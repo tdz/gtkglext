@@ -514,31 +514,38 @@ if test "x$gdktarget" = "xx11"; then
     AC_MSG_ERROR(Cannot find GL library)
   fi
 
-  have_GLU=no
-
   # GLU
+
+  have_GLU=no
+  have_SGI_GLU=no
+
+  THREAD_LIB="-lpthread"
+  STDCPP_LIB="-lstdc++"
+
   AC_CHECK_LIB(GLU, gluSphere,
                [ GL_LIBS="-lGLU $GL_LIBS"
-                 have_GLU=yes], ,
+                 have_GLU=yes ], ,
                [ $GL_LIBS ])
   if test "x$ac_cv_lib_GLU_gluSphere" = "xno" ; then
-    # GLU may need to link with -lpthread explicitly
+    # GLU may need to be linked with the thread library explicitly
     AC_CHECK_LIB(GLU, gluCylinder,
-                 [ GL_LIBS="-lGLU $GL_LIBS -lpthread"
-                   have_GLU=yes], ,
-                 [ $GL_LIBS -lpthread ])
+                 [ GL_LIBS="-lGLU $GL_LIBS $THREAD_LIB"
+                   have_GLU=yes ], ,
+                 [ $GL_LIBS $THREAD_LIB ])
     if test "x$ac_cv_lib_GLU_gluCylinder" = "xno" ; then
-      # GLU may need to link with -lstdc++ explicitly
+      # GLU may need to be linked with std C++ library explicitly
       AC_CHECK_LIB(GLU, gluDisk,
-                   [ GL_LIBS="-lGLU $GL_LIBS -lstdc++"
-                     have_GLU=yes], ,
-                   [ $GL_LIBS -lstdc++ ])
+                   [ GL_LIBS="-lGLU $GL_LIBS $STDCPP_LIB"
+                     have_GLU=yes
+                     have_SGI_GLU=yes ], ,
+                   [ $GL_LIBS $STDCPP_LIB ])
       if test "x$ac_cv_lib_GLU_gluDisk" = "xno" ; then
-        # GLU may need to link with -lstdc++ and -lpthread explicitly
+        # GLU may need to be linked with std C++ and thread libraries explicitly
         AC_CHECK_LIB(GLU, gluPartialDisk,
-                     [ GL_LIBS="-lGLU $GL_LIBS -lstdc++ -lpthread"
-                       have_GLU=yes], ,
-                     [ $GL_LIBS -lstdc++ -lpthread ])
+                     [ GL_LIBS="-lGLU $GL_LIBS $STDCPP_LIB $THREAD_LIB"
+                       have_GLU=yes
+                       have_SGI_GLU=yes ], ,
+                     [ $GL_LIBS $STDCPP_LIB $THREAD_LIB ])
       fi
     fi
   fi
@@ -547,7 +554,7 @@ if test "x$gdktarget" = "xx11"; then
     # if no GLU, check for MesaGLU
     AC_CHECK_LIB(MesaGLU, gluSphere,
                  [ GL_LIBS="-lMesaGLU $GL_LIBS"
-                   have_GLU=yes], ,
+                   have_GLU=yes ], ,
                  [ $GL_LIBS ])
   fi
 
@@ -555,6 +562,28 @@ if test "x$gdktarget" = "xx11"; then
     # no GLU found
     AC_MSG_ERROR(Cannot find GLU library)
   fi
+
+  # Checks for SGI's GLU library
+  if test "x$have_SGI_GLU" = "xno" ; then
+    # Try static linking
+    save_LDFLAGS="$LDFLAGS"
+    LDFLAGS="$LDFLAGS $lt_cv_prog_cc_static"
+
+    AC_CHECK_LIB(GLU, gluBeginCurve,
+                 [ have_SGI_GLU=no ], ,
+                 [ $GL_LIBS ])
+    if test "x$ac_cv_lib_GLU_gluBeginCurve" = "xno" ; then
+      AC_CHECK_LIB(GLU, gluBeginPolygon,
+                   [ GL_LIBS="$GL_LIBS $STDCPP_LIB"
+                     have_SGI_GLU=yes ], ,
+                   [ $GL_LIBS $STDCPP_LIB ])
+    fi
+
+    LDFLAGS="$save_LDFLAGS"
+  fi
+
+  AC_MSG_CHECKING([whether libGLU needs to be linked with the std C++ library])
+  AC_MSG_RESULT($have_SGI_GLU)
 
   # Checks for GLXPbufferSGIX type definition.
   GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF=no

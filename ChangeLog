@@ -1,6 +1,7 @@
 2003-01-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* configure.in: Modified X11 library dependencies.
+	Additional SGI's GLU checks.
 
 	(Bugs item #672485, Jussi Laako)
 
