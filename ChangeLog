@@ -1,5 +1,7 @@
 2002-12-22  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* Version 0.6.1
+
 	* gdk/win32/gdkglcontext-win32.c
 	(gdk_win32_gl_context_foreign_new): 
 	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_new) 
