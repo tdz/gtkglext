@@ -353,7 +353,7 @@ AC_SUBST(GDKGLEXT_WIN_LIBS)
 ##################################################
 
 AC_ARG_ENABLE(mesa-ext,
-[  --enable-mesa-ext       enable Mesa-specific GL/GLX extensions [[default=no]]],
+[  --enable-mesa-ext       enable Mesa-specific GLX extensions [[default=no]]],
 , enable_mesa_ext=no)
 
 GL_CFLAGS=""
@@ -406,9 +406,9 @@ if test "x$gdktarget" = "xx11"; then
   GL_LIB_NAME=GL
 
   # GLcore and GL (SGI)
-  AC_CHECK_LIB(GLcore, glNewList,
-               GL_LIBS="-lGLcore")
-  if test "x$ac_cv_lib_GLcore_glNewList" = "xyes" ; then
+  AC_CHECK_LIB(GLcore, glVertex3d,
+               [ GL_LIBS="-lGLcore" ])
+  if test "x$ac_cv_lib_GLcore_glVertex3d" = "xyes" ; then
     # if GLcore found, then also check for GL
     AC_CHECK_LIB(GL, glXCreateContext,
                  [ GL_LIBS="-lGL $GL_LIBS"
@@ -418,27 +418,27 @@ if test "x$gdktarget" = "xx11"; then
   # GL
   if test "x$have_GL" = "xno" ; then
     # if no GLcore and GL, check for GL
-    AC_CHECK_LIB(GL, glNewList,
+    AC_CHECK_LIB(GL, glVertex3d,
                  [ GL_LIBS="-lGL"
                    have_GL=yes ])
-    if test "x$ac_cv_lib_GL_glNewList" = "xno" ; then
+    if test "x$ac_cv_lib_GL_glVertex3d" = "xno" ; then
       # GL may need to link with -lpthread explicitly
-      AC_CHECK_LIB(GL, glGenLists,
+      AC_CHECK_LIB(GL, glVertex3f,
                    [ GL_LIBS="-lGL -lpthread"
                      have_GL=yes ], ,
-                   "-lpthread")
-      if test "x$ac_cv_lib_GL_glGenLists" = "xno" ; then
+                   [ -lpthread ])
+      if test "x$ac_cv_lib_GL_glVertex3f" = "xno" ; then
         # GL may need to link with -lstdc++ explicitly
-        AC_CHECK_LIB(GL, glCallList,
+        AC_CHECK_LIB(GL, glVertex3i,
                      [ GL_LIBS="-lGL -lstdc++"
                        have_GL=yes ], ,
-                     "-lstdc++")
-        if test "x$ac_cv_lib_GL_glCallList" = "xno" ; then
+                     [ -lstdc++ ])
+        if test "x$ac_cv_lib_GL_glVertex3i" = "xno" ; then
           # GL may need to link with -lstdc++ and -lpthread explicitly
-          AC_CHECK_LIB(GL, glEndList,
+          AC_CHECK_LIB(GL, glVertex3s,
                        [ GL_LIBS="-lGL -lstdc++ -lpthread"
                          have_GL=yes ], ,
-                       "-lstdc++ -lpthread")
+                       [ -lstdc++ -lpthread ])
         fi
       fi
     fi
@@ -447,7 +447,7 @@ if test "x$gdktarget" = "xx11"; then
   # MesaGL
   if test "x$have_GL" = "xno" ; then
     # if no GL, check for MesaGL
-    AC_CHECK_LIB(MesaGL, glNewList,
+    AC_CHECK_LIB(MesaGL, glVertex3d,
                  [ GL_LIBS="-lMesaGL"
                    have_GL=yes
                    GL_LIB_NAME=MesaGL ])
@@ -460,16 +460,39 @@ if test "x$gdktarget" = "xx11"; then
 
   have_GLU=no
 
-  AC_CHECK_LIB(GLU, gluNewQuadric,
+  # GLU
+  AC_CHECK_LIB(GLU, gluSphere,
                [ GL_LIBS="-lGLU $GL_LIBS"
                  have_GLU=yes], ,
-               $GL_LIBS)
-  if test "x$ac_cv_lib_GLU_gluNewQuadric" = "xno" ; then
+               [ $GL_LIBS ])
+  if test "x$ac_cv_lib_GLU_gluSphere" = "xno" ; then
+    # GLU may need to link with -lpthread explicitly
+    AC_CHECK_LIB(GLU, gluCylinder,
+                 [ GL_LIBS="-lGLU $GL_LIBS -lpthread"
+                   have_GLU=yes], ,
+                 [ $GL_LIBS -lpthread ])
+    if test "x$ac_cv_lib_GLU_gluCylinder" = "xno" ; then
+      # GLU may need to link with -lstdc++ explicitly
+      AC_CHECK_LIB(GLU, gluDisk,
+                   [ GL_LIBS="-lGLU $GL_LIBS -lstdc++"
+                     have_GLU=yes], ,
+                   [ $GL_LIBS -lstdc++ ])
+      if test "x$ac_cv_lib_GLU_gluDisk" = "xno" ; then
+        # GLU may need to link with -lstdc++ and -lpthread explicitly
+        AC_CHECK_LIB(GLU, gluPartialDisk,
+                     [ GL_LIBS="-lGLU $GL_LIBS -lstdc++ -lpthread"
+                       have_GLU=yes], ,
+                     [ $GL_LIBS -lstdc++ -lpthread ])
+      fi
+    fi
+  fi
+
+  if test "x$have_GLU" = "xno" ; then
     # if no GLU, check for MesaGLU
-    AC_CHECK_LIB(MesaGLU, gluNewQuadric,
+    AC_CHECK_LIB(MesaGLU, gluSphere,
                  [ GL_LIBS="-lMesaGLU $GL_LIBS"
                    have_GLU=yes], ,
-                 $GL_LIBS)
+                 [ $GL_LIBS ])
   fi
 
   if test "x$have_GLU" = "xno" ; then
@@ -481,9 +504,9 @@ if test "x$gdktarget" = "xx11"; then
   have_MesaEXT=no
   AC_CHECK_LIB($GL_LIB_NAME, glXCreateGLXPixmapMESA,
                [ have_MesaEXT=yes ], ,
-               $GL_LIBS)
+               [ $GL_LIBS ])
 
-  AC_MSG_CHECKING([whether to enable Mesa-specific GL/GLX extensions])
+  AC_MSG_CHECKING([whether to enable Mesa-specific GLX extensions])
   if test "x$have_MesaEXT" = "xno"; then
     enable_mesa_ext=no
   fi
@@ -501,7 +524,7 @@ else
   LIBS="-lopengl32 $LIBS"
   AC_TRY_LINK([ #include <windows.h>
                 #include <GL/gl.h> ], 
-              [ glNewList(1, GL_COMPILE); ], 
+              [ glVertex3d(0.0, 0.0, 0.0); ], 
               [ GL_LIBS="-lopengl32"
                 have_opengl32=yes ])
   AC_MSG_RESULT($have_opengl32)

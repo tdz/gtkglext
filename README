@@ -85,7 +85,7 @@ OpenGL options
   --with-gl-includes=DIR  OpenGL (Mesa) include files are in DIR [default=auto]
   --with-gl-libraries=DIR OpenGL (Mesa) library files are in DIR [default=auto]
 
-  --enable-mesa-ext       enable Mesa-specific GL/GLX extensions [default=no]
+  --enable-mesa-ext       enable Mesa-specific GLX extensions [default=no]
 
 Debug options
 
