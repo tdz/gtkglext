@@ -333,7 +333,7 @@ fi
 AC_SUBST([REBUILD])
 
 # Honor aclocal flags
-ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS -I $srcdir/m4macros"
 
 ## Initial sanity check, done here so that users get told they 
 ## have the wrong dependencies as early in the process as possible.
@@ -364,6 +364,7 @@ AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
+AC_C_VAR_FUNC
 
 # Checks for library functions.
 save_LIBS="$LIBS"

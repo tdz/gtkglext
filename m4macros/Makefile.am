@@ -2,6 +2,7 @@
 ## Makefile.am for gtkglext/m4macros
 
 EXTRA_DIST = \
+	ac_c_var_func.m4	\
 	gtkglext.m4
 
 API_VER = @GTKGLEXT_API_VERSION@

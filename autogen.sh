@@ -73,7 +73,7 @@ if test -z "$AUTOGEN_SUBDIR_MODE"; then
         fi
 fi
 
-$ACLOCAL $ACLOCAL_FLAGS || exit 1
+$ACLOCAL $ACLOCAL_FLAGS -I $srcdir/m4macros || exit 1
 
 libtoolize --force || exit 1
 
