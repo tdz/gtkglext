@@ -2,6 +2,7 @@
 
 	* configure.in: Modified X11 library dependencies.
 	Additional SGI's GLU checks.
+	Modified Win32 library dependencies.
 
 	(Bugs item #672485, Jussi Laako)
 
