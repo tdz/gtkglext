@@ -347,14 +347,6 @@ _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
 }
 */
 
-/**
- * gdk_gl_context_get_gl_drawable:
- * @glcontext: a #GdkGLContext.
- *
- * Get #GdkGLDrawable to which the @glcontext is binded.
- *
- * Return value: the #GdkGLDrawable.
- **/
 GdkGLDrawable *
 gdk_gl_context_get_gl_drawable (GdkGLContext *glcontext)
 {
