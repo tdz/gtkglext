@@ -6,16 +6,16 @@ OpenGL extension API to GtkWidget
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
-GtkGLExt is an extension to Gtk 2.0 or above which adds OpenGL
-capabilities to any gtk widget. As opposed to Jane Loff's gtkglarea,
-It does not provide any OpenGL widget, but an interface to use opengl
-on any widget. Its use is quite simple: use
-#gtk_widget_set_gl_capability to add OpenGL support to a widget, it
-will create a GLcontext and a gldrawable for the widget, which can be
-obtained via #gtk_widget_get_gl_context and
-#gtk_widget_get_gl_drawable. With them, gdk_gl_drawable_gl_begin and
-gdk_gl_drawable_gl_end can be called. Between those two function,
-OpenGL function calls can be made.
+GtkGLExt is an extension to GTK which adds OpenGL capabilities to
+GtkWidget. As opposed to Jane Loff's GtkGLArea, it does not provide
+any OpenGL widget, but an interface to use OpenGL on GtkWidget.
+Its use is quite simple: use #gtk_widget_set_gl_capability to add
+OpenGL support to a widget, it will create a GL drawable for the
+widget, which can be obtained via #gtk_widget_get_gl_drawable.
+GL context can also be obtained via #gtk_widget_get_gl_context.
+With GL drawable and GL context, #gdk_gl_drawable_gl_begin and
+#gdk_gl_drawable_gl_end can be called, and OpenGL function calls can
+be made between those two functions.
 </para>
 
 <!-- ##### SECTION See_Also ##### -->

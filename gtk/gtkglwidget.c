@@ -137,11 +137,7 @@ gtk_widget_gl_parent_set (GtkWidget   *widget,
  * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not used).
  *
  * Set the OpenGL-capability to the @widget.
- * The call setup the callbacks to realize a OpenGL-capable window.
- *
- * Prepares the widget for its use with OpenGL, by creating the
- * gl_context and the gl_drawable, which are afterwards obtainable by
- * #gtk_widget_get_gl_context and #gtk_widget_get_gl_drawable.
+ * This function prepares the widget for its use with OpenGL.
  *
  * Return value: TRUE if it is successful, FALSE otherwise.
  **/
@@ -351,10 +347,11 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
  * gtk_widget_get_gl_context:
  * @widget: a #GtkWidget.
  *
- * Return the #GdkGLContext holded by the @widget.
+ * Returns the #GdkGLContext with the appropriate #GdkGLDrawable
+ * for this widget.
  *
- * Returns the GdkGLContext holded by the widget. This struct is needed
- * for the function gdk_gl_drawable_begin, or for sharing Displaylists
+ * #GdkGLContext is needed for the function gdk_gl_drawable_begin,
+ * or for sharing display lists
  * (see #gtk_widget_set_gl_capability).
  *
  * Return value: the #GdkGLContext.
