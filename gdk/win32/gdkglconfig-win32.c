@@ -26,18 +26,21 @@
 
 enum {
   PROP_0,
-  PROP_ATTRIB_LIST
+  PROP_PFD
 };
 
 /* Forward declarations */
 
-static GdkColormap *gdk_gl_config_setup_colormap (GdkScreen             *screen,
-                                                  PIXELFORMATDESCRIPTOR *pfd,
-                                                  gboolean               is_rgba);
+static GdkColormap *gdk_gl_config_setup_colormap   (GdkScreen                   *screen,
+                                                    PIXELFORMATDESCRIPTOR       *pfd,
+                                                    gboolean                     is_rgba);
 
-static gboolean gdk_win32_gl_config_get_attrib        (GdkGLConfig               *glconfig,
-                                                       gint                       attribute,
-                                                       gint                      *value);
+static GdkGLConfig *gdk_gl_config_new_common       (GdkScreen                   *screen,
+                                                    CONST PIXELFORMATDESCRIPTOR *pfd);
+
+static gboolean     gdk_win32_gl_config_get_attrib (GdkGLConfig                 *glconfig,
+                                                    gint                         attribute,
+                                                    gint                        *value);
 
 static void     gdk_gl_config_impl_win32_init         (GdkGLConfigImplWin32      *impl);
 static void     gdk_gl_config_impl_win32_class_init   (GdkGLConfigImplWin32Class *klass);
@@ -110,61 +113,11 @@ gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass)
   glconfig_class->get_attrib = gdk_win32_gl_config_get_attrib;
 
   g_object_class_install_property (object_class,
-                                   PROP_ATTRIB_LIST,
-                                   g_param_spec_pointer ("attrib_list",
-                                                         "Attrib list",
-                                                         "Pointer to the OpenGL configuration attribute list.",
+                                   PROP_PFD,
+                                   g_param_spec_pointer ("pfd",
+                                                         "Pixel format descriptor",
+                                                         "Pointer to the pixel format descriptor.",
                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-}
-
-/*
- * Find an appropriate pixel format.
- * Basic idea of this code is ripped from FLTK.
- */
-int
-_gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
-					CONST PIXELFORMATDESCRIPTOR* req_pfd,
-					PIXELFORMATDESCRIPTOR*       found_pfd)
-{
-  PIXELFORMATDESCRIPTOR pfd, chosen_pfd;
-  int pixel_format = 0;
-  int i;
-
-  memset (&chosen_pfd, 0, sizeof (chosen_pfd));
-
-  for (i = 1; ; i++)
-    {
-      if (DescribePixelFormat (hdc, i, sizeof (pfd), &pfd) == 0)
-	break;
-
-      if (~(pfd.dwFlags)   &  req_pfd->dwFlags)      continue;
-      if (pfd.iPixelType   != req_pfd->iPixelType)   continue;
-      if (pfd.cColorBits   <  req_pfd->cColorBits)   continue;
-      if (pfd.cAlphaBits   <  req_pfd->cAlphaBits)   continue;
-      if (pfd.cAccumBits   <  req_pfd->cAccumBits)   continue;
-      if (pfd.cDepthBits   <  req_pfd->cDepthBits)   continue;
-      if (pfd.cStencilBits <  req_pfd->cStencilBits) continue;
-      if (pfd.cAuxBuffers  <  req_pfd->cAuxBuffers)  continue;
-      /* if (pfd.iLayerType   != req_pfd->iLayerType)   continue; */
-
-      /* Check whether pfd is better than chosen_pfd. */
-      if (pixel_format != 0)
-	{
-	  /* Offering overlay is better. */
-	  if ((pfd.bReserved & 0x0f) && !(chosen_pfd.bReserved & 0x0f)) {}
-	  /* More color bitplanes is better. */
-	  else if (pfd.cColorBits > chosen_pfd.cColorBits) {}
-	  /* pfd is not better than chosen_pfd. */
-	  else continue;
-	}
-
-      pixel_format = i;
-      chosen_pfd = pfd;
-    }
-
-  *found_pfd = chosen_pfd;
-
-  return pixel_format;
 }
 
 /* 
@@ -262,10 +215,6 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
   GdkGLConfig *glconfig;
   GdkGLConfigImplWin32 *impl;
 
-  HDC hdc;
-  PIXELFORMATDESCRIPTOR found_pfd;
-  int pixel_format;
-
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
                                                        n_construct_properties,
                                                        construct_properties);
@@ -276,45 +225,12 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
   impl = GDK_GL_CONFIG_IMPL_WIN32 (object);
 
   /*
-   * Get DC.
-   */
-
-  hdc = GetDC (NULL);
-  if (hdc == NULL)
-    {
-      g_warning ("cannot get DC");
-      goto FAIL;
-    }
-
-  /*
-   * Determine whether requested pixel format is supported.
-   */
-
-  pixel_format = _gdk_win32_gl_config_find_pixel_format (hdc,
-							 &(impl->pfd),
-							 &found_pfd);
-  if (pixel_format == 0)
-    goto FAIL;
-
-  GDK_GL_NOTE (MISC, g_message (" -- pixel_format = 0x%x", pixel_format));
-
-  /*
-   * Setup PFD from the found description.
-   */
-
-  impl->pfd = found_pfd;
-
-#ifdef G_ENABLE_DEBUG
-  _gdk_win32_gl_print_pfd (&(impl->pfd));
-#endif
-
-  /*
    * Set depth (number of bits per pixel).
    */
 
-  glconfig->depth = found_pfd.cRedBits +
-                    found_pfd.cGreenBits +
-                    found_pfd.cBlueBits;
+  glconfig->depth = impl->pfd.cRedBits +
+                    impl->pfd.cGreenBits +
+                    impl->pfd.cBlueBits;
 
   /*
    * Get colormap.
@@ -331,6 +247,18 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
   /*
    * Get configuration results.
    */
+
+  /* Layer plane. */
+  if (impl->pfd.bReserved != 0)
+    {
+      glconfig->layer_plane = impl->pfd.bReserved & 0x0f;
+      if (glconfig->layer_plane == 0)
+        glconfig->layer_plane = -1 * ((impl->pfd.bReserved & 0xf0) >> 4);
+    }
+  else
+    {
+      glconfig->layer_plane = 0;
+    }
 
   /* Double buffering is supported? */
   glconfig->is_double_buffered = (impl->pfd.dwFlags & PFD_DOUBLEBUFFER) ? TRUE : FALSE;
@@ -362,30 +290,94 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
 
   impl->is_constructed = TRUE;
 
- FAIL:
+  return object;
+}
+
+static void
+gdk_gl_config_impl_win32_set_property (GObject      *object,
+                                       guint         property_id,
+                                       const GValue *value,
+                                       GParamSpec   *pspec)
+{
+  GdkGLConfigImplWin32 *impl = GDK_GL_CONFIG_IMPL_WIN32 (object);
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_win32_set_property ()"));
+
+  switch (property_id)
+    {
+    case PROP_PFD:
+      impl->pfd = *((PIXELFORMATDESCRIPTOR *) g_value_get_pointer (value));
+      g_object_notify (object, "pfd");
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+    }
+}
+
+static void
+gdk_gl_config_impl_win32_get_property (GObject    *object,
+                                       guint       property_id,
+                                       GValue     *value,
+                                       GParamSpec *pspec)
+{
+  switch (property_id)
+    {
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+    }
+}
+
+static void
+gdk_gl_config_impl_win32_finalize (GObject *object)
+{
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_win32_finalize ()"));
+
+  G_OBJECT_CLASS (parent_class)->finalize (object);
+}
+
+static GdkGLConfig *
+gdk_gl_config_new_common (GdkScreen                   *screen,
+                          CONST PIXELFORMATDESCRIPTOR *pfd)
+{
+  GdkGLConfig *glconfig;
+  GdkGLConfigImplWin32 *impl;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_common ()"));
 
   /*
-   * Release DC.
+   * Instanciate the GdkGLConfigImplWin32 object.
    */
 
-  if (hdc != NULL)
-    ReleaseDC (NULL, hdc);
+  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
+                           "screen", screen,
+                           "pfd",    pfd,
+                           NULL);
+  impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
 
-  return object;
+  if (!impl->is_constructed)
+    {
+      g_object_unref (G_OBJECT (glconfig));
+      return NULL;
+    }
+
+  return glconfig;
 }
 
 /*
  * This code is based on lib/glut/win32_glx.c of GLUT by Nate Robins.
  */
 static void
-parse_attrib_list (GdkGLConfig *glconfig,
-		   int         *attrib_list)
+gdk_gl_config_parse_attrib_list (const int             *attrib_list,
+                                 PIXELFORMATDESCRIPTOR *pfd)
 {
-  GdkGLConfigImplWin32 *impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
-  PIXELFORMATDESCRIPTOR *pfd = &(impl->pfd);
   int *p;
   gboolean buffer_size_is_specified = FALSE;
   BYTE buffer_size;
+  int layer_plane;
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_parse_attrib_list ()"));
 
   /* Specifies the size of this data structure. */
   pfd->nSize = sizeof (PIXELFORMATDESCRIPTOR);
@@ -412,10 +404,10 @@ parse_attrib_list (GdkGLConfig *glconfig,
 
   /* Ignored. Earlier implementations of OpenGL used this member,
      but it is no longer used. */
-  glconfig->layer_plane = 0;
+  layer_plane = 0;
   pfd->iLayerType = PFD_MAIN_PLANE;
 
-  p = attrib_list;
+  p = (int *) attrib_list;
   while (*p != GDK_GL_ATTRIB_LIST_NONE)
     {
       switch (*p)
@@ -430,12 +422,12 @@ parse_attrib_list (GdkGLConfig *glconfig,
 	  buffer_size_is_specified = TRUE;
           break;
         case GDK_GL_LEVEL:
-	  glconfig->layer_plane = *(++p);
+          layer_plane = *(++p);
 	  /* Ignored. Earlier implementations of OpenGL used this member,
 	     but it is no longer used. */
-	  if (glconfig->layer_plane > 0)
+	  if (layer_plane > 0)
 	    pfd->iLayerType = PFD_OVERLAY_PLANE;
-	  else if (glconfig->layer_plane < 0)
+	  else if (layer_plane < 0)
 	    pfd->iLayerType = PFD_UNDERLAY_PLANE;
           break;
         case GDK_GL_RGBA:
@@ -529,86 +521,119 @@ parse_attrib_list (GdkGLConfig *glconfig,
                     pfd->cAccumAlphaBits;
 }
 
-static void
-gdk_gl_config_impl_win32_set_property (GObject      *object,
-                                       guint         property_id,
-                                       const GValue *value,
-                                       GParamSpec   *pspec)
+/*
+ * Find an appropriate pixel format.
+ * Basic idea of this code is ripped from FLTK.
+ */
+int
+_gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
+					CONST PIXELFORMATDESCRIPTOR *req_pfd,
+					PIXELFORMATDESCRIPTOR       *found_pfd)
 {
-  GdkGLConfig *glconfig = GDK_GL_CONFIG (object);
-  int *attrib_list;
+  PIXELFORMATDESCRIPTOR pfd, chosen_pfd;
+  int pixel_format = 0;
+  int i;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_win32_set_property ()"));
+  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_win32_gl_config_find_pixel_format ()"));
 
-  switch (property_id)
+  memset (&chosen_pfd, 0, sizeof (chosen_pfd));
+
+  for (i = 1; ; i++)
     {
-    case PROP_ATTRIB_LIST:
-      attrib_list = g_value_get_pointer (value);
-      if (attrib_list != NULL)
-	parse_attrib_list (glconfig, attrib_list);
-      g_object_notify (object, "attrib_list");
-      break;
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-      break;
+      if (DescribePixelFormat (hdc, i, sizeof (pfd), &pfd) == 0)
+	break;
+
+      if (~(pfd.dwFlags)   &  req_pfd->dwFlags)      continue;
+      if (pfd.iPixelType   != req_pfd->iPixelType)   continue;
+      if (pfd.cColorBits   <  req_pfd->cColorBits)   continue;
+      if (pfd.cAlphaBits   <  req_pfd->cAlphaBits)   continue;
+      if (pfd.cAccumBits   <  req_pfd->cAccumBits)   continue;
+      if (pfd.cDepthBits   <  req_pfd->cDepthBits)   continue;
+      if (pfd.cStencilBits <  req_pfd->cStencilBits) continue;
+      if (pfd.cAuxBuffers  <  req_pfd->cAuxBuffers)  continue;
+      /* if (pfd.iLayerType   != req_pfd->iLayerType)   continue; */
+
+      /* Check whether pfd is better than chosen_pfd. */
+      if (pixel_format != 0)
+	{
+	  /* Offering overlay is better. */
+	  if ((pfd.bReserved & 0x0f) && !(chosen_pfd.bReserved & 0x0f)) {}
+	  /* More color bitplanes is better. */
+	  else if (pfd.cColorBits > chosen_pfd.cColorBits) {}
+	  /* pfd is not better than chosen_pfd. */
+	  else continue;
+	}
+
+      pixel_format = i;
+      chosen_pfd = pfd;
     }
-}
 
-static void
-gdk_gl_config_impl_win32_get_property (GObject    *object,
-                                       guint       property_id,
-                                       GValue     *value,
-                                       GParamSpec *pspec)
-{
-  switch (property_id)
-    {
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-      break;
-    }
-}
+  *found_pfd = chosen_pfd;
 
-static void
-gdk_gl_config_impl_win32_finalize (GObject *object)
-{
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_win32_finalize ()"));
-
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  return pixel_format;
 }
 
 GdkGLConfig *
 gdk_gl_config_new (const int *attrib_list)
 {
-  GdkGLConfig *glconfig;
-  GdkGLConfigImplWin32 *impl;
+  GdkScreen *screen;
+  HDC hdc;
+  PIXELFORMATDESCRIPTOR pfd;
+  int pixel_format;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
+
+  g_return_val_if_fail (attrib_list != NULL, NULL);
+
+  /*
+   * Parse GLX style attrib_list.
+   */
+
+  memset (&pfd, 0, sizeof (pfd));
+
+  gdk_gl_config_parse_attrib_list (attrib_list, &pfd);
+
+#ifdef G_ENABLE_DEBUG
+  _gdk_win32_gl_print_pfd (&pfd);
+#endif
+
+  /*
+   * Determine whether requested pixel format is supported.
+   */
+
+  /* Get DC. */
+  hdc = GetDC (NULL);
+  if (hdc == NULL)
+    {
+      g_warning ("cannot get DC");
+      return NULL;
+    }
+
+  pixel_format = _gdk_win32_gl_config_find_pixel_format (hdc, &pfd, &pfd);
+
+  /* Release DC. */
+  ReleaseDC (NULL, hdc);
+
+  if (pixel_format == 0)
+    return NULL;
+
+  GDK_GL_NOTE (MISC, g_message (" -- found pixel_format = 0x%x", pixel_format));
+
+#ifdef G_ENABLE_DEBUG
+  _gdk_win32_gl_print_pfd (&pfd);
+#endif
 
   /*
    * Instanciate the GdkGLConfigImplWin32 object.
    */
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
-                           "screen",      gdk_screen_get_default (),
-                           "attrib_list", attrib_list,
-                           NULL);
+  screen = gdk_screen_get_default ();
 #else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
-                           "screen",      NULL,
-                           "attrib_list", attrib_list,
-                           NULL);
+  screen = NULL;
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-  impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
-
-  if (!impl->is_constructed)
-    {
-      g_object_unref (G_OBJECT (glconfig));
-      return NULL;
-    }
-
-  return glconfig;
+  return gdk_gl_config_new_common (screen, &pfd);
 }
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
@@ -617,33 +642,109 @@ GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
                               const int *attrib_list)
 {
-  GdkGLConfig *glconfig;
-  GdkGLConfigImplWin32 *impl;
+  HDC hdc;
+  PIXELFORMATDESCRIPTOR pfd;
+  int pixel_format;
 
-  g_return_val_if_fail (screen == gdk_screen_get_default (), NULL);
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_for_screen ()"));
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
+  g_return_val_if_fail (attrib_list != NULL, NULL);
+
+  /*
+   * Parse GLX style attrib_list.
+   */
+
+  memset (&pfd, 0, sizeof (pfd));
+
+  gdk_gl_config_parse_attrib_list (attrib_list, &pfd);
+
+#ifdef G_ENABLE_DEBUG
+  _gdk_win32_gl_print_pfd (&pfd);
+#endif
+
+  /*
+   * Determine whether requested pixel format is supported.
+   */
+
+  /* Get DC. */
+  hdc = GetDC (NULL);
+  if (hdc == NULL)
+    {
+      g_warning ("cannot get DC");
+      return NULL;
+    }
+
+  pixel_format = _gdk_win32_gl_config_find_pixel_format (hdc, &pfd, &pfd);
+
+  /* Release DC. */
+  ReleaseDC (NULL, hdc);
+
+  if (pixel_format == 0)
+    return NULL;
+
+  GDK_GL_NOTE (MISC, g_message (" -- found pixel_format = 0x%x", pixel_format));
+
+#ifdef G_ENABLE_DEBUG
+  _gdk_win32_gl_print_pfd (&pfd);
+#endif
 
   /*
    * Instanciate the GdkGLConfigImplWin32 object.
    */
 
-  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
-                           "screen",      screen,
-                           "attrib_list", attrib_list,
-                           NULL);
-  impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
-
-  if (!impl->is_constructed)
-    {
-      g_object_unref (G_OBJECT (glconfig));
-      return NULL;
-    }
-
-  return glconfig;
+  return gdk_gl_config_new_common (screen, &pfd);
 }
 
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+GdkGLConfig *
+gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
+{
+  GdkScreen *screen;
+  HDC hdc;
+  PIXELFORMATDESCRIPTOR pfd;
+  int result;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_win32_gl_config_new_from_pixel_format ()"));
+
+  /*
+   * Get PFD.
+   */
+
+  /* Get DC. */
+  hdc = GetDC (NULL);
+  if (hdc == NULL)
+    {
+      g_warning ("cannot get DC");
+      return NULL;
+    }
+
+  result = DescribePixelFormat (hdc, pixel_format, sizeof (pfd), &pfd);
+
+  /* Release DC. */
+  ReleaseDC (NULL, hdc);
+
+  if (result == 0)
+    return NULL;
+
+  GDK_GL_NOTE (MISC, g_message (" -- pixel_format = 0x%x", pixel_format));
+
+#ifdef G_ENABLE_DEBUG
+  _gdk_win32_gl_print_pfd (&pfd);
+#endif
+
+  /*
+   * Instanciate the GdkGLConfigImplWin32 object.
+   */
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+  screen = gdk_screen_get_default ();
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
+  screen = NULL;
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+  return gdk_gl_config_new_common (screen, &pfd);
+}
 
 PIXELFORMATDESCRIPTOR *
 gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
