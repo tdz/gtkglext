@@ -17,7 +17,7 @@
 ;Configuration
 
 OutFile gtkglext-win32-${GTKGLEXT_VERSION}.exe
-SetCompressor bzip2
+SetCompressor lzma
 
 InstType "Full (Runtime w/ Development and Examples)"
 InstType "Runtime (w/o Development and Examples)"
@@ -31,54 +31,84 @@ InstallDir C:\GtkGLExt\${GTKGLEXT_API_VERSION}
 InstallDirRegKey HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION} "Path"
 
 ;--------------------------------
-;Modern UI Configuration
+;Header Files
 
 !include "MUI.nsh"
 
-!define MUI_PRODUCT "GtkGLExt"
-!define MUI_VERSION "${GTKGLEXT_VERSION}"
+;--------------------------------
+;Configuration
 
-!define MUI_NAME "${MUI_PRODUCT} ${MUI_VERSION}" ;Installer name
+; Names
+Name "GtkGLExt"
+Caption "GtkGLExt ${GTKGLEXT_VERSION} Setup"
 
-!define MUI_WELCOMEPAGE
-!define MUI_LICENSEPAGE
-!define MUI_COMPONENTSPAGE
-  !define MUI_COMPONENTSPAGE_SMALLDESC
-!define MUI_DIRECTORYPAGE
-!define MUI_STARTMENUPAGE
-  ;$9 is being used to store the Start Menu Folder.
-  ;Do not use this variable in your script (or Push/Pop it)!
-  ;To change this variable, use MUI_STARTMENUPAGE_VARIABLE.
-  !define MUI_STARTMENUPAGE_DEFAULTFOLDER "${MUI_PRODUCT} ${GTKGLEXT_API_VERSION}"
-  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
-  !define MUI_STARTMENUPAGE_REGISTRY_KEY "SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}"
-  !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "StartMenuFolder"
-!define MUI_FINISHPAGE
-  ;!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\Docs\index.html"
-  !define MUI_FINISHPAGE_NOAUTOCLOSE
-  !define MUI_FINISHPAGE_NOREBOOTSUPPORT
+;--------------------------------
+;Variables
+
+Var MUI_TEMP
+Var STARTMENU_FOLDER
+
+;--------------------------------
+;Interface Settings
 
 !define MUI_ABORTWARNING
 
-!define MUI_UNINSTALLER
-!define MUI_UNCONFIRMPAGE
+!define MUI_COMPONENTSPAGE_SMALLDESC
+
+!define MUI_FINISHPAGE_NOAUTOCLOSE
+!define MUI_UNFINISHPAGE_NOAUTOCLOSE
+
+;--------------------------------
+;Pages
+
+;Welcome Page
+!define MUI_WELCOMEPAGE_TEXT "This wizard will guide you through the installation of GtkGLExt, OpenGL Extension to GTK.\r\n\r\n\r\n$_CLICK"
+!insertmacro MUI_PAGE_WELCOME
+
+;License Page
+!insertmacro MUI_PAGE_LICENSE "COPYING.LIB"
+
+;Components Page
+!insertmacro MUI_PAGE_COMPONENTS
+
+;Directory Page
+!insertmacro MUI_PAGE_DIRECTORY
+
+;Start Menu Folder Page
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "GtkGLExt ${GTKGLEXT_API_VERSION}"
+!define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
+!define MUI_STARTMENUPAGE_REGISTRY_KEY "SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}"
+!define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "StartMenuFolder"
+!insertmacro MUI_PAGE_STARTMENU StartMenu $STARTMENU_FOLDER
+
+;Installation Page
+!insertmacro MUI_PAGE_INSTFILES
+
+;Finish Page
+!define MUI_FINISHPAGE_NOREBOOTSUPPORT
+!insertmacro MUI_PAGE_FINISH
+
+;Uninstall Welcome Page
+!insertmacro MUI_UNPAGE_WELCOME
+
+;Uninstall Confirm Page
+!insertmacro MUI_UNPAGE_CONFIRM
+
+;Uninstallation Page
+!insertmacro MUI_UNPAGE_INSTFILES
+
+;Uninstall Finish Page
+!insertmacro MUI_UNPAGE_FINISH
 
 ;--------------------------------
 ;Languages
-
-!define MUI_TEXT_WELCOME_INFO_TEXT "This wizard will guide you through the installation of GtkGLExt, OpenGL Extension to GTK.\r\n\r\n\r\n"
 
 !insertmacro MUI_LANGUAGE "English"
   
 ;--------------------------------
 ;Reserve Files
 
-!insertmacro MUI_RESERVEFILE_WELCOMEFINISHPAGE
-
-;--------------------------------
-;Data
-
-LicenseData COPYING.LIB
+;!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 
 ;--------------------------------
 ;Installer Sections
@@ -184,18 +214,18 @@ SectionEnd
 Section "Start Menu" SecStartMenu
   SectionIn 1 2
 
-  ;Create shortcuts
   SetShellVarContext all
-  !insertmacro MUI_STARTMENU_WRITE_BEGIN    
 
-    CreateDirectory "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}"
+  !insertmacro MUI_STARTMENU_WRITE_BEGIN StartMenu
 
-    WriteINIStr "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}\GtkGLExt Website.url" "InternetShortcut" "URL" "http://gtkglext.sourceforge.net/"
+    CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
+
+    WriteINIStr "$SMPROGRAMS\$STARTMENU_FOLDER\GtkGLExt Website.url" "InternetShortcut" "URL" "http://gtkglext.sourceforge.net/"
 
     IfFileExists "$INSTDIR\share\gtk-doc\html\gtkglext\index.html" "" +2
-      CreateShortCut "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}\GtkGLExt Reference Manual.lnk" "$INSTDIR\share\gtk-doc\html\gtkglext\index.html"
+      CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GtkGLExt Reference Manual.lnk" "$INSTDIR\share\gtk-doc\html\gtkglext\index.html"
 
-    CreateShortCut "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}\Uninstall GtkGLExt.lnk" "$INSTDIR\uninst-gtkglext.exe"
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall GtkGLExt.lnk" "$INSTDIR\uninst-gtkglext.exe"
 
   !insertmacro MUI_STARTMENU_WRITE_END
 
@@ -216,8 +246,8 @@ Section -post
   DetailPrint "Done"
 
   ; Registry
-  WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "DisplayName" "${MUI_PRODUCT} ${MUI_VERSION}"
-  WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "DisplayVersion" "${MUI_VERSION}"
+  WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "DisplayName" "GtkGLExt ${GTKGLEXT_VERSION}"
+  WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "DisplayVersion" "${GTKGLEXT_VERSION}"
   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "Publisher" "${GTKGLEXT_PUBLISHER}"
   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "URLInfoAbout" "${GTKGLEXT_URL_INFO_ABOUT}"
   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "URLUpdateInfo" "${GTKGLEXT_URL_UPDATE_INFO}"
@@ -233,12 +263,12 @@ SectionEnd
 ;--------------------------------
 ;Descriptions
 
-!insertmacro MUI_FUNCTIONS_DESCRIPTION_BEGIN
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
   !insertmacro MUI_DESCRIPTION_TEXT ${SecRuntime} "GtkGLExt runtime libraries"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecDevelopment} "GtkGLExt development headers, libraries, and documentations"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecExamples} "GtkGLExt example programs"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecStartMenu} "Adds icons to your start menu for easy access"
-!insertmacro MUI_FUNCTIONS_DESCRIPTION_END
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 ;--------------------------------
 ;Installer Functions
@@ -376,12 +406,12 @@ Section Uninstall
 
   ;Remove shortcut
   SetShellVarContext all
-  ReadRegStr $0 "${MUI_STARTMENUPAGE_REGISTRY_ROOT}" "${MUI_STARTMENUPAGE_REGISTRY_KEY}" "${MUI_STARTMENUPAGE_REGISTRY_VALUENAME}"
-  StrCmp $0 "" noshortcuts
-    Delete "$SMPROGRAMS\$0\GtkGLExt Website.url"
-    Delete "$SMPROGRAMS\$0\GtkGLExt Reference Manual.lnk"
-    Delete "$SMPROGRAMS\$0\Uninstall GtkGLExt.lnk"
-    RMDir "$SMPROGRAMS\$0" ;Only if empty, so it won't delete other shortcuts
+  !insertmacro MUI_STARTMENU_GETFOLDER StartMenu $MUI_TEMP
+  StrCmp $MUI_TEMP "" noshortcuts
+    Delete "$SMPROGRAMS\$MUI_TEMP\GtkGLExt Website.url"
+    Delete "$SMPROGRAMS\$MUI_TEMP\GtkGLExt Reference Manual.lnk"
+    Delete "$SMPROGRAMS\$MUI_TEMP\Uninstall GtkGLExt.lnk"
+    RMDir "$SMPROGRAMS\$MUI_TEMP" ;Only if empty, so it won't delete other shortcuts
   noshortcuts:
 
   DeleteRegKey HKLM "SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}"
@@ -439,8 +469,5 @@ Section Uninstall
   ; $INSTDIR
 
   RMDir $INSTDIR
-
-  ;Modern UI Finish Header
-  !insertmacro MUI_UNFINISHHEADER
 
 SectionEnd
