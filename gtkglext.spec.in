@@ -52,7 +52,7 @@ and developer docs for GtkGLExt.
 LDFLAGS="-L$RPM_BUILD_ROOT%{_libdir}"
 export LDFLAGS
 
-%configure --enable-static --disable-gtk-doc
+%configure --disable-gtk-doc
 
 make
 
