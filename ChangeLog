@@ -1,5 +1,10 @@
 2004-02-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* m4macros/gtkglext.m4: Quote AC_DEFUN argument to avoid warnings
+	with automake-1.8.x.
+
+2004-02-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* gdk/*.[ch]: 
 	* gdk/glext/*.[ch]: 
 	* gdk/x11/*.[ch]: 

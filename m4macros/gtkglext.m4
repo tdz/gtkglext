@@ -8,7 +8,7 @@
 dnl AM_PATH_GTKGLEXT_1_0([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
 dnl Test for GtkGLExt, and define GTKGLEXT_CFLAGS and GTKGLEXT_LIBS.
 dnl
-AC_DEFUN(AM_PATH_GTKGLEXT_1_0,
+AC_DEFUN([AM_PATH_GTKGLEXT_1_0],
 [ no_gtkglext=""
   GTKGLEXT_CFLAGS=""
   GTKGLEXT_LIBS=""
@@ -215,7 +215,7 @@ main ()
 dnl AC_GTKGLEXT_SUPPORTS_MULTIHEAD([ACTION-IF-SUPPORTED [, ACTION-IF-NOT-SUPPORTED]])
 dnl Checks whether GtkGLExt supports multihead.
 dnl
-AC_DEFUN(AC_GTKGLEXT_SUPPORTS_MULTIHEAD,
+AC_DEFUN([AC_GTKGLEXT_SUPPORTS_MULTIHEAD],
 [ AC_CACHE_CHECK([whether GtkGLExt supports multihead],
                  [ac_cv_gtkglext_supports_multihead],
                  [AC_TRY_LINK([#include <gdk/gdkglquery.h>], 
