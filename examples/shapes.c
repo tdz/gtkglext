@@ -428,12 +428,9 @@ key_press_event (GtkWidget   *widget,
 		 GdkEventKey *event,
 		 gpointer     data)
 {
-  g_print ("%s: \"key_press_event\": ", gtk_widget_get_name (widget));
-
   switch (event->keyval)
     {
     case GDK_Escape:
-      g_print ("Escape key\n");
       gtk_main_quit ();
       break;
 
