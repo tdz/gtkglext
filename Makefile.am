@@ -3,7 +3,7 @@
 
 AUTOMAKE_OPTIONS = 1.6 dist-bzip2 dist-zip
 
-SUBDIRS = gdk gtk examples docs
+SUBDIRS = gdk gtk examples docs m4macros
 
 EXTRA_DIST = \
 	README.win32			\
@@ -20,36 +20,28 @@ PCFILE_EXT = @gdktarget@-@GTKGLEXT_API_VERSION@
 PCFILE_API_EXT = @GTKGLEXT_API_VERSION@
 
 gdkglext-$(PCFILE_EXT).pc: gdkglext.pc gdkglext-$(PCFILE_EXT)-uninstalled.pc
-	rm -f gdkglext-$(PCFILE_EXT).pc && \
-	cp gdkglext.pc gdkglext-$(PCFILE_EXT).pc
+	rm -f $@ && cp gdkglext.pc $@
 
 gdkglext-$(PCFILE_API_EXT).pc: gdkglext.pc gdkglext-$(PCFILE_API_EXT)-uninstalled.pc
-	rm -f gdkglext-$(PCFILE_API_EXT).pc && \
-	cp gdkglext.pc gdkglext-$(PCFILE_API_EXT).pc
+	rm -f $@ && cp gdkglext.pc $@
 
 gtkglext-$(PCFILE_EXT).pc: gtkglext.pc gtkglext-$(PCFILE_EXT)-uninstalled.pc
-	rm -f gtkglext-$(PCFILE_EXT).pc && \
-	cp gtkglext.pc gtkglext-$(PCFILE_EXT).pc
+	rm -f $@ && cp gtkglext.pc $@
 
 gtkglext-$(PCFILE_API_EXT).pc: gtkglext.pc gtkglext-$(PCFILE_API_EXT)-uninstalled.pc
-	rm -f gtkglext-$(PCFILE_API_EXT).pc && \
-	cp gtkglext.pc gtkglext-$(PCFILE_API_EXT).pc
+	rm -f $@ && cp gtkglext.pc $@
 
 gdkglext-$(PCFILE_EXT)-uninstalled.pc: gdkglext-uninstalled.pc
-	rm -f gdkglext-$(PCFILE_EXT)-uninstalled.pc && \
-	cp gdkglext-uninstalled.pc gdkglext-$(PCFILE_EXT)-uninstalled.pc
+	rm -f $@ && cp gdkglext-uninstalled.pc $@
 
 gdkglext-$(PCFILE_API_EXT)-uninstalled.pc: gdkglext-uninstalled.pc gdkglext-$(PCFILE_EXT)-uninstalled.pc
-	rm -f gdkglext-$(PCFILE_API_EXT)-uninstalled.pc && \
-	cp gdkglext-uninstalled.pc gdkglext-$(PCFILE_API_EXT)-uninstalled.pc
+	rm -f $@ && cp gdkglext-uninstalled.pc $@
 
 gtkglext-$(PCFILE_EXT)-uninstalled.pc: gtkglext-uninstalled.pc
-	rm -f gtkglext-$(PCFILE_EXT)-uninstalled.pc && \
-	cp gtkglext-uninstalled.pc gtkglext-$(PCFILE_EXT)-uninstalled.pc
+	rm -f $@ && cp gtkglext-uninstalled.pc $@
 
 gtkglext-$(PCFILE_API_EXT)-uninstalled.pc: gtkglext-uninstalled.pc gtkglext-$(PCFILE_EXT)-uninstalled.pc
-	rm -f gtkglext-$(PCFILE_API_EXT)-uninstalled.pc && \
-	cp gtkglext-uninstalled.pc gtkglext-$(PCFILE_API_EXT)-uninstalled.pc
+	rm -f $@ && cp gtkglext-uninstalled.pc $@
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = \

@@ -1,3 +1,11 @@
+2003-02-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* configure.in: 
+	* Makefile.am: 
+	* m4macros/Makefile.am: 
+	* m4macros/gtkglext.m4: Added m4 macro for checking GtkGLExt
+	library.
+
 2003-02-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/gdkgltokens.h (enum GdkGLBufferMask): Fixed comma at end of
