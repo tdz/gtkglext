@@ -92,7 +92,6 @@ gdk_gl_context_get_gl_config
 gdk_gl_context_get_share_list
 gdk_gl_context_is_direct
 gdk_gl_context_get_render_type
-gdk_gl_context_get_colormap
 gdk_gl_context_get_current
 
 <SUBSECTION Standard>
