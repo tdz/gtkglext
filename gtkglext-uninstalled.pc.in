@@ -1,6 +1,8 @@
 target=@gdktarget@
 api_version=@GTKGLEXT_API_VERSION@
 
+multihead=@GDKGLEXT_MULTIHEAD_SUPPORT@
+
 Name: GtkGLExt Uninstalled
 Description: OpenGL Extension to GTK+ (${target} target), Not Installed
 Version: @VERSION@
