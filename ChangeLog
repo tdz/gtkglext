@@ -1,5 +1,8 @@
 2002-06-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglwindow.c (gdk_window_set_gl_capability): Use
+	g_object_set_qdata_full to set quark data.
+
 	* examples/viewlw.c: 
 	* examples/lw.[hc]: 
 	* examples/trackball.[hc]: 

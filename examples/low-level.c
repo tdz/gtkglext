@@ -163,8 +163,8 @@ static void
 destroy (GtkWidget *widget,
          gpointer   data)
 {
-  if (glwindow != NULL)
-    g_object_unref (G_OBJECT (glwindow));
+  if (widget->window != NULL)
+    gdk_window_unset_gl_capability (widget->window);
 }
 
 static gboolean
