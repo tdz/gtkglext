@@ -375,11 +375,3 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
 
   return glpixmap;
 }
-
-HDC
-gdk_win32_gl_pixmap_get_hdc (GdkGLPixmap *glpixmap)
-{
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (glpixmap), NULL);
-
-  return GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap)->hdc;
-}
