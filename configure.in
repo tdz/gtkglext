@@ -437,9 +437,11 @@ if test "x$gdktarget" = "xx11"; then
                [ enable_mesa_ext=no ],
                $GL_LIBS)
 
+  AC_MSG_CHECKING([for Mesa-specific GL/GLX extensions])
   if test "x$enable_mesa_ext" = "xyes"; then
     GL_EXTRA_CFLAGS="$GL_EXTRA_CFLAGS -DGTKGLEXT_ENABLE_MESA_EXT"
   fi
+  AC_MSG_RESULT([$enable_mesa_ext])
 
 else
 

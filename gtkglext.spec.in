@@ -52,7 +52,7 @@ and developer docs for GtkGLExt.
 LDFLAGS="-L$RPM_BUILD_ROOT%{_libdir}"
 export LDFLAGS
 
-%configure --disable-gtk-doc
+%configure --disable-gtk-doc --disable-mesa-ext
 
 make
 
@@ -98,6 +98,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gtk-doc/html/*
 
 %changelog
+* Sat Aug  3 2002 Naofumi Yasufuku <naofumi@users.sourceforge.net>
+- Added --disable-mesa-ext configure option.
+
 * Sun Jun 23 2002 Naofumi Yasufuku <naofumi@users.sourceforge.net>
 - Initial build.
 
