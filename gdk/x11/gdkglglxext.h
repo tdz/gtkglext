@@ -123,8 +123,8 @@ GdkGLProc gdk_gl_get_glXSwapIntervalSGI (void);
 /* glXGetVideoSyncSGI */
 typedef int ( * GDK_GL_GLXGETVIDEOSYNCSGIPROC) (unsigned int *count);
 GdkGLProc gdk_gl_get_glXGetVideoSyncSGI (void);
-#define gdk_gl_glXGetVideoSyncSGI(proc) \
-  ((GDK_GL_GLXGETVIDEOSYNCSGIPROC) (proc)) ()
+#define gdk_gl_glXGetVideoSyncSGI(proc, count) \
+  ((GDK_GL_GLXGETVIDEOSYNCSGIPROC) (proc)) (count)
 
 /* glXWaitVideoSyncSGI */
 typedef int ( * GDK_GL_GLXWAITVIDEOSYNCSGIPROC) (int divisor, int remainder, unsigned int *count);
