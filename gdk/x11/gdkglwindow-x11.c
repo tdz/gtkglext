@@ -121,8 +121,8 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->make_context_current =  gdk_gl_window_impl_x11_make_context_current;
   iface->is_double_buffered   =  gdk_gl_window_impl_x11_is_double_buffered;
   iface->swap_buffers         =  gdk_gl_window_impl_x11_swap_buffers;
-  iface->wait_gl              = _gdk_x11_gl_drawable_wait_gl;
-  iface->wait_gdk             = _gdk_x11_gl_drawable_wait_gdk;
+  iface->wait_gl              = _gdk_gl_drawable_impl_x11_wait_gl;
+  iface->wait_gdk             = _gdk_gl_drawable_impl_x11_wait_gdk;
   iface->gl_begin             =  gdk_gl_window_impl_x11_gl_begin;
   iface->gl_end               =  gdk_gl_window_impl_x11_gl_end;
   iface->get_gl_config        =  gdk_gl_window_impl_x11_get_gl_config;
@@ -276,7 +276,7 @@ gdk_gl_window_impl_x11_gl_begin (GdkGLDrawable *draw,
   if (!ret)
     return FALSE;
 
-  _gdk_x11_gl_drawable_wait_gdk (draw);
+  _gdk_gl_drawable_impl_x11_wait_gdk (draw);
 
   return TRUE;
 }

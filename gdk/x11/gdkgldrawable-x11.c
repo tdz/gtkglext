@@ -21,14 +21,14 @@
 
 /*< private >*/
 void
-_gdk_x11_gl_drawable_wait_gl (GdkGLDrawable *gldrawable)
+_gdk_gl_drawable_impl_x11_wait_gl (GdkGLDrawable *gldrawable)
 {
   glXWaitGL ();
 }
 
 /*< private >*/
 void
-_gdk_x11_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
+_gdk_gl_drawable_impl_x11_wait_gdk (GdkGLDrawable *gldrawable)
 {
   glXWaitX ();
 }

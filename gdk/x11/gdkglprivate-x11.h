@@ -38,8 +38,8 @@ void _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
                                            GdkGLDrawable *gldrawable_read);
 */
 
-void _gdk_x11_gl_drawable_wait_gl  (GdkGLDrawable *gldrawable);
-void _gdk_x11_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable);
+void _gdk_gl_drawable_impl_x11_wait_gl  (GdkGLDrawable *gldrawable);
+void _gdk_gl_drawable_impl_x11_wait_gdk (GdkGLDrawable *gldrawable);
 
 G_END_DECLS
 
