@@ -296,9 +296,10 @@ main (int   argc,
   gtk_widget_set_colormap (window,
                            gdk_gl_config_get_colormap (glconfig));
 
+#ifndef G_OS_WIN32
   /* Perform the resizes immediately */
   gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
-
+#endif
   /* Get automatically redrawn if any of their children changed allocation. */
   gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
 

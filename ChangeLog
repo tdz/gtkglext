@@ -1,5 +1,18 @@
 2003-04-26  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/low-level.c (main): 
+	* examples/simple.c (main): 
+	* examples/simple-mixed.c (main): 
+	* examples/color.c (main): 
+	* examples/font.c (main): 
+	* examples/gears.c (main): 
+	* examples/multiarb.c (main): 
+	* examples/viewlw.c (show_lwobject): 
+	* examples/rotating-square.c (create_window): 
+	* examples/coolwave.c (create_window): 
+	* examples/template.c (create_window): Don't set resize_mode
+	GTK_RESIZE_IMMEDIATE on Win32.
+
 	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_setup_pfd):
 	Added. This function tries to construct PFD for both windows and
 	bitmaps.

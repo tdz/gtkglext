@@ -400,9 +400,11 @@ gint show_lwobject(const char *lwobject_name)
   /* create new top level window */
   window = gtk_window_new( GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title(GTK_WINDOW(window), lwobject_name);
-  gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
-  gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
   gtk_container_set_border_width(GTK_CONTAINER(window), 10);
+#ifndef G_OS_WIN32
+  gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
+#endif
+  gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
   create_popup_menu(window); /* add popup menu to window */
   g_signal_connect (G_OBJECT(window), "destroy",
                     G_CALLBACK(window_destroy), NULL);
