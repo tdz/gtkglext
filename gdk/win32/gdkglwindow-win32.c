@@ -202,6 +202,7 @@ _gdk_win32_gl_window_hdc_get (GdkGLDrawable *gldrawable)
 
   pfd = gdk_win32_gl_config_get_pfd (glwindow->glconfig);
   /* Draw to window */
+  pfd->dwFlags &= ~PFD_DRAW_TO_BITMAP;
   pfd->dwFlags |= PFD_DRAW_TO_WINDOW;
 
   pf = ChoosePixelFormat (impl->hdc, pfd);

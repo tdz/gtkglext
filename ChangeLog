@@ -1,3 +1,7 @@
+2002-06-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglpixmap-win32.c: GdkGLPixmap bug have been fixed.
+
 2002-06-05  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* Gtk-Doc based documentations have been added.
@@ -7,7 +11,7 @@
 	* gtk/gtkglwidget.c (gtk_widget_gl_realize) 
 	(gtk_widget_gl_configure_event): gtk_quit_add (0, ...) will cause
 	a problem with modal window. I use gtk_main_level () + 1 instead
-	main_level 0. Thank you Igor ;-)
+	main_level 0. Thank you, Igor ;-)
 
 2002-06-03  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 

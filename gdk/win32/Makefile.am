@@ -29,7 +29,8 @@ libgdkglext_win32_la_SOURCES = \
 	gdkglwindow-win32.h	\
 	gdkglwindow-win32.c	\
 	gdkglfont-win32.c	\
-	gdkglprivate-win32.h
+	gdkglprivate-win32.h	\
+	gdkinternal-win32.h
 
 libgdkglextinclude_HEADERS = \
 	gdkglwin32.h

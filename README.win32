@@ -110,16 +110,17 @@ non-Cygwin version pkg-config.exe works with appropriate PKG_CONFIG_PATH.
 Personally I run configure like this:
 
   (GTK is installed in C:\gtk)
-  $ export PATH=/cygdrive/c/gtk/bin:$PATH
-  $ export PKG_CONFIG_PATH=/cygdrive/c/gtk/lib/pkgconfig
+  $ ln -s /cygdrive/c/gtk /target
+  $ export PATH=/target/bin:$PATH
+  $ export PKG_CONFIG_PATH=/target/lib/pkgconfig
 
   (MinGW is installed in C:\mingw)
   $ export PATH=/cygdrive/c/mingw/bin:$PATH
 
   $ env CC='gcc -mpentium' \
-        LDFLAGS='-Lc:/target/lib' \
+        LDFLAGS='-Lc:/gtkglext/lib' \
         AR=/usr/bin/ar \
-        ./configure --host=i386-pc-mingw32 --prefix='c:/target'
+        ./configure --host=i386-pc-mingw32 --prefix=c:/gtkglext
   $ make
   $ make examples
   $ make install
@@ -147,11 +148,11 @@ When you are at work on the CVS version of GtkGLExt, you can use autogen.sh
 for generating configure script and Makefiles.
 
   $ libtoolize
-  $ env ACLOCAL_FLAGS='-I /cygdrive/c/gtk/share/aclocal' \
+  $ env ACLOCAL_FLAGS='-I /target/share/aclocal' \
         CC='gcc -mpentium' \
-        LDFLAGS='-Lc:/target/lib' \
+        LDFLAGS='-Lc:/gtkglext/lib' \
         AR=/usr/bin/ar \
-        ./autogen.sh --host=i386-pc-mingw32 --prefix='c:/target'
+        ./autogen.sh --host=i386-pc-mingw32 --prefix=c:/gtkglext
   $ make
   $ make examples
   $ make install
