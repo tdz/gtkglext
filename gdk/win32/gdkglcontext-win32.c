@@ -17,9 +17,6 @@
  */
 
 #include "gdkglconfig.h"
-#include "gdkgldrawable.h"
-#include "gdkglpixmap.h"
-#include "gdkglwindow.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglcontext-win32.h"
 

@@ -16,10 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include "gdkglprivate-win32.h"
-#include "gdkgldrawable.h"
 #include "gdkglpixmap.h"
 #include "gdkglwindow.h"
+#include "gdkglprivate-win32.h"
+#include "gdkgldrawable.h"
 
 HDC
 gdk_win32_gl_drawable_hdc_get (GdkGLDrawable *gldrawable)

@@ -16,9 +16,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include <gdk/gdkpixmap.h>
-#include <gdk/gdkwindow.h>
-
 #include "gdkglprivate-win32.h"
 #include "gdkglconfig-win32.h"
 
