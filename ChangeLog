@@ -1,3 +1,9 @@
+2003-07-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/GL/glext-extra.h: 
+	* gdk/GL/glxext-extra.h: Added extra SGI extensions.
+	Added extra EXT extensions. Added extra ATIX extensions.
+
 2003-07-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/GL/glxext-extra.h: Added extra NVIDIA extensions.

@@ -8076,6 +8076,167 @@ struct _GdkGL_GL_Autodesk_valid_back_buffer_hint
 GdkGL_GL_Autodesk_valid_back_buffer_hint *gdk_gl_get_GL_Autodesk_valid_back_buffer_hint (void);
 
 /*
+ * GL_EXT_depth_bounds_test
+ */
+
+/* glDepthBoundsEXT */
+typedef void (APIENTRY * GdkGLProc_glDepthBoundsEXT) (GLclampd zmin, GLclampd zmax);
+GdkGLProc    gdk_gl_get_glDepthBoundsEXT (void);
+#define      gdk_gl_glDepthBoundsEXT(proc, zmin, zmax) \
+  ( ((GdkGLProc_glDepthBoundsEXT) (proc)) (zmin, zmax) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GL_EXT_depth_bounds_test GdkGL_GL_EXT_depth_bounds_test;
+
+struct _GdkGL_GL_EXT_depth_bounds_test
+{
+  GdkGLProc_glDepthBoundsEXT glDepthBoundsEXT;
+};
+
+GdkGL_GL_EXT_depth_bounds_test *gdk_gl_get_GL_EXT_depth_bounds_test (void);
+
+/*
+ * GL_EXT_fragment_lighting
+ */
+
+/* glFragmentLightModelfEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentLightModelfEXT) (GLenum pname, GLfloat param);
+GdkGLProc    gdk_gl_get_glFragmentLightModelfEXT (void);
+#define      gdk_gl_glFragmentLightModelfEXT(proc, pname, param) \
+  ( ((GdkGLProc_glFragmentLightModelfEXT) (proc)) (pname, param) )
+
+/* glFragmentLightModelfvEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentLightModelfvEXT) (GLenum pname, GLfloat *params);
+GdkGLProc    gdk_gl_get_glFragmentLightModelfvEXT (void);
+#define      gdk_gl_glFragmentLightModelfvEXT(proc, pname, params) \
+  ( ((GdkGLProc_glFragmentLightModelfvEXT) (proc)) (pname, params) )
+
+/* glFragmentLightModeliEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentLightModeliEXT) (GLenum pname, GLint param);
+GdkGLProc    gdk_gl_get_glFragmentLightModeliEXT (void);
+#define      gdk_gl_glFragmentLightModeliEXT(proc, pname, param) \
+  ( ((GdkGLProc_glFragmentLightModeliEXT) (proc)) (pname, param) )
+
+/* glFragmentLightModelivEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentLightModelivEXT) (GLenum pname, GLint *params);
+GdkGLProc    gdk_gl_get_glFragmentLightModelivEXT (void);
+#define      gdk_gl_glFragmentLightModelivEXT(proc, pname, params) \
+  ( ((GdkGLProc_glFragmentLightModelivEXT) (proc)) (pname, params) )
+
+/* glFragmentLightfEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentLightfEXT) (GLenum light, GLenum pname, GLfloat param);
+GdkGLProc    gdk_gl_get_glFragmentLightfEXT (void);
+#define      gdk_gl_glFragmentLightfEXT(proc, light, pname, param) \
+  ( ((GdkGLProc_glFragmentLightfEXT) (proc)) (light, pname, param) )
+
+/* glFragmentLightfvEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentLightfvEXT) (GLenum light, GLenum pname, GLfloat *params);
+GdkGLProc    gdk_gl_get_glFragmentLightfvEXT (void);
+#define      gdk_gl_glFragmentLightfvEXT(proc, light, pname, params) \
+  ( ((GdkGLProc_glFragmentLightfvEXT) (proc)) (light, pname, params) )
+
+/* glFragmentLightiEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentLightiEXT) (GLenum light, GLenum pname, GLint param);
+GdkGLProc    gdk_gl_get_glFragmentLightiEXT (void);
+#define      gdk_gl_glFragmentLightiEXT(proc, light, pname, param) \
+  ( ((GdkGLProc_glFragmentLightiEXT) (proc)) (light, pname, param) )
+
+/* glFragmentLightivEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentLightivEXT) (GLenum light, GLenum pname, GLint *params);
+GdkGLProc    gdk_gl_get_glFragmentLightivEXT (void);
+#define      gdk_gl_glFragmentLightivEXT(proc, light, pname, params) \
+  ( ((GdkGLProc_glFragmentLightivEXT) (proc)) (light, pname, params) )
+
+/* glGetFragmentLightfvEXT */
+typedef void (APIENTRY * GdkGLProc_glGetFragmentLightfvEXT) (GLenum light, GLenum pname, GLfloat *params);
+GdkGLProc    gdk_gl_get_glGetFragmentLightfvEXT (void);
+#define      gdk_gl_glGetFragmentLightfvEXT(proc, light, pname, params) \
+  ( ((GdkGLProc_glGetFragmentLightfvEXT) (proc)) (light, pname, params) )
+
+/* glGetFragmentLightivEXT */
+typedef void (APIENTRY * GdkGLProc_glGetFragmentLightivEXT) (GLenum light, GLenum pname, GLint *params);
+GdkGLProc    gdk_gl_get_glGetFragmentLightivEXT (void);
+#define      gdk_gl_glGetFragmentLightivEXT(proc, light, pname, params) \
+  ( ((GdkGLProc_glGetFragmentLightivEXT) (proc)) (light, pname, params) )
+
+/* glFragmentMaterialfEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentMaterialfEXT) (GLenum face, GLenum pname, const GLfloat param);
+GdkGLProc    gdk_gl_get_glFragmentMaterialfEXT (void);
+#define      gdk_gl_glFragmentMaterialfEXT(proc, face, pname, param) \
+  ( ((GdkGLProc_glFragmentMaterialfEXT) (proc)) (face, pname, param) )
+
+/* glFragmentMaterialfvEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentMaterialfvEXT) (GLenum face, GLenum pname, const GLfloat *params);
+GdkGLProc    gdk_gl_get_glFragmentMaterialfvEXT (void);
+#define      gdk_gl_glFragmentMaterialfvEXT(proc, face, pname, params) \
+  ( ((GdkGLProc_glFragmentMaterialfvEXT) (proc)) (face, pname, params) )
+
+/* glFragmentMaterialiEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentMaterialiEXT) (GLenum face, GLenum pname, const GLint param);
+GdkGLProc    gdk_gl_get_glFragmentMaterialiEXT (void);
+#define      gdk_gl_glFragmentMaterialiEXT(proc, face, pname, param) \
+  ( ((GdkGLProc_glFragmentMaterialiEXT) (proc)) (face, pname, param) )
+
+/* glFragmentMaterialivEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentMaterialivEXT) (GLenum face, GLenum pname, const GLint *params);
+GdkGLProc    gdk_gl_get_glFragmentMaterialivEXT (void);
+#define      gdk_gl_glFragmentMaterialivEXT(proc, face, pname, params) \
+  ( ((GdkGLProc_glFragmentMaterialivEXT) (proc)) (face, pname, params) )
+
+/* glFragmentColorMaterialEXT */
+typedef void (APIENTRY * GdkGLProc_glFragmentColorMaterialEXT) (GLenum face, GLenum mode);
+GdkGLProc    gdk_gl_get_glFragmentColorMaterialEXT (void);
+#define      gdk_gl_glFragmentColorMaterialEXT(proc, face, mode) \
+  ( ((GdkGLProc_glFragmentColorMaterialEXT) (proc)) (face, mode) )
+
+/* glGetFragmentMaterialfvEXT */
+typedef void (APIENTRY * GdkGLProc_glGetFragmentMaterialfvEXT) (GLenum face, GLenum pname, const GLfloat *params);
+GdkGLProc    gdk_gl_get_glGetFragmentMaterialfvEXT (void);
+#define      gdk_gl_glGetFragmentMaterialfvEXT(proc, face, pname, params) \
+  ( ((GdkGLProc_glGetFragmentMaterialfvEXT) (proc)) (face, pname, params) )
+
+/* glGetFragmentMaterialivEXT */
+typedef void (APIENTRY * GdkGLProc_glGetFragmentMaterialivEXT) (GLenum face, GLenum pname, const GLint *params);
+GdkGLProc    gdk_gl_get_glGetFragmentMaterialivEXT (void);
+#define      gdk_gl_glGetFragmentMaterialivEXT(proc, face, pname, params) \
+  ( ((GdkGLProc_glGetFragmentMaterialivEXT) (proc)) (face, pname, params) )
+
+/* glLightEnviEXT */
+typedef void (APIENTRY * GdkGLProc_glLightEnviEXT) (GLenum pname, GLint param);
+GdkGLProc    gdk_gl_get_glLightEnviEXT (void);
+#define      gdk_gl_glLightEnviEXT(proc, pname, param) \
+  ( ((GdkGLProc_glLightEnviEXT) (proc)) (pname, param) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GL_EXT_fragment_lighting GdkGL_GL_EXT_fragment_lighting;
+
+struct _GdkGL_GL_EXT_fragment_lighting
+{
+  GdkGLProc_glFragmentLightModelfEXT glFragmentLightModelfEXT;
+  GdkGLProc_glFragmentLightModelfvEXT glFragmentLightModelfvEXT;
+  GdkGLProc_glFragmentLightModeliEXT glFragmentLightModeliEXT;
+  GdkGLProc_glFragmentLightModelivEXT glFragmentLightModelivEXT;
+  GdkGLProc_glFragmentLightfEXT glFragmentLightfEXT;
+  GdkGLProc_glFragmentLightfvEXT glFragmentLightfvEXT;
+  GdkGLProc_glFragmentLightiEXT glFragmentLightiEXT;
+  GdkGLProc_glFragmentLightivEXT glFragmentLightivEXT;
+  GdkGLProc_glGetFragmentLightfvEXT glGetFragmentLightfvEXT;
+  GdkGLProc_glGetFragmentLightivEXT glGetFragmentLightivEXT;
+  GdkGLProc_glFragmentMaterialfEXT glFragmentMaterialfEXT;
+  GdkGLProc_glFragmentMaterialfvEXT glFragmentMaterialfvEXT;
+  GdkGLProc_glFragmentMaterialiEXT glFragmentMaterialiEXT;
+  GdkGLProc_glFragmentMaterialivEXT glFragmentMaterialivEXT;
+  GdkGLProc_glFragmentColorMaterialEXT glFragmentColorMaterialEXT;
+  GdkGLProc_glGetFragmentMaterialfvEXT glGetFragmentMaterialfvEXT;
+  GdkGLProc_glGetFragmentMaterialivEXT glGetFragmentMaterialivEXT;
+  GdkGLProc_glLightEnviEXT glLightEnviEXT;
+};
+
+GdkGL_GL_EXT_fragment_lighting *gdk_gl_get_GL_EXT_fragment_lighting (void);
+
+/*
  * GL_EXT_multitexture
  */
 
@@ -8767,6 +8928,27 @@ struct _GdkGL_GL_SGIS_multitexture
 };
 
 GdkGL_GL_SGIS_multitexture *gdk_gl_get_GL_SGIS_multitexture (void);
+
+/*
+ * GL_SGIX_fog_texture
+ */
+
+/* glTextureFogSGIX */
+typedef void (APIENTRY * GdkGLProc_glTextureFogSGIX) (GLenum pname);
+GdkGLProc    gdk_gl_get_glTextureFogSGIX (void);
+#define      gdk_gl_glTextureFogSGIX(proc, pname) \
+  ( ((GdkGLProc_glTextureFogSGIX) (proc)) (pname) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GL_SGIX_fog_texture GdkGL_GL_SGIX_fog_texture;
+
+struct _GdkGL_GL_SGIX_fog_texture
+{
+  GdkGLProc_glTextureFogSGIX glTextureFogSGIX;
+};
+
+GdkGL_GL_SGIX_fog_texture *gdk_gl_get_GL_SGIX_fog_texture (void);
 
 /*
  * GL_SUN_multi_draw_arrays

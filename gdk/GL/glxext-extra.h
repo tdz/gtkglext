@@ -53,7 +53,9 @@ extern "C" {
 
 /* unknown */
 #ifndef GLX_EXT_scene_marker
-/* #define GLX_SCENE_REQUIRED_EXT          0 */
+/*
+#define GLX_SCENE_REQUIRED_EXT          0
+*/
 #endif
 
 /* unknown */
@@ -98,6 +100,26 @@ typedef void ( * PFNGLXFREEMEMORYNVPROC) (void *pointer);
 /*
  * SGIS
  */
+
+/* unknown */
+#ifndef GLX_SGIS_color_range
+/*
+#define GLX_EXTENDED_RANGE_SGIS         0
+#define GLX_MIN_RED_SGIS                0
+#define GLX_MAX_RED_SGIS                0
+#define GLX_MIN_GREEN_SGIS              0
+#define GLX_MAX_GREEN_SGIS              0
+#define GLX_MIN_BLUE_SGIS               0
+#define GLX_MAX_BLUE_SGIS               0
+#define GLX_MIN_ALPHA_SGIS              0
+#define GLX_MAX_ALPHA_SGIS              0
+*/
+#endif
+
+/* unknown */
+#ifndef GLX_SGIS_color_range
+/* #define GLX_SGIS_color_range 1 */
+#endif
 
 /*
  * SGIX

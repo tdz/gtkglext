@@ -22416,6 +22416,456 @@ gdk_gl_get_GL_Autodesk_valid_back_buffer_hint (void)
 }
 
 /*
+ * GL_EXT_depth_bounds_test
+ */
+
+static GdkGL_GL_EXT_depth_bounds_test _procs_GL_EXT_depth_bounds_test = {
+  (GdkGLProc_glDepthBoundsEXT) -1
+};
+
+/* glDepthBoundsEXT */
+GdkGLProc
+gdk_gl_get_glDepthBoundsEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT == (GdkGLProc_glDepthBoundsEXT) -1)
+    _procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT =
+      (GdkGLProc_glDepthBoundsEXT) gdk_gl_get_proc_address ("glDepthBoundsEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDepthBoundsEXT () - %s",
+               (_procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT);
+}
+
+/* Get GL_EXT_depth_bounds_test functions */
+GdkGL_GL_EXT_depth_bounds_test *
+gdk_gl_get_GL_EXT_depth_bounds_test (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_depth_bounds_test");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glDepthBoundsEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_depth_bounds_test () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_depth_bounds_test;
+}
+
+/*
+ * GL_EXT_fragment_lighting
+ */
+
+static GdkGL_GL_EXT_fragment_lighting _procs_GL_EXT_fragment_lighting = {
+  (GdkGLProc_glFragmentLightModelfEXT) -1,
+  (GdkGLProc_glFragmentLightModelfvEXT) -1,
+  (GdkGLProc_glFragmentLightModeliEXT) -1,
+  (GdkGLProc_glFragmentLightModelivEXT) -1,
+  (GdkGLProc_glFragmentLightfEXT) -1,
+  (GdkGLProc_glFragmentLightfvEXT) -1,
+  (GdkGLProc_glFragmentLightiEXT) -1,
+  (GdkGLProc_glFragmentLightivEXT) -1,
+  (GdkGLProc_glGetFragmentLightfvEXT) -1,
+  (GdkGLProc_glGetFragmentLightivEXT) -1,
+  (GdkGLProc_glFragmentMaterialfEXT) -1,
+  (GdkGLProc_glFragmentMaterialfvEXT) -1,
+  (GdkGLProc_glFragmentMaterialiEXT) -1,
+  (GdkGLProc_glFragmentMaterialivEXT) -1,
+  (GdkGLProc_glFragmentColorMaterialEXT) -1,
+  (GdkGLProc_glGetFragmentMaterialfvEXT) -1,
+  (GdkGLProc_glGetFragmentMaterialivEXT) -1,
+  (GdkGLProc_glLightEnviEXT) -1
+};
+
+/* glFragmentLightModelfEXT */
+GdkGLProc
+gdk_gl_get_glFragmentLightModelfEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentLightModelfEXT == (GdkGLProc_glFragmentLightModelfEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentLightModelfEXT =
+      (GdkGLProc_glFragmentLightModelfEXT) gdk_gl_get_proc_address ("glFragmentLightModelfEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightModelfEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentLightModelfEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentLightModelfEXT);
+}
+
+/* glFragmentLightModelfvEXT */
+GdkGLProc
+gdk_gl_get_glFragmentLightModelfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentLightModelfvEXT == (GdkGLProc_glFragmentLightModelfvEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentLightModelfvEXT =
+      (GdkGLProc_glFragmentLightModelfvEXT) gdk_gl_get_proc_address ("glFragmentLightModelfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightModelfvEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentLightModelfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentLightModelfvEXT);
+}
+
+/* glFragmentLightModeliEXT */
+GdkGLProc
+gdk_gl_get_glFragmentLightModeliEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentLightModeliEXT == (GdkGLProc_glFragmentLightModeliEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentLightModeliEXT =
+      (GdkGLProc_glFragmentLightModeliEXT) gdk_gl_get_proc_address ("glFragmentLightModeliEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightModeliEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentLightModeliEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentLightModeliEXT);
+}
+
+/* glFragmentLightModelivEXT */
+GdkGLProc
+gdk_gl_get_glFragmentLightModelivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentLightModelivEXT == (GdkGLProc_glFragmentLightModelivEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentLightModelivEXT =
+      (GdkGLProc_glFragmentLightModelivEXT) gdk_gl_get_proc_address ("glFragmentLightModelivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightModelivEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentLightModelivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentLightModelivEXT);
+}
+
+/* glFragmentLightfEXT */
+GdkGLProc
+gdk_gl_get_glFragmentLightfEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentLightfEXT == (GdkGLProc_glFragmentLightfEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentLightfEXT =
+      (GdkGLProc_glFragmentLightfEXT) gdk_gl_get_proc_address ("glFragmentLightfEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightfEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentLightfEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentLightfEXT);
+}
+
+/* glFragmentLightfvEXT */
+GdkGLProc
+gdk_gl_get_glFragmentLightfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentLightfvEXT == (GdkGLProc_glFragmentLightfvEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentLightfvEXT =
+      (GdkGLProc_glFragmentLightfvEXT) gdk_gl_get_proc_address ("glFragmentLightfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightfvEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentLightfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentLightfvEXT);
+}
+
+/* glFragmentLightiEXT */
+GdkGLProc
+gdk_gl_get_glFragmentLightiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentLightiEXT == (GdkGLProc_glFragmentLightiEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentLightiEXT =
+      (GdkGLProc_glFragmentLightiEXT) gdk_gl_get_proc_address ("glFragmentLightiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightiEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentLightiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentLightiEXT);
+}
+
+/* glFragmentLightivEXT */
+GdkGLProc
+gdk_gl_get_glFragmentLightivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentLightivEXT == (GdkGLProc_glFragmentLightivEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentLightivEXT =
+      (GdkGLProc_glFragmentLightivEXT) gdk_gl_get_proc_address ("glFragmentLightivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightivEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentLightivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentLightivEXT);
+}
+
+/* glGetFragmentLightfvEXT */
+GdkGLProc
+gdk_gl_get_glGetFragmentLightfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glGetFragmentLightfvEXT == (GdkGLProc_glGetFragmentLightfvEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glGetFragmentLightfvEXT =
+      (GdkGLProc_glGetFragmentLightfvEXT) gdk_gl_get_proc_address ("glGetFragmentLightfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFragmentLightfvEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glGetFragmentLightfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glGetFragmentLightfvEXT);
+}
+
+/* glGetFragmentLightivEXT */
+GdkGLProc
+gdk_gl_get_glGetFragmentLightivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glGetFragmentLightivEXT == (GdkGLProc_glGetFragmentLightivEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glGetFragmentLightivEXT =
+      (GdkGLProc_glGetFragmentLightivEXT) gdk_gl_get_proc_address ("glGetFragmentLightivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFragmentLightivEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glGetFragmentLightivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glGetFragmentLightivEXT);
+}
+
+/* glFragmentMaterialfEXT */
+GdkGLProc
+gdk_gl_get_glFragmentMaterialfEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentMaterialfEXT == (GdkGLProc_glFragmentMaterialfEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentMaterialfEXT =
+      (GdkGLProc_glFragmentMaterialfEXT) gdk_gl_get_proc_address ("glFragmentMaterialfEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentMaterialfEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentMaterialfEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentMaterialfEXT);
+}
+
+/* glFragmentMaterialfvEXT */
+GdkGLProc
+gdk_gl_get_glFragmentMaterialfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentMaterialfvEXT == (GdkGLProc_glFragmentMaterialfvEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentMaterialfvEXT =
+      (GdkGLProc_glFragmentMaterialfvEXT) gdk_gl_get_proc_address ("glFragmentMaterialfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentMaterialfvEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentMaterialfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentMaterialfvEXT);
+}
+
+/* glFragmentMaterialiEXT */
+GdkGLProc
+gdk_gl_get_glFragmentMaterialiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentMaterialiEXT == (GdkGLProc_glFragmentMaterialiEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentMaterialiEXT =
+      (GdkGLProc_glFragmentMaterialiEXT) gdk_gl_get_proc_address ("glFragmentMaterialiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentMaterialiEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentMaterialiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentMaterialiEXT);
+}
+
+/* glFragmentMaterialivEXT */
+GdkGLProc
+gdk_gl_get_glFragmentMaterialivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentMaterialivEXT == (GdkGLProc_glFragmentMaterialivEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentMaterialivEXT =
+      (GdkGLProc_glFragmentMaterialivEXT) gdk_gl_get_proc_address ("glFragmentMaterialivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentMaterialivEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentMaterialivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentMaterialivEXT);
+}
+
+/* glFragmentColorMaterialEXT */
+GdkGLProc
+gdk_gl_get_glFragmentColorMaterialEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glFragmentColorMaterialEXT == (GdkGLProc_glFragmentColorMaterialEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glFragmentColorMaterialEXT =
+      (GdkGLProc_glFragmentColorMaterialEXT) gdk_gl_get_proc_address ("glFragmentColorMaterialEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentColorMaterialEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glFragmentColorMaterialEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glFragmentColorMaterialEXT);
+}
+
+/* glGetFragmentMaterialfvEXT */
+GdkGLProc
+gdk_gl_get_glGetFragmentMaterialfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glGetFragmentMaterialfvEXT == (GdkGLProc_glGetFragmentMaterialfvEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glGetFragmentMaterialfvEXT =
+      (GdkGLProc_glGetFragmentMaterialfvEXT) gdk_gl_get_proc_address ("glGetFragmentMaterialfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFragmentMaterialfvEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glGetFragmentMaterialfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glGetFragmentMaterialfvEXT);
+}
+
+/* glGetFragmentMaterialivEXT */
+GdkGLProc
+gdk_gl_get_glGetFragmentMaterialivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glGetFragmentMaterialivEXT == (GdkGLProc_glGetFragmentMaterialivEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glGetFragmentMaterialivEXT =
+      (GdkGLProc_glGetFragmentMaterialivEXT) gdk_gl_get_proc_address ("glGetFragmentMaterialivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFragmentMaterialivEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glGetFragmentMaterialivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glGetFragmentMaterialivEXT);
+}
+
+/* glLightEnviEXT */
+GdkGLProc
+gdk_gl_get_glLightEnviEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_fragment_lighting.glLightEnviEXT == (GdkGLProc_glLightEnviEXT) -1)
+    _procs_GL_EXT_fragment_lighting.glLightEnviEXT =
+      (GdkGLProc_glLightEnviEXT) gdk_gl_get_proc_address ("glLightEnviEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLightEnviEXT () - %s",
+               (_procs_GL_EXT_fragment_lighting.glLightEnviEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_fragment_lighting.glLightEnviEXT);
+}
+
+/* Get GL_EXT_fragment_lighting functions */
+GdkGL_GL_EXT_fragment_lighting *
+gdk_gl_get_GL_EXT_fragment_lighting (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_fragment_lighting");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glFragmentLightModelfEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentLightModelfvEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentLightModeliEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentLightModelivEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentLightfEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentLightfvEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentLightiEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentLightivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetFragmentLightfvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetFragmentLightivEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentMaterialfEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentMaterialfvEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentMaterialiEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentMaterialivEXT () != NULL);
+          supported &= (gdk_gl_get_glFragmentColorMaterialEXT () != NULL);
+          supported &= (gdk_gl_get_glGetFragmentMaterialfvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetFragmentMaterialivEXT () != NULL);
+          supported &= (gdk_gl_get_glLightEnviEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_fragment_lighting () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_fragment_lighting;
+}
+
+/*
  * GL_EXT_multitexture
  */
 
@@ -24358,6 +24808,61 @@ gdk_gl_get_GL_SGIS_multitexture (void)
     return NULL;
 
   return &_procs_GL_SGIS_multitexture;
+}
+
+/*
+ * GL_SGIX_fog_texture
+ */
+
+static GdkGL_GL_SGIX_fog_texture _procs_GL_SGIX_fog_texture = {
+  (GdkGLProc_glTextureFogSGIX) -1
+};
+
+/* glTextureFogSGIX */
+GdkGLProc
+gdk_gl_get_glTextureFogSGIX (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIX_fog_texture.glTextureFogSGIX == (GdkGLProc_glTextureFogSGIX) -1)
+    _procs_GL_SGIX_fog_texture.glTextureFogSGIX =
+      (GdkGLProc_glTextureFogSGIX) gdk_gl_get_proc_address ("glTextureFogSGIX");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureFogSGIX () - %s",
+               (_procs_GL_SGIX_fog_texture.glTextureFogSGIX) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIX_fog_texture.glTextureFogSGIX);
+}
+
+/* Get GL_SGIX_fog_texture functions */
+GdkGL_GL_SGIX_fog_texture *
+gdk_gl_get_GL_SGIX_fog_texture (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_SGIX_fog_texture");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glTextureFogSGIX () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_fog_texture () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_SGIX_fog_texture;
 }
 
 /*

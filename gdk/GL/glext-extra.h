@@ -180,6 +180,12 @@ typedef void (APIENTRY * PFNGLBLENDEQUATIONSEPARATEATIPROC) (GLenum equationRGB,
 #define GL_PN_TRIANGLES_NORMAL_MODE_QUADRATIC_ATIX      0x6098
 #endif
 
+#ifndef GL_ATIX_texture_env_combine3
+#define GL_MODULATE_ADD_ATIX              0x8744
+#define GL_MODULATE_SIGNED_ADD_ATIX       0x8745
+#define GL_MODULATE_SUBTRACT_ATIX         0x8746
+#endif
+
 #ifndef GL_ATIX_texture_env_route
 #define GL_SECONDARY_COLOR_ATIX           0x8747
 #define GL_TEXTURE_OUTPUT_RGB_ATIX        0x8748
@@ -190,6 +196,10 @@ typedef void (APIENTRY * PFNGLBLENDEQUATIONSEPARATEATIPROC) (GLenum equationRGB,
 #define GL_OUTPUT_POINT_SIZE_ATIX         0x610E
 #endif
 
+#ifndef GL_ATIX_point_sprites
+#define GL_ATIX_point_sprites 1
+#endif
+
 #ifndef GL_ATIX_pn_triangles
 #define GL_ATIX_pn_triangles 1
 #ifdef GL_GLEXT_PROTOTYPES
@@ -198,6 +208,10 @@ GLAPI void APIENTRY glPNTrianglesfATIX (GLenum, GLfloat);
 #endif /* GL_GLEXT_PROTOTYPES */
 typedef void (APIENTRY * PFNGLPNTRIANGLESIATIXPROC) (GLenum pname, GLint param);
 typedef void (APIENTRY * PFNGLPNTRIANGLESFATIXPROC) (GLenum pname, GLfloat param);
+#endif
+
+#ifndef GL_ATIX_texture_env_combine3
+#define GL_ATIX_texture_env_combine3 1
 #endif
 
 #ifndef GL_ATIX_texture_env_route
@@ -256,6 +270,34 @@ typedef GLboolean (APIENTRY * PFNGLVALIDBACKBUFFERHINTEXTPROC) (GLint x, GLint y
  * EXT
  */
 
+#ifndef GL_EXT_depth_bounds_test
+#define GL_DEPTH_BOUNDS_TEST_EXT          0x8890
+#define GL_DEPTH_BOUNDS_EXT               0x8891
+#endif
+
+#ifndef GL_EXT_fragment_lighting
+#define GL_FRAGMENT_LIGHTING_EXT                               0x8400
+#define GL_FRAGMENT_COLOR_MATERIAL_EXT                         0x8401
+#define GL_FRAGMENT_COLOR_MATERIAL_FACE_EXT                    0x8402
+#define GL_FRAGMENT_COLOR_MATERIAL_PARAMETER_EXT               0x8403
+#define GL_MAX_FRAGMENT_LIGHTS_EXT                             0x8404
+#define GL_MAX_ACTIVE_LIGHTS_EXT                               0x8405
+#define GL_CURRENT_RASTER_NORMAL_EXT                           0x8406
+#define GL_LIGHT_ENV_MODE_EXT                                  0x8407
+#define GL_FRAGMENT_LIGHT_MODEL_LOCAL_VIEWER_EXT               0x8408
+#define GL_FRAGMENT_LIGHT_MODEL_TWO_SIDE_EXT                   0x8409
+#define GL_FRAGMENT_LIGHT_MODEL_AMBIENT_EXT                    0x840A
+#define GL_FRAGMENT_LIGHT_MODEL_NORMAL_INTERPOLATION_EXT       0x840B
+#define GL_FRAGMENT_LIGHT0_EXT                                 0x840C
+#define GL_FRAGMENT_LIGHT1_EXT                                 0x840D
+#define GL_FRAGMENT_LIGHT2_EXT                                 0x840E
+#define GL_FRAGMENT_LIGHT3_EXT                                 0x840F
+#define GL_FRAGMENT_LIGHT4_EXT                                 0x8410
+#define GL_FRAGMENT_LIGHT5_EXT                                 0x8411
+#define GL_FRAGMENT_LIGHT6_EXT                                 0x8412
+#define GL_FRAGMENT_LIGHT7_EXT                                 0x8413
+#endif
+
 #ifndef GL_EXT_multitexture
 #define GL_SELECTED_TEXTURE_EXT           0x83C0
 #define GL_SELECTED_TEXTURE_COORD_SET_EXT 0x83C1
@@ -299,7 +341,9 @@ typedef GLboolean (APIENTRY * PFNGLVALIDBACKBUFFERHINTEXTPROC) (GLint x, GLint y
 
 /* unknown */
 #ifndef GL_EXT_scene_marker
-/* #define GL_SCENE_REQUIRED_EXT             0 */
+/*
+#define GL_SCENE_REQUIRED_EXT             0
+*/
 #endif
 
 #ifndef GL_EXT_texgen_reflection
@@ -316,6 +360,56 @@ typedef GLboolean (APIENTRY * PFNGLVALIDBACKBUFFERHINTEXTPROC) (GLint x, GLint y
 #define GL_TEXTURE_BINDING_RECTANGLE_EXT  0x84F6
 #define GL_PROXY_TEXTURE_RECTANGLE_EXT    0x84F7
 #define GL_MAX_RECTANGLE_TEXTURE_SIZE_EXT 0x84F8
+#endif
+
+#ifndef GL_EXT_depth_bounds_test
+#define GL_EXT_depth_bounds_test 1
+#ifdef GL_GLEXT_PROTOTYPES
+GLAPI void APIENTRY glDepthBoundsEXT (GLclampd, GLclampd);
+#endif /* GL_GLEXT_PROTOTYPES */
+typedef void (APIENTRY * PFNGLDEPTHBOUNDSEXTPROC) (GLclampd zmin, GLclampd zmax);
+#endif
+
+#ifndef GL_EXT_fragment_lighting
+#define GL_EXT_fragment_lighting 1
+#ifdef GL_GLEXT_PROTOTYPES
+GLAPI void APIENTRY glFragmentLightModelfEXT (GLenum, GLfloat);
+GLAPI void APIENTRY glFragmentLightModelfvEXT (GLenum, GLfloat *);
+GLAPI void APIENTRY glFragmentLightModeliEXT (GLenum, GLint);
+GLAPI void APIENTRY glFragmentLightModelivEXT (GLenum, GLint *);
+GLAPI void APIENTRY glFragmentLightfEXT (GLenum, GLenum, GLfloat);
+GLAPI void APIENTRY glFragmentLightfvEXT (GLenum, GLenum, GLfloat *);
+GLAPI void APIENTRY glFragmentLightiEXT (GLenum, GLenum, GLint);
+GLAPI void APIENTRY glFragmentLightivEXT (GLenum, GLenum, GLint *);
+GLAPI void APIENTRY glGetFragmentLightfvEXT (GLenum, GLenum, GLfloat *);
+GLAPI void APIENTRY glGetFragmentLightivEXT (GLenum, GLenum, GLint *);
+GLAPI void APIENTRY glFragmentMaterialfEXT (GLenum, GLenum, const GLfloat);
+GLAPI void APIENTRY glFragmentMaterialfvEXT (GLenum, GLenum, const GLfloat *);
+GLAPI void APIENTRY glFragmentMaterialiEXT (GLenum, GLenum, const GLint);
+GLAPI void APIENTRY glFragmentMaterialivEXT (GLenum, GLenum, const GLint *);
+GLAPI void APIENTRY glFragmentColorMaterialEXT (GLenum, GLenum);
+GLAPI void APIENTRY glGetFragmentMaterialfvEXT (GLenum, GLenum, const GLfloat *);
+GLAPI void APIENTRY glGetFragmentMaterialivEXT (GLenum, GLenum, const GLint *);
+GLAPI void APIENTRY glLightEnviEXT (GLenum, GLint);
+#endif /* GL_GLEXT_PROTOTYPES */
+typedef void (APIENTRY * PFNGLFRAGMENTLIGHTMODELFEXTPROC) (GLenum pname, GLfloat param);
+typedef void (APIENTRY * PFNGLFRAGMENTLIGHTMODELFVEXTPROC) (GLenum pname, GLfloat *params);
+typedef void (APIENTRY * PFNGLFRAGMENTLIGHTMODELIEXTPROC) (GLenum pname, GLint param);
+typedef void (APIENTRY * PFNGLFRAGMENTLIGHTMODELIVEXTPROC) (GLenum pname, GLint *params);
+typedef void (APIENTRY * PFNGLFRAGMENTLIGHTFEXTPROC) (GLenum light, GLenum pname, GLfloat param);
+typedef void (APIENTRY * PFNGLFRAGMENTLIGHTFVEXTPROC) (GLenum light, GLenum pname, GLfloat *params);
+typedef void (APIENTRY * PFNGLFRAGMENTLIGHTIEXTPROC) (GLenum light, GLenum pname, GLint param);
+typedef void (APIENTRY * PFNGLFRAGMENTLIGHTIVEXTPROC) (GLenum light, GLenum pname, GLint *params);
+typedef void (APIENTRY * PFNGLGETFRAGMENTLIGHTFVEXTPROC) (GLenum light, GLenum pname, GLfloat *params);
+typedef void (APIENTRY * PFNGLGETFRAGMENTLIGHTIVEXTPROC) (GLenum light, GLenum pname, GLint *params);
+typedef void (APIENTRY * PFNGLFRAGMENTMATERIALFEXTPROC) (GLenum face, GLenum pname, const GLfloat param);
+typedef void (APIENTRY * PFNGLFRAGMENTMATERIALFVEXTPROC) (GLenum face, GLenum pname, const GLfloat *params);
+typedef void (APIENTRY * PFNGLFRAGMENTMATERIALIEXTPROC) (GLenum face, GLenum pname, const GLint param);
+typedef void (APIENTRY * PFNGLFRAGMENTMATERIALIVEXTPROC) (GLenum face, GLenum pname, const GLint *params);
+typedef void (APIENTRY * PFNGLFRAGMENTCOLORMATERIALEXTPROC) (GLenum face, GLenum mode);
+typedef void (APIENTRY * PFNGLGETFRAGMENTMATERIALFVEXTPROC) (GLenum face, GLenum pname, const GLfloat *params);
+typedef void (APIENTRY * PFNGLGETFRAGMENTMATERIALIVEXTPROC) (GLenum face, GLenum pname, const GLint *params);
+typedef void (APIENTRY * PFNGLLIGHTENVIEXTPROC) (GLenum pname, GLint param);
 #endif
 
 #ifndef GL_EXT_multitexture
@@ -549,6 +643,18 @@ typedef void (APIENTRY * PFNGLACTIVESTENCILFACENVPROC) (GLenum face);
  * SGIS
  */
 
+#ifndef GL_SGIS_color_range
+#define EXTENDED_RANGE_SGIS             0x85A5
+#define MIN_RED_SGIS                    0x85A6
+#define MAX_RED_SGIS                    0x85A7
+#define MIN_GREEN_SGIS                  0x85A8
+#define MAX_GREEN_SGIS                  0x85A9
+#define MIN_BLUE_SGIS                   0x85AA
+#define MAX_BLUE_SGIS                   0x85AB
+#define MIN_ALPHA_SGIS                  0x85AC
+#define MAX_ALPHA_SGIS                  0x85AD
+#endif
+
 #ifndef GL_SGIS_multitexture
 #define GL_SELECTED_TEXTURE_SGIS	   0x835C
 #define GL_SELECTED_TEXTURE_COORD_SET_SGIS 0x835D
@@ -586,6 +692,10 @@ typedef void (APIENTRY * PFNGLACTIVESTENCILFACENVPROC) (GLenum face);
 #define GL_TEXTURE30_SGIS                  0x837D
 #define GL_TEXTURE31_SGIS                  0x837E
 #define GL_TEXTURE_COORD_SET_SOURCE_SGIS   0x8363
+#endif
+
+#ifndef GL_SGIS_color_range
+#define GL_SGIS_color_range 1
 #endif
 
 #ifndef GL_SGIS_multitexture
@@ -667,6 +777,83 @@ typedef void (APIENTRY * PFNGLSELECTTEXTURECOORDSETSGISPROC) (GLenum target);
 /*
  * SGIX
  */
+
+/* unknown */
+#ifndef GL_SGIX_fog_texture
+/*
+#define GL_FRAGMENT_FOG_SGIX              0
+#define GL_TEXTURE_FOG_SGIX               0
+#define GL_FOG_PATCHY_FACTOR_SGIX         0
+*/
+#endif
+
+/* unknown */
+#ifndef GL_SGIX_pixel_texture_bits
+/*
+#define GL_COLOR_TO_TEXTURE_COORD_SGIX    0
+#define GL_COLOR_BIT_PATTERN_SGIX         0
+#define GL_COLOR_VALUE_SGIX               0
+*/
+#endif
+
+#ifndef GL_SGIX_texture_range
+#define GL_RGB_SIGNED_SGIX                         0x85E0
+#define GL_RGBA_SIGNED_SGIX                        0x85E1
+#define GL_ALPHA_SIGNED_SGIX                       0x85E2
+#define GL_LUMINANCE_SIGNED_SGIX                   0x85E3
+#define GL_INTENSITY_SIGNED_SGIX                   0x85E4
+#define GL_LUMINANCE_ALPHA_SIGNED_SGIX             0x85E5
+#define GL_RGB16_SIGNED_SGIX                       0x85E6
+#define GL_RGBA16_SIGNED_SGIX                      0x85E7
+#define GL_ALPHA16_SIGNED_SGIX                     0x85E8
+#define GL_LUMINANCE16_SIGNED_SGIX                 0x85E9
+#define GL_INTENSITY16_SIGNED_SGIX                 0x85EA
+#define GL_LUMINANCE16_ALPHA16_SIGNED_SGIX         0x85EB
+#define GL_RGB_EXTENDED_RANGE_SGIX                 0x85EC
+#define GL_RGBA_EXTENDED_RANGE_SGIX                0x85ED
+#define GL_ALPHA_EXTENDED_RANGE_SGIX               0x85EE
+#define GL_LUMINANCE_EXTENDED_RANGE_SGIX           0x85EF
+#define GL_INTENSITY_EXTENDED_RANGE_SGIX           0x85F0
+#define GL_LUMINANCE_ALPHA_EXTENDED_RANGE_SGIX     0x85F1
+#define GL_RGB16_EXTENDED_RANGE_SGIX               0x85F2
+#define GL_RGBA16_EXTENDED_RANGE_SGIX              0x85F3
+#define GL_ALPHA16_EXTENDED_RANGE_SGIX             0x85F4
+#define GL_LUMINANCE16_EXTENDED_RANGE_SGIX         0x85F5
+#define GL_INTENSITY16_EXTENDED_RANGE_SGIX         0x85F6
+#define GL_LUMINANCE16_ALPHA16_EXTENDED_RANGE_SGIX 0x85F7
+#define GL_MIN_LUMINANCE_SGIS                      0x85F8
+#define GL_MAX_LUMINANCE_SGIS                      0x85F9
+#define GL_MIN_INTENSITY_SGIS                      0x85FA
+#define GL_MAX_INTENSITY_SGIS                      0x85FB
+#endif
+
+#ifndef GL_SGIX_vertex_preclip_hint
+/* defined in glext.h
+#define GL_VERTEX_PRECLIP_HINT_SGIX       0x83EF
+*/
+#endif
+
+/* unknown */
+#ifndef GL_SGIX_fog_texture
+/* #define GL_SGIX_fog_texture 1 */
+#ifdef GL_GLEXT_PROTOTYPES
+GLAPI void APIENTRY glTextureFogSGIX (GLenum pname);
+#endif /* GL_GLEXT_PROTOTYPES */
+typedef void (APIENTRY * PFNGLTEXTUREFOGSGIXPROC) (GLenum pname);
+#endif
+
+/* unknown */
+#ifndef GL_SGIX_pixel_texture_bits
+/* #define GL_SGIX_pixel_texture_bits 1 */
+#endif
+
+#ifndef GL_SGIX_texture_range
+#define GL_SGIX_texture_range 1
+#endif
+
+#ifndef GL_SGIX_vertex_preclip_hint
+#define GL_SGIX_vertex_preclip_hint 1
+#endif
 
 /*
  * SUN
