@@ -42,7 +42,24 @@ print_gl_config_attrib (GdkGLConfig *glconfig,
 static void
 examine_gl_config_attrib (GdkGLConfig *glconfig)
 {
-  g_print ("\nOpenGL visual configurations :\n");
+  g_print ("\nOpenGL visual configurations :\n\n");
+
+  g_print ("gdk_gl_config_is_rgba (glconfig) = %s\n",
+           gdk_gl_config_is_rgba (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_is_double_buffered (glconfig) = %s\n",
+           gdk_gl_config_is_double_buffered (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_is_stereo (glconfig) = %s\n",
+           gdk_gl_config_is_stereo (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_alpha (glconfig) = %s\n",
+           gdk_gl_config_has_alpha (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_depth_buffer (glconfig) = %s\n",
+           gdk_gl_config_has_depth_buffer (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_stencil_buffer (glconfig) = %s\n",
+           gdk_gl_config_has_stencil_buffer (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_accum_buffer (glconfig) = %s\n",
+           gdk_gl_config_has_accum_buffer (glconfig) ? "TRUE" : "FALSE");
+
+  g_print ("\n");
 
   print_gl_config_attrib (glconfig, "GDK_GL_USE_GL",           GDK_GL_USE_GL,           TRUE);
   print_gl_config_attrib (glconfig, "GDK_GL_BUFFER_SIZE",      GDK_GL_BUFFER_SIZE,      FALSE);
