@@ -14,7 +14,9 @@ gdkglext_gl_public_h_sources = \
 	glext.h		\
 	glxext.h	\
 	wglext.h	\
-	glext-extra.h
+	glext-extra.h	\
+	glxext-extra.h	\
+	wglext-extra.h
 
 gdkglextglincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk/GL
 gdkglextglinclude_HEADERS = $(gdkglext_gl_public_h_sources)

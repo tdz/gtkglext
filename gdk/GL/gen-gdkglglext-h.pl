@@ -158,11 +158,9 @@ sub generate_code {
 
     print "struct _GdkGL_$extension\n";
     print "{\n";
-
     foreach $func (@functions) {
 	print "  GdkGLProc_$func $func;\n";
     }
-
     print "};\n\n";
 
     print "GdkGL_$extension *gdk_gl_get_$extension (void);\n\n";

@@ -33,6 +33,7 @@
 #include <GL/gl.h>
 
 #include <gdk/GL/wglext.h>
+#include <gdk/GL/wglext-extra.h>
 
 #include <gdk/gdkglquery.h>
 #include <gdk/gdkglconfig.h>
@@ -829,6 +830,34 @@ struct _GdkGL_WGL_I3D_swap_frame_usage
 };
 
 GdkGL_WGL_I3D_swap_frame_usage *gdk_gl_get_WGL_I3D_swap_frame_usage (GdkGLConfig *glconfig);
+
+/*
+ * WGL_NV_allocate_memory
+ */
+
+/* wglAllocateMemoryNV */
+typedef void * (APIENTRY * GdkGLProc_wglAllocateMemoryNV) (int size, float readfreq, float writefreq, float priority);
+GdkGLProc    gdk_gl_get_wglAllocateMemoryNV (void);
+#define      gdk_gl_wglAllocateMemoryNV(proc, size, readfreq, writefreq, priority) \
+  ( ((GdkGLProc_wglAllocateMemoryNV) (proc)) (size, readfreq, writefreq, priority) )
+
+/* wglFreeMemoryNV */
+typedef void (APIENTRY * GdkGLProc_wglFreeMemoryNV) (void *pointer);
+GdkGLProc    gdk_gl_get_wglFreeMemoryNV (void);
+#define      gdk_gl_wglFreeMemoryNV(proc, pointer) \
+  ( ((GdkGLProc_wglFreeMemoryNV) (proc)) (pointer) )
+
+/* proc struct */
+
+typedef struct _GdkGL_WGL_NV_allocate_memory GdkGL_WGL_NV_allocate_memory;
+
+struct _GdkGL_WGL_NV_allocate_memory
+{
+  GdkGLProc_wglAllocateMemoryNV wglAllocateMemoryNV;
+  GdkGLProc_wglFreeMemoryNV wglFreeMemoryNV;
+};
+
+GdkGL_WGL_NV_allocate_memory *gdk_gl_get_WGL_NV_allocate_memory (GdkGLConfig *glconfig);
 
 G_END_DECLS
 

@@ -8,7 +8,7 @@
 # written by Naofumi Yasufuku <naofumi@users.sourceforge.net>
 #
 
-@input_headers = ("glxext.h");
+@input_headers = ("glxext.h", "glxext-extra.h");
 
 #---------------
 print <<EOF;

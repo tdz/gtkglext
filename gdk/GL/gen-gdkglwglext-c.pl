@@ -8,7 +8,7 @@
 # written by Naofumi Yasufuku <naofumi@users.sourceforge.net>
 #
 
-@input_headers = ("wglext.h");
+@input_headers = ("wglext.h", "wglext-extra.h");
 
 #---------------
 print <<EOF;

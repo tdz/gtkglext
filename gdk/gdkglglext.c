@@ -21726,6 +21726,2336 @@ gdk_gl_get_GL_ATI_vertex_attrib_array_object (void)
 }
 
 /*
+ * GL_Autodesk_facet_normal
+ */
+
+static GdkGL_GL_Autodesk_facet_normal _procs_GL_Autodesk_facet_normal = {
+  (GdkGLProc_glFacetNormal3b) -1,
+  (GdkGLProc_glFacetNormal3d) -1,
+  (GdkGLProc_glFacetNormal3f) -1,
+  (GdkGLProc_glFacetNormal3i) -1,
+  (GdkGLProc_glFacetNormal3s) -1,
+  (GdkGLProc_glFacetNormal3bv) -1,
+  (GdkGLProc_glFacetNormal3dv) -1,
+  (GdkGLProc_glFacetNormal3fv) -1,
+  (GdkGLProc_glFacetNormal3iv) -1,
+  (GdkGLProc_glFacetNormal3sv) -1
+};
+
+/* glFacetNormal3b */
+GdkGLProc
+gdk_gl_get_glFacetNormal3b (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_facet_normal.glFacetNormal3b == (GdkGLProc_glFacetNormal3b) -1)
+    _procs_GL_Autodesk_facet_normal.glFacetNormal3b =
+      (GdkGLProc_glFacetNormal3b) gdk_gl_get_proc_address ("glFacetNormal3b");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFacetNormal3b () - %s",
+               (_procs_GL_Autodesk_facet_normal.glFacetNormal3b) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_facet_normal.glFacetNormal3b);
+}
+
+/* glFacetNormal3d */
+GdkGLProc
+gdk_gl_get_glFacetNormal3d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_facet_normal.glFacetNormal3d == (GdkGLProc_glFacetNormal3d) -1)
+    _procs_GL_Autodesk_facet_normal.glFacetNormal3d =
+      (GdkGLProc_glFacetNormal3d) gdk_gl_get_proc_address ("glFacetNormal3d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFacetNormal3d () - %s",
+               (_procs_GL_Autodesk_facet_normal.glFacetNormal3d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_facet_normal.glFacetNormal3d);
+}
+
+/* glFacetNormal3f */
+GdkGLProc
+gdk_gl_get_glFacetNormal3f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_facet_normal.glFacetNormal3f == (GdkGLProc_glFacetNormal3f) -1)
+    _procs_GL_Autodesk_facet_normal.glFacetNormal3f =
+      (GdkGLProc_glFacetNormal3f) gdk_gl_get_proc_address ("glFacetNormal3f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFacetNormal3f () - %s",
+               (_procs_GL_Autodesk_facet_normal.glFacetNormal3f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_facet_normal.glFacetNormal3f);
+}
+
+/* glFacetNormal3i */
+GdkGLProc
+gdk_gl_get_glFacetNormal3i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_facet_normal.glFacetNormal3i == (GdkGLProc_glFacetNormal3i) -1)
+    _procs_GL_Autodesk_facet_normal.glFacetNormal3i =
+      (GdkGLProc_glFacetNormal3i) gdk_gl_get_proc_address ("glFacetNormal3i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFacetNormal3i () - %s",
+               (_procs_GL_Autodesk_facet_normal.glFacetNormal3i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_facet_normal.glFacetNormal3i);
+}
+
+/* glFacetNormal3s */
+GdkGLProc
+gdk_gl_get_glFacetNormal3s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_facet_normal.glFacetNormal3s == (GdkGLProc_glFacetNormal3s) -1)
+    _procs_GL_Autodesk_facet_normal.glFacetNormal3s =
+      (GdkGLProc_glFacetNormal3s) gdk_gl_get_proc_address ("glFacetNormal3s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFacetNormal3s () - %s",
+               (_procs_GL_Autodesk_facet_normal.glFacetNormal3s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_facet_normal.glFacetNormal3s);
+}
+
+/* glFacetNormal3bv */
+GdkGLProc
+gdk_gl_get_glFacetNormal3bv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_facet_normal.glFacetNormal3bv == (GdkGLProc_glFacetNormal3bv) -1)
+    _procs_GL_Autodesk_facet_normal.glFacetNormal3bv =
+      (GdkGLProc_glFacetNormal3bv) gdk_gl_get_proc_address ("glFacetNormal3bv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFacetNormal3bv () - %s",
+               (_procs_GL_Autodesk_facet_normal.glFacetNormal3bv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_facet_normal.glFacetNormal3bv);
+}
+
+/* glFacetNormal3dv */
+GdkGLProc
+gdk_gl_get_glFacetNormal3dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_facet_normal.glFacetNormal3dv == (GdkGLProc_glFacetNormal3dv) -1)
+    _procs_GL_Autodesk_facet_normal.glFacetNormal3dv =
+      (GdkGLProc_glFacetNormal3dv) gdk_gl_get_proc_address ("glFacetNormal3dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFacetNormal3dv () - %s",
+               (_procs_GL_Autodesk_facet_normal.glFacetNormal3dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_facet_normal.glFacetNormal3dv);
+}
+
+/* glFacetNormal3fv */
+GdkGLProc
+gdk_gl_get_glFacetNormal3fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_facet_normal.glFacetNormal3fv == (GdkGLProc_glFacetNormal3fv) -1)
+    _procs_GL_Autodesk_facet_normal.glFacetNormal3fv =
+      (GdkGLProc_glFacetNormal3fv) gdk_gl_get_proc_address ("glFacetNormal3fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFacetNormal3fv () - %s",
+               (_procs_GL_Autodesk_facet_normal.glFacetNormal3fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_facet_normal.glFacetNormal3fv);
+}
+
+/* glFacetNormal3iv */
+GdkGLProc
+gdk_gl_get_glFacetNormal3iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_facet_normal.glFacetNormal3iv == (GdkGLProc_glFacetNormal3iv) -1)
+    _procs_GL_Autodesk_facet_normal.glFacetNormal3iv =
+      (GdkGLProc_glFacetNormal3iv) gdk_gl_get_proc_address ("glFacetNormal3iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFacetNormal3iv () - %s",
+               (_procs_GL_Autodesk_facet_normal.glFacetNormal3iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_facet_normal.glFacetNormal3iv);
+}
+
+/* glFacetNormal3sv */
+GdkGLProc
+gdk_gl_get_glFacetNormal3sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_facet_normal.glFacetNormal3sv == (GdkGLProc_glFacetNormal3sv) -1)
+    _procs_GL_Autodesk_facet_normal.glFacetNormal3sv =
+      (GdkGLProc_glFacetNormal3sv) gdk_gl_get_proc_address ("glFacetNormal3sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFacetNormal3sv () - %s",
+               (_procs_GL_Autodesk_facet_normal.glFacetNormal3sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_facet_normal.glFacetNormal3sv);
+}
+
+/* Get GL_Autodesk_facet_normal functions */
+GdkGL_GL_Autodesk_facet_normal *
+gdk_gl_get_GL_Autodesk_facet_normal (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_Autodesk_facet_normal");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glFacetNormal3b () != NULL);
+          supported &= (gdk_gl_get_glFacetNormal3d () != NULL);
+          supported &= (gdk_gl_get_glFacetNormal3f () != NULL);
+          supported &= (gdk_gl_get_glFacetNormal3i () != NULL);
+          supported &= (gdk_gl_get_glFacetNormal3s () != NULL);
+          supported &= (gdk_gl_get_glFacetNormal3bv () != NULL);
+          supported &= (gdk_gl_get_glFacetNormal3dv () != NULL);
+          supported &= (gdk_gl_get_glFacetNormal3fv () != NULL);
+          supported &= (gdk_gl_get_glFacetNormal3iv () != NULL);
+          supported &= (gdk_gl_get_glFacetNormal3sv () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_Autodesk_facet_normal () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_Autodesk_facet_normal;
+}
+
+/*
+ * GL_Autodesk_valid_back_buffer_hint
+ */
+
+static GdkGL_GL_Autodesk_valid_back_buffer_hint _procs_GL_Autodesk_valid_back_buffer_hint = {
+  (GdkGLProc_glWindowBackBufferHint) -1,
+  (GdkGLProc_glValidBackBufferHint) -1
+};
+
+/* glWindowBackBufferHint */
+GdkGLProc
+gdk_gl_get_glWindowBackBufferHint (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_valid_back_buffer_hint.glWindowBackBufferHint == (GdkGLProc_glWindowBackBufferHint) -1)
+    _procs_GL_Autodesk_valid_back_buffer_hint.glWindowBackBufferHint =
+      (GdkGLProc_glWindowBackBufferHint) gdk_gl_get_proc_address ("glWindowBackBufferHint");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowBackBufferHint () - %s",
+               (_procs_GL_Autodesk_valid_back_buffer_hint.glWindowBackBufferHint) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_valid_back_buffer_hint.glWindowBackBufferHint);
+}
+
+/* glValidBackBufferHint */
+GdkGLProc
+gdk_gl_get_glValidBackBufferHint (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_Autodesk_valid_back_buffer_hint.glValidBackBufferHint == (GdkGLProc_glValidBackBufferHint) -1)
+    _procs_GL_Autodesk_valid_back_buffer_hint.glValidBackBufferHint =
+      (GdkGLProc_glValidBackBufferHint) gdk_gl_get_proc_address ("glValidBackBufferHint");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glValidBackBufferHint () - %s",
+               (_procs_GL_Autodesk_valid_back_buffer_hint.glValidBackBufferHint) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_Autodesk_valid_back_buffer_hint.glValidBackBufferHint);
+}
+
+/* Get GL_Autodesk_valid_back_buffer_hint functions */
+GdkGL_GL_Autodesk_valid_back_buffer_hint *
+gdk_gl_get_GL_Autodesk_valid_back_buffer_hint (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_Autodesk_valid_back_buffer_hint");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glWindowBackBufferHint () != NULL);
+          supported &= (gdk_gl_get_glValidBackBufferHint () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_Autodesk_valid_back_buffer_hint () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_Autodesk_valid_back_buffer_hint;
+}
+
+/*
+ * GL_EXT_multitexture
+ */
+
+static GdkGL_GL_EXT_multitexture _procs_GL_EXT_multitexture = {
+  (GdkGLProc_glMultiTexCoord1dEXT) -1,
+  (GdkGLProc_glMultiTexCoord1dvEXT) -1,
+  (GdkGLProc_glMultiTexCoord1fEXT) -1,
+  (GdkGLProc_glMultiTexCoord1fvEXT) -1,
+  (GdkGLProc_glMultiTexCoord1iEXT) -1,
+  (GdkGLProc_glMultiTexCoord1ivEXT) -1,
+  (GdkGLProc_glMultiTexCoord1sEXT) -1,
+  (GdkGLProc_glMultiTexCoord1svEXT) -1,
+  (GdkGLProc_glMultiTexCoord2dEXT) -1,
+  (GdkGLProc_glMultiTexCoord2dvEXT) -1,
+  (GdkGLProc_glMultiTexCoord2fEXT) -1,
+  (GdkGLProc_glMultiTexCoord2fvEXT) -1,
+  (GdkGLProc_glMultiTexCoord2iEXT) -1,
+  (GdkGLProc_glMultiTexCoord2ivEXT) -1,
+  (GdkGLProc_glMultiTexCoord2sEXT) -1,
+  (GdkGLProc_glMultiTexCoord2svEXT) -1,
+  (GdkGLProc_glMultiTexCoord3dEXT) -1,
+  (GdkGLProc_glMultiTexCoord3dvEXT) -1,
+  (GdkGLProc_glMultiTexCoord3fEXT) -1,
+  (GdkGLProc_glMultiTexCoord3fvEXT) -1,
+  (GdkGLProc_glMultiTexCoord3iEXT) -1,
+  (GdkGLProc_glMultiTexCoord3ivEXT) -1,
+  (GdkGLProc_glMultiTexCoord3sEXT) -1,
+  (GdkGLProc_glMultiTexCoord3svEXT) -1,
+  (GdkGLProc_glMultiTexCoord4dEXT) -1,
+  (GdkGLProc_glMultiTexCoord4dvEXT) -1,
+  (GdkGLProc_glMultiTexCoord4fEXT) -1,
+  (GdkGLProc_glMultiTexCoord4fvEXT) -1,
+  (GdkGLProc_glMultiTexCoord4iEXT) -1,
+  (GdkGLProc_glMultiTexCoord4ivEXT) -1,
+  (GdkGLProc_glMultiTexCoord4sEXT) -1,
+  (GdkGLProc_glMultiTexCoord4svEXT) -1,
+  (GdkGLProc_glInterleavedTextureCoordSetsEXT) -1,
+  (GdkGLProc_glSelectTextureEXT) -1,
+  (GdkGLProc_glSelectTextureCoordSetEXT) -1,
+  (GdkGLProc_glSelectTextureTransformEXT) -1
+};
+
+/* glMultiTexCoord1dEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1dEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord1dEXT == (GdkGLProc_glMultiTexCoord1dEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord1dEXT =
+      (GdkGLProc_glMultiTexCoord1dEXT) gdk_gl_get_proc_address ("glMultiTexCoord1dEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1dEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord1dEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord1dEXT);
+}
+
+/* glMultiTexCoord1dvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1dvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord1dvEXT == (GdkGLProc_glMultiTexCoord1dvEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord1dvEXT =
+      (GdkGLProc_glMultiTexCoord1dvEXT) gdk_gl_get_proc_address ("glMultiTexCoord1dvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1dvEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord1dvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord1dvEXT);
+}
+
+/* glMultiTexCoord1fEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1fEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord1fEXT == (GdkGLProc_glMultiTexCoord1fEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord1fEXT =
+      (GdkGLProc_glMultiTexCoord1fEXT) gdk_gl_get_proc_address ("glMultiTexCoord1fEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1fEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord1fEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord1fEXT);
+}
+
+/* glMultiTexCoord1fvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord1fvEXT == (GdkGLProc_glMultiTexCoord1fvEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord1fvEXT =
+      (GdkGLProc_glMultiTexCoord1fvEXT) gdk_gl_get_proc_address ("glMultiTexCoord1fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1fvEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord1fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord1fvEXT);
+}
+
+/* glMultiTexCoord1iEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord1iEXT == (GdkGLProc_glMultiTexCoord1iEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord1iEXT =
+      (GdkGLProc_glMultiTexCoord1iEXT) gdk_gl_get_proc_address ("glMultiTexCoord1iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1iEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord1iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord1iEXT);
+}
+
+/* glMultiTexCoord1ivEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord1ivEXT == (GdkGLProc_glMultiTexCoord1ivEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord1ivEXT =
+      (GdkGLProc_glMultiTexCoord1ivEXT) gdk_gl_get_proc_address ("glMultiTexCoord1ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1ivEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord1ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord1ivEXT);
+}
+
+/* glMultiTexCoord1sEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1sEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord1sEXT == (GdkGLProc_glMultiTexCoord1sEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord1sEXT =
+      (GdkGLProc_glMultiTexCoord1sEXT) gdk_gl_get_proc_address ("glMultiTexCoord1sEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1sEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord1sEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord1sEXT);
+}
+
+/* glMultiTexCoord1svEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1svEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord1svEXT == (GdkGLProc_glMultiTexCoord1svEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord1svEXT =
+      (GdkGLProc_glMultiTexCoord1svEXT) gdk_gl_get_proc_address ("glMultiTexCoord1svEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1svEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord1svEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord1svEXT);
+}
+
+/* glMultiTexCoord2dEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2dEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord2dEXT == (GdkGLProc_glMultiTexCoord2dEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord2dEXT =
+      (GdkGLProc_glMultiTexCoord2dEXT) gdk_gl_get_proc_address ("glMultiTexCoord2dEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2dEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord2dEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord2dEXT);
+}
+
+/* glMultiTexCoord2dvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2dvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord2dvEXT == (GdkGLProc_glMultiTexCoord2dvEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord2dvEXT =
+      (GdkGLProc_glMultiTexCoord2dvEXT) gdk_gl_get_proc_address ("glMultiTexCoord2dvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2dvEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord2dvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord2dvEXT);
+}
+
+/* glMultiTexCoord2fEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2fEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord2fEXT == (GdkGLProc_glMultiTexCoord2fEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord2fEXT =
+      (GdkGLProc_glMultiTexCoord2fEXT) gdk_gl_get_proc_address ("glMultiTexCoord2fEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2fEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord2fEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord2fEXT);
+}
+
+/* glMultiTexCoord2fvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord2fvEXT == (GdkGLProc_glMultiTexCoord2fvEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord2fvEXT =
+      (GdkGLProc_glMultiTexCoord2fvEXT) gdk_gl_get_proc_address ("glMultiTexCoord2fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2fvEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord2fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord2fvEXT);
+}
+
+/* glMultiTexCoord2iEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord2iEXT == (GdkGLProc_glMultiTexCoord2iEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord2iEXT =
+      (GdkGLProc_glMultiTexCoord2iEXT) gdk_gl_get_proc_address ("glMultiTexCoord2iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2iEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord2iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord2iEXT);
+}
+
+/* glMultiTexCoord2ivEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord2ivEXT == (GdkGLProc_glMultiTexCoord2ivEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord2ivEXT =
+      (GdkGLProc_glMultiTexCoord2ivEXT) gdk_gl_get_proc_address ("glMultiTexCoord2ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2ivEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord2ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord2ivEXT);
+}
+
+/* glMultiTexCoord2sEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2sEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord2sEXT == (GdkGLProc_glMultiTexCoord2sEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord2sEXT =
+      (GdkGLProc_glMultiTexCoord2sEXT) gdk_gl_get_proc_address ("glMultiTexCoord2sEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2sEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord2sEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord2sEXT);
+}
+
+/* glMultiTexCoord2svEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2svEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord2svEXT == (GdkGLProc_glMultiTexCoord2svEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord2svEXT =
+      (GdkGLProc_glMultiTexCoord2svEXT) gdk_gl_get_proc_address ("glMultiTexCoord2svEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2svEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord2svEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord2svEXT);
+}
+
+/* glMultiTexCoord3dEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3dEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord3dEXT == (GdkGLProc_glMultiTexCoord3dEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord3dEXT =
+      (GdkGLProc_glMultiTexCoord3dEXT) gdk_gl_get_proc_address ("glMultiTexCoord3dEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3dEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord3dEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord3dEXT);
+}
+
+/* glMultiTexCoord3dvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3dvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord3dvEXT == (GdkGLProc_glMultiTexCoord3dvEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord3dvEXT =
+      (GdkGLProc_glMultiTexCoord3dvEXT) gdk_gl_get_proc_address ("glMultiTexCoord3dvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3dvEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord3dvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord3dvEXT);
+}
+
+/* glMultiTexCoord3fEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3fEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord3fEXT == (GdkGLProc_glMultiTexCoord3fEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord3fEXT =
+      (GdkGLProc_glMultiTexCoord3fEXT) gdk_gl_get_proc_address ("glMultiTexCoord3fEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3fEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord3fEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord3fEXT);
+}
+
+/* glMultiTexCoord3fvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord3fvEXT == (GdkGLProc_glMultiTexCoord3fvEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord3fvEXT =
+      (GdkGLProc_glMultiTexCoord3fvEXT) gdk_gl_get_proc_address ("glMultiTexCoord3fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3fvEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord3fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord3fvEXT);
+}
+
+/* glMultiTexCoord3iEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord3iEXT == (GdkGLProc_glMultiTexCoord3iEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord3iEXT =
+      (GdkGLProc_glMultiTexCoord3iEXT) gdk_gl_get_proc_address ("glMultiTexCoord3iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3iEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord3iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord3iEXT);
+}
+
+/* glMultiTexCoord3ivEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord3ivEXT == (GdkGLProc_glMultiTexCoord3ivEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord3ivEXT =
+      (GdkGLProc_glMultiTexCoord3ivEXT) gdk_gl_get_proc_address ("glMultiTexCoord3ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3ivEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord3ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord3ivEXT);
+}
+
+/* glMultiTexCoord3sEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3sEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord3sEXT == (GdkGLProc_glMultiTexCoord3sEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord3sEXT =
+      (GdkGLProc_glMultiTexCoord3sEXT) gdk_gl_get_proc_address ("glMultiTexCoord3sEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3sEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord3sEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord3sEXT);
+}
+
+/* glMultiTexCoord3svEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3svEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord3svEXT == (GdkGLProc_glMultiTexCoord3svEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord3svEXT =
+      (GdkGLProc_glMultiTexCoord3svEXT) gdk_gl_get_proc_address ("glMultiTexCoord3svEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3svEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord3svEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord3svEXT);
+}
+
+/* glMultiTexCoord4dEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4dEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord4dEXT == (GdkGLProc_glMultiTexCoord4dEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord4dEXT =
+      (GdkGLProc_glMultiTexCoord4dEXT) gdk_gl_get_proc_address ("glMultiTexCoord4dEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4dEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord4dEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord4dEXT);
+}
+
+/* glMultiTexCoord4dvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4dvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord4dvEXT == (GdkGLProc_glMultiTexCoord4dvEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord4dvEXT =
+      (GdkGLProc_glMultiTexCoord4dvEXT) gdk_gl_get_proc_address ("glMultiTexCoord4dvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4dvEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord4dvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord4dvEXT);
+}
+
+/* glMultiTexCoord4fEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4fEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord4fEXT == (GdkGLProc_glMultiTexCoord4fEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord4fEXT =
+      (GdkGLProc_glMultiTexCoord4fEXT) gdk_gl_get_proc_address ("glMultiTexCoord4fEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4fEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord4fEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord4fEXT);
+}
+
+/* glMultiTexCoord4fvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord4fvEXT == (GdkGLProc_glMultiTexCoord4fvEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord4fvEXT =
+      (GdkGLProc_glMultiTexCoord4fvEXT) gdk_gl_get_proc_address ("glMultiTexCoord4fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4fvEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord4fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord4fvEXT);
+}
+
+/* glMultiTexCoord4iEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord4iEXT == (GdkGLProc_glMultiTexCoord4iEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord4iEXT =
+      (GdkGLProc_glMultiTexCoord4iEXT) gdk_gl_get_proc_address ("glMultiTexCoord4iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4iEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord4iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord4iEXT);
+}
+
+/* glMultiTexCoord4ivEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord4ivEXT == (GdkGLProc_glMultiTexCoord4ivEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord4ivEXT =
+      (GdkGLProc_glMultiTexCoord4ivEXT) gdk_gl_get_proc_address ("glMultiTexCoord4ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4ivEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord4ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord4ivEXT);
+}
+
+/* glMultiTexCoord4sEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4sEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord4sEXT == (GdkGLProc_glMultiTexCoord4sEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord4sEXT =
+      (GdkGLProc_glMultiTexCoord4sEXT) gdk_gl_get_proc_address ("glMultiTexCoord4sEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4sEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord4sEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord4sEXT);
+}
+
+/* glMultiTexCoord4svEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4svEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glMultiTexCoord4svEXT == (GdkGLProc_glMultiTexCoord4svEXT) -1)
+    _procs_GL_EXT_multitexture.glMultiTexCoord4svEXT =
+      (GdkGLProc_glMultiTexCoord4svEXT) gdk_gl_get_proc_address ("glMultiTexCoord4svEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4svEXT () - %s",
+               (_procs_GL_EXT_multitexture.glMultiTexCoord4svEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glMultiTexCoord4svEXT);
+}
+
+/* glInterleavedTextureCoordSetsEXT */
+GdkGLProc
+gdk_gl_get_glInterleavedTextureCoordSetsEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glInterleavedTextureCoordSetsEXT == (GdkGLProc_glInterleavedTextureCoordSetsEXT) -1)
+    _procs_GL_EXT_multitexture.glInterleavedTextureCoordSetsEXT =
+      (GdkGLProc_glInterleavedTextureCoordSetsEXT) gdk_gl_get_proc_address ("glInterleavedTextureCoordSetsEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glInterleavedTextureCoordSetsEXT () - %s",
+               (_procs_GL_EXT_multitexture.glInterleavedTextureCoordSetsEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glInterleavedTextureCoordSetsEXT);
+}
+
+/* glSelectTextureEXT */
+GdkGLProc
+gdk_gl_get_glSelectTextureEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glSelectTextureEXT == (GdkGLProc_glSelectTextureEXT) -1)
+    _procs_GL_EXT_multitexture.glSelectTextureEXT =
+      (GdkGLProc_glSelectTextureEXT) gdk_gl_get_proc_address ("glSelectTextureEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSelectTextureEXT () - %s",
+               (_procs_GL_EXT_multitexture.glSelectTextureEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glSelectTextureEXT);
+}
+
+/* glSelectTextureCoordSetEXT */
+GdkGLProc
+gdk_gl_get_glSelectTextureCoordSetEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glSelectTextureCoordSetEXT == (GdkGLProc_glSelectTextureCoordSetEXT) -1)
+    _procs_GL_EXT_multitexture.glSelectTextureCoordSetEXT =
+      (GdkGLProc_glSelectTextureCoordSetEXT) gdk_gl_get_proc_address ("glSelectTextureCoordSetEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSelectTextureCoordSetEXT () - %s",
+               (_procs_GL_EXT_multitexture.glSelectTextureCoordSetEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glSelectTextureCoordSetEXT);
+}
+
+/* glSelectTextureTransformEXT */
+GdkGLProc
+gdk_gl_get_glSelectTextureTransformEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_multitexture.glSelectTextureTransformEXT == (GdkGLProc_glSelectTextureTransformEXT) -1)
+    _procs_GL_EXT_multitexture.glSelectTextureTransformEXT =
+      (GdkGLProc_glSelectTextureTransformEXT) gdk_gl_get_proc_address ("glSelectTextureTransformEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSelectTextureTransformEXT () - %s",
+               (_procs_GL_EXT_multitexture.glSelectTextureTransformEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_multitexture.glSelectTextureTransformEXT);
+}
+
+/* Get GL_EXT_multitexture functions */
+GdkGL_GL_EXT_multitexture *
+gdk_gl_get_GL_EXT_multitexture (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_multitexture");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glMultiTexCoord1dEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1dvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1fEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1fvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1iEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1ivEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1sEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1svEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2dEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2dvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2fEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2fvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2iEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2ivEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2sEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2svEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3dEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3dvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3fEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3fvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3iEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3ivEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3sEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3svEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4dEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4dvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4fEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4fvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4iEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4ivEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4sEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4svEXT () != NULL);
+          supported &= (gdk_gl_get_glInterleavedTextureCoordSetsEXT () != NULL);
+          supported &= (gdk_gl_get_glSelectTextureEXT () != NULL);
+          supported &= (gdk_gl_get_glSelectTextureCoordSetEXT () != NULL);
+          supported &= (gdk_gl_get_glSelectTextureTransformEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_multitexture () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_multitexture;
+}
+
+/*
+ * GL_EXT_scene_marker
+ */
+
+static GdkGL_GL_EXT_scene_marker _procs_GL_EXT_scene_marker = {
+  (GdkGLProc_glBeginSceneEXT) -1,
+  (GdkGLProc_glEndSceneEXT) -1
+};
+
+/* glBeginSceneEXT */
+GdkGLProc
+gdk_gl_get_glBeginSceneEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_scene_marker.glBeginSceneEXT == (GdkGLProc_glBeginSceneEXT) -1)
+    _procs_GL_EXT_scene_marker.glBeginSceneEXT =
+      (GdkGLProc_glBeginSceneEXT) gdk_gl_get_proc_address ("glBeginSceneEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginSceneEXT () - %s",
+               (_procs_GL_EXT_scene_marker.glBeginSceneEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_scene_marker.glBeginSceneEXT);
+}
+
+/* glEndSceneEXT */
+GdkGLProc
+gdk_gl_get_glEndSceneEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_scene_marker.glEndSceneEXT == (GdkGLProc_glEndSceneEXT) -1)
+    _procs_GL_EXT_scene_marker.glEndSceneEXT =
+      (GdkGLProc_glEndSceneEXT) gdk_gl_get_proc_address ("glEndSceneEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndSceneEXT () - %s",
+               (_procs_GL_EXT_scene_marker.glEndSceneEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_scene_marker.glEndSceneEXT);
+}
+
+/* Get GL_EXT_scene_marker functions */
+GdkGL_GL_EXT_scene_marker *
+gdk_gl_get_GL_EXT_scene_marker (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_scene_marker");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBeginSceneEXT () != NULL);
+          supported &= (gdk_gl_get_glEndSceneEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_scene_marker () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_scene_marker;
+}
+
+/*
+ * GL_IBM_static_data
+ */
+
+static GdkGL_GL_IBM_static_data _procs_GL_IBM_static_data = {
+  (GdkGLProc_glFlushStaticDataIBM) -1
+};
+
+/* glFlushStaticDataIBM */
+GdkGLProc
+gdk_gl_get_glFlushStaticDataIBM (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_IBM_static_data.glFlushStaticDataIBM == (GdkGLProc_glFlushStaticDataIBM) -1)
+    _procs_GL_IBM_static_data.glFlushStaticDataIBM =
+      (GdkGLProc_glFlushStaticDataIBM) gdk_gl_get_proc_address ("glFlushStaticDataIBM");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFlushStaticDataIBM () - %s",
+               (_procs_GL_IBM_static_data.glFlushStaticDataIBM) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_IBM_static_data.glFlushStaticDataIBM);
+}
+
+/* Get GL_IBM_static_data functions */
+GdkGL_GL_IBM_static_data *
+gdk_gl_get_GL_IBM_static_data (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_IBM_static_data");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glFlushStaticDataIBM () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_IBM_static_data () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_IBM_static_data;
+}
+
+/*
+ * GL_KTX_buffer_region
+ */
+
+static GdkGL_GL_KTX_buffer_region _procs_GL_KTX_buffer_region = {
+  (GdkGLProc_glBufferRegionEnabled) -1,
+  (GdkGLProc_glNewBufferRegion) -1,
+  (GdkGLProc_glDeleteBufferRegion) -1,
+  (GdkGLProc_glReadBufferRegion) -1,
+  (GdkGLProc_glDrawBufferRegion) -1
+};
+
+/* glBufferRegionEnabled */
+GdkGLProc
+gdk_gl_get_glBufferRegionEnabled (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_KTX_buffer_region.glBufferRegionEnabled == (GdkGLProc_glBufferRegionEnabled) -1)
+    _procs_GL_KTX_buffer_region.glBufferRegionEnabled =
+      (GdkGLProc_glBufferRegionEnabled) gdk_gl_get_proc_address ("glBufferRegionEnabled");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBufferRegionEnabled () - %s",
+               (_procs_GL_KTX_buffer_region.glBufferRegionEnabled) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_KTX_buffer_region.glBufferRegionEnabled);
+}
+
+/* glNewBufferRegion */
+GdkGLProc
+gdk_gl_get_glNewBufferRegion (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_KTX_buffer_region.glNewBufferRegion == (GdkGLProc_glNewBufferRegion) -1)
+    _procs_GL_KTX_buffer_region.glNewBufferRegion =
+      (GdkGLProc_glNewBufferRegion) gdk_gl_get_proc_address ("glNewBufferRegion");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNewBufferRegion () - %s",
+               (_procs_GL_KTX_buffer_region.glNewBufferRegion) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_KTX_buffer_region.glNewBufferRegion);
+}
+
+/* glDeleteBufferRegion */
+GdkGLProc
+gdk_gl_get_glDeleteBufferRegion (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_KTX_buffer_region.glDeleteBufferRegion == (GdkGLProc_glDeleteBufferRegion) -1)
+    _procs_GL_KTX_buffer_region.glDeleteBufferRegion =
+      (GdkGLProc_glDeleteBufferRegion) gdk_gl_get_proc_address ("glDeleteBufferRegion");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteBufferRegion () - %s",
+               (_procs_GL_KTX_buffer_region.glDeleteBufferRegion) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_KTX_buffer_region.glDeleteBufferRegion);
+}
+
+/* glReadBufferRegion */
+GdkGLProc
+gdk_gl_get_glReadBufferRegion (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_KTX_buffer_region.glReadBufferRegion == (GdkGLProc_glReadBufferRegion) -1)
+    _procs_GL_KTX_buffer_region.glReadBufferRegion =
+      (GdkGLProc_glReadBufferRegion) gdk_gl_get_proc_address ("glReadBufferRegion");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReadBufferRegion () - %s",
+               (_procs_GL_KTX_buffer_region.glReadBufferRegion) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_KTX_buffer_region.glReadBufferRegion);
+}
+
+/* glDrawBufferRegion */
+GdkGLProc
+gdk_gl_get_glDrawBufferRegion (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_KTX_buffer_region.glDrawBufferRegion == (GdkGLProc_glDrawBufferRegion) -1)
+    _procs_GL_KTX_buffer_region.glDrawBufferRegion =
+      (GdkGLProc_glDrawBufferRegion) gdk_gl_get_proc_address ("glDrawBufferRegion");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawBufferRegion () - %s",
+               (_procs_GL_KTX_buffer_region.glDrawBufferRegion) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_KTX_buffer_region.glDrawBufferRegion);
+}
+
+/* Get GL_KTX_buffer_region functions */
+GdkGL_GL_KTX_buffer_region *
+gdk_gl_get_GL_KTX_buffer_region (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_KTX_buffer_region");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBufferRegionEnabled () != NULL);
+          supported &= (gdk_gl_get_glNewBufferRegion () != NULL);
+          supported &= (gdk_gl_get_glDeleteBufferRegion () != NULL);
+          supported &= (gdk_gl_get_glReadBufferRegion () != NULL);
+          supported &= (gdk_gl_get_glDrawBufferRegion () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_KTX_buffer_region () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_KTX_buffer_region;
+}
+
+/*
+ * GL_NV_element_array
+ */
+
+static GdkGL_GL_NV_element_array _procs_GL_NV_element_array = {
+  (GdkGLProc_glElementPointerNV) -1,
+  (GdkGLProc_glDrawElementArrayNV) -1,
+  (GdkGLProc_glDrawRangeElementArrayNV) -1,
+  (GdkGLProc_glMultiDrawElementArrayNV) -1,
+  (GdkGLProc_glMultiDrawRangeElementArrayNV) -1
+};
+
+/* glElementPointerNV */
+GdkGLProc
+gdk_gl_get_glElementPointerNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_element_array.glElementPointerNV == (GdkGLProc_glElementPointerNV) -1)
+    _procs_GL_NV_element_array.glElementPointerNV =
+      (GdkGLProc_glElementPointerNV) gdk_gl_get_proc_address ("glElementPointerNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glElementPointerNV () - %s",
+               (_procs_GL_NV_element_array.glElementPointerNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_element_array.glElementPointerNV);
+}
+
+/* glDrawElementArrayNV */
+GdkGLProc
+gdk_gl_get_glDrawElementArrayNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_element_array.glDrawElementArrayNV == (GdkGLProc_glDrawElementArrayNV) -1)
+    _procs_GL_NV_element_array.glDrawElementArrayNV =
+      (GdkGLProc_glDrawElementArrayNV) gdk_gl_get_proc_address ("glDrawElementArrayNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawElementArrayNV () - %s",
+               (_procs_GL_NV_element_array.glDrawElementArrayNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_element_array.glDrawElementArrayNV);
+}
+
+/* glDrawRangeElementArrayNV */
+GdkGLProc
+gdk_gl_get_glDrawRangeElementArrayNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_element_array.glDrawRangeElementArrayNV == (GdkGLProc_glDrawRangeElementArrayNV) -1)
+    _procs_GL_NV_element_array.glDrawRangeElementArrayNV =
+      (GdkGLProc_glDrawRangeElementArrayNV) gdk_gl_get_proc_address ("glDrawRangeElementArrayNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawRangeElementArrayNV () - %s",
+               (_procs_GL_NV_element_array.glDrawRangeElementArrayNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_element_array.glDrawRangeElementArrayNV);
+}
+
+/* glMultiDrawElementArrayNV */
+GdkGLProc
+gdk_gl_get_glMultiDrawElementArrayNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_element_array.glMultiDrawElementArrayNV == (GdkGLProc_glMultiDrawElementArrayNV) -1)
+    _procs_GL_NV_element_array.glMultiDrawElementArrayNV =
+      (GdkGLProc_glMultiDrawElementArrayNV) gdk_gl_get_proc_address ("glMultiDrawElementArrayNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawElementArrayNV () - %s",
+               (_procs_GL_NV_element_array.glMultiDrawElementArrayNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_element_array.glMultiDrawElementArrayNV);
+}
+
+/* glMultiDrawRangeElementArrayNV */
+GdkGLProc
+gdk_gl_get_glMultiDrawRangeElementArrayNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_element_array.glMultiDrawRangeElementArrayNV == (GdkGLProc_glMultiDrawRangeElementArrayNV) -1)
+    _procs_GL_NV_element_array.glMultiDrawRangeElementArrayNV =
+      (GdkGLProc_glMultiDrawRangeElementArrayNV) gdk_gl_get_proc_address ("glMultiDrawRangeElementArrayNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawRangeElementArrayNV () - %s",
+               (_procs_GL_NV_element_array.glMultiDrawRangeElementArrayNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_element_array.glMultiDrawRangeElementArrayNV);
+}
+
+/* Get GL_NV_element_array functions */
+GdkGL_GL_NV_element_array *
+gdk_gl_get_GL_NV_element_array (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_element_array");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glElementPointerNV () != NULL);
+          supported &= (gdk_gl_get_glDrawElementArrayNV () != NULL);
+          supported &= (gdk_gl_get_glDrawRangeElementArrayNV () != NULL);
+          supported &= (gdk_gl_get_glMultiDrawElementArrayNV () != NULL);
+          supported &= (gdk_gl_get_glMultiDrawRangeElementArrayNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_element_array () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_element_array;
+}
+
+/*
+ * GL_NV_stencil_two_side
+ */
+
+static GdkGL_GL_NV_stencil_two_side _procs_GL_NV_stencil_two_side = {
+  (GdkGLProc_glActiveStencilFaceNV) -1
+};
+
+/* glActiveStencilFaceNV */
+GdkGLProc
+gdk_gl_get_glActiveStencilFaceNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_stencil_two_side.glActiveStencilFaceNV == (GdkGLProc_glActiveStencilFaceNV) -1)
+    _procs_GL_NV_stencil_two_side.glActiveStencilFaceNV =
+      (GdkGLProc_glActiveStencilFaceNV) gdk_gl_get_proc_address ("glActiveStencilFaceNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glActiveStencilFaceNV () - %s",
+               (_procs_GL_NV_stencil_two_side.glActiveStencilFaceNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_stencil_two_side.glActiveStencilFaceNV);
+}
+
+/* Get GL_NV_stencil_two_side functions */
+GdkGL_GL_NV_stencil_two_side *
+gdk_gl_get_GL_NV_stencil_two_side (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_stencil_two_side");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glActiveStencilFaceNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_stencil_two_side () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_stencil_two_side;
+}
+
+/*
+ * GL_SGIS_multitexture
+ */
+
+static GdkGL_GL_SGIS_multitexture _procs_GL_SGIS_multitexture = {
+  (GdkGLProc_glMultiTexCoord1dSGIS) -1,
+  (GdkGLProc_glMultiTexCoord1dvSGIS) -1,
+  (GdkGLProc_glMultiTexCoord1fSGIS) -1,
+  (GdkGLProc_glMultiTexCoord1fvSGIS) -1,
+  (GdkGLProc_glMultiTexCoord1iSGIS) -1,
+  (GdkGLProc_glMultiTexCoord1ivSGIS) -1,
+  (GdkGLProc_glMultiTexCoord1sSGIS) -1,
+  (GdkGLProc_glMultiTexCoord1svSGIS) -1,
+  (GdkGLProc_glMultiTexCoord2dSGIS) -1,
+  (GdkGLProc_glMultiTexCoord2dvSGIS) -1,
+  (GdkGLProc_glMultiTexCoord2fSGIS) -1,
+  (GdkGLProc_glMultiTexCoord2fvSGIS) -1,
+  (GdkGLProc_glMultiTexCoord2iSGIS) -1,
+  (GdkGLProc_glMultiTexCoord2ivSGIS) -1,
+  (GdkGLProc_glMultiTexCoord2sSGIS) -1,
+  (GdkGLProc_glMultiTexCoord2svSGIS) -1,
+  (GdkGLProc_glMultiTexCoord3dSGIS) -1,
+  (GdkGLProc_glMultiTexCoord3dvSGIS) -1,
+  (GdkGLProc_glMultiTexCoord3fSGIS) -1,
+  (GdkGLProc_glMultiTexCoord3fvSGIS) -1,
+  (GdkGLProc_glMultiTexCoord3iSGIS) -1,
+  (GdkGLProc_glMultiTexCoord3ivSGIS) -1,
+  (GdkGLProc_glMultiTexCoord3sSGIS) -1,
+  (GdkGLProc_glMultiTexCoord3svSGIS) -1,
+  (GdkGLProc_glMultiTexCoord4dSGIS) -1,
+  (GdkGLProc_glMultiTexCoord4dvSGIS) -1,
+  (GdkGLProc_glMultiTexCoord4fSGIS) -1,
+  (GdkGLProc_glMultiTexCoord4fvSGIS) -1,
+  (GdkGLProc_glMultiTexCoord4iSGIS) -1,
+  (GdkGLProc_glMultiTexCoord4ivSGIS) -1,
+  (GdkGLProc_glMultiTexCoord4sSGIS) -1,
+  (GdkGLProc_glMultiTexCoord4svSGIS) -1,
+  (GdkGLProc_glMultiTexCoordPointerSGIS) -1,
+  (GdkGLProc_glSelectTextureSGIS) -1,
+  (GdkGLProc_glSelectTextureCoordSetSGIS) -1
+};
+
+/* glMultiTexCoord1dSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1dSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord1dSGIS == (GdkGLProc_glMultiTexCoord1dSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord1dSGIS =
+      (GdkGLProc_glMultiTexCoord1dSGIS) gdk_gl_get_proc_address ("glMultiTexCoord1dSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1dSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord1dSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord1dSGIS);
+}
+
+/* glMultiTexCoord1dvSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1dvSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord1dvSGIS == (GdkGLProc_glMultiTexCoord1dvSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord1dvSGIS =
+      (GdkGLProc_glMultiTexCoord1dvSGIS) gdk_gl_get_proc_address ("glMultiTexCoord1dvSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1dvSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord1dvSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord1dvSGIS);
+}
+
+/* glMultiTexCoord1fSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1fSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord1fSGIS == (GdkGLProc_glMultiTexCoord1fSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord1fSGIS =
+      (GdkGLProc_glMultiTexCoord1fSGIS) gdk_gl_get_proc_address ("glMultiTexCoord1fSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1fSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord1fSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord1fSGIS);
+}
+
+/* glMultiTexCoord1fvSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1fvSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord1fvSGIS == (GdkGLProc_glMultiTexCoord1fvSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord1fvSGIS =
+      (GdkGLProc_glMultiTexCoord1fvSGIS) gdk_gl_get_proc_address ("glMultiTexCoord1fvSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1fvSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord1fvSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord1fvSGIS);
+}
+
+/* glMultiTexCoord1iSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1iSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord1iSGIS == (GdkGLProc_glMultiTexCoord1iSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord1iSGIS =
+      (GdkGLProc_glMultiTexCoord1iSGIS) gdk_gl_get_proc_address ("glMultiTexCoord1iSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1iSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord1iSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord1iSGIS);
+}
+
+/* glMultiTexCoord1ivSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1ivSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord1ivSGIS == (GdkGLProc_glMultiTexCoord1ivSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord1ivSGIS =
+      (GdkGLProc_glMultiTexCoord1ivSGIS) gdk_gl_get_proc_address ("glMultiTexCoord1ivSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1ivSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord1ivSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord1ivSGIS);
+}
+
+/* glMultiTexCoord1sSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1sSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord1sSGIS == (GdkGLProc_glMultiTexCoord1sSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord1sSGIS =
+      (GdkGLProc_glMultiTexCoord1sSGIS) gdk_gl_get_proc_address ("glMultiTexCoord1sSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1sSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord1sSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord1sSGIS);
+}
+
+/* glMultiTexCoord1svSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1svSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord1svSGIS == (GdkGLProc_glMultiTexCoord1svSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord1svSGIS =
+      (GdkGLProc_glMultiTexCoord1svSGIS) gdk_gl_get_proc_address ("glMultiTexCoord1svSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1svSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord1svSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord1svSGIS);
+}
+
+/* glMultiTexCoord2dSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2dSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord2dSGIS == (GdkGLProc_glMultiTexCoord2dSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord2dSGIS =
+      (GdkGLProc_glMultiTexCoord2dSGIS) gdk_gl_get_proc_address ("glMultiTexCoord2dSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2dSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord2dSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord2dSGIS);
+}
+
+/* glMultiTexCoord2dvSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2dvSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord2dvSGIS == (GdkGLProc_glMultiTexCoord2dvSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord2dvSGIS =
+      (GdkGLProc_glMultiTexCoord2dvSGIS) gdk_gl_get_proc_address ("glMultiTexCoord2dvSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2dvSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord2dvSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord2dvSGIS);
+}
+
+/* glMultiTexCoord2fSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2fSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord2fSGIS == (GdkGLProc_glMultiTexCoord2fSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord2fSGIS =
+      (GdkGLProc_glMultiTexCoord2fSGIS) gdk_gl_get_proc_address ("glMultiTexCoord2fSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2fSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord2fSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord2fSGIS);
+}
+
+/* glMultiTexCoord2fvSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2fvSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord2fvSGIS == (GdkGLProc_glMultiTexCoord2fvSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord2fvSGIS =
+      (GdkGLProc_glMultiTexCoord2fvSGIS) gdk_gl_get_proc_address ("glMultiTexCoord2fvSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2fvSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord2fvSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord2fvSGIS);
+}
+
+/* glMultiTexCoord2iSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2iSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord2iSGIS == (GdkGLProc_glMultiTexCoord2iSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord2iSGIS =
+      (GdkGLProc_glMultiTexCoord2iSGIS) gdk_gl_get_proc_address ("glMultiTexCoord2iSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2iSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord2iSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord2iSGIS);
+}
+
+/* glMultiTexCoord2ivSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2ivSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord2ivSGIS == (GdkGLProc_glMultiTexCoord2ivSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord2ivSGIS =
+      (GdkGLProc_glMultiTexCoord2ivSGIS) gdk_gl_get_proc_address ("glMultiTexCoord2ivSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2ivSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord2ivSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord2ivSGIS);
+}
+
+/* glMultiTexCoord2sSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2sSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord2sSGIS == (GdkGLProc_glMultiTexCoord2sSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord2sSGIS =
+      (GdkGLProc_glMultiTexCoord2sSGIS) gdk_gl_get_proc_address ("glMultiTexCoord2sSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2sSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord2sSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord2sSGIS);
+}
+
+/* glMultiTexCoord2svSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2svSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord2svSGIS == (GdkGLProc_glMultiTexCoord2svSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord2svSGIS =
+      (GdkGLProc_glMultiTexCoord2svSGIS) gdk_gl_get_proc_address ("glMultiTexCoord2svSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2svSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord2svSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord2svSGIS);
+}
+
+/* glMultiTexCoord3dSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3dSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord3dSGIS == (GdkGLProc_glMultiTexCoord3dSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord3dSGIS =
+      (GdkGLProc_glMultiTexCoord3dSGIS) gdk_gl_get_proc_address ("glMultiTexCoord3dSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3dSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord3dSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord3dSGIS);
+}
+
+/* glMultiTexCoord3dvSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3dvSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord3dvSGIS == (GdkGLProc_glMultiTexCoord3dvSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord3dvSGIS =
+      (GdkGLProc_glMultiTexCoord3dvSGIS) gdk_gl_get_proc_address ("glMultiTexCoord3dvSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3dvSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord3dvSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord3dvSGIS);
+}
+
+/* glMultiTexCoord3fSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3fSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord3fSGIS == (GdkGLProc_glMultiTexCoord3fSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord3fSGIS =
+      (GdkGLProc_glMultiTexCoord3fSGIS) gdk_gl_get_proc_address ("glMultiTexCoord3fSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3fSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord3fSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord3fSGIS);
+}
+
+/* glMultiTexCoord3fvSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3fvSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord3fvSGIS == (GdkGLProc_glMultiTexCoord3fvSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord3fvSGIS =
+      (GdkGLProc_glMultiTexCoord3fvSGIS) gdk_gl_get_proc_address ("glMultiTexCoord3fvSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3fvSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord3fvSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord3fvSGIS);
+}
+
+/* glMultiTexCoord3iSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3iSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord3iSGIS == (GdkGLProc_glMultiTexCoord3iSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord3iSGIS =
+      (GdkGLProc_glMultiTexCoord3iSGIS) gdk_gl_get_proc_address ("glMultiTexCoord3iSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3iSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord3iSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord3iSGIS);
+}
+
+/* glMultiTexCoord3ivSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3ivSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord3ivSGIS == (GdkGLProc_glMultiTexCoord3ivSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord3ivSGIS =
+      (GdkGLProc_glMultiTexCoord3ivSGIS) gdk_gl_get_proc_address ("glMultiTexCoord3ivSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3ivSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord3ivSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord3ivSGIS);
+}
+
+/* glMultiTexCoord3sSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3sSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord3sSGIS == (GdkGLProc_glMultiTexCoord3sSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord3sSGIS =
+      (GdkGLProc_glMultiTexCoord3sSGIS) gdk_gl_get_proc_address ("glMultiTexCoord3sSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3sSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord3sSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord3sSGIS);
+}
+
+/* glMultiTexCoord3svSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3svSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord3svSGIS == (GdkGLProc_glMultiTexCoord3svSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord3svSGIS =
+      (GdkGLProc_glMultiTexCoord3svSGIS) gdk_gl_get_proc_address ("glMultiTexCoord3svSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3svSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord3svSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord3svSGIS);
+}
+
+/* glMultiTexCoord4dSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4dSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord4dSGIS == (GdkGLProc_glMultiTexCoord4dSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord4dSGIS =
+      (GdkGLProc_glMultiTexCoord4dSGIS) gdk_gl_get_proc_address ("glMultiTexCoord4dSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4dSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord4dSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord4dSGIS);
+}
+
+/* glMultiTexCoord4dvSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4dvSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord4dvSGIS == (GdkGLProc_glMultiTexCoord4dvSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord4dvSGIS =
+      (GdkGLProc_glMultiTexCoord4dvSGIS) gdk_gl_get_proc_address ("glMultiTexCoord4dvSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4dvSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord4dvSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord4dvSGIS);
+}
+
+/* glMultiTexCoord4fSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4fSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord4fSGIS == (GdkGLProc_glMultiTexCoord4fSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord4fSGIS =
+      (GdkGLProc_glMultiTexCoord4fSGIS) gdk_gl_get_proc_address ("glMultiTexCoord4fSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4fSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord4fSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord4fSGIS);
+}
+
+/* glMultiTexCoord4fvSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4fvSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord4fvSGIS == (GdkGLProc_glMultiTexCoord4fvSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord4fvSGIS =
+      (GdkGLProc_glMultiTexCoord4fvSGIS) gdk_gl_get_proc_address ("glMultiTexCoord4fvSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4fvSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord4fvSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord4fvSGIS);
+}
+
+/* glMultiTexCoord4iSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4iSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord4iSGIS == (GdkGLProc_glMultiTexCoord4iSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord4iSGIS =
+      (GdkGLProc_glMultiTexCoord4iSGIS) gdk_gl_get_proc_address ("glMultiTexCoord4iSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4iSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord4iSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord4iSGIS);
+}
+
+/* glMultiTexCoord4ivSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4ivSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord4ivSGIS == (GdkGLProc_glMultiTexCoord4ivSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord4ivSGIS =
+      (GdkGLProc_glMultiTexCoord4ivSGIS) gdk_gl_get_proc_address ("glMultiTexCoord4ivSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4ivSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord4ivSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord4ivSGIS);
+}
+
+/* glMultiTexCoord4sSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4sSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord4sSGIS == (GdkGLProc_glMultiTexCoord4sSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord4sSGIS =
+      (GdkGLProc_glMultiTexCoord4sSGIS) gdk_gl_get_proc_address ("glMultiTexCoord4sSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4sSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord4sSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord4sSGIS);
+}
+
+/* glMultiTexCoord4svSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4svSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoord4svSGIS == (GdkGLProc_glMultiTexCoord4svSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoord4svSGIS =
+      (GdkGLProc_glMultiTexCoord4svSGIS) gdk_gl_get_proc_address ("glMultiTexCoord4svSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4svSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoord4svSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoord4svSGIS);
+}
+
+/* glMultiTexCoordPointerSGIS */
+GdkGLProc
+gdk_gl_get_glMultiTexCoordPointerSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glMultiTexCoordPointerSGIS == (GdkGLProc_glMultiTexCoordPointerSGIS) -1)
+    _procs_GL_SGIS_multitexture.glMultiTexCoordPointerSGIS =
+      (GdkGLProc_glMultiTexCoordPointerSGIS) gdk_gl_get_proc_address ("glMultiTexCoordPointerSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoordPointerSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glMultiTexCoordPointerSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glMultiTexCoordPointerSGIS);
+}
+
+/* glSelectTextureSGIS */
+GdkGLProc
+gdk_gl_get_glSelectTextureSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glSelectTextureSGIS == (GdkGLProc_glSelectTextureSGIS) -1)
+    _procs_GL_SGIS_multitexture.glSelectTextureSGIS =
+      (GdkGLProc_glSelectTextureSGIS) gdk_gl_get_proc_address ("glSelectTextureSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSelectTextureSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glSelectTextureSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glSelectTextureSGIS);
+}
+
+/* glSelectTextureCoordSetSGIS */
+GdkGLProc
+gdk_gl_get_glSelectTextureCoordSetSGIS (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SGIS_multitexture.glSelectTextureCoordSetSGIS == (GdkGLProc_glSelectTextureCoordSetSGIS) -1)
+    _procs_GL_SGIS_multitexture.glSelectTextureCoordSetSGIS =
+      (GdkGLProc_glSelectTextureCoordSetSGIS) gdk_gl_get_proc_address ("glSelectTextureCoordSetSGIS");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSelectTextureCoordSetSGIS () - %s",
+               (_procs_GL_SGIS_multitexture.glSelectTextureCoordSetSGIS) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SGIS_multitexture.glSelectTextureCoordSetSGIS);
+}
+
+/* Get GL_SGIS_multitexture functions */
+GdkGL_GL_SGIS_multitexture *
+gdk_gl_get_GL_SGIS_multitexture (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_SGIS_multitexture");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glMultiTexCoord1dSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1dvSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1fSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1fvSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1iSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1ivSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1sSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1svSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2dSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2dvSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2fSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2fvSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2iSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2ivSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2sSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2svSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3dSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3dvSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3fSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3fvSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3iSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3ivSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3sSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3svSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4dSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4dvSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4fSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4fvSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4iSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4ivSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4sSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4svSGIS () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoordPointerSGIS () != NULL);
+          supported &= (gdk_gl_get_glSelectTextureSGIS () != NULL);
+          supported &= (gdk_gl_get_glSelectTextureCoordSetSGIS () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIS_multitexture () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_SGIS_multitexture;
+}
+
+/*
+ * GL_SUN_multi_draw_arrays
+ */
+
+static GdkGL_GL_SUN_multi_draw_arrays _procs_GL_SUN_multi_draw_arrays = {
+  (GdkGLProc_glMultiDrawArraysSUN) -1,
+  (GdkGLProc_glMultiDrawElementsSUN) -1
+};
+
+/* glMultiDrawArraysSUN */
+GdkGLProc
+gdk_gl_get_glMultiDrawArraysSUN (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SUN_multi_draw_arrays.glMultiDrawArraysSUN == (GdkGLProc_glMultiDrawArraysSUN) -1)
+    _procs_GL_SUN_multi_draw_arrays.glMultiDrawArraysSUN =
+      (GdkGLProc_glMultiDrawArraysSUN) gdk_gl_get_proc_address ("glMultiDrawArraysSUN");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawArraysSUN () - %s",
+               (_procs_GL_SUN_multi_draw_arrays.glMultiDrawArraysSUN) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SUN_multi_draw_arrays.glMultiDrawArraysSUN);
+}
+
+/* glMultiDrawElementsSUN */
+GdkGLProc
+gdk_gl_get_glMultiDrawElementsSUN (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_SUN_multi_draw_arrays.glMultiDrawElementsSUN == (GdkGLProc_glMultiDrawElementsSUN) -1)
+    _procs_GL_SUN_multi_draw_arrays.glMultiDrawElementsSUN =
+      (GdkGLProc_glMultiDrawElementsSUN) gdk_gl_get_proc_address ("glMultiDrawElementsSUN");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawElementsSUN () - %s",
+               (_procs_GL_SUN_multi_draw_arrays.glMultiDrawElementsSUN) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_SUN_multi_draw_arrays.glMultiDrawElementsSUN);
+}
+
+/* Get GL_SUN_multi_draw_arrays functions */
+GdkGL_GL_SUN_multi_draw_arrays *
+gdk_gl_get_GL_SUN_multi_draw_arrays (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_SUN_multi_draw_arrays");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glMultiDrawArraysSUN () != NULL);
+          supported &= (gdk_gl_get_glMultiDrawElementsSUN () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SUN_multi_draw_arrays () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_SUN_multi_draw_arrays;
+}
+
+/*
  * GL_WIN_swap_hint
  */
 

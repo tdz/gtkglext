@@ -8,7 +8,7 @@
 # written by Naofumi Yasufuku <naofumi@users.sourceforge.net>
 #
 
-@input_headers = ("glxext.h");
+@input_headers = ("glxext.h", "glxext-extra.h");
 
 #---------------
 print <<EOF;
@@ -100,6 +100,7 @@ typedef XID GLXPbufferSGIX;
 #endif
 
 #include <gdk/GL/glxext.h>
+#include <gdk/GL/glxext-extra.h>
 
 EOF
 #---------------
@@ -212,11 +213,9 @@ sub generate_code {
 
     print "struct _GdkGL_$extension\n";
     print "{\n";
-
     foreach $func (@functions) {
 	print "  GdkGLProc_$func $func;\n";
     }
-
     print "};\n\n";
 
     if ($extension =~ /^GLX_VERSION_.*/) {

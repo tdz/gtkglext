@@ -1,3 +1,18 @@
+2003-07-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/GL/glxext-extra.h: 
+	* gdk/GL/wglext-extra.h: Added.
+
+	* gdk/GL/gen-gdkglglxext-h.pl: Read glxext-extra.h.
+
+	* gdk/GL/gen-gdkglwglext-h.pl: Read wglext-extra.h.
+
+	* gdk/GL/glext-extra.h: 
+	* gdk/gdkglglext.[ch]: 
+	* gdk/x11/gdkglglxext.[ch]: 
+	* gdk/win32/gdkglwglext.[ch]: Added some additional OpenGL
+	extensions.
+
 2003-07-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/GL/glext.h : Fixed GL_ARB_texture_mirror_repeat to

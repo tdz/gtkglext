@@ -86,6 +86,7 @@ typedef XID GLXPbufferSGIX;
 #endif
 
 #include <gdk/GL/glxext.h>
+#include <gdk/GL/glxext-extra.h>
 
 /*
  * GLX_VERSION_1_3

@@ -2184,3 +2184,78 @@ gdk_gl_get_WGL_I3D_swap_frame_usage (GdkGLConfig *glconfig)
   return &_procs_WGL_I3D_swap_frame_usage;
 }
 
+/*
+ * WGL_NV_allocate_memory
+ */
+
+static GdkGL_WGL_NV_allocate_memory _procs_WGL_NV_allocate_memory = {
+  (GdkGLProc_wglAllocateMemoryNV) -1,
+  (GdkGLProc_wglFreeMemoryNV) -1
+};
+
+/* wglAllocateMemoryNV */
+GdkGLProc
+gdk_gl_get_wglAllocateMemoryNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_allocate_memory.wglAllocateMemoryNV == (GdkGLProc_wglAllocateMemoryNV) -1)
+    _procs_WGL_NV_allocate_memory.wglAllocateMemoryNV =
+      (GdkGLProc_wglAllocateMemoryNV) gdk_gl_get_proc_address ("wglAllocateMemoryNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglAllocateMemoryNV () - %s",
+               (_procs_WGL_NV_allocate_memory.wglAllocateMemoryNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_allocate_memory.wglAllocateMemoryNV);
+}
+
+/* wglFreeMemoryNV */
+GdkGLProc
+gdk_gl_get_wglFreeMemoryNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_allocate_memory.wglFreeMemoryNV == (GdkGLProc_wglFreeMemoryNV) -1)
+    _procs_WGL_NV_allocate_memory.wglFreeMemoryNV =
+      (GdkGLProc_wglFreeMemoryNV) gdk_gl_get_proc_address ("wglFreeMemoryNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglFreeMemoryNV () - %s",
+               (_procs_WGL_NV_allocate_memory.wglFreeMemoryNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_allocate_memory.wglFreeMemoryNV);
+}
+
+/* Get WGL_NV_allocate_memory functions */
+GdkGL_WGL_NV_allocate_memory *
+gdk_gl_get_WGL_NV_allocate_memory (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_NV_allocate_memory");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglAllocateMemoryNV () != NULL);
+          supported &= (gdk_gl_get_wglFreeMemoryNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_WGL_NV_allocate_memory () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_WGL_NV_allocate_memory;
+}
+

@@ -8,7 +8,7 @@
 # written by Naofumi Yasufuku <naofumi@users.sourceforge.net>
 #
 
-@input_headers = ("wglext.h");
+@input_headers = ("wglext.h", "wglext-extra.h");
 
 #---------------
 print <<EOF;
@@ -47,6 +47,7 @@ print <<EOF;
 #include <GL/gl.h>
 
 #include <gdk/GL/wglext.h>
+#include <gdk/GL/wglext-extra.h>
 
 #include <gdk/gdkglquery.h>
 #include <gdk/gdkglconfig.h>
@@ -158,11 +159,9 @@ sub generate_code {
 
     print "struct _GdkGL_$extension\n";
     print "{\n";
-
     foreach $func (@functions) {
 	print "  GdkGLProc_$func $func;\n";
     }
-
     print "};\n\n";
 
     print "GdkGL_$extension *gdk_gl_get_$extension (GdkGLConfig *glconfig);\n\n";
