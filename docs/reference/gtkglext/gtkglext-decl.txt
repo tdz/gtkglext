@@ -257,27 +257,32 @@ GdkGLContext  *dst_glcontext,GdkGLContext  *src_glcontext,gulong         mask
 <FUNCTION>
 <NAME>gdk_gl_context_get_gl_drawable</NAME>
 <RETURNS>GdkGLDrawable  *</RETURNS>
-GdkGLContext *glcontext
+GdkGLContext  *glcontext
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_context_get_gl_config</NAME>
 <RETURNS>GdkGLConfig    *</RETURNS>
-GdkGLContext *glcontext
+GdkGLContext  *glcontext
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_context_get_share_list</NAME>
 <RETURNS>GdkGLContext   *</RETURNS>
-GdkGLContext *glcontext
+GdkGLContext  *glcontext
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_context_is_direct</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLContext *glcontext
+GdkGLContext  *glcontext
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_context_get_render_type</NAME>
 <RETURNS>gint  </RETURNS>
-GdkGLContext *glcontext
+GdkGLContext  *glcontext
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_context_get_colormap</NAME>
+<RETURNS>GdkColormap    *</RETURNS>
+GdkGLContext  *glcontext
 </FUNCTION>
 <STRUCT>
 <NAME>GdkGLDrawableClass</NAME>

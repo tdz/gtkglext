@@ -95,3 +95,12 @@ OpenGL rendering context.
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_gl_context_get_colormap ##### -->
+<para>
+
+</para>
+
+@glcontext: 
+@Returns: 
+
+
