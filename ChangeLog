@@ -1,3 +1,7 @@
+2003-01-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/gdkgltokens.h: Removed tokens seemed unnecessary.
+
 2002-12-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* setup-gtkglext.sh: Added.

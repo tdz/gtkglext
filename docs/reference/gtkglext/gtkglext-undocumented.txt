@@ -1,6 +1,6 @@
-63% symbol docs coverage.
+66% symbol docs coverage.
 86 symbols documented.
-50 not documented.
+45 not documented.
 
 
 GDKGLEXT_BINARY_AGE
@@ -18,21 +18,16 @@ GTKGLEXT_MICRO_VERSION
 GTKGLEXT_MINOR_VERSION
 GTK_GL_VAR
 GdkGLAttribListNone
-GdkGLClientStringAttribute
 GdkGLConfig
+GdkGLConfigAttrib
+GdkGLConfigAttribValue
 GdkGLConfigError
 GdkGLConfigMode
 GdkGLContext
-GdkGLContextInfoExtensionAttribute
 GdkGLDrawable
-GdkGLExtensionValue
-GdkGLFbConfigAttribute
-GdkGLGenericValue
-GdkGLMultisampleConfigAttribute
 GdkGLPixmap
 GdkGLProc
 GdkGLSuccess
-GdkGLVisualConfigAttribute
 GdkGLWindow
 gdk_gl_config_get_screen
 gdk_gl_config_new_by_mode_for_screen

@@ -78,14 +78,7 @@ typedef enum
 */
 
 /*
-#define GLX_VERSION_1_1 1
-#define GLX_VERSION_1_2 1
-#define GLX_VERSION_1_3 1
-#define GLX_VERSION_1_4 1
-*/
-
-/*
- * Visual Config Attributes (glXGetConfig, glXGetFBConfigAttrib)
+ * Visual Config Attributes.
  */
 typedef enum
 {
@@ -105,15 +98,12 @@ typedef enum
   GDK_GL_ACCUM_RED_SIZE   = 14, /* number of red accum bits */
   GDK_GL_ACCUM_GREEN_SIZE = 15, /* number of green accum bits */
   GDK_GL_ACCUM_BLUE_SIZE  = 16, /* number of blue accum bits */
-  GDK_GL_ACCUM_ALPHA_SIZE = 17  /* number of alpha accum bits */
-} GdkGLVisualConfigAttribute;
+  GDK_GL_ACCUM_ALPHA_SIZE = 17, /* number of alpha accum bits */
 
-/*
- * FBConfig-specific attributes
- * [ GLX 1.3 and later ]
- */
-typedef enum
-{
+  /*
+   * FBConfig-specific attributes.
+   * [ GLX 1.3 and later ]
+   */
   GDK_GL_X_VISUAL_TYPE           = 0x22,
   GDK_GL_CONFIG_CAVEAT           = 0x20, /* Like visual_info VISUAL_CAVEAT_EXT */
   GDK_GL_TRANSPARENT_TYPE        = 0x23,
@@ -129,43 +119,24 @@ typedef enum
   GDK_GL_MAX_PBUFFER_WIDTH       = 0x8016,
   GDK_GL_MAX_PBUFFER_HEIGHT      = 0x8017,
   GDK_GL_MAX_PBUFFER_PIXELS      = 0x8018,
-  GDK_GL_VISUAL_ID               = 0x800B
-} GdkGLFbConfigAttribute;
+  GDK_GL_VISUAL_ID               = 0x800B,
 
-/*
- * Multisampling configuration attributes.
- * [ GLX 1.4 and later ]
- */
-typedef enum
-{
+  /*
+   * Multisampling configuration attributes.
+   * [ GLX 1.4 and later ]
+   */
   GDK_GL_SAMPLE_BUFFERS = 100000,
   GDK_GL_SAMPLES        = 100001
-} GdkGLMultisampleConfigAttribute;
+
+} GdkGLConfigAttrib;
 
 /*
- * Error return values from glXGetConfig.  Success is indicated by
- * a value of 0.
- */
-typedef enum
-{
-  GDK_GL_BAD_SCREEN    = 1, /* screen # is bad */
-  GDK_GL_BAD_ATTRIBUTE = 2, /* attribute to get is bad */
-  GDK_GL_NO_EXTENSION  = 3, /* no glx extension on server */
-  GDK_GL_BAD_VISUAL    = 4, /* visual # not known by GLX */
-  GDK_GL_BAD_CONTEXT   = 5, /* returned only by import_context EXT? */
-  GDK_GL_BAD_VALUE     = 6, /* returned only by glXSwapIntervalSGI? */
-  GDK_GL_BAD_ENUM      = 7  /* unused? */
-} GdkGLConfigError;
-
-/* FBConfig attribute values */
-
-/*
- * Generic "don't care" value for glX ChooseFBConfig attributes
- * (except GLX_LEVEL)
+ * FBConfig attribute values.
  * [ GLX 1.3 and later ]
  */
 typedef enum
 {
+  /* Generic "don't care" value */
   GDK_GL_DONT_CARE              = 0xFFFFFFFF,
 
   /* GLX_RENDER_TYPE bits */
@@ -235,67 +206,23 @@ typedef enum
   GDK_GL_DEPTH_BUFFER_BIT       = 0x00000020,
   GDK_GL_STENCIL_BUFFER_BIT     = 0x00000040,
   GDK_GL_ACCUM_BUFFER_BIT       = 0x00000080
-} GdkGLGenericValue;
+
+} GdkGLConfigAttribValue;
 
 /*
- * Extension return values from glXGetConfig.  These are also
- * accepted as parameter values for glXChooseVisual.
- * 
+ * Error return values from glXGetConfig.  Success is indicated by
+ * a value of 0.
  */
 typedef enum
 {
-  /* [ GLX_EXT_visual_info extension ] */
-
-  GDK_GL_X_VISUAL_TYPE_EXT           = 0x22, /* visual_info extension type */
-  GDK_GL_TRANSPARENT_TYPE_EXT        = 0x23, /* visual_info extension */
-  GDK_GL_TRANSPARENT_INDEX_VALUE_EXT = 0x24, /* visual_info extension */
-  GDK_GL_TRANSPARENT_RED_VALUE_EXT   = 0x25, /* visual_info extension */
-  GDK_GL_TRANSPARENT_GREEN_VALUE_EXT = 0x26, /* visual_info extension */
-  GDK_GL_TRANSPARENT_BLUE_VALUE_EXT  = 0x27, /* visual_info extension */
-  GDK_GL_TRANSPARENT_ALPHA_VALUE_EXT = 0x28, /* visual_info extension */
-
-  /* Property values for visual_type */
-  GDK_GL_TRUE_COLOR_EXT              = 0x8002,
-  GDK_GL_DIRECT_COLOR_EXT            = 0x8003,
-  GDK_GL_PSEUDO_COLOR_EXT            = 0x8004,
-  GDK_GL_STATIC_COLOR_EXT            = 0x8005,
-  GDK_GL_GRAY_SCALE_EXT              = 0x8006,
-  GDK_GL_STATIC_GRAY_EXT             = 0x8007,
-
-  /* Property values for transparent pixel */
-  GDK_GL_NONE_EXT                    = 0x8000,
-  GDK_GL_TRANSPARENT_RGB_EXT         = 0x8008,
-  GDK_GL_TRANSPARENT_INDEX_EXT       = 0x8009,
-
-  /* [ GLX_EXT_visual_rating extension ] */
-
-  /* Property values for visual_rating */
-  GDK_GL_VISUAL_CAVEAT_EXT           = 0x20,   /* visual_rating extension type */
-  GDK_GL_SLOW_VISUAL_EXT             = 0x8001,
-  GDK_GL_NON_CONFORMANT_VISUAL_EXT   = 0x800D
-} GdkGLExtensionValue;
-
-/*
- * Names for attributes to glXGetClientString.
- * [GLX 1.1 and later]
- */
-typedef enum
-{
-  GDK_GL_VENDOR     = 0x1,
-  GDK_GL_VERSION    = 0x2,
-  GDK_GL_EXTENSIONS = 0x3
-} GdkGLClientStringAttribute;
-
-/*
- * Names for attributes to glXQueryContextInfoEXT.
- * [ GLX_EXT_import_context ]
- */
-typedef enum
-{
-  GDK_GL_SHARE_CONTEXT_EXT = 0x800A, /* id of share context */
-  GDK_GL_VISUAL_ID_EXT     = 0x800B, /* id of context's visual */
-  GDK_GL_SCREEN_EXT        = 0x800C  /* screen number */
-} GdkGLContextInfoExtensionAttribute;
+  GDK_GL_BAD_SCREEN    = 1, /* screen # is bad */
+  GDK_GL_BAD_ATTRIBUTE = 2, /* attribute to get is bad */
+  GDK_GL_NO_EXTENSION  = 3, /* no glx extension on server */
+  GDK_GL_BAD_VISUAL    = 4, /* visual # not known by GLX */
+  GDK_GL_BAD_CONTEXT   = 5, /* returned only by import_context EXT? */
+  GDK_GL_BAD_VALUE     = 6, /* returned only by glXSwapIntervalSGI? */
+  GDK_GL_BAD_ENUM      = 7  /* unused? */
+} GdkGLConfigError;
 
 #ifdef __cplusplus
 }

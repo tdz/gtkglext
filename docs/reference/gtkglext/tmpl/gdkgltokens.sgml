@@ -28,7 +28,7 @@ OpenGL-related tokens
 
 @GDK_GL_ATTRIB_LIST_NONE: 
 
-<!-- ##### ENUM GdkGLVisualConfigAttribute ##### -->
+<!-- ##### ENUM GdkGLConfigAttrib ##### -->
 <para>
 
 </para>
@@ -50,12 +50,6 @@ OpenGL-related tokens
 @GDK_GL_ACCUM_GREEN_SIZE: 
 @GDK_GL_ACCUM_BLUE_SIZE: 
 @GDK_GL_ACCUM_ALPHA_SIZE: 
-
-<!-- ##### ENUM GdkGLFbConfigAttribute ##### -->
-<para>
-
-</para>
-
 @GDK_GL_X_VISUAL_TYPE: 
 @GDK_GL_CONFIG_CAVEAT: 
 @GDK_GL_TRANSPARENT_TYPE: 
@@ -72,29 +66,10 @@ OpenGL-related tokens
 @GDK_GL_MAX_PBUFFER_HEIGHT: 
 @GDK_GL_MAX_PBUFFER_PIXELS: 
 @GDK_GL_VISUAL_ID: 
-
-<!-- ##### ENUM GdkGLMultisampleConfigAttribute ##### -->
-<para>
-
-</para>
-
 @GDK_GL_SAMPLE_BUFFERS: 
 @GDK_GL_SAMPLES: 
 
-<!-- ##### ENUM GdkGLConfigError ##### -->
-<para>
-
-</para>
-
-@GDK_GL_BAD_SCREEN: 
-@GDK_GL_BAD_ATTRIBUTE: 
-@GDK_GL_NO_EXTENSION: 
-@GDK_GL_BAD_VISUAL: 
-@GDK_GL_BAD_CONTEXT: 
-@GDK_GL_BAD_VALUE: 
-@GDK_GL_BAD_ENUM: 
-
-<!-- ##### ENUM GdkGLGenericValue ##### -->
+<!-- ##### ENUM GdkGLConfigAttribValue ##### -->
 <para>
 
 </para>
@@ -140,46 +115,16 @@ OpenGL-related tokens
 @GDK_GL_STENCIL_BUFFER_BIT: 
 @GDK_GL_ACCUM_BUFFER_BIT: 
 
-<!-- ##### ENUM GdkGLExtensionValue ##### -->
+<!-- ##### ENUM GdkGLConfigError ##### -->
 <para>
 
 </para>
 
-@GDK_GL_X_VISUAL_TYPE_EXT: 
-@GDK_GL_TRANSPARENT_TYPE_EXT: 
-@GDK_GL_TRANSPARENT_INDEX_VALUE_EXT: 
-@GDK_GL_TRANSPARENT_RED_VALUE_EXT: 
-@GDK_GL_TRANSPARENT_GREEN_VALUE_EXT: 
-@GDK_GL_TRANSPARENT_BLUE_VALUE_EXT: 
-@GDK_GL_TRANSPARENT_ALPHA_VALUE_EXT: 
-@GDK_GL_TRUE_COLOR_EXT: 
-@GDK_GL_DIRECT_COLOR_EXT: 
-@GDK_GL_PSEUDO_COLOR_EXT: 
-@GDK_GL_STATIC_COLOR_EXT: 
-@GDK_GL_GRAY_SCALE_EXT: 
-@GDK_GL_STATIC_GRAY_EXT: 
-@GDK_GL_NONE_EXT: 
-@GDK_GL_TRANSPARENT_RGB_EXT: 
-@GDK_GL_TRANSPARENT_INDEX_EXT: 
-@GDK_GL_VISUAL_CAVEAT_EXT: 
-@GDK_GL_SLOW_VISUAL_EXT: 
-@GDK_GL_NON_CONFORMANT_VISUAL_EXT: 
-
-<!-- ##### ENUM GdkGLClientStringAttribute ##### -->
-<para>
-
-</para>
-
-@GDK_GL_VENDOR: 
-@GDK_GL_VERSION: 
-@GDK_GL_EXTENSIONS: 
-
-<!-- ##### ENUM GdkGLContextInfoExtensionAttribute ##### -->
-<para>
-
-</para>
-
-@GDK_GL_SHARE_CONTEXT_EXT: 
-@GDK_GL_VISUAL_ID_EXT: 
-@GDK_GL_SCREEN_EXT: 
+@GDK_GL_BAD_SCREEN: 
+@GDK_GL_BAD_ATTRIBUTE: 
+@GDK_GL_NO_EXTENSION: 
+@GDK_GL_BAD_VISUAL: 
+@GDK_GL_BAD_CONTEXT: 
+@GDK_GL_BAD_VALUE: 
+@GDK_GL_BAD_ENUM: 
 
