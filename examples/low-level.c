@@ -75,10 +75,9 @@ init (GtkWidget *widget,
    * Set OpenGL-capability to widget->window
    */
 
-  gdk_window_set_gl_capability (widget->window, glconfig, NULL);
-
-  /* Get GdkGLWindow */
-  glwindow = gdk_window_get_gl_window (widget->window);
+  glwindow = gdk_window_set_gl_capability (widget->window,
+                                           glconfig,
+                                           NULL);
 
   /*
    * Create OpenGL rendering context.

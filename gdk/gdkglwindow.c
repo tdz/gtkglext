@@ -220,9 +220,9 @@ gl_window_destroy (GdkGLWindow *glwindow)
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None).
  *
- * Return value: TRUE if it is successful, FALSE otherwise.
+ * Return value: the #GdkGLWindow used by the #GdkWindow if it is successful, NULL otherwise.
  **/
-gboolean
+GdkGLWindow *
 gdk_window_set_gl_capability (GdkWindow    *window,
                               GdkGLConfig  *glconfig,
                               const gint   *attrib_list)
@@ -240,8 +240,9 @@ gdk_window_set_gl_capability (GdkWindow    *window,
     quark_gl_window = g_quark_from_static_string (quark_gl_window_string);
 
   /* If already set */
-  if (g_object_get_qdata (G_OBJECT (window), quark_gl_window) != NULL)
-    return FALSE;
+  glwindow = g_object_get_qdata (G_OBJECT (window), quark_gl_window);
+  if (glwindow != NULL)
+    return glwindow;
 
   /*
    * Create GdkGLWindow
@@ -257,13 +258,13 @@ gdk_window_set_gl_capability (GdkWindow    *window,
   g_object_set_qdata_full (G_OBJECT (window), quark_gl_window, glwindow,
                            (GDestroyNotify) gl_window_destroy);
 
-  return TRUE;
+  return glwindow;
 
  FAIL:
 
   g_object_set_qdata (G_OBJECT (window), quark_gl_window, NULL);
 
-  return FALSE;
+  return NULL;
 }
 
 /**

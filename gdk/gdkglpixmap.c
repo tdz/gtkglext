@@ -219,9 +219,9 @@ gl_pixmap_destroy (GdkGLPixmap *glpixmap)
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None).
  *
- * Return value: TRUE if it is successful, FALSE otherwise.
+ * Return value: the #GdkGLPixmap used by the #GdkPixmap if it is successful, NULL otherwise.
  **/
-gboolean
+GdkGLPixmap *
 gdk_pixmap_set_gl_capability (GdkPixmap    *pixmap,
                               GdkGLConfig  *glconfig,
                               const gint   *attrib_list)
@@ -239,8 +239,9 @@ gdk_pixmap_set_gl_capability (GdkPixmap    *pixmap,
     quark_gl_pixmap = g_quark_from_static_string (quark_gl_pixmap_string);
 
   /* If already set */
-  if (g_object_get_qdata (G_OBJECT (pixmap), quark_gl_pixmap) != NULL)
-    return FALSE;
+  glpixmap = g_object_get_qdata (G_OBJECT (pixmap), quark_gl_pixmap);
+  if (glpixmap != NULL)
+    return glpixmap;
 
   /*
    * Create GdkGLPixmap
@@ -256,13 +257,13 @@ gdk_pixmap_set_gl_capability (GdkPixmap    *pixmap,
   g_object_set_qdata_full (G_OBJECT (pixmap), quark_gl_pixmap, glpixmap,
                            (GDestroyNotify) gl_pixmap_destroy);
 
-  return TRUE;
+  return glpixmap;
 
  FAIL:
 
   g_object_set_qdata (G_OBJECT (pixmap), quark_gl_pixmap, NULL);
 
-  return FALSE;
+  return NULL;
 }
 
 /**

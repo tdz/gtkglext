@@ -81,7 +81,7 @@ GdkGLWindow *gdk_gl_window_new      (GdkGLConfig *glconfig,
  * OpenGL extension to GdkWindow
  */
 
-gboolean     gdk_window_set_gl_capability   (GdkWindow   *window,
+GdkGLWindow *gdk_window_set_gl_capability   (GdkWindow   *window,
                                              GdkGLConfig *glconfig,
                                              const gint  *attrib_list);
 

@@ -76,11 +76,9 @@ gtk_widget_gl_realize (GtkWidget        *widget,
    * Set OpenGL-capability to widget->window.
    */
 
-  gdk_window_set_gl_capability (widget->window,
-                                param->glconfig,
-                                NULL);
-
-  glwindow = gdk_window_get_gl_window (widget->window);
+  glwindow = gdk_window_set_gl_capability (widget->window,
+                                           param->glconfig,
+                                           NULL);
 
   /*
    * Create OpenGL rendering context.
@@ -126,11 +124,9 @@ gtk_widget_gl_configure_event (GtkWidget         *widget,
    * Set OpenGL-capability to widget->window.
    */
 
-  gdk_window_set_gl_capability (widget->window,
-                                param->glconfig,
-                                NULL);
-
-  glwindow = gdk_window_get_gl_window (widget->window);
+  glwindow = gdk_window_set_gl_capability (widget->window,
+                                           param->glconfig,
+                                           NULL);
 
   /*
    * Create OpenGL rendering context.

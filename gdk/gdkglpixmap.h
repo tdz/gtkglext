@@ -81,7 +81,7 @@ GdkGLPixmap *gdk_gl_pixmap_new      (GdkGLConfig *glconfig,
  * OpenGL extension to GdkPixmap
  */
 
-gboolean     gdk_pixmap_set_gl_capability   (GdkPixmap   *pixmap,
+GdkGLPixmap *gdk_pixmap_set_gl_capability   (GdkPixmap   *pixmap,
                                              GdkGLConfig *glconfig,
                                              const gint  *attrib_list);
 

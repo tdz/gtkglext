@@ -125,10 +125,9 @@ configure (GtkWidget         *widget,
    * Set OpenGL-capability to the pixmap
    */
 
-  gdk_pixmap_set_gl_capability (pixmap, glconfig, NULL);
-
-  /* Get GdkGLDrawable (== GdkGLPixmap) */
-  gldrawable = gdk_pixmap_get_gl_drawable (pixmap);
+  gldrawable = GDK_GL_DRAWABLE (gdk_pixmap_set_gl_capability (pixmap,
+                                                              glconfig,
+                                                              NULL));
 
   /*
    * Create OpenGL rendering context (not direct).
