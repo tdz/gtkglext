@@ -367,6 +367,7 @@ else
 fi
 
 AC_SUBST(GDKGLEXT_MULTIHEAD_SUPPORT)
+AM_CONDITIONAL(MULTIHEAD_SUPPORT, test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes")
 
 
 ##################################################

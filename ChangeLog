@@ -1,5 +1,10 @@
 2002-12-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglext-gtk20.def: 
+	* gdk/Makefile.am: 
+	* configure.in: Added MULTIHEAD_SUPPORT AM_CONDITIONAL. On win32
+	platforms, use gdkglext-gtk20.def if GTK doesn't support multihead.
+
 	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_impl_win32_constructor): 
 	* gdk/win32/gdkglwindow-win32.c (gdk_gl_window_impl_win32_constructor): 
 	* gdk/win32/gdkglprivate-win32.h: 

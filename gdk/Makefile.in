@@ -142,7 +142,8 @@ DIST_SUBDIRS = GL x11 win32
 
 @PLATFORM_WIN32_TRUE@no_undefined = -no-undefined
 
-@OS_WIN32_TRUE@gdkglext_def = gdkglext.def
+@MULTIHEAD_SUPPORT_FALSE@@OS_WIN32_TRUE@gdkglext_def = gdkglext-gtk20.def
+@MULTIHEAD_SUPPORT_TRUE@@OS_WIN32_TRUE@gdkglext_def = gdkglext.def
 @OS_WIN32_TRUE@gdkglext_win32_symbols = -export-symbols $(gdkglext_def)
 
 @MS_LIB_AVAILABLE_TRUE@noinst_DATA = gdkglext-win32-@GTKGLEXT_API_VERSION@.lib
@@ -271,7 +272,8 @@ configexecincludedir = $(libdir)/gtkglext-@GTKGLEXT_API_VERSION@/include
 
 EXTRA_DIST = \
 	gdkglversion.h.in	\
-	gdkglext.def
+	gdkglext.def		\
+	gdkglext-gtk20.def
 
 subdir = gdk
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
