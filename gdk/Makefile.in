@@ -136,8 +136,8 @@ gtkglext_targetlib = @gtkglext_targetlib@
 install_sh = @install_sh@
 ms_librarian = @ms_librarian@
 
-SUBDIRS = $(gdktarget)
-DIST_SUBDIRS = x11 win32 glext
+SUBDIRS = $(gdktarget) glext
+DIST_SUBDIRS = x11 win32
 
 @PLATFORM_WIN32_TRUE@no_undefined = -no-undefined
 
