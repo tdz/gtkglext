@@ -189,8 +189,7 @@ expose_event (GtkWidget      *widget,
   PangoLayout *layout;
   PangoRectangle logical_rect;
   GLfloat text_w, text_h;
-  GLfloat widget_w, widget_h;
-  GLfloat tangent;
+  GLfloat tangent_h;
 
   /* Font */
   widget_context = gtk_widget_get_pango_context (widget);
@@ -217,16 +216,21 @@ expose_event (GtkWidget      *widget,
 
   /* Text position */
   pango_layout_get_extents (layout, NULL, &logical_rect);
-  text_w = (GLfloat) PANGO_PIXELS (logical_rect.width);
-  text_h = (GLfloat) PANGO_PIXELS (logical_rect.height);
-
-  widget_w = (GLfloat) widget->allocation.width;
-  widget_h = (GLfloat) widget->allocation.height;
-
-  tangent = Z_NEAR * tan (FOVY_2 * G_PI / 180.0);
-
-  glRasterPos3f (-1.0 * (text_w/widget_w) * tangent * (widget_w/widget_h),
-                 -1.0 * (text_h/widget_h) * tangent,
+  text_w = PANGO_PIXELS (logical_rect.width);
+  text_h = PANGO_PIXELS (logical_rect.height);
+  /*
+   * tangent = Z_NEAR * tan (FOVY_2 * G_PI / 180.0)
+   * w = widget->allocation.width
+   * h = widget->allocation.height
+   *
+   * x = -1.0 * (text_w/w) * tangent * (w/h) = -text_w * tangent / h
+   * y = -1.0 * (text_h/h) * tangent         = -text_h * tangent / h
+   * z = Z_NEAR
+   */
+  tangent_h = Z_NEAR * tan (FOVY_2 * G_PI / 180.0);
+  tangent_h /= widget->allocation.height;
+  glRasterPos3f (-text_w * tangent_h,
+                 -text_h * tangent_h,
                  Z_NEAR);
 
   /* Render text */
