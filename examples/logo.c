@@ -459,6 +459,7 @@ motion_notify_event(GtkWidget      *widget,
   float x = event->x;
   float y = event->y;
   float d_quat[4];
+  gboolean redraw = FALSE;
 
   /* Rotation. */
   if (event->state & GDK_BUTTON1_MASK) {
@@ -468,8 +469,7 @@ motion_notify_event(GtkWidget      *widget,
               (2.0 * x - w) / w,
               (h - 2.0 * y) / h);
     add_quats(d_quat, view_quat, view_quat);
-    if (!enable_logo_anim)
-      gtk_widget_queue_draw(widget);
+    redraw = TRUE;
   }
 
   /* Scaling. */
@@ -479,12 +479,14 @@ motion_notify_event(GtkWidget      *widget,
       view_scale = VIEW_SCALE_MAX;
     else if (view_scale < VIEW_SCALE_MIN)
       view_scale = VIEW_SCALE_MIN;
-    if (!enable_logo_anim)
-      gtk_widget_queue_draw(widget);
+    redraw = TRUE;
   }
 
   begin_x = x;
   begin_y = y;
+
+  if (redraw && !enable_logo_anim)
+    gtk_widget_queue_draw(widget);
 
   return TRUE;
 }
