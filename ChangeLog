@@ -1,5 +1,8 @@
 2003-07-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/GL/glext.h : Fixed GL_ARB_texture_mirror_repeat to
+	GL_ARB_texture_mirrored_repeat.
+
 	* gdk/gdkglcontext.c: 
 	* gdk/gdkgldrawable.c: 
 	* gdk/gdkglpixmap.c: 

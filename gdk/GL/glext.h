@@ -3097,8 +3097,8 @@ typedef void (APIENTRY * PFNGLMATRIXINDEXPOINTERARBPROC) (GLint size, GLenum typ
 #define GL_ARB_texture_env_dot3 1
 #endif
 
-#ifndef GL_ARB_texture_mirror_repeat
-#define GL_ARB_texture_mirror_repeat 1
+#ifndef GL_ARB_texture_mirrored_repeat
+#define GL_ARB_texture_mirrored_repeat 1
 #endif
 
 #ifndef GL_ARB_depth_texture
