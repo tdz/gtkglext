@@ -295,13 +295,9 @@ void
 _gdk_gl_context_set_gl_drawable (GdkGLContext  *glcontext,
                                  GdkGLDrawable *gldrawable)
 {
-  GdkGLContextImplWin32 *impl;
+  GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 
   GDK_GL_NOTE (FUNC, g_message (" - _gdk_gl_context_set_gl_drawable ()"));
-
-  g_return_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext));
-
-  impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 
   if (impl->gldrawable == gldrawable)
     return;
@@ -328,13 +324,9 @@ void
 _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
                                       GdkGLDrawable *gldrawable_read)
 {
-  GdkGLContextImplWin32 *impl;
+  GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 
   GDK_GL_NOTE (FUNC, g_message (" - _gdk_gl_context_set_gl_drawable_read ()"));
-
-  g_return_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext));
-
-  impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 
   if (impl->gldrawable_read == gldrawable_read)
     return;
