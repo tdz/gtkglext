@@ -167,7 +167,6 @@ When prompted for a password for anonymous, simply press the Enter key.
 When you are at work on the CVS version of GtkGLExt, you can use autogen.sh
 for generating configure script and Makefiles.
 
-  $ libtoolize
   $ env ACLOCAL_FLAGS='-I /target/share/aclocal' \
         CC='gcc -march=pentium' \
         LDFLAGS='-Lc:/gtkglext/lib' \

@@ -1,5 +1,7 @@
 2003-03-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* autogen.sh: Added libtoolize --force.
+
 	* examples/*.c: Set top-level window's resize_mode to
 	GTK_RESIZE_IMMEDIATE and reallocate_redraws to TRUE.
 
