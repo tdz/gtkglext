@@ -236,7 +236,7 @@ gdk_gl_config_finalize (GObject *object)
 static GdkGLConfig *
 gdk_gl_config_new_ci (GdkGLConfigMode mode)
 {
-  static gint buf_size_list[] = { 16, 12, 8, 4, 2, 1, 0 };
+  static const gint buf_size_list[] = { 16, 12, 8, 4, 2, 1, 0 };
   gint list[32];
   GdkGLConfig *glconfig = NULL;
   int n = 0;
