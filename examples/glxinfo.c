@@ -1,4 +1,4 @@
-/* $Id: glxinfo.c,v 1.3 2002-11-15 04:37:08 naofumi Exp $ */
+/* $Id: glxinfo.c,v 1.4 2002-11-29 00:58:04 naofumi Exp $ */
 
 /*
  * Copyright (C) 1999-2002  Brian Paul   All Rights Reserved.
@@ -57,9 +57,31 @@
 #define GLX_TRANSPARENT_RGB 0x8008
 #endif
 
-#ifndef GL_MAX_RECTANGLE_TEXTURE_SIZE_NV
-#define GL_MAX_RECTANGLE_TEXTURE_SIZE_NV 0x84F8
+
+#ifndef GL_MAX_CUBE_MAP_TEXTURE_SIZE_ARB
+#define GL_MAX_CUBE_MAP_TEXTURE_SIZE_ARB      0x851C
 #endif
+
+#ifndef GL_MAX_RECTANGLE_TEXTURE_SIZE_NV
+#define GL_MAX_RECTANGLE_TEXTURE_SIZE_NV      0x84F8
+#endif
+
+#ifndef GL_NUM_COMPRESSED_TEXTURE_FORMATS_ARB
+#define GL_NUM_COMPRESSED_TEXTURE_FORMATS_ARB 0x86A2
+#endif
+
+#ifndef GL_MAX_TEXTURE_UNITS_ARB
+#define GL_MAX_TEXTURE_UNITS_ARB              0x84E2
+#endif
+
+#ifndef GL_MAX_TEXTURE_LOD_BIAS_EXT
+#define GL_MAX_TEXTURE_LOD_BIAS_EXT           0x84FD
+#endif
+
+#ifndef GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT
+#define GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT     0x84FF
+#endif
+
 
 typedef enum
 {
