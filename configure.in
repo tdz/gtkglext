@@ -145,7 +145,7 @@ case "$host_os" in
     ;;
 esac
 AC_MSG_RESULT([$platform_win32])
-AM_CONDITIONAL([PLATFORM_WIN32], [test "$platform_win32" = "yes"])
+AM_CONDITIONAL([PLATFORM_WIN32], [test "x$platform_win32" = "xyes"])
 
 os_win32=no
 MATH_LIB=-lm
@@ -159,15 +159,15 @@ case "$host_os" in
     ;;
 esac
 AC_MSG_RESULT([$os_win32])
-AM_CONDITIONAL([OS_WIN32], [test "$os_win32" = "yes"])
+AM_CONDITIONAL([OS_WIN32], [test "x$os_win32" = "xyes"])
 AC_SUBST([MATH_LIB])
 
-if test "$os_win32" = "yes"; then
+if test "x$os_win32" = "xyes"; then
   AC_CHECK_PROG([ms_librarian], [lib.exe], [yes], [no])
 fi
-AM_CONDITIONAL([MS_LIB_AVAILABLE], [test x$ms_librarian = xyes])
+AM_CONDITIONAL([MS_LIB_AVAILABLE], [test "x$ms_librarian" = "xyes"])
 
-if test "$platform_win32" = yes; then
+if test "x$platform_win32" = "xyes"; then
   gdktarget=win32
 else
   gdktarget=x11
@@ -827,7 +827,7 @@ AC_ARG_ENABLE(gtk-doc,
               [enable_gtk_doc="$enableval"],
               [enable_gtk_doc=auto])
 
-if test x$enable_gtk_doc = xyes ; then
+if test "x$enable_gtk_doc" = "xyes" ; then
   if test x$GTKDOC != xtrue ; then
     enable_gtk_doc=no 
   fi
@@ -835,10 +835,10 @@ fi
 
 dnl NOTE: We need to use a separate automake conditional for this
 dnl       to make this work with the tarballs.
-AM_CONDITIONAL([ENABLE_GTK_DOC], [test x$enable_gtk_doc = xyes])
+AM_CONDITIONAL([ENABLE_GTK_DOC], [test "x$enable_gtk_doc" = "xyes"])
 
 AC_PATH_PROG([SGML2HTML], [sgml2html], [no])
-AM_CONDITIONAL([HAVE_SGML2HTML], [test x$SGML2HTML != xno])
+AM_CONDITIONAL([HAVE_SGML2HTML], [test "x$SGML2HTML" != "xno"])
 
 
 ##################################################
