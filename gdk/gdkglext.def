@@ -29,3 +29,6 @@ EXPORTS
 	gdk_window_unset_gl_capability
 	gdk_win32_gl_context_get_hdc
 	gdk_win32_gl_context_get_hglrc
+	gdk_win32_gl_pixmap_get_hdc
+	gdk_win32_gl_pixmap_get_orig_hgdiobj
+	gdk_win32_gl_window_get_hdc

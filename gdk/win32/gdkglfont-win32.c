@@ -16,32 +16,27 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifndef __GDK_GL_WIN32_H__
-#define __GDK_GL_WIN32_H__
+#include "gdkglwin32.h"
+#include "gdkglfont.h"
 
-#include <gdk/gdkwin32.h>
+void
+gdk_gl_font_use_gdk_font (GdkFont *font,
+                          gint     first,
+                          gint     count,
+                          gint     list_base)
+{
+  HDC hdc;
+  HGDIOBJ orig_hgdiobj;
 
-#include <gdk/gdkglprivate.h>
+  g_return_if_fail (font != NULL);
 
-#ifndef STRICT
-#define STRICT                  /* We want strict type checks */
-#endif
-#include <windows.h>
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_gdk_font ()"));
 
-#include <GL/gl.h>
+  hdc = CreateCompatibleDC (NULL);
+  orig_hgdiobj = SelectObject (hdc, gdk_font_id (font));
 
-G_BEGIN_DECLS
+  wglUseFontBitmaps (hdc, first, count, list_base);
 
-PIXELFORMATDESCRIPTOR *gdk_x11_gl_config_get_pfd (GdkGLConfig *glconfig);
-
-HDC     gdk_win32_gl_context_get_hdc         (GdkGLContext *glcontext);
-HGLRC   gdk_win32_gl_context_get_hglrc       (GdkGLContext *glcontext);
-
-HDC     gdk_win32_gl_pixmap_get_hdc          (GdkGLPixmap *glpixmap);
-HGDIOBJ gdk_win32_gl_pixmap_get_orig_hgdiobj (GdkGLPixmap *glpixmap);
-
-HDC     gdk_win32_gl_window_get_hdc          (GdkGLWindow *glwindow);
-
-G_END_DECLS
-
-#endif /* __GDK_GL_WIN32_H__ */
+  SelectObject (hdc, orig_hgdiobj);
+  DeleteDC (hdc);
+}

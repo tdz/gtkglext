@@ -241,10 +241,10 @@ set_property (GdkGLConfigImplWin32 *impl,
     return;
 
   /*
-   * Set colormap to NULL at this stage.
+   * Get system colormap at this stage.
    */
 
-  glconfig->colormap = NULL;
+  glconfig->colormap = gdk_colormap_get_system ();
 
   /*
    * Set depth (number of bits per pixel) at this stage.
@@ -339,6 +339,15 @@ gdk_gl_config_new (const gint *attrib_list)
 
   return glconfig;
 }
+
+PIXELFORMATDESCRIPTOR *
+gdk_x11_gl_config_get_pfd (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+
+  return &(GDK_GL_CONFIG_IMPL_X11 (glconfig)->pfd);
+}
+
 
 /*
  * This code is based on lib/glut/win32_glx.c of GLUT by Nate Robins.

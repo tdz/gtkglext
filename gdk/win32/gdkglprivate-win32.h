@@ -25,6 +25,14 @@
 
 G_BEGIN_DECLS
 
+GdkGLContext *_gdk_win32_gl_context_new           (GdkGLDrawable *gldrawable,
+                                                   GdkGLConfig   *glconfig,
+                                                   gint           render_type,
+                                                   GdkGLContext  *share_list,
+                                                   gboolean       direct);
+
+void          _gdk_win32_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_PRIVATE_WIN32_H__ */

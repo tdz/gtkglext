@@ -149,6 +149,14 @@ libgdkglext_win32_la_SOURCES = \
 	gdkgl-win32.c		\
 	gdkglconfig-win32.h	\
 	gdkglconfig-win32.c	\
+	gdkglcontext-win32.h	\
+	gdkglcontext-win32.c	\
+	gdkgldrawable-win32.c	\
+	gdkglpixmap-win32.h	\
+	gdkglpixmap-win32.c	\
+	gdkglwindow-win32.h	\
+	gdkglwindow-win32.c	\
+	gdkglfont-win32.c	\
 	gdkglprivate-win32.h
 
 
@@ -165,7 +173,9 @@ LTLIBRARIES = $(noinst_LTLIBRARIES)
 
 libgdkglext_win32_la_LDFLAGS =
 libgdkglext_win32_la_LIBADD =
-am_libgdkglext_win32_la_OBJECTS = gdkgl-win32.lo gdkglconfig-win32.lo
+am_libgdkglext_win32_la_OBJECTS = gdkgl-win32.lo gdkglconfig-win32.lo \
+	gdkglcontext-win32.lo gdkgldrawable-win32.lo \
+	gdkglpixmap-win32.lo gdkglwindow-win32.lo gdkglfont-win32.lo
 libgdkglext_win32_la_OBJECTS = $(am_libgdkglext_win32_la_OBJECTS)
 
 DEFS = @DEFS@
@@ -176,7 +186,12 @@ LIBS = @LIBS@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/gdkgl-win32.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/gdkglconfig-win32.Plo
+@AMDEP_TRUE@	./$(DEPDIR)/gdkglconfig-win32.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gdkglcontext-win32.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gdkgldrawable-win32.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gdkglfont-win32.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gdkglpixmap-win32.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gdkglwindow-win32.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -214,6 +229,11 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkgl-win32.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglconfig-win32.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglcontext-win32.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkgldrawable-win32.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglfont-win32.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglpixmap-win32.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglwindow-win32.Plo@am__quote@
 
 distclean-depend:
 	-rm -rf ./$(DEPDIR)

@@ -23,6 +23,11 @@ libgdkglext_win32_la_SOURCES = \
 	gdkglcontext-win32.h	\
 	gdkglcontext-win32.c	\
 	gdkgldrawable-win32.c	\
+	gdkglpixmap-win32.h	\
+	gdkglpixmap-win32.c	\
+	gdkglwindow-win32.h	\
+	gdkglwindow-win32.c	\
+	gdkglfont-win32.c	\
 	gdkglprivate-win32.h
 
 libgdkglextinclude_HEADERS = \

@@ -92,7 +92,7 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
 
   GdkGLContextImplWin32 *share_impl = NULL;
 
-  GdkGLDrawable *drawable;
+  GdkDrawable *drawable;
   HWND hwnd;
   PIXELFORMATDESCRIPTOR *pfd;
   int pf;
@@ -117,7 +117,7 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
 
   /* Get DC. */
   impl->hdc = GetDC (hwnd);
-  pfd = gdk_x11_gl_config_get_pfd (glcontext->glconfig);
+  pfd = gdk_win32_gl_config_get_pfd (glcontext->glconfig);
 
   pf = ChoosePixelFormat(impl->hdc, pfd);
   if (pf == 0)

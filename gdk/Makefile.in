@@ -222,7 +222,9 @@ libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_D
 MAINTAINERCLEANFILES = 
 EXTRA_HEADERS = 
 
-EXTRA_DIST = 
+EXTRA_DIST = \
+	gdkglext.def
+
 subdir = gdk
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
