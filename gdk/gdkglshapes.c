@@ -18,13 +18,10 @@
 
 #include <math.h>
 
+#include <glib.h>
+
 #include "gdkglprivate.h"
 #include "gdkglshapes.h"
-
-/* Some <math.h> files do not define M_PI... */
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
 
 /* 
  * The following code is imported from GLUT.
@@ -239,8 +236,8 @@ doughnut(GLfloat r, GLfloat R, GLint nsides, GLint rings)
   GLfloat cosTheta1, sinTheta1;
   GLfloat ringDelta, sideDelta;
 
-  ringDelta = 2.0 * M_PI / rings;
-  sideDelta = 2.0 * M_PI / nsides;
+  ringDelta = 2.0 * G_PI / rings;
+  sideDelta = 2.0 * G_PI / nsides;
 
   theta = 0.0;
   cosTheta = 1.0;

@@ -20,16 +20,8 @@
 #include "logo-model.h"
 #include "trackball.h"
 
-#ifndef M_PI
-#define M_PI   3.14159265358979323846
-#endif
-
-#ifndef M_PI_2
-#define M_PI_2 1.57079632679489661923
-#endif
-
-#define DIG_2_RAD (M_PI / 180.0)
-#define RAD_2_DIG (180.0 / M_PI)
+#define DIG_2_RAD (G_PI / 180.0)
+#define RAD_2_DIG (180.0 / G_PI)
 
 #define DEFAULT_ROT_COUNT 300
 
@@ -305,7 +297,7 @@ expose_event (GtkWidget      *widget,
 	}
 
       axis_to_quat (rot_mode[mode].axis,
-		    rot_mode[mode].sign * M_PI_2 / rot_count,
+		    rot_mode[mode].sign * G_PI_2 / rot_count,
 		    d_quat);
       add_quats (d_quat, logo_quat, logo_quat);
 

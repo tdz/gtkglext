@@ -46,9 +46,6 @@
 
 #define MAXGRID 63
 #define SQRTOFTWOINV (1.0 / 1.414213562)
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
 
 
 /**************************************************************************
@@ -199,8 +196,8 @@ void resetWireframe (void)
 	  force[i][j]=0.0;
 	  veloc[i][j]=0.0;
 
-	  posit[i][j]= 	(sin(M_PI*2 * ((float)i/(float)grid)) +
-			 sin(M_PI*2 * ((float)j/(float)grid)))* grid/6.0;
+	  posit[i][j]= 	(sin(G_PI*2 * ((float)i/(float)grid)) +
+			 sin(G_PI*2 * ((float)j/(float)grid)))* grid/6.0;
 
 	  if (i==0||j==0||i==grid-1||j==grid-1) posit[i][j]=0.0;
 	}

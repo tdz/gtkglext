@@ -1,5 +1,11 @@
 2003-01-21  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/shapes.c: 
+	* examples/logo.c: 
+	* examples/gears.c: 
+	* examples/coolwave.c: 
+	* gdk/gdkglshapes.c (doughnut): Use G_PI instead of M_PI.
+
 	* gdk/gdkglpixmap.c (gl_pixmap_destroy): 
 	* gdk/gdkglwindow.c (gl_window_destroy): Removed.
 

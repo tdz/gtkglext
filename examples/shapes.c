@@ -18,12 +18,8 @@
 
 #include "trackball.h"
 
-#ifndef M_PI
-#define M_PI   3.14159265358979323846
-#endif
-
-#define DIG_2_RAD (M_PI / 180.0)
-#define RAD_2_DIG (180.0 / M_PI)
+#define DIG_2_RAD (G_PI / 180.0)
+#define RAD_2_DIG (180.0 / G_PI)
 
 #define ANIMATE_THRESHOLD 25.0
 
