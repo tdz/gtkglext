@@ -458,6 +458,9 @@ if test "x$gdktarget" = "xx11"; then
 
   # for X11
 
+  THREAD_LIB="-lpthread"
+  STDCPP_LIB="-lstdc++"
+
   have_GL=no
   GL_LIB_NAME=GL
 
@@ -478,23 +481,23 @@ if test "x$gdktarget" = "xx11"; then
                  [ GL_LIBS="-lGL"
                    have_GL=yes ])
     if test "x$ac_cv_lib_GL_glVertex3d" = "xno" ; then
-      # GL may need to link with -lpthread explicitly
+      # GL may need to be linked with the thread library explicitly
       AC_CHECK_LIB(GL, glVertex3f,
-                   [ GL_LIBS="-lGL -lpthread"
+                   [ GL_LIBS="-lGL $THREAD_LIB"
                      have_GL=yes ], ,
-                   [ -lpthread ])
+                   [ $THREAD_LIB ])
       if test "x$ac_cv_lib_GL_glVertex3f" = "xno" ; then
-        # GL may need to link with -lstdc++ explicitly
+        # GL may need to be linked with std C++ library explicitly
         AC_CHECK_LIB(GL, glVertex3i,
-                     [ GL_LIBS="-lGL -lstdc++"
+                     [ GL_LIBS="-lGL $STDCPP_LIB"
                        have_GL=yes ], ,
-                     [ -lstdc++ ])
+                     [ $STDCPP_LIB ])
         if test "x$ac_cv_lib_GL_glVertex3i" = "xno" ; then
-          # GL may need to link with -lstdc++ and -lpthread explicitly
+          # GL may need to be linked with std C++ and thread libraries explicitly
           AC_CHECK_LIB(GL, glVertex3s,
-                       [ GL_LIBS="-lGL -lstdc++ -lpthread"
+                       [ GL_LIBS="-lGL $STDCPP_LIB $THREAD_LIB"
                          have_GL=yes ], ,
-                       [ -lstdc++ -lpthread ])
+                       [ $STDCPP_LIB $THREAD_LIB ])
         fi
       fi
     fi
@@ -518,9 +521,6 @@ if test "x$gdktarget" = "xx11"; then
 
   have_GLU=no
   have_SGI_GLU=no
-
-  THREAD_LIB="-lpthread"
-  STDCPP_LIB="-lstdc++"
 
   AC_CHECK_LIB(GLU, gluSphere,
                [ GL_LIBS="-lGLU $GL_LIBS"
