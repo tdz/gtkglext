@@ -550,6 +550,14 @@ if test "x$gdktarget" = "xx11"; then
     AC_MSG_ERROR(Cannot find GLU library)
   fi
 
+  # Checks for GLXPbufferSGIX type definition.
+  GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF=no
+  AC_CHECK_TYPES(GLXPbufferSGIX, , ,
+                 [ #include <GL/glx.h> ])
+  if test "x$ac_cv_type_GLXPbufferSGIX" = "xno" ; then
+    GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF=yes
+  fi
+
 else
 
   # for Win32
@@ -753,6 +761,11 @@ _______EOF
 #if !defined(GDKGLEXT_MULTIHEAD_SUPPORT) && defined(GDK_MULTIHEAD_SAFE)
 #error "Installed GdkGLExt library doesn't have multihead support."
 #endif
+
+_______EOF
+
+	cat >>$outfile <<_______EOF
+$gdkglext_need_glxpbuffersgix_typedef
 _______EOF
 
 	cat >>$outfile <<_______EOF
@@ -786,6 +799,11 @@ fi
 if test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"; then
   gdkglext_multihead_support='
 #define GDKGLEXT_MULTIHEAD_SUPPORT'
+fi
+
+if test "x$GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF" = "xyes"; then
+  gdkglext_need_glxpbuffersgix_typedef='
+#define GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF'
 fi
 
 ])

@@ -25,6 +25,7 @@
 #include <GL/glx.h>
 #include <GL/gl.h>
 
+#include <gdk/gdkgldefs.h>
 #include <gdk/gdkglquery.h>
 #include <gdk/gdkglconfig.h>
 
@@ -36,6 +37,10 @@ typedef XID GLXFBConfigID;
 typedef XID GLXContextID;
 typedef XID GLXWindow;
 typedef XID GLXPbuffer;
+#endif
+
+#if defined(GLX_SGIX_pbuffer) && defined(GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF)
+typedef XID GLXPbufferSGIX;
 #endif
 
 #if !defined(__glxext_h_) && defined(GLX_ARB_get_proc_address)

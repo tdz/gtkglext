@@ -1,3 +1,12 @@
+2003-01-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglglxext.h: typedef GLXPbufferSGIX for some platforms
+	which provide GLX_SGIX_pbuffer support without GLXPbufferSGIX type
+	definition.
+
+	* configure.in: Check GLXPbufferSGIX typedef for some platforms
+	which have bad GLX headers (Solaris 8, etc.).
+
 2003-01-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglconfig-x11.c: Use macros defined in config.h.
