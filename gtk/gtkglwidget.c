@@ -136,7 +136,7 @@ gtk_gl_widget_parent_set (GtkWidget   *widget,
   GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_parent_set ()"));
 
   toplevel = gtk_widget_get_toplevel (widget);
-  if (GTK_WIDGET_TOPLEVEL (toplevel))
+  if (GTK_WIDGET_TOPLEVEL (toplevel) && !GTK_WIDGET_REALIZED (toplevel))
     {
       GTK_GL_NOTE (MISC,
         g_message (" - Install colormap to the top-level window."));
