@@ -1,3 +1,11 @@
+2002-12-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglconfig-x11.c: 
+	Removed gdk_gl_config_fb_configuration() function.
+	Now glXChooseVisual() is done by gdk_gl_config_choose_visual(),
+	and other works such as colormap setup are done by
+	gdk_gl_config_impl_x11_constructor().
+
 2002-12-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdkglext-uninstalled.pc.in: 
