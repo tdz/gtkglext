@@ -48,6 +48,8 @@ struct _GdkGLDrawableClass
                                          GdkGLDrawable *read,
                                          GdkGLContext  *glcontext);
   void          (*swap_buffers)         (GdkGLDrawable *gldrawable);
+  void          (*wait_gl)              (GdkGLDrawable *gldrawable);
+  void          (*wait_gdk)             (GdkGLDrawable *gldrawable);
 
   /*< private >*/
   /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */

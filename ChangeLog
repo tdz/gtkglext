@@ -1,5 +1,19 @@
 2002-06-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_impl_x11_gl_drawable_interface_init): 
+	* gdk/x11/gdkglwindow-x11.c (gdk_gl_window_impl_x11_gl_drawable_interface_init): 
+	* gdk/x11/gdkgldrawable-x11.c: 
+	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_impl_win32_gl_drawable_interface_init): 
+	* gdk/win32/gdkglwindow-win32.c (gdk_gl_window_impl_win32_gl_drawable_interface_init): 
+	* gdk/win32/gdkgldrawable-win32.c: Modified for setting wait_gl and
+	wait_gdk interface.
+
+	* gdk/gdkgldrawable.c (gdk_gl_drawable_wait_gl) 
+	(gdk_gl_drawable_wait_gdk): Modified to use GdkGLDrawable interface.
+
+	* gdk/gdkgldrawable.h (struct _GdkGLDrawableClass): Added wait_gl
+	and wait_gdk.
+
 	* configure.in: GL checks ware modified.
 
 2002-06-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>

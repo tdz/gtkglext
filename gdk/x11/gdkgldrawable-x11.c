@@ -36,28 +36,14 @@ _gdk_x11_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable)
                   gdk_x11_drawable_get_xid (drawable));
 }
 
-/**
- * gdk_gl_drawable_wait_gl:
- * @gldrawable: a #GdkGLDrawable.
- *
- * Complete GL execution prior to subsequent GDK drawing calls.
- *
- **/
 void
-gdk_gl_drawable_wait_gl (GdkGLDrawable *gldrawable)
+_gdk_x11_gl_drawable_wait_gl (GdkGLDrawable *gldrawable)
 {
   glXWaitGL ();
 }
 
-/**
- * gdk_gl_drawable_wait_gdk:
- * @gldrawable: a #GdkGLDrawable.
- *
- * Complete GDK drawing execution prior to subsequent GL calls.
- *
- **/
 void
-gdk_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
+_gdk_x11_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
 {
   glXWaitX ();
 }

@@ -74,3 +74,33 @@ gdk_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable)
 
   GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->swap_buffers (gldrawable);
 }
+
+/**
+ * gdk_gl_drawable_wait_gl:
+ * @gldrawable: a #GdkGLDrawable.
+ *
+ * Complete GL execution prior to subsequent GDK drawing calls.
+ *
+ **/
+void
+gdk_gl_drawable_wait_gl (GdkGLDrawable *gldrawable)
+{
+  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+
+  GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->wait_gl (gldrawable);
+}
+
+/**
+ * gdk_gl_drawable_wait_gdk:
+ * @gldrawable: a #GdkGLDrawable.
+ *
+ * Complete GDK drawing execution prior to subsequent GL calls.
+ *
+ **/
+void
+gdk_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
+{
+  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+
+  GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->wait_gdk (gldrawable);
+}

@@ -141,7 +141,7 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
     stereo_is_requested = TRUE;
 
   root_window = gdk_get_default_root_window ();
-  hwnd = gdk_win32_drawable_get_handle (GDK_DRAWABLE (root_window));
+  hwnd = (HWND) gdk_win32_drawable_get_handle (GDK_DRAWABLE (root_window));
 
   /*
    * Get DC.
