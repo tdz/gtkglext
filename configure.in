@@ -400,6 +400,7 @@ else
 fi
 
 if test "x$gdktarget" = "xwin32"; then
+  WINDOWING_LIBS="-lgdi32 -luser32 -lkernel32"
   GDKGLEXT_WIN_LIBS="-lgdi32 -luser32 -lkernel32"
   AM_CONDITIONAL(USE_WIN32, true)
 else
