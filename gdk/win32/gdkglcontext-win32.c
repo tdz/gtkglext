@@ -100,12 +100,14 @@ gdk_gl_context_impl_win32_finalize (GObject *object)
     }
 
   if (impl->gldrawable != NULL)
-    g_object_unref (G_OBJECT (impl->gldrawable));
+    g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable),
+                                  (gpointer *) &(impl->gldrawable));
 
   /* currently unused. */
   /*
   if (impl->gldrawable_read != NULL)
-    g_object_unref (G_OBJECT (impl->gldrawable_read));
+    g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable_read),
+                                  (gpointer *) &(impl->gldrawable_read));
   */
 
   g_object_unref (G_OBJECT (impl->glconfig));
@@ -154,7 +156,8 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
   g_object_ref (G_OBJECT (impl->glconfig));
 
   impl->gldrawable = gldrawable;
-  g_object_ref (G_OBJECT (impl->gldrawable));
+  g_object_add_weak_pointer (G_OBJECT (impl->gldrawable),
+                             (gpointer *) &(impl->gldrawable));
 
   impl->gldrawable_read = NULL;
 
@@ -283,14 +286,16 @@ _gdk_gl_context_set_gl_drawable (GdkGLContext  *glcontext,
 
   if (impl->gldrawable != NULL)
     {
-      g_object_unref (G_OBJECT (impl->gldrawable));
+      g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable),
+                                    (gpointer *) &(impl->gldrawable));
       impl->gldrawable = NULL;
     }
 
   if (gldrawable != NULL && GDK_IS_GL_DRAWABLE (gldrawable))
     {
       impl->gldrawable = gldrawable;
-      g_object_ref (G_OBJECT (impl->gldrawable));
+      g_object_add_weak_pointer (G_OBJECT (impl->gldrawable),
+                                 (gpointer *) &(impl->gldrawable));
     }
 }
 
@@ -314,14 +319,16 @@ _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
 
   if (impl->gldrawable_read != NULL)
     {
-      g_object_unref (G_OBJECT (impl->gldrawable_read));
+      g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable_read),
+                                    (gpointer *) &(impl->gldrawable_read));
       impl->gldrawable_read = NULL;
     }
 
   if (gldrawable_read != NULL && GDK_IS_GL_DRAWABLE (gldrawable_read))
     {
       impl->gldrawable_read = gldrawable_read;
-      g_object_ref (G_OBJECT (impl->gldrawable_read));
+      g_object_add_weak_pointer (G_OBJECT (impl->gldrawable_read),
+                                 (gpointer *) &(impl->gldrawable_read));
     }
 }
 */

@@ -1,4 +1,12 @@
-2003-04-10  Naofumi Yasufuku  <naofumi@yasufuku.net>
+2003-04-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_impl_x11_finalize) 
+	(gdk_gl_context_new_common, _gdk_gl_context_set_gl_drawable): 
+	Weak ref impl->gldrawable.
+
+	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_impl_win32_finalize) 
+	(gdk_gl_context_new_common, _gdk_gl_context_set_gl_drawable): 
+	Weak ref impl->gldrawable.
 
 	* gtk/gtkglwidget.c (struct GLWidgetParam): Renamed to
 	GLWidgetPrivate.
