@@ -197,8 +197,8 @@ gint motion_notify(GtkWidget *widget, GdkEventMotion *event)
 {
      int x = 0;
      int y = 0;
-     GdkRectangle area;
      GdkModifierType state = 0;
+     float width, height;
      mesh_info *info = (mesh_info*)gtk_object_get_data(GTK_OBJECT(widget), "mesh_info");
 
      if (event->is_hint)
@@ -215,35 +215,34 @@ gint motion_notify(GtkWidget *widget, GdkEventMotion *event)
           state = event->state;
      }
 
-     area.x = 0;
-     area.y = 0;
-     area.width  = widget->allocation.width;
-     area.height = widget->allocation.height;
+     width = widget->allocation.width;
+     height = widget->allocation.height;
 
      if (state & GDK_BUTTON1_MASK)
      {
           /* drag in progress, simulate trackball */
           float spin_quat[4];
           trackball( spin_quat,
-          	      (2.0*info->beginx -       area.width) / area.width,
-          	      (     area.height - 2.0*info->beginy) / area.height,
-          	      (           2.0*x -       area.width) / area.width,
-          	      (     area.height -            2.0*y) / area.height );
+          	      (2.0*info->beginx -            width) / width,
+          	      (          height - 2.0*info->beginy) / height,
+          	      (           2.0*x -            width) / width,
+          	      (          height -            2.0*y) / height );
           add_quats(spin_quat, info->quat, info->quat);
 
           /* orientation has changed, redraw mesh */
-          gtk_widget_draw(widget, &area);
+          gtk_widget_queue_draw(widget);
      }
 
      if (state & GDK_BUTTON2_MASK)
      {
           /* zooming drag */
-          info->zoom += ((y - info->beginy) / area.height) * 40;
-          if (info->zoom < 5) info->zoom = 5;
-          if (info->zoom > 120) info->zoom = 120;
+          info->zoom += ((y - info->beginy) / height) * 40.0;
+          if (info->zoom < 5.0) info->zoom = 5.0;
+          if (info->zoom > 120.0) info->zoom = 120.0;
           /* zoom has changed, redraw mesh */
-          gtk_widget_draw(widget, &area);
+          gtk_widget_queue_draw(widget);
      }
+
      info->beginx = x;
      info->beginy = y;
 
