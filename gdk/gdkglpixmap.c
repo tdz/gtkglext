@@ -221,7 +221,13 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
 static void
 gdk_gl_pixmap_finalize (GObject *object)
 {
+  GdkGLPixmap *glpixmap = GDK_GL_PIXMAP (object);
+
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_finalize ()"));
+
+  if (glpixmap->drawable != NULL)
+    g_object_remove_weak_pointer (G_OBJECT (glpixmap->drawable),
+                                  (gpointer *) &(glpixmap->drawable));
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }

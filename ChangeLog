@@ -1,5 +1,15 @@
 2003-01-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_new): 
+	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_new): 
+	* gdk/gdkglpixmap.c (gdk_gl_pixmap_finalize): Weak ref
+	glpixmap->drawable.
+
+	* gdk/x11/gdkglwindow-x11.c (gdk_gl_window_new): 
+	* gdk/win32/gdkglwindow-win32.c (gdk_gl_window_new): 
+	* gdk/gdkglwindow.c (gdk_gl_window_finalize): Weak ref
+	glwindow->drawable.
+
 	* gdk/gdkglconfig.h (GdkGLConfigMode): Removed
 	GDK_GL_MODE_LUMINANCE bit mask (it will not be supported in
 	gtkglext-1.0).

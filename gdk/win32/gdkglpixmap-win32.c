@@ -241,6 +241,8 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
 
   glpixmap->drawable = GDK_DRAWABLE (pixmap);
+  g_object_add_weak_pointer (G_OBJECT (glpixmap->drawable),
+                             (gpointer *) &(glpixmap->drawable));
 
   impl->aux_pixmap = aux_pixmap;
 

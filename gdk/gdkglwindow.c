@@ -221,7 +221,13 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
 static void
 gdk_gl_window_finalize (GObject *object)
 {
+  GdkGLWindow *glwindow = GDK_GL_WINDOW (object);
+
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_window_finalize ()"));
+
+  if (glwindow->drawable != NULL)
+    g_object_remove_weak_pointer (G_OBJECT (glwindow->drawable),
+                                  (gpointer *) &(glwindow->drawable));
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }

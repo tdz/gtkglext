@@ -204,6 +204,8 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   impl = GDK_GL_WINDOW_IMPL_WIN32 (glwindow);
 
   glwindow->drawable = GDK_DRAWABLE (window);
+  g_object_add_weak_pointer (G_OBJECT (glwindow->drawable),
+                             (gpointer *) &(glwindow->drawable));
 
   impl->hwnd = hwnd;
 
