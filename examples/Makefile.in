@@ -164,6 +164,7 @@ common_programs = \
 	simple-mixed	\
 	pixmap		\
 	pixmap-mixed	\
+	color		\
 	font		\
 	logo		\
 	gears		\
@@ -197,6 +198,10 @@ pixmap_mixed_SOURCES = pixmap-mixed.c
 pixmap_mixed_DEPENDENCIES = $(DEPS)
 pixmap_mixed_LDADD = $(LDADDS)
 
+color_SOURCES = color.c
+color_DEPENDENCIES = $(DEPS)
+color_LDADD = $(LDADDS)
+
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
@@ -228,15 +233,18 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 @PLATFORM_WIN32_TRUE@EXTRA_PROGRAMS = low-level$(EXEEXT) simple$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	simple-mixed$(EXEEXT) pixmap$(EXEEXT) \
-@PLATFORM_WIN32_TRUE@	pixmap-mixed$(EXEEXT) font$(EXEEXT) \
-@PLATFORM_WIN32_TRUE@	logo$(EXEEXT) gears$(EXEEXT) \
+@PLATFORM_WIN32_TRUE@	pixmap-mixed$(EXEEXT) color$(EXEEXT) \
+@PLATFORM_WIN32_TRUE@	font$(EXEEXT) logo$(EXEEXT) gears$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	viewlw$(EXEEXT)
 @PLATFORM_WIN32_FALSE@EXTRA_PROGRAMS = low-level$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	simple$(EXEEXT) simple-mixed$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	pixmap$(EXEEXT) pixmap-mixed$(EXEEXT) \
-@PLATFORM_WIN32_FALSE@	font$(EXEEXT) logo$(EXEEXT) \
-@PLATFORM_WIN32_FALSE@	gears$(EXEEXT) viewlw$(EXEEXT) \
-@PLATFORM_WIN32_FALSE@	glxinfo$(EXEEXT)
+@PLATFORM_WIN32_FALSE@	color$(EXEEXT) font$(EXEEXT) \
+@PLATFORM_WIN32_FALSE@	logo$(EXEEXT) gears$(EXEEXT) \
+@PLATFORM_WIN32_FALSE@	viewlw$(EXEEXT) glxinfo$(EXEEXT)
+am_color_OBJECTS = color.$(OBJEXT)
+color_OBJECTS = $(am_color_OBJECTS)
+color_LDFLAGS =
 am_font_OBJECTS = font.$(OBJEXT)
 font_OBJECTS = $(am_font_OBJECTS)
 font_LDFLAGS =
@@ -276,14 +284,15 @@ LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/font.Po ./$(DEPDIR)/gears.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/glxinfo.Po ./$(DEPDIR)/logo-g.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/logo-k.Po ./$(DEPDIR)/logo-model.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/logo-t.Po ./$(DEPDIR)/logo.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/low-level.Po ./$(DEPDIR)/lw.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/pixmap-mixed.Po ./$(DEPDIR)/pixmap.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/simple-mixed.Po ./$(DEPDIR)/simple.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/trackball.Po ./$(DEPDIR)/viewlw.Po
+@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/color.Po ./$(DEPDIR)/font.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/gears.Po ./$(DEPDIR)/glxinfo.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/logo-g.Po ./$(DEPDIR)/logo-k.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/logo-model.Po ./$(DEPDIR)/logo-t.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/logo.Po ./$(DEPDIR)/low-level.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/lw.Po ./$(DEPDIR)/pixmap-mixed.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/pixmap.Po ./$(DEPDIR)/simple-mixed.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/simple.Po ./$(DEPDIR)/trackball.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/viewlw.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -292,12 +301,12 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
-DIST_SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) \
-	$(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) \
-	$(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) \
-	$(simple_mixed_SOURCES) $(viewlw_SOURCES)
+DIST_SOURCES = $(color_SOURCES) $(font_SOURCES) $(gears_SOURCES) \
+	$(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) \
+	$(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) \
+	$(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
+SOURCES = $(color_SOURCES) $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
 
 all: all-am
 
@@ -308,6 +317,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configu
 	  $(AUTOMAKE) --gnu  examples/Makefile
 Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
+color$(EXEEXT): $(color_OBJECTS) $(color_DEPENDENCIES) 
+	@rm -f color$(EXEEXT)
+	$(LINK) $(color_LDFLAGS) $(color_OBJECTS) $(color_LDADD) $(LIBS)
 font$(EXEEXT): $(font_OBJECTS) $(font_DEPENDENCIES) 
 	@rm -f font$(EXEEXT)
 	$(LINK) $(font_LDFLAGS) $(font_OBJECTS) $(font_LDADD) $(LIBS)
@@ -345,6 +357,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/color.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/font.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gears.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/glxinfo.Po@am__quote@

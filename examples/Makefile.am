@@ -26,6 +26,7 @@ common_programs = \
 	simple-mixed	\
 	pixmap		\
 	pixmap-mixed	\
+	color		\
 	font		\
 	logo		\
 	gears		\
@@ -59,6 +60,10 @@ pixmap_LDADD = $(LDADDS)
 pixmap_mixed_SOURCES = pixmap-mixed.c
 pixmap_mixed_DEPENDENCIES = $(DEPS)
 pixmap_mixed_LDADD = $(LDADDS)
+
+color_SOURCES = color.c
+color_DEPENDENCIES = $(DEPS)
+color_LDADD = $(LDADDS)
 
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
