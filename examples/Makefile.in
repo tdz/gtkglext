@@ -235,7 +235,9 @@ glxinfo_LDADD = $(GL_LIBS) $(GDKGLEXT_WIN_LIBS)
 
 EXTRA_DIST = \
 	alien.lwo	\
-	penguin.lwo
+	penguin.lwo	\
+	girl.rgb	\
+	reflect.rgb
 
 subdir = examples
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
