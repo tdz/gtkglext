@@ -16,6 +16,9 @@
 
 /* 
  * Follow the GTK coding style.
+ * Changed idle function management codes.
+ * Added popup menu.
+ * Added quit button.
  *   Naofumi Yasufuku  <naofumi@users.sourceforge.net>
  */
 
@@ -53,6 +56,28 @@
 
 
 /**************************************************************************
+ * Global variable declarations.
+ **************************************************************************/
+
+static gboolean animate = FALSE;
+
+
+/**************************************************************************
+ * The following section contains the function prototype declarations.
+ **************************************************************************/
+
+static void         idle_add          (GtkWidget   *widget);
+static void         idle_remove       (GtkWidget   *widget);
+
+static void         toggle_animation  (GtkWidget   *widget);
+
+static GdkGLConfig *configure_gl      (void);
+
+static GtkWidget   *create_popup_menu (GtkWidget   *drawing_area);
+static GtkWidget   *create_window     (GdkGLConfig *glconfig);
+
+
+/**************************************************************************
  * The following section contains all the callback function definitions.
  **************************************************************************/
 
@@ -84,7 +109,7 @@ realize (GtkWidget *widget,
 
 /***
  *** The "configure_event" signal handler. Any processing required when
- *** the OpenGL capable drawing area is re-configured should be done here.
+ *** the OpenGL-capable drawing area is re-configured should be done here.
  *** Almost always it will be used to resize the OpenGL viewport when
  *** the window is resized.
  ***/
@@ -154,102 +179,20 @@ expose_event (GtkWidget      *widget,
  *** frame updates.
  ***/
 static gboolean
-idle (gpointer data)
+idle (GtkWidget *widget)
 {
   g_print (".");
 
   /*** Fill in the details here ***/
 
-  return TRUE;
-}
-
-static guint idle_id = 0;
-
-static void
-idle_add (GtkWidget *widget)
-{
-  if (idle_id == 0) {
-    idle_id = gtk_idle_add_priority (GDK_PRIORITY_REDRAW,
-				     (GtkFunction)idle,
-				     widget);
-  }
-}
-
-static void
-idle_remove (GtkWidget *widget)
-{
-  if (idle_id != 0) {
-    gtk_idle_remove (idle_id);
-    idle_id = 0;
-  }
-}
-
-/***
- *** The "map_event" signal handler. Any processing required when the
- *** OpenGL capable drawing area is mapped should be done here.
- ***/
-static gboolean
-map_event (GtkWidget *widget,
-	   GdkEvent  *event,
-	   gpointer   data)
-{
-  g_print ("%s: \"map_event\"\n", gtk_widget_get_name (widget));
-
-  /*** Fill in the details here. ***/
-
-#if 0
-  idle_add(widget);
-#endif
+  gtk_widget_queue_draw (widget);
 
   return TRUE;
 }
 
 /***
- *** The "unmap_event" signal handler. Any processing required when the
- *** OpenGL capable drawing area is unmapped should be done here.
- ***/
-static gboolean
-unmap_event (GtkWidget *widget,
-	     GdkEvent  *event,
-	     gpointer   data)
-{
-  g_print ("%s: \"unmap_event\"\n", gtk_widget_get_name (widget));
-
-  /*** Fill in the details here. ***/
-
-#if 0
-  idle_remove(widget);
-#endif
-
-  return TRUE;
-}
-
-/***
- *** The "visibility_notify_event" signal handler. Any processing required when
- *** the OpenGL capable drawing area is visually obscured should be done here.
- ***/
-static gboolean
-visibility_notify_event (GtkWidget          *widget,
-			 GdkEventVisibility *event,
-			 gpointer            data)
-{
-  g_print ("%s: \"visibility_notify_event\"\n", gtk_widget_get_name (widget));
-
-  /*** Fill in the details here. ***/
-
-#if 0
-  if (event->state == GDK_VISIBILITY_FULLY_OBSCURED)
-    idle_remove(widget);
-  else
-    idle_add(widget);
-#endif
-
-  return TRUE;
-}
-
-/***
- *** The "motion_notify_event" signal handler. Any processing required when the
- *** OpenGL capable drawing area is under drag motion should be done here.
+ *** The "motion_notify_event" signal handler. Any processing required when
+ *** the OpenGL-capable drawing area is under drag motion should be done here.
  ***/
 static gboolean
 motion_notify_event (GtkWidget      *widget,
@@ -292,28 +235,48 @@ button_press_event (GtkWidget      *widget,
 {
   g_print ("%s: \"button_press_event\": ", gtk_widget_get_name (widget));
 
-  switch (event->button)
+  if (event->button == 1)
     {
-    case 1:
       /*** Fill in the details here. ***/
       g_print ("button 1\n");
-      break;
 
-    case 2:
-      /*** Fill in the details here. ***/
-      g_print ("button 2\n");
-      break;
-
-    case 3:
-      /*** Fill in the details here. ***/
-      g_print ("button 3\n");
-      break;
-
-    default:
-      return FALSE;
+      return TRUE;
     }
 
-  return TRUE;
+  if (event->button == 2)
+    {
+      /*** Fill in the details here. ***/
+      g_print ("button 2\n");
+
+      return TRUE;
+    }
+
+  g_print ("\n");
+
+  return FALSE;
+}
+
+/* For popup menu. */
+static gboolean
+button_press_event_popup_menu (GtkWidget      *widget,
+			       GdkEventButton *event,
+			       gpointer        data)
+{
+  g_print ("%s: \"button_press_event_popup\": ", gtk_widget_get_name (widget));
+
+  if (event->button == 3)
+    {
+      g_print ("button 3\n");
+
+      /* Popup menu. */
+      gtk_menu_popup (GTK_MENU (widget), NULL, NULL, NULL, NULL,
+		      event->button, event->time);
+      return TRUE;
+    }
+
+  g_print ("\n");
+
+  return FALSE;
 }
 
 /***
@@ -331,9 +294,14 @@ key_press_event (GtkWidget   *widget,
     {
       /*** Fill in the details here. ***/
 
+    case GDK_a:
+      g_print ("a key\n");
+      toggle_animation (widget);
+      break;
+
     case GDK_Escape:
       g_print ("Escape key\n");
-      gtk_main_quit();
+      gtk_main_quit ();
       break;
 
     default:
@@ -344,19 +312,118 @@ key_press_event (GtkWidget   *widget,
 }
 
 /***
- *** The "destroy" signal handler. Any processing required when
- *** the OpenGL capable drawing area is destroyed should be done here.
+ *** The "unrealize" signal handler. Any processing required when
+ *** the OpenGL-capable window is unrealized should be done here.
  ***/
-static gboolean
-destroy (GtkWidget *widget,
-	 GdkEvent  *event,
-	 gpointer   data)
+static void
+unrealize (GtkWidget *widget,
+	   gpointer   data)
 {
-  g_print ("%s: \"destroy\"\n", gtk_widget_get_name (widget));
+  g_print ("%s: \"unrealize\"\n", gtk_widget_get_name (widget));
 
   /*** Fill in the details here ***/
 
-  return FALSE;
+}
+
+
+/**************************************************************************
+ * The following section contains the idle function management routines.
+ **************************************************************************/
+
+/***
+ *** Helper functions to add or remove the idle function.
+ ***/
+
+static guint idle_id = 0;
+
+static void
+idle_add (GtkWidget *widget)
+{
+  if (idle_id == 0)
+    {
+      idle_id = gtk_idle_add_priority (GDK_PRIORITY_REDRAW,
+				       (GtkFunction) idle,
+				       widget);
+    }
+}
+
+static void
+idle_remove (GtkWidget *widget)
+{
+  if (idle_id != 0)
+    {
+      gtk_idle_remove (idle_id);
+      idle_id = 0;
+    }
+}
+
+/***
+ *** The "map_event" signal handler. Any processing required when the
+ *** OpenGL-capable drawing area is mapped should be done here.
+ ***/
+static gboolean
+map_event (GtkWidget *widget,
+	   GdkEvent  *event,
+	   gpointer   data)
+{
+  if (animate)
+    idle_add (widget);
+
+  return TRUE;
+}
+
+/***
+ *** The "unmap_event" signal handler. Any processing required when the
+ *** OpenGL-capable drawing area is unmapped should be done here.
+ ***/
+static gboolean
+unmap_event (GtkWidget *widget,
+	     GdkEvent  *event,
+	     gpointer   data)
+{
+  idle_remove (widget);
+
+  return TRUE;
+}
+
+/***
+ *** The "visibility_notify_event" signal handler. Any processing required
+ *** when the OpenGL-capable drawing area is visually obscured should be
+ *** done here.
+ ***/
+static gboolean
+visibility_notify_event (GtkWidget          *widget,
+			 GdkEventVisibility *event,
+			 gpointer            data)
+{
+  if (animate)
+    {
+      if (event->state == GDK_VISIBILITY_FULLY_OBSCURED)
+	idle_remove (widget);
+      else
+	idle_add (widget);
+    }
+
+  return TRUE;
+}
+
+
+/**************************************************************************
+ * The following section contains some miscellaneous utility functions.
+ **************************************************************************/
+
+/***
+ *** Toggle animation.
+ ***/
+static void
+toggle_animation (GtkWidget *widget)
+{
+  animate = !animate;
+
+  if (animate)
+    idle_add (widget);
+  else
+    idle_remove (widget);
 }
 
 
@@ -364,22 +431,81 @@ destroy (GtkWidget *widget,
  * The following section contains the GUI building function definitions.
  **************************************************************************/
 
-/*** Creates the simple application window with one
- *** drawing area that is an OpenGL capable visual.
+/***
+ *** Creates the popup menu to be displayed.
+ ***/
+static GtkWidget *
+create_popup_menu (GtkWidget *drawing_area)
+{
+  GtkWidget *menu;
+  GtkWidget *menu_item;
+
+  menu = gtk_menu_new ();
+
+  /* Toggle animation */
+  menu_item = gtk_menu_item_new_with_label ("Toggle Animation");
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+  g_signal_connect_swapped (G_OBJECT (menu_item), "activate",
+			    G_CALLBACK (toggle_animation), drawing_area);
+  gtk_widget_show (menu_item);
+
+  /* Quit */
+  menu_item = gtk_menu_item_new_with_label ("Quit");
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+  g_signal_connect (G_OBJECT (menu_item), "activate",
+		    G_CALLBACK (gtk_main_quit), NULL);
+  gtk_widget_show (menu_item);
+	
+  return menu;
+}
+
+/***
+ *** Creates the simple application window with one
+ *** drawing area that has an OpenGL-capable visual.
  ***/
 static GtkWidget *
 create_window (GdkGLConfig *glconfig)
 {
   GtkWidget *window;
+  GtkWidget *vbox;
   GtkWidget *drawing_area;
+  GtkWidget *menu;
+  GtkWidget *button;
 
-  /* Top-level window. */
+  /*
+   * Top-level window.
+   */
+
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window), DEFAULT_TITLE);
 
-  /* Drawing area to draw OpenGL scene. */
+  /*
+   * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
+   * a top-level window, we have to set OpenGL window's colormap to the
+   * top-level window.
+   */
+  gtk_widget_set_colormap (window, gdk_gl_config_get_colormap (glconfig));
+
+  /* Connect signal handlers to the window */
+  g_signal_connect (G_OBJECT (window), "delete_event",
+		    G_CALLBACK (gtk_main_quit), NULL);
+
+  /*
+   * VBox.
+   */
+
+  vbox = gtk_vbox_new (FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (window), vbox);
+  gtk_widget_show (vbox);
+
+  /*
+   * Drawing area to draw OpenGL scene.
+   */
+
   drawing_area = gtk_drawing_area_new ();
   gtk_widget_set_size_request (drawing_area, DEFAULT_WIDTH, DEFAULT_HEIGHT);
+
+  gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
 
   gtk_widget_set_events (drawing_area,
 			 GDK_EXPOSURE_MASK          |
@@ -388,21 +514,12 @@ create_window (GdkGLConfig *glconfig)
 			 GDK_BUTTON_PRESS_MASK      |
 			 GDK_VISIBILITY_NOTIFY_MASK);
 
-  gtk_container_add (GTK_CONTAINER (window), drawing_area);
-  gtk_widget_show (drawing_area);
-
   /* Set OpenGL-capability to the widget */
   gtk_widget_set_gl_capability (drawing_area,
 				glconfig,
 				NULL,
 				TRUE,
 				GDK_GL_RGBA_TYPE);
-
-  /* Connect signal handlers to the window */
-  g_signal_connect (G_OBJECT (window), "delete_event",
-		    G_CALLBACK (gtk_main_quit), NULL);
-  g_signal_connect_swapped (G_OBJECT (window), "key_press_event",
-			    G_CALLBACK (key_press_event), drawing_area);
 
   /* Connect signal handlers to the drawing area */
   g_signal_connect (G_OBJECT (drawing_area), "realize",
@@ -411,18 +528,51 @@ create_window (GdkGLConfig *glconfig)
 		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
 		    G_CALLBACK (expose_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "motion_notify_event",
+		    G_CALLBACK (motion_notify_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "button_press_event",
+		    G_CALLBACK (button_press_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "unrealize",
+		    G_CALLBACK (unrealize), NULL);
+
+  /* key_press_event handler for top-level window */
+  g_signal_connect_swapped (G_OBJECT (window), "key_press_event",
+			    G_CALLBACK (key_press_event), drawing_area);
+
+  /* For idle function. */
   g_signal_connect (G_OBJECT (drawing_area), "map_event",
 		    G_CALLBACK (map_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "unmap_event",
 		    G_CALLBACK (unmap_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "visibility_notify_event",
 		    G_CALLBACK (visibility_notify_event), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "motion_notify_event",
-		    G_CALLBACK (motion_notify_event), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "button_press_event",
-		    G_CALLBACK (button_press_event), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "destroy",
-		    G_CALLBACK (destroy), NULL);
+
+  /* Destroy drawing_area on quit explicitly (for unrealize() handler). */
+  gtk_quit_add_destroy (gtk_main_level () + 1,
+			GTK_OBJECT (drawing_area));
+
+  gtk_widget_show (drawing_area);
+
+  /*
+   * Popup menu.
+   */
+
+  menu = create_popup_menu (drawing_area);
+
+  g_signal_connect_swapped (G_OBJECT (drawing_area), "button_press_event",
+			    G_CALLBACK (button_press_event_popup_menu), menu);
+
+  /*
+   * Simple quit button.
+   */
+
+  button = gtk_button_new_with_label ("Quit");
+  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+
+  g_signal_connect (G_OBJECT (button), "clicked",
+                    G_CALLBACK (gtk_main_quit), NULL);
+
+  gtk_widget_show (button);
 
   return window;
 }
@@ -433,18 +583,12 @@ create_window (GdkGLConfig *glconfig)
  **************************************************************************/
 
 /***
- *** Utility function to configure the OpenGL framebuffer.
+ *** Configure the OpenGL framebuffer.
  ***/
 static GdkGLConfig *
 configure_gl (void)
 {
   GdkGLConfig *glconfig;
-
-  if (!gdk_gl_query_extension ())
-    {
-      g_print("\n*** OpenGL is not supported.\n");
-      exit(1);
-    }
 
   /* Try double-buffered visual */
   glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB    |
@@ -452,16 +596,16 @@ configure_gl (void)
 					GDK_GL_MODE_DOUBLE);
   if (glconfig == NULL)
     {
-      g_print("\n*** Cannot find the double-buffered visual.\n");
-      g_print("\n*** Trying single-buffered visual.\n");
+      g_print ("\n*** Cannot find the double-buffered visual.\n");
+      g_print ("\n*** Trying single-buffered visual.\n");
 
       /* Try single-buffered visual */
       glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB   |
 					    GDK_GL_MODE_DEPTH);
       if (glconfig == NULL)
 	{
-	  g_print("*** No appropriate OpenGL-capable visual found.\n");
-	  exit(1);
+	  g_print ("*** No appropriate OpenGL-capable visual found.\n");
+	  exit (1);
 	}
     }
 
@@ -474,15 +618,21 @@ configure_gl (void)
  **************************************************************************/
 
 int
-main (int    argc,
-      char **argv)
+main (int   argc,
+      char *argv[])
 {
   GtkWidget *window;
   GdkGLConfig *glconfig;
 
-  /* Initialize Gtk. */
-  gtk_set_locale ();
+  /* Initialize GTK. */
   gtk_init (&argc, &argv);
+
+  /* OpenGL is supported? */
+  if (!gdk_gl_query_extension ())
+    {
+      g_print ("\n*** OpenGL is not supported.\n");
+      exit (1);
+    }
 
   /* Configure OpenGL framebuffer. */
   glconfig = configure_gl ();

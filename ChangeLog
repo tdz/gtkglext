@@ -1,3 +1,21 @@
+2002-12-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/low-level.c: 
+	* examples/simple.c: 
+	* examples/simple-mixed.c: 
+	* examples/pixmap.c: 
+	* examples/pixmap-mixed.c: 
+	* examples/color.c: 
+	* examples/font.c: 
+	* examples/logo.c: 
+	* examples/gears.c: 
+	* examples/multiarb.c: 
+	* examples/viewlw.c: 
+	* examples/rotating-square.c: 
+	* examples/coolwave.c: 
+	* examples/template.c: Clean up codes. Set appropriate OpenGL
+	colormap to the top-level window.
+
 2002-12-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/rotating-square.c: 

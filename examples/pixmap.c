@@ -19,69 +19,6 @@ static GdkGLContext *glcontext = NULL;
 static GdkPixmap *pixmap = NULL;
 
 static void
-print_gl_config_attrib (GdkGLConfig *glconfig,
-                        const gchar *attrib_str,
-                        int          attrib,
-                        gboolean     is_boolean)
-{
-  int value;
-
-  g_print ("%s = ", attrib_str);
-  if (gdk_gl_config_get_attrib (glconfig, attrib, &value))
-    {
-      if (is_boolean)
-        g_print ("%s\n", value == TRUE ? "TRUE" : "FALSE");
-      else
-        g_print ("%d\n", value);
-    }
-  else
-    g_print ("*** Cannot get %s attribute value\n", attrib_str);
-}
-
-static void
-examine_gl_config_attrib (GdkGLConfig *glconfig)
-{
-  g_print ("\nOpenGL visual configurations :\n\n");
-
-  g_print ("gdk_gl_config_is_rgba (glconfig) = %s\n",
-           gdk_gl_config_is_rgba (glconfig) ? "TRUE" : "FALSE");
-  g_print ("gdk_gl_config_is_double_buffered (glconfig) = %s\n",
-           gdk_gl_config_is_double_buffered (glconfig) ? "TRUE" : "FALSE");
-  g_print ("gdk_gl_config_is_stereo (glconfig) = %s\n",
-           gdk_gl_config_is_stereo (glconfig) ? "TRUE" : "FALSE");
-  g_print ("gdk_gl_config_has_alpha (glconfig) = %s\n",
-           gdk_gl_config_has_alpha (glconfig) ? "TRUE" : "FALSE");
-  g_print ("gdk_gl_config_has_depth_buffer (glconfig) = %s\n",
-           gdk_gl_config_has_depth_buffer (glconfig) ? "TRUE" : "FALSE");
-  g_print ("gdk_gl_config_has_stencil_buffer (glconfig) = %s\n",
-           gdk_gl_config_has_stencil_buffer (glconfig) ? "TRUE" : "FALSE");
-  g_print ("gdk_gl_config_has_accum_buffer (glconfig) = %s\n",
-           gdk_gl_config_has_accum_buffer (glconfig) ? "TRUE" : "FALSE");
-
-  g_print ("\n");
-
-  print_gl_config_attrib (glconfig, "GDK_GL_USE_GL",           GDK_GL_USE_GL,           TRUE);
-  print_gl_config_attrib (glconfig, "GDK_GL_BUFFER_SIZE",      GDK_GL_BUFFER_SIZE,      FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_LEVEL",            GDK_GL_LEVEL,            FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_RGBA",             GDK_GL_RGBA,             TRUE);
-  print_gl_config_attrib (glconfig, "GDK_GL_DOUBLEBUFFER",     GDK_GL_DOUBLEBUFFER,     TRUE);
-  print_gl_config_attrib (glconfig, "GDK_GL_STEREO",           GDK_GL_STEREO,           TRUE);
-  print_gl_config_attrib (glconfig, "GDK_GL_AUX_BUFFERS",      GDK_GL_AUX_BUFFERS,      FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_RED_SIZE",         GDK_GL_RED_SIZE,         FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_GREEN_SIZE",       GDK_GL_GREEN_SIZE,       FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_BLUE_SIZE",        GDK_GL_BLUE_SIZE,        FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_ALPHA_SIZE",       GDK_GL_ALPHA_SIZE,       FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_DEPTH_SIZE",       GDK_GL_DEPTH_SIZE,       FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_STENCIL_SIZE",     GDK_GL_STENCIL_SIZE,     FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_RED_SIZE",   GDK_GL_ACCUM_RED_SIZE,   FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_GREEN_SIZE", GDK_GL_ACCUM_GREEN_SIZE, FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_BLUE_SIZE",  GDK_GL_ACCUM_BLUE_SIZE,  FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_ALPHA_SIZE", GDK_GL_ACCUM_ALPHA_SIZE, FALSE);
-
-  g_print ("\n");
-}
-
-static void
 init (void)
 {
   GLUquadricObj *qobj;
@@ -165,7 +102,7 @@ configure (GtkWidget         *widget,
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
-    goto NO_GL;
+    return FALSE;
 
   if (!is_initialized)
     {
@@ -184,21 +121,6 @@ configure (GtkWidget         *widget,
 
   gdk_gl_drawable_gl_end (gldrawable);
   /*** OpenGL END ***/
-
- NO_GL:
-
-#if 0
-
-  gdk_draw_arc (GDK_DRAWABLE (gldrawable),
-                widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
-                TRUE,
-                0.4*widget->allocation.width,
-                0.4*widget->allocation.height,
-                0.2*widget->allocation.width,
-                0.2*widget->allocation.height,
-                0, 64 * 360);
-
-#endif
 
   return TRUE;
 }
@@ -230,18 +152,71 @@ destroy_gl_context (gpointer data)
   return FALSE;
 }
 
-static gint
-quit (GtkWidget *widget,
-      GdkEvent  *event,
-      gpointer   data)
+static void
+print_gl_config_attrib (GdkGLConfig *glconfig,
+                        const gchar *attrib_str,
+                        int          attrib,
+                        gboolean     is_boolean)
 {
-  gtk_main_quit ();
+  int value;
 
-  return FALSE;
+  g_print ("%s = ", attrib_str);
+  if (gdk_gl_config_get_attrib (glconfig, attrib, &value))
+    {
+      if (is_boolean)
+        g_print ("%s\n", value == TRUE ? "TRUE" : "FALSE");
+      else
+        g_print ("%d\n", value);
+    }
+  else
+    g_print ("*** Cannot get %s attribute value\n", attrib_str);
+}
+
+static void
+examine_gl_config_attrib (GdkGLConfig *glconfig)
+{
+  g_print ("\nOpenGL visual configurations :\n\n");
+
+  g_print ("gdk_gl_config_is_rgba (glconfig) = %s\n",
+           gdk_gl_config_is_rgba (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_is_double_buffered (glconfig) = %s\n",
+           gdk_gl_config_is_double_buffered (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_is_stereo (glconfig) = %s\n",
+           gdk_gl_config_is_stereo (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_alpha (glconfig) = %s\n",
+           gdk_gl_config_has_alpha (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_depth_buffer (glconfig) = %s\n",
+           gdk_gl_config_has_depth_buffer (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_stencil_buffer (glconfig) = %s\n",
+           gdk_gl_config_has_stencil_buffer (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_accum_buffer (glconfig) = %s\n",
+           gdk_gl_config_has_accum_buffer (glconfig) ? "TRUE" : "FALSE");
+
+  g_print ("\n");
+
+  print_gl_config_attrib (glconfig, "GDK_GL_USE_GL",           GDK_GL_USE_GL,           TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_BUFFER_SIZE",      GDK_GL_BUFFER_SIZE,      FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_LEVEL",            GDK_GL_LEVEL,            FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_RGBA",             GDK_GL_RGBA,             TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_DOUBLEBUFFER",     GDK_GL_DOUBLEBUFFER,     TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_STEREO",           GDK_GL_STEREO,           TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_AUX_BUFFERS",      GDK_GL_AUX_BUFFERS,      FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_RED_SIZE",         GDK_GL_RED_SIZE,         FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_GREEN_SIZE",       GDK_GL_GREEN_SIZE,       FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_BLUE_SIZE",        GDK_GL_BLUE_SIZE,        FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ALPHA_SIZE",       GDK_GL_ALPHA_SIZE,       FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_DEPTH_SIZE",       GDK_GL_DEPTH_SIZE,       FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_STENCIL_SIZE",     GDK_GL_STENCIL_SIZE,     FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_RED_SIZE",   GDK_GL_ACCUM_RED_SIZE,   FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_GREEN_SIZE", GDK_GL_ACCUM_GREEN_SIZE, FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_BLUE_SIZE",  GDK_GL_ACCUM_BLUE_SIZE,  FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_ALPHA_SIZE", GDK_GL_ACCUM_ALPHA_SIZE, FALSE);
+
+  g_print ("\n");
 }
 
 int
-main (int argc,
+main (int   argc,
       char *argv[])
 {
   gint major, minor;
@@ -290,8 +265,15 @@ main (int argc,
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window), "pixmap");
 
+  /*
+   * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
+   * a top-level window, we have to set OpenGL window's colormap to the
+   * top-level window.
+   */
+  gtk_widget_set_colormap (window, gdk_gl_config_get_colormap (glconfig));
+
   g_signal_connect (G_OBJECT (window), "delete_event",
-                    G_CALLBACK (quit), NULL);
+                    G_CALLBACK (gtk_main_quit), NULL);
 
   vbox = gtk_vbox_new (FALSE, 0);
   gtk_container_add (GTK_CONTAINER (window), vbox);
@@ -329,7 +311,7 @@ main (int argc,
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect (G_OBJECT (button), "clicked",
-                    G_CALLBACK (quit), NULL);
+                    G_CALLBACK (gtk_main_quit), NULL);
 
   gtk_widget_show (button);
 

@@ -12,7 +12,7 @@
 #include "logo-model.h"
 
 void
-logo_draw_cube(void)
+logo_draw_cube (void)
 {
   static GLfloat n[6][3] = {
     { -1.0,  0.0,  0.0 },
@@ -42,19 +42,20 @@ logo_draw_cube(void)
   };
   GLint i;
 
-  for (i = 5; i >= 0; i--) {
-    glBegin(GL_QUADS);
-      glNormal3fv(&n[i][0]);
-      glVertex3fv(&v[faces[i][0]][0]);
-      glVertex3fv(&v[faces[i][1]][0]);
-      glVertex3fv(&v[faces[i][2]][0]);
-      glVertex3fv(&v[faces[i][3]][0]);
-    glEnd();
-  }
+  for (i = 5; i >= 0; i--)
+    {
+      glBegin(GL_QUADS);
+        glNormal3fv(&n[i][0]);
+        glVertex3fv(&v[faces[i][0]][0]);
+        glVertex3fv(&v[faces[i][1]][0]);
+        glVertex3fv(&v[faces[i][2]][0]);
+        glVertex3fv(&v[faces[i][3]][0]);
+      glEnd();
+    }
 }
 
 void
-logo_draw_g_plane(void)
+logo_draw_g_plane (void)
 {
   static GLfloat n[3] = {
     0.0, 1.0, 0.0
@@ -76,7 +77,7 @@ logo_draw_g_plane(void)
 }
 
 void
-logo_draw_t_plane(void)
+logo_draw_t_plane (void)
 {
   static GLfloat n[3] = {
     0.0, 0.0, 1.0
@@ -98,7 +99,7 @@ logo_draw_t_plane(void)
 }
 
 void
-logo_draw_k_plane()
+logo_draw_k_plane ()
 {
   static GLfloat n[3] = {
     1.0, 0.0, 0.0
@@ -120,7 +121,9 @@ logo_draw_k_plane()
 }
 
 static void
-logo_draw_triangle(GLfloat *v0, GLfloat *v1, GLfloat *v2)
+logo_draw_triangle (GLfloat *v0,
+		    GLfloat *v1,
+		    GLfloat *v2)
 {
   GLfloat w0[3], w1[3];
   GLfloat n[3], m;
@@ -138,12 +141,13 @@ logo_draw_triangle(GLfloat *v0, GLfloat *v1, GLfloat *v2)
   n[2] = w0[0]*w1[1] - w0[1]*w1[0];
 
   m = n[0]*n[0] + n[1]*n[1] + n[2]*n[2];
-  if (m > 0.0) {
-    m = 1.0 / sqrt(m);
-    n[0] *= m;
-    n[1] *= m;
-    n[2] *= m;
-  }
+  if (m > 0.0)
+    {
+      m = 1.0 / sqrt(m);
+      n[0] *= m;
+      n[1] *= m;
+      n[2] *= m;
+    }
 
   glBegin(GL_TRIANGLES);
     glNormal3fv(&n[0]);
@@ -157,7 +161,7 @@ logo_draw_triangle(GLfloat *v0, GLfloat *v1, GLfloat *v2)
 #include "logo-g.c"
 
 void
-logo_draw_g(void)
+logo_draw_g (void)
 {
   GLint i;
 
@@ -171,7 +175,7 @@ logo_draw_g(void)
 #include "logo-t.c"
 
 void
-logo_draw_t(void)
+logo_draw_t (void)
 {
   GLint i;
 
@@ -185,7 +189,7 @@ logo_draw_t(void)
 #include "logo-k.c"
 
 void
-logo_draw_k(void)
+logo_draw_k (void)
 {
   GLint i;
 

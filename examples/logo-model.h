@@ -15,21 +15,21 @@ extern "C" {
 /*
  * Draw center cube.
  */
-void logo_draw_cube(void);
+void logo_draw_cube (void);
 
 /*
  * Draw "G", "T", "K" color planes.
  */
-void logo_draw_g_plane(void);
-void logo_draw_t_plane(void);
-void logo_draw_k_plane(void);
+void logo_draw_g_plane (void);
+void logo_draw_t_plane (void);
+void logo_draw_k_plane (void);
 
 /*
  * Draw "G", "T", "K" 3D characters.
  */
-void logo_draw_g(void);
-void logo_draw_t(void);
-void logo_draw_k(void);
+void logo_draw_g (void);
+void logo_draw_t (void);
+void logo_draw_k (void);
 
 #ifdef __cplusplus
 }

@@ -60,7 +60,7 @@ static float view_quat[4] = { 0.0, 0.0, 0.0, 1.0 };
 static float view_scale = 1.0;
 
 static void
-init_logo_quat(void)
+init_logo_quat (void)
 {
   logo_quat[0] = 0.0;
   logo_quat[1] = 0.0;
@@ -69,22 +69,22 @@ init_logo_quat(void)
 }
 
 static void
-init_view(void)
+init_view (void)
 {
-  float sine = sin(0.5 * VIEW_INIT_ANGLE * DIG_2_RAD);
+  float sine = sin (0.5 * VIEW_INIT_ANGLE * DIG_2_RAD);
   view_quat[0] = VIEW_INIT_AXIS_X * sine;
   view_quat[1] = VIEW_INIT_AXIS_Y * sine;
   view_quat[2] = VIEW_INIT_AXIS_Z * sine;
-  view_quat[3] = cos(0.5 * VIEW_INIT_ANGLE * DIG_2_RAD);
+  view_quat[3] = cos (0.5 * VIEW_INIT_ANGLE * DIG_2_RAD);
   view_scale = 1.0;
 }
 
 static void
-realize(GtkWidget *widget,
-        gpointer   data)
+realize (GtkWidget *widget,
+	 gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
   static GLfloat light0_position[] = { 0.0, 0.0, 30.0, 0.0 };
   static GLfloat light0_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
@@ -98,159 +98,157 @@ realize(GtkWidget *widget,
   static GLfloat mat_blue[]      = { 0.0, 0.0, 1.0, 1.0 };
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
     return;
 
-  glClearColor(0.5, 0.5, 0.8, 1.0);
-  glClearDepth(1.0);
+  glClearColor (0.5, 0.5, 0.8, 1.0);
+  glClearDepth (1.0);
 
-  glLightfv(GL_LIGHT0, GL_POSITION, light0_position);
-  glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diffuse);
-  glLightfv(GL_LIGHT0, GL_SPECULAR, light0_specular);
+  glLightfv (GL_LIGHT0, GL_POSITION, light0_position);
+  glLightfv (GL_LIGHT0, GL_DIFFUSE, light0_diffuse);
+  glLightfv (GL_LIGHT0, GL_SPECULAR, light0_specular);
 
-  glEnable(GL_LIGHTING);
-  glEnable(GL_LIGHT0);
-  glEnable(GL_DEPTH_TEST);
+  glEnable (GL_LIGHTING);
+  glEnable (GL_LIGHT0);
+  glEnable (GL_DEPTH_TEST);
 
-  glEnable(GL_CULL_FACE);
+  glEnable (GL_CULL_FACE);
 
-  glShadeModel(GL_SMOOTH);
+  glShadeModel (GL_SMOOTH);
 
-  glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-  glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+  glMaterialfv (GL_FRONT, GL_SPECULAR, mat_specular);
+  glMaterialfv (GL_FRONT, GL_SHININESS, mat_shininess);
 
   /* Center black cube. */
-  glNewList(LOGO_CUBE, GL_COMPILE);
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
-    logo_draw_cube();
-  glEndList();
+  glNewList (LOGO_CUBE, GL_COMPILE);
+    glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
+    logo_draw_cube ();
+  glEndList ();
 
   /* Forward "G". */
-  glNewList(LOGO_G_FORWARD, GL_COMPILE);
-    glDisable(GL_CULL_FACE);
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_blue);
-    logo_draw_g_plane();
-    glEnable(GL_CULL_FACE);
+  glNewList (LOGO_G_FORWARD, GL_COMPILE);
+    glDisable (GL_CULL_FACE);
+    glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_blue);
+    logo_draw_g_plane ();
+    glEnable (GL_CULL_FACE);
 
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
-    logo_draw_g();
-  glEndList();
+    glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
+    logo_draw_g ();
+  glEndList ();
 
   /* Backward "G". */
-  glNewList(LOGO_G_BACKWARD, GL_COMPILE);
-    glPushMatrix();
-      glRotatef(180.0, 1.0, 0.0, 0.0);
+  glNewList (LOGO_G_BACKWARD, GL_COMPILE);
+    glPushMatrix ();
+      glRotatef (180.0, 1.0, 0.0, 0.0);
 
-      glDisable(GL_CULL_FACE);
-      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_blue);
-      logo_draw_g_plane();
-      glEnable(GL_CULL_FACE);
+      glDisable (GL_CULL_FACE);
+      glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_blue);
+      logo_draw_g_plane ();
+      glEnable (GL_CULL_FACE);
 
-      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
-      logo_draw_g();
+      glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
+      logo_draw_g ();
 
-    glPopMatrix();
-  glEndList();
+    glPopMatrix ();
+  glEndList ();
 
   /* Forward "T". */
-  glNewList(LOGO_T_FORWARD, GL_COMPILE);
-    glDisable(GL_CULL_FACE);
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_red);
-    logo_draw_t_plane();
-    glEnable(GL_CULL_FACE);
+  glNewList (LOGO_T_FORWARD, GL_COMPILE);
+    glDisable (GL_CULL_FACE);
+    glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_red);
+    logo_draw_t_plane ();
+    glEnable (GL_CULL_FACE);
 
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
-    logo_draw_t();
-  glEndList();
+    glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
+    logo_draw_t ();
+  glEndList ();
 
   /* Backward "T". */
-  glNewList(LOGO_T_BACKWARD, GL_COMPILE);
-    glPushMatrix();
-      glRotatef(180.0, 1.0, 0.0, 0.0);
+  glNewList (LOGO_T_BACKWARD, GL_COMPILE);
+    glPushMatrix ();
+      glRotatef (180.0, 1.0, 0.0, 0.0);
 
-      glDisable(GL_CULL_FACE);
-      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_red);
-      logo_draw_t_plane();
-      glEnable(GL_CULL_FACE);
+      glDisable (GL_CULL_FACE);
+      glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_red);
+      logo_draw_t_plane ();
+      glEnable (GL_CULL_FACE);
 
-      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
-      logo_draw_t();
+      glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
+      logo_draw_t ();
 
-    glPopMatrix();
-  glEndList();
+    glPopMatrix ();
+  glEndList ();
 
   /* Forward "K". */
-  glNewList(LOGO_K_FORWARD, GL_COMPILE);
-    glDisable(GL_CULL_FACE);
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_green);
-    logo_draw_k_plane();
-    glEnable(GL_CULL_FACE);
+  glNewList (LOGO_K_FORWARD, GL_COMPILE);
+    glDisable (GL_CULL_FACE);
+    glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_green);
+    logo_draw_k_plane ();
+    glEnable (GL_CULL_FACE);
 
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
-    logo_draw_k();
-  glEndList();
+    glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
+    logo_draw_k ();
+  glEndList ();
 
   /* Backward "K". */
-  glNewList(LOGO_K_BACKWARD, GL_COMPILE);
-    glPushMatrix();
-      glRotatef(180.0, 0.0, 0.0, 1.0);
+  glNewList (LOGO_K_BACKWARD, GL_COMPILE);
+    glPushMatrix ();
+      glRotatef (180.0, 0.0, 0.0, 1.0);
 
-      glDisable(GL_CULL_FACE);
-      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_green);
-      logo_draw_k_plane();
-      glEnable(GL_CULL_FACE);
+      glDisable (GL_CULL_FACE);
+      glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_green);
+      logo_draw_k_plane ();
+      glEnable (GL_CULL_FACE);
 
-      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
-      logo_draw_k();
-    glPopMatrix();
-  glEndList();
+      glMaterialfv (GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
+      logo_draw_k ();
+    glPopMatrix ();
+  glEndList ();
 
   glEnable(GL_NORMALIZE);
 
   /* Init logo orientation. */
-  init_logo_quat();
+  init_logo_quat ();
 
   /* Init view. */
-  init_view();
+  init_view ();
 
-  gdk_gl_drawable_gl_end(gldrawable);
+  gdk_gl_drawable_gl_end (gldrawable);
   /*** OpenGL END ***/
 
   /* create timer */
   if (timer == NULL)
-    timer = g_timer_new();
+    timer = g_timer_new ();
 
-  g_timer_start(timer);
+  g_timer_start (timer);
 }
 
 static gboolean
-configure_event(GtkWidget         *widget,
-                GdkEventConfigure *event,
-                gpointer           data)
+configure_event (GtkWidget         *widget,
+		 GdkEventConfigure *event,
+		 gpointer           data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
   GLfloat w = widget->allocation.width;
   GLfloat h = widget->allocation.height;
   GLfloat aspect = h / w;
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
-    goto NO_GL;
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    return FALSE;
 
-  glViewport(0, 0, w, h);
+  glViewport (0, 0, w, h);
 
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  glFrustum(-1.0, 1.0, -aspect, aspect, 2.0, 60.0);
+  glMatrixMode (GL_PROJECTION);
+  glLoadIdentity ();
+  glFrustum (-1.0, 1.0, -aspect, aspect, 2.0, 60.0);
 
-  glMatrixMode(GL_MODELVIEW);
+  glMatrixMode (GL_MODELVIEW);
 
-  gdk_gl_drawable_gl_end(gldrawable);
+  gdk_gl_drawable_gl_end (gldrawable);
   /*** OpenGL END ***/
-
- NO_GL:
 
   return TRUE;
 }
@@ -283,95 +281,97 @@ static int mode = 0;
 static int counter = 0;
 
 static gboolean
-expose_event(GtkWidget      *widget,
-             GdkEventExpose *event,
-             gpointer        data)
+expose_event (GtkWidget      *widget,
+	      GdkEventExpose *event,
+	      gpointer        data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
   float d_quat[4];
   float m[4][4];
 
-  if (enable_logo_anim) {
+  if (enable_logo_anim)
+    {
 
-    if (counter == rot_count) {
-      if (rot_mode[++mode].axis == NULL)
-        mode = 0;
-      counter = 0;
+      if (counter == rot_count)
+	{
+	  if (rot_mode[++mode].axis == NULL)
+	    mode = 0;
+	  counter = 0;
+	}
+
+      axis_to_quat (rot_mode[mode].axis,
+		    rot_mode[mode].sign * M_PI_2 / rot_count,
+		    d_quat);
+      add_quats (d_quat, logo_quat, logo_quat);
+
+      counter++;
+
     }
 
-    axis_to_quat(rot_mode[mode].axis,
-                 rot_mode[mode].sign * M_PI_2 / rot_count,
-                 d_quat);
-    add_quats(d_quat, logo_quat, logo_quat);
-
-    counter++;
-
-  }
-
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
-    goto NO_GL;
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    return FALSE;
 
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  glLoadIdentity();
+  glLoadIdentity ();
 
   /* View transformation. */
-  glTranslatef(0.0, 0.0, -30.0);
-  glScalef(view_scale, view_scale, view_scale);
-  build_rotmatrix(m, view_quat);
-  glMultMatrixf(&m[0][0]);
+  glTranslatef (0.0, 0.0, -30.0);
+  glScalef (view_scale, view_scale, view_scale);
+  build_rotmatrix (m, view_quat);
+  glMultMatrixf (&m[0][0]);
 
   /* Logo model. */
-  glPushMatrix();
-    build_rotmatrix(m, logo_quat);
-    glMultMatrixf(&m[0][0]);
+  glPushMatrix ();
+    build_rotmatrix (m, logo_quat);
+    glMultMatrixf (&m[0][0]);
 
-    glRotatef(90.0, 1.0, 0.0, 0.0);
-    glCallList(LOGO_CUBE);
-    glCallList(LOGO_G_FORWARD);
-    glCallList(LOGO_G_BACKWARD);
-    glCallList(LOGO_T_FORWARD);
-    glCallList(LOGO_T_BACKWARD);
-    glCallList(LOGO_K_FORWARD);
-    glCallList(LOGO_K_BACKWARD);
-  glPopMatrix();
+    glRotatef (90.0, 1.0, 0.0, 0.0);
+    glCallList (LOGO_CUBE);
+    glCallList (LOGO_G_FORWARD);
+    glCallList (LOGO_G_BACKWARD);
+    glCallList (LOGO_T_FORWARD);
+    glCallList (LOGO_T_BACKWARD);
+    glCallList (LOGO_K_FORWARD);
+    glCallList (LOGO_K_BACKWARD);
+  glPopMatrix ();
 
   /* Swap buffers. */
-  if (gdk_gl_drawable_is_double_buffered(gldrawable))
-    gdk_gl_drawable_swap_buffers(gldrawable);
+  if (gdk_gl_drawable_is_double_buffered (gldrawable))
+    gdk_gl_drawable_swap_buffers (gldrawable);
   else
-    glFlush();
+    glFlush ();
 
-  gdk_gl_drawable_gl_end(gldrawable);
+  gdk_gl_drawable_gl_end (gldrawable);
   /*** OpenGL END ***/
-
- NO_GL:
 
   /* Frame counter. */
 
   frames++;
 
-  if (enable_logo_anim) {
-    gdouble seconds = g_timer_elapsed(timer, NULL);
-    if (seconds >= 5.0) {
-      gdouble fps = frames / seconds;
-      g_print("%d frames in %6.3f seconds = %6.3f FPS\n",
-              frames, seconds, fps);
-      g_timer_reset(timer);
-      frames = 0;
+  if (enable_logo_anim)
+    {
+      gdouble seconds = g_timer_elapsed (timer, NULL);
+      if (seconds >= 5.0)
+	{
+	  gdouble fps = frames / seconds;
+	  g_print ("%d frames in %6.3f seconds = %6.3f FPS\n",
+		   frames, seconds, fps);
+	  g_timer_reset (timer);
+	  frames = 0;
+	}
     }
-  }
 
   return TRUE;
 }
 
 static gboolean
-idle(GtkWidget *widget)
+idle (GtkWidget *widget)
 {
-  gtk_widget_queue_draw(widget);
+  gtk_widget_queue_draw (widget);
 
   return TRUE;
 }
@@ -379,53 +379,59 @@ idle(GtkWidget *widget)
 static guint idle_id = 0;
 
 static void
-idle_add(GtkWidget *widget)
+idle_add (GtkWidget *widget)
 {
-  if (idle_id == 0) {
-    idle_id = gtk_idle_add_priority(GDK_PRIORITY_REDRAW,
-                                    (GtkFunction)idle,
-                                    widget);
-  }
+  if (idle_id == 0)
+    {
+      idle_id = gtk_idle_add_priority (GDK_PRIORITY_REDRAW,
+				       (GtkFunction) idle,
+				       widget);
+    }
 }
 
 static void
-idle_remove(GtkWidget *widget)
+idle_remove (GtkWidget *widget)
 {
-  if (idle_id != 0) {
-    gtk_idle_remove(idle_id);
-    idle_id = 0;
-  }
+  if (idle_id != 0)
+    {
+      gtk_idle_remove (idle_id);
+      idle_id = 0;
+    }
 }
 
 static gboolean
-map_event(GtkWidget   *widget,
-          GdkEventAny *event,
-          gpointer     data)
+map_event (GtkWidget   *widget,
+	   GdkEventAny *event,
+	   gpointer     data)
 {
-  idle_add(widget);
+  if (enable_logo_anim)
+    idle_add (widget);
 
   return TRUE;
 }
 
 static gboolean
-unmap_event(GtkWidget   *widget,
-            GdkEventAny *event,
-            gpointer     data)
+unmap_event (GtkWidget   *widget,
+	     GdkEventAny *event,
+	     gpointer     data)
 {
-  idle_remove(widget);
+  idle_remove (widget);
 
   return TRUE;
 }
 
 static gboolean
-visibility_notify_event(GtkWidget          *widget,
-                        GdkEventVisibility *event,
-                        gpointer            data)
+visibility_notify_event (GtkWidget          *widget,
+			 GdkEventVisibility *event,
+			 gpointer            data)
 {
-  if (event->state == GDK_VISIBILITY_FULLY_OBSCURED)
-    idle_remove(widget);
-  else
-    idle_add(widget);
+  if (enable_logo_anim)
+    {
+      if (event->state == GDK_VISIBILITY_FULLY_OBSCURED)
+	idle_remove (widget);
+      else
+	idle_add (widget);
+    }
 
   return TRUE;
 }
@@ -434,14 +440,16 @@ static float begin_x = 0.0;
 static float begin_y = 0.0;
 
 static gboolean
-button_press_event(GtkWidget      *widget,
-                   GdkEventButton *event,
-                   gpointer        data)
+button_press_event (GtkWidget      *widget,
+		    GdkEventButton *event,
+		    GtkWidget      *menu)
 {
   /* Popup menu. */
   if (event->button == 3)
-    gtk_menu_popup(GTK_MENU(widget), NULL, NULL, NULL, NULL,
-                   event->button, event->time);
+    {
+      gtk_menu_popup (GTK_MENU(menu), NULL, NULL, NULL, NULL,
+		      event->button, event->time);
+    }
 
   begin_x = event->x;
   begin_y = event->y;
@@ -450,9 +458,9 @@ button_press_event(GtkWidget      *widget,
 }
 
 static gboolean
-motion_notify_event(GtkWidget      *widget,
-                    GdkEventMotion *event,
-                    gpointer        data)
+motion_notify_event (GtkWidget      *widget,
+		     GdkEventMotion *event,
+		     gpointer        data)
 {
   float w = widget->allocation.width;
   float h = widget->allocation.height;
@@ -462,144 +470,147 @@ motion_notify_event(GtkWidget      *widget,
   gboolean redraw = FALSE;
 
   /* Rotation. */
-  if (event->state & GDK_BUTTON1_MASK) {
-    trackball(d_quat,
-              (2.0 * begin_x - w) / w,
-              (h - 2.0 * begin_y) / h,
-              (2.0 * x - w) / w,
-              (h - 2.0 * y) / h);
-    add_quats(d_quat, view_quat, view_quat);
-    redraw = TRUE;
-  }
+  if (event->state & GDK_BUTTON1_MASK)
+    {
+      trackball (d_quat,
+		 (2.0 * begin_x - w) / w,
+		 (h - 2.0 * begin_y) / h,
+		 (2.0 * x - w) / w,
+		 (h - 2.0 * y) / h);
+      add_quats (d_quat, view_quat, view_quat);
+      redraw = TRUE;
+    }
 
   /* Scaling. */
-  if (event->state & GDK_BUTTON2_MASK) {
-    view_scale = view_scale * (1.0 + (y - begin_y) / h);
-    if (view_scale > VIEW_SCALE_MAX)
-      view_scale = VIEW_SCALE_MAX;
-    else if (view_scale < VIEW_SCALE_MIN)
-      view_scale = VIEW_SCALE_MIN;
-    redraw = TRUE;
-  }
+  if (event->state & GDK_BUTTON2_MASK)
+    {
+      view_scale = view_scale * (1.0 + (y - begin_y) / h);
+      if (view_scale > VIEW_SCALE_MAX)
+	view_scale = VIEW_SCALE_MAX;
+      else if (view_scale < VIEW_SCALE_MIN)
+	view_scale = VIEW_SCALE_MIN;
+      redraw = TRUE;
+    }
 
   begin_x = x;
   begin_y = y;
 
   if (redraw && !enable_logo_anim)
-    gtk_widget_queue_draw(widget);
+    gtk_widget_queue_draw (widget);
 
   return TRUE;
 }
 
 static void
-toggle_logo_anim(GtkWidget *widget)
+toggle_logo_anim (GtkWidget *widget)
 {
-  enable_logo_anim = enable_logo_anim ? FALSE : TRUE;
+  enable_logo_anim = !enable_logo_anim;
 
   if (enable_logo_anim)
-    idle_add(widget);
+    idle_add (widget);
   else
-    idle_remove(widget);
+    idle_remove (widget);
 }
 
 static void
-init_logo_anim(GtkWidget *widget)
+init_logo_anim (GtkWidget *widget)
 {
-  init_logo_quat();
-  init_view();
+  init_logo_quat ();
+  init_view ();
   mode = 0;
   counter = 0;
 
-  gtk_widget_queue_draw(widget);
+  gtk_widget_queue_draw (widget);
 }
 
 static gboolean
-key_press_event(GtkWidget   *widget,
-                GdkEventKey *event,
-                gpointer     data)
+key_press_event (GtkWidget   *widget,
+		 GdkEventKey *event,
+		 gpointer     data)
 {
-  switch (event->keyval) {
-  case GDK_a:
-    toggle_logo_anim(widget);
-    break;
-  case GDK_i:
-    init_logo_anim(widget);
-    break;
-  case GDK_q:
-    gtk_main_quit();
-    break;
-  default:
-    return TRUE;
-  }
-
-  gtk_widget_queue_draw(widget);
+  switch (event->keyval)
+    {
+    case GDK_a:
+      toggle_logo_anim (widget);
+      break;
+    case GDK_i:
+      init_logo_anim (widget);
+      break;
+    case GDK_Escape:
+      gtk_main_quit ();
+      break;
+    default:
+      return TRUE;
+    }
 
   return TRUE;
 }
 
 static void
-print_gl_config_attrib(GdkGLConfig *glconfig,
-                       const gchar *attrib_str,
-                       int          attrib,
-                       gboolean     is_boolean)
+print_gl_config_attrib (GdkGLConfig *glconfig,
+                        const gchar *attrib_str,
+                        int          attrib,
+                        gboolean     is_boolean)
 {
   int value;
 
-  g_print("%s = ", attrib_str);
-  if (gdk_gl_config_get_attrib(glconfig, attrib, &value)) {
-    if (is_boolean)
-      g_print ("%s\n", value == TRUE ? "TRUE" : "FALSE");
-    else
-      g_print ("%d\n", value);
-  } else
-    g_print("*** Cannot get %s attribute value\n", attrib_str);
+  g_print ("%s = ", attrib_str);
+  if (gdk_gl_config_get_attrib (glconfig, attrib, &value))
+    {
+      if (is_boolean)
+        g_print ("%s\n", value == TRUE ? "TRUE" : "FALSE");
+      else
+        g_print ("%d\n", value);
+    }
+  else
+    g_print ("*** Cannot get %s attribute value\n", attrib_str);
 }
 
 static void
-examine_gl_config_attrib(GdkGLConfig *glconfig)
+examine_gl_config_attrib (GdkGLConfig *glconfig)
 {
-  g_print("\nOpenGL visual configurations :\n\n");
+  g_print ("\nOpenGL visual configurations :\n\n");
 
-  g_print("gdk_gl_config_is_rgba (glconfig) = %s\n",
-          gdk_gl_config_is_rgba (glconfig) ? "TRUE" : "FALSE");
-  g_print("gdk_gl_config_is_double_buffered (glconfig) = %s\n",
-          gdk_gl_config_is_double_buffered (glconfig) ? "TRUE" : "FALSE");
-  g_print("gdk_gl_config_is_stereo (glconfig) = %s\n",
-          gdk_gl_config_is_stereo (glconfig) ? "TRUE" : "FALSE");
-  g_print("gdk_gl_config_has_alpha (glconfig) = %s\n",
-          gdk_gl_config_has_alpha (glconfig) ? "TRUE" : "FALSE");
-  g_print("gdk_gl_config_has_depth_buffer (glconfig) = %s\n",
-          gdk_gl_config_has_depth_buffer (glconfig) ? "TRUE" : "FALSE");
-  g_print("gdk_gl_config_has_stencil_buffer (glconfig) = %s\n",
-          gdk_gl_config_has_stencil_buffer (glconfig) ? "TRUE" : "FALSE");
-  g_print("gdk_gl_config_has_accum_buffer (glconfig) = %s\n",
-          gdk_gl_config_has_accum_buffer (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_is_rgba (glconfig) = %s\n",
+           gdk_gl_config_is_rgba (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_is_double_buffered (glconfig) = %s\n",
+           gdk_gl_config_is_double_buffered (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_is_stereo (glconfig) = %s\n",
+           gdk_gl_config_is_stereo (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_alpha (glconfig) = %s\n",
+           gdk_gl_config_has_alpha (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_depth_buffer (glconfig) = %s\n",
+           gdk_gl_config_has_depth_buffer (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_stencil_buffer (glconfig) = %s\n",
+           gdk_gl_config_has_stencil_buffer (glconfig) ? "TRUE" : "FALSE");
+  g_print ("gdk_gl_config_has_accum_buffer (glconfig) = %s\n",
+           gdk_gl_config_has_accum_buffer (glconfig) ? "TRUE" : "FALSE");
 
-  g_print("\n");
+  g_print ("\n");
 
-  print_gl_config_attrib(glconfig, "GDK_GL_USE_GL",           GDK_GL_USE_GL,           TRUE);
-  print_gl_config_attrib(glconfig, "GDK_GL_BUFFER_SIZE",      GDK_GL_BUFFER_SIZE,      FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_LEVEL",            GDK_GL_LEVEL,            FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_RGBA",             GDK_GL_RGBA,             TRUE);
-  print_gl_config_attrib(glconfig, "GDK_GL_DOUBLEBUFFER",     GDK_GL_DOUBLEBUFFER,     TRUE);
-  print_gl_config_attrib(glconfig, "GDK_GL_STEREO",           GDK_GL_STEREO,           TRUE);
-  print_gl_config_attrib(glconfig, "GDK_GL_AUX_BUFFERS",      GDK_GL_AUX_BUFFERS,      FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_RED_SIZE",         GDK_GL_RED_SIZE,         FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_GREEN_SIZE",       GDK_GL_GREEN_SIZE,       FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_BLUE_SIZE",        GDK_GL_BLUE_SIZE,        FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_ALPHA_SIZE",       GDK_GL_ALPHA_SIZE,       FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_DEPTH_SIZE",       GDK_GL_DEPTH_SIZE,       FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_STENCIL_SIZE",     GDK_GL_STENCIL_SIZE,     FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_ACCUM_RED_SIZE",   GDK_GL_ACCUM_RED_SIZE,   FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_ACCUM_GREEN_SIZE", GDK_GL_ACCUM_GREEN_SIZE, FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_ACCUM_BLUE_SIZE",  GDK_GL_ACCUM_BLUE_SIZE,  FALSE);
-  print_gl_config_attrib(glconfig, "GDK_GL_ACCUM_ALPHA_SIZE", GDK_GL_ACCUM_ALPHA_SIZE, FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_USE_GL",           GDK_GL_USE_GL,           TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_BUFFER_SIZE",      GDK_GL_BUFFER_SIZE,      FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_LEVEL",            GDK_GL_LEVEL,            FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_RGBA",             GDK_GL_RGBA,             TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_DOUBLEBUFFER",     GDK_GL_DOUBLEBUFFER,     TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_STEREO",           GDK_GL_STEREO,           TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_AUX_BUFFERS",      GDK_GL_AUX_BUFFERS,      FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_RED_SIZE",         GDK_GL_RED_SIZE,         FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_GREEN_SIZE",       GDK_GL_GREEN_SIZE,       FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_BLUE_SIZE",        GDK_GL_BLUE_SIZE,        FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ALPHA_SIZE",       GDK_GL_ALPHA_SIZE,       FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_DEPTH_SIZE",       GDK_GL_DEPTH_SIZE,       FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_STENCIL_SIZE",     GDK_GL_STENCIL_SIZE,     FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_RED_SIZE",   GDK_GL_ACCUM_RED_SIZE,   FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_GREEN_SIZE", GDK_GL_ACCUM_GREEN_SIZE, FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_BLUE_SIZE",  GDK_GL_ACCUM_BLUE_SIZE,  FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_ALPHA_SIZE", GDK_GL_ACCUM_ALPHA_SIZE, FALSE);
 
-  g_print("\n");
+  g_print ("\n");
 }
 
 int
-main(int argc,
+main(int   argc,
      char *argv[])
 {
   GdkGLConfig *glconfig;
@@ -617,163 +628,169 @@ main(int argc,
    * Init GTK.
    */
 
-  gtk_init(&argc, &argv);
+  gtk_init (&argc, &argv);
 
   /*
    * Parse arguments.
    */
 
-  for (i = 1; i < argc; i++) {
-    if (arg_count)
-      rot_count = atoi(argv[i]);
+  for (i = 1; i < argc; i++)
+    {
+      if (arg_count)
+	rot_count = atoi (argv[i]);
 
-    if (strcmp(argv[i], "--help") == 0 ||
-        strcmp(argv[i], "-h") == 0) {
-      g_print("Usage: %s [-count num] [-noanim] [--help]\n", argv[0]);
-      exit(0);
+      if (strcmp (argv[i], "--help") == 0 ||
+	  strcmp (argv[i], "-h") == 0)
+	{
+	  g_print ("Usage: %s [--count num] [--noanim] [--help]\n", argv[0]);
+	  exit (0);
+	}
+
+      if (strcmp (argv[i], "--count") == 0)
+	arg_count = TRUE;
+
+      if (strcmp (argv[i], "--noanim") == 0)
+	enable_logo_anim = FALSE;
     }
-
-    if (strcmp(argv[i], "-count") == 0)
-      arg_count = TRUE;
-
-    if (strcmp(argv[i], "-noanim") == 0)
-      enable_logo_anim = FALSE;
-  }
 
   /*
    * OpenGL is supported?
    */
 
-  if (!gdk_gl_query_extension()) {
-    g_print("\n*** OpenGL is not supported.\n");
-    exit(1);
-  }
+  if (!gdk_gl_query_extension ())
+    {
+      g_print ("\n*** OpenGL is not supported.\n");
+      exit (1);
+    }
 
-  gdk_gl_query_version(&major, &minor);
-  g_print("\nOpenGL is supported - version %d.%d\n",
-          major, minor);
+  gdk_gl_query_version (&major, &minor);
+  g_print ("\nOpenGL is supported - version %d.%d\n",
+	   major, minor);
 
   /*
    * Configure OpenGL-capable visual.
    */
 
   /* Try double-buffered visual */
-  glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB |
-                                       GDK_GL_MODE_DEPTH |
-                                       GDK_GL_MODE_DOUBLE);
-  if (glconfig == NULL) {
-    g_print("*** Cannot find the double-buffered visual.\n");
-    g_print("*** Trying single-buffered visual.\n");
+  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
+					GDK_GL_MODE_DEPTH |
+					GDK_GL_MODE_DOUBLE);
+  if (glconfig == NULL)
+    {
+      g_print ("*** Cannot find the double-buffered visual.\n");
+      g_print ("*** Trying single-buffered visual.\n");
 
-    /* Try single-buffered visual */
-    glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB |
-                                         GDK_GL_MODE_DEPTH);
-    if (glconfig == NULL) {
-      g_print("*** No appropriate OpenGL-capable visual found.\n");
-      exit(1);
+      /* Try single-buffered visual */
+      glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
+					    GDK_GL_MODE_DEPTH);
+      if (glconfig == NULL)
+	{
+	  g_print ("*** No appropriate OpenGL-capable visual found.\n");
+	  exit (1);
+	}
     }
-  }
 
-  examine_gl_config_attrib(glconfig);
+  examine_gl_config_attrib (glconfig);
 
   /*
    * Top-level window.
    */
 
-  window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title(GTK_WINDOW(window), "logo");
+  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_title (GTK_WINDOW (window), "logo");
 
-  g_signal_connect(G_OBJECT(window), "delete_event",
-                   G_CALLBACK(gtk_main_quit), NULL);
-  g_signal_connect(G_OBJECT(window), "key_press_event",
-                   G_CALLBACK(key_press_event), NULL);  
+  g_signal_connect (G_OBJECT (window), "delete_event",
+		    G_CALLBACK (gtk_main_quit), NULL);
 
-  vbox = gtk_vbox_new(FALSE, 0);
-  gtk_container_add(GTK_CONTAINER(window), vbox);
-  gtk_widget_show(vbox);
+  vbox = gtk_vbox_new (FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (window), vbox);
+  gtk_widget_show (vbox);
 
   /*
    * Drawing area for drawing OpenGL scene.
    */
 
-  drawing_area = gtk_drawing_area_new();
-  gtk_widget_set_size_request(drawing_area, 300, 300);
+  drawing_area = gtk_drawing_area_new ();
+  gtk_widget_set_size_request (drawing_area, 300, 300);
 
   /* Set OpenGL-capability to the widget. */
-  gtk_widget_set_gl_capability(drawing_area,
-                               glconfig,
-                               NULL,
-                               TRUE,
-                               GDK_GL_RGBA_TYPE);
+  gtk_widget_set_gl_capability (drawing_area,
+				glconfig,
+				NULL,
+				TRUE,
+				GDK_GL_RGBA_TYPE);
 
-  gtk_box_pack_start(GTK_BOX(vbox), drawing_area, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
 
-  gtk_widget_set_events(drawing_area,
-                        GDK_EXPOSURE_MASK |
-                        GDK_BUTTON1_MOTION_MASK |
-                        GDK_BUTTON2_MOTION_MASK |
-                        GDK_BUTTON_PRESS_MASK |
-                        GDK_VISIBILITY_NOTIFY_MASK);
+  gtk_widget_set_events (drawing_area,
+			 GDK_EXPOSURE_MASK |
+			 GDK_BUTTON1_MOTION_MASK |
+			 GDK_BUTTON2_MOTION_MASK |
+			 GDK_BUTTON_PRESS_MASK |
+			 GDK_VISIBILITY_NOTIFY_MASK);
 
-  g_signal_connect(G_OBJECT(drawing_area), "realize",
-                   G_CALLBACK(realize), NULL);
-  g_signal_connect(G_OBJECT(drawing_area), "configure_event",
-                   G_CALLBACK(configure_event), NULL);
-  g_signal_connect(G_OBJECT(drawing_area), "expose_event",
-                   G_CALLBACK(expose_event), NULL);
-  g_signal_connect(G_OBJECT(drawing_area), "map_event",
-                   G_CALLBACK(map_event), NULL);
-  g_signal_connect(G_OBJECT(drawing_area), "unmap_event",
-                   G_CALLBACK(unmap_event), NULL);
-  g_signal_connect(G_OBJECT(drawing_area), "visibility_notify_event",
-                   G_CALLBACK(visibility_notify_event), NULL);
-  g_signal_connect(G_OBJECT(drawing_area), "motion_notify_event",
-                   G_CALLBACK(motion_notify_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "realize",
+		    G_CALLBACK (realize), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "configure_event",
+		    G_CALLBACK (configure_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "expose_event",
+		    G_CALLBACK (expose_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "map_event",
+		    G_CALLBACK (map_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "unmap_event",
+		    G_CALLBACK (unmap_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "visibility_notify_event",
+		    G_CALLBACK (visibility_notify_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "motion_notify_event",
+		    G_CALLBACK (motion_notify_event), NULL);
 
-  gtk_widget_show(drawing_area);
+  g_signal_connect_swapped (G_OBJECT (window), "key_press_event",
+			    G_CALLBACK (key_press_event), drawing_area);
+
+  gtk_widget_show (drawing_area);
 
   /*
    * Popup menu.
    */
 
-  menu = gtk_menu_new();
+  menu = gtk_menu_new ();
 
   /* Toggle animation */
-  menu_item = gtk_menu_item_new_with_label("Toggle Animation");
-  gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
-  g_signal_connect_swapped(G_OBJECT(menu_item), "activate",
-                           G_CALLBACK(toggle_logo_anim), drawing_area);
-  gtk_widget_show(menu_item);
+  menu_item = gtk_menu_item_new_with_label ("Toggle Animation");
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+  g_signal_connect_swapped (G_OBJECT (menu_item), "activate",
+			    G_CALLBACK (toggle_logo_anim), drawing_area);
+  gtk_widget_show (menu_item);
 
   /* Init orientation */
-  menu_item = gtk_menu_item_new_with_label("Initialize");
-  gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
-  g_signal_connect_swapped(G_OBJECT(menu_item), "activate",
-                           G_CALLBACK(init_logo_anim), drawing_area);
-  gtk_widget_show(menu_item);
+  menu_item = gtk_menu_item_new_with_label ("Initialize");
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+  g_signal_connect_swapped (G_OBJECT (menu_item), "activate",
+			    G_CALLBACK (init_logo_anim), drawing_area);
+  gtk_widget_show (menu_item);
 
   /* Quit */
-  menu_item = gtk_menu_item_new_with_label("Quit");
-  gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
-  g_signal_connect(G_OBJECT(menu_item), "activate",
-                   G_CALLBACK(gtk_main_quit), NULL);
-  gtk_widget_show(menu_item);
+  menu_item = gtk_menu_item_new_with_label ("Quit");
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+  g_signal_connect (G_OBJECT (menu_item), "activate",
+		    G_CALLBACK (gtk_main_quit), NULL);
+  gtk_widget_show (menu_item);
 
   /* Signal handler */
-  g_signal_connect_swapped(G_OBJECT(drawing_area), "button_press_event",
-                           G_CALLBACK(button_press_event), menu);
+  g_signal_connect (G_OBJECT (drawing_area), "button_press_event",
+		    G_CALLBACK (button_press_event), menu);
 
   /*
    * Show window.
    */
 
-  gtk_widget_show(window);
+  gtk_widget_show (window);
 
   /*
    * Main loop.
    */
 
-  gtk_main();
+  gtk_main ();
 
   return 0;
 }

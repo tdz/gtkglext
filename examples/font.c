@@ -20,6 +20,138 @@ static GLuint font_list_base;
 static gint font_height;
 
 static void
+init (GtkWidget *widget,
+      gpointer   data)
+{
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
+  PangoFontDescription *font_desc;
+  PangoFont *font;
+  PangoFontMetrics *font_metrics;
+
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    return;
+
+  /*
+   * Generate font display lists.
+   */
+  font_list_base = glGenLists (128);
+
+  font_desc = pango_font_description_from_string (font_string);
+
+  font = gdk_gl_font_use_pango_font (font_desc, 0, 128, font_list_base);
+  if (font == NULL)
+    {
+      g_print ("*** Can't load font '%s'\n", font_string);
+      gtk_main_quit ();
+    }
+
+  font_metrics = pango_font_get_metrics (font, NULL);
+
+  font_height = pango_font_metrics_get_ascent (font_metrics) +
+                pango_font_metrics_get_descent (font_metrics);
+  font_height = PANGO_PIXELS (font_height);
+
+  pango_font_description_free (font_desc);
+  pango_font_metrics_unref (font_metrics);
+
+  glClearColor (1.0, 1.0, 1.0, 1.0);
+  glClearDepth (1.0);
+
+  glViewport (0, 0,
+              widget->allocation.width, widget->allocation.height);
+
+  glMatrixMode (GL_PROJECTION);
+  glLoadIdentity ();
+  glOrtho (0.0, widget->allocation.width,
+           0.0, widget->allocation.height,
+           -1.0, 1.0);
+
+  glMatrixMode (GL_MODELVIEW);
+  glLoadIdentity ();
+
+  gdk_gl_drawable_gl_end (gldrawable);
+  /*** OpenGL END ***/
+}
+
+static gboolean
+reshape (GtkWidget         *widget,
+         GdkEventConfigure *event,
+         gpointer           data)
+{
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    return FALSE;
+
+  glViewport (0, 0,
+              widget->allocation.width, widget->allocation.height);
+
+  glMatrixMode (GL_PROJECTION);
+  glLoadIdentity ();
+  glOrtho (0.0, widget->allocation.width,
+           0.0, widget->allocation.height,
+           -1.0, 1.0);
+
+  glMatrixMode (GL_MODELVIEW);
+  glLoadIdentity ();
+
+  gdk_gl_drawable_gl_end (gldrawable);
+  /*** OpenGL END ***/
+
+  return TRUE;
+}
+
+static gboolean
+display (GtkWidget      *widget,
+         GdkEventExpose *event,
+         gpointer        data)
+{
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+  int i, j;
+
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    return FALSE;
+
+  glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  /*
+   * Draw some text.
+   */
+  glColor3f (0.0, 0.0, 0.0);
+  for (i = 2; i >= -2; i--)
+    {
+      glRasterPos2f (10.0, 0.5*widget->allocation.height + i*font_height);
+      for (j = ' '; j <= 'Z'; j++)
+        glCallList (font_list_base+j);
+    }
+
+  /*
+   * Show font description string.
+   */
+  glColor3f (1.0, 0.0, 0.0);
+  glRasterPos2f (10.0, 10.0);
+  glListBase (font_list_base);
+  glCallLists (strlen (font_string), GL_UNSIGNED_BYTE, font_string);
+
+  if (gdk_gl_drawable_is_double_buffered (gldrawable))
+    gdk_gl_drawable_swap_buffers (gldrawable);
+  else
+    glFlush ();
+
+  gdk_gl_drawable_gl_end (gldrawable);
+  /*** OpenGL END ***/
+
+  return TRUE;
+}
+
+static void
 print_gl_config_attrib (GdkGLConfig *glconfig,
                         const gchar *attrib_str,
                         int          attrib,
@@ -82,153 +214,8 @@ examine_gl_config_attrib (GdkGLConfig *glconfig)
   g_print ("\n");
 }
 
-static void
-init (GtkWidget *widget,
-      gpointer   data)
-{
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
-  PangoFontDescription *font_desc;
-  PangoFont *font;
-  PangoFontMetrics *font_metrics;
-
-  /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
-    return;
-
-  /*
-   * Generate font display lists.
-   */
-  font_list_base = glGenLists (128);
-
-  font_desc = pango_font_description_from_string (font_string);
-
-  font = gdk_gl_font_use_pango_font (font_desc, 0, 128, font_list_base);
-  if (font == NULL) {
-    g_print("*** Can't load font '%s'\n", font_string);
-    gtk_main_quit ();
-  }
-
-  font_metrics = pango_font_get_metrics (font, NULL);
-
-  font_height = pango_font_metrics_get_ascent (font_metrics) +
-                pango_font_metrics_get_descent (font_metrics);
-  font_height = PANGO_PIXELS (font_height);
-
-  pango_font_description_free (font_desc);
-  pango_font_metrics_unref (font_metrics);
-
-  glClearColor (1.0, 1.0, 1.0, 1.0);
-  glClearDepth (1.0);
-
-  glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
-
-  glMatrixMode (GL_PROJECTION);
-  glLoadIdentity ();
-  glOrtho (0.0, widget->allocation.width,
-           0.0, widget->allocation.height,
-           -1.0, 1.0);
-
-  glMatrixMode (GL_MODELVIEW);
-  glLoadIdentity ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
-  /*** OpenGL END ***/
-}
-
-static gboolean
-reshape (GtkWidget         *widget,
-         GdkEventConfigure *event,
-         gpointer           data)
-{
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
-  /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
-    goto NO_GL;
-
-  glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
-
-  glMatrixMode (GL_PROJECTION);
-  glLoadIdentity ();
-  glOrtho (0.0, widget->allocation.width,
-           0.0, widget->allocation.height,
-           -1.0, 1.0);
-
-  glMatrixMode (GL_MODELVIEW);
-  glLoadIdentity ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
-  /*** OpenGL END ***/
-
- NO_GL:
-
-  return TRUE;
-}
-
-static gboolean
-display (GtkWidget      *widget,
-         GdkEventExpose *event,
-         gpointer        data)
-{
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-  int i, j;
-
-  /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
-    goto NO_GL;
-
-  glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-  /*
-   * Draw some text.
-   */
-  glColor3f (0.0, 0.0, 0.0);
-  for (i = 2; i >= -2; i--)
-    {
-      glRasterPos2f (10.0, 0.5*widget->allocation.height + i*font_height);
-      for (j = ' '; j <= 'Z'; j++)
-        glCallList (font_list_base+j);
-    }
-
-  /*
-   * Show font description string.
-   */
-  glColor3f (1.0, 0.0, 0.0);
-  glRasterPos2f (10.0, 10.0);
-  glListBase (font_list_base);
-  glCallLists (strlen(font_string), GL_UNSIGNED_BYTE, font_string);
-
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
-  /*** OpenGL END ***/
-
- NO_GL:
-
-  return TRUE;
-}
-
-static gint
-quit (GtkWidget *widget,
-      GdkEvent  *event,
-      gpointer   data)
-{
-  gtk_main_quit ();
-
-  return FALSE;
-}
-
 int
-main (int argc,
+main (int   argc,
       char *argv[])
 {
   GdkGLConfig *glconfig;
@@ -285,8 +272,15 @@ main (int argc,
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window), "font");
 
+  /*
+   * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
+   * a top-level window, we have to set OpenGL window's colormap to the
+   * top-level window.
+   */
+  gtk_widget_set_colormap (window, gdk_gl_config_get_colormap (glconfig));
+
   g_signal_connect (G_OBJECT (window), "delete_event",
-                    G_CALLBACK (quit), NULL);
+                    G_CALLBACK (gtk_main_quit), NULL);
 
   vbox = gtk_vbox_new (FALSE, 0);
   gtk_container_add (GTK_CONTAINER (window), vbox);
@@ -329,7 +323,7 @@ main (int argc,
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect (G_OBJECT (button), "clicked",
-                    G_CALLBACK (quit), NULL);
+                    G_CALLBACK (gtk_main_quit), NULL);
 
   gtk_widget_show (button);
 
