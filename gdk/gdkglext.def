@@ -979,6 +979,7 @@ EXPORTS
 	gdk_gl_get_glWindowPos4sMESA
 	gdk_gl_get_glWindowPos4svMESA
 	gdk_gl_get_glWriteMaskEXT
+	gdk_gl_get_proc_address
 	gdk_gl_get_wglAllocateMemoryNV
 	gdk_gl_get_wglAssociateImageBufferEventsI3D
 	gdk_gl_get_wglBeginFrameTrackingI3D
@@ -1061,7 +1062,6 @@ EXPORTS
 	gdk_gl_pixmap_new
 	gdk_gl_query_extension
 	gdk_gl_query_extension_for_display
-	gdk_gl_get_proc_address
 	gdk_gl_query_gl_extension
 	gdk_gl_query_version
 	gdk_gl_query_version_for_display
