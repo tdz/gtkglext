@@ -1,5 +1,10 @@
 2002-06-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglfont-win32.c (gdk_gl_font_use_gdk_font): Added
+	error checks.
+
+2002-06-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* gdk/gdkgldrawable.h: gdk_gl_drawable_gl_[begin end] macros ware
 	added.
 
