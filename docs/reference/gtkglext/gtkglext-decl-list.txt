@@ -194,7 +194,6 @@ GdkGLTransparentType
 GdkGLDrawableTypeMask
 GdkGLRenderTypeMask
 GdkGLBufferMask
-GdkGLContextAttrib
 GdkGLRenderType
 GdkGLDrawableAttrib
 GdkGLPbufferAttrib
@@ -253,8 +252,6 @@ gdk_gl_render_type_mask_get_type
 GDK_TYPE_GL_RENDER_TYPE_MASK
 gdk_gl_buffer_mask_get_type
 GDK_TYPE_GL_BUFFER_MASK
-gdk_gl_context_attrib_get_type
-GDK_TYPE_GL_CONTEXT_ATTRIB
 gdk_gl_render_type_get_type
 GDK_TYPE_GL_RENDER_TYPE
 gdk_gl_drawable_attrib_get_type

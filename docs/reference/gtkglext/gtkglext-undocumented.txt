@@ -1,6 +1,6 @@
-59% symbol docs coverage.
+60% symbol docs coverage.
 86 symbols documented.
-59 not documented.
+58 not documented.
 
 
 GDKGLEXT_BINARY_AGE
@@ -25,7 +25,6 @@ GdkGLConfigCaveat
 GdkGLConfigError
 GdkGLConfigMode
 GdkGLContext
-GdkGLContextAttrib
 GdkGLDontCare
 GdkGLDrawable
 GdkGLDrawableAttrib

@@ -120,6 +120,7 @@ typedef enum
   GDK_GL_MAX_PBUFFER_HEIGHT      = 0x8017,
   GDK_GL_MAX_PBUFFER_PIXELS      = 0x8018,
   GDK_GL_VISUAL_ID               = 0x800B,
+  GDK_GL_SCREEN                  = 0x800C,
 
   /*
    * Multisampling configuration attributes.
@@ -169,7 +170,7 @@ typedef enum
  */
 typedef enum
 {
-  /* GDK_GL_NONE                    = 0x8000, */
+  GDK_GL_CONFIG_CAVEAT_NONE      = GDK_GL_NONE,
   GDK_GL_SLOW_CONFIG             = 0x8001,
   GDK_GL_NON_CONFORMANT_CONFIG   = 0x800D
 } GdkGLConfigCaveat;
@@ -194,7 +195,7 @@ typedef enum
  */
 typedef enum
 {
-  /* GDK_GL_NONE                    = 0x8000, */
+  GDK_GL_TRANSPARENT_NONE        = GDK_GL_NONE,
   GDK_GL_TRANSPARENT_RGB         = 0x8008,
   GDK_GL_TRANSPARENT_INDEX       = 0x8009
 } GdkGLTransparentType;
@@ -237,17 +238,6 @@ typedef enum
 } GdkGLBufferMask;
 
 /*
- * glXQueryContext attributes.
- * [ GLX 1.3 and later ]
- */
-typedef enum
-{
-  /* GDK_GL_RENDER_TYPE             = 0x8011, */
-  /* GDK_GL_FBCONFIG_ID             = 0x8013, */
-  GDK_GL_SCREEN                  = 0x800C
-} GdkGLContextAttrib;
-
-/*
  * glXCreateNewContext render_type attribute values.
  * [ GLX 1.3 and later ]
  */
@@ -276,8 +266,10 @@ typedef enum
  */
 typedef enum
 {
-  GDK_GL_PBUFFER_HEIGHT          = 0x8040,
-  GDK_GL_PBUFFER_WIDTH           = 0x8041
+  GDK_GL_PBUFFER_PRESERVED_CONTENTS = GDK_GL_PRESERVED_CONTENTS,
+  GDK_GL_PBUFFER_LARGEST_PBUFFER    = GDK_GL_LARGEST_PBUFFER,
+  GDK_GL_PBUFFER_HEIGHT             = 0x8040,
+  GDK_GL_PBUFFER_WIDTH              = 0x8041
 } GdkGLPbufferAttrib;
 
 /*

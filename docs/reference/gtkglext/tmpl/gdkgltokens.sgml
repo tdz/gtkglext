@@ -66,6 +66,7 @@ OpenGL-related tokens
 @GDK_GL_MAX_PBUFFER_HEIGHT: 
 @GDK_GL_MAX_PBUFFER_PIXELS: 
 @GDK_GL_VISUAL_ID: 
+@GDK_GL_SCREEN: 
 @GDK_GL_SAMPLE_BUFFERS: 
 @GDK_GL_SAMPLES: 
 
@@ -101,6 +102,7 @@ OpenGL-related tokens
 
 </para>
 
+@GDK_GL_CONFIG_CAVEAT_NONE: 
 @GDK_GL_SLOW_CONFIG: 
 @GDK_GL_NON_CONFORMANT_CONFIG: 
 
@@ -121,6 +123,7 @@ OpenGL-related tokens
 
 </para>
 
+@GDK_GL_TRANSPARENT_NONE: 
 @GDK_GL_TRANSPARENT_RGB: 
 @GDK_GL_TRANSPARENT_INDEX: 
 
@@ -155,13 +158,6 @@ OpenGL-related tokens
 @GDK_GL_STENCIL_BUFFER_BIT: 
 @GDK_GL_ACCUM_BUFFER_BIT: 
 
-<!-- ##### ENUM GdkGLContextAttrib ##### -->
-<para>
-
-</para>
-
-@GDK_GL_SCREEN: 
-
 <!-- ##### ENUM GdkGLRenderType ##### -->
 <para>
 
@@ -186,6 +182,8 @@ OpenGL-related tokens
 
 </para>
 
+@GDK_GL_PBUFFER_PRESERVED_CONTENTS: 
+@GDK_GL_PBUFFER_LARGEST_PBUFFER: 
 @GDK_GL_PBUFFER_HEIGHT: 
 @GDK_GL_PBUFFER_WIDTH: 
 
