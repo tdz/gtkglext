@@ -86,7 +86,7 @@ gl_tex_create_texture (GLuint *texture)
   glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
   glTexImage2D (GL_TEXTURE_2D, 0, GL_RGBA,
                 size, size, 0,
-                GL_RGBA, GL_UNSIGNED_INT_8_8_8_8,
+                GL_RGBA, GL_UNSIGNED_BYTE,
                 texels);
 
   text_texture.name = tex_name;
@@ -146,9 +146,15 @@ gl_tex_pango_ft2_render_layout (PangoLayout *layout,
                            PANGO_PIXELS (-logical_rect.x), 0);
 
   glGetFloatv (GL_CURRENT_COLOR, color);
+#if !defined(GL_VERSION_1_2) && G_BYTE_ORDER == G_LITTLE_ENDIAN
+  rgb =  ((guint32) (color[0] * 255.0))        |
+        (((guint32) (color[1] * 255.0)) << 8)  |
+        (((guint32) (color[2] * 255.0)) << 16);
+#else
   rgb = (((guint32) (color[0] * 255.0)) << 24) |
         (((guint32) (color[1] * 255.0)) << 16) |
         (((guint32) (color[2] * 255.0)) << 8);
+#endif
   a = color[3];
 
   row = bitmap.buffer + (bitmap.rows-1) * bitmap.width;
@@ -161,7 +167,11 @@ gl_tex_pango_ft2_render_layout (PangoLayout *layout,
       do
         {
           for (i = 0; i < bitmap.width; i++)
+#if !defined(GL_VERSION_1_2) && G_BYTE_ORDER == G_LITTLE_ENDIAN
+            *t++ = rgb | (((guint32) row[i]) << 24);
+#else
             *t++ = rgb | ((guint32) row[i]);
+#endif
           row -= bitmap.width;
         }
       while (row != row_end);
@@ -171,7 +181,11 @@ gl_tex_pango_ft2_render_layout (PangoLayout *layout,
       do
         {
           for (i = 0; i < bitmap.width; i++)
+#if !defined(GL_VERSION_1_2) && G_BYTE_ORDER == G_LITTLE_ENDIAN
+            *t++ = rgb | (((guint32) (a * row[i])) << 24);
+#else
             *t++ = rgb | ((guint32) (a * row[i]));
+#endif
           row -= bitmap.width;
         }
       while (row != row_end);
@@ -180,10 +194,17 @@ gl_tex_pango_ft2_render_layout (PangoLayout *layout,
   glPixelStorei (GL_UNPACK_ALIGNMENT, 4);
 
   glBindTexture (GL_TEXTURE_2D, text_texture.name);
+#if !defined(GL_VERSION_1_2)
+  glTexSubImage2D (GL_TEXTURE_2D, 0,
+                   0, 0, bitmap.width, bitmap.rows,
+                   GL_RGBA, GL_UNSIGNED_BYTE,
+                   text_texture.texels);
+#else
   glTexSubImage2D (GL_TEXTURE_2D, 0,
                    0, 0, bitmap.width, bitmap.rows,
                    GL_RGBA, GL_UNSIGNED_INT_8_8_8_8,
                    text_texture.texels);
+#endif
 
   *texture = text_texture.name;
 
@@ -279,7 +300,7 @@ configure_event (GtkWidget         *widget,
 
 #define ANGLE   30.0
 /* tan (ANGLE * PI / 180.0) */
-#define TANGENT 0.577350
+#define TANGENT 0.57735
 
 #define TEXT_Z_NEAR  2.0
 #define TEXT_Z_FAR  -5.0

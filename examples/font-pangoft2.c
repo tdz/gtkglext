@@ -62,9 +62,15 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
   p = (guint32 *) pixels;
 
   glGetFloatv (GL_CURRENT_COLOR, color);
+#if !defined(GL_VERSION_1_2) && G_BYTE_ORDER == G_LITTLE_ENDIAN
+  rgb =  ((guint32) (color[0] * 255.0))        |
+        (((guint32) (color[1] * 255.0)) << 8)  |
+        (((guint32) (color[2] * 255.0)) << 16);
+#else
   rgb = (((guint32) (color[0] * 255.0)) << 24) |
         (((guint32) (color[1] * 255.0)) << 16) |
         (((guint32) (color[2] * 255.0)) << 8);
+#endif
   a = color[3];
 
   row = bitmap.buffer + (bitmap.rows-1) * bitmap.width;
@@ -75,7 +81,11 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
       do
         {
           for (i = 0; i < bitmap.width; i++)
+#if !defined(GL_VERSION_1_2) && G_BYTE_ORDER == G_LITTLE_ENDIAN
+            *p++ = rgb | (((guint32) row[i]) << 24);
+#else
             *p++ = rgb | ((guint32) row[i]);
+#endif
           row -= bitmap.width;
         }
       while (row != row_end);
@@ -85,19 +95,30 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
       do
         {
           for (i = 0; i < bitmap.width; i++)
+#if !defined(GL_VERSION_1_2) && G_BYTE_ORDER == G_LITTLE_ENDIAN
+            *p++ = rgb | (((guint32) (a * row[i])) << 24);
+#else
             *p++ = rgb | ((guint32) (a * row[i]));
+#endif
           row -= bitmap.width;
         }
       while (row != row_end);
     }
 
+  glPixelStorei (GL_UNPACK_ALIGNMENT, 4);
+
   glEnable (GL_BLEND);
   glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-  glPixelStorei (GL_UNPACK_ALIGNMENT, 4);
+#if !defined(GL_VERSION_1_2)
+  glDrawPixels (bitmap.width, bitmap.rows,
+                GL_RGBA, GL_UNSIGNED_BYTE,
+                pixels);
+#else
   glDrawPixels (bitmap.width, bitmap.rows,
                 GL_RGBA, GL_UNSIGNED_INT_8_8_8_8,
                 pixels);
+#endif
 
   glDisable (GL_BLEND);
 

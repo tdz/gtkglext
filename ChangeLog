@@ -1,5 +1,11 @@
 2003-07-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/font-pangoft2.c (gl_pango_ft2_render_layout): 
+	* examples/font-pangoft2-tex.c (gl_tex_pango_ft2_render_layout):
+	Use GL_UNSIGNED_BYTE data type if OpenGL 1.2 is not supported.
+
+2003-07-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* examples/Makefile.mingw (PROGRAMS): 
 	* examples/Makefile.msc (PROGRAMS): Removed font-pangoft2*
 	examples. They don't work on win32.
