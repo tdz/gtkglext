@@ -21,7 +21,7 @@ OpenGL window which is located onscreen.
 
 @parent_instance: 
 @glconfig: 
-@wrapper: 
+@drawable: 
 
 <!-- ##### FUNCTION gdk_gl_window_new ##### -->
 <para>

@@ -23,7 +23,7 @@
 enum {
   PROP_0,
   PROP_GLCONFIG,
-  PROP_WRAPPER
+  PROP_DRAWABLE
 };
 
 static GdkGC *gdk_gl_window_create_gc      (GdkDrawable      *drawable,
@@ -225,14 +225,14 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
                                    PROP_GLCONFIG,
                                    g_param_spec_object ("glconfig",
                                                         _("GL configuration"),
-                                                        _("The OpenGL configuration object."),
+                                                        _("OpenGL configuration object."),
                                                         GDK_TYPE_GL_CONFIG,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
   g_object_class_install_property (object_class,
-                                   PROP_WRAPPER,
-                                   g_param_spec_object ("wrapper",
-                                                        _("Wrapper"),
-                                                        _("Real GdkDrawable object."),
+                                   PROP_DRAWABLE,
+                                   g_param_spec_object ("drawable",
+                                                        _("Drawable"),
+                                                        _("Associated GdkDrawable object."),
                                                         GDK_TYPE_DRAWABLE,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
@@ -255,10 +255,10 @@ gdk_gl_window_set_property (GObject      *object,
       g_object_ref (G_OBJECT (glwindow->glconfig));
       g_object_notify (object, "glconfig");
       break;
-    case PROP_WRAPPER:
-      glwindow->wrapper = g_value_get_object (value);
-      /* g_object_ref (G_OBJECT (glwindow->wrapper)); */
-      g_object_notify (object, "wrapper");
+    case PROP_DRAWABLE:
+      glwindow->drawable = g_value_get_object (value);
+      /* g_object_ref (G_OBJECT (glwindow->drawable)); */
+      g_object_notify (object, "drawable");
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -294,10 +294,10 @@ gdk_gl_window_finalize (GObject *object)
     }
 
   /*
-  if (glwindow->wrapper != NULL)
+  if (glwindow->drawable != NULL)
     {
-      g_object_unref (G_OBJECT (glwindow->wrapper));
-      glwindow->wrapper = NULL;
+      g_object_unref (G_OBJECT (glwindow->drawable));
+      glwindow->drawable = NULL;
     }
   */
 
@@ -309,7 +309,7 @@ gdk_gl_window_create_gc (GdkDrawable    *drawable,
                          GdkGCValues    *values,
                          GdkGCValuesMask mask)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->create_gc (real_drawable,
                                                             values,
@@ -325,7 +325,7 @@ gdk_gl_window_draw_rectangle (GdkDrawable *drawable,
                               gint	   width,
                               gint	   height)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_rectangle (real_drawable,
                                                           gc,
@@ -347,7 +347,7 @@ gdk_gl_window_draw_arc (GdkDrawable *drawable,
                         gint	     angle1,
                         gint	     angle2)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_arc (real_drawable,
                                                     gc,
@@ -367,7 +367,7 @@ gdk_gl_window_draw_polygon (GdkDrawable *drawable,
                             GdkPoint    *points,
                             gint	 npoints)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_polygon (real_drawable,
                                                         gc,
@@ -385,7 +385,7 @@ gdk_gl_window_draw_text (GdkDrawable *drawable,
                          const gchar *text,
                          gint	      text_length)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_text (real_drawable,
                                                      font,
@@ -405,7 +405,7 @@ gdk_gl_window_draw_text_wc (GdkDrawable	   *drawable,
                             const GdkWChar *text,
                             gint	    text_length)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_text_wc (real_drawable,
                                                         font,
@@ -427,7 +427,7 @@ gdk_gl_window_draw_drawable (GdkDrawable *drawable,
                              gint	  width,
                              gint	  height)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_drawable (real_drawable,
                                                          gc,
@@ -446,7 +446,7 @@ gdk_gl_window_draw_points (GdkDrawable *drawable,
                            GdkPoint    *points,
                            gint	        npoints)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_points (real_drawable,
                                                        gc,
@@ -460,7 +460,7 @@ gdk_gl_window_draw_segments (GdkDrawable *drawable,
                              GdkSegment  *segs,
                              gint         nsegs)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_segments (real_drawable,
                                                          gc,
@@ -474,7 +474,7 @@ gdk_gl_window_draw_lines (GdkDrawable *drawable,
                           GdkPoint    *points,
                           gint         npoints)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_lines (real_drawable,
                                                       gc,
@@ -490,7 +490,7 @@ gdk_gl_window_draw_glyphs (GdkDrawable      *drawable,
                            gint              y,
                            PangoGlyphString *glyphs)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_glyphs (real_drawable,
                                                        gc,
@@ -511,7 +511,7 @@ gdk_gl_window_draw_image (GdkDrawable *drawable,
                           gint	       width,
                           gint	       height)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_image (real_drawable,
                                                       gc,
@@ -527,7 +527,7 @@ gdk_gl_window_draw_image (GdkDrawable *drawable,
 static gint
 gdk_gl_window_get_depth (GdkDrawable *drawable)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_depth (real_drawable);
 }
@@ -537,7 +537,7 @@ gdk_gl_window_get_size (GdkDrawable *drawable,
                         gint        *width,
                         gint        *height)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->get_size (real_drawable,
                                                     width,
@@ -548,7 +548,7 @@ static void
 gdk_gl_window_set_colormap (GdkDrawable *drawable,
                             GdkColormap *cmap)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->set_colormap (real_drawable,
                                                         cmap);
@@ -557,7 +557,7 @@ gdk_gl_window_set_colormap (GdkDrawable *drawable,
 static GdkColormap *
 gdk_gl_window_get_colormap (GdkDrawable *drawable)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_colormap (real_drawable);
 }
@@ -565,7 +565,7 @@ gdk_gl_window_get_colormap (GdkDrawable *drawable)
 static GdkVisual *
 gdk_gl_window_get_visual (GdkDrawable *drawable)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_visual (real_drawable);
 }
@@ -577,7 +577,7 @@ gdk_gl_window_get_image (GdkDrawable *drawable,
                          gint         width,
                          gint         height)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_image (real_drawable,
                                                             x,
@@ -589,7 +589,7 @@ gdk_gl_window_get_image (GdkDrawable *drawable,
 static GdkRegion *
 gdk_gl_window_get_clip_region (GdkDrawable *drawable)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_clip_region (real_drawable);
 }
@@ -597,7 +597,7 @@ gdk_gl_window_get_clip_region (GdkDrawable *drawable)
 static GdkRegion *
 gdk_gl_window_get_visible_region (GdkDrawable *drawable)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_visible_region (real_drawable);
 }
@@ -611,7 +611,7 @@ gdk_gl_window_get_composite_drawable (GdkDrawable *drawable,
                                       gint        *composite_x_offset,
                                       gint        *composite_y_offset)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_composite_drawable (real_drawable,
                                                                          x,
@@ -636,7 +636,7 @@ gdk_gl_window_draw_pixbuf (GdkDrawable *drawable,
                            gint         x_dither,
                            gint         y_dither)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->_draw_pixbuf (real_drawable,
                                                         gc,
@@ -662,7 +662,7 @@ gdk_gl_window_copy_to_image (GdkDrawable *drawable,
                              gint         width,
                              gint         height)
 {
-  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->wrapper;
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->_copy_to_image (real_drawable,
                                                                  image,
@@ -702,7 +702,7 @@ _gdk_gl_window_get_size (GdkGLDrawable *gldrawable,
 
   g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
 
-  real_drawable = ((GdkGLWindow *) gldrawable)->wrapper;
+  real_drawable = ((GdkGLWindow *) gldrawable)->drawable;
 
   GDK_DRAWABLE_GET_CLASS (real_drawable)->get_size (real_drawable,
                                                     width,
@@ -725,7 +725,7 @@ gdk_gl_window_get_window (GdkGLWindow *glwindow)
 {
   g_return_val_if_fail (GDK_IS_GL_WINDOW (glwindow), NULL);
 
-  return GDK_WINDOW (glwindow->wrapper);
+  return GDK_WINDOW (glwindow->drawable);
 }
 
 /*

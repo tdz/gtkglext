@@ -1,3 +1,8 @@
+2002-08-31  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/gdkglwindow.h (struct _GdkGLWindow): 
+	* gdk/gdkglpixmap.h (struct _GdkGLPixmap): wrapper -> drawable.
+
 2002-08-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* All sources have been refined, and unnecessary functions have

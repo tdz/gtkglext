@@ -42,7 +42,7 @@ struct _GdkGLPixmap
 
   GdkGLConfig *glconfig;
 
-  GdkDrawable *wrapper;         /* Real GdkPixmap */
+  GdkDrawable *drawable;        /* Associated GdkPixmap */
 };
 
 struct _GdkGLPixmapClass

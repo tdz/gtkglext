@@ -136,10 +136,9 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
    */
 
   /*
-   * XXX GdkGLPixmap is not GdkPixmap for the moment :-<
-   *     use glpixmap->wrapper.
+   * Associated GdkPixmap.
    */
-  xpixmap = GDK_DRAWABLE_XID (glpixmap->wrapper);
+  xpixmap = GDK_DRAWABLE_XID (glpixmap->drawable);
 
   /*
    * Check depth of the X pixmap.
@@ -294,10 +293,9 @@ gdk_x11_gl_pixmap_swap_buffers (GdkGLDrawable *gldrawable)
   g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
 
   /*
-   * XXX GdkGLPixmap is not GdkDrawable for the moment :-<
-   *     use glpixmap->wrapper.
+   * Associated GdkPixmap.
    */
-  drawable = GDK_GL_PIXMAP (gldrawable)->wrapper;
+  drawable = GDK_GL_PIXMAP (gldrawable)->drawable;
 
   GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
 
@@ -332,7 +330,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
    */
   glpixmap = g_object_new (GDK_TYPE_GL_PIXMAP_IMPL_X11,
                            "glconfig", glconfig,
-                           "wrapper",  GDK_DRAWABLE (pixmap),
+                           "drawable", GDK_DRAWABLE (pixmap),
                            NULL);
   impl = GDK_GL_PIXMAP_IMPL_X11 (glpixmap);
 

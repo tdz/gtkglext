@@ -453,7 +453,7 @@ struct GdkGLPixmap
 
   GdkGLConfig *glconfig;
 
-  GdkDrawable *wrapper;         /* Real GdkPixmap */
+  GdkDrawable *drawable;        /* Associated GdkPixmap */
 };
 </STRUCT>
 <FUNCTION>
@@ -779,7 +779,7 @@ struct GdkGLWindow
 
   GdkGLConfig *glconfig;
 
-  GdkDrawable *wrapper;         /* Real GdkWindow */
+  GdkDrawable *drawable;        /* Associated GdkWindow */
 };
 </STRUCT>
 <FUNCTION>

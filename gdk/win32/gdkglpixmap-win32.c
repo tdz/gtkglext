@@ -127,11 +127,11 @@ gdk_gl_pixmap_impl_win32_constructor (GType                  type,
    * Create offscreen rendering area.
    */
 
-  gdk_drawable_get_size (glpixmap->wrapper, &width, &height);
+  gdk_drawable_get_size (glpixmap->drawable, &width, &height);
 
   impl->pixmap = gdk_pixmap_new (NULL,
 				 width, height,
-				 gdk_drawable_get_depth (glpixmap->wrapper));
+				 gdk_drawable_get_depth (glpixmap->drawable));
   if (impl->pixmap == NULL)
     goto FAIL;
 
@@ -139,7 +139,7 @@ gdk_gl_pixmap_impl_win32_constructor (GType                  type,
   impl->gl_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (GDK_DRAWABLE (impl->pixmap));
 
   /* Destination (GDK) DIB */
-  impl->gdk_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (glpixmap->wrapper);
+  impl->gdk_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (glpixmap->drawable);
 
   /*
    * Create a memory DC.
@@ -356,7 +356,7 @@ gdk_gl_pixmap_sync_gdk (GdkGLPixmap *glpixmap)
 
   /* Access directly to GdkPixmap's internal image data
      for performance reason. */
-  gdk_image = ((GdkPixmapImplWin32 *) (GDK_PIXMAP_OBJECT (glpixmap->wrapper)->impl))->image;
+  gdk_image = ((GdkPixmapImplWin32 *) (GDK_PIXMAP_OBJECT (glpixmap->drawable)->impl))->image;
 
   /* See gdkpixmap-win32.c. */
   usage = DIB_RGB_COLORS;
@@ -503,7 +503,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
    */
   glpixmap = g_object_new (GDK_TYPE_GL_PIXMAP_IMPL_WIN32,
                            "glconfig", glconfig,
-                           "wrapper",  GDK_DRAWABLE (pixmap),
+                           "drawable", GDK_DRAWABLE (pixmap),
                            NULL);
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
 

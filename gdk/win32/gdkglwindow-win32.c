@@ -116,7 +116,7 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
   glwindow = GDK_GL_WINDOW (object);
   impl = GDK_GL_WINDOW_IMPL_WIN32 (glwindow);
 
-  impl->hwnd = (HWND) gdk_win32_drawable_get_handle (glwindow->wrapper);
+  impl->hwnd = (HWND) gdk_win32_drawable_get_handle (glwindow->drawable);
 
   /* Get DC. */
   impl->hdc = GetDC (impl->hwnd);
@@ -349,7 +349,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
    */
   glwindow = g_object_new (GDK_TYPE_GL_WINDOW_IMPL_WIN32,
                            "glconfig", glconfig,
-                           "wrapper",  GDK_DRAWABLE (window),
+                           "drawable", GDK_DRAWABLE (window),
                            NULL);
   impl = GDK_GL_WINDOW_IMPL_WIN32 (glwindow);
 

@@ -42,7 +42,7 @@ struct _GdkGLWindow
 
   GdkGLConfig *glconfig;
 
-  GdkDrawable *wrapper;         /* Real GdkWindow */
+  GdkDrawable *drawable;        /* Associated GdkWindow */
 };
 
 struct _GdkGLWindowClass

@@ -117,10 +117,9 @@ gdk_gl_window_impl_x11_constructor (GType                  type,
   impl = GDK_GL_WINDOW_IMPL_X11 (object);
 
   /*
-   * XXX GdkGLWindow is not GdkWindow for the moment :-<
-   *     use glwindow->wrapper.
+   * Associated GdkWindow.
    */
-  impl->glxwindow = GDK_DRAWABLE_XID (glwindow->wrapper);
+  impl->glxwindow = GDK_DRAWABLE_XID (glwindow->drawable);
 
   /*
    * Successfully constructed?
@@ -232,10 +231,9 @@ gdk_x11_gl_window_swap_buffers (GdkGLDrawable *gldrawable)
   g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
 
   /*
-   * XXX GdkGLWindow is not GdkDrawable for the moment :-<
-   *     use glwindow->wrapper.
+   * Associated GdkWindow.
    */
-  drawable = GDK_GL_WINDOW (gldrawable)->wrapper;
+  drawable = GDK_GL_WINDOW (gldrawable)->drawable;
 
   GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
 
@@ -274,7 +272,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
    */
   glwindow = g_object_new (GDK_TYPE_GL_WINDOW_IMPL_X11,
                            "glconfig", glconfig,
-                           "wrapper",  GDK_DRAWABLE (window),
+                           "drawable", GDK_DRAWABLE (window),
                            NULL);
   impl = GDK_GL_WINDOW_IMPL_X11 (glwindow);
 
