@@ -364,6 +364,26 @@ GdkPixmap   *pixmap
 #define      gdk_pixmap_get_gl_drawable(pixmap)         \
   GDK_GL_DRAWABLE (gdk_pixmap_get_gl_pixmap (pixmap))
 </MACRO>
+<FUNCTION>
+<NAME>gdk_gl_query_extension</NAME>
+<RETURNS>gboolean  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_query_extension_for_display</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkDisplay *display
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_query_version</NAME>
+<RETURNS>gboolean  </RETURNS>
+gint       *major,gint       *minor
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_query_version_for_display</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkDisplay *display,gint       *major,gint       *minor
+</FUNCTION>
 <ENUM>
 <NAME>GdkGLSuccess</NAME>
 typedef enum
@@ -649,26 +669,6 @@ GdkWindow   *window
 #define      gdk_window_get_gl_drawable(window)         \
   GDK_GL_DRAWABLE (gdk_window_get_gl_window (window))
 </MACRO>
-<FUNCTION>
-<NAME>gdk_gl_query_extension</NAME>
-<RETURNS>gboolean  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_query_extension_for_display</NAME>
-<RETURNS>gboolean  </RETURNS>
-GdkDisplay *display
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_query_version</NAME>
-<RETURNS>gboolean  </RETURNS>
-gint       *major,gint       *minor
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_query_version_for_display</NAME>
-<RETURNS>gboolean  </RETURNS>
-GdkDisplay *display,gint       *major,gint       *minor
-</FUNCTION>
 <FUNCTION>
 <NAME>gtk_widget_set_gl_capability</NAME>
 <RETURNS>gboolean  </RETURNS>

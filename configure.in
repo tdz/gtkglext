@@ -554,6 +554,5 @@ gtk/Makefile
 examples/Makefile
 docs/Makefile
 docs/reference/Makefile
-docs/reference/gdkglext/Makefile
 docs/reference/gtkglext/Makefile
 ])
