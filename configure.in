@@ -665,6 +665,7 @@ gdk/Makefile
 gdk/gdkglversion.h
 gdk/x11/Makefile
 gdk/win32/Makefile
+gdk/glext/Makefile
 gtk/Makefile
 gtk/gtkglversion.h
 examples/Makefile

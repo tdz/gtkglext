@@ -137,7 +137,7 @@ install_sh = @install_sh@
 ms_librarian = @ms_librarian@
 
 SUBDIRS = $(gdktarget)
-DIST_SUBDIRS = x11 win32
+DIST_SUBDIRS = x11 win32 glext
 
 @PLATFORM_WIN32_TRUE@no_undefined = -no-undefined
 

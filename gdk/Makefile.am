@@ -1,8 +1,8 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/gdk
 
-SUBDIRS=$(gdktarget)
-DIST_SUBDIRS=x11 win32
+SUBDIRS = $(gdktarget)
+DIST_SUBDIRS = x11 win32 glext
 
 if PLATFORM_WIN32
 no_undefined = -no-undefined
