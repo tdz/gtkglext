@@ -1,3 +1,16 @@
+2003-04-10  Naofumi Yasufuku  <naofumi@yasufuku.net>
+
+	* gtk/gtkglwidget.c (struct GLWidgetParam): Renamed to
+	GLWidgetPrivate.
+	(gtk_widget_set_gl_capability, gtk_gl_widget_realize) 
+	(gtk_gl_widget_configure_event, gtk_gl_widget_unrealize): 
+	Pass private data to the signal handlers, and don't use
+	g_object_get_qdata().
+	(struct GLWidgetPrivate): Added is_realized flag.
+	(gtk_gl_widget_realize, gtk_gl_widget_configure_event) 
+	(gtk_gl_widget_unrealize): Use is_realized flag to reduce
+	unnecessary function call.
+
 2003-04-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (gtk_gl_widget_configure_event): Don't
