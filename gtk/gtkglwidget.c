@@ -70,7 +70,7 @@ gtk_gl_widget_realize (GtkWidget       *widget,
 {
   GdkGLWindow *glwindow;
 
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_realize ()"));
+  GTK_GL_NOTE_FUNC_INTERNAL;
 
   if (!gdk_window_is_gl_capable (widget->window))
     {
@@ -105,10 +105,10 @@ gtk_gl_widget_configure_event (GtkWidget         *widget,
                                GdkEventConfigure *event,
                                GLWidgetPrivate   *private)
 {
+  GTK_GL_NOTE_FUNC_INTERNAL;
+
   if (!private->is_realized)
     {
-      GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_configure_event ()"));
-
       /* Realize. */
       gtk_gl_widget_realize (widget, private);
     }
@@ -120,7 +120,7 @@ static void
 gtk_gl_widget_unrealize (GtkWidget       *widget,
                          GLWidgetPrivate *private)
 {
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_unrealize ()"));
+  GTK_GL_NOTE_FUNC_INTERNAL;
 
   if (widget->window != NULL)
     {
@@ -141,7 +141,7 @@ gtk_gl_widget_parent_set (GtkWidget   *widget,
 {
   GtkWidget *toplevel;
 
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_parent_set ()"));
+  GTK_GL_NOTE_FUNC_INTERNAL;
 
   toplevel = gtk_widget_get_toplevel (widget);
   if (GTK_WIDGET_TOPLEVEL (toplevel) && !GTK_WIDGET_REALIZED (toplevel))
@@ -158,7 +158,7 @@ gtk_gl_widget_style_set (GtkWidget *widget,
                          GtkStyle  *previous_style,
                          gpointer   user_data)
 {
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_style_set ()"));
+  GTK_GL_NOTE_FUNC_INTERNAL;
 
   /* 
    * Set a background of "None" on window to avoid AIX X server crash.
@@ -181,7 +181,7 @@ gtk_gl_widget_style_set (GtkWidget *widget,
 static void
 gl_widget_private_destroy (GLWidgetPrivate *private)
 {
-  GTK_GL_NOTE (FUNC, g_message (" - gl_widget_private_destroy ()"));
+  GTK_GL_NOTE_FUNC_INTERNAL;
 
   g_object_unref (G_OBJECT (private->glconfig));
 
@@ -218,7 +218,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   GdkColormap *colormap;
   GLWidgetPrivate *private;
 
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_set_gl_capability ()"));
+  GTK_GL_NOTE_FUNC;
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (!GTK_WIDGET_REALIZED (widget), FALSE);
@@ -392,6 +392,8 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
   GdkGLDrawable *gldrawable;
   GdkGLContext *glcontext;
 
+  GTK_GL_NOTE_FUNC;
+
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), NULL);
 
@@ -420,7 +422,7 @@ static void
 gtk_gl_widget_destroy_gl_context (GtkWidget       *widget,
                                   GLWidgetPrivate *private)
 {
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_destroy_gl_context ()"));
+  GTK_GL_NOTE_FUNC_INTERNAL;
 
   /*
    * Destroy OpenGL rendering context.
