@@ -111,12 +111,17 @@ Personally I run configure like this:
   (MinGW is installed in C:\mingw)
   $ export PATH=/cygdrive/c/mingw/bin:$PATH
 
-  $ env AR=/usr/bin/ar \
-        ./configure --host=i386-pc-mingw32 --prefix=/target
+  $ env CC='gcc -mpentium' \
+        LDFLAGS='-Lc:/target/lib' \
+        AR=/usr/bin/ar \
+        ./configure --host=i386-pc-mingw32 --prefix='c:/target'
   $ make
   $ make examples
+  $ make install
 
-Use Cygwin's ar.exe instead of MinGW's one on Cygwin environment.
+Notice that LDFLAGS should be specified to install DLL's to
+${prefix}/lib, and use Cygwin's ar.exe instead of MinGW's one on
+Cygwin environment.
 
 
 Building the CVS Version of GtkGLExt
@@ -138,10 +143,13 @@ for generating configure script and Makefiles.
 
   $ libtoolize
   $ env ACLOCAL_FLAGS='-I /cygdrive/c/gtk/share/aclocal' \
+        CC='gcc -mpentium' \
+        LDFLAGS='-Lc:/target/lib' \
         AR=/usr/bin/ar \
-        ./autogen.sh --host=i386-pc-mingw32 --prefix=/target
+        ./autogen.sh --host=i386-pc-mingw32 --prefix='c:/target'
   $ make
   $ make examples
+  $ make install
 
 ACLOCAL_FLAGS is for pkg-config's PKG_CHECK_MODULES macro in configure.in.
 I use the following versions of the GNU auto-tools.
