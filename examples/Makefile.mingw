@@ -6,9 +6,9 @@
 
 SHELL = /bin/sh
 
-INCLUDES = $(shell pkg-config --cflags gtkglext-1.0)
+INCLUDES := $(shell pkg-config --cflags gtkglext-1.0)
+LIBS := $(shell pkg-config --libs gtkglext-1.0)
 DEFINES = 
-LIBS = $(shell pkg-config --libs gtkglext-1.0)
 
 CC = gcc
 OPTIMIZE = -march=pentium -O2
@@ -18,8 +18,10 @@ MS_BITFIELDS = -mms-bitfields
 CFLAGS = $(OPTIMIZE) $(DEBUG) $(MS_BITFIELDS)
 CPPFLAGS = $(INCLUDES) $(DEFINES)
 LDFLAGS = 
+
 COMPILE = $(CC) -c $(CFLAGS) $(CPPFLAGS)
 LINK = $(CC) $(LDFLAGS)
+
 EXEEXT = .exe
 
 HEADERS = \
@@ -96,7 +98,8 @@ DEPS = $(addprefix .deps/, $(SOURCES:.c=.Po))
 	$(COMPILE) -Wp,-MD,.deps/$(*F).TPo -c $<
 	@-cp .deps/$(*F).TPo .deps/$(*F).Po; \
 	tr ' ' '\012' < .deps/$(*F).TPo \
-		| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+		| sed -e 's/^\\$$//' -e '/^$$/d' -e '/:$$/d' \
+		| sed -e 's/$$/ :/' \
 		>> .deps/$(*F).Po; \
 	rm .deps/$(*F).TPo
 
@@ -150,7 +153,7 @@ template$(EXEEXT): template.o
 	$(LINK) -o $@ $^ $(LIBS)
 
 #
-# Other targets
+# Clean up
 #
 
 clean:
