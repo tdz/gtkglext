@@ -81,15 +81,15 @@ GdkGLWindow *gdk_gl_window_new      (GdkGLConfig *glconfig,
  * OpenGL extension to GdkWindow
  */
 
-gboolean     gdk_window_set_gl_capability   (GdkWindow    *window,
-                                             GdkGLConfig  *glconfig,
-                                             const gint   *attrib_list);
+gboolean     gdk_window_set_gl_capability   (GdkWindow   *window,
+                                             GdkGLConfig *glconfig,
+                                             const gint  *attrib_list);
 
-void         gdk_window_unset_gl_capability (GdkWindow *window);
+void         gdk_window_unset_gl_capability (GdkWindow   *window);
 
-gboolean     gdk_window_is_gl_capable       (GdkWindow *window);
+gboolean     gdk_window_is_gl_capable       (GdkWindow   *window);
 
-GdkGLWindow *gdk_window_get_gl_window       (GdkWindow *window);
+GdkGLWindow *gdk_window_get_gl_window       (GdkWindow   *window);
 
 #define      gdk_window_get_gl_drawable(window)         \
   GDK_GL_DRAWABLE (gdk_window_get_gl_window (window))
