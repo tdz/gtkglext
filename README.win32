@@ -8,13 +8,13 @@
 General Information
 ===================
 
-GtkGLExt is an OpenGL extention to GTK 2.0 or later.
+GtkGLExt is an OpenGL extension to GTK 2.0 or later.
 
 This package is composed of GdkGLExt library and GtkGLExt library.
 GdkGLExt library includes low-level OpenGL related objects,
 GdkGLConfig, GdkGLContext, GdkGLDrawable, GdkGLWindow, and so on,
 which has GLX like interface. GtkGLExt library includes high-level
-gtk_widget API extentions using GdkGLExt, which extends *ANY* GTK+ widget
+gtk_widget API add-ons using GdkGLExt, which extends *ANY* GTK+ widget
 to an OpenGL-capable widget.
 
 The objects included in these libraries are implemented using C and
