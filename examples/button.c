@@ -146,11 +146,17 @@ expose_event (GtkWidget      *widget,
 static gboolean
 timeout (GtkWidget *widget)
 {
+  GLfloat t;
+
   angle += 3.0;
   if (angle >= 360.0)
     angle -= 360.0;
 
-  pos_y = sin (angle * G_PI / 180.0);
+  t = angle * G_PI / 180.0;
+  if (t > G_PI)
+    t = 2.0 * G_PI - t;
+
+  pos_y = 2.0 * (sin (t) + 0.4 * sin (3.0*t)) - 1.0;
 
   gtk_widget_queue_draw (widget);
 
@@ -178,6 +184,13 @@ timeout_remove (GtkWidget *widget)
       gtk_timeout_remove (timeout_id);
       timeout_id = 0;
     }
+}
+
+static void
+unrealize (GtkWidget *widget,
+	   gpointer   data)
+{
+  timeout_remove (widget);
 }
 
 static gboolean
@@ -268,6 +281,8 @@ create_gl_toggle_button (GdkGLConfig *glconfig)
 		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
 		    G_CALLBACK (expose_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "unrealize",
+		    G_CALLBACK (unrealize), NULL);
 
   g_signal_connect (G_OBJECT (drawing_area), "map_event",
 		    G_CALLBACK (map_event), NULL);

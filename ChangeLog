@@ -1,5 +1,8 @@
 2003-07-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/button.c (timeout): Modified animation.
+	(unrealize): Remove timeout handler.
+
 	* configure.in: 
 	* gdk/glext/gen-gdkglglxext-h.pl: 
 	* gdk/x11/gdkglglxext.h: Check GLXVideoSourceSGIX typedef to avoid
