@@ -1,3 +1,7 @@
+2003-07-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/GL/wglext-extra.h: Removed WGL_NV_allocate_memory.
+
 2003-07-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/GL/glext-extra.h: 
