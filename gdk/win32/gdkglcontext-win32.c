@@ -27,8 +27,6 @@ static guint         gdk_gl_context_hash   (HGLRC        *hglrc);
 static gboolean      gdk_gl_context_equal  (HGLRC        *a,
                                             HGLRC        *b);
 
-static GHashTable *gl_context_ht = NULL;
-
 static void     gdk_gl_context_impl_win32_init        (GdkGLContextImplWin32      *impl);
 static void     gdk_gl_context_impl_win32_class_init  (GdkGLContextImplWin32Class *klass);
 
@@ -268,6 +266,8 @@ gdk_win32_gl_context_get_hglrc (GdkGLContext *glcontext)
  * GdkGLContext hash table.
  */
 
+static GHashTable *gl_context_ht = NULL;
+
 static void
 gdk_gl_context_insert (GdkGLContext *glcontext)
 {
@@ -278,8 +278,11 @@ gdk_gl_context_insert (GdkGLContext *glcontext)
   g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
 
   if (!gl_context_ht)
-    gl_context_ht = g_hash_table_new ((GHashFunc) gdk_gl_context_hash,
-                                      (GEqualFunc) gdk_gl_context_equal);
+    {
+      GDK_GL_NOTE (MISC, g_message (" -- Create GL context hash table."));
+      gl_context_ht = g_hash_table_new ((GHashFunc) gdk_gl_context_hash,
+                                        (GEqualFunc) gdk_gl_context_equal);
+    }
 
   impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 
@@ -296,12 +299,17 @@ gdk_gl_context_remove (GdkGLContext *glcontext)
   g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
 
   if (!gl_context_ht)
-    gl_context_ht = g_hash_table_new ((GHashFunc) gdk_gl_context_hash,
-                                      (GEqualFunc) gdk_gl_context_equal);
+    return;
 
   impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 
   g_hash_table_remove (gl_context_ht, &(impl->hglrc));
+
+  if (g_hash_table_size (gl_context_ht) == 0)
+    {
+      GDK_GL_NOTE (MISC, g_message (" -- Destroy GL context hash table."));
+      g_hash_table_destroy (gl_context_ht);
+    }
 }
 
 static GdkGLContext *
