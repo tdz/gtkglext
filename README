@@ -92,9 +92,9 @@ Configure Options
 
 OpenGL options
 
-  --with-gl-prefix=DIR    OpenGL (Mesa) is installed in DIR [default=auto]
-  --with-gl-includes=DIR  OpenGL (Mesa) include files are in DIR [default=auto]
-  --with-gl-libraries=DIR OpenGL (Mesa) library files are in DIR [default=auto]
+  --with-gl-prefix=DIR      OpenGL (Mesa) is installed in DIR [default=auto]
+  --with-gl-includedir=DIR  OpenGL (Mesa) headers are in DIR [default=auto]
+  --with-gl-libdir=DIR      OpenGL (Mesa) libraries are in DIR [default=auto]
 
 Debug options
 

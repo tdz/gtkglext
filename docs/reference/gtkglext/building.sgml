@@ -181,10 +181,10 @@ How to compile GtkGLExt
 	    <arg>--with-gl-prefix=DIR</arg>
 	  </group>
 	  <group>
-	    <arg>--with-gl-includes=DIR</arg>
+	    <arg>--with-gl-includedir=DIR</arg>
 	  </group>
 	  <group>
-	    <arg>--with-gl-libraries=DIR</arg>
+	    <arg>--with-gl-libdir=DIR</arg>
 	  </group>
 	  <group>
 	    <arg>--enable-debug=[no|minimum|yes]</arg>
@@ -212,7 +212,7 @@ How to compile GtkGLExt
       </formalpara>
 
       <formalpara>
-        <title><systemitem>--with-gl-includes=DIR</systemitem></title>
+        <title><systemitem>--with-gl-includedir=DIR</systemitem></title>
           
         <para>
 	  Directory where OpenGL (Mesa) header files are installed.
@@ -221,7 +221,7 @@ How to compile GtkGLExt
       </formalpara>
 
       <formalpara>
-        <title><systemitem>--with-gl-libraries=DIR</systemitem></title>
+        <title><systemitem>--with-gl-libdir=DIR</systemitem></title>
           
         <para>
 	  Directory where OpenGL (Mesa) libraries are installed.

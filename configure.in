@@ -35,9 +35,9 @@ GTK_REQUIRED_VERSION=2.0.0
 #
 GTKGLEXT_MAJOR_VERSION=0
 GTKGLEXT_MINOR_VERSION=7
-GTKGLEXT_MICRO_VERSION=0
-GTKGLEXT_INTERFACE_AGE=0
-GTKGLEXT_BINARY_AGE=0
+GTKGLEXT_MICRO_VERSION=1
+GTKGLEXT_INTERFACE_AGE=1
+GTKGLEXT_BINARY_AGE=1
 GTKGLEXT_VERSION=$GTKGLEXT_MAJOR_VERSION.$GTKGLEXT_MINOR_VERSION.$GTKGLEXT_MICRO_VERSION
 dnl This is the X.Y used in -lgtkglext-FOO-X.Y
 GTKGLEXT_API_MAJOR_VERSION=1
@@ -432,25 +432,25 @@ GL_LDFLAGS=""
 GL_LIBS=""
 
 AC_ARG_WITH(gl-prefix,
-[  --with-gl-prefix=DIR    OpenGL (Mesa) is installed in DIR [[default=auto]]],
+[  --with-gl-prefix=DIR      OpenGL (Mesa) is installed in DIR [[default=auto]]],
 , with_gl_prefix=auto)
 
-AC_ARG_WITH(gl-includes,
-[  --with-gl-includes=DIR  OpenGL (Mesa) include files are in DIR [[default=auto]]],
-, with_gl_includes=auto)
+AC_ARG_WITH(gl-includedir,
+[  --with-gl-includedir=DIR  OpenGL (Mesa) headers are in DIR [[default=auto]]],
+, with_gl_includedir=auto)
 
-AC_ARG_WITH(gl-libraries,
-[  --with-gl-libraries=DIR OpenGL (Mesa) library files are in DIR [[default=auto]]],
-, with_gl_libraries=auto)
+AC_ARG_WITH(gl-libdir,
+[  --with-gl-libdir=DIR      OpenGL (Mesa) libraries are in DIR [[default=auto]]],
+, with_gl_libdir=auto)
 
-if test "x$with_gl_includes" != "xauto"; then
-  GL_CFLAGS="-I$with_gl_includes"
+if test "x$with_gl_includedir" != "xauto"; then
+  GL_CFLAGS="-I$with_gl_includedir"
 elif test "x$with_gl_prefix" != "xauto"; then
   GL_CFLAGS="-I$with_gl_prefix/include"
 fi
 
-if test "x$with_gl_libraries" != "xauto"; then
-  GL_LDFLAGS="-L$with_gl_libraries"
+if test "x$with_gl_libdir" != "xauto"; then
+  GL_LDFLAGS="-L$with_gl_libdir"
 elif test "x$with_gl_prefix" != "xauto"; then
   GL_LDFLAGS="-L$with_gl_prefix/lib"
 fi

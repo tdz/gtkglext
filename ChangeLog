@@ -1,3 +1,7 @@
+2003-03-17  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* Version 0.7.1
+
 2003-03-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglprivate-win32.h (GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET) 
