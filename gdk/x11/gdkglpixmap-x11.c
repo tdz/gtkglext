@@ -24,6 +24,11 @@
 #include "gdkglcontext-x11.h"
 #include "gdkglpixmap-x11.h"
 
+enum {
+  PROP_0,
+  PROP_GLXPIXMAP,
+};
+
 /* Forward declarations */
 static gboolean gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable           *draw,
                                                         GdkGLDrawable           *read,
@@ -34,12 +39,16 @@ static gboolean gdk_x11_gl_pixmap_gl_begin             (GdkGLDrawable           
                                                         GdkGLContext            *glcontext);
 static void     gdk_x11_gl_pixmap_gl_end               (GdkGLDrawable           *gldrawable);
 
-static void     gdk_gl_pixmap_impl_x11_init            (GdkGLPixmapImplX11      *impl);
 static void     gdk_gl_pixmap_impl_x11_class_init      (GdkGLPixmapImplX11Class *klass);
 
-static GObject *gdk_gl_pixmap_impl_x11_constructor     (GType                    type,
-                                                        guint                    n_construct_properties,
-                                                        GObjectConstructParam   *construct_properties);
+static void     gdk_gl_pixmap_impl_x11_set_property    (GObject                 *object,
+                                                        guint                    property_id,
+                                                        const GValue            *value,
+                                                        GParamSpec              *pspec);
+static void     gdk_gl_pixmap_impl_x11_get_property    (GObject                 *object,
+                                                        guint                    property_id,
+                                                        GValue                  *value,
+                                                        GParamSpec              *pspec);
 static void     gdk_gl_pixmap_impl_x11_finalize        (GObject                 *object);
 
 static void     gdk_gl_pixmap_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface);
@@ -62,7 +71,7 @@ gdk_gl_pixmap_impl_x11_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLPixmapImplX11),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) gdk_gl_pixmap_impl_x11_init,
+        (GInstanceInitFunc) NULL,
       };
       static const GInterfaceInfo gl_drawable_interface_info = {
         (GInterfaceInitFunc) gdk_gl_pixmap_impl_x11_gl_drawable_interface_init,
@@ -82,14 +91,6 @@ gdk_gl_pixmap_impl_x11_get_type (void)
 }
 
 static void
-gdk_gl_pixmap_impl_x11_init (GdkGLPixmapImplX11 *impl)
-{
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_init ()"));
-
-  impl->is_constructed = FALSE;
-}
-
-static void
 gdk_gl_pixmap_impl_x11_class_init (GdkGLPixmapImplX11Class *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -98,104 +99,52 @@ gdk_gl_pixmap_impl_x11_class_init (GdkGLPixmapImplX11Class *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->constructor = gdk_gl_pixmap_impl_x11_constructor;
-  object_class->finalize    = gdk_gl_pixmap_impl_x11_finalize;
+  object_class->set_property = gdk_gl_pixmap_impl_x11_set_property;
+  object_class->get_property = gdk_gl_pixmap_impl_x11_get_property;
+  object_class->finalize     = gdk_gl_pixmap_impl_x11_finalize;
+
+  g_object_class_install_property (object_class,
+                                   PROP_GLXPIXMAP,
+                                   g_param_spec_pointer ("glxpixmap",
+                                                         "GLXPixmap",
+                                                         "Pointer to the GLXPixmap.",
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
-static GObject *
-gdk_gl_pixmap_impl_x11_constructor (GType                  type,
-                                    guint                  n_construct_properties,
-                                    GObjectConstructParam *construct_properties)
+static void
+gdk_gl_pixmap_impl_x11_set_property (GObject      *object,
+                                     guint         property_id,
+                                     const GValue *value,
+                                     GParamSpec   *pspec)
 {
-  GObject *object;
-  GdkGLPixmap *glpixmap;
-  GdkGLPixmapImplX11 *impl;
+  GdkGLPixmapImplX11 *impl = GDK_GL_PIXMAP_IMPL_X11 (object);
 
-  Display *xdisplay;
-  int screen_num;
-  XVisualInfo *xvinfo;
-  Pixmap xpixmap;
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_set_property ()"));
 
-  Window root_return;
-  int x_return, y_return;
-  unsigned int width_return, height_return;
-  unsigned int border_width_return;
-  unsigned int depth_return;
-
-  GdkGL_GLX_MESA_pixmap_colormap *mesa_ext;
-
-  object = G_OBJECT_CLASS (parent_class)->constructor (type,
-                                                       n_construct_properties,
-                                                       construct_properties);
-
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_constructor ()"));
-
-  glpixmap = GDK_GL_PIXMAP (object);
-  impl = GDK_GL_PIXMAP_IMPL_X11 (object);
-
-  xdisplay = GDK_GL_CONFIG_XDISPLAY (glpixmap->glconfig);
-  screen_num = GDK_GL_CONFIG_SCREEN_XNUMBER (glpixmap->glconfig);
-  xvinfo = GDK_GL_CONFIG_XVINFO (glpixmap->glconfig);
-
-  /*
-   * Get X Pixmap.
-   */
-
-  /*
-   * Associated GdkPixmap.
-   */
-  xpixmap = GDK_DRAWABLE_XID (glpixmap->drawable);
-
-  /*
-   * Check depth of the X pixmap.
-   */
-
-  if (!XGetGeometry(xdisplay, xpixmap,
-                    &root_return,
-                    &x_return, &y_return,
-                    &width_return, &height_return,
-                    &border_width_return,
-                    &depth_return))
-    goto FAIL;
-
-  if (depth_return != xvinfo->depth)
-    goto FAIL;
-
-  /*
-   * Create an OpenGL off-screen rendering area.
-   */
-
-  /* If GLX_MESA_pixmap_colormap is supported. */
-  mesa_ext = gdk_gl_get_GLX_MESA_pixmap_colormap (glpixmap->glconfig);
-  if (mesa_ext)
+  switch (property_id)
     {
-      GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmapMESA ()"));
-
-      impl->glxpixmap = mesa_ext->glXCreateGLXPixmapMESA (xdisplay,
-                                                          xvinfo,
-                                                          xpixmap,
-                                                          GDK_GL_CONFIG_XCOLORMAP (glpixmap->glconfig));
+    case PROP_GLXPIXMAP:
+      impl->glxpixmap = *((GLXPixmap *) g_value_get_pointer (value));
+      g_object_notify (object, "glxpixmap");
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
     }
-  else
+}
+
+static void
+gdk_gl_pixmap_impl_x11_get_property (GObject    *object,
+                                     guint       property_id,
+                                     GValue     *value,
+                                     GParamSpec *pspec)
+{
+  switch (property_id)
     {
-      GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmap ()"));
-
-      impl->glxpixmap = glXCreateGLXPixmap (xdisplay,
-                                            xvinfo,
-                                            xpixmap);
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
     }
-
-  if (impl->glxpixmap == None)
-    goto FAIL;
-
-  /*
-   * Successfully constructed?
-   */
-
-  impl->is_constructed = TRUE;
-
- FAIL:
-  return object;
 }
 
 static void
@@ -281,14 +230,14 @@ gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable *draw,
   _gdk_gl_context_set_gl_drawable (glcontext, draw);
   _gdk_gl_context_set_gl_drawable_read (glcontext, read);
 
-  if (GDK_GL_CONFIG_AS_SINGLE_MODE(glpixmap->glconfig))
+  if (GDK_GL_CONFIG_AS_SINGLE_MODE (glpixmap->glconfig))
     {
       /* We do this because we are treating a double-buffered frame
          buffer as a single-buffered frame buffer because the system
          does not appear to export any suitable single-buffered
          visuals (in which the following are necessary). */
-      glDrawBuffer(GL_FRONT);
-      glReadBuffer(GL_FRONT);
+      glDrawBuffer (GL_FRONT);
+      glReadBuffer (GL_FRONT);
     }
 
   return TRUE;
@@ -341,24 +290,86 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
                    const int   *attrib_list)
 {
   GdkGLPixmap *glpixmap;
-  GdkGLPixmapImplX11 *impl;
+
+  Display *xdisplay;
+  XVisualInfo *xvinfo;
+  Pixmap xpixmap;
+  GLXPixmap glxpixmap;
+
+  Window root_return;
+  int x_return, y_return;
+  unsigned int width_return, height_return;
+  unsigned int border_width_return;
+  unsigned int depth_return;
+
+  GdkGL_GLX_MESA_pixmap_colormap *mesa_ext;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_new ()"));
+
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), NULL);
+
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (glconfig);
+  xvinfo = GDK_GL_CONFIG_XVINFO (glconfig);
+
+  /*
+   * Get X Pixmap.
+   */
+
+  xpixmap = GDK_DRAWABLE_XID (GDK_DRAWABLE (pixmap));
+
+  /*
+   * Check depth of the X pixmap.
+   */
+
+  if (!XGetGeometry(xdisplay, xpixmap,
+                    &root_return,
+                    &x_return, &y_return,
+                    &width_return, &height_return,
+                    &border_width_return,
+                    &depth_return))
+    return NULL;
+
+  if (depth_return != xvinfo->depth)
+    return NULL;
+
+  /*
+   * Create GLXPixmap.
+   */
+
+  mesa_ext = gdk_gl_get_GLX_MESA_pixmap_colormap (glconfig);
+  if (mesa_ext)
+    {
+      /* If GLX_MESA_pixmap_colormap is supported. */
+
+      GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmapMESA ()"));
+
+      glxpixmap = mesa_ext->glXCreateGLXPixmapMESA (xdisplay,
+                                                    xvinfo,
+                                                    xpixmap,
+                                                    GDK_GL_CONFIG_XCOLORMAP (glconfig));
+    }
+  else
+    {
+      GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmap ()"));
+
+      glxpixmap = glXCreateGLXPixmap (xdisplay,
+                                      xvinfo,
+                                      xpixmap);
+    }
+
+  if (glxpixmap == None)
+    return NULL;
 
   /*
    * Instanciate the GdkGLPixmapImplX11 object.
    */
-  glpixmap = g_object_new (GDK_TYPE_GL_PIXMAP_IMPL_X11,
-                           "glconfig", glconfig,
-                           "drawable", GDK_DRAWABLE (pixmap),
-                           NULL);
-  impl = GDK_GL_PIXMAP_IMPL_X11 (glpixmap);
 
-  if (!impl->is_constructed)
-    {
-      g_object_unref (G_OBJECT (glpixmap));
-      return NULL;
-    }
+  glpixmap = g_object_new (GDK_TYPE_GL_PIXMAP_IMPL_X11,
+                           "glconfig",  glconfig,
+                           "drawable",  GDK_DRAWABLE (pixmap),
+                           "glxpixmap", &glxpixmap,
+                           NULL);
 
   return glpixmap;
 }

@@ -1,5 +1,12 @@
 2003-01-25  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglpixmap-x11.h (struct _GdkGLPixmapImplX11): 
+	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_impl_x11_constructor) 
+	(gdk_gl_pixmap_impl_x11_init): Removed.
+	(gdk_gl_pixmap_impl_x11_class_init): Added glxpixmap property.
+	(gdk_gl_pixmap_new): Create GLXPimxpa in gdk_gl_pixmap_new()
+	instead of gdk_gl_pixmap_impl_x11_constructor().
+
 	* gdk/x11/gdkglconfig-x11.h (struct _GdkGLConfigImplX11): 
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new_common) 
 	(gdk_x11_gl_config_new_from_visualid_common): Removed unnecessary

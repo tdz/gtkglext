@@ -39,8 +39,6 @@ struct _GdkGLPixmapImplX11
   GdkGLPixmap parent_instance;
 
   GLXPixmap glxpixmap;
-
-  guint is_constructed : 1;
 };
 
 struct _GdkGLPixmapImplX11Class
