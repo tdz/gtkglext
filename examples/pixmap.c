@@ -214,8 +214,6 @@ configure (GtkWidget         *widget,
     }
   /* OpenGL end. */
 
- NO_GL:
-
 #if 0
 
   gdk_draw_arc (pixmap,
