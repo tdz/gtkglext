@@ -722,7 +722,7 @@ gdk_window_set_gl_capability (GdkWindow   *window,
                            (GDestroyNotify) g_object_unref);
 
   /* 
-   * Unset background pixmap explicitly to avoid AIX X server crash.
+   * Set a background of "None" on window to avoid AIX X server crash
    */
 
   gdk_window_set_back_pixmap (window, NULL, FALSE);
