@@ -191,9 +191,11 @@ struct GdkGLContext
   GdkGLDrawable *gldrawable;
 
   GdkGLConfig *glconfig;
-  gint render_type;
+
   GdkGLContext *share_list;
+
   gboolean is_direct;
+  gint render_type;
 };
 </STRUCT>
 <FUNCTION>
@@ -204,7 +206,7 @@ void
 <FUNCTION>
 <NAME>gdk_gl_context_new</NAME>
 <RETURNS>GdkGLContext  *</RETURNS>
-GdkGLDrawable *gldrawable,GdkGLConfig   *glconfig,gint           render_type,GdkGLContext  *share_list,gboolean       direct
+GdkGLDrawable *gldrawable,GdkGLConfig   *glconfig,GdkGLContext  *share_list,gboolean       direct,gint           render_type
 </FUNCTION>
 <STRUCT>
 <NAME>GdkGLDrawableClass</NAME>
@@ -672,7 +674,7 @@ GdkWindow   *window
 <FUNCTION>
 <NAME>gtk_widget_set_gl_capability</NAME>
 <RETURNS>gboolean  </RETURNS>
-GtkWidget    *widget,GdkGLConfig  *glconfig,gint          render_type,GdkGLContext *share_list,gboolean      direct
+GtkWidget    *widget,GdkGLConfig  *glconfig,GdkGLContext *share_list,gboolean      direct,gint          render_type
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_widget_is_gl_capable</NAME>

@@ -1,6 +1,6 @@
-24% function docs coverage.
-12 functions documented.
-38 not documented.
+62% function docs coverage.
+31 functions documented.
+19 not documented.
 
 
 GDK_GL_CONFIG_XDISPLAY
@@ -10,32 +10,13 @@ GDK_GL_PIXMAP_GLXPIXMAP
 GDK_GL_WINDOW_GLXWINDOW
 gdk_gl_config_get_screen
 gdk_gl_config_new_for_screen
-gdk_gl_context_new
 gdk_gl_drawable_gl_begin
 gdk_gl_drawable_gl_end
-gdk_gl_drawable_is_double_buffered
-gdk_gl_drawable_make_current
-gdk_gl_drawable_swap_buffers
-gdk_gl_drawable_wait_gdk
-gdk_gl_drawable_wait_gl
-gdk_gl_font_use_pango_font
 gdk_gl_font_use_pango_font_for_display
-gdk_gl_pixmap_new
-gdk_gl_query_extension
 gdk_gl_query_extension_for_display
-gdk_gl_query_version
 gdk_gl_query_version_for_display
-gdk_gl_window_new
 gdk_pixmap_get_gl_drawable
-gdk_pixmap_get_gl_pixmap
-gdk_pixmap_is_gl_capable
-gdk_pixmap_set_gl_capability
-gdk_pixmap_unset_gl_capability
 gdk_window_get_gl_drawable
-gdk_window_get_gl_window
-gdk_window_is_gl_capable
-gdk_window_set_gl_capability
-gdk_window_unset_gl_capability
 gdk_x11_gl_config_get_xdisplay
 gdk_x11_gl_config_get_xvinfo
 gdk_x11_gl_context_get_glxcontext

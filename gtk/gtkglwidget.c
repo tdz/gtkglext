@@ -86,9 +86,9 @@ gtk_widget_gl_realize (GtkWidget        *widget,
 
   glcontext = gdk_gl_context_new (GDK_GL_DRAWABLE (glwindow),
                                   param->glconfig,
-                                  param->render_type,
                                   param->share_list,
-                                  param->direct);
+                                  param->direct,
+                                  param->render_type);
   if (glcontext == NULL)
     {
       g_warning ("cannot create GdkGLContext\n");
@@ -134,9 +134,9 @@ gtk_widget_gl_configure_event (GtkWidget         *widget,
 
   glcontext = gdk_gl_context_new (GDK_GL_DRAWABLE (glwindow),
                                   param->glconfig,
-                                  param->render_type,
                                   param->share_list,
-                                  param->direct);
+                                  param->direct,
+                                  param->render_type);
   if (glcontext == NULL)
     {
       g_warning ("cannot create GdkGLContext\n");
@@ -182,9 +182,9 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
  * gtk_widget_set_gl_capability:
  * @widget: the #GtkWidget to be used as the rendering area.
  * @glconfig: a #GdkGLConfig.
- * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not used).
  * @share_list: the #GdkGLContext which to share display lists. NULL indicates that no sharing is to take place.
  * @direct: whether rendering is to be done with a direct connection to the graphics system.
+ * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not used).
  *
  * Set the OpenGL-capability to the #GtkWidget.
  * The call setup the callbacks to realize a OpenGL-capable window.
@@ -194,9 +194,9 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
 gboolean
 gtk_widget_set_gl_capability (GtkWidget    *widget,
                               GdkGLConfig  *glconfig,
-                              gint          render_type,
                               GdkGLContext *share_list,
-                              gboolean      direct)
+                              gboolean      direct,
+                              gint          render_type)
 {
   GtkGLWidgetParam param;
 
@@ -233,9 +233,9 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    */
 
   param.glconfig = glconfig;
-  param.render_type = render_type;
   param.share_list = share_list;
   param.direct = direct;
+  param.render_type = render_type;
 
   g_signal_connect (G_OBJECT (widget), "realize",
 		    G_CALLBACK (gtk_widget_gl_realize),

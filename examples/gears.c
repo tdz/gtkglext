@@ -498,9 +498,9 @@ main(int   argc,
   /* Set OpenGL-capability to the widget. */
   gtk_widget_set_gl_capability(drawing_area,
                                glconfig,
-                               GDK_GL_RGBA_TYPE,
                                NULL,
-                               TRUE);
+                               TRUE,
+                               GDK_GL_RGBA_TYPE);
 
   gtk_box_pack_start(GTK_BOX(vbox), drawing_area, TRUE, TRUE, 0);
 

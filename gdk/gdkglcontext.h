@@ -41,9 +41,11 @@ struct _GdkGLContext
   GdkGLDrawable *gldrawable;
 
   GdkGLConfig *glconfig;
-  gint render_type;
+
   GdkGLContext *share_list;
+
   gboolean is_direct;
+  gint render_type;
 };
 
 struct _GdkGLContextClass
@@ -55,9 +57,9 @@ GType         gdk_gl_context_get_type  (void);
 
 GdkGLContext *gdk_gl_context_new       (GdkGLDrawable *gldrawable,
                                         GdkGLConfig   *glconfig,
-                                        gint           render_type,
                                         GdkGLContext  *share_list,
-                                        gboolean       direct);
+                                        gboolean       direct,
+                                        gint           render_type);
 
 G_END_DECLS
 

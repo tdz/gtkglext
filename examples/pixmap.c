@@ -137,9 +137,9 @@ configure (GtkWidget         *widget,
     {
       glcontext = gdk_gl_context_new (gldrawable,
                                       glconfig,
-                                      GDK_GL_RGBA_TYPE,
                                       NULL,
-                                      FALSE);
+                                      FALSE,
+                                      GDK_GL_RGBA_TYPE);
       if (glcontext == NULL)
         {
           g_print ("Connot create the OpenGL rendering context\n");

@@ -33,9 +33,9 @@ gdkgltypes
 @parent_instance: 
 @gldrawable: 
 @glconfig: 
-@render_type: 
 @share_list: 
 @is_direct: 
+@render_type: 
 
 <!-- ##### STRUCT GdkGLDrawable ##### -->
 <para>

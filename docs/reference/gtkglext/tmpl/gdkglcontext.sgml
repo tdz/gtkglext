@@ -21,9 +21,9 @@ OpenGL rendering context.
 
 @gldrawable: 
 @glconfig: 
-@render_type: 
 @share_list: 
 @direct: 
+@render_type: 
 @Returns: 
 
 

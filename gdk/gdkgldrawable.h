@@ -40,9 +40,9 @@ struct _GdkGLDrawableClass
 
   GdkGLContext *(*create_new_context)   (GdkGLDrawable *gldrawable,
                                          GdkGLConfig   *glconfig,
-                                         gint           render_type,
                                          GdkGLContext  *share_list,
-                                         gboolean       direct);
+                                         gboolean       direct,
+                                         gint           render_type);
 
   gboolean      (*make_context_current) (GdkGLDrawable *draw,
                                          GdkGLDrawable *read,

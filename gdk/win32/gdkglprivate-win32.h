@@ -28,9 +28,9 @@ G_BEGIN_DECLS
 
 GdkGLContext *_gdk_win32_gl_context_new        (GdkGLDrawable *gldrawable,
                                                 GdkGLConfig   *glconfig,
-                                                gint           render_type,
                                                 GdkGLContext  *share_list,
-                                                gboolean       direct);
+                                                gboolean       direct,
+                                                gint           render_type);
 
 void          _gdk_win32_gl_drawable_wait_gdk  (GdkGLDrawable *gldrawable);
 

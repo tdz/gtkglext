@@ -357,9 +357,9 @@ gint show_lwobject(const char *lwobject_name)
   /* Set OpenGL-capability to the widget. */
   gtk_widget_set_gl_capability (GTK_WIDGET (glarea),
                                 glconfig,
-                                GDK_GL_RGBA_TYPE,
                                 NULL,
-                                TRUE);
+                                TRUE,
+                                GDK_GL_RGBA_TYPE);
 
   /* set up events and signals for OpenGL widget */
   gtk_widget_set_events(glarea,

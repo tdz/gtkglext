@@ -178,9 +178,9 @@ gdk_gl_context_impl_win32_finalize (GObject *object)
 GdkGLContext *
 _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
                            GdkGLConfig   *glconfig,
-                           gint           render_type,
                            GdkGLContext  *share_list,
-                           gboolean       direct)
+                           gboolean       direct,
+                           gint           render_type)
 {
   GdkGLContext *glcontext;
   GdkGLContextImplWin32 *impl;
@@ -194,9 +194,9 @@ _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
   glcontext = g_object_new (GDK_TYPE_GL_CONTEXT_IMPL_WIN32,
                             "gldrawable",  gldrawable,
                             "glconfig",    glconfig,
-                            "render_type", render_type,
                             "share_list",  share_list,
                             "is_direct",   direct,
+                            "render_type", render_type,
                             NULL);
   impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 

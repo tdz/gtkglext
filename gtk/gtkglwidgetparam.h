@@ -32,9 +32,9 @@ typedef struct _GtkGLWidgetParam GtkGLWidgetParam;
 struct _GtkGLWidgetParam
 {
   GdkGLConfig *glconfig;
-  gint render_type;
   GdkGLContext *share_list;
   gboolean direct;
+  gint render_type;
 };
 
 GType gtk_gl_widget_param_get_type (void);

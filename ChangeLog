@@ -1,5 +1,14 @@
 2002-07-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Argument order
+	have been changed changed.
+	
+	* gdk/win32/gdkglcontext-win32.c (_gdk_win32_gl_context_new): 
+	* gdk/x11/gdkglcontext-x11.c (_gdk_x11_gl_context_new): 
+	* gdk/gdkgldrawable.h (struct _GdkGLDrawableClass): 
+	* gdk/gdkglcontext.[hc] (gdk_gl_context_new): Argument order have
+	been changed. It is convenient for C++ wrapper GtkGLExtmm.
+
 	* gdkglext and gtkglext docs have been merged into one gtkglext
 	doc module.
 

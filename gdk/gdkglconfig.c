@@ -26,7 +26,7 @@
 
 enum {
   PROP_0,
-  PROP_SCREEN,
+  PROP_SCREEN
 };
 
 static void     gdk_gl_config_init         (GdkGLConfig           *glconfig);
