@@ -66,6 +66,7 @@ gdkglext_headers = \
 	gdkgl.h			\
 	gdkgltokens.h		\
 	gdkgltypes.h		\
+	gdkglquery.h		\
 	gdkglconfig.h		\
 	gdkglcontext.h		\
 	gdkgldrawable.h		\

@@ -20,8 +20,9 @@
 #include <gdk/gdkdisplay.h>
 #endif /* GDK_MULTIHEAD_SAFE */
 
-#include "gdkglprivate-win32.h"
 #include "gdkglwin32.h"
+#include "gdkglprivate-win32.h"
+#include "gdkglquery.h"
 
 gboolean
 gdk_gl_query_extension (void)

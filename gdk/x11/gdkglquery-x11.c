@@ -22,6 +22,7 @@
 
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
+#include "gdkglquery.h"
 
 /**
  * gdk_gl_query_extension:

@@ -1,0 +1,105 @@
+<!-- ##### SECTION Title ##### -->
+GdkGLConfig
+
+<!-- ##### SECTION Short_Description ##### -->
+OpenGL frame buffer configurations.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+Under #GdkGLConfig there is a set of functions which allows to
+configure the framebuffer, i.e, all those things we have to define
+before anything is drawn. In order to get this sorted, a GdkGLConfig
+struct is arranged. This GdkGLconfig is created with gdk_gl_config_new
+and is afterwards used in gtk_widget_set_gl_capability.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION gdk_gl_config_new ##### -->
+<para>
+Reserves an space in memory for containing OpenGL FrameBuffer
+configuration Data. Configuration data is sent via attrib_list. This
+array of gint contains attributes data stored in pairs
+{ATTRIBUTE_NAME1, value1, ATTRIBUTE_NAME2, value2, ...}, ending always
+with a GDK_ATTRIB_LIST_NONE. These attributes can be:
+GDK_GL_USE_GL,GDK_GL_BUFFER_SIZE, GDK_GL_LEVEL, GDK_GL_RGBA,
+GDK_GL_DOUBLEBUFFER, GDK_GL_STEREO, GDK_GL_AUX_BUFFERS,
+GDK_GL_RED_SIZE, GDK_GL_GREEN_SIZE, GDK_GL_BLUE_SIZE,
+GDK_GL_ALPHA_SIZE, GDK_GL_DEPTH_SIZE, GDK_GL_STENCIL_SIZE,
+GDK_GL_ACCUM_RED_SIZE, GDK_GL_ACCUM_GREEN_SIZE, GDK_GL_ACCUM_BLUE_SIZE
+and GDK_GL_ACCUM_ALPHA_SIZE. 
+</para>
+
+@attrib_list: an array of gint containing values for frame buffer configuration.It must end with GDK_GL_ATTRIB_LIST_NONE.
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_new_for_screen ##### -->
+<para>
+
+</para>
+
+@screen: 
+@attrib_list: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_get_screen ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_get_attrib ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@attribute: 
+@value: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_get_colormap ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_get_depth ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_is_double_buffered ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_is_stereo ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+

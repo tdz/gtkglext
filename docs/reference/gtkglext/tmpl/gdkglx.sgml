@@ -1,0 +1,101 @@
+<!-- ##### SECTION Title ##### -->
+gdkglx
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION gdk_x11_gl_config_get_xdisplay ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_x11_gl_config_get_xvinfo ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_x11_gl_context_get_glxcontext ##### -->
+<para>
+
+</para>
+
+@glcontext: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_x11_gl_pixmap_get_glxpixmap ##### -->
+<para>
+
+</para>
+
+@glpixmap: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_x11_gl_window_get_glxwindow ##### -->
+<para>
+
+</para>
+
+@glwindow: 
+@Returns: 
+
+
+<!-- ##### MACRO GDK_GL_CONFIG_XDISPLAY ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+
+
+<!-- ##### MACRO GDK_GL_CONFIG_XVINFO ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+
+
+<!-- ##### MACRO GDK_GL_CONTEXT_GLXCONTEXT ##### -->
+<para>
+
+</para>
+
+@glcontext: 
+
+
+<!-- ##### MACRO GDK_GL_PIXMAP_GLXPIXMAP ##### -->
+<para>
+
+</para>
+
+@glpixmap: 
+
+
+<!-- ##### MACRO GDK_GL_WINDOW_GLXWINDOW ##### -->
+<para>
+
+</para>
+
+@glwindow: 
+
+

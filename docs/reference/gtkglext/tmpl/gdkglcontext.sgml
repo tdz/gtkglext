@@ -1,0 +1,29 @@
+<!-- ##### SECTION Title ##### -->
+GdkGLContext
+
+<!-- ##### SECTION Short_Description ##### -->
+OpenGL rendering context.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION gdk_gl_context_new ##### -->
+<para>
+
+</para>
+
+@gldrawable: 
+@glconfig: 
+@render_type: 
+@share_list: 
+@direct: 
+@Returns: 
+
+

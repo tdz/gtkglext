@@ -1,3 +1,13 @@
+2002-07-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdkglext and gtkglext docs have been merged into one gtkglext
+	doc module.
+
+	* gdk/gdkgl.h: 
+	* gdk/win32/gdkglquery-win32.c: 
+	* gdk/x11/gdkglquery-x11.c: 
+	* gdk/gdkglquery.h: Query functions have been moved to gdkglquery.h.
+
 2002-07-05  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglpixmap-win32.c: 

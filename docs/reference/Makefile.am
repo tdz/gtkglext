@@ -1,7 +1,7 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/docs/reference
 
-SUBDIRS = gdkglext gtkglext
+SUBDIRS = gtkglext
 
 .PHONY: files
 

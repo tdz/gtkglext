@@ -16,19 +16,28 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifndef __GDK_GL_H__
-#define __GDK_GL_H__
+#ifndef __GDK_GL_QUERY_H__
+#define __GDK_GL_QUERY_H__
 
 #include <gdk/gdktypes.h>
 
-#include <gdk/gdkgltokens.h>
-#include <gdk/gdkgltypes.h>
-#include <gdk/gdkglquery.h>
-#include <gdk/gdkglconfig.h>
-#include <gdk/gdkglcontext.h>
-#include <gdk/gdkgldrawable.h>
-#include <gdk/gdkglpixmap.h>
-#include <gdk/gdkglwindow.h>
-#include <gdk/gdkglfont.h>
+G_BEGIN_DECLS
 
-#endif /* __GDK_GL_H__ */
+gboolean gdk_gl_query_extension             (void);
+
+#ifdef GDK_MULTIHEAD_SAFE
+gboolean gdk_gl_query_extension_for_display (GdkDisplay *display);
+#endif /* GDK_MULTIHEAD_SAFE */
+
+gboolean gdk_gl_query_version               (gint       *major,
+                                             gint       *minor);
+
+#ifdef GDK_MULTIHEAD_SAFE
+gboolean gdk_gl_query_version_for_display   (GdkDisplay *display,
+                                             gint       *major,
+                                             gint       *minor);
+#endif /* GDK_MULTIHEAD_SAFE */
+
+G_END_DECLS
+
+#endif /* __GDK_GL_QUERY_H__ */

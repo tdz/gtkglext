@@ -6,7 +6,16 @@ OpenGL extension API to GtkWidget.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
-GtkGlExt is an extension to Gtk 2.0 or above which adds OpenGL capabilities to any gtk widget. As opposed to Jane Loff's gtkglarea, It does not provide any OpenGL widget, but an interface to use opengl on any widget. Its use is quite simple: use #gtk_widget_set_gl_capability to add OpenGL support to a widget, it will create a GLcontext and a gldrawable for the widget, which can be obtained via #gtk_widget_get_gl_context and #gtk_widget_get_gl_drawable. With them, gdk_gl_drawable_gl_begin and gdk_gl_drawable_gl_end can be called. Between those two function, OpenGl function calls can be made.
+GtkGLExt is an extension to Gtk 2.0 or above which adds OpenGL
+capabilities to any gtk widget. As opposed to Jane Loff's gtkglarea,
+It does not provide any OpenGL widget, but an interface to use opengl
+on any widget. Its use is quite simple: use
+#gtk_widget_set_gl_capability to add OpenGL support to a widget, it
+will create a GLcontext and a gldrawable for the widget, which can be
+obtained via #gtk_widget_get_gl_context and
+#gtk_widget_get_gl_drawable. With them, gdk_gl_drawable_gl_begin and
+gdk_gl_drawable_gl_end can be called. Between those two function,
+OpenGL function calls can be made.
 </para>
 
 <!-- ##### SECTION See_Also ##### -->
@@ -16,44 +25,47 @@ GtkGlExt is an extension to Gtk 2.0 or above which adds OpenGL capabilities to a
 
 <!-- ##### FUNCTION gtk_widget_set_gl_capability ##### -->
 <para>
-Prepares the widget for its use with OpenGl, by creating the gl_context and the gl_drawable, which are afterwards obtainable by #gtk_widget_get_gl_context and #gtk_widget_get_gl_drawable.
+Prepares the widget for its use with OpenGL, by creating the
+gl_context and the gl_drawable, which are afterwards obtainable by
+#gtk_widget_get_gl_context and #gtk_widget_get_gl_drawable.
 </para>
 
-@widget: The widget to be added OpenGl capabilities.
+@widget: The widget to be added OpenGL capabilities.
 @glconfig: OpenGL configuration, see gdk_gl_config_new.
 @render_type: GDK_GL_RGBA_TYPE or GDK_COLOR_INDEX_TYPE (currently unused)
-@share_list: Sometimes is useful to have several widgets displaying similar information (f.e: different views of the same object=. This parameter allows two widgets to share display lists. Insert here the GdkGlcontext of the widget to share lists with, or NULL to share no lists.
+@share_list: Sometimes is useful to have several widgets displaying similar information (f.e: different views of the same object=. This parameter allows two widgets to share display lists. Insert here the GdkGLcontext of the widget to share lists with, or NULL to share no lists.
 @direct: Usually direct rendering is desired (i.e: use of hardware rendering), but this is not always required, use this to select among direct or indirect rendering.
 @Returns: TRUE if succesful, FALSE otherwise.
-<!-- # Unused Parameters # -->
-@attrib_list: 
 
 
 <!-- ##### FUNCTION gtk_widget_is_gl_capable ##### -->
 <para>
-This function is useful to check if a widget is OpenGL-capable (i.e if it is possible to use OpenGL functions to draw on it).
+This function is useful to check if a widget is OpenGL-capable (i.e if
+it is possible to use OpenGL functions to draw on it).
 </para>
 
-@widget: Widget to chack for capability
+@widget: Widget to check for capability
 @Returns: TRUE if the widget is OpenGL-capable, FALSE otherwise.
 
 
 <!-- ##### FUNCTION gtk_widget_get_gl_config ##### -->
 <para>
-This returns a GdkGLConfig with the openGL configuration of the widget.
+This returns a GdkGLConfig with the OpenGL configuration of the widget.
 </para>
 
-@widget: Widget to check for OpenGl configuration.
+@widget: Widget to check for OpenGL configuration.
 @Returns: A GdkGLConfig with the OpenGL configuration of the widget.
 
 
 <!-- ##### FUNCTION gtk_widget_get_gl_context ##### -->
 <para>
-Returns the GdkGLContext holded by the widget. This struct is needed for the function gdk_gl_drawable_begin, or for sharing Displaylists (see #gtk_widget_set_gl_capability.
+Returns the GdkGLContext holded by the widget. This struct is needed
+for the function gdk_gl_drawable_begin, or for sharing Displaylists
+(see #gtk_widget_set_gl_capability.
 </para>
 
-@widget: Widget to obtain GdkGlContext from.
-@Returns: The GdkGlContext of the widget.
+@widget: Widget to obtain GdkGLContext from.
+@Returns: The GdkGLContext of the widget.
 
 
 <!-- ##### FUNCTION gtk_widget_get_gl_window ##### -->
@@ -61,13 +73,14 @@ Returns the GdkGLContext holded by the widget. This struct is needed for the fun
 Returns the pointer to the GdkGLWindow struct of the widget.
 </para>
 
-@widget: The widget owner of the GdkGlWindow.
-@Returns: The pointer to the GdkGlWindow
+@widget: The widget owner of the GdkGLWindow.
+@Returns: The pointer to the GdkGLWindow
 
 
 <!-- ##### MACRO gtk_widget_get_gl_drawable ##### -->
 <para>
-Return the #GdkGLDrawable holded by the #GtkWidget. In fact it calls #gtk_widget_get_gl_window and casts result to a GDK_GL_DRAWABLE
+Return the #GdkGLDrawable holded by the #GtkWidget. In fact it calls
+#gtk_widget_get_gl_window and casts result to a GDK_GL_DRAWABLE.
 </para>
 
 @widget: a #GtkWidget.

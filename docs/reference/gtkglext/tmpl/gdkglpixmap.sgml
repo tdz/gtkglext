@@ -1,0 +1,72 @@
+<!-- ##### SECTION Title ##### -->
+GdkGLPixmap
+
+<!-- ##### SECTION Short_Description ##### -->
+OpenGL pixmap which is maintained offscreen.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION gdk_gl_pixmap_new ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@pixmap: 
+@attrib_list: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_pixmap_set_gl_capability ##### -->
+<para>
+
+</para>
+
+@pixmap: 
+@glconfig: 
+@attrib_list: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_pixmap_unset_gl_capability ##### -->
+<para>
+
+</para>
+
+@pixmap: 
+
+
+<!-- ##### FUNCTION gdk_pixmap_is_gl_capable ##### -->
+<para>
+
+</para>
+
+@pixmap: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_pixmap_get_gl_pixmap ##### -->
+<para>
+
+</para>
+
+@pixmap: 
+@Returns: 
+
+
+<!-- ##### MACRO gdk_pixmap_get_gl_drawable ##### -->
+<para>
+
+</para>
+
+@pixmap: 
+
+

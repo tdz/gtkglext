@@ -21,7 +21,7 @@ LDADDS = \
 noinst_LTLIBRARIES = libgdkglext-win32.la
 
 libgdkglext_win32_la_SOURCES = \
-	gdkgl-win32.c		\
+	gdkglquery-win32.c	\
 	gdkglconfig-win32.h	\
 	gdkglconfig-win32.c	\
 	gdkglcontext-win32.h	\

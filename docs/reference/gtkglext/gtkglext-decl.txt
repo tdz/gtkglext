@@ -1,4 +1,675 @@
 <FUNCTION>
+<NAME>gdk_x11_gl_config_get_xdisplay</NAME>
+<RETURNS>Display      *</RETURNS>
+GdkGLConfig  *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_x11_gl_config_get_xvinfo</NAME>
+<RETURNS>XVisualInfo  *</RETURNS>
+GdkGLConfig  *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_x11_gl_context_get_glxcontext</NAME>
+<RETURNS>GLXContext  </RETURNS>
+GdkGLContext *glcontext
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_x11_gl_pixmap_get_glxpixmap</NAME>
+<RETURNS>GLXPixmap  </RETURNS>
+GdkGLPixmap  *glpixmap
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_x11_gl_window_get_glxwindow</NAME>
+<RETURNS>Window  </RETURNS>
+GdkGLWindow  *glwindow
+</FUNCTION>
+<MACRO>
+<NAME>GDK_GL_CONFIG_XDISPLAY</NAME>
+#define GDK_GL_CONFIG_XDISPLAY(glconfig)     (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xdisplay)
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONFIG_XVINFO</NAME>
+#define GDK_GL_CONFIG_XVINFO(glconfig)       (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo)
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONTEXT_GLXCONTEXT</NAME>
+#define GDK_GL_CONTEXT_GLXCONTEXT(glcontext) (GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glxcontext)
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_PIXMAP_GLXPIXMAP</NAME>
+#define GDK_GL_PIXMAP_GLXPIXMAP(glpixmap)    (GDK_GL_PIXMAP_IMPL_X11 (glpixmap)->glxpixmap)
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_WINDOW_GLXWINDOW</NAME>
+#define GDK_GL_WINDOW_GLXWINDOW(glwindow)    (GDK_GL_WINDOW_IMPL_X11 (glwindow)->glxwindow)
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONFIG_XDISPLAY</NAME>
+#define GDK_GL_CONFIG_XDISPLAY(glconfig)     (gdk_x11_gl_config_get_xdisplay (glconfig))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONFIG_XVINFO</NAME>
+#define GDK_GL_CONFIG_XVINFO(glconfig)       (gdk_x11_gl_config_get_xvinfo (glconfig))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONTEXT_GLXCONTEXT</NAME>
+#define GDK_GL_CONTEXT_GLXCONTEXT(glcontext) (gdk_x11_gl_context_get_glxcontext (glcontext))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_PIXMAP_GLXPIXMAP</NAME>
+#define GDK_GL_PIXMAP_GLXPIXMAP(glpixmap)    (gdk_x11_gl_pixmap_get_glxpixmap (glpixmap))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_WINDOW_GLXWINDOW</NAME>
+#define GDK_GL_WINDOW_GLXWINDOW(glwindow)    (gdk_x11_gl_window_get_glxwindow (glwindow))
+</MACRO>
+<STRUCT>
+<NAME>GdkGLConfigClass</NAME>
+</STRUCT>
+<MACRO>
+<NAME>GDK_TYPE_GL_CONFIG</NAME>
+#define GDK_TYPE_GL_CONFIG              (gdk_gl_config_get_type ())
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONFIG</NAME>
+#define GDK_GL_CONFIG(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_GL_CONFIG, GdkGLConfig))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONFIG_CLASS</NAME>
+#define GDK_GL_CONFIG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_GL_CONFIG, GdkGLConfigClass))
+</MACRO>
+<MACRO>
+<NAME>GDK_IS_GL_CONFIG</NAME>
+#define GDK_IS_GL_CONFIG(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_GL_CONFIG))
+</MACRO>
+<MACRO>
+<NAME>GDK_IS_GL_CONFIG_CLASS</NAME>
+#define GDK_IS_GL_CONFIG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_GL_CONFIG))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONFIG_GET_CLASS</NAME>
+#define GDK_GL_CONFIG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_CONFIG, GdkGLConfigClass))
+</MACRO>
+<STRUCT>
+<NAME>GdkGLConfig</NAME>
+struct GdkGLConfig
+{
+  GObject parent_instance;
+
+  GdkColormap *colormap;
+  gint depth;
+
+  guint is_double_buffered : 1;
+  guint is_stereo : 1;
+
+#ifdef GDK_MULTIHEAD_SAFE
+  GdkScreen *screen;
+#else  /* GDK_MULTIHEAD_SAFE */
+  gpointer screen;
+#endif /* GDK_MULTIHEAD_SAFE */
+
+};
+</STRUCT>
+<FUNCTION>
+<NAME>gdk_gl_config_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_new</NAME>
+<RETURNS>GdkGLConfig  *</RETURNS>
+const gint  *attrib_list
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_new_for_screen</NAME>
+<RETURNS>GdkGLConfig  *</RETURNS>
+GdkScreen   *screen,const gint  *attrib_list
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_get_screen</NAME>
+<RETURNS>GdkScreen    *</RETURNS>
+GdkGLConfig *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_get_attrib</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLConfig *glconfig,gint         attribute,gint        *value
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_get_colormap</NAME>
+<RETURNS>GdkColormap  *</RETURNS>
+GdkGLConfig *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_get_depth</NAME>
+<RETURNS>gint  </RETURNS>
+GdkGLConfig *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_is_double_buffered</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLConfig *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_is_stereo</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLConfig *glconfig
+</FUNCTION>
+<STRUCT>
+<NAME>GdkGLContextClass</NAME>
+</STRUCT>
+<MACRO>
+<NAME>GDK_TYPE_GL_CONTEXT</NAME>
+#define GDK_TYPE_GL_CONTEXT              (gdk_gl_context_get_type ())
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONTEXT</NAME>
+#define GDK_GL_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_GL_CONTEXT, GdkGLContext))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONTEXT_CLASS</NAME>
+#define GDK_GL_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_GL_CONTEXT, GdkGLContextClass))
+</MACRO>
+<MACRO>
+<NAME>GDK_IS_GL_CONTEXT</NAME>
+#define GDK_IS_GL_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_GL_CONTEXT))
+</MACRO>
+<MACRO>
+<NAME>GDK_IS_GL_CONTEXT_CLASS</NAME>
+#define GDK_IS_GL_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_GL_CONTEXT))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_CONTEXT_GET_CLASS</NAME>
+#define GDK_GL_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_CONTEXT, GdkGLContextClass))
+</MACRO>
+<STRUCT>
+<NAME>GdkGLContext</NAME>
+struct GdkGLContext
+{
+  GObject parent_instance;
+
+  GdkGLDrawable *gldrawable;
+
+  GdkGLConfig *glconfig;
+  gint render_type;
+  GdkGLContext *share_list;
+  gboolean is_direct;
+};
+</STRUCT>
+<FUNCTION>
+<NAME>gdk_gl_context_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_context_new</NAME>
+<RETURNS>GdkGLContext  *</RETURNS>
+GdkGLDrawable *gldrawable,GdkGLConfig   *glconfig,gint           render_type,GdkGLContext  *share_list,gboolean       direct
+</FUNCTION>
+<STRUCT>
+<NAME>GdkGLDrawableClass</NAME>
+</STRUCT>
+<MACRO>
+<NAME>GDK_TYPE_GL_DRAWABLE</NAME>
+#define GDK_TYPE_GL_DRAWABLE		  (gdk_gl_drawable_get_type ())
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_DRAWABLE</NAME>
+#define GDK_GL_DRAWABLE(inst)		  (G_TYPE_CHECK_INSTANCE_CAST ((inst), GDK_TYPE_GL_DRAWABLE, GdkGLDrawable))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_DRAWABLE_CLASS</NAME>
+#define GDK_GL_DRAWABLE_CLASS(vtable)	  (G_TYPE_CHECK_CLASS_CAST ((vtable), GDK_TYPE_GL_DRAWABLE, GdkGLDrawableClass))
+</MACRO>
+<MACRO>
+<NAME>GDK_IS_GL_DRAWABLE</NAME>
+#define GDK_IS_GL_DRAWABLE(inst)	  (G_TYPE_CHECK_INSTANCE_TYPE ((inst), GDK_TYPE_GL_DRAWABLE))
+</MACRO>
+<MACRO>
+<NAME>GDK_IS_GL_DRAWABLE_CLASS</NAME>
+#define GDK_IS_GL_DRAWABLE_CLASS(vtable)  (G_TYPE_CHECK_CLASS_TYPE ((vtable), GDK_TYPE_GL_DRAWABLE))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_DRAWABLE_GET_CLASS</NAME>
+#define GDK_GL_DRAWABLE_GET_CLASS(inst)	  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GDK_TYPE_GL_DRAWABLE, GdkGLDrawableClass))
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_drawable_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_make_current</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLDrawable *gldrawable,GdkGLContext  *glcontext
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_is_double_buffered</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLDrawable *gldrawable
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_swap_buffers</NAME>
+<RETURNS>void  </RETURNS>
+GdkGLDrawable *gldrawable
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_wait_gl</NAME>
+<RETURNS>void  </RETURNS>
+GdkGLDrawable *gldrawable
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_wait_gdk</NAME>
+<RETURNS>void  </RETURNS>
+GdkGLDrawable *gldrawable
+</FUNCTION>
+<MACRO>
+<NAME>gdk_gl_drawable_gl_begin</NAME>
+#define  gdk_gl_drawable_gl_begin(gldrawable, glcontext)        \
+  do                                                            \
+    {                                                           \
+      if (gdk_gl_drawable_make_current (gldrawable, glcontext)) \
+        {                                                       \
+          gdk_gl_drawable_wait_gdk (gldrawable)
+</MACRO>
+<MACRO>
+<NAME>gdk_gl_drawable_gl_end</NAME>
+#define  gdk_gl_drawable_gl_end(gldrawable)     \
+          gdk_gl_drawable_wait_gl (gldrawable); \
+        }                                       \
+    }                                           \
+  while (0)
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_font_use_pango_font</NAME>
+<RETURNS>PangoFont  *</RETURNS>
+const PangoFontDescription *font_desc,gint                        first,gint                        count,gint                        list_base
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_font_use_pango_font_for_display</NAME>
+<RETURNS>PangoFont  *</RETURNS>
+GdkDisplay                 *display,const PangoFontDescription *font_desc,gint                        first,gint                        count,gint                        list_base
+</FUNCTION>
+<STRUCT>
+<NAME>GdkGLPixmapClass</NAME>
+</STRUCT>
+<MACRO>
+<NAME>GDK_TYPE_GL_PIXMAP</NAME>
+#define GDK_TYPE_GL_PIXMAP              (gdk_gl_pixmap_get_type ())
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_PIXMAP</NAME>
+#define GDK_GL_PIXMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_GL_PIXMAP, GdkGLPixmap))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_PIXMAP_CLASS</NAME>
+#define GDK_GL_PIXMAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_GL_PIXMAP, GdkGLPixmapClass))
+</MACRO>
+<MACRO>
+<NAME>GDK_IS_GL_PIXMAP</NAME>
+#define GDK_IS_GL_PIXMAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_GL_PIXMAP))
+</MACRO>
+<MACRO>
+<NAME>GDK_IS_GL_PIXMAP_CLASS</NAME>
+#define GDK_IS_GL_PIXMAP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_GL_PIXMAP))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_PIXMAP_GET_CLASS</NAME>
+#define GDK_GL_PIXMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_PIXMAP, GdkGLPixmapClass))
+</MACRO>
+<STRUCT>
+<NAME>GdkGLPixmap</NAME>
+struct GdkGLPixmap
+{
+  GObject parent_instance;
+
+  GdkGLConfig *glconfig;
+
+  /* XXX GdkGLPixmap is not GdkPixmap for the moment :-< */
+  GdkDrawable *wrapper;         /* Real GdkPixmap */
+};
+</STRUCT>
+<FUNCTION>
+<NAME>gdk_gl_pixmap_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_pixmap_new</NAME>
+<RETURNS>GdkGLPixmap  *</RETURNS>
+GdkGLConfig *glconfig,GdkPixmap   *pixmap,const gint  *attrib_list
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_pixmap_set_gl_capability</NAME>
+<RETURNS>GdkGLPixmap  *</RETURNS>
+GdkPixmap   *pixmap,GdkGLConfig *glconfig,const gint  *attrib_list
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_pixmap_unset_gl_capability</NAME>
+<RETURNS>void  </RETURNS>
+GdkPixmap   *pixmap
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_pixmap_is_gl_capable</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkPixmap   *pixmap
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_pixmap_get_gl_pixmap</NAME>
+<RETURNS>GdkGLPixmap  *</RETURNS>
+GdkPixmap   *pixmap
+</FUNCTION>
+<MACRO>
+<NAME>gdk_pixmap_get_gl_drawable</NAME>
+#define      gdk_pixmap_get_gl_drawable(pixmap)         \
+  GDK_GL_DRAWABLE (gdk_pixmap_get_gl_pixmap (pixmap))
+</MACRO>
+<ENUM>
+<NAME>GdkGLSuccess</NAME>
+typedef enum
+{
+  GDK_GL_SUCCESS = 0
+} GdkGLSuccess;
+</ENUM>
+<ENUM>
+<NAME>GdkGLAttribListNone</NAME>
+typedef enum
+{
+  GDK_GL_ATTRIB_LIST_NONE = 0
+} GdkGLAttribListNone;
+</ENUM>
+<ENUM>
+<NAME>GdkGLVisualConfigAttribute</NAME>
+typedef enum
+{
+  GDK_GL_USE_GL           = 1,  /* support GLX rendering */
+  GDK_GL_BUFFER_SIZE      = 2,  /* depth of the color buffer */
+  GDK_GL_LEVEL            = 3,  /* level in plane stacking */
+  GDK_GL_RGBA             = 4,  /* true if RGBA mode */
+  GDK_GL_DOUBLEBUFFER     = 5,  /* double buffering supported */
+  GDK_GL_STEREO           = 6,  /* stereo buffering supported */
+  GDK_GL_AUX_BUFFERS      = 7,  /* number of aux buffers */
+  GDK_GL_RED_SIZE         = 8,  /* number of red component bits */
+  GDK_GL_GREEN_SIZE       = 9,  /* number of green component bits */
+  GDK_GL_BLUE_SIZE        = 10, /* number of blue component bits */
+  GDK_GL_ALPHA_SIZE       = 11, /* number of alpha component bits */
+  GDK_GL_DEPTH_SIZE       = 12, /* number of depth bits */
+  GDK_GL_STENCIL_SIZE     = 13, /* number of stencil bits */
+  GDK_GL_ACCUM_RED_SIZE   = 14, /* number of red accum bits */
+  GDK_GL_ACCUM_GREEN_SIZE = 15, /* number of green accum bits */
+  GDK_GL_ACCUM_BLUE_SIZE  = 16, /* number of blue accum bits */
+  GDK_GL_ACCUM_ALPHA_SIZE = 17  /* number of alpha accum bits */
+} GdkGLVisualConfigAttribute;
+</ENUM>
+<ENUM>
+<NAME>GdkGLFBConfigAttribute</NAME>
+typedef enum
+{
+  GDK_GL_X_VISUAL_TYPE           = 0x22,
+  GDK_GL_CONFIG_CAVEAT           = 0x20, /* Like visual_info VISUAL_CAVEAT_EXT */
+  GDK_GL_TRANSPARENT_TYPE        = 0x23,
+  GDK_GL_TRANSPARENT_INDEX_VALUE = 0x24,
+  GDK_GL_TRANSPARENT_RED_VALUE   = 0x25,
+  GDK_GL_TRANSPARENT_GREEN_VALUE = 0x26,
+  GDK_GL_TRANSPARENT_BLUE_VALUE  = 0x27,
+  GDK_GL_TRANSPARENT_ALPHA_VALUE = 0x28,
+  GDK_GL_DRAWABLE_TYPE           = 0x8010,
+  GDK_GL_RENDER_TYPE             = 0x8011,
+  GDK_GL_X_RENDERABLE            = 0x8012,
+  GDK_GL_FBCONFIG_ID             = 0x8013,
+  GDK_GL_MAX_PBUFFER_WIDTH       = 0x8016,
+  GDK_GL_MAX_PBUFFER_HEIGHT      = 0x8017,
+  GDK_GL_MAX_PBUFFER_PIXELS      = 0x8018,
+  GDK_GL_VISUAL_ID               = 0x800B
+} GdkGLFBConfigAttribute;
+</ENUM>
+<ENUM>
+<NAME>GdkGLConfigError</NAME>
+typedef enum
+{
+  GDK_GL_BAD_SCREEN    = 1, /* screen # is bad */
+  GDK_GL_BAD_ATTRIBUTE = 2, /* attribute to get is bad */
+  GDK_GL_NO_EXTENSION  = 3, /* no glx extension on server */
+  GDK_GL_BAD_VISUAL    = 4, /* visual # not known by GLX */
+  GDK_GL_BAD_CONTEXT   = 5, /* returned only by import_context EXT? */
+  GDK_GL_BAD_VALUE     = 6, /* returned only by glXSwapIntervalSGI? */
+  GDK_GL_BAD_ENUM      = 7  /* unused? */
+} GdkGLConfigError;
+</ENUM>
+<ENUM>
+<NAME>GdkGLGenericValue</NAME>
+typedef enum
+{
+  GDK_GL_DONT_CARE              = 0xFFFFFFFF,
+
+  /* GLX_RENDER_TYPE bits */
+  GDK_GL_RGBA_BIT               = 0x00000001,
+  GDK_GL_COLOR_INDEX_BIT        = 0x00000002,
+
+  /* GLX_DRAWABLE_TYPE bits */
+  GDK_GL_WINDOW_BIT             = 0x00000001,
+  GDK_GL_PIXMAP_BIT             = 0x00000002,
+  GDK_GL_PBUFFER_BIT            = 0x00000004,
+
+  /* GLX_CONFIG_CAVEAT attribute values */
+  GDK_GL_NONE                   = 0x8000,
+  GDK_GL_SLOW_CONFIG            = 0x8001,
+  GDK_GL_NON_CONFORMANT_CONFIG  = 0x800D,
+
+  /* GLX_X_VISUAL_TYPE attribute values */
+  GDK_GL_TRUE_COLOR             = 0x8002,
+  GDK_GL_DIRECT_COLOR           = 0x8003,
+  GDK_GL_PSEUDO_COLOR           = 0x8004,
+  GDK_GL_STATIC_COLOR           = 0x8005,
+  GDK_GL_GRAY_SCALE             = 0x8006,
+  GDK_GL_STATIC_GRAY            = 0x8007,
+
+  /* GLX_TRANSPARENT_TYPE attribute values */
+  /* GDK_GL_NONE                   = 0x8000, */
+  GDK_GL_TRANSPARENT_RGB        = 0x8008,
+  GDK_GL_TRANSPARENT_INDEX      = 0x8009,
+
+  /* glXCreateGLXPbuffer attributes */
+  GDK_GL_PRESERVED_CONTENTS     = 0x801B,
+  GDK_GL_LARGEST_PBUFFER        = 0x801C,
+  GDK_GL_PBUFFER_HEIGHT         = 0x8040, /* New for GLX 1.3 */
+  GDK_GL_PBUFFER_WIDTH          = 0x8041, /* New for GLX 1.3 */
+
+  /* glXQueryGLXPBuffer attributes */
+  GDK_GL_WIDTH                  = 0x801D,
+  GDK_GL_HEIGHT                 = 0x801E,
+  GDK_GL_EVENT_MASK             = 0x801F,
+
+  /* glXCreateNewContext render_type attribute values */
+  GDK_GL_RGBA_TYPE              = 0x8014,
+  GDK_GL_COLOR_INDEX_TYPE       = 0x8015,
+
+  /* glXQueryContext attributes */
+  /* GDK_GL_FBCONFIG_ID            = 0x8013, */
+  /* GDK_GL_RENDER_TYPE            = 0x8011, */
+  GDK_GL_SCREEN                 = 0x800C,
+
+  /* glXSelectEvent event mask bits */
+  GDK_GL_PBUFFER_CLOBBER_MASK   = 0x08000000,
+
+  /* GLXPbufferClobberEvent event_type values */
+  GDK_GL_DAMAGED                = 0x8020,
+  GDK_GL_SAVED                  = 0x8021,
+
+  /* GLXPbufferClobberEvent draw_type values */
+  GDK_GL_WINDOW                 = 0x8022,
+  GDK_GL_PBUFFER                = 0x8023,
+
+  /* GLXPbufferClobberEvent buffer_mask bits */
+  GDK_GL_FRONT_LEFT_BUFFER_BIT  = 0x00000001,
+  GDK_GL_FRONT_RIGHT_BUFFER_BIT = 0x00000002,
+  GDK_GL_BACK_LEFT_BUFFER_BIT   = 0x00000004,
+  GDK_GL_BACK_RIGHT_BUFFER_BIT  = 0x00000008,
+  GDK_GL_AUX_BUFFERS_BIT        = 0x00000010,
+  GDK_GL_DEPTH_BUFFER_BIT       = 0x00000020,
+  GDK_GL_STENCIL_BUFFER_BIT     = 0x00000040,
+  GDK_GL_ACCUM_BUFFER_BIT       = 0x00000080
+} GdkGLGenericValue;
+</ENUM>
+<ENUM>
+<NAME>GdkGLExtensionValue</NAME>
+typedef enum
+{
+  GDK_GL_X_VISUAL_TYPE_EXT           = 0x22, /* visual_info extension type */
+  GDK_GL_TRANSPARENT_TYPE_EXT        = 0x23, /* visual_info extension */
+  GDK_GL_TRANSPARENT_INDEX_VALUE_EXT = 0x24, /* visual_info extension */
+  GDK_GL_TRANSPARENT_RED_VALUE_EXT   = 0x25, /* visual_info extension */
+  GDK_GL_TRANSPARENT_GREEN_VALUE_EXT = 0x26, /* visual_info extension */
+  GDK_GL_TRANSPARENT_BLUE_VALUE_EXT  = 0x27, /* visual_info extension */
+  GDK_GL_TRANSPARENT_ALPHA_VALUE_EXT = 0x28, /* visual_info extension */
+
+  /* Property values for visual_type */
+  GDK_GL_TRUE_COLOR_EXT              = 0x8002,
+  GDK_GL_DIRECT_COLOR_EXT            = 0x8003,
+  GDK_GL_PSEUDO_COLOR_EXT            = 0x8004,
+  GDK_GL_STATIC_COLOR_EXT            = 0x8005,
+  GDK_GL_GRAY_SCALE_EXT              = 0x8006,
+  GDK_GL_STATIC_GRAY_EXT             = 0x8007,
+
+  /* Property values for transparent pixel */
+  GDK_GL_NONE_EXT                    = 0x8000,
+  GDK_GL_TRANSPARENT_RGB_EXT         = 0x8008,
+  GDK_GL_TRANSPARENT_INDEX_EXT       = 0x8009,
+
+  /* Property values for visual_rating */
+  GDK_GL_VISUAL_CAVEAT_EXT           = 0x20,   /* visual_rating extension type */
+  GDK_GL_SLOW_VISUAL_EXT             = 0x8001,
+  GDK_GL_NON_CONFORMANT_VISUAL_EXT   = 0x800D
+} GdkGLExtensionValue;
+</ENUM>
+<ENUM>
+<NAME>GdkGLClientStringAttribute</NAME>
+typedef enum
+{
+  GDK_GL_VENDOR     = 0x1,
+  GDK_GL_VERSION    = 0x2,
+  GDK_GL_EXTENSIONS = 0x3
+} GdkGLClientStringAttribute;
+</ENUM>
+<ENUM>
+<NAME>GdkGLContextInfoExtensionAttribute</NAME>
+typedef enum
+{
+  GDK_GL_SHARE_CONTEXT_EXT = 0x800A, /* id of share context */
+  GDK_GL_VISUAL_ID_EXT     = 0x800B, /* id of context's visual */
+  GDK_GL_SCREEN_EXT        = 0x800C  /* screen number */
+} GdkGLContextInfoExtensionAttribute;
+</ENUM>
+<STRUCT>
+<NAME>GdkGLConfig</NAME>
+</STRUCT>
+<STRUCT>
+<NAME>GdkGLContext</NAME>
+</STRUCT>
+<STRUCT>
+<NAME>GdkGLDrawable</NAME>
+</STRUCT>
+<STRUCT>
+<NAME>GdkGLPixmap</NAME>
+</STRUCT>
+<STRUCT>
+<NAME>GdkGLWindow</NAME>
+</STRUCT>
+<STRUCT>
+<NAME>GdkGLWindowClass</NAME>
+</STRUCT>
+<MACRO>
+<NAME>GDK_TYPE_GL_WINDOW</NAME>
+#define GDK_TYPE_GL_WINDOW              (gdk_gl_window_get_type ())
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_WINDOW</NAME>
+#define GDK_GL_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_GL_WINDOW, GdkGLWindow))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_WINDOW_CLASS</NAME>
+#define GDK_GL_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_GL_WINDOW, GdkGLWindowClass))
+</MACRO>
+<MACRO>
+<NAME>GDK_IS_GL_WINDOW</NAME>
+#define GDK_IS_GL_WINDOW(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_GL_WINDOW))
+</MACRO>
+<MACRO>
+<NAME>GDK_IS_GL_WINDOW_CLASS</NAME>
+#define GDK_IS_GL_WINDOW_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_GL_WINDOW))
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_WINDOW_GET_CLASS</NAME>
+#define GDK_GL_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_WINDOW, GdkGLWindowClass))
+</MACRO>
+<STRUCT>
+<NAME>GdkGLWindow</NAME>
+struct GdkGLWindow
+{
+  GObject parent_instance;
+
+  GdkGLConfig *glconfig;
+
+  /* XXX GdkGLWindow is not GdkWindow for the moment :-< */
+  GdkDrawable *wrapper;         /* Real GdkWindow */
+};
+</STRUCT>
+<FUNCTION>
+<NAME>gdk_gl_window_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_window_new</NAME>
+<RETURNS>GdkGLWindow  *</RETURNS>
+GdkGLConfig *glconfig,GdkWindow   *window,const gint  *attrib_list
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_window_set_gl_capability</NAME>
+<RETURNS>GdkGLWindow  *</RETURNS>
+GdkWindow   *window,GdkGLConfig *glconfig,const gint  *attrib_list
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_window_unset_gl_capability</NAME>
+<RETURNS>void  </RETURNS>
+GdkWindow   *window
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_window_is_gl_capable</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkWindow   *window
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_window_get_gl_window</NAME>
+<RETURNS>GdkGLWindow  *</RETURNS>
+GdkWindow   *window
+</FUNCTION>
+<MACRO>
+<NAME>gdk_window_get_gl_drawable</NAME>
+#define      gdk_window_get_gl_drawable(window)         \
+  GDK_GL_DRAWABLE (gdk_window_get_gl_window (window))
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_query_extension</NAME>
+<RETURNS>gboolean  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_query_extension_for_display</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkDisplay *display
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_query_version</NAME>
+<RETURNS>gboolean  </RETURNS>
+gint       *major,gint       *minor
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_query_version_for_display</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkDisplay *display,gint       *major,gint       *minor
+</FUNCTION>
+<FUNCTION>
 <NAME>gtk_widget_set_gl_capability</NAME>
 <RETURNS>gboolean  </RETURNS>
 GtkWidget    *widget,GdkGLConfig  *glconfig,gint          render_type,GdkGLContext *share_list,gboolean      direct

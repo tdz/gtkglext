@@ -21,7 +21,7 @@ LDADDS = \
 noinst_LTLIBRARIES = libgdkglext-x11.la
 
 libgdkglext_x11_la_SOURCES = \
-	gdkgl-x11.c		\
+	gdkglquery-x11.c	\
 	gdkglconfig-x11.h	\
 	gdkglconfig-x11.c	\
 	gdkglcontext-x11.h	\

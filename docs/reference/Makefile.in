@@ -128,7 +128,7 @@ gtkglext_targetlib = @gtkglext_targetlib@
 install_sh = @install_sh@
 ms_librarian = @ms_librarian@
 
-SUBDIRS = gdkglext gtkglext
+SUBDIRS = gtkglext
 subdir = docs/reference
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
