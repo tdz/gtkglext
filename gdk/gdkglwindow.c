@@ -163,7 +163,7 @@ gdk_gl_window_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLWindow),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL,
+        (GInstanceInitFunc) NULL
       };
 
       type = g_type_register_static (GDK_TYPE_DRAWABLE,

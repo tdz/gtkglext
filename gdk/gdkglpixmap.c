@@ -163,7 +163,7 @@ gdk_gl_pixmap_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLPixmap),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL,
+        (GInstanceInitFunc) NULL
       };
 
       type = g_type_register_static (GDK_TYPE_DRAWABLE,
