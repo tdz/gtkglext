@@ -255,6 +255,7 @@ glxinfo_LDADD = $(GL_LIBS) $(GDKGLEXT_WIN_LIBS)
 
 EXTRA_DIST = \
 	Makefile.mingw	\
+	Makefile.msc	\
 	alien.lwo	\
 	penguin.lwo	\
 	girl.rgb	\

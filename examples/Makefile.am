@@ -130,6 +130,7 @@ files:
 
 EXTRA_DIST = \
 	Makefile.mingw	\
+	Makefile.msc	\
 	alien.lwo	\
 	penguin.lwo	\
 	girl.rgb	\
