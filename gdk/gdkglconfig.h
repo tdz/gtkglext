@@ -64,9 +64,9 @@ gboolean     gdk_gl_config_get_attrib       (GdkGLConfig *glconfig,
                                              gint         attribute,
                                              gint        *value);
 
-GdkDrawable *gdk_gl_config_get_drawable   (GdkGLConfig *glconfig);
+GdkDrawable *gdk_gl_config_get_drawable     (GdkGLConfig *glconfig);
 
-GdkColormap *gdk_gl_config_get_colormap   (GdkGLConfig *glconfig);
+GdkColormap *gdk_gl_config_get_colormap     (GdkGLConfig *glconfig);
 
 gint         gdk_gl_config_get_depth        (GdkGLConfig *glconfig);
 

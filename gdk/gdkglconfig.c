@@ -25,8 +25,8 @@ enum {
   PROP_WINDOW,
 };
 
-static void gdk_gl_config_init       (GdkGLConfig      *glconfig);
-static void gdk_gl_config_class_init (GdkGLConfigClass *klass);
+static void     gdk_gl_config_init         (GdkGLConfig           *glconfig);
+static void     gdk_gl_config_class_init   (GdkGLConfigClass      *klass);
 
 static GObject *gdk_gl_config_constructor  (GType                  type,
 					    guint                  n_construct_properties,

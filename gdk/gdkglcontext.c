@@ -30,8 +30,8 @@ enum {
   PROP_IS_DIRECT
 };
 
-static void gdk_gl_context_init       (GdkGLContext      *glcontext);
-static void gdk_gl_context_class_init (GdkGLContextClass *klass);
+static void     gdk_gl_context_init         (GdkGLContext          *glcontext);
+static void     gdk_gl_context_class_init   (GdkGLContextClass     *klass);
 
 static GObject *gdk_gl_context_constructor  (GType                  type,
                                              guint                  n_construct_properties,

@@ -20,13 +20,13 @@
 #include "gdkglprivate-win32.h"
 #include "gdkglcontext-win32.h"
 
-static void gdk_gl_context_impl_win32_init       (GdkGLContextImplWin32      *impl);
-static void gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass);
+static void     gdk_gl_context_impl_win32_init        (GdkGLContextImplWin32      *impl);
+static void     gdk_gl_context_impl_win32_class_init  (GdkGLContextImplWin32Class *klass);
 
-static GObject *gdk_gl_context_impl_win32_constructor  (GType                  type,
-                                                        guint                  n_construct_properties,
-                                                        GObjectConstructParam *construct_properties);
-static void     gdk_gl_context_impl_win32_finalize     (GObject               *object);
+static GObject *gdk_gl_context_impl_win32_constructor (GType                       type,
+                                                       guint                       n_construct_properties,
+                                                       GObjectConstructParam      *construct_properties);
+static void     gdk_gl_context_impl_win32_finalize    (GObject                    *object);
 
 static gpointer parent_class = NULL;
 

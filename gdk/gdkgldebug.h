@@ -24,9 +24,9 @@
 G_BEGIN_DECLS
 
 typedef enum {
-  GDK_GL_DEBUG_MISC        = 1 << 0,
-  GDK_GL_DEBUG_FUNC        = 1 << 1,
-  GDK_GL_DEBUG_IMPL        = 1 << 2
+  GDK_GL_DEBUG_MISC = 1 << 0,
+  GDK_GL_DEBUG_FUNC = 1 << 1,
+  GDK_GL_DEBUG_IMPL = 1 << 2
 } GdkGLDebugFlag;
 
 #ifdef G_ENABLE_DEBUG

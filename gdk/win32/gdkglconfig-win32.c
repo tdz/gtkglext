@@ -25,25 +25,25 @@ enum {
 };
 
 /* Forward declarations */
-static gboolean gdk_win32_gl_config_get_attrib (GdkGLConfig *glconfig,
-                                                gint         attribute,
-                                                gint        *value);
+static gboolean gdk_win32_gl_config_get_attrib        (GdkGLConfig               *glconfig,
+                                                       gint                       attribute,
+                                                       gint                      *value);
 
-static void gdk_gl_config_impl_win32_init       (GdkGLConfigImplWin32      *impl);
-static void gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass);
+static void     gdk_gl_config_impl_win32_init         (GdkGLConfigImplWin32      *impl);
+static void     gdk_gl_config_impl_win32_class_init   (GdkGLConfigImplWin32Class *klass);
 
-static GObject *gdk_gl_config_impl_win32_constructor  (GType                  type,
-                                                       guint                  n_construct_properties,
-                                                       GObjectConstructParam *construct_properties);
-static void     gdk_gl_config_impl_win32_set_property (GObject               *object,
-                                                       guint                  property_id,
-                                                       const GValue          *value,
-                                                       GParamSpec            *pspec);
-static void     gdk_gl_config_impl_win32_get_property (GObject               *object,
-                                                       guint                  property_id,
-                                                       GValue                *value,
-                                                       GParamSpec            *pspec);
-static void     gdk_gl_config_impl_win32_finalize     (GObject               *object);
+static GObject *gdk_gl_config_impl_win32_constructor  (GType                      type,
+                                                       guint                      n_construct_properties,
+                                                       GObjectConstructParam     *construct_properties);
+static void     gdk_gl_config_impl_win32_set_property (GObject                   *object,
+                                                       guint                      property_id,
+                                                       const GValue              *value,
+                                                       GParamSpec                *pspec);
+static void     gdk_gl_config_impl_win32_get_property (GObject                   *object,
+                                                       guint                      property_id,
+                                                       GValue                    *value,
+                                                       GParamSpec                *pspec);
+static void     gdk_gl_config_impl_win32_finalize     (GObject                   *object);
 
 static gpointer parent_class = NULL;
 

@@ -32,12 +32,12 @@
 
 G_BEGIN_DECLS
 
-HDC  gdk_win32_gl_drawable_hdc_get     (GdkGLDrawable *gldrawable);
-void gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable);
-
 PIXELFORMATDESCRIPTOR *gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig);
 
-HGLRC   gdk_win32_gl_context_get_hglrc       (GdkGLContext *glcontext);
+HGLRC gdk_win32_gl_context_get_hglrc    (GdkGLContext  *glcontext);
+
+HDC   gdk_win32_gl_drawable_hdc_get     (GdkGLDrawable *gldrawable);
+void  gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable);
 
 G_END_DECLS
 

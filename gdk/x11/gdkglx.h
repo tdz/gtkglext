@@ -30,17 +30,17 @@
 
 G_BEGIN_DECLS
 
-Display     *gdk_x11_gl_config_get_xdisplay    (GdkGLConfig *glconfig);
-XVisualInfo *gdk_x11_gl_config_get_xvinfo      (GdkGLConfig *glconfig);
+Display     *gdk_x11_gl_config_get_xdisplay    (GdkGLConfig  *glconfig);
+XVisualInfo *gdk_x11_gl_config_get_xvinfo      (GdkGLConfig  *glconfig);
 
 Display     *gdk_x11_gl_context_get_xdisplay   (GdkGLContext *glcontext);
 GLXContext   gdk_x11_gl_context_get_glxcontext (GdkGLContext *glcontext);
 
-Display     *gdk_x11_gl_pixmap_get_xdisplay    (GdkGLPixmap *glpixmap);
-GLXPixmap    gdk_x11_gl_pixmap_get_glxpixmap   (GdkGLPixmap *glpixmap);
+Display     *gdk_x11_gl_pixmap_get_xdisplay    (GdkGLPixmap  *glpixmap);
+GLXPixmap    gdk_x11_gl_pixmap_get_glxpixmap   (GdkGLPixmap  *glpixmap);
 
-Display     *gdk_x11_gl_window_get_xdisplay    (GdkGLWindow *glwindow);
-Window       gdk_x11_gl_window_get_glxwindow   (GdkGLWindow *glwindow);
+Display     *gdk_x11_gl_window_get_xdisplay    (GdkGLWindow  *glwindow);
+Window       gdk_x11_gl_window_get_glxwindow   (GdkGLWindow  *glwindow);
 
 G_END_DECLS
 

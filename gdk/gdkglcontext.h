@@ -51,7 +51,7 @@ struct _GdkGLContextClass
   GObjectClass parent_class;
 };
 
-GType         gdk_gl_context_get_type (void);
+GType         gdk_gl_context_get_type  (void);
 
 GdkGLContext *gdk_gl_context_new       (GdkGLDrawable *gldrawable,
                                         GdkGLConfig   *glconfig,

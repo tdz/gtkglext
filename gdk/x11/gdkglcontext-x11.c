@@ -21,13 +21,13 @@
 #include "gdkglprivate-x11.h"
 #include "gdkglcontext-x11.h"
 
-static void gdk_gl_context_impl_x11_init       (GdkGLContextImplX11      *impl);
-static void gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass);
+static void     gdk_gl_context_impl_x11_init         (GdkGLContextImplX11      *impl);
+static void     gdk_gl_context_impl_x11_class_init   (GdkGLContextImplX11Class *klass);
 
-static GObject *gdk_gl_context_impl_x11_constructor  (GType                  type,
-                                                      guint                  n_construct_properties,
-                                                      GObjectConstructParam *construct_properties);
-static void     gdk_gl_context_impl_x11_finalize     (GObject               *object);
+static GObject *gdk_gl_context_impl_x11_constructor  (GType                     type,
+                                                      guint                     n_construct_properties,
+                                                      GObjectConstructParam    *construct_properties);
+static void     gdk_gl_context_impl_x11_finalize     (GObject                  *object);
 
 static gpointer parent_class = NULL;
 

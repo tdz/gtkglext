@@ -29,25 +29,25 @@ enum {
 static XVisualInfo *gdk_x11_visual_get_xvinfo (GdkVisual *visual);
 #endif
 
-static gboolean gdk_x11_gl_config_get_attrib (GdkGLConfig *glconfig,
-                                              gint         attribute,
-                                              gint        *value);
+static gboolean gdk_x11_gl_config_get_attrib        (GdkGLConfig             *glconfig,
+                                                     gint                     attribute,
+                                                     gint                    *value);
 
-static void gdk_gl_config_impl_x11_init       (GdkGLConfigImplX11      *impl);
-static void gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass);
+static void     gdk_gl_config_impl_x11_init         (GdkGLConfigImplX11      *impl);
+static void     gdk_gl_config_impl_x11_class_init   (GdkGLConfigImplX11Class *klass);
 
-static GObject *gdk_gl_config_impl_x11_constructor  (GType                  type,
-                                                     guint                  n_construct_properties,
-                                                     GObjectConstructParam *construct_properties);
-static void     gdk_gl_config_impl_x11_set_property (GObject               *object,
-                                                     guint                  property_id,
-                                                     const GValue          *value,
-                                                     GParamSpec            *pspec);
-static void     gdk_gl_config_impl_x11_get_property (GObject               *object,
-                                                     guint                  property_id,
-                                                     GValue                *value,
-                                                     GParamSpec            *pspec);
-static void     gdk_gl_config_impl_x11_finalize     (GObject               *object);
+static GObject *gdk_gl_config_impl_x11_constructor  (GType                    type,
+                                                     guint                    n_construct_properties,
+                                                     GObjectConstructParam   *construct_properties);
+static void     gdk_gl_config_impl_x11_set_property (GObject                 *object,
+                                                     guint                    property_id,
+                                                     const GValue            *value,
+                                                     GParamSpec              *pspec);
+static void     gdk_gl_config_impl_x11_get_property (GObject                 *object,
+                                                     guint                    property_id,
+                                                     GValue                  *value,
+                                                     GParamSpec              *pspec);
+static void     gdk_gl_config_impl_x11_finalize     (GObject                 *object);
 
 static gpointer parent_class = NULL;
 

@@ -21,19 +21,19 @@
 #include "gdkglwindow-x11.h"
 
 /* Forward declarations */
-static gboolean gdk_x11_gl_window_make_context_current (GdkGLDrawable *draw,
-                                                        GdkGLDrawable *read,
-                                                        GdkGLContext  *glcontext);
+static gboolean gdk_x11_gl_window_make_context_current (GdkGLDrawable           *draw,
+                                                        GdkGLDrawable           *read,
+                                                        GdkGLContext            *glcontext);
 
-static void gdk_gl_window_impl_x11_init       (GdkGLWindowImplX11      *impl);
-static void gdk_gl_window_impl_x11_class_init (GdkGLWindowImplX11Class *klass);
+static void     gdk_gl_window_impl_x11_init            (GdkGLWindowImplX11      *impl);
+static void     gdk_gl_window_impl_x11_class_init      (GdkGLWindowImplX11Class *klass);
 
-static GObject *gdk_gl_window_impl_x11_constructor (GType                  type,
-                                                    guint                  n_construct_properties,
-                                                    GObjectConstructParam *construct_properties);
-static void     gdk_gl_window_impl_x11_finalize    (GObject               *object);
+static GObject *gdk_gl_window_impl_x11_constructor     (GType                    type,
+                                                        guint                    n_construct_properties,
+                                                        GObjectConstructParam   *construct_properties);
+static void     gdk_gl_window_impl_x11_finalize        (GObject                 *object);
 
-static void gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface);
+static void     gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface);
 
 static gpointer parent_class = NULL;
 

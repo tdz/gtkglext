@@ -24,20 +24,20 @@
 #include "gdkglpixmap-win32.h"
 
 /* Forward declarations */
-static gboolean gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable *draw,
-                                                          GdkGLDrawable *read,
-                                                          GdkGLContext  *glcontext);
-static void     gdk_win32_gl_pixmap_swap_buffers         (GdkGLDrawable *gldrawable);
+static gboolean gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable             *draw,
+                                                          GdkGLDrawable             *read,
+                                                          GdkGLContext              *glcontext);
+static void     gdk_win32_gl_pixmap_swap_buffers         (GdkGLDrawable             *gldrawable);
 
-static void gdk_gl_pixmap_impl_win32_init       (GdkGLPixmapImplWin32      *impl);
-static void gdk_gl_pixmap_impl_win32_class_init (GdkGLPixmapImplWin32Class *klass);
+static void     gdk_gl_pixmap_impl_win32_init            (GdkGLPixmapImplWin32      *impl);
+static void     gdk_gl_pixmap_impl_win32_class_init      (GdkGLPixmapImplWin32Class *klass);
 
-static GObject *gdk_gl_pixmap_impl_win32_constructor (GType                  type,
-                                                      guint                  n_construct_properties,
-                                                      GObjectConstructParam *construct_properties);
-static void     gdk_gl_pixmap_impl_win32_finalize    (GObject               *object);
+static GObject *gdk_gl_pixmap_impl_win32_constructor     (GType                      type,
+                                                          guint                      n_construct_properties,
+                                                          GObjectConstructParam     *construct_properties);
+static void     gdk_gl_pixmap_impl_win32_finalize        (GObject                   *object);
 
-static void gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface);
+static void     gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface);
 
 static gpointer parent_class = NULL;
 
@@ -370,7 +370,7 @@ gdk_win32_gl_pixmap_swap_buffers (GdkGLDrawable *gldrawable)
 
   g_assert (impl->hdc != NULL);
 
-  GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
+  GDK_GL_NOTE (IMPL, g_message (" * SwapBuffers ()"));
 
   SwapBuffers (impl->hdc);
 }

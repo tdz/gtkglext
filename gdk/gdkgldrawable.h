@@ -54,7 +54,7 @@ struct _GdkGLDrawableClass
   GdkDrawable  *(*real_drawable)        (GdkGLDrawable *gldrawable);
 };
 
-GType gdk_gl_drawable_get_type (void);
+GType    gdk_gl_drawable_get_type     (void);
 
 gboolean gdk_gl_drawable_make_current (GdkGLDrawable *gldrawable,
                                        GdkGLContext  *glcontext);

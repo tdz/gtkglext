@@ -67,15 +67,15 @@ struct _GdkGLWindowClass
   GObjectClass parent_class;
 };
 
-GType         gdk_gl_window_get_type (void);
+GType        gdk_gl_window_get_type (void);
 
 /*
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None). See GLX 1.3 spec.
  */
-GdkGLWindow  *gdk_gl_window_new      (GdkGLConfig *glconfig,
-                                      GdkWindow   *window,
-                                      const gint  *attrib_list);
+GdkGLWindow *gdk_gl_window_new      (GdkGLConfig *glconfig,
+                                     GdkWindow   *window,
+                                     const gint  *attrib_list);
 
 /*
  * OpenGL extension to GdkWindow
