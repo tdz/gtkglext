@@ -273,8 +273,8 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
   g_return_val_if_fail (GDK_IS_GL_PIXMAP (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  if (GDK_GL_PIXMAP_IS_DESTROYED(draw) ||
-      GDK_GL_CONTEXT_IS_DESTROYED(glcontext))
+  if (GDK_GL_PIXMAP_IS_DESTROYED (draw) ||
+      GDK_GL_CONTEXT_IS_DESTROYED (glcontext))
     return FALSE;
 
   impl = GDK_GL_PIXMAP_IMPL_X11 (draw);
@@ -290,11 +290,11 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   GDK_GL_NOTE (MISC,
     g_message (" -- Pixmap: screen number = %d",
-      GDK_SCREEN_XNUMBER (gdk_drawable_get_screen (GDK_DRAWABLE(draw)))));
+      GDK_SCREEN_XNUMBER (gdk_drawable_get_screen (GDK_DRAWABLE (draw)))));
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
   GDK_GL_NOTE (MISC,
     g_message (" -- Pixmap: visual id = 0x%lx",
-      GDK_VISUAL_XVISUAL (gdk_drawable_get_visual (GDK_DRAWABLE(draw)))->visualid));
+      GDK_VISUAL_XVISUAL (gdk_drawable_get_visual (GDK_DRAWABLE (draw)))->visualid));
 
   GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
 
@@ -339,7 +339,7 @@ gdk_gl_pixmap_impl_x11_swap_buffers (GdkGLDrawable *gldrawable)
 
   g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
 
-  if (GDK_GL_PIXMAP_IS_DESTROYED(gldrawable))
+  if (GDK_GL_PIXMAP_IS_DESTROYED (gldrawable))
     return;
 
   impl = GDK_GL_PIXMAP_IMPL_X11 (gldrawable);

@@ -246,7 +246,7 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
     g_message (" -- Context: visual id = 0x%lx", xvinfo->visualid));
 
   /*
-   * Instanciate the GdkGLContextImplX11 object.
+   * Instantiate the GdkGLContextImplX11 object.
    */
 
   return gdk_gl_context_new_common (glconfig,
@@ -267,7 +267,7 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
   g_return_val_if_fail (glxcontext != NULL, NULL);
 
   /*
-   * Instanciate the GdkGLContextImplX11 object.
+   * Instantiate the GdkGLContextImplX11 object.
    */
 
   return gdk_gl_context_new_common (glconfig,
