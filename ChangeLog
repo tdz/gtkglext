@@ -1,3 +1,8 @@
+2002-12-22  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_new) 
+	(gdk_gl_config_new_for_screen): Cleanup duplicated code.
+
 2002-12-21  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglcontext-win32.c (_gdk_win32_gl_context_new) 

@@ -35,9 +35,6 @@ static GdkColormap *gdk_gl_config_setup_colormap   (GdkScreen                   
                                                     PIXELFORMATDESCRIPTOR       *pfd,
                                                     gboolean                     is_rgba);
 
-static GdkGLConfig *gdk_gl_config_new_common       (GdkScreen                   *screen,
-                                                    CONST PIXELFORMATDESCRIPTOR *pfd);
-
 static gboolean     gdk_win32_gl_config_get_attrib (GdkGLConfig                 *glconfig,
                                                     gint                         attribute,
                                                     gint                        *value);
@@ -337,34 +334,6 @@ gdk_gl_config_impl_win32_finalize (GObject *object)
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
-static GdkGLConfig *
-gdk_gl_config_new_common (GdkScreen                   *screen,
-                          CONST PIXELFORMATDESCRIPTOR *pfd)
-{
-  GdkGLConfig *glconfig;
-  GdkGLConfigImplWin32 *impl;
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_common ()"));
-
-  /*
-   * Instanciate the GdkGLConfigImplWin32 object.
-   */
-
-  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
-                           "screen", screen,
-                           "pfd",    pfd,
-                           NULL);
-  impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
-
-  if (!impl->is_constructed)
-    {
-      g_object_unref (G_OBJECT (glconfig));
-      return NULL;
-    }
-
-  return glconfig;
-}
-
 /*
  * This code is based on lib/glut/win32_glx.c of GLUT by Nate Robins.
  */
@@ -575,17 +544,20 @@ _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
   return pixel_format;
 }
 
-GdkGLConfig *
-gdk_gl_config_new (const int *attrib_list)
+static GdkGLConfig *
+gdk_gl_config_new_common (GdkScreen *screen,
+                          const int *attrib_list)
 {
-  GdkScreen *screen;
+  GdkGLConfig *glconfig;
+  GdkGLConfigImplWin32 *impl;
+
   HDC hdc;
   PIXELFORMATDESCRIPTOR pfd;
   int pixel_format;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
-
   g_return_val_if_fail (attrib_list != NULL, NULL);
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_new_common ()"));
 
   /*
    * Parse GLX style attrib_list.
@@ -627,13 +599,35 @@ gdk_gl_config_new (const int *attrib_list)
    * Instanciate the GdkGLConfigImplWin32 object.
    */
 
+  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
+                           "screen", screen,
+                           "pfd",    &pfd,
+                           NULL);
+  impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
+
+  if (!impl->is_constructed)
+    {
+      g_object_unref (G_OBJECT (glconfig));
+      return NULL;
+    }
+
+  return glconfig;
+}
+
+GdkGLConfig *
+gdk_gl_config_new (const int *attrib_list)
+{
+  GdkScreen *screen;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
+
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   screen = gdk_screen_get_default ();
 #else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   screen = NULL;
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-  return gdk_gl_config_new_common (screen, &pfd);
+  return gdk_gl_config_new_common (screen, attrib_list);
 }
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
@@ -642,55 +636,9 @@ GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
                               const int *attrib_list)
 {
-  HDC hdc;
-  PIXELFORMATDESCRIPTOR pfd;
-  int pixel_format;
-
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_for_screen ()"));
 
-  g_return_val_if_fail (attrib_list != NULL, NULL);
-
-  /*
-   * Parse GLX style attrib_list.
-   */
-
-  gdk_gl_config_parse_attrib_list (attrib_list, &pfd);
-
-#ifdef G_ENABLE_DEBUG
-  _gdk_win32_gl_print_pfd (&pfd);
-#endif
-
-  /*
-   * Determine whether requested pixel format is supported.
-   */
-
-  /* Get DC. */
-  hdc = GetDC (NULL);
-  if (hdc == NULL)
-    {
-      g_warning ("cannot get DC");
-      return NULL;
-    }
-
-  pixel_format = _gdk_win32_gl_config_find_pixel_format (hdc, &pfd, &pfd);
-
-  /* Release DC. */
-  ReleaseDC (NULL, hdc);
-
-  if (pixel_format == 0)
-    return NULL;
-
-  GDK_GL_NOTE (MISC, g_message (" -- found pixel_format = 0x%x", pixel_format));
-
-#ifdef G_ENABLE_DEBUG
-  _gdk_win32_gl_print_pfd (&pfd);
-#endif
-
-  /*
-   * Instanciate the GdkGLConfigImplWin32 object.
-   */
-
-  return gdk_gl_config_new_common (screen, &pfd);
+  return gdk_gl_config_new_common (screen, attrib_list);
 }
 
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
@@ -698,7 +646,10 @@ gdk_gl_config_new_for_screen (GdkScreen *screen,
 GdkGLConfig *
 gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
 {
+  GdkGLConfig *glconfig;
+  GdkGLConfigImplWin32 *impl;
   GdkScreen *screen;
+
   HDC hdc;
   PIXELFORMATDESCRIPTOR pfd;
   int result;
@@ -741,7 +692,19 @@ gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
   screen = NULL;
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-  return gdk_gl_config_new_common (screen, &pfd);
+  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
+                           "screen", screen,
+                           "pfd",    &pfd,
+                           NULL);
+  impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
+
+  if (!impl->is_constructed)
+    {
+      g_object_unref (G_OBJECT (glconfig));
+      return NULL;
+    }
+
+  return glconfig;
 }
 
 PIXELFORMATDESCRIPTOR *
