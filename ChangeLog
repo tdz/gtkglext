@@ -1,3 +1,9 @@
+2003-07-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/Makefile.mingw (PROGRAMS): 
+	* examples/Makefile.msc (PROGRAMS): Removed font-pangoft2*
+	examples. They don't work on win32.
+
 2003-07-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (struct GLWidgetPrivate): Added

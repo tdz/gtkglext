@@ -84,8 +84,6 @@ PROGRAMS = \
 	coolwave$(EXEEXT)		\
 	template$(EXEEXT)		\
 	scribble-gl$(EXEEXT)		\
-	font-pangoft2$(EXEEXT)		\
-	font-pangoft2-tex$(EXEEXT)	\
 	wglinfo$(EXEEXT)
 
 .PHONY: all clean clean-deps distclean
