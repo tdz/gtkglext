@@ -78,14 +78,14 @@ gdk_gl_context_finalize (GObject *object)
 /**
  * gdk_gl_context_new:
  * @gldrawable: a #GdkGLDrawable.
- * @share_list: the #GdkGLContext which to share display lists and texture
+ * @share_list: the #GdkGLContext with which to share display lists and texture
  *              objects. NULL indicates that no sharing is to take place.
  * @direct: whether rendering is to be done with a direct connection to
  *          the graphics system.
  * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not
  *               used).
  *
- * Create a new OpenGL rendering context.
+ * Creates a new OpenGL rendering context.
  *
  * Return value: the new #GdkGLContext.
  **/

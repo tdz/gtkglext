@@ -131,8 +131,6 @@ gdk_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
  * @glcontext: a #GdkGLContext.
  *
  * Delimits the begining of the OpenGL execution.
- * The call makes the @glcontext current to the @gldrawable, and
- * completes GDK drawing execution.
  *
  * Return value: TRUE if it is successful, FALSE otherwise.
  **/
@@ -152,7 +150,6 @@ gdk_gl_drawable_gl_begin (GdkGLDrawable *gldrawable,
  * @gldrawable: a #GdkGLDrawable.
  *
  * Delimits the end of the OpenGL execution.
- * The call completes OpenGL execution.
  *
  **/
 void

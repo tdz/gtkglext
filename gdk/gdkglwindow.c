@@ -695,7 +695,7 @@ static GQuark quark_gl_window = 0;
  * @attrib_list: this must be set to NULL or empty (first attribute of None).
  *
  * Set the OpenGL-capability to the @window.
- * The call creates a new #GdkGLWindow.
+ * This function creates a new #GdkGLWindow held by the @window.
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None).
  *

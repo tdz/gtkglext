@@ -168,7 +168,7 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
  * @window: the #GdkWindow to be used as the rendering area.
  * @attrib_list: this must be set to NULL or empty (first attribute of None).
  *
- * Create an on-screen rendering area.
+ * Creates an on-screen rendering area.
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None). See GLX 1.3 spec.
  *

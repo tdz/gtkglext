@@ -188,7 +188,7 @@ gl_widget_private_destroy (GLWidgetPrivate *private)
  * gtk_widget_set_gl_capability:
  * @widget: the #GtkWidget to be used as the rendering area.
  * @glconfig: a #GdkGLConfig.
- * @share_list: the #GdkGLContext which to share display lists and texture
+ * @share_list: the #GdkGLContext with which to share display lists and texture
  *              objects. NULL indicates that no sharing is to take place.
  * @direct: whether rendering is to be done with a direct connection to
  *          the graphics system.
@@ -375,7 +375,7 @@ gtk_widget_get_gl_config (GtkWidget *widget)
 /**
  * gtk_widget_create_gl_context:
  * @widget: a #GtkWidget.
- * @share_list: the #GdkGLContext which to share display lists and texture
+ * @share_list: the #GdkGLContext with which to share display lists and texture
  *              objects. NULL indicates that no sharing is to take place.
  * @direct: whether rendering is to be done with a direct connection to
  *          the graphics system.

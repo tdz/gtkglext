@@ -1,5 +1,15 @@
 2003-07-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglcontext.c: 
+	* gdk/gdkgldrawable.c: 
+	* gdk/gdkglpixmap.c: 
+	* gdk/gdkglwindow.c: 
+	* gdk/x11/gdkglcontext-x11.c: 
+	* gdk/x11/gdkglpixmap-x11.c: 
+	* gdk/x11/gdkglwindow-x11.c: 
+	* gdk/x11/gdkglfont-x11.c: 
+	* gtk/gtkglwidget.c: Fixed documentations.
+
 	* gdk/GL/gen-gdkglglext-h.pl: 
 	* gdk/gdkglglext.h: Include glext-extra.h.
 

@@ -695,7 +695,7 @@ static GQuark quark_gl_pixmap = 0;
  * @attrib_list: this must be set to NULL or empty (first attribute of None).
  *
  * Set the OpenGL-capability to the @pixmap.
- * The call creates a new #GdkGLPixmap.
+ * This function creates a new #GdkGLPixmap held by the @pixmap.
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None).
  *

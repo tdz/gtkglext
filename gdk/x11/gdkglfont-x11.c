@@ -133,7 +133,7 @@ gdk_gl_font_use_pango_font_common (PangoFontMap               *font_map,
  * @count: the number of glyphs to be taken.
  * @list_base: the index of the first display list to be generated.
  *
- * Create bitmap display lists from a #PangoFont.
+ * Creates bitmap display lists from a #PangoFont.
  *
  * Return value: the #PangoFont used, or NULL if no font matched.
  **/
@@ -169,7 +169,7 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
  * @count: the number of glyphs to be taken.
  * @list_base: the index of the first display list to be generated.
  *
- * Create bitmap display lists from a #PangoFont.
+ * Creates bitmap display lists from a #PangoFont.
  *
  * Return value: the #PangoFont used, or NULL if no font matched.
  **/

@@ -271,7 +271,7 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
 /**
  * gdk_x11_gl_context_foreign_new:
  * @glconfig: #GdkGLConfig that represents the visual the GLXContext uses.
- * @share_list: the #GdkGLContext which to share display lists with the
+ * @share_list: the #GdkGLContext which shares display lists with the
  *              GLXContext, or NULL.
  * @glxcontext: exsisting GLXContext.
  *
