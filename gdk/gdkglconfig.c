@@ -74,7 +74,7 @@ gdk_gl_config_mode_get_type (void)
         { 0, NULL, NULL }
       };
 
-      etype = g_enum_register_static ("GdkGLConfigMode", values);
+      etype = g_flags_register_static ("GdkGLConfigMode", values);
     }
 
   return etype;
@@ -344,9 +344,9 @@ static GdkGLConfig *
 gdk_gl_config_new_internal (GdkGLConfigMode mode)
 {
   if (mode & GDK_GL_MODE_RGB)
-    return = gdk_gl_config_new_rgb (mode);
+    return gdk_gl_config_new_rgb (mode);
   else
-    return = gdk_gl_config_new_ci (mode);
+    return gdk_gl_config_new_ci (mode);
 }
 
 /**

@@ -128,6 +128,7 @@ struct GdkGLConfig
 
   guint is_double_buffered : 1;
   guint is_stereo : 1;
+  guint as_single_mode : 1;
 
 #ifdef GDK_MULTIHEAD_SAFE
   GdkScreen *screen;

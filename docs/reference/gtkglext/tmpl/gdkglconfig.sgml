@@ -46,6 +46,7 @@ and is afterwards used in #gtk_widget_set_gl_capability.
 @depth: 
 @is_double_buffered: 
 @is_stereo: 
+@as_single_mode: 
 
 <!-- ##### FUNCTION gdk_gl_config_new ##### -->
 <para>
