@@ -9,7 +9,8 @@ EXTRA_DIST = \
 	gen-gdkglglxext-c.pl	\
 	gen-gdkglglxext-h.pl	\
 	gen-gdkglwglext-c.pl	\
-	gen-gdkglwglext-h.pl
+	gen-gdkglwglext-h.pl	\
+	common-header.h
 
 gdkglext_glext_public_h_sources = \
 	glext.h		\
