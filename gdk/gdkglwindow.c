@@ -220,7 +220,7 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
   drawable_class->get_clip_region        = gdk_gl_window_get_clip_region;
   drawable_class->get_visible_region     = gdk_gl_window_get_visible_region;
   drawable_class->get_composite_drawable = gdk_gl_window_get_composite_drawable;
-#if GTK_MAJOR_VERSION == 2 && GTK_MAJOR_VERSION == 0
+#if GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION == 0
   drawable_class->_draw_pixbuf           = gdk_gl_window_draw_pixbuf;
 #else
   drawable_class->draw_pixbuf            = gdk_gl_window_draw_pixbuf;
@@ -644,7 +644,7 @@ gdk_gl_window_draw_pixbuf (GdkDrawable *drawable,
 {
   GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
-#if GTK_MAJOR_VERSION == 2 && GTK_MAJOR_VERSION == 0
+#if GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION == 0
   GDK_DRAWABLE_GET_CLASS (real_drawable)->_draw_pixbuf (real_drawable,
                                                         gc,
                                                         pixbuf,
