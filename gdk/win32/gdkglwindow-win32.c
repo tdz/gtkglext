@@ -216,6 +216,7 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->wait_gl              = gdk_win32_gl_window_wait_gl;
   iface->wait_gdk             = gdk_win32_gl_window_wait_gdk;
   iface->get_gl_config        = _gdk_gl_window_get_gl_config;
+  iface->get_size             = _gdk_gl_window_get_size;
 }
 
 HDC

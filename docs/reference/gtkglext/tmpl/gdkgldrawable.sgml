@@ -90,3 +90,13 @@ OpenGL rendering surface interface.
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_gl_drawable_get_size ##### -->
+<para>
+
+</para>
+
+@gldrawable: 
+@width: 
+@height: 
+
+

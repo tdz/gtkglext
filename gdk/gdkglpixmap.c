@@ -700,6 +700,17 @@ _gdk_gl_pixmap_get_gl_config (GdkGLDrawable *gldrawable)
   return GDK_GL_PIXMAP (gldrawable)->glconfig;
 }
 
+/*< private >*/
+void
+_gdk_gl_pixmap_get_size (GdkGLDrawable *gldrawable,
+                         gint          *width,
+                         gint          *height)
+{
+  g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
+
+  gdk_drawable_get_size (GDK_DRAWABLE (gldrawable), width, height);
+}
+
 /**
  * gdk_gl_pixmap_get_pixmap:
  * @glpixmap: a #GdkGLPixmap.

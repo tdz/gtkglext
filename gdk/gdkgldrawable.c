@@ -186,3 +186,23 @@ gdk_gl_drawable_get_gl_config (GdkGLDrawable *gldrawable)
 
   return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->get_gl_config (gldrawable);
 }
+
+/**
+ * gdk_gl_drawable_get_size:
+ * @gldrawable: a #GdkGLDrawable.
+ * @width: location to store drawable's width, or NULL.
+ * @height: location to store drawable's height, or NULL.
+ *
+ * Fills *width and *height with the size of GL drawable.
+ * width or height can be NULL if you only want the other one.
+ *
+ **/
+void
+gdk_gl_drawable_get_size (GdkGLDrawable *gldrawable,
+                          gint          *width,
+                          gint          *height)
+{
+  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+
+  return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->get_size (gldrawable, width, height);
+}

@@ -1,3 +1,13 @@
+2002-08-19  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/gdkgldrawable.h (struct _GdkGLDrawableClass): 
+	* gdk/gdkglpixmap.c: 
+	* gdk/gdkglwindow.c: 
+	* gdk/x11/gdkglpixmap-x11.c: 
+	* gdk/x11/gdkglwindow-x11.c: 
+	* gdk/win32/gdkglpixmap-win32.c: 
+	* gdk/win32/gdkglwindow-win32.c: Added get_size() interface.
+
 2002-08-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/logo-model.[ch]: 

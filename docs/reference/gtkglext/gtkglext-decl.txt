@@ -400,8 +400,13 @@ GdkGLDrawable *gldrawable
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_drawable_get_gl_config</NAME>
-<RETURNS>GdkGLConfig   *</RETURNS>
+<RETURNS>GdkGLConfig  *</RETURNS>
 GdkGLDrawable *gldrawable
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_get_size</NAME>
+<RETURNS>void  </RETURNS>
+GdkGLDrawable *gldrawable,gint          *width,gint          *height
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_font_use_pango_font</NAME>

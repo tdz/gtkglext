@@ -696,9 +696,20 @@ _gdk_gl_window_is_double_buffered (GdkGLDrawable *gldrawable)
 GdkGLConfig *
 _gdk_gl_window_get_gl_config (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), NULL);
 
   return GDK_GL_WINDOW (gldrawable)->glconfig;
+}
+
+/*< private >*/
+void
+_gdk_gl_window_get_size (GdkGLDrawable *gldrawable,
+                         gint          *width,
+                         gint          *height)
+{
+  g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
+
+  return gdk_drawable_get_size (GDK_DRAWABLE (gldrawable), width, height);
 }
 
 /**
