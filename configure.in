@@ -200,7 +200,10 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 ## calls. Oh, also the later pkg-config calls don't include 
 ## the version requirements since those make the module lists 
 ## annoying to construct
-PKG_CHECK_MODULES(BASE_DEPENDENCIES, $GDK_PKG >= $GDK_REQUIRED_VERSION $GTK_PKG >= $GTK_REQUIRED_VERSION)
+PKG_CHECK_MODULES(BASE_DEPENDENCIES,
+$GDK_PKG >= $GDK_REQUIRED_VERSION \
+$GTK_PKG >= $GTK_REQUIRED_VERSION \
+)
 
 if test "$os_win32" != yes; then
     # libtool option to control which symbols are exported
@@ -225,13 +228,18 @@ AC_C_CONST
 
 
 ##################################################
-# Checks for MULTIHEAD_SAFE
+# Checks for MULTIHEAD_SAFE CPPFLAGS
 ##################################################
 
 MULTIHEAD_SAFE=""
 
-PKG_CHECK_MODULES(MYSTUFF, $GDK_PKG >= 2.1.0,
-                  MULTIHEAD_SAFE="-DGDK_MULTIHEAD_SAFE")
+save_CPPFLAGS="$CPPFLAGS"
+CPPFLAGS="$CPPFLAGS $BASE_DEPENDENCIES_CFLAGS"
+
+AC_CHECK_HEADERS(gdk/gdkdisplay.h gdk/gdkscreen.h,
+                 MULTIHEAD_SAFE="-DGDK_MULTIHEAD_SAFE")
+
+CPPFLAGS="$save_CPPFLAGS"
 
 
 ##################################################
