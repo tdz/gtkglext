@@ -267,7 +267,7 @@ configure_event (GtkWidget         *widget,
 
   GLfloat w = widget->allocation.width;
   GLfloat h = widget->allocation.height;
-  GLfloat aspect = h / w;
+  GLfloat aspect;
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -277,7 +277,16 @@ configure_event (GtkWidget         *widget,
 
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
-  glFrustum (-1.0, 1.0, -aspect, aspect, 5.0, 60.0);
+  if (w > h)
+    {
+      aspect = w / h;
+      glFrustum (-aspect, aspect, -1.0, 1.0, 5.0, 60.0);
+    }
+  else
+    {
+      aspect = h / w;
+      glFrustum (-1.0, 1.0, -aspect, aspect, 5.0, 60.0);
+    }
 
   glMatrixMode (GL_MODELVIEW);
 
