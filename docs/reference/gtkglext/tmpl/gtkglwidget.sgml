@@ -86,8 +86,8 @@ be made between those two functions.
 
 <!-- ##### MACRO gtk_widget_get_gl_drawable ##### -->
 <para>
-Returns the #GdkGLDrawable owned by the @widget. In fact, this is the
-macro that casts #gtk_widget_get_gl_window result to GDK_GL_DRAWABLE.
+Returns the #GdkGLDrawable owned by the @widget. In fact, this is
+macro that casts the result of #gtk_widget_get_gl_window to #GdkGLDrawable.
 </para>
 
 @widget: a #GtkWidget.

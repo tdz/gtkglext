@@ -1,6 +1,6 @@
-66% symbol docs coverage.
-100 symbols documented.
-51 not documented.
+68% symbol docs coverage.
+102 symbols documented.
+49 not documented.
 
 
 GDKGLEXT_BINARY_AGE
@@ -42,8 +42,6 @@ GdkGLRenderTypeMask
 GdkGLTransparentType
 GdkGLVisualType
 GdkGLWindow
-gdk_pixmap_get_gl_drawable
-gdk_window_get_gl_drawable
 gdkglext_binary_age
 gdkglext_interface_age
 gdkglext_major_version
