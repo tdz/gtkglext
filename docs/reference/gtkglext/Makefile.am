@@ -33,7 +33,7 @@ IGNORE_HFILES = \
 	config.h		\
 	docs			\
 	examples		\
-	GL			\
+	glext			\
 	x11			\
 	win32			\
 	gdkglext-config.h	\
