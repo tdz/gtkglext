@@ -1,6 +1,7 @@
 EXPORTS
 	gdk_gl_attrib_list_none_get_type
-	gdk_gl_client_string_attribute_get_type
+	gdk_gl_config_attrib_get_type
+	gdk_gl_config_attrib_value_get_type
 	gdk_gl_config_error_get_type
 	gdk_gl_config_get_attrib
 	gdk_gl_config_get_colormap
@@ -28,7 +29,6 @@ EXPORTS
 	gdk_gl_context_get_render_type
 	gdk_gl_context_get_share_list
 	gdk_gl_context_get_type
-	gdk_gl_context_info_extension_attribute_get_type
 	gdk_gl_context_is_direct
 	gdk_gl_context_new
 	gdk_gl_debug_flags
@@ -52,11 +52,8 @@ EXPORTS
 	gdk_gl_drawable_swap_buffers
 	gdk_gl_drawable_wait_gdk
 	gdk_gl_drawable_wait_gl
-	gdk_gl_extension_value_get_type
-	gdk_gl_fb_config_attribute_get_type
 	gdk_gl_font_use_pango_font
 	gdk_gl_font_use_pango_font_for_display
-	gdk_gl_generic_value_get_type
 	gdk_gl_get_GL_3DFX_tbuffer
 	gdk_gl_get_GL_ARB_matrix_palette
 	gdk_gl_get_GL_ARB_multisample
@@ -1053,7 +1050,6 @@ EXPORTS
 	gdk_gl_get_wglWaitForSbcOML
 	gdk_gl_init
 	gdk_gl_init_check
-	gdk_gl_multisample_config_attribute_get_type
 	gdk_gl_parse_args
 	gdk_gl_pixmap_get_pixmap
 	gdk_gl_pixmap_get_type
@@ -1065,7 +1061,6 @@ EXPORTS
 	gdk_gl_query_version
 	gdk_gl_query_version_for_display
 	gdk_gl_success_get_type
-	gdk_gl_visual_config_attribute_get_type
 	gdk_gl_window_get_type
 	gdk_gl_window_get_window
 	gdk_gl_window_new
