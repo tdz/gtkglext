@@ -440,49 +440,49 @@ gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
 
   impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
 
-#define GET_CONFIG(attrib) \
-  glXGetConfig (impl->xdisplay, impl->xvinfo, (attrib), &value)
+#define _GET_CONFIG(__attrib) \
+  glXGetConfig (impl->xdisplay, impl->xvinfo, __attrib, &value)
 
   /* RGBA mode? */
-  GET_CONFIG (GLX_RGBA);
+  _GET_CONFIG (GLX_RGBA);
   glconfig->is_rgba = value ? TRUE : FALSE;
 
   /* Layer plane. */
-  GET_CONFIG (GLX_LEVEL);
+  _GET_CONFIG (GLX_LEVEL);
   glconfig->layer_plane = value;
 
   /* Double buffering is supported? */
-  GET_CONFIG (GLX_DOUBLEBUFFER);
+  _GET_CONFIG (GLX_DOUBLEBUFFER);
   glconfig->is_double_buffered = value ? TRUE : FALSE;
 
   /* Stereo is supported? */
-  GET_CONFIG (GLX_STEREO);
+  _GET_CONFIG (GLX_STEREO);
   glconfig->is_stereo = value ? TRUE : FALSE;
 
   /* Number of aux buffers */
-  GET_CONFIG (GLX_AUX_BUFFERS);
+  _GET_CONFIG (GLX_AUX_BUFFERS);
   glconfig->n_aux_buffers = value;
 
   /* Has alpha bits? */
-  GET_CONFIG (GLX_ALPHA_SIZE);
+  _GET_CONFIG (GLX_ALPHA_SIZE);
   glconfig->has_alpha = value ? TRUE : FALSE;
 
   /* Has depth buffer? */
-  GET_CONFIG (GLX_DEPTH_SIZE);
+  _GET_CONFIG (GLX_DEPTH_SIZE);
   glconfig->has_depth_buffer = value ? TRUE : FALSE;
 
   /* Has stencil buffer? */
-  GET_CONFIG (GLX_STENCIL_SIZE);
+  _GET_CONFIG (GLX_STENCIL_SIZE);
   glconfig->has_stencil_buffer = value ? TRUE : FALSE;
 
   /* Has accumulation buffer? */
-  GET_CONFIG (GLX_ACCUM_RED_SIZE);
+  _GET_CONFIG (GLX_ACCUM_RED_SIZE);
   glconfig->has_accum_buffer = value ? TRUE : FALSE;
 
   /* Number of multisample buffers (not supported yet) */
   glconfig->n_sample_buffers = 0;
 
-#undef GET_CONFIG
+#undef _GET_CONFIG
 }
 
 static GdkGLConfig *
