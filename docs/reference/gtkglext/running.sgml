@@ -25,7 +25,7 @@ options. These are removed from <literal>argv</literal> by
 </para>
 
 <formalpara>
-<title><systemitem>--install-gl-colormap</systemitem></title>
+<title><systemitem>--gtk-gl-install-colormap</systemitem></title>
 
 <para>
 Install OpenGL window's colormap to the top-level window.

@@ -1,5 +1,9 @@
 2003-05-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* docs/reference/gtkglext/running.sgml: 
+	* gtk/gtkglinit.c (gtk_gl_parse_args): Changed
+	--install-gl-colormap option to --gtk-gl-install-colormap.
+
 	* gtk/gtkglwidget.c (gtk_gl_widget_parent_set): Don't try to set
 	toplevel window's colormap if it is already realized.
 

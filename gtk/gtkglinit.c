@@ -92,7 +92,7 @@ gtk_gl_parse_args (int    *argc,
       
       for (i = 1; i < *argc;)
 	{
-          if (strcmp ("--install-gl-colormap", (*argv)[i]) == 0)
+          if (strcmp ("--gtk-gl-install-colormap", (*argv)[i]) == 0)
             {
               gtk_gl_widget_install_toplevel_cmap = TRUE;
               (*argv)[i] = NULL;
