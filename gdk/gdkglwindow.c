@@ -725,7 +725,15 @@ gdk_window_set_gl_capability (GdkWindow   *window,
    * Set a background of "None" on window to avoid AIX X server crash
    */
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - window->bg_pixmap = 0x%lx",
+               ((GdkWindowObject *) window)->bg_pixmap));
+
   gdk_window_set_back_pixmap (window, NULL, FALSE);
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - window->bg_pixmap = 0x%lx",
+               ((GdkWindowObject *) window)->bg_pixmap));
 
   return glwindow;
 }

@@ -125,6 +125,31 @@ gtk_gl_widget_parent_set (GtkWidget   *widget,
 }
 
 static void
+gtk_gl_widget_style_set (GtkWidget *widget,
+                         GtkStyle  *previous_style,
+                         gpointer   user_data)
+{
+  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_style_set ()"));
+
+  /* 
+   * Set a background of "None" on window to avoid AIX X server crash.
+   */
+
+  if (GTK_WIDGET_REALIZED (widget))
+    {
+      GTK_GL_NOTE (MISC,
+        g_message (" - window->bg_pixmap = 0x%lx",
+                   ((GdkWindowObject *) (widget->window))->bg_pixmap));
+
+      gdk_window_set_back_pixmap (widget->window, NULL, FALSE);
+
+      GTK_GL_NOTE (MISC,
+        g_message (" - window->bg_pixmap = 0x%lx",
+                   ((GdkWindowObject *) (widget->window))->bg_pixmap));
+    }
+}
+
+static void
 gl_param_destroy (GLWidgetParam *glparam)
 {
   GTK_GL_NOTE (FUNC, g_message (" - gl_param_destroy ()"));
@@ -216,6 +241,15 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    */
 
   gtk_widget_set_double_buffered (widget, FALSE);
+
+  /* 
+   * "style_set" signal handler to set a background of "None" on window.
+   * (relates AIX X server crash)
+   */
+
+  g_signal_connect (G_OBJECT (widget), "style_set",
+                    G_CALLBACK (gtk_gl_widget_style_set),
+                    NULL);
 
   /*
    * Set given GL widget parameters.

@@ -1,3 +1,9 @@
+2003-03-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability) 
+	(gtk_gl_widget_style_set): If "style_set" signal is emitted, set a
+	background of "None" on window to avoid AIX X server crash.
+
 2003-03-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/*.c (toggle_animation): Call gtk_widget_queue_draw() if
