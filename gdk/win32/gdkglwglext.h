@@ -55,6 +55,18 @@ GdkGLProc    gdk_gl_get_wglRestoreBufferRegionARB (void);
 #define      gdk_gl_wglRestoreBufferRegionARB(proc, hRegion, x, y, width, height, xSrc, ySrc) \
   ( ((GdkGLProc_wglRestoreBufferRegionARB) (proc)) (hRegion, x, y, width, height, xSrc, ySrc) )
 
+/* proc struct */
+
+typedef _GdkGL_WGL_ARB_buffer_region GdkGL_WGL_ARB_buffer_region;
+
+struct _GdkGL_WGL_ARB_buffer_region
+{
+  GdkGLProc_wglCreateBufferRegionARB  wglCreateBufferRegionARB;
+  GdkGLProc_wglDeleteBufferRegionARB  wglDeleteBufferRegionARB;
+  GdkGLProc_wglSaveBufferRegionARB    wglSaveBufferRegionARB;
+  GdkGLProc_wglRestoreBufferRegionARB wglRestoreBufferRegionARB;
+};
+
 /* 
  * WGL_ARB_extensions_string
  */
@@ -64,6 +76,15 @@ typedef const char * (WINAPI * GdkGLProc_wglGetExtensionsStringARB) (HDC hdc);
 GdkGLProc    gdk_gl_get_wglGetExtensionsStringARB (void);
 #define      gdk_gl_wglGetExtensionsStringARB(proc, hdc) \
   ( ((GdkGLProc_wglGetExtensionsStringARB) (proc)) (hdc) )
+
+/* proc struct */
+
+typedef _GdkGL_WGL_ARB_extensions_string GdkGL_WGL_ARB_extensions_string;
+
+struct _GdkGL_WGL_ARB_extensions_string
+{
+  GdkGLProc_wglGetExtensionsStringARB wglGetExtensionsStringARB;
+};
 
 /* 
  * WGL_ARB_pixel_format
@@ -87,6 +108,17 @@ GdkGLProc    gdk_gl_get_wglChoosePixelFormatARB (void);
 #define      gdk_gl_wglChoosePixelFormatARB(proc, hdc, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats) \
   ( ((GdkGLProc_wglChoosePixelFormatARB) (proc)) (hdc, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats) )
 
+/* proc struct */
+
+typedef _GdkGL_WGL_ARB_pixel_format GdkGL_WGL_ARB_pixel_format;
+
+struct _GdkGL_WGL_ARB_pixel_format
+{
+  GdkGLProc_wglGetPixelFormatAttribivARB wglGetPixelFormatAttribivARB;
+  GdkGLProc_wglGetPixelFormatAttribfvARB wglGetPixelFormatAttribfvARB;
+  GdkGLProc_wglChoosePixelFormatARB      wglChoosePixelFormatARB;
+};
+
 /* 
  * WGL_ARB_make_current_read
  */
@@ -102,6 +134,16 @@ typedef HDC (WINAPI * GdkGLProc_wglGetCurrentReadDCARB) (void);
 GdkGLProc    gdk_gl_get_wglGetCurrentReadDCARB (void);
 #define      gdk_gl_wglGetCurrentReadDCARB(proc) \
   ( ((GdkGLProc_wglGetCurrentReadDCARB) (proc)) () )
+
+/* proc struct */
+
+typedef _GdkGL_WGL_ARB_make_current_read GdkGL_WGL_ARB_make_current_read;
+
+struct _GdkGL_WGL_ARB_make_current_read
+{
+  GdkGLProc_wglMakeContextCurrentARB wglMakeContextCurrentARB;
+  GdkGLProc_wglGetCurrentReadDCARB   wglGetCurrentReadDCARB;
+};
 
 /* 
  * WGL_ARB_pbuffer
@@ -137,6 +179,19 @@ GdkGLProc    gdk_gl_get_wglQueryPbufferARB (void);
 #define      gdk_gl_wglQueryPbufferARB(proc, hPbuffer, iAttribute, piValue) \
   ( ((GdkGLProc_wglQueryPbufferARB) (proc)) (hPbuffer, iAttribute, piValue) )
 
+/* proc struct */
+
+typedef _GdkGL_WGL_ARB_pbuffer GdkGL_WGL_ARB_pbuffer;
+
+struct _GdkGL_WGL_ARB_pbuffer
+{
+  GdkGLProc_wglCreatePbufferARB    wglCreatePbufferARB;
+  GdkGLProc_wglGetPbufferDCARB     wglGetPbufferDCARB;
+  GdkGLProc_wglReleasePbufferDCARB wglReleasePbufferDCARB;
+  GdkGLProc_wglDestroyPbufferARB   wglDestroyPbufferARB;
+  GdkGLProc_wglQueryPbufferARB     wglQueryPbufferARB;
+};
+
 /* 
  * WGL_ARB_render_texture
  */
@@ -158,6 +213,17 @@ typedef BOOL (WINAPI * GdkGLProc_wglSetPbufferAttribARB) (HPBUFFERARB hPbuffer, 
 GdkGLProc    gdk_gl_get_wglSetPbufferAttribARB (void);
 #define      gdk_gl_wglSetPbufferAttribARB(proc, hPbuffer, piAttribList) \
   ( ((GdkGLProc_wglSetPbufferAttribARB) (proc)) (hPbuffer, piAttribList) )
+
+/* proc struct */
+
+typedef _GdkGL_WGL_ARB_render_texture GdkGL_WGL_ARB_render_texture;
+
+struct _GdkGL_WGL_ARB_render_texture
+{
+  GdkGLProc_wglBindTexImageARB     wglBindTexImageARB;
+  GdkGLProc_wglReleaseTexImageARB  wglReleaseTexImageARB;
+  GdkGLProc_wglSetPbufferAttribARB wglSetPbufferAttribARB;
+};
 
 /* 
  * WGL_EXT_display_color_table
@@ -187,6 +253,18 @@ GdkGLProc    gdk_gl_get_wglDestroyDisplayColorTableEXT (void);
 #define      gdk_gl_wglDestroyDisplayColorTableEXT(proc, id) \
   ( ((GdkGLProc_wglDestroyDisplayColorTableEXT) (proc)) (id) )
 
+/* proc struct */
+
+typedef _GdkGL_WGL_EXT_display_color_table GdkGL_WGL_EXT_display_color_table;
+
+struct _GdkGL_WGL_EXT_display_color_table
+{
+  GdkGLProc_wglCreateDisplayColorTableEXT  wglCreateDisplayColorTableEXT;
+  GdkGLProc_wglLoadDisplayColorTableEXT    wglLoadDisplayColorTableEXT;
+  GdkGLProc_wglBindDisplayColorTableEXT    wglBindDisplayColorTableEXT;
+  GdkGLProc_wglDestroyDisplayColorTableEXT wglDestroyDisplayColorTableEXT;
+};
+
 /* 
  * WGL_EXT_extensions_string
  */
@@ -196,6 +274,15 @@ typedef const char * (WINAPI * GdkGLProc_wglGetExtensionsStringEXT) (void);
 GdkGLProc    gdk_gl_get_wglGetExtensionsStringEXT (void);
 #define      gdk_gl_wglGetExtensionsStringEXT(proc) \
   ( ((GdkGLProc_wglGetExtensionsStringEXT) (proc)) () )
+
+/* proc struct */
+
+typedef _GdkGL_WGL_EXT_extensions_string GdkGL_WGL_EXT_extensions_string;
+
+struct _GdkGL_WGL_EXT_extensions_string
+{
+  GdkGLProc_wglGetExtensionsStringEXT wglGetExtensionsStringEXT;
+};
 
 /* 
  * WGL_EXT_make_current_read
@@ -212,6 +299,16 @@ typedef HDC (WINAPI * GdkGLProc_wglGetCurrentReadDCEXT) (void);
 GdkGLProc    gdk_gl_get_wglGetCurrentReadDCEXT (void);
 #define      gdk_gl_wglGetCurrentReadDCEXT(proc) \
   ( ((GdkGLProc_wglGetCurrentReadDCEXT) (proc)) () )
+
+/* proc struct */
+
+typedef _GdkGL_WGL_EXT_make_current_read GdkGL_WGL_EXT_make_current_read;
+
+struct _GdkGL_WGL_EXT_make_current_read
+{
+  GdkGLProc_wglMakeContextCurrentEXT wglMakeContextCurrentEXT;
+  GdkGLProc_wglGetCurrentReadDCEXT   wglGetCurrentReadDCEXT;
+};
 
 /* 
  * WGL_EXT_pbuffer
@@ -247,6 +344,19 @@ GdkGLProc    gdk_gl_get_wglQueryPbufferEXT (void);
 #define      gdk_gl_wglQueryPbufferEXT(proc, hPbuffer, iAttribute, piValue) \
   ( ((GdkGLProc_wglQueryPbufferEXT) (proc)) (hPbuffer, iAttribute, piValue) )
 
+/* proc struct */
+
+typedef _GdkGL_WGL_EXT_pbuffer GdkGL_WGL_EXT_pbuffer;
+
+struct _GdkGL_WGL_EXT_pbuffer
+{
+  GdkGLProc_wglCreatePbufferEXT    wglCreatePbufferEXT;
+  GdkGLProc_wglGetPbufferDCEXT     wglGetPbufferDCEXT;
+  GdkGLProc_wglReleasePbufferDCEXT wglReleasePbufferDCEXT;
+  GdkGLProc_wglDestroyPbufferEXT   wglDestroyPbufferEXT;
+  GdkGLProc_wglQueryPbufferEXT     wglQueryPbufferEXT;
+};
+
 /* 
  * WGL_EXT_pixel_format
  */
@@ -269,6 +379,17 @@ GdkGLProc    gdk_gl_get_wglChoosePixelFormatEXT (void);
 #define      gdk_gl_wglChoosePixelFormatEXT(proc, hdc, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats) \
   ( ((GdkGLProc_wglChoosePixelFormatEXT) (proc)) (hdc, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats) )
 
+/* proc struct */
+
+typedef _GdkGL_WGL_EXT_pixel_format GdkGL_WGL_EXT_pixel_format;
+
+struct _GdkGL_WGL_EXT_pixel_format
+{
+  GdkGLProc_wglGetPixelFormatAttribivEXT wglGetPixelFormatAttribivEXT;
+  GdkGLProc_wglGetPixelFormatAttribfvEXT wglGetPixelFormatAttribfvEXT;
+  GdkGLProc_wglChoosePixelFormatEXT      wglChoosePixelFormatEXT;
+};
+
 /* 
  * WGL_EXT_swap_control
  */
@@ -285,6 +406,16 @@ GdkGLProc    gdk_gl_get_wglGetSwapIntervalEXT (void);
 #define      gdk_gl_wglGetSwapIntervalEXT(proc) \
   ( ((GdkGLProc_wglGetSwapIntervalEXT) (proc)) () )
 
+/* proc struct */
+
+typedef _GdkGL_WGL_EXT_swap_control GdkGL_WGL_EXT_swap_control;
+
+struct _GdkGL_WGL_EXT_swap_control
+{
+  GdkGLProc_wglSwapIntervalEXT    wglSwapIntervalEXT;
+  GdkGLProc_wglGetSwapIntervalEXT wglGetSwapIntervalEXT;
+};
+
 /* 
  * WGL_NV_vertex_array_range
  */
@@ -300,6 +431,16 @@ typedef void (WINAPI * GdkGLProc_wglFreeMemoryNV) (void *pointer);
 GdkGLProc    gdk_gl_get_wglFreeMemoryNV (void);
 #define      gdk_gl_wglFreeMemoryNV(proc, pointer) \
   ( ((GdkGLProc_wglFreeMemoryNV) (proc)) (pointer) )
+
+/* proc struct */
+
+typedef _GdkGL_WGL_NV_vertex_array_range GdkGL_WGL_NV_vertex_array_range;
+
+struct _GdkGL_WGL_NV_vertex_array_range
+{
+  GdkGLProc_wglAllocateMemoryNV wglAllocateMemoryNV;
+  GdkGLProc_wglFreeMemoryNV     wglFreeMemoryNV;
+};
 
 /* 
  * WGL_OML_sync_control
@@ -341,6 +482,20 @@ GdkGLProc    gdk_gl_get_wglWaitForSbcOML (void);
 #define      gdk_gl_wglWaitForSbcOML(proc, hdc, target_sbc, ust, msc, sbc) \
   ( ((GdkGLProc_wglWaitForSbcOML) (proc)) (hdc, target_sbc, ust, msc, sbc) )
 
+/* proc struct */
+
+typedef _GdkGL_WGL_OML_sync_control GdkGL_WGL_OML_sync_control;
+
+struct _GdkGL_WGL_OML_sync_control
+{
+  GdkGLProc_wglGetSyncValuesOML       wglGetSyncValuesOML;
+  GdkGLProc_wglGetMscRateOML          wglGetMscRateOML;
+  GdkGLProc_wglSwapBuffersMscOML      wglSwapBuffersMscOML;
+  GdkGLProc_wglSwapLayerBuffersMscOML wglSwapLayerBuffersMscOML;
+  GdkGLProc_wglWaitForMscOML          wglWaitForMscOML;
+  GdkGLProc_wglWaitForSbcOML          wglWaitForSbcOML;
+};
+
 /* 
  * WGL_I3D_digital_video_control
  */
@@ -356,6 +511,16 @@ typedef BOOL (WINAPI * GdkGLProc_wglSetDigitalVideoParametersI3D) (HDC hDC, int 
 GdkGLProc    gdk_gl_get_wglSetDigitalVideoParametersI3D (void);
 #define      gdk_gl_wglSetDigitalVideoParametersI3D(proc, hDC, iAttribute, piValue) \
   ( ((GdkGLProc_wglSetDigitalVideoParametersI3D) (proc)) (hDC, iAttribute, piValue) )
+
+/* proc struct */
+
+typedef _GdkGL_WGL_I3D_digital_video_control GdkGL_WGL_I3D_digital_video_control;
+
+struct _GdkGL_WGL_I3D_digital_video_control
+{
+  GdkGLProc_wglGetDigitalVideoParametersI3D wglGetDigitalVideoParametersI3D;
+  GdkGLProc_wglSetDigitalVideoParametersI3D wglSetDigitalVideoParametersI3D;
+};
 
 /* 
  * WGL_I3D_gamma
@@ -384,6 +549,18 @@ typedef BOOL (WINAPI * GdkGLProc_wglSetGammaTableI3D) (HDC hDC, int iEntries, co
 GdkGLProc    gdk_gl_get_wglSetGammaTableI3D (void);
 #define      gdk_gl_wglSetGammaTableI3D(proc, hDC, iEntries, puRed, puGreen, puBlue) \
   ( ((GdkGLProc_wglSetGammaTableI3D) (proc)) (hDC, iEntries, puRed, puGreen, puBlue) )
+
+/* proc struct */
+
+typedef _GdkGL_WGL_I3D_gamma GdkGL_WGL_I3D_gamma;
+
+struct _GdkGL_WGL_I3D_gamma
+{
+  GdkGLProc_wglGetGammaTableParametersI3D wglGetGammaTableParametersI3D;
+  GdkGLProc_wglSetGammaTableParametersI3D wglSetGammaTableParametersI3D;
+  GdkGLProc_wglGetGammaTableI3D           wglGetGammaTableI3D;
+  GdkGLProc_wglSetGammaTableI3D           wglSetGammaTableI3D;
+};
 
 /* 
  * WGL_I3D_genlock
@@ -461,6 +638,26 @@ GdkGLProc    gdk_gl_get_wglQueryGenlockMaxSourceDelayI3D (void);
 #define      gdk_gl_wglQueryGenlockMaxSourceDelayI3D(proc, hDC, uMaxLineDelay, uMaxPixelDelay) \
   ( ((GdkGLProc_wglQueryGenlockMaxSourceDelayI3D) (proc)) (hDC, uMaxLineDelay, uMaxPixelDelay) )
 
+/* proc struct */
+
+typedef _GdkGL_WGL_I3D_genlock GdkGL_WGL_I3D_genlock;
+
+struct _GdkGL_WGL_I3D_genlock
+{
+  GdkGLProc_wglEnableGenlockI3D              wglEnableGenlockI3D;
+  GdkGLProc_wglDisableGenlockI3D             wglDisableGenlockI3D;
+  GdkGLProc_wglIsEnabledGenlockI3D           wglIsEnabledGenlockI3D;
+  GdkGLProc_wglGenlockSourceI3D              wglGenlockSourceI3D;
+  GdkGLProc_wglGetGenlockSourceI3D           wglGetGenlockSourceI3D;
+  GdkGLProc_wglGenlockSourceEdgeI3D          wglGenlockSourceEdgeI3D;
+  GdkGLProc_wglGetGenlockSourceEdgeI3D       wglGetGenlockSourceEdgeI3D;
+  GdkGLProc_wglGenlockSampleRateI3D          wglGenlockSampleRateI3D;
+  GdkGLProc_wglGetGenlockSampleRateI3D       wglGetGenlockSampleRateI3D;
+  GdkGLProc_wglGenlockSourceDelayI3D         wglGenlockSourceDelayI3D;
+  GdkGLProc_wglGetGenlockSourceDelayI3D      wglGetGenlockSourceDelayI3D;
+  GdkGLProc_wglQueryGenlockMaxSourceDelayI3D wglQueryGenlockMaxSourceDelayI3D;
+};
+
 /* 
  * WGL_I3D_image_buffer
  */
@@ -488,6 +685,18 @@ typedef BOOL (WINAPI * GdkGLProc_wglReleaseImageBufferEventsI3D) (HDC hDC, const
 GdkGLProc    gdk_gl_get_wglReleaseImageBufferEventsI3D (void);
 #define      gdk_gl_wglReleaseImageBufferEventsI3D(proc, hDC, pAddress, count) \
   ( ((GdkGLProc_wglReleaseImageBufferEventsI3D) (proc)) (hDC, pAddress, count) )
+
+/* proc struct */
+
+typedef _GdkGL_WGL_I3D_image_buffer GdkGL_WGL_I3D_image_buffer;
+
+struct _GdkGL_WGL_I3D_image_buffer
+{
+  GdkGLProc_wglCreateImageBufferI3D          wglCreateImageBufferI3D;
+  GdkGLProc_wglDestroyImageBufferI3D         wglDestroyImageBufferI3D;
+  GdkGLProc_wglAssociateImageBufferEventsI3D wglAssociateImageBufferEventsI3D;
+  GdkGLProc_wglReleaseImageBufferEventsI3D   wglReleaseImageBufferEventsI3D;
+};
 
 /* 
  * WGL_I3D_swap_frame_lock
@@ -517,6 +726,18 @@ GdkGLProc    gdk_gl_get_wglQueryFrameLockMasterI3D (void);
 #define      gdk_gl_wglQueryFrameLockMasterI3D(proc, pFlag) \
   ( ((GdkGLProc_wglQueryFrameLockMasterI3D) (proc)) (pFlag) )
 
+/* proc struct */
+
+typedef _GdkGL_WGL_I3D_swap_frame_lock GdkGL_WGL_I3D_swap_frame_lock;
+
+struct _GdkGL_WGL_I3D_swap_frame_lock
+{
+  GdkGLProc_wglEnableFrameLockI3D      wglEnableFrameLockI3D;
+  GdkGLProc_wglDisableFrameLockI3D     wglDisableFrameLockI3D;
+  GdkGLProc_wglIsEnabledFrameLockI3D   wglIsEnabledFrameLockI3D;
+  GdkGLProc_wglQueryFrameLockMasterI3D wglQueryFrameLockMasterI3D;
+};
+
 /* 
  * WGL_I3D_swap_frame_usage
  */
@@ -544,6 +765,18 @@ typedef BOOL (WINAPI * GdkGLProc_wglQueryFrameTrackingI3D) (DWORD *pFrameCount, 
 GdkGLProc    gdk_gl_get_wglQueryFrameTrackingI3D (void);
 #define      gdk_gl_wglQueryFrameTrackingI3D(proc, pFrameCount, pMissedFrames, pLastMissedUsage) \
   ( ((GdkGLProc_wglQueryFrameTrackingI3D) (proc)) (pFrameCount, pMissedFrames, pLastMissedUsage) )
+
+/* proc struct */
+
+typedef _GdkGL_WGL_I3D_swap_frame_usage GdkGL_WGL_I3D_swap_frame_usage;
+
+struct _GdkGL_WGL_I3D_swap_frame_usage
+{
+  GdkGLProc_wglGetFrameUsageI3D      wglGetFrameUsageI3D;
+  GdkGLProc_wglBeginFrameTrackingI3D wglBeginFrameTrackingI3D;
+  GdkGLProc_wglEndFrameTrackingI3D   wglEndFrameTrackingI3D;
+  GdkGLProc_wglQueryFrameTrackingI3D wglQueryFrameTrackingI3D;
+};
 
 G_END_DECLS
 
