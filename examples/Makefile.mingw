@@ -55,6 +55,7 @@ SOURCES = \
 	template.c		\
 	scribble-gl.c		\
 	font-pangoft2.c		\
+	font-pangoft2-tex.c	\
 	wglinfo.c
 
 EXTRA_SOURCES = \
@@ -84,6 +85,7 @@ PROGRAMS = \
 	template$(EXEEXT)		\
 	scribble-gl$(EXEEXT)		\
 	font-pangoft2$(EXEEXT)		\
+	font-pangoft2-tex$(EXEEXT)	\
 	wglinfo$(EXEEXT)
 
 .PHONY: all clean clean-deps distclean
@@ -173,6 +175,9 @@ scribble-gl$(EXEEXT): scribble-gl.o
 	$(LINK) -o $@ $^ $(LIBS)
 
 font-pangoft2$(EXEEXT): font-pangoft2.o
+	$(LINK) -o $@ $^ $(LIBS_WITH_PANGOFT2)
+
+font-pangoft2-tex$(EXEEXT): font-pangoft2-tex.o
 	$(LINK) -o $@ $^ $(LIBS_WITH_PANGOFT2)
 
 wglinfo$(EXEEXT): wglinfo.o

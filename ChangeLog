@@ -1,3 +1,11 @@
+2003-07-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/font-pangoft2-tex.c: 
+	* examples/Makefile.am (common_programs): 
+	* examples/Makefile.mingw (PROGRAMS): 
+	* examples/Makefile.msc (PROGRAMS): Added simple example for text
+	texture rendering with PangoFT2.
+
 2003-07-21  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* configure.in: Added $EXAMPLES_DEP_CFLAGS contains PangoFT2

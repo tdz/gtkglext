@@ -35,25 +35,26 @@ LDADDS_WITH_PANGOFT2 = \
 	$(GTKGLEXT_DEP_LIBS_WITH_PANGOFT2)
 
 common_programs = \
-	low-level	\
-	simple		\
-	simple-mixed	\
-	pixmap		\
-	pixmap-mixed	\
-	share-lists	\
-	color		\
-	font		\
-	button		\
-	shapes		\
-	logo		\
-	gears		\
-	multiarb	\
-	viewlw		\
-	rotating-square	\
-	coolwave	\
-	template	\
-	scribble-gl	\
-	font-pangoft2
+	low-level		\
+	simple			\
+	simple-mixed		\
+	pixmap			\
+	pixmap-mixed		\
+	share-lists		\
+	color			\
+	font			\
+	button			\
+	shapes			\
+	logo			\
+	gears			\
+	multiarb		\
+	viewlw			\
+	rotating-square		\
+	coolwave		\
+	template		\
+	scribble-gl		\
+	font-pangoft2		\
+	font-pangoft2-tex
 
 x11_programs = \
 	glxinfo
@@ -143,6 +144,10 @@ scribble_gl_LDADD = $(LDADDS)
 font_pangoft2_SOURCES = font-pangoft2.c
 font_pangoft2_DEPENDENCIES = $(DEPS)
 font_pangoft2_LDADD = $(LDADDS_WITH_PANGOFT2)
+
+font_pangoft2_tex_SOURCES = font-pangoft2-tex.c
+font_pangoft2_tex_DEPENDENCIES = $(DEPS)
+font_pangoft2_tex_LDADD = $(LDADDS_WITH_PANGOFT2)
 
 glxinfo_SOURCES = glxinfo.c
 glxinfo_DEPENDENCIES = $(DEPS)

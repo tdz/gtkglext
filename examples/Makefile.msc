@@ -123,6 +123,7 @@ SOURCES = \
 	template.c		\
 	scribble-gl.c		\
 	font-pangoft2.c		\
+	font-pangoft2-tex.c	\
 	wglinfo.c
 
 EXTRA_SOURCES = \
@@ -152,6 +153,7 @@ PROGRAMS = \
 	template$(EXEEXT)		\
 	scribble-gl$(EXEEXT)		\
 	font-pangoft2$(EXEEXT)		\
+	font-pangoft2-tex$(EXEEXT)	\
 	wglinfo$(EXEEXT)
 
 .SUFFIXES:
@@ -225,6 +227,9 @@ scribble-gl$(EXEEXT): scribble-gl.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
 
 font-pangoft2$(EXEEXT): font-pangoft2.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS_WITH_PANGOFT2)
+
+font-pangoft2-tex$(EXEEXT): font-pangoft2-tex.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS_WITH_PANGOFT2)
 
 wglinfo$(EXEEXT): wglinfo.obj
