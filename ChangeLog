@@ -1,5 +1,7 @@
 2002-12-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* Version 0.6.0
+
 	* examples/Makefile.mingw: Sample makefile for compiling example
 	programs under MinGW/Cygwin environment.
 

@@ -11,16 +11,14 @@ General Information
 GtkGLExt is an OpenGL extension to GTK 2.0 or later.
 
 This package is composed of GdkGLExt library and GtkGLExt library.
-GdkGLExt library includes low-level OpenGL related objects,
-GdkGLConfig, GdkGLContext, GdkGLDrawable, GdkGLWindow, and so on,
-which has GLX like interface. GtkGLExt library includes high-level
-gtk_widget API add-on using GdkGLExt, which extends *ANY* GTK+ widget
-to an OpenGL-capable widget.
+GdkGLExt library provides the GDK objects which support OpenGL
+rendering in GTK. GtkGLExt library provides the GtkWidget API add-ons
+to make GTK+ widgets OpenGL-capable.
 
 The official web site is:
   http://gtkglext.sourceforge.net/
 
-The official download & development information site is:
+The official download & development project site is:
   http://sourceforge.net/projects/gtkglext/
 
 
@@ -39,7 +37,7 @@ Supported Platforms
 Currently GtkGLExt supports
 
   * UNIX platforms
-      Tested under Linux (RedHat 7.3) and IRIX (6.5).
+      Tested under Linux (RedHat 8.0) and IRIX (6.5).
 
   * Win32 platforms
       Tested under Windows XP & 2000 Professional using MinGW/Cygwin
@@ -87,7 +85,11 @@ OpenGL options
 
 Debug options
 
-  --enable-debug          turn on debugging [default=no]
+  --enable-debug=[no/minimum/yes] turn on debugging [default=minimum]
+
+Window system options
+
+  --with-gdktarget=[x11/win32] select GDK target
 
 Auto-generation files options
 
@@ -128,13 +130,13 @@ I use the following versions of the GNU auto-tools.
 
   autoconf 2.52 (libtool's AC_LIBTOOL_WIN32_DLL macro has a problem with 2.53)
   automake 1.6.3
-  libtool  1.4.2
+  libtool  1.4.3
 
 
 Contact
 =======
 
-I am looking forward to receiving any bug fixes and patches ;-)
+Any patches, bug fixes and improvements are always welcome ;-)
 
   Naofumi Yasufuku (°ÂÊ¡ ¾°Ê¸)  <naofumi@users.sourceforge.net>
 

@@ -21,4 +21,5 @@ X11 Target
 Win32 Target
 ============
 
+ - RGB palette management.
 
