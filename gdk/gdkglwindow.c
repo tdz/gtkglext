@@ -699,7 +699,8 @@ static GQuark quark_gl_window = 0;
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None).
  *
- * Return value: the #GdkGLWindow used by the @window if it is successful, NULL otherwise.
+ * Return value: the #GdkGLWindow used by the @window if it is successful,
+ *               NULL otherwise.
  **/
 GdkGLWindow *
 gdk_window_set_gl_capability (GdkWindow   *window,
@@ -761,7 +762,7 @@ gdk_window_set_gl_capability (GdkWindow   *window,
  * @window: a #GdkWindow.
  *
  * Unset the OpenGL-capability of the @window.
- * The call destroys the #GdkGLWindow held by the @window.
+ * This function destroys the #GdkGLWindow held by the @window.
  *
  **/
 void

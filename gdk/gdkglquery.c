@@ -46,7 +46,8 @@
  * only. This means that window system dependent extensions (for example,
  * GLX extensions) are not reported by gdk_gl_query_gl_extension().
  *
- * Return value: TRUE if the OpenGL extension is supported, FALSE if not supported.
+ * Return value: TRUE if the OpenGL extension is supported, FALSE if not 
+ *               supported.
  **/
 gboolean
 gdk_gl_query_gl_extension (const char *extension)

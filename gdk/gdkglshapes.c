@@ -166,8 +166,10 @@ initQuadObj(void)
  * gdk_gl_draw_sphere:
  * @solid: TRUE if the sphere should be solid.
  * @radius: the radius of the sphere.
- * @slices: the number of subdivisions around the Z axis (similar to lines of longitude).
- * @stacks: the number of subdivisions along the Z axis (similar to lines of latitude).
+ * @slices: the number of subdivisions around the Z axis (similar to lines of
+ *          longitude).
+ * @stacks: the number of subdivisions along the Z axis (similar to lines of
+ *          latitude).
  *
  * Renders a sphere centered at the modeling coordinates origin of
  * the specified @radius. The sphere is subdivided around the Z axis into

@@ -51,6 +51,15 @@ gdk_gl_query_extension (void)
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
+/**
+ * gdk_gl_query_extension_for_display:
+ * @display: the #GdkDisplay where the query is sent to.
+ *
+ * Indicates whether the window system supports the OpenGL extension
+ * (GLX, WGL, etc.).
+ *
+ * Return value: TRUE if OpenGL is supported, FALSE otherwise.
+ **/
 gboolean
 gdk_gl_query_extension_for_display (GdkDisplay *display)
 {
@@ -90,6 +99,20 @@ gdk_gl_query_version (int *major,
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
+/**
+ * gdk_gl_query_version_for_display:
+ * @display: the #GdkDisplay where the query is sent to.
+ * @major: returns the major version number of the OpenGL extension.
+ * @minor: returns the minor version number of the OpenGL extension.
+ *
+ * Returns the version numbers of the OpenGL extension to the window system.
+ *
+ * In the X Window System, it returns the GLX version.
+ *
+ * In the Microsoft Windows, it returns the Windows version.
+ *
+ * Return value: FALSE if it fails, TRUE otherwise.
+ **/
 gboolean
 gdk_gl_query_version_for_display (GdkDisplay *display,
                                   int        *major,
@@ -114,7 +137,8 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
  *
  * Determines whether a given GLX extension is supported.
  *
- * Return value: TRUE if the GLX extension is supported, FALSE if not supported.
+ * Return value: TRUE if the GLX extension is supported, FALSE if not
+ *               supported.
  **/
 gboolean
 gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
@@ -178,11 +202,11 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
 
 /**
  * gdk_gl_get_proc_address:
- * @proc_name: extension function name.
+ * @proc_name: function name.
  *
- * Returns the address of the OpenGL extension functions.
+ * Returns the address of the OpenGL, GLU, or GLX function.
  *
- * Return value: the address of the extension function named by @proc_name.
+ * Return value: the address of the function named by @proc_name.
  **/
 GdkGLProc
 gdk_gl_get_proc_address (const char *proc_name)

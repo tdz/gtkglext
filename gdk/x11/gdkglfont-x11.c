@@ -147,6 +147,18 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
+/**
+ * gdk_gl_font_use_pango_font_for_display:
+ * @display: a #GdkDisplay.
+ * @font_desc: a #PangoFontDescription describing the font to use.
+ * @first: the index of the first glyph to be taken.
+ * @count: the number of glyphs to be taken.
+ * @list_base: the index of the first display list to be generated.
+ *
+ * Create bitmap display lists from a #PangoFont.
+ *
+ * Return value: the #PangoFont used, or NULL if no font matched.
+ **/
 PangoFont *
 gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
                                         const PangoFontDescription *font_desc,

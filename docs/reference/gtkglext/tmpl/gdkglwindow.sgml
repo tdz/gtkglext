@@ -87,10 +87,10 @@ OpenGL window which is located onscreen
 
 <!-- ##### MACRO gdk_window_get_gl_drawable ##### -->
 <para>
-Return the #GdkGLWindow held by the @window.
+
 </para>
 
-@window: a #GdkWindow.
-@Returns: the #GdkGLDrawable.
+@window: 
+@Returns: 
 
 

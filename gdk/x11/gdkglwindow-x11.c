@@ -328,7 +328,7 @@ gdk_gl_window_impl_x11_get_gl_config (GdkGLDrawable *gldrawable)
  * gdk_x11_gl_window_get_glxwindow:
  * @glwindow: a #GdkGLWindow.
  *
- * Get X Window.
+ * Gets X Window.
  *
  * Return value: the Window.
  **/

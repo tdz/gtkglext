@@ -699,7 +699,8 @@ static GQuark quark_gl_pixmap = 0;
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None).
  *
- * Return value: the #GdkGLPixmap used by the @pixmap if it is successful, NULL otherwise.
+ * Return value: the #GdkGLPixmap used by the @pixmap if it is successful,
+ *               NULL otherwise.
  **/
 GdkGLPixmap *
 gdk_pixmap_set_gl_capability (GdkPixmap   *pixmap,
@@ -747,7 +748,7 @@ gdk_pixmap_set_gl_capability (GdkPixmap   *pixmap,
  * @pixmap: a #GdkPixmap.
  *
  * Unset the OpenGL-capability of the @pixmap.
- * The call destroys the #GdkGLPixmap held by the @pixmap.
+ * This function destroys the #GdkGLPixmap held by the @pixmap.
  *
  **/
 void

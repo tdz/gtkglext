@@ -26,7 +26,7 @@ FIXXREF_OPTIONS =
 
 # Used for dependencies.
 HFILE_GLOB = $(top_srcdir)/gdk/*.h $(top_srcdir)/gdk/x11/gdkglx.h $(top_srcdir)/gtk/*.h
-CFILE_GLOB = $(top_srcdir)/gdk/*.c $(top_srcdir)/gtk/*.c
+CFILE_GLOB = $(top_srcdir)/gdk/*.c $(top_srcdir)/gdk/x11/*.c $(top_srcdir)/gtk/*.c
 
 # Header files to ignore when scanning.
 IGNORE_HFILES = \

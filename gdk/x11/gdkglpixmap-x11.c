@@ -372,7 +372,7 @@ gdk_gl_pixmap_impl_x11_get_gl_config (GdkGLDrawable *gldrawable)
  * gdk_x11_gl_pixmap_get_glxpixmap:
  * @glpixmap: a #GdkGLPixmap.
  *
- * Get GLXPixmap.
+ * Gets GLXPixmap.
  *
  * Return value: the GLXPixmap.
  **/

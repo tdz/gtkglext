@@ -119,7 +119,7 @@ Internal X-related functions
 
 <!-- ##### MACRO GDK_GL_CONFIG_XDISPLAY ##### -->
 <para>
-Get X Display.
+Gets X Display.
 </para>
 
 @glconfig: a #GdkGLConfig.
@@ -128,7 +128,7 @@ Get X Display.
 
 <!-- ##### MACRO GDK_GL_CONFIG_SCREEN_XNUMBER ##### -->
 <para>
-Get X screen number.
+Gets X screen number.
 </para>
 
 @glconfig: a #GdkGLConfig.
@@ -137,7 +137,7 @@ Get X screen number.
 
 <!-- ##### MACRO GDK_GL_CONFIG_XVINFO ##### -->
 <para>
-Get XVisualInfo data.
+Gets XVisualInfo data.
 </para>
 
 @glconfig: a #GdkGLConfig.
@@ -146,7 +146,7 @@ Get XVisualInfo data.
 
 <!-- ##### MACRO GDK_GL_CONFIG_XCOLORMAP ##### -->
 <para>
-Get X Colormap.
+Gets X Colormap.
 </para>
 
 @glconfig: a #GdkGLConfig.
@@ -155,7 +155,7 @@ Get X Colormap.
 
 <!-- ##### MACRO GDK_GL_CONTEXT_GLXCONTEXT ##### -->
 <para>
-Get GLXContext.
+Gets GLXContext.
 </para>
 
 @glcontext: a #GdkGLContext.
@@ -164,7 +164,7 @@ Get GLXContext.
 
 <!-- ##### MACRO GDK_GL_PIXMAP_GLXPIXMAP ##### -->
 <para>
-Get GLXPixmap.
+Gets GLXPixmap.
 </para>
 
 @glpixmap: a #GdkGLPixmap.
@@ -173,7 +173,7 @@ Get GLXPixmap.
 
 <!-- ##### MACRO GDK_GL_WINDOW_GLXWINDOW ##### -->
 <para>
-Get X Window.
+Gets X Window.
 </para>
 
 @glwindow: a #GdkGLWindow.

@@ -178,11 +178,11 @@ gdk_gl_parse_args (int    *argc,
 /**
  * gdk_gl_init_check:
  * @argc: Address of the <parameter>argc</parameter> parameter of your 
- *   <function>main()</function> function. Changed if any arguments were 
- *   handled.
+ *        <function>main()</function> function. Changed if any arguments
+ *        were handled.
  * @argv: Address of the <parameter>argv</parameter> parameter of 
- *   <function>main()</function>. Any parameters understood by gdk_gl_init() 
- *   are stripped before return.
+ *        <function>main()</function>. Any parameters understood by
+ *        gdk_gl_init() are stripped before return.
  * 
  * This function does the same work as gdk_gl_init() with only 
  * a single change: It does not terminate the program if the library can't be 
@@ -218,11 +218,11 @@ gdk_gl_init_check (int    *argc,
 /**
  * gdk_gl_init:
  * @argc: Address of the <parameter>argc</parameter> parameter of your 
- *   <function>main()</function> function. Changed if any arguments were 
- *   handled.
+ *        <function>main()</function> function. Changed if any arguments
+ *        were handled.
  * @argv: Address of the <parameter>argv</parameter> parameter of 
- *   <function>main()</function>. Any parameters understood by gdk_gl_init() 
- *   are stripped before return.
+ *        <function>main()</function>. Any parameters understood by
+ *        gdk_gl_init() are stripped before return.
  * 
  * Call this function before using any other GdkGLExt functions in your 
  * applications.  It will initialize everything needed to operate the library

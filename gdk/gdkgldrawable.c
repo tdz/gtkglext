@@ -48,7 +48,7 @@ gdk_gl_drawable_get_type (void)
  * @gldrawable: a #GdkGLDrawable.
  * @glcontext: a #GdkGLContext.
  *
- * Attach a OpenGL rendering context to a @gldrawable.
+ * Attach an OpenGL rendering context to a @gldrawable.
  *
  * Return value: TRUE if it is successful, FALSE otherwise.
  **/
@@ -69,7 +69,8 @@ gdk_gl_drawable_make_current (GdkGLDrawable *gldrawable,
  *
  * Returns whether the @gldrawable supports the double-buffered visual.
  *
- * Return value: TRUE if the double-buffered visual is supported, FALSE otherwise.
+ * Return value: TRUE if the double-buffered visual is supported,
+ *               FALSE otherwise.
  **/
 gboolean
 gdk_gl_drawable_is_double_buffered (GdkGLDrawable *gldrawable)
@@ -129,7 +130,7 @@ gdk_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
  * @gldrawable: a #GdkGLDrawable.
  * @glcontext: a #GdkGLContext.
  *
- * Delimit the begining of the OpenGL execution.
+ * Delimits the begining of the OpenGL execution.
  * The call makes the @glcontext current to the @gldrawable, and
  * completes GDK drawing execution.
  *
@@ -150,7 +151,7 @@ gdk_gl_drawable_gl_begin (GdkGLDrawable *gldrawable,
  * gdk_gl_drawable_gl_end:
  * @gldrawable: a #GdkGLDrawable.
  *
- * Delimit the end of the OpenGL execution.
+ * Delimits the end of the OpenGL execution.
  * The call completes OpenGL execution.
  *
  **/
@@ -166,7 +167,7 @@ gdk_gl_drawable_gl_end (GdkGLDrawable *gldrawable)
  * gdk_gl_drawable_get_gl_config:
  * @gldrawable: a #GdkGLDrawable.
  *
- * Get #GdkGLConfig with which the @gldrawable is configured.
+ * Gets #GdkGLConfig with which the @gldrawable is configured.
  *
  * Return value: the #GdkGLConfig.
  **/

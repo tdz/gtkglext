@@ -251,6 +251,16 @@ gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
+/**
+ * gdk_gl_config_new_by_mode_for_screen:
+ * @screen: target screen.
+ * @mode: display mode bit mask.
+ *
+ * Returns an OpenGL frame buffer configuration that match the specified
+ * display mode.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
 GdkGLConfig *
 gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
                                       GdkGLConfigMode  mode)
@@ -339,7 +349,8 @@ gdk_gl_config_get_n_sample_buffers (GdkGLConfig *glconfig)
  *
  * Returns whether the configured frame buffer is RGBA mode.
  *
- * Return value: TRUE if the configured frame buffer is RGBA mode, FALSE otherwise.
+ * Return value: TRUE if the configured frame buffer is RGBA mode, FALSE
+ *               otherwise.
  **/
 gboolean
 gdk_gl_config_is_rgba (GdkGLConfig *glconfig)
@@ -355,15 +366,8 @@ gdk_gl_config_is_rgba (GdkGLConfig *glconfig)
  *
  * Returns whether the configuration supports the double-buffered visual.
  *
- * Checks for double buffering use in the #GdkGLConfig struct.
- * Double buffering is a technique use to avoid drawing directly in the
- * viewable area. With double buffering, all entities drawn with OpenGL are
- * stored in an invisible buffer. This buffer is then replaced by the frame
- * buffer. Using Double-buffering, a big amount of memory is used to mantain
- * this buffer, but quality is highly improved. Use #gdk_drawable_swap_buffers
- * to swap buffers when drawing is complete.
- *
- * Return value: TRUE if the double-buffered visual is supported, FALSE otherwise.
+ * Return value: TRUE if the double-buffered visual is supported, FALSE
+ *               otherwise.
  **/
 gboolean
 gdk_gl_config_is_double_buffered (GdkGLConfig *glconfig)
@@ -378,13 +382,6 @@ gdk_gl_config_is_double_buffered (GdkGLConfig *glconfig)
  * @glconfig: a #GdkGLConfig.
  *
  * Returns whether the configuration supports the stereo visual.
- *
- * Stereo Viewing deals with all techniques used to give 3D capabilities to
- * a view, as for example are all kind of 3D and VR glasses. Generating 3D
- * vision is a matter only of generating two views of the same scene, one for
- * each eye. OpenGL does not support any specific hardware, but has the
- * underlying support for using it. This function check for stereo support in
- * a #GdkGLConfig struct.
  *
  * Return value: TRUE if the stereo visual is supported, FALSE otherwise.
  **/
@@ -450,7 +447,8 @@ gdk_gl_config_has_stencil_buffer (GdkGLConfig *glconfig)
  *
  * Returns whether the configured frame buffer has accumulation buffer.
  *
- * Return value: TRUE if the frame buffer has accumulation buffer, FALSE otherwise.
+ * Return value: TRUE if the frame buffer has accumulation buffer, FALSE
+ *               otherwise.
  **/
 gboolean
 gdk_gl_config_has_accum_buffer (GdkGLConfig *glconfig)

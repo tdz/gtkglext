@@ -188,9 +188,12 @@ gl_widget_private_destroy (GLWidgetPrivate *private)
  * gtk_widget_set_gl_capability:
  * @widget: the #GtkWidget to be used as the rendering area.
  * @glconfig: a #GdkGLConfig.
- * @share_list: the #GdkGLContext which to share display lists and texture objects. NULL indicates that no sharing is to take place.
- * @direct: whether rendering is to be done with a direct connection to the graphics system.
- * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not used).
+ * @share_list: the #GdkGLContext which to share display lists and texture
+ *              objects. NULL indicates that no sharing is to take place.
+ * @direct: whether rendering is to be done with a direct connection to
+ *          the graphics system.
+ * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not
+ *               used).
  *
  * Set the OpenGL-capability to the @widget.
  * This function prepares the widget for its use with OpenGL.
@@ -337,9 +340,6 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
  *
  * Returns whether the @widget is OpenGL-capable.
  *
- * This function is useful to check if a widget is OpenGL-capable (i.e if
- * it is possible to use OpenGL functions to draw on it).
- *
  * Return value: TRUE if the @widget is OpenGL-capable, FALSE otherwise.
  **/
 gboolean
@@ -355,8 +355,6 @@ gtk_widget_is_gl_capable (GtkWidget *widget)
  * @widget: a #GtkWidget.
  *
  * Returns the #GdkGLConfig referred by the @widget.
- *
- * This returns a GdkGLConfig with the OpenGL configuration of the widget.
  *
  * Return value: the #GdkGLConfig.
  **/
@@ -377,9 +375,12 @@ gtk_widget_get_gl_config (GtkWidget *widget)
 /**
  * gtk_widget_create_gl_context:
  * @widget: a #GtkWidget.
- * @share_list: the #GdkGLContext which to share display lists and texture objects. NULL indicates that no sharing is to take place.
- * @direct: whether rendering is to be done with a direct connection to the graphics system.
- * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not used).
+ * @share_list: the #GdkGLContext which to share display lists and texture
+ *              objects. NULL indicates that no sharing is to take place.
+ * @direct: whether rendering is to be done with a direct connection to
+ *          the graphics system.
+ * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not
+ *               used).
  *
  * Creates a new #GdkGLContext with the appropriate #GdkGLDrawable
  * for this widget. The GL context must be freed when you're
@@ -429,8 +430,7 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
  * gtk_widget_create_gl_context(),  this context is owned by the widget.
  *
  * #GdkGLContext is needed for the function gdk_gl_drawable_begin,
- * or for sharing display lists
- * (see gtk_widget_set_gl_capability()).
+ * or for sharing display lists (see gtk_widget_set_gl_capability()).
  *
  * Return value: the #GdkGLContext.
  **/

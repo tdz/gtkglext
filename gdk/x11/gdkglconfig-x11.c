@@ -578,22 +578,19 @@ gdk_gl_config_new_common (GdkScreen *screen,
 
 /**
  * gdk_gl_config_new:
- * @attrib_list: a list of attribute/value pairs. The last attribute must be GDK_GL_ATTRIB_LIST_NONE.
+ * @attrib_list: a list of attribute/value pairs. The last attribute must
+ *               be GDK_GL_ATTRIB_LIST_NONE.
  *
  * Returns an OpenGL frame buffer configuration that match the specified
  * attributes.
  *
- * Reserves an space in memory for containing OpenGL FrameBuffer
- * configuration Data. Configuration data is sent via attrib_list. This
- * array of gint contains attributes data stored in pairs
- * {ATTRIBUTE_NAME1, value1, ATTRIBUTE_NAME2, value2, ...}, ending always
- * with a GDK_ATTRIB_LIST_NONE. These attributes can be:
- * GDK_GL_USE_GL,GDK_GL_BUFFER_SIZE, GDK_GL_LEVEL, GDK_GL_RGBA,
+ * attrib_list is a int array that contains the attribute/value pairs.
+ * Available attributes are: 
+ * GDK_GL_USE_GL, GDK_GL_BUFFER_SIZE, GDK_GL_LEVEL, GDK_GL_RGBA,
  * GDK_GL_DOUBLEBUFFER, GDK_GL_STEREO, GDK_GL_AUX_BUFFERS,
- * GDK_GL_RED_SIZE, GDK_GL_GREEN_SIZE, GDK_GL_BLUE_SIZE,
- * GDK_GL_ALPHA_SIZE, GDK_GL_DEPTH_SIZE, GDK_GL_STENCIL_SIZE,
- * GDK_GL_ACCUM_RED_SIZE, GDK_GL_ACCUM_GREEN_SIZE, GDK_GL_ACCUM_BLUE_SIZE
- * and GDK_GL_ACCUM_ALPHA_SIZE.
+ * GDK_GL_RED_SIZE, GDK_GL_GREEN_SIZE, GDK_GL_BLUE_SIZE, GDK_GL_ALPHA_SIZE,
+ * GDK_GL_DEPTH_SIZE, GDK_GL_STENCIL_SIZE, GDK_GL_ACCUM_RED_SIZE,
+ * GDK_GL_ACCUM_GREEN_SIZE, GDK_GL_ACCUM_BLUE_SIZE, GDK_GL_ACCUM_ALPHA_SIZE.
  *
  * Return value: the new #GdkGLConfig.
  **/
@@ -617,6 +614,17 @@ gdk_gl_config_new (const int *attrib_list)
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
+/**
+ * gdk_gl_config_new_for_screen:
+ * @screen: target screen.
+ * @attrib_list: a list of attribute/value pairs. The last attribute must
+ *               be GDK_GL_ATTRIB_LIST_NONE.
+ *
+ * Returns an OpenGL frame buffer configuration that match the specified
+ * attributes.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
 GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
                               const int *attrib_list)
@@ -748,6 +756,15 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
   return glconfig;
 }
 
+/**
+ * gdk_x11_gl_config_new_from_visualid:
+ * @xvisualid: visual ID.
+ *
+ * Creates #GdkGLConfig from given visual ID that specifies the OpenGL-capable
+ * visual.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
 GdkGLConfig *
 gdk_x11_gl_config_new_from_visualid (VisualID xvisualid)
 {
@@ -766,6 +783,16 @@ gdk_x11_gl_config_new_from_visualid (VisualID xvisualid)
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
+/**
+ * gdk_x11_gl_config_new_from_visualid_for_screen:
+ * @screen: target screen.
+ * @xvisualid: visual ID.
+ *
+ * Creates #GdkGLConfig from given visual ID that specifies the OpenGL-capable
+ * visual.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
 GdkGLConfig *
 gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
                                                 VisualID   xvisualid)
@@ -783,7 +810,7 @@ gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
  * gdk_gl_config_get_screen:
  * @glconfig: a #GdkGLConfig.
  *
- * Get #GdkScreen.
+ * Gets #GdkScreen.
  *
  * Return value: the #GdkScreen.
  **/
@@ -801,10 +828,7 @@ gdk_gl_config_get_screen (GdkGLConfig *glconfig)
  * @attribute: the attribute to be returned.
  * @value: returns the requested value.
  *
- * Returns information about a OpenGL frame buffer configuration.
- *
- * Returns the value one of the attributes which can be specified in
- * #gdk_gl_config_new.
+ * Gets information about a OpenGL frame buffer configuration.
  *
  * Return value: TRUE if it succeeded, FALSE otherwise.
  **/
@@ -829,11 +853,8 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
  * gdk_gl_config_get_colormap:
  * @glconfig: a #GdkGLConfig.
  *
- * Get the #GdkColormap that is appropriate for the OpenGL frame buffer
+ * Gets the #GdkColormap that is appropriate for the OpenGL frame buffer
  * configuration.
- *
- * Useful to get the appropiate colormap (GdkColormap) for the OpenGL
- * framebuffer.
  *
  * Return value: the appropriate #GdkColormap.
  **/
@@ -849,7 +870,7 @@ gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
  * gdk_gl_config_get_visual:
  * @glconfig: a #GdkGLConfig.
  *
- * Get the #GdkVisual that is appropriate for the OpenGL frame buffer
+ * Gets the #GdkVisual that is appropriate for the OpenGL frame buffer
  * configuration.
  *
  * Return value: the appropriate #GdkVisual.
@@ -866,15 +887,9 @@ gdk_gl_config_get_visual (GdkGLConfig *glconfig)
  * gdk_gl_config_get_depth:
  * @glconfig: a #GdkGLConfig.
  *
- * Get the depth (number of bits per pixel) of the OpenGL-capable visual.
+ * Gets the color depth of the OpenGL-capable visual.
  *
- * Color depth is a somehow confusing term. It is defined as the amount of
- * bits per pixel used to define a color. It is confusing because in some
- * environments is expressed as the amount of bits used to define each of
- * the components (RGBA) of the color. Here it will be named as the total
- * amount of bits required to define the whole color.
- *
- * Return value: the depth value.
+ * Return value: number of bits per pixel
  **/
 gint
 gdk_gl_config_get_depth (GdkGLConfig *glconfig)
@@ -888,7 +903,7 @@ gdk_gl_config_get_depth (GdkGLConfig *glconfig)
  * gdk_x11_gl_config_get_xdisplay:
  * @glconfig: a #GdkGLConfig.
  *
- * Get X Display.
+ * Gets X Display.
  *
  * Return value: pointer to the Display.
  **/
@@ -904,7 +919,7 @@ gdk_x11_gl_config_get_xdisplay (GdkGLConfig *glconfig)
  * gdk_x11_gl_config_get_screen_number:
  * @glconfig: a #GdkGLConfig.
  *
- * Get X screen number.
+ * Gets X screen number.
  *
  * Return value: the screen number.
  **/
@@ -920,7 +935,7 @@ gdk_x11_gl_config_get_screen_number (GdkGLConfig *glconfig)
  * gdk_x11_gl_config_get_xvinfo:
  * @glconfig: a #GdkGLConfig.
  *
- * Get XVisualInfo data.
+ * Gets XVisualInfo data.
  *
  * Return value: pointer to the XVisualInfo data.
  **/
