@@ -47,150 +47,175 @@ typedef XID GLXPbuffer;
  * GLX_VERSION_1_3
  */
 
-/* GLXFBConfig * glXGetFBConfigs (Display *, int, int *) */
-GdkGLProc gdk_gl_get_glXGetFBConfigs (void);
-#define   gdk_gl_glXGetFBConfigs(proc, dpy, screen, nelements) \
-  ( ((PFNGLXGETFBCONFIGSPROC) (proc)) (dpy, screen, nelements) )
+/* glXGetFBConfigs */
+typedef GLXFBConfig * ( * GdkGLProc_GLXGETFBCONFIGS) (Display *dpy, int screen, int *nelements);
+GdkGLProc    gdk_gl_get_glXGetFBConfigs (void);
+#define      gdk_gl_glXGetFBConfigs(proc, dpy, screen, nelements) \
+  ( ((GdkGLProc_GLXGETFBCONFIGS) (proc)) (dpy, screen, nelements) )
 
-/* GLXFBConfig * glXChooseFBConfig (Display *, int, const int *, int *) */
-GdkGLProc gdk_gl_get_glXChooseFBConfig (void);
-#define   gdk_gl_glXChooseFBConfig(proc, dpy, screen, attrib_list, nelements) \
-  ( ((PFNGLXCHOOSEFBCONFIGPROC) (proc)) (dpy, screen, attrib_list, nelements) )
+/* glXChooseFBConfig */
+typedef GLXFBConfig * ( * GdkGLProc_GLXCHOOSEFBCONFIG) (Display *dpy, int screen, const int *attrib_list, int *nelements);
+GdkGLProc    gdk_gl_get_glXChooseFBConfig (void);
+#define      gdk_gl_glXChooseFBConfig(proc, dpy, screen, attrib_list, nelements) \
+  ( ((GdkGLProc_GLXCHOOSEFBCONFIG) (proc)) (dpy, screen, attrib_list, nelements) )
 
-/* int glXGetFBConfigAttrib (Display *, GLXFBConfig, int, int *) */
-GdkGLProc gdk_gl_get_glXGetFBConfigAttrib (void);
-#define   gdk_gl_glXGetFBConfigAttrib(proc, dpy, config, attribute, value) \
-  ( ((PFNGLXGETFBCONFIGATTRIBPROC) (proc)) (dpy, config, attribute, value) )
+/* glXGetFBConfigAttrib */
+typedef int ( * GdkGLProc_GLXGETFBCONFIGATTRIB) (Display *dpy, GLXFBConfig config, int attribute, int *value);
+GdkGLProc    gdk_gl_get_glXGetFBConfigAttrib (void);
+#define      gdk_gl_glXGetFBConfigAttrib(proc, dpy, config, attribute, value) \
+  ( ((GdkGLProc_GLXGETFBCONFIGATTRIB) (proc)) (dpy, config, attribute, value) )
 
-/* XVisualInfo * glXGetVisualFromFBConfig (Display *, GLXFBConfig) */
-GdkGLProc gdk_gl_get_glXGetVisualFromFBConfig (void);
-#define   gdk_gl_glXGetVisualFromFBConfig(proc, dpy, config) \
-  ( ((PFNGLXGETVISUALFROMFBCONFIGPROC) (proc)) (dpy, config) )
+/* glXGetVisualFromFBConfig */
+typedef XVisualInfo * ( * GdkGLProc_GLXGETVISUALFROMFBCONFIG) (Display *dpy, GLXFBConfig config);
+GdkGLProc    gdk_gl_get_glXGetVisualFromFBConfig (void);
+#define      gdk_gl_glXGetVisualFromFBConfig(proc, dpy, config) \
+  ( ((GdkGLProc_GLXGETVISUALFROMFBCONFIG) (proc)) (dpy, config) )
 
-/* GLXWindow glXCreateWindow (Display *, GLXFBConfig, Window, const int *) */
-GdkGLProc gdk_gl_get_glXCreateWindow (void);
-#define   gdk_gl_glXCreateWindow(proc, dpy, config, win, attrib_list) \
-  ( ((PFNGLXCREATEWINDOWPROC) (proc)) (dpy, config, win, attrib_list) )
+/* glXCreateWindow */
+typedef GLXWindow ( * GdkGLProc_GLXCREATEWINDOW) (Display *dpy, GLXFBConfig config, Window win, const int *attrib_list);
+GdkGLProc    gdk_gl_get_glXCreateWindow (void);
+#define      gdk_gl_glXCreateWindow(proc, dpy, config, win, attrib_list) \
+  ( ((GdkGLProc_GLXCREATEWINDOW) (proc)) (dpy, config, win, attrib_list) )
 
-/* void glXDestroyWindow (Display *, GLXWindow) */
-GdkGLProc gdk_gl_get_glXDestroyWindow (void);
-#define   gdk_gl_glXDestroyWindow(proc, dpy, win) \
-  ( ((PFNGLXDESTROYWINDOWPROC) (proc)) (dpy, win) )
+/* glXDestroyWindow */
+typedef void ( * GdkGLProc_GLXDESTROYWINDOW) (Display *dpy, GLXWindow win);
+GdkGLProc    gdk_gl_get_glXDestroyWindow (void);
+#define      gdk_gl_glXDestroyWindow(proc, dpy, win) \
+  ( ((GdkGLProc_GLXDESTROYWINDOW) (proc)) (dpy, win) )
 
-/* GLXPixmap glXCreatePixmap (Display *, GLXFBConfig, Pixmap, const int *) */
-GdkGLProc gdk_gl_get_glXCreatePixmap (void);
-#define   gdk_gl_glXCreatePixmap(proc, dpy, config, pixmap, attrib_list) \
-  ( ((PFNGLXCREATEPIXMAPPROC) (proc)) (dpy, config, pixmap, attrib_list) )
+/* glXCreatePixmap */
+typedef GLXPixmap ( * GdkGLProc_GLXCREATEPIXMAP) (Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list);
+GdkGLProc    gdk_gl_get_glXCreatePixmap (void);
+#define      gdk_gl_glXCreatePixmap(proc, dpy, config, pixmap, attrib_list) \
+  ( ((GdkGLProc_GLXCREATEPIXMAP) (proc)) (dpy, config, pixmap, attrib_list) )
 
-/* void glXDestroyPixmap (Display *, GLXPixmap) */
-GdkGLProc gdk_gl_get_glXDestroyPixmap (void);
-#define   gdk_gl_glXDestroyPixmap(proc, dpy, pixmap) \
-  ( ((PFNGLXDESTROYPIXMAPPROC) (proc)) (dpy, pixmap) )
+/* glXDestroyPixmap */
+typedef void ( * GdkGLProc_GLXDESTROYPIXMAP) (Display *dpy, GLXPixmap pixmap);
+GdkGLProc    gdk_gl_get_glXDestroyPixmap (void);
+#define      gdk_gl_glXDestroyPixmap(proc, dpy, pixmap) \
+  ( ((GdkGLProc_GLXDESTROYPIXMAP) (proc)) (dpy, pixmap) )
 
-/* GLXPbuffer glXCreatePbuffer (Display *, GLXFBConfig, const int *) */
-GdkGLProc gdk_gl_get_glXCreatePbuffer (void);
-#define   gdk_gl_glXCreatePbuffer(proc, dpy, config, attrib_list) \
-  ( ((PFNGLXCREATEPBUFFERPROC) (proc)) (dpy, config, attrib_list) )
+/* glXCreatePbuffer */
+typedef GLXPbuffer ( * GdkGLProc_GLXCREATEPBUFFER) (Display *dpy, GLXFBConfig config, const int *attrib_list);
+GdkGLProc    gdk_gl_get_glXCreatePbuffer (void);
+#define      gdk_gl_glXCreatePbuffer(proc, dpy, config, attrib_list) \
+  ( ((GdkGLProc_GLXCREATEPBUFFER) (proc)) (dpy, config, attrib_list) )
 
-/* void glXDestroyPbuffer (Display *, GLXPbuffer) */
-GdkGLProc gdk_gl_get_glXDestroyPbuffer (void);
-#define   gdk_gl_glXDestroyPbuffer(proc, dpy, pbuf) \
-  ( ((PFNGLXDESTROYPBUFFERPROC) (proc)) (dpy, pbuf) )
+/* glXDestroyPbuffer */
+typedef void ( * GdkGLProc_GLXDESTROYPBUFFER) (Display *dpy, GLXPbuffer pbuf);
+GdkGLProc    gdk_gl_get_glXDestroyPbuffer (void);
+#define      gdk_gl_glXDestroyPbuffer(proc, dpy, pbuf) \
+  ( ((GdkGLProc_GLXDESTROYPBUFFER) (proc)) (dpy, pbuf) )
 
-/* void glXQueryDrawable (Display *, GLXDrawable, int, unsigned int *) */
-GdkGLProc gdk_gl_get_glXQueryDrawable (void);
-#define   gdk_gl_glXQueryDrawable(proc, dpy, draw, attribute, value) \
-  ( ((PFNGLXQUERYDRAWABLEPROC) (proc)) (dpy, draw, attribute, value) )
+/* glXQueryDrawable */
+typedef void ( * GdkGLProc_GLXQUERYDRAWABLE) (Display *dpy, GLXDrawable draw, int attribute, unsigned int *value);
+GdkGLProc    gdk_gl_get_glXQueryDrawable (void);
+#define      gdk_gl_glXQueryDrawable(proc, dpy, draw, attribute, value) \
+  ( ((GdkGLProc_GLXQUERYDRAWABLE) (proc)) (dpy, draw, attribute, value) )
 
-/* GLXContext glXCreateNewContext (Display *, GLXFBConfig, int, GLXContext, Bool) */
-GdkGLProc gdk_gl_get_glXCreateNewContext (void);
-#define   gdk_gl_glXCreateNewContext(proc, dpy, config, render_type, share_list, direct) \
-  ( ((PFNGLXCREATENEWCONTEXTPROC) (proc)) (dpy, config, render_type, share_list, direct) )
+/* glXCreateNewContext */
+typedef GLXContext ( * GdkGLProc_GLXCREATENEWCONTEXT) (Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
+GdkGLProc    gdk_gl_get_glXCreateNewContext (void);
+#define      gdk_gl_glXCreateNewContext(proc, dpy, config, render_type, share_list, direct) \
+  ( ((GdkGLProc_GLXCREATENEWCONTEXT) (proc)) (dpy, config, render_type, share_list, direct) )
 
-/* Bool glXMakeContextCurrent (Display *, GLXDrawable, GLXDrawable, GLXContext) */
-GdkGLProc gdk_gl_get_glXMakeContextCurrent (void);
-#define   gdk_gl_glXMakeContextCurrent(proc, dpy, draw, read, ctx) \
-  ( ((PFNGLXMAKECONTEXTCURRENTPROC) (proc)) (dpy, draw, read, ctx) )
+/* glXMakeContextCurrent */
+typedef Bool ( * GdkGLProc_GLXMAKECONTEXTCURRENT) (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
+GdkGLProc    gdk_gl_get_glXMakeContextCurrent (void);
+#define      gdk_gl_glXMakeContextCurrent(proc, dpy, draw, read, ctx) \
+  ( ((GdkGLProc_GLXMAKECONTEXTCURRENT) (proc)) (dpy, draw, read, ctx) )
 
-/* GLXDrawable glXGetCurrentReadDrawable (void) */
-GdkGLProc gdk_gl_get_glXGetCurrentReadDrawable (void);
-#define   gdk_gl_glXGetCurrentReadDrawable(proc) \
-  ( ((PFNGLXGETCURRENTREADDRAWABLEPROC) (proc)) () )
+/* glXGetCurrentReadDrawable */
+typedef GLXDrawable ( * GdkGLProc_GLXGETCURRENTREADDRAWABLE) (void);
+GdkGLProc    gdk_gl_get_glXGetCurrentReadDrawable (void);
+#define      gdk_gl_glXGetCurrentReadDrawable(proc) \
+  ( ((GdkGLProc_GLXGETCURRENTREADDRAWABLE) (proc)) () )
 
-/* Display * glXGetCurrentDisplay (void) */
-GdkGLProc gdk_gl_get_glXGetCurrentDisplay (void);
-#define   gdk_gl_glXGetCurrentDisplay(proc) \
-  ( ((PFNGLXGETCURRENTDISPLAYPROC) (proc)) () )
+/* glXGetCurrentDisplay */
+typedef Display * ( * GdkGLProc_GLXGETCURRENTDISPLAY) (void);
+GdkGLProc    gdk_gl_get_glXGetCurrentDisplay (void);
+#define      gdk_gl_glXGetCurrentDisplay(proc) \
+  ( ((GdkGLProc_GLXGETCURRENTDISPLAY) (proc)) () )
 
-/* int glXQueryContext (Display *, GLXContext, int, int *) */
-GdkGLProc gdk_gl_get_glXQueryContext (void);
-#define   gdk_gl_glXQueryContext(proc, dpy, ctx, attribute, value) \
-  ( ((PFNGLXQUERYCONTEXTPROC) (proc)) (dpy, ctx, attribute, value) )
+/* glXQueryContext */
+typedef int ( * GdkGLProc_GLXQUERYCONTEXT) (Display *dpy, GLXContext ctx, int attribute, int *value);
+GdkGLProc    gdk_gl_get_glXQueryContext (void);
+#define      gdk_gl_glXQueryContext(proc, dpy, ctx, attribute, value) \
+  ( ((GdkGLProc_GLXQUERYCONTEXT) (proc)) (dpy, ctx, attribute, value) )
 
-/* void glXSelectEvent (Display *, GLXDrawable, unsigned long) */
-GdkGLProc gdk_gl_get_glXSelectEvent (void);
-#define   gdk_gl_glXSelectEvent(proc, dpy, draw, event_mask) \
-  ( ((PFNGLXSELECTEVENTPROC) (proc)) (dpy, draw, event_mask) )
+/* glXSelectEvent */
+typedef void ( * GdkGLProc_GLXSELECTEVENT) (Display *dpy, GLXDrawable draw, unsigned long event_mask);
+GdkGLProc    gdk_gl_get_glXSelectEvent (void);
+#define      gdk_gl_glXSelectEvent(proc, dpy, draw, event_mask) \
+  ( ((GdkGLProc_GLXSELECTEVENT) (proc)) (dpy, draw, event_mask) )
 
-/* void glXGetSelectedEvent (Display *, GLXDrawable, unsigned long *) */
-GdkGLProc gdk_gl_get_glXGetSelectedEvent (void);
-#define   gdk_gl_glXGetSelectedEvent(proc, dpy, draw, event_mask) \
-  ( ((PFNGLXGETSELECTEDEVENTPROC) (proc)) (dpy, draw, event_mask) )
+/* glXGetSelectedEvent */
+typedef void ( * GdkGLProc_GLXGETSELECTEDEVENT) (Display *dpy, GLXDrawable draw, unsigned long *event_mask);
+GdkGLProc    gdk_gl_get_glXGetSelectedEvent (void);
+#define      gdk_gl_glXGetSelectedEvent(proc, dpy, draw, event_mask) \
+  ( ((GdkGLProc_GLXGETSELECTEDEVENT) (proc)) (dpy, draw, event_mask) )
 
 /* 
  * GLX_VERSION_1_4
  */
 
-/* void ( * glXGetProcAddress (const GLubyte *) ) (void) */
-GdkGLProc gdk_gl_get_glXGetProcAddress (void);
-#define   gdk_gl_glXGetProcAddress(proc, procName) \
-  ( ((PFNGLXGETPROCADDRESSPROC) (proc)) (procName) )
+/* glXGetProcAddress */
+typedef GdkGLProc ( * GdkGLProc_GLXGETPROCADDRESS) (const GLubyte *procName);
+GdkGLProc    gdk_gl_get_glXGetProcAddress (void);
+#define      gdk_gl_glXGetProcAddress(proc, procName) \
+  ( ((GdkGLProc_GLXGETPROCADDRESS) (proc)) (procName) )
 
 /* 
  * GLX_ARB_get_proc_address
  */
 
-/* void ( * glXGetProcAddressARB (const GLubyte *) ) (void) */
-GdkGLProc gdk_gl_get_glXGetProcAddressARB (void);
-#define   gdk_gl_glXGetProcAddressARB(proc, procName) \
-  ( ((PFNGLXGETPROCADDRESSARBPROC) (proc)) (procName) )
+/* glXGetProcAddressARB */
+typedef GdkGLProc ( * GdkGLProc_GLXGETPROCADDRESSARB) (const GLubyte *procName);
+GdkGLProc    gdk_gl_get_glXGetProcAddressARB (void);
+#define      gdk_gl_glXGetProcAddressARB(proc, procName) \
+  ( ((GdkGLProc_GLXGETPROCADDRESSARB) (proc)) (procName) )
 
 /* 
  * GLX_SGI_swap_control
  */
 
-/* int glXSwapIntervalSGI (int) */
-GdkGLProc gdk_gl_get_glXSwapIntervalSGI (void);
-#define   gdk_gl_glXSwapIntervalSGI(proc, interval) \
-  ( ((PFNGLXSWAPINTERVALSGIPROC) (proc)) (interval) )
+/* glXSwapIntervalSGI */
+typedef int ( * GdkGLProc_GLXSWAPINTERVALSGI) (int interval);
+GdkGLProc    gdk_gl_get_glXSwapIntervalSGI (void);
+#define      gdk_gl_glXSwapIntervalSGI(proc, interval) \
+  ( ((GdkGLProc_GLXSWAPINTERVALSGI) (proc)) (interval) )
 
 /* 
  * GLX_SGI_video_sync
  */
 
-/* int glXGetVideoSyncSGI (unsigned int *) */
-GdkGLProc gdk_gl_get_glXGetVideoSyncSGI (void);
-#define   gdk_gl_glXGetVideoSyncSGI(proc, count) \
-  ( ((PFNGLXGETVIDEOSYNCSGIPROC) (proc)) (count) )
+/* glXGetVideoSyncSGI */
+typedef int ( * GdkGLProc_GLXGETVIDEOSYNCSGI) (unsigned int *count);
+GdkGLProc    gdk_gl_get_glXGetVideoSyncSGI (void);
+#define      gdk_gl_glXGetVideoSyncSGI(proc, count) \
+  ( ((GdkGLProc_GLXGETVIDEOSYNCSGI) (proc)) (count) )
 
-/* int glXWaitVideoSyncSGI (int, int, unsigned int *) */
-GdkGLProc gdk_gl_get_glXWaitVideoSyncSGI (void);
-#define   gdk_gl_glXWaitVideoSyncSGI(proc, divisor, remainder, count) \
-  ( ((PFNGLXWAITVIDEOSYNCSGIPROC) (proc)) (divisor, remainder, count) )
+/* glXWaitVideoSyncSGI */
+typedef int ( * GdkGLProc_GLXWAITVIDEOSYNCSGI) (int divisor, int remainder, unsigned int *count);
+GdkGLProc    gdk_gl_get_glXWaitVideoSyncSGI (void);
+#define      gdk_gl_glXWaitVideoSyncSGI(proc, divisor, remainder, count) \
+  ( ((GdkGLProc_GLXWAITVIDEOSYNCSGI) (proc)) (divisor, remainder, count) )
 
 /* 
  * GLX_SGI_make_current_read
  */
 
-/* Bool glXMakeCurrentReadSGI (Display *, GLXDrawable, GLXDrawable, GLXContext) */
-GdkGLProc gdk_gl_get_glXMakeCurrentReadSGI (void);
-#define   gdk_gl_glXMakeCurrentReadSGI(proc, dpy, draw, read, ctx) \
-  ( ((PFNGLXMAKECURRENTREADSGIPROC) (proc)) (dpy, draw, read, ctx) )
+/* glXMakeCurrentReadSGI */
+typedef Bool ( * GdkGLProc_GLXMAKECURRENTREADSGI) (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
+GdkGLProc    gdk_gl_get_glXMakeCurrentReadSGI (void);
+#define      gdk_gl_glXMakeCurrentReadSGI(proc, dpy, draw, read, ctx) \
+  ( ((GdkGLProc_GLXMAKECURRENTREADSGI) (proc)) (dpy, draw, read, ctx) )
 
-/* GLXDrawable glXGetCurrentReadDrawableSGI (void) */
-GdkGLProc gdk_gl_get_glXGetCurrentReadDrawableSGI (void);
-#define   gdk_gl_glXGetCurrentReadDrawableSGI(proc) \
-  ( ((PFNGLXGETCURRENTREADDRAWABLESGIPROC) (proc)) () )
+/* glXGetCurrentReadDrawableSGI */
+typedef GLXDrawable ( * GdkGLProc_GLXGETCURRENTREADDRAWABLESGI) (void);
+GdkGLProc    gdk_gl_get_glXGetCurrentReadDrawableSGI (void);
+#define      gdk_gl_glXGetCurrentReadDrawableSGI(proc) \
+  ( ((GdkGLProc_GLXGETCURRENTREADDRAWABLESGI) (proc)) () )
 
 /* 
  * GLX_SGIX_video_source
@@ -198,15 +223,17 @@ GdkGLProc gdk_gl_get_glXGetCurrentReadDrawableSGI (void);
 
 #ifdef _VL_H
 
-/* GLXVideoSourceSGIX glXCreateGLXVideoSourceSGIX (Display *, int, VLServer, VLPath, int, VLNode) */
-GdkGLProc gdk_gl_get_glXCreateGLXVideoSourceSGIX (void);
-#define   gdk_gl_glXCreateGLXVideoSourceSGIX(proc, display, screen, server, path, nodeClass, drainNode) \
-  ( ((PFNGLXCREATEGLXVIDEOSOURCESGIXPROC) (proc)) (display, screen, server, path, nodeClass, drainNode) )
+/* glXCreateGLXVideoSourceSGIX */
+typedef GLXVideoSourceSGIX ( * GdkGLProc_GLXCREATEGLXVIDEOSOURCESGIX) (Display *display, int screen, VLServer server, VLPath path, int nodeClass, VLNode drainNode);
+GdkGLProc    gdk_gl_get_glXCreateGLXVideoSourceSGIX (void);
+#define      gdk_gl_glXCreateGLXVideoSourceSGIX(proc, display, screen, server, path, nodeClass, drainNode) \
+  ( ((GdkGLProc_GLXCREATEGLXVIDEOSOURCESGIX) (proc)) (display, screen, server, path, nodeClass, drainNode) )
 
-/* void glXDestroyGLXVideoSourceSGIX (Display *, GLXVideoSourceSGIX) */
-GdkGLProc gdk_gl_get_glXDestroyGLXVideoSourceSGIX (void);
-#define   gdk_gl_glXDestroyGLXVideoSourceSGIX(proc, dpy, glxvideosource) \
-  ( ((PFNGLXDESTROYGLXVIDEOSOURCESGIXPROC) (proc)) (dpy, glxvideosource) )
+/* glXDestroyGLXVideoSourceSGIX */
+typedef void ( * GdkGLProc_GLXDESTROYGLXVIDEOSOURCESGIX) (Display *dpy, GLXVideoSourceSGIX glxvideosource);
+GdkGLProc    gdk_gl_get_glXDestroyGLXVideoSourceSGIX (void);
+#define      gdk_gl_glXDestroyGLXVideoSourceSGIX(proc, dpy, glxvideosource) \
+  ( ((GdkGLProc_GLXDESTROYGLXVIDEOSOURCESGIX) (proc)) (dpy, glxvideosource) )
 
 #endif /* _VL_H */
 
@@ -214,131 +241,153 @@ GdkGLProc gdk_gl_get_glXDestroyGLXVideoSourceSGIX (void);
  * GLX_EXT_import_context
  */
 
-/* Display * glXGetCurrentDisplayEXT (void) */
-GdkGLProc gdk_gl_get_glXGetCurrentDisplayEXT (void);
-#define   gdk_gl_glXGetCurrentDisplayEXT(proc) \
-  ( ((PFNGLXGETCURRENTDISPLAYEXTPROC) (proc)) () )
+/* glXGetCurrentDisplayEXT */
+typedef Display * ( * GdkGLProc_GLXGETCURRENTDISPLAYEXT) (void);
+GdkGLProc    gdk_gl_get_glXGetCurrentDisplayEXT (void);
+#define      gdk_gl_glXGetCurrentDisplayEXT(proc) \
+  ( ((GdkGLProc_GLXGETCURRENTDISPLAYEXT) (proc)) () )
 
-/* int glXQueryContextInfoEXT (Display *, GLXContext, int, int *) */
-GdkGLProc gdk_gl_get_glXQueryContextInfoEXT (void);
-#define   gdk_gl_glXQueryContextInfoEXT(proc, dpy, context, attribute, value) \
-  ( ((PFNGLXQUERYCONTEXTINFOEXTPROC) (proc)) (dpy, context, attribute, value) )
+/* glXQueryContextInfoEXT */
+typedef int ( * GdkGLProc_GLXQUERYCONTEXTINFOEXT) (Display *dpy, GLXContext context, int attribute, int *value);
+GdkGLProc    gdk_gl_get_glXQueryContextInfoEXT (void);
+#define      gdk_gl_glXQueryContextInfoEXT(proc, dpy, context, attribute, value) \
+  ( ((GdkGLProc_GLXQUERYCONTEXTINFOEXT) (proc)) (dpy, context, attribute, value) )
 
-/* GLXContextID glXGetContextIDEXT (const GLXContext) */
-GdkGLProc gdk_gl_get_glXGetContextIDEXT (void);
-#define   gdk_gl_glXGetContextIDEXT(proc, context) \
-  ( ((PFNGLXGETCONTEXTIDEXTPROC) (proc)) (context) )
+/* glXGetContextIDEXT */
+typedef GLXContextID ( * GdkGLProc_GLXGETCONTEXTIDEXT) (const GLXContext context);
+GdkGLProc    gdk_gl_get_glXGetContextIDEXT (void);
+#define      gdk_gl_glXGetContextIDEXT(proc, context) \
+  ( ((GdkGLProc_GLXGETCONTEXTIDEXT) (proc)) (context) )
 
-/* GLXContext glXImportContextEXT (Display *, GLXContextID) */
-GdkGLProc gdk_gl_get_glXImportContextEXT (void);
-#define   gdk_gl_glXImportContextEXT(proc, dpy, contextID) \
-  ( ((PFNGLXIMPORTCONTEXTEXTPROC) (proc)) (dpy, contextID) )
+/* glXImportContextEXT */
+typedef GLXContext ( * GdkGLProc_GLXIMPORTCONTEXTEXT) (Display *dpy, GLXContextID contextID);
+GdkGLProc    gdk_gl_get_glXImportContextEXT (void);
+#define      gdk_gl_glXImportContextEXT(proc, dpy, contextID) \
+  ( ((GdkGLProc_GLXIMPORTCONTEXTEXT) (proc)) (dpy, contextID) )
 
-/* void glXFreeContextEXT (Display *, GLXContext) */
-GdkGLProc gdk_gl_get_glXFreeContextEXT (void);
-#define   gdk_gl_glXFreeContextEXT(proc, dpy, context) \
-  ( ((PFNGLXFREECONTEXTEXTPROC) (proc)) (dpy, context) )
+/* glXFreeContextEXT */
+typedef void ( * GdkGLProc_GLXFREECONTEXTEXT) (Display *dpy, GLXContext context);
+GdkGLProc    gdk_gl_get_glXFreeContextEXT (void);
+#define      gdk_gl_glXFreeContextEXT(proc, dpy, context) \
+  ( ((GdkGLProc_GLXFREECONTEXTEXT) (proc)) (dpy, context) )
 
 /* 
  * GLX_SGIX_fbconfig
  */
 
-/* int glXGetFBConfigAttribSGIX (Display *, GLXFBConfigSGIX, int, int *) */
-GdkGLProc gdk_gl_get_glXGetFBConfigAttribSGIX (void);
-#define   gdk_gl_glXGetFBConfigAttribSGIX(proc, dpy, config, attribute, value) \
-  ( ((PFNGLXGETFBCONFIGATTRIBSGIXPROC) (proc)) (dpy, config, attribute, value) )
+/* glXGetFBConfigAttribSGIX */
+typedef int ( * GdkGLProc_GLXGETFBCONFIGATTRIBSGIX) (Display *dpy, GLXFBConfigSGIX config, int attribute, int *value);
+GdkGLProc    gdk_gl_get_glXGetFBConfigAttribSGIX (void);
+#define      gdk_gl_glXGetFBConfigAttribSGIX(proc, dpy, config, attribute, value) \
+  ( ((GdkGLProc_GLXGETFBCONFIGATTRIBSGIX) (proc)) (dpy, config, attribute, value) )
 
-/* GLXFBConfigSGIX * glXChooseFBConfigSGIX (Display *, int, int *, int *) */
-GdkGLProc gdk_gl_get_glXChooseFBConfigSGIX (void);
-#define   gdk_gl_glXChooseFBConfigSGIX(proc, dpy, screen, attrib_list, nelements) \
-  ( ((PFNGLXCHOOSEFBCONFIGSGIXPROC) (proc)) (dpy, screen, attrib_list, nelements) )
+/* glXChooseFBConfigSGIX */
+typedef GLXFBConfigSGIX * ( * GdkGLProc_GLXCHOOSEFBCONFIGSGIX) (Display *dpy, int screen, int *attrib_list, int *nelements);
+GdkGLProc    gdk_gl_get_glXChooseFBConfigSGIX (void);
+#define      gdk_gl_glXChooseFBConfigSGIX(proc, dpy, screen, attrib_list, nelements) \
+  ( ((GdkGLProc_GLXCHOOSEFBCONFIGSGIX) (proc)) (dpy, screen, attrib_list, nelements) )
 
-/* GLXPixmap glXCreateGLXPixmapWithConfigSGIX (Display *, GLXFBConfigSGIX, Pixmap) */
-GdkGLProc gdk_gl_get_glXCreateGLXPixmapWithConfigSGIX (void);
-#define   gdk_gl_glXCreateGLXPixmapWithConfigSGIX(proc, dpy, config, pixmap) \
-  ( ((PFNGLXCREATEGLXPIXMAPWITHCONFIGSGIXPROC) (proc)) (dpy, config, pixmap) )
+/* glXCreateGLXPixmapWithConfigSGIX */
+typedef GLXPixmap ( * GdkGLProc_GLXCREATEGLXPIXMAPWITHCONFIGSGIX) (Display *dpy, GLXFBConfigSGIX config, Pixmap pixmap);
+GdkGLProc    gdk_gl_get_glXCreateGLXPixmapWithConfigSGIX (void);
+#define      gdk_gl_glXCreateGLXPixmapWithConfigSGIX(proc, dpy, config, pixmap) \
+  ( ((GdkGLProc_GLXCREATEGLXPIXMAPWITHCONFIGSGIX) (proc)) (dpy, config, pixmap) )
 
-/* GLXContext glXCreateContextWithConfigSGIX (Display *, GLXFBConfigSGIX, int, GLXContext, Bool) */
-GdkGLProc gdk_gl_get_glXCreateContextWithConfigSGIX (void);
-#define   gdk_gl_glXCreateContextWithConfigSGIX(proc, dpy, config, render_type, share_list, direct) \
-  ( ((PFNGLXCREATECONTEXTWITHCONFIGSGIXPROC) (proc)) (dpy, config, render_type, share_list, direct) )
+/* glXCreateContextWithConfigSGIX */
+typedef GLXContext ( * GdkGLProc_GLXCREATECONTEXTWITHCONFIGSGIX) (Display *dpy, GLXFBConfigSGIX config, int render_type, GLXContext share_list, Bool direct);
+GdkGLProc    gdk_gl_get_glXCreateContextWithConfigSGIX (void);
+#define      gdk_gl_glXCreateContextWithConfigSGIX(proc, dpy, config, render_type, share_list, direct) \
+  ( ((GdkGLProc_GLXCREATECONTEXTWITHCONFIGSGIX) (proc)) (dpy, config, render_type, share_list, direct) )
 
-/* XVisualInfo * glXGetVisualFromFBConfigSGIX (Display *, GLXFBConfigSGIX) */
-GdkGLProc gdk_gl_get_glXGetVisualFromFBConfigSGIX (void);
-#define   gdk_gl_glXGetVisualFromFBConfigSGIX(proc, dpy, config) \
-  ( ((PFNGLXGETVISUALFROMFBCONFIGSGIXPROC) (proc)) (dpy, config) )
+/* glXGetVisualFromFBConfigSGIX */
+typedef XVisualInfo * ( * GdkGLProc_GLXGETVISUALFROMFBCONFIGSGIX) (Display *dpy, GLXFBConfigSGIX config);
+GdkGLProc    gdk_gl_get_glXGetVisualFromFBConfigSGIX (void);
+#define      gdk_gl_glXGetVisualFromFBConfigSGIX(proc, dpy, config) \
+  ( ((GdkGLProc_GLXGETVISUALFROMFBCONFIGSGIX) (proc)) (dpy, config) )
 
-/* GLXFBConfigSGIX glXGetFBConfigFromVisualSGIX (Display *, XVisualInfo *) */
-GdkGLProc gdk_gl_get_glXGetFBConfigFromVisualSGIX (void);
-#define   gdk_gl_glXGetFBConfigFromVisualSGIX(proc, dpy, vis) \
-  ( ((PFNGLXGETFBCONFIGFROMVISUALSGIXPROC) (proc)) (dpy, vis) )
+/* glXGetFBConfigFromVisualSGIX */
+typedef GLXFBConfigSGIX ( * GdkGLProc_GLXGETFBCONFIGFROMVISUALSGIX) (Display *dpy, XVisualInfo *vis);
+GdkGLProc    gdk_gl_get_glXGetFBConfigFromVisualSGIX (void);
+#define      gdk_gl_glXGetFBConfigFromVisualSGIX(proc, dpy, vis) \
+  ( ((GdkGLProc_GLXGETFBCONFIGFROMVISUALSGIX) (proc)) (dpy, vis) )
 
 /* 
  * GLX_SGIX_pbuffer
  */
 
-/* GLXPbufferSGIX glXCreateGLXPbufferSGIX (Display *, GLXFBConfigSGIX, unsigned int, unsigned int, int *) */
-GdkGLProc gdk_gl_get_glXCreateGLXPbufferSGIX (void);
-#define   gdk_gl_glXCreateGLXPbufferSGIX(proc, dpy, config, width, height, attrib_list) \
-  ( ((PFNGLXCREATEGLXPBUFFERSGIXPROC) (proc)) (dpy, config, width, height, attrib_list) )
+/* glXCreateGLXPbufferSGIX */
+typedef GLXPbufferSGIX ( * GdkGLProc_GLXCREATEGLXPBUFFERSGIX) (Display *dpy, GLXFBConfigSGIX config, unsigned int width, unsigned int height, int *attrib_list);
+GdkGLProc    gdk_gl_get_glXCreateGLXPbufferSGIX (void);
+#define      gdk_gl_glXCreateGLXPbufferSGIX(proc, dpy, config, width, height, attrib_list) \
+  ( ((GdkGLProc_GLXCREATEGLXPBUFFERSGIX) (proc)) (dpy, config, width, height, attrib_list) )
 
-/* void glXDestroyGLXPbufferSGIX (Display *, GLXPbufferSGIX) */
-GdkGLProc gdk_gl_get_glXDestroyGLXPbufferSGIX (void);
-#define   gdk_gl_glXDestroyGLXPbufferSGIX(proc, dpy, pbuf) \
-  ( ((PFNGLXDESTROYGLXPBUFFERSGIXPROC) (proc)) (dpy, pbuf) )
+/* glXDestroyGLXPbufferSGIX */
+typedef void ( * GdkGLProc_GLXDESTROYGLXPBUFFERSGIX) (Display *dpy, GLXPbufferSGIX pbuf);
+GdkGLProc    gdk_gl_get_glXDestroyGLXPbufferSGIX (void);
+#define      gdk_gl_glXDestroyGLXPbufferSGIX(proc, dpy, pbuf) \
+  ( ((GdkGLProc_GLXDESTROYGLXPBUFFERSGIX) (proc)) (dpy, pbuf) )
 
-/* int glXQueryGLXPbufferSGIX (Display *, GLXPbufferSGIX, int, unsigned int *) */
-GdkGLProc gdk_gl_get_glXQueryGLXPbufferSGIX (void);
-#define   gdk_gl_glXQueryGLXPbufferSGIX(proc, dpy, pbuf, attribute, value) \
-  ( ((PFNGLXQUERYGLXPBUFFERSGIXPROC) (proc)) (dpy, pbuf, attribute, value) )
+/* glXQueryGLXPbufferSGIX */
+typedef int ( * GdkGLProc_GLXQUERYGLXPBUFFERSGIX) (Display *dpy, GLXPbufferSGIX pbuf, int attribute, unsigned int *value);
+GdkGLProc    gdk_gl_get_glXQueryGLXPbufferSGIX (void);
+#define      gdk_gl_glXQueryGLXPbufferSGIX(proc, dpy, pbuf, attribute, value) \
+  ( ((GdkGLProc_GLXQUERYGLXPBUFFERSGIX) (proc)) (dpy, pbuf, attribute, value) )
 
-/* void glXSelectEventSGIX (Display *, GLXDrawable, unsigned long) */
-GdkGLProc gdk_gl_get_glXSelectEventSGIX (void);
-#define   gdk_gl_glXSelectEventSGIX(proc, dpy, drawable, mask) \
-  ( ((PFNGLXSELECTEVENTSGIXPROC) (proc)) (dpy, drawable, mask) )
+/* glXSelectEventSGIX */
+typedef void ( * GdkGLProc_GLXSELECTEVENTSGIX) (Display *dpy, GLXDrawable drawable, unsigned long mask);
+GdkGLProc    gdk_gl_get_glXSelectEventSGIX (void);
+#define      gdk_gl_glXSelectEventSGIX(proc, dpy, drawable, mask) \
+  ( ((GdkGLProc_GLXSELECTEVENTSGIX) (proc)) (dpy, drawable, mask) )
 
-/* void glXGetSelectedEventSGIX (Display *, GLXDrawable, unsigned long *) */
-GdkGLProc gdk_gl_get_glXGetSelectedEventSGIX (void);
-#define   gdk_gl_glXGetSelectedEventSGIX(proc, dpy, drawable, mask) \
-  ( ((PFNGLXGETSELECTEDEVENTSGIXPROC) (proc)) (dpy, drawable, mask) )
+/* glXGetSelectedEventSGIX */
+typedef void ( * GdkGLProc_GLXGETSELECTEDEVENTSGIX) (Display *dpy, GLXDrawable drawable, unsigned long *mask);
+GdkGLProc    gdk_gl_get_glXGetSelectedEventSGIX (void);
+#define      gdk_gl_glXGetSelectedEventSGIX(proc, dpy, drawable, mask) \
+  ( ((GdkGLProc_GLXGETSELECTEDEVENTSGIX) (proc)) (dpy, drawable, mask) )
 
 /* 
  * GLX_SGI_cushion
  */
 
-/* void glXCushionSGI (Display *, Window, float) */
-GdkGLProc gdk_gl_get_glXCushionSGI (void);
-#define   gdk_gl_glXCushionSGI(proc, dpy, window, cushion) \
-  ( ((PFNGLXCUSHIONSGIPROC) (proc)) (dpy, window, cushion) )
+/* glXCushionSGI */
+typedef void ( * GdkGLProc_GLXCUSHIONSGI) (Display *dpy, Window window, float cushion);
+GdkGLProc    gdk_gl_get_glXCushionSGI (void);
+#define      gdk_gl_glXCushionSGI(proc, dpy, window, cushion) \
+  ( ((GdkGLProc_GLXCUSHIONSGI) (proc)) (dpy, window, cushion) )
 
 /* 
  * GLX_SGIX_video_resize
  */
 
-/* int glXBindChannelToWindowSGIX (Display *, int, int, Window) */
-GdkGLProc gdk_gl_get_glXBindChannelToWindowSGIX (void);
-#define   gdk_gl_glXBindChannelToWindowSGIX(proc, display, screen, channel, window) \
-  ( ((PFNGLXBINDCHANNELTOWINDOWSGIXPROC) (proc)) (display, screen, channel, window) )
+/* glXBindChannelToWindowSGIX */
+typedef int ( * GdkGLProc_GLXBINDCHANNELTOWINDOWSGIX) (Display *display, int screen, int channel, Window window);
+GdkGLProc    gdk_gl_get_glXBindChannelToWindowSGIX (void);
+#define      gdk_gl_glXBindChannelToWindowSGIX(proc, display, screen, channel, window) \
+  ( ((GdkGLProc_GLXBINDCHANNELTOWINDOWSGIX) (proc)) (display, screen, channel, window) )
 
-/* int glXChannelRectSGIX (Display *, int, int, int, int, int, int) */
-GdkGLProc gdk_gl_get_glXChannelRectSGIX (void);
-#define   gdk_gl_glXChannelRectSGIX(proc, display, screen, channel, x, y, w, h) \
-  ( ((PFNGLXCHANNELRECTSGIXPROC) (proc)) (display, screen, channel, x, y, w, h) )
+/* glXChannelRectSGIX */
+typedef int ( * GdkGLProc_GLXCHANNELRECTSGIX) (Display *display, int screen, int channel, int x, int y, int w, int h);
+GdkGLProc    gdk_gl_get_glXChannelRectSGIX (void);
+#define      gdk_gl_glXChannelRectSGIX(proc, display, screen, channel, x, y, w, h) \
+  ( ((GdkGLProc_GLXCHANNELRECTSGIX) (proc)) (display, screen, channel, x, y, w, h) )
 
-/* int glXQueryChannelRectSGIX (Display *, int, int, int *, int *, int *, int *) */
-GdkGLProc gdk_gl_get_glXQueryChannelRectSGIX (void);
-#define   gdk_gl_glXQueryChannelRectSGIX(proc, display, screen, channel, dx, dy, dw, dh) \
-  ( ((PFNGLXQUERYCHANNELRECTSGIXPROC) (proc)) (display, screen, channel, dx, dy, dw, dh) )
+/* glXQueryChannelRectSGIX */
+typedef int ( * GdkGLProc_GLXQUERYCHANNELRECTSGIX) (Display *display, int screen, int channel, int *dx, int *dy, int *dw, int *dh);
+GdkGLProc    gdk_gl_get_glXQueryChannelRectSGIX (void);
+#define      gdk_gl_glXQueryChannelRectSGIX(proc, display, screen, channel, dx, dy, dw, dh) \
+  ( ((GdkGLProc_GLXQUERYCHANNELRECTSGIX) (proc)) (display, screen, channel, dx, dy, dw, dh) )
 
-/* int glXQueryChannelDeltasSGIX (Display *, int, int, int *, int *, int *, int *) */
-GdkGLProc gdk_gl_get_glXQueryChannelDeltasSGIX (void);
-#define   gdk_gl_glXQueryChannelDeltasSGIX(proc, display, screen, channel, x, y, w, h) \
-  ( ((PFNGLXQUERYCHANNELDELTASSGIXPROC) (proc)) (display, screen, channel, x, y, w, h) )
+/* glXQueryChannelDeltasSGIX */
+typedef int ( * GdkGLProc_GLXQUERYCHANNELDELTASSGIX) (Display *display, int screen, int channel, int *x, int *y, int *w, int *h);
+GdkGLProc    gdk_gl_get_glXQueryChannelDeltasSGIX (void);
+#define      gdk_gl_glXQueryChannelDeltasSGIX(proc, display, screen, channel, x, y, w, h) \
+  ( ((GdkGLProc_GLXQUERYCHANNELDELTASSGIX) (proc)) (display, screen, channel, x, y, w, h) )
 
-/* int glXChannelRectSyncSGIX (Display *, int, int, GLenum) */
-GdkGLProc gdk_gl_get_glXChannelRectSyncSGIX (void);
-#define   gdk_gl_glXChannelRectSyncSGIX(proc, display, screen, channel, synctype) \
-  ( ((PFNGLXCHANNELRECTSYNCSGIXPROC) (proc)) (display, screen, channel, synctype) )
+/* glXChannelRectSyncSGIX */
+typedef int ( * GdkGLProc_GLXCHANNELRECTSYNCSGIX) (Display *display, int screen, int channel, GLenum synctype);
+GdkGLProc    gdk_gl_get_glXChannelRectSyncSGIX (void);
+#define      gdk_gl_glXChannelRectSyncSGIX(proc, display, screen, channel, synctype) \
+  ( ((GdkGLProc_GLXCHANNELRECTSYNCSGIX) (proc)) (display, screen, channel, synctype) )
 
 /* 
  * GLX_SGIX_dmbuffer
@@ -346,10 +395,11 @@ GdkGLProc gdk_gl_get_glXChannelRectSyncSGIX (void);
 
 #ifdef _DM_BUFFER_H_
 
-/* Bool glXAssociateDMPbufferSGIX (Display *, GLXPbufferSGIX, DMparams *, DMbuffer) */
-GdkGLProc gdk_gl_get_glXAssociateDMPbufferSGIX (void);
-#define   gdk_gl_glXAssociateDMPbufferSGIX(proc, dpy, pbuffer, params, dmbuffer) \
-  ( ((PFNGLXASSOCIATEDMPBUFFERSGIXPROC) (proc)) (dpy, pbuffer, params, dmbuffer) )
+/* glXAssociateDMPbufferSGIX */
+typedef Bool ( * GdkGLProc_GLXASSOCIATEDMPBUFFERSGIX) (Display *dpy, GLXPbufferSGIX pbuffer, DMparams *params, DMbuffer dmbuffer);
+GdkGLProc    gdk_gl_get_glXAssociateDMPbufferSGIX (void);
+#define      gdk_gl_glXAssociateDMPbufferSGIX(proc, dpy, pbuffer, params, dmbuffer) \
+  ( ((GdkGLProc_GLXASSOCIATEDMPBUFFERSGIX) (proc)) (dpy, pbuffer, params, dmbuffer) )
 
 #endif /* _DM_BUFFER_H_ */
 
@@ -357,98 +407,111 @@ GdkGLProc gdk_gl_get_glXAssociateDMPbufferSGIX (void);
  * GLX_SGIX_swap_group
  */
 
-/* void glXJoinSwapGroupSGIX (Display *, GLXDrawable, GLXDrawable) */
-GdkGLProc gdk_gl_get_glXJoinSwapGroupSGIX (void);
-#define   gdk_gl_glXJoinSwapGroupSGIX(proc, dpy, drawable, member) \
-  ( ((PFNGLXJOINSWAPGROUPSGIXPROC) (proc)) (dpy, drawable, member) )
+/* glXJoinSwapGroupSGIX */
+typedef void ( * GdkGLProc_GLXJOINSWAPGROUPSGIX) (Display *dpy, GLXDrawable drawable, GLXDrawable member);
+GdkGLProc    gdk_gl_get_glXJoinSwapGroupSGIX (void);
+#define      gdk_gl_glXJoinSwapGroupSGIX(proc, dpy, drawable, member) \
+  ( ((GdkGLProc_GLXJOINSWAPGROUPSGIX) (proc)) (dpy, drawable, member) )
 
 /* 
  * GLX_SGIX_swap_barrier
  */
 
-/* void glXBindSwapBarrierSGIX (Display *, GLXDrawable, int) */
-GdkGLProc gdk_gl_get_glXBindSwapBarrierSGIX (void);
-#define   gdk_gl_glXBindSwapBarrierSGIX(proc, dpy, drawable, barrier) \
-  ( ((PFNGLXBINDSWAPBARRIERSGIXPROC) (proc)) (dpy, drawable, barrier) )
+/* glXBindSwapBarrierSGIX */
+typedef void ( * GdkGLProc_GLXBINDSWAPBARRIERSGIX) (Display *dpy, GLXDrawable drawable, int barrier);
+GdkGLProc    gdk_gl_get_glXBindSwapBarrierSGIX (void);
+#define      gdk_gl_glXBindSwapBarrierSGIX(proc, dpy, drawable, barrier) \
+  ( ((GdkGLProc_GLXBINDSWAPBARRIERSGIX) (proc)) (dpy, drawable, barrier) )
 
-/* Bool glXQueryMaxSwapBarriersSGIX (Display *, int, int *) */
-GdkGLProc gdk_gl_get_glXQueryMaxSwapBarriersSGIX (void);
-#define   gdk_gl_glXQueryMaxSwapBarriersSGIX(proc, dpy, screen, max) \
-  ( ((PFNGLXQUERYMAXSWAPBARRIERSSGIXPROC) (proc)) (dpy, screen, max) )
+/* glXQueryMaxSwapBarriersSGIX */
+typedef Bool ( * GdkGLProc_GLXQUERYMAXSWAPBARRIERSSGIX) (Display *dpy, int screen, int *max);
+GdkGLProc    gdk_gl_get_glXQueryMaxSwapBarriersSGIX (void);
+#define      gdk_gl_glXQueryMaxSwapBarriersSGIX(proc, dpy, screen, max) \
+  ( ((GdkGLProc_GLXQUERYMAXSWAPBARRIERSSGIX) (proc)) (dpy, screen, max) )
 
 /* 
  * GLX_SUN_get_transparent_index
  */
 
-/* Status glXGetTransparentIndexSUN (Display *, Window, Window, long *) */
-GdkGLProc gdk_gl_get_glXGetTransparentIndexSUN (void);
-#define   gdk_gl_glXGetTransparentIndexSUN(proc, dpy, overlay, underlay, pTransparentIndex) \
-  ( ((PFNGLXGETTRANSPARENTINDEXSUNPROC) (proc)) (dpy, overlay, underlay, pTransparentIndex) )
+/* glXGetTransparentIndexSUN */
+typedef Status ( * GdkGLProc_GLXGETTRANSPARENTINDEXSUN) (Display *dpy, Window overlay, Window underlay, long *pTransparentIndex);
+GdkGLProc    gdk_gl_get_glXGetTransparentIndexSUN (void);
+#define      gdk_gl_glXGetTransparentIndexSUN(proc, dpy, overlay, underlay, pTransparentIndex) \
+  ( ((GdkGLProc_GLXGETTRANSPARENTINDEXSUN) (proc)) (dpy, overlay, underlay, pTransparentIndex) )
 
 /*
  * GLX_MESA_copy_sub_buffer
  */
 
-/* void glXCopySubBufferMESA (Display *, GLXDrawable, int, int, int, int) */
-GdkGLProc gdk_gl_get_glXCopySubBufferMESA (void);
-#define   gdk_gl_glXCopySubBufferMESA(proc, dpy, drawable, x, y, width, height) \
-  ( ((PFNGLXCOPYSUBBUFFERMESAPROC) (proc)) (dpy, drawable, x, y, width, height) )
+/* glXCopySubBufferMESA */
+typedef void ( * GdkGLProc_GLXCOPYSUBBUFFERMESA) (Display *dpy, GLXDrawable drawable, int x, int y, int width, int height);
+GdkGLProc    gdk_gl_get_glXCopySubBufferMESA (void);
+#define      gdk_gl_glXCopySubBufferMESA(proc, dpy, drawable, x, y, width, height) \
+  ( ((GdkGLProc_GLXCOPYSUBBUFFERMESA) (proc)) (dpy, drawable, x, y, width, height) )
 
 /*
  * GLX_MESA_pixmap_colormap
  */
 
-/* GLXPixmap glXCreateGLXPixmapMESA (Display *, XVisualInfo *, Pixmap, Colormap) */
-GdkGLProc gdk_gl_get_glXCreateGLXPixmapMESA (void);
-#define   gdk_gl_glXCreateGLXPixmapMESA(proc, dpy, visual, pixmap, cmap) \
-  ( ((PFNGLXCREATEGLXPIXMAPMESAPROC) (proc)) (dpy, visual, pixmap, cmap) )
+/* glXCreateGLXPixmapMESA */
+typedef GLXPixmap ( * GdkGLProc_GLXCREATEGLXPIXMAPMESA) (Display *dpy, XVisualInfo *visual, Pixmap pixmap, Colormap cmap);
+GdkGLProc    gdk_gl_get_glXCreateGLXPixmapMESA (void);
+#define      gdk_gl_glXCreateGLXPixmapMESA(proc, dpy, visual, pixmap, cmap) \
+  ( ((GdkGLProc_GLXCREATEGLXPIXMAPMESA) (proc)) (dpy, visual, pixmap, cmap) )
 
 /*
  * GLX_MESA_release_buffers
  */
 
-/* Bool glXReleaseBuffersMESA (Display *, GLXDrawable) */
-GdkGLProc gdk_gl_get_glXReleaseBuffersMESA (void);
-#define   gdk_gl_glXReleaseBuffersMESA(proc, dpy, drawable) \
-  ( ((PFNGLXRELEASEBUFFERSMESAPROC) (proc)) (dpy, drawable) )
+/* glXReleaseBuffersMESA */
+typedef Bool ( * GdkGLProc_GLXRELEASEBUFFERSMESA) (Display *dpy, GLXDrawable drawable);
+GdkGLProc    gdk_gl_get_glXReleaseBuffersMESA (void);
+#define      gdk_gl_glXReleaseBuffersMESA(proc, dpy, drawable) \
+  ( ((GdkGLProc_GLXRELEASEBUFFERSMESA) (proc)) (dpy, drawable) )
 
 /*
  * GLX_MESA_set_3dfx_mode
  */
 
-/* Bool glXSet3DfxModeMESA (int) */
-GdkGLProc gdk_gl_get_glXSet3DfxModeMESA (void);
-#define   gdk_gl_glXSet3DfxModeMESA(proc, mode) \
-  ( ((PFNGLXSET3DFXMODEMESAPROC) (proc)) (mode) )
+/* glXSet3DfxModeMESA */
+typedef Bool ( * GdkGLProc_GLXSET3DFXMODEMESA) (int mode);
+GdkGLProc    gdk_gl_get_glXSet3DfxModeMESA (void);
+#define      gdk_gl_glXSet3DfxModeMESA(proc, mode) \
+  ( ((GdkGLProc_GLXSET3DFXMODEMESA) (proc)) (mode) )
 
 /* 
  * GLX_OML_sync_control
  */
 
-/* Bool glXGetSyncValuesOML (Display *, GLXDrawable, int64_t *, int64_t *, int64_t *) */
-GdkGLProc gdk_gl_get_glXGetSyncValuesOML (void);
-#define   gdk_gl_glXGetSyncValuesOML(proc, dpy, drawable, ust, msc, sbc) \
-  ( ((PFNGLXGETSYNCVALUESOMLPROC) (proc)) (dpy, drawable, ust, msc, sbc) )
+/* glXGetSyncValuesOML */
+typedef Bool ( * GdkGLProc_GLXGETSYNCVALUESOML) (Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc);
+GdkGLProc    gdk_gl_get_glXGetSyncValuesOML (void);
+#define      gdk_gl_glXGetSyncValuesOML(proc, dpy, drawable, ust, msc, sbc) \
+  ( ((GdkGLProc_GLXGETSYNCVALUESOML) (proc)) (dpy, drawable, ust, msc, sbc) )
 
-/* Bool glXGetMscRateOML (Display *, GLXDrawable, int32_t *, int32_t *) */
-GdkGLProc gdk_gl_get_glXGetMscRateOML (void);
-#define   gdk_gl_glXGetMscRateOML(proc, dpy, drawable, numerator, denominator) \
-  ( ((PFNGLXGETMSCRATEOMLPROC) (proc)) (dpy, drawable, numerator, denominator) )
+/* glXGetMscRateOML */
+typedef Bool ( * GdkGLProc_GLXGETMSCRATEOML) (Display *dpy, GLXDrawable drawable, int32_t *numerator, int32_t *denominator);
+GdkGLProc    gdk_gl_get_glXGetMscRateOML (void);
+#define      gdk_gl_glXGetMscRateOML(proc, dpy, drawable, numerator, denominator) \
+  ( ((GdkGLProc_GLXGETMSCRATEOML) (proc)) (dpy, drawable, numerator, denominator) )
 
-/* int64_t glXSwapBuffersMscOML (Display *, GLXDrawable, int64_t, int64_t, int64_t) */
-GdkGLProc gdk_gl_get_glXSwapBuffersMscOML (void);
-#define   gdk_gl_glXSwapBuffersMscOML(proc, dpy, drawable, target_msc, divisor, remainder) \
-  ( ((PFNGLXSWAPBUFFERSMSCOMLPROC) (proc)) (dpy, drawable, target_msc, divisor, remainder) )
+/* glXSwapBuffersMscOML */
+typedef int64_t ( * GdkGLProc_GLXSWAPBUFFERSMSCOML) (Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder);
+GdkGLProc    gdk_gl_get_glXSwapBuffersMscOML (void);
+#define      gdk_gl_glXSwapBuffersMscOML(proc, dpy, drawable, target_msc, divisor, remainder) \
+  ( ((GdkGLProc_GLXSWAPBUFFERSMSCOML) (proc)) (dpy, drawable, target_msc, divisor, remainder) )
 
-/* Bool glXWaitForMscOML (Display *, GLXDrawable, int64_t, int64_t, int64_t, int64_t *, int64_t *, int64_t *) */
-GdkGLProc gdk_gl_get_glXWaitForMscOML (void);
-#define   gdk_gl_glXWaitForMscOML(proc, dpy, drawable, target_msc, divisor, remainder, ust, msc, sbc) \
-  ( ((PFNGLXWAITFORMSCOMLPROC) (proc)) (dpy, drawable, target_msc, divisor, remainder, ust, msc, sbc) )
+/* glXWaitForMscOML */
+typedef Bool ( * GdkGLProc_GLXWAITFORMSCOML) (Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t *ust, int64_t *msc, int64_t *sbc);
+GdkGLProc    gdk_gl_get_glXWaitForMscOML (void);
+#define      gdk_gl_glXWaitForMscOML(proc, dpy, drawable, target_msc, divisor, remainder, ust, msc, sbc) \
+  ( ((GdkGLProc_GLXWAITFORMSCOML) (proc)) (dpy, drawable, target_msc, divisor, remainder, ust, msc, sbc) )
 
-/* Bool glXWaitForSbcOML (Display *, GLXDrawable, int64_t, int64_t *, int64_t *, int64_t *) */
-GdkGLProc gdk_gl_get_glXWaitForSbcOML (void);
-#define   gdk_gl_glXWaitForSbcOML(proc, dpy, drawable, target_sbc, ust, msc, sbc) \
-  ( ((PFNGLXWAITFORSBCOMLPROC) (proc)) (dpy, drawable, target_sbc, ust, msc, sbc) )
+/* glXWaitForSbcOML */
+typedef Bool ( * GdkGLProc_GLXWAITFORSBCOML) (Display *dpy, GLXDrawable drawable, int64_t target_sbc, int64_t *ust, int64_t *msc, int64_t *sbc);
+GdkGLProc    gdk_gl_get_glXWaitForSbcOML (void);
+#define      gdk_gl_glXWaitForSbcOML(proc, dpy, drawable, target_sbc, ust, msc, sbc) \
+  ( ((GdkGLProc_GLXWAITFORSBCOML) (proc)) (dpy, drawable, target_sbc, ust, msc, sbc) )
 
 G_END_DECLS
 
