@@ -1,3 +1,8 @@
+2003-02-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/gdkgltokens.h (enum GdkGLBufferMask): Fixed comma at end of
+	enumerator list. (reported by Thomas Zimmermann)
+
 2003-02-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglconfig-win32.c (_gdk_win32_gl_print_pfd): Print
