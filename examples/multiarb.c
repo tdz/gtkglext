@@ -423,20 +423,16 @@ main (int   argc,
   GtkWidget *menu, *menu_item;
 
   /*
-   * Init
+   * Init GTK.
    */
 
   gtk_init (&argc, &argv);
 
   /*
-   * OpenGL is supported?
+   * Init GtkGLExt.
    */
 
-  if (!gdk_gl_query_extension ())
-    {
-      g_print ("\n*** OpenGL is not supported.\n");
-      exit (1);
-    }
+  gtk_gl_init (&argc, &argv);
 
   /*
    * Configure OpenGL-capable visual.

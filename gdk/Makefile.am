@@ -69,6 +69,7 @@ gdkglext_public_h_sources = \
 	gdkglversion.h		\
 	gdkgltokens.h		\
 	gdkgltypes.h		\
+	gdkglinit.h		\
 	gdkglquery.h		\
 	gdkglconfig.h		\
 	gdkglcontext.h		\
@@ -86,14 +87,14 @@ gdkglext_headers = \
 
 gdkglext_c_sources = \
 	gdkglversion.c		\
+	gdkglinit.c		\
 	gdkglquery.c		\
 	gdkglconfig.c		\
 	gdkglcontext.c		\
 	gdkgldrawable.c		\
 	gdkglpixmap.c		\
 	gdkglwindow.c		\
-	gdkglglext.c		\
-	gdkgldebug.c
+	gdkglglext.c
 
 #
 # setup GdkGLExt sources and their dependancies

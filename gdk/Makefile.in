@@ -182,6 +182,7 @@ gdkglext_public_h_sources = \
 	gdkglversion.h		\
 	gdkgltokens.h		\
 	gdkgltypes.h		\
+	gdkglinit.h		\
 	gdkglquery.h		\
 	gdkglconfig.h		\
 	gdkglcontext.h		\
@@ -201,14 +202,14 @@ gdkglext_headers = \
 
 gdkglext_c_sources = \
 	gdkglversion.c		\
+	gdkglinit.c		\
 	gdkglquery.c		\
 	gdkglconfig.c		\
 	gdkglcontext.c		\
 	gdkgldrawable.c		\
 	gdkglpixmap.c		\
 	gdkglwindow.c		\
-	gdkglglext.c		\
-	gdkgldebug.c
+	gdkglglext.c
 
 
 
@@ -276,9 +277,9 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES = gdkglversion.h
 LTLIBRARIES = $(lib_LTLIBRARIES)
 
-am__objects_1 = gdkglversion.lo gdkglquery.lo gdkglconfig.lo \
-	gdkglcontext.lo gdkgldrawable.lo gdkglpixmap.lo gdkglwindow.lo \
-	gdkglglext.lo gdkgldebug.lo
+am__objects_1 = gdkglversion.lo gdkglinit.lo gdkglquery.lo \
+	gdkglconfig.lo gdkglcontext.lo gdkgldrawable.lo gdkglpixmap.lo \
+	gdkglwindow.lo gdkglglext.lo
 am_libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
 	$(am__objects_1) gdkglenumtypes.lo
 libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
@@ -299,10 +300,10 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/gdkglconfig.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglcontext.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/gdkgldebug.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkgldrawable.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglenumtypes.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglglext.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gdkglinit.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglpixmap.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglquery.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglversion.Plo \
@@ -383,10 +384,10 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglconfig.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglcontext.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkgldebug.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkgldrawable.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglenumtypes.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglglext.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglinit.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglpixmap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglquery.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglversion.Plo@am__quote@

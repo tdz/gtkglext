@@ -181,6 +181,13 @@ GdkGLWindow
 </SECTION>
 
 <SECTION>
+<FILE>gdkglinit</FILE>
+gdk_gl_parse_args
+gdk_gl_init_check
+gdk_gl_init
+</SECTION>
+
+<SECTION>
 <FILE>gdkglversion</FILE>
 GDKGLEXT_MAJOR_VERSION
 GDKGLEXT_MINOR_VERSION
@@ -227,6 +234,13 @@ GDK_TYPE_GL_CONFIG_MODE
 
 <SECTION>
 <FILE>stamp-gdkglext-config</FILE>
+</SECTION>
+
+<SECTION>
+<FILE>gtkglinit</FILE>
+gtk_gl_parse_args
+gtk_gl_init_check
+gtk_gl_init
 </SECTION>
 
 <SECTION>

@@ -853,6 +853,21 @@ GdkWindow   *window
 #define      gdk_window_get_gl_drawable(window)         \
   GDK_GL_DRAWABLE (gdk_window_get_gl_window (window))
 </MACRO>
+<FUNCTION>
+<NAME>gdk_gl_parse_args</NAME>
+<RETURNS>gboolean  </RETURNS>
+gint    *argc,gchar ***argv
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_init_check</NAME>
+<RETURNS>gboolean  </RETURNS>
+gint    *argc,gchar ***argv
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_init</NAME>
+<RETURNS>void  </RETURNS>
+gint    *argc,gchar ***argv
+</FUNCTION>
 <MACRO>
 <NAME>GDKGLEXT_MAJOR_VERSION</NAME>
 #define GDKGLEXT_MAJOR_VERSION (0)
@@ -1000,6 +1015,21 @@ void
 <NAME>GDK_TYPE_GL_CONFIG_MODE</NAME>
 #define GDK_TYPE_GL_CONFIG_MODE (gdk_gl_config_mode_get_type())
 </MACRO>
+<FUNCTION>
+<NAME>gtk_gl_parse_args</NAME>
+<RETURNS>gboolean  </RETURNS>
+gint    *argc,gchar ***argv
+</FUNCTION>
+<FUNCTION>
+<NAME>gtk_gl_init_check</NAME>
+<RETURNS>gboolean  </RETURNS>
+gint    *argc,gchar ***argv
+</FUNCTION>
+<FUNCTION>
+<NAME>gtk_gl_init</NAME>
+<RETURNS>void  </RETURNS>
+gint    *argc,gchar ***argv
+</FUNCTION>
 <MACRO>
 <NAME>GTK_GL_VAR</NAME>
 #    define GTK_GL_VAR __declspec(dllexport)

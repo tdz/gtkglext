@@ -631,6 +631,12 @@ main(int   argc,
   gtk_init (&argc, &argv);
 
   /*
+   * Init GtkGLExt.
+   */
+
+  gtk_gl_init (&argc, &argv);
+
+  /*
    * Parse arguments.
    */
 
@@ -654,18 +660,12 @@ main(int   argc,
     }
 
   /*
-   * OpenGL is supported?
+   * Query OpenGL extension version.
    */
 
-  if (!gdk_gl_query_extension ())
-    {
-      g_print ("\n*** OpenGL is not supported.\n");
-      exit (1);
-    }
-
   gdk_gl_query_version (&major, &minor);
-  g_print ("\nOpenGL is supported - version %d.%d\n",
-	   major, minor);
+  g_print ("\nOpenGL extension version - %d.%d\n",
+           major, minor);
 
   /*
    * Configure OpenGL-capable visual.

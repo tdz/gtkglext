@@ -68,6 +68,7 @@ gtkglext_public_h_sources = \
 	gtkgl.h		\
 	gtkgldefs.h	\
 	gtkglversion.h	\
+	gtkglinit.h	\
 	gtkglwidget.h
 
 gtkglext_headers = \
@@ -78,9 +79,9 @@ gtkglext_headers = \
 
 gtkglext_c_sources = \
 	gtkglversion.c		\
+	gtkglinit.c		\
 	gtkglwidget.c		\
-	gtkglwidgetparam.c	\
-	gtkgldebug.c
+	gtkglwidgetparam.c
 
 #
 # setup GtkGLExt sources and their dependancies

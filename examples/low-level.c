@@ -253,20 +253,24 @@ main (int   argc,
   GtkWidget *drawing_area;
   GtkWidget *button;
 
+  /*
+   * Init GTK.
+   */
+
   gtk_init (&argc, &argv);
 
   /*
-   * OpenGL is supported?
+   * Init GdkGLExt.
    */
 
-  if (!gdk_gl_query_extension ())
-    {
-      g_print ("\n*** OpenGL is not supported.\n");
-      exit (1);
-    }
+  gdk_gl_init (&argc, &argv);
+
+  /*
+   * Query OpenGL extension version.
+   */
 
   gdk_gl_query_version (&major, &minor);
-  g_print ("\nOpenGL is supported - version %d.%d\n",
+  g_print ("\nOpenGL extension version - %d.%d\n",
            major, minor);
 
   /*

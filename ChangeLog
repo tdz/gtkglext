@@ -1,5 +1,38 @@
 2002-12-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/low-level.c: 
+	* examples/simple.c: 
+	* examples/simple-mixed.c: 
+	* examples/pixmap.c: 
+	* examples/pixmap-mixed.c: 
+	* examples/color.c: 
+	* examples/font.c: 
+	* examples/logo.c: 
+	* examples/gears.c: 
+	* examples/multiarb.c: 
+	* examples/viewlw.c: 
+	* examples/rotating-square.c: 
+	* examples/coolwave.c: 
+	* examples/template.c: Call gtk_gl_init() to init library.
+	gdk_gl_query_extension() call is no longer needed.
+
+	* gtk/gtkgldebug.c: 
+	* gdk/gdkgldebug.c: Removed.
+
+	* gtk/gtkglinit.c (gtk_gl_parse_args, gtk_gl_init_check) 
+	(gtk_gl_init): Added GtkGLExt library initialization routines.
+	GTK style debug command line options (--gtk-gl-debug,
+	--gtk-gl-no-debug) and environment variable (GTK_GL_DEBUG) have
+	been supported.
+
+	* gdk/gdkglinit.[ch] (gdk_gl_parse_args, gdk_gl_init_check) 
+	(gdk_gl_init): Added GdkGLExt library initialization routines.
+	GTK style debug command line options (--gdk-gl-debug,
+	--gdk-gl-no-debug) and environment variable (GDK_GL_DEBUG) have
+	been supported.
+
+2002-12-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Check whether
 	given widget is already OpenGL-capable.
 	(gtk_widget_gl_realize): gtk_quit_add_destroy() call has been

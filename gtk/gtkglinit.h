@@ -16,16 +16,28 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include "gtkgldebug.h"
+#ifndef __GTK_GL_INIT_H__
+#define __GTK_GL_INIT_H__
 
-/* Global GtkGLExt debug flag */
-#ifdef G_ENABLE_DEBUG
+#include <gdk/gdk.h>
 
-guint gtk_gl_debug_flags = GTK_GL_DEBUG_MISC |
-                           GTK_GL_DEBUG_FUNC;
+#include <gdk/gdkgl.h>
 
-#else  /* !G_ENABLE_DEBUG */
+G_BEGIN_DECLS
 
-guint gtk_gl_debug_flags = 0;
+/*
+ * Initialization routines.
+ */
 
-#endif /* !G_ENABLE_DEBUG */
+gboolean gtk_gl_parse_args (gint    *argc,
+                            gchar ***argv);
+
+gboolean gtk_gl_init_check (gint    *argc,
+                            gchar ***argv);
+
+void     gtk_gl_init       (gint    *argc,
+                            gchar ***argv);
+
+G_END_DECLS
+
+#endif /* __GTK_GL_INIT_H__ */

@@ -446,14 +446,10 @@ void select_lwobject()
 int main (int argc, char **argv)
 {
   /* initialize gtk */
-  gtk_init( &argc, &argv );
+  gtk_init (&argc, &argv);
 
-  /* Check if OpenGL is supported. */
-  if (!gdk_gl_query_extension ())
-    {
-      g_print ("\n*** OpenGL is not supported.\n");
-      exit (1);
-    }
+  /* initialize gtkglext */
+  gtk_gl_init (&argc, &argv);
 
   /* Configure OpenGL-capable visual. */
 

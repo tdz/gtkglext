@@ -23,6 +23,7 @@
 
 #include <gtk/gtkgldefs.h>
 #include <gtk/gtkglversion.h>
+#include <gtk/gtkglinit.h>
 #include <gtk/gtkglwidget.h>
 
 #endif /* __GTK_GL_H__ */

@@ -593,12 +593,8 @@ main (int   argc,
   /* Initialize GTK. */
   gtk_init (&argc, &argv);
 
-  /* OpenGL is supported? */
-  if (!gdk_gl_query_extension ())
-    {
-      g_print ("\n*** OpenGL is not supported.\n");
-      exit (1);
-    }
+  /* Initialize GtkGLExt. */
+  gtk_gl_init (&argc, &argv);
 
   /* Configure OpenGL framebuffer. */
   glconfig = configure_gl ();
