@@ -107,7 +107,7 @@ expose_event (GtkWidget      *widget,
 
   /* GDK rendering. */
   gdk_draw_rectangle (GDK_DRAWABLE (gldrawable),
-		      widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
+		      widget->style->black_gc,
 		      TRUE,
 		      widget->allocation.width/10,
 		      widget->allocation.height/10,
