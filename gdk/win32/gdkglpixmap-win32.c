@@ -197,9 +197,8 @@ gdk_gl_pixmap_impl_win32_constructor (GType                  type,
     }
 
   GDK_GL_NOTE (MISC, g_message (" -- impl->pixel_format = 0x%x", impl->pixel_format));
-#ifdef G_ENABLE_DEBUG
-  _gdk_win32_gl_print_pfd (&(impl->pfd));
-#endif
+
+  GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&(impl->pfd)));
 
   /*
    * Set pixel format.

@@ -563,9 +563,7 @@ gdk_gl_config_new_common (GdkScreen *screen,
 
   gdk_gl_config_parse_attrib_list (attrib_list, &pfd);
 
-#ifdef G_ENABLE_DEBUG
-  _gdk_win32_gl_print_pfd (&pfd);
-#endif
+  GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&pfd));
 
   /*
    * Determine whether requested pixel format is supported.
@@ -589,9 +587,7 @@ gdk_gl_config_new_common (GdkScreen *screen,
 
   GDK_GL_NOTE (MISC, g_message (" -- found pixel_format = 0x%x", pixel_format));
 
-#ifdef G_ENABLE_DEBUG
-  _gdk_win32_gl_print_pfd (&pfd);
-#endif
+  GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&pfd));
 
   /*
    * Instanciate the GdkGLConfigImplWin32 object.
@@ -681,9 +677,7 @@ gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
 
   GDK_GL_NOTE (MISC, g_message (" -- pixel_format = 0x%x", pixel_format));
 
-#ifdef G_ENABLE_DEBUG
-  _gdk_win32_gl_print_pfd (&pfd);
-#endif
+  GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&pfd));
 
   /*
    * Instanciate the GdkGLConfigImplWin32 object.
@@ -827,79 +821,76 @@ gdk_win32_gl_config_get_attrib (GdkGLConfig *glconfig,
 void
 _gdk_win32_gl_print_pfd (PIXELFORMATDESCRIPTOR *pfd)
 {
-  if (gdk_gl_debug_flags & GDK_GL_DEBUG_MISC) {
+  g_message (" -- pfd->dwFlags & PFD_DRAW_TO_WINDOW      = %s",
+             (pfd->dwFlags & PFD_DRAW_TO_WINDOW)      ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_DRAW_TO_BITMAP      = %s",
+             (pfd->dwFlags & PFD_DRAW_TO_BITMAP)      ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_SUPPORT_GDI         = %s",
+             (pfd->dwFlags & PFD_SUPPORT_GDI)         ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_SUPPORT_OPENGL      = %s",
+             (pfd->dwFlags & PFD_SUPPORT_OPENGL)      ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_GENERIC_ACCELERATED = %s",
+             (pfd->dwFlags & PFD_GENERIC_ACCELERATED) ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_GENERIC_FORMAT      = %s",
+             (pfd->dwFlags & PFD_GENERIC_FORMAT)      ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_NEED_PALETTE        = %s",
+             (pfd->dwFlags & PFD_NEED_PALETTE)        ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_NEED_SYSTEM_PALETTE = %s",
+             (pfd->dwFlags & PFD_NEED_SYSTEM_PALETTE) ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_DOUBLEBUFFER        = %s",
+             (pfd->dwFlags & PFD_DOUBLEBUFFER)        ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_STEREO              = %s",
+             (pfd->dwFlags & PFD_STEREO)              ? "TRUE" : "FALSE");
+  /*
+  g_message (" -- pfd->dwFlags & PFD_SWAP_LAYER_BUFFERS  = %s",
+             (pfd->dwFlags & PFD_SWAP_LAYER_BUFFERS)  ? "TRUE" : "FALSE");
+  */
 
-    g_message (" -- pfd->dwFlags & PFD_DRAW_TO_WINDOW      = %s",
-               (pfd->dwFlags & PFD_DRAW_TO_WINDOW)      ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_DRAW_TO_BITMAP      = %s",
-               (pfd->dwFlags & PFD_DRAW_TO_BITMAP)      ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_SUPPORT_GDI         = %s",
-               (pfd->dwFlags & PFD_SUPPORT_GDI)         ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_SUPPORT_OPENGL      = %s",
-               (pfd->dwFlags & PFD_SUPPORT_OPENGL)      ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_GENERIC_ACCELERATED = %s",
-               (pfd->dwFlags & PFD_GENERIC_ACCELERATED) ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_GENERIC_FORMAT      = %s",
-               (pfd->dwFlags & PFD_GENERIC_FORMAT)      ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_NEED_PALETTE        = %s",
-               (pfd->dwFlags & PFD_NEED_PALETTE)        ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_NEED_SYSTEM_PALETTE = %s",
-               (pfd->dwFlags & PFD_NEED_SYSTEM_PALETTE) ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_DOUBLEBUFFER        = %s",
-               (pfd->dwFlags & PFD_DOUBLEBUFFER)        ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_STEREO              = %s",
-               (pfd->dwFlags & PFD_STEREO)              ? "TRUE" : "FALSE");
-    /*
-    g_message (" -- pfd->dwFlags & PFD_SWAP_LAYER_BUFFERS  = %s",
-               (pfd->dwFlags & PFD_SWAP_LAYER_BUFFERS)  ? "TRUE" : "FALSE");
-    */
+  g_message (" -- pfd->dwFlags & PFD_DEPTH_DONTCARE        = %s",
+             (pfd->dwFlags & PFD_DEPTH_DONTCARE)        ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_DOUBLEBUFFER_DONTCARE = %s",
+             (pfd->dwFlags & PFD_DOUBLEBUFFER_DONTCARE) ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_STEREO_DONTCARE       = %s",
+             (pfd->dwFlags & PFD_STEREO_DONTCARE)       ? "TRUE" : "FALSE");
 
-    g_message (" -- pfd->dwFlags & PFD_DEPTH_DONTCARE        = %s",
-               (pfd->dwFlags & PFD_DEPTH_DONTCARE)        ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_DOUBLEBUFFER_DONTCARE = %s",
-               (pfd->dwFlags & PFD_DOUBLEBUFFER_DONTCARE) ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_STEREO_DONTCARE       = %s",
-               (pfd->dwFlags & PFD_STEREO_DONTCARE)       ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_SWAP_COPY     = %s",
+             (pfd->dwFlags & PFD_SWAP_COPY)     ? "TRUE" : "FALSE");
+  g_message (" -- pfd->dwFlags & PFD_SWAP_EXCHANGE = %s",
+             (pfd->dwFlags & PFD_SWAP_EXCHANGE) ? "TRUE" : "FALSE");
 
-    g_message (" -- pfd->dwFlags & PFD_SWAP_COPY     = %s",
-               (pfd->dwFlags & PFD_SWAP_COPY)     ? "TRUE" : "FALSE");
-    g_message (" -- pfd->dwFlags & PFD_SWAP_EXCHANGE = %s",
-               (pfd->dwFlags & PFD_SWAP_EXCHANGE) ? "TRUE" : "FALSE");
+  g_message (" -- pfd->iPixelType = %d (%s)",
+             pfd->iPixelType,
+             (pfd->iPixelType == PFD_TYPE_RGBA) ? "PFD_TYPE_RGBA" : "PFD_TYPE_COLORINDEX");
 
-    g_message (" -- pfd->iPixelType = %d (%s)",
-               pfd->iPixelType,
-               (pfd->iPixelType == PFD_TYPE_RGBA) ? "PFD_TYPE_RGBA" : "PFD_TYPE_COLORINDEX");
+  g_message (" -- pfd->cColorBits      = %d", pfd->cColorBits);
+  g_message (" -- pfd->cRedBits        = %d", pfd->cRedBits);
+  g_message (" -- pfd->cRedShift       = %d", pfd->cRedShift);
+  g_message (" -- pfd->cGreenBits      = %d", pfd->cGreenBits);
+  g_message (" -- pfd->cGreenShift     = %d", pfd->cGreenShift);
+  g_message (" -- pfd->cBlueBits       = %d", pfd->cBlueBits);
+  g_message (" -- pfd->cBlueShift      = %d", pfd->cBlueShift);
+  g_message (" -- pfd->cAlphaBits      = %d", pfd->cAlphaBits);
+  g_message (" -- pfd->cAlphaShift     = %d", pfd->cAlphaShift);
+  g_message (" -- pfd->cAccumBits      = %d", pfd->cAccumBits);
+  g_message (" -- pfd->cAccumRedBits   = %d", pfd->cAccumRedBits);
+  g_message (" -- pfd->cAccumGreenBits = %d", pfd->cAccumGreenBits);
+  g_message (" -- pfd->cAccumBlueBits  = %d", pfd->cAccumBlueBits);
+  g_message (" -- pfd->cAccumAlphaBits = %d", pfd->cAccumAlphaBits);
+  g_message (" -- pfd->cDepthBits      = %d", pfd->cDepthBits);
+  g_message (" -- pfd->cStencilBits    = %d", pfd->cStencilBits);
+  g_message (" -- pfd->cAuxBuffers     = %d", pfd->cAuxBuffers);
 
-    g_message (" -- pfd->cColorBits      = %d", pfd->cColorBits);
-    g_message (" -- pfd->cRedBits        = %d", pfd->cRedBits);
-    g_message (" -- pfd->cRedShift       = %d", pfd->cRedShift);
-    g_message (" -- pfd->cGreenBits      = %d", pfd->cGreenBits);
-    g_message (" -- pfd->cGreenShift     = %d", pfd->cGreenShift);
-    g_message (" -- pfd->cBlueBits       = %d", pfd->cBlueBits);
-    g_message (" -- pfd->cBlueShift      = %d", pfd->cBlueShift);
-    g_message (" -- pfd->cAlphaBits      = %d", pfd->cAlphaBits);
-    g_message (" -- pfd->cAlphaShift     = %d", pfd->cAlphaShift);
-    g_message (" -- pfd->cAccumBits      = %d", pfd->cAccumBits);
-    g_message (" -- pfd->cAccumRedBits   = %d", pfd->cAccumRedBits);
-    g_message (" -- pfd->cAccumGreenBits = %d", pfd->cAccumGreenBits);
-    g_message (" -- pfd->cAccumBlueBits  = %d", pfd->cAccumBlueBits);
-    g_message (" -- pfd->cAccumAlphaBits = %d", pfd->cAccumAlphaBits);
-    g_message (" -- pfd->cDepthBits      = %d", pfd->cDepthBits);
-    g_message (" -- pfd->cStencilBits    = %d", pfd->cStencilBits);
-    g_message (" -- pfd->cAuxBuffers     = %d", pfd->cAuxBuffers);
+  /* Ignored */
+  g_message (" -- pfd->iLayerType = %d", pfd->iLayerType);
 
-    /* Ignored */
-    g_message (" -- pfd->iLayerType = %d", pfd->iLayerType);
+  g_message (" -- pfd->bReserved & 0x0f        = %d", pfd->bReserved & 0x0f);
+  g_message (" -- (pfd->bReserved & 0xf0) >> 4 = %d", (pfd->bReserved & 0xf0) >> 4);
 
-    g_message (" -- pfd->bReserved & 0x0f        = %d", pfd->bReserved & 0x0f);
-    g_message (" -- (pfd->bReserved & 0xf0) >> 4 = %d", (pfd->bReserved & 0xf0) >> 4);
+  /* Ignored */
+  g_message (" -- pfd->dwLayerMask = 0x%lx", pfd->dwLayerMask);
 
-    /* Ignored */
-    g_message (" -- pfd->dwLayerMask = 0x%lx", pfd->dwLayerMask);
+  g_message (" -- pfd->dwVisibleMask = 0x%lx", pfd->dwVisibleMask);
 
-    g_message (" -- pfd->dwVisibleMask = 0x%lx", pfd->dwVisibleMask);
+  g_message (" -- pfd->dwDamageMask = 0x%lx", pfd->dwDamageMask);
 
-    g_message (" -- pfd->dwDamageMask = 0x%lx", pfd->dwDamageMask);
-
-  }
 }
