@@ -1,5 +1,11 @@
 2003-08-17  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* README: 
+	* docs/reference/gtkglext/building.sgml: 
+	* configure.in: Removed --disable-sgi-fast-atoms configure
+	option. Now GdkGLExt doesn't use XSGIFastInternAtom(), so this
+	option is no longer needed.
+
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_setup_colormap):
 	New _gdk_x11_gl_overlay_get_info() function.
 

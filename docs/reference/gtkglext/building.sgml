@@ -286,18 +286,6 @@ How to compile GtkGLExt
 	</para>
       </formalpara>
 
-      <formalpara>
-	<title><systemitem>--disable-sgi-fast-atoms</systemitem></title>
-
-	<para>
-          Disable SGI's fast X atoms optimization.
-          SGI's /usr/include/X11/SGIFastAtom.h header may cause a
-          problem with GCC. You can solve this problem by modifying
-          this header. If you want to avoid modifying it, pass
-          this option to disable this feature.
-	</para>
-      </formalpara>
-
     </refsect1>
 
 </refentry>
