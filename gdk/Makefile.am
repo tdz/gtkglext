@@ -146,9 +146,10 @@ BUILT_SOURCES = \
 	@REBUILD@			\
 	$(gdkglext_built_sources)
 
+DISTCLEANFILES = $(stamp_files)
+
 MAINTAINERCLEANFILES = \
-	$(gdkglext_built_sources)	\
-	$(stamp_files)
+	$(gdkglext_built_sources)
 
 # Generate built header without using automake BUILT_SOURCES
 $(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS): $(gdkglext_built_public_h_sources)
@@ -196,7 +197,7 @@ stamp-gdkglext-config-h: $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status gdk/gdkglext-config.h
 	echo timestamp > stamp-gdkglext-config-h
 
-DISTCLEANFILES = gdkglext-config.h stamp-gdkglext-config-h
+DISTCLEANFILES += gdkglext-config.h stamp-gdkglext-config-h
 
 #
 # Extra rules

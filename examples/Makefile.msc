@@ -237,11 +237,13 @@ wglinfo$(EXEEXT): wglinfo.obj
 # Clean up
 #
 
-clean:
-	-del *$(EXEEXT)
+clean-obj:
 	-del *.obj
 	-del *.pdb
 	-del *.ilk
+
+clean: clean-obj
+	-del *$(EXEEXT)
 
 distclean: clean
 	-del $(PKGCONFIG_CFLAGS_MAK)

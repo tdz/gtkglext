@@ -1,5 +1,13 @@
 2003-08-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/Makefile.mingw (clean-obj): 
+	* examples/Makefile.msc (clean-obj): Added clean-obj target for
+	convenience.
+
+	* Makefile.am (examples): 
+	* examples/Makefile.am (all-local): Use all-local target for
+	building example programs.
+
 	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_new): 
 	* gdk/win32/gdkglwindow-win32.c (gdk_gl_window_new): Do
 	DescribePixelFormat().

@@ -185,12 +185,14 @@ wglinfo$(EXEEXT): wglinfo.o
 # Clean up
 #
 
-clean:
-	-rm -f $(PROGRAMS)
-	-rm -f *.o
-
 clean-deps:
 	-rm -rf .deps
 
-distclean: clean clean-deps
+clean-obj: clean-deps
+	-rm -f *.o
+
+clean: clean-obj
+	-rm -f $(PROGRAMS)
+
+distclean: clean
 	-rm -f *~

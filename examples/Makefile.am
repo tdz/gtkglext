@@ -158,9 +158,7 @@ wglinfo_DEPENDENCIES = $(DEPS)
 wglinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS)
 
 
-.PHONY: examples
-
-examples: $(EXTRA_PROGRAMS)
+all-local: $(EXTRA_PROGRAMS)
 
 clean-local:
 	-rm -f $(EXTRA_PROGRAMS)

@@ -1,7 +1,8 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext
 
-SUBDIRS = gdk gtk examples docs m4macros
+SUBDIRS = gdk gtk m4macros docs
+DIST_SUBDIRS = $(SUBDIRS) examples
 
 EXTRA_DIST = \
 	README.win32			\
@@ -62,8 +63,11 @@ DISTCLEANFILES = \
 	gtkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc	\
 	gtkglext-$(API_VER)-uninstalled.pc
 
-.PHONY: examples
+.PHONY: examples examples-clean
 
 examples: all
-	(cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) examples)
+	( cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) )
+
+examples-clean:
+	( cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) clean )
 
