@@ -1,28 +1,24 @@
-%define base_version	@GTKGLEXT_VERSION@
-%define api_version	@GTKGLEXT_API_VERSION@
-%define rel		1
+# -*- rpm-spec -*-
+
+%define base_version		@GTKGLEXT_VERSION@
+%define api_version		@GTKGLEXT_API_VERSION@
+%define rel			1
 
 Summary: OpenGL Extension to GTK
 Name: gtkglext
 Version: %{base_version}
 Release: %{rel}
-URL: http://gtkglext.sourceforge.net
-Source0: ftp://ftp.sourceforge.net/pub/sourceforge/gtkglext/%{name}-%{version}.tar.gz
 License: LGPL
 Group: System Environment/Libraries
-BuildRoot: %{_tmppath}/%{name}-%{version}-root
+URL: http://gtkglext.sourceforge.net
+Source0: ftp://ftp.sourceforge.net/pub/sourceforge/gtkglext/%{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 Requires: gtk2
-Requires: atk
-Requires: pango
-Requires: glib2
 Requires: XFree86-libs
 
-BuildPrereq: gtk2-devel
-BuildPrereq: atk-devel
-BuildPrereq: pango-devel
-BuildPrereq: glib2-devel
-BuildPrereq: XFree86-devel
+BuildPreReq: gtk2-devel
+BuildPreReq: XFree86-devel
 
 %description
 GtkGLExt is an OpenGL extension to GTK. It provides the GDK objects
@@ -35,9 +31,6 @@ Group: Development/Libraries
 
 Requires: %{name} = %{version}
 Requires: gtk2-devel
-Requires: atk-devel
-Requires: pango-devel
-Requires: glib2-devel
 Requires: XFree86-devel
 
 %description devel
@@ -48,17 +41,11 @@ and developer docs for GtkGLExt.
 %setup -q
 
 %build
-
-LDFLAGS="-L$RPM_BUILD_ROOT%{_libdir}"
-export LDFLAGS
-
 %configure --disable-gtk-doc
-
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %makeinstall
 
 pushd "$RPM_BUILD_ROOT%{_libdir}"
@@ -66,10 +53,12 @@ pushd "$RPM_BUILD_ROOT%{_libdir}"
 cp -p libgdkglext-x11-%{api_version}.la libgdkglext-x11-%{api_version}.la.bak
 cat libgdkglext-x11-%{api_version}.la.bak | \
   sed -e "s| -L$RPM_BUILD_ROOT%{_libdir}||g" > libgdkglext-x11-%{api_version}.la
+rm -f libgdkglext-x11-%{api_version}.la.bak
 
 cp -p libgtkglext-x11-%{api_version}.la libgtkglext-x11-%{api_version}.la.bak
 cat libgtkglext-x11-%{api_version}.la.bak | \
   sed -e "s| -L$RPM_BUILD_ROOT%{_libdir}||g" > libgtkglext-x11-%{api_version}.la
+rm -f libgtkglext-x11-%{api_version}.la.bak
 
 popd
 
@@ -81,14 +70,14 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 
 %doc AUTHORS COPYING COPYING.LIB ChangeLog NEWS README TODO
 %{_libdir}/libgdkglext-x11-%{api_version}.so.*
 %{_libdir}/libgtkglext-x11-%{api_version}.so.*
 
 %files devel
-%defattr(-,root,root)
+%defattr(-,root,root,-)
 
 %{_includedir}/*
 %{_libdir}/gtkglext-%{api_version}
@@ -100,6 +89,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gtk-doc/html/*
 
 %changelog
+* Sun May 11 2003 Naofumi Yasufuku <naofumi@users.sourceforge.net>
+- Removed LDFLAGS setting.
+- Removed atk, pango, glib2 from Requires.
+- Remove lib*.la.bak files.
+
 * Mon Feb 24 2003 Naofumi Yasufuku <naofumi@users.sourceforge.net>
 - Added %{_datadir}/aclocal/* to the file list.
 - Re-enabled static libraries by default.
