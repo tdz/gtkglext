@@ -128,10 +128,10 @@ configure_event (GtkWidget         *widget,
   gdk_draw_rectangle (GDK_DRAWABLE (gldrawable),
 		      widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
 		      TRUE,
-		      0.1*widget->allocation.width,
-		      0.1*widget->allocation.height,
-		      0.8*widget->allocation.width,
-		      0.8*widget->allocation.height);
+		      widget->allocation.width/10,
+		      widget->allocation.height/10,
+		      widget->allocation.width*4/5,
+		      widget->allocation.height*4/5);
 
   /* Sync. */
   gdk_gl_drawable_wait_gdk (gldrawable);
