@@ -266,26 +266,19 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
                                              GdkGLDrawable *read,
                                              GdkGLContext  *glcontext)
 {
-  GdkGLPixmapImplX11 *impl;
-  Display *xdisplay;
+  GdkGLConfig *glconfig;
+  GLXPixmap glxpixmap;
   GLXContext glxcontext;
 
   g_return_val_if_fail (GDK_IS_GL_PIXMAP_IMPL_X11 (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), FALSE);
 
-  if (GDK_GL_PIXMAP_IS_DESTROYED (draw) ||
-      GDK_GL_CONTEXT_IS_DESTROYED (glcontext))
-    return FALSE;
-
-  impl = GDK_GL_PIXMAP_IMPL_X11 (draw);
-
-  xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
+  glconfig = GDK_GL_PIXMAP_IMPL_X11 (draw)->glconfig;
+  glxpixmap = GDK_GL_PIXMAP_IMPL_X11 (draw)->glxpixmap;
   glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
 
-  if (glxcontext == glXGetCurrentContext () &&
-      impl->glxpixmap == glXGetCurrentDrawable () &&
-      xdisplay == glXGetCurrentDisplay ())
-    return TRUE;
+  if (glxpixmap == None || glxcontext == NULL)
+    return FALSE;
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   GDK_GL_NOTE (MISC,
@@ -298,7 +291,7 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
 
   GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
 
-  if (!glXMakeCurrent (xdisplay, impl->glxpixmap, glxcontext))
+  if (!glXMakeCurrent (GDK_GL_CONFIG_XDISPLAY (glconfig), glxpixmap, glxcontext))
     {
       g_warning ("glXMakeCurrent() failed");
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
@@ -311,7 +304,7 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
   /* currently unused. */
   /* _gdk_gl_context_set_gl_drawable_read (glcontext, read); */
 
-  if (GDK_GL_CONFIG_AS_SINGLE_MODE (impl->glconfig))
+  if (GDK_GL_CONFIG_AS_SINGLE_MODE (glconfig))
     {
       /* We do this because we are treating a double-buffered frame
          buffer as a single-buffered frame buffer because the system
@@ -335,19 +328,20 @@ gdk_gl_pixmap_impl_x11_is_double_buffered (GdkGLDrawable *gldrawable)
 static void
 gdk_gl_pixmap_impl_x11_swap_buffers (GdkGLDrawable *gldrawable)
 {
-  GdkGLPixmapImplX11 *impl;
+  Display *xdisplay;
+  GLXPixmap glxpixmap;
 
   g_return_if_fail (GDK_IS_GL_PIXMAP_IMPL_X11 (gldrawable));
 
-  if (GDK_GL_PIXMAP_IS_DESTROYED (gldrawable))
-    return;
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (GDK_GL_PIXMAP_IMPL_X11 (gldrawable)->glconfig);
+  glxpixmap = GDK_GL_PIXMAP_IMPL_X11 (gldrawable)->glxpixmap;
 
-  impl = GDK_GL_PIXMAP_IMPL_X11 (gldrawable);
+  if (glxpixmap == None)
+    return;
 
   GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
 
-  glXSwapBuffers (GDK_GL_CONFIG_XDISPLAY (impl->glconfig),
-                  impl->glxpixmap);
+  glXSwapBuffers (xdisplay, glxpixmap);
 }
 
 /*
