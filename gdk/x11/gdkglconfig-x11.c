@@ -192,7 +192,7 @@ get_colormap (GdkVisual *visual)
 #endif /* GDK_MULTIHEAD_SAFE */
 
 static void
-set_property (GdkGLConfigImplX11 *impl,
+configure_gl (GdkGLConfigImplX11 *impl,
               int                *attrib_list)
 {
   GdkGLConfig *glconfig = GDK_GL_CONFIG (impl);
@@ -253,6 +253,15 @@ set_property (GdkGLConfigImplX11 *impl,
   glconfig->depth = impl->xvinfo->depth;
 
   /*
+   * Layer plane.
+   */
+
+  glconfig->layer_plane = 0;
+  ret = glXGetConfig (impl->xdisplay, impl->xvinfo, GLX_LEVEL, &value);
+  if (ret == Success)
+    glconfig->layer_plane = value;
+
+  /*
    * Double buffering is supported?
    */
 
@@ -284,7 +293,7 @@ gdk_gl_config_impl_x11_set_property (GObject      *object,
   switch (property_id)
     {
     case PROP_ATTRIB_LIST:
-      set_property (impl, g_value_get_pointer (value));
+      configure_gl (impl, g_value_get_pointer (value));
       g_object_notify (object, "attrib_list");
       break;
     default:

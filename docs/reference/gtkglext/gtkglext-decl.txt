@@ -131,18 +131,16 @@ struct GdkGLConfig
 {
   GObject parent_instance;
 
+  GdkScreen *screen;
+
   GdkColormap *colormap;
   gint depth;
+
+  gint layer_plane;
 
   guint is_double_buffered : 1;
   guint is_stereo : 1;
   guint as_single_mode : 1;
-
-#ifdef GDK_MULTIHEAD_SAFE
-  GdkScreen *screen;
-#else  /* GDK_MULTIHEAD_SAFE */
-  gpointer screen;
-#endif /* GDK_MULTIHEAD_SAFE */
 
 };
 </STRUCT>
@@ -341,23 +339,16 @@ GdkGLDrawable *gldrawable
 <RETURNS>void  </RETURNS>
 GdkGLDrawable *gldrawable
 </FUNCTION>
-<MACRO>
+<FUNCTION>
 <NAME>gdk_gl_drawable_gl_begin</NAME>
-#define  gdk_gl_drawable_gl_begin(gldrawable, glcontext)        \
-  do                                                            \
-    {                                                           \
-      if (gdk_gl_drawable_make_current (gldrawable, glcontext)) \
-        {                                                       \
-          gdk_gl_drawable_wait_gdk (gldrawable)
-</MACRO>
-<MACRO>
+<RETURNS>gboolean  </RETURNS>
+GdkGLDrawable *gldrawable,GdkGLContext  *glcontext
+</FUNCTION>
+<FUNCTION>
 <NAME>gdk_gl_drawable_gl_end</NAME>
-#define  gdk_gl_drawable_gl_end(gldrawable)     \
-          gdk_gl_drawable_wait_gl (gldrawable); \
-        }                                       \
-    }                                           \
-  while (0)
-</MACRO>
+<RETURNS>void  </RETURNS>
+GdkGLDrawable *gldrawable
+</FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_drawable_get_gl_config</NAME>
 <RETURNS>GdkGLConfig   *</RETURNS>

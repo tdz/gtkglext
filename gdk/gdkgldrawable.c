@@ -160,7 +160,7 @@ gdk_gl_drawable_gl_begin (GdkGLDrawable *gldrawable,
  * @gldrawable: a #GdkGLDrawable.
  *
  * Delimit the end of the OpenGL execution.
- * The call completes GL execution.
+ * The call completes OpenGL execution.
  *
  **/
 void

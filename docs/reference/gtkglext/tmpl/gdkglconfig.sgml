@@ -42,8 +42,10 @@ and is afterwards used in #gtk_widget_set_gl_capability.
 </para>
 
 @parent_instance: 
+@screen: 
 @colormap: 
 @depth: 
+@layer_plane: 
 @is_double_buffered: 
 @is_stereo: 
 @as_single_mode: 
