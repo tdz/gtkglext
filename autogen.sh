@@ -42,7 +42,7 @@ have_automake=false
 if automake --version < /dev/null > /dev/null 2>&1 ; then
 	automake_version=`automake --version | grep 'automake (GNU automake)' | sed 's/^[^0-9]*\(.*\)/\1/'`
 	case $automake_version in
-	   1.2*|1.3*|1.4) 
+	   1.2*|1.3*|1.4*|1.5*) 
 		;;
 	   *)
 		have_automake=true
@@ -51,8 +51,8 @@ if automake --version < /dev/null > /dev/null 2>&1 ; then
 fi
 if $have_automake ; then : ; else
 	echo
-	echo "You must have automake 1.4-p1 installed to compile $PROJECT."
-	echo "Get ftp://ftp.gnu.org/pub/gnu/automake/automake-1.4-p1.tar.gz"
+	echo "You must have automake 1.6 installed to compile $PROJECT."
+	echo "Get ftp://ftp.gnu.org/pub/gnu/automake/automake-1.6.tar.gz"
 	echo "(or a newer version if it is available)"
 	DIE=1
 fi

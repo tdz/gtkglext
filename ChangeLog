@@ -1,9 +1,13 @@
+2002-06-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* Version 0.2.0.
+
 2002-06-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_impl_win32_constructor): 
 	Fixed double buffered PFD setup.
 
-	* examples/*.c: 
+	* examples/*.c: Changed for new interfaces.
 
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): The interface
 	have been changed. Now, it takes glconfig instead of attrib_list.
