@@ -35,6 +35,9 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
 {                                                                                       \
   static gboolean init = FALSE;                                                         \
                                                                                         \
+  if (!wglGetCurrentContext ())                                                         \
+    return NULL;                                                                        \
+                                                                                        \
   if (!init)                                                                            \
     {                                                                                   \
       __procs.__proc_name =                                                             \
@@ -45,8 +48,7 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
                               #__proc_name,                                             \
                               (__procs.__proc_name) ? "supported" : "not supported"));  \
                                                                                         \
-      if (__procs.__proc_name || wglGetCurrentContext())                                \
-        init = TRUE;                                                                    \
+      init = TRUE;                                                                      \
     }                                                                                   \
                                                                                         \
   return (GdkGLProc) (__procs.__proc_name);                                             \

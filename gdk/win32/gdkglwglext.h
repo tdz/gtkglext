@@ -67,6 +67,8 @@ struct _GdkGL_WGL_ARB_buffer_region
   GdkGLProc_wglRestoreBufferRegionARB wglRestoreBufferRegionARB;
 };
 
+GdkGL_WGL_ARB_buffer_region *gdk_gl_get_WGL_ARB_buffer_region (void);
+
 /* 
  * WGL_ARB_extensions_string
  */
@@ -85,6 +87,8 @@ struct _GdkGL_WGL_ARB_extensions_string
 {
   GdkGLProc_wglGetExtensionsStringARB wglGetExtensionsStringARB;
 };
+
+GdkGL_WGL_ARB_extensions_string *gdk_gl_get_WGL_ARB_extensions_string (void);
 
 /* 
  * WGL_ARB_pixel_format
@@ -119,6 +123,8 @@ struct _GdkGL_WGL_ARB_pixel_format
   GdkGLProc_wglChoosePixelFormatARB      wglChoosePixelFormatARB;
 };
 
+GdkGL_WGL_ARB_pixel_format *gdk_gl_get_WGL_ARB_pixel_format (void);
+
 /* 
  * WGL_ARB_make_current_read
  */
@@ -144,6 +150,8 @@ struct _GdkGL_WGL_ARB_make_current_read
   GdkGLProc_wglMakeContextCurrentARB wglMakeContextCurrentARB;
   GdkGLProc_wglGetCurrentReadDCARB   wglGetCurrentReadDCARB;
 };
+
+GdkGL_WGL_ARB_make_current_read *gdk_gl_get_WGL_ARB_make_current_read (void);
 
 /* 
  * WGL_ARB_pbuffer
@@ -192,6 +200,8 @@ struct _GdkGL_WGL_ARB_pbuffer
   GdkGLProc_wglQueryPbufferARB     wglQueryPbufferARB;
 };
 
+GdkGL_WGL_ARB_pbuffer *gdk_gl_get_WGL_ARB_pbuffer (void);
+
 /* 
  * WGL_ARB_render_texture
  */
@@ -224,6 +234,8 @@ struct _GdkGL_WGL_ARB_render_texture
   GdkGLProc_wglReleaseTexImageARB  wglReleaseTexImageARB;
   GdkGLProc_wglSetPbufferAttribARB wglSetPbufferAttribARB;
 };
+
+GdkGL_WGL_ARB_render_texture *gdk_gl_get_WGL_ARB_render_texture (void);
 
 /* 
  * WGL_EXT_display_color_table
@@ -265,6 +277,8 @@ struct _GdkGL_WGL_EXT_display_color_table
   GdkGLProc_wglDestroyDisplayColorTableEXT wglDestroyDisplayColorTableEXT;
 };
 
+GdkGL_WGL_EXT_display_color_table *gdk_gl_get_WGL_EXT_display_color_table (void);
+
 /* 
  * WGL_EXT_extensions_string
  */
@@ -283,6 +297,8 @@ struct _GdkGL_WGL_EXT_extensions_string
 {
   GdkGLProc_wglGetExtensionsStringEXT wglGetExtensionsStringEXT;
 };
+
+GdkGL_WGL_EXT_extensions_string *gdk_gl_get_WGL_EXT_extensions_string (void);
 
 /* 
  * WGL_EXT_make_current_read
@@ -309,6 +325,8 @@ struct _GdkGL_WGL_EXT_make_current_read
   GdkGLProc_wglMakeContextCurrentEXT wglMakeContextCurrentEXT;
   GdkGLProc_wglGetCurrentReadDCEXT   wglGetCurrentReadDCEXT;
 };
+
+GdkGL_WGL_EXT_make_current_read *gdk_gl_get_WGL_EXT_make_current_read (void);
 
 /* 
  * WGL_EXT_pbuffer
@@ -357,6 +375,8 @@ struct _GdkGL_WGL_EXT_pbuffer
   GdkGLProc_wglQueryPbufferEXT     wglQueryPbufferEXT;
 };
 
+GdkGL_WGL_EXT_pbuffer *gdk_gl_get_WGL_EXT_pbuffer (void);
+
 /* 
  * WGL_EXT_pixel_format
  */
@@ -390,6 +410,8 @@ struct _GdkGL_WGL_EXT_pixel_format
   GdkGLProc_wglChoosePixelFormatEXT      wglChoosePixelFormatEXT;
 };
 
+GdkGL_WGL_EXT_pixel_format *gdk_gl_get_WGL_EXT_pixel_format (void);
+
 /* 
  * WGL_EXT_swap_control
  */
@@ -416,6 +438,8 @@ struct _GdkGL_WGL_EXT_swap_control
   GdkGLProc_wglGetSwapIntervalEXT wglGetSwapIntervalEXT;
 };
 
+GdkGL_WGL_EXT_swap_control *gdk_gl_get_WGL_EXT_swap_control (void);
+
 /* 
  * WGL_NV_vertex_array_range
  */
@@ -441,6 +465,8 @@ struct _GdkGL_WGL_NV_vertex_array_range
   GdkGLProc_wglAllocateMemoryNV wglAllocateMemoryNV;
   GdkGLProc_wglFreeMemoryNV     wglFreeMemoryNV;
 };
+
+GdkGL_WGL_NV_vertex_array_range *gdk_gl_get_WGL_NV_vertex_array_range (void);
 
 /* 
  * WGL_OML_sync_control
@@ -496,6 +522,8 @@ struct _GdkGL_WGL_OML_sync_control
   GdkGLProc_wglWaitForSbcOML          wglWaitForSbcOML;
 };
 
+GdkGL_WGL_OML_sync_control *gdk_gl_get_WGL_OML_sync_control (void);
+
 /* 
  * WGL_I3D_digital_video_control
  */
@@ -521,6 +549,8 @@ struct _GdkGL_WGL_I3D_digital_video_control
   GdkGLProc_wglGetDigitalVideoParametersI3D wglGetDigitalVideoParametersI3D;
   GdkGLProc_wglSetDigitalVideoParametersI3D wglSetDigitalVideoParametersI3D;
 };
+
+GdkGL_WGL_I3D_digital_video_control *gdk_gl_get_WGL_I3D_digital_video_control (void);
 
 /* 
  * WGL_I3D_gamma
@@ -561,6 +591,8 @@ struct _GdkGL_WGL_I3D_gamma
   GdkGLProc_wglGetGammaTableI3D           wglGetGammaTableI3D;
   GdkGLProc_wglSetGammaTableI3D           wglSetGammaTableI3D;
 };
+
+GdkGL_WGL_I3D_gamma *gdk_gl_get_WGL_I3D_gamma (void);
 
 /* 
  * WGL_I3D_genlock
@@ -658,6 +690,8 @@ struct _GdkGL_WGL_I3D_genlock
   GdkGLProc_wglQueryGenlockMaxSourceDelayI3D wglQueryGenlockMaxSourceDelayI3D;
 };
 
+GdkGL_WGL_I3D_genlock *gdk_gl_get_WGL_I3D_genlock (void);
+
 /* 
  * WGL_I3D_image_buffer
  */
@@ -697,6 +731,8 @@ struct _GdkGL_WGL_I3D_image_buffer
   GdkGLProc_wglAssociateImageBufferEventsI3D wglAssociateImageBufferEventsI3D;
   GdkGLProc_wglReleaseImageBufferEventsI3D   wglReleaseImageBufferEventsI3D;
 };
+
+GdkGL_WGL_I3D_image_buffer *gdk_gl_get_WGL_I3D_image_buffer (void);
 
 /* 
  * WGL_I3D_swap_frame_lock
@@ -738,6 +774,8 @@ struct _GdkGL_WGL_I3D_swap_frame_lock
   GdkGLProc_wglQueryFrameLockMasterI3D wglQueryFrameLockMasterI3D;
 };
 
+GdkGL_WGL_I3D_swap_frame_lock *gdk_gl_get_WGL_I3D_swap_frame_lock (void);
+
 /* 
  * WGL_I3D_swap_frame_usage
  */
@@ -777,6 +815,8 @@ struct _GdkGL_WGL_I3D_swap_frame_usage
   GdkGLProc_wglEndFrameTrackingI3D   wglEndFrameTrackingI3D;
   GdkGLProc_wglQueryFrameTrackingI3D wglQueryFrameTrackingI3D;
 };
+
+GdkGL_WGL_I3D_swap_frame_usage *gdk_gl_get_WGL_I3D_swap_frame_usage (void);
 
 G_END_DECLS
 
