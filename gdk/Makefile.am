@@ -77,6 +77,7 @@ gdkglext_public_h_sources = \
 	gdkglpixmap.h		\
 	gdkglwindow.h		\
 	gdkglfont.h		\
+	gdkglshapes.h		\
 	gdkglglext.h
 
 gdkglext_headers = \
@@ -94,6 +95,7 @@ gdkglext_c_sources = \
 	gdkgldrawable.c		\
 	gdkglpixmap.c		\
 	gdkglwindow.c		\
+	gdkglshapes.c		\
 	gdkglglext.c
 
 #

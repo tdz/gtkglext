@@ -1,3 +1,11 @@
+2002-12-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/shapes.c: Added new shapes demo.
+
+	* gdk/gdkglshapes.[ch]: Added new functions for generating easily
+	recognizable 3D geometric objects. This code is imported from
+	GLUT.
+
 2002-12-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* docs/reference/gtkglext/running.sgml: 

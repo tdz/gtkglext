@@ -171,6 +171,7 @@ common_programs = \
 	pixmap-mixed	\
 	color		\
 	font		\
+	shapes		\
 	logo		\
 	gears		\
 	multiarb	\
@@ -214,6 +215,10 @@ color_LDADD = $(LDADDS)
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
+
+shapes_SOURCES = trackball.h trackball.c shapes.c
+shapes_DEPENDENCIES = $(DEPS)
+shapes_LDADD = $(LDADDS)
 
 logo_SOURCES = trackball.h trackball.c logo-model.h logo-model.c logo.c
 EXTRA_logo_SOURCES = logo-g.c logo-t.c logo-k.c
@@ -261,7 +266,8 @@ CONFIG_CLEAN_FILES =
 @PLATFORM_WIN32_TRUE@EXTRA_PROGRAMS = low-level$(EXEEXT) simple$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	simple-mixed$(EXEEXT) pixmap$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	pixmap-mixed$(EXEEXT) color$(EXEEXT) \
-@PLATFORM_WIN32_TRUE@	font$(EXEEXT) logo$(EXEEXT) gears$(EXEEXT) \
+@PLATFORM_WIN32_TRUE@	font$(EXEEXT) shapes$(EXEEXT) \
+@PLATFORM_WIN32_TRUE@	logo$(EXEEXT) gears$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	multiarb$(EXEEXT) viewlw$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	rotating-square$(EXEEXT) coolwave$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	template$(EXEEXT)
@@ -269,9 +275,9 @@ CONFIG_CLEAN_FILES =
 @PLATFORM_WIN32_FALSE@	simple$(EXEEXT) simple-mixed$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	pixmap$(EXEEXT) pixmap-mixed$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	color$(EXEEXT) font$(EXEEXT) \
-@PLATFORM_WIN32_FALSE@	logo$(EXEEXT) gears$(EXEEXT) \
-@PLATFORM_WIN32_FALSE@	multiarb$(EXEEXT) viewlw$(EXEEXT) \
-@PLATFORM_WIN32_FALSE@	rotating-square$(EXEEXT) \
+@PLATFORM_WIN32_FALSE@	shapes$(EXEEXT) logo$(EXEEXT) \
+@PLATFORM_WIN32_FALSE@	gears$(EXEEXT) multiarb$(EXEEXT) \
+@PLATFORM_WIN32_FALSE@	viewlw$(EXEEXT) rotating-square$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	coolwave$(EXEEXT) template$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	glxinfo$(EXEEXT)
 am_color_OBJECTS = color.$(OBJEXT)
@@ -308,6 +314,9 @@ pixmap_mixed_LDFLAGS =
 am_rotating_square_OBJECTS = rotating-square.$(OBJEXT)
 rotating_square_OBJECTS = $(am_rotating_square_OBJECTS)
 rotating_square_LDFLAGS =
+am_shapes_OBJECTS = trackball.$(OBJEXT) shapes.$(OBJEXT)
+shapes_OBJECTS = $(am_shapes_OBJECTS)
+shapes_LDFLAGS =
 am_simple_OBJECTS = simple.$(OBJEXT)
 simple_OBJECTS = $(am_simple_OBJECTS)
 simple_LDFLAGS =
@@ -337,9 +346,9 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/multiarb.Po ./$(DEPDIR)/pixmap-mixed.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/pixmap.Po ./$(DEPDIR)/readtex.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/rotating-square.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/simple-mixed.Po ./$(DEPDIR)/simple.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/template.Po ./$(DEPDIR)/trackball.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/viewlw.Po
+@AMDEP_TRUE@	./$(DEPDIR)/shapes.Po ./$(DEPDIR)/simple-mixed.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/simple.Po ./$(DEPDIR)/template.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/trackball.Po ./$(DEPDIR)/viewlw.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -352,10 +361,10 @@ DIST_SOURCES = $(color_SOURCES) $(coolwave_SOURCES) $(font_SOURCES) \
 	$(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) \
 	$(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(multiarb_SOURCES) \
 	$(pixmap_SOURCES) $(pixmap_mixed_SOURCES) \
-	$(rotating_square_SOURCES) $(simple_SOURCES) \
+	$(rotating_square_SOURCES) $(shapes_SOURCES) $(simple_SOURCES) \
 	$(simple_mixed_SOURCES) $(template_SOURCES) $(viewlw_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(color_SOURCES) $(coolwave_SOURCES) $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(multiarb_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(rotating_square_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(template_SOURCES) $(viewlw_SOURCES)
+SOURCES = $(color_SOURCES) $(coolwave_SOURCES) $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(multiarb_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(rotating_square_SOURCES) $(shapes_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(template_SOURCES) $(viewlw_SOURCES)
 
 all: all-am
 
@@ -399,6 +408,9 @@ pixmap-mixed$(EXEEXT): $(pixmap_mixed_OBJECTS) $(pixmap_mixed_DEPENDENCIES)
 rotating-square$(EXEEXT): $(rotating_square_OBJECTS) $(rotating_square_DEPENDENCIES) 
 	@rm -f rotating-square$(EXEEXT)
 	$(LINK) $(rotating_square_LDFLAGS) $(rotating_square_OBJECTS) $(rotating_square_LDADD) $(LIBS)
+shapes$(EXEEXT): $(shapes_OBJECTS) $(shapes_DEPENDENCIES) 
+	@rm -f shapes$(EXEEXT)
+	$(LINK) $(shapes_LDFLAGS) $(shapes_OBJECTS) $(shapes_LDADD) $(LIBS)
 simple$(EXEEXT): $(simple_OBJECTS) $(simple_DEPENDENCIES) 
 	@rm -f simple$(EXEEXT)
 	$(LINK) $(simple_LDFLAGS) $(simple_OBJECTS) $(simple_LDADD) $(LIBS)
@@ -435,6 +447,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/readtex.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/rotating-square.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shapes.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simple-mixed.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simple.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/template.Po@am__quote@

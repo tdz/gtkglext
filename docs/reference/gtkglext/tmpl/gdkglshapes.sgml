@@ -1,0 +1,168 @@
+<!-- ##### SECTION Title ##### -->
+Geometric Object Rendering
+
+<!-- ##### SECTION Short_Description ##### -->
+Functions for generating easily recognizable 3D geometric objects
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION gdk_gl_solid_cube ##### -->
+<para>
+
+</para>
+
+@size: 
+
+
+<!-- ##### FUNCTION gdk_gl_wire_cube ##### -->
+<para>
+
+</para>
+
+@size: 
+
+
+<!-- ##### FUNCTION gdk_gl_solid_sphere ##### -->
+<para>
+
+</para>
+
+@radius: 
+@slices: 
+@stacks: 
+
+
+<!-- ##### FUNCTION gdk_gl_wire_sphere ##### -->
+<para>
+
+</para>
+
+@radius: 
+@slices: 
+@stacks: 
+
+
+<!-- ##### FUNCTION gdk_gl_solid_cone ##### -->
+<para>
+
+</para>
+
+@base: 
+@height: 
+@slices: 
+@stacks: 
+
+
+<!-- ##### FUNCTION gdk_gl_wire_cone ##### -->
+<para>
+
+</para>
+
+@base: 
+@height: 
+@slices: 
+@stacks: 
+
+
+<!-- ##### FUNCTION gdk_gl_solid_torus ##### -->
+<para>
+
+</para>
+
+@inner_radius: 
+@outer_radius: 
+@nsides: 
+@rings: 
+
+
+<!-- ##### FUNCTION gdk_gl_wire_torus ##### -->
+<para>
+
+</para>
+
+@inner_radius: 
+@outer_radius: 
+@nsides: 
+@rings: 
+
+
+<!-- ##### FUNCTION gdk_gl_solid_tetrahedron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gdk_gl_wire_tetrahedron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gdk_gl_solid_octahedron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gdk_gl_wire_octahedron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gdk_gl_solid_dodecahedron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gdk_gl_wire_dodecahedron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gdk_gl_solid_icosahedron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gdk_gl_wire_icosahedron ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gdk_gl_solid_teapot ##### -->
+<para>
+
+</para>
+
+@scale: 
+
+
+<!-- ##### FUNCTION gdk_gl_wire_teapot ##### -->
+<para>
+
+</para>
+
+@scale: 
+
+

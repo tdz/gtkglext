@@ -32,6 +32,7 @@ common_programs = \
 	pixmap-mixed	\
 	color		\
 	font		\
+	shapes		\
 	logo		\
 	gears		\
 	multiarb	\
@@ -76,6 +77,10 @@ color_LDADD = $(LDADDS)
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
+
+shapes_SOURCES = trackball.h trackball.c shapes.c
+shapes_DEPENDENCIES = $(DEPS)
+shapes_LDADD = $(LDADDS)
 
 logo_SOURCES = trackball.h trackball.c logo-model.h logo-model.c logo.c
 EXTRA_logo_SOURCES = logo-g.c logo-t.c logo-k.c

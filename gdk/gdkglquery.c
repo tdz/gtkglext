@@ -19,14 +19,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-#if defined(_WIN32)
+#include "gdkglprivate.h"
+#include "gdkglquery.h"
+
+#ifdef G_OS_WIN32
 #include <windows.h>
 #endif
 
 #include <GL/gl.h>
-
-#include "gdkglprivate.h"
-#include "gdkglquery.h"
 
 /*
  * This code is based on glutExtensionSupported().
