@@ -171,10 +171,8 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
   GdkGLConfig *glconfig;
   GdkGLConfigImplWin32 *impl;
 
-  GdkWindow *root_window;
   GdkVisual *visual;
 
-  HWND hwnd;
   HDC hdc;
   PIXELFORMATDESCRIPTOR found_pfd;
   int pixel_format;
@@ -188,16 +186,16 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
   glconfig = GDK_GL_CONFIG (object);
   impl = GDK_GL_CONFIG_IMPL_WIN32 (object);
 
-  root_window = gdk_get_default_root_window ();
-  hwnd = (HWND) gdk_win32_drawable_get_handle (GDK_DRAWABLE (root_window));
-
   /*
    * Get DC.
    */
 
-  hdc = GetDC (hwnd);
+  hdc = GetDC (NULL);
   if (hdc == NULL)
-    goto FAIL;
+    {
+      g_warning ("cannot get DC");
+      goto FAIL;
+    }
 
   /*
    * Determine whether requested pixel format is supported.
@@ -277,7 +275,7 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
    */
 
   if (hdc != NULL)
-    ReleaseDC (hwnd, hdc);
+    ReleaseDC (NULL, hdc);
 
   return object;
 }

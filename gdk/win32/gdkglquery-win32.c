@@ -129,10 +129,6 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
   static const char *extensions = NULL;
   const char *start;
   char *where, *terminator;
-  int major, minor;
-
-  GdkWindow *root_window;
-  HWND hwnd;
   HDC hdc;
 
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
@@ -152,11 +148,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
 
       if (wgl_get_extensions_string_arb)
         {
-          /* root_window = gdk_screen_get_root_window (glconfig->screen); */
-          root_window = gdk_get_default_root_window ();
-          hwnd = (HWND) gdk_win32_drawable_get_handle (GDK_DRAWABLE (root_window));
-
-          hdc = GetDC (hwnd);
+          hdc = GetDC (NULL);
           if (!hdc)
             {
               g_warning ("cannot get DC");
@@ -164,7 +156,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
           else
             {
               extensions = wgl_get_extensions_string_arb (hdc);
-              ReleaseDC (hwnd, hdc);
+              ReleaseDC (NULL, hdc);
             }
         }
 
@@ -180,7 +172,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
         }
 
       if (!extensions)
-        extensions = "";
+        return FALSE;
 
     }
 
