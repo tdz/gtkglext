@@ -10,11 +10,11 @@ AC_PREREQ([2.54])
 # if backwards compatibility has been broken,
 # set gtkglext_binary_age and gtkglext_interface_age to 0.
 #
-m4_define([gtkglext_major_version], [0])
-m4_define([gtkglext_minor_version], [99])
-m4_define([gtkglext_micro_version], [1])
-m4_define([gtkglext_interface_age], [1])
-m4_define([gtkglext_binary_age],    [1])
+m4_define([gtkglext_major_version], [1])
+m4_define([gtkglext_minor_version], [0])
+m4_define([gtkglext_micro_version], [0])
+m4_define([gtkglext_interface_age], [0])
+m4_define([gtkglext_binary_age],    [0])
 m4_define([gtkglext_version],
           [gtkglext_major_version.gtkglext_minor_version.gtkglext_micro_version])
 
@@ -38,10 +38,8 @@ m4_define([gtkglext_lt_current_minus_age],
 
 # if the minor version number is odd, then we want debugging.  Otherwise
 # we only want minimal debugging support.
-#m4_define([gtkglext_debug_default],
-#          [m4_if(m4_eval(gtkglext_minor_version % 2), [1], [yes], [minimum])])dnl
 m4_define([gtkglext_debug_default],
-          [minimum])
+          [m4_if(m4_eval(gtkglext_minor_version % 2), [1], [yes], [minimum])])dnl
 
 # Versions of dependencies
 

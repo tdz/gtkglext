@@ -5,6 +5,7 @@ SUBDIRS = gdk gtk examples docs m4macros
 
 EXTRA_DIST = \
 	README.win32			\
+	ChangeLog.pre-1-0		\
 	gdkglext.pc.in			\
 	gtkglext.pc.in			\
 	gdkglext-uninstalled.pc.in	\
