@@ -797,9 +797,9 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
     return NULL;
 
   GDK_GL_NOTE (MISC,
-    g_message (" - gdk_x11_gl_get_xvinfo: screen number = %d", xvinfo->screen));
+    g_message (" -- gdk_x11_gl_get_xvinfo: screen number = %d", xvinfo->screen));
   GDK_GL_NOTE (MISC,
-    g_message (" - gdk_x11_gl_get_xvinfo: visual id = 0x%lx", xvinfo->visualid));
+    g_message (" -- gdk_x11_gl_get_xvinfo: visual id = 0x%lx", xvinfo->visualid));
 
   /*
    * Instanciate the GdkGLConfigImplX11 object.
