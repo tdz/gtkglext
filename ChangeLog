@@ -1,5 +1,7 @@
 2002-12-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* configure.in: Bump API version to 1.0.
+
 	* examples/low-level.c: 
 	* examples/simple.c: 
 	* examples/simple-mixed.c: 
