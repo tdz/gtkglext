@@ -77,7 +77,8 @@ gtk_widget_gl_realize (GtkWidget        *widget,
                           (gpointer) &gl_capable);
 
       /* Destroy OpenGL rendering context explicitly. */
-      gtk_quit_add (0, (GtkFunction) gtk_widget_destroy_gl_context, widget);
+      gtk_quit_add (gtk_main_level () + 1,
+                    (GtkFunction) gtk_widget_destroy_gl_context, widget);
     }
 
   g_object_unref (G_OBJECT (glconfig));
@@ -126,7 +127,8 @@ gtk_widget_gl_configure_event (GtkWidget         *widget,
                           (gpointer) &gl_capable);
 
       /* Destroy OpenGL rendering context explicitly. */
-      gtk_quit_add (0, (GtkFunction) gtk_widget_destroy_gl_context, widget);
+      gtk_quit_add (gtk_main_level () + 1,
+                    (GtkFunction) gtk_widget_destroy_gl_context, widget);
     }
 
   g_object_unref (G_OBJECT (glconfig));
