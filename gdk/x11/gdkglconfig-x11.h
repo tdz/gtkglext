@@ -43,6 +43,7 @@ struct _GdkGLConfigImplX11
   XVisualInfo *xvinfo;
 
   guint is_constructed : 1;
+  guint is_mesa_glx : 1;
 };
 
 struct _GdkGLConfigImplX11Class

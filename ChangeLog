@@ -1,4 +1,14 @@
-2002-11-24  Naofumi Yasufuku  <naofumi@yasufuku.net>
+2002-11-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_fb_configuration) 
+	(gdk_gl_config_setup_colormap) 
+	(gdk_gl_config_get_std_rgb_colormap): Colormap setup routines have
+	been rewritten. GdkGLConfig now supports colormap sharing using ICCCM
+	convention (GTK-2.1 or above).
+
+	* configure.in: Added gdk_x11_colormap_foreign_new() function check.
+
+2002-11-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglpixmap-win32.c (gdk_win32_gl_pixmap_make_context_current): 
 	* gdk/win32/gdkglwindow-win32.c (gdk_win32_gl_window_make_context_current): 
