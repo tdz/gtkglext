@@ -177,6 +177,8 @@ common_libadd = \
 #
 gdkglext_public_h_sources = \
 	gdkgl.h			\
+	gdkgldefs.h		\
+	gdkglversion.h		\
 	gdkgltokens.h		\
 	gdkgltypes.h		\
 	gdkglquery.h		\
@@ -197,6 +199,7 @@ gdkglext_headers = \
 
 
 gdkglext_c_sources = \
+	gdkglversion.c		\
 	gdkglquery.c		\
 	gdkglconfig.c		\
 	gdkglcontext.c		\
@@ -256,17 +259,18 @@ EXTRA_HEADERS =
 BUILT_SOURCES = @REBUILD@ gdkglenumtypes.h
 
 EXTRA_DIST = \
+	gdkglversion.h.in	\
 	gdkglext.def
 
 subdir = gdk
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES =
+CONFIG_CLEAN_FILES = gdkglversion.h
 LTLIBRARIES = $(lib_LTLIBRARIES)
 
-am__objects_1 = gdkglquery.lo gdkglconfig.lo gdkglcontext.lo \
-	gdkgldrawable.lo gdkglpixmap.lo gdkglwindow.lo gdkglpixbuf.lo \
-	gdkgldebug.lo
+am__objects_1 = gdkglversion.lo gdkglquery.lo gdkglconfig.lo \
+	gdkglcontext.lo gdkgldrawable.lo gdkglpixmap.lo gdkglwindow.lo \
+	gdkglpixbuf.lo gdkgldebug.lo
 am_libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
 	$(am__objects_1) gdkglenumtypes.lo
 libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
@@ -293,6 +297,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglpixbuf.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglpixmap.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglquery.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gdkglversion.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglwindow.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -313,7 +318,8 @@ RECURSIVE_TARGETS = info-recursive dvi-recursive install-info-recursive \
 	uninstall-info-recursive all-recursive install-data-recursive \
 	install-exec-recursive installdirs-recursive install-recursive \
 	uninstall-recursive check-recursive installcheck-recursive
-DIST_COMMON = $(gdkglextinclude_HEADERS) Makefile.am Makefile.in
+DIST_COMMON = $(gdkglextinclude_HEADERS) Makefile.am Makefile.in \
+	gdkglversion.h.in
 SOURCES = $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES) $(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES)
 
 all: $(BUILT_SOURCES)
@@ -326,6 +332,8 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configu
 	  $(AUTOMAKE) --gnu  gdk/Makefile
 Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
+gdkglversion.h: $(top_builddir)/config.status gdkglversion.h.in
+	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 libLTLIBRARIES_INSTALL = $(INSTALL)
 install-libLTLIBRARIES: $(lib_LTLIBRARIES)
 	@$(NORMAL_INSTALL)
@@ -373,6 +381,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglpixbuf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglpixmap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglquery.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglversion.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglwindow.Plo@am__quote@
 
 distclean-depend:

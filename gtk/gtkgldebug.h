@@ -21,6 +21,8 @@
 
 #include <glib.h>
 
+#include <gtk/gtkgldefs.h>
+
 G_BEGIN_DECLS
 
 typedef enum {
@@ -40,17 +42,7 @@ typedef enum {
       
 #endif /* G_ENABLE_DEBUG */
 
-#ifdef G_OS_WIN32
-#  ifdef GTK_GL_COMPILATION
-#    define GTKGLVAR __declspec(dllexport)
-#  else
-#    define GTKGLVAR extern __declspec(dllimport)
-#  endif
-#else
-#  define GTKGLVAR extern
-#endif
-
-GTKGLVAR guint gtk_gl_debug_flags;
+GTK_GL_VAR guint gtk_gl_debug_flags;
 
 G_END_DECLS
 

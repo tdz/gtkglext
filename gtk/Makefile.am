@@ -66,6 +66,8 @@ common_libadd = \
 
 gtkglext_public_h_sources = \
 	gtkgl.h		\
+	gtkgldefs.h	\
+	gtkglversion.h	\
 	gtkglwidget.h
 
 gtkglext_headers = \
@@ -75,6 +77,7 @@ gtkglext_headers = \
 	gtkglprivate.h
 
 gtkglext_c_sources = \
+	gtkglversion.c		\
 	gtkglwidget.c		\
 	gtkglwidgetparam.c	\
 	gtkgldebug.c
@@ -129,4 +132,5 @@ files:
 	done
 
 EXTRA_DIST = \
+	gtkglversion.h.in	\
 	gtkglext.def

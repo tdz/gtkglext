@@ -1,8 +1,22 @@
-93% function docs coverage.
+78% function docs coverage.
 66 functions documented.
-5 not documented.
+19 not documented.
 
 
+GDKGLEXT_BINARY_AGE
+GDKGLEXT_CHECK_VERSION
+GDKGLEXT_INTERFACE_AGE
+GDKGLEXT_MAJOR_VERSION
+GDKGLEXT_MICRO_VERSION
+GDKGLEXT_MINOR_VERSION
+GDK_GL_VAR
+GTKGLEXT_BINARY_AGE
+GTKGLEXT_CHECK_VERSION
+GTKGLEXT_INTERFACE_AGE
+GTKGLEXT_MAJOR_VERSION
+GTKGLEXT_MICRO_VERSION
+GTKGLEXT_MINOR_VERSION
+GTK_GL_VAR
 gdk_gl_config_get_screen
 gdk_gl_config_new_for_screen
 gdk_gl_font_use_pango_font_for_display

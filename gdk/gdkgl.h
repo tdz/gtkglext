@@ -21,6 +21,8 @@
 
 #include <gdk/gdktypes.h>
 
+#include <gdk/gdkgldefs.h>
+#include <gdk/gdkglversion.h>
 #include <gdk/gdkgltokens.h>
 #include <gdk/gdkgltypes.h>
 #include <gdk/gdkglenumtypes.h>

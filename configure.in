@@ -615,9 +615,11 @@ gdkglext-uninstalled.pc
 gtkglext-uninstalled.pc
 gtkglext.spec
 gdk/Makefile
+gdk/gdkglversion.h
 gdk/x11/Makefile
 gdk/win32/Makefile
 gtk/Makefile
+gtk/gtkglversion.h
 examples/Makefile
 docs/Makefile
 docs/reference/Makefile

@@ -1,4 +1,4 @@
-/* GdkGLExt - OpenGL Extension to GDK
+/* GtkGLExt - OpenGL Extension to GTK+
  * Copyright (C) 2002  Naofumi Yasufuku
  *
  * This library is free software; you can redistribute it and/or
@@ -16,35 +16,23 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifndef __GDK_GL_DEBUG_H__
-#define __GDK_GL_DEBUG_H__
+#ifndef __GTK_GL_DEFS_H__
+#define __GTK_GL_DEFS_H__
 
 #include <glib.h>
 
-#include <gdk/gdkgldefs.h>
-
 G_BEGIN_DECLS
 
-typedef enum {
-  GDK_GL_DEBUG_MISC = 1 << 0,
-  GDK_GL_DEBUG_FUNC = 1 << 1,
-  GDK_GL_DEBUG_IMPL = 1 << 2
-} GdkGLDebugFlag;
-
-#ifdef G_ENABLE_DEBUG
-
-#define GDK_GL_NOTE(type, action)                G_STMT_START { \
-    if (gdk_gl_debug_flags & GDK_GL_DEBUG_##type)               \
-       { action; };                              } G_STMT_END
-
-#else /* !G_ENABLE_DEBUG */
-
-#define GDK_GL_NOTE(type, action)
-      
-#endif /* G_ENABLE_DEBUG */
-
-GDK_GL_VAR guint gdk_gl_debug_flags;
+#ifdef G_OS_WIN32
+#  ifdef GTK_GL_COMPILATION
+#    define GTK_GL_VAR __declspec(dllexport)
+#  else
+#    define GTK_GL_VAR extern __declspec(dllimport)
+#  endif
+#else
+#  define GTK_GL_VAR extern
+#endif
 
 G_END_DECLS
 
-#endif /* __GDK_GL_DEBUG_H__ */
+#endif /* __GTK_GL_DEFS_H__ */

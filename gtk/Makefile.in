@@ -178,6 +178,8 @@ common_libadd = \
 #
 gtkglext_public_h_sources = \
 	gtkgl.h		\
+	gtkgldefs.h	\
+	gtkglversion.h	\
 	gtkglwidget.h
 
 
@@ -189,6 +191,7 @@ gtkglext_headers = \
 
 
 gtkglext_c_sources = \
+	gtkglversion.c		\
 	gtkglwidget.c		\
 	gtkglwidgetparam.c	\
 	gtkgldebug.c
@@ -237,15 +240,17 @@ MAINTAINERCLEANFILES =
 EXTRA_HEADERS = 
 
 EXTRA_DIST = \
+	gtkglversion.h.in	\
 	gtkglext.def
 
 subdir = gtk
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES =
+CONFIG_CLEAN_FILES = gtkglversion.h
 LTLIBRARIES = $(lib_LTLIBRARIES)
 
-am__objects_1 = gtkglwidget.lo gtkglwidgetparam.lo gtkgldebug.lo
+am__objects_1 = gtkglversion.lo gtkglwidget.lo gtkglwidgetparam.lo \
+	gtkgldebug.lo
 am_libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
 	$(am__objects_1)
 libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
@@ -264,6 +269,7 @@ LIBS = @LIBS@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/gtkgldebug.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gtkglversion.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gtkglwidget.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gtkglwidgetparam.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -280,7 +286,8 @@ DATA = $(noinst_DATA)
 
 HEADERS = $(gtkglextinclude_HEADERS)
 
-DIST_COMMON = $(gtkglextinclude_HEADERS) Makefile.am Makefile.in
+DIST_COMMON = $(gtkglextinclude_HEADERS) Makefile.am Makefile.in \
+	gtkglversion.h.in
 SOURCES = $(libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES) $(libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES)
 
 all: all-am
@@ -292,6 +299,8 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configu
 	  $(AUTOMAKE) --gnu  gtk/Makefile
 Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
+gtkglversion.h: $(top_builddir)/config.status gtkglversion.h.in
+	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 libLTLIBRARIES_INSTALL = $(INSTALL)
 install-libLTLIBRARIES: $(lib_LTLIBRARIES)
 	@$(NORMAL_INSTALL)
@@ -332,6 +341,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkgldebug.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkglversion.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkglwidget.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkglwidgetparam.Plo@am__quote@
 

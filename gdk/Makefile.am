@@ -65,6 +65,8 @@ common_libadd = \
 
 gdkglext_public_h_sources = \
 	gdkgl.h			\
+	gdkgldefs.h		\
+	gdkglversion.h		\
 	gdkgltokens.h		\
 	gdkgltypes.h		\
 	gdkglquery.h		\
@@ -83,6 +85,7 @@ gdkglext_headers = \
 	gdkglprivate.h
 
 gdkglext_c_sources = \
+	gdkglversion.c		\
 	gdkglquery.c		\
 	gdkglconfig.c		\
 	gdkglcontext.c		\
@@ -180,4 +183,5 @@ files:
 	done
 
 EXTRA_DIST = \
+	gdkglversion.h.in	\
 	gdkglext.def

@@ -25,6 +25,8 @@
 
 #include <gtk/gtk.h>
 
+#include <gtk/gtkgldefs.h>
+#include <gtk/gtkglversion.h>
 #include <gtk/gtkglwidget.h>
 
 G_BEGIN_DECLS
