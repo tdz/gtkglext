@@ -204,51 +204,53 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
 GdkGLProc
 gdk_gl_get_proc_address (const char *proc_name)
 {
-  GdkGLProc proc_address;
+  GdkGLProc proc_address = NULL;
   HMODULE hmodule;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_proc_address ()"));
 
-  /* Try wglGetProcAddress () */
+  if (strncmp ("glu", proc_name, 3) != 0)
+    {
+      /* Try wglGetProcAddress () */
 
-  proc_address = (GdkGLProc) wglGetProcAddress (proc_name);
+      proc_address = (GdkGLProc) wglGetProcAddress (proc_name);
 
-  GDK_GL_NOTE (IMPL, g_message (" * wglGetProcAddress () - %s",
-                                proc_address ? "succeeded" : "failed"));
+      GDK_GL_NOTE (IMPL, g_message (" * wglGetProcAddress () - %s",
+                                    proc_address ? "succeeded" : "failed"));
 
-  if (proc_address != NULL)
-    return proc_address;
+      if (proc_address != NULL)
+        return proc_address;
 
-  /* Try GetProcAddress () */
+      /* Try GetProcAddress () */
 
-  /* opengl32.dll */
+      /* opengl32.dll */
 
-  GDK_GL_NOTE (MISC, g_message (" - Get opengl32 module handle"));
+      GDK_GL_NOTE (MISC, g_message (" - Get opengl32 module handle"));
 
-  hmodule = GetModuleHandle ("opengl32");
-  if (hmodule == NULL)
-    g_warning ("Cannot get opengl32 module handle");
+      hmodule = GetModuleHandle ("opengl32");
+      if (hmodule == NULL)
+        g_warning ("Cannot get opengl32 module handle");
+      else
+        proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
+
+      GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
+                                    proc_address ? "succeeded" : "failed"));
+    }
   else
-    proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
+    {
+      /* glu32.dll */
 
-  GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
-                                proc_address ? "succeeded" : "failed"));
+      GDK_GL_NOTE (MISC, g_message (" - Get glu32 module handle"));
 
-  if (proc_address != NULL)
-    return proc_address;
+      hmodule = GetModuleHandle ("glu32");
+      if (hmodule == NULL)
+        g_warning ("Cannot get glu32 module handle");
+      else
+        proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
 
-  /* glu32.dll */
-
-  GDK_GL_NOTE (MISC, g_message (" - Get glu32 module handle"));
-
-  hmodule = GetModuleHandle ("glu32");
-  if (hmodule == NULL)
-    g_warning ("Cannot get glu32 module handle");
-  else
-    proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
-
-  GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
-                                proc_address ? "succeeded" : "failed"));
+      GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
+                                    proc_address ? "succeeded" : "failed"));
+    }
 
   return proc_address;
 }

@@ -1,3 +1,8 @@
+2003-05-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglquery-win32.c (gdk_gl_get_proc_address): Check
+	whether given proc_name has "glu" prefix.
+
 2003-05-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglwindow-win32.c (gdk_gl_window_new): Check whether
