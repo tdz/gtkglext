@@ -1143,6 +1143,11 @@ GtkWidget    *widget
 GtkWidget    *widget
 </FUNCTION>
 <FUNCTION>
+<NAME>gtk_widget_create_gl_context</NAME>
+<RETURNS>GdkGLContext  *</RETURNS>
+GtkWidget    *widget,GdkGLContext *share_list,gboolean      direct,int           render_type
+</FUNCTION>
+<FUNCTION>
 <NAME>gtk_widget_get_gl_context</NAME>
 <RETURNS>GdkGLContext  *</RETURNS>
 GtkWidget    *widget

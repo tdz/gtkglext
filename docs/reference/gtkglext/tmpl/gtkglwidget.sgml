@@ -54,6 +54,18 @@ OpenGL function calls can be made.
 @Returns: 
 
 
+<!-- ##### FUNCTION gtk_widget_create_gl_context ##### -->
+<para>
+
+</para>
+
+@widget: 
+@share_list: 
+@direct: 
+@render_type: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gtk_widget_get_gl_context ##### -->
 <para>
 

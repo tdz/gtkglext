@@ -38,6 +38,11 @@ gboolean      gtk_widget_is_gl_capable     (GtkWidget    *widget);
 
 GdkGLConfig  *gtk_widget_get_gl_config     (GtkWidget    *widget);
 
+GdkGLContext *gtk_widget_create_gl_context (GtkWidget    *widget,
+                                            GdkGLContext *share_list,
+                                            gboolean      direct,
+                                            int           render_type);
+
 GdkGLContext *gtk_widget_get_gl_context    (GtkWidget    *widget);
 
 GdkGLWindow  *gtk_widget_get_gl_window     (GtkWidget    *widget);

@@ -41,24 +41,6 @@ param_destroy (GtkGLWidgetParam *param)
     g_boxed_free (GTK_TYPE_GL_WIDGET_PARAM, (gpointer) param);
 }
 
-static void
-gl_config_destroy (GdkGLConfig *glconfig)
-{
-  GTK_GL_NOTE (FUNC, g_message (" - gl_config_destroy ()"));
-
-  if (glconfig != NULL)
-    g_object_unref (G_OBJECT (glconfig));
-}
-
-static void
-gl_context_destroy (GdkGLContext *glcontext)
-{
-  GTK_GL_NOTE (FUNC, g_message (" - gl_context_destroy ()"));
-
-  if (glcontext != NULL)
-    g_object_unref (G_OBJECT (glcontext));
-}
-
 /* 
  * Signal handlers.
  */
@@ -69,15 +51,11 @@ gtk_widget_gl_realize (GtkWidget *widget,
 {
   GtkGLWidgetParam *param;
   GdkGLWindow *glwindow;
-  GdkGLContext *glcontext;
 
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_realize ()"));
 
-  if (quark_gl_context == 0)
-    quark_gl_context = g_quark_from_static_string (quark_gl_context_string);
-
   /* Already OpenGL-capable */
-  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_context) != NULL)
+  if (gdk_window_is_gl_capable (widget->window))
     return;
 
   /* Get param */
@@ -92,24 +70,8 @@ gtk_widget_gl_realize (GtkWidget *widget,
   glwindow = gdk_window_set_gl_capability (widget->window,
                                            param->glconfig,
                                            NULL);
-
-  /*
-   * Create OpenGL rendering context.
-   */
-
-  glcontext = gdk_gl_context_new (GDK_GL_DRAWABLE (glwindow),
-                                  param->glconfig,
-                                  param->share_list,
-                                  param->direct,
-                                  param->render_type);
-  if (glcontext == NULL)
-    {
-      g_warning ("cannot create GdkGLContext\n");
-      return;
-    }
-
-  g_object_set_qdata_full (G_OBJECT (widget), quark_gl_context, glcontext,
-                           (GDestroyNotify) gl_context_destroy);
+  if (glwindow == NULL)
+    g_warning ("cannot set OpenGL-capability to widget->window\n");
 }
 
 static gboolean
@@ -138,13 +100,6 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
                          gpointer   user_data)
 {
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_unrealize ()"));
-
-  /* 
-   * Unref OpenGL rendering context.
-   */
-
-  if (quark_gl_context != 0)
-    g_object_set_qdata (G_OBJECT (widget), quark_gl_context, NULL);
 
   /*
    * Remove OpenGL-capability from widget->window.
@@ -204,16 +159,20 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (!GTK_WIDGET_REALIZED (widget), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
   /* 
    * Init quarks.
    */
 
+  if (quark_param == 0)
+    quark_param = g_quark_from_static_string (quark_param_string);
+
   if (quark_gl_config == 0)
     quark_gl_config = g_quark_from_static_string (quark_gl_config_string);
 
-  if (quark_param == 0)
-    quark_param = g_quark_from_static_string (quark_param_string);
+  if (quark_gl_context == 0)
+    quark_gl_context = g_quark_from_static_string (quark_gl_context_string);
 
   /*
    * Already OpenGL-capable?
@@ -227,7 +186,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    */
 
   g_object_set_qdata_full (G_OBJECT (widget), quark_gl_config, glconfig,
-                           (GDestroyNotify) gl_config_destroy);
+                           (GDestroyNotify) g_object_unref);
   g_object_ref (G_OBJECT (glconfig));
 
   /*
@@ -264,7 +223,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   gtk_widget_set_double_buffered (widget, FALSE);
 
   /*
-   * Signal handler for realizing a OpenGL-capable GdkWindow.
+   * Set given GL widget parameters.
    */
 
   param.glconfig = glconfig;
@@ -275,6 +234,10 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   g_object_set_qdata_full (G_OBJECT (widget), quark_param,
                            g_boxed_copy (GTK_TYPE_GL_WIDGET_PARAM, (gconstpointer) &param),
                            (GDestroyNotify) param_destroy);
+
+  /*
+   * Signal handler for realizing a OpenGL-capable GdkWindow.
+   */
 
   g_signal_connect (G_OBJECT (widget), "realize",
 		    G_CALLBACK (gtk_widget_gl_realize),
@@ -335,6 +298,56 @@ gtk_widget_get_gl_config (GtkWidget *widget)
 }
 
 /**
+ * gtk_widget_create_gl_context:
+ * @widget: a #GtkWidget.
+ * @share_list: the #GdkGLContext which to share display lists. NULL indicates that no sharing is to take place.
+ * @direct: whether rendering is to be done with a direct connection to the graphics system.
+ * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not used).
+ *
+ * Creates a new #GdkGLContext with the appropriate #GdkGLDrawable
+ * for this widget. The GL context must be freed when you're
+ * finished with it. See also gtk_widget_get_gl_context().
+ *
+ * Return value: the new #GdkGLContext.
+ **/
+GdkGLContext *
+gtk_widget_create_gl_context (GtkWidget    *widget,
+                              GdkGLContext *share_list,
+                              gboolean      direct,
+                              int           render_type)
+{
+  GdkGLDrawable *gldrawable;
+  GdkGLConfig *glconfig;
+  GdkGLContext *glcontext;
+
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), NULL);
+
+  gldrawable = gdk_window_get_gl_drawable (widget->window);
+  if (gldrawable == NULL)
+    return NULL;
+
+  glconfig = gdk_gl_drawable_get_gl_config (gldrawable);
+
+  /*
+   * Create OpenGL rendering context.
+   */
+
+  glcontext = gdk_gl_context_new (gldrawable,
+                                  glconfig,
+                                  share_list,
+                                  direct,
+                                  render_type);
+  if (glcontext == NULL)
+    {
+      g_warning ("cannot create GdkGLContext\n");
+      return NULL;
+    }
+
+  return glcontext;
+}
+
+/**
  * gtk_widget_get_gl_context:
  * @widget: a #GtkWidget.
  *
@@ -342,16 +355,37 @@ gtk_widget_get_gl_config (GtkWidget *widget)
  *
  * Returns the GdkGLContext holded by the widget. This struct is needed
  * for the function gdk_gl_drawable_begin, or for sharing Displaylists
- * (see #gtk_widget_set_gl_capability.
+ * (see #gtk_widget_set_gl_capability).
  *
  * Return value: the #GdkGLContext.
  **/
 GdkGLContext *
 gtk_widget_get_gl_context (GtkWidget *widget)
 {
+  GdkGLContext *glcontext;
+  GtkGLWidgetParam *param;
+
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), NULL);
 
-  return g_object_get_qdata (G_OBJECT (widget), quark_gl_context);
+  glcontext = g_object_get_qdata (G_OBJECT (widget), quark_gl_context);
+  if (glcontext == NULL)
+    {
+      /* Get param */
+      param = g_object_get_qdata (G_OBJECT (widget), quark_param);
+      if (param == NULL)
+        return NULL;
+
+      glcontext = gtk_widget_create_gl_context (widget,
+                                                param->share_list,
+                                                param->direct,
+                                                param->render_type);
+
+      g_object_set_qdata_full (G_OBJECT (widget), quark_gl_context, glcontext,
+                               (GDestroyNotify) g_object_unref);
+    }
+
+  return glcontext;
 }
 
 /**
@@ -365,6 +399,7 @@ gtk_widget_get_gl_context (GtkWidget *widget)
 GdkGLWindow *
 gtk_widget_get_gl_window (GtkWidget *widget)
 {
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), NULL);
 
   return gdk_window_get_gl_window (widget->window);
