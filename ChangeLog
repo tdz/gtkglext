@@ -1,3 +1,14 @@
+2003-09-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* configure.in (AC_CONFIG_FILES): 
+	* examples/Makefile.am (DIST_SUBDIRS): 
+	* examples/glade/Makefile.am: 
+	* examples/glade/README: 
+	* examples/glade/simple.glade: 
+	* examples/glade/simple.c: 
+	* examples/glade/share-lists.glade: 
+	* examples/glade/share-lists.c: Added new libglade examples.
+
 2003-09-04  Alif Wahid  <awah005@users.sourceforge.net>
 
 	* AUTHORS:

@@ -1,6 +1,9 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/examples
 
+SUBDIRS = 
+DIST_SUBDIRS = glade
+
 EXTRA_DIST = \
 	Makefile.mingw	\
 	Makefile.msc	\
