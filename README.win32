@@ -193,7 +193,7 @@ macros used in configure.in.
 I use the following versions of the GNU autotools.
 
   autoconf 2.57
-  automake 1.7.5
+  automake 1.7.x
   libtool  1.5
 
 
