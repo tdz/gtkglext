@@ -164,6 +164,8 @@ expose_event (GtkWidget      *widget,
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
     return FALSE;
 
+  glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
   /*** Fill in the details here. ***/
 
   /* Swap buffers */
