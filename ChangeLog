@@ -1,5 +1,12 @@
 2003-09-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Check whether
+	given widget has own GdkWindow. GL widget's "realize" signal
+	handler should be connected by g_signal_connect() instead of
+	g_signal_connect_after().
+
+2003-09-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* configure.in (AC_CONFIG_FILES): 
 	* examples/Makefile.am (DIST_SUBDIRS): 
 	* examples/glade/Makefile.am: 

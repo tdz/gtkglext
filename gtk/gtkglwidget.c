@@ -221,6 +221,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   GTK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (!GTK_WIDGET_NO_WINDOW (widget), FALSE);
   g_return_val_if_fail (!GTK_WIDGET_REALIZED (widget), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
@@ -317,9 +318,9 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    * Connect signal handlers to realize OpenGL-capable widget.
    */
 
-  g_signal_connect_after (G_OBJECT (widget), "realize",
-                          G_CALLBACK (gtk_gl_widget_realize),
-                          private);
+  g_signal_connect (G_OBJECT (widget), "realize",
+                    G_CALLBACK (gtk_gl_widget_realize),
+                    private);
 
   /* gtk_drawing_area sends configure_event when it is realized. */
   g_signal_connect (G_OBJECT (widget), "configure_event",
