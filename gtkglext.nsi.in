@@ -350,7 +350,7 @@ FunctionEnd
 
 ; WriteEnvBat
 Function WriteEnvBat
-  pop $R0 ; Output file
+  Pop $R0 ; Output file
   Push $R9
     FileOpen $R9 $R0 w
     FileWrite $R9 "@set GTKGLEXT_PREFIX=$INSTDIR$\r$\n"
