@@ -304,40 +304,77 @@ if test "x$gdktarget" = "xx11"; then
 
   # for X11
 
+  have_GL=no
+
+  # GLcore and GL (SGI)
   AC_CHECK_LIB(GLcore, glNewList,
                GL_LIBS="-lGLcore")
-  if test "x$ac_cv_lib_GLcore_glNewList" = "xno" ; then
-    # if no GLcore, check for GL
-    AC_CHECK_LIB(GL, glNewList,
-                 GL_LIBS="-lGL")
-    if test "x$ac_cv_lib_GL_glNewList" = "xno" ; then
-      # latest Mesa may need stdc++ (SGI SI GLU will have C++ deps)
-      AC_CHECK_LIB(GL, glCallList,
-                   GL_LIBS="-lGL -lstdc++", ,
-                   "-lstdc++")
-      if test "x$ac_cv_lib_GL_glCallList" = "xno" ; then
-        # if no GL, check for MesaGL
-        AC_CHECK_LIB(MesaGL, glNewList,
-                     GL_LIBS="-lMesaGL",
-                     AC_MSG_ERROR(Cannot find GL library))
-      fi
-    fi
-  else
+  if test "x$ac_cv_lib_GLcore_glNewList" = "xyes" ; then
     # if GLcore found, then also check for GL
     AC_CHECK_LIB(GL, glXCreateContext,
-                 GL_LIBS="-lGL $GL_LIBS",
-                 AC_MSG_ERROR(Cannot find GL library))
+                 [ GL_LIBS="-lGL $GL_LIBS"
+                   have_GL=yes ])
   fi
 
+  # GL
+  if test "x$have_GL" = "xno" ; then
+    # if no GLcore and GL, check for GL
+    AC_CHECK_LIB(GL, glNewList,
+                 [ GL_LIBS="-lGL"
+                   have_GL=yes ])
+    if test "x$ac_cv_lib_GL_glNewList" = "xno" ; then
+      # GL may need to link with -lpthread explicitly
+      AC_CHECK_LIB(GL, glGenLists,
+                   [ GL_LIBS="-lGL -lpthread"
+                     have_GL=yes ], ,
+                   "-lpthread")
+      if test "x$ac_cv_lib_GL_glGenLists" = "xno" ; then
+        # GL may need to link with -lstdc++ explicitly
+        AC_CHECK_LIB(GL, glCallList,
+                     [ GL_LIBS="-lGL -lstdc++"
+                       have_GL=yes ], ,
+                     "-lstdc++")
+        if test "x$ac_cv_lib_GL_glCallList" = "xno" ; then
+          # GL may need to link with -lstdc++ and -lpthread explicitly
+          AC_CHECK_LIB(GL, glEndList,
+                       [ GL_LIBS="-lGL -lstdc++ -lpthread"
+                         have_GL=yes ], ,
+                       "-lstdc++ -lpthread")
+        fi
+      fi
+    fi
+  fi
+
+  # MesaGL
+  if test "x$have_GL" = "xno" ; then
+    # if no GL, check for MesaGL
+    AC_CHECK_LIB(MesaGL, glNewList,
+                 [ GL_LIBS="-lMesaGL"
+                   have_GL=yes ])
+  fi
+
+  if test "x$have_GL" = "xno" ; then
+    # no GL found
+    AC_MSG_ERROR(Cannot find GL library)
+  fi
+
+  have_GLU=no
+
   AC_CHECK_LIB(GLU, gluNewQuadric,
-               GL_LIBS="-lGLU $GL_LIBS",
-               , $GL_LIBS)
+               [ GL_LIBS="-lGLU $GL_LIBS"
+                 have_GLU=yes], ,
+               $GL_LIBS)
   if test "x$ac_cv_lib_GLU_gluNewQuadric" = "xno" ; then
     # if no GLU, check for MesaGLU
     AC_CHECK_LIB(MesaGLU, gluNewQuadric,
-                 GL_LIBS="-lMesaGLU $GL_LIBS",
-                 AC_MSG_ERROR(Cannot find GLU library),
+                 [ GL_LIBS="-lMesaGLU $GL_LIBS"
+                   have_GLU=yes], ,
                  $GL_LIBS)
+  fi
+
+  if test "x$have_GLU" = "xno" ; then
+    # no GLU found
+    AC_MSG_ERROR(Cannot find GLU library)
   fi
 
 else
@@ -345,27 +382,27 @@ else
   # for Win32
 
   AC_MSG_CHECKING([for glNewList in -lopengl32])
+  have_opengl32=no
   LIBS="-lopengl32 $LIBS"
   AC_TRY_LINK([ #include <windows.h>
                 #include <GL/gl.h> ], 
               [ glNewList(1, GL_COMPILE); ], 
               [ GL_LIBS="-lopengl32"
-                have_opengl32=yes ],
-              have_opengl32=no)
+                have_opengl32=yes ])
   AC_MSG_RESULT($have_opengl32)
   if test "x$have_opengl32" = "xno" ; then
     AC_MSG_ERROR(Cannot find GL library)
   fi
 
   AC_MSG_CHECKING([for gluNewQuadric in -lglu32])
+  have_glu32=no
   LIBS="-lglu32 $LIBS"
   AC_TRY_LINK([ #include <windows.h>
                 #include <GL/gl.h>
                 #include <GL/glu.h> ], 
               [ gluNewQuadric(); ], 
               [ GL_LIBS="-lglu32 $GL_LIBS"
-                have_glu32=yes ],
-              have_glu32=no)
+                have_glu32=yes ])
   AC_MSG_RESULT($have_glu32)
   if test "x$have_glu32" = "xno" ; then
     AC_MSG_ERROR(Cannot find GLU library)
@@ -402,95 +439,8 @@ LIBS="$save_LIBS"
 
 
 ##################################################
-# Checks for OpenGL (ripped from GtkGLArea)
+# CFLAGS and LIBS
 ##################################################
-
-dnl AC_ARG_WITH(GL-prefix,   [  --with-GL-prefix=DIR    prefix where GL/MesaGL is installed])
-dnl AC_ARG_WITH(lib-GL,      [  --with-lib-GL           use '-lGL'])
-dnl AC_ARG_WITH(lib-MesaGL,  [  --with-lib-MesaGL       use '-lMesaGL'])
-dnl AC_ARG_WITH(lib-opengl32,[  --with-lib-opengl32     use '-lopengl32'])
-
-dnl if test "x$with_GL_prefix" = "x" ; then
-dnl  GL_LDOPTS=""
-dnl  GL_CFLAGS=""
-dnl else
-dnl  GL_LDOPTS="-L$with_GL_prefix/lib"
-dnl  GL_CFLAGS="-I$with_GL_prefix/include"
-dnl fi
-
-dnl saved_LIBS="$LIBS"
-
-dnl AC_MSG_CHECKING([OpenGL])
-dnl LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lGL"
-dnl AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_GL=yes, 
-dnl   LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lopengl32"
-dnl   [AC_TRY_LINK([ #include <windows.h>
-dnl                  #include <GL/gl.h>], 
-dnl                [ glBegin(GL_TRIANGLES); ], 
-dnl     [have_opengl32=yes
-dnl      have_GL=yes],
-dnl     have_GL=no)])
-dnl AC_MSG_RESULT($have_GL)
-
-dnl AC_MSG_CHECKING([Mesa])
-dnl LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lMesaGL"
-dnl AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_MesaGL=yes, have_MesaGL=no)
-dnl AC_MSG_RESULT($have_MesaGL)
-
-dnl if test "x$have_MesaGL" = "xno"; then
-dnl  AC_MSG_CHECKING([Mesa with pthreads])
-dnl  LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lMesaGL -lpthread"
-dnl  AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_MesaGL_pthread=yes, have_MesaGL_pthread=no)
-dnl  AC_MSG_RESULT($have_MesaGL_pthread)
-dnl fi
-
-dnl LIBS="$saved_LIBS"
-
-dnl if test "x$with_lib_GL" = "xyes"; then
-
-dnl  if test "x$have_GL" = "xyes"; then
-dnl   GL_LIBS="$GL_LDOPTS -lGLU -lGL"
-dnl  else
-dnl   AC_MSG_ERROR([Missing GL library])
-dnl  fi
-
-dnl elif test "x$with_lib_MesaGL" = "xyes"; then
-
-dnl  if test "x$have_MesaGL" = "xyes"; then
-dnl   GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL"
-dnl  elif test "x$have_MesaGL_pthread" = "xyes"; then
-dnl   GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL -lpthread"
-dnl  else
-dnl   AC_MSG_ERROR([Missing MesaGL library])
-dnl  fi
-
-dnl elif test "x$with_lib_opengl32" = "xyes"; then
-
-dnl  if test "x$have_opengl32" = "xyes"; then
-dnl   GL_LIBS="$GL_LDOPTS -lglu32 -lopengl32"
-dnl  else
-dnl   AC_MSG_ERROR([Missing OpenGL32 library])
-dnl  fi
-
-dnl else
-
-dnl  if test "x$have_opengl32" = "xyes"; then
-dnl   GL_LIBS="$GL_LDOPTS -lglu32 -lopengl32"
-dnl  elif test "x$have_GL" = "xyes"; then
-dnl   GL_LIBS="$GL_LDOPTS -lGLU -lGL"
-dnl  elif test "x$have_MesaGL" = "xyes"; then
-dnl   GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL"
-dnl  elif test "x$have_MesaGL_pthread" = "xyes"; then
-dnl   GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL -lpthread"
-dnl  else
-dnl   AC_MSG_ERROR([You need GL or MesaGL libraries])
-dnl  fi
-
-dnl fi
-
-dnl AC_SUBST(GL_CFLAGS)
-dnl AC_SUBST(GL_LIBS)
-
 
 GDKGLEXT_PACKAGES="$GDK_PKG"
 GDKGLEXT_EXTRA_LIBS="$GL_LIBS"
