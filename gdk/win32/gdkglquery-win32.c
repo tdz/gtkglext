@@ -112,3 +112,9 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 }
 
 #endif /* GDK_MULTIHEAD_SAFE */
+
+GdkGLProc
+gdk_gl_query_get_proc_address (const char *proc_name)
+{
+  return wglGetProcAddress (proc_name);
+}
