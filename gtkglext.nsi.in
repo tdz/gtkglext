@@ -10,7 +10,7 @@
 !define GTKGLEXT_API_VERSION     @GTKGLEXT_API_VERSION@
 !define GTKGLEXT_PUBLISHER       "GtkGLExt"
 !define GTKGLEXT_URL_INFO_ABOUT  "http://gtkglext.sourceforge.net/"
-!define GTKGLEXT_URL_UPDATE_INFO "http://sourceforge.net/projects/gtkglext"
+!define GTKGLEXT_URL_UPDATE_INFO "http://sourceforge.net/projects/gtkglext/"
 !define GTKGLEXT_HELP_LINK       "mailto:gtkglext-users@lists.sourceforge.net"
 
 ;--------------------------------
@@ -37,15 +37,23 @@ InstallDirRegKey HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION} "Path"
 !define MUI_PRODUCT "GtkGLExt"
 !define MUI_VERSION "${GTKGLEXT_VERSION}"
 
-!define MUI_NAME "GtkGLExt ${MUI_VERSION}" ;Installer name
+!define MUI_NAME "${MUI_PRODUCT} ${MUI_VERSION}" ;Installer name
 
 !define MUI_WELCOMEPAGE
 !define MUI_LICENSEPAGE
 !define MUI_COMPONENTSPAGE
   !define MUI_COMPONENTSPAGE_SMALLDESC
 !define MUI_DIRECTORYPAGE
+!define MUI_STARTMENUPAGE
+  ;$9 is being used to store the Start Menu Folder.
+  ;Do not use this variable in your script (or Push/Pop it)!
+  ;To change this variable, use MUI_STARTMENUPAGE_VARIABLE.
+  !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
+  !define MUI_STARTMENUPAGE_REGISTRY_KEY "SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}"
+  !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "StartMenuFolder"
 !define MUI_FINISHPAGE
   ;!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\Docs\index.html"
+  !define MUI_FINISHPAGE_NOAUTOCLOSE
   !define MUI_FINISHPAGE_NOREBOOTSUPPORT
 
 !define MUI_ABORTWARNING
@@ -59,6 +67,11 @@ InstallDirRegKey HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION} "Path"
 !define MUI_TEXT_WELCOME_INFO_TEXT "This wizard will guide you through the installation of GtkGLExt, OpenGL Extension to GTK.\r\n\r\n\r\n"
 
 !insertmacro MUI_LANGUAGE "English"
+  
+;--------------------------------
+;Reserve Files
+
+!insertmacro MUI_RESERVEFILE_WELCOMEFINISHPAGE
 
 ;--------------------------------
 ;Data
@@ -150,6 +163,26 @@ Section "GtkGLExt Examples" SecExamples
 
 SectionEnd
 
+Section "Start Menu" SecStartMenu
+  SectionIn 1 2
+
+  ;Create shortcuts
+  SetShellVarContext all
+  !insertmacro MUI_STARTMENU_WRITE_BEGIN    
+
+    CreateDirectory "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}"
+
+    WriteINIStr "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}\GtkGLExt Homepage.url" "InternetShortcut" "URL" "http://gtkglext.sourceforge.net/"
+
+    IfFileExists "$INSTDIR\share\gtk-doc\html\gtkglext\index.html" "" +2
+      CreateShortCut "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}\GtkGLExt Reference Manual.lnk" "$INSTDIR\share\gtk-doc\html\gtkglext\index.html"
+
+    CreateShortCut "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}\Uninstall.lnk" "$INSTDIR\uninst-gtkglext.exe"
+
+  !insertmacro MUI_STARTMENU_WRITE_END
+
+SectionEnd
+
 Section -post
 
   ; Registry
@@ -177,6 +210,7 @@ SectionEnd
   !insertmacro MUI_DESCRIPTION_TEXT ${SecRuntime} "GtkGLExt runtime libraries"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecDevelopment} "GtkGLExt development headers, libraries, and documentations"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecExamples} "GtkGLExt example programs"
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecStartMenu} "Adds icons to your start menu for easy access"
 !insertmacro MUI_FUNCTIONS_DESCRIPTION_END
 
 ;--------------------------------
@@ -249,6 +283,16 @@ FunctionEnd
 
 Section Uninstall
 
+  ;Remove shortcut
+  SetShellVarContext all
+  ReadRegStr $0 "${MUI_STARTMENUPAGE_REGISTRY_ROOT}" "${MUI_STARTMENUPAGE_REGISTRY_KEY}" "${MUI_STARTMENUPAGE_REGISTRY_VALUENAME}"
+  StrCmp $0 "" noshortcuts
+    Delete "$SMPROGRAMS\$0\GtkGLExt Homepage.url"
+    Delete "$SMPROGRAMS\$0\GtkGLExt Reference Manual.lnk"
+    Delete "$SMPROGRAMS\$0\Uninstall.lnk"
+    RMDir "$SMPROGRAMS\$0" ;Only if empty, so it won't delete other shortcuts
+  noshortcuts:
+
   DeleteRegKey HKLM "SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}"
   DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt"
 
@@ -261,9 +305,7 @@ Section Uninstall
   RMDir $INSTDIR
   RMDir $PROGRAMFILES\GtkGLExt
 
-  !ifndef CLASSIC_UI
-    ;Modern UI Finish Header
-    !insertmacro MUI_UNFINISHHEADER
-  !endif
+  ;Modern UI Finish Header
+  !insertmacro MUI_UNFINISHHEADER
 
 SectionEnd
