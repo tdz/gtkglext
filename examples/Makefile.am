@@ -47,7 +47,8 @@ common_programs = \
 	rotating-square	\
 	coolwave	\
 	template	\
-	scribble-gl
+	scribble-gl	\
+	font-pangoft2
 
 x11_programs = \
 	glxinfo
@@ -133,6 +134,10 @@ template_LDADD = $(LDADDS)
 scribble_gl_SOURCES = scribble-gl.c
 scribble_gl_DEPENDENCIES = $(DEPS)
 scribble_gl_LDADD = $(LDADDS)
+
+font_pangoft2_SOURCES = font-pangoft2.c
+font_pangoft2_DEPENDENCIES = $(DEPS)
+font_pangoft2_LDADD = $(LDADDS) -lpangoft2-1.0
 
 glxinfo_SOURCES = glxinfo.c
 glxinfo_DEPENDENCIES = $(DEPS)

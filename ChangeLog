@@ -1,3 +1,11 @@
+2003-07-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/font-pangoft2.c: 
+	* examples/Makefile.am (common_programs): 
+	* examples/Makefile.mingw (PROGRAMS): 
+	* examples/Makefile.msc (PROGRAMS): Added simple example for text
+	rendering with PangoFT2.
+
 2003-07-18  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/Makefile.am (scribble_gl_SOURCES) 

@@ -110,6 +110,7 @@ SOURCES = \
 	coolwave.c		\
 	template.c		\
 	scribble-gl.c		\
+	font-pangoft2.c		\
 	wglinfo.c
 
 EXTRA_SOURCES = \
@@ -138,6 +139,7 @@ PROGRAMS = \
 	coolwave$(EXEEXT)		\
 	template$(EXEEXT)		\
 	scribble-gl$(EXEEXT)		\
+	font-pangoft2$(EXEEXT)		\
 	wglinfo$(EXEEXT)
 
 .SUFFIXES:
@@ -209,6 +211,9 @@ template$(EXEEXT): template.obj
 
 scribble-gl$(EXEEXT): scribble-gl.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+font-pangoft2$(EXEEXT): font-pangoft2.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS) pangoft2-1.0.lib
 
 wglinfo$(EXEEXT): wglinfo.obj
 	$(link) $(linkdebug) -out:$@ $** opengl32.lib $(guilibs)
