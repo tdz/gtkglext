@@ -244,16 +244,16 @@ GLAPI void APIENTRY glFacetNormal3fv (const GLfloat *);
 GLAPI void APIENTRY glFacetNormal3iv (const GLint *);
 GLAPI void APIENTRY glFacetNormal3sv (const GLshort *);
 #endif /* GL_GLEXT_PROTOTYPES */
-typedef void (APIENTRY * PFNGLFACETNORMAL3BEXTPROC) (GLbyte nx, GLbyte ny, GLbyte nz);
-typedef void (APIENTRY * PFNGLFACETNORMAL3DEXTPROC) (GLdouble nx, GLdouble ny, GLdouble nz);
-typedef void (APIENTRY * PFNGLFACETNORMAL3FEXTPROC) (GLfloat nx, GLfloat ny, GLfloat nz);
-typedef void (APIENTRY * PFNGLFACETNORMAL3IEXTPROC) (GLint nx, GLint ny, GLint nz);
-typedef void (APIENTRY * PFNGLFACETNORMAL3SEXTPROC) (GLshort nx, GLshort ny, GLshort nz);
-typedef void (APIENTRY * PFNGLFACETNORMAL3BVEXTPROC) (const GLbyte *v);
-typedef void (APIENTRY * PFNGLFACETNORMAL3DVEXTPROC) (const GLdouble *v);
-typedef void (APIENTRY * PFNGLFACETNORMAL3FVEXTPROC) (const GLfloat *v);
-typedef void (APIENTRY * PFNGLFACETNORMAL3IVEXTPROC) (const GLint *v);
-typedef void (APIENTRY * PFNGLFACETNORMAL3SVEXTPROC) (const GLshort *v);
+typedef void (APIENTRY * PFNGLFACETNORMAL3BPROC) (GLbyte nx, GLbyte ny, GLbyte nz);
+typedef void (APIENTRY * PFNGLFACETNORMAL3DPROC) (GLdouble nx, GLdouble ny, GLdouble nz);
+typedef void (APIENTRY * PFNGLFACETNORMAL3FPROC) (GLfloat nx, GLfloat ny, GLfloat nz);
+typedef void (APIENTRY * PFNGLFACETNORMAL3IPROC) (GLint nx, GLint ny, GLint nz);
+typedef void (APIENTRY * PFNGLFACETNORMAL3SPROC) (GLshort nx, GLshort ny, GLshort nz);
+typedef void (APIENTRY * PFNGLFACETNORMAL3BVPROC) (const GLbyte *v);
+typedef void (APIENTRY * PFNGLFACETNORMAL3DVPROC) (const GLdouble *v);
+typedef void (APIENTRY * PFNGLFACETNORMAL3FVPROC) (const GLfloat *v);
+typedef void (APIENTRY * PFNGLFACETNORMAL3IVPROC) (const GLint *v);
+typedef void (APIENTRY * PFNGLFACETNORMAL3SVPROC) (const GLshort *v);
 #endif
 
 #ifndef GL_Autodesk_valid_back_buffer_hint
@@ -262,8 +262,8 @@ typedef void (APIENTRY * PFNGLFACETNORMAL3SVEXTPROC) (const GLshort *v);
 GLAPI void APIENTRY glWindowBackBufferHint (void);
 GLAPI GLboolean APIENTRY glValidBackBufferHint (GLint, GLint, GLsizei, GLsizei);
 #endif /* GL_GLEXT_PROTOTYPES */
-typedef void (APIENTRY * PFNGLWINDOWBACKBUFFERHINTEXTPROC) (void);
-typedef GLboolean (APIENTRY * PFNGLVALIDBACKBUFFERHINTEXTPROC) (GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (APIENTRY * PFNGLWINDOWBACKBUFFERHINTPROC) (void);
+typedef GLboolean (APIENTRY * PFNGLVALIDBACKBUFFERHINTPROC) (GLint x, GLint y, GLsizei width, GLsizei height);
 #endif
 
 /*
@@ -562,11 +562,11 @@ GLAPI void APIENTRY glDeleteBufferRegion (GLenum);
 GLAPI void APIENTRY glReadBufferRegion (GLuint, GLint, GLint, GLsizei, GLsizei);
 GLAPI void APIENTRY glDrawBufferRegion (GLuint, GLint, GLint, GLsizei, GLsizei, GLint, GLint);
 #endif /* GL_GLEXT_PROTOTYPES */
-typedef GLuint (APIENTRY * PFNGLBUFFERREGIONENABLEDEXTPROC) (void);
-typedef GLuint (APIENTRY * PFNGLNEWBUFFERREGIONEXTPROC) (GLenum region);
-typedef void (APIENTRY * PFNGLDELETEBUFFERREGIONEXTPROC) (GLenum region);
-typedef void (APIENTRY * PFNGLREADBUFFERREGIONEXTPROC) (GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
-typedef void (APIENTRY * PFNGLDRAWBUFFERREGIONEXTPROC) (GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
+typedef GLuint (APIENTRY * PFNGLBUFFERREGIONENABLEDPROC) (void);
+typedef GLuint (APIENTRY * PFNGLNEWBUFFERREGIONPROC) (GLenum region);
+typedef void (APIENTRY * PFNGLDELETEBUFFERREGIONPROC) (GLenum region);
+typedef void (APIENTRY * PFNGLREADBUFFERREGIONPROC) (GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (APIENTRY * PFNGLDRAWBUFFERREGIONPROC) (GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
 #endif
 
 /*
