@@ -103,8 +103,6 @@ gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
                                         int                         count,
                                         int                         list_base)
 {
-  g_return_val_if_fail (display == gdk_display_get_default (), NULL);
-
   return gdk_gl_font_use_pango_font (font_desc, first, count, list_base);
 }
 

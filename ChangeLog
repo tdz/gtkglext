@@ -1,22 +1,26 @@
+2003-05-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglfont-win32.c
+	(gdk_gl_font_use_pango_font_for_display): Removed unnecessary
+	parameter check.
+
 2003-05-14  Alif Wahid  <awah005@users.sourceforge.net>
 
-    * examples/template.c: minor improvement of 
-    console printouts in key_press_event, map_event 
-    and unmap_event signal handlers.
+	* examples/template.c: minor improvement of console printouts in
+	key_press_event, map_event and unmap_event signal handlers.
 
 2003-05-13  Alif Wahid  <awah005@users.sourceforge.net>
 
-    * examples/coolwave.c:
-    * examples/rotating-square.c:
-    * examples/template.c:
-    * examples/viewlw.c: Updated my e-mail address.
+	* examples/coolwave.c:
+	* examples/rotating-square.c:
+	* examples/template.c:
+	* examples/viewlw.c: Updated my e-mail address.
 
-    * examples/coolwave.c (button_press_event): Fixed a bug
-    concerning the improper functioning of zooming drag with
-    the middle mouse-button. The beginning x and y coordinates
-    were not being set properly, so each new zooming drag
-    started from the previous drag and as a result wasn't
-    going anywhere.
+	* examples/coolwave.c (button_press_event): Fixed a bug concerning
+	the improper functioning of zooming drag with the middle
+	mouse-button. The beginning x and y coordinates were not being set
+	properly, so each new zooming drag started from the previous drag
+	and as a result wasn't going anywhere.
 
 2003-05-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
