@@ -130,62 +130,18 @@ gtk_widget_gl_configure_event (GtkWidget         *widget,
                                GdkEventConfigure *event,
                                gpointer           data)
 {
-  GtkGLWidgetParam *param;
-  GdkGLWindow *glwindow;
-  GdkGLContext *glcontext;
-
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_configure_event ()"));
 
-  if (quark_gl_context == 0)
-    quark_gl_context = g_quark_from_static_string (quark_gl_context_string);
-
-  /* Already OpenGL-capable */
-  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_context) != NULL)
-    goto DONE;
-
-  /* Get param */
-  param = g_object_get_qdata (G_OBJECT (widget), quark_param);
-  if (param == NULL)
-    goto DONE;
+  /* Realize. */
+  gtk_widget_gl_realize (widget, data);
 
   /*
-   * Set OpenGL-capability to widget->window.
+   * Once OpenGL-capable widget is realized,
+   * this callback is no longer needed.
    */
-
-  glwindow = gdk_window_set_gl_capability (widget->window,
-                                           param->glconfig,
-                                           NULL);
-
-  /*
-   * Create OpenGL rendering context.
-   */
-
-  glcontext = gdk_gl_context_new (GDK_GL_DRAWABLE (glwindow),
-                                  param->glconfig,
-                                  param->share_list,
-                                  param->direct,
-                                  param->render_type);
-  if (glcontext == NULL)
-    {
-      g_warning ("cannot create GdkGLContext\n");
-      goto DONE;
-    }
-
-  g_object_set_qdata_full (G_OBJECT (widget), quark_gl_context, glcontext,
-                           (GDestroyNotify) gl_context_destroy);
-
-  /* Destroy OpenGL rendering context explicitly. */
-  param->quit_handler_id = gtk_quit_add (gtk_main_level () + 1,
-                                         (GtkFunction) gtk_widget_destroy_gl_context,
-                                         widget);
-
- DONE:
-
-#if 1
   g_signal_handlers_disconnect_by_func (widget,
                                         G_CALLBACK (gtk_widget_gl_configure_event),
                                         NULL);
-#endif
 
   return FALSE;
 }

@@ -1,3 +1,8 @@
+2002-12-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gtk/gtkglwidget.c (gtk_widget_gl_configure_event): Clean up
+	duplicated code.
+
 2002-12-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/low-level.c: 
