@@ -25,7 +25,7 @@
 #define FOVY_2 20.0
 #define Z_NEAR 3.0
 
-static const char *text = "This text is rendered with Παν語FT2";
+static const char *text = "This text is rendered with Παν語FT2.";
 
 static PangoContext *ft2_context = NULL;
 
