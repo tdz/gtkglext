@@ -151,6 +151,7 @@ EXTRA_PROGRAMS = \
 	simple		\
 	pixmap		\
 	font		\
+	gears		\
 	viewlw
 
 
@@ -170,6 +171,10 @@ font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
 
+gears_SOURCES = gears.c
+gears_DEPENDENCIES = $(DEPS)
+gears_LDADD = $(LDADDS)
+
 viewlw_SOURCES = viewlw.c lw.h lw.c trackball.h trackball.c
 viewlw_DEPENDENCIES = $(DEPS)
 viewlw_LDADD = $(LDADDS)
@@ -183,10 +188,13 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 EXTRA_PROGRAMS = low-level$(EXEEXT) simple$(EXEEXT) pixmap$(EXEEXT) \
-	font$(EXEEXT) viewlw$(EXEEXT)
+	font$(EXEEXT) gears$(EXEEXT) viewlw$(EXEEXT)
 am_font_OBJECTS = font.$(OBJEXT)
 font_OBJECTS = $(am_font_OBJECTS)
 font_LDFLAGS =
+am_gears_OBJECTS = gears.$(OBJEXT)
+gears_OBJECTS = $(am_gears_OBJECTS)
+gears_LDFLAGS =
 am_low_level_OBJECTS = low-level.$(OBJEXT)
 low_level_OBJECTS = $(am_low_level_OBJECTS)
 low_level_LDFLAGS =
@@ -207,10 +215,10 @@ LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/font.Po ./$(DEPDIR)/low-level.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/lw.Po ./$(DEPDIR)/pixmap.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/simple.Po ./$(DEPDIR)/trackball.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/viewlw.Po
+@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/font.Po ./$(DEPDIR)/gears.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/low-level.Po ./$(DEPDIR)/lw.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/pixmap.Po ./$(DEPDIR)/simple.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/trackball.Po ./$(DEPDIR)/viewlw.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -219,10 +227,10 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
-DIST_SOURCES = $(font_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) \
-	$(simple_SOURCES) $(viewlw_SOURCES)
+DIST_SOURCES = $(font_SOURCES) $(gears_SOURCES) $(low_level_SOURCES) \
+	$(pixmap_SOURCES) $(simple_SOURCES) $(viewlw_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(font_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(simple_SOURCES) $(viewlw_SOURCES)
+SOURCES = $(font_SOURCES) $(gears_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(simple_SOURCES) $(viewlw_SOURCES)
 
 all: all-am
 
@@ -236,6 +244,9 @@ Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.s
 font$(EXEEXT): $(font_OBJECTS) $(font_DEPENDENCIES) 
 	@rm -f font$(EXEEXT)
 	$(LINK) $(font_LDFLAGS) $(font_OBJECTS) $(font_LDADD) $(LIBS)
+gears$(EXEEXT): $(gears_OBJECTS) $(gears_DEPENDENCIES) 
+	@rm -f gears$(EXEEXT)
+	$(LINK) $(gears_LDFLAGS) $(gears_OBJECTS) $(gears_LDADD) $(LIBS)
 low-level$(EXEEXT): $(low_level_OBJECTS) $(low_level_DEPENDENCIES) 
 	@rm -f low-level$(EXEEXT)
 	$(LINK) $(low_level_LDFLAGS) $(low_level_OBJECTS) $(low_level_LDADD) $(LIBS)
@@ -256,6 +267,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/font.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gears.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/low-level.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lw.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pixmap.Po@am__quote@

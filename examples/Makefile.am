@@ -21,6 +21,7 @@ EXTRA_PROGRAMS = \
 	simple		\
 	pixmap		\
 	font		\
+	gears		\
 	viewlw
 
 low_level_SOURCES = low-level.c
@@ -38,6 +39,10 @@ pixmap_LDADD = $(LDADDS)
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
+
+gears_SOURCES = gears.c
+gears_DEPENDENCIES = $(DEPS)
+gears_LDADD = $(LDADDS)
 
 viewlw_SOURCES = viewlw.c lw.h lw.c trackball.h trackball.c
 viewlw_DEPENDENCIES = $(DEPS)

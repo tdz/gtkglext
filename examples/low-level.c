@@ -218,32 +218,6 @@ display (GtkWidget      *widget,
   return TRUE;
 }
 
-#if 0
-static gboolean
-idle (GtkWidget *widget)
-{
-  /* OpenGL begin. */
-  if (gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
-    {
-      gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
-
-      glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-      glCallList (1);
-
-      if (gdk_gl_config_is_double_buffer (glconfig))
-        gdk_gl_drawable_swap_buffers (GDK_GL_DRAWABLE (glwindow));
-      else
-        glFlush ();
-
-      gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
-    }
-  /* OpenGL end. */
-
-  return TRUE;
-}
-#endif
-
 static gboolean
 destroy_gl_context (GtkWidget *widget)
 {
@@ -387,10 +361,6 @@ main (int argc,
 
   /* Destroy the GLX context explicitly when application is terminated. */
   gtk_quit_add (0, (GtkFunction) destroy_gl_context, drawing_area);
-
-#if 0
-  gtk_idle_add((GtkFunction) idle, drawing_area);
-#endif
 
   gtk_main ();
 

@@ -158,29 +158,6 @@ display (GtkWidget      *widget,
   return TRUE;
 }
 
-#if 0
-static gboolean
-idle (GtkWidget *widget)
-{
-  /* OpenGL begin. */
-  gtk_widget_gl_begin (widget);
-
-  glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-  glCallList (1);
-
-  if (gtk_widget_gl_is_double_buffer (widget))
-    gtk_widget_gl_swap_buffers (widget);
-  else
-    glFlush ();
-
-  gtk_widget_gl_end (widget);
-  /* OpenGL end. */
-
-  return TRUE;
-}
-#endif
-
 static gint
 quit (GtkWidget *widget,
       GdkEvent  *event,
@@ -305,10 +282,6 @@ main (int argc,
   /*
    * Main loop.
    */
-
-#if 0
-  gtk_idle_add((GtkFunction) idle, drawing_area);
-#endif
 
   gtk_main ();
 
