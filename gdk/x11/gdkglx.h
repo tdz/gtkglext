@@ -21,8 +21,6 @@
 
 #include <gdk/gdkx.h>
 
-#include <gdk/gdkglprivate.h>
-
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 

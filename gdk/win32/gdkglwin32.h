@@ -21,8 +21,6 @@
 
 #include <gdk/gdkwin32.h>
 
-#include <gdk/gdkglprivate.h>
-
 #ifndef STRICT
 #define STRICT                  /* We want strict type checks */
 #endif
