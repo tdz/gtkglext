@@ -26,9 +26,8 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
-#define __glxext_h_
+#include <GL/gl.h>
 #include <GL/glx.h>
-#undef __glxext_h_
 
 #include <gdk/gdkgldefs.h>
 #include <gdk/gdkglquery.h>
@@ -87,8 +86,15 @@ typedef XID GLXPbufferSGIX;
 #define GLX_EXT_import_context 1
 #endif
 
-#include <gdk/GL/glxext.h>
-#include <gdk/GL/glxext-extra.h>
+/* Avoid old glxext.h bug. */
+#if !defined(GLX_SGIX_video_source) && !defined(GDKGLEXT_NEED_GLXVIDEOSOURCESGIX_TYPEDEF)
+#define GLX_SGIX_video_source 1
+#endif
+
+#undef __glxext_h_
+#undef GLX_GLXEXT_VERSION
+#include <gdk/glext/glxext.h>
+#include <gdk/glext/glxext-extra.h>
 
 /*
  * GLX_VERSION_1_3

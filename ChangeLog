@@ -1,3 +1,24 @@
+2003-07-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* configure.in: 
+	* gdk/glext/gen-gdkglglxext-h.pl: 
+	* gdk/x11/gdkglglxext.h: Check GLXVideoSourceSGIX typedef to avoid
+	old SGI's glxext.h bug.
+
+	* gdk/gdkglglext.h: 
+	* gdk/x11/gdkglglxext.h: 
+	* gdk/win32/gdkglwglext.h: Updated.
+
+	* gdk/glext/gen-gdkglglext-h.pl: 
+	* gdk/glext/gen-gdkglglxext-h.pl: 
+	* gdk/glext/gen-gdkglwglext-h.pl: Include <gdk/glext/*.h>
+	extension headers.
+
+	* configure.in: 
+	* gdk/glext/Makefile.am: 
+	* gdk/glext: Renamed gdk/GL to gdk/glext to prevent <GL/gl.h> from
+	including <GL/glext.h> in gdk directory.
+
 2003-07-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/viewlw.c: Improved mouse operation.

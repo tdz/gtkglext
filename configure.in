@@ -708,6 +708,14 @@ if test "x$gdktarget" = "xx11"; then
     GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF=yes
   fi
 
+  # GLXVideoSourceSGIX
+  GDKGLEXT_NEED_GLXVIDEOSOURCESGIX_TYPEDEF=no
+  AC_CHECK_TYPES([GLXVideoSourceSGIX], , ,
+                 [#include <GL/glx.h>])
+  if test "x$ac_cv_type_GLXVideoSourceSGIX" = "xno" ; then
+    GDKGLEXT_NEED_GLXVIDEOSOURCESGIX_TYPEDEF=yes
+  fi
+
   # __GLXextFuncPtr
   GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF=no
   AC_CHECK_TYPES([__GLXextFuncPtr], , ,
@@ -922,6 +930,7 @@ _______EOF
 $gdkglext_need_glxfbconfigsgix_typedef
 $gdkglext_need_glxfbconfigidsgix_typedef
 $gdkglext_need_glxpbuffersgix_typedef
+$gdkglext_need_glxvideosourcesgix_typedef
 $gdkglext_need_glxextfuncptr_typedef
 $gdkglext_need_glhalfnv_typedef
 _______EOF
@@ -973,6 +982,11 @@ if test "x$GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF" = "xyes"; then
 #define GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF'
 fi
 
+if test "x$GDKGLEXT_NEED_GLXVIDEOSOURCESGIX_TYPEDEF" = "xyes"; then
+  gdkglext_need_glxvideosourcesgix_typedef='
+#define GDKGLEXT_NEED_GLXVIDEOSOURCESGIX_TYPEDEF'
+fi
+
 if test "x$GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF" = "xyes"; then
   gdkglext_need_glxextfuncptr_typedef='
 #define GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF'
@@ -1000,7 +1014,7 @@ gtkglext.nsi
 Makefile
 gdk/Makefile
 gdk/gdkglversion.h
-gdk/GL/Makefile
+gdk/glext/Makefile
 gdk/x11/Makefile
 gdk/win32/Makefile
 gtk/Makefile

@@ -30,9 +30,7 @@
 #include <windows.h>
 #endif
 
-#define __glext_h_
 #include <GL/gl.h>
-#undef __glext_h_
 
 #include <gdk/gdkgldefs.h>
 #include <gdk/gdkglquery.h>
@@ -45,8 +43,10 @@ typedef unsigned short GLhalfNV;
 #endif
 #endif
 
-#include <gdk/GL/glext.h>
-#include <gdk/GL/glext-extra.h>
+#undef __glext_h_
+#undef GL_GLEXT_VERSION
+#include <gdk/glext/glext.h>
+#include <gdk/glext/glext-extra.h>
 
 /*
  * GL_VERSION_1_2

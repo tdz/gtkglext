@@ -1,8 +1,8 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/gdk
 
-SUBDIRS = GL $(gdktarget)
-DIST_SUBDIRS = GL x11 win32
+SUBDIRS = glext $(gdktarget)
+DIST_SUBDIRS = glext x11 win32
 
 EXTRA_DIST = \
 	gdkglversion.h.in	\

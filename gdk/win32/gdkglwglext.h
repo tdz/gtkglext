@@ -30,16 +30,16 @@
 #include <windows.h>
 #endif
 
-#define __wglext_h_
 #include <GL/gl.h>
-#undef __wglext_h_
 
 #include <gdk/gdkgldefs.h>
 #include <gdk/gdkglquery.h>
 #include <gdk/gdkglconfig.h>
 
-#include <gdk/GL/wglext.h>
-#include <gdk/GL/wglext-extra.h>
+#undef __wglext_h_
+#undef WGL_WGLEXT_VERSION
+#include <gdk/glext/wglext.h>
+#include <gdk/glext/wglext-extra.h>
 
 G_BEGIN_DECLS
 
