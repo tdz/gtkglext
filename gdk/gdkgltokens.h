@@ -278,7 +278,7 @@ typedef enum
  */
 typedef enum
 {
-  GDK_GL_PBUFFER_CLOBBER_MASK       = 0x08000000
+  GDK_GL_PBUFFER_CLOBBER_MASK       = 1 << 27  /* 0x08000000 */
 } GdkGLEventMask;
 
 /*
