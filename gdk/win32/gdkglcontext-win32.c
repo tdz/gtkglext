@@ -90,12 +90,10 @@ gdk_gl_context_impl_win32_finalize (GObject *object)
       if (impl->hglrc == wglGetCurrentContext ())
         {
           GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
-
           wglMakeCurrent (NULL, NULL);
         }
 
       GDK_GL_NOTE (IMPL, g_message (" * wglDeleteContext ()"));
-
       wglDeleteContext (impl->hglrc);
     }
 

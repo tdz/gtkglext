@@ -97,16 +97,24 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
 {
   GdkGLWindowImplX11 *impl = GDK_GL_WINDOW_IMPL_X11 (object);
   GdkGL_GLX_MESA_release_buffers *mesa_ext;
+  Display *xdisplay;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_finalize ()"));
+
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
+
+  if (impl->glxwindow == glXGetCurrentDrawable ())
+    {
+      GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
+      glXMakeCurrent (xdisplay, None, NULL);
+    }
 
   /* If GLX_MESA_release_buffers is supported. */
   mesa_ext = gdk_gl_get_GLX_MESA_release_buffers (impl->glconfig);
   if (mesa_ext)
     {
       GDK_GL_NOTE (IMPL, g_message (" * glXReleaseBuffersMESA ()"));
-      mesa_ext->glXReleaseBuffersMESA (GDK_GL_CONFIG_XDISPLAY (impl->glconfig),
-                                       impl->glxwindow);
+      mesa_ext->glXReleaseBuffersMESA (xdisplay, impl->glxwindow);
     }
 
   g_object_unref (G_OBJECT (impl->glconfig));

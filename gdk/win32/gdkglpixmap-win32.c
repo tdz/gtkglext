@@ -101,6 +101,12 @@ gdk_gl_pixmap_impl_win32_finalize (GObject *object)
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_finalize ()"));
 
+  if (impl->hdc == wglGetCurrentDC ())
+    {
+      GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
+      wglMakeCurrent (NULL, NULL);
+    }
+
   /* Delete the memory DC. */
   DeleteDC (impl->hdc);
 

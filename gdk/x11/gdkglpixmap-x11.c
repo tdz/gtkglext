@@ -94,13 +94,21 @@ static void
 gdk_gl_pixmap_impl_x11_finalize (GObject *object)
 {
   GdkGLPixmapImplX11 *impl = GDK_GL_PIXMAP_IMPL_X11 (object);
+  Display *xdisplay;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_finalize ()"));
 
-  GDK_GL_NOTE (IMPL, g_message (" * glXDestroyGLXPixmap ()"));
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
 
-  glXDestroyGLXPixmap (GDK_GL_CONFIG_XDISPLAY (impl->glconfig),
-                       impl->glxpixmap);
+  if (impl->glxpixmap == glXGetCurrentDrawable ())
+    {
+      GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
+      glXMakeCurrent (xdisplay, None, NULL);
+    }
+
+  GDK_GL_NOTE (IMPL, g_message (" * glXDestroyGLXPixmap ()"));
+  glXDestroyGLXPixmap (xdisplay, impl->glxpixmap);
+
   glXWaitGL ();
 
   g_object_unref (G_OBJECT (impl->glconfig));
