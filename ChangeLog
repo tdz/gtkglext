@@ -4,6 +4,10 @@
 	* examples/pixmap-mixed.c (configure_event): Use
 	widget->style->black_gc to draw GDK rectangle.
 
+	* examples/pixmap-mixed.c (configure_event): 
+	* examples/pixmap.c (configure_event): Don't need to pass
+	widget->window to gdk_pixmap_new().
+
 2003-09-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability) 
