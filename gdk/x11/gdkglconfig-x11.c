@@ -30,13 +30,15 @@ enum {
 };
 
 /* Forward declarations */
-#if 1
+#if 0
+
 #ifdef GDK_MULTIHEAD_SAFE
 static XVisualInfo *gdk_x11_visual_get_xvinfo (GdkScreen *screen,
                                                GdkVisual *visual);
 #else  /* GDK_MULTIHEAD_SAFE */
 static XVisualInfo *gdk_x11_visual_get_xvinfo (GdkVisual *visual);
 #endif /* GDK_MULTIHEAD_SAFE */
+
 #endif
 
 static gboolean gdk_x11_gl_config_get_attrib        (GdkGLConfig             *glconfig,
@@ -398,7 +400,7 @@ gdk_gl_config_new_for_screen (GdkScreen  *screen,
 
 #endif /* GDK_MULTIHEAD_SAFE */
 
-#if 1
+#if 0
 
 /*
  * XVisualInfo returned by this function should be freed by XFree ().
