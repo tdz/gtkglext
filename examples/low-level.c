@@ -114,9 +114,6 @@ configure_event (GtkWidget         *widget,
   if (!gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
     return FALSE;
 
-  /* Sync. */
-  gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
-
   glViewport (0, 0,
 	      widget->allocation.width, widget->allocation.height);
 
@@ -134,9 +131,6 @@ expose_event (GtkWidget      *widget,
 
   if (!gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
     return FALSE;
-
-  /* Sync. */
-  gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -297,8 +291,18 @@ main (int   argc,
   gtk_widget_set_colormap (window,
                            gdk_gl_config_get_colormap (glconfig));
 
+  /* Perform the resizes immediately */
+  gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
+
+  /* Get automatically redrawn if any of their children changed allocation. */
+  gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
+
   g_signal_connect (G_OBJECT (window), "delete_event",
                     G_CALLBACK (gtk_main_quit), NULL);
+
+  /*
+   * VBox.
+   */
 
   vbox = gtk_vbox_new (FALSE, 0);
   gtk_container_add (GTK_CONTAINER (window), vbox);

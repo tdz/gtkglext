@@ -243,8 +243,18 @@ main (int argc,
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window), "color");
 
+  /* Perform the resizes immediately */
+  gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
+
+  /* Get automatically redrawn if any of their children changed allocation. */
+  gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
+
   g_signal_connect (G_OBJECT (window), "delete_event",
                     G_CALLBACK (gtk_main_quit), NULL);
+
+  /*
+   * VBox.
+   */
 
   vbox = gtk_vbox_new (FALSE, 0);
   gtk_container_add (GTK_CONTAINER (window), vbox);
