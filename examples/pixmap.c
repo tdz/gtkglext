@@ -104,7 +104,8 @@ configure (GtkWidget         *widget,
            GdkEventConfigure *event,
            gpointer           data)
 {
-  GdkGLPixmap *glpixmap;
+  GdkGLDrawable *gldrawable;
+  static gboolean is_initialized = FALSE;
 
   /*
    * Create an OpenGL off-screen rendering area.
@@ -124,8 +125,8 @@ configure (GtkWidget         *widget,
 
   gdk_pixmap_set_gl_capability (pixmap, glconfig, NULL);
 
-  /* Get GdkGLPixmap */
-  glpixmap = gdk_pixmap_get_gl_pixmap (pixmap);
+  /* Get GdkGLDrawable (== GdkGLPixmap) */
+  gldrawable = gdk_pixmap_get_gl_drawable (pixmap);
 
   /*
    * Create OpenGL rendering context (not direct).
@@ -133,7 +134,7 @@ configure (GtkWidget         *widget,
 
   if (glcontext == NULL)
     {
-      glcontext = gdk_gl_context_new (GDK_GL_DRAWABLE (glpixmap),
+      glcontext = gdk_gl_context_new (gldrawable,
                                       glconfig,
                                       GDK_GL_RGBA_TYPE,
                                       NULL,
@@ -148,32 +149,27 @@ configure (GtkWidget         *widget,
     }
 
   /* OpenGL begin. */
-  if (gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glpixmap), glcontext))
+  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+
+  if (!is_initialized)
     {
-      static gboolean is_initialized = FALSE;
-
-      gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glpixmap));
-
-      if (!is_initialized)
-        {
-          init ();
-          is_initialized = TRUE;
-        }
-
-      glViewport (0, 0,
-                  widget->allocation.width, widget->allocation.height);
-
-      glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-      glCallList (1);
-
-      if (gdk_gl_config_is_double_buffer (glconfig))
-        gdk_gl_drawable_swap_buffers (GDK_GL_DRAWABLE (glpixmap));
-      else
-        glFlush ();
-
-      gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glpixmap));
+      init ();
+      is_initialized = TRUE;
     }
+
+  glViewport (0, 0,
+              widget->allocation.width, widget->allocation.height);
+
+  glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  glCallList (1);
+
+  if (gdk_gl_config_is_double_buffer (glconfig))
+    gdk_gl_drawable_swap_buffers (gldrawable);
+  else
+    glFlush ();
+
+  gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */
 
 #if 0

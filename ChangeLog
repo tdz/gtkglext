@@ -1,3 +1,8 @@
+2002-06-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/gdkgldrawable.h: gdk_gl_drawable_gl_[begin end] macros ware
+	added.
+
 2002-06-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/gears.c: Added.
