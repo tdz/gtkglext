@@ -6,8 +6,9 @@
 
 SHELL = /bin/sh
 
-INCLUDES := $(shell pkg-config --cflags gtkglext-1.0)
+INCLUDES := $(shell pkg-config --cflags gtkglext-1.0 pangoft2)
 LIBS := $(shell pkg-config --libs gtkglext-1.0)
+LIBS_WITH_PANGOFT2 := $(shell pkg-config --libs gtkglext-1.0 pangoft2)
 DEFINES = 
 
 CC = gcc
@@ -172,7 +173,7 @@ scribble-gl$(EXEEXT): scribble-gl.o
 	$(LINK) -o $@ $^ $(LIBS)
 
 font-pangoft2$(EXEEXT): font-pangoft2.o
-	$(LINK) -o $@ $^ $(LIBS) -lpangoft2-1.0
+	$(LINK) -o $@ $^ $(LIBS_WITH_PANGOFT2)
 
 wglinfo$(EXEEXT): wglinfo.o
 	$(LINK) -o $@ $^ -lopengl32 -lgdi32

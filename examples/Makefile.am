@@ -14,7 +14,7 @@ INCLUDES = \
 	-I$(top_builddir)/gdk		\
 	-I$(top_builddir)/gtk		\
 	$(GTKGLEXT_DEBUG_FLAGS)		\
-	$(GTKGLEXT_DEP_CFLAGS)		\
+	$(EXAMPLES_DEP_CFLAGS)		\
 	-DG_DISABLE_DEPRECATED		\
 	-DGDK_DISABLE_DEPRECATED	\
 	-DGDK_PIXBUF_DISABLE_DEPRECATED	\
@@ -28,6 +28,11 @@ LDADDS = \
 	$(top_builddir)/gdk/$(gdkglext_targetlib)	\
 	$(top_builddir)/gtk/$(gtkglext_targetlib)	\
 	$(GTKGLEXT_DEP_LIBS)
+
+LDADDS_WITH_PANGOFT2 = \
+	$(top_builddir)/gdk/$(gdkglext_targetlib)	\
+	$(top_builddir)/gtk/$(gtkglext_targetlib)	\
+	$(GTKGLEXT_DEP_LIBS_WITH_PANGOFT2)
 
 common_programs = \
 	low-level	\
@@ -137,7 +142,7 @@ scribble_gl_LDADD = $(LDADDS)
 
 font_pangoft2_SOURCES = font-pangoft2.c
 font_pangoft2_DEPENDENCIES = $(DEPS)
-font_pangoft2_LDADD = $(LDADDS) -lpangoft2-1.0
+font_pangoft2_LDADD = $(LDADDS_WITH_PANGOFT2)
 
 glxinfo_SOURCES = glxinfo.c
 glxinfo_DEPENDENCIES = $(DEPS)

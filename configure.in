@@ -59,6 +59,10 @@ m4_define([gmodule_required_version], [2.0.0])
 m4_define([pango_pkg], [pango])
 m4_define([pango_required_version], [1.0.0])
 
+# PangoFT2
+m4_define([pangoft2_pkg], [pangoft2])
+m4_define([pangoft2_required_version], [1.0.0])
+
 # GDK
 m4_define([gdk_pkg], [gdk-2.0])
 m4_define([gdk_required_version], [2.0.0])
@@ -798,6 +802,14 @@ AC_SUBST([GTKGLEXT_EXTRA_CFLAGS])
 AC_SUBST([GTKGLEXT_EXTRA_LIBS])
 AC_SUBST([GTKGLEXT_DEP_CFLAGS])
 AC_SUBST([GTKGLEXT_DEP_LIBS])
+
+# CFLAGS for examples
+EXAMPLES_DEP_CFLAGS="$GTKGLEXT_EXTRA_CFLAGS $GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES pangoft2_pkg`"
+AC_SUBST([EXAMPLES_DEP_CFLAGS])
+
+# GtkGLExt dep libs + PangoFT2
+GTKGLEXT_DEP_LIBS_WITH_PANGOFT2="$GTKGLEXT_EXTRA_LIBS $GDKGLEXT_EXTRA_LIBS `$PKG_CONFIG --libs $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES pangoft2_pkg` $MATH_LIB"
+AC_SUBST([GTKGLEXT_DEP_LIBS_WITH_PANGOFT2])
 
 
 ##################################################

@@ -1,5 +1,15 @@
 2003-07-21  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* configure.in: Added $EXAMPLES_DEP_CFLAGS contains PangoFT2
+	cflags. Added $GTKGLEXT_DEP_LIBS_WITH_PANGOFT2 contains PangoFT2
+	libs.
+
+	* examples/Makefile.am (INCLUDES): Use $EXAMPLES_DEP_CFLAGS.
+	(LDADDS_WITH_PANGOFT2): For font-pangoft2.
+
+	* examples/Makefile.msc (LIBS_WITH_PANGOFT2): 
+	* examples/Makefile.mingw (LIBS_WITH_PANGOFT2): For font-pangoft2.
+
 	* examples/scribble-gl.c: Suppress "comparison between signed and
 	unsigned" warnings.
 
