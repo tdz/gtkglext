@@ -418,11 +418,10 @@ main(int   argc,
    * OpenGL extension is supported?
    */
 
-  if (!gdk_gl_query_extension())
-    {
-      g_print("\n*** OpenGL extension is not supported\n");
-      gtk_exit(1);
-    }
+  if (!gdk_gl_query_extension()) {
+    g_print("\n*** OpenGL extension is not supported\n");
+    gtk_exit(1);
+  }
 
   /*
    * Configure OpenGL-capable visual.
@@ -430,19 +429,17 @@ main(int   argc,
 
   /* Try double buffered visual */
   glconfig = gdk_gl_config_new(&config_attributes[0]);
-  if (glconfig == NULL)
-    {
-      g_print("*** Cannot find the OpenGL-capable visual with double buffering support.\n");
-      g_print("*** Trying single buffering visual.\n");
+  if (glconfig == NULL) {
+    g_print("*** Cannot find the OpenGL-capable visual with double buffering support.\n");
+    g_print("*** Trying single buffering visual.\n");
 
-      /* Try single buffered visual */
-      glconfig = gdk_gl_config_new(&config_attributes[1]);
-      if (glconfig == NULL)
-        {
-          g_print("*** Cannot find an OpenGL-capable visual\n");
-          gtk_exit(1);
-        }
+    /* Try single buffered visual */
+    glconfig = gdk_gl_config_new(&config_attributes[1]);
+    if (glconfig == NULL) {
+      g_print("*** Cannot find an OpenGL-capable visual\n");
+      gtk_exit(1);
     }
+  }
 
   /*
    * Top-level window.
