@@ -19,9 +19,6 @@ OpenGL pixmap which is maintained offscreen
 
 </para>
 
-@parent_instance: 
-@glconfig: 
-@drawable: 
 
 <!-- ##### FUNCTION gdk_gl_pixmap_new ##### -->
 <para>

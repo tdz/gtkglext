@@ -399,7 +399,7 @@ uninstall-am: uninstall-info-am
 @ENABLE_GTK_DOC_TRUE@scan-build.stamp: $(HFILE_GLOB)
 @ENABLE_GTK_DOC_TRUE@	@echo '*** Scanning header files ***'
 @ENABLE_GTK_DOC_TRUE@	if grep -l '^..*$$' $(srcdir)/$(DOC_MODULE).types > /dev/null ; then \
-@ENABLE_GTK_DOC_TRUE@	    CC="$(GTKDOC_CC)" LD="$(GTKDOC_LD)" CFLAGS="$(GTKDOC_CFLAGS)" LDFLAGS="$(GTKDOC_LIBS)" gtkdoc-scanobj $(SCANOBJ_OPTIONS) --module=$(DOC_MODULE) --output-dir=$(srcdir) ; \
+@ENABLE_GTK_DOC_TRUE@	    CC="$(GTKDOC_CC)" LD="$(GTKDOC_LD)" CFLAGS="$(GTKDOC_CFLAGS)" LDFLAGS="$(GTKDOC_LIBS)" gtkdoc-scangobj $(SCANOBJ_OPTIONS) --module=$(DOC_MODULE) --output-dir=$(srcdir) ; \
 @ENABLE_GTK_DOC_TRUE@	else \
 @ENABLE_GTK_DOC_TRUE@	    cd $(srcdir) ; \
 @ENABLE_GTK_DOC_TRUE@	    for i in $(SCANOBJ_FILES) ; do \

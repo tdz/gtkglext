@@ -19,13 +19,6 @@ OpenGL rendering context object
 
 </para>
 
-@parent_instance: 
-@gldrawable: 
-@gldrawable_read: 
-@glconfig: 
-@share_list: 
-@is_direct: 
-@render_type: 
 
 <!-- ##### FUNCTION gdk_gl_context_new ##### -->
 <para>

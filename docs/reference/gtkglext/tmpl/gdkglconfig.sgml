@@ -2,7 +2,7 @@
 Frame Buffer Configuration
 
 <!-- ##### SECTION Short_Description ##### -->
-Functions to configure the OpenGL frame buffer
+OpenGL frame buffer configuration object
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
@@ -41,21 +41,6 @@ and is afterwards used in #gtk_widget_set_gl_capability.
 
 </para>
 
-@parent_instance: 
-@screen: 
-@colormap: 
-@depth: 
-@layer_plane: 
-@is_rgba: 
-@is_double_buffered: 
-@as_single_mode: 
-@is_stereo: 
-@has_alpha: 
-@has_depth_buffer: 
-@has_stencil_buffer: 
-@has_accum_buffer: 
-@is_multisample: 
-@is_luminance: 
 
 <!-- ##### FUNCTION gdk_gl_config_new ##### -->
 <para>
