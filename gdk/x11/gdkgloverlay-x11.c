@@ -33,7 +33,7 @@
 /* SGI optimization introduced in IRIX 6.3 to avoid X server
    round trips for interning common X atoms. */
 #include <X11/Xatom.h>
-#if defined(_SGI_EXTRA_PREDEFINES) && !defined(NO_FAST_ATOMS)
+#if defined(_SGI_EXTRA_PREDEFINES) && !defined(_DISABLE_SGI_FAST_ATOMS)
 #include <X11/SGIFastAtom.h>
 #else
 #define XSGIFastInternAtom(dpy, string, fast_name, how) \

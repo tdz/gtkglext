@@ -1,3 +1,12 @@
+2003-05-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkgloverlay-x11.c: Don't use XSGIFastInternAtom() if
+	_DISABLE_SGI_FAST_ATOMS is defined.
+
+	* README: 
+	* gdk/x11/Makefile.am: 
+	* configure.in: Added --disable-sgi-fast-atoms configure option.
+
 2003-05-05  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* Version 0.99.1

@@ -111,6 +111,30 @@ Documentation options
   --enable-gtk-doc        use gtk-doc to build documentation [default=no]
   --with-html-dir=PATH    path to installed docs
 
+SGI-specific options
+
+  --disable-sgi-fast-atoms  disable SGI's fast X atoms optimization
+
+    SGI's /usr/include/X11/SGIFastAtom.h header may cause a problem
+    with GCC. You can solve this problem by modifying this header.
+    If you want to avoid modifying it, pass --disable-sgi-fast-atoms
+    option to disable this feature.
+
+SGIFastAtom.h.diff:
+-------------------------------------------------------------------------------
+--- /usr/include/X11/SGIFastAtom.h.orig	Tue Apr 17 00:07:55 2001
++++ /usr/include/X11/SGIFastAtom.h	Wed May  7 09:59:01 2003
+@@ -180,7 +180,7 @@
+   atom = XSGIFastInternAtom(dpy, "WM_DELETE_WINDOW", SGI_XA_WM_DELETE_WINDOW, False);
+ 
+ This lets your X source code using fast atoms work when compiled on X
+-implementations that lack SGI's fast atoms optimizations.
++implementations that lack SGIs fast atoms optimizations.
+ 
+ #endif /* END COMMENT */
+ 
+-------------------------------------------------------------------------------
+
 
 Building the CVS Version of GtkGLExt
 ====================================

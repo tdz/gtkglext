@@ -252,6 +252,19 @@ changequote([,])dnl
 
 AC_SUBST([GTKGLEXT_DEBUG_FLAGS])
 
+# option to disable XSGIFastInternAtom() optimization
+AC_ARG_ENABLE([sgi-fast-atoms],
+              [AC_HELP_STRING([--disable-sgi-fast-atoms],
+                              [disable SGI's fast X atoms optimization])], ,
+              [enable_sgi_fast_atoms=yes])
+
+if test "x$enable_sgi_fast_atoms" = "xno"; then
+  DISABLE_SGI_FAST_ATOMS='-D_DISABLE_SGI_FAST_ATOMS'
+else
+  DISABLE_SGI_FAST_ATOMS=
+fi
+AC_SUBST([DISABLE_SGI_FAST_ATOMS])
+
 # Ensure MSVC-compatible struct packing convention is used when
 # compiling for Win32 with gcc.
 # What flag to depends on gcc version: gcc3 uses "-mms-bitfields", while
