@@ -773,13 +773,6 @@ gdk_gl_pixmap_get_pixmap (GdkGLPixmap *glpixmap)
 static const gchar quark_gl_pixmap_string[] = "gdk-gl-pixmap-gl-pixmap";
 static GQuark quark_gl_pixmap = 0;
 
-static void
-gl_pixmap_destroy (GdkGLPixmap *glpixmap)
-{
-  if (glpixmap != NULL)
-    g_object_unref (G_OBJECT (glpixmap));
-}
-
 /**
  * gdk_pixmap_set_gl_capability:
  * @pixmap: the #GdkPixmap to be used as the rendering area.
@@ -827,7 +820,7 @@ gdk_pixmap_set_gl_capability (GdkPixmap   *pixmap,
     }
 
   g_object_set_qdata_full (G_OBJECT (pixmap), quark_gl_pixmap, glpixmap,
-                           (GDestroyNotify) gl_pixmap_destroy);
+                           (GDestroyNotify) g_object_unref);
 
   return glpixmap;
 

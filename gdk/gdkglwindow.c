@@ -774,13 +774,6 @@ gdk_gl_window_get_window (GdkGLWindow *glwindow)
 static const gchar quark_gl_window_string[] = "gdk-gl-window-gl-window";
 static GQuark quark_gl_window = 0;
 
-static void
-gl_window_destroy (GdkGLWindow *glwindow)
-{
-  if (glwindow != NULL)
-    g_object_unref (G_OBJECT (glwindow));
-}
-
 /**
  * gdk_window_set_gl_capability:
  * @window: the #GdkWindow to be used as the rendering area.
@@ -828,7 +821,7 @@ gdk_window_set_gl_capability (GdkWindow   *window,
     }
 
   g_object_set_qdata_full (G_OBJECT (window), quark_gl_window, glwindow,
-                           (GDestroyNotify) gl_window_destroy);
+                           (GDestroyNotify) g_object_unref);
 
   return glwindow;
 

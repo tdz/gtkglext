@@ -1,4 +1,7 @@
-2003-01-21  Naofumi Yasufuku  <naofumi@yasufuku.net>
+2003-01-21  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/gdkglpixmap.c (gl_pixmap_destroy): 
+	* gdk/gdkglwindow.c (gl_window_destroy): Removed.
 
 	* gtk/gtkglwidget.c (gtk_widget_create_gl_context): Added.
 	(gtk_widget_gl_realize, gtk_widget_get_gl_context): GL context is
