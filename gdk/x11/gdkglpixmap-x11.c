@@ -98,6 +98,8 @@ gdk_gl_pixmap_impl_x11_finalize (GObject *object)
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_finalize ()"));
 
+  glXWaitGL ();
+
   xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
 
   if (impl->glxpixmap == glXGetCurrentDrawable ())
@@ -108,8 +110,6 @@ gdk_gl_pixmap_impl_x11_finalize (GObject *object)
 
   GDK_GL_NOTE (IMPL, g_message (" * glXDestroyGLXPixmap ()"));
   glXDestroyGLXPixmap (xdisplay, impl->glxpixmap);
-
-  glXWaitGL ();
 
   g_object_unref (G_OBJECT (impl->glconfig));
 

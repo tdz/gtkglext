@@ -101,6 +101,8 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_finalize ()"));
 
+  glXWaitGL ();
+
   xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
 
   if (impl->glxwindow == glXGetCurrentDrawable ())
