@@ -1,5 +1,12 @@
 2003-11-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/low-level.c (realize, unrealize): Use
+	gdk_gl_window_new()/g_object_unref() instead of
+	gdk_window_(set|unset)_gl_capability() extension function.
+	It's really "low-level".
+
+2003-11-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* examples/low-level.c (main): 
 	* examples/simple.c (main): 
 	* examples/simple-mixed.c (main): 

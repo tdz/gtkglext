@@ -42,12 +42,12 @@ realize (GtkWidget *widget,
   static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
 
   /*
-   * Set OpenGL-capability to widget->window
+   * Create GdkGLWindow for widget->window.
    */
 
-  glwindow = gdk_window_set_gl_capability (widget->window,
-                                           glconfig,
-                                           NULL);
+  glwindow = gdk_gl_window_new (glconfig,
+                                widget->window,
+                                NULL);
 
   /*
    * Create OpenGL rendering context.
@@ -173,7 +173,7 @@ unrealize (GtkWidget *widget,
 {
   if (widget->window != NULL)
     {
-      gdk_window_unset_gl_capability (widget->window);
+      g_object_unref (G_OBJECT (glwindow));
       glwindow = NULL;
     }
 
