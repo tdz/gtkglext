@@ -117,7 +117,7 @@ gdk_gl_query_get_proc_address (const char *proc_name)
   static GModule *main_module = NULL;
   GdkGLProc proc_address = NULL;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_query_get_proc_address ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_query_get_proc_address ()"));
 
   if (!init_glx_get_proc_address)
     {
@@ -125,7 +125,7 @@ gdk_gl_query_get_proc_address (const char *proc_name)
        * Look up glXGetProcAddress () function.
        */
 
-      GDK_GL_NOTE (IMPL, g_message (" * get main_module"));
+      GDK_GL_NOTE (MISC, g_message (" - get main_module"));
 
       main_module = g_module_open (NULL, G_MODULE_BIND_LAZY);
       g_return_val_if_fail (main_module != NULL, NULL);
@@ -142,7 +142,7 @@ gdk_gl_query_get_proc_address (const char *proc_name)
       /* main_module is resident */
       /* g_module_close (main_module); */
 
-      GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () - %s",
+      GDK_GL_NOTE (MISC, g_message (" - glXGetProcAddress () - %s",
                                     glx_get_proc_address ? "supported" : "not supported"));
 
       init_glx_get_proc_address = TRUE;
@@ -164,7 +164,7 @@ gdk_gl_query_get_proc_address (const char *proc_name)
     {
       g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
 
-      GDK_GL_NOTE (IMPL, g_message (" * g_module_symbol () - %s",
+      GDK_GL_NOTE (MISC, g_message (" - g_module_symbol () - %s",
                                     proc_address ? "succeeded" : "failed"));
     }
 

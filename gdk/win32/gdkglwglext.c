@@ -39,7 +39,7 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
       __procs.__proc_name =                                                             \
         (_GDK_GL_PROC_TYPE (__proc_name)) gdk_gl_query_get_proc_address (#__proc_name); \
                                                                                         \
-      GDK_GL_NOTE (IMPL,                                                                \
+      GDK_GL_NOTE (MISC,                                                                \
                    g_message (" * gdk_gl_get_%s () - %s",                               \
                               #__proc_name,                                             \
                               (__procs.__proc_name) ? "supported" : "not supported"));  \
@@ -69,7 +69,7 @@ gdk_gl_get_WGL_ARB_buffer_region (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_ARB_buffer_region ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_buffer_region ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -106,7 +106,7 @@ gdk_gl_get_WGL_ARB_extensions_string (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_ARB_extensions_string ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_extensions_string ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -142,7 +142,7 @@ gdk_gl_get_WGL_ARB_pixel_format (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_ARB_pixel_format ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_pixel_format ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -179,7 +179,7 @@ gdk_gl_get_WGL_ARB_make_current_read (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_ARB_make_current_read ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_make_current_read ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -218,7 +218,7 @@ gdk_gl_get_WGL_ARB_pbuffer (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_ARB_pbuffer ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_pbuffer ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -258,7 +258,7 @@ gdk_gl_get_WGL_ARB_render_texture (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_ARB_render_texture ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_render_texture ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -297,7 +297,7 @@ gdk_gl_get_WGL_EXT_display_color_table (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_EXT_display_color_table ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_display_color_table ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -334,7 +334,7 @@ gdk_gl_get_WGL_EXT_extensions_string (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_EXT_extensions_string ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_extensions_string ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -369,7 +369,7 @@ gdk_gl_get_WGL_EXT_make_current_read (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_EXT_make_current_read ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_make_current_read ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -408,7 +408,7 @@ gdk_gl_get_WGL_EXT_pbuffer (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_EXT_pbuffer ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_pbuffer ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -448,7 +448,7 @@ gdk_gl_get_WGL_EXT_pixel_format (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_EXT_pixel_format ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_pixel_format ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -485,7 +485,7 @@ gdk_gl_get_WGL_EXT_swap_control (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_EXT_swap_control ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_swap_control ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -521,7 +521,7 @@ gdk_gl_get_WGL_NV_vertex_array_range (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_NV_vertex_array_range ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_NV_vertex_array_range ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -561,7 +561,7 @@ gdk_gl_get_WGL_OML_sync_control (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_OML_sync_control ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_OML_sync_control ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -601,7 +601,7 @@ gdk_gl_get_WGL_I3D_digital_video_control (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_I3D_digital_video_control ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_digital_video_control ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -639,7 +639,7 @@ gdk_gl_get_WGL_I3D_gamma (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_I3D_gamma ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_gamma ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -688,7 +688,7 @@ gdk_gl_get_WGL_I3D_genlock (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_I3D_genlock ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_genlock ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -736,7 +736,7 @@ gdk_gl_get_WGL_I3D_image_buffer (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_I3D_image_buffer ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_image_buffer ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -776,7 +776,7 @@ gdk_gl_get_WGL_I3D_swap_frame_lock (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_I3D_swap_frame_lock ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_swap_frame_lock ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;
@@ -817,7 +817,7 @@ gdk_gl_get_WGL_I3D_swap_frame_usage (void);
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_WGL_I3D_swap_frame_usage ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_swap_frame_usage ()"));
 
   if (!wglGetCurrentContext ())
     return NULL;

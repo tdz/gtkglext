@@ -36,8 +36,8 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
       __procs.__proc_name =                                                             \
         (_GDK_GL_PROC_TYPE (__proc_name)) gdk_gl_query_get_proc_address (#__proc_name); \
                                                                                         \
-      GDK_GL_NOTE (IMPL,                                                                \
-                   g_message (" * gdk_gl_get_%s () - %s",                               \
+      GDK_GL_NOTE (MISC,                                                                \
+                   g_message (" - gdk_gl_get_%s () - %s",                               \
                               #__proc_name,                                             \
                               (__procs.__proc_name) ? "supported" : "not supported"));  \
                                                                                         \
@@ -81,7 +81,7 @@ gdk_gl_get_GLX_VERSION_1_3 (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_VERSION_1_3 ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_VERSION_1_3 ()"));
 
   if (!init)
     {
@@ -129,7 +129,7 @@ gdk_gl_get_GLX_VERSION_1_4 (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_VERSION_1_4 ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_VERSION_1_4 ()"));
 
   if (!init)
     {
@@ -160,7 +160,7 @@ gdk_gl_get_GLX_ARB_get_proc_address (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_ARB_get_proc_address ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_ARB_get_proc_address ()"));
 
   if (!init)
     {
@@ -191,7 +191,7 @@ gdk_gl_get_GLX_SGI_swap_control (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGI_swap_control ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGI_swap_control ()"));
 
   if (!init)
     {
@@ -223,7 +223,7 @@ gdk_gl_get_GLX_SGI_video_sync (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGI_video_sync ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGI_video_sync ()"));
 
   if (!init)
     {
@@ -256,7 +256,7 @@ gdk_gl_get_GLX_SGI_make_current_read (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGI_make_current_read ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGI_make_current_read ()"));
 
   if (!init)
     {
@@ -291,7 +291,7 @@ gdk_gl_get_GLX_SGIX_video_source (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_video_source ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGIX_video_source ()"));
 
   if (!init)
     {
@@ -329,7 +329,7 @@ gdk_gl_get_GLX_EXT_import_context (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_EXT_import_context ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_EXT_import_context ()"));
 
   if (!init)
     {
@@ -369,7 +369,7 @@ gdk_gl_get_GLX_SGIX_fbconfig (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_fbconfig ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGIX_fbconfig ()"));
 
   if (!init)
     {
@@ -409,7 +409,7 @@ gdk_gl_get_GLX_SGIX_pbuffer (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_pbuffer ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGIX_pbuffer ()"));
 
   if (!init)
     {
@@ -444,7 +444,7 @@ gdk_gl_get_GLX_SGI_cushion (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGI_cushion ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGI_cushion ()"));
 
   if (!init)
     {
@@ -479,7 +479,7 @@ gdk_gl_get_GLX_SGIX_video_resize (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_video_resize ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGIX_video_resize ()"));
 
   if (!init)
     {
@@ -516,7 +516,7 @@ gdk_gl_get_GLX_SGIX_dmbuffer (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_dmbuffer ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGIX_dmbuffer ()"));
 
   if (!init)
     {
@@ -549,7 +549,7 @@ gdk_gl_get_GLX_SGIX_swap_group (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_swap_group ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGIX_swap_group ()"));
 
   if (!init)
     {
@@ -581,7 +581,7 @@ gdk_gl_get_GLX_SGIX_swap_barrier (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_swap_barrier ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SGIX_swap_barrier ()"));
 
   if (!init)
     {
@@ -613,7 +613,7 @@ gdk_gl_get_GLX_SUN_get_transparent_index (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SUN_get_transparent_index ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_SUN_get_transparent_index ()"));
 
   if (!init)
     {
@@ -644,7 +644,7 @@ gdk_gl_get_GLX_MESA_copy_sub_buffer (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_MESA_copy_sub_buffer ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_MESA_copy_sub_buffer ()"));
 
   if (!init)
     {
@@ -675,7 +675,7 @@ gdk_gl_get_GLX_MESA_pixmap_colormap (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_MESA_pixmap_colormap ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_MESA_pixmap_colormap ()"));
 
   if (!init)
     {
@@ -706,7 +706,7 @@ gdk_gl_get_GLX_MESA_release_buffers (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_MESA_release_buffers ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_MESA_release_buffers ()"));
 
   if (!init)
     {
@@ -737,7 +737,7 @@ gdk_gl_get_GLX_MESA_set_3dfx_mode (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_MESA_set_3dfx_mode ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_MESA_set_3dfx_mode ()"));
 
   if (!init)
     {
@@ -772,7 +772,7 @@ gdk_gl_get_GLX_OML_sync_control (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_OML_sync_control ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GLX_OML_sync_control ()"));
 
   if (!init)
     {

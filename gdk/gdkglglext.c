@@ -43,7 +43,7 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
       __procs.__proc_name =                                                             \
         (_GDK_GL_PROC_TYPE (__proc_name)) gdk_gl_query_get_proc_address (#__proc_name); \
                                                                                         \
-      GDK_GL_NOTE (IMPL,                                                                \
+      GDK_GL_NOTE (MISC,                                                                \
                    g_message (" * gdk_gl_get_%s () - %s",                               \
                               #__proc_name,                                             \
                               (__procs.__proc_name) ? "supported" : "not supported"));  \
@@ -67,7 +67,7 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
       __procs.__proc_name =                                                             \
         (_GDK_GL_PROC_TYPE (__proc_name)) gdk_gl_query_get_proc_address (#__proc_name); \
                                                                                         \
-      GDK_GL_NOTE (IMPL,                                                                \
+      GDK_GL_NOTE (MISC,                                                                \
                    g_message (" * gdk_gl_get_%s () - %s",                               \
                               #__proc_name,                                             \
                               (__procs.__proc_name) ? "supported" : "not supported"));  \
@@ -136,7 +136,7 @@ gdk_gl_get_GL_VERSION_1_2 (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_VERSION_1_2 ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_2 ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -258,7 +258,7 @@ gdk_gl_get_GL_VERSION_1_3 (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_VERSION_1_3 ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_3 ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -387,7 +387,7 @@ gdk_gl_get_GL_VERSION_1_4 (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_VERSION_1_4 ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_4 ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -503,7 +503,7 @@ gdk_gl_get_GL_ARB_multitexture (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ARB_multitexture ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_multitexture ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -575,7 +575,7 @@ gdk_gl_get_GL_ARB_transpose_matrix (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ARB_transpose_matrix ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_transpose_matrix ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -614,7 +614,7 @@ gdk_gl_get_GL_ARB_multisample (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ARB_multisample ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_multisample ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -656,7 +656,7 @@ gdk_gl_get_GL_ARB_texture_compression (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ARB_texture_compression ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_texture_compression ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -699,7 +699,7 @@ gdk_gl_get_GL_ARB_point_parameters (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ARB_point_parameters ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_point_parameters ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -745,7 +745,7 @@ gdk_gl_get_GL_ARB_vertex_blend (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ARB_vertex_blend ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_vertex_blend ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -794,7 +794,7 @@ gdk_gl_get_GL_ARB_matrix_palette (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ARB_matrix_palette ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_matrix_palette ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -850,7 +850,7 @@ gdk_gl_get_GL_ARB_window_pos (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ARB_window_pos ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_window_pos ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -968,7 +968,7 @@ gdk_gl_get_GL_ARB_vertex_program (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ARB_vertex_program ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_vertex_program ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1065,7 +1065,7 @@ gdk_gl_get_GL_EXT_blend_color (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_blend_color ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_color ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1101,7 +1101,7 @@ gdk_gl_get_GL_EXT_polygon_offset (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_polygon_offset ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_polygon_offset ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1138,7 +1138,7 @@ gdk_gl_get_GL_EXT_texture3D (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_texture3D ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture3D ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1176,7 +1176,7 @@ gdk_gl_get_GL_SGIS_texture_filter4 (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIS_texture_filter4 ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture_filter4 ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1214,7 +1214,7 @@ gdk_gl_get_GL_EXT_subtexture (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_subtexture ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_subtexture ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1255,7 +1255,7 @@ gdk_gl_get_GL_EXT_copy_texture (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_copy_texture ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_copy_texture ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1304,7 +1304,7 @@ gdk_gl_get_GL_EXT_histogram (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_histogram ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_histogram ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1362,7 +1362,7 @@ gdk_gl_get_GL_EXT_convolution (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_convolution ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_convolution ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1416,7 +1416,7 @@ gdk_gl_get_GL_SGI_color_table (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGI_color_table ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGI_color_table ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1458,7 +1458,7 @@ gdk_gl_get_GL_SGIX_pixel_texture (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_pixel_texture ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_pixel_texture ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1499,7 +1499,7 @@ gdk_gl_get_GL_SGIS_pixel_texture (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIS_pixel_texture ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_pixel_texture ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1541,7 +1541,7 @@ gdk_gl_get_GL_SGIS_texture4D (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIS_texture4D ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture4D ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1583,7 +1583,7 @@ gdk_gl_get_GL_EXT_texture_object (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_texture_object ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture_object ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1625,7 +1625,7 @@ gdk_gl_get_GL_SGIS_detail_texture (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIS_detail_texture ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_detail_texture ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1663,7 +1663,7 @@ gdk_gl_get_GL_SGIS_sharpen_texture (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIS_sharpen_texture ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_sharpen_texture ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1701,7 +1701,7 @@ gdk_gl_get_GL_SGIS_multisample (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIS_multisample ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_multisample ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1746,7 +1746,7 @@ gdk_gl_get_GL_EXT_vertex_array (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_vertex_array ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_array ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1790,7 +1790,7 @@ gdk_gl_get_GL_EXT_blend_minmax (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_blend_minmax ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_minmax ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1829,7 +1829,7 @@ gdk_gl_get_GL_SGIX_sprite (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_sprite ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_sprite ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1869,7 +1869,7 @@ gdk_gl_get_GL_EXT_point_parameters (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_point_parameters ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_point_parameters ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1907,7 +1907,7 @@ gdk_gl_get_GL_SGIS_point_parameters (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIS_point_parameters ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_point_parameters ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1949,7 +1949,7 @@ gdk_gl_get_GL_SGIX_instruments (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_instruments ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_instruments ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -1990,7 +1990,7 @@ gdk_gl_get_GL_SGIX_framezoom (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_framezoom ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_framezoom ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2026,7 +2026,7 @@ gdk_gl_get_GL_SGIX_tag_sample_buffer (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_tag_sample_buffer ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_tag_sample_buffer ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2065,7 +2065,7 @@ gdk_gl_get_GL_SGIX_polynomial_ffd (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_polynomial_ffd ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_polynomial_ffd ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2104,7 +2104,7 @@ gdk_gl_get_GL_SGIX_reference_plane (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_reference_plane ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_reference_plane ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2140,7 +2140,7 @@ gdk_gl_get_GL_SGIX_flush_raster (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_flush_raster ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_flush_raster ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2177,7 +2177,7 @@ gdk_gl_get_GL_SGIS_fog_function (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIS_fog_function ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_fog_function ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2219,7 +2219,7 @@ gdk_gl_get_GL_HP_image_transform (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_HP_image_transform ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_HP_image_transform ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2261,7 +2261,7 @@ gdk_gl_get_GL_EXT_color_subtable (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_color_subtable ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_color_subtable ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2298,7 +2298,7 @@ gdk_gl_get_GL_PGI_misc_hints (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_PGI_misc_hints ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_PGI_misc_hints ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2337,7 +2337,7 @@ gdk_gl_get_GL_EXT_paletted_texture (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_paletted_texture ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_paletted_texture ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2381,7 +2381,7 @@ gdk_gl_get_GL_SGIX_list_priority (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_list_priority ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_list_priority ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2422,7 +2422,7 @@ gdk_gl_get_GL_EXT_index_material (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_index_material ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_index_material ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2458,7 +2458,7 @@ gdk_gl_get_GL_EXT_index_func (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_index_func ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_index_func ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2495,7 +2495,7 @@ gdk_gl_get_GL_EXT_compiled_vertex_array (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_compiled_vertex_array ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_compiled_vertex_array ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2533,7 +2533,7 @@ gdk_gl_get_GL_EXT_cull_vertex (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_cull_vertex ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_cull_vertex ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2588,7 +2588,7 @@ gdk_gl_get_GL_SGIX_fragment_lighting (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_fragment_lighting ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_fragment_lighting ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2641,7 +2641,7 @@ gdk_gl_get_GL_EXT_draw_range_elements (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_draw_range_elements ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_draw_range_elements ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2679,7 +2679,7 @@ gdk_gl_get_GL_EXT_light_texture (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_light_texture ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_light_texture ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2722,7 +2722,7 @@ gdk_gl_get_GL_SGIX_async (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_async ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_async ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2766,7 +2766,7 @@ gdk_gl_get_GL_INTEL_parallel_arrays (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_INTEL_parallel_arrays ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_INTEL_parallel_arrays ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2808,7 +2808,7 @@ gdk_gl_get_GL_EXT_pixel_transform (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_pixel_transform ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_pixel_transform ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2864,7 +2864,7 @@ gdk_gl_get_GL_EXT_secondary_color (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_secondary_color ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_secondary_color ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2916,7 +2916,7 @@ gdk_gl_get_GL_EXT_texture_perturb_normal (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_texture_perturb_normal ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture_perturb_normal ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2953,7 +2953,7 @@ gdk_gl_get_GL_EXT_multi_draw_arrays (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_multi_draw_arrays ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_multi_draw_arrays ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -2994,7 +2994,7 @@ gdk_gl_get_GL_EXT_fog_coord (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_fog_coord ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_fog_coord ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3057,7 +3057,7 @@ gdk_gl_get_GL_EXT_coordinate_frame (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_coordinate_frame ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_coordinate_frame ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3114,7 +3114,7 @@ gdk_gl_get_GL_SUNX_constant_data (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SUNX_constant_data ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUNX_constant_data ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3157,7 +3157,7 @@ gdk_gl_get_GL_SUN_global_alpha (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SUN_global_alpha ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_global_alpha ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3206,7 +3206,7 @@ gdk_gl_get_GL_SUN_triangle_list (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SUN_triangle_list ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_triangle_list ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3290,7 +3290,7 @@ gdk_gl_get_GL_SUN_vertex (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SUN_vertex ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_vertex ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3365,7 +3365,7 @@ gdk_gl_get_GL_EXT_blend_func_separate (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_blend_func_separate ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_func_separate ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3401,7 +3401,7 @@ gdk_gl_get_GL_INGR_blend_func_separate (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_INGR_blend_func_separate ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_INGR_blend_func_separate ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3439,7 +3439,7 @@ gdk_gl_get_GL_EXT_vertex_weighting (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_vertex_weighting ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_weighting ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3478,7 +3478,7 @@ gdk_gl_get_GL_NV_vertex_array_range (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_NV_vertex_array_range ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_vertex_array_range ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3528,7 +3528,7 @@ gdk_gl_get_GL_NV_register_combiners (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_NV_register_combiners ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_register_combiners ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3576,7 +3576,7 @@ gdk_gl_get_GL_MESA_resize_buffers (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_MESA_resize_buffers ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_MESA_resize_buffers ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3637,7 +3637,7 @@ gdk_gl_get_GL_MESA_window_pos (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_MESA_window_pos ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_MESA_window_pos ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3697,7 +3697,7 @@ gdk_gl_get_GL_IBM_multimode_draw_arrays (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_IBM_multimode_draw_arrays ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_IBM_multimode_draw_arrays ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3741,7 +3741,7 @@ gdk_gl_get_GL_IBM_vertex_array_lists (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_IBM_vertex_array_lists ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_IBM_vertex_array_lists ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3784,7 +3784,7 @@ gdk_gl_get_GL_3DFX_tbuffer (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_3DFX_tbuffer ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_3DFX_tbuffer ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3821,7 +3821,7 @@ gdk_gl_get_GL_EXT_multisample (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_multisample ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_multisample ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3858,7 +3858,7 @@ gdk_gl_get_GL_SGIS_texture_color_mask (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIS_texture_color_mask ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture_color_mask ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3894,7 +3894,7 @@ gdk_gl_get_GL_SGIX_igloo_interface (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SGIX_igloo_interface ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_igloo_interface ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3936,7 +3936,7 @@ gdk_gl_get_GL_NV_fence (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_NV_fence ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_fence ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -3986,7 +3986,7 @@ gdk_gl_get_GL_NV_evaluators (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_NV_evaluators ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_evaluators ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4031,7 +4031,7 @@ gdk_gl_get_GL_NV_register_combiners2 (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_NV_register_combiners2 ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_register_combiners2 ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4137,7 +4137,7 @@ gdk_gl_get_GL_NV_vertex_program (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_NV_vertex_program ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_vertex_program ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4239,7 +4239,7 @@ gdk_gl_get_GL_ATI_envmap_bumpmap (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ATI_envmap_bumpmap ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_envmap_bumpmap ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4292,7 +4292,7 @@ gdk_gl_get_GL_ATI_fragment_shader (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ATI_fragment_shader ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_fragment_shader ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4342,7 +4342,7 @@ gdk_gl_get_GL_ATI_pn_triangles (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ATI_pn_triangles ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_pn_triangles ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4391,7 +4391,7 @@ gdk_gl_get_GL_ATI_vertex_array_object (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ATI_vertex_array_object ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_vertex_array_object ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4483,7 +4483,7 @@ gdk_gl_get_GL_EXT_vertex_shader (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_vertex_shader ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_shader ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4608,7 +4608,7 @@ gdk_gl_get_GL_ATI_vertex_streams (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ATI_vertex_streams ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_vertex_streams ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4690,7 +4690,7 @@ gdk_gl_get_GL_ATI_element_array (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_ATI_element_array ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_element_array ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4728,7 +4728,7 @@ gdk_gl_get_GL_SUN_mesh_array (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_SUN_mesh_array ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_mesh_array ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4770,7 +4770,7 @@ gdk_gl_get_GL_NV_occlusion_query (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_NV_occlusion_query ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_occlusion_query ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4813,7 +4813,7 @@ gdk_gl_get_GL_NV_point_sprite (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_NV_point_sprite ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_point_sprite ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
@@ -4850,7 +4850,7 @@ gdk_gl_get_GL_EXT_stencil_two_side (void)
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GL_EXT_stencil_two_side ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_stencil_two_side ()"));
 
 #ifdef G_OS_WIN32
   if (!wglGetCurrentContext ())
