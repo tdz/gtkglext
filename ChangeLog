@@ -1,5 +1,7 @@
 2002-11-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* configure.in: Removed --enable-mesa-ext option.
+
 	* gdk/{x11,win32}/Makefile.am: Location of platform-specific
 	headers have been changed to ${includedir}/gdk/{x11,win32}.
 	

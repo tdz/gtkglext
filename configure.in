@@ -356,10 +356,6 @@ AC_SUBST(GDKGLEXT_WIN_LIBS)
 # Checks for OpenGL
 ##################################################
 
-AC_ARG_ENABLE(mesa-ext,
-[  --enable-mesa-ext       enable Mesa-specific GLX extensions [[default=yes]]],
-, enable_mesa_ext=yes)
-
 GL_CFLAGS=""
 GL_EXTRA_CFLAGS=""
 GL_LDFLAGS=""
@@ -503,13 +499,6 @@ if test "x$gdktarget" = "xx11"; then
     # no GLU found
     AC_MSG_ERROR(Cannot find GLU library)
   fi
-
-  # Mesa-specific GLX extensions
-  AC_MSG_CHECKING([whether to enable Mesa-specific GLX extensions])
-  if test "x$enable_mesa_ext" = "xyes"; then
-    GL_EXTRA_CFLAGS="$GL_EXTRA_CFLAGS -DGTKGLEXT_ENABLE_MESA_EXT"    
-  fi
-  AC_MSG_RESULT([$enable_mesa_ext])
 
 else
 
