@@ -52,6 +52,7 @@ SOURCES = \
 	lw.c			\
 	rotating-square.c	\
 	coolwave.c		\
+	coolwave2.c		\
 	template.c		\
 	scribble-gl.c		\
 	font-pangoft2.c		\
@@ -82,6 +83,7 @@ PROGRAMS = \
 	viewlw$(EXEEXT)			\
 	rotating-square$(EXEEXT)	\
 	coolwave$(EXEEXT)		\
+	coolwave2$(EXEEXT)		\
 	template$(EXEEXT)		\
 	scribble-gl$(EXEEXT)		\
 	wglinfo$(EXEEXT)
@@ -164,6 +166,9 @@ rotating-square$(EXEEXT): rotating-square.o
 	$(LINK) -o $@ $^ $(LIBS)
 
 coolwave$(EXEEXT): coolwave.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+coolwave2$(EXEEXT): coolwave2.o
 	$(LINK) -o $@ $^ $(LIBS)
 
 template$(EXEEXT): template.o

@@ -51,6 +51,7 @@ common_programs = \
 	viewlw			\
 	rotating-square		\
 	coolwave		\
+	coolwave2		\
 	template		\
 	scribble-gl		\
 	font-pangoft2		\
@@ -133,6 +134,10 @@ rotating_square_LDADD = $(LDADDS)
 coolwave_SOURCES = coolwave.c
 coolwave_DEPENDENCIES = $(DEPS)
 coolwave_LDADD = $(LDADDS)
+
+coolwave2_SOURCES = coolwave2.c
+coolwave2_DEPENDENCIES = $(DEPS)
+coolwave2_LDADD = $(LDADDS)
 
 template_SOURCES = template.c
 template_DEPENDENCIES = $(DEPS)

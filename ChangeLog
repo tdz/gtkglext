@@ -1,3 +1,15 @@
+2003-09-04  Alif Wahid  <awah005@users.sourceforge.net>
+
+	* AUTHORS:
+	* examples/coolwave2.c
+	* examples/Makefile.am:
+	* examples/Makefile.mingw:
+	* examples/Makefile.msc: Added new example coolwave2.c to 
+	test how well a Gtk window behaves in fullscreen mode
+	when containing an OpenGL capable drawable. Use the
+	popup menu items to change between fullscreen and normal
+	mode. Otherwise this is identical to the coolwave.c program.
+
 2003-08-31  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/font-pangoft2-tex.c (gl_tex_pango_ft2_render_layout):
@@ -6,21 +18,21 @@
 	* examples/font-pangoft2.c (gl_pango_ft2_render_layout): Fixed
 	pixel store setup code.
 
-	* gdk/*.c: 
-	* gdk/x11/*.c: 
-	* gdk/win32/*.c: 
+	* gdk/*.c:
+	* gdk/x11/*.c:
+	* gdk/win32/*.c:
 	* gtk/*.c: Use new function call debug macros.
 
 2003-08-26  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c: Use new debug macros.
 
-	* gdk/gdkgldebug.h: 
+	* gdk/gdkgldebug.h:
 	* gtk/gtkgldebug.h: Added G[DT]K_GL_NOTE_FUNC* debug macros.
 
 2003-08-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
-	* gdk/glext/common-header.h: 
+	* gdk/glext/common-header.h:
 	* gdk/glext/gen-gdkgl*.pl: Code cleanup. Read common header part
 	from common-header.h.
 
@@ -32,12 +44,12 @@
 
 2003-08-17  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
-	* examples/Makefile.am (x11_programs): 
+	* examples/Makefile.am (x11_programs):
 	* examples/simple-pbuffer-sgix.c: Added simple GLX_SGIX_pbuffer
 	example.
 
-	* README: 
-	* docs/reference/gtkglext/building.sgml: 
+	* README:
+	* docs/reference/gtkglext/building.sgml:
 	* configure.in: Removed --disable-sgi-fast-atoms configure
 	option. Now GdkGLExt doesn't use XSGIFastInternAtom(), so this
 	option is no longer needed.
@@ -45,8 +57,8 @@
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_setup_colormap):
 	New _gdk_x11_gl_overlay_get_info() function.
 
-	* gdk/x11/gdkgloverlay-x11.h: 
-	* gdk/x11/gdkgloverlay-x11.c (gdk_gl_overlay_get_sov_props) 
+	* gdk/x11/gdkgloverlay-x11.h:
+	* gdk/x11/gdkgloverlay-x11.c (gdk_gl_overlay_get_sov_props)
 	(_gdk_x11_gl_overlay_get_info): Rewritten.
 
 2003-08-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
@@ -57,26 +69,26 @@
 
 2003-08-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
-	* README: 
+	* README:
 	* README.win32: Updated CVS pserver info.
 
-	* examples/Makefile.mingw (clean-obj): 
+	* examples/Makefile.mingw (clean-obj):
 	* examples/Makefile.msc (clean-obj): Added clean-obj target for
 	convenience.
 
-	* Makefile.am (examples): 
+	* Makefile.am (examples):
 	* examples/Makefile.am (all-local): Use all-local target for
 	building example programs.
 
-	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_new): 
+	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_new):
 	* gdk/win32/gdkglwindow-win32.c (gdk_gl_window_new): Do
 	DescribePixelFormat().
 
-	* gdk/win32/Makefile.am (gdkglext_win32_private_h_sources): 
+	* gdk/win32/Makefile.am (gdkglext_win32_private_h_sources):
 	* gdk/win32/gdkinternal-win32.h: Removed.
 
-	* gdk/win32/gdkglpixmap-win32.h (struct _GdkGLPixmapImplWin32): 
-	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_new) 
+	* gdk/win32/gdkglpixmap-win32.h (struct _GdkGLPixmapImplWin32):
+	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_new)
 	(gdk_gl_pixmap_sync_gl, gdk_gl_pixmap_sync_gdk): Don't use
 	GdkPixmapImplWin32 private data. In the latest CVS version of
 	GTK+, GdkPixmapImplWin32 data structure has been changed, so old
@@ -90,7 +102,7 @@
 
 2003-07-30  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
-	* gdk/x11/gdkglx.h: 
+	* gdk/x11/gdkglx.h:
 	* gdk/win32/gdkglwin32.h: Don't include gdk/gdkglprivate.h.
 	(reported by Ralf Corsepius)
 
