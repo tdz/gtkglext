@@ -147,6 +147,13 @@ gdk_gl_font_use_pango_font_for_display
 </SECTION>
 
 <SECTION>
+<FILE>gdkglinit</FILE>
+gdk_gl_parse_args
+gdk_gl_init_check
+gdk_gl_init
+</SECTION>
+
+<SECTION>
 <FILE>gdkglquery</FILE>
 GdkGLProc
 gdk_gl_query_extension
@@ -178,13 +185,6 @@ GdkGLContext
 GdkGLDrawable
 GdkGLPixmap
 GdkGLWindow
-</SECTION>
-
-<SECTION>
-<FILE>gdkglinit</FILE>
-gdk_gl_parse_args
-gdk_gl_init_check
-gdk_gl_init
 </SECTION>
 
 <SECTION>
@@ -237,19 +237,19 @@ GDK_TYPE_GL_CONFIG_MODE
 </SECTION>
 
 <SECTION>
-<FILE>gtkglinit</FILE>
-gtk_gl_parse_args
-gtk_gl_init_check
-gtk_gl_init
-</SECTION>
-
-<SECTION>
 <FILE>gtkgl</FILE>
 </SECTION>
 
 <SECTION>
 <FILE>gtkgldefs</FILE>
 GTK_GL_VAR
+</SECTION>
+
+<SECTION>
+<FILE>gtkglinit</FILE>
+gtk_gl_parse_args
+gtk_gl_init_check
+gtk_gl_init
 </SECTION>
 
 <SECTION>

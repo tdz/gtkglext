@@ -2,6 +2,7 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
                "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <!ENTITY version SYSTEM "version.xml">
+<!ENTITY gtkglext-gdkglinit SYSTEM "xml/gdkglinit.xml">
 <!ENTITY gtkglext-gdkglquery SYSTEM "xml/gdkglquery.xml">
 <!ENTITY gtkglext-GdkGLConfig SYSTEM "xml/gdkglconfig.xml">
 <!ENTITY gtkglext-GdkGLContext SYSTEM "xml/gdkglcontext.xml">
@@ -11,6 +12,7 @@
 <!ENTITY gtkglext-gdkglfont SYSTEM "xml/gdkglfont.xml">
 <!ENTITY gtkglext-gdkgltokens SYSTEM "xml/gdkgltokens.xml">
 <!ENTITY gtkglext-gdkglx SYSTEM "xml/gdkglx.xml">
+<!ENTITY gtkglext-gtkglinit SYSTEM "xml/gtkglinit.xml">
 <!ENTITY gtkglext-gtkglwidget SYSTEM "xml/gtkglwidget.xml">
 ]>
 <book id="index">
@@ -21,6 +23,7 @@
 
   <reference>
     <title>GdkGLExt API Reference</title>
+    &gtkglext-gdkglinit;
     &gtkglext-gdkglquery;
     &gtkglext-GdkGLConfig;
     &gtkglext-GdkGLContext;
@@ -34,6 +37,7 @@
 
   <reference>
     <title>GtkGLExt API Reference</title>
+    &gtkglext-gtkglinit;
     &gtkglext-gtkglwidget;
   </reference>
   

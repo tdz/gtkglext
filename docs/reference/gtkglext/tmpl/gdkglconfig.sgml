@@ -2,7 +2,7 @@
 Frame Buffer Configuration
 
 <!-- ##### SECTION Short_Description ##### -->
-object to configure the OpenGL frame buffer.
+Functions to configure the OpenGL frame buffer.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>

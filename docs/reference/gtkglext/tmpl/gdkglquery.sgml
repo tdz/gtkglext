@@ -1,8 +1,8 @@
 <!-- ##### SECTION Title ##### -->
-OpenGL Support Query
+Query
 
 <!-- ##### SECTION Short_Description ##### -->
-functions to query OpenGL support information.
+Functions to query OpenGL support information.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>

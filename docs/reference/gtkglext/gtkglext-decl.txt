@@ -439,6 +439,21 @@ const PangoFontDescription *font_desc,int                         first,int     
 <RETURNS>PangoFont  *</RETURNS>
 GdkDisplay                 *display,const PangoFontDescription *font_desc,int                         first,int                         count,int                         list_base
 </FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_parse_args</NAME>
+<RETURNS>gboolean  </RETURNS>
+gint    *argc,gchar ***argv
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_init_check</NAME>
+<RETURNS>gboolean  </RETURNS>
+gint    *argc,gchar ***argv
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_init</NAME>
+<RETURNS>void  </RETURNS>
+gint    *argc,gchar ***argv
+</FUNCTION>
 <STRUCT>
 <NAME>GdkGLPixmapClass</NAME>
 </STRUCT>
@@ -853,21 +868,6 @@ GdkWindow   *window
 #define      gdk_window_get_gl_drawable(window)         \
   GDK_GL_DRAWABLE (gdk_window_get_gl_window (window))
 </MACRO>
-<FUNCTION>
-<NAME>gdk_gl_parse_args</NAME>
-<RETURNS>gboolean  </RETURNS>
-gint    *argc,gchar ***argv
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_init_check</NAME>
-<RETURNS>gboolean  </RETURNS>
-gint    *argc,gchar ***argv
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_init</NAME>
-<RETURNS>void  </RETURNS>
-gint    *argc,gchar ***argv
-</FUNCTION>
 <MACRO>
 <NAME>GDKGLEXT_MAJOR_VERSION</NAME>
 #define GDKGLEXT_MAJOR_VERSION (0)
@@ -1015,6 +1015,18 @@ void
 <NAME>GDK_TYPE_GL_CONFIG_MODE</NAME>
 #define GDK_TYPE_GL_CONFIG_MODE (gdk_gl_config_mode_get_type())
 </MACRO>
+<MACRO>
+<NAME>GTK_GL_VAR</NAME>
+#    define GTK_GL_VAR __declspec(dllexport)
+</MACRO>
+<MACRO>
+<NAME>GTK_GL_VAR</NAME>
+#    define GTK_GL_VAR extern __declspec(dllimport)
+</MACRO>
+<MACRO>
+<NAME>GTK_GL_VAR</NAME>
+#  define GTK_GL_VAR extern
+</MACRO>
 <FUNCTION>
 <NAME>gtk_gl_parse_args</NAME>
 <RETURNS>gboolean  </RETURNS>
@@ -1030,18 +1042,6 @@ gint    *argc,gchar ***argv
 <RETURNS>void  </RETURNS>
 gint    *argc,gchar ***argv
 </FUNCTION>
-<MACRO>
-<NAME>GTK_GL_VAR</NAME>
-#    define GTK_GL_VAR __declspec(dllexport)
-</MACRO>
-<MACRO>
-<NAME>GTK_GL_VAR</NAME>
-#    define GTK_GL_VAR extern __declspec(dllimport)
-</MACRO>
-<MACRO>
-<NAME>GTK_GL_VAR</NAME>
-#  define GTK_GL_VAR extern
-</MACRO>
 <FUNCTION>
 <NAME>gtk_widget_set_gl_capability</NAME>
 <RETURNS>gboolean  </RETURNS>

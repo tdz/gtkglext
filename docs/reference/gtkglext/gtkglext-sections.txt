@@ -26,6 +26,13 @@ gdkglext_binary_age
 </SECTION>
 
 <SECTION>
+<FILE>gdkglinit</FILE>
+gdk_gl_init
+gdk_gl_init_check
+gdk_gl_parse_args
+</SECTION>
+
+<SECTION>
 <FILE>gdkglquery</FILE>
 GdkGLProc
 gdk_gl_query_extension
@@ -243,6 +250,13 @@ gtkglext_minor_version
 gtkglext_micro_version
 gtkglext_interface_age
 gtkglext_binary_age
+</SECTION>
+
+<SECTION>
+<FILE>gtkglinit</FILE>
+gtk_gl_init
+gtk_gl_init_check
+gtk_gl_parse_args
 </SECTION>
 
 <SECTION>

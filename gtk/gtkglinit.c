@@ -37,6 +37,22 @@ static const guint gtk_gl_ndebug_keys = G_N_ELEMENTS (gtk_gl_debug_keys);
 
 #endif /* G_ENABLE_DEBUG */
 
+/**
+ * gtk_gl_parse_args:
+ * @argc: the number of command line arguments.
+ * @argv: the array of command line arguments.
+ * 
+ * Parses command line arguments, and initializes global
+ * attributes of GtkGLExt.
+ *
+ * Any arguments used by GtkGLExt are removed from the array and
+ * @argc and @argv are updated accordingly.
+ *
+ * You shouldn't call this function explicitely if you are using
+ * gtk_gl_init(), or gtk_gl_init_check().
+ *
+ * Return value: %TRUE if initialization succeeded, otherwise %FALSE.
+ **/
 gboolean
 gtk_gl_parse_args (gint    *argc,
                    gchar ***argv)
@@ -133,6 +149,25 @@ gtk_gl_parse_args (gint    *argc,
   return TRUE;
 }
 
+/**
+ * gtk_gl_init_check:
+ * @argc: Address of the <parameter>argc</parameter> parameter of your 
+ *   <function>main()</function> function. Changed if any arguments were 
+ *   handled.
+ * @argv: Address of the <parameter>argv</parameter> parameter of 
+ *   <function>main()</function>. Any parameters understood by gtk_gl_init() 
+ *   are stripped before return.
+ * 
+ * This function does the same work as gtk_gl_init() with only 
+ * a single change: It does not terminate the program if the library can't be 
+ * initialized. Instead it returns %FALSE on failure.
+ *
+ * This way the application can fall back to some other means of communication 
+ * with the user - for example a curses or command line interface.
+ * 
+ * Return value: %TRUE if the GUI has been successfully initialized, 
+ *               %FALSE otherwise.
+ **/
 gboolean
 gtk_gl_init_check (gint    *argc,
                    gchar ***argv)
@@ -151,6 +186,27 @@ gtk_gl_init_check (gint    *argc,
   return TRUE;
 }
 
+/**
+ * gtk_gl_init:
+ * @argc: Address of the <parameter>argc</parameter> parameter of your 
+ *   <function>main()</function> function. Changed if any arguments were 
+ *   handled.
+ * @argv: Address of the <parameter>argv</parameter> parameter of 
+ *   <function>main()</function>. Any parameters understood by gtk_gl_init() 
+ *   are stripped before return.
+ * 
+ * Call this function before using any other GtkGLExt functions in your 
+ * applications.  It will initialize everything needed to operate the library
+ * and parses some standard command line options. @argc and 
+ * @argv are adjusted accordingly so your own code will 
+ * never see those standard arguments.
+ *
+ * <note><para>
+ * This function will terminate your program if it was unable to initialize 
+ * the library for some reason. If you want your program to fall back to a 
+ * textual interface you want to call gtk_gl_init_check() instead.
+ * </para></note>
+ **/
 void
 gtk_gl_init (gint    *argc,
              gchar ***argv)
