@@ -27,6 +27,7 @@ cat $TMP | \
     grep -v "$TMP" | \
     grep gtk | \
     grep gl | \
+    grep -v _gtk_gl | \
     sed -e 's| \@.*||g'
 
 rm -f $TMP
