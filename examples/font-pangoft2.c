@@ -199,7 +199,7 @@ expose_event (GtkWidget      *widget,
 
   /* Text layout */
   layout = pango_layout_new (ft2_context);
-  pango_layout_set_width (layout, 200 * PANGO_SCALE);
+  pango_layout_set_width (layout, PANGO_SCALE * widget->allocation.width);
   pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
   pango_layout_set_text (layout, "This text is rendered with PangoFT2.", -1);
 
