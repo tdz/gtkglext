@@ -539,8 +539,6 @@ struct GdkGLPixmap
 {
   GdkDrawable parent_instance;
 
-  GdkGLConfig *glconfig;
-
   GdkDrawable *drawable;        /* Associated GdkPixmap */
 };
 </STRUCT>
@@ -915,8 +913,6 @@ typedef enum
 struct GdkGLWindow
 {
   GdkDrawable parent_instance;
-
-  GdkGLConfig *glconfig;
 
   GdkDrawable *drawable;        /* Associated GdkWindow */
 };

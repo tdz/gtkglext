@@ -36,8 +36,6 @@ void         _gdk_gl_context_set_gl_drawable      (GdkGLContext  *glcontext,
 void         _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
                                                    GdkGLDrawable *gldrawable_read);
 
-gboolean     _gdk_gl_pixmap_is_double_buffered (GdkGLDrawable *gldrawable);
-GdkGLConfig *_gdk_gl_pixmap_get_gl_config      (GdkGLDrawable *gldrawable);
 void         _gdk_gl_pixmap_get_size           (GdkGLDrawable *gldrawable,
                                                 gint          *width,
                                                 gint          *height);

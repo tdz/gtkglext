@@ -40,6 +40,8 @@ struct _GdkGLWindowImplX11
 
   /* GLXWindow glxwindow; */
   Window glxwindow;
+
+  GdkGLConfig *glconfig;
 };
 
 struct _GdkGLWindowImplX11Class

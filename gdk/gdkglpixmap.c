@@ -22,12 +22,6 @@
 #include "gdkglconfig.h"
 #include "gdkglpixmap.h"
 
-enum {
-  PROP_0,
-  PROP_GLCONFIG,
-  PROP_DRAWABLE
-};
-
 static GdkGC *gdk_gl_pixmap_create_gc      (GdkDrawable      *drawable,
                                             GdkGCValues      *values,
                                             GdkGCValuesMask   mask);
@@ -149,14 +143,7 @@ static GdkImage    *gdk_gl_pixmap_copy_to_image (GdkDrawable *drawable,
                                                  gint         height);
 
 static void gdk_gl_pixmap_class_init   (GdkGLPixmapClass *klass);
-static void gdk_gl_pixmap_set_property (GObject          *object,
-                                        guint             property_id,
-                                        const GValue     *value,
-                                        GParamSpec       *pspec);
-static void gdk_gl_pixmap_get_property (GObject          *object,
-                                        guint             property_id,
-                                        GValue           *value,
-                                        GParamSpec       *pspec);
+
 static void gdk_gl_pixmap_finalize     (GObject          *object);
 
 static gpointer parent_class = NULL;
@@ -198,9 +185,7 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->set_property = gdk_gl_pixmap_set_property;
-  object_class->get_property = gdk_gl_pixmap_get_property;
-  object_class->finalize     = gdk_gl_pixmap_finalize;
+  object_class->finalize = gdk_gl_pixmap_finalize;
 
   drawable_class->create_gc              = gdk_gl_pixmap_create_gc;
   drawable_class->draw_rectangle         = gdk_gl_pixmap_draw_rectangle;
@@ -232,85 +217,12 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
   drawable_class->draw_pixbuf            = gdk_gl_pixmap_draw_pixbuf;
 #endif
   drawable_class->_copy_to_image         = gdk_gl_pixmap_copy_to_image;
-
-  g_object_class_install_property (object_class,
-                                   PROP_GLCONFIG,
-                                   g_param_spec_object ("glconfig",
-                                                        "Frame buffer configuration",
-                                                        "OpenGL frame buffer configuration object.",
-                                                        GDK_TYPE_GL_CONFIG,
-                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-  g_object_class_install_property (object_class,
-                                   PROP_DRAWABLE,
-                                   g_param_spec_object ("drawable",
-                                                        "Drawable",
-                                                        "Associated GdkDrawable object.",
-                                                        GDK_TYPE_DRAWABLE,
-                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-}
-
-static void
-gdk_gl_pixmap_set_property (GObject      *object,
-                            guint         property_id,
-                            const GValue *value,
-                            GParamSpec   *pspec)
-{
-  GdkGLPixmap *glpixmap = GDK_GL_PIXMAP (object);
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_set_property ()"));
-
-  switch (property_id)
-    {
-    case PROP_GLCONFIG:
-      glpixmap->glconfig = g_value_get_object (value);
-      g_object_ref (G_OBJECT (glpixmap->glconfig));
-      g_object_notify (object, "glconfig");
-      break;
-    case PROP_DRAWABLE:
-      glpixmap->drawable = g_value_get_object (value);
-      /* g_object_ref (G_OBJECT (glpixmap->drawable)); */
-      g_object_notify (object, "drawable");
-      break;
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-      break;
-    }
-}
-
-static void
-gdk_gl_pixmap_get_property (GObject    *object,
-                            guint       property_id,
-                            GValue     *value,
-                            GParamSpec *pspec)
-{
-  switch (property_id)
-    {
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-      break;
-    }
 }
 
 static void
 gdk_gl_pixmap_finalize (GObject *object)
 {
-  GdkGLPixmap *glpixmap = GDK_GL_PIXMAP (object);
-
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_finalize ()"));
-
-  if (glpixmap->glconfig != NULL)
-    {
-      g_object_unref (G_OBJECT (glpixmap->glconfig));
-      glpixmap->glconfig = NULL;
-    }
-
-  /*
-  if (glpixmap->drawable != NULL)
-    {
-      g_object_unref (G_OBJECT (glpixmap->drawable));
-      glpixmap->drawable = NULL;
-    }
-  */
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -710,24 +622,6 @@ gdk_gl_pixmap_copy_to_image (GdkDrawable *drawable,
                                                                  dest_y,
                                                                  width,
                                                                  height);
-}
-
-/*< private >*/
-gboolean
-_gdk_gl_pixmap_is_double_buffered (GdkGLDrawable *gldrawable)
-{
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), FALSE);
-
-  return gdk_gl_config_is_double_buffered (GDK_GL_PIXMAP (gldrawable)->glconfig);
-}
-
-/*< private >*/
-GdkGLConfig *
-_gdk_gl_pixmap_get_gl_config (GdkGLDrawable *gldrawable)
-{
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
-
-  return GDK_GL_PIXMAP (gldrawable)->glconfig;
 }
 
 /*< private >*/

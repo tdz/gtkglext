@@ -1,3 +1,29 @@
+2003-01-27  Naofumi Yasufuku  <naofumi@yasufuku.net>
+
+	* gdk/x11/gdkglwindow-x11.c (gdk_gl_window_impl_x11_set_property) 
+	(gdk_gl_window_impl_x11_get_property): Removed.
+	(gdk_gl_window_new): Rewritten.
+
+	* gdk/gdkglwindow.c (gdk_gl_window_set_property) 
+	(gdk_gl_window_get_property): Removed.
+	(_gdk_gl_window_is_double_buffered, _gdk_gl_window_get_gl_config):
+	Moved into gdkglwindow-x11.c.
+
+	* gdk/gdkglwindow.h (struct _GdkGLWindow): 
+
+	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_new): Rewritten.
+
+	* gdk/gdkglpixmap.c (gdk_gl_pixmap_set_property) 
+	(gdk_gl_pixmap_get_property): Removed.
+
+	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_impl_x11_set_property) 
+	(gdk_gl_pixmap_impl_x11_get_property): Removed.
+
+	* gdk/gdkglpixmap.c (_gdk_gl_pixmap_is_double_buffered)
+	(_gdk_gl_pixmap_get_gl_config): Moved into gdkglpixmap-x11.c.
+
+	* gdk/gdkglpixmap.h (struct _GdkGLPixmap): Removed glconfig member.
+
 2003-01-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_impl_win32_set_property) 

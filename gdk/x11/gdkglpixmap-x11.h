@@ -39,6 +39,8 @@ struct _GdkGLPixmapImplX11
   GdkGLPixmap parent_instance;
 
   GLXPixmap glxpixmap;
+
+  GdkGLConfig *glconfig;
 };
 
 struct _GdkGLPixmapImplX11Class

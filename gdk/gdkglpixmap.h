@@ -41,8 +41,6 @@ struct _GdkGLPixmap
 {
   GdkDrawable parent_instance;
 
-  GdkGLConfig *glconfig;
-
   GdkDrawable *drawable;        /* Associated GdkPixmap */
 };
 

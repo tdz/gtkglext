@@ -41,8 +41,6 @@ struct _GdkGLWindow
 {
   GdkDrawable parent_instance;
 
-  GdkGLConfig *glconfig;
-
   GdkDrawable *drawable;        /* Associated GdkWindow */
 };
 
