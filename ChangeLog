@@ -1,3 +1,9 @@
+2003-03-30  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/*.c: Include windows.h on Win32 platform.
+
+	* gdk/gdkglglext.h: Include windows.h on Win32 platform.
+
 2003-03-19  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* configure.in: 

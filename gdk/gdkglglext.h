@@ -19,6 +19,11 @@
 #ifndef __GDK_GL_GLEXT_H__
 #define __GDK_GL_GLEXT_H__
 
+#ifdef G_OS_WIN32
+#define WIN32_LEAN_AND_MEAN 1
+#include <windows.h>
+#endif
+
 #include <GL/gl.h>
 
 #include <gdk/GL/glext.h>
