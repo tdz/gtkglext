@@ -297,7 +297,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
       visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
 
-      overlay_supported = _gdk_x11_gl_overlay_get_info (screen, visual, &overlay_info);
+      overlay_supported = _gdk_x11_gl_overlay_get_info (visual, &overlay_info);
       if (overlay_supported &&
           overlay_info.transparent_type == GDK_GL_OVERLAY_TRANSPARENT_PIXEL &&
           overlay_info.value < (guint32) xvinfo->visual->map_entries)
@@ -389,7 +389,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
       visual = gdkx_visual_get (xvinfo->visualid);
 
-      overlay_supported = _gdk_x11_gl_overlay_get_info (screen, visual, &overlay_info);
+      overlay_supported = _gdk_x11_gl_overlay_get_info (visual, &overlay_info);
       if (overlay_supported &&
           overlay_info.transparent_type == GDK_GL_OVERLAY_TRANSPARENT_PIXEL &&
           overlay_info.value < xvinfo->visual->map_entries)

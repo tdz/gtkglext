@@ -1,3 +1,12 @@
+2003-08-17  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_setup_colormap):
+	New _gdk_x11_gl_overlay_get_info() function.
+
+	* gdk/x11/gdkgloverlay-x11.h: 
+	* gdk/x11/gdkgloverlay-x11.c (gdk_gl_overlay_get_sov_props) 
+	(_gdk_x11_gl_overlay_get_info): Rewritten.
+
 2003-08-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_get_std_rgb_colormap):

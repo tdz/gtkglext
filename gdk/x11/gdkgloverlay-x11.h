@@ -41,8 +41,7 @@ struct _GdkGLOverlayInfo
 };
 
 /* private at present... */
-gboolean _gdk_x11_gl_overlay_get_info (GdkScreen        *screen,
-                                       GdkVisual        *visual,
+gboolean _gdk_x11_gl_overlay_get_info (GdkVisual        *visual,
                                        GdkGLOverlayInfo *overlay_info);
 
 G_END_DECLS
