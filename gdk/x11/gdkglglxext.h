@@ -42,7 +42,7 @@ typedef XID GLXPbuffer;
 /* for __GLXextFuncPtr typedef in glxext.h */
 #  undef GLX_ARB_get_proc_address
 #endif
-#include <gdk/glext/glxext.h>
+#include <gdk/GL/glxext.h>
 
 /* 
  * GLX_VERSION_1_3

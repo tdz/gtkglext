@@ -10704,7 +10704,7 @@ else
   HAVE_SGML2HTML_FALSE=
 fi
 
-ac_config_files="$ac_config_files Makefile gdkglext.pc gtkglext.pc gdkglext-uninstalled.pc gtkglext-uninstalled.pc gtkglext.spec gdk/Makefile gdk/gdkglversion.h gdk/x11/Makefile gdk/win32/Makefile gdk/glext/Makefile gtk/Makefile gtk/gtkglversion.h examples/Makefile docs/Makefile docs/reference/Makefile docs/reference/gtkglext/Makefile"
+ac_config_files="$ac_config_files Makefile gdkglext.pc gtkglext.pc gdkglext-uninstalled.pc gtkglext-uninstalled.pc gtkglext.spec gdk/Makefile gdk/gdkglversion.h gdk/GL/Makefile gdk/x11/Makefile gdk/win32/Makefile gtk/Makefile gtk/gtkglversion.h examples/Makefile docs/Makefile docs/reference/Makefile docs/reference/gtkglext/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -11116,9 +11116,9 @@ do
   "gtkglext.spec" ) CONFIG_FILES="$CONFIG_FILES gtkglext.spec" ;;
   "gdk/Makefile" ) CONFIG_FILES="$CONFIG_FILES gdk/Makefile" ;;
   "gdk/gdkglversion.h" ) CONFIG_FILES="$CONFIG_FILES gdk/gdkglversion.h" ;;
+  "gdk/GL/Makefile" ) CONFIG_FILES="$CONFIG_FILES gdk/GL/Makefile" ;;
   "gdk/x11/Makefile" ) CONFIG_FILES="$CONFIG_FILES gdk/x11/Makefile" ;;
   "gdk/win32/Makefile" ) CONFIG_FILES="$CONFIG_FILES gdk/win32/Makefile" ;;
-  "gdk/glext/Makefile" ) CONFIG_FILES="$CONFIG_FILES gdk/glext/Makefile" ;;
   "gtk/Makefile" ) CONFIG_FILES="$CONFIG_FILES gtk/Makefile" ;;
   "gtk/gtkglversion.h" ) CONFIG_FILES="$CONFIG_FILES gtk/gtkglversion.h" ;;
   "examples/Makefile" ) CONFIG_FILES="$CONFIG_FILES examples/Makefile" ;;

@@ -21,7 +21,7 @@
 
 #include <GL/gl.h>
 
-#include <gdk/glext/wglext.h>
+#include <gdk/GL/wglext.h>
 
 #include <gdk/gdkglquery.h>
 #include <gdk/gdkglconfig.h>
