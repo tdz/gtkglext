@@ -10,9 +10,9 @@ Version: %{base_version}
 Release: %{rel}
 License: LGPL
 Group: System Environment/Libraries
-URL: http://gtkglext.sourceforge.net
+URL: http://gtkglext.sourceforge.net/
 Source0: ftp://ftp.sourceforge.net/pub/sourceforge/gtkglext/gtkglext-%{version}.tar.gz
-BuildRoot: %{_tmppath}/gtkglext-%{version}-root
+BuildRoot: %{_tmppath}/gtkglext-%{PACKAGE_VERSION}-root
 
 Requires: gtk2
 Requires: XFree86-libs
