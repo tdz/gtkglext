@@ -281,7 +281,6 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
 
 /**
  * gdk_gl_config_new:
- * @window: a #GdkWindow.
  * @attrib_list: a list of attribute/value pairs. The last attribute must be GDK_GL_ATTRIB_LIST_NONE.
  *
  * Returns an OpenGL frame buffer configuration that match the specified
@@ -290,8 +289,7 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
  * Return value: the new #GdkGLConfig.
  **/
 GdkGLConfig *
-gdk_gl_config_new (GdkWindow  *window,
-                   const gint *attrib_list)
+gdk_gl_config_new (const gint *attrib_list)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplX11 *impl;
@@ -303,7 +301,6 @@ gdk_gl_config_new (GdkWindow  *window,
    */
 
   glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11,
-                           "window",      window,
                            "attrib_list", attrib_list,
                            NULL);
 

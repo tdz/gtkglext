@@ -118,6 +118,7 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
   GdkGLConfig *glconfig;
   GdkGLConfigImplWin32 *impl;
 
+  GdkWindow *root_window;
   GdkVisual *visual;
 
   HWND hwnd;
@@ -139,7 +140,8 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
   if (impl->pfd.dwFlags & PFD_STEREO)
     stereo_is_requested = TRUE;
 
-  hwnd = gdk_win32_drawable_get_handle (glconfig->window);
+  root_window = gdk_get_default_root_window ();
+  hwnd = gdk_win32_drawable_get_handle (GDK_DRAWABLE (root_window));
 
   /*
    * Get DC.
@@ -462,8 +464,7 @@ gdk_gl_config_impl_win32_finalize (GObject *object)
 }
 
 GdkGLConfig *
-gdk_gl_config_new (GdkWindow  *window,
-		   const gint *attrib_list)
+gdk_gl_config_new (const gint *attrib_list)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplWin32 *impl;
@@ -475,7 +476,6 @@ gdk_gl_config_new (GdkWindow  *window,
    */
 
   glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
-			   "window",      window,
                            "attrib_list", attrib_list,
                            NULL);
 

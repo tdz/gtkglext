@@ -28,7 +28,7 @@
 G_BEGIN_DECLS
 
 gboolean      gtk_widget_set_gl_capability (GtkWidget    *widget,
-                                            const gint   *attrib_list,
+                                            GdkGLConfig  *glconfig,
                                             gint          render_type,
                                             GdkGLContext *share_list,
                                             gboolean      direct);

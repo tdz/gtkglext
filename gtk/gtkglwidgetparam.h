@@ -31,7 +31,7 @@ typedef struct _GtkGLWidgetParam GtkGLWidgetParam;
 
 struct _GtkGLWidgetParam
 {
-  gint *attrib_list;
+  GdkGLConfig *glconfig;
   gint render_type;
   GdkGLContext *share_list;
   gboolean direct;

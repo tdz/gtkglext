@@ -89,8 +89,6 @@ void          gdk_window_unset_gl_capability (GdkWindow *window);
 
 gboolean      gdk_window_is_gl_capable       (GdkWindow *window);
 
-GdkGLConfig  *gdk_window_get_gl_config       (GdkWindow *window);
-
 GdkGLWindow  *gdk_window_get_gl_window       (GdkWindow *window);
 
 #define       gdk_window_get_gl_drawable(window)        \

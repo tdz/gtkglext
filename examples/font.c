@@ -73,11 +73,6 @@ init (GtkWidget *widget,
 {
   GdkFont *font;
 
-  /*
-   * Print OpenGL visual configuration.
-   */
-  examine_gl_config_attrib (gtk_widget_get_gl_config(widget));
-
   /* OpenGL begin. */
   gtk_widget_gl_begin (widget);
 
@@ -207,11 +202,13 @@ int
 main (int argc,
       char *argv[])
 {
+  GdkGLConfig *glconfig;
+  gint major, minor;
+
   GtkWidget *window;
   GtkWidget *vbox;
   GtkWidget *drawing_area;
   GtkWidget *button;
-  gint major, minor;
 
   gtk_init (&argc, &argv);
 
@@ -224,9 +221,32 @@ main (int argc,
       g_print ("\n*** OpenGL extension is not supported\n");
       gtk_exit (1);
     }
+
   gdk_gl_query_version (&major, &minor);
   g_print ("\nOpenGL extension is supported - version %d.%d\n",
            major, minor);
+
+  /*
+   * Configure OpenGL-capable visual.
+   */
+
+  /* Try double buffered visual */
+  glconfig = gdk_gl_config_new (&config_attributes[0]);
+  if (glconfig == NULL)
+    {
+      g_print ("*** Cannot find the OpenGL-capable visual with double buffering support.\n");
+      g_print ("*** Trying single buffering visual.\n");
+
+      /* Try single buffered visual */
+      glconfig = gdk_gl_config_new (&config_attributes[1]);
+      if (glconfig == NULL)
+        {
+          g_print ("*** Cannot find an OpenGL-capable visual\n");
+          gtk_exit (1);
+        }
+    }
+
+  examine_gl_config_attrib (glconfig);
 
   /*
    * Top-level window.
@@ -247,11 +267,11 @@ main (int argc,
    */
 
   drawing_area = gtk_drawing_area_new ();
-  gtk_widget_set_size_request (GTK_WIDGET (drawing_area), 600, 200);
+  gtk_widget_set_size_request (drawing_area, 600, 200);
 
   /* Set OpenGL-capability to the widget. */
-  gtk_widget_set_gl_capability (GTK_WIDGET (drawing_area),
-				config_attributes,
+  gtk_widget_set_gl_capability (drawing_area,
+				glconfig,
                                 GDK_GL_RGBA_TYPE,
                                 NULL,
                                 TRUE);

@@ -3,7 +3,6 @@ EXPORTS
 	gdk_gl_config_get_colormap
 	gdk_gl_config_get_depth
 	gdk_gl_config_get_type
-	gdk_gl_config_get_window
 	gdk_gl_config_is_double_buffer
 	gdk_gl_config_is_stereo 
 	gdk_gl_config_new
@@ -22,12 +21,14 @@ EXPORTS
 	gdk_gl_query_version
 	gdk_gl_window_get_type
 	gdk_gl_window_new
+	gdk_pixmap_get_gl_pixmap
+	gdk_pixmap_is_gl_capable
+	gdk_pixmap_set_gl_capability
+	gdk_pixmap_unset_gl_capability
 	gdk_win32_gl_config_get_pfd
 	gdk_win32_gl_context_get_hglrc
 	gdk_win32_gl_drawable_hdc_get
 	gdk_win32_gl_drawable_hdc_release
-	gdk_window_get_gl_config
-	gdk_window_get_gl_context
 	gdk_window_get_gl_window
 	gdk_window_is_gl_capable
 	gdk_window_set_gl_capability

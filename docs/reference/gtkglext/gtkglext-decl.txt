@@ -1,7 +1,7 @@
 <FUNCTION>
 <NAME>gtk_widget_set_gl_capability</NAME>
 <RETURNS>gboolean  </RETURNS>
-GtkWidget    *widget,const gint   *attrib_list,gint          render_type,GdkGLContext *share_list,gboolean      direct
+GtkWidget    *widget,GdkGLConfig  *glconfig,gint          render_type,GdkGLContext *share_list,gboolean      direct
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_widget_is_gl_capable</NAME>

@@ -1,3 +1,18 @@
+2002-06-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/*.c: 
+
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): The interface
+	have been changed. Now, it takes glconfig instead of attrib_list.
+
+	* gdk/gdkglpixmap.c (gdk_pixmap_set_gl_capability): 
+	* gdk/gdkglwindow.c (gdk_window_set_gl_capability): It doesn't try
+	to set colormap.
+	
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new): 
+	* gdk/gdkglconfig.[hc]: gdk_gl_config_new() interface have been
+	changed. Now, it doesn't take window argument.
+
 2002-06-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* Functions ware roughly documented.

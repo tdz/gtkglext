@@ -89,8 +89,6 @@ void         gdk_pixmap_unset_gl_capability (GdkPixmap *pixmap);
 
 gboolean     gdk_pixmap_is_gl_capable       (GdkPixmap *pixmap);
 
-GdkGLConfig *gdk_pixmap_get_gl_config       (GdkPixmap *pixmap);
-
 GdkGLPixmap *gdk_pixmap_get_gl_pixmap       (GdkPixmap *pixmap);
 
 #define      gdk_pixmap_get_gl_drawable(pixmap)         \

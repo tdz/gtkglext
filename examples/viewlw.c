@@ -72,6 +72,8 @@ static const gint config_attributes[] =
      GDK_GL_ATTRIB_LIST_NONE
 };
 
+static GdkGLConfig *glconfig = NULL;
+
 void initgl (GtkWidget *widget, gpointer   data)
 {
      GLfloat light0_pos[4]   = { -50.0, 50.0, 0.0, 0.0 };
@@ -340,7 +342,7 @@ gint show_lwobject(const char *lwobject_name)
 
      /* Set OpenGL-capability to the widget. */
      gtk_widget_set_gl_capability (GTK_WIDGET (glarea),
-                                config_attributes,
+                                glconfig,
                                 GDK_GL_RGBA_TYPE,
                                 NULL,
                                 TRUE);
@@ -442,6 +444,24 @@ int main (int argc, char **argv)
           g_print ("\n*** OpenGL extension is not supported\n");
           gtk_exit (1);
      }
+
+     /* Configure OpenGL-capable visual. */
+
+     /* Try double buffered visual */
+     glconfig = gdk_gl_config_new (&config_attributes[0]);
+     if (glconfig == NULL)
+       {
+         g_print ("*** Cannot find the OpenGL-capable visual with double buffering support.\n");
+         g_print ("*** Trying single buffering visual.\n");
+
+         /* Try single buffered visual */
+         glconfig = gdk_gl_config_new (&config_attributes[1]);
+         if (glconfig == NULL)
+           {
+             g_print ("*** Cannot find an OpenGL-capable visual\n");
+             gtk_exit (1);
+           }
+       }
 
      /* help? */
      if (argc >= 2 && strcmp(argv[1],"--help")==0)

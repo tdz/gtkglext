@@ -20,11 +20,13 @@ OpenGL extension API to GtkWidget.
 </para>
 
 @widget: 
-@attrib_list: 
+@glconfig: 
 @render_type: 
 @share_list: 
 @direct: 
 @Returns: 
+<!-- # Unused Parameters # -->
+@attrib_list: 
 
 
 <!-- ##### FUNCTION gtk_widget_is_gl_capable ##### -->
