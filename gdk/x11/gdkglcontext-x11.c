@@ -260,6 +260,7 @@ gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
 GdkGLContext *
 gdk_gl_context_get_current (void)
 {
+  static GdkGLContext *current = NULL;
   GLXContext glxcontext;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_get_current ()"));
@@ -269,7 +270,12 @@ gdk_gl_context_get_current (void)
   if (!glxcontext)
     return NULL;
 
-  return gdk_x11_gl_context_lookup (glxcontext);
+  if (current && GDK_GL_CONTEXT_GLXCONTEXT (current) == glxcontext)
+    return current;
+
+  current = gdk_x11_gl_context_lookup (glxcontext);
+
+  return current;
 }
 
 /**

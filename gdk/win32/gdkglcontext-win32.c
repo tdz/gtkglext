@@ -236,6 +236,7 @@ gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
 GdkGLContext *
 gdk_gl_context_get_current (void)
 {
+  static GdkGLContext *current = NULL;
   HGLRC hglrc;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_get_current ()"));
@@ -245,7 +246,12 @@ gdk_gl_context_get_current (void)
   if (!hglrc)
     return NULL;
 
-  return gdk_win32_gl_context_lookup (hglrc);
+  if (current && GDK_GL_CONTEXT_HGLRC (current) == hglrc)
+    return current;
+
+  current = gdk_win32_gl_context_lookup (hglrc);
+
+  return current;
 }
 
 HGLRC
