@@ -67,16 +67,17 @@ AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
 # Specify a configuration file
 AM_CONFIG_HEADER(config.h)
 
-dnl Initialize libtool
-AC_PROG_CC
-AM_DISABLE_STATIC
-AC_LIBTOOL_WIN32_DLL
-AC_PROG_LIBTOOL
-
 dnl Initialize maintainer mode
 AM_MAINTAINER_MODE
 
 AC_CANONICAL_HOST
+
+dnl Initialize libtool
+AC_PROG_CC
+AC_ISC_POSIX
+AM_DISABLE_STATIC
+AC_LIBTOOL_WIN32_DLL
+AC_PROG_LIBTOOL
 
 platform_win32=no
 AC_MSG_CHECKING([for some Win32 platform])
@@ -135,7 +136,6 @@ AC_SUBST(gtkglext_targetlib)
 AM_SANITY_CHECK
 
 # Checks for programs.
-AC_ISC_POSIX
 AM_PROG_CC_STDC
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET

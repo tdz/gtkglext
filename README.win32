@@ -14,8 +14,8 @@ This package is composed of GdkGLExt library and GtkGLExt library.
 GdkGLExt library includes low-level OpenGL related objects,
 GdkGLConfig, GdkGLContext, GdkGLDrawable, GdkGLWindow, and so on,
 which has GLX 1.3 like interface. GtkGLExt library includes high-level
-gtk_widget API extentions using GdkGLExt, which extends *ANY* widget
-in GTK+ to an OpenGL-capable widget.
+gtk_widget API extentions using GdkGLExt, which extends *ANY* GTK+ widget
+to an OpenGL-capable widget.
 
 The objects included in these libraries are implemented using C and
 fully compliant with GLib's GObject and it's latest features.
@@ -45,7 +45,7 @@ Currently GtkGLExt supports
       Tested on Linux (RedHat 7.2) and IRIX (6.5).
 
   * Win32 platforms
-      Tested on Windows XP & 2000 Professional using MinGW on
+      Tested on Windows XP & 2000 Professional using MinGW with
       Cygwin environment.
 
 
@@ -61,7 +61,7 @@ Requirements
       http://www.gimp.org/~tml/gimp/win32/
 
   * OpenGL or Mesa (http://www.mesa3d.org/)
-      OpenGL headers are also needed. You can use GL headers
+      OpenGL headers are also needed. You can use GL/*.h headers
       included in Cygwin opengl package or Microsoft's PlatformSDK.
 
 
@@ -94,6 +94,61 @@ OpenGL options
 Debug options
 
   --enable-debug          turn on debugging [default=no]
+
+
+Building GtkGLExt on Win32
+==========================
+
+Please note that GTK for Win32 is successfully installed and
+non-Cygwin version pkg-config.exe works with appropriate PKG_CONFIG_PATH.
+
+Personally I run configure like this:
+
+  (GTK is installed in C:\gtk)
+  $ export PATH=/cygdrive/c/gtk/bin:$PATH
+  $ export PKG_CONFIG_PATH=/cygdrive/c/gtk/lib/pkgconfig
+
+  (MinGW is installed in C:\mingw)
+  $ export PATH=/cygdrive/c/mingw/bin:$PATH
+
+  $ env AR=/usr/bin/ar \
+        ./configure --host=i386-pc-mingw32 --prefix=/target
+  $ make
+  $ make examples
+
+Use Cygwin's ar.exe instead of MinGW's one on Cygwin environment.
+
+
+Building the CVS Version of GtkGLExt
+====================================
+
+GtkGLExt's SourceForge CVS repository can be checked out through
+anonymous (pserver) CVS with the following instruction set.
+When prompted for a password for anonymous, simply press the Enter key. 
+
+  $ cvs \
+      -d:pserver:anonymous@cvs.gtkglext.sourceforge.net:/cvsroot/gtkglext \
+      login
+  $ cvs -z3 \
+      -d:pserver:anonymous@cvs.gtkglext.sourceforge.net:/cvsroot/gtkglext \
+      co gtkglext
+
+When you are at work on the CVS version of GtkGLExt, you can use autogen.sh
+for generating configure script and Makefiles.
+
+  $ libtoolize
+  $ env ACLOCAL_FLAGS='-I /cygdrive/c/gtk/share/aclocal' \
+        AR=/usr/bin/ar \
+        ./autogen.sh --host=i386-pc-mingw32 --prefix=/target
+  $ make
+  $ make examples
+
+ACLOCAL_FLAGS is for pkg-config's PKG_CHECK_MODULES macro in configure.in.
+I use the following versions of the GNU auto-tools.
+
+  autoconf 2.52 (libtool's AC_LIBTOOL_WIN32_DLL macro has a problem with 2.53)
+  automake 1.6.1
+  libtool  1.4.2
 
 
 Contact

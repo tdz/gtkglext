@@ -14,8 +14,8 @@ This package is composed of GdkGLExt library and GtkGLExt library.
 GdkGLExt library includes low-level OpenGL related objects,
 GdkGLConfig, GdkGLContext, GdkGLDrawable, GdkGLWindow, and so on,
 which has GLX 1.3 like interface. GtkGLExt library includes high-level
-gtk_widget API extentions using GdkGLExt, which extends *ANY* widget
-in GTK+ to an OpenGL-capable widget.
+gtk_widget API extentions using GdkGLExt, which extends *ANY* GTK+ widget
+to an OpenGL-capable widget.
 
 The objects included in these libraries are implemented using C and
 fully compliant with GLib's GObject and it's latest features.
@@ -45,7 +45,7 @@ Currently GtkGLExt supports
       Tested on Linux (RedHat 7.2) and IRIX (6.5).
 
   * Win32 platforms
-      Tested on Windows XP & 2000 Professional using MinGW on
+      Tested on Windows XP & 2000 Professional using MinGW with
       Cygwin environment.
 
 
@@ -90,6 +90,37 @@ OpenGL options
 Debug options
 
   --enable-debug          turn on debugging [default=no]
+
+
+Building the CVS Version of GtkGLExt
+====================================
+
+GtkGLExt's SourceForge CVS repository can be checked out through
+anonymous (pserver) CVS with the following instruction set.
+When prompted for a password for anonymous, simply press the Enter key. 
+
+  $ cvs \
+      -d:pserver:anonymous@cvs.gtkglext.sourceforge.net:/cvsroot/gtkglext \
+      login
+  $ cvs -z3 \
+      -d:pserver:anonymous@cvs.gtkglext.sourceforge.net:/cvsroot/gtkglext \
+      co gtkglext
+
+When you are at work on the CVS version of GtkGLExt, you can use autogen.sh
+for generating configure script and Makefiles.
+
+  $ libtoolize
+  $ env ACLOCAL_FLAGS='-I /pkgconfig/is/installed/share/aclocal' \
+        ./autogen.sh --prefix=${HOME}/gtkglext --enable-debug
+  $ make
+  $ make examples
+
+ACLOCAL_FLAGS is for pkg-config's PKG_CHECK_MODULES macro in configure.in.
+I use the following versions of the GNU auto-tools.
+
+  autoconf 2.52 (libtool's AC_LIBTOOL_WIN32_DLL macro has a problem with 2.53)
+  automake 1.6.1
+  libtool  1.4.2
 
 
 Contact
