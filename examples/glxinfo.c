@@ -1,4 +1,4 @@
-/* $Id: glxinfo.c,v 1.2 2002-11-15 02:26:57 naofumi Exp $ */
+/* $Id: glxinfo.c,v 1.3 2002-11-15 04:37:08 naofumi Exp $ */
 
 /*
  * Copyright (C) 1999-2002  Brian Paul   All Rights Reserved.
@@ -55,6 +55,10 @@
 
 #ifndef GLX_TRANSPARENT_RGB
 #define GLX_TRANSPARENT_RGB 0x8008
+#endif
+
+#ifndef GL_MAX_RECTANGLE_TEXTURE_SIZE_NV
+#define GL_MAX_RECTANGLE_TEXTURE_SIZE_NV 0x84F8
 #endif
 
 typedef enum
