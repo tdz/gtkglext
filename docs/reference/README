@@ -1,0 +1,13 @@
+
+These are example build files which you can copy and modify for your app or
+library. They were pinched from the GTK+ build files (thanks Owen!)
+
+configure.in	- a check for gtk-doc which you can add to your configure.in
+
+Makefile.am	- a basic Makefile.am. Copy to your project and modify the
+		  variables at the top of the file.
+
+		  Note that if your project is targeted at GTK+ 2.0 rather
+		  than GTK+ 1.2.x, then you will have to change it so it
+		  runs gtkdoc-scangobj rather than gtkdoc-scanobj.
+
