@@ -295,3 +295,83 @@ _gdk_gl_context_set_gl_drawable (GdkGLContext  *glcontext,
 
   g_object_notify (G_OBJECT (glcontext), "gldrawable");
 }
+
+/**
+ * gdk_gl_context_get_gl_drawable:
+ * @glcontext: a #GdkGLContext.
+ *
+ * Get #GdkGLDrawable to which the @glcontext is binded.
+ *
+ * Return value: the #GdkGLDrawable.
+ **/
+GdkGLDrawable *
+gdk_gl_context_get_gl_drawable (GdkGLContext *glcontext)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
+
+  return glcontext->gldrawable;
+}
+
+/**
+ * gdk_gl_context_get_gl_config:
+ * @glcontext: a #GdkGLContext.
+ *
+ * Get #GdkGLConfig with which the @glcontext is configured.
+ *
+ * Return value: the #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_gl_context_get_gl_config (GdkGLContext *glcontext)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
+
+  return glcontext->glconfig;
+}
+
+/**
+ * gdk_gl_context_get_share_list:
+ * @glcontext: a #GdkGLContext.
+ *
+ * Get #GdkGLContext which the @glcontext shares the display lists.
+ *
+ * Return value: the #GdkGLContext.
+ **/
+GdkGLContext *
+gdk_gl_context_get_share_list (GdkGLContext *glcontext)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
+
+  return glcontext->share_list;
+}
+
+/**
+ * gdk_gl_context_is_direct:
+ * @glcontext: a #GdkGLContext.
+ *
+ * Returns whether the @glcontext is a direct rendering context.
+ *
+ * Return value: TRUE if the @glcontext is a direct rendering contest.
+ **/
+gboolean
+gdk_gl_context_is_direct (GdkGLContext *glcontext)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+
+  return glcontext->is_direct;
+}
+
+/**
+ * gdk_gl_context_get_render_type:
+ * @glcontext: a #GdkGLContext.
+ *
+ * Get render_type of the @glcontext.
+ *
+ * Return value: the render_type
+ **/
+gint
+gdk_gl_context_get_render_type (GdkGLContext *glcontext)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+
+  return glcontext->render_type;
+}

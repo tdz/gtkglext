@@ -30,6 +30,11 @@ GDK_GL_CONFIG_GET_CLASS
 GdkGLContext
 gdk_gl_context_new
 gdk_gl_context_copy
+gdk_gl_context_get_gl_drawable
+gdk_gl_context_get_gl_config
+gdk_gl_context_get_share_list
+gdk_gl_context_is_direct
+gdk_gl_context_get_render_type
 <SUBSECTION Standard>
 GDK_GL_CONTEXT
 GDK_IS_GL_CONTEXT

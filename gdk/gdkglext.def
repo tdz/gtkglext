@@ -12,8 +12,13 @@ EXPORTS
 	gdk_gl_config_new
 	gdk_gl_config_new_by_mode
 	gdk_gl_context_copy
+	gdk_gl_context_get_gl_config
+	gdk_gl_context_get_gl_drawable
+	gdk_gl_context_get_render_type
+	gdk_gl_context_get_share_list
 	gdk_gl_context_get_type
 	gdk_gl_context_info_extension_attribute_get_type
+	gdk_gl_context_is_direct
 	gdk_gl_context_new
 	gdk_gl_debug_flags
 	gdk_gl_drawable_get_colormap

@@ -83,19 +83,19 @@ void     gdk_gl_drawable_wait_gdk           (GdkGLDrawable *gldrawable);
     }                                           \
   while (0)
 
-GdkGLConfig *gdk_gl_drawable_get_gl_config (GdkGLDrawable *gldrawable);
+GdkGLConfig  *gdk_gl_drawable_get_gl_config (GdkGLDrawable *gldrawable);
 
-GdkDrawable *gdk_gl_drawable_get_drawable  (GdkGLDrawable *gldrawable);
+GdkDrawable  *gdk_gl_drawable_get_drawable  (GdkGLDrawable *gldrawable);
 
-void         gdk_gl_drawable_get_size      (GdkGLDrawable *gldrawable,
-                                            gint          *width,
-                                            gint          *height);
+void          gdk_gl_drawable_get_size      (GdkGLDrawable *gldrawable,
+                                             gint          *width,
+                                             gint          *height);
 
-GdkColormap *gdk_gl_drawable_get_colormap  (GdkGLDrawable *gldrawable);
+GdkColormap  *gdk_gl_drawable_get_colormap  (GdkGLDrawable *gldrawable);
 
-GdkVisual   *gdk_gl_drawable_get_visual    (GdkGLDrawable *gldrawable);
+GdkVisual    *gdk_gl_drawable_get_visual    (GdkGLDrawable *gldrawable);
 
-gint         gdk_gl_drawable_get_depth     (GdkGLDrawable *gldrawable);
+gint          gdk_gl_drawable_get_depth     (GdkGLDrawable *gldrawable);
 
 G_END_DECLS
 

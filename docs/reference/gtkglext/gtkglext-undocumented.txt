@@ -1,5 +1,5 @@
-67% function docs coverage.
-41 functions documented.
+70% function docs coverage.
+46 functions documented.
 20 not documented.
 
 

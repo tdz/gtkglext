@@ -50,3 +50,48 @@ OpenGL rendering context.
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_gl_context_get_gl_drawable ##### -->
+<para>
+
+</para>
+
+@glcontext: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_context_get_gl_config ##### -->
+<para>
+
+</para>
+
+@glcontext: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_context_get_share_list ##### -->
+<para>
+
+</para>
+
+@glcontext: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_context_is_direct ##### -->
+<para>
+
+</para>
+
+@glcontext: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_context_get_render_type ##### -->
+<para>
+
+</para>
+
+@glcontext: 
+@Returns: 
+
+

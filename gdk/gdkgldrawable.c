@@ -46,7 +46,7 @@ gdk_gl_drawable_get_type (void)
  * @gldrawable: a #GdkGLDrawable.
  * @glcontext: a #GdkGLContext.
  *
- * Attach a OpenGL rendering context to a #GdkGLDrawable.
+ * Attach a OpenGL rendering context to a @gldrawable.
  *
  * Return value: TRUE if it is successful, FALSE otherwise.
  **/
@@ -126,7 +126,7 @@ gdk_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
  * gdk_gl_drawable_get_gl_config:
  * @gldrawable: a #GdkGLDrawable.
  *
- * Get #GdkGLConfig with which the #GdkGLDrawable is configured.
+ * Get #GdkGLConfig with which the @gldrawable is configured.
  *
  * Return value: the #GdkGLConfig.
  **/
@@ -142,7 +142,7 @@ gdk_gl_drawable_get_gl_config (GdkGLDrawable *gldrawable)
  * gdk_gl_drawable_get_drawable:
  * @gldrawable: a #GdkGLDrawable.
  *
- * Get #GdkDrawable associated with the #GdkGLDrawable.
+ * Get #GdkDrawable associated with the @gldrawable.
  *
  * Return value: the #GdkDrawable.
  **/

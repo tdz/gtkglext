@@ -254,6 +254,31 @@ GdkGLDrawable *gldrawable,GdkGLConfig   *glconfig,GdkGLContext  *share_list,gboo
 <RETURNS>gboolean  </RETURNS>
 GdkGLContext  *dst_glcontext,GdkGLContext  *src_glcontext,gulong         mask
 </FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_context_get_gl_drawable</NAME>
+<RETURNS>GdkGLDrawable  *</RETURNS>
+GdkGLContext *glcontext
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_context_get_gl_config</NAME>
+<RETURNS>GdkGLConfig    *</RETURNS>
+GdkGLContext *glcontext
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_context_get_share_list</NAME>
+<RETURNS>GdkGLContext   *</RETURNS>
+GdkGLContext *glcontext
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_context_is_direct</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLContext *glcontext
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_context_get_render_type</NAME>
+<RETURNS>gint  </RETURNS>
+GdkGLContext *glcontext
+</FUNCTION>
 <STRUCT>
 <NAME>GdkGLDrawableClass</NAME>
 </STRUCT>
@@ -330,12 +355,12 @@ GdkGLDrawable *gldrawable
 </MACRO>
 <FUNCTION>
 <NAME>gdk_gl_drawable_get_gl_config</NAME>
-<RETURNS>GdkGLConfig  *</RETURNS>
+<RETURNS>GdkGLConfig   *</RETURNS>
 GdkGLDrawable *gldrawable
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_drawable_get_drawable</NAME>
-<RETURNS>GdkDrawable  *</RETURNS>
+<RETURNS>GdkDrawable   *</RETURNS>
 GdkGLDrawable *gldrawable
 </FUNCTION>
 <FUNCTION>
@@ -345,12 +370,12 @@ GdkGLDrawable *gldrawable,gint          *width,gint          *height
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_drawable_get_colormap</NAME>
-<RETURNS>GdkColormap  *</RETURNS>
+<RETURNS>GdkColormap   *</RETURNS>
 GdkGLDrawable *gldrawable
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_drawable_get_visual</NAME>
-<RETURNS>GdkVisual    *</RETURNS>
+<RETURNS>GdkVisual     *</RETURNS>
 GdkGLDrawable *gldrawable
 </FUNCTION>
 <FUNCTION>

@@ -65,6 +65,16 @@ gboolean      gdk_gl_context_copy      (GdkGLContext  *dst_glcontext,
                                         GdkGLContext  *src_glcontext,
                                         gulong         mask);
 
+GdkGLDrawable *gdk_gl_context_get_gl_drawable (GdkGLContext *glcontext);
+
+GdkGLConfig   *gdk_gl_context_get_gl_config (GdkGLContext *glcontext);
+
+GdkGLContext  *gdk_gl_context_get_share_list (GdkGLContext *glcontext);
+
+gboolean       gdk_gl_context_is_direct (GdkGLContext *glcontext);
+
+gint           gdk_gl_context_get_render_type (GdkGLContext *glcontext);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_CONTEXT_H__ */
