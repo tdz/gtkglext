@@ -5,7 +5,12 @@
 # Naofumi Yasufuku <naofumi@users.sourceforge.net>
 #
 
-exclude_files="docs examples"
+exclude_files="config.h docs examples"
+
+header_files=`find . -name '*.h' -print`
+source_files=`find . -name '*.c' -print`
+
+target_files="$header_files $source_files"
 
 
 copyright_gdk ()
@@ -67,7 +72,7 @@ EOF
 }
 
 
-for file in `find . -name "*.[ch]" -print`; do
+for file in $target_files; do
 
   exclude=""
   for file_exclude in bak $exclude_files; do
@@ -78,7 +83,7 @@ for file in `find . -name "*.[ch]" -print`; do
   done
 
   dir=`dirname $file`
-  subdir=`echo ${dir#*/} | sed -e 's/\//_/'`
+  subdir=`echo ${dir#*/} | sed -e 's/\//_/g'`
 
   if test -z "$subdir"; then
     continue
