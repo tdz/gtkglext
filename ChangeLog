@@ -1,5 +1,10 @@
 2002-12-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.c (gtk_widget_destroy_gl_context)
+	(gtk_widget_gl_unrealize): gtk_widget_destroy_gl_context() has
+	been removed, and its destruction code has been moved into
+	gtk_widget_gl_unrealize().
+
 	* gtk/gtkglwidgetparam.h (struct _GtkGLWidgetParam): Removed
 	quit_handler_id field.
 

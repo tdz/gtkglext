@@ -57,20 +57,6 @@ gl_context_destroy (GdkGLContext *glcontext)
     g_object_unref (G_OBJECT (glcontext));
 }
 
-static gboolean
-gtk_widget_destroy_gl_context (GtkWidget *widget)
-{
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_destroy_gl_context ()"));
-
-  if (quark_gl_context != 0)
-    g_object_set_qdata (G_OBJECT (widget), quark_gl_context, NULL);
-
-  if (widget->window != NULL)
-    gdk_window_unset_gl_capability (widget->window);
-
-  return FALSE;
-}
-
 static void
 gtk_widget_gl_realize (GtkWidget *widget,
                        gpointer   data)
@@ -154,8 +140,11 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
 {
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_unrealize ()"));
 
-  /* Call quit handler to destroy OpenGL rendering context. */
-  gtk_widget_destroy_gl_context (widget);
+  if (quark_gl_context != 0)
+    g_object_set_qdata (G_OBJECT (widget), quark_gl_context, NULL);
+
+  if (widget->window != NULL)
+    gdk_window_unset_gl_capability (widget->window);
 }
 
 /**
