@@ -82,7 +82,9 @@ examine_gl_config_attrib (GdkGLConfig *glconfig)
  * Colors.
  */
 
-static GdkColor colors[4] = {
+#define NUM_COLORS 4
+
+static GdkColor colors[NUM_COLORS] = {
   /* pixel   red     green   blue */
   {  0,      0x0,    0x0,    0x0    }, /* black */
   {  0,      0xffff, 0x0,    0x0    }, /* red */
@@ -173,9 +175,9 @@ main (int argc,
 {
   GdkGLConfigMode mode;
   GdkGLConfig *glconfig;
+  GdkColormap *colormap;
+  gboolean is_rgba, success;
   gint major, minor;
-
-  gboolean success;
   int i;
 
   GtkWidget *window;
@@ -233,29 +235,31 @@ main (int argc,
 
   examine_gl_config_attrib (glconfig);
 
-  /* 
+  is_rgba = gdk_gl_config_is_rgba (glconfig);
+
+  /*
    * Allocate colors.
    */
 
-  if (!gdk_gl_config_is_rgba (glconfig))
+  colormap = gdk_gl_config_get_colormap (glconfig);
+
+  if (!is_rgba)
     {
+      g_print ("\nAllocate colors.\n");
 
-      gdk_colormap_alloc_colors (gdk_gl_config_get_colormap (glconfig),
-                                 colors, 4, FALSE, FALSE, &success);
+      gdk_colormap_alloc_colors (colormap, colors, 4, FALSE, FALSE, &success);
       if (!success)
-        g_print ("*** color allocation failed.\n");
+        g_print ("*** Color allocation failed.\n");
       else
-        g_print ("colors ware successfully allocated.\n");
+        g_print ("Colors ware successfully allocated.\n");
 
-      for (i = 0; i < 4; i++)
+      for (i = 0; i < NUM_COLORS; i++)
         {
           g_print ("colors[%d] = { %u, 0x%x, 0x%x, 0x%x }\n",
                    i, colors[i].pixel,
                    colors[i].red, colors[i].green, colors[i].blue);
         }
       g_print ("\n");
-
-      /* gtk_widget_set_default_colormap (gdk_gl_config_get_colormap (glconfig)); */
     }
 
   /*
@@ -263,7 +267,16 @@ main (int argc,
    */
 
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title (GTK_WINDOW (window), "simple");
+  gtk_window_set_title (GTK_WINDOW (window), "color");
+
+  /*
+   * NOTICE!
+   * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
+   * a top-level window, we have to set OpenGL window's colormap to the
+   * top-level window, especially in color index mode (color index mode
+   * uses own private writable colormap).
+   */
+  gtk_widget_set_colormap (window, gdk_gl_config_get_colormap (glconfig));
 
   g_signal_connect (G_OBJECT (window), "delete_event",
                     G_CALLBACK (quit), NULL);
@@ -284,7 +297,7 @@ main (int argc,
                                 glconfig,
                                 NULL,
                                 TRUE,
-                                GDK_GL_RGBA_TYPE);
+                                is_rgba ? GDK_GL_RGBA_TYPE : GDK_GL_COLOR_INDEX_TYPE);
 
   gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
 

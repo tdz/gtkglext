@@ -434,54 +434,6 @@ const PangoFontDescription *font_desc,int                         first,int     
 <RETURNS>PangoFont  *</RETURNS>
 GdkDisplay                 *display,const PangoFontDescription *font_desc,int                         first,int                         count,int                         list_base
 </FUNCTION>
-<MACRO>
-<NAME>GDKGLEXT_MAJOR_VERSION</NAME>
-#define GDKGLEXT_MAJOR_VERSION (0)
-</MACRO>
-<MACRO>
-<NAME>GDKGLEXT_MINOR_VERSION</NAME>
-#define GDKGLEXT_MINOR_VERSION (5)
-</MACRO>
-<MACRO>
-<NAME>GDKGLEXT_MICRO_VERSION</NAME>
-#define GDKGLEXT_MICRO_VERSION (1)
-</MACRO>
-<MACRO>
-<NAME>GDKGLEXT_INTERFACE_AGE</NAME>
-#define GDKGLEXT_INTERFACE_AGE (0)
-</MACRO>
-<MACRO>
-<NAME>GDKGLEXT_BINARY_AGE</NAME>
-#define GDKGLEXT_BINARY_AGE    (0)
-</MACRO>
-<MACRO>
-<NAME>GDKGLEXT_CHECK_VERSION</NAME>
-#define	GDKGLEXT_CHECK_VERSION(major, minor, micro)                          \
-  (GDKGLEXT_MAJOR_VERSION > (major) ||                                       \
-  (GDKGLEXT_MAJOR_VERSION == (major) && GDKGLEXT_MINOR_VERSION > (minor)) || \
-  (GDKGLEXT_MAJOR_VERSION == (major) && GDKGLEXT_MINOR_VERSION == (minor) && \
-   GDKGLEXT_MICRO_VERSION >= (micro)))
-</MACRO>
-<VARIABLE>
-<NAME>gdkglext_major_version</NAME>
-extern const guint gdkglext_major_version;
-</VARIABLE>
-<VARIABLE>
-<NAME>gdkglext_minor_version</NAME>
-extern const guint gdkglext_minor_version;
-</VARIABLE>
-<VARIABLE>
-<NAME>gdkglext_micro_version</NAME>
-extern const guint gdkglext_micro_version;
-</VARIABLE>
-<VARIABLE>
-<NAME>gdkglext_interface_age</NAME>
-extern const guint gdkglext_interface_age;
-</VARIABLE>
-<VARIABLE>
-<NAME>gdkglext_binary_age</NAME>
-extern const guint gdkglext_binary_age;
-</VARIABLE>
 <STRUCT>
 <NAME>GdkGLPixmapClass</NAME>
 </STRUCT>
@@ -896,6 +848,54 @@ GdkWindow   *window
 #define      gdk_window_get_gl_drawable(window)         \
   GDK_GL_DRAWABLE (gdk_window_get_gl_window (window))
 </MACRO>
+<MACRO>
+<NAME>GDKGLEXT_MAJOR_VERSION</NAME>
+#define GDKGLEXT_MAJOR_VERSION (0)
+</MACRO>
+<MACRO>
+<NAME>GDKGLEXT_MINOR_VERSION</NAME>
+#define GDKGLEXT_MINOR_VERSION (5)
+</MACRO>
+<MACRO>
+<NAME>GDKGLEXT_MICRO_VERSION</NAME>
+#define GDKGLEXT_MICRO_VERSION (1)
+</MACRO>
+<MACRO>
+<NAME>GDKGLEXT_INTERFACE_AGE</NAME>
+#define GDKGLEXT_INTERFACE_AGE (0)
+</MACRO>
+<MACRO>
+<NAME>GDKGLEXT_BINARY_AGE</NAME>
+#define GDKGLEXT_BINARY_AGE    (0)
+</MACRO>
+<MACRO>
+<NAME>GDKGLEXT_CHECK_VERSION</NAME>
+#define	GDKGLEXT_CHECK_VERSION(major, minor, micro)                          \
+  (GDKGLEXT_MAJOR_VERSION > (major) ||                                       \
+  (GDKGLEXT_MAJOR_VERSION == (major) && GDKGLEXT_MINOR_VERSION > (minor)) || \
+  (GDKGLEXT_MAJOR_VERSION == (major) && GDKGLEXT_MINOR_VERSION == (minor) && \
+   GDKGLEXT_MICRO_VERSION >= (micro)))
+</MACRO>
+<VARIABLE>
+<NAME>gdkglext_major_version</NAME>
+extern const guint gdkglext_major_version;
+</VARIABLE>
+<VARIABLE>
+<NAME>gdkglext_minor_version</NAME>
+extern const guint gdkglext_minor_version;
+</VARIABLE>
+<VARIABLE>
+<NAME>gdkglext_micro_version</NAME>
+extern const guint gdkglext_micro_version;
+</VARIABLE>
+<VARIABLE>
+<NAME>gdkglext_interface_age</NAME>
+extern const guint gdkglext_interface_age;
+</VARIABLE>
+<VARIABLE>
+<NAME>gdkglext_binary_age</NAME>
+extern const guint gdkglext_binary_age;
+</VARIABLE>
 <FUNCTION>
 <NAME>gdk_gl_success_get_type</NAME>
 <RETURNS>GType  </RETURNS>
