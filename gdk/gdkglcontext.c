@@ -332,7 +332,7 @@ gdk_gl_context_get_gl_config (GdkGLContext *glcontext)
  * gdk_gl_context_get_share_list:
  * @glcontext: a #GdkGLContext.
  *
- * Get #GdkGLContext which the @glcontext shares the display lists.
+ * Get #GdkGLContext with which the @glcontext shares the display lists.
  *
  * Return value: the #GdkGLContext.
  **/
@@ -366,7 +366,7 @@ gdk_gl_context_is_direct (GdkGLContext *glcontext)
  *
  * Get render_type of the @glcontext.
  *
- * Return value: the render_type
+ * Return value: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE.
  **/
 gint
 gdk_gl_context_get_render_type (GdkGLContext *glcontext)
