@@ -14,6 +14,9 @@
 <!ENTITY gtkglext-gdkglx SYSTEM "xml/gdkglx.xml">
 <!ENTITY gtkglext-gtkglinit SYSTEM "xml/gtkglinit.xml">
 <!ENTITY gtkglext-gtkglwidget SYSTEM "xml/gtkglwidget.xml">
+
+<!ENTITY gtkglext-Building SYSTEM "building.sgml">
+<!ENTITY gtkglext-Running SYSTEM "running.sgml">
 ]>
 <book id="index">
   <bookinfo>
@@ -21,7 +24,13 @@
     <releaseinfo>for GtkGLExt &version;</releaseinfo>
   </bookinfo>
 
-  <reference>
+  <part id="Overview">
+    <title>GtkGLExt Overview</title>
+    &gtkglext-Building;
+    &gtkglext-Running;
+  </part>
+
+  <part id="GdkGLExt">
     <title>GdkGLExt API Reference</title>
     &gtkglext-gdkglinit;
     &gtkglext-gdkglquery;
@@ -33,12 +42,12 @@
     &gtkglext-gdkglfont;
     &gtkglext-gdkgltokens;
     &gtkglext-gdkglx;
-  </reference>
+  </part>
 
-  <reference>
+  <part id="GtkGLExt">
     <title>GtkGLExt API Reference</title>
     &gtkglext-gtkglinit;
     &gtkglext-gtkglwidget;
-  </reference>
+  </part>
   
 </book>

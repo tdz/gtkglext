@@ -55,7 +55,9 @@ HTML_IMAGES =
 
 # Extra SGML files that are included by $(DOC_MAIN_SGML_FILE).
 content_files = \
-	version.xml
+	version.xml	\
+	building.sgml	\
+	running.sgml
 
 # Other files to distribute.
 extra_files = \
