@@ -65,6 +65,9 @@ gtkglext_public_h_sources = \
 	gtkglinit.h	\
 	gtkglwidget.h
 
+gtkglext_private_h_sources = \
+	gtkglprivate.h
+
 gtkglext_c_sources = \
 	gtkglversion.c	\
 	gtkglinit.c	\
@@ -72,10 +75,10 @@ gtkglext_c_sources = \
 
 gtkglext_headers = \
 	$(gtkglext_public_h_sources)	\
-	gtkgldebug.h			\
-	gtkglprivate.h
+	gtkgldebug.h
 
 gtkglext_sources = \
+	$(gtkglext_private_h_sources)	\
 	$(gtkglext_c_sources)
 
 #
@@ -101,9 +104,6 @@ libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
 libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
 libgtkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
 libgtkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = $(gtkglext_def)
-
-MAINTAINERCLEANFILES =
-EXTRA_HEADERS =
 
 #
 # Extra rules

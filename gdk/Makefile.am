@@ -80,6 +80,9 @@ gdkglext_public_h_sources = \
 	gdkglshapes.h		\
 	gdkglglext.h
 
+gdkglext_private_h_sources = \
+	gdkglprivate.h
+
 gdkglext_built_public_h_sources = \
 	gdkglenumtypes.h
 
@@ -101,10 +104,10 @@ gdkglext_built_c_sources = \
 gdkglext_headers = \
 	$(gdkglext_public_h_sources)		\
 	$(gdkglext_built_public_h_sources)	\
-	gdkgldebug.h				\
-	gdkglprivate.h
+	gdkgldebug.h
 
 gdkglext_sources = \
+	$(gdkglext_private_h_sources)		\
 	$(gdkglext_c_sources)			\
 	$(gdkglext_built_c_sources)
 
@@ -146,8 +149,6 @@ BUILT_SOURCES = \
 MAINTAINERCLEANFILES = \
 	$(gdkglext_built_sources)	\
 	$(stamp_files)
-
-EXTRA_HEADERS =
 
 # Generate built header without using automake BUILT_SOURCES
 $(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS): $(gdkglext_built_public_h_sources)

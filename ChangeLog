@@ -1,5 +1,8 @@
 2003-05-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/Makefile.am: 
+	* gtk/Makefile.am: Don't install g[dt]kglprivate.h.
+
 	* gtk/gtkglext.def: Removed gtk_gl_widget_install_toplevel_cmap.
 
 	* gtk/gtkglprivate.h: 
