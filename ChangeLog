@@ -1,5 +1,12 @@
 2003-05-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglext.def: Removed gtk_gl_widget_install_toplevel_cmap.
+
+	* gtk/gtkglprivate.h: 
+	* gtk/gtkglinit.c (gtk_gl_parse_args): 
+	* gtk/gtkglwidget.c: Renamed gtk_gl_widget_install_toplevel_cmap
+	to _gtk_gl_widget_install_toplevel_cmap.
+
 	* docs/reference/gtkglext/running.sgml: 
 	* gtk/gtkglinit.c (gtk_gl_parse_args): Changed
 	--install-gl-colormap option to --gtk-gl-install-colormap.

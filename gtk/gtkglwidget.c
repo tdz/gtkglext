@@ -38,7 +38,7 @@ typedef struct
 static const gchar quark_gl_private_string[] = "gtk-gl-widget-private";
 static GQuark quark_gl_private = 0;
 
-gboolean gtk_gl_widget_install_toplevel_cmap = FALSE;
+gboolean _gtk_gl_widget_install_toplevel_cmap = FALSE;
 
 /* 
  * Signal handlers.
@@ -236,7 +236,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   gtk_widget_set_colormap (widget, colormap);
 
   /* Install colormap to the top-level window. */
-  if (gtk_gl_widget_install_toplevel_cmap)
+  if (_gtk_gl_widget_install_toplevel_cmap)
     {
       /*
        * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on

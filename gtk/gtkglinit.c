@@ -71,7 +71,7 @@ gtk_gl_parse_args (int    *argc,
   env_string = g_getenv ("GTK_GL_INSTALL_COLORMAP");
   if (env_string != NULL)
     {
-      gtk_gl_widget_install_toplevel_cmap = (atoi (env_string) != 0);
+      _gtk_gl_widget_install_toplevel_cmap = (atoi (env_string) != 0);
       env_string = NULL;
     }
 
@@ -94,7 +94,7 @@ gtk_gl_parse_args (int    *argc,
 	{
           if (strcmp ("--gtk-gl-install-colormap", (*argv)[i]) == 0)
             {
-              gtk_gl_widget_install_toplevel_cmap = TRUE;
+              _gtk_gl_widget_install_toplevel_cmap = TRUE;
               (*argv)[i] = NULL;
             }
 #ifdef G_ENABLE_DEBUG
