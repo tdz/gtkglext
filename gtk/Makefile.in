@@ -207,7 +207,9 @@ libgtkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_D
 MAINTAINERCLEANFILES = 
 EXTRA_HEADERS = 
 
-EXTRA_DIST = 
+EXTRA_DIST = \
+	gtkglext.def
+
 subdir = gtk
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
