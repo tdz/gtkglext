@@ -279,6 +279,16 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
+/**
+ * gdk_gl_config_new:
+ * @window: a #GdkWindow.
+ * @attrib_list: a list of attribute/value pairs. The last attribute must be GDK_GL_ATTRIB_LIST_NONE.
+ *
+ * Returns an OpenGL frame buffer configuration that match the specified
+ * attributes.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
 GdkGLConfig *
 gdk_gl_config_new (GdkWindow  *window,
                    const gint *attrib_list)

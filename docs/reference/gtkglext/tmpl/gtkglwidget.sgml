@@ -65,49 +65,56 @@ OpenGL extension API to GtkWidget.
 
 <!-- ##### MACRO gtk_widget_get_gl_drawable ##### -->
 <para>
-
+Return the #GdkGLDrawable holded by the #GtkWidget.
 </para>
 
-@widget: 
+@widget: a #GtkWidget.
+@Returns: the #GdkGLDrawable.
 
 
 <!-- ##### MACRO gtk_widget_gl_make_current ##### -->
 <para>
-
+Attach a OpenGL rendering context to the #GtkWidget.
 </para>
 
-@widget: 
+@widget: a #GtkWidget.
+@Returns: TRUE if it is successful, FALSE otherwise.
 
 
 <!-- ##### MACRO gtk_widget_gl_is_double_buffer ##### -->
 <para>
-
+Returns whether the #GtkWidget configuration supports the double
+buffered visual.
 </para>
 
-@widget: 
+@widget: a #GtkWidget.
+@Returns: TRUE if the double buffered visual is supported, FALSE otherwise.
 
 
 <!-- ##### MACRO gtk_widget_gl_swap_buffers ##### -->
 <para>
-
+Exchange front and back buffers.
 </para>
 
-@widget: 
+@widget: a #GtkWidget.
 
 
 <!-- ##### MACRO gtk_widget_gl_begin ##### -->
 <para>
-
+Delimit the begining of the GL execution.
+The call makes the OpenGL rendering context current to the widget, and
+completes GDK drawing execution.
 </para>
 
-@widget: 
+@widget: a #GtkWidget.
 
 
 <!-- ##### MACRO gtk_widget_gl_end ##### -->
 <para>
-
+Delimit the end of the GL execution.
+The call completes GL execution.
 </para>
 
-@widget: 
+@widget: a #GtkWidget.
 
 

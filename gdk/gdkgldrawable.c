@@ -40,6 +40,15 @@ gdk_gl_drawable_get_type (void)
   return type;
 }
 
+/**
+ * gdk_gl_drawable_make_current:
+ * @gldrawable: a #GdkGLDrawable.
+ * @glcontext: a #GdkGLContext.
+ *
+ * Attach a OpenGL rendering context to a #GdkGLDrawable.
+ *
+ * Return value: TRUE if it is successful, FALSE otherwise.
+ **/
 gboolean
 gdk_gl_drawable_make_current (GdkGLDrawable *gldrawable,
                               GdkGLContext  *glcontext)
@@ -51,6 +60,13 @@ gdk_gl_drawable_make_current (GdkGLDrawable *gldrawable,
                                                                        glcontext);
 }
 
+/**
+ * gdk_gl_drawable_swap_buffers:
+ * @gldrawable: a #GdkGLDrawable.
+ *
+ * Exchange front and back buffers.
+ *
+ **/
 void
 gdk_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable)
 {

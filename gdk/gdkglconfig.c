@@ -179,6 +179,16 @@ gdk_gl_config_finalize (GObject *object)
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
+/**
+ * gdk_gl_config_get_attrib:
+ * @glconfig: a #GdkGLConfig.
+ * @attribute: the attribute to be returned.
+ * @value: returns the requested value.
+ *
+ * Return information about a OpenGL frame buffer configuration.
+ *
+ * Return value: an error code if it fails for any reason, otherwise, GDK_GL_SUCCESS is returned.
+ **/
 gboolean
 gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
                           gint         attribute,
@@ -189,6 +199,14 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
   return GDK_GL_CONFIG_GET_CLASS (glconfig)->get_attrib (glconfig, attribute, value);
 }
 
+/**
+ * gdk_gl_config_get_window:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get the referred #GdkWindow.
+ *
+ * Return value: the referred #GdkWindow.
+ **/
 GdkWindow *
 gdk_gl_config_get_window (GdkGLConfig *glconfig)
 {
@@ -197,6 +215,15 @@ gdk_gl_config_get_window (GdkGLConfig *glconfig)
   return glconfig->window;
 }
 
+/**
+ * gdk_gl_config_get_colormap:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get the colormap that is appropriate for the OpenGL frame buffer
+ * configuration.
+ *
+ * Return value: the appropriate colormap.
+ **/
 GdkColormap *
 gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
 {
@@ -205,6 +232,14 @@ gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
   return glconfig->colormap;
 }
 
+/**
+ * gdk_gl_config_get_depth:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get the depth (number of bits per pixel) of the OpenGL-capable visual.
+ *
+ * Return value: the depth value.
+ **/
 gint
 gdk_gl_config_get_depth (GdkGLConfig *glconfig)
 {
@@ -213,6 +248,14 @@ gdk_gl_config_get_depth (GdkGLConfig *glconfig)
   return glconfig->depth;
 }
 
+/**
+ * gdk_gl_config_is_double_buffer:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Returns whether the configuration supports the double buffered visual.
+ *
+ * Return value: TRUE if the double buffered visual is supported, FALSE otherwise.
+ **/
 gboolean
 gdk_gl_config_is_double_buffer (GdkGLConfig *glconfig)
 {
@@ -221,6 +264,14 @@ gdk_gl_config_is_double_buffer (GdkGLConfig *glconfig)
   return glconfig->is_double_buffer;
 }
 
+/**
+ * gdk_gl_config_is_stereo:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Returns whether the configuration supports the stereo visual.
+ *
+ * Return value: TRUE if the stereo visual is supported, FALSE otherwise.
+ **/
 gboolean
 gdk_gl_config_is_stereo (GdkGLConfig *glconfig)
 {

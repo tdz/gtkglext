@@ -19,6 +19,16 @@
 #include "gdkglx.h"
 #include "gdkglfont.h"
 
+/**
+ * gdk_gl_font_use_gdk_font:
+ * @font: a #GdkFont.
+ * @first: the index of the first glyph to be taken.
+ * @count: the number of glyphs to be taken.
+ * @list_base: the index of the first display list to be generated.
+ *
+ * Create bitmap display lists from a #GdkFont.
+ *
+ **/
 void
 gdk_gl_font_use_gdk_font (GdkFont *font,
                           gint     first,

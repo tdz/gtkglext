@@ -201,6 +201,19 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
     }
 }
 
+/**
+ * gtk_widget_set_gl_capability:
+ * @widget: the #GtkWidget to be used as the rendering area.
+ * @attrib_list: a list of attribute/value pairs. The last attribute must be GDK_GL_ATTRIB_LIST_NONE.
+ * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not used).
+ * @share_list: the #GdkGLContext which to share display lists. NULL indicates that no sharing is to take place.
+ * @direct: whether rendering is to be done with a direct connection to the graphics system.
+ *
+ * Set the OpenGL-capability to the #GtkWidget.
+ * The call setup the callbacks to realize a OpenGL-capable window.
+ *
+ * Return value: TRUE if it is successful, FALSE otherwise.
+ **/
 gboolean
 gtk_widget_set_gl_capability (GtkWidget    *widget,
                               const gint   *attrib_list,
@@ -244,6 +257,14 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   return TRUE;
 }
 
+/**
+ * gtk_widget_is_gl_capable:
+ * @widget: a #GtkWidget.
+ *
+ * Return whether the #GtkWidget is OpenGL-capable.
+ *
+ * Return value: TRUE if the #GtkWidget is OpenGL-capable, FALSE otherwise.
+ **/
 gboolean
 gtk_widget_is_gl_capable (GtkWidget *widget)
 {
@@ -252,6 +273,14 @@ gtk_widget_is_gl_capable (GtkWidget *widget)
   return g_object_get_qdata (G_OBJECT (widget), quark_gl_context) != NULL ? TRUE : FALSE;
 }
 
+/**
+ * gtk_widget_get_gl_config:
+ * @widget: a #GtkWidget.
+ *
+ * Return the #GdkGLConfig referred by the #GtkWidget.
+ *
+ * Return value: the #GdkGLConfig.
+ **/
 GdkGLConfig *
 gtk_widget_get_gl_config (GtkWidget *widget)
 {
@@ -260,6 +289,14 @@ gtk_widget_get_gl_config (GtkWidget *widget)
   return gdk_window_get_gl_config (widget->window);
 }
 
+/**
+ * gtk_widget_get_gl_context:
+ * @widget: a #GtkWidget.
+ *
+ * Return the #GdkGLContext holded by the #GtkWidget.
+ *
+ * Return value: the #GdkGLContext.
+ **/
 GdkGLContext *
 gtk_widget_get_gl_context (GtkWidget *widget)
 {
@@ -268,6 +305,14 @@ gtk_widget_get_gl_context (GtkWidget *widget)
   return g_object_get_qdata (G_OBJECT (widget), quark_gl_context);
 }
 
+/**
+ * gtk_widget_get_gl_window:
+ * @widget: a #GtkWidget.
+ *
+ * Return the #GdkGLWindow holded by the #GtkWidget.
+ *
+ * Return value: the #GdkGLWindow.
+ **/
 GdkGLWindow *
 gtk_widget_get_gl_window (GtkWidget *widget)
 {

@@ -19,6 +19,13 @@
 #include "gdkglprivate-x11.h"
 #include "gdkglx.h"
 
+/**
+ * gdk_gl_query_extension:
+ *
+ * Indicate whether the OpenGL extension is supported.
+ *
+ * Return value: TRUE if the OpenGL extension is supported, FALSE otherwise.
+ **/
 gboolean
 gdk_gl_query_extension (void)
 {
@@ -26,6 +33,15 @@ gdk_gl_query_extension (void)
                             NULL, NULL);
 }
 
+/**
+ * gdk_gl_query_version:
+ * @major: returns the major version number of the OpenGL extension.
+ * @minor: returns the minor version number of the OpenGL extension.
+ *
+ * Return the version numbers of the OpenGL extension.
+ *
+ * Return value: FALSE if it fails, TRUE otherwise.
+ **/
 gboolean
 gdk_gl_query_version (gint *major,
                       gint *minor)

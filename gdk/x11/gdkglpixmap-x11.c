@@ -234,10 +234,18 @@ gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable *draw,
   return TRUE;
 }
 
-/*
+/**
+ * gdk_gl_pixmap_new:
+ * @glconfig: a #GdkGLConfig.
+ * @pixmap: the #GdkPixmap to be used as the rendering area.
+ * @attrib_list: this must be set to NULL or empty (first attribute of None).
+ *
+ * Create an off-screen rendering area.
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None). See GLX 1.3 spec.
- */
+ *
+ * Return value: the new #GdkGLPixmap.
+ **/
 GdkGLPixmap *
 gdk_gl_pixmap_new (GdkGLConfig *glconfig,
                    GdkPixmap   *pixmap,

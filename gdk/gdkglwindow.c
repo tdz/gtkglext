@@ -210,6 +210,19 @@ gl_window_destroy (GdkGLWindow *glwindow)
     g_object_unref (G_OBJECT (glwindow));
 }
 
+/**
+ * gdk_window_set_gl_capability:
+ * @window: the #GdkWindow to be used as the rendering area.
+ * @glconfig: a #GdkGLConfig.
+ * @attrib_list: this must be set to NULL or empty (first attribute of None).
+ *
+ * Set the OpenGL-capability to the #GdkWindow.
+ * The call creates a new #GdkGLWindow.
+ * attrib_list is currently unused. This must be set to NULL or empty
+ * (first attribute of None).
+ *
+ * Return value: TRUE if it is successful, FALSE otherwise.
+ **/
 gboolean
 gdk_window_set_gl_capability (GdkWindow    *window,
                               GdkGLConfig  *glconfig,
@@ -276,6 +289,14 @@ gdk_window_set_gl_capability (GdkWindow    *window,
   return FALSE;
 }
 
+/**
+ * gdk_window_unset_gl_capability:
+ * @window: a #GdkWindow.
+ *
+ * Unset the OpenGL-capability of the #GdkWindow.
+ * The call destroys the #GdkGLWindow holded by the #GdkWindow.
+ *
+ **/
 void
 gdk_window_unset_gl_capability (GdkWindow *window)
 {
@@ -297,6 +318,14 @@ gdk_window_unset_gl_capability (GdkWindow *window)
   g_object_set_qdata (G_OBJECT (window), quark_gl_window, NULL);
 }
 
+/**
+ * gdk_window_is_gl_capable:
+ * @window: a #GdkWindow.
+ *
+ * Return whether the #GdkWindow is OpenGL-capable.
+ *
+ * Return value: TRUE if the #GdkWindow is OpenGL-capable, FALSE otherwise.
+ **/
 gboolean
 gdk_window_is_gl_capable (GdkWindow *window)
 {
@@ -305,6 +334,14 @@ gdk_window_is_gl_capable (GdkWindow *window)
   return g_object_get_qdata (G_OBJECT (window), quark_gl_window) != NULL ? TRUE : FALSE;
 }
 
+/**
+ * gdk_window_get_gl_config:
+ * @window: a #GdkWindow.
+ *
+ * Return the #GdkGLConfig referred by the #GdkWindow.
+ *
+ * Return value: the #GdkGLConfig.
+ **/
 GdkGLConfig *
 gdk_window_get_gl_config (GdkWindow *window)
 {
@@ -313,6 +350,14 @@ gdk_window_get_gl_config (GdkWindow *window)
   return g_object_get_qdata (G_OBJECT (window), quark_gl_config);
 }
 
+/**
+ * gdk_window_get_gl_window:
+ * @window: a #GdkWindow.
+ *
+ * Return the #GdkGLWindow holded by the #GdkWindow.
+ *
+ * Return value: the #GdkGLWindow.
+ **/
 GdkGLWindow *
 gdk_window_get_gl_window (GdkWindow *window)
 {

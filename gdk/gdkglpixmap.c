@@ -209,6 +209,19 @@ gl_pixmap_destroy (GdkGLPixmap *glpixmap)
     g_object_unref (G_OBJECT (glpixmap));
 }
 
+/**
+ * gdk_pixmap_set_gl_capability:
+ * @pixmap: the #GdkPixmap to be used as the rendering area.
+ * @glconfig: a #GdkGLConfig.
+ * @attrib_list: this must be set to NULL or empty (first attribute of None).
+ *
+ * Set the OpenGL-capability to the #GdkPixmap.
+ * The call creates a new #GdkGLPixmap.
+ * attrib_list is currently unused. This must be set to NULL or empty
+ * (first attribute of None).
+ *
+ * Return value: TRUE if it is successful, FALSE otherwise.
+ **/
 gboolean
 gdk_pixmap_set_gl_capability (GdkPixmap    *pixmap,
                               GdkGLConfig  *glconfig,
@@ -275,6 +288,14 @@ gdk_pixmap_set_gl_capability (GdkPixmap    *pixmap,
   return FALSE;
 }
 
+/**
+ * gdk_pixmap_unset_gl_capability:
+ * @pixmap: a #GdkPixmap.
+ *
+ * Unset the OpenGL-capability of the #GdkPixmap.
+ * The call destroys the #GdkGLPixmap holded by the #GdkPixmap.
+ *
+ **/
 void
 gdk_pixmap_unset_gl_capability (GdkPixmap *pixmap)
 {
@@ -296,6 +317,14 @@ gdk_pixmap_unset_gl_capability (GdkPixmap *pixmap)
   g_object_set_qdata (G_OBJECT (pixmap), quark_gl_pixmap, NULL);
 }
 
+/**
+ * gdk_pixmap_is_gl_capable:
+ * @pixmap: a #GdkPixmap.
+ *
+ * Return whether the #GdkPixmap is OpenGL-capable.
+ *
+ * Return value: TRUE if the #GdkPixmap is OpenGL-capable, FALSE otherwise.
+ **/
 gboolean
 gdk_pixmap_is_gl_capable (GdkPixmap *pixmap)
 {
@@ -304,6 +333,14 @@ gdk_pixmap_is_gl_capable (GdkPixmap *pixmap)
   return g_object_get_qdata (G_OBJECT (pixmap), quark_gl_pixmap) != NULL ? TRUE : FALSE;
 }
 
+/**
+ * gdk_pixmap_get_gl_config:
+ * @pixmap: a #GdkPixmap.
+ *
+ * Return the #GdkGLConfig referred by the #GdkPixmap.
+ *
+ * Return value: the #GdkGLConfig.
+ **/
 GdkGLConfig *
 gdk_pixmap_get_gl_config (GdkPixmap *pixmap)
 {
@@ -312,6 +349,14 @@ gdk_pixmap_get_gl_config (GdkPixmap *pixmap)
   return g_object_get_qdata (G_OBJECT (pixmap), quark_gl_config);
 }
 
+/**
+ * gdk_pixmap_get_gl_pixmap:
+ * @pixmap: a #GdkPixmap.
+ *
+ * Return the #GdkGLPixmap holded by the #GdkPixmap.
+ *
+ * Return value: the #GdkGLPixmap.
+ **/
 GdkGLPixmap *
 gdk_pixmap_get_gl_pixmap (GdkPixmap *pixmap)
 {

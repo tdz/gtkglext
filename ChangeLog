@@ -1,5 +1,7 @@
 2002-06-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* Functions ware roughly documented.
+
 	* gtk/gtkglwidget.c (gtk_widget_gl_realize) 
 	(gtk_widget_gl_configure_event): Modified for new
 	gdk_window_set_gl_capability function.

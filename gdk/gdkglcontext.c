@@ -242,6 +242,18 @@ gdk_gl_context_finalize (GObject *object)
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
+/**
+ * gdk_gl_context_new:
+ * @gldrawable: a #GdkGLDrawable.
+ * @glconfig: a #GdkGLConfig.
+ * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not used).
+ * @share_list: the #GdkGLContext which to share display lists. NULL indicates that no sharing is to take place.
+ * @direct: whether rendering is to be done with a direct connection to the graphics system.
+ *
+ * Create a new OpenGL rendering context.
+ *
+ * Return value: the new #GdkGLContext.
+ **/
 GdkGLContext *
 gdk_gl_context_new (GdkGLDrawable *gldrawable,
                     GdkGLConfig   *glconfig,
