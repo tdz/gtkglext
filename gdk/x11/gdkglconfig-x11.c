@@ -280,7 +280,8 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
 }
 
 GdkGLConfig *
-gdk_gl_config_new (const gint *attrib_list)
+gdk_gl_config_new (GdkWindow  *window,
+                   const gint *attrib_list)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplX11 *impl;
@@ -292,6 +293,7 @@ gdk_gl_config_new (const gint *attrib_list)
    */
 
   glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11,
+                           "window",      window,
                            "attrib_list", attrib_list,
                            NULL);
 

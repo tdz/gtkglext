@@ -33,15 +33,3 @@ gdk_gl_query_version (gint *major,
   return glXQueryVersion (gdk_x11_get_default_xdisplay (),
                           major, minor);
 }
-
-void
-gdk_gl_wait_gl (void)
-{
-  glXWaitGL ();
-}
-
-void
-gdk_gl_wait_gdk (void)
-{
-  glXWaitX ();
-}

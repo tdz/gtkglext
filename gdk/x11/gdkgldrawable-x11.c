@@ -35,3 +35,15 @@ _gdk_x11_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable)
   glXSwapBuffers (gdk_x11_drawable_get_xdisplay (drawable),
                   gdk_x11_drawable_get_xid (drawable));
 }
+
+void
+gdk_gl_drawable_wait_gl (GdkGLDrawable *gldrawable)
+{
+  glXWaitGL ();
+}
+
+void
+gdk_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
+{
+  glXWaitX ();
+}
