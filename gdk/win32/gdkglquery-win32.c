@@ -18,8 +18,6 @@
 
 #include <string.h>
 
-#include <gmodule.h>
-
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglquery.h"
@@ -206,8 +204,8 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
 GdkGLProc
 gdk_gl_get_proc_address (const char *proc_name)
 {
-  static GModule *main_module = NULL;
   GdkGLProc proc_address;
+  HMODULE hmodule;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_proc_address ()"));
 
@@ -218,23 +216,37 @@ gdk_gl_get_proc_address (const char *proc_name)
   GDK_GL_NOTE (IMPL, g_message (" * wglGetProcAddress () - %s",
                                 proc_address ? "succeeded" : "failed"));
 
-  if (proc_address != NULL)
-    return proc_address;
+  /* Try GetProcAddress () */
 
-  /* Try g_module_symbol () */
-
-  if (main_module == NULL)
+  if (proc_address == NULL)
     {
-      GDK_GL_NOTE (MISC, g_message (" - get main_module"));
+      /* opengl32.dll */
 
-      main_module = g_module_open (NULL, G_MODULE_BIND_LAZY);
+      GDK_GL_NOTE (MISC, g_message (" - Get opengl32 module handle"));
+
+      hmodule = GetModuleHandle ("opengl32");
+      if (hmodule == NULL)
+        g_warning ("Cannot get opengl32 module handle");
+      else
+        proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
+
+      GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
+                                    proc_address ? "succeeded" : "failed"));
     }
 
-  if (main_module != NULL)
+  if (proc_address == NULL)
     {
-      g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
+      /* glu32.dll */
 
-      GDK_GL_NOTE (MISC, g_message (" - g_module_symbol () - %s",
+      GDK_GL_NOTE (MISC, g_message (" - Get glu32 module handle"));
+
+      hmodule = GetModuleHandle ("glu32");
+      if (hmodule == NULL)
+        g_warning ("Cannot get glu32 module handle");
+      else
+        proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
+
+      GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
                                     proc_address ? "succeeded" : "failed"));
     }
 

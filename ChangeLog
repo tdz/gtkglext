@@ -1,5 +1,8 @@
 2003-04-25  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglquery-win32.c (gdk_gl_get_proc_address): Use
+	Win32 API instead of GModule.
+
 	* gdk/x11/gdkglquery-x11.c (gdk_gl_get_proc_address): Modified to
 	open the GdkGLExt shared library file. Now it works well with
 	python binding.
