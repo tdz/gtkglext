@@ -379,7 +379,7 @@ gdk_gl_config_parse_attrib_list (const int             *attrib_list,
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_parse_attrib_list ()"));
 
-  memset (&pfd, 0, sizeof (PIXELFORMATDESCRIPTOR));
+  memset (pfd, 0, sizeof (PIXELFORMATDESCRIPTOR));
 
   /* Specifies the size of this data structure. */
   pfd->nSize = sizeof (PIXELFORMATDESCRIPTOR);
