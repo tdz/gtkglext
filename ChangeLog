@@ -1,5 +1,7 @@
 2003-01-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglconfig-x11.c: Use macros defined in config.h.
+
 	* configure.in: Modified Xmu library checks.
 	Modified gdk_x11_colormap_foreign_new check.
 

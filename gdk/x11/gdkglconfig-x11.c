@@ -16,6 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif /* HAVE_CONFIG_H */
+
 #include <string.h>
 
 #include "gdkglx.h"
@@ -27,12 +31,17 @@
 #include <gdk/gdkscreen.h>
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
+#ifdef HAVE_LIBXMU
+
 #include <X11/Xatom.h>  /* for XA_RGB_DEFAULT_MAP atom */
-#if defined(__vms)
+
+#ifdef HAVE_XMU_STDCMAP_H
 #include <Xmu/StdCmap.h>  /* for XmuLookupStandardColormap */
 #else
 #include <X11/Xmu/StdCmap.h>  /* for XmuLookupStandardColormap */
 #endif
+
+#endif /* HAVE_LIBXMU */
 
 enum {
   PROP_0,
@@ -41,11 +50,11 @@ enum {
 
 /* Forward declarations */
 
-#ifdef __GDK_HAS_COLORMAP_FOREIGN_NEW
+#ifdef HAVE_GDK_X11_COLORMAP_FOREIGN_NEW
 static GdkColormap *gdk_gl_config_get_std_rgb_colormap  (GdkScreen               *screen,
                                                          XVisualInfo             *xvinfo,
                                                          gboolean                 is_mesa_glx);
-#endif /* __GDK_HAS_COLORMAP_FOREIGN_NEW */
+#endif /* HAVE_GDK_X11_COLORMAP_FOREIGN_NEW */
 static GdkColormap *gdk_gl_config_setup_colormap        (GdkScreen               *screen,
                                                          XVisualInfo             *xvinfo,
                                                          gboolean                 is_rgba,
@@ -137,7 +146,7 @@ gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass)
  * Get standard RGB colormap
  */
 
-#ifdef __GDK_HAS_COLORMAP_FOREIGN_NEW
+#ifdef HAVE_GDK_X11_COLORMAP_FOREIGN_NEW
 
 static GdkColormap *
 gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
@@ -206,7 +215,8 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
         }
     }
 
-#ifndef SOLARIS_2_4_BUG
+#if defined(HAVE_LIBXMU) && !defined(SOLARIS_2_4_BUG)
+
   /*
    * (ripped from GLUT)
    * Solaris 2.4 and 2.5 have a bug in their XmuLookupStandardColormap
@@ -250,12 +260,12 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
         }
     }
 
-#endif /* SOLARIS_2_4_BUG */
+#endif /* defined(HAVE_LIBXMU) && !defined(SOLARIS_2_4_BUG) */
 
   return NULL;
 }
 
-#endif /* __GDK_HAS_COLORMAP_FOREIGN_NEW */
+#endif /* HAVE_GDK_X11_COLORMAP_FOREIGN_NEW */
 
 /* 
  * Setup colormap.
@@ -295,11 +305,11 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
       /* Try standard RGB colormap. */
 
-#ifdef __GDK_HAS_COLORMAP_FOREIGN_NEW
+#ifdef HAVE_GDK_X11_COLORMAP_FOREIGN_NEW
       colormap = gdk_gl_config_get_std_rgb_colormap (screen, xvinfo, is_mesa_glx);
       if (colormap)
         return colormap;
-#endif /* __GDK_HAS_COLORMAP_FOREIGN_NEW */
+#endif /* HAVE_GDK_X11_COLORMAP_FOREIGN_NEW */
 
       /* New colormap. */
 
