@@ -39,7 +39,7 @@ static gboolean      gdk_gl_context_equal  (GLXContext   *a,
 static GdkGLContext *gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
                                                 GdkGLConfig   *glconfig,
                                                 GdkGLContext  *share_list,
-                                                gboolean       direct,
+                                                gboolean       is_direct,
                                                 int            render_type,
                                                 GLXContext    *glxcontext);
 
@@ -220,7 +220,7 @@ static GdkGLContext *
 gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
                            GdkGLConfig   *glconfig,
                            GdkGLContext  *share_list,
-                           gboolean       direct,
+                           gboolean       is_direct,
                            int            render_type,
                            GLXContext    *glxcontext)
 {
@@ -238,7 +238,7 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
                             "gldrawable_read", NULL,
                             "glconfig",        glconfig,
                             "share_list",      share_list,
-                            "is_direct",       direct,
+                            "is_direct",       is_direct,
                             "render_type",     render_type,
                             "glxcontext",      glxcontext,
                             NULL);
