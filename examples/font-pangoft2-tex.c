@@ -262,7 +262,7 @@ configure_event (GtkWidget         *widget,
   gluPerspective (2.0 * FOVY_2,
                   (GLfloat) w / (GLfloat) h,
                   Z_NEAR,
-                  4.0 * Z_NEAR);
+                  2.5 * Z_NEAR);
 
   glMatrixMode (GL_MODELVIEW);
   glLoadIdentity ();
@@ -277,13 +277,13 @@ configure_event (GtkWidget         *widget,
   return TRUE;
 }
 
-#define ANGLE   60.0
-/* tan (30.0 * PI / 180.0) */
+#define ANGLE   30.0
+/* tan (ANGLE * PI / 180.0) */
 #define TANGENT 0.577350
 
 #define TEXT_Z_NEAR  2.0
-#define TEXT_Z_FAR  -4.0
-#define TEXT_Z_DIFF  0.001
+#define TEXT_Z_FAR  -5.0
+#define TEXT_Z_DIFF  0.0025
 
 static GLfloat text_z = TEXT_Z_NEAR;
 
@@ -336,7 +336,7 @@ expose_event (GtkWidget      *widget,
     {
       glPushMatrix ();
         glTranslatef (0.0, -text_z * TANGENT, text_z + 2.0);
-        glRotatef (ANGLE, -1.0, 0.0, 0.0);
+        glRotatef (ANGLE, 1.0, 0.0, 0.0);
 
         glEnable (GL_TEXTURE_2D);
         glEnable (GL_BLEND);
@@ -345,10 +345,10 @@ expose_event (GtkWidget      *widget,
         glBindTexture (GL_TEXTURE_2D, texture);
         glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
         glBegin (GL_QUADS);
-          glTexCoord2f (s0, t0); glVertex3f (-1.0, -1.0, 0.0);
-          glTexCoord2f (s0, t1); glVertex3f (-1.0,  1.0, 0.0);
-          glTexCoord2f (s1, t1); glVertex3f ( 1.0,  1.0, 0.0);
-          glTexCoord2f (s1, t0); glVertex3f ( 1.0, -1.0, 0.0);
+          glTexCoord2f (s0, t0); glVertex3f (-1.0, 0.0,  1.0);
+          glTexCoord2f (s0, t1); glVertex3f (-1.0, 0.0, -1.0);
+          glTexCoord2f (s1, t1); glVertex3f ( 1.0, 0.0, -1.0);
+          glTexCoord2f (s1, t0); glVertex3f ( 1.0, 0.0,  1.0);
         glEnd ();
 
         glDisable (GL_BLEND);
