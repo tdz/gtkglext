@@ -204,7 +204,12 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
  * @mask: which portions of @src_glcontext state are to be copied to @dst_glcontext.
  *
  * Copy state from one rendering context to another.
+ *
  * Notice that dst and src arguments' order is different from glXCopyContext().
+ *
+ * @mask contains the bitwise-OR of the same symbolic names that are passed to
+ * the glPushAttrib() function. You can use GL_ALL_ATTRIB_BITS to copy all the
+ * rendering state information. 
  *
  * Return value: FALSE if it fails, TRUE otherwise.
  **/
