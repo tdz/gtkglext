@@ -39,6 +39,12 @@ struct _GdkGLConfigImplWin32
   GdkGLConfig parent_instance;
 
   PIXELFORMATDESCRIPTOR pfd;
+
+  GdkScreen *screen;
+
+  GdkColormap *colormap;
+
+  gint depth;
 };
 
 struct _GdkGLConfigImplWin32Class

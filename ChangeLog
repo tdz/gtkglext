@@ -1,5 +1,11 @@
 2003-01-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_impl_win32_constructor) 
+	(gdk_gl_config_impl_win32_set_property) 
+	(gdk_gl_config_impl_win32_get_property): Removed.
+	(gdk_gl_config_new_common) 
+	(gdk_win32_gl_config_new_from_pixel_format): Rewritten.
+
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new_common) 
 	(gdk_x11_gl_config_new_from_visualid_common): Rewritten.
 
@@ -11,7 +17,7 @@
 	* gdk/gdkglconfig.c (gdk_gl_config_get_screen) 
 	(gdk_gl_config_get_attrib, gdk_gl_config_get_colormap) 
 	(gdk_gl_config_get_visual, gdk_gl_config_get_depth): Moved into
-	gdkglconfig-x11.c
+	gdkglconfig-(x11|win32).c
 	(gdk_gl_config_set_property, gdk_gl_config_get_property) 
 	(gdk_gl_config_class_init): Removed.
 
