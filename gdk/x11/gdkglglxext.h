@@ -16,6 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+/*
+ * This is a generated file.  Please modify `gen-gdkglglxext-h.pl'.
+ */
+
 #ifndef __GDK_GL_GLXEXT_H__
 #define __GDK_GL_GLXEXT_H__
 
@@ -83,7 +87,7 @@ typedef XID GLXPbufferSGIX;
 
 #include <gdk/GL/glxext.h>
 
-/* 
+/*
  * GLX_VERSION_1_3
  */
 
@@ -201,34 +205,34 @@ typedef struct _GdkGL_GLX_VERSION_1_3 GdkGL_GLX_VERSION_1_3;
 
 struct _GdkGL_GLX_VERSION_1_3
 {
-  GdkGLProc_glXGetFBConfigs           glXGetFBConfigs;
-  GdkGLProc_glXChooseFBConfig         glXChooseFBConfig;
-  GdkGLProc_glXGetFBConfigAttrib      glXGetFBConfigAttrib;
-  GdkGLProc_glXGetVisualFromFBConfig  glXGetVisualFromFBConfig;
-  GdkGLProc_glXCreateWindow           glXCreateWindow;
-  GdkGLProc_glXDestroyWindow          glXDestroyWindow;
-  GdkGLProc_glXCreatePixmap           glXCreatePixmap;
-  GdkGLProc_glXDestroyPixmap          glXDestroyPixmap;
-  GdkGLProc_glXCreatePbuffer          glXCreatePbuffer;
-  GdkGLProc_glXDestroyPbuffer         glXDestroyPbuffer;
-  GdkGLProc_glXQueryDrawable          glXQueryDrawable;
-  GdkGLProc_glXCreateNewContext       glXCreateNewContext;
-  GdkGLProc_glXMakeContextCurrent     glXMakeContextCurrent;
+  GdkGLProc_glXGetFBConfigs glXGetFBConfigs;
+  GdkGLProc_glXChooseFBConfig glXChooseFBConfig;
+  GdkGLProc_glXGetFBConfigAttrib glXGetFBConfigAttrib;
+  GdkGLProc_glXGetVisualFromFBConfig glXGetVisualFromFBConfig;
+  GdkGLProc_glXCreateWindow glXCreateWindow;
+  GdkGLProc_glXDestroyWindow glXDestroyWindow;
+  GdkGLProc_glXCreatePixmap glXCreatePixmap;
+  GdkGLProc_glXDestroyPixmap glXDestroyPixmap;
+  GdkGLProc_glXCreatePbuffer glXCreatePbuffer;
+  GdkGLProc_glXDestroyPbuffer glXDestroyPbuffer;
+  GdkGLProc_glXQueryDrawable glXQueryDrawable;
+  GdkGLProc_glXCreateNewContext glXCreateNewContext;
+  GdkGLProc_glXMakeContextCurrent glXMakeContextCurrent;
   GdkGLProc_glXGetCurrentReadDrawable glXGetCurrentReadDrawable;
-  GdkGLProc_glXGetCurrentDisplay      glXGetCurrentDisplay;
-  GdkGLProc_glXQueryContext           glXQueryContext;
-  GdkGLProc_glXSelectEvent            glXSelectEvent;
-  GdkGLProc_glXGetSelectedEvent       glXGetSelectedEvent;
+  GdkGLProc_glXGetCurrentDisplay glXGetCurrentDisplay;
+  GdkGLProc_glXQueryContext glXQueryContext;
+  GdkGLProc_glXSelectEvent glXSelectEvent;
+  GdkGLProc_glXGetSelectedEvent glXGetSelectedEvent;
 };
 
 GdkGL_GLX_VERSION_1_3 *gdk_gl_get_GLX_VERSION_1_3 (void);
 
-/* 
+/*
  * GLX_VERSION_1_4
  */
 
 /* glXGetProcAddress */
-typedef GdkGLProc ( * GdkGLProc_glXGetProcAddress) (const GLubyte *procName);
+typedef __GLXextFuncPtr ( * GdkGLProc_glXGetProcAddress) (const GLubyte *procName);
 GdkGLProc    gdk_gl_get_glXGetProcAddress (void);
 #define      gdk_gl_glXGetProcAddress(proc, procName) \
   ( ((GdkGLProc_glXGetProcAddress) (proc)) (procName) )
@@ -244,12 +248,12 @@ struct _GdkGL_GLX_VERSION_1_4
 
 GdkGL_GLX_VERSION_1_4 *gdk_gl_get_GLX_VERSION_1_4 (void);
 
-/* 
+/*
  * GLX_ARB_get_proc_address
  */
 
 /* glXGetProcAddressARB */
-typedef GdkGLProc ( * GdkGLProc_glXGetProcAddressARB) (const GLubyte *procName);
+typedef __GLXextFuncPtr ( * GdkGLProc_glXGetProcAddressARB) (const GLubyte *procName);
 GdkGLProc    gdk_gl_get_glXGetProcAddressARB (void);
 #define      gdk_gl_glXGetProcAddressARB(proc, procName) \
   ( ((GdkGLProc_glXGetProcAddressARB) (proc)) (procName) )
@@ -265,7 +269,7 @@ struct _GdkGL_GLX_ARB_get_proc_address
 
 GdkGL_GLX_ARB_get_proc_address *gdk_gl_get_GLX_ARB_get_proc_address (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SGI_swap_control
  */
 
@@ -286,7 +290,7 @@ struct _GdkGL_GLX_SGI_swap_control
 
 GdkGL_GLX_SGI_swap_control *gdk_gl_get_GLX_SGI_swap_control (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SGI_video_sync
  */
 
@@ -308,13 +312,13 @@ typedef struct _GdkGL_GLX_SGI_video_sync GdkGL_GLX_SGI_video_sync;
 
 struct _GdkGL_GLX_SGI_video_sync
 {
-  GdkGLProc_glXGetVideoSyncSGI  glXGetVideoSyncSGI;
+  GdkGLProc_glXGetVideoSyncSGI glXGetVideoSyncSGI;
   GdkGLProc_glXWaitVideoSyncSGI glXWaitVideoSyncSGI;
 };
 
 GdkGL_GLX_SGI_video_sync *gdk_gl_get_GLX_SGI_video_sync (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SGI_make_current_read
  */
 
@@ -336,13 +340,13 @@ typedef struct _GdkGL_GLX_SGI_make_current_read GdkGL_GLX_SGI_make_current_read;
 
 struct _GdkGL_GLX_SGI_make_current_read
 {
-  GdkGLProc_glXMakeCurrentReadSGI        glXMakeCurrentReadSGI;
+  GdkGLProc_glXMakeCurrentReadSGI glXMakeCurrentReadSGI;
   GdkGLProc_glXGetCurrentReadDrawableSGI glXGetCurrentReadDrawableSGI;
 };
 
 GdkGL_GLX_SGI_make_current_read *gdk_gl_get_GLX_SGI_make_current_read (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SGIX_video_source
  */
 
@@ -366,7 +370,7 @@ typedef struct _GdkGL_GLX_SGIX_video_source GdkGL_GLX_SGIX_video_source;
 
 struct _GdkGL_GLX_SGIX_video_source
 {
-  GdkGLProc_glXCreateGLXVideoSourceSGIX  glXCreateGLXVideoSourceSGIX;
+  GdkGLProc_glXCreateGLXVideoSourceSGIX glXCreateGLXVideoSourceSGIX;
   GdkGLProc_glXDestroyGLXVideoSourceSGIX glXDestroyGLXVideoSourceSGIX;
 };
 
@@ -374,7 +378,7 @@ GdkGL_GLX_SGIX_video_source *gdk_gl_get_GLX_SGIX_video_source (GdkGLConfig *glco
 
 #endif /* _VL_H */
 
-/* 
+/*
  * GLX_EXT_import_context
  */
 
@@ -415,15 +419,15 @@ typedef struct _GdkGL_GLX_EXT_import_context GdkGL_GLX_EXT_import_context;
 struct _GdkGL_GLX_EXT_import_context
 {
   GdkGLProc_glXGetCurrentDisplayEXT glXGetCurrentDisplayEXT;
-  GdkGLProc_glXQueryContextInfoEXT  glXQueryContextInfoEXT;
-  GdkGLProc_glXGetContextIDEXT      glXGetContextIDEXT;
-  GdkGLProc_glXImportContextEXT     glXImportContextEXT;
-  GdkGLProc_glXFreeContextEXT       glXFreeContextEXT;
+  GdkGLProc_glXQueryContextInfoEXT glXQueryContextInfoEXT;
+  GdkGLProc_glXGetContextIDEXT glXGetContextIDEXT;
+  GdkGLProc_glXImportContextEXT glXImportContextEXT;
+  GdkGLProc_glXFreeContextEXT glXFreeContextEXT;
 };
 
 GdkGL_GLX_EXT_import_context *gdk_gl_get_GLX_EXT_import_context (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SGIX_fbconfig
  */
 
@@ -469,17 +473,17 @@ typedef struct _GdkGL_GLX_SGIX_fbconfig GdkGL_GLX_SGIX_fbconfig;
 
 struct _GdkGL_GLX_SGIX_fbconfig
 {
-  GdkGLProc_glXGetFBConfigAttribSGIX         glXGetFBConfigAttribSGIX;
-  GdkGLProc_glXChooseFBConfigSGIX            glXChooseFBConfigSGIX;
+  GdkGLProc_glXGetFBConfigAttribSGIX glXGetFBConfigAttribSGIX;
+  GdkGLProc_glXChooseFBConfigSGIX glXChooseFBConfigSGIX;
   GdkGLProc_glXCreateGLXPixmapWithConfigSGIX glXCreateGLXPixmapWithConfigSGIX;
-  GdkGLProc_glXCreateContextWithConfigSGIX   glXCreateContextWithConfigSGIX;
-  GdkGLProc_glXGetVisualFromFBConfigSGIX     glXGetVisualFromFBConfigSGIX;
-  GdkGLProc_glXGetFBConfigFromVisualSGIX     glXGetFBConfigFromVisualSGIX;
+  GdkGLProc_glXCreateContextWithConfigSGIX glXCreateContextWithConfigSGIX;
+  GdkGLProc_glXGetVisualFromFBConfigSGIX glXGetVisualFromFBConfigSGIX;
+  GdkGLProc_glXGetFBConfigFromVisualSGIX glXGetFBConfigFromVisualSGIX;
 };
 
 GdkGL_GLX_SGIX_fbconfig *gdk_gl_get_GLX_SGIX_fbconfig (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SGIX_pbuffer
  */
 
@@ -519,16 +523,16 @@ typedef struct _GdkGL_GLX_SGIX_pbuffer GdkGL_GLX_SGIX_pbuffer;
 
 struct _GdkGL_GLX_SGIX_pbuffer
 {
-  GdkGLProc_glXCreateGLXPbufferSGIX  glXCreateGLXPbufferSGIX;
+  GdkGLProc_glXCreateGLXPbufferSGIX glXCreateGLXPbufferSGIX;
   GdkGLProc_glXDestroyGLXPbufferSGIX glXDestroyGLXPbufferSGIX;
-  GdkGLProc_glXQueryGLXPbufferSGIX   glXQueryGLXPbufferSGIX;
-  GdkGLProc_glXSelectEventSGIX       glXSelectEventSGIX;
-  GdkGLProc_glXGetSelectedEventSGIX  glXGetSelectedEventSGIX;
+  GdkGLProc_glXQueryGLXPbufferSGIX glXQueryGLXPbufferSGIX;
+  GdkGLProc_glXSelectEventSGIX glXSelectEventSGIX;
+  GdkGLProc_glXGetSelectedEventSGIX glXGetSelectedEventSGIX;
 };
 
 GdkGL_GLX_SGIX_pbuffer *gdk_gl_get_GLX_SGIX_pbuffer (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SGI_cushion
  */
 
@@ -549,7 +553,7 @@ struct _GdkGL_GLX_SGI_cushion
 
 GdkGL_GLX_SGI_cushion *gdk_gl_get_GLX_SGI_cushion (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SGIX_video_resize
  */
 
@@ -590,15 +594,15 @@ typedef struct _GdkGL_GLX_SGIX_video_resize GdkGL_GLX_SGIX_video_resize;
 struct _GdkGL_GLX_SGIX_video_resize
 {
   GdkGLProc_glXBindChannelToWindowSGIX glXBindChannelToWindowSGIX;
-  GdkGLProc_glXChannelRectSGIX         glXChannelRectSGIX;
-  GdkGLProc_glXQueryChannelRectSGIX    glXQueryChannelRectSGIX;
-  GdkGLProc_glXQueryChannelDeltasSGIX  glXQueryChannelDeltasSGIX;
-  GdkGLProc_glXChannelRectSyncSGIX     glXChannelRectSyncSGIX;
+  GdkGLProc_glXChannelRectSGIX glXChannelRectSGIX;
+  GdkGLProc_glXQueryChannelRectSGIX glXQueryChannelRectSGIX;
+  GdkGLProc_glXQueryChannelDeltasSGIX glXQueryChannelDeltasSGIX;
+  GdkGLProc_glXChannelRectSyncSGIX glXChannelRectSyncSGIX;
 };
 
 GdkGL_GLX_SGIX_video_resize *gdk_gl_get_GLX_SGIX_video_resize (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SGIX_dmbuffer
  */
 
@@ -623,7 +627,7 @@ GdkGL_GLX_SGIX_dmbuffer *gdk_gl_get_GLX_SGIX_dmbuffer (GdkGLConfig *glconfig);
 
 #endif /* _DM_BUFFER_H_ */
 
-/* 
+/*
  * GLX_SGIX_swap_group
  */
 
@@ -644,7 +648,7 @@ struct _GdkGL_GLX_SGIX_swap_group
 
 GdkGL_GLX_SGIX_swap_group *gdk_gl_get_GLX_SGIX_swap_group (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SGIX_swap_barrier
  */
 
@@ -666,13 +670,13 @@ typedef struct _GdkGL_GLX_SGIX_swap_barrier GdkGL_GLX_SGIX_swap_barrier;
 
 struct _GdkGL_GLX_SGIX_swap_barrier
 {
-  GdkGLProc_glXBindSwapBarrierSGIX      glXBindSwapBarrierSGIX;
+  GdkGLProc_glXBindSwapBarrierSGIX glXBindSwapBarrierSGIX;
   GdkGLProc_glXQueryMaxSwapBarriersSGIX glXQueryMaxSwapBarriersSGIX;
 };
 
 GdkGL_GLX_SGIX_swap_barrier *gdk_gl_get_GLX_SGIX_swap_barrier (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_SUN_get_transparent_index
  */
 
@@ -777,7 +781,7 @@ struct _GdkGL_GLX_MESA_set_3dfx_mode
 
 GdkGL_GLX_MESA_set_3dfx_mode *gdk_gl_get_GLX_MESA_set_3dfx_mode (GdkGLConfig *glconfig);
 
-/* 
+/*
  * GLX_OML_sync_control
  */
 
@@ -817,11 +821,11 @@ typedef struct _GdkGL_GLX_OML_sync_control GdkGL_GLX_OML_sync_control;
 
 struct _GdkGL_GLX_OML_sync_control
 {
-  GdkGLProc_glXGetSyncValuesOML  glXGetSyncValuesOML;
-  GdkGLProc_glXGetMscRateOML     glXGetMscRateOML;
+  GdkGLProc_glXGetSyncValuesOML glXGetSyncValuesOML;
+  GdkGLProc_glXGetMscRateOML glXGetMscRateOML;
   GdkGLProc_glXSwapBuffersMscOML glXSwapBuffersMscOML;
-  GdkGLProc_glXWaitForMscOML     glXWaitForMscOML;
-  GdkGLProc_glXWaitForSbcOML     glXWaitForSbcOML;
+  GdkGLProc_glXWaitForMscOML glXWaitForMscOML;
+  GdkGLProc_glXWaitForSbcOML glXWaitForSbcOML;
 };
 
 GdkGL_GLX_OML_sync_control *gdk_gl_get_GLX_OML_sync_control (GdkGLConfig *glconfig);

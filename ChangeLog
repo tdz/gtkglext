@@ -1,3 +1,17 @@
+2003-07-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/GL/glext.[ch]: 
+	* gdk/GL/glxext.[ch]: 
+	* gdk/GL/wglext.[ch]: Use auto-generated code.
+
+	* gdk/GL/glext_extra.h: Added.
+
+	* gdk/GL/gen-gdkglglext-[ch].pl: 
+	* gdk/GL/gen-gdkglglxext-[ch].pl: 
+	* gdk/GL/gen-gdkglwglext-[ch].pl: Added perl scripts for
+	generating gdkgl*ext.[ch] sources from SGI's OpenGL extension
+	header.
+
 2003-07-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/gdkglglext.[ch]: Added new OpenGL extensions defined in
