@@ -1,5 +1,11 @@
 2003-07-21  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/scribble-gl.c: Suppress "comparison between signed and
+	unsigned" warnings.
+
+	* examples/font-pangoft2.c: Suppress "implicit declaration of
+	function `memset'" warning.
+
 	* examples/font-pangoft2.c (gl_pango_ft2_render_layout):
 	Optimized.
 

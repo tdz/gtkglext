@@ -121,7 +121,7 @@ configure_event (GtkWidget         *widget,
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  gint count=0;
+  guint count;
 
   GLfloat w = widget->allocation.width;
   GLfloat h = widget->allocation.height;
@@ -164,7 +164,7 @@ expose_event (GtkWidget      *widget,
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  gint count = 0;
+  guint count;
   Point* coord;
 
   /*** OpenGL BEGIN ***/
@@ -252,7 +252,7 @@ button_press_event (GtkWidget      *widget,
 static void
 quit_cb (GtkWidget* widget, gpointer data)
 {
-  gint count=0;
+  guint count;
 
   /* Free the resources occupied by brushStrokeList. */
   for (count=0; count<g_list_length(brushStrokeList); count++)
