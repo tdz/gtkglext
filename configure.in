@@ -525,6 +525,7 @@ gdkglext.pc
 gtkglext.pc
 gdkglext-uninstalled.pc
 gtkglext-uninstalled.pc
+gtkglext.spec
 gdk/Makefile
 gdk/x11/Makefile
 gdk/win32/Makefile

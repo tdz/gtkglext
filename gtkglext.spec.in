@@ -1,0 +1,104 @@
+%define base_version	@GTKGLEXT_VERSION@
+%define api_version	@GTKGLEXT_API_VERSION@
+%define rel		1
+
+Summary: OpenGL Extension to GTK
+Name: gtkglext
+Version: %{base_version}
+Release: %{rel}
+URL: http://gtkglext.sourceforge.net
+Source0: ftp://ftp.sourceforge.net/pub/sourceforge/gtkglext/%{name}-%{version}.tar.gz
+License: LGPL
+Group: System Environment/Libraries
+BuildRoot: %{_tmppath}/%{name}-%{version}-root
+
+Requires: gtk2
+Requires: atk
+Requires: pango
+Requires: glib2
+Requires: XFree86-libs
+
+BuildPrereq: gtk2-devel
+BuildPrereq: atk-devel
+BuildPrereq: pango-devel
+BuildPrereq: glib2-devel
+BuildPrereq: XFree86-devel
+
+%description
+GtkGLExt is an OpenGL extention to GTK 2.0 or later. It provides
+the GDK objects which support OpenGL in GTK, and GTK+ widget API
+add-ons which extends *ANY* GTK+ widget to an OpenGL-capable widget.
+
+%package devel
+Summary: Development tools for GTK-based OpenGL applications.
+Group: Development/Libraries
+
+Requires: %{name} = %{version}
+Requires: gtk2-devel
+Requires: atk-devel
+Requires: pango-devel
+Requires: glib2-devel
+Requires: XFree86-devel
+
+%description devel
+The gtkglext-devel package contains the header files, static libraries,
+and developer docs for GtkGLExt.
+
+%prep
+%setup -q
+
+%build
+
+LDFLAGS="-L$RPM_BUILD_ROOT%{_libdir}"
+export LDFLAGS
+
+%configure --enable-static --disable-gtk-doc
+
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+%makeinstall
+
+pushd "$RPM_BUILD_ROOT%{_libdir}"
+
+%{__cp} -p libgdkglext-x11-%{api_version}.la libgdkglext-x11-%{api_version}.la.bak
+%{__cat} libgdkglext-x11-%{api_version}.la.bak | \
+    %{__sed} -e "s| -L$RPM_BUILD_ROOT%{_libdir}||g" > libgdkglext-x11-%{api_version}.la
+
+%{__cp} -p libgtkglext-x11-%{api_version}.la libgtkglext-x11-%{api_version}.la.bak
+%{__cat} libgtkglext-x11-%{api_version}.la.bak | \
+    %{__sed} -e "s| -L$RPM_BUILD_ROOT%{_libdir}||g" > libgtkglext-x11-%{api_version}.la
+
+popd
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
+%files
+%defattr(-,root,root)
+
+%doc AUTHORS COPYING COPYING.LIB ChangeLog NEWS README TODO
+%{_libdir}/libgdkglext-x11-%{api_version}.so.*
+%{_libdir}/libgtkglext-x11-%{api_version}.so.*
+
+%files devel
+%defattr(-,root,root)
+
+%{_includedir}/*
+%{_libdir}/lib*.so
+%{_libdir}/lib*.a
+%{_libdir}/lib*.la
+%{_libdir}/pkgconfig/*
+%{_datadir}/gtk-doc/html/*
+
+%changelog
+* Sun Jun 23 2002 Naofumi Yasufuku <naofumi@users.sourceforge.net>
+- Initial build.
+
+

@@ -10,7 +10,8 @@ EXTRA_DIST = \
 	gdkglext.pc.in			\
 	gtkglext.pc.in			\
 	gdkglext-uninstalled.pc.in	\
-	gtkglext-uninstalled.pc.in
+	gtkglext-uninstalled.pc.in	\
+	gtkglext.spec.in
 
 ## Copy .pc files to target-specific names
 PCFILE_EXT = @gdktarget@-@GTKGLEXT_API_VERSION@

@@ -10032,7 +10032,7 @@ else
   HAVE_SGML2HTML_FALSE=
 fi
 
-ac_config_files="$ac_config_files Makefile gdkglext.pc gtkglext.pc gdkglext-uninstalled.pc gtkglext-uninstalled.pc gdk/Makefile gdk/x11/Makefile gdk/win32/Makefile gtk/Makefile examples/Makefile docs/Makefile docs/reference/Makefile docs/reference/gdkglext/Makefile docs/reference/gtkglext/Makefile"
+ac_config_files="$ac_config_files Makefile gdkglext.pc gtkglext.pc gdkglext-uninstalled.pc gtkglext-uninstalled.pc gtkglext.spec gdk/Makefile gdk/x11/Makefile gdk/win32/Makefile gtk/Makefile examples/Makefile docs/Makefile docs/reference/Makefile docs/reference/gdkglext/Makefile docs/reference/gtkglext/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -10441,6 +10441,7 @@ do
   "gtkglext.pc" ) CONFIG_FILES="$CONFIG_FILES gtkglext.pc" ;;
   "gdkglext-uninstalled.pc" ) CONFIG_FILES="$CONFIG_FILES gdkglext-uninstalled.pc" ;;
   "gtkglext-uninstalled.pc" ) CONFIG_FILES="$CONFIG_FILES gtkglext-uninstalled.pc" ;;
+  "gtkglext.spec" ) CONFIG_FILES="$CONFIG_FILES gtkglext.spec" ;;
   "gdk/Makefile" ) CONFIG_FILES="$CONFIG_FILES gdk/Makefile" ;;
   "gdk/x11/Makefile" ) CONFIG_FILES="$CONFIG_FILES gdk/x11/Makefile" ;;
   "gdk/win32/Makefile" ) CONFIG_FILES="$CONFIG_FILES gdk/win32/Makefile" ;;
@@ -10452,7 +10453,7 @@ do
   "docs/reference/gtkglext/Makefile" ) CONFIG_FILES="$CONFIG_FILES docs/reference/gtkglext/Makefile" ;;
   "depfiles" ) CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
-  *) { { echo "$as_me:10455: error: invalid argument: $ac_config_target" >&5
+  *) { { echo "$as_me:10456: error: invalid argument: $ac_config_target" >&5
 echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
    { (exit 1); exit 1; }; };;
   esac
@@ -10764,7 +10765,7 @@ done; }
   esac
 
   if test x"$ac_file" != x-; then
-    { echo "$as_me:10767: creating $ac_file" >&5
+    { echo "$as_me:10768: creating $ac_file" >&5
 echo "$as_me: creating $ac_file" >&6;}
     rm -f "$ac_file"
   fi
@@ -10782,7 +10783,7 @@ echo "$as_me: creating $ac_file" >&6;}
       -) echo $tmp/stdin ;;
       [\\/$]*)
          # Absolute (can't be DOS-style, as IFS=:)
-         test -f "$f" || { { echo "$as_me:10785: error: cannot find input file: $f" >&5
+         test -f "$f" || { { echo "$as_me:10786: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          echo $f;;
@@ -10795,7 +10796,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
            echo $srcdir/$f
          else
            # /dev/null tree
-           { { echo "$as_me:10798: error: cannot find input file: $f" >&5
+           { { echo "$as_me:10799: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          fi;;
@@ -10856,7 +10857,7 @@ for ac_file in : $CONFIG_HEADERS; do test "x$ac_file" = x: && continue
   * )   ac_file_in=$ac_file.in ;;
   esac
 
-  test x"$ac_file" != x- && { echo "$as_me:10859: creating $ac_file" >&5
+  test x"$ac_file" != x- && { echo "$as_me:10860: creating $ac_file" >&5
 echo "$as_me: creating $ac_file" >&6;}
 
   # First look for the input files in the build tree, otherwise in the
@@ -10867,7 +10868,7 @@ echo "$as_me: creating $ac_file" >&6;}
       -) echo $tmp/stdin ;;
       [\\/$]*)
          # Absolute (can't be DOS-style, as IFS=:)
-         test -f "$f" || { { echo "$as_me:10870: error: cannot find input file: $f" >&5
+         test -f "$f" || { { echo "$as_me:10871: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          echo $f;;
@@ -10880,7 +10881,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
            echo $srcdir/$f
          else
            # /dev/null tree
-           { { echo "$as_me:10883: error: cannot find input file: $f" >&5
+           { { echo "$as_me:10884: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          fi;;
@@ -10997,7 +10998,7 @@ cat >>$CONFIG_STATUS <<\EOF
   rm -f $tmp/in
   if test x"$ac_file" != x-; then
     if cmp -s $ac_file $tmp/config.h 2>/dev/null; then
-      { echo "$as_me:11000: $ac_file is unchanged" >&5
+      { echo "$as_me:11001: $ac_file is unchanged" >&5
 echo "$as_me: $ac_file is unchanged" >&6;}
     else
       ac_dir=`$as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
