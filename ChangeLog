@@ -1,5 +1,9 @@
 2003-05-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* README: 
+	* configure.in: Removed --disable-standard-rgb-cmap configure
+	option.
+
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_get_std_rgb_colormap): 
 	If _gdk_gl_config_no_standard_colormap is TRUE, don't try to find
 	a standard RGB colormap.

@@ -218,6 +218,21 @@ GdkGLWindow
 </SECTION>
 
 <SECTION>
+<FILE>gdkglversion</FILE>
+GDKGLEXT_MAJOR_VERSION
+GDKGLEXT_MINOR_VERSION
+GDKGLEXT_MICRO_VERSION
+GDKGLEXT_INTERFACE_AGE
+GDKGLEXT_BINARY_AGE
+GDKGLEXT_CHECK_VERSION
+gdkglext_major_version
+gdkglext_minor_version
+gdkglext_micro_version
+gdkglext_interface_age
+gdkglext_binary_age
+</SECTION>
+
+<SECTION>
 <FILE>gdkglenumtypes</FILE>
 gdk_gl_config_attrib_get_type
 GDK_TYPE_GL_CONFIG_ATTRIB
@@ -249,21 +264,6 @@ gdk_gl_drawable_type_get_type
 GDK_TYPE_GL_DRAWABLE_TYPE
 gdk_gl_config_mode_get_type
 GDK_TYPE_GL_CONFIG_MODE
-</SECTION>
-
-<SECTION>
-<FILE>gdkglversion</FILE>
-GDKGLEXT_MAJOR_VERSION
-GDKGLEXT_MINOR_VERSION
-GDKGLEXT_MICRO_VERSION
-GDKGLEXT_INTERFACE_AGE
-GDKGLEXT_BINARY_AGE
-GDKGLEXT_CHECK_VERSION
-gdkglext_major_version
-gdkglext_minor_version
-gdkglext_micro_version
-gdkglext_interface_age
-gdkglext_binary_age
 </SECTION>
 
 <SECTION>
