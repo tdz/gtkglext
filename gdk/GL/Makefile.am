@@ -3,6 +3,7 @@
 
 EXTRA_DIST = \
 	README			\
+	list-ext.pl		\
 	gen-gdkglglext-c.pl	\
 	gen-gdkglglext-h.pl	\
 	gen-gdkglglxext-c.pl	\
