@@ -192,8 +192,8 @@ gdkglext-config.h: stamp-gdkglext-config-h
 	@if test -f gdkglext-config.h; then :; \
 	else rm -f stamp-gdkglext-config-h; $(MAKE) stamp-gdkglext-config-h; fi
 
-stamp-gdkglext-config-h: ../config.status
-	cd .. && ./config.status gdk/gdkglext-config.h
+stamp-gdkglext-config-h: $(top_builddir)/config.status
+	cd $(top_builddir) && $(SHELL) ./config.status gdk/gdkglext-config.h
 	echo timestamp > stamp-gdkglext-config-h
 
 DISTCLEANFILES = gdkglext-config.h stamp-gdkglext-config-h

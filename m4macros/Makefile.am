@@ -12,7 +12,7 @@ gtkglext-$(API_VER).m4: gtkglext.m4
 m4datadir = $(datadir)/aclocal
 m4data_DATA = gtkglext-$(API_VER).m4
 
-$(m4data_DATA): ../config.status
+$(m4data_DATA): $(top_builddir)/config.status
 
 DISTCLEANFILES = gtkglext-$(API_VER).m4
 

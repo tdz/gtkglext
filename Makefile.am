@@ -49,7 +49,7 @@ pkgconfig_DATA = \
 	gdkglext-$(API_VER).pc			\
 	gtkglext-$(GDK_TARGET)-$(API_VER).pc	\
 	gtkglext-$(API_VER).pc
-$(pkgconfig_DATA): config.status
+$(pkgconfig_DATA): $(top_builddir)/config.status
 
 DISTCLEANFILES = \
 	gdkglext-$(GDK_TARGET)-$(API_VER).pc			\

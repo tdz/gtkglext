@@ -1,3 +1,10 @@
+2003-04-17  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* Makefile.am ($(pkgconfig_DATA)): 
+	* m4macros/Makefile.am ($(m4data_DATA)): 
+	* gdk/Makefile.am (stamp-gdkglext-config-h): Changed to use
+	$(top_builddir)/config.status instead of ../config.status.
+
 2003-04-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/pixmap-mixed.c (configure_event): 
