@@ -237,11 +237,11 @@ main (int argc,
 
   is_rgba = gdk_gl_config_is_rgba (glconfig);
 
+  colormap = gdk_gl_config_get_colormap (glconfig);
+
   /*
    * Allocate colors.
    */
-
-  colormap = gdk_gl_config_get_colormap (glconfig);
 
   if (!is_rgba)
     {
