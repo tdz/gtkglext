@@ -9465,88 +9465,15 @@ fi
 
   fi
 
-  # if using mesa, check for xmesa.h
-  if test "x$ac_cv_lib_MesaGL_glNewList" = "xyes" ; then
-
-for ac_header in GL/xmesa.h
-do
-as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
-echo "$as_me:9474: checking for $ac_header" >&5
-echo $ECHO_N "checking for $ac_header... $ECHO_C" >&6
-if eval "test \"\${$as_ac_Header+set}\" = set"; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  cat >conftest.$ac_ext <<_ACEOF
-#line 9480 "configure"
-#include "confdefs.h"
-#include <$ac_header>
-_ACEOF
-if { (eval echo "$as_me:9484: \"$ac_cpp conftest.$ac_ext\"") >&5
-  (eval $ac_cpp conftest.$ac_ext) 2>conftest.er1
-  ac_status=$?
-  egrep -v '^ *\+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  echo "$as_me:9490: \$? = $ac_status" >&5
-  (exit $ac_status); } >/dev/null; then
-  if test -s conftest.err; then
-    ac_cpp_err=$ac_c_preproc_warn_flag
-  else
-    ac_cpp_err=
-  fi
-else
-  ac_cpp_err=yes
-fi
-if test -z "$ac_cpp_err"; then
-  eval "$as_ac_Header=yes"
-else
-  echo "$as_me: failed program was:" >&5
-  cat conftest.$ac_ext >&5
-  eval "$as_ac_Header=no"
-fi
-rm -f conftest.err conftest.$ac_ext
-fi
-echo "$as_me:9509: result: `eval echo '${'$as_ac_Header'}'`" >&5
-echo "${ECHO_T}`eval echo '${'$as_ac_Header'}'`" >&6
-if test `eval echo '${'$as_ac_Header'}'` = yes; then
-  cat >>confdefs.h <<EOF
-#define `echo "HAVE_$ac_header" | $as_tr_cpp` 1
-EOF
-
-fi
-done
-
-if \
-                   test "x$ac_cv_header_GL_xmesa_h" = "xyes"; then
-  ENABLE_XMESA_FX_TRUE=
-  ENABLE_XMESA_FX_FALSE='#'
-else
-  ENABLE_XMESA_FX_TRUE='#'
-  ENABLE_XMESA_FX_FALSE=
-fi
-
-  else
-    # force a failed check
-
-if test "no" = "yes"; then
-  ENABLE_XMESA_FX_TRUE=
-  ENABLE_XMESA_FX_FALSE='#'
-else
-  ENABLE_XMESA_FX_TRUE='#'
-  ENABLE_XMESA_FX_FALSE=
-fi
-
-  fi
-
-  echo "$as_me:9541: checking for gluLookAt in -lGLU" >&5
-echo $ECHO_N "checking for gluLookAt in -lGLU... $ECHO_C" >&6
-if test "${ac_cv_lib_GLU_gluLookAt+set}" = set; then
+  echo "$as_me:9468: checking for gluNewQuadric in -lGLU" >&5
+echo $ECHO_N "checking for gluNewQuadric in -lGLU... $ECHO_C" >&6
+if test "${ac_cv_lib_GLU_gluNewQuadric+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
   ac_check_lib_save_LIBS=$LIBS
 LIBS="-lGLU $GL_LIBS $LIBS"
 cat >conftest.$ac_ext <<_ACEOF
-#line 9549 "configure"
+#line 9476 "configure"
 #include "confdefs.h"
 
 /* Override any gcc2 internal prototype to avoid an error.  */
@@ -9555,53 +9482,53 @@ extern "C"
 #endif
 /* We use char because int might match the return type of a gcc2
    builtin and then its argument prototype would still apply.  */
-char gluLookAt ();
+char gluNewQuadric ();
 int
 main ()
 {
-gluLookAt ();
+gluNewQuadric ();
   ;
   return 0;
 }
 _ACEOF
 rm -f conftest.$ac_objext conftest$ac_exeext
-if { (eval echo "$as_me:9568: \"$ac_link\"") >&5
+if { (eval echo "$as_me:9495: \"$ac_link\"") >&5
   (eval $ac_link) 2>&5
   ac_status=$?
-  echo "$as_me:9571: \$? = $ac_status" >&5
+  echo "$as_me:9498: \$? = $ac_status" >&5
   (exit $ac_status); } &&
          { ac_try='test -s conftest$ac_exeext'
-  { (eval echo "$as_me:9574: \"$ac_try\"") >&5
+  { (eval echo "$as_me:9501: \"$ac_try\"") >&5
   (eval $ac_try) 2>&5
   ac_status=$?
-  echo "$as_me:9577: \$? = $ac_status" >&5
+  echo "$as_me:9504: \$? = $ac_status" >&5
   (exit $ac_status); }; }; then
-  ac_cv_lib_GLU_gluLookAt=yes
+  ac_cv_lib_GLU_gluNewQuadric=yes
 else
   echo "$as_me: failed program was:" >&5
 cat conftest.$ac_ext >&5
-ac_cv_lib_GLU_gluLookAt=no
+ac_cv_lib_GLU_gluNewQuadric=no
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
 LIBS=$ac_check_lib_save_LIBS
 fi
-echo "$as_me:9588: result: $ac_cv_lib_GLU_gluLookAt" >&5
-echo "${ECHO_T}$ac_cv_lib_GLU_gluLookAt" >&6
-if test $ac_cv_lib_GLU_gluLookAt = yes; then
+echo "$as_me:9515: result: $ac_cv_lib_GLU_gluNewQuadric" >&5
+echo "${ECHO_T}$ac_cv_lib_GLU_gluNewQuadric" >&6
+if test $ac_cv_lib_GLU_gluNewQuadric = yes; then
   GL_LIBS="-lGLU $GL_LIBS"
 fi
 
-  if test "x$ac_cv_lib_GLU_gluLookAt" = "xno" ; then
+  if test "x$ac_cv_lib_GLU_gluNewQuadric" = "xno" ; then
     # if no GLU, check for MesaGLU
-    echo "$as_me:9596: checking for gluLookAt in -lMesaGLU" >&5
-echo $ECHO_N "checking for gluLookAt in -lMesaGLU... $ECHO_C" >&6
-if test "${ac_cv_lib_MesaGLU_gluLookAt+set}" = set; then
+    echo "$as_me:9523: checking for gluNewQuadric in -lMesaGLU" >&5
+echo $ECHO_N "checking for gluNewQuadric in -lMesaGLU... $ECHO_C" >&6
+if test "${ac_cv_lib_MesaGLU_gluNewQuadric+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
   ac_check_lib_save_LIBS=$LIBS
 LIBS="-lMesaGLU $GL_LIBS $LIBS"
 cat >conftest.$ac_ext <<_ACEOF
-#line 9604 "configure"
+#line 9531 "configure"
 #include "confdefs.h"
 
 /* Override any gcc2 internal prototype to avoid an error.  */
@@ -9610,42 +9537,42 @@ extern "C"
 #endif
 /* We use char because int might match the return type of a gcc2
    builtin and then its argument prototype would still apply.  */
-char gluLookAt ();
+char gluNewQuadric ();
 int
 main ()
 {
-gluLookAt ();
+gluNewQuadric ();
   ;
   return 0;
 }
 _ACEOF
 rm -f conftest.$ac_objext conftest$ac_exeext
-if { (eval echo "$as_me:9623: \"$ac_link\"") >&5
+if { (eval echo "$as_me:9550: \"$ac_link\"") >&5
   (eval $ac_link) 2>&5
   ac_status=$?
-  echo "$as_me:9626: \$? = $ac_status" >&5
+  echo "$as_me:9553: \$? = $ac_status" >&5
   (exit $ac_status); } &&
          { ac_try='test -s conftest$ac_exeext'
-  { (eval echo "$as_me:9629: \"$ac_try\"") >&5
+  { (eval echo "$as_me:9556: \"$ac_try\"") >&5
   (eval $ac_try) 2>&5
   ac_status=$?
-  echo "$as_me:9632: \$? = $ac_status" >&5
+  echo "$as_me:9559: \$? = $ac_status" >&5
   (exit $ac_status); }; }; then
-  ac_cv_lib_MesaGLU_gluLookAt=yes
+  ac_cv_lib_MesaGLU_gluNewQuadric=yes
 else
   echo "$as_me: failed program was:" >&5
 cat conftest.$ac_ext >&5
-ac_cv_lib_MesaGLU_gluLookAt=no
+ac_cv_lib_MesaGLU_gluNewQuadric=no
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
 LIBS=$ac_check_lib_save_LIBS
 fi
-echo "$as_me:9643: result: $ac_cv_lib_MesaGLU_gluLookAt" >&5
-echo "${ECHO_T}$ac_cv_lib_MesaGLU_gluLookAt" >&6
-if test $ac_cv_lib_MesaGLU_gluLookAt = yes; then
+echo "$as_me:9570: result: $ac_cv_lib_MesaGLU_gluNewQuadric" >&5
+echo "${ECHO_T}$ac_cv_lib_MesaGLU_gluNewQuadric" >&6
+if test $ac_cv_lib_MesaGLU_gluNewQuadric = yes; then
   GL_LIBS="-lMesaGLU $GL_LIBS"
 else
-  { { echo "$as_me:9648: error: Cannot find GLU library" >&5
+  { { echo "$as_me:9575: error: Cannot find GLU library" >&5
 echo "$as_me: error: Cannot find GLU library" >&2;}
    { (exit 1); exit 1; }; }
 fi
@@ -9656,119 +9583,94 @@ else
 
   # for Win32
 
-  echo "$as_me:9659: checking for glNewList in -lopengl32" >&5
-echo $ECHO_N "checking for glNewList in -lopengl32... $ECHO_C" >&6
-if test "${ac_cv_lib_opengl32_glNewList+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lopengl32  $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-#line 9667 "configure"
+  echo "$as_me:9586: checking for glNewList in opengl32" >&5
+echo $ECHO_N "checking for glNewList in opengl32... $ECHO_C" >&6
+  LIBS="-lopengl32 $LIBS"
+  cat >conftest.$ac_ext <<_ACEOF
+#line 9590 "configure"
 #include "confdefs.h"
-
-/* Override any gcc2 internal prototype to avoid an error.  */
-#ifdef __cplusplus
-extern "C"
-#endif
-/* We use char because int might match the return type of a gcc2
-   builtin and then its argument prototype would still apply.  */
-char glNewList ();
+ #include <windows.h>
+                #include <GL/gl.h>
 int
 main ()
 {
-glNewList ();
+ glNewList(1, GL_COMPILE);
   ;
   return 0;
 }
 _ACEOF
 rm -f conftest.$ac_objext conftest$ac_exeext
-if { (eval echo "$as_me:9686: \"$ac_link\"") >&5
+if { (eval echo "$as_me:9603: \"$ac_link\"") >&5
   (eval $ac_link) 2>&5
   ac_status=$?
-  echo "$as_me:9689: \$? = $ac_status" >&5
+  echo "$as_me:9606: \$? = $ac_status" >&5
   (exit $ac_status); } &&
          { ac_try='test -s conftest$ac_exeext'
-  { (eval echo "$as_me:9692: \"$ac_try\"") >&5
+  { (eval echo "$as_me:9609: \"$ac_try\"") >&5
   (eval $ac_try) 2>&5
   ac_status=$?
-  echo "$as_me:9695: \$? = $ac_status" >&5
+  echo "$as_me:9612: \$? = $ac_status" >&5
   (exit $ac_status); }; }; then
-  ac_cv_lib_opengl32_glNewList=yes
+   GL_LIBS="-lopengl32"
+                have_opengl32=yes
 else
   echo "$as_me: failed program was:" >&5
 cat conftest.$ac_ext >&5
-ac_cv_lib_opengl32_glNewList=no
+have_opengl32=no
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-echo "$as_me:9706: result: $ac_cv_lib_opengl32_glNewList" >&5
-echo "${ECHO_T}$ac_cv_lib_opengl32_glNewList" >&6
-if test $ac_cv_lib_opengl32_glNewList = yes; then
-  GL_LIBS="-lopengl32"
-else
-  { { echo "$as_me:9711: error: Cannot find GL library" >&5
+  echo "$as_me:9622: result: $have_opengl32" >&5
+echo "${ECHO_T}$have_opengl32" >&6
+  if test "x$have_opengl32" = "xno" ; then
+    { { echo "$as_me:9625: error: Cannot find GL library" >&5
 echo "$as_me: error: Cannot find GL library" >&2;}
    { (exit 1); exit 1; }; }
-fi
+  fi
 
-  echo "$as_me:9716: checking for gluLookAt in -lglu32" >&5
-echo $ECHO_N "checking for gluLookAt in -lglu32... $ECHO_C" >&6
-if test "${ac_cv_lib_glu32_gluLookAt+set}" = set; then
-  echo $ECHO_N "(cached) $ECHO_C" >&6
-else
-  ac_check_lib_save_LIBS=$LIBS
-LIBS="-lglu32 $GL_LIBS $LIBS"
-cat >conftest.$ac_ext <<_ACEOF
-#line 9724 "configure"
+  echo "$as_me:9630: checking for gluNewQuadric in glu32" >&5
+echo $ECHO_N "checking for gluNewQuadric in glu32... $ECHO_C" >&6
+  LIBS="-lglu32 $LIBS"
+  cat >conftest.$ac_ext <<_ACEOF
+#line 9634 "configure"
 #include "confdefs.h"
-
-/* Override any gcc2 internal prototype to avoid an error.  */
-#ifdef __cplusplus
-extern "C"
-#endif
-/* We use char because int might match the return type of a gcc2
-   builtin and then its argument prototype would still apply.  */
-char gluLookAt ();
+ #include <windows.h>
+                #include <GL/gl.h>
+                #include <GL/glu.h>
 int
 main ()
 {
-gluLookAt ();
+ gluNewQuadric();
   ;
   return 0;
 }
 _ACEOF
 rm -f conftest.$ac_objext conftest$ac_exeext
-if { (eval echo "$as_me:9743: \"$ac_link\"") >&5
+if { (eval echo "$as_me:9648: \"$ac_link\"") >&5
   (eval $ac_link) 2>&5
   ac_status=$?
-  echo "$as_me:9746: \$? = $ac_status" >&5
+  echo "$as_me:9651: \$? = $ac_status" >&5
   (exit $ac_status); } &&
          { ac_try='test -s conftest$ac_exeext'
-  { (eval echo "$as_me:9749: \"$ac_try\"") >&5
+  { (eval echo "$as_me:9654: \"$ac_try\"") >&5
   (eval $ac_try) 2>&5
   ac_status=$?
-  echo "$as_me:9752: \$? = $ac_status" >&5
+  echo "$as_me:9657: \$? = $ac_status" >&5
   (exit $ac_status); }; }; then
-  ac_cv_lib_glu32_gluLookAt=yes
+   GL_LIBS="-lglu32 $GL_LIBS"
+                have_glu32=yes
 else
   echo "$as_me: failed program was:" >&5
 cat conftest.$ac_ext >&5
-ac_cv_lib_glu32_gluLookAt=no
+have_glu32=no
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
-LIBS=$ac_check_lib_save_LIBS
-fi
-echo "$as_me:9763: result: $ac_cv_lib_glu32_gluLookAt" >&5
-echo "${ECHO_T}$ac_cv_lib_glu32_gluLookAt" >&6
-if test $ac_cv_lib_glu32_gluLookAt = yes; then
-  GL_LIBS="-lglu32 $GL_LIBS"
-else
-  { { echo "$as_me:9768: error: Cannot find GLU library" >&5
+  echo "$as_me:9667: result: $have_glu32" >&5
+echo "${ECHO_T}$have_glu32" >&6
+  if test "x$have_glu32" = "xno" ; then
+    { { echo "$as_me:9670: error: Cannot find GLU library" >&5
 echo "$as_me: error: Cannot find GLU library" >&2;}
    { (exit 1); exit 1; }; }
-fi
+  fi
 
 fi
 
@@ -9811,7 +9713,7 @@ fi
 
 # Extract the first word of "gtkdoc-mkdb", so it can be a program name with args.
 set dummy gtkdoc-mkdb; ac_word=$2
-echo "$as_me:9814: checking for $ac_word" >&5
+echo "$as_me:9716: checking for $ac_word" >&5
 echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
 if test "${ac_cv_prog_GTKDOC+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
@@ -9826,7 +9728,7 @@ for ac_dir in $ac_dummy; do
   test -z "$ac_dir" && ac_dir=.
   $as_executable_p "$ac_dir/$ac_word" || continue
 ac_cv_prog_GTKDOC="true"
-echo "$as_me:9829: found $ac_dir/$ac_word" >&5
+echo "$as_me:9731: found $ac_dir/$ac_word" >&5
 break
 done
 
@@ -9835,26 +9737,26 @@ fi
 fi
 GTKDOC=$ac_cv_prog_GTKDOC
 if test -n "$GTKDOC"; then
-  echo "$as_me:9838: result: $GTKDOC" >&5
+  echo "$as_me:9740: result: $GTKDOC" >&5
 echo "${ECHO_T}$GTKDOC" >&6
 else
-  echo "$as_me:9841: result: no" >&5
+  echo "$as_me:9743: result: no" >&5
 echo "${ECHO_T}no" >&6
 fi
 
 gtk_doc_min_version=0.9
 if $GTKDOC ; then
     gtk_doc_version=`gtkdoc-mkdb --version`
-    echo "$as_me:9848: checking gtk-doc version ($gtk_doc_version) >= $gtk_doc_min_version" >&5
+    echo "$as_me:9750: checking gtk-doc version ($gtk_doc_version) >= $gtk_doc_min_version" >&5
 echo $ECHO_N "checking gtk-doc version ($gtk_doc_version) >= $gtk_doc_min_version... $ECHO_C" >&6
     if perl <<EOF ; then
       exit (("$gtk_doc_version" =~ /^[0-9]+\.[0-9]+$/) &&
             ("$gtk_doc_version" >= "$gtk_doc_min_version") ? 0 : 1);
 EOF
-      echo "$as_me:9854: result: yes" >&5
+      echo "$as_me:9756: result: yes" >&5
 echo "${ECHO_T}yes" >&6
    else
-      echo "$as_me:9857: result: no" >&5
+      echo "$as_me:9759: result: no" >&5
 echo "${ECHO_T}no" >&6
       GTKDOC=false
    fi
@@ -9862,7 +9764,7 @@ fi
 
 # Extract the first word of "db2html", so it can be a program name with args.
 set dummy db2html; ac_word=$2
-echo "$as_me:9865: checking for $ac_word" >&5
+echo "$as_me:9767: checking for $ac_word" >&5
 echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
 if test "${ac_cv_prog_DB2HTML+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
@@ -9877,7 +9779,7 @@ for ac_dir in $ac_dummy; do
   test -z "$ac_dir" && ac_dir=.
   $as_executable_p "$ac_dir/$ac_word" || continue
 ac_cv_prog_DB2HTML="true"
-echo "$as_me:9880: found $ac_dir/$ac_word" >&5
+echo "$as_me:9782: found $ac_dir/$ac_word" >&5
 break
 done
 
@@ -9886,10 +9788,10 @@ fi
 fi
 DB2HTML=$ac_cv_prog_DB2HTML
 if test -n "$DB2HTML"; then
-  echo "$as_me:9889: result: $DB2HTML" >&5
+  echo "$as_me:9791: result: $DB2HTML" >&5
 echo "${ECHO_T}$DB2HTML" >&6
 else
-  echo "$as_me:9892: result: no" >&5
+  echo "$as_me:9794: result: no" >&5
 echo "${ECHO_T}no" >&6
 fi
 
@@ -9925,7 +9827,7 @@ fi
 
 # Extract the first word of "sgml2html", so it can be a program name with args.
 set dummy sgml2html; ac_word=$2
-echo "$as_me:9928: checking for $ac_word" >&5
+echo "$as_me:9830: checking for $ac_word" >&5
 echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
 if test "${ac_cv_path_SGML2HTML+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
@@ -9942,7 +9844,7 @@ for ac_dir in $ac_dummy; do
   test -z "$ac_dir" && ac_dir=.
   if $as_executable_p "$ac_dir/$ac_word"; then
    ac_cv_path_SGML2HTML="$ac_dir/$ac_word"
-   echo "$as_me:9945: found $ac_dir/$ac_word" >&5
+   echo "$as_me:9847: found $ac_dir/$ac_word" >&5
    break
 fi
 done
@@ -9954,10 +9856,10 @@ fi
 SGML2HTML=$ac_cv_path_SGML2HTML
 
 if test -n "$SGML2HTML"; then
-  echo "$as_me:9957: result: $SGML2HTML" >&5
+  echo "$as_me:9859: result: $SGML2HTML" >&5
 echo "${ECHO_T}$SGML2HTML" >&6
 else
-  echo "$as_me:9960: result: no" >&5
+  echo "$as_me:9862: result: no" >&5
 echo "${ECHO_T}no" >&6
 fi
 
@@ -10047,98 +9949,84 @@ fi
 DEFS=-DHAVE_CONFIG_H
 
 if test -z "${MAINTAINER_MODE_TRUE}" && test -z "${MAINTAINER_MODE_FALSE}"; then
-  { { echo "$as_me:10050: error: conditional \"MAINTAINER_MODE\" was never defined.
+  { { echo "$as_me:9952: error: conditional \"MAINTAINER_MODE\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"MAINTAINER_MODE\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
 if test -z "${AMDEP_TRUE}" && test -z "${AMDEP_FALSE}"; then
-  { { echo "$as_me:10057: error: conditional \"AMDEP\" was never defined.
+  { { echo "$as_me:9959: error: conditional \"AMDEP\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"AMDEP\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
 if test -z "${PLATFORM_WIN32_TRUE}" && test -z "${PLATFORM_WIN32_FALSE}"; then
-  { { echo "$as_me:10064: error: conditional \"PLATFORM_WIN32\" was never defined.
+  { { echo "$as_me:9966: error: conditional \"PLATFORM_WIN32\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"PLATFORM_WIN32\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
 if test -z "${OS_WIN32_TRUE}" && test -z "${OS_WIN32_FALSE}"; then
-  { { echo "$as_me:10071: error: conditional \"OS_WIN32\" was never defined.
+  { { echo "$as_me:9973: error: conditional \"OS_WIN32\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"OS_WIN32\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
 if test -z "${MS_LIB_AVAILABLE_TRUE}" && test -z "${MS_LIB_AVAILABLE_FALSE}"; then
-  { { echo "$as_me:10078: error: conditional \"MS_LIB_AVAILABLE\" was never defined.
+  { { echo "$as_me:9980: error: conditional \"MS_LIB_AVAILABLE\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"MS_LIB_AVAILABLE\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
 if test -z "${USE_X11_TRUE}" && test -z "${USE_X11_FALSE}"; then
-  { { echo "$as_me:10085: error: conditional \"USE_X11\" was never defined.
+  { { echo "$as_me:9987: error: conditional \"USE_X11\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"USE_X11\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
 if test -z "${USE_X11_TRUE}" && test -z "${USE_X11_FALSE}"; then
-  { { echo "$as_me:10092: error: conditional \"USE_X11\" was never defined.
+  { { echo "$as_me:9994: error: conditional \"USE_X11\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"USE_X11\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
 if test -z "${USE_WIN32_TRUE}" && test -z "${USE_WIN32_FALSE}"; then
-  { { echo "$as_me:10099: error: conditional \"USE_WIN32\" was never defined.
+  { { echo "$as_me:10001: error: conditional \"USE_WIN32\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"USE_WIN32\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
 if test -z "${USE_WIN32_TRUE}" && test -z "${USE_WIN32_FALSE}"; then
-  { { echo "$as_me:10106: error: conditional \"USE_WIN32\" was never defined.
+  { { echo "$as_me:10008: error: conditional \"USE_WIN32\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"USE_WIN32\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
-if test -z "${ENABLE_XMESA_FX_TRUE}" && test -z "${ENABLE_XMESA_FX_FALSE}"; then
-  { { echo "$as_me:10113: error: conditional \"ENABLE_XMESA_FX\" was never defined.
-Usually this means the macro was only invoked conditionally." >&5
-echo "$as_me: error: conditional \"ENABLE_XMESA_FX\" was never defined.
-Usually this means the macro was only invoked conditionally." >&2;}
-   { (exit 1); exit 1; }; }
-fi
-if test -z "${ENABLE_XMESA_FX_TRUE}" && test -z "${ENABLE_XMESA_FX_FALSE}"; then
-  { { echo "$as_me:10120: error: conditional \"ENABLE_XMESA_FX\" was never defined.
-Usually this means the macro was only invoked conditionally." >&5
-echo "$as_me: error: conditional \"ENABLE_XMESA_FX\" was never defined.
-Usually this means the macro was only invoked conditionally." >&2;}
-   { (exit 1); exit 1; }; }
-fi
 if test -z "${HAVE_DOCBOOK_TRUE}" && test -z "${HAVE_DOCBOOK_FALSE}"; then
-  { { echo "$as_me:10127: error: conditional \"HAVE_DOCBOOK\" was never defined.
+  { { echo "$as_me:10015: error: conditional \"HAVE_DOCBOOK\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"HAVE_DOCBOOK\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
 if test -z "${ENABLE_GTK_DOC_TRUE}" && test -z "${ENABLE_GTK_DOC_FALSE}"; then
-  { { echo "$as_me:10134: error: conditional \"ENABLE_GTK_DOC\" was never defined.
+  { { echo "$as_me:10022: error: conditional \"ENABLE_GTK_DOC\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"ENABLE_GTK_DOC\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
 if test -z "${HAVE_SGML2HTML_TRUE}" && test -z "${HAVE_SGML2HTML_FALSE}"; then
-  { { echo "$as_me:10141: error: conditional \"HAVE_SGML2HTML\" was never defined.
+  { { echo "$as_me:10029: error: conditional \"HAVE_SGML2HTML\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"HAVE_SGML2HTML\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
@@ -10148,7 +10036,7 @@ fi
 : ${CONFIG_STATUS=./config.status}
 ac_clean_files_save=$ac_clean_files
 ac_clean_files="$ac_clean_files $CONFIG_STATUS"
-{ echo "$as_me:10151: creating $CONFIG_STATUS" >&5
+{ echo "$as_me:10039: creating $CONFIG_STATUS" >&5
 echo "$as_me: creating $CONFIG_STATUS" >&6;}
 cat >$CONFIG_STATUS <<_ACEOF
 #! $SHELL
@@ -10324,7 +10212,7 @@ cat >>$CONFIG_STATUS <<\EOF
     echo "$ac_cs_version"; exit 0 ;;
   --he | --h)
     # Conflict between --help and --header
-    { { echo "$as_me:10327: error: ambiguous option: $1
+    { { echo "$as_me:10215: error: ambiguous option: $1
 Try \`$0 --help' for more information." >&5
 echo "$as_me: error: ambiguous option: $1
 Try \`$0 --help' for more information." >&2;}
@@ -10343,7 +10231,7 @@ Try \`$0 --help' for more information." >&2;}
     ac_need_defaults=false;;
 
   # This is an error.
-  -*) { { echo "$as_me:10346: error: unrecognized option: $1
+  -*) { { echo "$as_me:10234: error: unrecognized option: $1
 Try \`$0 --help' for more information." >&5
 echo "$as_me: error: unrecognized option: $1
 Try \`$0 --help' for more information." >&2;}
@@ -10403,7 +10291,7 @@ do
   "docs/reference/gtkglext/Makefile" ) CONFIG_FILES="$CONFIG_FILES docs/reference/gtkglext/Makefile" ;;
   "depfiles" ) CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
-  *) { { echo "$as_me:10406: error: invalid argument: $ac_config_target" >&5
+  *) { { echo "$as_me:10294: error: invalid argument: $ac_config_target" >&5
 echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
    { (exit 1); exit 1; }; };;
   esac
@@ -10579,8 +10467,6 @@ s,@USE_WIN32_TRUE@,$USE_WIN32_TRUE,;t t
 s,@USE_WIN32_FALSE@,$USE_WIN32_FALSE,;t t
 s,@GDKGLEXT_WIN_CFLAGS@,$GDKGLEXT_WIN_CFLAGS,;t t
 s,@GDKGLEXT_WIN_LIBS@,$GDKGLEXT_WIN_LIBS,;t t
-s,@ENABLE_XMESA_FX_TRUE@,$ENABLE_XMESA_FX_TRUE,;t t
-s,@ENABLE_XMESA_FX_FALSE@,$ENABLE_XMESA_FX_FALSE,;t t
 s,@GL_CFLAGS@,$GL_CFLAGS,;t t
 s,@GL_LIBS@,$GL_LIBS,;t t
 s,@GDKGLEXT_PACKAGES@,$GDKGLEXT_PACKAGES,;t t
@@ -10717,7 +10603,7 @@ done; }
   esac
 
   if test x"$ac_file" != x-; then
-    { echo "$as_me:10720: creating $ac_file" >&5
+    { echo "$as_me:10606: creating $ac_file" >&5
 echo "$as_me: creating $ac_file" >&6;}
     rm -f "$ac_file"
   fi
@@ -10735,7 +10621,7 @@ echo "$as_me: creating $ac_file" >&6;}
       -) echo $tmp/stdin ;;
       [\\/$]*)
          # Absolute (can't be DOS-style, as IFS=:)
-         test -f "$f" || { { echo "$as_me:10738: error: cannot find input file: $f" >&5
+         test -f "$f" || { { echo "$as_me:10624: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          echo $f;;
@@ -10748,7 +10634,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
            echo $srcdir/$f
          else
            # /dev/null tree
-           { { echo "$as_me:10751: error: cannot find input file: $f" >&5
+           { { echo "$as_me:10637: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          fi;;
@@ -10809,7 +10695,7 @@ for ac_file in : $CONFIG_HEADERS; do test "x$ac_file" = x: && continue
   * )   ac_file_in=$ac_file.in ;;
   esac
 
-  test x"$ac_file" != x- && { echo "$as_me:10812: creating $ac_file" >&5
+  test x"$ac_file" != x- && { echo "$as_me:10698: creating $ac_file" >&5
 echo "$as_me: creating $ac_file" >&6;}
 
   # First look for the input files in the build tree, otherwise in the
@@ -10820,7 +10706,7 @@ echo "$as_me: creating $ac_file" >&6;}
       -) echo $tmp/stdin ;;
       [\\/$]*)
          # Absolute (can't be DOS-style, as IFS=:)
-         test -f "$f" || { { echo "$as_me:10823: error: cannot find input file: $f" >&5
+         test -f "$f" || { { echo "$as_me:10709: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          echo $f;;
@@ -10833,7 +10719,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
            echo $srcdir/$f
          else
            # /dev/null tree
-           { { echo "$as_me:10836: error: cannot find input file: $f" >&5
+           { { echo "$as_me:10722: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          fi;;
@@ -10950,7 +10836,7 @@ cat >>$CONFIG_STATUS <<\EOF
   rm -f $tmp/in
   if test x"$ac_file" != x-; then
     if cmp -s $ac_file $tmp/config.h 2>/dev/null; then
-      { echo "$as_me:10953: $ac_file is unchanged" >&5
+      { echo "$as_me:10839: $ac_file is unchanged" >&5
 echo "$as_me: $ac_file is unchanged" >&6;}
     else
       ac_dir=`$as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \

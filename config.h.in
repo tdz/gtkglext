@@ -12,9 +12,6 @@
 /* Define if you have the <GL/gl.h> header file. */
 #undef HAVE_GL_GL_H
 
-/* Define if you have the <GL/xmesa.h> header file. */
-#undef HAVE_GL_XMESA_H
-
 /* Define if you have the ANSI C header files. */
 #undef STDC_HEADERS
 

@@ -329,22 +329,12 @@ if test "x$gdktarget" = "xx11"; then
                  AC_MSG_ERROR(Cannot find GL library))
   fi
 
-  # if using mesa, check for xmesa.h
-  if test "x$ac_cv_lib_MesaGL_glNewList" = "xyes" ; then
-    AC_CHECK_HEADERS(GL/xmesa.h)
-    AM_CONDITIONAL(ENABLE_XMESA_FX, \
-                   test "x$ac_cv_header_GL_xmesa_h" = "xyes")
-  else
-    # force a failed check
-    AM_CONDITIONAL(ENABLE_XMESA_FX, test "no" = "yes")
-  fi
-
-  AC_CHECK_LIB(GLU, gluLookAt,
+  AC_CHECK_LIB(GLU, gluNewQuadric,
                GL_LIBS="-lGLU $GL_LIBS",
                , $GL_LIBS)
-  if test "x$ac_cv_lib_GLU_gluLookAt" = "xno" ; then
+  if test "x$ac_cv_lib_GLU_gluNewQuadric" = "xno" ; then
     # if no GLU, check for MesaGLU
-    AC_CHECK_LIB(MesaGLU, gluLookAt,
+    AC_CHECK_LIB(MesaGLU, gluNewQuadric,
                  GL_LIBS="-lMesaGLU $GL_LIBS",
                  AC_MSG_ERROR(Cannot find GLU library),
                  $GL_LIBS)
@@ -354,16 +344,53 @@ else
 
   # for Win32
 
-  AC_CHECK_LIB(opengl32, glNewList,
-               GL_LIBS="-lopengl32",
-               AC_MSG_ERROR(Cannot find GL library))
+  AC_MSG_CHECKING([for glNewList in opengl32])
+  LIBS="-lopengl32 $LIBS"
+  AC_TRY_LINK([ #include <windows.h>
+                #include <GL/gl.h> ], 
+              [ glNewList(1, GL_COMPILE); ], 
+              [ GL_LIBS="-lopengl32"
+                have_opengl32=yes ],
+              have_opengl32=no)
+  AC_MSG_RESULT($have_opengl32)
+  if test "x$have_opengl32" = "xno" ; then
+    AC_MSG_ERROR(Cannot find GL library)
+  fi
 
-  AC_CHECK_LIB(glu32, gluLookAt,
-               GL_LIBS="-lglu32 $GL_LIBS",
-               AC_MSG_ERROR(Cannot find GLU library),
-               $GL_LIBS)
+  AC_MSG_CHECKING([for gluNewQuadric in glu32])
+  LIBS="-lglu32 $LIBS"
+  AC_TRY_LINK([ #include <windows.h>
+                #include <GL/gl.h>
+                #include <GL/glu.h> ], 
+              [ gluNewQuadric(); ], 
+              [ GL_LIBS="-lglu32 $GL_LIBS"
+                have_glu32=yes ],
+              have_glu32=no)
+  AC_MSG_RESULT($have_glu32)
+  if test "x$have_glu32" = "xno" ; then
+    AC_MSG_ERROR(Cannot find GLU library)
+  fi
+
+dnl   AC_CHECK_LIB(opengl32, glNewList,
+dnl                GL_LIBS="-lopengl32",
+dnl                AC_MSG_ERROR(Cannot find GL library))
+
+dnl   AC_CHECK_LIB(glu32, gluNewQuadric,
+dnl                GL_LIBS="-lglu32 $GL_LIBS",
+dnl                AC_MSG_ERROR(Cannot find GLU library),
+dnl                $GL_LIBS)
 
 fi
+
+dnl # if using mesa, check for xmesa.h
+dnl if test "x$ac_cv_lib_MesaGL_glNewList" = "xyes" ; then
+dnl   AC_CHECK_HEADERS(GL/xmesa.h)
+dnl   AM_CONDITIONAL(ENABLE_XMESA_FX, \
+dnl                  test "x$ac_cv_header_GL_xmesa_h" = "xyes")
+dnl else
+dnl   # force a failed check
+dnl   AM_CONDITIONAL(ENABLE_XMESA_FX, test "no" = "yes")
+dnl fi
 
 GL_LIBS="$GL_LDFLAGS $GL_LIBS"
 
