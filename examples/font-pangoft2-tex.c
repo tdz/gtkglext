@@ -62,7 +62,7 @@ gl_tex_create_texture (GLuint *texture)
       if (width != 0)
         break;
 
-      size >>= 2;
+      size >>= 1;
     }
   while (size > 0);
 
@@ -283,7 +283,7 @@ configure_event (GtkWidget         *widget,
 
 #define TEXT_Z_NEAR  2.0
 #define TEXT_Z_FAR  -5.0
-#define TEXT_Z_DIFF  0.0025
+#define TEXT_Z_DIFF  0.005
 
 static GLfloat text_z = TEXT_Z_NEAR;
 
