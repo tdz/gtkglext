@@ -195,9 +195,10 @@ gint button_press(GtkWidget *widget, GdkEventButton *event)
 
 gint motion_notify(GtkWidget *widget, GdkEventMotion *event)
 {
-     int x, y;
+     int x = 0;
+     int y = 0;
      GdkRectangle area;
-     GdkModifierType state;
+     GdkModifierType state = 0;
      mesh_info *info = (mesh_info*)gtk_object_get_data(GTK_OBJECT(widget), "mesh_info");
 
      if (event->is_hint)
