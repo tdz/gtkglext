@@ -175,8 +175,11 @@ main (int argc,
 {
   GdkGLConfigMode mode;
   GdkGLConfig *glconfig;
+  gboolean is_rgba;
   GdkColormap *colormap;
-  gboolean is_rgba, success;
+  GdkColor color;
+  gboolean success[NUM_COLORS];
+  gint not_allocated;
   gint major, minor;
   int i;
 
@@ -238,30 +241,6 @@ main (int argc,
   is_rgba = gdk_gl_config_is_rgba (glconfig);
 
   colormap = gdk_gl_config_get_colormap (glconfig);
-
-  /*
-   * Allocate colors.
-   */
-
-  if (!is_rgba)
-    {
-      g_print ("\nAllocate colors.\n");
-
-      gdk_colormap_alloc_colors (colormap, colors, NUM_COLORS,
-                                 FALSE, FALSE, &success);
-      if (!success)
-        g_print ("*** Color allocation failed.\n");
-      else
-        g_print ("Colors ware successfully allocated.\n");
-
-      for (i = 0; i < NUM_COLORS; i++)
-        {
-          g_print ("colors[%d] = { %u, 0x%x, 0x%x, 0x%x }\n",
-                   i, colors[i].pixel,
-                   colors[i].red, colors[i].green, colors[i].blue);
-        }
-      g_print ("\n");
-    }
 
   /*
    * Top-level window.
@@ -330,6 +309,38 @@ main (int argc,
    */
 
   gtk_widget_show (window);
+
+  /*
+   * Allocate colors.
+   */
+
+  if (!is_rgba)
+    {
+      g_print ("\nAllocate colors.\n");
+
+      not_allocated = gdk_colormap_alloc_colors (colormap, colors, NUM_COLORS,
+                                                 TRUE, FALSE, success);
+      g_print ("Not allocated = %d\n", not_allocated);
+
+      for (i = 0; i < NUM_COLORS; i++)
+        {
+          g_print ("colors[%d] = { %u, 0x%x, 0x%x, 0x%x }\n",
+                   i, colors[i].pixel,
+                   colors[i].red, colors[i].green, colors[i].blue);
+        }
+      g_print ("\n");
+
+      g_print ("Query colors.\n");
+      for (i = 0; i < NUM_COLORS; i++)
+        {
+          color.pixel = colors[i].pixel;
+          gdk_colormap_query_color (colormap, colors[i].pixel, &color);
+          g_print ("colors[%d] = { %u, 0x%x, 0x%x, 0x%x }\n",
+                   i, colors[i].pixel,
+                   color.red, color.green, color.blue);
+        }
+      g_print ("\n");
+    }
 
   /*
    * Main loop.
