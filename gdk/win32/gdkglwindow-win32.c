@@ -22,8 +22,6 @@
 #include "gdkglcontext-win32.h"
 #include "gdkglwindow-win32.h"
 
-/* Forward declarations */
-
 static gboolean     gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
                                                               GdkGLDrawable *read,
                                                               GdkGLContext  *glcontext);
@@ -228,6 +226,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   return NULL;
 }
 
+/*< private >*/
 HDC
 _gdk_win32_gl_window_hdc_get (GdkGLDrawable *gldrawable)
 {
@@ -243,6 +242,7 @@ _gdk_win32_gl_window_hdc_get (GdkGLDrawable *gldrawable)
   return impl->hdc;
 }
 
+/*< private >*/
 void
 _gdk_win32_gl_window_hdc_release (GdkGLDrawable *gldrawable)
 {

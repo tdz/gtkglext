@@ -97,7 +97,6 @@ gdk_gl_context_impl_win32_finalize (GObject *object)
       GDK_GL_NOTE (IMPL, g_message (" * wglDeleteContext ()"));
 
       wglDeleteContext (impl->hglrc);
-      impl->hglrc = NULL;
     }
 
   if (impl->gldrawable != NULL)
@@ -170,6 +169,7 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
   return glcontext;
 }
 
+/*< private >*/
 GdkGLContext *
 _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
                            GdkGLContext  *share_list,

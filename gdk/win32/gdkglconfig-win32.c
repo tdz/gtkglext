@@ -24,19 +24,8 @@
 #include <gdk/gdkscreen.h>
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-/* Forward declarations */
-
-static void         gdk_gl_config_parse_attrib_list     (const int                 *attrib_list,
-                                                         PIXELFORMATDESCRIPTOR     *pfd);
-
-static GdkColormap *gdk_gl_config_setup_colormap        (GdkScreen                 *screen,
-                                                         PIXELFORMATDESCRIPTOR     *pfd,
-                                                         gboolean                   is_rgba);
-
-static void         gdk_gl_config_init_attrib           (GdkGLConfig               *glconfig);
-
-static void         gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass);
-static void         gdk_gl_config_impl_win32_finalize   (GObject                   *object);
+static void gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass);
+static void gdk_gl_config_impl_win32_finalize   (GObject                   *object);
 
 static gpointer parent_class = NULL;
 
@@ -253,6 +242,7 @@ gdk_gl_config_parse_attrib_list (const int             *attrib_list,
  * Find an appropriate pixel format.
  * Basic idea of this code is ripped from FLTK.
  */
+/*< private >*/
 int
 _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
 					CONST PIXELFORMATDESCRIPTOR *req_pfd,
@@ -767,6 +757,7 @@ gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
   return &(GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->pfd);
 }
 
+/*< private >*/
 void
 _gdk_win32_gl_print_pfd (PIXELFORMATDESCRIPTOR *pfd)
 {

@@ -25,8 +25,6 @@
 /* For direct access to GDK objects' internal data. */
 #include "gdkinternal-win32.h"
 
-/* Forward declarations */
-
 static void gdk_gl_pixmap_sync_gl  (GdkGLPixmap *glpixmap);
 static void gdk_gl_pixmap_sync_gdk (GdkGLPixmap *glpixmap);
 
@@ -270,6 +268,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   return NULL;  
 }
 
+/*< private >*/
 HDC
 _gdk_win32_gl_pixmap_hdc_get (GdkGLDrawable *gldrawable)
 {
@@ -287,6 +286,7 @@ _gdk_win32_gl_pixmap_hdc_get (GdkGLDrawable *gldrawable)
   return impl->hdc;
 }
 
+/*< private >*/
 void
 _gdk_win32_gl_pixmap_hdc_release (GdkGLDrawable *gldrawable)
 {
