@@ -342,7 +342,10 @@ gdk_gl_config_get_screen (GdkGLConfig *glconfig)
  * @attribute: the attribute to be returned.
  * @value: returns the requested value.
  *
- * Return information about a OpenGL frame buffer configuration.
+ * Returns information about a OpenGL frame buffer configuration.
+ *
+ * Returns the value one of the attributes which can be specified in
+ * #gdk_gl_config_new.
  *
  * Return value: an error code if it fails for any reason, otherwise, GDK_GL_SUCCESS is returned.
  **/
@@ -362,6 +365,9 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
  *
  * Get the #GdkColormap that is appropriate for the OpenGL frame buffer
  * configuration.
+ *
+ * Useful to get the appropiate colormap (GdkColormap) for the OpenGL
+ * framebuffer.
  *
  * Return value: the appropriate #GdkColormap.
  **/
@@ -396,6 +402,12 @@ gdk_gl_config_get_visual (GdkGLConfig *glconfig)
  *
  * Get the depth (number of bits per pixel) of the OpenGL-capable visual.
  *
+ * Color depth is a somehow confusing term. It is defined as the amount of
+ * bits per pixel used to define a color. It is confusing because in some
+ * environments is expressed as the amount of bits used to define each of
+ * the components (RGBA) of the color. Here it will be named as the total
+ * amount of bits required to define the whole color.
+ *
  * Return value: the depth value.
  **/
 gint
@@ -428,6 +440,14 @@ gdk_gl_config_is_rgba (GdkGLConfig *glconfig)
  *
  * Returns whether the configuration supports the double-buffered visual.
  *
+ * Checks for double buffering use in the #GdkGLConfig struct.
+ * Double buffering is a technique use to avoid drawing directly in the
+ * viewable area. With double buffering, all entities drawn with OpenGL are
+ * stored in an invisible buffer. This buffer is then replaced by the frame
+ * buffer. Using Double-buffering, a big amount of memory is used to mantain
+ * this buffer, but quality is highly improved. Use #gdk_drawable_swap_buffers
+ * to swap buffers when drawing is complete.
+ *
  * Return value: TRUE if the double-buffered visual is supported, FALSE otherwise.
  **/
 gboolean
@@ -443,6 +463,13 @@ gdk_gl_config_is_double_buffered (GdkGLConfig *glconfig)
  * @glconfig: a #GdkGLConfig.
  *
  * Returns whether the configuration supports the stereo visual.
+ *
+ * Stereo Viewing deals with all techniques used to give 3D capabilities to
+ * a view, as for example are all kind of 3D and VR glasses. Generating 3D
+ * vision is a matter only of generating two views of the same scene, one for
+ * each eye. OpenGL does not support any specific hardware, but has the
+ * underlying support for using it. This function check for stereo support in
+ * a #GdkGLConfig struct.
  *
  * Return value: TRUE if the stereo visual is supported, FALSE otherwise.
  **/

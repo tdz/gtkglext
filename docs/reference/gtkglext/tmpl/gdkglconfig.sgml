@@ -59,21 +59,11 @@ and is afterwards used in #gtk_widget_set_gl_capability.
 
 <!-- ##### FUNCTION gdk_gl_config_new ##### -->
 <para>
-Reserves an space in memory for containing OpenGL FrameBuffer
-configuration Data. Configuration data is sent via attrib_list. This
-array of gint contains attributes data stored in pairs
-{ATTRIBUTE_NAME1, value1, ATTRIBUTE_NAME2, value2, ...}, ending always
-with a GDK_ATTRIB_LIST_NONE. These attributes can be:
-GDK_GL_USE_GL,GDK_GL_BUFFER_SIZE, GDK_GL_LEVEL, GDK_GL_RGBA,
-GDK_GL_DOUBLEBUFFER, GDK_GL_STEREO, GDK_GL_AUX_BUFFERS,
-GDK_GL_RED_SIZE, GDK_GL_GREEN_SIZE, GDK_GL_BLUE_SIZE,
-GDK_GL_ALPHA_SIZE, GDK_GL_DEPTH_SIZE, GDK_GL_STENCIL_SIZE,
-GDK_GL_ACCUM_RED_SIZE, GDK_GL_ACCUM_GREEN_SIZE, GDK_GL_ACCUM_BLUE_SIZE
-and GDK_GL_ACCUM_ALPHA_SIZE. 
+
 </para>
 
-@attrib_list: an array of gint containing values for frame buffer configuration.It must end with GDK_GL_ATTRIB_LIST_NONE.
-@Returns: A pointer to the newly allocated struct.
+@attrib_list: 
+@Returns: 
 
 
 <!-- ##### FUNCTION gdk_gl_config_new_for_screen ##### -->
@@ -99,28 +89,28 @@ and GDK_GL_ACCUM_ALPHA_SIZE.
 <para>
 </para>
 
-@glconfig: The #GdkGLConfig
-@Returns: The pointer to the #GdkScreen struct.
+@glconfig: 
+@Returns: 
 
 
 <!-- ##### FUNCTION gdk_gl_config_get_attrib ##### -->
 <para>
-Returns the value one of the attributes which can be specified in #gdk_gl_config_new.
+
 </para>
 
-@glconfig: The #GdkGLConfig
-@attribute: Attribute to check for. Possibilities are listed in #gdk_gl_config_new
-@value: in fact is a return value, here will be the value for the attribute
-@Returns: GDK_GL_SUCCESS on success, error code otherwise.
+@glconfig: 
+@attribute: 
+@value: 
+@Returns: 
 
 
 <!-- ##### FUNCTION gdk_gl_config_get_colormap ##### -->
 <para>
-Useful to get the appropiate colormap (GdkColormap) for the OpenGL framebuffer.
+
 </para>
 
-@glconfig: a #GdkGLConfig struct to check for its colormap
-@Returns: The appropiate GdkColormap
+@glconfig: 
+@Returns: 
 
 
 <!-- ##### FUNCTION gdk_gl_config_get_visual ##### -->
@@ -134,11 +124,11 @@ Useful to get the appropiate colormap (GdkColormap) for the OpenGL framebuffer.
 
 <!-- ##### FUNCTION gdk_gl_config_get_depth ##### -->
 <para>
-Color depth is a somehow confusing term. It is defined as the amount of bits per pixel used to define a color. It is confusing because in some environments is expressed as the amount of bits used to define each of the components (RGBA) of the color. Here it will be named as the total amount of bits required to define the whole color. 
+
 </para>
 
-@glconfig: The #GdkGLConfig to check for color depth.
-@Returns: The amounts of bits required to define RGBA components of a color.
+@glconfig: 
+@Returns: 
 
 
 <!-- ##### FUNCTION gdk_gl_config_is_rgba ##### -->
@@ -152,20 +142,20 @@ Color depth is a somehow confusing term. It is defined as the amount of bits per
 
 <!-- ##### FUNCTION gdk_gl_config_is_double_buffered ##### -->
 <para>
-Checks for double buffering use in the #GdkGLConfig struct. Double buffering is a technique use to avoid drawing directly in the viewable area. With double buffering, all entities drawn with OpenGL are stored in an invisible buffer. This buffer is then replaced by the frame buffer. Using Double-buffering, a big amount of memory is used to mantain this buffer, but quality is highly improved. Use #gdk_drawable_swap_buffers to swap buffers when drawing is complete.
+
 </para>
 
-@glconfig: The #GdkGLConfig to check for Double-buffering
-@Returns: TRUE if Double_buffered, FALSE otherwise.
+@glconfig: 
+@Returns: 
 
 
 <!-- ##### FUNCTION gdk_gl_config_is_stereo ##### -->
 <para>
-Stereo Viewing deals with all techniques used to give 3D capabilities to a view, as for example are all kind of 3D and VR glasses. Generating 3D vision is a matter only of generating two views of the same scene, one for each eye. OpenGL does not support any specific hardware, but has the underlying support for using it. This function check for stereo support in a #GdkGLConfig struct.
+
 </para>
 
-@glconfig: The #GdkGLConfig struct to check for stereo capabilities.
-@Returns: TRUE if stereo is supported, FALSE otherwise.
+@glconfig: 
+@Returns: 
 
 
 <!-- ##### FUNCTION gdk_gl_config_has_alpha ##### -->

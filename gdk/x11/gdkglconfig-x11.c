@@ -669,6 +669,18 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
  * Returns an OpenGL frame buffer configuration that match the specified
  * attributes.
  *
+ * Reserves an space in memory for containing OpenGL FrameBuffer
+ * configuration Data. Configuration data is sent via attrib_list. This
+ * array of gint contains attributes data stored in pairs
+ * {ATTRIBUTE_NAME1, value1, ATTRIBUTE_NAME2, value2, ...}, ending always
+ * with a GDK_ATTRIB_LIST_NONE. These attributes can be:
+ * GDK_GL_USE_GL,GDK_GL_BUFFER_SIZE, GDK_GL_LEVEL, GDK_GL_RGBA,
+ * GDK_GL_DOUBLEBUFFER, GDK_GL_STEREO, GDK_GL_AUX_BUFFERS,
+ * GDK_GL_RED_SIZE, GDK_GL_GREEN_SIZE, GDK_GL_BLUE_SIZE,
+ * GDK_GL_ALPHA_SIZE, GDK_GL_DEPTH_SIZE, GDK_GL_STENCIL_SIZE,
+ * GDK_GL_ACCUM_RED_SIZE, GDK_GL_ACCUM_GREEN_SIZE, GDK_GL_ACCUM_BLUE_SIZE
+ * and GDK_GL_ACCUM_ALPHA_SIZE.
+ *
  * Return value: the new #GdkGLConfig.
  **/
 GdkGLConfig *

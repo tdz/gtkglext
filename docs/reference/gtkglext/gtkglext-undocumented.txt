@@ -1,6 +1,6 @@
-79% function docs coverage.
-71 functions documented.
-19 not documented.
+61% symbol docs coverage.
+71 symbols documented.
+46 not documented.
 
 
 GDKGLEXT_BINARY_AGE
@@ -17,8 +17,35 @@ GTKGLEXT_MAJOR_VERSION
 GTKGLEXT_MICRO_VERSION
 GTKGLEXT_MINOR_VERSION
 GTK_GL_VAR
+GdkGLAttribListNone
+GdkGLClientStringAttribute
+GdkGLConfig
+GdkGLConfigError
+GdkGLConfigMode
+GdkGLContext
+GdkGLContextInfoExtensionAttribute
+GdkGLDrawable
+GdkGLExtensionValue
+GdkGLFbConfigAttribute
+GdkGLGenericValue
+GdkGLMultisampleConfigAttribute
+GdkGLPixmap
+GdkGLProc
+GdkGLSuccess
+GdkGLVisualConfigAttribute
+GdkGLWindow
 gdk_gl_config_get_screen
 gdk_gl_config_new_for_screen
 gdk_gl_font_use_pango_font_for_display
 gdk_gl_query_extension_for_display
 gdk_gl_query_version_for_display
+gdkglext_binary_age
+gdkglext_interface_age
+gdkglext_major_version
+gdkglext_micro_version
+gdkglext_minor_version
+gtkglext_binary_age
+gtkglext_interface_age
+gtkglext_major_version
+gtkglext_micro_version
+gtkglext_minor_version
