@@ -1,3 +1,8 @@
+2003-09-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* configure.in (gtkglext_minor_version): 1.1.x unstable
+	development series.
+
 2003-09-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Check whether
