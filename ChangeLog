@@ -1,5 +1,11 @@
 2002-06-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglwindow.c (gdk_gl_window_set_property): 
+	* gdk/gdkglpixmap.c (gdk_gl_pixmap_set_property): Don't ref
+	wrapper to avoid memory leak.
+
+	* gdk/gdkglpixmap.c: Added GdkPixmap extension API.
+
 	* gdk/gdkglwindow.c (gdk_window_set_gl_capability): Use
 	g_object_set_qdata_full to set quark data.
 

@@ -130,7 +130,7 @@ gdk_gl_window_set_property (GObject      *object,
       break;
     case PROP_WRAPPER:
       glwindow->wrapper = g_value_get_object (value);
-      g_object_ref (G_OBJECT (glwindow->wrapper));
+      /* g_object_ref (G_OBJECT (glwindow->wrapper)); */
       g_object_notify (object, "wrapper");
       break;
     default:
@@ -166,11 +166,13 @@ gdk_gl_window_finalize (GObject *object)
       glwindow->glconfig = NULL;
     }
 
+  /*
   if (glwindow->wrapper != NULL)
     {
       g_object_unref (G_OBJECT (glwindow->wrapper));
       glwindow->wrapper = NULL;
     }
+  */
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }

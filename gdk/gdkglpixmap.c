@@ -128,7 +128,7 @@ gdk_gl_pixmap_set_property (GObject      *object,
       break;
     case PROP_WRAPPER:
       glpixmap->wrapper = g_value_get_object (value);
-      g_object_ref (G_OBJECT (glpixmap->wrapper));
+      /* g_object_ref (G_OBJECT (glpixmap->wrapper)); */
       g_object_notify (object, "wrapper");
       break;
     default:
@@ -164,11 +164,13 @@ gdk_gl_pixmap_finalize (GObject *object)
       glpixmap->glconfig = NULL;
     }
 
+  /*
   if (glpixmap->wrapper != NULL)
     {
       g_object_unref (G_OBJECT (glpixmap->wrapper));
       glpixmap->wrapper = NULL;
     }
+  */
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -181,4 +183,139 @@ _gdk_gl_pixmap_real_drawable (GdkGLDrawable *gldrawable)
   g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
 
   return GDK_GL_PIXMAP (gldrawable)->wrapper;
+}
+
+/*
+ * OpenGL extension to GdkPixmap
+ */
+
+static const gchar quark_gl_config_string[] = "gdk-gl-pixmap-gl-config";
+static GQuark quark_gl_config = 0;
+
+static const gchar quark_gl_pixmap_string[] = "gdk-gl-pixmap-gl-pixmap";
+static GQuark quark_gl_pixmap = 0;
+
+static void
+gl_config_destroy (GdkGLConfig *glconfig)
+{
+  if (glconfig != NULL)
+    g_object_unref (G_OBJECT (glconfig));
+}
+
+static void
+gl_pixmap_destroy (GdkGLPixmap *glpixmap)
+{
+  if (glpixmap != NULL)
+    g_object_unref (G_OBJECT (glpixmap));
+}
+
+gboolean
+gdk_pixmap_set_gl_capability (GdkPixmap    *pixmap,
+                              GdkGLConfig  *glconfig,
+                              const gint   *attrib_list)
+{
+  GdkGLPixmap *glpixmap;
+
+  g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  /*
+   * Initialize quarks
+   */
+
+  if (quark_gl_config == 0)
+    quark_gl_config = g_quark_from_static_string (quark_gl_config_string);
+
+  if (quark_gl_pixmap == 0)
+    quark_gl_pixmap = g_quark_from_static_string (quark_gl_pixmap_string);
+
+  /* If dalready set */
+  if (g_object_get_qdata (G_OBJECT (pixmap), quark_gl_pixmap) != NULL)
+    return FALSE;
+
+  /*
+   * Set the OpenGL configuration data to the pixmap.
+   */
+
+  g_object_set_qdata_full (G_OBJECT (pixmap), quark_gl_config, glconfig,
+                           (GDestroyNotify) gl_config_destroy);
+  g_object_ref (G_OBJECT (glconfig));
+
+  /*
+   * Set OpenGL-capable colormap.
+   */
+
+  gdk_drawable_set_colormap (GDK_DRAWABLE (pixmap),
+			     gdk_gl_config_get_colormap (glconfig));
+
+  /*
+   * Create GdkGLPixmap
+   */
+
+  if (g_object_get_qdata (G_OBJECT (pixmap), quark_gl_pixmap) != NULL)
+    return FALSE;
+
+  glpixmap = gdk_gl_pixmap_new (glconfig, pixmap, attrib_list);
+  if (glpixmap == NULL)
+    {
+      g_warning ("cannot create GdkGLPixmap\n");
+      goto FAIL;
+    }
+
+  g_object_set_qdata_full (G_OBJECT (pixmap), quark_gl_pixmap, glpixmap,
+                           (GDestroyNotify) gl_pixmap_destroy);
+
+  return TRUE;
+
+ FAIL:
+
+  g_object_set_qdata (G_OBJECT (pixmap), quark_gl_config, NULL);
+  g_object_set_qdata (G_OBJECT (pixmap), quark_gl_pixmap, NULL);
+
+  return FALSE;
+}
+
+void
+gdk_pixmap_unset_gl_capability (GdkPixmap *pixmap)
+{
+  /*
+   * If quarks are not initialized
+   */
+
+  if (quark_gl_config == 0)
+    quark_gl_config = g_quark_from_static_string (quark_gl_config_string);
+
+  if (quark_gl_pixmap == 0)
+    quark_gl_pixmap = g_quark_from_static_string (quark_gl_pixmap_string);
+
+  /*
+   * Unref OpenGL-related data of the pixmap
+   */
+
+  g_object_set_qdata (G_OBJECT (pixmap), quark_gl_config, NULL);
+  g_object_set_qdata (G_OBJECT (pixmap), quark_gl_pixmap, NULL);
+}
+
+gboolean
+gdk_pixmap_is_gl_capable (GdkPixmap *pixmap)
+{
+  g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), FALSE);
+
+  return g_object_get_qdata (G_OBJECT (pixmap), quark_gl_pixmap) != NULL ? TRUE : FALSE;
+}
+
+GdkGLConfig *
+gdk_pixmap_get_gl_config (GdkPixmap *pixmap)
+{
+  g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), NULL);
+
+  return g_object_get_qdata (G_OBJECT (pixmap), quark_gl_config);
+}
+
+GdkGLPixmap *
+gdk_pixmap_get_gl_pixmap (GdkPixmap *pixmap)
+{
+  g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), NULL);
+
+  return g_object_get_qdata (G_OBJECT (pixmap), quark_gl_pixmap);
 }

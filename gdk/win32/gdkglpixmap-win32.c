@@ -399,7 +399,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   GdkGLPixmap *glpixmap;
   GdkGLPixmapImplWin32 *impl;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_new ()\n"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_new ()"));
 
   /*
    * Instanciate the GdkGLPixmapImplWin32 object.

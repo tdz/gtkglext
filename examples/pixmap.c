@@ -8,7 +8,6 @@
 static GdkGLConfig *glconfig = NULL;
 static GdkGLContext *glcontext = NULL;
 static GdkPixmap *pixmap = NULL;
-static GdkGLPixmap *glpixmap = NULL;
 
 static const gint config_attributes[] = {
   GDK_GL_DOUBLEBUFFER,
@@ -105,6 +104,8 @@ configure (GtkWidget         *widget,
            GdkEventConfigure *event,
            gpointer           data)
 {
+  GdkGLPixmap *glpixmap;
+
   /*
    * Configure OpenGL-capable visual.
    */
@@ -153,12 +154,19 @@ configure (GtkWidget         *widget,
 			   widget->allocation.height,
 			   gdk_gl_config_get_depth (glconfig));
 
-  if (glpixmap != NULL)
-    g_object_unref (G_OBJECT (glpixmap));
+  /*
+   * Set OpenGL-capability to the pixmap
+   */
+  if (!gdk_pixmap_set_gl_capability (pixmap,
+                                     glconfig,
+                                     NULL))
+    {
+      g_print ("*** Cannot set OpenGL-capability to pixmap\n");
+      gtk_exit (1);
+    }
 
-  glpixmap = gdk_gl_pixmap_new (glconfig, pixmap, NULL);
-  if (glpixmap == NULL)
-    goto NO_GL;
+  /* Get GdkGLPixmap */
+  glpixmap = gdk_pixmap_get_gl_pixmap (pixmap);
 
   /*
    * Create OpenGL rendering context (not direct).
