@@ -35,9 +35,9 @@ static GdkColor colors[NUM_COLORS] = {
 #define BLUE  colors[3].pixel
 
 static gboolean
-reshape (GtkWidget         *widget,
-         GdkEventConfigure *event,
-         gpointer           data)
+configure_event (GtkWidget         *widget,
+                 GdkEventConfigure *event,
+                 gpointer           data)
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
@@ -58,9 +58,9 @@ reshape (GtkWidget         *widget,
 }
 
 static gboolean
-display (GtkWidget      *widget,
-         GdkEventExpose *event,
-         gpointer        data)
+expose_event (GtkWidget      *widget,
+              GdkEventExpose *event,
+              gpointer        data)
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
@@ -271,9 +271,9 @@ main (int argc,
                          GDK_BUTTON_PRESS_MASK);
 
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
-		    G_CALLBACK (reshape), NULL);
+		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
-		    G_CALLBACK (display), NULL);
+		    G_CALLBACK (expose_event), NULL);
 
   gtk_widget_show (drawing_area);
 

@@ -29,8 +29,8 @@ static const int config_attributes[] = {
 };
 
 static void
-init (GtkWidget *widget,
-      gpointer   data)
+realize (GtkWidget *widget,
+         gpointer   data)
 {
   GLUquadricObj *qobj;
   static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
@@ -108,9 +108,9 @@ init (GtkWidget *widget,
 }
 
 static gboolean
-reshape (GtkWidget         *widget,
-         GdkEventConfigure *event,
-         gpointer           data)
+configure_event (GtkWidget         *widget,
+                 GdkEventConfigure *event,
+                 gpointer           data)
 {
   /* gtk_drawing_area sends configure_event when it is realized. */
   if (glwindow == NULL)
@@ -136,9 +136,9 @@ reshape (GtkWidget         *widget,
 }
 
 static gboolean
-display (GtkWidget      *widget,
-         GdkEventExpose *event,
-         gpointer        data)
+expose_event (GtkWidget      *widget,
+              GdkEventExpose *event,
+              gpointer        data)
 {
   /*** OpenGL BEGIN ***/
 
@@ -166,8 +166,8 @@ display (GtkWidget      *widget,
 }
 
 static void
-destroy (GtkWidget *widget,
-         gpointer   data)
+unrealize (GtkWidget *widget,
+           gpointer   data)
 {
   if (widget->window != NULL)
     gdk_window_unset_gl_capability (widget->window);
@@ -338,13 +338,13 @@ main (int   argc,
                          GDK_BUTTON_PRESS_MASK);
 
   g_signal_connect (G_OBJECT (drawing_area), "realize",
-		    G_CALLBACK (init), NULL);
+		    G_CALLBACK (realize), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
-		    G_CALLBACK (reshape), NULL);
+		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
-		    G_CALLBACK (display), NULL);
+		    G_CALLBACK (expose_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "unrealize",
-		    G_CALLBACK (destroy), NULL);
+		    G_CALLBACK (unrealize), NULL);
 
   gtk_widget_show (drawing_area);
 

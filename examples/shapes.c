@@ -178,19 +178,19 @@ realize (GtkWidget *widget,
   glClearColor (0.5, 0.5, 0.8, 1.0);
   glClearDepth (1.0);
 
-  glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
-  glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-  glLightfv(GL_LIGHT0, GL_POSITION, position);
-  glLightModelfv(GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
-  glLightModelfv(GL_LIGHT_MODEL_LOCAL_VIEWER, local_view);
+  glLightfv (GL_LIGHT0, GL_AMBIENT, ambient);
+  glLightfv (GL_LIGHT0, GL_DIFFUSE, diffuse);
+  glLightfv (GL_LIGHT0, GL_POSITION, position);
+  glLightModelfv (GL_LIGHT_MODEL_AMBIENT, lmodel_ambient);
+  glLightModelfv (GL_LIGHT_MODEL_LOCAL_VIEWER, local_view);
 
-  glFrontFace(GL_CW);
-  glEnable(GL_LIGHTING);
-  glEnable(GL_LIGHT0);
-  glEnable(GL_AUTO_NORMAL);
-  glEnable(GL_NORMALIZE);
-  glEnable(GL_DEPTH_TEST);
-  glDepthFunc(GL_LESS);
+  glFrontFace (GL_CW);
+  glEnable (GL_LIGHTING);
+  glEnable (GL_LIGHT0);
+  glEnable (GL_AUTO_NORMAL);
+  glEnable (GL_NORMALIZE);
+  glEnable (GL_DEPTH_TEST);
+  glDepthFunc (GL_LESS);
 
   /* Shape display lists */
   shape_list_base = glGenLists (NUM_SHAPES);
@@ -277,7 +277,7 @@ configure_event (GtkWidget         *widget,
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
     return FALSE;
 
-  glViewport(0, 0, w, h);
+  glViewport (0, 0, w, h);
 
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();

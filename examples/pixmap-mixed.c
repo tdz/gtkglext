@@ -53,9 +53,9 @@ init (void)
 }
 
 static gboolean
-configure (GtkWidget         *widget,
-           GdkEventConfigure *event,
-           gpointer           data)
+configure_event (GtkWidget         *widget,
+                 GdkEventConfigure *event,
+                 gpointer           data)
 {
   GdkGLDrawable *gldrawable;
   static gboolean is_initialized = FALSE;
@@ -143,9 +143,9 @@ configure (GtkWidget         *widget,
 }
 
 static gboolean
-expose (GtkWidget      *widget,
-        GdkEventExpose *event,
-        gpointer        data)
+expose_event (GtkWidget      *widget,
+              GdkEventExpose *event,
+              gpointer        data)
 {
   gdk_draw_drawable (widget->window,
 		     widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
@@ -319,9 +319,9 @@ main (int   argc,
                          GDK_BUTTON_PRESS_MASK);
 
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
-		    G_CALLBACK (configure), NULL);
+		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
-		    G_CALLBACK (expose), NULL);
+		    G_CALLBACK (expose_event), NULL);
 
   gtk_widget_show (drawing_area);
 

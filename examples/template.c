@@ -521,6 +521,7 @@ create_window (GdkGLConfig *glconfig)
 		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
 		    G_CALLBACK (expose_event), NULL);
+
   g_signal_connect (G_OBJECT (drawing_area), "motion_notify_event",
 		    G_CALLBACK (motion_notify_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "button_press_event",
