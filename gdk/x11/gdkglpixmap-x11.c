@@ -26,7 +26,7 @@
 static gboolean gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable           *draw,
                                                         GdkGLDrawable           *read,
                                                         GdkGLContext            *glcontext);
-static void     gdk_x11_gl_pixmap_swap_buffers         (GdkGLDrawable *gldrawable);
+static void     gdk_x11_gl_pixmap_swap_buffers         (GdkGLDrawable           *gldrawable);
 
 static void     gdk_gl_pixmap_impl_x11_init            (GdkGLPixmapImplX11      *impl);
 static void     gdk_gl_pixmap_impl_x11_class_init      (GdkGLPixmapImplX11Class *klass);

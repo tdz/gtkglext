@@ -25,14 +25,14 @@
 
 G_BEGIN_DECLS
 
-GdkGLContext *_gdk_x11_gl_context_new          (GdkGLDrawable *gldrawable,
-                                                GdkGLConfig   *glconfig,
-                                                gint           render_type,
-                                                GdkGLContext  *share_list,
-                                                gboolean       direct);
+GdkGLContext *_gdk_x11_gl_context_new      (GdkGLDrawable *gldrawable,
+                                            GdkGLConfig   *glconfig,
+                                            gint           render_type,
+                                            GdkGLContext  *share_list,
+                                            gboolean       direct);
 
-void         _gdk_x11_gl_drawable_wait_gl      (GdkGLDrawable *gldrawable);
-void         _gdk_x11_gl_drawable_wait_gdk     (GdkGLDrawable *gldrawable);
+void         _gdk_x11_gl_drawable_wait_gl  (GdkGLDrawable *gldrawable);
+void         _gdk_x11_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable);
 
 G_END_DECLS
 
