@@ -192,9 +192,9 @@ for generating configure script and Makefiles.
 You may have to set ACLOCAL_FLAGS environment variable for some m4
 macros used in configure.in.
 
-I use the following versions of the GNU autotools.
+The following versions of the GNU autotools are required.
 
-  autoconf 2.57
+  autoconf 2.54 and above
   automake 1.7.x
   libtool  1.5
 
