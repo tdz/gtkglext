@@ -31,12 +31,10 @@
 GdkGLProc                                                                               \
 _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                        \
 {                                                                                       \
-  static gboolean init = FALSE;                                                         \
-                                                                                        \
   if (gdk_gl_context_get_current () == NULL)                                            \
     return NULL;                                                                        \
                                                                                         \
-  if (!init)                                                                            \
+  if (__procs.__proc_name == (_GDK_GL_PROC_TYPE(__proc_name)) -1)                       \
     {                                                                                   \
       __procs.__proc_name =                                                             \
         (_GDK_GL_PROC_TYPE (__proc_name)) gdk_gl_get_proc_address (#__proc_name);       \
@@ -45,8 +43,6 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
                    g_message (" - gdk_gl_get_%s () - %s",                               \
                               #__proc_name,                                             \
                               (__procs.__proc_name) ? "supported" : "not supported"));  \
-                                                                                        \
-      init = TRUE;                                                                      \
     }                                                                                   \
                                                                                         \
   return (GdkGLProc) (__procs.__proc_name);                                             \
@@ -57,10 +53,14 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
  */
 
 static GdkGL_GL_VERSION_1_2 _GDK_GL_PROCS (GdkGL_GL_VERSION_1_2) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_VERSION_1_2), glBlendColor)
@@ -105,17 +105,16 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_VERSION_1_2), glCopyTexSubImage3D)
 GdkGL_GL_VERSION_1_2 *
 gdk_gl_get_GL_VERSION_1_2 (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_2 ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
-      supported &= (gdk_gl_get_glBlendColor ()                != NULL);
+      supported =  (gdk_gl_get_glBlendColor ()                != NULL);
       supported &= (gdk_gl_get_glBlendEquation ()             != NULL);
       supported &= (gdk_gl_get_glDrawRangeElements ()         != NULL);
       supported &= (gdk_gl_get_glColorTable ()                != NULL);
@@ -153,8 +152,6 @@ gdk_gl_get_GL_VERSION_1_2 (void)
       supported &= (gdk_gl_get_glTexImage3D ()                != NULL);
       supported &= (gdk_gl_get_glTexSubImage3D ()             != NULL);
       supported &= (gdk_gl_get_glCopyTexSubImage3D ()         != NULL);
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -168,11 +165,16 @@ gdk_gl_get_GL_VERSION_1_2 (void)
  */
 
 static GdkGL_GL_VERSION_1_3 _GDK_GL_PROCS (GdkGL_GL_VERSION_1_3) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_VERSION_1_3), glActiveTexture)
@@ -225,17 +227,16 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_VERSION_1_3), glGetCompressedTexImage)
 GdkGL_GL_VERSION_1_3 *
 gdk_gl_get_GL_VERSION_1_3 (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_3 ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
-      supported &= (gdk_gl_get_glActiveTexture ()           != NULL);
+      supported =  (gdk_gl_get_glActiveTexture ()           != NULL);
       supported &= (gdk_gl_get_glClientActiveTexture ()     != NULL);
       supported &= (gdk_gl_get_glMultiTexCoord1d ()         != NULL);
       supported &= (gdk_gl_get_glMultiTexCoord1dv ()        != NULL);
@@ -281,8 +282,6 @@ gdk_gl_get_GL_VERSION_1_3 (void)
       supported &= (gdk_gl_get_glCompressedTexSubImage2D () != NULL);
       supported &= (gdk_gl_get_glCompressedTexSubImage1D () != NULL);
       supported &= (gdk_gl_get_glGetCompressedTexImage ()   != NULL);
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -296,11 +295,15 @@ gdk_gl_get_GL_VERSION_1_3 (void)
  */
 
 static GdkGL_GL_VERSION_1_4 _GDK_GL_PROCS (GdkGL_GL_VERSION_1_4) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_VERSION_1_4), glBlendFuncSeparate)
@@ -352,17 +355,16 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_VERSION_1_4), glWindowPos3sv)
 GdkGL_GL_VERSION_1_4 *
 gdk_gl_get_GL_VERSION_1_4 (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_4 ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
-      supported &= (gdk_gl_get_glBlendFuncSeparate ()     != NULL);
+      supported =  (gdk_gl_get_glBlendFuncSeparate ()     != NULL);
       supported &= (gdk_gl_get_glFogCoordf ()             != NULL);
       supported &= (gdk_gl_get_glFogCoordfv ()            != NULL);
       supported &= (gdk_gl_get_glFogCoordd ()             != NULL);
@@ -407,8 +409,6 @@ gdk_gl_get_GL_VERSION_1_4 (void)
       supported &= (gdk_gl_get_glWindowPos3iv ()          != NULL);
       supported &= (gdk_gl_get_glWindowPos3s ()           != NULL);
       supported &= (gdk_gl_get_glWindowPos3sv ()          != NULL);
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -422,10 +422,13 @@ gdk_gl_get_GL_VERSION_1_4 (void)
  */
 
 static GdkGL_GL_ARB_multitexture _GDK_GL_PROCS (GdkGL_GL_ARB_multitexture) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_multitexture), glActiveTextureARB)
@@ -466,15 +469,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_multitexture), glMultiTexCoord4svA
 GdkGL_GL_ARB_multitexture *
 gdk_gl_get_GL_ARB_multitexture (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_multitexture ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ARB_multitexture");
 
@@ -515,8 +517,6 @@ gdk_gl_get_GL_ARB_multitexture (void)
           supported &= (gdk_gl_get_glMultiTexCoord4sARB ()     != NULL);
           supported &= (gdk_gl_get_glMultiTexCoord4svARB ()    != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -530,7 +530,7 @@ gdk_gl_get_GL_ARB_multitexture (void)
  */
 
 static GdkGL_GL_ARB_transpose_matrix _GDK_GL_PROCS (GdkGL_GL_ARB_transpose_matrix) = {
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_transpose_matrix), glLoadTransposeMatrixfARB)
@@ -541,15 +541,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_transpose_matrix), glMultTranspose
 GdkGL_GL_ARB_transpose_matrix *
 gdk_gl_get_GL_ARB_transpose_matrix (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_transpose_matrix ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ARB_transpose_matrix");
 
@@ -560,8 +559,6 @@ gdk_gl_get_GL_ARB_transpose_matrix (void)
           supported &= (gdk_gl_get_glMultTransposeMatrixfARB () != NULL);
           supported &= (gdk_gl_get_glMultTransposeMatrixdARB () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -575,7 +572,7 @@ gdk_gl_get_GL_ARB_transpose_matrix (void)
  */
 
 static GdkGL_GL_ARB_multisample _GDK_GL_PROCS (GdkGL_GL_ARB_multisample) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_multisample), glSampleCoverageARB)
@@ -583,15 +580,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_multisample), glSampleCoverageARB)
 GdkGL_GL_ARB_multisample *
 gdk_gl_get_GL_ARB_multisample (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_multisample ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ARB_multisample");
 
@@ -599,8 +595,6 @@ gdk_gl_get_GL_ARB_multisample (void)
         {
           supported &= (gdk_gl_get_glSampleCoverageARB () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -614,7 +608,8 @@ gdk_gl_get_GL_ARB_multisample (void)
  */
 
 static GdkGL_GL_ARB_texture_compression _GDK_GL_PROCS (GdkGL_GL_ARB_texture_compression) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_texture_compression), glCompressedTexImage3DARB)
@@ -628,15 +623,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_texture_compression), glGetCompres
 GdkGL_GL_ARB_texture_compression *
 gdk_gl_get_GL_ARB_texture_compression (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_texture_compression ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ARB_texture_compression");
 
@@ -650,8 +644,6 @@ gdk_gl_get_GL_ARB_texture_compression (void)
           supported &= (gdk_gl_get_glCompressedTexSubImage1DARB () != NULL);
           supported &= (gdk_gl_get_glGetCompressedTexImageARB ()   != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -665,7 +657,7 @@ gdk_gl_get_GL_ARB_texture_compression (void)
  */
 
 static GdkGL_GL_ARB_point_parameters _GDK_GL_PROCS (GdkGL_GL_ARB_point_parameters) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_point_parameters), glPointParameterfARB)
@@ -674,15 +666,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_point_parameters), glPointParamete
 GdkGL_GL_ARB_point_parameters *
 gdk_gl_get_GL_ARB_point_parameters (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_point_parameters ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ARB_point_parameters");
 
@@ -691,8 +682,6 @@ gdk_gl_get_GL_ARB_point_parameters (void)
           supported &= (gdk_gl_get_glPointParameterfARB ()  != NULL);
           supported &= (gdk_gl_get_glPointParameterfvARB () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -706,7 +695,8 @@ gdk_gl_get_GL_ARB_point_parameters (void)
  */
 
 static GdkGL_GL_ARB_vertex_blend _GDK_GL_PROCS (GdkGL_GL_ARB_vertex_blend) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_blend), glWeightbvARB)
@@ -723,15 +713,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_blend), glVertexBlendARB)
 GdkGL_GL_ARB_vertex_blend *
 gdk_gl_get_GL_ARB_vertex_blend (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_vertex_blend ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ARB_vertex_blend");
 
@@ -748,8 +737,6 @@ gdk_gl_get_GL_ARB_vertex_blend (void)
           supported &= (gdk_gl_get_glWeightPointerARB () != NULL);
           supported &= (gdk_gl_get_glVertexBlendARB ()   != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -763,7 +750,7 @@ gdk_gl_get_GL_ARB_vertex_blend (void)
  */
 
 static GdkGL_GL_ARB_matrix_palette _GDK_GL_PROCS (GdkGL_GL_ARB_matrix_palette) = {
-  NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_matrix_palette), glCurrentPaletteMatrixARB)
@@ -775,15 +762,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_matrix_palette), glMatrixIndexPoin
 GdkGL_GL_ARB_matrix_palette *
 gdk_gl_get_GL_ARB_matrix_palette (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_matrix_palette ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ARB_matrix_palette");
 
@@ -795,8 +781,6 @@ gdk_gl_get_GL_ARB_matrix_palette (void)
           supported &= (gdk_gl_get_glMatrixIndexuivARB ()       != NULL);
           supported &= (gdk_gl_get_glMatrixIndexPointerARB ()   != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -810,8 +794,10 @@ gdk_gl_get_GL_ARB_matrix_palette (void)
  */
 
 static GdkGL_GL_ARB_window_pos _GDK_GL_PROCS (GdkGL_GL_ARB_window_pos) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_window_pos), glWindowPos2dARB)
@@ -834,15 +820,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_window_pos), glWindowPos3svARB)
 GdkGL_GL_ARB_window_pos *
 gdk_gl_get_GL_ARB_window_pos (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_window_pos ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ARB_window_pos");
 
@@ -865,8 +850,6 @@ gdk_gl_get_GL_ARB_window_pos (void)
           supported &= (gdk_gl_get_glWindowPos3sARB ()  != NULL);
           supported &= (gdk_gl_get_glWindowPos3svARB () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -880,13 +863,19 @@ gdk_gl_get_GL_ARB_window_pos (void)
  */
 
 static GdkGL_GL_ARB_vertex_program _GDK_GL_PROCS (GdkGL_GL_ARB_vertex_program) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_program), glVertexAttrib1dARB)
@@ -955,15 +944,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_program), glIsProgramARB)
 GdkGL_GL_ARB_vertex_program *
 gdk_gl_get_GL_ARB_vertex_program (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_vertex_program ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ARB_vertex_program");
 
@@ -1032,8 +1020,6 @@ gdk_gl_get_GL_ARB_vertex_program (void)
           supported &= (gdk_gl_get_glGetVertexAttribPointervARB ()    != NULL);
           supported &= (gdk_gl_get_glIsProgramARB ()                  != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1047,7 +1033,7 @@ gdk_gl_get_GL_ARB_vertex_program (void)
  */
 
 static GdkGL_GL_EXT_blend_color _GDK_GL_PROCS (GdkGL_GL_EXT_blend_color) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_blend_color), glBlendColorEXT)
@@ -1055,15 +1041,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_blend_color), glBlendColorEXT)
 GdkGL_GL_EXT_blend_color *
 gdk_gl_get_GL_EXT_blend_color (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_color ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_blend_color");
 
@@ -1071,8 +1056,6 @@ gdk_gl_get_GL_EXT_blend_color (void)
         {
           supported &= (gdk_gl_get_glBlendColorEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1086,7 +1069,7 @@ gdk_gl_get_GL_EXT_blend_color (void)
  */
 
 static GdkGL_GL_EXT_polygon_offset _GDK_GL_PROCS (GdkGL_GL_EXT_polygon_offset) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_polygon_offset), glPolygonOffsetEXT)
@@ -1094,15 +1077,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_polygon_offset), glPolygonOffsetEX
 GdkGL_GL_EXT_polygon_offset *
 gdk_gl_get_GL_EXT_polygon_offset (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_polygon_offset ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_polygon_offset");
 
@@ -1110,8 +1092,6 @@ gdk_gl_get_GL_EXT_polygon_offset (void)
         {
           supported &= (gdk_gl_get_glPolygonOffsetEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1125,7 +1105,7 @@ gdk_gl_get_GL_EXT_polygon_offset (void)
  */
 
 static GdkGL_GL_EXT_texture3D _GDK_GL_PROCS (GdkGL_GL_EXT_texture3D) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_texture3D), glTexImage3DEXT)
@@ -1134,15 +1114,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_texture3D), glTexSubImage3DEXT)
 GdkGL_GL_EXT_texture3D *
 gdk_gl_get_GL_EXT_texture3D (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture3D ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_texture3D");
 
@@ -1151,8 +1130,6 @@ gdk_gl_get_GL_EXT_texture3D (void)
           supported &= (gdk_gl_get_glTexImage3DEXT ()    != NULL);
           supported &= (gdk_gl_get_glTexSubImage3DEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1166,7 +1143,7 @@ gdk_gl_get_GL_EXT_texture3D (void)
  */
 
 static GdkGL_GL_SGIS_texture_filter4 _GDK_GL_PROCS (GdkGL_GL_SGIS_texture_filter4) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_texture_filter4), glGetTexFilterFuncSGIS)
@@ -1175,15 +1152,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_texture_filter4), glTexFilterFunc
 GdkGL_GL_SGIS_texture_filter4 *
 gdk_gl_get_GL_SGIS_texture_filter4 (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture_filter4 ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIS_texture_filter4");
 
@@ -1192,8 +1168,6 @@ gdk_gl_get_GL_SGIS_texture_filter4 (void)
           supported &= (gdk_gl_get_glGetTexFilterFuncSGIS () != NULL);
           supported &= (gdk_gl_get_glTexFilterFuncSGIS ()    != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1207,7 +1181,7 @@ gdk_gl_get_GL_SGIS_texture_filter4 (void)
  */
 
 static GdkGL_GL_EXT_subtexture _GDK_GL_PROCS (GdkGL_GL_EXT_subtexture) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_subtexture), glTexSubImage1DEXT)
@@ -1216,15 +1190,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_subtexture), glTexSubImage2DEXT)
 GdkGL_GL_EXT_subtexture *
 gdk_gl_get_GL_EXT_subtexture (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_subtexture ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_subtexture");
 
@@ -1233,8 +1206,6 @@ gdk_gl_get_GL_EXT_subtexture (void)
           supported &= (gdk_gl_get_glTexSubImage1DEXT () != NULL);
           supported &= (gdk_gl_get_glTexSubImage2DEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1248,7 +1219,7 @@ gdk_gl_get_GL_EXT_subtexture (void)
  */
 
 static GdkGL_GL_EXT_copy_texture _GDK_GL_PROCS (GdkGL_GL_EXT_copy_texture) = {
-  NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_copy_texture), glCopyTexImage1DEXT)
@@ -1260,15 +1231,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_copy_texture), glCopyTexSubImage3D
 GdkGL_GL_EXT_copy_texture *
 gdk_gl_get_GL_EXT_copy_texture (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_copy_texture ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_copy_texture");
 
@@ -1280,8 +1250,6 @@ gdk_gl_get_GL_EXT_copy_texture (void)
           supported &= (gdk_gl_get_glCopyTexSubImage2DEXT () != NULL);
           supported &= (gdk_gl_get_glCopyTexSubImage3DEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1295,7 +1263,8 @@ gdk_gl_get_GL_EXT_copy_texture (void)
  */
 
 static GdkGL_GL_EXT_histogram _GDK_GL_PROCS (GdkGL_GL_EXT_histogram) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_histogram), glGetHistogramEXT)
@@ -1312,15 +1281,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_histogram), glResetMinmaxEXT)
 GdkGL_GL_EXT_histogram *
 gdk_gl_get_GL_EXT_histogram (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_histogram ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_histogram");
 
@@ -1337,8 +1305,6 @@ gdk_gl_get_GL_EXT_histogram (void)
           supported &= (gdk_gl_get_glResetHistogramEXT ()          != NULL);
           supported &= (gdk_gl_get_glResetMinmaxEXT ()             != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1352,8 +1318,9 @@ gdk_gl_get_GL_EXT_histogram (void)
  */
 
 static GdkGL_GL_EXT_convolution _GDK_GL_PROCS (GdkGL_GL_EXT_convolution) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_convolution), glConvolutionFilter1DEXT)
@@ -1373,15 +1340,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_convolution), glSeparableFilter2DE
 GdkGL_GL_EXT_convolution *
 gdk_gl_get_GL_EXT_convolution (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_convolution ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_convolution");
 
@@ -1401,8 +1367,6 @@ gdk_gl_get_GL_EXT_convolution (void)
           supported &= (gdk_gl_get_glGetSeparableFilterEXT ()        != NULL);
           supported &= (gdk_gl_get_glSeparableFilter2DEXT ()         != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1416,7 +1380,8 @@ gdk_gl_get_GL_EXT_convolution (void)
  */
 
 static GdkGL_GL_SGI_color_table _GDK_GL_PROCS (GdkGL_GL_SGI_color_table) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGI_color_table), glColorTableSGI)
@@ -1430,15 +1395,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGI_color_table), glGetColorTableParam
 GdkGL_GL_SGI_color_table *
 gdk_gl_get_GL_SGI_color_table (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGI_color_table ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGI_color_table");
 
@@ -1452,8 +1416,6 @@ gdk_gl_get_GL_SGI_color_table (void)
           supported &= (gdk_gl_get_glGetColorTableParameterfvSGI () != NULL);
           supported &= (gdk_gl_get_glGetColorTableParameterivSGI () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1467,7 +1429,7 @@ gdk_gl_get_GL_SGI_color_table (void)
  */
 
 static GdkGL_GL_SGIX_pixel_texture _GDK_GL_PROCS (GdkGL_GL_SGIX_pixel_texture) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_pixel_texture), glPixelTexGenSGIX)
@@ -1475,15 +1437,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_pixel_texture), glPixelTexGenSGIX
 GdkGL_GL_SGIX_pixel_texture *
 gdk_gl_get_GL_SGIX_pixel_texture (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_pixel_texture ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_pixel_texture");
 
@@ -1491,8 +1452,6 @@ gdk_gl_get_GL_SGIX_pixel_texture (void)
         {
           supported &= (gdk_gl_get_glPixelTexGenSGIX () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1506,7 +1465,8 @@ gdk_gl_get_GL_SGIX_pixel_texture (void)
  */
 
 static GdkGL_GL_SGIS_pixel_texture _GDK_GL_PROCS (GdkGL_GL_SGIS_pixel_texture) = {
-  NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_pixel_texture), glPixelTexGenParameteriSGIS)
@@ -1519,15 +1479,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_pixel_texture), glGetPixelTexGenP
 GdkGL_GL_SGIS_pixel_texture *
 gdk_gl_get_GL_SGIS_pixel_texture (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_pixel_texture ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIS_pixel_texture");
 
@@ -1540,8 +1499,6 @@ gdk_gl_get_GL_SGIS_pixel_texture (void)
           supported &= (gdk_gl_get_glGetPixelTexGenParameterivSGIS () != NULL);
           supported &= (gdk_gl_get_glGetPixelTexGenParameterfvSGIS () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1555,7 +1512,7 @@ gdk_gl_get_GL_SGIS_pixel_texture (void)
  */
 
 static GdkGL_GL_SGIS_texture4D _GDK_GL_PROCS (GdkGL_GL_SGIS_texture4D) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_texture4D), glTexImage4DSGIS)
@@ -1564,15 +1521,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_texture4D), glTexSubImage4DSGIS)
 GdkGL_GL_SGIS_texture4D *
 gdk_gl_get_GL_SGIS_texture4D (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture4D ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIS_texture4D");
 
@@ -1581,8 +1537,6 @@ gdk_gl_get_GL_SGIS_texture4D (void)
           supported &= (gdk_gl_get_glTexImage4DSGIS ()    != NULL);
           supported &= (gdk_gl_get_glTexSubImage4DSGIS () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1596,7 +1550,8 @@ gdk_gl_get_GL_SGIS_texture4D (void)
  */
 
 static GdkGL_GL_EXT_texture_object _GDK_GL_PROCS (GdkGL_GL_EXT_texture_object) = {
-  NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_texture_object), glAreTexturesResidentEXT)
@@ -1609,15 +1564,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_texture_object), glPrioritizeTextu
 GdkGL_GL_EXT_texture_object *
 gdk_gl_get_GL_EXT_texture_object (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture_object ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_texture_object");
 
@@ -1630,8 +1584,6 @@ gdk_gl_get_GL_EXT_texture_object (void)
           supported &= (gdk_gl_get_glIsTextureEXT ()           != NULL);
           supported &= (gdk_gl_get_glPrioritizeTexturesEXT ()  != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1645,7 +1597,7 @@ gdk_gl_get_GL_EXT_texture_object (void)
  */
 
 static GdkGL_GL_SGIS_detail_texture _GDK_GL_PROCS (GdkGL_GL_SGIS_detail_texture) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_detail_texture), glDetailTexFuncSGIS)
@@ -1654,15 +1606,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_detail_texture), glGetDetailTexFu
 GdkGL_GL_SGIS_detail_texture *
 gdk_gl_get_GL_SGIS_detail_texture (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_detail_texture ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIS_detail_texture");
 
@@ -1671,8 +1622,6 @@ gdk_gl_get_GL_SGIS_detail_texture (void)
           supported &= (gdk_gl_get_glDetailTexFuncSGIS ()    != NULL);
           supported &= (gdk_gl_get_glGetDetailTexFuncSGIS () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1686,7 +1635,7 @@ gdk_gl_get_GL_SGIS_detail_texture (void)
  */
 
 static GdkGL_GL_SGIS_sharpen_texture _GDK_GL_PROCS (GdkGL_GL_SGIS_sharpen_texture) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_sharpen_texture), glSharpenTexFuncSGIS)
@@ -1695,15 +1644,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_sharpen_texture), glGetSharpenTex
 GdkGL_GL_SGIS_sharpen_texture *
 gdk_gl_get_GL_SGIS_sharpen_texture (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_sharpen_texture ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIS_sharpen_texture");
 
@@ -1712,8 +1660,6 @@ gdk_gl_get_GL_SGIS_sharpen_texture (void)
           supported &= (gdk_gl_get_glSharpenTexFuncSGIS ()    != NULL);
           supported &= (gdk_gl_get_glGetSharpenTexFuncSGIS () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1727,7 +1673,7 @@ gdk_gl_get_GL_SGIS_sharpen_texture (void)
  */
 
 static GdkGL_GL_SGIS_multisample _GDK_GL_PROCS (GdkGL_GL_SGIS_multisample) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_multisample), glSampleMaskSGIS)
@@ -1736,15 +1682,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_multisample), glSamplePatternSGIS
 GdkGL_GL_SGIS_multisample *
 gdk_gl_get_GL_SGIS_multisample (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_multisample ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIS_multisample");
 
@@ -1753,8 +1698,6 @@ gdk_gl_get_GL_SGIS_multisample (void)
           supported &= (gdk_gl_get_glSampleMaskSGIS ()    != NULL);
           supported &= (gdk_gl_get_glSamplePatternSGIS () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1768,7 +1711,8 @@ gdk_gl_get_GL_SGIS_multisample (void)
  */
 
 static GdkGL_GL_EXT_vertex_array _GDK_GL_PROCS (GdkGL_GL_EXT_vertex_array) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_vertex_array), glArrayElementEXT)
@@ -1784,15 +1728,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_vertex_array), glVertexPointerEXT)
 GdkGL_GL_EXT_vertex_array *
 gdk_gl_get_GL_EXT_vertex_array (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_array ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_vertex_array");
 
@@ -1808,8 +1751,6 @@ gdk_gl_get_GL_EXT_vertex_array (void)
           supported &= (gdk_gl_get_glTexCoordPointerEXT () != NULL);
           supported &= (gdk_gl_get_glVertexPointerEXT ()   != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1823,7 +1764,7 @@ gdk_gl_get_GL_EXT_vertex_array (void)
  */
 
 static GdkGL_GL_EXT_blend_minmax _GDK_GL_PROCS (GdkGL_GL_EXT_blend_minmax) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_blend_minmax), glBlendEquationEXT)
@@ -1831,15 +1772,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_blend_minmax), glBlendEquationEXT)
 GdkGL_GL_EXT_blend_minmax *
 gdk_gl_get_GL_EXT_blend_minmax (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_minmax ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_blend_minmax");
 
@@ -1847,8 +1787,6 @@ gdk_gl_get_GL_EXT_blend_minmax (void)
         {
           supported &= (gdk_gl_get_glBlendEquationEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1862,7 +1800,7 @@ gdk_gl_get_GL_EXT_blend_minmax (void)
  */
 
 static GdkGL_GL_SGIX_sprite _GDK_GL_PROCS (GdkGL_GL_SGIX_sprite) = {
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_sprite), glSpriteParameterfSGIX)
@@ -1873,15 +1811,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_sprite), glSpriteParameterivSGIX)
 GdkGL_GL_SGIX_sprite *
 gdk_gl_get_GL_SGIX_sprite (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_sprite ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_sprite");
 
@@ -1892,8 +1829,6 @@ gdk_gl_get_GL_SGIX_sprite (void)
           supported &= (gdk_gl_get_glSpriteParameteriSGIX ()  != NULL);
           supported &= (gdk_gl_get_glSpriteParameterivSGIX () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1907,7 +1842,7 @@ gdk_gl_get_GL_SGIX_sprite (void)
  */
 
 static GdkGL_GL_EXT_point_parameters _GDK_GL_PROCS (GdkGL_GL_EXT_point_parameters) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_point_parameters), glPointParameterfEXT)
@@ -1916,15 +1851,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_point_parameters), glPointParamete
 GdkGL_GL_EXT_point_parameters *
 gdk_gl_get_GL_EXT_point_parameters (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_point_parameters ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_point_parameters");
 
@@ -1933,8 +1867,6 @@ gdk_gl_get_GL_EXT_point_parameters (void)
           supported &= (gdk_gl_get_glPointParameterfEXT ()  != NULL);
           supported &= (gdk_gl_get_glPointParameterfvEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1948,7 +1880,7 @@ gdk_gl_get_GL_EXT_point_parameters (void)
  */
 
 static GdkGL_GL_SGIS_point_parameters _GDK_GL_PROCS (GdkGL_GL_SGIS_point_parameters) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_point_parameters), glPointParameterfSGIS)
@@ -1957,15 +1889,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_point_parameters), glPointParamet
 GdkGL_GL_SGIS_point_parameters *
 gdk_gl_get_GL_SGIS_point_parameters (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_point_parameters ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIS_point_parameters");
 
@@ -1974,8 +1905,6 @@ gdk_gl_get_GL_SGIS_point_parameters (void)
           supported &= (gdk_gl_get_glPointParameterfSGIS ()  != NULL);
           supported &= (gdk_gl_get_glPointParameterfvSGIS () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -1989,7 +1918,8 @@ gdk_gl_get_GL_SGIS_point_parameters (void)
  */
 
 static GdkGL_GL_SGIX_instruments _GDK_GL_PROCS (GdkGL_GL_SGIX_instruments) = {
-  NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_instruments), glGetInstrumentsSGIX)
@@ -2002,15 +1932,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_instruments), glStopInstrumentsSG
 GdkGL_GL_SGIX_instruments *
 gdk_gl_get_GL_SGIX_instruments (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_instruments ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_instruments");
 
@@ -2023,8 +1952,6 @@ gdk_gl_get_GL_SGIX_instruments (void)
           supported &= (gdk_gl_get_glStartInstrumentsSGIX ()  != NULL);
           supported &= (gdk_gl_get_glStopInstrumentsSGIX ()   != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2038,7 +1965,7 @@ gdk_gl_get_GL_SGIX_instruments (void)
  */
 
 static GdkGL_GL_SGIX_framezoom _GDK_GL_PROCS (GdkGL_GL_SGIX_framezoom) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_framezoom), glFrameZoomSGIX)
@@ -2046,15 +1973,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_framezoom), glFrameZoomSGIX)
 GdkGL_GL_SGIX_framezoom *
 gdk_gl_get_GL_SGIX_framezoom (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_framezoom ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_framezoom");
 
@@ -2062,8 +1988,6 @@ gdk_gl_get_GL_SGIX_framezoom (void)
         {
           supported &= (gdk_gl_get_glFrameZoomSGIX () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2077,7 +2001,7 @@ gdk_gl_get_GL_SGIX_framezoom (void)
  */
 
 static GdkGL_GL_SGIX_tag_sample_buffer _GDK_GL_PROCS (GdkGL_GL_SGIX_tag_sample_buffer) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_tag_sample_buffer), glTagSampleBufferSGIX)
@@ -2085,15 +2009,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_tag_sample_buffer), glTagSampleBu
 GdkGL_GL_SGIX_tag_sample_buffer *
 gdk_gl_get_GL_SGIX_tag_sample_buffer (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_tag_sample_buffer ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_tag_sample_buffer");
 
@@ -2101,8 +2024,6 @@ gdk_gl_get_GL_SGIX_tag_sample_buffer (void)
         {
           supported &= (gdk_gl_get_glTagSampleBufferSGIX () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2116,7 +2037,7 @@ gdk_gl_get_GL_SGIX_tag_sample_buffer (void)
  */
 
 static GdkGL_GL_SGIX_polynomial_ffd _GDK_GL_PROCS (GdkGL_GL_SGIX_polynomial_ffd) = {
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_polynomial_ffd), glDeformationMap3dSGIX)
@@ -2127,15 +2048,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_polynomial_ffd), glLoadIdentityDe
 GdkGL_GL_SGIX_polynomial_ffd *
 gdk_gl_get_GL_SGIX_polynomial_ffd (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_polynomial_ffd ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_polynomial_ffd");
 
@@ -2146,8 +2066,6 @@ gdk_gl_get_GL_SGIX_polynomial_ffd (void)
           supported &= (gdk_gl_get_glDeformSGIX ()                     != NULL);
           supported &= (gdk_gl_get_glLoadIdentityDeformationMapSGIX () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2161,7 +2079,7 @@ gdk_gl_get_GL_SGIX_polynomial_ffd (void)
  */
 
 static GdkGL_GL_SGIX_reference_plane _GDK_GL_PROCS (GdkGL_GL_SGIX_reference_plane) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_reference_plane), glReferencePlaneSGIX)
@@ -2169,15 +2087,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_reference_plane), glReferencePlan
 GdkGL_GL_SGIX_reference_plane *
 gdk_gl_get_GL_SGIX_reference_plane (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_reference_plane ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_reference_plane");
 
@@ -2185,8 +2102,6 @@ gdk_gl_get_GL_SGIX_reference_plane (void)
         {
           supported &= (gdk_gl_get_glReferencePlaneSGIX () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2200,7 +2115,7 @@ gdk_gl_get_GL_SGIX_reference_plane (void)
  */
 
 static GdkGL_GL_SGIX_flush_raster _GDK_GL_PROCS (GdkGL_GL_SGIX_flush_raster) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_flush_raster), glFlushRasterSGIX)
@@ -2208,15 +2123,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_flush_raster), glFlushRasterSGIX)
 GdkGL_GL_SGIX_flush_raster *
 gdk_gl_get_GL_SGIX_flush_raster (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_flush_raster ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_flush_raster");
 
@@ -2224,8 +2138,6 @@ gdk_gl_get_GL_SGIX_flush_raster (void)
         {
           supported &= (gdk_gl_get_glFlushRasterSGIX () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2239,7 +2151,7 @@ gdk_gl_get_GL_SGIX_flush_raster (void)
  */
 
 static GdkGL_GL_SGIS_fog_function _GDK_GL_PROCS (GdkGL_GL_SGIS_fog_function) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_fog_function), glFogFuncSGIS)
@@ -2248,15 +2160,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_fog_function), glGetFogFuncSGIS)
 GdkGL_GL_SGIS_fog_function *
 gdk_gl_get_GL_SGIS_fog_function (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_fog_function ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIS_fog_function");
 
@@ -2265,8 +2176,6 @@ gdk_gl_get_GL_SGIS_fog_function (void)
           supported &= (gdk_gl_get_glFogFuncSGIS ()    != NULL);
           supported &= (gdk_gl_get_glGetFogFuncSGIS () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2280,7 +2189,8 @@ gdk_gl_get_GL_SGIS_fog_function (void)
  */
 
 static GdkGL_GL_HP_image_transform _GDK_GL_PROCS (GdkGL_GL_HP_image_transform) = {
-  NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_HP_image_transform), glImageTransformParameteriHP)
@@ -2293,15 +2203,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_HP_image_transform), glGetImageTransfo
 GdkGL_GL_HP_image_transform *
 gdk_gl_get_GL_HP_image_transform (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_HP_image_transform ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_HP_image_transform");
 
@@ -2314,8 +2223,6 @@ gdk_gl_get_GL_HP_image_transform (void)
           supported &= (gdk_gl_get_glGetImageTransformParameterivHP () != NULL);
           supported &= (gdk_gl_get_glGetImageTransformParameterfvHP () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2329,7 +2236,7 @@ gdk_gl_get_GL_HP_image_transform (void)
  */
 
 static GdkGL_GL_EXT_color_subtable _GDK_GL_PROCS (GdkGL_GL_EXT_color_subtable) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_color_subtable), glColorSubTableEXT)
@@ -2338,15 +2245,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_color_subtable), glCopyColorSubTab
 GdkGL_GL_EXT_color_subtable *
 gdk_gl_get_GL_EXT_color_subtable (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_color_subtable ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_color_subtable");
 
@@ -2355,8 +2261,6 @@ gdk_gl_get_GL_EXT_color_subtable (void)
           supported &= (gdk_gl_get_glColorSubTableEXT ()     != NULL);
           supported &= (gdk_gl_get_glCopyColorSubTableEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2370,7 +2274,7 @@ gdk_gl_get_GL_EXT_color_subtable (void)
  */
 
 static GdkGL_GL_PGI_misc_hints _GDK_GL_PROCS (GdkGL_GL_PGI_misc_hints) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_PGI_misc_hints), glHintPGI)
@@ -2378,15 +2282,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_PGI_misc_hints), glHintPGI)
 GdkGL_GL_PGI_misc_hints *
 gdk_gl_get_GL_PGI_misc_hints (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_PGI_misc_hints ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_PGI_misc_hints");
 
@@ -2394,8 +2297,6 @@ gdk_gl_get_GL_PGI_misc_hints (void)
         {
           supported &= (gdk_gl_get_glHintPGI () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2409,7 +2310,7 @@ gdk_gl_get_GL_PGI_misc_hints (void)
  */
 
 static GdkGL_GL_EXT_paletted_texture _GDK_GL_PROCS (GdkGL_GL_EXT_paletted_texture) = {
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_paletted_texture), glColorTableEXT)
@@ -2420,15 +2321,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_paletted_texture), glGetColorTable
 GdkGL_GL_EXT_paletted_texture *
 gdk_gl_get_GL_EXT_paletted_texture (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_paletted_texture ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_paletted_texture");
 
@@ -2439,8 +2339,6 @@ gdk_gl_get_GL_EXT_paletted_texture (void)
           supported &= (gdk_gl_get_glGetColorTableParameterivEXT () != NULL);
           supported &= (gdk_gl_get_glGetColorTableParameterfvEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2454,7 +2352,8 @@ gdk_gl_get_GL_EXT_paletted_texture (void)
  */
 
 static GdkGL_GL_SGIX_list_priority _GDK_GL_PROCS (GdkGL_GL_SGIX_list_priority) = {
-  NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_list_priority), glGetListParameterfvSGIX)
@@ -2467,15 +2366,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_list_priority), glListParameteriv
 GdkGL_GL_SGIX_list_priority *
 gdk_gl_get_GL_SGIX_list_priority (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_list_priority ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_list_priority");
 
@@ -2488,8 +2386,6 @@ gdk_gl_get_GL_SGIX_list_priority (void)
           supported &= (gdk_gl_get_glListParameteriSGIX ()     != NULL);
           supported &= (gdk_gl_get_glListParameterivSGIX ()    != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2503,7 +2399,7 @@ gdk_gl_get_GL_SGIX_list_priority (void)
  */
 
 static GdkGL_GL_EXT_index_material _GDK_GL_PROCS (GdkGL_GL_EXT_index_material) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_index_material), glIndexMaterialEXT)
@@ -2511,15 +2407,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_index_material), glIndexMaterialEX
 GdkGL_GL_EXT_index_material *
 gdk_gl_get_GL_EXT_index_material (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_index_material ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_index_material");
 
@@ -2527,8 +2422,6 @@ gdk_gl_get_GL_EXT_index_material (void)
         {
           supported &= (gdk_gl_get_glIndexMaterialEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2542,7 +2435,7 @@ gdk_gl_get_GL_EXT_index_material (void)
  */
 
 static GdkGL_GL_EXT_index_func _GDK_GL_PROCS (GdkGL_GL_EXT_index_func) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_index_func), glIndexFuncEXT)
@@ -2550,15 +2443,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_index_func), glIndexFuncEXT)
 GdkGL_GL_EXT_index_func *
 gdk_gl_get_GL_EXT_index_func (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_index_func ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_index_func");
 
@@ -2566,8 +2458,6 @@ gdk_gl_get_GL_EXT_index_func (void)
         {
           supported &= (gdk_gl_get_glIndexFuncEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2581,7 +2471,7 @@ gdk_gl_get_GL_EXT_index_func (void)
  */
 
 static GdkGL_GL_EXT_compiled_vertex_array _GDK_GL_PROCS (GdkGL_GL_EXT_compiled_vertex_array) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_compiled_vertex_array), glLockArraysEXT)
@@ -2590,15 +2480,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_compiled_vertex_array), glUnlockAr
 GdkGL_GL_EXT_compiled_vertex_array *
 gdk_gl_get_GL_EXT_compiled_vertex_array (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_compiled_vertex_array ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_compiled_vertex_array");
 
@@ -2607,8 +2496,6 @@ gdk_gl_get_GL_EXT_compiled_vertex_array (void)
           supported &= (gdk_gl_get_glLockArraysEXT ()   != NULL);
           supported &= (gdk_gl_get_glUnlockArraysEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2622,7 +2509,7 @@ gdk_gl_get_GL_EXT_compiled_vertex_array (void)
  */
 
 static GdkGL_GL_EXT_cull_vertex _GDK_GL_PROCS (GdkGL_GL_EXT_cull_vertex) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_cull_vertex), glCullParameterdvEXT)
@@ -2631,15 +2518,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_cull_vertex), glCullParameterfvEXT
 GdkGL_GL_EXT_cull_vertex *
 gdk_gl_get_GL_EXT_cull_vertex (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_cull_vertex ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_cull_vertex");
 
@@ -2648,8 +2534,6 @@ gdk_gl_get_GL_EXT_cull_vertex (void)
           supported &= (gdk_gl_get_glCullParameterdvEXT () != NULL);
           supported &= (gdk_gl_get_glCullParameterfvEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2663,8 +2547,10 @@ gdk_gl_get_GL_EXT_cull_vertex (void)
  */
 
 static GdkGL_GL_SGIX_fragment_lighting _GDK_GL_PROCS (GdkGL_GL_SGIX_fragment_lighting) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_fragment_lighting), glFragmentColorMaterialSGIX)
@@ -2689,15 +2575,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_fragment_lighting), glLightEnviSG
 GdkGL_GL_SGIX_fragment_lighting *
 gdk_gl_get_GL_SGIX_fragment_lighting (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_fragment_lighting ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_fragment_lighting");
 
@@ -2722,8 +2607,6 @@ gdk_gl_get_GL_SGIX_fragment_lighting (void)
           supported &= (gdk_gl_get_glGetFragmentMaterialivSGIX () != NULL);
           supported &= (gdk_gl_get_glLightEnviSGIX ()             != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2737,7 +2620,7 @@ gdk_gl_get_GL_SGIX_fragment_lighting (void)
  */
 
 static GdkGL_GL_EXT_draw_range_elements _GDK_GL_PROCS (GdkGL_GL_EXT_draw_range_elements) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_draw_range_elements), glDrawRangeElementsEXT)
@@ -2745,15 +2628,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_draw_range_elements), glDrawRangeE
 GdkGL_GL_EXT_draw_range_elements *
 gdk_gl_get_GL_EXT_draw_range_elements (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_draw_range_elements ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_draw_range_elements");
 
@@ -2761,8 +2643,6 @@ gdk_gl_get_GL_EXT_draw_range_elements (void)
         {
           supported &= (gdk_gl_get_glDrawRangeElementsEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2776,7 +2656,7 @@ gdk_gl_get_GL_EXT_draw_range_elements (void)
  */
 
 static GdkGL_GL_EXT_light_texture _GDK_GL_PROCS (GdkGL_GL_EXT_light_texture) = {
-  NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_light_texture), glApplyTextureEXT)
@@ -2786,15 +2666,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_light_texture), glTextureMaterialE
 GdkGL_GL_EXT_light_texture *
 gdk_gl_get_GL_EXT_light_texture (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_light_texture ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_light_texture");
 
@@ -2804,8 +2683,6 @@ gdk_gl_get_GL_EXT_light_texture (void)
           supported &= (gdk_gl_get_glTextureLightEXT ()    != NULL);
           supported &= (gdk_gl_get_glTextureMaterialEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2819,7 +2696,8 @@ gdk_gl_get_GL_EXT_light_texture (void)
  */
 
 static GdkGL_GL_SGIX_async _GDK_GL_PROCS (GdkGL_GL_SGIX_async) = {
-  NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_async), glAsyncMarkerSGIX)
@@ -2832,15 +2710,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_async), glIsAsyncMarkerSGIX)
 GdkGL_GL_SGIX_async *
 gdk_gl_get_GL_SGIX_async (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_async ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_async");
 
@@ -2853,8 +2730,6 @@ gdk_gl_get_GL_SGIX_async (void)
           supported &= (gdk_gl_get_glDeleteAsyncMarkersSGIX () != NULL);
           supported &= (gdk_gl_get_glIsAsyncMarkerSGIX ()      != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2868,7 +2743,7 @@ gdk_gl_get_GL_SGIX_async (void)
  */
 
 static GdkGL_GL_INTEL_parallel_arrays _GDK_GL_PROCS (GdkGL_GL_INTEL_parallel_arrays) = {
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_INTEL_parallel_arrays), glVertexPointervINTEL)
@@ -2879,15 +2754,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_INTEL_parallel_arrays), glTexCoordPoin
 GdkGL_GL_INTEL_parallel_arrays *
 gdk_gl_get_GL_INTEL_parallel_arrays (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_INTEL_parallel_arrays ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_INTEL_parallel_arrays");
 
@@ -2898,8 +2772,6 @@ gdk_gl_get_GL_INTEL_parallel_arrays (void)
           supported &= (gdk_gl_get_glColorPointervINTEL ()    != NULL);
           supported &= (gdk_gl_get_glTexCoordPointervINTEL () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2913,7 +2785,7 @@ gdk_gl_get_GL_INTEL_parallel_arrays (void)
  */
 
 static GdkGL_GL_EXT_pixel_transform _GDK_GL_PROCS (GdkGL_GL_EXT_pixel_transform) = {
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_pixel_transform), glPixelTransformParameteriEXT)
@@ -2924,15 +2796,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_pixel_transform), glPixelTransform
 GdkGL_GL_EXT_pixel_transform *
 gdk_gl_get_GL_EXT_pixel_transform (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_pixel_transform ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_pixel_transform");
 
@@ -2943,8 +2814,6 @@ gdk_gl_get_GL_EXT_pixel_transform (void)
           supported &= (gdk_gl_get_glPixelTransformParameterivEXT () != NULL);
           supported &= (gdk_gl_get_glPixelTransformParameterfvEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -2958,8 +2827,10 @@ gdk_gl_get_GL_EXT_pixel_transform (void)
  */
 
 static GdkGL_GL_EXT_secondary_color _GDK_GL_PROCS (GdkGL_GL_EXT_secondary_color) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_secondary_color), glSecondaryColor3bEXT)
@@ -2983,15 +2854,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_secondary_color), glSecondaryColor
 GdkGL_GL_EXT_secondary_color *
 gdk_gl_get_GL_EXT_secondary_color (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_secondary_color ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_secondary_color");
 
@@ -3015,8 +2885,6 @@ gdk_gl_get_GL_EXT_secondary_color (void)
           supported &= (gdk_gl_get_glSecondaryColor3usvEXT ()    != NULL);
           supported &= (gdk_gl_get_glSecondaryColorPointerEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3030,7 +2898,7 @@ gdk_gl_get_GL_EXT_secondary_color (void)
  */
 
 static GdkGL_GL_EXT_texture_perturb_normal _GDK_GL_PROCS (GdkGL_GL_EXT_texture_perturb_normal) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_texture_perturb_normal), glTextureNormalEXT)
@@ -3038,15 +2906,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_texture_perturb_normal), glTexture
 GdkGL_GL_EXT_texture_perturb_normal *
 gdk_gl_get_GL_EXT_texture_perturb_normal (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture_perturb_normal ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_texture_perturb_normal");
 
@@ -3054,8 +2921,6 @@ gdk_gl_get_GL_EXT_texture_perturb_normal (void)
         {
           supported &= (gdk_gl_get_glTextureNormalEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3069,7 +2934,7 @@ gdk_gl_get_GL_EXT_texture_perturb_normal (void)
  */
 
 static GdkGL_GL_EXT_multi_draw_arrays _GDK_GL_PROCS (GdkGL_GL_EXT_multi_draw_arrays) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_multi_draw_arrays), glMultiDrawArraysEXT)
@@ -3078,15 +2943,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_multi_draw_arrays), glMultiDrawEle
 GdkGL_GL_EXT_multi_draw_arrays *
 gdk_gl_get_GL_EXT_multi_draw_arrays (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_multi_draw_arrays ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_multi_draw_arrays");
 
@@ -3095,8 +2959,6 @@ gdk_gl_get_GL_EXT_multi_draw_arrays (void)
           supported &= (gdk_gl_get_glMultiDrawArraysEXT ()   != NULL);
           supported &= (gdk_gl_get_glMultiDrawElementsEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3110,7 +2972,7 @@ gdk_gl_get_GL_EXT_multi_draw_arrays (void)
  */
 
 static GdkGL_GL_EXT_fog_coord _GDK_GL_PROCS (GdkGL_GL_EXT_fog_coord) = {
-  NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_fog_coord), glFogCoordfEXT)
@@ -3122,15 +2984,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_fog_coord), glFogCoordPointerEXT)
 GdkGL_GL_EXT_fog_coord *
 gdk_gl_get_GL_EXT_fog_coord (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_fog_coord ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_fog_coord");
 
@@ -3142,8 +3003,6 @@ gdk_gl_get_GL_EXT_fog_coord (void)
           supported &= (gdk_gl_get_glFogCoorddvEXT ()      != NULL);
           supported &= (gdk_gl_get_glFogCoordPointerEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3157,9 +3016,11 @@ gdk_gl_get_GL_EXT_fog_coord (void)
  */
 
 static GdkGL_GL_EXT_coordinate_frame _GDK_GL_PROCS (GdkGL_GL_EXT_coordinate_frame) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_coordinate_frame), glTangent3bEXT)
@@ -3188,15 +3049,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_coordinate_frame), glBinormalPoint
 GdkGL_GL_EXT_coordinate_frame *
 gdk_gl_get_GL_EXT_coordinate_frame (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_coordinate_frame ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_coordinate_frame");
 
@@ -3225,8 +3085,6 @@ gdk_gl_get_GL_EXT_coordinate_frame (void)
           supported &= (gdk_gl_get_glTangentPointerEXT ()  != NULL);
           supported &= (gdk_gl_get_glBinormalPointerEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3240,7 +3098,7 @@ gdk_gl_get_GL_EXT_coordinate_frame (void)
  */
 
 static GdkGL_GL_SUNX_constant_data _GDK_GL_PROCS (GdkGL_GL_SUNX_constant_data) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SUNX_constant_data), glFinishTextureSUNX)
@@ -3248,15 +3106,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SUNX_constant_data), glFinishTextureSU
 GdkGL_GL_SUNX_constant_data *
 gdk_gl_get_GL_SUNX_constant_data (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUNX_constant_data ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SUNX_constant_data");
 
@@ -3264,8 +3121,6 @@ gdk_gl_get_GL_SUNX_constant_data (void)
         {
           supported &= (gdk_gl_get_glFinishTextureSUNX () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3279,7 +3134,8 @@ gdk_gl_get_GL_SUNX_constant_data (void)
  */
 
 static GdkGL_GL_SUN_global_alpha _GDK_GL_PROCS (GdkGL_GL_SUN_global_alpha) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SUN_global_alpha), glGlobalAlphaFactorbSUN)
@@ -3294,15 +3150,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SUN_global_alpha), glGlobalAlphaFactor
 GdkGL_GL_SUN_global_alpha *
 gdk_gl_get_GL_SUN_global_alpha (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_global_alpha ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SUN_global_alpha");
 
@@ -3317,8 +3172,6 @@ gdk_gl_get_GL_SUN_global_alpha (void)
           supported &= (gdk_gl_get_glGlobalAlphaFactorusSUN () != NULL);
           supported &= (gdk_gl_get_glGlobalAlphaFactoruiSUN () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3332,7 +3185,8 @@ gdk_gl_get_GL_SUN_global_alpha (void)
  */
 
 static GdkGL_GL_SUN_triangle_list _GDK_GL_PROCS (GdkGL_GL_SUN_triangle_list) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SUN_triangle_list), glReplacementCodeuiSUN)
@@ -3346,15 +3200,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SUN_triangle_list), glReplacementCodeP
 GdkGL_GL_SUN_triangle_list *
 gdk_gl_get_GL_SUN_triangle_list (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_triangle_list ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SUN_triangle_list");
 
@@ -3368,8 +3221,6 @@ gdk_gl_get_GL_SUN_triangle_list (void)
           supported &= (gdk_gl_get_glReplacementCodeubvSUN ()     != NULL);
           supported &= (gdk_gl_get_glReplacementCodePointerSUN () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3383,10 +3234,14 @@ gdk_gl_get_GL_SUN_triangle_list (void)
  */
 
 static GdkGL_GL_SUN_vertex _GDK_GL_PROCS (GdkGL_GL_SUN_vertex) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SUN_vertex), glColor4ubVertex2fSUN)
@@ -3433,15 +3288,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SUN_vertex), glReplacementCodeuiTexCoo
 GdkGL_GL_SUN_vertex *
 gdk_gl_get_GL_SUN_vertex (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_vertex ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SUN_vertex");
 
@@ -3488,8 +3342,6 @@ gdk_gl_get_GL_SUN_vertex (void)
           supported &= (gdk_gl_get_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN ()  != NULL);
           supported &= (gdk_gl_get_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3503,7 +3355,7 @@ gdk_gl_get_GL_SUN_vertex (void)
  */
 
 static GdkGL_GL_EXT_blend_func_separate _GDK_GL_PROCS (GdkGL_GL_EXT_blend_func_separate) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_blend_func_separate), glBlendFuncSeparateEXT)
@@ -3511,15 +3363,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_blend_func_separate), glBlendFuncS
 GdkGL_GL_EXT_blend_func_separate *
 gdk_gl_get_GL_EXT_blend_func_separate (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_func_separate ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_blend_func_separate");
 
@@ -3527,8 +3378,6 @@ gdk_gl_get_GL_EXT_blend_func_separate (void)
         {
           supported &= (gdk_gl_get_glBlendFuncSeparateEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3542,7 +3391,7 @@ gdk_gl_get_GL_EXT_blend_func_separate (void)
  */
 
 static GdkGL_GL_INGR_blend_func_separate _GDK_GL_PROCS (GdkGL_GL_INGR_blend_func_separate) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_INGR_blend_func_separate), glBlendFuncSeparateINGR)
@@ -3550,15 +3399,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_INGR_blend_func_separate), glBlendFunc
 GdkGL_GL_INGR_blend_func_separate *
 gdk_gl_get_GL_INGR_blend_func_separate (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_INGR_blend_func_separate ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_INGR_blend_func_separate");
 
@@ -3566,8 +3414,6 @@ gdk_gl_get_GL_INGR_blend_func_separate (void)
         {
           supported &= (gdk_gl_get_glBlendFuncSeparateINGR () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3581,7 +3427,7 @@ gdk_gl_get_GL_INGR_blend_func_separate (void)
  */
 
 static GdkGL_GL_EXT_vertex_weighting _GDK_GL_PROCS (GdkGL_GL_EXT_vertex_weighting) = {
-  NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_vertex_weighting), glVertexWeightfEXT)
@@ -3591,15 +3437,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_vertex_weighting), glVertexWeightP
 GdkGL_GL_EXT_vertex_weighting *
 gdk_gl_get_GL_EXT_vertex_weighting (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_weighting ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_vertex_weighting");
 
@@ -3609,8 +3454,6 @@ gdk_gl_get_GL_EXT_vertex_weighting (void)
           supported &= (gdk_gl_get_glVertexWeightfvEXT ()      != NULL);
           supported &= (gdk_gl_get_glVertexWeightPointerEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3624,7 +3467,7 @@ gdk_gl_get_GL_EXT_vertex_weighting (void)
  */
 
 static GdkGL_GL_NV_vertex_array_range _GDK_GL_PROCS (GdkGL_GL_NV_vertex_array_range) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_vertex_array_range), glFlushVertexArrayRangeNV)
@@ -3633,15 +3476,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_vertex_array_range), glVertexArrayR
 GdkGL_GL_NV_vertex_array_range *
 gdk_gl_get_GL_NV_vertex_array_range (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_vertex_array_range ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_NV_vertex_array_range");
 
@@ -3650,8 +3492,6 @@ gdk_gl_get_GL_NV_vertex_array_range (void)
           supported &= (gdk_gl_get_glFlushVertexArrayRangeNV () != NULL);
           supported &= (gdk_gl_get_glVertexArrayRangeNV ()      != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3665,8 +3505,9 @@ gdk_gl_get_GL_NV_vertex_array_range (void)
  */
 
 static GdkGL_GL_NV_register_combiners _GDK_GL_PROCS (GdkGL_GL_NV_register_combiners) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_register_combiners), glCombinerParameterfvNV)
@@ -3686,15 +3527,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_register_combiners), glGetFinalComb
 GdkGL_GL_NV_register_combiners *
 gdk_gl_get_GL_NV_register_combiners (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_register_combiners ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_NV_register_combiners");
 
@@ -3714,8 +3554,6 @@ gdk_gl_get_GL_NV_register_combiners (void)
           supported &= (gdk_gl_get_glGetFinalCombinerInputParameterfvNV () != NULL);
           supported &= (gdk_gl_get_glGetFinalCombinerInputParameterivNV () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3729,7 +3567,7 @@ gdk_gl_get_GL_NV_register_combiners (void)
  */
 
 static GdkGL_GL_MESA_resize_buffers _GDK_GL_PROCS (GdkGL_GL_MESA_resize_buffers) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_MESA_resize_buffers), glResizeBuffersMESA)
@@ -3737,15 +3575,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_MESA_resize_buffers), glResizeBuffersM
 GdkGL_GL_MESA_resize_buffers *
 gdk_gl_get_GL_MESA_resize_buffers (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_MESA_resize_buffers ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_MESA_resize_buffers");
 
@@ -3753,8 +3590,6 @@ gdk_gl_get_GL_MESA_resize_buffers (void)
         {
           supported &= (gdk_gl_get_glResizeBuffersMESA () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3768,9 +3603,11 @@ gdk_gl_get_GL_MESA_resize_buffers (void)
  */
 
 static GdkGL_GL_MESA_window_pos _GDK_GL_PROCS (GdkGL_GL_MESA_window_pos) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_MESA_window_pos), glWindowPos2dMESA)
@@ -3801,15 +3638,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_MESA_window_pos), glWindowPos4svMESA)
 GdkGL_GL_MESA_window_pos *
 gdk_gl_get_GL_MESA_window_pos (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_MESA_window_pos ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_MESA_window_pos");
 
@@ -3840,8 +3676,6 @@ gdk_gl_get_GL_MESA_window_pos (void)
           supported &= (gdk_gl_get_glWindowPos4sMESA ()  != NULL);
           supported &= (gdk_gl_get_glWindowPos4svMESA () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3855,7 +3689,7 @@ gdk_gl_get_GL_MESA_window_pos (void)
  */
 
 static GdkGL_GL_IBM_multimode_draw_arrays _GDK_GL_PROCS (GdkGL_GL_IBM_multimode_draw_arrays) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_IBM_multimode_draw_arrays), glMultiModeDrawArraysIBM)
@@ -3864,15 +3698,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_IBM_multimode_draw_arrays), glMultiMod
 GdkGL_GL_IBM_multimode_draw_arrays *
 gdk_gl_get_GL_IBM_multimode_draw_arrays (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_IBM_multimode_draw_arrays ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_IBM_multimode_draw_arrays");
 
@@ -3881,8 +3714,6 @@ gdk_gl_get_GL_IBM_multimode_draw_arrays (void)
           supported &= (gdk_gl_get_glMultiModeDrawArraysIBM ()   != NULL);
           supported &= (gdk_gl_get_glMultiModeDrawElementsIBM () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3896,7 +3727,8 @@ gdk_gl_get_GL_IBM_multimode_draw_arrays (void)
  */
 
 static GdkGL_GL_IBM_vertex_array_lists _GDK_GL_PROCS (GdkGL_GL_IBM_vertex_array_lists) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_IBM_vertex_array_lists), glColorPointerListIBM)
@@ -3911,15 +3743,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_IBM_vertex_array_lists), glVertexPoint
 GdkGL_GL_IBM_vertex_array_lists *
 gdk_gl_get_GL_IBM_vertex_array_lists (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_IBM_vertex_array_lists ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_IBM_vertex_array_lists");
 
@@ -3934,8 +3765,6 @@ gdk_gl_get_GL_IBM_vertex_array_lists (void)
           supported &= (gdk_gl_get_glTexCoordPointerListIBM ()       != NULL);
           supported &= (gdk_gl_get_glVertexPointerListIBM ()         != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3949,7 +3778,7 @@ gdk_gl_get_GL_IBM_vertex_array_lists (void)
  */
 
 static GdkGL_GL_3DFX_tbuffer _GDK_GL_PROCS (GdkGL_GL_3DFX_tbuffer) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_3DFX_tbuffer), glTbufferMask3DFX)
@@ -3957,15 +3786,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_3DFX_tbuffer), glTbufferMask3DFX)
 GdkGL_GL_3DFX_tbuffer *
 gdk_gl_get_GL_3DFX_tbuffer (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_3DFX_tbuffer ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_3DFX_tbuffer");
 
@@ -3973,8 +3801,6 @@ gdk_gl_get_GL_3DFX_tbuffer (void)
         {
           supported &= (gdk_gl_get_glTbufferMask3DFX () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -3988,7 +3814,7 @@ gdk_gl_get_GL_3DFX_tbuffer (void)
  */
 
 static GdkGL_GL_EXT_multisample _GDK_GL_PROCS (GdkGL_GL_EXT_multisample) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_multisample), glSampleMaskEXT)
@@ -3997,15 +3823,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_multisample), glSamplePatternEXT)
 GdkGL_GL_EXT_multisample *
 gdk_gl_get_GL_EXT_multisample (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_multisample ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_multisample");
 
@@ -4014,8 +3839,6 @@ gdk_gl_get_GL_EXT_multisample (void)
           supported &= (gdk_gl_get_glSampleMaskEXT ()    != NULL);
           supported &= (gdk_gl_get_glSamplePatternEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4029,7 +3852,7 @@ gdk_gl_get_GL_EXT_multisample (void)
  */
 
 static GdkGL_GL_SGIS_texture_color_mask _GDK_GL_PROCS (GdkGL_GL_SGIS_texture_color_mask) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_texture_color_mask), glTextureColorMaskSGIS)
@@ -4037,15 +3860,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIS_texture_color_mask), glTextureCol
 GdkGL_GL_SGIS_texture_color_mask *
 gdk_gl_get_GL_SGIS_texture_color_mask (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture_color_mask ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIS_texture_color_mask");
 
@@ -4053,8 +3875,6 @@ gdk_gl_get_GL_SGIS_texture_color_mask (void)
         {
           supported &= (gdk_gl_get_glTextureColorMaskSGIS () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4068,7 +3888,7 @@ gdk_gl_get_GL_SGIS_texture_color_mask (void)
  */
 
 static GdkGL_GL_SGIX_igloo_interface _GDK_GL_PROCS (GdkGL_GL_SGIX_igloo_interface) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_igloo_interface), glIglooInterfaceSGIX)
@@ -4076,15 +3896,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SGIX_igloo_interface), glIglooInterfac
 GdkGL_GL_SGIX_igloo_interface *
 gdk_gl_get_GL_SGIX_igloo_interface (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_igloo_interface ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SGIX_igloo_interface");
 
@@ -4092,8 +3911,6 @@ gdk_gl_get_GL_SGIX_igloo_interface (void)
         {
           supported &= (gdk_gl_get_glIglooInterfaceSGIX () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4107,7 +3924,8 @@ gdk_gl_get_GL_SGIX_igloo_interface (void)
  */
 
 static GdkGL_GL_NV_fence _GDK_GL_PROCS (GdkGL_GL_NV_fence) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_fence), glDeleteFencesNV)
@@ -4121,15 +3939,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_fence), glSetFenceNV)
 GdkGL_GL_NV_fence *
 gdk_gl_get_GL_NV_fence (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_fence ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_NV_fence");
 
@@ -4143,8 +3960,6 @@ gdk_gl_get_GL_NV_fence (void)
           supported &= (gdk_gl_get_glFinishFenceNV ()  != NULL);
           supported &= (gdk_gl_get_glSetFenceNV ()     != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4158,7 +3973,8 @@ gdk_gl_get_GL_NV_fence (void)
  */
 
 static GdkGL_GL_NV_evaluators _GDK_GL_PROCS (GdkGL_GL_NV_evaluators) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_evaluators), glMapControlPointsNV)
@@ -4174,15 +3990,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_evaluators), glEvalMapsNV)
 GdkGL_GL_NV_evaluators *
 gdk_gl_get_GL_NV_evaluators (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_evaluators ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_NV_evaluators");
 
@@ -4198,8 +4013,6 @@ gdk_gl_get_GL_NV_evaluators (void)
           supported &= (gdk_gl_get_glGetMapAttribParameterfvNV () != NULL);
           supported &= (gdk_gl_get_glEvalMapsNV ()                != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4213,7 +4026,7 @@ gdk_gl_get_GL_NV_evaluators (void)
  */
 
 static GdkGL_GL_NV_register_combiners2 _GDK_GL_PROCS (GdkGL_GL_NV_register_combiners2) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_register_combiners2), glCombinerStageParameterfvNV)
@@ -4222,15 +4035,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_register_combiners2), glGetCombiner
 GdkGL_GL_NV_register_combiners2 *
 gdk_gl_get_GL_NV_register_combiners2 (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_register_combiners2 ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_NV_register_combiners2");
 
@@ -4239,8 +4051,6 @@ gdk_gl_get_GL_NV_register_combiners2 (void)
           supported &= (gdk_gl_get_glCombinerStageParameterfvNV ()    != NULL);
           supported &= (gdk_gl_get_glGetCombinerStageParameterfvNV () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4254,13 +4064,19 @@ gdk_gl_get_GL_NV_register_combiners2 (void)
  */
 
 static GdkGL_GL_NV_vertex_program _GDK_GL_PROCS (GdkGL_GL_NV_vertex_program) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_vertex_program), glAreProgramsResidentNV)
@@ -4331,15 +4147,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_vertex_program), glVertexAttribs4ub
 GdkGL_GL_NV_vertex_program *
 gdk_gl_get_GL_NV_vertex_program (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_vertex_program ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_NV_vertex_program");
 
@@ -4410,8 +4225,6 @@ gdk_gl_get_GL_NV_vertex_program (void)
           supported &= (gdk_gl_get_glVertexAttribs4svNV ()        != NULL);
           supported &= (gdk_gl_get_glVertexAttribs4ubvNV ()       != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4425,7 +4238,7 @@ gdk_gl_get_GL_NV_vertex_program (void)
  */
 
 static GdkGL_GL_ATI_envmap_bumpmap _GDK_GL_PROCS (GdkGL_GL_ATI_envmap_bumpmap) = {
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_envmap_bumpmap), glTexBumpParameterivATI)
@@ -4436,15 +4249,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_envmap_bumpmap), glGetTexBumpParam
 GdkGL_GL_ATI_envmap_bumpmap *
 gdk_gl_get_GL_ATI_envmap_bumpmap (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_envmap_bumpmap ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ATI_envmap_bumpmap");
 
@@ -4455,8 +4267,6 @@ gdk_gl_get_GL_ATI_envmap_bumpmap (void)
           supported &= (gdk_gl_get_glGetTexBumpParameterivATI () != NULL);
           supported &= (gdk_gl_get_glGetTexBumpParameterfvATI () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4470,8 +4280,9 @@ gdk_gl_get_GL_ATI_envmap_bumpmap (void)
  */
 
 static GdkGL_GL_ATI_fragment_shader _GDK_GL_PROCS (GdkGL_GL_ATI_fragment_shader) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_fragment_shader), glGenFragmentShadersATI)
@@ -4492,15 +4303,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_fragment_shader), glSetFragmentSha
 GdkGL_GL_ATI_fragment_shader *
 gdk_gl_get_GL_ATI_fragment_shader (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_fragment_shader ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ATI_fragment_shader");
 
@@ -4521,8 +4331,6 @@ gdk_gl_get_GL_ATI_fragment_shader (void)
           supported &= (gdk_gl_get_glAlphaFragmentOp3ATI ()          != NULL);
           supported &= (gdk_gl_get_glSetFragmentShaderConstantATI () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4536,7 +4344,7 @@ gdk_gl_get_GL_ATI_fragment_shader (void)
  */
 
 static GdkGL_GL_ATI_pn_triangles _GDK_GL_PROCS (GdkGL_GL_ATI_pn_triangles) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_pn_triangles), glPNTrianglesiATI)
@@ -4545,15 +4353,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_pn_triangles), glPNTrianglesfATI)
 GdkGL_GL_ATI_pn_triangles *
 gdk_gl_get_GL_ATI_pn_triangles (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_pn_triangles ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ATI_pn_triangles");
 
@@ -4562,8 +4369,6 @@ gdk_gl_get_GL_ATI_pn_triangles (void)
           supported &= (gdk_gl_get_glPNTrianglesiATI () != NULL);
           supported &= (gdk_gl_get_glPNTrianglesfATI () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4577,8 +4382,9 @@ gdk_gl_get_GL_ATI_pn_triangles (void)
  */
 
 static GdkGL_GL_ATI_vertex_array_object _GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glNewObjectBufferATI)
@@ -4597,15 +4403,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glGetVariant
 GdkGL_GL_ATI_vertex_array_object *
 gdk_gl_get_GL_ATI_vertex_array_object (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_vertex_array_object ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ATI_vertex_array_object");
 
@@ -4624,8 +4429,6 @@ gdk_gl_get_GL_ATI_vertex_array_object (void)
           supported &= (gdk_gl_get_glGetVariantArrayObjectfvATI () != NULL);
           supported &= (gdk_gl_get_glGetVariantArrayObjectivATI () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4639,11 +4442,15 @@ gdk_gl_get_GL_ATI_vertex_array_object (void)
  */
 
 static GdkGL_GL_EXT_vertex_shader _GDK_GL_PROCS (GdkGL_GL_EXT_vertex_shader) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_vertex_shader), glBeginVertexShaderEXT)
@@ -4692,15 +4499,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_vertex_shader), glGetLocalConstant
 GdkGL_GL_EXT_vertex_shader *
 gdk_gl_get_GL_EXT_vertex_shader (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_shader ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_vertex_shader");
 
@@ -4749,8 +4555,6 @@ gdk_gl_get_GL_EXT_vertex_shader (void)
           supported &= (gdk_gl_get_glGetLocalConstantIntegervEXT ()  != NULL);
           supported &= (gdk_gl_get_glGetLocalConstantFloatvEXT ()    != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4764,11 +4568,15 @@ gdk_gl_get_GL_EXT_vertex_shader (void)
  */
 
 static GdkGL_GL_ATI_vertex_streams _GDK_GL_PROCS (GdkGL_GL_ATI_vertex_streams) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-  NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_streams), glVertexStream1sATI)
@@ -4820,15 +4628,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_streams), glVertexBlendEnvf
 GdkGL_GL_ATI_vertex_streams *
 gdk_gl_get_GL_ATI_vertex_streams (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_vertex_streams ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ATI_vertex_streams");
 
@@ -4880,8 +4687,6 @@ gdk_gl_get_GL_ATI_vertex_streams (void)
           supported &= (gdk_gl_get_glVertexBlendEnviATI ()          != NULL);
           supported &= (gdk_gl_get_glVertexBlendEnvfATI ()          != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4895,7 +4700,7 @@ gdk_gl_get_GL_ATI_vertex_streams (void)
  */
 
 static GdkGL_GL_ATI_element_array _GDK_GL_PROCS (GdkGL_GL_ATI_element_array) = {
-  NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_element_array), glElementPointerATI)
@@ -4905,15 +4710,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_element_array), glDrawRangeElement
 GdkGL_GL_ATI_element_array *
 gdk_gl_get_GL_ATI_element_array (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_element_array ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_ATI_element_array");
 
@@ -4923,8 +4727,6 @@ gdk_gl_get_GL_ATI_element_array (void)
           supported &= (gdk_gl_get_glDrawElementArrayATI ()      != NULL);
           supported &= (gdk_gl_get_glDrawRangeElementArrayATI () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4938,7 +4740,7 @@ gdk_gl_get_GL_ATI_element_array (void)
  */
 
 static GdkGL_GL_SUN_mesh_array _GDK_GL_PROCS (GdkGL_GL_SUN_mesh_array) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SUN_mesh_array), glDrawMeshArraysSUN)
@@ -4946,15 +4748,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_SUN_mesh_array), glDrawMeshArraysSUN)
 GdkGL_GL_SUN_mesh_array *
 gdk_gl_get_GL_SUN_mesh_array (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_mesh_array ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_SUN_mesh_array");
 
@@ -4962,8 +4763,6 @@ gdk_gl_get_GL_SUN_mesh_array (void)
         {
           supported &= (gdk_gl_get_glDrawMeshArraysSUN () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -4977,7 +4776,8 @@ gdk_gl_get_GL_SUN_mesh_array (void)
  */
 
 static GdkGL_GL_NV_occlusion_query _GDK_GL_PROCS (GdkGL_GL_NV_occlusion_query) = {
-  NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_occlusion_query), glGenOcclusionQueriesNV)
@@ -4991,15 +4791,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_occlusion_query), glGetOcclusionQue
 GdkGL_GL_NV_occlusion_query *
 gdk_gl_get_GL_NV_occlusion_query (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_occlusion_query ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_NV_occlusion_query");
 
@@ -5013,8 +4812,6 @@ gdk_gl_get_GL_NV_occlusion_query (void)
           supported &= (gdk_gl_get_glGetOcclusionQueryivNV ()    != NULL);
           supported &= (gdk_gl_get_glGetOcclusionQueryuivNV ()   != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -5028,7 +4825,7 @@ gdk_gl_get_GL_NV_occlusion_query (void)
  */
 
 static GdkGL_GL_NV_point_sprite _GDK_GL_PROCS (GdkGL_GL_NV_point_sprite) = {
-  NULL, NULL
+  (gpointer) -1, (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_point_sprite), glPointParameteriNV)
@@ -5037,15 +4834,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_point_sprite), glPointParameterivNV
 GdkGL_GL_NV_point_sprite *
 gdk_gl_get_GL_NV_point_sprite (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_point_sprite ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_NV_point_sprite");
 
@@ -5054,8 +4850,6 @@ gdk_gl_get_GL_NV_point_sprite (void)
           supported &= (gdk_gl_get_glPointParameteriNV ()  != NULL);
           supported &= (gdk_gl_get_glPointParameterivNV () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -5069,7 +4863,7 @@ gdk_gl_get_GL_NV_point_sprite (void)
  */
 
 static GdkGL_GL_EXT_stencil_two_side _GDK_GL_PROCS (GdkGL_GL_EXT_stencil_two_side) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_stencil_two_side), glActiveStencilFaceEXT)
@@ -5077,15 +4871,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_EXT_stencil_two_side), glActiveStencil
 GdkGL_GL_EXT_stencil_two_side *
 gdk_gl_get_GL_EXT_stencil_two_side (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_stencil_two_side ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_EXT_stencil_two_side");
 
@@ -5093,8 +4886,6 @@ gdk_gl_get_GL_EXT_stencil_two_side (void)
         {
           supported &= (gdk_gl_get_glActiveStencilFaceEXT () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
@@ -5112,7 +4903,7 @@ gdk_gl_get_GL_EXT_stencil_two_side (void)
  */
 
 static GdkGL_GL_WIN_swap_hint _GDK_GL_PROCS (GdkGL_GL_WIN_swap_hint) = {
-  NULL
+  (gpointer) -1
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_WIN_swap_hint), glAddSwapHintRectWIN)
@@ -5120,15 +4911,14 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_WIN_swap_hint), glAddSwapHintRectWIN)
 GdkGL_GL_WIN_swap_hint *
 gdk_gl_get_GL_WIN_swap_hint (void)
 {
-  static gboolean init = FALSE;
-  static gboolean supported = TRUE;
+  static gint supported = -1;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_WIN_swap_hint ()"));
 
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
-  if (!init)
+  if (supported == -1)
     {
       supported = gdk_gl_query_gl_extension ("GL_WIN_swap_hint");
 
@@ -5136,8 +4926,6 @@ gdk_gl_get_GL_WIN_swap_hint (void)
         {
           supported &= (gdk_gl_get_glAddSwapHintRectWIN () != NULL);
         }
-
-      init = TRUE;
     }
 
   if (!supported)
