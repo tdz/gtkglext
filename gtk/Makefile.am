@@ -12,14 +12,6 @@ endif
 if OS_WIN32
 gtkglext_def = gtkglext.def
 gtkglext_win32_symbols = -export-symbols $(gtkglext_def)
-
-install-libtool-import-lib:
-	$(INSTALL) .libs/libgtkglext-win32-@GTKGLEXT_API_VERSION@.dll.a $(DESTDIR)$(libdir)
-uninstall-libtool-import-lib:
-	-rm $(DESTDIR)$(libdir)/libgtkglext-win32-@GTKGLEXT_API_VERSION@.dll.a
-else
-install-libtool-import-lib:
-uninstall-libtool-import-lib:
 endif
 
 if MS_LIB_AVAILABLE
@@ -119,9 +111,9 @@ EXTRA_HEADERS =
 # Extra rules
 #
 
-install-data-local: install-ms-lib install-libtool-import-lib
+install-data-local: install-ms-lib
 
-uninstall-local: uninstall-ms-lib uninstall-libtool-import-lib
+uninstall-local: uninstall-ms-lib
 
 .PHONY: files
 

@@ -1,5 +1,11 @@
 2003-04-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/Makefile.am (install-libtool-import-lib) 
+	(uninstall-libtool-import-lib): 
+	* gdk/Makefile.am (install-libtool-import-lib) 
+	(uninstall-libtool-import-lib): Removed. Now MinGW import
+	libraries are installed by libtool.
+
 	* Makefile.am: Removed AUTOMAKE_OPTIONS.
 
 	* gdk/Makefile.am: Use './config.status gdk/gdkglext-config.h' to

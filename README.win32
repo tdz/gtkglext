@@ -135,19 +135,17 @@ Personally I run configure like this:
   $ export PATH=/cygdrive/c/mingw/bin:$PATH
 
   $ env CC='gcc -march=pentium' \
-        LDFLAGS='-Lc:/gtkglext/lib' \
         AR=/usr/bin/ar \
-        ./configure --build=i386-pc-mingw32 \
-                    --prefix=c:/gtkglext \
+        ./configure --prefix=c:/gtkglext \
+                    --build=i386-pc-mingw32 \
                     --disable-static \
                     --enable-debug=yes
   $ make
   $ make install
   $ make examples
 
-Notice that LDFLAGS should be specified to install DLL's to
-${prefix}/lib, and use Cygwin's ar.exe instead of MinGW's one under
-Cygwin environment.
+Notice that you should use not MinGW's ar but Cygwin's ar under Cygwin
+environment.
 
 
 Building the CVS Version of GtkGLExt
@@ -169,10 +167,9 @@ for generating configure script and Makefiles.
 
   $ env ACLOCAL_FLAGS='-I /target/share/aclocal' \
         CC='gcc -march=pentium' \
-        LDFLAGS='-Lc:/gtkglext/lib' \
         AR=/usr/bin/ar \
-        ./autogen.sh --build=i386-pc-mingw32 \
-                     --prefix=c:/gtkglext \
+        ./autogen.sh --prefix=c:/gtkglext \
+                     --build=i386-pc-mingw32 \
                      --disable-static \
                      --enable-debug=yes
   $ make

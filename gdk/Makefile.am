@@ -20,14 +20,6 @@ else
 gdkglext_def = gdkglext-gtk20.def
 endif
 gdkglext_win32_symbols = -export-symbols $(gdkglext_def)
-
-install-libtool-import-lib:
-	$(INSTALL) .libs/libgdkglext-win32-@GTKGLEXT_API_VERSION@.dll.a $(DESTDIR)$(libdir)
-uninstall-libtool-import-lib:
-	-rm $(DESTDIR)$(libdir)/libgdkglext-win32-@GTKGLEXT_API_VERSION@.dll.a
-else
-install-libtool-import-lib:
-uninstall-libtool-import-lib:
 endif
 
 if MS_LIB_AVAILABLE
@@ -210,9 +202,9 @@ DISTCLEANFILES = gdkglext-config.h stamp-gdkglext-config-h
 # Extra rules
 #
 
-install-data-local: install-ms-lib install-libtool-import-lib
+install-data-local: install-ms-lib
 
-uninstall-local: uninstall-ms-lib uninstall-libtool-import-lib
+uninstall-local: uninstall-ms-lib
 
 .PHONY: files
 
