@@ -8,7 +8,7 @@ Naofumi Yasufuku (°ÂÊ¡ ¾°Ê¸)  <naofumi@users.sourceforge.net>
 Contributors
 ============
 
-Alif Wahid  <awah005@varsity.co.nz>
+Alif Wahid  <awah005@users.sourceforge.net>
   * Port of viewlw, the LightWave 3D object viewer demo, that comes
     with the GtkGLArea. The program is originally written by Janne Lof.
   * rotating-square.c, coolwave.c, and template.c demo programs.
