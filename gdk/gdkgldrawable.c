@@ -71,7 +71,7 @@ gdk_gl_drawable_make_current (GdkGLDrawable *gldrawable,
 gboolean
 gdk_gl_drawable_is_double_buffered (GdkGLDrawable *gldrawable)
 {
-  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+  g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), FALSE);
 
   return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->is_double_buffered (gldrawable);
 }
