@@ -8,7 +8,7 @@
 
 /* Conversion to GtkGLExt by Naofumi Yasufuku */
 
-
+#include <stdlib.h>
 #include <math.h>
 
 #include <gtk/gtk.h>
@@ -451,7 +451,7 @@ main(int   argc,
 
   if (!gdk_gl_query_extension()) {
     g_print("\n*** OpenGL extension is not supported\n");
-    gtk_exit(1);
+    exit(1);
   }
 
   /*
@@ -468,7 +468,7 @@ main(int   argc,
     glconfig = gdk_gl_config_new(&config_attributes[1]);
     if (glconfig == NULL) {
       g_print("*** Cannot find an OpenGL-capable visual\n");
-      gtk_exit(1);
+      exit(1);
     }
   }
 

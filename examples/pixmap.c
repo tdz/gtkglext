@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include <gtk/gtk.h>
 
 #include <gdk/gdkgl.h>
@@ -142,7 +144,7 @@ configure (GtkWidget         *widget,
       if (glcontext == NULL)
         {
           g_print ("Connot create the OpenGL rendering context\n");
-          gtk_exit (1);
+          gtk_main_quit ();
         }
 
       g_print ("The OpenGL rendering context is created\n");
@@ -245,7 +247,7 @@ main (int argc,
   if (!gdk_gl_query_extension ())
     {
       g_print ("\n*** OpenGL extension is not supported\n");
-      gtk_exit (1);
+      exit (1);
     }
 
   gdk_gl_query_version (&major, &minor);
@@ -268,7 +270,7 @@ main (int argc,
       if (glconfig == NULL)
         {
           g_print ("*** Cannot find an OpenGL-capable visual\n");
-          gtk_exit (1);
+          exit (1);
         }
     }
 

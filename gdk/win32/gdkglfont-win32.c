@@ -87,31 +87,3 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
 
   return font;
 }
-
-void
-gdk_gl_font_use_gdk_font (GdkFont *font,
-                          gint     first,
-                          gint     count,
-                          gint     list_base)
-{
-  HDC hdc;
-
-  g_return_if_fail (font != NULL);
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_gdk_font ()"));
-
-  hdc = CreateCompatibleDC (NULL);
-  if (hdc == NULL)
-    {
-      g_warning ("cannot create a memory DC");
-      return;
-    }
-
-  SelectObject (hdc, (HGDIOBJ) gdk_font_id (font));
-
-  if (!wglUseFontBitmaps (hdc, first, count, list_base))
-    g_warning ("cannot create the font display lists");
-
-  if (!DeleteDC (hdc))
-    g_warning ("cannot delete the memory DC");
-}

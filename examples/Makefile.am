@@ -2,10 +2,13 @@
 ## Makefile.am for gtkglext/examples
 
 INCLUDES = \
-	-I$(top_srcdir) 	\
-	-I$(top_builddir)	\
-	$(GTKGLEXT_DEBUG_FLAGS)	\
-	$(GTKGLEXT_DEP_CFLAGS)
+	-I$(top_srcdir) 		\
+	-I$(top_builddir)		\
+	$(GTKGLEXT_DEBUG_FLAGS)		\
+	$(GTKGLEXT_DEP_CFLAGS)		\
+	-DG_DISABLE_DEPRECATED		\
+	-DGDK_DISABLE_DEPRECATED	\
+	-DGTK_DISABLE_DEPRECATED
 
 DEPS = \
 	$(top_builddir)/gdk/$(gdkglext_targetlib)	\
@@ -21,7 +24,6 @@ EXTRA_PROGRAMS = \
 	simple		\
 	pixmap		\
 	font		\
-	font-old	\
 	gears		\
 	viewlw
 
@@ -40,10 +42,6 @@ pixmap_LDADD = $(LDADDS)
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
-
-font_old_SOURCES = font-old.c
-font_old_DEPENDENCIES = $(DEPS)
-font_old_LDADD = $(LDADDS)
 
 gears_SOURCES = gears.c
 gears_DEPENDENCIES = $(DEPS)

@@ -1,11 +1,12 @@
+#include <stdlib.h>
+#include <string.h>
+
 #include <gtk/gtk.h>
 
 #include <gtk/gtkgl.h>
 
 #include <GL/gl.h>
 #include <GL/glu.h>
-
-#include <string.h>
 
 static gchar font_string[] = "courier 12";
 static GLuint font_list_base;
@@ -90,7 +91,7 @@ init (GtkWidget *widget,
   font = gdk_gl_font_use_pango_font (font_desc, 0, 128, font_list_base);
   if (font == NULL) {
     g_print("*** Can't load font '%s'\n", font_string);
-    gtk_exit (1);
+    gtk_main_quit ();
   }
 
   font_metrics = pango_font_get_metrics (font, NULL);
@@ -235,7 +236,7 @@ main (int argc,
   if (!gdk_gl_query_extension ())
     {
       g_print ("\n*** OpenGL extension is not supported\n");
-      gtk_exit (1);
+      exit (1);
     }
 
   gdk_gl_query_version (&major, &minor);
@@ -258,7 +259,7 @@ main (int argc,
       if (glconfig == NULL)
         {
           g_print ("*** Cannot find an OpenGL-capable visual\n");
-          gtk_exit (1);
+          exit (1);
         }
     }
 

@@ -15,7 +15,6 @@ EXPORTS
 	gdk_gl_drawable_swap_buffers
 	gdk_gl_drawable_wait_gdk
 	gdk_gl_drawable_wait_gl
-	gdk_gl_font_use_gdk_font
 	gdk_gl_font_use_pango_font
 	gdk_gl_pixmap_get_type
 	gdk_gl_pixmap_new

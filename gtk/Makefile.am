@@ -42,7 +42,10 @@ common_includes = \
 	-I../gdk			\
 	$(GTKGLEXT_DEBUG_FLAGS)		\
 	$(GTKGLEXT_DEP_CFLAGS)		\
-	-DGTK_GL_COMPILATION
+	-DGTK_GL_COMPILATION		\
+	-DG_DISABLE_DEPRECATED		\
+	-DGDK_DISABLE_DEPRECATED	\
+	-DGTK_DISABLE_DEPRECATED
 
 common_ldflags = \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) 	\

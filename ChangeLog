@@ -1,13 +1,21 @@
 2002-06-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
-	* examples/font.c: Modified to use Pango-based font operation.
+	* The codes that contain the deprecated functions have been
+	cleaned.
 
-	* examples/font-old.c: Old GdkFont-based example.
+	* gdk/Makefile.am: 
+	* gdk/x11/Makefile.am: 
+	* gdk/win32/Makefile.am: 
+	* gtk/Makefile.am: 
+	* examples/Makefile.am: Added *_DISABLE_DEPRECATED definition.
+
+	* examples/font.c: Modified to use Pango-based font operation.
 
 	* gdk/x11/gdkglfont-x11.c (gdk_gl_font_use_pango_font): 
 	* gdk/win32/gdkglfont-win32.c (gdk_gl_font_use_pango_font): 
 	* gdk/gdkglfont.h: Added new bitmap font generator function which
-	is implemented using Pango.
+	is implemented using Pango. gdk_gl_font_use_gdk_font () have been
+	removed.
 
 	* examples/simple.c: 
 	* examples/font.c: 

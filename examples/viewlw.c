@@ -22,10 +22,14 @@
  * Alif Wahid, <awah005@varsity.co.nz>
  */
 
+#include <stdlib.h>
 #include <string.h>
 #include <math.h>
+
 #include <gtk/gtk.h>
+
 #include <gtk/gtkgl.h>
+
 #include <GL/gl.h>
 #include <GL/glu.h>
 
@@ -110,7 +114,7 @@ gint expose(GtkWidget *widget, GdkEventExpose *event)
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
   GLfloat m[4][4];
-  mesh_info *info = (mesh_info*)gtk_object_get_data(GTK_OBJECT(widget), "mesh_info");
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
 
   /* draw only last expose */
   if (event->count > 0) {
@@ -179,7 +183,7 @@ gint configure(GtkWidget *widget, GdkEventConfigure *event, gpointer data)
 gint destroy(GtkWidget *widget)
 {
   /* delete mesh info */
-  mesh_info *info = (mesh_info*)gtk_object_get_data(GTK_OBJECT(widget), "mesh_info");
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
   if (info)
     {
       lw_object_free(info->lwobject);
@@ -191,7 +195,7 @@ gint destroy(GtkWidget *widget)
 
 gint button_press(GtkWidget *widget, GdkEventButton *event)
 {
-  mesh_info *info = (mesh_info*)gtk_object_get_data(GTK_OBJECT(widget), "mesh_info");
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
   if (event->button == 1)
     {
       /* beginning of drag, reset mouse position */
@@ -209,7 +213,7 @@ gint motion_notify(GtkWidget *widget, GdkEventMotion *event)
   int y = 0;
   GdkModifierType state = 0;
   float width, height;
-  mesh_info *info = (mesh_info*)gtk_object_get_data(GTK_OBJECT(widget), "mesh_info");
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
 
   if (event->is_hint)
     {
@@ -282,9 +286,9 @@ void create_popup_menu(GtkWidget *widget)
   GtkWidget *quit_item     = gtk_menu_item_new_with_label("Quit");
   GtkWidget *quit_all_item = gtk_menu_item_new_with_label("Quit All");
 
-  gtk_menu_append(GTK_MENU(menu), open_item);
-  gtk_menu_append(GTK_MENU(menu), quit_item);
-  gtk_menu_append(GTK_MENU(menu), quit_all_item);
+  gtk_menu_shell_append(GTK_MENU_SHELL(menu), open_item);
+  gtk_menu_shell_append(GTK_MENU_SHELL(menu), quit_item);
+  gtk_menu_shell_append(GTK_MENU_SHELL(menu), quit_all_item);
 
   gtk_widget_show(open_item);
   gtk_widget_show(quit_item);
@@ -292,20 +296,20 @@ void create_popup_menu(GtkWidget *widget)
 
   gtk_menu_attach_to_widget(GTK_MENU(menu),GTK_WIDGET(widget),popup_menu_detacher);
 
-  gtk_signal_connect_object(GTK_OBJECT(widget), "destroy",
-     			    GTK_SIGNAL_FUNC(gtk_menu_detach), GTK_OBJECT(menu));
+  g_signal_connect_swapped(G_OBJECT(widget), "destroy",
+                           G_CALLBACK(gtk_menu_detach), menu);
 
-  gtk_signal_connect_object(GTK_OBJECT(widget), "button_press_event",
-     			    GTK_SIGNAL_FUNC(popup_menu_handler), GTK_OBJECT(menu));
+  g_signal_connect_swapped(G_OBJECT(widget), "button_press_event",
+                           G_CALLBACK(popup_menu_handler), menu);
 
-  gtk_signal_connect(GTK_OBJECT(open_item), "activate",
-                     GTK_SIGNAL_FUNC(select_lwobject), NULL);
+  g_signal_connect(G_OBJECT(open_item), "activate",
+                   G_CALLBACK(select_lwobject), NULL);
 
-  gtk_signal_connect_object(GTK_OBJECT(quit_item), "activate",
-     			    GTK_SIGNAL_FUNC(gtk_widget_destroy), GTK_OBJECT(widget));
+  g_signal_connect_swapped(G_OBJECT(quit_item), "activate",
+                           G_CALLBACK(gtk_widget_destroy), widget);
 
-  gtk_signal_connect(GTK_OBJECT(quit_all_item), "activate",
-                     GTK_SIGNAL_FUNC(gtk_main_quit), NULL);
+  g_signal_connect(G_OBJECT(quit_all_item), "activate",
+                   G_CALLBACK(gtk_main_quit), NULL);
 }
 
 gint window_count = 0; /* number of windows on screen */
@@ -365,20 +369,20 @@ gint show_lwobject(const char *lwobject_name)
      			GDK_POINTER_MOTION_MASK|
      			GDK_POINTER_MOTION_HINT_MASK);
 
-  gtk_signal_connect (GTK_OBJECT(glarea), "expose_event",
-     		      GTK_SIGNAL_FUNC(expose), NULL);
+  g_signal_connect (G_OBJECT(glarea), "expose_event",
+                    G_CALLBACK(expose), NULL);
 
-  gtk_signal_connect (GTK_OBJECT(glarea), "motion_notify_event",
-     		      GTK_SIGNAL_FUNC(motion_notify), NULL);
+  g_signal_connect (G_OBJECT(glarea), "motion_notify_event",
+                    G_CALLBACK(motion_notify), NULL);
 
-  gtk_signal_connect (GTK_OBJECT(glarea), "button_press_event",
-     		      GTK_SIGNAL_FUNC(button_press), NULL);
+  g_signal_connect (G_OBJECT(glarea), "button_press_event",
+                    G_CALLBACK(button_press), NULL);
 
-  gtk_signal_connect (GTK_OBJECT(glarea), "configure_event",
-     		      GTK_SIGNAL_FUNC(configure), NULL);
+  g_signal_connect (G_OBJECT(glarea), "configure_event",
+                    G_CALLBACK(configure), NULL);
 
-  gtk_signal_connect (GTK_OBJECT(glarea), "destroy",
-     		      GTK_SIGNAL_FUNC(destroy), NULL);
+  g_signal_connect (G_OBJECT(glarea), "destroy",
+                    G_CALLBACK(destroy), NULL);
 
   gtk_widget_set_size_request(glarea, 200,200/VIEW_ASPECT); /* minimum size */
 
@@ -390,7 +394,7 @@ gint show_lwobject(const char *lwobject_name)
   info->beginy = 0;
   info->zoom   = 45;
   trackball(info->quat , 0.0, 0.0, 0.0, 0.0);
-  gtk_object_set_data(GTK_OBJECT(glarea), "mesh_info", info);
+  g_object_set_data(G_OBJECT(glarea), "mesh_info", info);
 
 
   /* create new top level window */
@@ -398,8 +402,8 @@ gint show_lwobject(const char *lwobject_name)
   gtk_window_set_title(GTK_WINDOW(window), lwobject_name);
   gtk_container_set_border_width(GTK_CONTAINER(window), 10);
   create_popup_menu(window); /* add popup menu to window */
-  gtk_signal_connect (GTK_OBJECT(window), "destroy",
-                      GTK_SIGNAL_FUNC(window_destroy), NULL);
+  g_signal_connect (G_OBJECT(window), "destroy",
+                    G_CALLBACK(window_destroy), NULL);
   window_count++;
 
   /* destroy this window when exiting from gtk_main() */
@@ -428,15 +432,15 @@ void select_lwobject()
 {
   GtkWidget *filew = gtk_file_selection_new("Select LightWave 3D object");
 
-  gtk_signal_connect(GTK_OBJECT(GTK_FILE_SELECTION (filew)->ok_button), "clicked",
-                     GTK_SIGNAL_FUNC(filew_ok), filew);
+  g_signal_connect(G_OBJECT(GTK_FILE_SELECTION (filew)->ok_button), "clicked",
+                   G_CALLBACK(filew_ok), filew);
 
-  gtk_signal_connect_object(GTK_OBJECT(GTK_FILE_SELECTION(filew)->cancel_button),
-                            "clicked", GTK_SIGNAL_FUNC(gtk_widget_destroy),
-                            GTK_OBJECT(filew));
+  g_signal_connect_swapped(G_OBJECT(GTK_FILE_SELECTION(filew)->cancel_button),
+                           "clicked", G_CALLBACK(gtk_widget_destroy),
+                           filew);
 
-  gtk_signal_connect (GTK_OBJECT(filew), "destroy",
-                      GTK_SIGNAL_FUNC(window_destroy), NULL);
+  g_signal_connect (G_OBJECT(filew), "destroy",
+                    G_CALLBACK(window_destroy), NULL);
 
   window_count++;
 
@@ -452,7 +456,7 @@ int main (int argc, char **argv)
   if (!gdk_gl_query_extension ())
     {
       g_print ("\n*** OpenGL extension is not supported\n");
-      gtk_exit (1);
+      exit (1);
     }
 
   /* Configure OpenGL-capable visual. */
@@ -469,7 +473,7 @@ int main (int argc, char **argv)
       if (glconfig == NULL)
         {
           g_print ("*** Cannot find an OpenGL-capable visual\n");
-          gtk_exit (1);
+          exit (1);
         }
     }
 
