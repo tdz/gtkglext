@@ -1,3 +1,7 @@
+2002-10-03  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* configure.in: Added -lm to $LIBS for OpenGL library check.
+
 2002-09-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglpixmap-x11.c: 
