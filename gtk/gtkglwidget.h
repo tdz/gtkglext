@@ -27,10 +27,6 @@
 
 G_BEGIN_DECLS
 
-/*
- * attrib_list is currently unused. This must be set to NULL or empty
- * (first attribute of None).
- */
 gboolean      gtk_widget_set_gl_capability (GtkWidget    *widget,
                                             const gint   *attrib_list,
                                             gint          render_type,
