@@ -1,8 +1,8 @@
 2003-08-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
-	* gdk/glext/gen-gdkgl*.pl: 
-	* gdk/glext/common-header.h: Read common header part from
-	common-header.h.
+	* gdk/glext/common-header.h: 
+	* gdk/glext/gen-gdkgl*.pl: Code cleanup. Read common header part
+	from common-header.h.
 
 2003-08-18  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 

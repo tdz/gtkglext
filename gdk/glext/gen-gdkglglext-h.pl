@@ -17,7 +17,7 @@ close(IN);
 
 print <<EOF;
 /*
- * This is a generated file.  Please modify `gen-gdkglglext-h.pl'.
+ * This is a generated file.  Please modify "gen-gdkglglext-h.pl".
  */
 
 #ifndef __GDK_GL_GLEXT_H__
@@ -72,9 +72,7 @@ foreach $in (@input_headers) {
 			# function prototypes
 			@functions = ();
 			while (<IN>) {
-			    if (/#endif/) {
-				last;
-			    }
+			    last if (/#endif/);
 			    ($func) = /(gl\w+)/;
 			    push(@functions, $func);
 			}
@@ -82,9 +80,7 @@ foreach $in (@input_headers) {
 			# typedefs
 			@typedefs = ();
 			while (<IN>) {
-			    if (/#endif/) {
-				last;
-			    }
+			    last if (/#endif/);
 			    chomp;
 			    push(@typedefs, $_);
 			}
@@ -129,15 +125,11 @@ sub generate_code {
 	print "GdkGLProc    gdk_gl_get_$func (void);\n";
 
 	$_ = $type;
-	($args) = /\(.*\)\s+(\(.*\))/;
-	$args =~ s/\(|\)//g;
+	($args) = /\(.*\)\s+\((.*)\)/;
 	@args_list = split(/,\s+/, $args);
-	foreach $a (@args_list) {
-	    $_ = $a;
-	    ($a) = /.*\s+\**(\w+)$/;
-	    if (!$a) {
-		$a = "";
-	    }
+	foreach (@args_list) {
+	    ($_) = /.*\s+\**(\w+)$/;
+	    $_ = "" if (!$_);
 	}
 	$args = join(", ", @args_list);
 

@@ -17,7 +17,7 @@ close(IN);
 
 print <<EOF;
 /*
- * This is a generated file.  Please modify `gen-gdkglglext-c.pl'.
+ * This is a generated file.  Please modify "gen-gdkglglext-c.pl".
  */
 
 #include "gdkglprivate.h"
@@ -44,9 +44,7 @@ foreach $in (@input_headers) {
 			# function prototypes
 			@functions = ();
 			while (<IN>) {
-			    if (/#endif/) {
-				last;
-			    }
+			    last if (/#endif/);
 			    ($func) = /(gl\w+)/;
 			    push(@functions, $func);
 			}
@@ -54,9 +52,7 @@ foreach $in (@input_headers) {
 			# typedefs
 			@typedefs = ();
 			while (<IN>) {
-			    if (/#endif/) {
-				last;
-			    }
+			    last if (/#endif/);
 			    chomp;
 			    push(@typedefs, $_);
 			}
