@@ -21976,6 +21976,136 @@ gdk_gl_get_GL_APPLE_vertex_program_evaluators (void)
 }
 
 /*
+ * GL_ATI_blend_equation_separate
+ */
+
+static GdkGL_GL_ATI_blend_equation_separate _procs_GL_ATI_blend_equation_separate = {
+  (GdkGLProc_glBlendEquationSeparateATI) -1
+};
+
+/* glBlendEquationSeparateATI */
+GdkGLProc
+gdk_gl_get_glBlendEquationSeparateATI (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ATI_blend_equation_separate.glBlendEquationSeparateATI == (GdkGLProc_glBlendEquationSeparateATI) -1)
+    _procs_GL_ATI_blend_equation_separate.glBlendEquationSeparateATI =
+      (GdkGLProc_glBlendEquationSeparateATI) gdk_gl_get_proc_address ("glBlendEquationSeparateATI");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendEquationSeparateATI () - %s",
+               (_procs_GL_ATI_blend_equation_separate.glBlendEquationSeparateATI) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ATI_blend_equation_separate.glBlendEquationSeparateATI);
+}
+
+/* Get GL_ATI_blend_equation_separate functions */
+GdkGL_GL_ATI_blend_equation_separate *
+gdk_gl_get_GL_ATI_blend_equation_separate (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ATI_blend_equation_separate");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBlendEquationSeparateATI () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_blend_equation_separate () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ATI_blend_equation_separate;
+}
+
+/*
+ * GL_ATIX_pn_triangles
+ */
+
+static GdkGL_GL_ATIX_pn_triangles _procs_GL_ATIX_pn_triangles = {
+  (GdkGLProc_glPNTrianglesiATIX) -1,
+  (GdkGLProc_glPNTrianglesfATIX) -1
+};
+
+/* glPNTrianglesiATIX */
+GdkGLProc
+gdk_gl_get_glPNTrianglesiATIX (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ATIX_pn_triangles.glPNTrianglesiATIX == (GdkGLProc_glPNTrianglesiATIX) -1)
+    _procs_GL_ATIX_pn_triangles.glPNTrianglesiATIX =
+      (GdkGLProc_glPNTrianglesiATIX) gdk_gl_get_proc_address ("glPNTrianglesiATIX");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPNTrianglesiATIX () - %s",
+               (_procs_GL_ATIX_pn_triangles.glPNTrianglesiATIX) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ATIX_pn_triangles.glPNTrianglesiATIX);
+}
+
+/* glPNTrianglesfATIX */
+GdkGLProc
+gdk_gl_get_glPNTrianglesfATIX (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ATIX_pn_triangles.glPNTrianglesfATIX == (GdkGLProc_glPNTrianglesfATIX) -1)
+    _procs_GL_ATIX_pn_triangles.glPNTrianglesfATIX =
+      (GdkGLProc_glPNTrianglesfATIX) gdk_gl_get_proc_address ("glPNTrianglesfATIX");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPNTrianglesfATIX () - %s",
+               (_procs_GL_ATIX_pn_triangles.glPNTrianglesfATIX) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ATIX_pn_triangles.glPNTrianglesfATIX);
+}
+
+/* Get GL_ATIX_pn_triangles functions */
+GdkGL_GL_ATIX_pn_triangles *
+gdk_gl_get_GL_ATIX_pn_triangles (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ATIX_pn_triangles");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glPNTrianglesiATIX () != NULL);
+          supported &= (gdk_gl_get_glPNTrianglesfATIX () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATIX_pn_triangles () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ATIX_pn_triangles;
+}
+
+/*
  * GL_Autodesk_facet_normal
  */
 

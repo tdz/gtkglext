@@ -5,6 +5,7 @@
 
 	* gdk/GL/glext-extra.h: 
 	* gdk/gdkglglext.[ch]: Added extra APPLE extensions.
+	Added extra ATI extensions.
 
 	* gdk/GL/glxext-extra.h: 
 	* gdk/GL/wglext-extra.h: Added.

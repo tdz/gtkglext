@@ -133,9 +133,52 @@ typedef void (APIENTRY * PFNGLMAPVERTEXATTRIB2FAPPLEPROC) (GLuint index, GLuint 
  * ATI
  */
 
+#ifndef GL_ATI_blend_equation_separate
+#define GL_ALPHA_BLEND_EQUATION_ATI       0x883D
+#endif
+
+#ifndef GL_ATI_blend_weighted_minmax
+#define GL_MIN_WEIGHTED_ATI               0x877D
+#define GL_MAX_WEIGHTED_ATI               0x877E
+#endif
+
+#ifndef GL_ATI_point_cull_mode
+#define GL_POINT_CULL_MODE_ATI            0x60B3
+#define GL_POINT_CULL_CENTER_ATI          0x60B4
+#define GL_POINT_CULL_CLIP_ATI            0x60B5
+#endif
+
+#ifndef GL_ATI_blend_equation_separate
+#define GL_ATI_blend_equation_separate 1
+#ifdef GL_GLEXT_PROTOTYPES
+GLAPI void APIENTRY glBlendEquationSeparateATI (GLenum, GLenum);
+#endif /* GL_GLEXT_PROTOTYPES */
+typedef void (APIENTRY * PFNGLBLENDEQUATIONSEPARATEATIPROC) (GLenum equationRGB, GLenum equationAlpha);
+#endif
+
+#ifndef GL_ATI_blend_weighted_minmax
+#define GL_ATI_blend_weighted_minmax 1
+#endif
+
+#ifndef GL_ATI_point_cull_mode
+#define GL_ATI_point_cull_mode 1
+#endif
+
 /*
  * ATIX
  */
+
+#ifndef GL_ATIX_pn_triangles
+#define GL_PN_TRIANGLES_ATIX                            0x6090
+#define GL_MAX_PN_TRIANGLES_TESSELATION_LEVEL_ATIX      0x6091
+#define GL_PN_TRIANGLES_POINT_MODE_ATIX                 0x6092
+#define GL_PN_TRIANGLES_NORMAL_MODE_ATIX                0x6093
+#define GL_PN_TRIANGLES_TESSELATION_LEVEL_ATIX          0x6094
+#define GL_PN_TRIANGLES_POINT_MODE_LINEAR_ATIX          0x6095
+#define GL_PN_TRIANGLES_POINT_MODE_CUBIC_ATIX           0x6096
+#define GL_PN_TRIANGLES_NORMAL_MODE_LINEAR_ATIX         0x6097
+#define GL_PN_TRIANGLES_NORMAL_MODE_QUADRATIC_ATIX      0x6098
+#endif
 
 #ifndef GL_ATIX_texture_env_route
 #define GL_SECONDARY_COLOR_ATIX           0x8747
@@ -145,6 +188,16 @@ typedef void (APIENTRY * PFNGLMAPVERTEXATTRIB2FAPPLEPROC) (GLuint index, GLuint 
 
 #ifndef GL_ATIX_vertex_shader_output_point_size
 #define GL_OUTPUT_POINT_SIZE_ATIX         0x610E
+#endif
+
+#ifndef GL_ATIX_pn_triangles
+#define GL_ATIX_pn_triangles 1
+#ifdef GL_GLEXT_PROTOTYPES
+GLAPI void APIENTRY glPNTrianglesiATIX (GLenum, GLint);
+GLAPI void APIENTRY glPNTrianglesfATIX (GLenum, GLfloat);
+#endif /* GL_GLEXT_PROTOTYPES */
+typedef void (APIENTRY * PFNGLPNTRIANGLESIATIXPROC) (GLenum pname, GLint param);
+typedef void (APIENTRY * PFNGLPNTRIANGLESFATIXPROC) (GLenum pname, GLfloat param);
 #endif
 
 #ifndef GL_ATIX_texture_env_route

@@ -7915,6 +7915,55 @@ struct _GdkGL_GL_APPLE_vertex_program_evaluators
 GdkGL_GL_APPLE_vertex_program_evaluators *gdk_gl_get_GL_APPLE_vertex_program_evaluators (void);
 
 /*
+ * GL_ATI_blend_equation_separate
+ */
+
+/* glBlendEquationSeparateATI */
+typedef void (APIENTRY * GdkGLProc_glBlendEquationSeparateATI) (GLenum equationRGB, GLenum equationAlpha);
+GdkGLProc    gdk_gl_get_glBlendEquationSeparateATI (void);
+#define      gdk_gl_glBlendEquationSeparateATI(proc, equationRGB, equationAlpha) \
+  ( ((GdkGLProc_glBlendEquationSeparateATI) (proc)) (equationRGB, equationAlpha) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GL_ATI_blend_equation_separate GdkGL_GL_ATI_blend_equation_separate;
+
+struct _GdkGL_GL_ATI_blend_equation_separate
+{
+  GdkGLProc_glBlendEquationSeparateATI glBlendEquationSeparateATI;
+};
+
+GdkGL_GL_ATI_blend_equation_separate *gdk_gl_get_GL_ATI_blend_equation_separate (void);
+
+/*
+ * GL_ATIX_pn_triangles
+ */
+
+/* glPNTrianglesiATIX */
+typedef void (APIENTRY * GdkGLProc_glPNTrianglesiATIX) (GLenum pname, GLint param);
+GdkGLProc    gdk_gl_get_glPNTrianglesiATIX (void);
+#define      gdk_gl_glPNTrianglesiATIX(proc, pname, param) \
+  ( ((GdkGLProc_glPNTrianglesiATIX) (proc)) (pname, param) )
+
+/* glPNTrianglesfATIX */
+typedef void (APIENTRY * GdkGLProc_glPNTrianglesfATIX) (GLenum pname, GLfloat param);
+GdkGLProc    gdk_gl_get_glPNTrianglesfATIX (void);
+#define      gdk_gl_glPNTrianglesfATIX(proc, pname, param) \
+  ( ((GdkGLProc_glPNTrianglesfATIX) (proc)) (pname, param) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GL_ATIX_pn_triangles GdkGL_GL_ATIX_pn_triangles;
+
+struct _GdkGL_GL_ATIX_pn_triangles
+{
+  GdkGLProc_glPNTrianglesiATIX glPNTrianglesiATIX;
+  GdkGLProc_glPNTrianglesfATIX glPNTrianglesfATIX;
+};
+
+GdkGL_GL_ATIX_pn_triangles *gdk_gl_get_GL_ATIX_pn_triangles (void);
+
+/*
  * GL_Autodesk_facet_normal
  */
 
