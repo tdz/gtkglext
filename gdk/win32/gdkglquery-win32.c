@@ -16,8 +16,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include <gmodule.h>
-
 #ifdef GDK_MULTIHEAD_SAFE
 #include <gdk/gdkdisplay.h>
 #endif /* GDK_MULTIHEAD_SAFE */
@@ -118,18 +116,5 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 GdkGLProc
 gdk_gl_query_get_proc_address (const char *proc_name)
 {
-  GModule *module;
-  GdkGLProc proc_address = wglGetProcAddress (proc_name);
-
-  if (proc_address == NULL)
-    {
-      module = g_module_open (NULL, G_MODULE_BIND_LAZY);
-      g_return_val_if_fail (module != NULL, NULL);
-
-      g_module_symbol (module, proc_name, (gpointer) &proc_address);
-
-      g_module_close (module);
-    }
-
-  return proc_address;
+  return wglGetProcAddress (proc_name);
 }
