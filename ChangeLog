@@ -1,3 +1,11 @@
+2003-05-01  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gtk/gtkglwidget.c (struct GLWidgetPrivate): 
+	(gtk_widget_set_gl_capability): Added need_unrealize flag.
+	(gtk_gl_widget_realize, gtk_gl_widget_unrealize): Call
+	gdk_window_unset_gl_capability() if private->need_unrealize flag
+	is set.
+
 2003-04-30  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* configure.in: Don't check gtk-doc version if --enable-gtk-doc

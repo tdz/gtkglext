@@ -31,6 +31,7 @@ typedef struct
   GdkGLContext *glcontext;
 
   guint is_realized : 1;
+  guint need_unrealize : 1;
 
 } GLWidgetPrivate;
 
@@ -65,6 +66,8 @@ gtk_gl_widget_realize (GtkWidget       *widget,
           g_warning ("cannot set OpenGL-capability to widget->window\n");
           return;
         }
+
+      private->need_unrealize = TRUE;
     }
 
   private->is_realized = TRUE;
@@ -92,12 +95,16 @@ gtk_gl_widget_unrealize (GtkWidget       *widget,
 {
   GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_unrealize ()"));
 
-  /*
-   * Remove OpenGL-capability from widget->window.
-   */
+  if (widget->window != NULL && private->need_unrealize)
+    {
+      /*
+       * Remove OpenGL-capability from widget->window.
+       */
 
-  if (widget->window != NULL)
-    gdk_window_unset_gl_capability (widget->window);
+      gdk_window_unset_gl_capability (widget->window);
+
+      private->need_unrealize = FALSE;
+    }
 
   private->is_realized = FALSE;
 }
@@ -288,6 +295,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   private->glcontext = NULL;
 
   private->is_realized = FALSE;
+  private->need_unrealize = FALSE;
 
   g_object_set_qdata_full (G_OBJECT (widget), quark_gl_private, private,
                            (GDestroyNotify) gl_widget_private_destroy);
