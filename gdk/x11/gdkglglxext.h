@@ -37,6 +37,8 @@ typedef XID GLXWindow;
 typedef XID GLXPbuffer;
 #endif
 
+#ifndef __glxext_h_
+
 #ifndef GLX_SGIX_video_source
 typedef XID GLXVideoSourceSGIX;
 #endif
@@ -62,6 +64,8 @@ typedef struct {
     int count;		  /* if nonzero, at least this many more */
 } GLXBufferClobberEventSGIX;
 #endif
+
+#endif /* __glxext_h_ */
 
 /* 
  * GLX_VERSION_1_3
