@@ -108,11 +108,11 @@ extern "C" {
 #ifndef WGL_NV_allocate_memory
 #define WGL_NV_allocate_memory 1
 #ifdef WGL_WGLEXT_PROTOTYPES
-extern void * wglAllocateMemoryNV (int, float, float, float);
-extern void wglFreeMemoryNV (void *); 
+extern void * WINAPI wglAllocateMemoryNV (int, float, float, float);
+extern void WINAPI wglFreeMemoryNV (void *); 
 #endif
-typedef void * (APIENTRY * PFNWGLALLOCATEMEMORYNVPROC) (int size, float readfreq, float writefreq, float priority);
-typedef void (APIENTRY * PFNWGLFREEMEMORYNVPROC) (void *pointer);
+typedef void * (WINAPI * PFNWGLALLOCATEMEMORYNVPROC) (int size, float readfreq, float writefreq, float priority);
+typedef void (WINAPI * PFNWGLFREEMEMORYNVPROC) (void *pointer);
 #endif
 
 /*
