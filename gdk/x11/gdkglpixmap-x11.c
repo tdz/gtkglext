@@ -209,7 +209,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
                      &depth_return))
     return NULL;
 
-  if (depth_return != xvinfo->depth)
+  if (depth_return != (unsigned int) xvinfo->depth)
     return NULL;
 
   /*

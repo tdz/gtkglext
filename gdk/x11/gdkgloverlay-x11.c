@@ -81,7 +81,7 @@ static __SOVProp *
 gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
                              GdkVisual *visual)
 {
-  static Atom xa_sov = -1;
+  static Atom xa_sov = (Atom) -1;
   static gboolean init = FALSE;
   Display *xdisplay;
   int screen_count, screen_num;
@@ -100,7 +100,7 @@ gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
   xdisplay = gdk_x11_get_default_xdisplay ();
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-  if (xa_sov == -1)
+  if (xa_sov == (Atom) -1)
     xa_sov = XSGIFastInternAtom (xdisplay,
                                  "SERVER_OVERLAY_VISUALS",
                                  SGI_XA_SERVER_OVERLAY_VISUALS,

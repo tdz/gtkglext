@@ -120,7 +120,7 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
   XStandardColormap *standard_cmaps;
   int i, num_cmaps;
   GdkVisual *visual;
-  static Atom xa_hp_cr_maps = -1;
+  static Atom xa_hp_cr_maps = (Atom) -1;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_get_std_rgb_colormap ()"));
 
@@ -139,7 +139,7 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
 
   if (is_mesa_glx)
     {
-      if (xa_hp_cr_maps == -1)
+      if (xa_hp_cr_maps == (Atom) -1)
         xa_hp_cr_maps = XInternAtom (xdisplay, "_HP_RGB_SMOOTH_MAP_LIST", True);
 
       if (xa_hp_cr_maps &&
@@ -298,7 +298,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
       overlay_supported = _gdk_x11_gl_overlay_get_info (screen, visual, &overlay_info);
       if (overlay_supported &&
           overlay_info.transparent_type == GDK_GL_OVERLAY_TRANSPARENT_PIXEL &&
-          overlay_info.value < xvinfo->visual->map_entries)
+          overlay_info.value < (guint32) xvinfo->visual->map_entries)
         {
 
           /*

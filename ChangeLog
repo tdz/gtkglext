@@ -1,3 +1,12 @@
+2003-07-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglfont-x11.c (gdk_gl_font_charset_for_locale): 
+	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_new): 
+	* gdk/x11/gdkgloverlay-x11.c (gdk_gl_overlay_get_sov_prop): 
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_get_std_rgb_colormap) 
+	(gdk_gl_config_setup_colormap): Suppress "comparison between signed 
+	and unsigned" warnings.
+
 2003-07-01  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglquery-x11.c (gdk_gl_get_proc_address): Added Mac OS X 

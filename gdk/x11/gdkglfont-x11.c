@@ -51,7 +51,7 @@ gdk_gl_font_charset_for_locale (void)
 
   const char *codeset;
   char *result = NULL;
-  int i;
+  gsize i;
 
   g_get_charset (&codeset);
   
