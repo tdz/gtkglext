@@ -1,3 +1,9 @@
+2003-05-05  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* Version 0.99.1
+
+	* configure.in: Bumped version.
+
 2003-05-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/gdkgltypes.h: 
