@@ -1,3 +1,11 @@
+2004-02-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/*.[ch]: 
+	* gdk/glext/*.[ch]: 
+	* gdk/x11/*.[ch]: 
+	* gdk/win32/*.[ch]: 
+	* gtk/*.[ch]: Updated copyright.
+
 2004-02-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (gtk_widget_get_gl_context):
