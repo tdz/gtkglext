@@ -236,10 +236,6 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   GDK_GL_NOTE (IMPL, g_message (" * ChoosePixelFormat ()"));
 
   pixel_format = ChoosePixelFormat (hdc, &pfd);
-  /*
-  pixel_format = _gdk_win32_gl_config_find_pixel_format (hdc, &pfd, &pfd);
-  */
-
   if (pixel_format == 0)
     {
       g_warning ("cannot choose pixel format");
