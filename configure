@@ -12064,4 +12064,5 @@ configuration:
 	OpenGL CFLAGS:		$GL_CFLAGS
 	OpenGL LIBS:		$GL_LIBS
 	multihead support:	$GDKGLEXT_MULTIHEAD_SUPPORT
+	debug:			$enable_debug
 "
