@@ -25,9 +25,9 @@ enum {
 };
 
 /* Forward declarations */
-/*
+#if 0
 static XVisualInfo *gdk_x11_visual_get_xvinfo (GdkVisual *visual);
-*/
+#endif
 
 static gboolean gdk_x11_gl_config_get_attrib (GdkGLConfig *glconfig,
                                               gint         attribute,
@@ -308,11 +308,11 @@ gdk_gl_config_new (GdkWindow  *window,
   return glconfig;
 }
 
+#if 0
+
 /*
  * XVisualInfo returned by this function should be freed by XFree ().
  */
-/* Returned XVisualInfo needs to be unique */
-/*
 static XVisualInfo *
 gdk_x11_visual_get_xvinfo (GdkVisual *visual)
 {
@@ -328,11 +328,13 @@ gdk_x11_visual_get_xvinfo (GdkVisual *visual)
                                 &xvinfo_template,
                                 &nitems_return);
 
+  /* Returned XVisualInfo needs to be unique */
   g_assert (xvinfo_list != NULL && nitems_return == 1);
 
   return xvinfo_list;
 }
-*/
+
+#endif
 
 Display *
 gdk_x11_gl_config_get_xdisplay (GdkGLConfig *glconfig)

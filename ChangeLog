@@ -1,3 +1,9 @@
+2002-06-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* Version 0.1.1.
+
+	* configure.in: OpenGL checks have been rewritten.
+
 2002-06-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglpixmap-win32.c: GdkGLPixmap bug have been fixed.

@@ -12,9 +12,9 @@ AC_INIT(gdk/gdkgl.h)
 #
 GTKGLEXT_MAJOR_VERSION=0
 GTKGLEXT_MINOR_VERSION=1
-GTKGLEXT_MICRO_VERSION=0
-GTKGLEXT_INTERFACE_AGE=0
-GTKGLEXT_BINARY_AGE=0
+GTKGLEXT_MICRO_VERSION=1
+GTKGLEXT_INTERFACE_AGE=1
+GTKGLEXT_BINARY_AGE=1
 GTKGLEXT_VERSION=$GTKGLEXT_MAJOR_VERSION.$GTKGLEXT_MINOR_VERSION.$GTKGLEXT_MICRO_VERSION
 dnl This is the X.Y used in -lgtkglextontext-FOO-X.Y
 GTKGLEXT_API_MAJOR_VERSION=0
@@ -256,95 +256,213 @@ AC_SUBST(GDKGLEXT_WIN_LIBS)
 
 
 ##################################################
-# Checks for OpenGL (ripped from GtkGLArea)
+# Checks for OpenGL
 ##################################################
 
-AC_ARG_WITH(GL-prefix,   [  --with-GL-prefix=DIR    prefix where GL/MesaGL is installed])
-AC_ARG_WITH(lib-GL,      [  --with-lib-GL           use '-lGL'])
-AC_ARG_WITH(lib-MesaGL,  [  --with-lib-MesaGL       use '-lMesaGL'])
-AC_ARG_WITH(lib-opengl32,[  --with-lib-opengl32     use '-lopengl32'])
+GL_CFLAGS=""
+GL_LDFLAGS=""
+GL_LIBS=""
 
-if test "x$with_GL_prefix" = "x" ; then
- GL_LDOPTS=""
- GL_CFLAGS=""
+AC_ARG_WITH(gl-prefix,
+[  --with-gl-prefix=DIR    OpenGL (Mesa) is installed in DIR [[default=auto]]],
+, with_gl_prefix=auto)
+
+AC_ARG_WITH(gl-includes,
+[  --with-gl-includes=DIR  OpenGL (Mesa) include files are in DIR [[default=auto]]],
+, with_gl_includes=auto)
+
+AC_ARG_WITH(gl-libraries,
+[  --with-gl-libraries=DIR OpenGL (Mesa) library files are in DIR [[default=auto]]],
+, with_gl_libraries=auto)
+
+if test "x$with_gl_includes" != "xauto"; then
+  GL_CFLAGS="-I$with_gl_includes"
+elif test "x$with_gl_prefix" != "xauto"; then
+  GL_CFLAGS="-I$with_gl_prefix/include"
+fi
+
+if test "x$with_gl_libraries" != "xauto"; then
+  GL_LDFLAGS="-L$with_gl_libraries"
+elif test "x$with_gl_prefix" != "xauto"; then
+  GL_LDFLAGS="-L$with_gl_prefix/lib"
+fi
+
+save_CPPFLAGS="$CPPFLAGS"
+CPPFLAGS="$CPPFLAGS $GL_CFLAGS $GDKGLEXT_WIN_CFLAGS"
+save_LIBS="$LIBS"
+LIBS="$LIBS $GL_LDFLAGS $GDKGLEXT_WIN_LIBS"
+
+if test "x$gdktarget" = "xx11"; then
+  AC_CHECK_HEADERS(GL/glx.h, ,
+                   AC_MSG_ERROR(Cannot find GLX header))
+fi
+
+AC_CHECK_HEADERS(GL/gl.h GL/glu.h, ,
+                 AC_MSG_ERROR(Cannot find OpenGL headers))
+
+if test "x$gdktarget" = "xx11"; then
+
+  # for X11
+
+  AC_CHECK_LIB(GLcore, glNewList,
+               GL_LIBS="-lGLcore")
+  if test "x$ac_cv_lib_GLcore_glNewList" = "xno" ; then
+    # if no GLcore, check for GL
+    AC_CHECK_LIB(GL, glNewList,
+                 GL_LIBS="-lGL")
+    if test "x$ac_cv_lib_GL_glNewList" = "xno" ; then
+      # latest Mesa may need stdc++ (SGI SI GLU will have C++ deps)
+      AC_CHECK_LIB(GL, glCallList,
+                   GL_LIBS="-lGL -lstdc++", ,
+                   "-lstdc++")
+      if test "x$ac_cv_lib_GL_glCallList" = "xno" ; then
+        # if no GL, check for MesaGL
+        AC_CHECK_LIB(MesaGL, glNewList,
+                     GL_LIBS="-lMesaGL",
+                     AC_MSG_ERROR(Cannot find GL library))
+      fi
+    fi
+  else
+    # if GLcore found, then also check for GL
+    AC_CHECK_LIB(GL, glXCreateContext,
+                 GL_LIBS="-lGL $GL_LIBS",
+                 AC_MSG_ERROR(Cannot find GL library))
+  fi
+
+  # if using mesa, check for xmesa.h
+  if test "x$ac_cv_lib_MesaGL_glNewList" = "xyes" ; then
+    AC_CHECK_HEADERS(GL/xmesa.h)
+    AM_CONDITIONAL(ENABLE_XMESA_FX, \
+                   test "x$ac_cv_header_GL_xmesa_h" = "xyes")
+  else
+    # force a failed check
+    AM_CONDITIONAL(ENABLE_XMESA_FX, test "no" = "yes")
+  fi
+
+  AC_CHECK_LIB(GLU, gluLookAt,
+               GL_LIBS="-lGLU $GL_LIBS",
+               , $GL_LIBS)
+  if test "x$ac_cv_lib_GLU_gluLookAt" = "xno" ; then
+    # if no GLU, check for MesaGLU
+    AC_CHECK_LIB(MesaGLU, gluLookAt,
+                 GL_LIBS="-lMesaGLU $GL_LIBS",
+                 AC_MSG_ERROR(Cannot find GLU library),
+                 $GL_LIBS)
+  fi
+
 else
- GL_LDOPTS="-L$with_GL_prefix/lib"
- GL_CFLAGS="-I$with_GL_prefix/include"
-fi
 
-saved_LIBS="$LIBS"
+  # for Win32
 
-AC_MSG_CHECKING([OpenGL])
-LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lGL"
-AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_GL=yes, 
-  LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lopengl32"
-  [AC_TRY_LINK([ #include <windows.h>
-                 #include <GL/gl.h>], 
-               [ glBegin(GL_TRIANGLES); ], 
-    [have_opengl32=yes
-     have_GL=yes],
-    have_GL=no)])
-AC_MSG_RESULT($have_GL)
+  AC_CHECK_LIB(opengl32, glNewList,
+               GL_LIBS="-lopengl32",
+               AC_MSG_ERROR(Cannot find GL library))
 
-AC_MSG_CHECKING([Mesa])
-LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lMesaGL"
-AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_MesaGL=yes, have_MesaGL=no)
-AC_MSG_RESULT($have_MesaGL)
-
-if test "x$have_MesaGL" = "xno"; then
- AC_MSG_CHECKING([Mesa with pthreads])
- LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lMesaGL -lpthread"
- AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_MesaGL_pthread=yes, have_MesaGL_pthread=no)
- AC_MSG_RESULT($have_MesaGL_pthread)
-fi
-
-LIBS="$saved_LIBS"
-
-
-if test "x$with_lib_GL" = "xyes"; then
-
- if test "x$have_GL" = "xyes"; then
-  GL_LIBS="$GL_LDOPTS -lGLU -lGL"
- else
-  AC_MSG_ERROR([Missing GL library])
- fi
-
-elif test "x$with_lib_MesaGL" = "xyes"; then
-
- if test "x$have_MesaGL" = "xyes"; then
-  GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL"
- elif test "x$have_MesaGL_pthread" = "xyes"; then
-  GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL -lpthread"
- else
-  AC_MSG_ERROR([Missing MesaGL library])
- fi
-
-elif test "x$with_lib_opengl32" = "xyes"; then
-
- if test "x$have_opengl32" = "xyes"; then
-  GL_LIBS="$GL_LDOPTS -lglu32 -lopengl32"
- else
-  AC_MSG_ERROR([Missing OpenGL32 library])
- fi
-
-else
-
- if test "x$have_opengl32" = "xyes"; then
-  GL_LIBS="$GL_LDOPTS -lglu32 -lopengl32"
- elif test "x$have_GL" = "xyes"; then
-  GL_LIBS="$GL_LDOPTS -lGLU -lGL"
- elif test "x$have_MesaGL" = "xyes"; then
-  GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL"
- elif test "x$have_MesaGL_pthread" = "xyes"; then
-  GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL -lpthread"
- else
-  AC_MSG_ERROR([You need GL or MesaGL libraries])
- fi
+  AC_CHECK_LIB(glu32, gluLookAt,
+               GL_LIBS="-lglu32 $GL_LIBS",
+               AC_MSG_ERROR(Cannot find GLU library),
+               $GL_LIBS)
 
 fi
+
+GL_LIBS="$GL_LDFLAGS $GL_LIBS"
 
 AC_SUBST(GL_CFLAGS)
 AC_SUBST(GL_LIBS)
+
+CPPFLAGS="$save_CPPFLAGS"
+LIBS="$save_LIBS"
+
+
+##################################################
+# Checks for OpenGL (ripped from GtkGLArea)
+##################################################
+
+dnl AC_ARG_WITH(GL-prefix,   [  --with-GL-prefix=DIR    prefix where GL/MesaGL is installed])
+dnl AC_ARG_WITH(lib-GL,      [  --with-lib-GL           use '-lGL'])
+dnl AC_ARG_WITH(lib-MesaGL,  [  --with-lib-MesaGL       use '-lMesaGL'])
+dnl AC_ARG_WITH(lib-opengl32,[  --with-lib-opengl32     use '-lopengl32'])
+
+dnl if test "x$with_GL_prefix" = "x" ; then
+dnl  GL_LDOPTS=""
+dnl  GL_CFLAGS=""
+dnl else
+dnl  GL_LDOPTS="-L$with_GL_prefix/lib"
+dnl  GL_CFLAGS="-I$with_GL_prefix/include"
+dnl fi
+
+dnl saved_LIBS="$LIBS"
+
+dnl AC_MSG_CHECKING([OpenGL])
+dnl LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lGL"
+dnl AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_GL=yes, 
+dnl   LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lopengl32"
+dnl   [AC_TRY_LINK([ #include <windows.h>
+dnl                  #include <GL/gl.h>], 
+dnl                [ glBegin(GL_TRIANGLES); ], 
+dnl     [have_opengl32=yes
+dnl      have_GL=yes],
+dnl     have_GL=no)])
+dnl AC_MSG_RESULT($have_GL)
+
+dnl AC_MSG_CHECKING([Mesa])
+dnl LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lMesaGL"
+dnl AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_MesaGL=yes, have_MesaGL=no)
+dnl AC_MSG_RESULT($have_MesaGL)
+
+dnl if test "x$have_MesaGL" = "xno"; then
+dnl  AC_MSG_CHECKING([Mesa with pthreads])
+dnl  LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lMesaGL -lpthread"
+dnl  AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_MesaGL_pthread=yes, have_MesaGL_pthread=no)
+dnl  AC_MSG_RESULT($have_MesaGL_pthread)
+dnl fi
+
+dnl LIBS="$saved_LIBS"
+
+dnl if test "x$with_lib_GL" = "xyes"; then
+
+dnl  if test "x$have_GL" = "xyes"; then
+dnl   GL_LIBS="$GL_LDOPTS -lGLU -lGL"
+dnl  else
+dnl   AC_MSG_ERROR([Missing GL library])
+dnl  fi
+
+dnl elif test "x$with_lib_MesaGL" = "xyes"; then
+
+dnl  if test "x$have_MesaGL" = "xyes"; then
+dnl   GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL"
+dnl  elif test "x$have_MesaGL_pthread" = "xyes"; then
+dnl   GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL -lpthread"
+dnl  else
+dnl   AC_MSG_ERROR([Missing MesaGL library])
+dnl  fi
+
+dnl elif test "x$with_lib_opengl32" = "xyes"; then
+
+dnl  if test "x$have_opengl32" = "xyes"; then
+dnl   GL_LIBS="$GL_LDOPTS -lglu32 -lopengl32"
+dnl  else
+dnl   AC_MSG_ERROR([Missing OpenGL32 library])
+dnl  fi
+
+dnl else
+
+dnl  if test "x$have_opengl32" = "xyes"; then
+dnl   GL_LIBS="$GL_LDOPTS -lglu32 -lopengl32"
+dnl  elif test "x$have_GL" = "xyes"; then
+dnl   GL_LIBS="$GL_LDOPTS -lGLU -lGL"
+dnl  elif test "x$have_MesaGL" = "xyes"; then
+dnl   GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL"
+dnl  elif test "x$have_MesaGL_pthread" = "xyes"; then
+dnl   GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL -lpthread"
+dnl  else
+dnl   AC_MSG_ERROR([You need GL or MesaGL libraries])
+dnl  fi
+
+dnl fi
+
+dnl AC_SUBST(GL_CFLAGS)
+dnl AC_SUBST(GL_LIBS)
 
 
 GDKGLEXT_PACKAGES="$GDK_PKG"
