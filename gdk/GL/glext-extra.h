@@ -301,6 +301,11 @@ typedef GLboolean (APIENTRY * PFNGLVALIDBACKBUFFERHINTEXTPROC) (GLint x, GLint y
 #define GL_SCENE_REQUIRED_EXT             0
 #endif
 
+#ifndef GL_EXT_texgen_reflection
+#define GL_NORMAL_MAP_EXT                 0x8511
+#define GL_REFLECTION_MAP_EXT             0x8512
+#endif
+
 #ifndef GL_EXT_texture_edge_clamp
 #define GL_CLAMP_TO_EDGE_EXT              0x812F
 #endif
@@ -398,6 +403,10 @@ GLAPI void APIENTRY glEndSceneEXT (void);
 #endif /* GL_GLEXT_PROTOTYPES */
 typedef void (APIENTRY * PFNGLBEGINSCENEEXTPROC) (void);
 typedef void (APIENTRY * PFNGLENDSCENEEXTPROC) (void);
+#endif
+
+#ifndef GL_EXT_texgen_reflection
+#define GL_EXT_texgen_reflection 1
 #endif
 
 #ifndef GL_EXT_texture_edge_clamp
@@ -525,6 +534,14 @@ typedef void (APIENTRY * PFNGLACTIVESTENCILFACENVPROC) (GLenum face);
 /*
  * SGI
  */
+
+#ifndef GL_SGI_texture_edge_clamp
+#define GL_CLAMP_TO_EDGE_SGI              0x812F
+#endif
+
+#ifndef GL_SGI_texture_edge_clamp
+#define GL_SGI_texture_edge_clamp 1
+#endif
 
 /*
  * SGIS
