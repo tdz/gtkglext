@@ -98,10 +98,9 @@ configure_event (GtkWidget         *widget,
       if (glcontext == NULL)
         {
           g_print ("Connot create the OpenGL rendering context\n");
-          if (gtk_main_level () == 0)
-            exit (1);
-          else
+          if (gtk_main_level () != 0)
             gtk_main_quit ();
+          return TRUE;
         }
 
       g_print ("The OpenGL rendering context is created\n");
