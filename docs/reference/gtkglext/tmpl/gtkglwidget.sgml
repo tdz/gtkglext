@@ -1,5 +1,5 @@
 <!-- ##### SECTION Title ##### -->
-gtkglwidget
+OpenGL-Capable Widget
 
 <!-- ##### SECTION Short_Description ##### -->
 OpenGL extension API to GtkWidget.
@@ -79,7 +79,7 @@ Returns the pointer to the GdkGLWindow struct of the widget.
 
 <!-- ##### MACRO gtk_widget_get_gl_drawable ##### -->
 <para>
-Return the #GdkGLDrawable holded by the #GtkWidget. In fact it calls
+Return the #GdkGLDrawable holded by the @widget. In fact it calls
 #gtk_widget_get_gl_window and casts result to a GDK_GL_DRAWABLE.
 </para>
 

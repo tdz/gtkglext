@@ -218,7 +218,7 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
  * @direct: whether rendering is to be done with a direct connection to the graphics system.
  * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not used).
  *
- * Set the OpenGL-capability to the #GtkWidget.
+ * Set the OpenGL-capability to the @widget.
  * The call setup the callbacks to realize a OpenGL-capable window.
  *
  * Return value: TRUE if it is successful, FALSE otherwise.
@@ -297,9 +297,9 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
  * gtk_widget_is_gl_capable:
  * @widget: a #GtkWidget.
  *
- * Return whether the #GtkWidget is OpenGL-capable.
+ * Return whether the @widget is OpenGL-capable.
  *
- * Return value: TRUE if the #GtkWidget is OpenGL-capable, FALSE otherwise.
+ * Return value: TRUE if the @widget is OpenGL-capable, FALSE otherwise.
  **/
 gboolean
 gtk_widget_is_gl_capable (GtkWidget *widget)
@@ -313,7 +313,7 @@ gtk_widget_is_gl_capable (GtkWidget *widget)
  * gtk_widget_get_gl_config:
  * @widget: a #GtkWidget.
  *
- * Return the #GdkGLConfig referred by the #GtkWidget.
+ * Return the #GdkGLConfig referred by the @widget.
  *
  * Return value: the #GdkGLConfig.
  **/
@@ -329,7 +329,7 @@ gtk_widget_get_gl_config (GtkWidget *widget)
  * gtk_widget_get_gl_context:
  * @widget: a #GtkWidget.
  *
- * Return the #GdkGLContext holded by the #GtkWidget.
+ * Return the #GdkGLContext holded by the @widget.
  *
  * Return value: the #GdkGLContext.
  **/
@@ -345,7 +345,7 @@ gtk_widget_get_gl_context (GtkWidget *widget)
  * gtk_widget_get_gl_window:
  * @widget: a #GtkWidget.
  *
- * Return the #GdkGLWindow holded by the #GtkWidget.
+ * Return the #GdkGLWindow holded by the @widget.
  *
  * Return value: the #GdkGLWindow.
  **/

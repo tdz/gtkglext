@@ -1,8 +1,8 @@
 <!-- ##### SECTION Title ##### -->
-gdkgltokens
+Tokens
 
 <!-- ##### SECTION Short_Description ##### -->
-
+OpenGL-related tokens.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
@@ -72,6 +72,14 @@ gdkgltokens
 @GDK_GL_MAX_PBUFFER_HEIGHT: 
 @GDK_GL_MAX_PBUFFER_PIXELS: 
 @GDK_GL_VISUAL_ID: 
+
+<!-- ##### ENUM GdkGLMultisampleConfigAttribute ##### -->
+<para>
+
+</para>
+
+@GDK_GL_SAMPLE_BUFFERS: 
+@GDK_GL_SAMPLES: 
 
 <!-- ##### ENUM GdkGLConfigError ##### -->
 <para>

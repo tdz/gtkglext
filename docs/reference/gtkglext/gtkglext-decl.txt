@@ -518,14 +518,14 @@ GdkDisplay *display,gint       *major,gint       *minor
 <NAME>GdkGLSuccess</NAME>
 typedef enum
 {
-  GDK_GL_SUCCESS = 0
+  GDK_GL_SUCCESS = 0  /* same as 'Success' of X11 */
 } GdkGLSuccess;
 </ENUM>
 <ENUM>
 <NAME>GdkGLAttribListNone</NAME>
 typedef enum
 {
-  GDK_GL_ATTRIB_LIST_NONE = 0
+  GDK_GL_ATTRIB_LIST_NONE = 0  /* same as 'None' of X11 */
 } GdkGLAttribListNone;
 </ENUM>
 <ENUM>
@@ -572,6 +572,14 @@ typedef enum
   GDK_GL_MAX_PBUFFER_PIXELS      = 0x8018,
   GDK_GL_VISUAL_ID               = 0x800B
 } GdkGLFbConfigAttribute;
+</ENUM>
+<ENUM>
+<NAME>GdkGLMultisampleConfigAttribute</NAME>
+typedef enum
+{
+  GDK_GL_SAMPLE_BUFFERS = 100000,
+  GDK_GL_SAMPLES        = 100001
+} GdkGLMultisampleConfigAttribute;
 </ENUM>
 <ENUM>
 <NAME>GdkGLConfigError</NAME>
@@ -665,6 +673,8 @@ typedef enum
 <NAME>GdkGLExtensionValue</NAME>
 typedef enum
 {
+  /* [ GLX_EXT_visual_info extension ] */
+
   GDK_GL_X_VISUAL_TYPE_EXT           = 0x22, /* visual_info extension type */
   GDK_GL_TRANSPARENT_TYPE_EXT        = 0x23, /* visual_info extension */
   GDK_GL_TRANSPARENT_INDEX_VALUE_EXT = 0x24, /* visual_info extension */
@@ -685,6 +695,8 @@ typedef enum
   GDK_GL_NONE_EXT                    = 0x8000,
   GDK_GL_TRANSPARENT_RGB_EXT         = 0x8008,
   GDK_GL_TRANSPARENT_INDEX_EXT       = 0x8009,
+
+  /* [ GLX_EXT_visual_rating extension ] */
 
   /* Property values for visual_rating */
   GDK_GL_VISUAL_CAVEAT_EXT           = 0x20,   /* visual_rating extension type */
@@ -833,6 +845,15 @@ void
 <MACRO>
 <NAME>GDK_TYPE_GL_FB_CONFIG_ATTRIBUTE</NAME>
 #define GDK_TYPE_GL_FB_CONFIG_ATTRIBUTE (gdk_gl_fb_config_attribute_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_multisample_config_attribute_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_MULTISAMPLE_CONFIG_ATTRIBUTE</NAME>
+#define GDK_TYPE_GL_MULTISAMPLE_CONFIG_ATTRIBUTE (gdk_gl_multisample_config_attribute_get_type())
 </MACRO>
 <FUNCTION>
 <NAME>gdk_gl_config_error_get_type</NAME>

@@ -15,8 +15,8 @@
     <title>GtkGLExt Reference Manual</title>
   </bookinfo>
 
-  <chapter>
-    <title>API Reference</title>
+  <reference>
+    <title>GdkGLExt API Reference</title>
     &gtkglext-gdkglquery;
     &gtkglext-GdkGLConfig;
     &gtkglext-GdkGLContext;
@@ -26,6 +26,11 @@
     &gtkglext-gdkglfont;
     &gtkglext-gdkgltokens;
     &gtkglext-gdkglx;
+  </reference>
+
+  <reference>
+    <title>GtkGLExt API Reference</title>
     &gtkglext-gtkglwidget;
-  </chapter>
+  </reference>
+  
 </book>

@@ -223,12 +223,12 @@ gl_window_destroy (GdkGLWindow *glwindow)
  * @glconfig: a #GdkGLConfig.
  * @attrib_list: this must be set to NULL or empty (first attribute of None).
  *
- * Set the OpenGL-capability to the #GdkWindow.
+ * Set the OpenGL-capability to the @window.
  * The call creates a new #GdkGLWindow.
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None).
  *
- * Return value: the #GdkGLWindow used by the #GdkWindow if it is successful, NULL otherwise.
+ * Return value: the #GdkGLWindow used by the @window if it is successful, NULL otherwise.
  **/
 GdkGLWindow *
 gdk_window_set_gl_capability (GdkWindow    *window,
@@ -279,8 +279,8 @@ gdk_window_set_gl_capability (GdkWindow    *window,
  * gdk_window_unset_gl_capability:
  * @window: a #GdkWindow.
  *
- * Unset the OpenGL-capability of the #GdkWindow.
- * The call destroys the #GdkGLWindow holded by the #GdkWindow.
+ * Unset the OpenGL-capability of the @window.
+ * The call destroys the #GdkGLWindow holded by the @window.
  *
  **/
 void
@@ -304,9 +304,9 @@ gdk_window_unset_gl_capability (GdkWindow *window)
  * gdk_window_is_gl_capable:
  * @window: a #GdkWindow.
  *
- * Return whether the #GdkWindow is OpenGL-capable.
+ * Return whether the @window is OpenGL-capable.
  *
- * Return value: TRUE if the #GdkWindow is OpenGL-capable, FALSE otherwise.
+ * Return value: TRUE if the @window is OpenGL-capable, FALSE otherwise.
  **/
 gboolean
 gdk_window_is_gl_capable (GdkWindow *window)
@@ -320,7 +320,7 @@ gdk_window_is_gl_capable (GdkWindow *window)
  * gdk_window_get_gl_window:
  * @window: a #GdkWindow.
  *
- * Return the #GdkGLWindow holded by the #GdkWindow.
+ * Return the #GdkGLWindow holded by the @window.
  *
  * Return value: the #GdkGLWindow.
  **/

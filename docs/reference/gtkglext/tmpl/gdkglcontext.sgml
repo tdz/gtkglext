@@ -1,8 +1,8 @@
 <!-- ##### SECTION Title ##### -->
-GdkGLContext
+Rendering Context
 
 <!-- ##### SECTION Short_Description ##### -->
-OpenGL rendering context.
+OpenGL rendering context object.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>

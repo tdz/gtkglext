@@ -1,8 +1,8 @@
 <!-- ##### SECTION Title ##### -->
-gdkglfont
+Font Rendering
 
 <!-- ##### SECTION Short_Description ##### -->
-
+functions for support font rendering in OpenGL.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>

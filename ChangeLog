@@ -1,5 +1,7 @@
 2002-08-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkgltokens.h: Updated.
+
 	* gdk/gdkglconfig.[ch]
 	(gdk_gl_config_is_rgba) 
 	(gdk_gl_config_has_alpha)

@@ -1,8 +1,8 @@
 <!-- ##### SECTION Title ##### -->
-gdkglx
+X Window System Interaction
 
 <!-- ##### SECTION Short_Description ##### -->
-
+internal X-related functions.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
@@ -70,57 +70,64 @@ gdkglx
 
 <!-- ##### MACRO GDK_GL_CONFIG_XDISPLAY ##### -->
 <para>
-
+Get X Display.
 </para>
 
-@glconfig: 
+@glconfig: a #GdkGLConfig.
+@Returns: pointer to the Display.
 
 
 <!-- ##### MACRO GDK_GL_CONFIG_SCREEN_XNUMBER ##### -->
 <para>
-
+Get X screen number.
 </para>
 
-@glconfig: 
+@glconfig: a #GdkGLConfig.
+@Returns: the screen number.
 
 
 <!-- ##### MACRO GDK_GL_CONFIG_XVINFO ##### -->
 <para>
-
+Get XVisualInfo data.
 </para>
 
-@glconfig: 
+@glconfig: a #GdkGLConfig.
+@Returns: pointer to the XVisualInfo data.
 
 
 <!-- ##### MACRO GDK_GL_CONFIG_XCOLORMAP ##### -->
 <para>
-
+Get X Colormap.
 </para>
 
-@glconfig: 
+@glconfig: a #GdkGLConfig.
+@Returns: the Colormap.
 
 
 <!-- ##### MACRO GDK_GL_CONTEXT_GLXCONTEXT ##### -->
 <para>
-
+Get GLXContext.
 </para>
 
-@glcontext: 
+@glcontext: a #GdkGLContext.
+@Returns: the GLXContext.
 
 
 <!-- ##### MACRO GDK_GL_PIXMAP_GLXPIXMAP ##### -->
 <para>
-
+Get GLXPixmap.
 </para>
 
-@glpixmap: 
+@glpixmap: a #GdkGLPixmap.
+@Returns: the GLXPixmap.
 
 
 <!-- ##### MACRO GDK_GL_WINDOW_GLXWINDOW ##### -->
 <para>
-
+Get X Window.
 </para>
 
-@glwindow: 
+@glwindow: a #GdkGLWindow.
+@Returns: the Window.
 
 

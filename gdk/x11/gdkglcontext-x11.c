@@ -237,6 +237,14 @@ gdk_gl_context_copy (GdkGLContext *dst_glcontext,
   return gdk_error_trap_pop () == Success;
 }
 
+/**
+ * gdk_x11_gl_context_get_glxcontext:
+ * @glcontext: a #GdkGLContext.
+ *
+ * Get GLXContext.
+ *
+ * Return value: the GLXContext.
+ **/
 GLXContext
 gdk_x11_gl_context_get_glxcontext (GdkGLContext *glcontext)
 {

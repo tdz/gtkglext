@@ -151,6 +151,7 @@ GdkGLSuccess
 GdkGLAttribListNone
 GdkGLVisualConfigAttribute
 GdkGLFbConfigAttribute
+GdkGLMultisampleConfigAttribute
 GdkGLConfigError
 GdkGLGenericValue
 GdkGLExtensionValue
@@ -165,6 +166,8 @@ GDK_TYPE_GL_VISUAL_CONFIG_ATTRIBUTE
 gdk_gl_visual_config_attribute_get_type
 GDK_TYPE_GL_FB_CONFIG_ATTRIBUTE
 gdk_gl_fb_config_attribute_get_type
+GDK_TYPE_GL_MULTISAMPLE_CONFIG_ATTRIBUTE
+gdk_gl_multisample_config_attribute_get_type
 GDK_TYPE_GL_CONFIG_ERROR
 gdk_gl_config_error_get_type
 GDK_TYPE_GL_GENERIC_VALUE

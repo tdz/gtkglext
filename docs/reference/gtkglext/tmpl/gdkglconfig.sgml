@@ -1,8 +1,8 @@
 <!-- ##### SECTION Title ##### -->
-GdkGLConfig
+Frame Buffer Configuration
 
 <!-- ##### SECTION Short_Description ##### -->
-OpenGL frame buffer configurations.
+object to configure the OpenGL frame buffer.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>

@@ -489,6 +489,14 @@ gdk_x11_visual_get_xvinfo (GdkVisual *visual)
 
 #endif
 
+/**
+ * gdk_x11_gl_config_get_xdisplay:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get X Display.
+ *
+ * Return value: pointer to the Display.
+ **/
 Display *
 gdk_x11_gl_config_get_xdisplay (GdkGLConfig *glconfig)
 {
@@ -497,6 +505,14 @@ gdk_x11_gl_config_get_xdisplay (GdkGLConfig *glconfig)
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->xdisplay;
 }
 
+/**
+ * gdk_x11_gl_config_get_screen_number:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get X screen number.
+ *
+ * Return value: the screen number.
+ **/
 int
 gdk_x11_gl_config_get_screen_number (GdkGLConfig *glconfig)
 {
@@ -505,6 +521,14 @@ gdk_x11_gl_config_get_screen_number (GdkGLConfig *glconfig)
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->screen_num;
 }
 
+/**
+ * gdk_x11_gl_config_get_xvinfo:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get XVisualInfo data.
+ *
+ * Return value: pointer to the XVisualInfo data.
+ **/
 XVisualInfo *
 gdk_x11_gl_config_get_xvinfo (GdkGLConfig *glconfig)
 {

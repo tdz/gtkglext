@@ -65,7 +65,7 @@ gdk_gl_drawable_make_current (GdkGLDrawable *gldrawable,
  * gdk_gl_drawable_is_double_buffered:
  * @gldrawable: a #GdkGLDrawable.
  *
- * Returns whether the #GdkGLDrawable supports the double-buffered visual.
+ * Returns whether the @gldrawable supports the double-buffered visual.
  *
  * Return value: TRUE if the double-buffered visual is supported, FALSE otherwise.
  **/
@@ -128,7 +128,7 @@ gdk_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
  * @glcontext: a #GdkGLContext.
  *
  * Delimit the begining of the OpenGL execution.
- * The call makes the #GdkGLContext current to the #GdkGLDrawable, and
+ * The call makes the @glcontext current to the @gldrawable, and
  * completes GDK drawing execution.
  *
  * Return value: TRUE if it is successful, FALSE otherwise.

@@ -222,12 +222,12 @@ gl_pixmap_destroy (GdkGLPixmap *glpixmap)
  * @glconfig: a #GdkGLConfig.
  * @attrib_list: this must be set to NULL or empty (first attribute of None).
  *
- * Set the OpenGL-capability to the #GdkPixmap.
+ * Set the OpenGL-capability to the @pixmap.
  * The call creates a new #GdkGLPixmap.
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None).
  *
- * Return value: the #GdkGLPixmap used by the #GdkPixmap if it is successful, NULL otherwise.
+ * Return value: the #GdkGLPixmap used by the @pixmap if it is successful, NULL otherwise.
  **/
 GdkGLPixmap *
 gdk_pixmap_set_gl_capability (GdkPixmap    *pixmap,
@@ -278,8 +278,8 @@ gdk_pixmap_set_gl_capability (GdkPixmap    *pixmap,
  * gdk_pixmap_unset_gl_capability:
  * @pixmap: a #GdkPixmap.
  *
- * Unset the OpenGL-capability of the #GdkPixmap.
- * The call destroys the #GdkGLPixmap holded by the #GdkPixmap.
+ * Unset the OpenGL-capability of the @pixmap.
+ * The call destroys the #GdkGLPixmap holded by the @pixmap.
  *
  **/
 void
@@ -303,9 +303,9 @@ gdk_pixmap_unset_gl_capability (GdkPixmap *pixmap)
  * gdk_pixmap_is_gl_capable:
  * @pixmap: a #GdkPixmap.
  *
- * Return whether the #GdkPixmap is OpenGL-capable.
+ * Return whether the @pixmap is OpenGL-capable.
  *
- * Return value: TRUE if the #GdkPixmap is OpenGL-capable, FALSE otherwise.
+ * Return value: TRUE if the @pixmap is OpenGL-capable, FALSE otherwise.
  **/
 gboolean
 gdk_pixmap_is_gl_capable (GdkPixmap *pixmap)
@@ -319,7 +319,7 @@ gdk_pixmap_is_gl_capable (GdkPixmap *pixmap)
  * gdk_pixmap_get_gl_pixmap:
  * @pixmap: a #GdkPixmap.
  *
- * Return the #GdkGLPixmap holded by the #GdkPixmap.
+ * Return the #GdkGLPixmap holded by the @pixmap.
  *
  * Return value: the #GdkGLPixmap.
  **/

@@ -289,6 +289,14 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   return glwindow;
 }
 
+/**
+ * gdk_x11_gl_window_get_glxwindow:
+ * @glwindow: a #GdkGLWindow.
+ *
+ * Get X Window.
+ *
+ * Return value: the Window.
+ **/
 Window
 gdk_x11_gl_window_get_glxwindow (GdkGLWindow *glwindow)
 {

@@ -1,8 +1,8 @@
 <!-- ##### SECTION Title ##### -->
-GdkGLDrawable
+Rendering Surface
 
 <!-- ##### SECTION Short_Description ##### -->
-OpenGL rendering surface.
+OpenGL rendering surface interface.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>

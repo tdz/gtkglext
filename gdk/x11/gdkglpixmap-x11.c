@@ -347,6 +347,14 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   return glpixmap;
 }
 
+/**
+ * gdk_x11_gl_pixmap_get_glxpixmap:
+ * @glpixmap: a #GdkGLPixmap.
+ *
+ * Get GLXPixmap.
+ *
+ * Return value: the GLXPixmap.
+ **/
 GLXPixmap
 gdk_x11_gl_pixmap_get_glxpixmap (GdkGLPixmap *glpixmap)
 {
