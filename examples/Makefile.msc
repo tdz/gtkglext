@@ -109,6 +109,7 @@ SOURCES = \
 	rotating-square.c	\
 	coolwave.c		\
 	template.c		\
+	scribble-gl.c	\
 	wglinfo.c
 
 EXTRA_SOURCES = \
@@ -136,6 +137,7 @@ PROGRAMS = \
 	rotating-square$(EXEEXT)	\
 	coolwave$(EXEEXT)		\
 	template$(EXEEXT)		\
+	scribble-gl$(EXEEXT)	\
 	wglinfo$(EXEEXT)
 
 .SUFFIXES:
@@ -203,6 +205,9 @@ coolwave$(EXEEXT): coolwave.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
 
 template$(EXEEXT): template.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+scribble-gl$(EXEEXT): scribble-gl.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
 
 wglinfo$(EXEEXT): wglinfo.obj

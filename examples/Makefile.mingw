@@ -52,6 +52,7 @@ SOURCES = \
 	rotating-square.c	\
 	coolwave.c		\
 	template.c		\
+	scribble-gl.c	\
 	wglinfo.c
 
 EXTRA_SOURCES = \
@@ -79,6 +80,7 @@ PROGRAMS = \
 	rotating-square$(EXEEXT)	\
 	coolwave$(EXEEXT)		\
 	template$(EXEEXT)		\
+	scribble-gl$(EXEEXT)	\
 	wglinfo$(EXEEXT)
 
 .PHONY: all clean clean-deps distclean
@@ -162,6 +164,9 @@ coolwave$(EXEEXT): coolwave.o
 	$(LINK) -o $@ $^ $(LIBS)
 
 template$(EXEEXT): template.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+scribble-gl$(EXEEXT): scribble-gl.o
 	$(LINK) -o $@ $^ $(LIBS)
 
 wglinfo$(EXEEXT): wglinfo.o

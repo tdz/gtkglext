@@ -46,7 +46,8 @@ common_programs = \
 	viewlw		\
 	rotating-square	\
 	coolwave	\
-	template
+	template	\
+	scribble-gl
 
 x11_programs = \
 	glxinfo
@@ -128,6 +129,10 @@ coolwave_LDADD = $(LDADDS)
 template_SOURCES = template.c
 template_DEPENDENCIES = $(DEPS)
 template_LDADD = $(LDADDS)
+
+scribble-gl_SOURCES = scribble-gl.c
+scribble-gl_DEPENDENCIES = $(DEPS)
+scribble-gl_LDADD = $(LDADDS)
 
 glxinfo_SOURCES = glxinfo.c
 glxinfo_DEPENDENCIES = $(DEPS)

@@ -1,8 +1,17 @@
+2003-07-18  Alif Wahid  <awah005@users.sourceforge.net>
+
+	* examples/scribble-gl.c
+	* examples/Makefile.am (common_programs):
+	* examples/Makefile.mingw (PROGRAMS):
+	* examples/Makefile.msc (PROGRAMS): Added new scribble-gl.c
+	example program. This is mapped back to C from Python according
+	to the scribble-gl.py script in PyGtkGLExt.
+
 2003-07-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
-	* examples/button.c: 
-	* examples/Makefile.am (common_programs): 
-	* examples/Makefile.mingw (PROGRAMS): 
+	* examples/button.c:
+	* examples/Makefile.am (common_programs):
+	* examples/Makefile.mingw (PROGRAMS):
 	* examples/Makefile.msc (PROGRAMS): Added simple toggle button
 	example.
 
