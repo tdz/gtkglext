@@ -232,7 +232,7 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
    */
 
   if (impl->pfd.dwFlags & PFD_DOUBLEBUFFER)
-    glconfig->is_double_buffer = TRUE;
+    glconfig->is_double_buffered = TRUE;
 
   /*
    * Stereo is supported? (not work on Windows)

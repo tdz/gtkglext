@@ -41,7 +41,7 @@ struct _GdkGLConfig
   GdkColormap *colormap;
   gint depth;
 
-  guint is_double_buffer : 1;
+  guint is_double_buffered : 1;
   guint is_stereo : 1;
 };
 
@@ -54,21 +54,21 @@ struct _GdkGLConfigClass
                           gint        *value);
 };
 
-GType        gdk_gl_config_get_type         (void);
+GType        gdk_gl_config_get_type           (void);
 
-GdkGLConfig *gdk_gl_config_new              (const gint  *attrib_list);
+GdkGLConfig *gdk_gl_config_new                (const gint  *attrib_list);
 
-gboolean     gdk_gl_config_get_attrib       (GdkGLConfig *glconfig,
-                                             gint         attribute,
-                                             gint        *value);
+gboolean     gdk_gl_config_get_attrib         (GdkGLConfig *glconfig,
+                                               gint         attribute,
+                                               gint        *value);
 
-GdkColormap *gdk_gl_config_get_colormap     (GdkGLConfig *glconfig);
+GdkColormap *gdk_gl_config_get_colormap       (GdkGLConfig *glconfig);
 
-gint         gdk_gl_config_get_depth        (GdkGLConfig *glconfig);
+gint         gdk_gl_config_get_depth          (GdkGLConfig *glconfig);
 
-gboolean     gdk_gl_config_is_double_buffer (GdkGLConfig *glconfig);
+gboolean     gdk_gl_config_is_double_buffered (GdkGLConfig *glconfig);
 
-gboolean     gdk_gl_config_is_stereo        (GdkGLConfig *glconfig);
+gboolean     gdk_gl_config_is_stereo          (GdkGLConfig *glconfig);
 
 G_END_DECLS
 

@@ -1,0 +1,9 @@
+<!-- ##### MACRO gtk_widget_gl_is_double_buffer ##### -->
+<para>
+Returns whether the #GtkWidget configuration supports the double
+buffered visual.
+</para>
+
+@widget: a #GtkWidget.
+@Returns: TRUE if the double buffered visual is supported, FALSE otherwise.
+

@@ -50,8 +50,8 @@ GdkGLWindow  *gtk_widget_get_gl_window     (GtkWidget    *widget);
   gdk_gl_drawable_make_current (gtk_widget_get_gl_drawable (widget),    \
                                 gtk_widget_get_gl_context (widget))
 
-#define       gtk_widget_gl_is_double_buffer(widget)                    \
-  gdk_gl_config_is_double_buffer (gtk_widget_get_gl_config (widget))
+#define       gtk_widget_gl_is_double_buffered(widget)                  \
+  gdk_gl_drawable_is_double_buffered (gtk_widget_get_gl_drawable (widget))
 
 #define       gtk_widget_gl_swap_buffers(widget)                        \
   gdk_gl_drawable_swap_buffers (gtk_widget_get_gl_drawable (widget))

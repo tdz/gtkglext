@@ -198,7 +198,7 @@ draw(GtkWidget      *widget,
 
   glPopMatrix();
 
-  if (gtk_widget_gl_is_double_buffer(widget))
+  if (gtk_widget_gl_is_double_buffered(widget))
     gtk_widget_gl_swap_buffers(widget);
   else
     glFlush();
@@ -449,13 +449,13 @@ main(int   argc,
    * Configure OpenGL-capable visual.
    */
 
-  /* Try double buffered visual */
+  /* Try double-buffered visual */
   glconfig = gdk_gl_config_new(&config_attributes[0]);
   if (glconfig == NULL) {
-    g_print("*** Cannot find the OpenGL-capable visual with double buffering support.\n");
-    g_print("*** Trying single buffering visual.\n");
+    g_print("*** Cannot find the double-buffered visual.\n");
+    g_print("*** Trying single-buffered visual.\n");
 
-    /* Try single buffered visual */
+    /* Try single-buffered visual */
     glconfig = gdk_gl_config_new(&config_attributes[1]);
     if (glconfig == NULL) {
       g_print("*** Cannot find an OpenGL-capable visual\n");

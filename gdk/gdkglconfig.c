@@ -61,7 +61,7 @@ gdk_gl_config_init (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_init ()"));
 
-  glconfig->is_double_buffer = FALSE;
+  glconfig->is_double_buffered = FALSE;
   glconfig->is_stereo = FALSE;
 }
 
@@ -147,19 +147,19 @@ gdk_gl_config_get_depth (GdkGLConfig *glconfig)
 }
 
 /**
- * gdk_gl_config_is_double_buffer:
+ * gdk_gl_config_is_double_buffered:
  * @glconfig: a #GdkGLConfig.
  *
- * Returns whether the configuration supports the double buffered visual.
+ * Returns whether the configuration supports the double-buffered visual.
  *
- * Return value: TRUE if the double buffered visual is supported, FALSE otherwise.
+ * Return value: TRUE if the double-buffered visual is supported, FALSE otherwise.
  **/
 gboolean
-gdk_gl_config_is_double_buffer (GdkGLConfig *glconfig)
+gdk_gl_config_is_double_buffered (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return glconfig->is_double_buffer;
+  return glconfig->is_double_buffered;
 }
 
 /**

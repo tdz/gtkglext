@@ -35,9 +35,9 @@ GtkWidget    *widget
                                 gtk_widget_get_gl_context (widget))
 </MACRO>
 <MACRO>
-<NAME>gtk_widget_gl_is_double_buffer</NAME>
-#define       gtk_widget_gl_is_double_buffer(widget)                    \
-  gdk_gl_config_is_double_buffer (gtk_widget_get_gl_config (widget))
+<NAME>gtk_widget_gl_is_double_buffered</NAME>
+#define       gtk_widget_gl_is_double_buffered(widget)                  \
+  gdk_gl_drawable_is_double_buffered (gtk_widget_get_gl_drawable (widget))
 </MACRO>
 <MACRO>
 <NAME>gtk_widget_gl_swap_buffers</NAME>

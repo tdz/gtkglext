@@ -3,7 +3,7 @@ EXPORTS
 	gdk_gl_config_get_colormap
 	gdk_gl_config_get_depth
 	gdk_gl_config_get_type
-	gdk_gl_config_is_double_buffer
+	gdk_gl_config_is_double_buffered
 	gdk_gl_config_is_stereo
 	gdk_gl_config_new
 	gdk_gl_context_get_type

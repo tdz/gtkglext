@@ -212,10 +212,10 @@ set_property (GdkGLConfigImplX11 *impl,
    * Double buffering is supported?
    */
 
-  glconfig->is_double_buffer = FALSE;
+  glconfig->is_double_buffered = FALSE;
   ret = glXGetConfig (impl->xdisplay, impl->xvinfo, GLX_DOUBLEBUFFER, &value);
   if (ret == Success && value == True)
-    glconfig->is_double_buffer = TRUE;
+    glconfig->is_double_buffered = TRUE;
 
   /*
    * Stereo is supported?

@@ -186,6 +186,15 @@ _gdk_gl_window_real_drawable (GdkGLDrawable *gldrawable)
   return GDK_GL_WINDOW (gldrawable)->wrapper;
 }
 
+/*< private >*/
+gboolean
+_gdk_gl_window_is_double_buffered (GdkGLDrawable *gldrawable)
+{
+  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), NULL);
+
+  return gdk_gl_config_is_double_buffered (GDK_GL_WINDOW (gldrawable)->glconfig);
+}
+
 /*
  * OpenGL extension to GdkWindow
  */

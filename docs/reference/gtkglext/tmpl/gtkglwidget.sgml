@@ -83,14 +83,13 @@ Attach a OpenGL rendering context to the #GtkWidget.
 @Returns: TRUE if it is successful, FALSE otherwise.
 
 
-<!-- ##### MACRO gtk_widget_gl_is_double_buffer ##### -->
+<!-- ##### MACRO gtk_widget_gl_is_double_buffered ##### -->
 <para>
-Returns whether the #GtkWidget configuration supports the double
-buffered visual.
+Returns whether the widget supports the double-buffered visual.
 </para>
 
 @widget: a #GtkWidget.
-@Returns: TRUE if the double buffered visual is supported, FALSE otherwise.
+@Returns: TRUE if the double-buffered visual is supported, FALSE otherwise.
 
 
 <!-- ##### MACRO gtk_widget_gl_swap_buffers ##### -->

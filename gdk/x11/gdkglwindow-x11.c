@@ -144,6 +144,7 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 
   iface->create_new_context   = _gdk_x11_gl_context_new;
   iface->make_context_current = gdk_x11_gl_window_make_context_current;
+  iface->is_double_buffered   = _gdk_gl_window_is_double_buffered;
   iface->swap_buffers         = _gdk_x11_gl_drawable_swap_buffers;
   iface->wait_gl              = _gdk_x11_gl_drawable_wait_gl;
   iface->wait_gdk             = _gdk_x11_gl_drawable_wait_gdk;

@@ -164,7 +164,7 @@ configure (GtkWidget         *widget,
 
   glCallList (1);
 
-  if (gdk_gl_config_is_double_buffer (glconfig))
+  if (gdk_gl_drawable_is_double_buffered (gldrawable))
     gdk_gl_drawable_swap_buffers (gldrawable);
   else
     glFlush ();
@@ -256,14 +256,14 @@ main (int argc,
    * Configure OpenGL-capable visual.
    */
 
-  /* Try single buffered visual */
+  /* Try single-buffered visual */
   glconfig = gdk_gl_config_new (&config_attributes[1]);
   if (glconfig == NULL)
     {
-      g_print ("*** Cannot find the OpenGL-capable visual with single buffering support.\n");
-      g_print ("*** Trying double buffered visual.\n");
+      g_print ("*** Cannot find the single-buffered visual.\n");
+      g_print ("*** Trying double-buffered visual.\n");
 
-      /* Try double buffered visual */
+      /* Try double-buffered visual */
       glconfig = gdk_gl_config_new (&config_attributes[0]);
       if (glconfig == NULL)
         {

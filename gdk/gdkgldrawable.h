@@ -47,6 +47,7 @@ struct _GdkGLDrawableClass
   gboolean      (*make_context_current) (GdkGLDrawable *draw,
                                          GdkGLDrawable *read,
                                          GdkGLContext  *glcontext);
+  gboolean      (*is_double_buffered)   (GdkGLDrawable *gldrawable);
   void          (*swap_buffers)         (GdkGLDrawable *gldrawable);
   void          (*wait_gl)              (GdkGLDrawable *gldrawable);
   void          (*wait_gdk)             (GdkGLDrawable *gldrawable);
@@ -56,16 +57,18 @@ struct _GdkGLDrawableClass
   GdkDrawable  *(*real_drawable)        (GdkGLDrawable *gldrawable);
 };
 
-GType    gdk_gl_drawable_get_type     (void);
+GType    gdk_gl_drawable_get_type           (void);
 
-gboolean gdk_gl_drawable_make_current (GdkGLDrawable *gldrawable,
-                                       GdkGLContext  *glcontext);
+gboolean gdk_gl_drawable_make_current       (GdkGLDrawable *gldrawable,
+                                             GdkGLContext  *glcontext);
 
-void     gdk_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable);
+gboolean gdk_gl_drawable_is_double_buffered (GdkGLDrawable *gldrawable);
 
-void     gdk_gl_drawable_wait_gl      (GdkGLDrawable *gldrawable);
+void     gdk_gl_drawable_swap_buffers       (GdkGLDrawable *gldrawable);
 
-void     gdk_gl_drawable_wait_gdk     (GdkGLDrawable *gldrawable);
+void     gdk_gl_drawable_wait_gl            (GdkGLDrawable *gldrawable);
+
+void     gdk_gl_drawable_wait_gdk           (GdkGLDrawable *gldrawable);
 
 #define  gdk_gl_drawable_gl_begin(gldrawable, glcontext)        \
   do                                                            \
