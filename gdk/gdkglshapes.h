@@ -19,10 +19,8 @@
 #ifndef __GDK_GL_SHAPES_H__
 #define __GDK_GL_SHAPES_H__
 
-#include <gdk/gdktypes.h>
-
 #include <gdk/gdkgldefs.h>
-#include <gdk/gdkgldebug.h>
+#include <gdk/gdkgltypes.h>
 
 #ifdef G_OS_WIN32
 #include <windows.h>

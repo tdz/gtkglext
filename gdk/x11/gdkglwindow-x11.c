@@ -40,9 +40,7 @@ static void         gdk_x11_gl_window_gl_end               (GdkGLDrawable *gldra
 static GdkGLConfig *gdk_x11_gl_window_get_gl_config        (GdkGLDrawable *gldrawable);
 
 static void gdk_gl_window_impl_x11_class_init (GdkGLWindowImplX11Class *klass);
-
 static void gdk_gl_window_impl_x11_finalize   (GObject                 *object);
-
 static void gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface);
 
 static gpointer parent_class = NULL;
@@ -63,7 +61,7 @@ gdk_gl_window_impl_x11_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLWindowImplX11),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL,
+        (GInstanceInitFunc) NULL
       };
       static const GInterfaceInfo gl_drawable_interface_info = {
         (GInterfaceInitFunc) gdk_gl_window_impl_x11_gl_drawable_interface_init,
@@ -111,11 +109,7 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
                                        impl->glxwindow);
     }
 
-  if (impl->glconfig != NULL)
-    {
-      g_object_unref (G_OBJECT (impl->glconfig));
-      impl->glconfig = NULL;
-    }
+  g_object_unref (G_OBJECT (impl->glconfig));
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -135,6 +129,61 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->gl_end               =  gdk_x11_gl_window_gl_end;
   iface->get_gl_config        =  gdk_x11_gl_window_get_gl_config;
   iface->get_size             = _gdk_gl_window_get_size;
+}
+
+/*
+ * attrib_list is currently unused. This must be set to NULL or empty
+ * (first attribute of None). See GLX 1.3 spec.
+ */
+/**
+ * gdk_gl_window_new:
+ * @glconfig: a #GdkGLConfig.
+ * @window: the #GdkWindow to be used as the rendering area.
+ * @attrib_list: this must be set to NULL or empty (first attribute of None).
+ *
+ * Create an on-screen rendering area.
+ * attrib_list is currently unused. This must be set to NULL or empty
+ * (first attribute of None). See GLX 1.3 spec.
+ *
+ * Return value: the new #GdkGLWindow.
+ **/
+GdkGLWindow *
+gdk_gl_window_new (GdkGLConfig *glconfig,
+                   GdkWindow   *window,
+                   const int   *attrib_list)
+{
+  GdkGLWindow *glwindow;
+  GdkGLWindowImplX11 *impl;
+
+  /* GLXWindow glxwindow; */
+  Window glxwindow;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_window_new ()"));
+
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
+
+  /*
+   * Get X Window.
+   */
+
+  glxwindow = GDK_DRAWABLE_XID (GDK_DRAWABLE(window));
+
+  /*
+   * Instantiate the GdkGLWindowImplX11 object.
+   */
+
+  glwindow = g_object_new (GDK_TYPE_GL_WINDOW_IMPL_X11, NULL);
+  impl = GDK_GL_WINDOW_IMPL_X11 (glwindow);
+
+  glwindow->drawable = GDK_DRAWABLE (window);
+
+  impl->glxwindow = glxwindow;
+
+  impl->glconfig = glconfig;
+  g_object_ref (G_OBJECT (impl->glconfig));
+
+  return glwindow;
 }
 
 static gboolean
@@ -246,61 +295,6 @@ gdk_x11_gl_window_get_gl_config (GdkGLDrawable *gldrawable)
   g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), NULL);
 
   return GDK_GL_WINDOW_IMPL_X11 (gldrawable)->glconfig;
-}
-
-/*
- * attrib_list is currently unused. This must be set to NULL or empty
- * (first attribute of None). See GLX 1.3 spec.
- */
-/**
- * gdk_gl_window_new:
- * @glconfig: a #GdkGLConfig.
- * @window: the #GdkWindow to be used as the rendering area.
- * @attrib_list: this must be set to NULL or empty (first attribute of None).
- *
- * Create an on-screen rendering area.
- * attrib_list is currently unused. This must be set to NULL or empty
- * (first attribute of None). See GLX 1.3 spec.
- *
- * Return value: the new #GdkGLWindow.
- **/
-GdkGLWindow *
-gdk_gl_window_new (GdkGLConfig *glconfig,
-                   GdkWindow   *window,
-                   const int   *attrib_list)
-{
-  GdkGLWindow *glwindow;
-  GdkGLWindowImplX11 *impl;
-
-  /* GLXWindow glxwindow; */
-  Window glxwindow;
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_window_new ()"));
-
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
-  g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
-
-  /*
-   * Get X Window.
-   */
-
-  glxwindow = GDK_DRAWABLE_XID (GDK_DRAWABLE(window));
-
-  /*
-   * Instantiate the GdkGLWindowImplX11 object.
-   */
-
-  glwindow = g_object_new (GDK_TYPE_GL_WINDOW_IMPL_X11, NULL);
-  impl = GDK_GL_WINDOW_IMPL_X11 (glwindow);
-
-  glwindow->drawable = GDK_DRAWABLE (window);
-
-  impl->glxwindow = glxwindow;
-
-  impl->glconfig = glconfig;
-  g_object_ref (G_OBJECT (impl->glconfig));
-
-  return glwindow;
 }
 
 /**

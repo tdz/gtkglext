@@ -19,9 +19,6 @@
 #ifndef __GDK_GL_CONFIG_H__
 #define __GDK_GL_CONFIG_H__
 
-#include <gdk/gdktypes.h>
-#include <gdk/gdkwindow.h>
-
 #include <gdk/gdkgldefs.h>
 #include <gdk/gdkgltypes.h>
 

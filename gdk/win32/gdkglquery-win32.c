@@ -218,19 +218,19 @@ gdk_gl_query_get_proc_address (const char *proc_name)
   GDK_GL_NOTE (IMPL, g_message (" * wglGetProcAddress () - %s",
                                 proc_address ? "succeeded" : "failed"));
 
-  if (proc_address)
+  if (proc_address != NULL)
     return proc_address;
 
   /* Try g_module_symbol () */
 
-  if (!main_module)
+  if (main_module == NULL)
     {
       GDK_GL_NOTE (MISC, g_message (" - get main_module"));
 
       main_module = g_module_open (NULL, G_MODULE_BIND_LAZY);
     }
 
-  if (main_module)
+  if (main_module != NULL)
     {
       g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
 

@@ -36,7 +36,6 @@ static GdkColormap *gdk_gl_config_setup_colormap        (GdkScreen              
 static void         gdk_gl_config_init_attrib           (GdkGLConfig               *glconfig);
 
 static void         gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass);
-
 static void         gdk_gl_config_impl_win32_finalize   (GObject                   *object);
 
 static gpointer parent_class = NULL;
@@ -57,7 +56,7 @@ gdk_gl_config_impl_win32_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLConfigImplWin32),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL,
+        (GInstanceInitFunc) NULL
       };
 
       type = g_type_register_static (GDK_TYPE_GL_CONFIG,
@@ -87,19 +86,7 @@ gdk_gl_config_impl_win32_finalize (GObject *object)
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_win32_finalize ()"));
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-  if (impl->screen != NULL)
-    {
-      g_object_unref (G_OBJECT (impl->screen));
-      impl->screen = NULL;
-    }
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-
-  if (impl->colormap != NULL)
-    {
-      g_object_unref (G_OBJECT (impl->colormap));
-      impl->colormap = NULL;
-    }
+  g_object_unref (G_OBJECT (impl->colormap));
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -502,9 +489,6 @@ gdk_gl_config_new_common (GdkScreen *screen,
   impl->pfd = pfd;
 
   impl->screen = screen;
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-  g_object_ref (G_OBJECT (impl->screen));
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   /*
    * Get an appropriate colormap.
@@ -534,9 +518,9 @@ gdk_gl_config_new (const int *attrib_list)
 {
   GdkScreen *screen;
 
-  g_return_val_if_fail (attrib_list != NULL, NULL);
-
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
+
+  g_return_val_if_fail (attrib_list != NULL, NULL);
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   screen = gdk_screen_get_default ();
@@ -553,10 +537,10 @@ GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
                               const int *attrib_list)
 {
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_for_screen ()"));
+
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
   g_return_val_if_fail (attrib_list != NULL, NULL);
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_for_screen ()"));
 
   return gdk_gl_config_new_common (screen, attrib_list);
 }
@@ -610,7 +594,6 @@ gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   impl->screen = gdk_screen_get_default ();
-  g_object_ref (G_OBJECT (impl->screen));
 #else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   impl->screen = NULL;
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
@@ -636,14 +619,6 @@ gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
   gdk_gl_config_init_attrib (glconfig);
 
   return glconfig;
-}
-
-PIXELFORMATDESCRIPTOR *
-gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
-
-  return &(GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->pfd);
 }
 
 GdkScreen *
@@ -782,6 +757,14 @@ gdk_gl_config_get_depth (GdkGLConfig *glconfig)
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
 
   return GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->depth;
+}
+
+PIXELFORMATDESCRIPTOR *
+gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+
+  return &(GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->pfd);
 }
 
 void

@@ -44,9 +44,7 @@ static void         gdk_win32_gl_pixmap_gl_end               (GdkGLDrawable *gld
 static GdkGLConfig *gdk_win32_gl_pixmap_get_gl_config        (GdkGLDrawable *gldrawable);
 
 static void gdk_gl_pixmap_impl_win32_class_init (GdkGLPixmapImplWin32Class *klass);
-
 static void gdk_gl_pixmap_impl_win32_finalize   (GObject                   *object);
-
 static void gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface);
 
 static gpointer parent_class = NULL;
@@ -67,7 +65,7 @@ gdk_gl_pixmap_impl_win32_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLPixmapImplWin32),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL,
+        (GInstanceInitFunc) NULL
       };
       static const GInterfaceInfo gl_drawable_interface_info = {
         (GInterfaceInitFunc) gdk_gl_pixmap_impl_win32_gl_drawable_interface_init,
@@ -101,32 +99,16 @@ gdk_gl_pixmap_impl_win32_class_init (GdkGLPixmapImplWin32Class *klass)
 static void
 gdk_gl_pixmap_impl_win32_finalize (GObject *object)
 {
-  GdkGLPixmap *glpixmap;
-  GdkGLPixmapImplWin32 *impl;
+  GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (object);
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_finalize ()"));
 
-  glpixmap = GDK_GL_PIXMAP (object);
-  impl = GDK_GL_PIXMAP_IMPL_WIN32 (object);
-
   /* Delete the memory DC. */
-  if (impl->hdc != NULL)
-    {
-      DeleteDC (impl->hdc);
-      impl->hdc = NULL;
-    }
+  DeleteDC (impl->hdc);
 
-  if (impl->aux_pixmap != NULL)
-    {
-      g_object_unref (G_OBJECT (impl->aux_pixmap));
-      impl->aux_pixmap = NULL;
-    }
+  g_object_unref (G_OBJECT (impl->aux_pixmap));
 
-  if (impl->glconfig != NULL)
-    {
-      g_object_unref (G_OBJECT (impl->glconfig));
-      impl->glconfig = NULL;
-    }
+  g_object_unref (G_OBJECT (impl->glconfig));
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -146,6 +128,146 @@ gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->gl_end               =  gdk_win32_gl_pixmap_gl_end;
   iface->get_gl_config        =  gdk_win32_gl_pixmap_get_gl_config;
   iface->get_size             = _gdk_gl_pixmap_get_size;
+}
+
+/*
+ * attrib_list is currently unused. This must be set to NULL or empty
+ * (first attribute of None). See GLX 1.3 spec.
+ */
+GdkGLPixmap *
+gdk_gl_pixmap_new (GdkGLConfig *glconfig,
+                   GdkPixmap   *pixmap,
+                   const int   *attrib_list)
+{
+  GdkGLPixmap *glpixmap;
+  GdkGLPixmapImplWin32 *impl;
+
+  gint width, height;
+  gint depth;
+  GdkPixmap *aux_pixmap = NULL;
+
+  HBITMAP gl_hbitmap;
+  HBITMAP gdk_hbitmap;
+  HDC hdc = NULL;
+  PIXELFORMATDESCRIPTOR pfd;
+  int pixel_format;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_new ()"));
+
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), NULL);
+
+  /*
+   * Create offscreen rendering area.
+   */
+
+  gdk_drawable_get_size (GDK_DRAWABLE (pixmap), &width, &height);
+  depth = gdk_drawable_get_depth (GDK_DRAWABLE (pixmap));
+
+  aux_pixmap = gdk_pixmap_new (NULL, width, height, depth);
+  if (aux_pixmap == NULL)
+    goto FAIL;
+
+  /* Source (OpenGL) DIB */
+  gl_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (GDK_DRAWABLE (aux_pixmap));
+
+  /* Destination (GDK) DIB */
+  gdk_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (GDK_DRAWABLE (pixmap));
+
+  /*
+   * Create a memory DC.
+   */
+
+  hdc = CreateCompatibleDC (NULL);
+  if (hdc == NULL)
+    {
+      g_warning ("cannot create a memory DC");
+      goto FAIL;
+    }
+
+  /*
+   * Select the bitmap.
+   */
+
+  if (SelectObject (hdc, gl_hbitmap) == NULL)
+    {
+      g_warning ("cannot select DIB");
+      goto FAIL;
+    }
+
+  /*
+   * Choose pixel format.
+   */
+
+  pfd = *(GDK_GL_CONFIG_PFD (glconfig));
+  /* Draw to bitmap */
+  pfd.dwFlags &= ~PFD_DRAW_TO_WINDOW;
+  pfd.dwFlags |= PFD_DRAW_TO_BITMAP;
+
+  /* Request pfd.cColorBits should exclude alpha bitplanes. */
+  pfd.cColorBits = pfd.cRedBits + pfd.cGreenBits + pfd.cBlueBits;
+
+  GDK_GL_NOTE (IMPL, g_message (" * ChoosePixelFormat ()"));
+
+  pixel_format = ChoosePixelFormat (hdc, &pfd);
+  /*
+  pixel_format = _gdk_win32_gl_config_find_pixel_format (hdc, &pfd, &pfd);
+  */
+
+  if (pixel_format == 0)
+    {
+      g_warning ("cannot choose pixel format");
+      goto FAIL;
+    }
+
+  GDK_GL_NOTE (MISC, g_message (" -- impl->pixel_format = 0x%x", pixel_format));
+  GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&pfd));
+
+  /*
+   * Set pixel format.
+   */
+
+  GDK_GL_NOTE (IMPL, g_message (" * SetPixelFormat ()"));
+
+  if (!SetPixelFormat (hdc, pixel_format, &pfd))
+    {
+      g_warning ("cannot set pixel format");
+      goto FAIL;
+    }
+
+  /*
+   * Instantiate the GdkGLPixmapImplWin32 object.
+   */
+
+  glpixmap = g_object_new (GDK_TYPE_GL_PIXMAP_IMPL_WIN32, NULL);
+  impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
+
+  glpixmap->drawable = GDK_DRAWABLE (pixmap);
+
+  impl->aux_pixmap = aux_pixmap;
+
+  impl->gl_hbitmap = gl_hbitmap;
+  impl->gdk_hbitmap = gdk_hbitmap;
+
+  impl->pfd = pfd;
+  impl->pixel_format = pixel_format;
+
+  impl->glconfig = glconfig;
+  g_object_ref (G_OBJECT (impl->glconfig));
+
+  impl->hdc = hdc;
+
+  return glpixmap;
+
+ FAIL:
+
+  if (hdc != NULL)
+    DeleteDC (hdc);
+
+  if (aux_pixmap != NULL)
+    g_object_unref (G_OBJECT (aux_pixmap));
+
+  return NULL;  
 }
 
 HDC
@@ -415,143 +537,6 @@ gdk_win32_gl_pixmap_get_gl_config (GdkGLDrawable *gldrawable)
   g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
 
   return GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable)->glconfig;
-}
-
-/*
- * attrib_list is currently unused. This must be set to NULL or empty
- * (first attribute of None). See GLX 1.3 spec.
- */
-GdkGLPixmap *
-gdk_gl_pixmap_new (GdkGLConfig *glconfig,
-                   GdkPixmap   *pixmap,
-                   const int   *attrib_list)
-{
-  GdkGLPixmap *glpixmap;
-  GdkGLPixmapImplWin32 *impl;
-
-  gint width, height;
-  gint depth;
-  GdkPixmap *aux_pixmap = NULL;
-
-  HBITMAP gl_hbitmap;
-  HBITMAP gdk_hbitmap;
-  HDC hdc = NULL;
-  PIXELFORMATDESCRIPTOR pfd;
-  int pixel_format;
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_new ()"));
-
-  /*
-   * Create offscreen rendering area.
-   */
-
-  gdk_drawable_get_size (GDK_DRAWABLE (pixmap), &width, &height);
-  depth = gdk_drawable_get_depth (GDK_DRAWABLE (pixmap));
-
-  aux_pixmap = gdk_pixmap_new (NULL, width, height, depth);
-  if (aux_pixmap == NULL)
-    goto FAIL;
-
-  /* Source (OpenGL) DIB */
-  gl_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (GDK_DRAWABLE (aux_pixmap));
-
-  /* Destination (GDK) DIB */
-  gdk_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (GDK_DRAWABLE (pixmap));
-
-  /*
-   * Create a memory DC.
-   */
-
-  hdc = CreateCompatibleDC (NULL);
-  if (hdc == NULL)
-    {
-      g_warning ("cannot create a memory DC");
-      goto FAIL;
-    }
-
-  /*
-   * Select the bitmap.
-   */
-
-  if (SelectObject (hdc, gl_hbitmap) == NULL)
-    {
-      g_warning ("cannot select DIB");
-      goto FAIL;
-    }
-
-  /*
-   * Choose pixel format.
-   */
-
-  pfd = *(GDK_GL_CONFIG_PFD (glconfig));
-  /* Draw to bitmap */
-  pfd.dwFlags &= ~PFD_DRAW_TO_WINDOW;
-  pfd.dwFlags |= PFD_DRAW_TO_BITMAP;
-
-  /* Request pfd.cColorBits should exclude alpha bitplanes. */
-  pfd.cColorBits = pfd.cRedBits + pfd.cGreenBits + pfd.cBlueBits;
-
-  GDK_GL_NOTE (IMPL, g_message (" * ChoosePixelFormat ()"));
-
-  pixel_format = ChoosePixelFormat (hdc, &pfd);
-  /*
-  pixel_format = _gdk_win32_gl_config_find_pixel_format (hdc, &pfd, &pfd);
-  */
-
-  if (pixel_format == 0)
-    {
-      g_warning ("cannot choose pixel format");
-      goto FAIL;
-    }
-
-  GDK_GL_NOTE (MISC, g_message (" -- impl->pixel_format = 0x%x", pixel_format));
-  GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&pfd));
-
-  /*
-   * Set pixel format.
-   */
-
-  GDK_GL_NOTE (IMPL, g_message (" * SetPixelFormat ()"));
-
-  if (!SetPixelFormat (hdc, pixel_format, &pfd))
-    {
-      g_warning ("cannot set pixel format");
-      goto FAIL;
-    }
-
-  /*
-   * Instantiate the GdkGLPixmapImplWin32 object.
-   */
-
-  glpixmap = g_object_new (GDK_TYPE_GL_PIXMAP_IMPL_WIN32, NULL);
-  impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
-
-  glpixmap->drawable = GDK_DRAWABLE (pixmap);
-
-  impl->aux_pixmap = aux_pixmap;
-
-  impl->gl_hbitmap = gl_hbitmap;
-  impl->gdk_hbitmap = gdk_hbitmap;
-
-  impl->pfd = pfd;
-  impl->pixel_format = pixel_format;
-
-  impl->glconfig = glconfig;
-  g_object_ref (G_OBJECT (impl->glconfig));
-
-  impl->hdc = hdc;
-
-  return glpixmap;
-
- FAIL:
-
-  if (hdc != NULL)
-    DeleteDC (hdc);
-
-  if (aux_pixmap != NULL)
-    g_object_unref (G_OBJECT (aux_pixmap));
-
-  return NULL;  
 }
 
 PIXELFORMATDESCRIPTOR *

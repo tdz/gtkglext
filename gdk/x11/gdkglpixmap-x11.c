@@ -38,9 +38,7 @@ static void         gdk_x11_gl_pixmap_gl_end               (GdkGLDrawable *gldra
 static GdkGLConfig *gdk_x11_gl_pixmap_get_gl_config        (GdkGLDrawable *gldrawable);
 
 static void gdk_gl_pixmap_impl_x11_class_init (GdkGLPixmapImplX11Class *klass);
-
 static void gdk_gl_pixmap_impl_x11_finalize   (GObject                 *object);
-
 static void gdk_gl_pixmap_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface);
 
 static gpointer parent_class = NULL;
@@ -61,7 +59,7 @@ gdk_gl_pixmap_impl_x11_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLPixmapImplX11),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL,
+        (GInstanceInitFunc) NULL
       };
       static const GInterfaceInfo gl_drawable_interface_info = {
         (GInterfaceInitFunc) gdk_gl_pixmap_impl_x11_gl_drawable_interface_init,
@@ -99,21 +97,13 @@ gdk_gl_pixmap_impl_x11_finalize (GObject *object)
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_finalize ()"));
 
-  if (impl->glxpixmap != None)
-    {
-      GDK_GL_NOTE (IMPL, g_message (" * glXDestroyGLXPixmap ()"));
+  GDK_GL_NOTE (IMPL, g_message (" * glXDestroyGLXPixmap ()"));
 
-      glXDestroyGLXPixmap (GDK_GL_CONFIG_XDISPLAY (impl->glconfig),
-                           impl->glxpixmap);
-      glXWaitGL ();
-      impl->glxpixmap = None;
-    }
+  glXDestroyGLXPixmap (GDK_GL_CONFIG_XDISPLAY (impl->glconfig),
+                       impl->glxpixmap);
+  glXWaitGL ();
 
-  if (impl->glconfig != NULL)
-    {
-      g_object_unref (G_OBJECT (impl->glconfig));
-      impl->glconfig = NULL;
-    }
+  g_object_unref (G_OBJECT (impl->glconfig));
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -133,109 +123,6 @@ gdk_gl_pixmap_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->gl_end               =  gdk_x11_gl_pixmap_gl_end;
   iface->get_gl_config        =  gdk_x11_gl_pixmap_get_gl_config;
   iface->get_size             = _gdk_gl_pixmap_get_size;
-}
-
-static gboolean
-gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable *draw,
-                                        GdkGLDrawable *read,
-                                        GdkGLContext  *glcontext)
-{
-  GdkGLPixmapImplX11 *impl;
-  Display *xdisplay;
-  GLXContext glxcontext;
-
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (draw), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
-
-  impl = GDK_GL_PIXMAP_IMPL_X11 (draw);
-
-  xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
-  glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
-
-  if (xdisplay == glXGetCurrentDisplay () &&
-      glxcontext == glXGetCurrentContext () &&
-      impl->glxpixmap == glXGetCurrentDrawable ())
-    return TRUE;
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-  GDK_GL_NOTE (MISC,
-    g_message (" -- Pixmap: screen number = %d",
-      GDK_SCREEN_XNUMBER (gdk_drawable_get_screen (GDK_DRAWABLE(draw)))));
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  GDK_GL_NOTE (MISC,
-    g_message (" -- Pixmap: visual id = 0x%lx",
-      GDK_VISUAL_XVISUAL (gdk_drawable_get_visual (GDK_DRAWABLE(draw)))->visualid));
-
-  GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
-
-  if (!glXMakeCurrent (xdisplay, impl->glxpixmap, glxcontext))
-    {
-      _gdk_gl_context_set_gl_drawable (glcontext, NULL);
-      /* currently unused. */
-      /* _gdk_gl_context_set_gl_drawable_read (glcontext, NULL); */
-      return FALSE;
-    }
-
-  _gdk_gl_context_set_gl_drawable (glcontext, draw);
-  /* currently unused. */
-  /* _gdk_gl_context_set_gl_drawable_read (glcontext, read); */
-
-  if (GDK_GL_CONFIG_AS_SINGLE_MODE (impl->glconfig))
-    {
-      /* We do this because we are treating a double-buffered frame
-         buffer as a single-buffered frame buffer because the system
-         does not appear to export any suitable single-buffered
-         visuals (in which the following are necessary). */
-      glDrawBuffer (GL_FRONT);
-      glReadBuffer (GL_FRONT);
-    }
-
-  return TRUE;
-}
-
-static gboolean
-gdk_x11_gl_pixmap_is_double_buffered (GdkGLDrawable *gldrawable)
-{
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), FALSE);
-
-  return gdk_gl_config_is_double_buffered (GDK_GL_PIXMAP_IMPL_X11 (gldrawable)->glconfig);
-}
-
-static void
-gdk_x11_gl_pixmap_swap_buffers (GdkGLDrawable *gldrawable)
-{
-  GdkGLPixmapImplX11 *impl;
-
-  g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
-
-  impl = GDK_GL_PIXMAP_IMPL_X11 (gldrawable);
-
-  GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
-
-  glXSwapBuffers (GDK_GL_CONFIG_XDISPLAY (impl->glconfig),
-                  impl->glxpixmap);
-}
-
-static gboolean
-gdk_x11_gl_pixmap_gl_begin (GdkGLDrawable *draw,
-                            GdkGLDrawable *read,
-                            GdkGLContext  *glcontext)
-{
-  return gdk_x11_gl_pixmap_make_context_current (draw, read, glcontext);
-}
-
-static void
-gdk_x11_gl_pixmap_gl_end (GdkGLDrawable *gldrawable)
-{
-  /* do nothing */
-}
-
-static GdkGLConfig *
-gdk_x11_gl_pixmap_get_gl_config (GdkGLDrawable *gldrawable)
-{
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
-
-  return GDK_GL_PIXMAP_IMPL_X11 (gldrawable)->glconfig;
 }
 
 /**
@@ -343,6 +230,109 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   g_object_ref (G_OBJECT (impl->glconfig));
 
   return glpixmap;
+}
+
+static gboolean
+gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable *draw,
+                                        GdkGLDrawable *read,
+                                        GdkGLContext  *glcontext)
+{
+  GdkGLPixmapImplX11 *impl;
+  Display *xdisplay;
+  GLXContext glxcontext;
+
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP (draw), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+
+  impl = GDK_GL_PIXMAP_IMPL_X11 (draw);
+
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
+  glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
+
+  if (xdisplay == glXGetCurrentDisplay () &&
+      glxcontext == glXGetCurrentContext () &&
+      impl->glxpixmap == glXGetCurrentDrawable ())
+    return TRUE;
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Pixmap: screen number = %d",
+      GDK_SCREEN_XNUMBER (gdk_drawable_get_screen (GDK_DRAWABLE(draw)))));
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Pixmap: visual id = 0x%lx",
+      GDK_VISUAL_XVISUAL (gdk_drawable_get_visual (GDK_DRAWABLE(draw)))->visualid));
+
+  GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
+
+  if (!glXMakeCurrent (xdisplay, impl->glxpixmap, glxcontext))
+    {
+      _gdk_gl_context_set_gl_drawable (glcontext, NULL);
+      /* currently unused. */
+      /* _gdk_gl_context_set_gl_drawable_read (glcontext, NULL); */
+      return FALSE;
+    }
+
+  _gdk_gl_context_set_gl_drawable (glcontext, draw);
+  /* currently unused. */
+  /* _gdk_gl_context_set_gl_drawable_read (glcontext, read); */
+
+  if (GDK_GL_CONFIG_AS_SINGLE_MODE (impl->glconfig))
+    {
+      /* We do this because we are treating a double-buffered frame
+         buffer as a single-buffered frame buffer because the system
+         does not appear to export any suitable single-buffered
+         visuals (in which the following are necessary). */
+      glDrawBuffer (GL_FRONT);
+      glReadBuffer (GL_FRONT);
+    }
+
+  return TRUE;
+}
+
+static gboolean
+gdk_x11_gl_pixmap_is_double_buffered (GdkGLDrawable *gldrawable)
+{
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), FALSE);
+
+  return gdk_gl_config_is_double_buffered (GDK_GL_PIXMAP_IMPL_X11 (gldrawable)->glconfig);
+}
+
+static void
+gdk_x11_gl_pixmap_swap_buffers (GdkGLDrawable *gldrawable)
+{
+  GdkGLPixmapImplX11 *impl;
+
+  g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
+
+  impl = GDK_GL_PIXMAP_IMPL_X11 (gldrawable);
+
+  GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
+
+  glXSwapBuffers (GDK_GL_CONFIG_XDISPLAY (impl->glconfig),
+                  impl->glxpixmap);
+}
+
+static gboolean
+gdk_x11_gl_pixmap_gl_begin (GdkGLDrawable *draw,
+                            GdkGLDrawable *read,
+                            GdkGLContext  *glcontext)
+{
+  return gdk_x11_gl_pixmap_make_context_current (draw, read, glcontext);
+}
+
+static void
+gdk_x11_gl_pixmap_gl_end (GdkGLDrawable *gldrawable)
+{
+  /* do nothing */
+}
+
+static GdkGLConfig *
+gdk_x11_gl_pixmap_get_gl_config (GdkGLDrawable *gldrawable)
+{
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
+
+  return GDK_GL_PIXMAP_IMPL_X11 (gldrawable)->glconfig;
 }
 
 /**

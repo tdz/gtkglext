@@ -189,13 +189,13 @@ gdk_gl_query_get_proc_address (const char *proc_name)
 {
   typedef GdkGLProc (*__glXGetProcAddressProc) (const GLubyte *);
   static __glXGetProcAddressProc glx_get_proc_address = NULL;
-  static gboolean init_glx_get_proc_address = FALSE;
   static GModule *main_module = NULL;
+  static gboolean initialized = FALSE;
   GdkGLProc proc_address = NULL;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_query_get_proc_address ()"));
 
-  if (!init_glx_get_proc_address)
+  if (!initialized)
     {
       /*
        * Look up glXGetProcAddress () function.
@@ -208,10 +208,10 @@ gdk_gl_query_get_proc_address (const char *proc_name)
 
       g_module_symbol (main_module, "glXGetProcAddress",
                        (gpointer) &glx_get_proc_address);
-      if (!glx_get_proc_address)
+      if (glx_get_proc_address == NULL)
         g_module_symbol (main_module, "glXGetProcAddressARB",
                          (gpointer) &glx_get_proc_address);
-      if (!glx_get_proc_address)
+      if (glx_get_proc_address == NULL)
         g_module_symbol (main_module, "glXGetProcAddressEXT",
                          (gpointer) &glx_get_proc_address);
 
@@ -221,12 +221,12 @@ gdk_gl_query_get_proc_address (const char *proc_name)
       GDK_GL_NOTE (MISC, g_message (" - glXGetProcAddress () - %s",
                                     glx_get_proc_address ? "supported" : "not supported"));
 
-      init_glx_get_proc_address = TRUE;
+      initialized = TRUE;
     }
 
   /* Try glXGetProcAddress () */
 
-  if (glx_get_proc_address)
+  if (glx_get_proc_address != NULL)
     {
       proc_address = glx_get_proc_address (proc_name);
 
@@ -236,7 +236,7 @@ gdk_gl_query_get_proc_address (const char *proc_name)
 
   /* Try g_module_symbol () */
 
-  if (!proc_address)
+  if (proc_address == NULL)
     {
       g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
 

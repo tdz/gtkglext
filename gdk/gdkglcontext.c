@@ -22,7 +22,6 @@
 #include "gdkglcontext.h"
 
 static void gdk_gl_context_class_init (GdkGLContextClass *klass);
-
 static void gdk_gl_context_finalize   (GObject           *object);
 
 static gpointer parent_class = NULL;
@@ -43,7 +42,7 @@ gdk_gl_context_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLContext),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL,
+        (GInstanceInitFunc) NULL
       };
 
       type = g_type_register_static (G_TYPE_OBJECT,

@@ -20,7 +20,7 @@
 #define __GDK_GL_QUERY_H__
 
 #include <gdk/gdkgldefs.h>
-#include <gdk/gdktypes.h>
+#include <gdk/gdkgltypes.h>
 
 G_BEGIN_DECLS
 

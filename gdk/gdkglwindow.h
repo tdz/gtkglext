@@ -19,12 +19,10 @@
 #ifndef __GDK_GL_WINDOW_H__
 #define __GDK_GL_WINDOW_H__
 
-#include <gdk/gdktypes.h>
-#include <gdk/gdkdrawable.h>
-#include <gdk/gdkwindow.h>
-
 #include <gdk/gdkgldefs.h>
 #include <gdk/gdkgltypes.h>
+
+#include <gdk/gdkwindow.h>
 
 G_BEGIN_DECLS
 

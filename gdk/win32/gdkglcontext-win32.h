@@ -38,14 +38,14 @@ struct _GdkGLContextImplWin32
 {
   GdkGLContext parent_instance;
 
-  GdkGLDrawable *gldrawable;
-  GdkGLDrawable *gldrawable_read; /* currently unused. */
-
-  GdkGLConfig *glconfig;
-
   HGLRC hglrc;
   GdkGLContext *share_list;
   int render_type;
+
+  GdkGLConfig *glconfig;
+
+  GdkGLDrawable *gldrawable;
+  GdkGLDrawable *gldrawable_read; /* currently unused. */
 
   guint is_foreign : 1;
 };

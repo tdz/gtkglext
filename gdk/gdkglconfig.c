@@ -16,8 +16,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include <gdk/gdkwindow.h>
-
 #include "gdkglprivate.h"
 #include "gdkglconfig.h"
 
@@ -25,16 +23,15 @@
 #include <gdk/gdkscreen.h>
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-static void gdk_gl_config_class_init   (GdkGLConfigClass *klass);
-
-static void gdk_gl_config_finalize     (GObject          *object);
-
 static GdkGLConfig *gdk_gl_config_new_ci       (GdkScreen       *screen,
                                                 GdkGLConfigMode  mode);
 static GdkGLConfig *gdk_gl_config_new_rgb      (GdkScreen       *screen,
                                                 GdkGLConfigMode  mode);
 static GdkGLConfig *gdk_gl_config_new_internal (GdkScreen       *screen,
                                                 GdkGLConfigMode  mode);
+
+static void gdk_gl_config_class_init (GdkGLConfigClass *klass);
+static void gdk_gl_config_finalize   (GObject          *object);
 
 static gpointer parent_class = NULL;
 
@@ -54,7 +51,7 @@ gdk_gl_config_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLConfig),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL,
+        (GInstanceInitFunc) NULL
       };
 
       type = g_type_register_static (G_TYPE_OBJECT,

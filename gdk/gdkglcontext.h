@@ -19,8 +19,6 @@
 #ifndef __GDK_GL_CONTEXT_H__
 #define __GDK_GL_CONTEXT_H__
 
-#include <gdk/gdktypes.h>
-
 #include <gdk/gdkgldefs.h>
 #include <gdk/gdkgltypes.h>
 

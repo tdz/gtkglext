@@ -32,7 +32,6 @@ static gboolean      gdk_gl_context_equal  (GLXContext   *a,
                                             GLXContext   *b);
 
 static void gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass);
-
 static void gdk_gl_context_impl_x11_finalize   (GObject                  *object);
 
 static gpointer parent_class = NULL;
@@ -53,7 +52,7 @@ gdk_gl_context_impl_x11_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLContextImplX11),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL,
+        (GInstanceInitFunc) NULL
       };
 
       type = g_type_register_static (GDK_TYPE_GL_CONTEXT,
@@ -87,7 +86,7 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
 
   gdk_gl_context_remove (glcontext);
 
-  if (impl->glxcontext != NULL && !impl->is_foreign)
+  if (!impl->is_foreign)
     {
       xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
 
@@ -99,35 +98,21 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
       GDK_GL_NOTE (IMPL, g_message (" * glXDestroyContext ()"));
 
       glXDestroyContext (xdisplay, impl->glxcontext);
-      impl->glxcontext = NULL;
     }
 
   if (impl->gldrawable != NULL)
-    {
-      g_object_unref (G_OBJECT (impl->gldrawable));
-      impl->gldrawable = NULL;
-    }
+    g_object_unref (G_OBJECT (impl->gldrawable));
 
   /* currently unused. */
   /*
   if (impl->gldrawable_read != NULL)
-    {
-      g_object_unref (G_OBJECT (impl->gldrawable_read));
-      impl->gldrawable_read = NULL;
-    }
+    g_object_unref (G_OBJECT (impl->gldrawable_read));
   */
 
-  if (impl->glconfig != NULL)
-    {
-      g_object_unref (G_OBJECT (impl->glconfig));
-      impl->glconfig = NULL;
-    }
+  g_object_unref (G_OBJECT (impl->glconfig));
 
   if (impl->share_list != NULL)
-    {
-      g_object_unref (G_OBJECT (impl->share_list));
-      impl->share_list = NULL;
-    }
+    g_object_unref (G_OBJECT (impl->share_list));
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -154,14 +139,6 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
   glcontext = g_object_new (GDK_TYPE_GL_CONTEXT_IMPL_X11, NULL);
   impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
 
-  impl->gldrawable = gldrawable;
-  g_object_ref (G_OBJECT (impl->gldrawable));
-
-  impl->gldrawable_read = NULL;
-
-  impl->glconfig = glconfig;
-  g_object_ref (G_OBJECT (impl->glconfig));
-
   impl->glxcontext = glxcontext;
 
   if (share_list != NULL && GDK_IS_GL_CONTEXT (share_list))
@@ -178,6 +155,14 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
   impl->is_direct = glXIsDirect (xdisplay, glxcontext) ? TRUE : FALSE;
 
   impl->render_type = render_type;
+
+  impl->glconfig = glconfig;
+  g_object_ref (G_OBJECT (impl->glconfig));
+
+  impl->gldrawable = gldrawable;
+  g_object_ref (G_OBJECT (impl->gldrawable));
+
+  impl->gldrawable_read = NULL;
 
   impl->is_foreign = is_foreign;
 
@@ -252,10 +237,10 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
                                 GdkGLContext *share_list,
                                 GLXContext    glxcontext)
 {
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_context_foreign_new ()"));
+
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
   g_return_val_if_fail (glxcontext != NULL, NULL);
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_context_foreign_new ()"));
 
   /*
    * Instanciate the GdkGLContextImplX11 object.
