@@ -45,19 +45,19 @@ foreach $in (@input_headers) {
     open(IN, $in) || die "cannot open $in";
 
     while (<IN>) {
-	if (/^#ifndef\s+GLX_[a-zA-Z0-9]+_[a-z0-9_]+/) {
+	if (/#ifndef\s+GLX_[a-zA-Z0-9]+_[a-z0-9_]+/) {
 	    @line = split;
 	    $_ = <IN>;
-	    if (/^#define\s+$line[1]/) {
+	    if (/#define\s+$line[1]/) {
 		while (<IN>) {
-		    if (/^#ifdef\s+GLX_GLXEXT_PROTOTYPES/) {
+		    if (/#ifdef\s+GLX_GLXEXT_PROTOTYPES/) {
 
 			$extension = $line[1];
 
 			# function prototypes
 			@functions = ();
 			while (<IN>) {
-			    if (/^#endif/) {
+			    if (/#endif/) {
 				last;
 			    }
 			    ($func) = /(glX\w+)/;
@@ -67,7 +67,7 @@ foreach $in (@input_headers) {
 			# typedefs
 			@typedefs = ();
 			while (<IN>) {
-			    if (/^#endif/) {
+			    if (/#endif/) {
 				last;
 			    }
 			    chomp;
@@ -78,7 +78,7 @@ foreach $in (@input_headers) {
 
 			last;
 
-		    } elsif (/^#endif/) {
+		    } elsif (/#endif/) {
 			last;
 		    }
 		}

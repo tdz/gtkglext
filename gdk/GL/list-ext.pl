@@ -25,7 +25,7 @@ foreach $in (@input_headers) {
     open(IN, $in) || die "cannot open $in";
     while (<IN>) {
         chomp;
-        if (/^#ifndef\s+(GL|GLX|WGL)_[a-zA-Z0-9]+_[a-z0-9_]+/) {
+        if (/#ifndef\s+(GL|GLX|WGL)_[a-zA-Z0-9]+_[a-z0-9_]+/) {
             @line = split;
             push(@tmp_exts, $line[1]);
         }

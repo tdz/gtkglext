@@ -297,8 +297,9 @@ typedef GLboolean (APIENTRY * PFNGLVALIDBACKBUFFERHINTEXTPROC) (GLint x, GLint y
 #define GL_TEXTURE31_EXT                  0x83E5
 #endif
 
+/* unknown */
 #ifndef GL_EXT_scene_marker
-#define GL_SCENE_REQUIRED_EXT             0
+/* #define GL_SCENE_REQUIRED_EXT             0 */
 #endif
 
 #ifndef GL_EXT_texgen_reflection
@@ -395,8 +396,9 @@ typedef void (APIENTRY * PFNGLSELECTTEXTURECOORDSETEXTPROC) (GLenum target);
 typedef void (APIENTRY * PFNGLSELECTTEXTURETRANSFORMEXTPROC) (GLenum target);
 #endif
 
+/* unknown */
 #ifndef GL_EXT_scene_marker
-#define GL_EXT_scene_marker 1
+/* #define GL_EXT_scene_marker 1 */
 #ifdef GL_GLEXT_PROTOTYPES
 GLAPI void APIENTRY glBeginSceneEXT (void);
 GLAPI void APIENTRY glEndSceneEXT (void);

@@ -51,6 +51,16 @@ extern "C" {
  * EXT
  */
 
+/* unknown */
+#ifndef GLX_EXT_scene_marker
+/* #define GLX_SCENE_REQUIRED_EXT          0 */
+#endif
+
+/* unknown */
+#ifndef GLX_EXT_scene_marker
+/* #define GLX_EXT_scene_marker 1 */
+#endif
+
 /*
  * MESA
  */
