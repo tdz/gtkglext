@@ -227,7 +227,7 @@ main (int argc,
    */
 
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_widget_set_name (window, "Simple");
+  gtk_window_set_title (GTK_WINDOW (window), "simple");
 
   g_signal_connect (G_OBJECT (window), "delete_event",
                     G_CALLBACK (quit), NULL);

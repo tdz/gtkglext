@@ -1,5 +1,7 @@
 2002-07-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* Version 0.4.1.
+
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Modified to
 	hold glwidgetparam as qdata, and changed to use
 	param->quit_handler_id to remove the valid quit handler.
