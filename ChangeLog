@@ -1,3 +1,12 @@
+2002-11-30  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_setup_colormap):
+	Avoid writable colormap allocation on machines which have
+	transparent pixel < visual->map_entries.
+
+	* gdk/x11/gdkgloverlay-x11.[ch]: Added SERVER_OVERLAY_VISUALS
+	suppport inspection code.
+
 2002-11-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_fb_configuration) 

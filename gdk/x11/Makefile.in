@@ -162,6 +162,8 @@ libgdkglext_x11_la_SOURCES = \
 	gdkglquery-x11.c	\
 	gdkglconfig-x11.h	\
 	gdkglconfig-x11.c	\
+	gdkgloverlay-x11.h	\
+	gdkgloverlay-x11.c	\
 	gdkglcontext-x11.h	\
 	gdkglcontext-x11.c	\
 	gdkgldrawable-x11.c	\
@@ -189,8 +191,9 @@ LTLIBRARIES = $(noinst_LTLIBRARIES)
 libgdkglext_x11_la_LDFLAGS =
 libgdkglext_x11_la_LIBADD =
 am_libgdkglext_x11_la_OBJECTS = gdkglquery-x11.lo gdkglconfig-x11.lo \
-	gdkglcontext-x11.lo gdkgldrawable-x11.lo gdkglpixmap-x11.lo \
-	gdkglwindow-x11.lo gdkglfont-x11.lo gdkglglxext.lo
+	gdkgloverlay-x11.lo gdkglcontext-x11.lo gdkgldrawable-x11.lo \
+	gdkglpixmap-x11.lo gdkglwindow-x11.lo gdkglfont-x11.lo \
+	gdkglglxext.lo
 libgdkglext_x11_la_OBJECTS = $(am_libgdkglext_x11_la_OBJECTS)
 
 DEFS = @DEFS@
@@ -205,6 +208,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/gdkgldrawable-x11.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglfont-x11.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglglxext.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gdkgloverlay-x11.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglpixmap-x11.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglquery-x11.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglwindow-x11.Plo
@@ -254,6 +258,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkgldrawable-x11.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglfont-x11.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglglxext.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkgloverlay-x11.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglpixmap-x11.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglquery-x11.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglwindow-x11.Plo@am__quote@

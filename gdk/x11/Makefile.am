@@ -25,6 +25,8 @@ libgdkglext_x11_la_SOURCES = \
 	gdkglquery-x11.c	\
 	gdkglconfig-x11.h	\
 	gdkglconfig-x11.c	\
+	gdkgloverlay-x11.h	\
+	gdkgloverlay-x11.c	\
 	gdkglcontext-x11.h	\
 	gdkglcontext-x11.c	\
 	gdkgldrawable-x11.c	\

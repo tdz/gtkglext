@@ -24,6 +24,7 @@
 
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
+#include "gdkgloverlay-x11.h"
 #include "gdkglconfig-x11.h"
 
 #include <X11/Xatom.h>  /* for XA_RGB_DEFAULT_MAP atom */
@@ -300,12 +301,16 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 {
   GdkColormap *colormap;
   GdkVisual *visual;
+  GdkGLOverlayInfo overlay_info;
+  gboolean overlay_supported;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_setup_colormap ()"));
 
   if (is_rgba)
     {
-      /* For RGBA mode. */
+      /*
+       * For RGBA mode.
+       */
 
       /* Try default colormap. */
 
@@ -314,7 +319,6 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
       if (GDK_VISUAL_XVISUAL (visual)->visualid == xvinfo->visualid)
         {
           GDK_GL_NOTE (MISC, g_message (" -- colormap: screen default"));
-
           g_object_ref (G_OBJECT (colormap));
           return colormap;
         }
@@ -330,7 +334,6 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
       /* New colormap. */
 
       GDK_GL_NOTE (MISC, g_message (" -- colormap: new"));
-
       visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
       colormap = gdk_colormap_new (visual, FALSE);
       return colormap;
@@ -338,12 +341,46 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
     }
   else
     {
-      /* For color index mode. */
-
-      GDK_GL_NOTE (MISC, g_message (" -- colormap: new allocated writable"));
+      /*
+       * For color index mode.
+       */
 
       visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
-      colormap = gdk_colormap_new (visual, TRUE);
+
+      overlay_supported = _gdk_x11_gl_overlay_get_info (screen, visual, &overlay_info);
+      if (overlay_supported &&
+          overlay_info.transparent_type == GDK_GL_TRANSPARENT_PIXEL &&
+          overlay_info.value < xvinfo->visual->map_entries)
+        {
+
+          /*
+           * On machines where zero (or some other value in the range
+           * of 0 through map_entries-1), BadAlloc may be generated
+           * when an AllocAll overlay colormap is allocated since the
+           * transparent pixel precludes all the cells in the colormap
+           * being allocated (the transparent pixel is pre-allocated).
+           * So in this case, use XAllocColorCells to allocate
+           * map_entries-1 pixels (that is, all but the transparent pixel.
+           */
+
+          GDK_GL_NOTE (MISC, g_message (" -- colormap: new"));
+          colormap = gdk_colormap_new (visual, FALSE);
+        }
+      else
+        {
+
+          /*
+           * If there is no transparent pixel or if the transparent
+           * pixel is outside the range of valid colormap cells (HP
+           * can implement their overlays this smart way since their
+           * transparent pixel is 255), we can AllocAll the colormap.
+           * See note above.
+           */
+
+          GDK_GL_NOTE (MISC, g_message (" -- colormap: new allocated writable"));
+          colormap = gdk_colormap_new (visual, TRUE);
+        }
+
       return colormap;
 
     }
@@ -362,12 +399,16 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 {
   GdkColormap *colormap;
   GdkVisual *visual;
+  GdkGLOverlayInfo overlay_info;
+  gboolean overlay_supported;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_setup_colormap ()"));
 
   if (is_rgba)
     {
-      /* For RGBA mode. */
+      /*
+       * For RGBA mode.
+       */
 
       /* Try default colormap. */
 
@@ -392,12 +433,46 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
     }
   else
     {
-      /* For color index mode. */
-
-      GDK_GL_NOTE (MISC, g_message (" -- colormap: new allocated writable"));
+      /*
+       * For color index mode.
+       */
 
       visual = gdkx_visual_get (xvinfo->visualid);
-      colormap = gdk_colormap_new (visual, TRUE);
+
+      overlay_supported = _gdk_x11_gl_overlay_get_info (screen, visual, &overlay_info);
+      if (overlay_supported &&
+          overlay_info.transparent_type == GDK_GL_TRANSPARENT_PIXEL &&
+          overlay_info.value < xvinfo->visual->map_entries)
+        {
+
+          /*
+           * On machines where zero (or some other value in the range
+           * of 0 through map_entries-1), BadAlloc may be generated
+           * when an AllocAll overlay colormap is allocated since the
+           * transparent pixel precludes all the cells in the colormap
+           * being allocated (the transparent pixel is pre-allocated).
+           * So in this case, use XAllocColorCells to allocate
+           * map_entries-1 pixels (that is, all but the transparent pixel.
+           */
+
+          GDK_GL_NOTE (MISC, g_message (" -- colormap: new"));
+          colormap = gdk_colormap_new (visual, FALSE);
+        }
+      else
+        {
+
+          /*
+           * If there is no transparent pixel or if the transparent
+           * pixel is outside the range of valid colormap cells (HP
+           * can implement their overlays this smart way since their
+           * transparent pixel is 255), we can AllocAll the colormap.
+           * See note above.
+           */
+
+          GDK_GL_NOTE (MISC, g_message (" -- colormap: new allocated writable"));
+          colormap = gdk_colormap_new (visual, TRUE);
+        }
+
       return colormap;
 
     }
