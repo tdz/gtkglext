@@ -235,6 +235,8 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
 
   if (_gdk_gl_context_force_indirect)
     {
+      GDK_GL_NOTE (MISC, g_message (" -- Force indirect"));
+
       glxcontext = glXCreateContext (xdisplay,
                                      xvinfo,
                                      share_glxcontext,
