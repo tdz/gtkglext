@@ -185,7 +185,7 @@ gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
   g_return_val_if_fail (font_desc != NULL, NULL);
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font_for_display ()"));
 
   font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (display));
 

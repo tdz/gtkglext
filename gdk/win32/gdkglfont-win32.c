@@ -33,9 +33,9 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
                             int                         list_base)
 {
   PangoFontMap *font_map;
-  PangoWin32FontCache *font_cache;
   PangoFont *font = NULL;
   LOGFONT *logfont = NULL;
+  PangoWin32FontCache *font_cache;
   HFONT hfont;
   HDC hdc;
 
@@ -44,7 +44,6 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font ()"));
 
   font_map = pango_win32_font_map_for_display ();
-  font_cache = pango_win32_font_map_get_font_cache (font_map);
 
   font = pango_font_map_load_font (font_map, NULL, font_desc);
   if (font == NULL)
@@ -60,6 +59,8 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
       font = NULL;
       goto FAIL;
     }
+
+  font_cache = pango_win32_font_map_get_font_cache (font_map);
 
   hfont = pango_win32_font_cache_load (font_cache, logfont);
 
@@ -102,66 +103,9 @@ gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
                                         int                         count,
                                         int                         list_base)
 {
-  PangoFontMap *font_map;
-  PangoWin32FontCache *font_cache;
-  PangoFont *font = NULL;
-  LOGFONT *logfont = NULL;
-  HFONT hfont;
-  HDC hdc;
-
   g_return_val_if_fail (display == gdk_display_get_default (), NULL);
-  g_return_val_if_fail (font_desc != NULL, NULL);
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font ()"));
-
-  font_map = pango_win32_font_map_for_display ();
-  font_cache = pango_win32_font_map_get_font_cache (font_map);
-
-  font = pango_font_map_load_font (font_map, NULL, font_desc);
-  if (font == NULL)
-    {
-      g_warning ("cannot load PangoFont");
-      goto FAIL;
-    }
-
-  logfont = pango_win32_font_logfont (font);
-  if (logfont == NULL)
-    {
-      g_warning ("cannot get LOGFONT struct");
-      font = NULL;
-      goto FAIL;
-    }
-
-  hfont = pango_win32_font_cache_load (font_cache, logfont);
-
-  hdc = CreateCompatibleDC (NULL);
-  if (hdc == NULL)
-    {
-      g_warning ("cannot create a memory DC");
-      font = NULL;
-      goto FAIL;
-    }
-
-  SelectObject (hdc, hfont);
-
-  if (!wglUseFontBitmaps (hdc, first, count, list_base))
-    {
-      g_warning ("cannot create the font display lists");
-      font = NULL;
-      goto FAIL;
-    }
-
-  if (!DeleteDC (hdc))
-    g_warning ("cannot delete the memory DC");
-
-  pango_win32_font_cache_unload (font_cache, hfont);
-
- FAIL:
-
-  if (logfont != NULL)
-    g_free (logfont);
-
-  return font;
+  return gdk_gl_font_use_pango_font (font_desc, first, count, list_base);
 }
 
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
