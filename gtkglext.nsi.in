@@ -137,21 +137,29 @@ Section "GtkGLExt Development" SecDevelopment
   Call ChangeDirSeparator
   Pop $0
 
+  DetailPrint "Updating $INSTDIR\lib\pkgconfig\gdkglext-${GTKGLEXT_API_VERSION}.pc"
   Push $INSTDIR\lib\pkgconfig\gdkglext-${GTKGLEXT_API_VERSION}.pc
   Push $0
   Call UpdatePCFile
+  DetailPrint "Done"
 
+  DetailPrint "Updating $INSTDIR\lib\pkgconfig\gdkglext-win32-${GTKGLEXT_API_VERSION}.pc"
   Push $INSTDIR\lib\pkgconfig\gdkglext-win32-${GTKGLEXT_API_VERSION}.pc
   Push $0
   Call UpdatePCFile
+  DetailPrint "Done"
 
+  DetailPrint "Updating $INSTDIR\lib\pkgconfig\gtkglext-${GTKGLEXT_API_VERSION}.pc"
   Push $INSTDIR\lib\pkgconfig\gtkglext-${GTKGLEXT_API_VERSION}.pc
   Push $0
   Call UpdatePCFile
+  DetailPrint "Done"
 
+  DetailPrint "Updating $INSTDIR\lib\pkgconfig\gtkglext-win32-${GTKGLEXT_API_VERSION}.pc"
   Push $INSTDIR\lib\pkgconfig\gtkglext-win32-${GTKGLEXT_API_VERSION}.pc
   Push $0
   Call UpdatePCFile
+  DetailPrint "Done"
 
   ; Registry
   WriteRegStr HKLM "SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}\Development" "Path" "$INSTDIR"
@@ -194,6 +202,18 @@ Section "Start Menu" SecStartMenu
 SectionEnd
 
 Section -post
+
+  ; Write $INSTDIR\bin\gtkglext-env.sh
+  DetailPrint "Generating $INSTDIR\bin\gtkglext-env.sh"
+  Push $INSTDIR\bin\gtkglext-env.sh
+  Call WriteEnvSh
+  DetailPrint "Done"
+
+  ; Write $INSTDIR\bin\gtkglext-env.bat
+  DetailPrint "Generating $INSTDIR\bin\gtkglext-env.bat"
+  Push $INSTDIR\bin\gtkglext-env.bat
+  Call WriteEnvBat
+  DetailPrint "Done"
 
   ; Registry
   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "DisplayName" "${MUI_PRODUCT} ${MUI_VERSION}"
@@ -263,8 +283,8 @@ FunctionEnd
 ; UpdatePCFile
 ; update pkg-config .pc file
 Function UpdatePCFile
-  pop $R0 ; prefix
-  pop $R1 ; target .pc file
+  Pop $R0 ; prefix
+  Pop $R1 ; target .pc file
   Push $R7
   Push $R8
   Push $R9
@@ -285,6 +305,62 @@ Function UpdatePCFile
   Pop $R9
   Pop $R8
   Pop $R7
+FunctionEnd
+
+; WriteEnvSh
+Function WriteEnvSh
+  Pop $R0 ; Output file
+  GetFullPathName /SHORT $R1 $INSTDIR
+  Push $R1
+  Call ChangeDirSeparator
+  Pop $R1
+  FileOpen $R9 $R0 w
+  FileWrite $R9 "#!/bin/sh$\n"
+  FileWrite $R9 "$\n"
+  FileWrite $R9 "export GTKGLEXT_PREFIX=$R1$\n"
+  FileWrite $R9 "$\n"
+  FileWrite $R9 "echo $\"Setting environment variables for GtkGLExt.$\"$\n"
+  FileWrite $R9 "echo $\"$\"$\n"
+  FileWrite $R9 "$\n"
+  FileWrite $R9 "case $$TERM in$\n"
+  FileWrite $R9 "cygwin)$\n"
+  FileWrite $R9 "  GTKGLEXT_PATH=`cygpath -u $${GTKGLEXT_PREFIX}/bin`$\n"
+  FileWrite $R9 "  ;;$\n"
+  FileWrite $R9 "msys)$\n"
+  FileWrite $R9 "  GTKGLEXT_PATH=/$${GTKGLEXT_PREFIX%:*}$${GTKGLEXT_PREFIX#*:}/bin$\n"
+  FileWrite $R9 "  ;;$\n"
+  FileWrite $R9 "*)$\n"
+  FileWrite $R9 "  echo $\"Unknown TERM$\"$\n"
+  FileWrite $R9 "  ;;$\n"
+  FileWrite $R9 "esac$\n"
+  FileWrite $R9 "$\n"
+  FileWrite $R9 "echo $\"export PATH=\$\"$${GTKGLEXT_PATH}:\$${PATH}\$\"$\"$\n"
+  FileWrite $R9 "export PATH=$\"$${GTKGLEXT_PATH}:$${PATH}$\"$\n"
+  FileWrite $R9 "$\n"
+  FileWrite $R9 "echo $\"export PKG_CONFIG_PATH=\$\"$${GTKGLEXT_PREFIX}/lib/pkgconfig;\$${PKG_CONFIG_PATH}\$\"$\"$\n"
+  FileWrite $R9 "export PKG_CONFIG_PATH=$\"$${GTKGLEXT_PREFIX}/lib/pkgconfig;$${PKG_CONFIG_PATH}$\"$\n"
+  FileWrite $R9 "$\n"
+  FileWrite $R9 "echo $\"$\"$\n"
+  FileClose $R9
+FunctionEnd
+
+; WriteEnvBat
+Function WriteEnvBat
+  pop $R0 ; Output file
+  FileOpen $R9 $R0 w
+  FileWrite $R9 "@set GTKGLEXT_PREFIX=$INSTDIR$\r$\n"
+  FileWrite $R9 "$\r$\n"
+  FileWrite $R9 "@echo Setting environment variables for GtkGLExt.$\r$\n"
+  FileWrite $R9 "@echo.$\r$\n"
+  FileWrite $R9 "$\r$\n"
+  FileWrite $R9 "@echo set PATH=%GTKGLEXT_PREFIX%\bin;%%PATH%%$\r$\n"
+  FileWrite $R9 "@set PATH=%GTKGLEXT_PREFIX%\bin;%PATH%$\r$\n"
+  FileWrite $R9 "$\r$\n"
+  FileWrite $R9 "@echo set PKG_CONFIG_PATH=%GTKGLEXT_PREFIX%\lib\pkgconfig;%%PKG_CONFIG_PATH%%$\r$\n"
+  FileWrite $R9 "@set PKG_CONFIG_PATH=%GTKGLEXT_PREFIX%\lib\pkgconfig;%PKG_CONFIG_PATH%$\r$\n"
+  FileWrite $R9 "$\r$\n"
+  FileWrite $R9 "@echo.$\r$\n"
+  FileClose $R9
 FunctionEnd
 
 ;--------------------------------
@@ -309,6 +385,8 @@ Section Uninstall
 
   ; bin
 
+  Delete $INSTDIR\bin\gtkglext-env.sh
+  Delete $INSTDIR\bin\gtkglext-env.bat
   Delete $INSTDIR\bin\libgdkglext-win32-${GTKGLEXT_API_VERSION}-*.dll
   Delete $INSTDIR\bin\libgtkglext-win32-${GTKGLEXT_API_VERSION}-*.dll
 

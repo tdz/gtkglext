@@ -1,3 +1,9 @@
+2003-04-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gtkglext.nsi.in: Changed default installation directory.
+	Fixed Uninstaller section. Output gtkglext-env.sh file.
+	Output gtkglext-env.bat batch file.
+
 2003-04-26  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/low-level.c (main): 
