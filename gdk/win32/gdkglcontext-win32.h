@@ -38,7 +38,6 @@ struct _GdkGLContextImplWin32
 {
   GdkGLContext parent_instance;
 
-  HDC hdc;
   HGLRC hglrc;
 
   guint is_constructed : 1;

@@ -16,8 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include "gdkgldrawable.h"
 #include "gdkglconfig.h"
+#include "gdkgldrawable.h"
+#include "gdkglpixmap.h"
+#include "gdkglwindow.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglcontext-win32.h"
 
@@ -92,8 +94,7 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
 
   GdkGLContextImplWin32 *share_impl = NULL;
 
-  GdkDrawable *drawable;
-  HWND hwnd;
+  HDC hdc;
   PIXELFORMATDESCRIPTOR *pfd;
   int pf;
 
@@ -110,21 +111,36 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
    * Create an OpenGL rendering context.
    */
 
-  /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  drawable = GDK_GL_DRAWABLE_GET_CLASS (glcontext->gldrawable)->real_drawable (glcontext->gldrawable);
+  /*
+   * Get DC.
+   */
+  if (GDK_IS_GL_PIXMAP (glcontext->gldrawable))
+    hdc = gdk_win32_gl_pixmap_get_hdc (GDK_GL_PIXMAP (glcontext->gldrawable));
+  else if (GDK_IS_GL_WINDOW (glcontext->gldrawable))
+    hdc = gdk_win32_gl_window_get_hdc (GDK_GL_WINDOW (glcontext->gldrawable));
+  else
+    {
+      g_warning (G_STRLOC " GLDrawable is not a GLPixmap or GLWindow");
+      goto FAIL;
+    }
 
-  hwnd = (HWND) gdk_win32_drawable_get_handle (drawable);
+  if (hdc == NULL)
+    goto FAIL;
 
-  /* Get DC. */
-  impl->hdc = GetDC (hwnd);
   pfd = gdk_win32_gl_config_get_pfd (glcontext->glconfig);
 
-  pf = ChoosePixelFormat(impl->hdc, pfd);
+  pf = ChoosePixelFormat(hdc, pfd);
   if (pf == 0)
     goto FAIL;
 
-  SetPixelFormat (impl->hdc, pf, pfd);
-  impl->hglrc = wglCreateContext (impl->hdc);
+  if (!SetPixelFormat (hdc, pf, pfd))
+    goto FAIL;
+
+  /*
+   * Create an OpenGL rendering context.
+   */
+
+  impl->hglrc = wglCreateContext (hdc);
   if (impl->hglrc == NULL)
     goto FAIL;
 
@@ -134,10 +150,6 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
       if (!wglShareLists (share_impl->hglrc, impl->hglrc))
         goto FAIL;
     }
-
-  /* Release DC. */
-  ReleaseDC (hwnd, impl->hdc);
-  impl->hdc = NULL;
 
   /*
    * Successfully constructed?
@@ -149,21 +161,10 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
 
  FAIL:
 
-  if (impl->hdc != NULL)
-    {
-      ReleaseDC (hwnd, impl->hdc);
-      impl->hdc = NULL;
-    }
-
   if (impl->hglrc != NULL)
-    {
-      wglDeleteContext (impl->hglrc);
-      impl->hglrc = NULL;
-    }
+    wglDeleteContext (impl->hglrc);
 
-  /* Release DC */
-  ReleaseDC (hwnd, impl->hdc);
-  impl->hdc = NULL;
+  impl->hglrc = NULL;
 
   return object;
 }
@@ -174,6 +175,10 @@ gdk_gl_context_impl_win32_finalize (GObject *object)
   GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (object);
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_win32_finalize ()"));
+
+  /*
+   * Destroy rendering context.
+   */
 
   if (impl->hglrc != NULL)
     {
@@ -219,14 +224,6 @@ _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
     }
 
   return glcontext;
-}
-
-HDC
-gdk_win32_gl_context_get_hdc (GdkGLContext *glcontext)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
-
-  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->hdc;
 }
 
 HGLRC

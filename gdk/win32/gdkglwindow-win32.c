@@ -24,6 +24,7 @@
 static gboolean gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
                                                           GdkGLDrawable *read,
                                                           GdkGLContext  *glcontext);
+static void     gdk_win32_gl_window_swap_buffers         (GdkGLDrawable *gldrawable);
 
 static void gdk_gl_window_impl_win32_init       (GdkGLWindowImplWin32      *impl);
 static void gdk_gl_window_impl_win32_class_init (GdkGLWindowImplWin32Class *klass);
@@ -104,8 +105,6 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
   GdkGLWindow *glwindow;
   GdkGLWindowImplWin32 *impl;
 
-  HWND hwnd;
-
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
                                                        n_construct_properties,
                                                        construct_properties);
@@ -116,11 +115,20 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
   impl = GDK_GL_WINDOW_IMPL_WIN32 (object);
 
   /*
+   * Get DC.
+   */
+
+  /*
    * XXX GdkGLWindow is not GdkWindow for the moment :-<
    *     use glwindow->wrapper.
    */
-  hwnd = (HWND) gdk_win32_drawable_get_handle (glwindow->wrapper);
-  impl->hdc = GetDC (hwnd);
+  impl->hdc = GetDC (gdk_win32_drawable_get_handle (glwindow->wrapper));
+  if (impl->hdc == NULL)
+    goto FAIL;
+
+  impl->saved_dc = SaveDC (impl->hdc);
+  if (impl->saved_dc == 0)
+    goto FAIL;
 
   /*
    * Successfully constructed?
@@ -128,13 +136,38 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
 
   impl->is_constructed = TRUE;
 
+ FAIL:
+
+  if (impl->hdc != NULL)
+    ReleaseDC (gdk_win32_drawable_get_handle (glwindow->wrapper),
+               impl->hdc);
+
+  impl->hdc = NULL;
+  impl->saved_dc = 0;
+
   return object;
 }
 
 static void
 gdk_gl_window_impl_win32_finalize (GObject *object)
 {
+  GdkGLWindow *glwindow = GDK_GL_WINDOW (object);
+  GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (object);
+
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_win32_finalize ()"));
+
+  if (impl->saved_dc != 0)
+    {
+      RestoreDC (impl->hdc, impl->saved_dc);
+      impl->saved_dc = 0;
+    }
+
+  if (impl->hdc != NULL)
+    {
+      ReleaseDC (gdk_win32_drawable_get_handle (glwindow->wrapper),
+                 impl->hdc);
+      impl->hdc = NULL;
+    }
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -146,7 +179,7 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 
   iface->create_new_context = _gdk_win32_gl_context_new;
   iface->make_context_current = gdk_win32_gl_window_make_context_current;
-  iface->swap_buffers = _gdk_win32_gl_drawable_swap_buffers;
+  iface->swap_buffers = gdk_win32_gl_window_swap_buffers;
 
   /*< private >*/
   /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
@@ -183,6 +216,20 @@ gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
   _gdk_gl_context_set_gl_drawable (glcontext, draw);
 
   return TRUE;
+}
+
+static void
+gdk_win32_gl_window_swap_buffers (GdkGLDrawable *gldrawable)
+{
+  GdkGLWindowImplWin32 *impl;
+
+  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+
+  impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
+
+  GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
+
+  SwapBuffers (impl->hdc);
 }
 
 /*

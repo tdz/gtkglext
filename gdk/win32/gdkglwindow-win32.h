@@ -39,6 +39,7 @@ struct _GdkGLWindowImplWin32
   GdkGLWindow parent_instance;
 
   HDC hdc;
+  int saved_dc;
 
   guint is_constructed : 1;
 };

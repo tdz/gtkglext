@@ -39,7 +39,6 @@ struct _GdkGLPixmapImplWin32
   GdkGLPixmap parent_instance;
 
   HDC hdc;
-  HGDIOBJ orig_hgdiobj;
 
   guint is_constructed : 1;
 };

@@ -34,11 +34,9 @@ G_BEGIN_DECLS
 
 PIXELFORMATDESCRIPTOR *gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig);
 
-HDC     gdk_win32_gl_context_get_hdc         (GdkGLContext *glcontext);
 HGLRC   gdk_win32_gl_context_get_hglrc       (GdkGLContext *glcontext);
 
 HDC     gdk_win32_gl_pixmap_get_hdc          (GdkGLPixmap *glpixmap);
-HGDIOBJ gdk_win32_gl_pixmap_get_orig_hgdiobj (GdkGLPixmap *glpixmap);
 
 HDC     gdk_win32_gl_window_get_hdc          (GdkGLWindow *glwindow);
 

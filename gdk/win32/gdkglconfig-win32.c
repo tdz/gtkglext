@@ -348,7 +348,6 @@ gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
   return &(GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->pfd);
 }
 
-
 /*
  * This code is based on lib/glut/win32_glx.c of GLUT by Nate Robins.
  */

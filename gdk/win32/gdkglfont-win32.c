@@ -26,17 +26,17 @@ gdk_gl_font_use_gdk_font (GdkFont *font,
                           gint     list_base)
 {
   HDC hdc;
-  HGDIOBJ orig_hgdiobj;
+  HANDLE old_handle;
 
   g_return_if_fail (font != NULL);
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_gdk_font ()"));
 
   hdc = CreateCompatibleDC (NULL);
-  orig_hgdiobj = SelectObject (hdc, (HGDIOBJ) gdk_font_id (font));
+  old_handle = SelectObject (hdc, (HGDIOBJ) gdk_font_id (font));
 
   wglUseFontBitmaps (hdc, first, count, list_base);
 
-  SelectObject (hdc, orig_hgdiobj);
+  SelectObject (hdc, old_handle);
   DeleteDC (hdc);
 }

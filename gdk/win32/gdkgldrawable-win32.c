@@ -17,34 +17,38 @@
  */
 
 #include "gdkglcontext.h"
+#include "gdkglpixmap.h"
+#include "gdkglwindow.h"
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 
 void
 _gdk_win32_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable)
 {
-  GdkDrawable *drawable;
-  HWND hwnd;
   HDC hdc;
 
   g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
 
-  /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  drawable = GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->real_drawable (gldrawable);
-  hwnd = (HWND) gdk_win32_drawable_get_handle (drawable);
+  /*
+   * Get DC.
+   */
+  if (GDK_IS_GL_PIXMAP (gldrawable))
+    hdc = gdk_win32_gl_pixmap_get_hdc (GDK_GL_PIXMAP (gldrawable));
+  else if (GDK_IS_GL_WINDOW (gldrawable))
+    hdc = gdk_win32_gl_window_get_hdc (GDK_GL_WINDOW (gldrawable));
+  else
+    {
+      g_warning (G_STRLOC " GLDrawable is not a GLPixmap or GLWindow");
+      return;
+    }
 
-  /* Get DC. */
-  hdc = GetDC (hwnd);
   if (hdc == NULL)
     {
-      g_warning ("cannot get DC.");
+      g_warning (G_STRLOC " cannot get DC");
       return;
     }
 
   GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
 
   SwapBuffers (hdc);
-
-  /* Release DC. */
-  ReleaseDC (hwnd, hdc);
 }
