@@ -25,6 +25,8 @@
 #define FOVY_2 20.0
 #define Z_NEAR 3.0
 
+static const char *text = "This text is rendered with Παν語FT2.";
+
 static PangoContext *ft2_context = NULL;
 
 static void
@@ -201,7 +203,7 @@ expose_event (GtkWidget      *widget,
   layout = pango_layout_new (ft2_context);
   pango_layout_set_width (layout, PANGO_SCALE * widget->allocation.width);
   pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
-  pango_layout_set_text (layout, "This text is rendered with PangoFT2.", -1);
+  pango_layout_set_text (layout, text, -1);
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
