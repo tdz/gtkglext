@@ -25,21 +25,8 @@
 #include <gdk/gdkscreen.h>
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-enum {
-  PROP_0,
-  PROP_SCREEN
-};
-
 static void gdk_gl_config_class_init   (GdkGLConfigClass *klass);
 
-static void gdk_gl_config_set_property (GObject          *object,
-                                        guint             property_id,
-                                        const GValue     *value,
-                                        GParamSpec       *pspec);
-static void gdk_gl_config_get_property (GObject          *object,
-                                        guint             property_id,
-                                        GValue           *value,
-                                        GParamSpec       *pspec);
 static void gdk_gl_config_finalize     (GObject          *object);
 
 static GdkGLConfig *gdk_gl_config_new_ci       (GdkScreen       *screen,
@@ -87,92 +74,12 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->set_property = gdk_gl_config_set_property;
-  object_class->get_property = gdk_gl_config_get_property;
-  object_class->finalize     = gdk_gl_config_finalize;
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-  g_object_class_install_property (object_class,
-                                   PROP_SCREEN,
-                                   g_param_spec_object ("screen",
-                                                        "Screen",
-                                                        "Target screen for the OpenGL frame buffer configuration.",
-                                                        GDK_TYPE_SCREEN,
-                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  g_object_class_install_property (object_class,
-                                   PROP_SCREEN,
-                                   g_param_spec_pointer ("screen",
-                                                         "Screen",
-                                                         "Target screen for the OpenGL frame buffer configuration.",
-                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-}
-
-static void
-gdk_gl_config_set_property (GObject      *object,
-                            guint         property_id,
-                            const GValue *value,
-                            GParamSpec   *pspec)
-{
-  GdkGLConfig *glconfig = GDK_GL_CONFIG (object);
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_set_property ()"));
-
-  switch (property_id)
-    {
-    case PROP_SCREEN:
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-      glconfig->screen = g_value_get_object (value);
-      g_object_ref (G_OBJECT (glconfig->screen));
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-      glconfig->screen = g_value_get_pointer (value);
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-      g_object_notify (object, "screen");
-      break;
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-      break;
-    }
-}
-
-static void
-gdk_gl_config_get_property (GObject    *object,
-                            guint       property_id,
-                            GValue     *value,
-                            GParamSpec *pspec)
-{
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_get_property ()"));
-
-  switch (property_id)
-    {
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-      break;
-    }
+  object_class->finalize = gdk_gl_config_finalize;
 }
 
 static void
 gdk_gl_config_finalize (GObject *object)
 {
-  GdkGLConfig *glconfig = GDK_GL_CONFIG (object);
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_finalize ()"));
-
-  if (glconfig->colormap != NULL)
-    {
-      g_object_unref (G_OBJECT (glconfig->colormap));
-      glconfig->colormap = NULL;
-    }
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-  if (glconfig->screen != NULL)
-    {
-      g_object_unref (G_OBJECT (glconfig->screen));
-      glconfig->screen = NULL;
-    }
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
@@ -379,96 +286,6 @@ gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
 }
 
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-
-GdkScreen *
-gdk_gl_config_get_screen (GdkGLConfig *glconfig)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
-
-  return glconfig->screen;
-}
-
-/**
- * gdk_gl_config_get_attrib:
- * @glconfig: a #GdkGLConfig.
- * @attribute: the attribute to be returned.
- * @value: returns the requested value.
- *
- * Returns information about a OpenGL frame buffer configuration.
- *
- * Returns the value one of the attributes which can be specified in
- * #gdk_gl_config_new.
- *
- * Return value: an error code if it fails for any reason, otherwise, GDK_GL_SUCCESS is returned.
- **/
-gboolean
-gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
-                          int          attribute,
-                          int         *value)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
-
-  return GDK_GL_CONFIG_GET_CLASS (glconfig)->get_attrib (glconfig, attribute, value);
-}
-
-/**
- * gdk_gl_config_get_colormap:
- * @glconfig: a #GdkGLConfig.
- *
- * Get the #GdkColormap that is appropriate for the OpenGL frame buffer
- * configuration.
- *
- * Useful to get the appropiate colormap (GdkColormap) for the OpenGL
- * framebuffer.
- *
- * Return value: the appropriate #GdkColormap.
- **/
-GdkColormap *
-gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
-
-  return glconfig->colormap;
-}
-
-/**
- * gdk_gl_config_get_visual:
- * @glconfig: a #GdkGLConfig.
- *
- * Get the #GdkVisual that is appropriate for the OpenGL frame buffer
- * configuration.
- *
- * Return value: the appropriate #GdkVisual.
- **/
-GdkVisual *
-gdk_gl_config_get_visual (GdkGLConfig *glconfig)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
-
-  return gdk_colormap_get_visual (glconfig->colormap);
-}
-
-/**
- * gdk_gl_config_get_depth:
- * @glconfig: a #GdkGLConfig.
- *
- * Get the depth (number of bits per pixel) of the OpenGL-capable visual.
- *
- * Color depth is a somehow confusing term. It is defined as the amount of
- * bits per pixel used to define a color. It is confusing because in some
- * environments is expressed as the amount of bits used to define each of
- * the components (RGBA) of the color. Here it will be named as the total
- * amount of bits required to define the whole color.
- *
- * Return value: the depth value.
- **/
-gint
-gdk_gl_config_get_depth (GdkGLConfig *glconfig)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
-
-  return glconfig->depth;
-}
 
 /**
  * gdk_gl_config_is_rgba:

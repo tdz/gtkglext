@@ -43,12 +43,10 @@
 
 #endif /* HAVE_LIBXMU */
 
-enum {
-  PROP_0,
-  PROP_XVINFO
-};
-
 /* Forward declarations */
+
+static gboolean     gdk_x11_gl_config_is_mesa_glx       (Display                 *xdisplay,
+                                                         int                      screen_num);
 
 #ifdef HAVE_GDK_X11_COLORMAP_FOREIGN_NEW
 static GdkColormap *gdk_gl_config_get_std_rgb_colormap  (GdkScreen               *screen,
@@ -60,23 +58,10 @@ static GdkColormap *gdk_gl_config_setup_colormap        (GdkScreen              
                                                          gboolean                 is_rgba,
                                                          gboolean                 is_mesa_glx);
 
-static gboolean     gdk_x11_gl_config_get_attrib        (GdkGLConfig             *glconfig,
-                                                         gint                     attribute,
-                                                         gint                    *value);
+static void         gdk_gl_config_init_attrib           (GdkGLConfig             *glconfig);
 
 static void         gdk_gl_config_impl_x11_class_init   (GdkGLConfigImplX11Class *klass);
 
-static GObject     *gdk_gl_config_impl_x11_constructor  (GType                    type,
-                                                         guint                    n_construct_properties,
-                                                         GObjectConstructParam   *construct_properties);
-static void         gdk_gl_config_impl_x11_set_property (GObject                 *object,
-                                                         guint                    property_id,
-                                                         const GValue            *value,
-                                                         GParamSpec              *pspec);
-static void         gdk_gl_config_impl_x11_get_property (GObject                 *object,
-                                                         guint                    property_id,
-                                                         GValue                  *value,
-                                                         GParamSpec              *pspec);
 static void         gdk_gl_config_impl_x11_finalize     (GObject                 *object);
 
 static gpointer parent_class = NULL;
@@ -111,26 +96,60 @@ gdk_gl_config_impl_x11_get_type (void)
 static void
 gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass)
 {
-  GdkGLConfigClass *glconfig_class = GDK_GL_CONFIG_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_x11_class_init ()"));
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->constructor  = gdk_gl_config_impl_x11_constructor;
-  object_class->set_property = gdk_gl_config_impl_x11_set_property;
-  object_class->get_property = gdk_gl_config_impl_x11_get_property;
-  object_class->finalize     = gdk_gl_config_impl_x11_finalize;
+  object_class->finalize = gdk_gl_config_impl_x11_finalize;
+}
 
-  glconfig_class->get_attrib = gdk_x11_gl_config_get_attrib;
+static void
+gdk_gl_config_impl_x11_finalize (GObject *object)
+{
+  GdkGLConfigImplX11 *impl = GDK_GL_CONFIG_IMPL_X11 (object);
 
-  g_object_class_install_property (object_class,
-                                   PROP_XVINFO,
-                                   g_param_spec_pointer ("xvinfo",
-                                                         "XVisualInfo",
-                                                         "Pointer to the XVisualInfo data.",
-                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_x11_finalize ()"));
+
+  if (impl->xvinfo != NULL)
+    {
+      XFree (impl->xvinfo);
+      impl->xvinfo = NULL;
+    }
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+  if (impl->screen != NULL)
+    {
+      g_object_unref (G_OBJECT (impl->screen));
+      impl->screen = NULL;
+    }
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+  if (impl->colormap != NULL)
+    {
+      g_object_unref (G_OBJECT (impl->colormap));
+      impl->colormap = NULL;
+    }
+
+  G_OBJECT_CLASS (parent_class)->finalize (object);
+}
+
+static gboolean
+gdk_x11_gl_config_is_mesa_glx (Display *xdisplay,
+                               int      screen_num)
+{
+  static int is_mesa_glx = -1;
+
+  if (is_mesa_glx == -1)
+    {
+      if (strstr (glXQueryServerString (xdisplay, screen_num, GLX_VERSION), "Mesa"))
+        is_mesa_glx = 1;
+      else
+        is_mesa_glx = 0;
+    }
+
+  return (is_mesa_glx == 1) ? TRUE : FALSE;
 }
 
 /* 
@@ -454,83 +473,20 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-static GObject *
-gdk_gl_config_impl_x11_constructor (GType                  type,
-                                    guint                  n_construct_properties,
-                                    GObjectConstructParam *construct_properties)
+static void
+gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
 {
-  GObject *object;
-  GdkGLConfig *glconfig;
   GdkGLConfigImplX11 *impl;
   int value;
-  static int is_mesa_glx = -1;
 
-  object = G_OBJECT_CLASS (parent_class)->constructor (type,
-                                                       n_construct_properties,
-                                                       construct_properties);
-
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_x11_constructor ()"));
-
-  glconfig = GDK_GL_CONFIG (object);
-  impl = GDK_GL_CONFIG_IMPL_X11 (object);
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-  impl->xdisplay = GDK_SCREEN_XDISPLAY (glconfig->screen);
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  impl->xdisplay = gdk_x11_get_default_xdisplay ();
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  impl->screen_num = impl->xvinfo->screen;
-
-  GDK_GL_NOTE (MISC,
-               g_message (" -- GLX_VENDOR     : %s",
-                          glXGetClientString(impl->xdisplay, GLX_VENDOR)));
-  GDK_GL_NOTE (MISC,
-               g_message (" -- GLX_VERSION    : %s",
-                          glXGetClientString(impl->xdisplay, GLX_VERSION)));
-  GDK_GL_NOTE (MISC,
-               g_message (" -- GLX_EXTENSIONS : %s",
-                          glXGetClientString(impl->xdisplay, GLX_EXTENSIONS)));
+  impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
 
 #define GET_CONFIG(attrib) \
   glXGetConfig (impl->xdisplay, impl->xvinfo, (attrib), &value)
 
-  /*
-   * Setup colormap.
-   */
-
   /* RGBA mode? */
   GET_CONFIG (GLX_RGBA);
   glconfig->is_rgba = value ? TRUE : FALSE;
-
-  /* Using Mesa? */
-  if (is_mesa_glx == -1)
-    {
-      if (strstr (glXQueryServerString (impl->xdisplay, impl->screen_num, GLX_VERSION), "Mesa"))
-        is_mesa_glx = 1;
-      else
-        is_mesa_glx = 0;
-    }
-  impl->is_mesa_glx = is_mesa_glx ? TRUE : FALSE;
-
-  /* get an appropriate colormap. */
-  glconfig->colormap = gdk_gl_config_setup_colormap (glconfig->screen,
-                                                     impl->xvinfo,
-                                                     glconfig->is_rgba,
-                                                     impl->is_mesa_glx);
-
-  GDK_GL_NOTE (MISC,
-    g_message (" -- Colormap: visual id = 0x%lx",
-               GDK_VISUAL_XVISUAL (glconfig->colormap->visual)->visualid));
-
-  /*
-   * Depth (number of bits per pixel) of the visual.
-   */
-
-  glconfig->depth = impl->xvinfo->depth;
-
-  /*
-   * Get configuration results.
-   */
 
   /* Layer plane. */
   GET_CONFIG (GLX_LEVEL);
@@ -567,60 +523,6 @@ gdk_gl_config_impl_x11_constructor (GType                  type,
   glconfig->is_luminance = FALSE;
 
 #undef GET_CONFIG
-
-  return object;
-}
-
-static void
-gdk_gl_config_impl_x11_set_property (GObject      *object,
-                                     guint         property_id,
-                                     const GValue *value,
-                                     GParamSpec   *pspec)
-{
-  GdkGLConfigImplX11 *impl = GDK_GL_CONFIG_IMPL_X11 (object);
-
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_x11_set_property ()"));
-
-  switch (property_id)
-    {
-    case PROP_XVINFO:
-      impl->xvinfo = g_value_get_pointer (value);
-      g_object_notify (object, "xvinfo");
-      break;
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-      break;
-    }
-}
-
-static void
-gdk_gl_config_impl_x11_get_property (GObject    *object,
-                                     guint       property_id,
-                                     GValue     *value,
-                                     GParamSpec *pspec)
-{
-  switch (property_id)
-    {
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-      break;
-    }
-}
-
-static void
-gdk_gl_config_impl_x11_finalize (GObject *object)
-{
-  GdkGLConfigImplX11 *impl = GDK_GL_CONFIG_IMPL_X11 (object);
-
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_x11_finalize ()"));
-
-  if (impl->xvinfo != NULL)
-    {
-      XFree (impl->xvinfo);
-      impl->xvinfo = NULL;
-    }
-
-  G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
 static GdkGLConfig *
@@ -628,10 +530,12 @@ gdk_gl_config_new_common (GdkScreen *screen,
                           const int *attrib_list)
 {
   GdkGLConfig *glconfig;
+  GdkGLConfigImplX11 *impl;
 
   Display *xdisplay;
   int screen_num;
   XVisualInfo *xvinfo;
+  int is_rgba;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_new_common ()"));
 
@@ -642,6 +546,16 @@ gdk_gl_config_new_common (GdkScreen *screen,
   xdisplay = gdk_x11_get_default_xdisplay ();
   screen_num = gdk_x11_get_default_screen ();
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+  GDK_GL_NOTE (MISC,
+               g_message (" -- GLX_VENDOR     : %s",
+                          glXGetClientString(xdisplay, GLX_VENDOR)));
+  GDK_GL_NOTE (MISC,
+               g_message (" -- GLX_VERSION    : %s",
+                          glXGetClientString(xdisplay, GLX_VERSION)));
+  GDK_GL_NOTE (MISC,
+               g_message (" -- GLX_EXTENSIONS : %s",
+                          glXGetClientString(xdisplay, GLX_EXTENSIONS)));
 
   /*
    * Find an OpenGL-capable visual.
@@ -659,13 +573,45 @@ gdk_gl_config_new_common (GdkScreen *screen,
     g_message (" -- glXChooseVisual: visual id = 0x%lx", xvinfo->visualid));
 
   /*
-   * Instanciate the GdkGLConfigImplX11 object.
+   * Instantiate the GdkGLConfigImplX11 object.
    */
 
-  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11,
-                           "screen", screen,
-                           "xvinfo", xvinfo,
-                           NULL);
+  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11, NULL);
+  impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
+
+  impl->xdisplay = xdisplay;
+  impl->screen_num = screen_num;
+  impl->xvinfo = xvinfo;
+
+  impl->screen = screen;
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+  g_object_ref (G_OBJECT (impl->screen));
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+  /* Using Mesa? */
+  impl->is_mesa_glx = gdk_x11_gl_config_is_mesa_glx (xdisplay, screen_num);
+
+  /*
+   * Get an appropriate colormap.
+   */
+
+  /* RGBA mode? */
+  glXGetConfig (xdisplay, xvinfo, GLX_RGBA, &is_rgba);
+
+  impl->colormap = gdk_gl_config_setup_colormap (impl->screen,
+                                                 impl->xvinfo,
+                                                 is_rgba,
+                                                 impl->is_mesa_glx);
+
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Colormap: visual id = 0x%lx",
+               GDK_VISUAL_XVISUAL (impl->colormap->visual)->visualid));
+
+  /*
+   * Init configuration attributes.
+   */
+
+  gdk_gl_config_init_attrib (glconfig);
 
   return glconfig;
 }
@@ -758,10 +704,12 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
                                             VisualID   xvisualid)
 {
   GdkGLConfig *glconfig;
+  GdkGLConfigImplX11 *impl;
 
   Display *xdisplay;
   int screen_num;
   XVisualInfo *xvinfo;
+  int is_rgba;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_x11_gl_config_new_from_visualid_common ()"));
 
@@ -772,6 +720,16 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
   xdisplay = gdk_x11_get_default_xdisplay ();
   screen_num = gdk_x11_get_default_screen ();
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+  GDK_GL_NOTE (MISC,
+               g_message (" -- GLX_VENDOR     : %s",
+                          glXGetClientString(xdisplay, GLX_VENDOR)));
+  GDK_GL_NOTE (MISC,
+               g_message (" -- GLX_VERSION    : %s",
+                          glXGetClientString(xdisplay, GLX_VERSION)));
+  GDK_GL_NOTE (MISC,
+               g_message (" -- GLX_EXTENSIONS : %s",
+                          glXGetClientString(xdisplay, GLX_EXTENSIONS)));
 
   /*
    * Get XVisualInfo.
@@ -787,13 +745,45 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
     g_message (" -- gdk_x11_gl_get_xvinfo: visual id = 0x%lx", xvinfo->visualid));
 
   /*
-   * Instanciate the GdkGLConfigImplX11 object.
+   * Instantiate the GdkGLConfigImplX11 object.
    */
 
-  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11,
-                           "screen", screen,
-                           "xvinfo", xvinfo,
-                           NULL);
+  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11, NULL);
+  impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
+
+  impl->xdisplay = xdisplay;
+  impl->screen_num = screen_num;
+  impl->xvinfo = xvinfo;
+
+  impl->screen = screen;
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+  g_object_ref (G_OBJECT (impl->screen));
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+  /* Using Mesa? */
+  impl->is_mesa_glx = gdk_x11_gl_config_is_mesa_glx (xdisplay, screen_num);
+
+  /*
+   * Get an appropriate colormap.
+   */
+
+  /* RGBA mode? */
+  glXGetConfig (xdisplay, xvinfo, GLX_RGBA, &is_rgba);
+
+  impl->colormap = gdk_gl_config_setup_colormap (impl->screen,
+                                                 impl->xvinfo,
+                                                 is_rgba,
+                                                 impl->is_mesa_glx);
+
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Colormap: visual id = 0x%lx",
+               GDK_VISUAL_XVISUAL (impl->colormap->visual)->visualid));
+
+  /*
+   * Init configuration attributes.
+   */
+
+  gdk_gl_config_init_attrib (glconfig);
 
   return glconfig;
 }
@@ -877,10 +867,39 @@ gdk_x11_gl_config_get_xvinfo (GdkGLConfig *glconfig)
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo;
 }
 
-static gboolean
-gdk_x11_gl_config_get_attrib (GdkGLConfig *glconfig,
-                              int          attribute,
-                              int         *value)
+/**
+ * gdk_gl_config_get_screen:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get #GdkScreen.
+ *
+ * Return value: the #GdkScreen.
+ **/
+GdkScreen *
+gdk_gl_config_get_screen (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+
+  return GDK_GL_CONFIG_IMPL_X11 (glconfig)->screen;
+}
+
+/**
+ * gdk_gl_config_get_attrib:
+ * @glconfig: a #GdkGLConfig.
+ * @attribute: the attribute to be returned.
+ * @value: returns the requested value.
+ *
+ * Returns information about a OpenGL frame buffer configuration.
+ *
+ * Returns the value one of the attributes which can be specified in
+ * #gdk_gl_config_new.
+ *
+ * Return value: an error code if it fails for any reason, otherwise, GDK_GL_SUCCESS is returned.
+ **/
+gboolean
+gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
+                          int          attribute,
+                          int         *value)
 {
   GdkGLConfigImplX11 *impl;
   int ret;
@@ -896,4 +915,63 @@ gdk_x11_gl_config_get_attrib (GdkGLConfig *glconfig,
   /* Error handling? */
 
   return FALSE;
+}
+
+/**
+ * gdk_gl_config_get_colormap:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get the #GdkColormap that is appropriate for the OpenGL frame buffer
+ * configuration.
+ *
+ * Useful to get the appropiate colormap (GdkColormap) for the OpenGL
+ * framebuffer.
+ *
+ * Return value: the appropriate #GdkColormap.
+ **/
+GdkColormap *
+gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+
+  return GDK_GL_CONFIG_IMPL_X11 (glconfig)->colormap;
+}
+
+/**
+ * gdk_gl_config_get_visual:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get the #GdkVisual that is appropriate for the OpenGL frame buffer
+ * configuration.
+ *
+ * Return value: the appropriate #GdkVisual.
+ **/
+GdkVisual *
+gdk_gl_config_get_visual (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+
+  return gdk_colormap_get_visual (GDK_GL_CONFIG_IMPL_X11 (glconfig)->colormap);
+}
+
+/**
+ * gdk_gl_config_get_depth:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get the depth (number of bits per pixel) of the OpenGL-capable visual.
+ *
+ * Color depth is a somehow confusing term. It is defined as the amount of
+ * bits per pixel used to define a color. It is confusing because in some
+ * environments is expressed as the amount of bits used to define each of
+ * the components (RGBA) of the color. Here it will be named as the total
+ * amount of bits required to define the whole color.
+ *
+ * Return value: the depth value.
+ **/
+gint
+gdk_gl_config_get_depth (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
+
+  return GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo->depth;
 }

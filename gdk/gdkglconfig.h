@@ -59,11 +59,6 @@ struct _GdkGLConfig
 {
   GObject parent_instance;
 
-  GdkScreen *screen;
-
-  GdkColormap *colormap;
-  gint depth;
-
   gint layer_plane;
 
   guint is_rgba            : 1;
@@ -82,10 +77,6 @@ struct _GdkGLConfig
 struct _GdkGLConfigClass
 {
   GObjectClass parent_class;
-
-  gboolean (*get_attrib) (GdkGLConfig *glconfig,
-                          int          attribute,
-                          int         *value);
 };
 
 GType        gdk_gl_config_get_type               (void);

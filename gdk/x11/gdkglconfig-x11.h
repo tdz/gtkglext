@@ -42,6 +42,10 @@ struct _GdkGLConfigImplX11
   int screen_num;
   XVisualInfo *xvinfo;
 
+  GdkScreen *screen;
+
+  GdkColormap *colormap;
+
   guint is_mesa_glx : 1;
 };
 

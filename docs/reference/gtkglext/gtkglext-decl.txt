@@ -61,6 +61,10 @@ GdkGLWindow  *glwindow
 #define GDK_GL_CONFIG_XVINFO(glconfig)         (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo)
 </MACRO>
 <MACRO>
+<NAME>GDK_GL_CONFIG_XCOLORMAP</NAME>
+#define GDK_GL_CONFIG_XCOLORMAP(glconfig)      (GDK_COLORMAP_XCOLORMAP (GDK_GL_CONFIG_IMPL_X11 (glconfig)->colormap))
+</MACRO>
+<MACRO>
 <NAME>GDK_GL_CONTEXT_GLXCONTEXT</NAME>
 #define GDK_GL_CONTEXT_GLXCONTEXT(glcontext)   (GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glxcontext)
 </MACRO>
@@ -85,6 +89,10 @@ GdkGLWindow  *glwindow
 #define GDK_GL_CONFIG_XVINFO(glconfig)         (gdk_x11_gl_config_get_xvinfo (glconfig))
 </MACRO>
 <MACRO>
+<NAME>GDK_GL_CONFIG_XCOLORMAP</NAME>
+#define GDK_GL_CONFIG_XCOLORMAP(glconfig)      (GDK_COLORMAP_XCOLORMAP (gdk_gl_config_get_colormap (glconfig)))
+</MACRO>
+<MACRO>
 <NAME>GDK_GL_CONTEXT_GLXCONTEXT</NAME>
 #define GDK_GL_CONTEXT_GLXCONTEXT(glcontext)   (gdk_x11_gl_context_get_glxcontext (glcontext))
 </MACRO>
@@ -95,10 +103,6 @@ GdkGLWindow  *glwindow
 <MACRO>
 <NAME>GDK_GL_WINDOW_GLXWINDOW</NAME>
 #define GDK_GL_WINDOW_GLXWINDOW(glwindow)      (gdk_x11_gl_window_get_glxwindow (glwindow))
-</MACRO>
-<MACRO>
-<NAME>GDK_GL_CONFIG_XCOLORMAP</NAME>
-#define GDK_GL_CONFIG_XCOLORMAP(glconfig)    (GDK_COLORMAP_XCOLORMAP ((glconfig)->colormap))
 </MACRO>
 <ENUM>
 <NAME>GdkGLConfigMode</NAME>
@@ -150,11 +154,6 @@ typedef enum
 struct GdkGLConfig
 {
   GObject parent_instance;
-
-  GdkScreen *screen;
-
-  GdkColormap *colormap;
-  gint depth;
 
   gint layer_plane;
 
