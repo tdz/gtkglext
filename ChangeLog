@@ -1,5 +1,15 @@
 2003-07-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/GL/Makefile.am (gdkglext_gl_public_h_sources): Install
+	glext_extra.h.
+	(EXTRA_DIST): Added gen-gdkgl*ext-[ch].pl scripts.
+
+	* gdk/GL/gen-gdkglglext-c.pl (generate_code): 
+	* gdk/GL/gen-gdkglglxext-c.pl (generate_code): 
+	* gdk/GL/gen-gdkglwglext-c.pl (generate_code): Changed
+	_procs_$extension struct initialization code. Changed debug
+	message.
+
 	* gdk/GL/glext.[ch]: 
 	* gdk/GL/glxext.[ch]: 
 	* gdk/GL/wglext.[ch]: Use auto-generated code.

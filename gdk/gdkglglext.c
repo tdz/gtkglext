@@ -30,14 +30,44 @@
  */
 
 static GdkGL_GL_VERSION_1_2 _procs_GL_VERSION_1_2 = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glBlendColor) -1,
+  (GdkGLProc_glBlendEquation) -1,
+  (GdkGLProc_glDrawRangeElements) -1,
+  (GdkGLProc_glColorTable) -1,
+  (GdkGLProc_glColorTableParameterfv) -1,
+  (GdkGLProc_glColorTableParameteriv) -1,
+  (GdkGLProc_glCopyColorTable) -1,
+  (GdkGLProc_glGetColorTable) -1,
+  (GdkGLProc_glGetColorTableParameterfv) -1,
+  (GdkGLProc_glGetColorTableParameteriv) -1,
+  (GdkGLProc_glColorSubTable) -1,
+  (GdkGLProc_glCopyColorSubTable) -1,
+  (GdkGLProc_glConvolutionFilter1D) -1,
+  (GdkGLProc_glConvolutionFilter2D) -1,
+  (GdkGLProc_glConvolutionParameterf) -1,
+  (GdkGLProc_glConvolutionParameterfv) -1,
+  (GdkGLProc_glConvolutionParameteri) -1,
+  (GdkGLProc_glConvolutionParameteriv) -1,
+  (GdkGLProc_glCopyConvolutionFilter1D) -1,
+  (GdkGLProc_glCopyConvolutionFilter2D) -1,
+  (GdkGLProc_glGetConvolutionFilter) -1,
+  (GdkGLProc_glGetConvolutionParameterfv) -1,
+  (GdkGLProc_glGetConvolutionParameteriv) -1,
+  (GdkGLProc_glGetSeparableFilter) -1,
+  (GdkGLProc_glSeparableFilter2D) -1,
+  (GdkGLProc_glGetHistogram) -1,
+  (GdkGLProc_glGetHistogramParameterfv) -1,
+  (GdkGLProc_glGetHistogramParameteriv) -1,
+  (GdkGLProc_glGetMinmax) -1,
+  (GdkGLProc_glGetMinmaxParameterfv) -1,
+  (GdkGLProc_glGetMinmaxParameteriv) -1,
+  (GdkGLProc_glHistogram) -1,
+  (GdkGLProc_glMinmax) -1,
+  (GdkGLProc_glResetHistogram) -1,
+  (GdkGLProc_glResetMinmax) -1,
+  (GdkGLProc_glTexImage3D) -1,
+  (GdkGLProc_glTexSubImage3D) -1,
+  (GdkGLProc_glCopyTexSubImage3D) -1
 };
 
 /* glBlendColor */
@@ -806,8 +836,6 @@ gdk_gl_get_GL_VERSION_1_2 (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_2 ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -853,6 +881,10 @@ gdk_gl_get_GL_VERSION_1_2 (void)
       supported &= (gdk_gl_get_glCopyTexSubImage3D () != NULL);
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_1_2 () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -864,16 +896,52 @@ gdk_gl_get_GL_VERSION_1_2 (void)
  */
 
 static GdkGL_GL_VERSION_1_3 _procs_GL_VERSION_1_3 = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glActiveTexture) -1,
+  (GdkGLProc_glClientActiveTexture) -1,
+  (GdkGLProc_glMultiTexCoord1d) -1,
+  (GdkGLProc_glMultiTexCoord1dv) -1,
+  (GdkGLProc_glMultiTexCoord1f) -1,
+  (GdkGLProc_glMultiTexCoord1fv) -1,
+  (GdkGLProc_glMultiTexCoord1i) -1,
+  (GdkGLProc_glMultiTexCoord1iv) -1,
+  (GdkGLProc_glMultiTexCoord1s) -1,
+  (GdkGLProc_glMultiTexCoord1sv) -1,
+  (GdkGLProc_glMultiTexCoord2d) -1,
+  (GdkGLProc_glMultiTexCoord2dv) -1,
+  (GdkGLProc_glMultiTexCoord2f) -1,
+  (GdkGLProc_glMultiTexCoord2fv) -1,
+  (GdkGLProc_glMultiTexCoord2i) -1,
+  (GdkGLProc_glMultiTexCoord2iv) -1,
+  (GdkGLProc_glMultiTexCoord2s) -1,
+  (GdkGLProc_glMultiTexCoord2sv) -1,
+  (GdkGLProc_glMultiTexCoord3d) -1,
+  (GdkGLProc_glMultiTexCoord3dv) -1,
+  (GdkGLProc_glMultiTexCoord3f) -1,
+  (GdkGLProc_glMultiTexCoord3fv) -1,
+  (GdkGLProc_glMultiTexCoord3i) -1,
+  (GdkGLProc_glMultiTexCoord3iv) -1,
+  (GdkGLProc_glMultiTexCoord3s) -1,
+  (GdkGLProc_glMultiTexCoord3sv) -1,
+  (GdkGLProc_glMultiTexCoord4d) -1,
+  (GdkGLProc_glMultiTexCoord4dv) -1,
+  (GdkGLProc_glMultiTexCoord4f) -1,
+  (GdkGLProc_glMultiTexCoord4fv) -1,
+  (GdkGLProc_glMultiTexCoord4i) -1,
+  (GdkGLProc_glMultiTexCoord4iv) -1,
+  (GdkGLProc_glMultiTexCoord4s) -1,
+  (GdkGLProc_glMultiTexCoord4sv) -1,
+  (GdkGLProc_glLoadTransposeMatrixf) -1,
+  (GdkGLProc_glLoadTransposeMatrixd) -1,
+  (GdkGLProc_glMultTransposeMatrixf) -1,
+  (GdkGLProc_glMultTransposeMatrixd) -1,
+  (GdkGLProc_glSampleCoverage) -1,
+  (GdkGLProc_glCompressedTexImage3D) -1,
+  (GdkGLProc_glCompressedTexImage2D) -1,
+  (GdkGLProc_glCompressedTexImage1D) -1,
+  (GdkGLProc_glCompressedTexSubImage3D) -1,
+  (GdkGLProc_glCompressedTexSubImage2D) -1,
+  (GdkGLProc_glCompressedTexSubImage1D) -1,
+  (GdkGLProc_glGetCompressedTexImage) -1
 };
 
 /* glActiveTexture */
@@ -1802,8 +1870,6 @@ gdk_gl_get_GL_VERSION_1_3 (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_3 ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -1857,6 +1923,10 @@ gdk_gl_get_GL_VERSION_1_3 (void)
       supported &= (gdk_gl_get_glGetCompressedTexImage () != NULL);
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_1_3 () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -1868,15 +1938,51 @@ gdk_gl_get_GL_VERSION_1_3 (void)
  */
 
 static GdkGL_GL_VERSION_1_4 _procs_GL_VERSION_1_4 = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glBlendFuncSeparate) -1,
+  (GdkGLProc_glFogCoordf) -1,
+  (GdkGLProc_glFogCoordfv) -1,
+  (GdkGLProc_glFogCoordd) -1,
+  (GdkGLProc_glFogCoorddv) -1,
+  (GdkGLProc_glFogCoordPointer) -1,
+  (GdkGLProc_glMultiDrawArrays) -1,
+  (GdkGLProc_glMultiDrawElements) -1,
+  (GdkGLProc_glPointParameterf) -1,
+  (GdkGLProc_glPointParameterfv) -1,
+  (GdkGLProc_glPointParameteri) -1,
+  (GdkGLProc_glPointParameteriv) -1,
+  (GdkGLProc_glSecondaryColor3b) -1,
+  (GdkGLProc_glSecondaryColor3bv) -1,
+  (GdkGLProc_glSecondaryColor3d) -1,
+  (GdkGLProc_glSecondaryColor3dv) -1,
+  (GdkGLProc_glSecondaryColor3f) -1,
+  (GdkGLProc_glSecondaryColor3fv) -1,
+  (GdkGLProc_glSecondaryColor3i) -1,
+  (GdkGLProc_glSecondaryColor3iv) -1,
+  (GdkGLProc_glSecondaryColor3s) -1,
+  (GdkGLProc_glSecondaryColor3sv) -1,
+  (GdkGLProc_glSecondaryColor3ub) -1,
+  (GdkGLProc_glSecondaryColor3ubv) -1,
+  (GdkGLProc_glSecondaryColor3ui) -1,
+  (GdkGLProc_glSecondaryColor3uiv) -1,
+  (GdkGLProc_glSecondaryColor3us) -1,
+  (GdkGLProc_glSecondaryColor3usv) -1,
+  (GdkGLProc_glSecondaryColorPointer) -1,
+  (GdkGLProc_glWindowPos2d) -1,
+  (GdkGLProc_glWindowPos2dv) -1,
+  (GdkGLProc_glWindowPos2f) -1,
+  (GdkGLProc_glWindowPos2fv) -1,
+  (GdkGLProc_glWindowPos2i) -1,
+  (GdkGLProc_glWindowPos2iv) -1,
+  (GdkGLProc_glWindowPos2s) -1,
+  (GdkGLProc_glWindowPos2sv) -1,
+  (GdkGLProc_glWindowPos3d) -1,
+  (GdkGLProc_glWindowPos3dv) -1,
+  (GdkGLProc_glWindowPos3f) -1,
+  (GdkGLProc_glWindowPos3fv) -1,
+  (GdkGLProc_glWindowPos3i) -1,
+  (GdkGLProc_glWindowPos3iv) -1,
+  (GdkGLProc_glWindowPos3s) -1,
+  (GdkGLProc_glWindowPos3sv) -1
 };
 
 /* glBlendFuncSeparate */
@@ -2785,8 +2891,6 @@ gdk_gl_get_GL_VERSION_1_4 (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_4 ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -2839,6 +2943,10 @@ gdk_gl_get_GL_VERSION_1_4 (void)
       supported &= (gdk_gl_get_glWindowPos3sv () != NULL);
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_1_4 () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -2850,13 +2958,40 @@ gdk_gl_get_GL_VERSION_1_4 (void)
  */
 
 static GdkGL_GL_ARB_multitexture _procs_GL_ARB_multitexture = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glActiveTextureARB) -1,
+  (GdkGLProc_glClientActiveTextureARB) -1,
+  (GdkGLProc_glMultiTexCoord1dARB) -1,
+  (GdkGLProc_glMultiTexCoord1dvARB) -1,
+  (GdkGLProc_glMultiTexCoord1fARB) -1,
+  (GdkGLProc_glMultiTexCoord1fvARB) -1,
+  (GdkGLProc_glMultiTexCoord1iARB) -1,
+  (GdkGLProc_glMultiTexCoord1ivARB) -1,
+  (GdkGLProc_glMultiTexCoord1sARB) -1,
+  (GdkGLProc_glMultiTexCoord1svARB) -1,
+  (GdkGLProc_glMultiTexCoord2dARB) -1,
+  (GdkGLProc_glMultiTexCoord2dvARB) -1,
+  (GdkGLProc_glMultiTexCoord2fARB) -1,
+  (GdkGLProc_glMultiTexCoord2fvARB) -1,
+  (GdkGLProc_glMultiTexCoord2iARB) -1,
+  (GdkGLProc_glMultiTexCoord2ivARB) -1,
+  (GdkGLProc_glMultiTexCoord2sARB) -1,
+  (GdkGLProc_glMultiTexCoord2svARB) -1,
+  (GdkGLProc_glMultiTexCoord3dARB) -1,
+  (GdkGLProc_glMultiTexCoord3dvARB) -1,
+  (GdkGLProc_glMultiTexCoord3fARB) -1,
+  (GdkGLProc_glMultiTexCoord3fvARB) -1,
+  (GdkGLProc_glMultiTexCoord3iARB) -1,
+  (GdkGLProc_glMultiTexCoord3ivARB) -1,
+  (GdkGLProc_glMultiTexCoord3sARB) -1,
+  (GdkGLProc_glMultiTexCoord3svARB) -1,
+  (GdkGLProc_glMultiTexCoord4dARB) -1,
+  (GdkGLProc_glMultiTexCoord4dvARB) -1,
+  (GdkGLProc_glMultiTexCoord4fARB) -1,
+  (GdkGLProc_glMultiTexCoord4fvARB) -1,
+  (GdkGLProc_glMultiTexCoord4iARB) -1,
+  (GdkGLProc_glMultiTexCoord4ivARB) -1,
+  (GdkGLProc_glMultiTexCoord4sARB) -1,
+  (GdkGLProc_glMultiTexCoord4svARB) -1
 };
 
 /* glActiveTextureARB */
@@ -3545,8 +3680,6 @@ gdk_gl_get_GL_ARB_multitexture (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_multitexture ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -3593,6 +3726,10 @@ gdk_gl_get_GL_ARB_multitexture (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_multitexture () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -3604,7 +3741,10 @@ gdk_gl_get_GL_ARB_multitexture (void)
  */
 
 static GdkGL_GL_ARB_transpose_matrix _procs_GL_ARB_transpose_matrix = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glLoadTransposeMatrixfARB) -1,
+  (GdkGLProc_glLoadTransposeMatrixdARB) -1,
+  (GdkGLProc_glMultTransposeMatrixfARB) -1,
+  (GdkGLProc_glMultTransposeMatrixdARB) -1
 };
 
 /* glLoadTransposeMatrixfARB */
@@ -3693,8 +3833,6 @@ gdk_gl_get_GL_ARB_transpose_matrix (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_transpose_matrix ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -3711,6 +3849,10 @@ gdk_gl_get_GL_ARB_transpose_matrix (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_transpose_matrix () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -3722,7 +3864,7 @@ gdk_gl_get_GL_ARB_transpose_matrix (void)
  */
 
 static GdkGL_GL_ARB_multisample _procs_GL_ARB_multisample = {
-  (gpointer) -1
+  (GdkGLProc_glSampleCoverageARB) -1
 };
 
 /* glSampleCoverageARB */
@@ -3751,8 +3893,6 @@ gdk_gl_get_GL_ARB_multisample (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_multisample ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -3766,6 +3906,10 @@ gdk_gl_get_GL_ARB_multisample (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_multisample () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -3777,8 +3921,13 @@ gdk_gl_get_GL_ARB_multisample (void)
  */
 
 static GdkGL_GL_ARB_texture_compression _procs_GL_ARB_texture_compression = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glCompressedTexImage3DARB) -1,
+  (GdkGLProc_glCompressedTexImage2DARB) -1,
+  (GdkGLProc_glCompressedTexImage1DARB) -1,
+  (GdkGLProc_glCompressedTexSubImage3DARB) -1,
+  (GdkGLProc_glCompressedTexSubImage2DARB) -1,
+  (GdkGLProc_glCompressedTexSubImage1DARB) -1,
+  (GdkGLProc_glGetCompressedTexImageARB) -1
 };
 
 /* glCompressedTexImage3DARB */
@@ -3927,8 +4076,6 @@ gdk_gl_get_GL_ARB_texture_compression (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_texture_compression ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -3948,6 +4095,10 @@ gdk_gl_get_GL_ARB_texture_compression (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_texture_compression () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -3959,7 +4110,8 @@ gdk_gl_get_GL_ARB_texture_compression (void)
  */
 
 static GdkGL_GL_ARB_point_parameters _procs_GL_ARB_point_parameters = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glPointParameterfARB) -1,
+  (GdkGLProc_glPointParameterfvARB) -1
 };
 
 /* glPointParameterfARB */
@@ -4008,8 +4160,6 @@ gdk_gl_get_GL_ARB_point_parameters (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_point_parameters ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -4024,6 +4174,10 @@ gdk_gl_get_GL_ARB_point_parameters (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_point_parameters () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -4035,8 +4189,16 @@ gdk_gl_get_GL_ARB_point_parameters (void)
  */
 
 static GdkGL_GL_ARB_vertex_blend _procs_GL_ARB_vertex_blend = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glWeightbvARB) -1,
+  (GdkGLProc_glWeightsvARB) -1,
+  (GdkGLProc_glWeightivARB) -1,
+  (GdkGLProc_glWeightfvARB) -1,
+  (GdkGLProc_glWeightdvARB) -1,
+  (GdkGLProc_glWeightubvARB) -1,
+  (GdkGLProc_glWeightusvARB) -1,
+  (GdkGLProc_glWeightuivARB) -1,
+  (GdkGLProc_glWeightPointerARB) -1,
+  (GdkGLProc_glVertexBlendARB) -1
 };
 
 /* glWeightbvARB */
@@ -4245,8 +4407,6 @@ gdk_gl_get_GL_ARB_vertex_blend (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_vertex_blend ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -4269,6 +4429,10 @@ gdk_gl_get_GL_ARB_vertex_blend (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_vertex_blend () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -4280,7 +4444,11 @@ gdk_gl_get_GL_ARB_vertex_blend (void)
  */
 
 static GdkGL_GL_ARB_matrix_palette _procs_GL_ARB_matrix_palette = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glCurrentPaletteMatrixARB) -1,
+  (GdkGLProc_glMatrixIndexubvARB) -1,
+  (GdkGLProc_glMatrixIndexusvARB) -1,
+  (GdkGLProc_glMatrixIndexuivARB) -1,
+  (GdkGLProc_glMatrixIndexPointerARB) -1
 };
 
 /* glCurrentPaletteMatrixARB */
@@ -4389,8 +4557,6 @@ gdk_gl_get_GL_ARB_matrix_palette (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_matrix_palette ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -4408,6 +4574,10 @@ gdk_gl_get_GL_ARB_matrix_palette (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_matrix_palette () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -4419,10 +4589,22 @@ gdk_gl_get_GL_ARB_matrix_palette (void)
  */
 
 static GdkGL_GL_ARB_window_pos _procs_GL_ARB_window_pos = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glWindowPos2dARB) -1,
+  (GdkGLProc_glWindowPos2dvARB) -1,
+  (GdkGLProc_glWindowPos2fARB) -1,
+  (GdkGLProc_glWindowPos2fvARB) -1,
+  (GdkGLProc_glWindowPos2iARB) -1,
+  (GdkGLProc_glWindowPos2ivARB) -1,
+  (GdkGLProc_glWindowPos2sARB) -1,
+  (GdkGLProc_glWindowPos2svARB) -1,
+  (GdkGLProc_glWindowPos3dARB) -1,
+  (GdkGLProc_glWindowPos3dvARB) -1,
+  (GdkGLProc_glWindowPos3fARB) -1,
+  (GdkGLProc_glWindowPos3fvARB) -1,
+  (GdkGLProc_glWindowPos3iARB) -1,
+  (GdkGLProc_glWindowPos3ivARB) -1,
+  (GdkGLProc_glWindowPos3sARB) -1,
+  (GdkGLProc_glWindowPos3svARB) -1
 };
 
 /* glWindowPos2dARB */
@@ -4751,8 +4933,6 @@ gdk_gl_get_GL_ARB_window_pos (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_window_pos ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -4781,6 +4961,10 @@ gdk_gl_get_GL_ARB_window_pos (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_window_pos () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -4792,19 +4976,68 @@ gdk_gl_get_GL_ARB_window_pos (void)
  */
 
 static GdkGL_GL_ARB_vertex_program _procs_GL_ARB_vertex_program = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glVertexAttrib1dARB) -1,
+  (GdkGLProc_glVertexAttrib1dvARB) -1,
+  (GdkGLProc_glVertexAttrib1fARB) -1,
+  (GdkGLProc_glVertexAttrib1fvARB) -1,
+  (GdkGLProc_glVertexAttrib1sARB) -1,
+  (GdkGLProc_glVertexAttrib1svARB) -1,
+  (GdkGLProc_glVertexAttrib2dARB) -1,
+  (GdkGLProc_glVertexAttrib2dvARB) -1,
+  (GdkGLProc_glVertexAttrib2fARB) -1,
+  (GdkGLProc_glVertexAttrib2fvARB) -1,
+  (GdkGLProc_glVertexAttrib2sARB) -1,
+  (GdkGLProc_glVertexAttrib2svARB) -1,
+  (GdkGLProc_glVertexAttrib3dARB) -1,
+  (GdkGLProc_glVertexAttrib3dvARB) -1,
+  (GdkGLProc_glVertexAttrib3fARB) -1,
+  (GdkGLProc_glVertexAttrib3fvARB) -1,
+  (GdkGLProc_glVertexAttrib3sARB) -1,
+  (GdkGLProc_glVertexAttrib3svARB) -1,
+  (GdkGLProc_glVertexAttrib4NbvARB) -1,
+  (GdkGLProc_glVertexAttrib4NivARB) -1,
+  (GdkGLProc_glVertexAttrib4NsvARB) -1,
+  (GdkGLProc_glVertexAttrib4NubARB) -1,
+  (GdkGLProc_glVertexAttrib4NubvARB) -1,
+  (GdkGLProc_glVertexAttrib4NuivARB) -1,
+  (GdkGLProc_glVertexAttrib4NusvARB) -1,
+  (GdkGLProc_glVertexAttrib4bvARB) -1,
+  (GdkGLProc_glVertexAttrib4dARB) -1,
+  (GdkGLProc_glVertexAttrib4dvARB) -1,
+  (GdkGLProc_glVertexAttrib4fARB) -1,
+  (GdkGLProc_glVertexAttrib4fvARB) -1,
+  (GdkGLProc_glVertexAttrib4ivARB) -1,
+  (GdkGLProc_glVertexAttrib4sARB) -1,
+  (GdkGLProc_glVertexAttrib4svARB) -1,
+  (GdkGLProc_glVertexAttrib4ubvARB) -1,
+  (GdkGLProc_glVertexAttrib4uivARB) -1,
+  (GdkGLProc_glVertexAttrib4usvARB) -1,
+  (GdkGLProc_glVertexAttribPointerARB) -1,
+  (GdkGLProc_glEnableVertexAttribArrayARB) -1,
+  (GdkGLProc_glDisableVertexAttribArrayARB) -1,
+  (GdkGLProc_glProgramStringARB) -1,
+  (GdkGLProc_glBindProgramARB) -1,
+  (GdkGLProc_glDeleteProgramsARB) -1,
+  (GdkGLProc_glGenProgramsARB) -1,
+  (GdkGLProc_glProgramEnvParameter4dARB) -1,
+  (GdkGLProc_glProgramEnvParameter4dvARB) -1,
+  (GdkGLProc_glProgramEnvParameter4fARB) -1,
+  (GdkGLProc_glProgramEnvParameter4fvARB) -1,
+  (GdkGLProc_glProgramLocalParameter4dARB) -1,
+  (GdkGLProc_glProgramLocalParameter4dvARB) -1,
+  (GdkGLProc_glProgramLocalParameter4fARB) -1,
+  (GdkGLProc_glProgramLocalParameter4fvARB) -1,
+  (GdkGLProc_glGetProgramEnvParameterdvARB) -1,
+  (GdkGLProc_glGetProgramEnvParameterfvARB) -1,
+  (GdkGLProc_glGetProgramLocalParameterdvARB) -1,
+  (GdkGLProc_glGetProgramLocalParameterfvARB) -1,
+  (GdkGLProc_glGetProgramivARB) -1,
+  (GdkGLProc_glGetProgramStringARB) -1,
+  (GdkGLProc_glGetVertexAttribdvARB) -1,
+  (GdkGLProc_glGetVertexAttribfvARB) -1,
+  (GdkGLProc_glGetVertexAttribivARB) -1,
+  (GdkGLProc_glGetVertexAttribPointervARB) -1,
+  (GdkGLProc_glIsProgramARB) -1
 };
 
 /* glVertexAttrib1dARB */
@@ -6053,8 +6286,6 @@ gdk_gl_get_GL_ARB_vertex_program (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_vertex_program ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -6129,6 +6360,10 @@ gdk_gl_get_GL_ARB_vertex_program (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_vertex_program () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -6140,9 +6375,17 @@ gdk_gl_get_GL_ARB_vertex_program (void)
  */
 
 static GdkGL_GL_ARB_vertex_buffer_object _procs_GL_ARB_vertex_buffer_object = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glBindBufferARB) -1,
+  (GdkGLProc_glDeleteBuffersARB) -1,
+  (GdkGLProc_glGenBuffersARB) -1,
+  (GdkGLProc_glIsBufferARB) -1,
+  (GdkGLProc_glBufferDataARB) -1,
+  (GdkGLProc_glBufferSubDataARB) -1,
+  (GdkGLProc_glGetBufferSubDataARB) -1,
+  (GdkGLProc_glMapBufferARB) -1,
+  (GdkGLProc_glUnmapBufferARB) -1,
+  (GdkGLProc_glGetBufferParameterivARB) -1,
+  (GdkGLProc_glGetBufferPointervARB) -1
 };
 
 /* glBindBufferARB */
@@ -6371,8 +6614,6 @@ gdk_gl_get_GL_ARB_vertex_buffer_object (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_vertex_buffer_object ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -6396,6 +6637,10 @@ gdk_gl_get_GL_ARB_vertex_buffer_object (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_vertex_buffer_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -6407,7 +6652,7 @@ gdk_gl_get_GL_ARB_vertex_buffer_object (void)
  */
 
 static GdkGL_GL_EXT_blend_color _procs_GL_EXT_blend_color = {
-  (gpointer) -1
+  (GdkGLProc_glBlendColorEXT) -1
 };
 
 /* glBlendColorEXT */
@@ -6436,8 +6681,6 @@ gdk_gl_get_GL_EXT_blend_color (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_color ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -6451,6 +6694,10 @@ gdk_gl_get_GL_EXT_blend_color (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_blend_color () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -6462,7 +6709,7 @@ gdk_gl_get_GL_EXT_blend_color (void)
  */
 
 static GdkGL_GL_EXT_polygon_offset _procs_GL_EXT_polygon_offset = {
-  (gpointer) -1
+  (GdkGLProc_glPolygonOffsetEXT) -1
 };
 
 /* glPolygonOffsetEXT */
@@ -6491,8 +6738,6 @@ gdk_gl_get_GL_EXT_polygon_offset (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_polygon_offset ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -6506,6 +6751,10 @@ gdk_gl_get_GL_EXT_polygon_offset (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_polygon_offset () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -6517,7 +6766,8 @@ gdk_gl_get_GL_EXT_polygon_offset (void)
  */
 
 static GdkGL_GL_EXT_texture3D _procs_GL_EXT_texture3D = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glTexImage3DEXT) -1,
+  (GdkGLProc_glTexSubImage3DEXT) -1
 };
 
 /* glTexImage3DEXT */
@@ -6566,8 +6816,6 @@ gdk_gl_get_GL_EXT_texture3D (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture3D ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -6582,6 +6830,10 @@ gdk_gl_get_GL_EXT_texture3D (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_texture3D () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -6593,7 +6845,8 @@ gdk_gl_get_GL_EXT_texture3D (void)
  */
 
 static GdkGL_GL_SGIS_texture_filter4 _procs_GL_SGIS_texture_filter4 = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glGetTexFilterFuncSGIS) -1,
+  (GdkGLProc_glTexFilterFuncSGIS) -1
 };
 
 /* glGetTexFilterFuncSGIS */
@@ -6642,8 +6895,6 @@ gdk_gl_get_GL_SGIS_texture_filter4 (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture_filter4 ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -6658,6 +6909,10 @@ gdk_gl_get_GL_SGIS_texture_filter4 (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIS_texture_filter4 () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -6669,7 +6924,8 @@ gdk_gl_get_GL_SGIS_texture_filter4 (void)
  */
 
 static GdkGL_GL_EXT_subtexture _procs_GL_EXT_subtexture = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glTexSubImage1DEXT) -1,
+  (GdkGLProc_glTexSubImage2DEXT) -1
 };
 
 /* glTexSubImage1DEXT */
@@ -6718,8 +6974,6 @@ gdk_gl_get_GL_EXT_subtexture (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_subtexture ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -6734,6 +6988,10 @@ gdk_gl_get_GL_EXT_subtexture (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_subtexture () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -6745,7 +7003,11 @@ gdk_gl_get_GL_EXT_subtexture (void)
  */
 
 static GdkGL_GL_EXT_copy_texture _procs_GL_EXT_copy_texture = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glCopyTexImage1DEXT) -1,
+  (GdkGLProc_glCopyTexImage2DEXT) -1,
+  (GdkGLProc_glCopyTexSubImage1DEXT) -1,
+  (GdkGLProc_glCopyTexSubImage2DEXT) -1,
+  (GdkGLProc_glCopyTexSubImage3DEXT) -1
 };
 
 /* glCopyTexImage1DEXT */
@@ -6854,8 +7116,6 @@ gdk_gl_get_GL_EXT_copy_texture (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_copy_texture ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -6873,6 +7133,10 @@ gdk_gl_get_GL_EXT_copy_texture (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_copy_texture () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -6884,8 +7148,16 @@ gdk_gl_get_GL_EXT_copy_texture (void)
  */
 
 static GdkGL_GL_EXT_histogram _procs_GL_EXT_histogram = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glGetHistogramEXT) -1,
+  (GdkGLProc_glGetHistogramParameterfvEXT) -1,
+  (GdkGLProc_glGetHistogramParameterivEXT) -1,
+  (GdkGLProc_glGetMinmaxEXT) -1,
+  (GdkGLProc_glGetMinmaxParameterfvEXT) -1,
+  (GdkGLProc_glGetMinmaxParameterivEXT) -1,
+  (GdkGLProc_glHistogramEXT) -1,
+  (GdkGLProc_glMinmaxEXT) -1,
+  (GdkGLProc_glResetHistogramEXT) -1,
+  (GdkGLProc_glResetMinmaxEXT) -1
 };
 
 /* glGetHistogramEXT */
@@ -7094,8 +7366,6 @@ gdk_gl_get_GL_EXT_histogram (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_histogram ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -7118,6 +7388,10 @@ gdk_gl_get_GL_EXT_histogram (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_histogram () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -7129,9 +7403,19 @@ gdk_gl_get_GL_EXT_histogram (void)
  */
 
 static GdkGL_GL_EXT_convolution _procs_GL_EXT_convolution = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glConvolutionFilter1DEXT) -1,
+  (GdkGLProc_glConvolutionFilter2DEXT) -1,
+  (GdkGLProc_glConvolutionParameterfEXT) -1,
+  (GdkGLProc_glConvolutionParameterfvEXT) -1,
+  (GdkGLProc_glConvolutionParameteriEXT) -1,
+  (GdkGLProc_glConvolutionParameterivEXT) -1,
+  (GdkGLProc_glCopyConvolutionFilter1DEXT) -1,
+  (GdkGLProc_glCopyConvolutionFilter2DEXT) -1,
+  (GdkGLProc_glGetConvolutionFilterEXT) -1,
+  (GdkGLProc_glGetConvolutionParameterfvEXT) -1,
+  (GdkGLProc_glGetConvolutionParameterivEXT) -1,
+  (GdkGLProc_glGetSeparableFilterEXT) -1,
+  (GdkGLProc_glSeparableFilter2DEXT) -1
 };
 
 /* glConvolutionFilter1DEXT */
@@ -7400,8 +7684,6 @@ gdk_gl_get_GL_EXT_convolution (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_convolution ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -7427,6 +7709,10 @@ gdk_gl_get_GL_EXT_convolution (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_convolution () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -7438,8 +7724,13 @@ gdk_gl_get_GL_EXT_convolution (void)
  */
 
 static GdkGL_GL_SGI_color_table _procs_GL_SGI_color_table = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glColorTableSGI) -1,
+  (GdkGLProc_glColorTableParameterfvSGI) -1,
+  (GdkGLProc_glColorTableParameterivSGI) -1,
+  (GdkGLProc_glCopyColorTableSGI) -1,
+  (GdkGLProc_glGetColorTableSGI) -1,
+  (GdkGLProc_glGetColorTableParameterfvSGI) -1,
+  (GdkGLProc_glGetColorTableParameterivSGI) -1
 };
 
 /* glColorTableSGI */
@@ -7588,8 +7879,6 @@ gdk_gl_get_GL_SGI_color_table (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGI_color_table ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -7609,6 +7898,10 @@ gdk_gl_get_GL_SGI_color_table (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGI_color_table () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -7620,7 +7913,7 @@ gdk_gl_get_GL_SGI_color_table (void)
  */
 
 static GdkGL_GL_SGIX_pixel_texture _procs_GL_SGIX_pixel_texture = {
-  (gpointer) -1
+  (GdkGLProc_glPixelTexGenSGIX) -1
 };
 
 /* glPixelTexGenSGIX */
@@ -7649,8 +7942,6 @@ gdk_gl_get_GL_SGIX_pixel_texture (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_pixel_texture ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -7664,6 +7955,10 @@ gdk_gl_get_GL_SGIX_pixel_texture (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_pixel_texture () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -7675,8 +7970,12 @@ gdk_gl_get_GL_SGIX_pixel_texture (void)
  */
 
 static GdkGL_GL_SGIS_pixel_texture _procs_GL_SGIS_pixel_texture = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glPixelTexGenParameteriSGIS) -1,
+  (GdkGLProc_glPixelTexGenParameterivSGIS) -1,
+  (GdkGLProc_glPixelTexGenParameterfSGIS) -1,
+  (GdkGLProc_glPixelTexGenParameterfvSGIS) -1,
+  (GdkGLProc_glGetPixelTexGenParameterivSGIS) -1,
+  (GdkGLProc_glGetPixelTexGenParameterfvSGIS) -1
 };
 
 /* glPixelTexGenParameteriSGIS */
@@ -7805,8 +8104,6 @@ gdk_gl_get_GL_SGIS_pixel_texture (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_pixel_texture ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -7825,6 +8122,10 @@ gdk_gl_get_GL_SGIS_pixel_texture (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIS_pixel_texture () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -7836,7 +8137,8 @@ gdk_gl_get_GL_SGIS_pixel_texture (void)
  */
 
 static GdkGL_GL_SGIS_texture4D _procs_GL_SGIS_texture4D = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glTexImage4DSGIS) -1,
+  (GdkGLProc_glTexSubImage4DSGIS) -1
 };
 
 /* glTexImage4DSGIS */
@@ -7885,8 +8187,6 @@ gdk_gl_get_GL_SGIS_texture4D (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture4D ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -7901,6 +8201,10 @@ gdk_gl_get_GL_SGIS_texture4D (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIS_texture4D () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -7912,8 +8216,12 @@ gdk_gl_get_GL_SGIS_texture4D (void)
  */
 
 static GdkGL_GL_EXT_texture_object _procs_GL_EXT_texture_object = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glAreTexturesResidentEXT) -1,
+  (GdkGLProc_glBindTextureEXT) -1,
+  (GdkGLProc_glDeleteTexturesEXT) -1,
+  (GdkGLProc_glGenTexturesEXT) -1,
+  (GdkGLProc_glIsTextureEXT) -1,
+  (GdkGLProc_glPrioritizeTexturesEXT) -1
 };
 
 /* glAreTexturesResidentEXT */
@@ -8042,8 +8350,6 @@ gdk_gl_get_GL_EXT_texture_object (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture_object ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -8062,6 +8368,10 @@ gdk_gl_get_GL_EXT_texture_object (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_texture_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -8073,7 +8383,8 @@ gdk_gl_get_GL_EXT_texture_object (void)
  */
 
 static GdkGL_GL_SGIS_detail_texture _procs_GL_SGIS_detail_texture = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glDetailTexFuncSGIS) -1,
+  (GdkGLProc_glGetDetailTexFuncSGIS) -1
 };
 
 /* glDetailTexFuncSGIS */
@@ -8122,8 +8433,6 @@ gdk_gl_get_GL_SGIS_detail_texture (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_detail_texture ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -8138,6 +8447,10 @@ gdk_gl_get_GL_SGIS_detail_texture (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIS_detail_texture () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -8149,7 +8462,8 @@ gdk_gl_get_GL_SGIS_detail_texture (void)
  */
 
 static GdkGL_GL_SGIS_sharpen_texture _procs_GL_SGIS_sharpen_texture = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glSharpenTexFuncSGIS) -1,
+  (GdkGLProc_glGetSharpenTexFuncSGIS) -1
 };
 
 /* glSharpenTexFuncSGIS */
@@ -8198,8 +8512,6 @@ gdk_gl_get_GL_SGIS_sharpen_texture (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_sharpen_texture ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -8214,6 +8526,10 @@ gdk_gl_get_GL_SGIS_sharpen_texture (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIS_sharpen_texture () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -8225,7 +8541,8 @@ gdk_gl_get_GL_SGIS_sharpen_texture (void)
  */
 
 static GdkGL_GL_SGIS_multisample _procs_GL_SGIS_multisample = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glSampleMaskSGIS) -1,
+  (GdkGLProc_glSamplePatternSGIS) -1
 };
 
 /* glSampleMaskSGIS */
@@ -8274,8 +8591,6 @@ gdk_gl_get_GL_SGIS_multisample (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_multisample ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -8290,6 +8605,10 @@ gdk_gl_get_GL_SGIS_multisample (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIS_multisample () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -8301,8 +8620,15 @@ gdk_gl_get_GL_SGIS_multisample (void)
  */
 
 static GdkGL_GL_EXT_vertex_array _procs_GL_EXT_vertex_array = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glArrayElementEXT) -1,
+  (GdkGLProc_glColorPointerEXT) -1,
+  (GdkGLProc_glDrawArraysEXT) -1,
+  (GdkGLProc_glEdgeFlagPointerEXT) -1,
+  (GdkGLProc_glGetPointervEXT) -1,
+  (GdkGLProc_glIndexPointerEXT) -1,
+  (GdkGLProc_glNormalPointerEXT) -1,
+  (GdkGLProc_glTexCoordPointerEXT) -1,
+  (GdkGLProc_glVertexPointerEXT) -1
 };
 
 /* glArrayElementEXT */
@@ -8491,8 +8817,6 @@ gdk_gl_get_GL_EXT_vertex_array (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_array ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -8514,6 +8838,10 @@ gdk_gl_get_GL_EXT_vertex_array (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_vertex_array () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -8525,7 +8853,7 @@ gdk_gl_get_GL_EXT_vertex_array (void)
  */
 
 static GdkGL_GL_EXT_blend_minmax _procs_GL_EXT_blend_minmax = {
-  (gpointer) -1
+  (GdkGLProc_glBlendEquationEXT) -1
 };
 
 /* glBlendEquationEXT */
@@ -8554,8 +8882,6 @@ gdk_gl_get_GL_EXT_blend_minmax (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_minmax ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -8569,6 +8895,10 @@ gdk_gl_get_GL_EXT_blend_minmax (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_blend_minmax () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -8580,7 +8910,10 @@ gdk_gl_get_GL_EXT_blend_minmax (void)
  */
 
 static GdkGL_GL_SGIX_sprite _procs_GL_SGIX_sprite = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glSpriteParameterfSGIX) -1,
+  (GdkGLProc_glSpriteParameterfvSGIX) -1,
+  (GdkGLProc_glSpriteParameteriSGIX) -1,
+  (GdkGLProc_glSpriteParameterivSGIX) -1
 };
 
 /* glSpriteParameterfSGIX */
@@ -8669,8 +9002,6 @@ gdk_gl_get_GL_SGIX_sprite (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_sprite ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -8687,6 +9018,10 @@ gdk_gl_get_GL_SGIX_sprite (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_sprite () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -8698,7 +9033,8 @@ gdk_gl_get_GL_SGIX_sprite (void)
  */
 
 static GdkGL_GL_EXT_point_parameters _procs_GL_EXT_point_parameters = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glPointParameterfEXT) -1,
+  (GdkGLProc_glPointParameterfvEXT) -1
 };
 
 /* glPointParameterfEXT */
@@ -8747,8 +9083,6 @@ gdk_gl_get_GL_EXT_point_parameters (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_point_parameters ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -8763,6 +9097,10 @@ gdk_gl_get_GL_EXT_point_parameters (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_point_parameters () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -8774,7 +9112,8 @@ gdk_gl_get_GL_EXT_point_parameters (void)
  */
 
 static GdkGL_GL_SGIS_point_parameters _procs_GL_SGIS_point_parameters = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glPointParameterfSGIS) -1,
+  (GdkGLProc_glPointParameterfvSGIS) -1
 };
 
 /* glPointParameterfSGIS */
@@ -8823,8 +9162,6 @@ gdk_gl_get_GL_SGIS_point_parameters (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_point_parameters ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -8839,6 +9176,10 @@ gdk_gl_get_GL_SGIS_point_parameters (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIS_point_parameters () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -8850,8 +9191,12 @@ gdk_gl_get_GL_SGIS_point_parameters (void)
  */
 
 static GdkGL_GL_SGIX_instruments _procs_GL_SGIX_instruments = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glGetInstrumentsSGIX) -1,
+  (GdkGLProc_glInstrumentsBufferSGIX) -1,
+  (GdkGLProc_glPollInstrumentsSGIX) -1,
+  (GdkGLProc_glReadInstrumentsSGIX) -1,
+  (GdkGLProc_glStartInstrumentsSGIX) -1,
+  (GdkGLProc_glStopInstrumentsSGIX) -1
 };
 
 /* glGetInstrumentsSGIX */
@@ -8980,8 +9325,6 @@ gdk_gl_get_GL_SGIX_instruments (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_instruments ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9000,6 +9343,10 @@ gdk_gl_get_GL_SGIX_instruments (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_instruments () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9011,7 +9358,7 @@ gdk_gl_get_GL_SGIX_instruments (void)
  */
 
 static GdkGL_GL_SGIX_framezoom _procs_GL_SGIX_framezoom = {
-  (gpointer) -1
+  (GdkGLProc_glFrameZoomSGIX) -1
 };
 
 /* glFrameZoomSGIX */
@@ -9040,8 +9387,6 @@ gdk_gl_get_GL_SGIX_framezoom (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_framezoom ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9055,6 +9400,10 @@ gdk_gl_get_GL_SGIX_framezoom (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_framezoom () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9066,7 +9415,7 @@ gdk_gl_get_GL_SGIX_framezoom (void)
  */
 
 static GdkGL_GL_SGIX_tag_sample_buffer _procs_GL_SGIX_tag_sample_buffer = {
-  (gpointer) -1
+  (GdkGLProc_glTagSampleBufferSGIX) -1
 };
 
 /* glTagSampleBufferSGIX */
@@ -9095,8 +9444,6 @@ gdk_gl_get_GL_SGIX_tag_sample_buffer (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_tag_sample_buffer ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9110,6 +9457,10 @@ gdk_gl_get_GL_SGIX_tag_sample_buffer (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_tag_sample_buffer () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9121,7 +9472,10 @@ gdk_gl_get_GL_SGIX_tag_sample_buffer (void)
  */
 
 static GdkGL_GL_SGIX_polynomial_ffd _procs_GL_SGIX_polynomial_ffd = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glDeformationMap3dSGIX) -1,
+  (GdkGLProc_glDeformationMap3fSGIX) -1,
+  (GdkGLProc_glDeformSGIX) -1,
+  (GdkGLProc_glLoadIdentityDeformationMapSGIX) -1
 };
 
 /* glDeformationMap3dSGIX */
@@ -9210,8 +9564,6 @@ gdk_gl_get_GL_SGIX_polynomial_ffd (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_polynomial_ffd ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9228,6 +9580,10 @@ gdk_gl_get_GL_SGIX_polynomial_ffd (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_polynomial_ffd () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9239,7 +9595,7 @@ gdk_gl_get_GL_SGIX_polynomial_ffd (void)
  */
 
 static GdkGL_GL_SGIX_reference_plane _procs_GL_SGIX_reference_plane = {
-  (gpointer) -1
+  (GdkGLProc_glReferencePlaneSGIX) -1
 };
 
 /* glReferencePlaneSGIX */
@@ -9268,8 +9624,6 @@ gdk_gl_get_GL_SGIX_reference_plane (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_reference_plane ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9283,6 +9637,10 @@ gdk_gl_get_GL_SGIX_reference_plane (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_reference_plane () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9294,7 +9652,7 @@ gdk_gl_get_GL_SGIX_reference_plane (void)
  */
 
 static GdkGL_GL_SGIX_flush_raster _procs_GL_SGIX_flush_raster = {
-  (gpointer) -1
+  (GdkGLProc_glFlushRasterSGIX) -1
 };
 
 /* glFlushRasterSGIX */
@@ -9323,8 +9681,6 @@ gdk_gl_get_GL_SGIX_flush_raster (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_flush_raster ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9338,6 +9694,10 @@ gdk_gl_get_GL_SGIX_flush_raster (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_flush_raster () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9349,7 +9709,8 @@ gdk_gl_get_GL_SGIX_flush_raster (void)
  */
 
 static GdkGL_GL_SGIS_fog_function _procs_GL_SGIS_fog_function = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glFogFuncSGIS) -1,
+  (GdkGLProc_glGetFogFuncSGIS) -1
 };
 
 /* glFogFuncSGIS */
@@ -9398,8 +9759,6 @@ gdk_gl_get_GL_SGIS_fog_function (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_fog_function ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9414,6 +9773,10 @@ gdk_gl_get_GL_SGIS_fog_function (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIS_fog_function () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9425,8 +9788,12 @@ gdk_gl_get_GL_SGIS_fog_function (void)
  */
 
 static GdkGL_GL_HP_image_transform _procs_GL_HP_image_transform = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glImageTransformParameteriHP) -1,
+  (GdkGLProc_glImageTransformParameterfHP) -1,
+  (GdkGLProc_glImageTransformParameterivHP) -1,
+  (GdkGLProc_glImageTransformParameterfvHP) -1,
+  (GdkGLProc_glGetImageTransformParameterivHP) -1,
+  (GdkGLProc_glGetImageTransformParameterfvHP) -1
 };
 
 /* glImageTransformParameteriHP */
@@ -9555,8 +9922,6 @@ gdk_gl_get_GL_HP_image_transform (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_HP_image_transform ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9575,6 +9940,10 @@ gdk_gl_get_GL_HP_image_transform (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_HP_image_transform () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9586,7 +9955,8 @@ gdk_gl_get_GL_HP_image_transform (void)
  */
 
 static GdkGL_GL_EXT_color_subtable _procs_GL_EXT_color_subtable = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glColorSubTableEXT) -1,
+  (GdkGLProc_glCopyColorSubTableEXT) -1
 };
 
 /* glColorSubTableEXT */
@@ -9635,8 +10005,6 @@ gdk_gl_get_GL_EXT_color_subtable (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_color_subtable ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9651,6 +10019,10 @@ gdk_gl_get_GL_EXT_color_subtable (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_color_subtable () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9662,7 +10034,7 @@ gdk_gl_get_GL_EXT_color_subtable (void)
  */
 
 static GdkGL_GL_PGI_misc_hints _procs_GL_PGI_misc_hints = {
-  (gpointer) -1
+  (GdkGLProc_glHintPGI) -1
 };
 
 /* glHintPGI */
@@ -9691,8 +10063,6 @@ gdk_gl_get_GL_PGI_misc_hints (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_PGI_misc_hints ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9706,6 +10076,10 @@ gdk_gl_get_GL_PGI_misc_hints (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_PGI_misc_hints () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9717,7 +10091,10 @@ gdk_gl_get_GL_PGI_misc_hints (void)
  */
 
 static GdkGL_GL_EXT_paletted_texture _procs_GL_EXT_paletted_texture = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glColorTableEXT) -1,
+  (GdkGLProc_glGetColorTableEXT) -1,
+  (GdkGLProc_glGetColorTableParameterivEXT) -1,
+  (GdkGLProc_glGetColorTableParameterfvEXT) -1
 };
 
 /* glColorTableEXT */
@@ -9806,8 +10183,6 @@ gdk_gl_get_GL_EXT_paletted_texture (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_paletted_texture ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9824,6 +10199,10 @@ gdk_gl_get_GL_EXT_paletted_texture (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_paletted_texture () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9835,8 +10214,12 @@ gdk_gl_get_GL_EXT_paletted_texture (void)
  */
 
 static GdkGL_GL_SGIX_list_priority _procs_GL_SGIX_list_priority = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glGetListParameterfvSGIX) -1,
+  (GdkGLProc_glGetListParameterivSGIX) -1,
+  (GdkGLProc_glListParameterfSGIX) -1,
+  (GdkGLProc_glListParameterfvSGIX) -1,
+  (GdkGLProc_glListParameteriSGIX) -1,
+  (GdkGLProc_glListParameterivSGIX) -1
 };
 
 /* glGetListParameterfvSGIX */
@@ -9965,8 +10348,6 @@ gdk_gl_get_GL_SGIX_list_priority (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_list_priority ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -9985,6 +10366,10 @@ gdk_gl_get_GL_SGIX_list_priority (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_list_priority () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -9996,7 +10381,7 @@ gdk_gl_get_GL_SGIX_list_priority (void)
  */
 
 static GdkGL_GL_EXT_index_material _procs_GL_EXT_index_material = {
-  (gpointer) -1
+  (GdkGLProc_glIndexMaterialEXT) -1
 };
 
 /* glIndexMaterialEXT */
@@ -10025,8 +10410,6 @@ gdk_gl_get_GL_EXT_index_material (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_index_material ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -10040,6 +10423,10 @@ gdk_gl_get_GL_EXT_index_material (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_index_material () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -10051,7 +10438,7 @@ gdk_gl_get_GL_EXT_index_material (void)
  */
 
 static GdkGL_GL_EXT_index_func _procs_GL_EXT_index_func = {
-  (gpointer) -1
+  (GdkGLProc_glIndexFuncEXT) -1
 };
 
 /* glIndexFuncEXT */
@@ -10080,8 +10467,6 @@ gdk_gl_get_GL_EXT_index_func (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_index_func ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -10095,6 +10480,10 @@ gdk_gl_get_GL_EXT_index_func (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_index_func () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -10106,7 +10495,8 @@ gdk_gl_get_GL_EXT_index_func (void)
  */
 
 static GdkGL_GL_EXT_compiled_vertex_array _procs_GL_EXT_compiled_vertex_array = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glLockArraysEXT) -1,
+  (GdkGLProc_glUnlockArraysEXT) -1
 };
 
 /* glLockArraysEXT */
@@ -10155,8 +10545,6 @@ gdk_gl_get_GL_EXT_compiled_vertex_array (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_compiled_vertex_array ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -10171,6 +10559,10 @@ gdk_gl_get_GL_EXT_compiled_vertex_array (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_compiled_vertex_array () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -10182,7 +10574,8 @@ gdk_gl_get_GL_EXT_compiled_vertex_array (void)
  */
 
 static GdkGL_GL_EXT_cull_vertex _procs_GL_EXT_cull_vertex = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glCullParameterdvEXT) -1,
+  (GdkGLProc_glCullParameterfvEXT) -1
 };
 
 /* glCullParameterdvEXT */
@@ -10231,8 +10624,6 @@ gdk_gl_get_GL_EXT_cull_vertex (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_cull_vertex ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -10247,6 +10638,10 @@ gdk_gl_get_GL_EXT_cull_vertex (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_cull_vertex () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -10258,10 +10653,24 @@ gdk_gl_get_GL_EXT_cull_vertex (void)
  */
 
 static GdkGL_GL_SGIX_fragment_lighting _procs_GL_SGIX_fragment_lighting = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glFragmentColorMaterialSGIX) -1,
+  (GdkGLProc_glFragmentLightfSGIX) -1,
+  (GdkGLProc_glFragmentLightfvSGIX) -1,
+  (GdkGLProc_glFragmentLightiSGIX) -1,
+  (GdkGLProc_glFragmentLightivSGIX) -1,
+  (GdkGLProc_glFragmentLightModelfSGIX) -1,
+  (GdkGLProc_glFragmentLightModelfvSGIX) -1,
+  (GdkGLProc_glFragmentLightModeliSGIX) -1,
+  (GdkGLProc_glFragmentLightModelivSGIX) -1,
+  (GdkGLProc_glFragmentMaterialfSGIX) -1,
+  (GdkGLProc_glFragmentMaterialfvSGIX) -1,
+  (GdkGLProc_glFragmentMaterialiSGIX) -1,
+  (GdkGLProc_glFragmentMaterialivSGIX) -1,
+  (GdkGLProc_glGetFragmentLightfvSGIX) -1,
+  (GdkGLProc_glGetFragmentLightivSGIX) -1,
+  (GdkGLProc_glGetFragmentMaterialfvSGIX) -1,
+  (GdkGLProc_glGetFragmentMaterialivSGIX) -1,
+  (GdkGLProc_glLightEnviSGIX) -1
 };
 
 /* glFragmentColorMaterialSGIX */
@@ -10630,8 +11039,6 @@ gdk_gl_get_GL_SGIX_fragment_lighting (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_fragment_lighting ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -10662,6 +11069,10 @@ gdk_gl_get_GL_SGIX_fragment_lighting (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_fragment_lighting () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -10673,7 +11084,7 @@ gdk_gl_get_GL_SGIX_fragment_lighting (void)
  */
 
 static GdkGL_GL_EXT_draw_range_elements _procs_GL_EXT_draw_range_elements = {
-  (gpointer) -1
+  (GdkGLProc_glDrawRangeElementsEXT) -1
 };
 
 /* glDrawRangeElementsEXT */
@@ -10702,8 +11113,6 @@ gdk_gl_get_GL_EXT_draw_range_elements (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_draw_range_elements ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -10717,6 +11126,10 @@ gdk_gl_get_GL_EXT_draw_range_elements (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_draw_range_elements () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -10728,7 +11141,9 @@ gdk_gl_get_GL_EXT_draw_range_elements (void)
  */
 
 static GdkGL_GL_EXT_light_texture _procs_GL_EXT_light_texture = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glApplyTextureEXT) -1,
+  (GdkGLProc_glTextureLightEXT) -1,
+  (GdkGLProc_glTextureMaterialEXT) -1
 };
 
 /* glApplyTextureEXT */
@@ -10797,8 +11212,6 @@ gdk_gl_get_GL_EXT_light_texture (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_light_texture ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -10814,6 +11227,10 @@ gdk_gl_get_GL_EXT_light_texture (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_light_texture () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -10825,8 +11242,12 @@ gdk_gl_get_GL_EXT_light_texture (void)
  */
 
 static GdkGL_GL_SGIX_async _procs_GL_SGIX_async = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glAsyncMarkerSGIX) -1,
+  (GdkGLProc_glFinishAsyncSGIX) -1,
+  (GdkGLProc_glPollAsyncSGIX) -1,
+  (GdkGLProc_glGenAsyncMarkersSGIX) -1,
+  (GdkGLProc_glDeleteAsyncMarkersSGIX) -1,
+  (GdkGLProc_glIsAsyncMarkerSGIX) -1
 };
 
 /* glAsyncMarkerSGIX */
@@ -10955,8 +11376,6 @@ gdk_gl_get_GL_SGIX_async (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_async ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -10975,6 +11394,10 @@ gdk_gl_get_GL_SGIX_async (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_async () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -10986,7 +11409,10 @@ gdk_gl_get_GL_SGIX_async (void)
  */
 
 static GdkGL_GL_INTEL_parallel_arrays _procs_GL_INTEL_parallel_arrays = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glVertexPointervINTEL) -1,
+  (GdkGLProc_glNormalPointervINTEL) -1,
+  (GdkGLProc_glColorPointervINTEL) -1,
+  (GdkGLProc_glTexCoordPointervINTEL) -1
 };
 
 /* glVertexPointervINTEL */
@@ -11075,8 +11501,6 @@ gdk_gl_get_GL_INTEL_parallel_arrays (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_INTEL_parallel_arrays ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -11093,6 +11517,10 @@ gdk_gl_get_GL_INTEL_parallel_arrays (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_INTEL_parallel_arrays () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -11104,7 +11532,10 @@ gdk_gl_get_GL_INTEL_parallel_arrays (void)
  */
 
 static GdkGL_GL_EXT_pixel_transform _procs_GL_EXT_pixel_transform = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glPixelTransformParameteriEXT) -1,
+  (GdkGLProc_glPixelTransformParameterfEXT) -1,
+  (GdkGLProc_glPixelTransformParameterivEXT) -1,
+  (GdkGLProc_glPixelTransformParameterfvEXT) -1
 };
 
 /* glPixelTransformParameteriEXT */
@@ -11193,8 +11624,6 @@ gdk_gl_get_GL_EXT_pixel_transform (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_pixel_transform ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -11211,6 +11640,10 @@ gdk_gl_get_GL_EXT_pixel_transform (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_pixel_transform () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -11222,10 +11655,23 @@ gdk_gl_get_GL_EXT_pixel_transform (void)
  */
 
 static GdkGL_GL_EXT_secondary_color _procs_GL_EXT_secondary_color = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glSecondaryColor3bEXT) -1,
+  (GdkGLProc_glSecondaryColor3bvEXT) -1,
+  (GdkGLProc_glSecondaryColor3dEXT) -1,
+  (GdkGLProc_glSecondaryColor3dvEXT) -1,
+  (GdkGLProc_glSecondaryColor3fEXT) -1,
+  (GdkGLProc_glSecondaryColor3fvEXT) -1,
+  (GdkGLProc_glSecondaryColor3iEXT) -1,
+  (GdkGLProc_glSecondaryColor3ivEXT) -1,
+  (GdkGLProc_glSecondaryColor3sEXT) -1,
+  (GdkGLProc_glSecondaryColor3svEXT) -1,
+  (GdkGLProc_glSecondaryColor3ubEXT) -1,
+  (GdkGLProc_glSecondaryColor3ubvEXT) -1,
+  (GdkGLProc_glSecondaryColor3uiEXT) -1,
+  (GdkGLProc_glSecondaryColor3uivEXT) -1,
+  (GdkGLProc_glSecondaryColor3usEXT) -1,
+  (GdkGLProc_glSecondaryColor3usvEXT) -1,
+  (GdkGLProc_glSecondaryColorPointerEXT) -1
 };
 
 /* glSecondaryColor3bEXT */
@@ -11574,8 +12020,6 @@ gdk_gl_get_GL_EXT_secondary_color (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_secondary_color ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -11605,6 +12049,10 @@ gdk_gl_get_GL_EXT_secondary_color (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_secondary_color () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -11616,7 +12064,7 @@ gdk_gl_get_GL_EXT_secondary_color (void)
  */
 
 static GdkGL_GL_EXT_texture_perturb_normal _procs_GL_EXT_texture_perturb_normal = {
-  (gpointer) -1
+  (GdkGLProc_glTextureNormalEXT) -1
 };
 
 /* glTextureNormalEXT */
@@ -11645,8 +12093,6 @@ gdk_gl_get_GL_EXT_texture_perturb_normal (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture_perturb_normal ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -11660,6 +12106,10 @@ gdk_gl_get_GL_EXT_texture_perturb_normal (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_texture_perturb_normal () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -11671,7 +12121,8 @@ gdk_gl_get_GL_EXT_texture_perturb_normal (void)
  */
 
 static GdkGL_GL_EXT_multi_draw_arrays _procs_GL_EXT_multi_draw_arrays = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glMultiDrawArraysEXT) -1,
+  (GdkGLProc_glMultiDrawElementsEXT) -1
 };
 
 /* glMultiDrawArraysEXT */
@@ -11720,8 +12171,6 @@ gdk_gl_get_GL_EXT_multi_draw_arrays (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_multi_draw_arrays ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -11736,6 +12185,10 @@ gdk_gl_get_GL_EXT_multi_draw_arrays (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_multi_draw_arrays () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -11747,7 +12200,11 @@ gdk_gl_get_GL_EXT_multi_draw_arrays (void)
  */
 
 static GdkGL_GL_EXT_fog_coord _procs_GL_EXT_fog_coord = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glFogCoordfEXT) -1,
+  (GdkGLProc_glFogCoordfvEXT) -1,
+  (GdkGLProc_glFogCoorddEXT) -1,
+  (GdkGLProc_glFogCoorddvEXT) -1,
+  (GdkGLProc_glFogCoordPointerEXT) -1
 };
 
 /* glFogCoordfEXT */
@@ -11856,8 +12313,6 @@ gdk_gl_get_GL_EXT_fog_coord (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_fog_coord ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -11875,6 +12330,10 @@ gdk_gl_get_GL_EXT_fog_coord (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_fog_coord () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -11886,11 +12345,28 @@ gdk_gl_get_GL_EXT_fog_coord (void)
  */
 
 static GdkGL_GL_EXT_coordinate_frame _procs_GL_EXT_coordinate_frame = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glTangent3bEXT) -1,
+  (GdkGLProc_glTangent3bvEXT) -1,
+  (GdkGLProc_glTangent3dEXT) -1,
+  (GdkGLProc_glTangent3dvEXT) -1,
+  (GdkGLProc_glTangent3fEXT) -1,
+  (GdkGLProc_glTangent3fvEXT) -1,
+  (GdkGLProc_glTangent3iEXT) -1,
+  (GdkGLProc_glTangent3ivEXT) -1,
+  (GdkGLProc_glTangent3sEXT) -1,
+  (GdkGLProc_glTangent3svEXT) -1,
+  (GdkGLProc_glBinormal3bEXT) -1,
+  (GdkGLProc_glBinormal3bvEXT) -1,
+  (GdkGLProc_glBinormal3dEXT) -1,
+  (GdkGLProc_glBinormal3dvEXT) -1,
+  (GdkGLProc_glBinormal3fEXT) -1,
+  (GdkGLProc_glBinormal3fvEXT) -1,
+  (GdkGLProc_glBinormal3iEXT) -1,
+  (GdkGLProc_glBinormal3ivEXT) -1,
+  (GdkGLProc_glBinormal3sEXT) -1,
+  (GdkGLProc_glBinormal3svEXT) -1,
+  (GdkGLProc_glTangentPointerEXT) -1,
+  (GdkGLProc_glBinormalPointerEXT) -1
 };
 
 /* glTangent3bEXT */
@@ -12339,8 +12815,6 @@ gdk_gl_get_GL_EXT_coordinate_frame (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_coordinate_frame ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -12375,6 +12849,10 @@ gdk_gl_get_GL_EXT_coordinate_frame (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_coordinate_frame () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -12386,7 +12864,7 @@ gdk_gl_get_GL_EXT_coordinate_frame (void)
  */
 
 static GdkGL_GL_SUNX_constant_data _procs_GL_SUNX_constant_data = {
-  (gpointer) -1
+  (GdkGLProc_glFinishTextureSUNX) -1
 };
 
 /* glFinishTextureSUNX */
@@ -12415,8 +12893,6 @@ gdk_gl_get_GL_SUNX_constant_data (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUNX_constant_data ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -12430,6 +12906,10 @@ gdk_gl_get_GL_SUNX_constant_data (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SUNX_constant_data () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -12441,8 +12921,14 @@ gdk_gl_get_GL_SUNX_constant_data (void)
  */
 
 static GdkGL_GL_SUN_global_alpha _procs_GL_SUN_global_alpha = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glGlobalAlphaFactorbSUN) -1,
+  (GdkGLProc_glGlobalAlphaFactorsSUN) -1,
+  (GdkGLProc_glGlobalAlphaFactoriSUN) -1,
+  (GdkGLProc_glGlobalAlphaFactorfSUN) -1,
+  (GdkGLProc_glGlobalAlphaFactordSUN) -1,
+  (GdkGLProc_glGlobalAlphaFactorubSUN) -1,
+  (GdkGLProc_glGlobalAlphaFactorusSUN) -1,
+  (GdkGLProc_glGlobalAlphaFactoruiSUN) -1
 };
 
 /* glGlobalAlphaFactorbSUN */
@@ -12611,8 +13097,6 @@ gdk_gl_get_GL_SUN_global_alpha (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_global_alpha ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -12633,6 +13117,10 @@ gdk_gl_get_GL_SUN_global_alpha (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SUN_global_alpha () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -12644,8 +13132,13 @@ gdk_gl_get_GL_SUN_global_alpha (void)
  */
 
 static GdkGL_GL_SUN_triangle_list _procs_GL_SUN_triangle_list = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glReplacementCodeuiSUN) -1,
+  (GdkGLProc_glReplacementCodeusSUN) -1,
+  (GdkGLProc_glReplacementCodeubSUN) -1,
+  (GdkGLProc_glReplacementCodeuivSUN) -1,
+  (GdkGLProc_glReplacementCodeusvSUN) -1,
+  (GdkGLProc_glReplacementCodeubvSUN) -1,
+  (GdkGLProc_glReplacementCodePointerSUN) -1
 };
 
 /* glReplacementCodeuiSUN */
@@ -12794,8 +13287,6 @@ gdk_gl_get_GL_SUN_triangle_list (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_triangle_list ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -12815,6 +13306,10 @@ gdk_gl_get_GL_SUN_triangle_list (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SUN_triangle_list () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -12826,14 +13321,46 @@ gdk_gl_get_GL_SUN_triangle_list (void)
  */
 
 static GdkGL_GL_SUN_vertex _procs_GL_SUN_vertex = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glColor4ubVertex2fSUN) -1,
+  (GdkGLProc_glColor4ubVertex2fvSUN) -1,
+  (GdkGLProc_glColor4ubVertex3fSUN) -1,
+  (GdkGLProc_glColor4ubVertex3fvSUN) -1,
+  (GdkGLProc_glColor3fVertex3fSUN) -1,
+  (GdkGLProc_glColor3fVertex3fvSUN) -1,
+  (GdkGLProc_glNormal3fVertex3fSUN) -1,
+  (GdkGLProc_glNormal3fVertex3fvSUN) -1,
+  (GdkGLProc_glColor4fNormal3fVertex3fSUN) -1,
+  (GdkGLProc_glColor4fNormal3fVertex3fvSUN) -1,
+  (GdkGLProc_glTexCoord2fVertex3fSUN) -1,
+  (GdkGLProc_glTexCoord2fVertex3fvSUN) -1,
+  (GdkGLProc_glTexCoord4fVertex4fSUN) -1,
+  (GdkGLProc_glTexCoord4fVertex4fvSUN) -1,
+  (GdkGLProc_glTexCoord2fColor4ubVertex3fSUN) -1,
+  (GdkGLProc_glTexCoord2fColor4ubVertex3fvSUN) -1,
+  (GdkGLProc_glTexCoord2fColor3fVertex3fSUN) -1,
+  (GdkGLProc_glTexCoord2fColor3fVertex3fvSUN) -1,
+  (GdkGLProc_glTexCoord2fNormal3fVertex3fSUN) -1,
+  (GdkGLProc_glTexCoord2fNormal3fVertex3fvSUN) -1,
+  (GdkGLProc_glTexCoord2fColor4fNormal3fVertex3fSUN) -1,
+  (GdkGLProc_glTexCoord2fColor4fNormal3fVertex3fvSUN) -1,
+  (GdkGLProc_glTexCoord4fColor4fNormal3fVertex4fSUN) -1,
+  (GdkGLProc_glTexCoord4fColor4fNormal3fVertex4fvSUN) -1,
+  (GdkGLProc_glReplacementCodeuiVertex3fSUN) -1,
+  (GdkGLProc_glReplacementCodeuiVertex3fvSUN) -1,
+  (GdkGLProc_glReplacementCodeuiColor4ubVertex3fSUN) -1,
+  (GdkGLProc_glReplacementCodeuiColor4ubVertex3fvSUN) -1,
+  (GdkGLProc_glReplacementCodeuiColor3fVertex3fSUN) -1,
+  (GdkGLProc_glReplacementCodeuiColor3fVertex3fvSUN) -1,
+  (GdkGLProc_glReplacementCodeuiNormal3fVertex3fSUN) -1,
+  (GdkGLProc_glReplacementCodeuiNormal3fVertex3fvSUN) -1,
+  (GdkGLProc_glReplacementCodeuiColor4fNormal3fVertex3fSUN) -1,
+  (GdkGLProc_glReplacementCodeuiColor4fNormal3fVertex3fvSUN) -1,
+  (GdkGLProc_glReplacementCodeuiTexCoord2fVertex3fSUN) -1,
+  (GdkGLProc_glReplacementCodeuiTexCoord2fVertex3fvSUN) -1,
+  (GdkGLProc_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN) -1,
+  (GdkGLProc_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN) -1,
+  (GdkGLProc_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN) -1,
+  (GdkGLProc_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN) -1
 };
 
 /* glColor4ubVertex2fSUN */
@@ -13642,8 +14169,6 @@ gdk_gl_get_GL_SUN_vertex (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_vertex ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -13696,6 +14221,10 @@ gdk_gl_get_GL_SUN_vertex (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SUN_vertex () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -13707,7 +14236,7 @@ gdk_gl_get_GL_SUN_vertex (void)
  */
 
 static GdkGL_GL_EXT_blend_func_separate _procs_GL_EXT_blend_func_separate = {
-  (gpointer) -1
+  (GdkGLProc_glBlendFuncSeparateEXT) -1
 };
 
 /* glBlendFuncSeparateEXT */
@@ -13736,8 +14265,6 @@ gdk_gl_get_GL_EXT_blend_func_separate (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_func_separate ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -13751,6 +14278,10 @@ gdk_gl_get_GL_EXT_blend_func_separate (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_blend_func_separate () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -13762,7 +14293,7 @@ gdk_gl_get_GL_EXT_blend_func_separate (void)
  */
 
 static GdkGL_GL_INGR_blend_func_separate _procs_GL_INGR_blend_func_separate = {
-  (gpointer) -1
+  (GdkGLProc_glBlendFuncSeparateINGR) -1
 };
 
 /* glBlendFuncSeparateINGR */
@@ -13791,8 +14322,6 @@ gdk_gl_get_GL_INGR_blend_func_separate (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_INGR_blend_func_separate ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -13806,6 +14335,10 @@ gdk_gl_get_GL_INGR_blend_func_separate (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_INGR_blend_func_separate () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -13817,7 +14350,9 @@ gdk_gl_get_GL_INGR_blend_func_separate (void)
  */
 
 static GdkGL_GL_EXT_vertex_weighting _procs_GL_EXT_vertex_weighting = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glVertexWeightfEXT) -1,
+  (GdkGLProc_glVertexWeightfvEXT) -1,
+  (GdkGLProc_glVertexWeightPointerEXT) -1
 };
 
 /* glVertexWeightfEXT */
@@ -13886,8 +14421,6 @@ gdk_gl_get_GL_EXT_vertex_weighting (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_weighting ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -13903,6 +14436,10 @@ gdk_gl_get_GL_EXT_vertex_weighting (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_vertex_weighting () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -13914,7 +14451,8 @@ gdk_gl_get_GL_EXT_vertex_weighting (void)
  */
 
 static GdkGL_GL_NV_vertex_array_range _procs_GL_NV_vertex_array_range = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glFlushVertexArrayRangeNV) -1,
+  (GdkGLProc_glVertexArrayRangeNV) -1
 };
 
 /* glFlushVertexArrayRangeNV */
@@ -13963,8 +14501,6 @@ gdk_gl_get_GL_NV_vertex_array_range (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_vertex_array_range ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -13979,6 +14515,10 @@ gdk_gl_get_GL_NV_vertex_array_range (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_vertex_array_range () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -13990,9 +14530,19 @@ gdk_gl_get_GL_NV_vertex_array_range (void)
  */
 
 static GdkGL_GL_NV_register_combiners _procs_GL_NV_register_combiners = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glCombinerParameterfvNV) -1,
+  (GdkGLProc_glCombinerParameterfNV) -1,
+  (GdkGLProc_glCombinerParameterivNV) -1,
+  (GdkGLProc_glCombinerParameteriNV) -1,
+  (GdkGLProc_glCombinerInputNV) -1,
+  (GdkGLProc_glCombinerOutputNV) -1,
+  (GdkGLProc_glFinalCombinerInputNV) -1,
+  (GdkGLProc_glGetCombinerInputParameterfvNV) -1,
+  (GdkGLProc_glGetCombinerInputParameterivNV) -1,
+  (GdkGLProc_glGetCombinerOutputParameterfvNV) -1,
+  (GdkGLProc_glGetCombinerOutputParameterivNV) -1,
+  (GdkGLProc_glGetFinalCombinerInputParameterfvNV) -1,
+  (GdkGLProc_glGetFinalCombinerInputParameterivNV) -1
 };
 
 /* glCombinerParameterfvNV */
@@ -14261,8 +14811,6 @@ gdk_gl_get_GL_NV_register_combiners (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_register_combiners ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -14288,6 +14836,10 @@ gdk_gl_get_GL_NV_register_combiners (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_register_combiners () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -14299,7 +14851,7 @@ gdk_gl_get_GL_NV_register_combiners (void)
  */
 
 static GdkGL_GL_MESA_resize_buffers _procs_GL_MESA_resize_buffers = {
-  (gpointer) -1
+  (GdkGLProc_glResizeBuffersMESA) -1
 };
 
 /* glResizeBuffersMESA */
@@ -14328,8 +14880,6 @@ gdk_gl_get_GL_MESA_resize_buffers (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_MESA_resize_buffers ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -14343,6 +14893,10 @@ gdk_gl_get_GL_MESA_resize_buffers (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_MESA_resize_buffers () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -14354,11 +14908,30 @@ gdk_gl_get_GL_MESA_resize_buffers (void)
  */
 
 static GdkGL_GL_MESA_window_pos _procs_GL_MESA_window_pos = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glWindowPos2dMESA) -1,
+  (GdkGLProc_glWindowPos2dvMESA) -1,
+  (GdkGLProc_glWindowPos2fMESA) -1,
+  (GdkGLProc_glWindowPos2fvMESA) -1,
+  (GdkGLProc_glWindowPos2iMESA) -1,
+  (GdkGLProc_glWindowPos2ivMESA) -1,
+  (GdkGLProc_glWindowPos2sMESA) -1,
+  (GdkGLProc_glWindowPos2svMESA) -1,
+  (GdkGLProc_glWindowPos3dMESA) -1,
+  (GdkGLProc_glWindowPos3dvMESA) -1,
+  (GdkGLProc_glWindowPos3fMESA) -1,
+  (GdkGLProc_glWindowPos3fvMESA) -1,
+  (GdkGLProc_glWindowPos3iMESA) -1,
+  (GdkGLProc_glWindowPos3ivMESA) -1,
+  (GdkGLProc_glWindowPos3sMESA) -1,
+  (GdkGLProc_glWindowPos3svMESA) -1,
+  (GdkGLProc_glWindowPos4dMESA) -1,
+  (GdkGLProc_glWindowPos4dvMESA) -1,
+  (GdkGLProc_glWindowPos4fMESA) -1,
+  (GdkGLProc_glWindowPos4fvMESA) -1,
+  (GdkGLProc_glWindowPos4iMESA) -1,
+  (GdkGLProc_glWindowPos4ivMESA) -1,
+  (GdkGLProc_glWindowPos4sMESA) -1,
+  (GdkGLProc_glWindowPos4svMESA) -1
 };
 
 /* glWindowPos2dMESA */
@@ -14847,8 +15420,6 @@ gdk_gl_get_GL_MESA_window_pos (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_MESA_window_pos ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -14885,6 +15456,10 @@ gdk_gl_get_GL_MESA_window_pos (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_MESA_window_pos () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -14896,7 +15471,8 @@ gdk_gl_get_GL_MESA_window_pos (void)
  */
 
 static GdkGL_GL_IBM_multimode_draw_arrays _procs_GL_IBM_multimode_draw_arrays = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glMultiModeDrawArraysIBM) -1,
+  (GdkGLProc_glMultiModeDrawElementsIBM) -1
 };
 
 /* glMultiModeDrawArraysIBM */
@@ -14945,8 +15521,6 @@ gdk_gl_get_GL_IBM_multimode_draw_arrays (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_IBM_multimode_draw_arrays ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -14961,6 +15535,10 @@ gdk_gl_get_GL_IBM_multimode_draw_arrays (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_IBM_multimode_draw_arrays () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -14972,8 +15550,14 @@ gdk_gl_get_GL_IBM_multimode_draw_arrays (void)
  */
 
 static GdkGL_GL_IBM_vertex_array_lists _procs_GL_IBM_vertex_array_lists = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glColorPointerListIBM) -1,
+  (GdkGLProc_glSecondaryColorPointerListIBM) -1,
+  (GdkGLProc_glEdgeFlagPointerListIBM) -1,
+  (GdkGLProc_glFogCoordPointerListIBM) -1,
+  (GdkGLProc_glIndexPointerListIBM) -1,
+  (GdkGLProc_glNormalPointerListIBM) -1,
+  (GdkGLProc_glTexCoordPointerListIBM) -1,
+  (GdkGLProc_glVertexPointerListIBM) -1
 };
 
 /* glColorPointerListIBM */
@@ -15142,8 +15726,6 @@ gdk_gl_get_GL_IBM_vertex_array_lists (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_IBM_vertex_array_lists ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -15164,6 +15746,10 @@ gdk_gl_get_GL_IBM_vertex_array_lists (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_IBM_vertex_array_lists () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -15175,7 +15761,7 @@ gdk_gl_get_GL_IBM_vertex_array_lists (void)
  */
 
 static GdkGL_GL_3DFX_tbuffer _procs_GL_3DFX_tbuffer = {
-  (gpointer) -1
+  (GdkGLProc_glTbufferMask3DFX) -1
 };
 
 /* glTbufferMask3DFX */
@@ -15204,8 +15790,6 @@ gdk_gl_get_GL_3DFX_tbuffer (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_3DFX_tbuffer ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -15219,6 +15803,10 @@ gdk_gl_get_GL_3DFX_tbuffer (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_3DFX_tbuffer () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -15230,7 +15818,8 @@ gdk_gl_get_GL_3DFX_tbuffer (void)
  */
 
 static GdkGL_GL_EXT_multisample _procs_GL_EXT_multisample = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glSampleMaskEXT) -1,
+  (GdkGLProc_glSamplePatternEXT) -1
 };
 
 /* glSampleMaskEXT */
@@ -15279,8 +15868,6 @@ gdk_gl_get_GL_EXT_multisample (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_multisample ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -15295,6 +15882,10 @@ gdk_gl_get_GL_EXT_multisample (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_multisample () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -15306,7 +15897,7 @@ gdk_gl_get_GL_EXT_multisample (void)
  */
 
 static GdkGL_GL_SGIS_texture_color_mask _procs_GL_SGIS_texture_color_mask = {
-  (gpointer) -1
+  (GdkGLProc_glTextureColorMaskSGIS) -1
 };
 
 /* glTextureColorMaskSGIS */
@@ -15335,8 +15926,6 @@ gdk_gl_get_GL_SGIS_texture_color_mask (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture_color_mask ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -15350,6 +15939,10 @@ gdk_gl_get_GL_SGIS_texture_color_mask (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIS_texture_color_mask () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -15361,7 +15954,7 @@ gdk_gl_get_GL_SGIS_texture_color_mask (void)
  */
 
 static GdkGL_GL_SGIX_igloo_interface _procs_GL_SGIX_igloo_interface = {
-  (gpointer) -1
+  (GdkGLProc_glIglooInterfaceSGIX) -1
 };
 
 /* glIglooInterfaceSGIX */
@@ -15390,8 +15983,6 @@ gdk_gl_get_GL_SGIX_igloo_interface (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_igloo_interface ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -15405,6 +15996,10 @@ gdk_gl_get_GL_SGIX_igloo_interface (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SGIX_igloo_interface () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -15416,8 +16011,13 @@ gdk_gl_get_GL_SGIX_igloo_interface (void)
  */
 
 static GdkGL_GL_NV_fence _procs_GL_NV_fence = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glDeleteFencesNV) -1,
+  (GdkGLProc_glGenFencesNV) -1,
+  (GdkGLProc_glIsFenceNV) -1,
+  (GdkGLProc_glTestFenceNV) -1,
+  (GdkGLProc_glGetFenceivNV) -1,
+  (GdkGLProc_glFinishFenceNV) -1,
+  (GdkGLProc_glSetFenceNV) -1
 };
 
 /* glDeleteFencesNV */
@@ -15566,8 +16166,6 @@ gdk_gl_get_GL_NV_fence (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_fence ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -15587,6 +16185,10 @@ gdk_gl_get_GL_NV_fence (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_fence () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -15598,8 +16200,15 @@ gdk_gl_get_GL_NV_fence (void)
  */
 
 static GdkGL_GL_NV_evaluators _procs_GL_NV_evaluators = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glMapControlPointsNV) -1,
+  (GdkGLProc_glMapParameterivNV) -1,
+  (GdkGLProc_glMapParameterfvNV) -1,
+  (GdkGLProc_glGetMapControlPointsNV) -1,
+  (GdkGLProc_glGetMapParameterivNV) -1,
+  (GdkGLProc_glGetMapParameterfvNV) -1,
+  (GdkGLProc_glGetMapAttribParameterivNV) -1,
+  (GdkGLProc_glGetMapAttribParameterfvNV) -1,
+  (GdkGLProc_glEvalMapsNV) -1
 };
 
 /* glMapControlPointsNV */
@@ -15788,8 +16397,6 @@ gdk_gl_get_GL_NV_evaluators (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_evaluators ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -15811,6 +16418,10 @@ gdk_gl_get_GL_NV_evaluators (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_evaluators () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -15822,7 +16433,8 @@ gdk_gl_get_GL_NV_evaluators (void)
  */
 
 static GdkGL_GL_NV_register_combiners2 _procs_GL_NV_register_combiners2 = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glCombinerStageParameterfvNV) -1,
+  (GdkGLProc_glGetCombinerStageParameterfvNV) -1
 };
 
 /* glCombinerStageParameterfvNV */
@@ -15871,8 +16483,6 @@ gdk_gl_get_GL_NV_register_combiners2 (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_register_combiners2 ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -15887,6 +16497,10 @@ gdk_gl_get_GL_NV_register_combiners2 (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_register_combiners2 () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -15898,19 +16512,70 @@ gdk_gl_get_GL_NV_register_combiners2 (void)
  */
 
 static GdkGL_GL_NV_vertex_program _procs_GL_NV_vertex_program = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glAreProgramsResidentNV) -1,
+  (GdkGLProc_glBindProgramNV) -1,
+  (GdkGLProc_glDeleteProgramsNV) -1,
+  (GdkGLProc_glExecuteProgramNV) -1,
+  (GdkGLProc_glGenProgramsNV) -1,
+  (GdkGLProc_glGetProgramParameterdvNV) -1,
+  (GdkGLProc_glGetProgramParameterfvNV) -1,
+  (GdkGLProc_glGetProgramivNV) -1,
+  (GdkGLProc_glGetProgramStringNV) -1,
+  (GdkGLProc_glGetTrackMatrixivNV) -1,
+  (GdkGLProc_glGetVertexAttribdvNV) -1,
+  (GdkGLProc_glGetVertexAttribfvNV) -1,
+  (GdkGLProc_glGetVertexAttribivNV) -1,
+  (GdkGLProc_glGetVertexAttribPointervNV) -1,
+  (GdkGLProc_glIsProgramNV) -1,
+  (GdkGLProc_glLoadProgramNV) -1,
+  (GdkGLProc_glProgramParameter4dNV) -1,
+  (GdkGLProc_glProgramParameter4dvNV) -1,
+  (GdkGLProc_glProgramParameter4fNV) -1,
+  (GdkGLProc_glProgramParameter4fvNV) -1,
+  (GdkGLProc_glProgramParameters4dvNV) -1,
+  (GdkGLProc_glProgramParameters4fvNV) -1,
+  (GdkGLProc_glRequestResidentProgramsNV) -1,
+  (GdkGLProc_glTrackMatrixNV) -1,
+  (GdkGLProc_glVertexAttribPointerNV) -1,
+  (GdkGLProc_glVertexAttrib1dNV) -1,
+  (GdkGLProc_glVertexAttrib1dvNV) -1,
+  (GdkGLProc_glVertexAttrib1fNV) -1,
+  (GdkGLProc_glVertexAttrib1fvNV) -1,
+  (GdkGLProc_glVertexAttrib1sNV) -1,
+  (GdkGLProc_glVertexAttrib1svNV) -1,
+  (GdkGLProc_glVertexAttrib2dNV) -1,
+  (GdkGLProc_glVertexAttrib2dvNV) -1,
+  (GdkGLProc_glVertexAttrib2fNV) -1,
+  (GdkGLProc_glVertexAttrib2fvNV) -1,
+  (GdkGLProc_glVertexAttrib2sNV) -1,
+  (GdkGLProc_glVertexAttrib2svNV) -1,
+  (GdkGLProc_glVertexAttrib3dNV) -1,
+  (GdkGLProc_glVertexAttrib3dvNV) -1,
+  (GdkGLProc_glVertexAttrib3fNV) -1,
+  (GdkGLProc_glVertexAttrib3fvNV) -1,
+  (GdkGLProc_glVertexAttrib3sNV) -1,
+  (GdkGLProc_glVertexAttrib3svNV) -1,
+  (GdkGLProc_glVertexAttrib4dNV) -1,
+  (GdkGLProc_glVertexAttrib4dvNV) -1,
+  (GdkGLProc_glVertexAttrib4fNV) -1,
+  (GdkGLProc_glVertexAttrib4fvNV) -1,
+  (GdkGLProc_glVertexAttrib4sNV) -1,
+  (GdkGLProc_glVertexAttrib4svNV) -1,
+  (GdkGLProc_glVertexAttrib4ubNV) -1,
+  (GdkGLProc_glVertexAttrib4ubvNV) -1,
+  (GdkGLProc_glVertexAttribs1dvNV) -1,
+  (GdkGLProc_glVertexAttribs1fvNV) -1,
+  (GdkGLProc_glVertexAttribs1svNV) -1,
+  (GdkGLProc_glVertexAttribs2dvNV) -1,
+  (GdkGLProc_glVertexAttribs2fvNV) -1,
+  (GdkGLProc_glVertexAttribs2svNV) -1,
+  (GdkGLProc_glVertexAttribs3dvNV) -1,
+  (GdkGLProc_glVertexAttribs3fvNV) -1,
+  (GdkGLProc_glVertexAttribs3svNV) -1,
+  (GdkGLProc_glVertexAttribs4dvNV) -1,
+  (GdkGLProc_glVertexAttribs4fvNV) -1,
+  (GdkGLProc_glVertexAttribs4svNV) -1,
+  (GdkGLProc_glVertexAttribs4ubvNV) -1
 };
 
 /* glAreProgramsResidentNV */
@@ -17199,8 +17864,6 @@ gdk_gl_get_GL_NV_vertex_program (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_vertex_program ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -17277,6 +17940,10 @@ gdk_gl_get_GL_NV_vertex_program (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_vertex_program () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -17288,7 +17955,10 @@ gdk_gl_get_GL_NV_vertex_program (void)
  */
 
 static GdkGL_GL_ATI_envmap_bumpmap _procs_GL_ATI_envmap_bumpmap = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glTexBumpParameterivATI) -1,
+  (GdkGLProc_glTexBumpParameterfvATI) -1,
+  (GdkGLProc_glGetTexBumpParameterivATI) -1,
+  (GdkGLProc_glGetTexBumpParameterfvATI) -1
 };
 
 /* glTexBumpParameterivATI */
@@ -17377,8 +18047,6 @@ gdk_gl_get_GL_ATI_envmap_bumpmap (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_envmap_bumpmap ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -17395,6 +18063,10 @@ gdk_gl_get_GL_ATI_envmap_bumpmap (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_envmap_bumpmap () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -17406,9 +18078,20 @@ gdk_gl_get_GL_ATI_envmap_bumpmap (void)
  */
 
 static GdkGL_GL_ATI_fragment_shader _procs_GL_ATI_fragment_shader = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glGenFragmentShadersATI) -1,
+  (GdkGLProc_glBindFragmentShaderATI) -1,
+  (GdkGLProc_glDeleteFragmentShaderATI) -1,
+  (GdkGLProc_glBeginFragmentShaderATI) -1,
+  (GdkGLProc_glEndFragmentShaderATI) -1,
+  (GdkGLProc_glPassTexCoordATI) -1,
+  (GdkGLProc_glSampleMapATI) -1,
+  (GdkGLProc_glColorFragmentOp1ATI) -1,
+  (GdkGLProc_glColorFragmentOp2ATI) -1,
+  (GdkGLProc_glColorFragmentOp3ATI) -1,
+  (GdkGLProc_glAlphaFragmentOp1ATI) -1,
+  (GdkGLProc_glAlphaFragmentOp2ATI) -1,
+  (GdkGLProc_glAlphaFragmentOp3ATI) -1,
+  (GdkGLProc_glSetFragmentShaderConstantATI) -1
 };
 
 /* glGenFragmentShadersATI */
@@ -17697,8 +18380,6 @@ gdk_gl_get_GL_ATI_fragment_shader (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_fragment_shader ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -17725,6 +18406,10 @@ gdk_gl_get_GL_ATI_fragment_shader (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_fragment_shader () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -17736,7 +18421,8 @@ gdk_gl_get_GL_ATI_fragment_shader (void)
  */
 
 static GdkGL_GL_ATI_pn_triangles _procs_GL_ATI_pn_triangles = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glPNTrianglesiATI) -1,
+  (GdkGLProc_glPNTrianglesfATI) -1
 };
 
 /* glPNTrianglesiATI */
@@ -17785,8 +18471,6 @@ gdk_gl_get_GL_ATI_pn_triangles (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_pn_triangles ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -17801,6 +18485,10 @@ gdk_gl_get_GL_ATI_pn_triangles (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_pn_triangles () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -17812,9 +18500,18 @@ gdk_gl_get_GL_ATI_pn_triangles (void)
  */
 
 static GdkGL_GL_ATI_vertex_array_object _procs_GL_ATI_vertex_array_object = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glNewObjectBufferATI) -1,
+  (GdkGLProc_glIsObjectBufferATI) -1,
+  (GdkGLProc_glUpdateObjectBufferATI) -1,
+  (GdkGLProc_glGetObjectBufferfvATI) -1,
+  (GdkGLProc_glGetObjectBufferivATI) -1,
+  (GdkGLProc_glFreeObjectBufferATI) -1,
+  (GdkGLProc_glArrayObjectATI) -1,
+  (GdkGLProc_glGetArrayObjectfvATI) -1,
+  (GdkGLProc_glGetArrayObjectivATI) -1,
+  (GdkGLProc_glVariantArrayObjectATI) -1,
+  (GdkGLProc_glGetVariantArrayObjectfvATI) -1,
+  (GdkGLProc_glGetVariantArrayObjectivATI) -1
 };
 
 /* glNewObjectBufferATI */
@@ -18063,8 +18760,6 @@ gdk_gl_get_GL_ATI_vertex_array_object (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_vertex_array_object ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -18089,6 +18784,10 @@ gdk_gl_get_GL_ATI_vertex_array_object (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_vertex_array_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -18100,15 +18799,48 @@ gdk_gl_get_GL_ATI_vertex_array_object (void)
  */
 
 static GdkGL_GL_EXT_vertex_shader _procs_GL_EXT_vertex_shader = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glBeginVertexShaderEXT) -1,
+  (GdkGLProc_glEndVertexShaderEXT) -1,
+  (GdkGLProc_glBindVertexShaderEXT) -1,
+  (GdkGLProc_glGenVertexShadersEXT) -1,
+  (GdkGLProc_glDeleteVertexShaderEXT) -1,
+  (GdkGLProc_glShaderOp1EXT) -1,
+  (GdkGLProc_glShaderOp2EXT) -1,
+  (GdkGLProc_glShaderOp3EXT) -1,
+  (GdkGLProc_glSwizzleEXT) -1,
+  (GdkGLProc_glWriteMaskEXT) -1,
+  (GdkGLProc_glInsertComponentEXT) -1,
+  (GdkGLProc_glExtractComponentEXT) -1,
+  (GdkGLProc_glGenSymbolsEXT) -1,
+  (GdkGLProc_glSetInvariantEXT) -1,
+  (GdkGLProc_glSetLocalConstantEXT) -1,
+  (GdkGLProc_glVariantbvEXT) -1,
+  (GdkGLProc_glVariantsvEXT) -1,
+  (GdkGLProc_glVariantivEXT) -1,
+  (GdkGLProc_glVariantfvEXT) -1,
+  (GdkGLProc_glVariantdvEXT) -1,
+  (GdkGLProc_glVariantubvEXT) -1,
+  (GdkGLProc_glVariantusvEXT) -1,
+  (GdkGLProc_glVariantuivEXT) -1,
+  (GdkGLProc_glVariantPointerEXT) -1,
+  (GdkGLProc_glEnableVariantClientStateEXT) -1,
+  (GdkGLProc_glDisableVariantClientStateEXT) -1,
+  (GdkGLProc_glBindLightParameterEXT) -1,
+  (GdkGLProc_glBindMaterialParameterEXT) -1,
+  (GdkGLProc_glBindTexGenParameterEXT) -1,
+  (GdkGLProc_glBindTextureUnitParameterEXT) -1,
+  (GdkGLProc_glBindParameterEXT) -1,
+  (GdkGLProc_glIsVariantEnabledEXT) -1,
+  (GdkGLProc_glGetVariantBooleanvEXT) -1,
+  (GdkGLProc_glGetVariantIntegervEXT) -1,
+  (GdkGLProc_glGetVariantFloatvEXT) -1,
+  (GdkGLProc_glGetVariantPointervEXT) -1,
+  (GdkGLProc_glGetInvariantBooleanvEXT) -1,
+  (GdkGLProc_glGetInvariantIntegervEXT) -1,
+  (GdkGLProc_glGetInvariantFloatvEXT) -1,
+  (GdkGLProc_glGetLocalConstantBooleanvEXT) -1,
+  (GdkGLProc_glGetLocalConstantIntegervEXT) -1,
+  (GdkGLProc_glGetLocalConstantFloatvEXT) -1
 };
 
 /* glBeginVertexShaderEXT */
@@ -18957,8 +19689,6 @@ gdk_gl_get_GL_EXT_vertex_shader (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_shader ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -19013,6 +19743,10 @@ gdk_gl_get_GL_EXT_vertex_shader (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_vertex_shader () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -19024,15 +19758,51 @@ gdk_gl_get_GL_EXT_vertex_shader (void)
  */
 
 static GdkGL_GL_ATI_vertex_streams _procs_GL_ATI_vertex_streams = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glVertexStream1sATI) -1,
+  (GdkGLProc_glVertexStream1svATI) -1,
+  (GdkGLProc_glVertexStream1iATI) -1,
+  (GdkGLProc_glVertexStream1ivATI) -1,
+  (GdkGLProc_glVertexStream1fATI) -1,
+  (GdkGLProc_glVertexStream1fvATI) -1,
+  (GdkGLProc_glVertexStream1dATI) -1,
+  (GdkGLProc_glVertexStream1dvATI) -1,
+  (GdkGLProc_glVertexStream2sATI) -1,
+  (GdkGLProc_glVertexStream2svATI) -1,
+  (GdkGLProc_glVertexStream2iATI) -1,
+  (GdkGLProc_glVertexStream2ivATI) -1,
+  (GdkGLProc_glVertexStream2fATI) -1,
+  (GdkGLProc_glVertexStream2fvATI) -1,
+  (GdkGLProc_glVertexStream2dATI) -1,
+  (GdkGLProc_glVertexStream2dvATI) -1,
+  (GdkGLProc_glVertexStream3sATI) -1,
+  (GdkGLProc_glVertexStream3svATI) -1,
+  (GdkGLProc_glVertexStream3iATI) -1,
+  (GdkGLProc_glVertexStream3ivATI) -1,
+  (GdkGLProc_glVertexStream3fATI) -1,
+  (GdkGLProc_glVertexStream3fvATI) -1,
+  (GdkGLProc_glVertexStream3dATI) -1,
+  (GdkGLProc_glVertexStream3dvATI) -1,
+  (GdkGLProc_glVertexStream4sATI) -1,
+  (GdkGLProc_glVertexStream4svATI) -1,
+  (GdkGLProc_glVertexStream4iATI) -1,
+  (GdkGLProc_glVertexStream4ivATI) -1,
+  (GdkGLProc_glVertexStream4fATI) -1,
+  (GdkGLProc_glVertexStream4fvATI) -1,
+  (GdkGLProc_glVertexStream4dATI) -1,
+  (GdkGLProc_glVertexStream4dvATI) -1,
+  (GdkGLProc_glNormalStream3bATI) -1,
+  (GdkGLProc_glNormalStream3bvATI) -1,
+  (GdkGLProc_glNormalStream3sATI) -1,
+  (GdkGLProc_glNormalStream3svATI) -1,
+  (GdkGLProc_glNormalStream3iATI) -1,
+  (GdkGLProc_glNormalStream3ivATI) -1,
+  (GdkGLProc_glNormalStream3fATI) -1,
+  (GdkGLProc_glNormalStream3fvATI) -1,
+  (GdkGLProc_glNormalStream3dATI) -1,
+  (GdkGLProc_glNormalStream3dvATI) -1,
+  (GdkGLProc_glClientActiveVertexStreamATI) -1,
+  (GdkGLProc_glVertexBlendEnviATI) -1,
+  (GdkGLProc_glVertexBlendEnvfATI) -1
 };
 
 /* glVertexStream1sATI */
@@ -19941,8 +20711,6 @@ gdk_gl_get_GL_ATI_vertex_streams (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_vertex_streams ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -20000,6 +20768,10 @@ gdk_gl_get_GL_ATI_vertex_streams (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_vertex_streams () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -20011,7 +20783,9 @@ gdk_gl_get_GL_ATI_vertex_streams (void)
  */
 
 static GdkGL_GL_ATI_element_array _procs_GL_ATI_element_array = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glElementPointerATI) -1,
+  (GdkGLProc_glDrawElementArrayATI) -1,
+  (GdkGLProc_glDrawRangeElementArrayATI) -1
 };
 
 /* glElementPointerATI */
@@ -20080,8 +20854,6 @@ gdk_gl_get_GL_ATI_element_array (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_element_array ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -20097,6 +20869,10 @@ gdk_gl_get_GL_ATI_element_array (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_element_array () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -20108,7 +20884,7 @@ gdk_gl_get_GL_ATI_element_array (void)
  */
 
 static GdkGL_GL_SUN_mesh_array _procs_GL_SUN_mesh_array = {
-  (gpointer) -1
+  (GdkGLProc_glDrawMeshArraysSUN) -1
 };
 
 /* glDrawMeshArraysSUN */
@@ -20137,8 +20913,6 @@ gdk_gl_get_GL_SUN_mesh_array (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_mesh_array ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -20152,6 +20926,10 @@ gdk_gl_get_GL_SUN_mesh_array (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_SUN_mesh_array () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -20163,8 +20941,13 @@ gdk_gl_get_GL_SUN_mesh_array (void)
  */
 
 static GdkGL_GL_NV_occlusion_query _procs_GL_NV_occlusion_query = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glGenOcclusionQueriesNV) -1,
+  (GdkGLProc_glDeleteOcclusionQueriesNV) -1,
+  (GdkGLProc_glIsOcclusionQueryNV) -1,
+  (GdkGLProc_glBeginOcclusionQueryNV) -1,
+  (GdkGLProc_glEndOcclusionQueryNV) -1,
+  (GdkGLProc_glGetOcclusionQueryivNV) -1,
+  (GdkGLProc_glGetOcclusionQueryuivNV) -1
 };
 
 /* glGenOcclusionQueriesNV */
@@ -20313,8 +21096,6 @@ gdk_gl_get_GL_NV_occlusion_query (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_occlusion_query ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -20334,6 +21115,10 @@ gdk_gl_get_GL_NV_occlusion_query (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_occlusion_query () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -20345,7 +21130,8 @@ gdk_gl_get_GL_NV_occlusion_query (void)
  */
 
 static GdkGL_GL_NV_point_sprite _procs_GL_NV_point_sprite = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glPointParameteriNV) -1,
+  (GdkGLProc_glPointParameterivNV) -1
 };
 
 /* glPointParameteriNV */
@@ -20394,8 +21180,6 @@ gdk_gl_get_GL_NV_point_sprite (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_point_sprite ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -20410,6 +21194,10 @@ gdk_gl_get_GL_NV_point_sprite (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_point_sprite () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -20421,7 +21209,7 @@ gdk_gl_get_GL_NV_point_sprite (void)
  */
 
 static GdkGL_GL_EXT_stencil_two_side _procs_GL_EXT_stencil_two_side = {
-  (gpointer) -1
+  (GdkGLProc_glActiveStencilFaceEXT) -1
 };
 
 /* glActiveStencilFaceEXT */
@@ -20450,8 +21238,6 @@ gdk_gl_get_GL_EXT_stencil_two_side (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_stencil_two_side ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -20465,6 +21251,10 @@ gdk_gl_get_GL_EXT_stencil_two_side (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_stencil_two_side () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -20476,7 +21266,11 @@ gdk_gl_get_GL_EXT_stencil_two_side (void)
  */
 
 static GdkGL_GL_APPLE_element_array _procs_GL_APPLE_element_array = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glElementPointerAPPLE) -1,
+  (GdkGLProc_glDrawElementArrayAPPLE) -1,
+  (GdkGLProc_glDrawRangeElementArrayAPPLE) -1,
+  (GdkGLProc_glMultiDrawElementArrayAPPLE) -1,
+  (GdkGLProc_glMultiDrawRangeElementArrayAPPLE) -1
 };
 
 /* glElementPointerAPPLE */
@@ -20585,8 +21379,6 @@ gdk_gl_get_GL_APPLE_element_array (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_APPLE_element_array ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -20604,6 +21396,10 @@ gdk_gl_get_GL_APPLE_element_array (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_APPLE_element_array () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -20615,8 +21411,14 @@ gdk_gl_get_GL_APPLE_element_array (void)
  */
 
 static GdkGL_GL_APPLE_fence _procs_GL_APPLE_fence = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glGenFencesAPPLE) -1,
+  (GdkGLProc_glDeleteFencesAPPLE) -1,
+  (GdkGLProc_glSetFenceAPPLE) -1,
+  (GdkGLProc_glIsFenceAPPLE) -1,
+  (GdkGLProc_glTestFenceAPPLE) -1,
+  (GdkGLProc_glFinishFenceAPPLE) -1,
+  (GdkGLProc_glTestObjectAPPLE) -1,
+  (GdkGLProc_glFinishObjectAPPLE) -1
 };
 
 /* glGenFencesAPPLE */
@@ -20785,8 +21587,6 @@ gdk_gl_get_GL_APPLE_fence (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_APPLE_fence ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -20807,6 +21607,10 @@ gdk_gl_get_GL_APPLE_fence (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_APPLE_fence () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -20818,7 +21622,10 @@ gdk_gl_get_GL_APPLE_fence (void)
  */
 
 static GdkGL_GL_APPLE_vertex_array_object _procs_GL_APPLE_vertex_array_object = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glBindVertexArrayAPPLE) -1,
+  (GdkGLProc_glDeleteVertexArraysAPPLE) -1,
+  (GdkGLProc_glGenVertexArraysAPPLE) -1,
+  (GdkGLProc_glIsVertexArrayAPPLE) -1
 };
 
 /* glBindVertexArrayAPPLE */
@@ -20907,8 +21714,6 @@ gdk_gl_get_GL_APPLE_vertex_array_object (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_APPLE_vertex_array_object ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -20925,6 +21730,10 @@ gdk_gl_get_GL_APPLE_vertex_array_object (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_APPLE_vertex_array_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -20936,7 +21745,9 @@ gdk_gl_get_GL_APPLE_vertex_array_object (void)
  */
 
 static GdkGL_GL_APPLE_vertex_array_range _procs_GL_APPLE_vertex_array_range = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glVertexArrayRangeAPPLE) -1,
+  (GdkGLProc_glFlushVertexArrayRangeAPPLE) -1,
+  (GdkGLProc_glVertexArrayParameteriAPPLE) -1
 };
 
 /* glVertexArrayRangeAPPLE */
@@ -21005,8 +21816,6 @@ gdk_gl_get_GL_APPLE_vertex_array_range (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_APPLE_vertex_array_range ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -21022,6 +21831,10 @@ gdk_gl_get_GL_APPLE_vertex_array_range (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_APPLE_vertex_array_range () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -21033,7 +21846,7 @@ gdk_gl_get_GL_APPLE_vertex_array_range (void)
  */
 
 static GdkGL_GL_ATI_draw_buffers _procs_GL_ATI_draw_buffers = {
-  (gpointer) -1
+  (GdkGLProc_glDrawBuffersATI) -1
 };
 
 /* glDrawBuffersATI */
@@ -21062,8 +21875,6 @@ gdk_gl_get_GL_ATI_draw_buffers (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_draw_buffers ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -21077,6 +21888,10 @@ gdk_gl_get_GL_ATI_draw_buffers (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_draw_buffers () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -21088,8 +21903,12 @@ gdk_gl_get_GL_ATI_draw_buffers (void)
  */
 
 static GdkGL_GL_NV_fragment_program _procs_GL_NV_fragment_program = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glProgramNamedParameter4fNV) -1,
+  (GdkGLProc_glProgramNamedParameter4dNV) -1,
+  (GdkGLProc_glProgramNamedParameter4fvNV) -1,
+  (GdkGLProc_glProgramNamedParameter4dvNV) -1,
+  (GdkGLProc_glGetProgramNamedParameterfvNV) -1,
+  (GdkGLProc_glGetProgramNamedParameterdvNV) -1
 };
 
 /* glProgramNamedParameter4fNV */
@@ -21218,8 +22037,6 @@ gdk_gl_get_GL_NV_fragment_program (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_fragment_program ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -21238,6 +22055,10 @@ gdk_gl_get_GL_NV_fragment_program (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_fragment_program () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -21249,16 +22070,52 @@ gdk_gl_get_GL_NV_fragment_program (void)
  */
 
 static GdkGL_GL_NV_half_float _procs_GL_NV_half_float = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
-  (gpointer) -1
+  (GdkGLProc_glVertex2hNV) -1,
+  (GdkGLProc_glVertex2hvNV) -1,
+  (GdkGLProc_glVertex3hNV) -1,
+  (GdkGLProc_glVertex3hvNV) -1,
+  (GdkGLProc_glVertex4hNV) -1,
+  (GdkGLProc_glVertex4hvNV) -1,
+  (GdkGLProc_glNormal3hNV) -1,
+  (GdkGLProc_glNormal3hvNV) -1,
+  (GdkGLProc_glColor3hNV) -1,
+  (GdkGLProc_glColor3hvNV) -1,
+  (GdkGLProc_glColor4hNV) -1,
+  (GdkGLProc_glColor4hvNV) -1,
+  (GdkGLProc_glTexCoord1hNV) -1,
+  (GdkGLProc_glTexCoord1hvNV) -1,
+  (GdkGLProc_glTexCoord2hNV) -1,
+  (GdkGLProc_glTexCoord2hvNV) -1,
+  (GdkGLProc_glTexCoord3hNV) -1,
+  (GdkGLProc_glTexCoord3hvNV) -1,
+  (GdkGLProc_glTexCoord4hNV) -1,
+  (GdkGLProc_glTexCoord4hvNV) -1,
+  (GdkGLProc_glMultiTexCoord1hNV) -1,
+  (GdkGLProc_glMultiTexCoord1hvNV) -1,
+  (GdkGLProc_glMultiTexCoord2hNV) -1,
+  (GdkGLProc_glMultiTexCoord2hvNV) -1,
+  (GdkGLProc_glMultiTexCoord3hNV) -1,
+  (GdkGLProc_glMultiTexCoord3hvNV) -1,
+  (GdkGLProc_glMultiTexCoord4hNV) -1,
+  (GdkGLProc_glMultiTexCoord4hvNV) -1,
+  (GdkGLProc_glFogCoordhNV) -1,
+  (GdkGLProc_glFogCoordhvNV) -1,
+  (GdkGLProc_glSecondaryColor3hNV) -1,
+  (GdkGLProc_glSecondaryColor3hvNV) -1,
+  (GdkGLProc_glVertexWeighthNV) -1,
+  (GdkGLProc_glVertexWeighthvNV) -1,
+  (GdkGLProc_glVertexAttrib1hNV) -1,
+  (GdkGLProc_glVertexAttrib1hvNV) -1,
+  (GdkGLProc_glVertexAttrib2hNV) -1,
+  (GdkGLProc_glVertexAttrib2hvNV) -1,
+  (GdkGLProc_glVertexAttrib3hNV) -1,
+  (GdkGLProc_glVertexAttrib3hvNV) -1,
+  (GdkGLProc_glVertexAttrib4hNV) -1,
+  (GdkGLProc_glVertexAttrib4hvNV) -1,
+  (GdkGLProc_glVertexAttribs1hvNV) -1,
+  (GdkGLProc_glVertexAttribs2hvNV) -1,
+  (GdkGLProc_glVertexAttribs3hvNV) -1,
+  (GdkGLProc_glVertexAttribs4hvNV) -1
 };
 
 /* glVertex2hNV */
@@ -22187,8 +23044,6 @@ gdk_gl_get_GL_NV_half_float (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_half_float ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -22247,6 +23102,10 @@ gdk_gl_get_GL_NV_half_float (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_half_float () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -22258,7 +23117,8 @@ gdk_gl_get_GL_NV_half_float (void)
  */
 
 static GdkGL_GL_NV_pixel_data_range _procs_GL_NV_pixel_data_range = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glPixelDataRangeNV) -1,
+  (GdkGLProc_glFlushPixelDataRangeNV) -1
 };
 
 /* glPixelDataRangeNV */
@@ -22307,8 +23167,6 @@ gdk_gl_get_GL_NV_pixel_data_range (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_pixel_data_range ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -22323,6 +23181,10 @@ gdk_gl_get_GL_NV_pixel_data_range (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_pixel_data_range () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -22334,7 +23196,8 @@ gdk_gl_get_GL_NV_pixel_data_range (void)
  */
 
 static GdkGL_GL_NV_primitive_restart _procs_GL_NV_primitive_restart = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glPrimitiveRestartNV) -1,
+  (GdkGLProc_glPrimitiveRestartIndexNV) -1
 };
 
 /* glPrimitiveRestartNV */
@@ -22383,8 +23246,6 @@ gdk_gl_get_GL_NV_primitive_restart (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_primitive_restart ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -22399,6 +23260,10 @@ gdk_gl_get_GL_NV_primitive_restart (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_primitive_restart () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -22410,7 +23275,8 @@ gdk_gl_get_GL_NV_primitive_restart (void)
  */
 
 static GdkGL_GL_ATI_map_object_buffer _procs_GL_ATI_map_object_buffer = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glMapObjectBufferATI) -1,
+  (GdkGLProc_glUnmapObjectBufferATI) -1
 };
 
 /* glMapObjectBufferATI */
@@ -22459,8 +23325,6 @@ gdk_gl_get_GL_ATI_map_object_buffer (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_map_object_buffer ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -22475,6 +23339,10 @@ gdk_gl_get_GL_ATI_map_object_buffer (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_map_object_buffer () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -22486,7 +23354,8 @@ gdk_gl_get_GL_ATI_map_object_buffer (void)
  */
 
 static GdkGL_GL_ATI_separate_stencil _procs_GL_ATI_separate_stencil = {
-  (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glStencilOpSeparateATI) -1,
+  (GdkGLProc_glStencilFuncSeparateATI) -1
 };
 
 /* glStencilOpSeparateATI */
@@ -22535,8 +23404,6 @@ gdk_gl_get_GL_ATI_separate_stencil (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_separate_stencil ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -22551,6 +23418,10 @@ gdk_gl_get_GL_ATI_separate_stencil (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_separate_stencil () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -22562,7 +23433,9 @@ gdk_gl_get_GL_ATI_separate_stencil (void)
  */
 
 static GdkGL_GL_ATI_vertex_attrib_array_object _procs_GL_ATI_vertex_attrib_array_object = {
-  (gpointer) -1, (gpointer) -1, (gpointer) -1
+  (GdkGLProc_glVertexAttribArrayObjectATI) -1,
+  (GdkGLProc_glGetVertexAttribArrayObjectfvATI) -1,
+  (GdkGLProc_glGetVertexAttribArrayObjectivATI) -1
 };
 
 /* glVertexAttribArrayObjectATI */
@@ -22631,8 +23504,6 @@ gdk_gl_get_GL_ATI_vertex_attrib_array_object (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_vertex_attrib_array_object ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -22648,6 +23519,10 @@ gdk_gl_get_GL_ATI_vertex_attrib_array_object (void)
         }
     }
 
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ATI_vertex_attrib_array_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
   if (!supported)
     return NULL;
 
@@ -22659,7 +23534,7 @@ gdk_gl_get_GL_ATI_vertex_attrib_array_object (void)
  */
 
 static GdkGL_GL_WIN_swap_hint _procs_GL_WIN_swap_hint = {
-  (gpointer) -1
+  (GdkGLProc_glAddSwapHintRectWIN) -1
 };
 
 /* glAddSwapHintRectWIN */
@@ -22688,8 +23563,6 @@ gdk_gl_get_GL_WIN_swap_hint (void)
 {
   static gint supported = -1;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_WIN_swap_hint ()"));
-
   if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
@@ -22702,6 +23575,10 @@ gdk_gl_get_GL_WIN_swap_hint (void)
           supported &= (gdk_gl_get_glAddSwapHintRectWIN () != NULL);
         }
     }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_WIN_swap_hint () - %s",
+               (supported) ? "supported" : "not supported"));
 
   if (!supported)
     return NULL;

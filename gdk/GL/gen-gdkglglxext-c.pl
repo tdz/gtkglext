@@ -102,13 +102,9 @@ sub generate_code {
     }
 
     print "static GdkGL_$extension _procs_$extension = {\n";
-    print "  (gpointer) -1";
+    print "  (GdkGLProc_$functions[0]) -1";
     for ($i = 1; $i <= $#functions; $i++) {
-	print ",";
-	if ($i % 5 == 0) {
-	    print "\n ";
-	}
-	print " (gpointer) -1";
+	print ",\n  (GdkGLProc_$functions[$i]) -1";
     }
     print "\n};\n\n";
 
@@ -141,8 +137,6 @@ sub generate_code {
     print "{\n";
     print "  static gint supported = -1;\n";
     print "\n";
-    print "  GDK_GL_NOTE (FUNC, g_message (\" - gdk_gl_get_$extension ()\"));\n";
-    print "\n";
     print "  if (supported == -1)\n";
     print "    {\n";
     if ($extension =~ /^GLX_VERSION_.*/) {
@@ -161,6 +155,10 @@ sub generate_code {
 	print "        }\n";
     }
     print "    }\n";
+    print "\n";
+    print "  GDK_GL_NOTE (MISC,\n";
+    print "    g_message (\" - gdk_gl_get_$extension () - \%s\",\n";
+    print "               (supported) ? \"supported\" : \"not supported\"));\n";
     print "\n";
     print "  if (!supported)\n";
     print "    return NULL;\n";
