@@ -379,6 +379,8 @@ gdk_gl_config_parse_attrib_list (const int             *attrib_list,
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_parse_attrib_list ()"));
 
+  memset (&pfd, 0, sizeof (PIXELFORMATDESCRIPTOR));
+
   /* Specifies the size of this data structure. */
   pfd->nSize = sizeof (PIXELFORMATDESCRIPTOR);
   /* Specifies the version of this data structure. This value should be set to 1. */
@@ -589,8 +591,6 @@ gdk_gl_config_new (const int *attrib_list)
    * Parse GLX style attrib_list.
    */
 
-  memset (&pfd, 0, sizeof (pfd));
-
   gdk_gl_config_parse_attrib_list (attrib_list, &pfd);
 
 #ifdef G_ENABLE_DEBUG
@@ -653,8 +653,6 @@ gdk_gl_config_new_for_screen (GdkScreen *screen,
   /*
    * Parse GLX style attrib_list.
    */
-
-  memset (&pfd, 0, sizeof (pfd));
 
   gdk_gl_config_parse_attrib_list (attrib_list, &pfd);
 
