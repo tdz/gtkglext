@@ -4,6 +4,20 @@ AC_PREREQ(2.52)
 # Process this file with autoconf to produce a configure script.
 AC_INIT(gdk/gdkgl.h)
 
+## Versions of dependencies
+
+GTK_PKG=gtk+-2.0
+GTK_REQUIRED_VERSION=2.0.0
+
+GDK_PKG=gdk-2.0
+GDK_REQUIRED_VERSION=2.0.0
+
+GDKPIXBUF_PKG=gdk-pixbuf-2.0
+GDKPIXBUF_REQUIRED_VERSION=2.0.0
+
+PANGO_PKG=pango
+PANGO_REQUIRED_VERSION=1.0.0
+
 #
 # Making releases:
 #   GTKGLEXT_MICRO_VERSION += 1;
@@ -54,12 +68,6 @@ AC_SUBST(LT_CURRENT_MINUS_AGE)
 #
 GTKGLEXT_BINARY_VERSION=$GTKGLEXT_MAJOR_VERSION.$GTKGLEXT_MINOR_VERSION.$LT_CURRENT
 AC_SUBST(GTKGLEXT_BINARY_VERSION)
-
-## Versions of dependencies
-GDK_PKG=gdk-2.0
-GDK_REQUIRED_VERSION=2.0.0
-GTK_PKG=gtk+-2.0
-GTK_REQUIRED_VERSION=2.0.0
 
 # For automake.
 VERSION=$GTKGLEXT_VERSION
@@ -124,8 +132,9 @@ else
   gdktarget=x11
 fi
 
-AC_ARG_WITH(gdktarget, [  --with-gdktarget=[[x11/win32]] select GDK target],
-	gdktarget=$with_gdktarget)
+AC_ARG_WITH(gdktarget,
+[  --with-gdktarget=[[x11/win32]] select GDK target],
+gdktarget=$with_gdktarget)
 
 AC_SUBST(gdktarget)
 case $gdktarget in
@@ -230,8 +239,10 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 ## the version requirements since those make the module lists 
 ## annoying to construct
 PKG_CHECK_MODULES(BASE_DEPENDENCIES,
-$GDK_PKG >= $GDK_REQUIRED_VERSION \
 $GTK_PKG >= $GTK_REQUIRED_VERSION \
+$GDK_PKG >= $GDK_REQUIRED_VERSION \
+$GDKPIXBUF_PKG >= $GDKPIXBUF_REQUIRED_VERSION \
+$PANGO_PKG >= $PANGO_REQUIRED_VERSION \
 )
 
 if test "$os_win32" != yes; then
@@ -519,7 +530,7 @@ LIBS="$save_LIBS"
 # CFLAGS and LIBS
 ##################################################
 
-GDKGLEXT_PACKAGES="$GDK_PKG"
+GDKGLEXT_PACKAGES="$GDK_PKG $GDKPIXBUF_PKG $PANGO_PKG"
 GDKGLEXT_EXTRA_LIBS="$GL_LIBS"
 GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS"
 GDKGLEXT_DEP_LIBS="`$PKG_CONFIG --libs $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_LIBS $GDKGLEXT_WIN_LIBS $MATH_LIB"

@@ -16,21 +16,15 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifndef __GDK_GL_H__
-#define __GDK_GL_H__
+#ifndef __GDK_GL_PIXBUF_H__
+#define __GDK_GL_PIXBUF_H__
 
 #include <gdk/gdktypes.h>
 
-#include <gdk/gdkgltokens.h>
-#include <gdk/gdkgltypes.h>
-#include <gdk/gdkglenumtypes.h>
-#include <gdk/gdkglquery.h>
-#include <gdk/gdkglconfig.h>
-#include <gdk/gdkglcontext.h>
-#include <gdk/gdkgldrawable.h>
-#include <gdk/gdkglpixmap.h>
-#include <gdk/gdkglwindow.h>
-#include <gdk/gdkglfont.h>
-#include <gdk/gdkglpixbuf.h>
+G_BEGIN_DECLS
 
-#endif /* __GDK_GL_H__ */
+
+
+G_END_DECLS
+
+#endif /* __GDK_GL_PIXBUF_H__ */
