@@ -816,19 +816,13 @@ gdk_pixmap_set_gl_capability (GdkPixmap   *pixmap,
   if (glpixmap == NULL)
     {
       g_warning ("cannot create GdkGLPixmap\n");
-      goto FAIL;
+      return NULL;
     }
 
   g_object_set_qdata_full (G_OBJECT (pixmap), quark_gl_pixmap, glpixmap,
                            (GDestroyNotify) g_object_unref);
 
   return glpixmap;
-
- FAIL:
-
-  g_object_set_qdata (G_OBJECT (pixmap), quark_gl_pixmap, NULL);
-
-  return NULL;
 }
 
 /**

@@ -817,19 +817,13 @@ gdk_window_set_gl_capability (GdkWindow   *window,
   if (glwindow == NULL)
     {
       g_warning ("cannot create GdkGLWindow\n");
-      goto FAIL;
+      return NULL;
     }
 
   g_object_set_qdata_full (G_OBJECT (window), quark_gl_window, glwindow,
                            (GDestroyNotify) g_object_unref);
 
   return glwindow;
-
- FAIL:
-
-  g_object_set_qdata (G_OBJECT (window), quark_gl_window, NULL);
-
-  return NULL;
 }
 
 /**
