@@ -351,6 +351,8 @@ gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
   return glconfig;
 }
 
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+
 GdkGLConfig *
 gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
                                       GdkGLConfigMode  mode)
@@ -378,6 +380,8 @@ gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
 
   return glconfig;
 }
+
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 GdkScreen *
 gdk_gl_config_get_screen (GdkGLConfig *glconfig)
