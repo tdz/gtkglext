@@ -92,21 +92,24 @@ gdk_gl_window_impl_x11_class_init (GdkGLWindowImplX11Class *klass)
   object_class->finalize = gdk_gl_window_impl_x11_finalize;
 }
 
-static void
-gdk_gl_window_impl_x11_finalize (GObject *object)
+void
+_gdk_gl_window_destroy (GdkGLWindow *glwindow)
 {
-  GdkGLWindowImplX11 *impl = GDK_GL_WINDOW_IMPL_X11 (object);
-  GdkGL_GLX_MESA_release_buffers *mesa_ext;
+  GdkGLWindowImplX11 *impl = GDK_GL_WINDOW_IMPL_X11 (glwindow);;
   Display *xdisplay;
+  GdkGL_GLX_MESA_release_buffers *mesa_ext;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_finalize ()"));
+  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_gl_window_destroy ()"));
 
-  glXWaitGL ();
+  if (impl->is_destroyed)
+    return;
 
   xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
 
   if (impl->glxwindow == glXGetCurrentDrawable ())
     {
+      glXWaitGL ();
+
       GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
       glXMakeCurrent (xdisplay, None, NULL);
     }
@@ -118,6 +121,20 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
       GDK_GL_NOTE (IMPL, g_message (" * glXReleaseBuffersMESA ()"));
       mesa_ext->glXReleaseBuffersMESA (xdisplay, impl->glxwindow);
     }
+
+  impl->glxwindow = None;
+
+  impl->is_destroyed = TRUE;
+}
+
+static void
+gdk_gl_window_impl_x11_finalize (GObject *object)
+{
+  GdkGLWindowImplX11 *impl = GDK_GL_WINDOW_IMPL_X11 (object);
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_finalize ()"));
+
+  _gdk_gl_window_destroy (GDK_GL_WINDOW (object));
 
   g_object_unref (G_OBJECT (impl->glconfig));
 
@@ -195,6 +212,8 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   impl->glconfig = glconfig;
   g_object_ref (G_OBJECT (impl->glconfig));
 
+  impl->is_destroyed = FALSE;
+
   return glwindow;
 }
 
@@ -233,6 +252,7 @@ gdk_gl_window_impl_x11_make_context_current (GdkGLDrawable *draw,
 
   if (!glXMakeCurrent (xdisplay, impl->glxwindow, glxcontext))
     {
+      g_warning ("glXMakeCurrent() failed");
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
       /* currently unused. */
       /* _gdk_gl_context_set_gl_drawable_read (glcontext, NULL); */

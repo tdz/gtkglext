@@ -647,6 +647,22 @@ _gdk_gl_pixmap_get_size (GdkGLDrawable *gldrawable,
 }
 
 /**
+ * gdk_gl_pixmap_destroy:
+ * @glpixmap: a #GdkGLPixmap.
+ *
+ * Destroys the OpenGL resources associated with @glpixmap and
+ * decrements @glpixmap's reference count.
+ **/
+void
+gdk_gl_pixmap_destroy (GdkGLPixmap *glpixmap)
+{
+  g_return_if_fail (GDK_IS_GL_PIXMAP (glpixmap));
+
+  _gdk_gl_pixmap_destroy (glpixmap);
+  g_object_unref (G_OBJECT (glpixmap));
+}
+
+/**
  * gdk_gl_pixmap_get_pixmap:
  * @glpixmap: a #GdkGLPixmap.
  *
@@ -737,18 +753,22 @@ gdk_pixmap_set_gl_capability (GdkPixmap   *pixmap,
 void
 gdk_pixmap_unset_gl_capability (GdkPixmap *pixmap)
 {
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_pixmap_unset_gl_capability ()"));
+  GdkGLPixmap *glpixmap;
 
-  /*
-   * If quarks are not initialized
-   */
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_pixmap_unset_gl_capability ()"));
 
   if (quark_gl_pixmap == 0)
     quark_gl_pixmap = g_quark_from_static_string (quark_gl_pixmap_string);
 
   /*
-   * Unref OpenGL-related data of the pixmap
+   * Destroy OpenGL resources explicitly, then unref.
    */
+
+  glpixmap = g_object_get_qdata (G_OBJECT (pixmap), quark_gl_pixmap);
+  if (glpixmap == NULL)
+    return;
+
+  _gdk_gl_pixmap_destroy (glpixmap);
 
   g_object_set_qdata (G_OBJECT (pixmap), quark_gl_pixmap, NULL);
 }

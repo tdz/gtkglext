@@ -90,16 +90,23 @@ gdk_gl_window_impl_win32_class_init (GdkGLWindowImplWin32Class *klass)
   object_class->finalize = gdk_gl_window_impl_win32_finalize;
 }
 
-static void
-gdk_gl_window_impl_win32_finalize (GObject *object)
+void
+_gdk_gl_window_destroy (GdkGLWindow *glwindow)
 {
-  GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (object);
+  GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (glwindow);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_win32_finalize ()"));
+  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_gl_window_destroy ()"));
+
+  if (impl->is_destroyed)
+    return;
 
   /* Get DC. */
   if (impl->hdc == NULL)
-    impl->hdc = GetDC (impl->hwnd);
+    {
+      impl->hdc = GetDC (impl->hwnd);
+      if (impl->hdc == NULL)
+        return;
+    }
 
   if (impl->hdc == wglGetCurrentDC ())
     {
@@ -110,8 +117,22 @@ gdk_gl_window_impl_win32_finalize (GObject *object)
     }
 
   /* Release DC. */
-  if (impl->hdc != NULL)
-    ReleaseDC (impl->hwnd, impl->hdc);
+  ReleaseDC (impl->hwnd, impl->hdc);
+  impl->hdc = NULL;
+
+  impl->hwnd = NULL;
+
+  impl->is_destroyed = TRUE;
+}
+
+static void
+gdk_gl_window_impl_win32_finalize (GObject *object)
+{
+  GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (object);
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_win32_finalize ()"));
+
+  _gdk_gl_window_destroy (GDK_GL_WINDOW (object));
 
   g_object_unref (G_OBJECT (impl->glconfig));
 
@@ -231,6 +252,8 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
 
   impl->hdc = NULL;
 
+  impl->is_destroyed = FALSE;
+
   return glwindow;
 
  FAIL:
@@ -271,6 +294,7 @@ gdk_gl_window_impl_win32_make_context_current (GdkGLDrawable *draw,
 
   if (!wglMakeCurrent (hdc, hglrc))
     {
+      g_warning ("wglMakeCurrent() failed");
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
       /* currently unused. */
       /* _gdk_gl_context_set_gl_drawable_read (glcontext, NULL); */

@@ -94,12 +94,15 @@ gdk_gl_pixmap_impl_win32_class_init (GdkGLPixmapImplWin32Class *klass)
   object_class->finalize = gdk_gl_pixmap_impl_win32_finalize;
 }
 
-static void
-gdk_gl_pixmap_impl_win32_finalize (GObject *object)
+void
+_gdk_gl_pixmap_destroy (GdkGLPixmap *glpixmap)
 {
-  GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (object);
+  GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_finalize ()"));
+  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_gl_pixmap_destroy ()"));
+
+  if (impl->is_destroyed)
+    return;
 
   if (impl->hdc == wglGetCurrentDC ())
     {
@@ -111,8 +114,25 @@ gdk_gl_pixmap_impl_win32_finalize (GObject *object)
 
   /* Delete the memory DC. */
   DeleteDC (impl->hdc);
+  impl->hdc = NULL;
 
   g_object_unref (G_OBJECT (impl->aux_pixmap));
+  impl->aux_pixmap = NULL;
+
+  impl->gl_hbitmap = NULL;
+  impl->gdk_hbitmap = NULL;
+
+  impl->is_destroyed = TRUE;
+}
+
+static void
+gdk_gl_pixmap_impl_win32_finalize (GObject *object)
+{
+  GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (object);
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_finalize ()"));
+
+  _gdk_gl_pixmap_destroy (GDK_GL_PIXMAP (object));
 
   g_object_unref (G_OBJECT (impl->glconfig));
 
@@ -264,6 +284,8 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   g_object_ref (G_OBJECT (impl->glconfig));
 
   impl->hdc = hdc;
+
+  impl->is_destroyed = FALSE;
 
   return glpixmap;
 

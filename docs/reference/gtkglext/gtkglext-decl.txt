@@ -334,6 +334,11 @@ void
 GdkGLDrawable *gldrawable,GdkGLContext  *share_list,gboolean       direct,int            render_type
 </FUNCTION>
 <FUNCTION>
+<NAME>gdk_gl_context_destroy</NAME>
+<RETURNS>void  </RETURNS>
+GdkGLContext  *glcontext
+</FUNCTION>
+<FUNCTION>
 <NAME>gdk_gl_context_copy</NAME>
 <RETURNS>gboolean  </RETURNS>
 GdkGLContext  *dst_glcontext,GdkGLContext  *src_glcontext,unsigned long  mask
@@ -570,6 +575,11 @@ void
 <NAME>gdk_gl_pixmap_new</NAME>
 <RETURNS>GdkGLPixmap  *</RETURNS>
 GdkGLConfig *glconfig,GdkPixmap   *pixmap,const int   *attrib_list
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_pixmap_destroy</NAME>
+<RETURNS>void  </RETURNS>
+GdkGLPixmap *glpixmap
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_pixmap_get_pixmap</NAME>
@@ -945,6 +955,11 @@ void
 <NAME>gdk_gl_window_new</NAME>
 <RETURNS>GdkGLWindow  *</RETURNS>
 GdkGLConfig *glconfig,GdkWindow   *window,const int   *attrib_list
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_window_destroy</NAME>
+<RETURNS>void  </RETURNS>
+GdkGLWindow *glwindow
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_window_get_window</NAME>

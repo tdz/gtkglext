@@ -49,6 +49,7 @@ struct _GdkGLContextImplX11
   GdkGLDrawable *gldrawable_read; /* currently unused. */
 
   guint is_foreign : 1;
+  guint is_destroyed : 1;
 };
 
 struct _GdkGLContextImplX11Class

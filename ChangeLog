@@ -1,3 +1,47 @@
+2003-04-25  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gtk/gtkglwidget.c (struct GLWidgetPrivate): Added glcontext
+	field, and quark_gl_context quark data is no longer used.
+	(gtk_widget_get_gl_context): Use private->glcontext.
+	(gtk_gl_widget_destroy, gtk_widget_set_gl_capability): Connect
+	"destroy" signal hander to destroy the GdkGLContext explicitly.
+
+	* gdk/gdkglcontext.[ch] (gdk_gl_context_destroy): Added.
+
+	* gdk/win32/gdkglcontext-win32.c (_gdk_gl_context_destroy): Added.
+	(gdk_gl_context_impl_win32_finalize): Use _gdk_gl_context_destroy()
+	to release WGL resources.
+
+	* gdk/x11/gdkglcontext-x11.c (_gdk_gl_context_destroy): Added.
+	(gdk_gl_context_impl_x11_finalize): Use _gdk_gl_context_destroy()
+	to release GLX resources.
+
+	* gdk/gdkglwindow.[ch] (gdk_gl_window_destroy): Added.
+
+	* gdk/gdkglwindow.c (gdk_window_unset_gl_capability): Destroy
+	OpenGL resources explicitly.
+
+	* gdk/win32/gdkglwindow-win32.c (_gdk_gl_window_destroy): Added.
+	(gdk_gl_window_impl_win32_finalize): Use _gdk_gl_window_destroy()
+	to release WGL resources.
+
+	* gdk/x11/gdkglwindow-x11.c (_gdk_gl_window_destroy): Added.
+	(gdk_gl_window_impl_x11_finalize): Use _gdk_gl_window_destroy() to
+	release GLX resources.
+
+	* gdk/gdkglpixmap.[ch] (gdk_gl_pixmap_destroy): Added.
+
+	* gdk/gdkglpixmap.c (gdk_pixmap_unset_gl_capability): Destroy
+	OpenGL resources explicitly.
+
+	* gdk/win32/gdkglpixmap-win32.c (_gdk_gl_pixmap_destroy): Added.
+	(gdk_gl_pixmap_impl_win32_finalize): Use _gdk_gl_pixmap_destroy()
+	to release WGL resources.
+
+	* gdk/x11/gdkglpixmap-x11.c (_gdk_gl_pixmap_destroy): Added.
+	(gdk_gl_pixmap_impl_x11_finalize): Use _gdk_gl_pixmap_destroy()
+	to release GLX resources.
+
 2003-04-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_new_common): 

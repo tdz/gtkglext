@@ -90,26 +90,43 @@ gdk_gl_pixmap_impl_x11_class_init (GdkGLPixmapImplX11Class *klass)
   object_class->finalize = gdk_gl_pixmap_impl_x11_finalize;
 }
 
-static void
-gdk_gl_pixmap_impl_x11_finalize (GObject *object)
+void
+_gdk_gl_pixmap_destroy (GdkGLPixmap *glpixmap)
 {
-  GdkGLPixmapImplX11 *impl = GDK_GL_PIXMAP_IMPL_X11 (object);
+  GdkGLPixmapImplX11 *impl = GDK_GL_PIXMAP_IMPL_X11 (glpixmap);
   Display *xdisplay;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_finalize ()"));
+  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_gl_pixmap_destroy ()"));
 
-  glXWaitGL ();
+  if (impl->is_destroyed)
+    return;
 
   xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
 
   if (impl->glxpixmap == glXGetCurrentDrawable ())
     {
+      glXWaitGL ();
+
       GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
       glXMakeCurrent (xdisplay, None, NULL);
     }
 
   GDK_GL_NOTE (IMPL, g_message (" * glXDestroyGLXPixmap ()"));
   glXDestroyGLXPixmap (xdisplay, impl->glxpixmap);
+
+  impl->glxpixmap = None;
+
+  impl->is_destroyed = TRUE;
+}
+
+static void
+gdk_gl_pixmap_impl_x11_finalize (GObject *object)
+{
+  GdkGLPixmapImplX11 *impl = GDK_GL_PIXMAP_IMPL_X11 (object);
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_finalize ()"));
+
+  _gdk_gl_pixmap_destroy (GDK_GL_PIXMAP (object));
 
   g_object_unref (G_OBJECT (impl->glconfig));
 
@@ -239,6 +256,8 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   impl->glconfig = glconfig;
   g_object_ref (G_OBJECT (impl->glconfig));
 
+  impl->is_destroyed = FALSE;
+
   return glpixmap;
 }
 
@@ -277,6 +296,7 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
 
   if (!glXMakeCurrent (xdisplay, impl->glxpixmap, glxcontext))
     {
+      g_warning ("glXMakeCurrent() failed");
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
       /* currently unused. */
       /* _gdk_gl_context_set_gl_drawable_read (glcontext, NULL); */

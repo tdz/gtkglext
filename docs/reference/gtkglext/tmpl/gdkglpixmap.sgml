@@ -31,6 +31,14 @@ OpenGL pixmap which is maintained offscreen
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_gl_pixmap_destroy ##### -->
+<para>
+
+</para>
+
+@glpixmap: 
+
+
 <!-- ##### FUNCTION gdk_gl_pixmap_get_pixmap ##### -->
 <para>
 

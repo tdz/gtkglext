@@ -47,6 +47,8 @@ struct _GdkGLWindowImplWin32
 
   /*< private >*/
   HDC hdc;
+
+  guint is_destroyed : 1;
 };
 
 struct _GdkGLWindowImplWin32Class

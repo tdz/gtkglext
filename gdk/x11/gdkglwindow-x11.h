@@ -42,6 +42,8 @@ struct _GdkGLWindowImplX11
   Window glxwindow;
 
   GdkGLConfig *glconfig;
+
+  guint is_destroyed : 1;
 };
 
 struct _GdkGLWindowImplX11Class

@@ -50,6 +50,8 @@ struct _GdkGLPixmapImplWin32
 
   /*< private >*/
   HDC hdc;
+
+  guint is_destroyed : 1;
 };
 
 struct _GdkGLPixmapImplWin32Class

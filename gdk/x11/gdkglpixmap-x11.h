@@ -41,6 +41,8 @@ struct _GdkGLPixmapImplX11
   GLXPixmap glxpixmap;
 
   GdkGLConfig *glconfig;
+
+  guint is_destroyed : 1;
 };
 
 struct _GdkGLPixmapImplX11Class

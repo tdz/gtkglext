@@ -34,6 +34,14 @@ OpenGL rendering context object
 @glconfig: 
 
 
+<!-- ##### FUNCTION gdk_gl_context_destroy ##### -->
+<para>
+
+</para>
+
+@glcontext: 
+
+
 <!-- ##### FUNCTION gdk_gl_context_copy ##### -->
 <para>
 

@@ -86,6 +86,7 @@ gdk_gl_config_get_type
 <FILE>gdkglcontext</FILE>
 GdkGLContext
 gdk_gl_context_new
+gdk_gl_context_destroy
 gdk_gl_context_copy
 gdk_gl_context_get_gl_drawable
 gdk_gl_context_get_gl_config
@@ -138,6 +139,7 @@ gdk_gl_drawable_get_type
 <FILE>gdkglpixmap</FILE>
 GdkGLPixmap
 gdk_gl_pixmap_new
+gdk_gl_pixmap_destroy
 gdk_gl_pixmap_get_pixmap
 gdk_pixmap_set_gl_capability
 gdk_pixmap_unset_gl_capability
@@ -162,6 +164,7 @@ gdk_gl_pixmap_get_type
 <FILE>gdkglwindow</FILE>
 GdkGLWindow
 gdk_gl_window_new
+gdk_gl_window_destroy
 gdk_gl_window_get_window
 gdk_window_set_gl_capability
 gdk_window_unset_gl_capability

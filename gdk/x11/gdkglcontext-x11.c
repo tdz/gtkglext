@@ -75,23 +75,25 @@ gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass)
   object_class->finalize = gdk_gl_context_impl_x11_finalize;
 }
 
-static void
-gdk_gl_context_impl_x11_finalize (GObject *object)
+void
+_gdk_gl_context_destroy (GdkGLContext *glcontext)
 {
-  GdkGLContext *glcontext = GDK_GL_CONTEXT (object);
-  GdkGLContextImplX11 *impl = GDK_GL_CONTEXT_IMPL_X11 (object);
+  GdkGLContextImplX11 *impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
   Display *xdisplay;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_x11_finalize ()"));
+  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_gl_context_destroy ()"));
+
+  if (impl->is_destroyed)
+    return;
 
   gdk_gl_context_remove (glcontext);
-
-  glXWaitGL ();
 
   xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
 
   if (impl->glxcontext == glXGetCurrentContext ())
     {
+      glXWaitGL ();
+
       GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
       glXMakeCurrent (xdisplay, None, NULL);
     }
@@ -100,18 +102,37 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
     {
       GDK_GL_NOTE (IMPL, g_message (" * glXDestroyContext ()"));
       glXDestroyContext (xdisplay, impl->glxcontext);
+      impl->glxcontext = NULL;
     }
 
   if (impl->gldrawable != NULL)
-    g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable),
-                                  (gpointer *) &(impl->gldrawable));
+    {
+      g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable),
+                                    (gpointer *) &(impl->gldrawable));
+      impl->gldrawable = NULL;
+    }
 
   /* currently unused. */
   /*
   if (impl->gldrawable_read != NULL)
-    g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable_read),
-                                  (gpointer *) &(impl->gldrawable_read));
+    {
+      g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable_read),
+                                    (gpointer *) &(impl->gldrawable_read));
+      impl->gldrawable_read = NULL;
+    }
   */
+
+  impl->is_destroyed = TRUE;
+}
+
+static void
+gdk_gl_context_impl_x11_finalize (GObject *object)
+{
+  GdkGLContextImplX11 *impl = GDK_GL_CONTEXT_IMPL_X11 (object);
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_x11_finalize ()"));
+
+  _gdk_gl_context_destroy (GDK_GL_CONTEXT (object));
 
   g_object_unref (G_OBJECT (impl->glconfig));
 
@@ -166,6 +187,8 @@ gdk_gl_context_new_common (GdkGLConfig   *glconfig,
   impl->gldrawable_read = NULL;
 
   impl->is_foreign = is_foreign;
+
+  impl->is_destroyed = FALSE;
 
   /* 
    * Insert into the GL context hash table.

@@ -647,6 +647,22 @@ _gdk_gl_window_get_size (GdkGLDrawable *gldrawable,
 }
 
 /**
+ * gdk_gl_window_destroy:
+ * @glwindow: a #GdkGLWindow.
+ *
+ * Destroys the OpenGL resources associated with @glwindow and
+ * decrements @glwindow's reference count.
+ **/
+void
+gdk_gl_window_destroy (GdkGLWindow *glwindow)
+{
+  g_return_if_fail (GDK_IS_GL_WINDOW (glwindow));
+
+  _gdk_gl_window_destroy (glwindow);
+  g_object_unref (G_OBJECT (glwindow));
+}
+
+/**
  * gdk_gl_window_get_window:
  * @glwindow: a #GdkGLWindow.
  *
@@ -751,18 +767,22 @@ gdk_window_set_gl_capability (GdkWindow   *window,
 void
 gdk_window_unset_gl_capability (GdkWindow *window)
 {
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_window_unset_gl_capability ()"));
+  GdkGLWindow *glwindow;
 
-  /*
-   * If quarks are not initialized
-   */
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_window_unset_gl_capability ()"));
 
   if (quark_gl_window == 0)
     quark_gl_window = g_quark_from_static_string (quark_gl_window_string);
 
   /*
-   * Unref OpenGL-related data of the window
+   * Destroy OpenGL resources explicitly, then unref.
    */
+
+  glwindow = g_object_get_qdata (G_OBJECT (window), quark_gl_window);
+  if (glwindow == NULL)
+    return;
+
+  _gdk_gl_window_destroy (glwindow);
 
   g_object_set_qdata (G_OBJECT (window), quark_gl_window, NULL);
 }

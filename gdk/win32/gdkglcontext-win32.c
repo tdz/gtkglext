@@ -71,13 +71,15 @@ gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass)
   object_class->finalize = gdk_gl_context_impl_win32_finalize;
 }
 
-static void
-gdk_gl_context_impl_win32_finalize (GObject *object)
+void
+_gdk_gl_context_destroy (GdkGLContext *glcontext)
 {
-  GdkGLContext *glcontext = GDK_GL_CONTEXT (object);
-  GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (object);
+  GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_win32_finalize ()"));
+  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_gl_context_destroy ()"));
+
+  if (impl->is_destroyed)
+    return;
 
   gdk_gl_context_remove (glcontext);
 
@@ -93,18 +95,37 @@ gdk_gl_context_impl_win32_finalize (GObject *object)
     {
       GDK_GL_NOTE (IMPL, g_message (" * wglDeleteContext ()"));
       wglDeleteContext (impl->hglrc);
+      impl->hglrc = NULL;
     }
 
   if (impl->gldrawable != NULL)
-    g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable),
-                                  (gpointer *) &(impl->gldrawable));
+    {
+      g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable),
+                                    (gpointer *) &(impl->gldrawable));
+      impl->gldrawable = NULL;
+    }
 
   /* currently unused. */
   /*
   if (impl->gldrawable_read != NULL)
-    g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable_read),
-                                  (gpointer *) &(impl->gldrawable_read));
+    {
+      g_object_remove_weak_pointer (G_OBJECT (impl->gldrawable_read),
+                                    (gpointer *) &(impl->gldrawable_read));
+      impl->gldrawable_read = NULL;
+    }
   */
+
+  impl->is_destroyed = TRUE;
+}
+
+static void
+gdk_gl_context_impl_win32_finalize (GObject *object)
+{
+  GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (object);
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_win32_finalize ()"));
+
+  _gdk_gl_context_destroy (GDK_GL_CONTEXT (object));
 
   g_object_unref (G_OBJECT (impl->glconfig));
 
@@ -154,6 +175,8 @@ gdk_gl_context_new_common (GdkGLConfig   *glconfig,
   impl->gldrawable_read = NULL;
 
   impl->is_foreign = is_foreign;
+
+  impl->is_destroyed = FALSE;
 
   /* 
    * Insert into the GL context hash table.
