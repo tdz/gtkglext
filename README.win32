@@ -121,8 +121,8 @@ Personally I run configure like this:
         AR=/usr/bin/ar \
         ./configure --host=i386-pc-mingw32 --prefix=c:/gtkglext
   $ make
-  $ make examples
   $ make install
+  $ make examples
 
 Notice that LDFLAGS should be specified to install DLL's to
 ${prefix}/lib, and use Cygwin's ar.exe instead of MinGW's one on
@@ -153,8 +153,8 @@ for generating configure script and Makefiles.
         AR=/usr/bin/ar \
         ./autogen.sh --host=i386-pc-mingw32 --prefix=c:/gtkglext
   $ make
-  $ make examples
   $ make install
+  $ make examples
 
 ACLOCAL_FLAGS is for pkg-config's PKG_CHECK_MODULES macro in configure.in.
 I use the following versions of the GNU auto-tools.

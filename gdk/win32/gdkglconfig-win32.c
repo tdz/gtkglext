@@ -197,7 +197,9 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
 
   /* PFD_DRAW_TO_WINDOW or PFD_DRAW_TO_BITMAP is not specified at this stage.
      The flag is specified by _gdk_win32_gl_(window|pixmap)_hdc_get (). */
-  if (impl->pfd.dwFlags & PFD_SUPPORT_GDI)
+  if (impl->pfd.dwFlags & PFD_DOUBLEBUFFER)
+    impl->pfd.dwFlags = PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
+  else if (impl->pfd.dwFlags & PFD_SUPPORT_GDI)
     impl->pfd.dwFlags = PFD_SUPPORT_OPENGL | PFD_SUPPORT_GDI;
   else
     impl->pfd.dwFlags = PFD_SUPPORT_OPENGL;

@@ -117,6 +117,7 @@ for generating configure script and Makefiles.
   $ env ACLOCAL_FLAGS='-I /pkgconfig/is/installed/share/aclocal' \
         ./autogen.sh --prefix=${HOME}/gtkglext --enable-debug
   $ make
+  $ make install
   $ make examples
 
 ACLOCAL_FLAGS is for pkg-config's PKG_CHECK_MODULES macro in configure.in.
