@@ -19,7 +19,7 @@
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglconfig-win32.h"
-#include "gdkglcontext-x11.h"
+#include "gdkglcontext-win32.h"
 #include "gdkglwindow-win32.h"
 
 /* Forward declarations */
