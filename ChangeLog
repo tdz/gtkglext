@@ -1,3 +1,8 @@
+2003-03-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/gdkglshapes.h: 
+	* gdk/gdkglshapes.c: Don't use GLtypes in API.
+
 2003-02-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/GL/Makefile.am: Fixed header installation problem.

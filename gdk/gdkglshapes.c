@@ -23,6 +23,13 @@
 #include "gdkglprivate.h"
 #include "gdkglshapes.h"
 
+#ifdef G_OS_WIN32
+#include <windows.h>
+#endif
+
+#include <GL/gl.h>
+#include <GL/glu.h>
+
 /* 
  * The following code is imported from GLUT.
  */
@@ -130,7 +137,7 @@ drawBox(GLfloat size, GLenum type)
  **/
 void
 gdk_gl_draw_cube (gboolean solid,
-                  GLdouble size)
+                  double   size)
 {
   if (solid)
     drawBox (size, GL_QUADS);
@@ -168,9 +175,9 @@ initQuadObj(void)
  **/
 void
 gdk_gl_draw_sphere (gboolean solid,
-                    GLdouble radius,
-                    GLint    slices,
-                    GLint    stacks)
+                    double   radius,
+                    int      slices,
+                    int      stacks)
 {
   QUAD_OBJ_INIT();
 
@@ -203,10 +210,10 @@ gdk_gl_draw_sphere (gboolean solid,
  **/
 void
 gdk_gl_draw_cone (gboolean solid,
-                  GLdouble base,
-                  GLdouble height,
-                  GLint    slices,
-                  GLint    stacks)
+                  double   base,
+                  double   height,
+                  int      slices,
+                  int      stacks)
 {
   QUAD_OBJ_INIT();
 
@@ -282,10 +289,10 @@ doughnut(GLfloat r, GLfloat R, GLint nsides, GLint rings)
  **/
 void
 gdk_gl_draw_torus (gboolean solid,
-                   GLdouble inner_radius,
-                   GLdouble outer_radius,
-                   GLint    nsides,
-                   GLint    rings)
+                   double   inner_radius,
+                   double   outer_radius,
+                   int      nsides,
+                   int      rings)
 {
   if (solid)
     {
@@ -849,7 +856,7 @@ teapot(GLint grid, GLdouble scale, GLenum type)
  **/
 void
 gdk_gl_draw_teapot (gboolean solid,
-                    GLdouble scale)
+                    double   scale)
 {
   if (solid)
     teapot (7, scale, GL_FILL);

@@ -22,34 +22,27 @@
 #include <gdk/gdkgldefs.h>
 #include <gdk/gdkgltypes.h>
 
-#ifdef G_OS_WIN32
-#include <windows.h>
-#endif
-
-#include <GL/gl.h>
-#include <GL/glu.h>
-
 G_BEGIN_DECLS
 
 void gdk_gl_draw_cube         (gboolean solid,
-                               GLdouble size);
+                               double   size);
 
 void gdk_gl_draw_sphere       (gboolean solid,
-                               GLdouble radius,
-                               GLint    slices,
-                               GLint    stacks);
+                               double   radius,
+                               int      slices,
+                               int      stacks);
 
 void gdk_gl_draw_cone         (gboolean solid,
-                               GLdouble base,
-                               GLdouble height,
-                               GLint    slices,
-                               GLint    stacks);
+                               double   base,
+                               double   height,
+                               int      slices,
+                               int      stacks);
 
 void gdk_gl_draw_torus        (gboolean solid,
-                               GLdouble inner_radius,
-                               GLdouble outer_radius,
-                               GLint    nsides,
-                               GLint    rings);
+                               double   inner_radius,
+                               double   outer_radius,
+                               int      nsides,
+                               int      rings);
 
 void gdk_gl_draw_tetrahedron  (gboolean solid);
 
@@ -60,7 +53,7 @@ void gdk_gl_draw_dodecahedron (gboolean solid);
 void gdk_gl_draw_icosahedron  (gboolean solid);
 
 void gdk_gl_draw_teapot       (gboolean solid,
-                               GLdouble scale);
+                               double   scale);
 
 G_END_DECLS
 

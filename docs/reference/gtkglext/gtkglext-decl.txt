@@ -639,22 +639,22 @@ const char *proc_name
 <FUNCTION>
 <NAME>gdk_gl_draw_cube</NAME>
 <RETURNS>void  </RETURNS>
-gboolean solid,GLdouble size
+gboolean solid,double   size
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_draw_sphere</NAME>
 <RETURNS>void  </RETURNS>
-gboolean solid,GLdouble radius,GLint    slices,GLint    stacks
+gboolean solid,double   radius,int      slices,int      stacks
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_draw_cone</NAME>
 <RETURNS>void  </RETURNS>
-gboolean solid,GLdouble base,GLdouble height,GLint    slices,GLint    stacks
+gboolean solid,double   base,double   height,int      slices,int      stacks
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_draw_torus</NAME>
 <RETURNS>void  </RETURNS>
-gboolean solid,GLdouble inner_radius,GLdouble outer_radius,GLint    nsides,GLint    rings
+gboolean solid,double   inner_radius,double   outer_radius,int      nsides,int      rings
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_draw_tetrahedron</NAME>
@@ -679,7 +679,7 @@ gboolean solid
 <FUNCTION>
 <NAME>gdk_gl_draw_teapot</NAME>
 <RETURNS>void  </RETURNS>
-gboolean solid,GLdouble scale
+gboolean solid,double   scale
 </FUNCTION>
 <MACRO>
 <NAME>GDK_GL_SUCCESS</NAME>
@@ -754,8 +754,8 @@ typedef enum
 <NAME>GdkGLConfigCaveat</NAME>
 typedef enum
 {
-  GDK_GL_CONFIG_CAVEAT_DONT_CARE    = GDK_GL_DONT_CARE,
-  GDK_GL_CONFIG_CAVEAT_NONE         = GDK_GL_NONE,
+  GDK_GL_CONFIG_CAVEAT_DONT_CARE    = 0xFFFFFFFF, /* GDK_GL_DONT_CARE */
+  GDK_GL_CONFIG_CAVEAT_NONE         = 0x8000,     /* GDK_GL_NONE */
   GDK_GL_SLOW_CONFIG                = 0x8001,
   GDK_GL_NON_CONFORMANT_CONFIG      = 0x800D
 } GdkGLConfigCaveat;
@@ -764,7 +764,7 @@ typedef enum
 <NAME>GdkGLVisualType</NAME>
 typedef enum
 {
-  GDK_GL_VISUAL_TYPE_DONT_CARE      = GDK_GL_DONT_CARE,
+  GDK_GL_VISUAL_TYPE_DONT_CARE      = 0xFFFFFFFF, /* GDK_GL_DONT_CARE */
   GDK_GL_TRUE_COLOR                 = 0x8002,
   GDK_GL_DIRECT_COLOR               = 0x8003,
   GDK_GL_PSEUDO_COLOR               = 0x8004,
@@ -777,7 +777,7 @@ typedef enum
 <NAME>GdkGLTransparentType</NAME>
 typedef enum
 {
-  GDK_GL_TRANSPARENT_NONE           = GDK_GL_NONE,
+  GDK_GL_TRANSPARENT_NONE           = 0x8000, /* GDK_GL_NONE */
   GDK_GL_TRANSPARENT_RGB            = 0x8008,
   GDK_GL_TRANSPARENT_INDEX          = 0x8009
 } GdkGLTransparentType;
@@ -849,8 +849,8 @@ typedef enum
 <NAME>GdkGLPbufferAttrib</NAME>
 typedef enum
 {
-  GDK_GL_PBUFFER_PRESERVED_CONTENTS = GDK_GL_PRESERVED_CONTENTS,
-  GDK_GL_PBUFFER_LARGEST_PBUFFER    = GDK_GL_LARGEST_PBUFFER,
+  GDK_GL_PBUFFER_PRESERVED_CONTENTS = 0x801B, /* GDK_GL_PRESERVED_CONTENTS */
+  GDK_GL_PBUFFER_LARGEST_PBUFFER    = 0x801C, /* GDK_GL_LARGEST_PBUFFER */
   GDK_GL_PBUFFER_HEIGHT             = 0x8040,
   GDK_GL_PBUFFER_WIDTH              = 0x8041
 } GdkGLPbufferAttrib;
