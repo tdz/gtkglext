@@ -219,7 +219,7 @@ AC_DEFUN(AC_GTKGLEXT_SUPPORTS_MULTIHEAD,
 [ AC_CACHE_CHECK([whether GtkGLExt supports multihead],
                  [ac_cv_gtkglext_supports_multihead],
                  [AC_TRY_LINK([#include <gdk/gdkglquery.h>], 
-                              [gdk_gl_query_extension_for_display(NULL);],
+                              [gdk_gl_query_extension_for_display(gdk_display_get_default());],
                               [ac_cv_gtkglext_supports_multihead=yes],
                               [ac_cv_gtkglext_supports_multihead=no])])
   if test "x$ac_cv_gtkglext_supports_multihead" = "xyes" ; then
