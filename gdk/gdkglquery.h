@@ -24,8 +24,6 @@
 
 G_BEGIN_DECLS
 
-typedef void (*GdkGLProc)(void);
-
 #ifndef GDK_MULTIHEAD_SAFE
 gboolean  gdk_gl_query_extension             (void);
 #endif /* GDK_MULTIHEAD_SAFE */

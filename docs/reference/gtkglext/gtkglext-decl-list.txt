@@ -164,7 +164,6 @@ gdk_gl_init
 
 <SECTION>
 <FILE>gdkglquery</FILE>
-GdkGLProc
 gdk_gl_query_extension
 gdk_gl_query_extension_for_display
 gdk_gl_query_version
@@ -210,6 +209,7 @@ GdkGLDrawableType
 
 <SECTION>
 <FILE>gdkgltypes</FILE>
+GdkGLProc
 GdkGLConfig
 GdkGLContext
 GdkGLDrawable

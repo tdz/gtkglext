@@ -1,5 +1,8 @@
 2003-05-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkgltypes.h: 
+	* gdk/gdkglquery.h: GdkGLProc typedef is moved into gdkgltypes.h.
+
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_get_attrib): Clean up
 	the code. Fixed the document.
 

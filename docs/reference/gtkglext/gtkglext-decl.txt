@@ -611,11 +611,6 @@ GdkPixmap   *pixmap
 #define      gdk_pixmap_get_gl_drawable(pixmap)         \
   GDK_GL_DRAWABLE (gdk_pixmap_get_gl_pixmap (pixmap))
 </MACRO>
-<USER_FUNCTION>
-<NAME>GdkGLProc</NAME>
-<RETURNS>void </RETURNS>
-void
-</USER_FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_query_extension</NAME>
 <RETURNS>gboolean  </RETURNS>
@@ -888,6 +883,11 @@ typedef enum
   GDK_GL_PBUFFER                    = 0x8023
 } GdkGLDrawableType;
 </ENUM>
+<USER_FUNCTION>
+<NAME>GdkGLProc</NAME>
+<RETURNS>void </RETURNS>
+void
+</USER_FUNCTION>
 <STRUCT>
 <NAME>GdkGLConfig</NAME>
 </STRUCT>

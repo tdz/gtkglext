@@ -27,6 +27,8 @@ G_BEGIN_DECLS
  * Forward declarations of commonly used types
  */
 
+typedef void (*GdkGLProc)(void);
+
 typedef struct _GdkGLConfig   GdkGLConfig;
 typedef struct _GdkGLContext  GdkGLContext;
 
