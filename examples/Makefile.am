@@ -53,14 +53,11 @@ viewlw_DEPENDENCIES = $(DEPS)
 viewlw_LDADD = $(LDADDS)
 
 
-.PHONY: examples clean distclean files
+.PHONY: examples files
 
 examples: $(EXTRA_PROGRAMS)
 
-clean:
-	-rm -f $(EXTRA_PROGRAMS)
-
-distclean:
+clean-local:
 	-rm -f $(EXTRA_PROGRAMS)
 
 files:
