@@ -130,9 +130,9 @@ template_SOURCES = template.c
 template_DEPENDENCIES = $(DEPS)
 template_LDADD = $(LDADDS)
 
-scribble-gl_SOURCES = scribble-gl.c
-scribble-gl_DEPENDENCIES = $(DEPS)
-scribble-gl_LDADD = $(LDADDS)
+scribble_gl_SOURCES = scribble-gl.c
+scribble_gl_DEPENDENCIES = $(DEPS)
+scribble_gl_LDADD = $(LDADDS)
 
 glxinfo_SOURCES = glxinfo.c
 glxinfo_DEPENDENCIES = $(DEPS)

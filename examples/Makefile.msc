@@ -109,7 +109,7 @@ SOURCES = \
 	rotating-square.c	\
 	coolwave.c		\
 	template.c		\
-	scribble-gl.c	\
+	scribble-gl.c		\
 	wglinfo.c
 
 EXTRA_SOURCES = \
@@ -137,7 +137,7 @@ PROGRAMS = \
 	rotating-square$(EXEEXT)	\
 	coolwave$(EXEEXT)		\
 	template$(EXEEXT)		\
-	scribble-gl$(EXEEXT)	\
+	scribble-gl$(EXEEXT)		\
 	wglinfo$(EXEEXT)
 
 .SUFFIXES:

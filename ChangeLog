@@ -1,3 +1,9 @@
+2003-07-18  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/Makefile.am (scribble_gl_SOURCES) 
+	(scribble_gl_DEPENDENCIES, scribble_gl_LDADD): Fixed variable
+	name.
+
 2003-07-18  Alif Wahid  <awah005@users.sourceforge.net>
 
 	* examples/scribble-gl.c
