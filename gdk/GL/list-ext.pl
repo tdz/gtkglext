@@ -24,11 +24,11 @@ if (!@ARGV) {
 foreach $in (@input_headers) {
     open(IN, $in) || die "cannot open $in";
     while (<IN>) {
-	chomp;
-	if (/^#ifndef\s+(GL_|GLX_|WGL_)/) {
-	    @line = split;
-	    push(@tmp_exts, $line[1]);
-	}
+        chomp;
+        if (/^#ifndef\s+(GL|GLX|WGL)_[A-Z0-9]+_[a-z0-9_]+/) {
+            @line = split;
+            push(@tmp_exts, $line[1]);
+        }
     }
     close(IN);
 }
@@ -37,6 +37,6 @@ foreach $in (@input_headers) {
 print "$exts[0]\n";
 for ($i = 1; $i <= $#exts; $i++) {
     if ($exts[$i] ne $exts[$i-1]) {
-	print "$exts[$i]\n";
+        print "$exts[$i]\n";
     }
 }
