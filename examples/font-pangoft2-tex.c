@@ -159,8 +159,8 @@ gl_tex_pango_ft2_render_layout (PangoLayout *layout,
 #endif
   a = color[3];
 
-  row = bitmap.buffer + (bitmap.rows-1) * bitmap.width;
-  row_end = bitmap.buffer - bitmap.width;
+  row = bitmap.buffer + bitmap.rows * bitmap.width; /* past-the-end */
+  row_end = bitmap.buffer;      /* beginning */
 
   t = (guint32 *) text_texture.texels;
 
@@ -168,13 +168,13 @@ gl_tex_pango_ft2_render_layout (PangoLayout *layout,
     {
       do
         {
+          row -= bitmap.width;
           for (i = 0; i < bitmap.width; i++)
 #if !defined(GL_VERSION_1_2) && G_BYTE_ORDER == G_LITTLE_ENDIAN
             *t++ = rgb | (((guint32) row[i]) << 24);
 #else
             *t++ = rgb | ((guint32) row[i]);
 #endif
-          row -= bitmap.width;
         }
       while (row != row_end);
     }
@@ -182,13 +182,13 @@ gl_tex_pango_ft2_render_layout (PangoLayout *layout,
     {
       do
         {
+          row -= bitmap.width;
           for (i = 0; i < bitmap.width; i++)
 #if !defined(GL_VERSION_1_2) && G_BYTE_ORDER == G_LITTLE_ENDIAN
             *t++ = rgb | (((guint32) (a * row[i])) << 24);
 #else
             *t++ = rgb | ((guint32) (a * row[i]));
 #endif
-          row -= bitmap.width;
         }
       while (row != row_end);
     }

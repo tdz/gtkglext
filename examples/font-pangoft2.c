@@ -73,20 +73,20 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
 #endif
   a = color[3];
 
-  row = bitmap.buffer + (bitmap.rows-1) * bitmap.width;
-  row_end = bitmap.buffer - bitmap.width;
+  row = bitmap.buffer + bitmap.rows * bitmap.width; /* past-the-end */
+  row_end = bitmap.buffer;      /* beginning */
 
   if (a == 1.0)
     {
       do
         {
+          row -= bitmap.width;
           for (i = 0; i < bitmap.width; i++)
 #if !defined(GL_VERSION_1_2) && G_BYTE_ORDER == G_LITTLE_ENDIAN
             *p++ = rgb | (((guint32) row[i]) << 24);
 #else
             *p++ = rgb | ((guint32) row[i]);
 #endif
-          row -= bitmap.width;
         }
       while (row != row_end);
     }
@@ -94,13 +94,13 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
     {
       do
         {
+          row -= bitmap.width;
           for (i = 0; i < bitmap.width; i++)
 #if !defined(GL_VERSION_1_2) && G_BYTE_ORDER == G_LITTLE_ENDIAN
             *p++ = rgb | (((guint32) (a * row[i])) << 24);
 #else
             *p++ = rgb | ((guint32) (a * row[i]));
 #endif
-          row -= bitmap.width;
         }
       while (row != row_end);
     }

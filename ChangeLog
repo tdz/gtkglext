@@ -1,3 +1,11 @@
+2003-08-31  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/font-pangoft2-tex.c (gl_tex_pango_ft2_render_layout):
+	Fixed texel buffer setup code.
+
+	* examples/font-pangoft2.c (gl_pango_ft2_render_layout): Fixed
+	pixel store setup code.
+
 2003-08-26  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c: Use new debug macros.
