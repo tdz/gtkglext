@@ -170,11 +170,13 @@ libgdkglext_win32_la_SOURCES = \
 	gdkglwindow-win32.h	\
 	gdkglwindow-win32.c	\
 	gdkglfont-win32.c	\
+	gdkglwglext.c		\
 	gdkglprivate-win32.h	\
 	gdkinternal-win32.h
 
 
 libgdkglextinclude_HEADERS = \
+	gdkglwglext.h		\
 	gdkglwin32.h
 
 
@@ -190,7 +192,7 @@ libgdkglext_win32_la_LIBADD =
 am_libgdkglext_win32_la_OBJECTS = gdkglquery-win32.lo \
 	gdkglconfig-win32.lo gdkglcontext-win32.lo \
 	gdkgldrawable-win32.lo gdkglpixmap-win32.lo \
-	gdkglwindow-win32.lo gdkglfont-win32.lo
+	gdkglwindow-win32.lo gdkglfont-win32.lo gdkglwglext.lo
 libgdkglext_win32_la_OBJECTS = $(am_libgdkglext_win32_la_OBJECTS)
 
 DEFS = @DEFS@
@@ -206,6 +208,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglfont-win32.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglpixmap-win32.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglquery-win32.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gdkglwglext.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglwindow-win32.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -254,6 +257,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglfont-win32.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglpixmap-win32.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglquery-win32.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglwglext.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglwindow-win32.Plo@am__quote@
 
 distclean-depend:

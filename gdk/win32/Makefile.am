@@ -33,10 +33,12 @@ libgdkglext_win32_la_SOURCES = \
 	gdkglwindow-win32.h	\
 	gdkglwindow-win32.c	\
 	gdkglfont-win32.c	\
+	gdkglwglext.c		\
 	gdkglprivate-win32.h	\
 	gdkinternal-win32.h
 
 libgdkglextinclude_HEADERS = \
+	gdkglwglext.h		\
 	gdkglwin32.h
 
 .PHONY: files

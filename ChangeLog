@@ -1,3 +1,7 @@
+2002-11-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglwglext.[ch]: Added WGL extension support.
+
 2002-11-16  wrobell  <wrobell@ite.pl>
 
 	* gdk/x11/gdkglconfig-x11.c (configure_gl): Fix for GTK+-2.1.
