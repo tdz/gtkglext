@@ -31,11 +31,7 @@
 
 #include <GL/gl.h>
 
-#ifdef INSIDE_GDK_GL_WIN32
 #include <gdk/win32/gdkglwglext.h>
-#else
-#include <gdk/gdkglwglext.h>
-#endif
 
 G_BEGIN_DECLS
 

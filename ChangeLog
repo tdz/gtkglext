@@ -1,5 +1,8 @@
 2002-11-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/{x11,win32}/Makefile.am: Location of platform-specific
+	headers have been changed to ${includedir}/gdk/{x11,win32}.
+	
 	* gdk/win32/gdkglwglext.[ch]: Added WGL extension support.
 
 2002-11-16  wrobell  <wrobell@ite.pl>

@@ -194,7 +194,7 @@ GDK_TYPE_GL_CONTEXT_INFO_EXTENSION_ATTRIBUTE
 gdk_gl_context_info_extension_attribute_get_type
 </SECTION>
 
-<INCLUDE>gdk/gdkglx.h</INCLUDE>
+<INCLUDE>gdk/x11/gdkglx.h</INCLUDE>
 
 <SECTION>
 <FILE>gdkglx</FILE>

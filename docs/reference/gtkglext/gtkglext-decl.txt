@@ -992,1250 +992,6 @@ void
 #define GLAPI extern
 </MACRO>
 <MACRO>
-<NAME>GLX_GLXEXT_VERSION</NAME>
-#define GLX_GLXEXT_VERSION 5
-</MACRO>
-<MACRO>
-<NAME>GLX_WINDOW_BIT</NAME>
-#define GLX_WINDOW_BIT                     0x00000001
-</MACRO>
-<MACRO>
-<NAME>GLX_PIXMAP_BIT</NAME>
-#define GLX_PIXMAP_BIT                     0x00000002
-</MACRO>
-<MACRO>
-<NAME>GLX_PBUFFER_BIT</NAME>
-#define GLX_PBUFFER_BIT                    0x00000004
-</MACRO>
-<MACRO>
-<NAME>GLX_RGBA_BIT</NAME>
-#define GLX_RGBA_BIT                       0x00000001
-</MACRO>
-<MACRO>
-<NAME>GLX_COLOR_INDEX_BIT</NAME>
-#define GLX_COLOR_INDEX_BIT                0x00000002
-</MACRO>
-<MACRO>
-<NAME>GLX_PBUFFER_CLOBBER_MASK</NAME>
-#define GLX_PBUFFER_CLOBBER_MASK           0x08000000
-</MACRO>
-<MACRO>
-<NAME>GLX_FRONT_LEFT_BUFFER_BIT</NAME>
-#define GLX_FRONT_LEFT_BUFFER_BIT          0x00000001
-</MACRO>
-<MACRO>
-<NAME>GLX_FRONT_RIGHT_BUFFER_BIT</NAME>
-#define GLX_FRONT_RIGHT_BUFFER_BIT         0x00000002
-</MACRO>
-<MACRO>
-<NAME>GLX_BACK_LEFT_BUFFER_BIT</NAME>
-#define GLX_BACK_LEFT_BUFFER_BIT           0x00000004
-</MACRO>
-<MACRO>
-<NAME>GLX_BACK_RIGHT_BUFFER_BIT</NAME>
-#define GLX_BACK_RIGHT_BUFFER_BIT          0x00000008
-</MACRO>
-<MACRO>
-<NAME>GLX_AUX_BUFFERS_BIT</NAME>
-#define GLX_AUX_BUFFERS_BIT                0x00000010
-</MACRO>
-<MACRO>
-<NAME>GLX_DEPTH_BUFFER_BIT</NAME>
-#define GLX_DEPTH_BUFFER_BIT               0x00000020
-</MACRO>
-<MACRO>
-<NAME>GLX_STENCIL_BUFFER_BIT</NAME>
-#define GLX_STENCIL_BUFFER_BIT             0x00000040
-</MACRO>
-<MACRO>
-<NAME>GLX_ACCUM_BUFFER_BIT</NAME>
-#define GLX_ACCUM_BUFFER_BIT               0x00000080
-</MACRO>
-<MACRO>
-<NAME>GLX_CONFIG_CAVEAT</NAME>
-#define GLX_CONFIG_CAVEAT                  0x20
-</MACRO>
-<MACRO>
-<NAME>GLX_X_VISUAL_TYPE</NAME>
-#define GLX_X_VISUAL_TYPE                  0x22
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_TYPE</NAME>
-#define GLX_TRANSPARENT_TYPE               0x23
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_INDEX_VALUE</NAME>
-#define GLX_TRANSPARENT_INDEX_VALUE        0x24
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_RED_VALUE</NAME>
-#define GLX_TRANSPARENT_RED_VALUE          0x25
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_GREEN_VALUE</NAME>
-#define GLX_TRANSPARENT_GREEN_VALUE        0x26
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_BLUE_VALUE</NAME>
-#define GLX_TRANSPARENT_BLUE_VALUE         0x27
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_ALPHA_VALUE</NAME>
-#define GLX_TRANSPARENT_ALPHA_VALUE        0x28
-</MACRO>
-<MACRO>
-<NAME>GLX_DONT_CARE</NAME>
-#define GLX_DONT_CARE                      0xFFFFFFFF
-</MACRO>
-<MACRO>
-<NAME>GLX_NONE</NAME>
-#define GLX_NONE                           0x8000
-</MACRO>
-<MACRO>
-<NAME>GLX_SLOW_CONFIG</NAME>
-#define GLX_SLOW_CONFIG                    0x8001
-</MACRO>
-<MACRO>
-<NAME>GLX_TRUE_COLOR</NAME>
-#define GLX_TRUE_COLOR                     0x8002
-</MACRO>
-<MACRO>
-<NAME>GLX_DIRECT_COLOR</NAME>
-#define GLX_DIRECT_COLOR                   0x8003
-</MACRO>
-<MACRO>
-<NAME>GLX_PSEUDO_COLOR</NAME>
-#define GLX_PSEUDO_COLOR                   0x8004
-</MACRO>
-<MACRO>
-<NAME>GLX_STATIC_COLOR</NAME>
-#define GLX_STATIC_COLOR                   0x8005
-</MACRO>
-<MACRO>
-<NAME>GLX_GRAY_SCALE</NAME>
-#define GLX_GRAY_SCALE                     0x8006
-</MACRO>
-<MACRO>
-<NAME>GLX_STATIC_GRAY</NAME>
-#define GLX_STATIC_GRAY                    0x8007
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_RGB</NAME>
-#define GLX_TRANSPARENT_RGB                0x8008
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_INDEX</NAME>
-#define GLX_TRANSPARENT_INDEX              0x8009
-</MACRO>
-<MACRO>
-<NAME>GLX_VISUAL_ID</NAME>
-#define GLX_VISUAL_ID                      0x800B
-</MACRO>
-<MACRO>
-<NAME>GLX_SCREEN</NAME>
-#define GLX_SCREEN                         0x800C
-</MACRO>
-<MACRO>
-<NAME>GLX_NON_CONFORMANT_CONFIG</NAME>
-#define GLX_NON_CONFORMANT_CONFIG          0x800D
-</MACRO>
-<MACRO>
-<NAME>GLX_DRAWABLE_TYPE</NAME>
-#define GLX_DRAWABLE_TYPE                  0x8010
-</MACRO>
-<MACRO>
-<NAME>GLX_RENDER_TYPE</NAME>
-#define GLX_RENDER_TYPE                    0x8011
-</MACRO>
-<MACRO>
-<NAME>GLX_X_RENDERABLE</NAME>
-#define GLX_X_RENDERABLE                   0x8012
-</MACRO>
-<MACRO>
-<NAME>GLX_FBCONFIG_ID</NAME>
-#define GLX_FBCONFIG_ID                    0x8013
-</MACRO>
-<MACRO>
-<NAME>GLX_RGBA_TYPE</NAME>
-#define GLX_RGBA_TYPE                      0x8014
-</MACRO>
-<MACRO>
-<NAME>GLX_COLOR_INDEX_TYPE</NAME>
-#define GLX_COLOR_INDEX_TYPE               0x8015
-</MACRO>
-<MACRO>
-<NAME>GLX_MAX_PBUFFER_WIDTH</NAME>
-#define GLX_MAX_PBUFFER_WIDTH              0x8016
-</MACRO>
-<MACRO>
-<NAME>GLX_MAX_PBUFFER_HEIGHT</NAME>
-#define GLX_MAX_PBUFFER_HEIGHT             0x8017
-</MACRO>
-<MACRO>
-<NAME>GLX_MAX_PBUFFER_PIXELS</NAME>
-#define GLX_MAX_PBUFFER_PIXELS             0x8018
-</MACRO>
-<MACRO>
-<NAME>GLX_PRESERVED_CONTENTS</NAME>
-#define GLX_PRESERVED_CONTENTS             0x801B
-</MACRO>
-<MACRO>
-<NAME>GLX_LARGEST_PBUFFER</NAME>
-#define GLX_LARGEST_PBUFFER                0x801C
-</MACRO>
-<MACRO>
-<NAME>GLX_WIDTH</NAME>
-#define GLX_WIDTH                          0x801D
-</MACRO>
-<MACRO>
-<NAME>GLX_HEIGHT</NAME>
-#define GLX_HEIGHT                         0x801E
-</MACRO>
-<MACRO>
-<NAME>GLX_EVENT_MASK</NAME>
-#define GLX_EVENT_MASK                     0x801F
-</MACRO>
-<MACRO>
-<NAME>GLX_DAMAGED</NAME>
-#define GLX_DAMAGED                        0x8020
-</MACRO>
-<MACRO>
-<NAME>GLX_SAVED</NAME>
-#define GLX_SAVED                          0x8021
-</MACRO>
-<MACRO>
-<NAME>GLX_WINDOW</NAME>
-#define GLX_WINDOW                         0x8022
-</MACRO>
-<MACRO>
-<NAME>GLX_PBUFFER</NAME>
-#define GLX_PBUFFER                        0x8023
-</MACRO>
-<MACRO>
-<NAME>GLX_PBUFFER_HEIGHT</NAME>
-#define GLX_PBUFFER_HEIGHT                 0x8040
-</MACRO>
-<MACRO>
-<NAME>GLX_PBUFFER_WIDTH</NAME>
-#define GLX_PBUFFER_WIDTH                  0x8041
-</MACRO>
-<MACRO>
-<NAME>GLX_SAMPLE_BUFFERS</NAME>
-#define GLX_SAMPLE_BUFFERS                 100000
-</MACRO>
-<MACRO>
-<NAME>GLX_SAMPLES</NAME>
-#define GLX_SAMPLES                        100001
-</MACRO>
-<MACRO>
-<NAME>GLX_SAMPLE_BUFFERS_ARB</NAME>
-#define GLX_SAMPLE_BUFFERS_ARB             100000
-</MACRO>
-<MACRO>
-<NAME>GLX_SAMPLES_ARB</NAME>
-#define GLX_SAMPLES_ARB                    100001
-</MACRO>
-<MACRO>
-<NAME>GLX_SAMPLE_BUFFERS_SGIS</NAME>
-#define GLX_SAMPLE_BUFFERS_SGIS            100000
-</MACRO>
-<MACRO>
-<NAME>GLX_SAMPLES_SGIS</NAME>
-#define GLX_SAMPLES_SGIS                   100001
-</MACRO>
-<MACRO>
-<NAME>GLX_X_VISUAL_TYPE_EXT</NAME>
-#define GLX_X_VISUAL_TYPE_EXT              0x22
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_TYPE_EXT</NAME>
-#define GLX_TRANSPARENT_TYPE_EXT           0x23
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_INDEX_VALUE_EXT</NAME>
-#define GLX_TRANSPARENT_INDEX_VALUE_EXT    0x24
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_RED_VALUE_EXT</NAME>
-#define GLX_TRANSPARENT_RED_VALUE_EXT      0x25
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_GREEN_VALUE_EXT</NAME>
-#define GLX_TRANSPARENT_GREEN_VALUE_EXT    0x26
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_BLUE_VALUE_EXT</NAME>
-#define GLX_TRANSPARENT_BLUE_VALUE_EXT     0x27
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_ALPHA_VALUE_EXT</NAME>
-#define GLX_TRANSPARENT_ALPHA_VALUE_EXT    0x28
-</MACRO>
-<MACRO>
-<NAME>GLX_NONE_EXT</NAME>
-#define GLX_NONE_EXT                       0x8000
-</MACRO>
-<MACRO>
-<NAME>GLX_TRUE_COLOR_EXT</NAME>
-#define GLX_TRUE_COLOR_EXT                 0x8002
-</MACRO>
-<MACRO>
-<NAME>GLX_DIRECT_COLOR_EXT</NAME>
-#define GLX_DIRECT_COLOR_EXT               0x8003
-</MACRO>
-<MACRO>
-<NAME>GLX_PSEUDO_COLOR_EXT</NAME>
-#define GLX_PSEUDO_COLOR_EXT               0x8004
-</MACRO>
-<MACRO>
-<NAME>GLX_STATIC_COLOR_EXT</NAME>
-#define GLX_STATIC_COLOR_EXT               0x8005
-</MACRO>
-<MACRO>
-<NAME>GLX_GRAY_SCALE_EXT</NAME>
-#define GLX_GRAY_SCALE_EXT                 0x8006
-</MACRO>
-<MACRO>
-<NAME>GLX_STATIC_GRAY_EXT</NAME>
-#define GLX_STATIC_GRAY_EXT                0x8007
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_RGB_EXT</NAME>
-#define GLX_TRANSPARENT_RGB_EXT            0x8008
-</MACRO>
-<MACRO>
-<NAME>GLX_TRANSPARENT_INDEX_EXT</NAME>
-#define GLX_TRANSPARENT_INDEX_EXT          0x8009
-</MACRO>
-<MACRO>
-<NAME>GLX_VISUAL_CAVEAT_EXT</NAME>
-#define GLX_VISUAL_CAVEAT_EXT              0x20
-</MACRO>
-<MACRO>
-<NAME>GLX_SLOW_VISUAL_EXT</NAME>
-#define GLX_SLOW_VISUAL_EXT                0x8001
-</MACRO>
-<MACRO>
-<NAME>GLX_NON_CONFORMANT_VISUAL_EXT</NAME>
-#define GLX_NON_CONFORMANT_VISUAL_EXT      0x800D
-</MACRO>
-<MACRO>
-<NAME>GLX_SHARE_CONTEXT_EXT</NAME>
-#define GLX_SHARE_CONTEXT_EXT              0x800A
-</MACRO>
-<MACRO>
-<NAME>GLX_VISUAL_ID_EXT</NAME>
-#define GLX_VISUAL_ID_EXT                  0x800B
-</MACRO>
-<MACRO>
-<NAME>GLX_SCREEN_EXT</NAME>
-#define GLX_SCREEN_EXT                     0x800C
-</MACRO>
-<MACRO>
-<NAME>GLX_WINDOW_BIT_SGIX</NAME>
-#define GLX_WINDOW_BIT_SGIX                0x00000001
-</MACRO>
-<MACRO>
-<NAME>GLX_PIXMAP_BIT_SGIX</NAME>
-#define GLX_PIXMAP_BIT_SGIX                0x00000002
-</MACRO>
-<MACRO>
-<NAME>GLX_RGBA_BIT_SGIX</NAME>
-#define GLX_RGBA_BIT_SGIX                  0x00000001
-</MACRO>
-<MACRO>
-<NAME>GLX_COLOR_INDEX_BIT_SGIX</NAME>
-#define GLX_COLOR_INDEX_BIT_SGIX           0x00000002
-</MACRO>
-<MACRO>
-<NAME>GLX_DRAWABLE_TYPE_SGIX</NAME>
-#define GLX_DRAWABLE_TYPE_SGIX             0x8010
-</MACRO>
-<MACRO>
-<NAME>GLX_RENDER_TYPE_SGIX</NAME>
-#define GLX_RENDER_TYPE_SGIX               0x8011
-</MACRO>
-<MACRO>
-<NAME>GLX_X_RENDERABLE_SGIX</NAME>
-#define GLX_X_RENDERABLE_SGIX              0x8012
-</MACRO>
-<MACRO>
-<NAME>GLX_FBCONFIG_ID_SGIX</NAME>
-#define GLX_FBCONFIG_ID_SGIX               0x8013
-</MACRO>
-<MACRO>
-<NAME>GLX_RGBA_TYPE_SGIX</NAME>
-#define GLX_RGBA_TYPE_SGIX                 0x8014
-</MACRO>
-<MACRO>
-<NAME>GLX_COLOR_INDEX_TYPE_SGIX</NAME>
-#define GLX_COLOR_INDEX_TYPE_SGIX          0x8015
-</MACRO>
-<MACRO>
-<NAME>GLX_PBUFFER_BIT_SGIX</NAME>
-#define GLX_PBUFFER_BIT_SGIX               0x00000004
-</MACRO>
-<MACRO>
-<NAME>GLX_BUFFER_CLOBBER_MASK_SGIX</NAME>
-#define GLX_BUFFER_CLOBBER_MASK_SGIX       0x08000000
-</MACRO>
-<MACRO>
-<NAME>GLX_FRONT_LEFT_BUFFER_BIT_SGIX</NAME>
-#define GLX_FRONT_LEFT_BUFFER_BIT_SGIX     0x00000001
-</MACRO>
-<MACRO>
-<NAME>GLX_FRONT_RIGHT_BUFFER_BIT_SGIX</NAME>
-#define GLX_FRONT_RIGHT_BUFFER_BIT_SGIX    0x00000002
-</MACRO>
-<MACRO>
-<NAME>GLX_BACK_LEFT_BUFFER_BIT_SGIX</NAME>
-#define GLX_BACK_LEFT_BUFFER_BIT_SGIX      0x00000004
-</MACRO>
-<MACRO>
-<NAME>GLX_BACK_RIGHT_BUFFER_BIT_SGIX</NAME>
-#define GLX_BACK_RIGHT_BUFFER_BIT_SGIX     0x00000008
-</MACRO>
-<MACRO>
-<NAME>GLX_AUX_BUFFERS_BIT_SGIX</NAME>
-#define GLX_AUX_BUFFERS_BIT_SGIX           0x00000010
-</MACRO>
-<MACRO>
-<NAME>GLX_DEPTH_BUFFER_BIT_SGIX</NAME>
-#define GLX_DEPTH_BUFFER_BIT_SGIX          0x00000020
-</MACRO>
-<MACRO>
-<NAME>GLX_STENCIL_BUFFER_BIT_SGIX</NAME>
-#define GLX_STENCIL_BUFFER_BIT_SGIX        0x00000040
-</MACRO>
-<MACRO>
-<NAME>GLX_ACCUM_BUFFER_BIT_SGIX</NAME>
-#define GLX_ACCUM_BUFFER_BIT_SGIX          0x00000080
-</MACRO>
-<MACRO>
-<NAME>GLX_SAMPLE_BUFFERS_BIT_SGIX</NAME>
-#define GLX_SAMPLE_BUFFERS_BIT_SGIX        0x00000100
-</MACRO>
-<MACRO>
-<NAME>GLX_MAX_PBUFFER_WIDTH_SGIX</NAME>
-#define GLX_MAX_PBUFFER_WIDTH_SGIX         0x8016
-</MACRO>
-<MACRO>
-<NAME>GLX_MAX_PBUFFER_HEIGHT_SGIX</NAME>
-#define GLX_MAX_PBUFFER_HEIGHT_SGIX        0x8017
-</MACRO>
-<MACRO>
-<NAME>GLX_MAX_PBUFFER_PIXELS_SGIX</NAME>
-#define GLX_MAX_PBUFFER_PIXELS_SGIX        0x8018
-</MACRO>
-<MACRO>
-<NAME>GLX_OPTIMAL_PBUFFER_WIDTH_SGIX</NAME>
-#define GLX_OPTIMAL_PBUFFER_WIDTH_SGIX     0x8019
-</MACRO>
-<MACRO>
-<NAME>GLX_OPTIMAL_PBUFFER_HEIGHT_SGIX</NAME>
-#define GLX_OPTIMAL_PBUFFER_HEIGHT_SGIX    0x801A
-</MACRO>
-<MACRO>
-<NAME>GLX_PRESERVED_CONTENTS_SGIX</NAME>
-#define GLX_PRESERVED_CONTENTS_SGIX        0x801B
-</MACRO>
-<MACRO>
-<NAME>GLX_LARGEST_PBUFFER_SGIX</NAME>
-#define GLX_LARGEST_PBUFFER_SGIX           0x801C
-</MACRO>
-<MACRO>
-<NAME>GLX_WIDTH_SGIX</NAME>
-#define GLX_WIDTH_SGIX                     0x801D
-</MACRO>
-<MACRO>
-<NAME>GLX_HEIGHT_SGIX</NAME>
-#define GLX_HEIGHT_SGIX                    0x801E
-</MACRO>
-<MACRO>
-<NAME>GLX_EVENT_MASK_SGIX</NAME>
-#define GLX_EVENT_MASK_SGIX                0x801F
-</MACRO>
-<MACRO>
-<NAME>GLX_DAMAGED_SGIX</NAME>
-#define GLX_DAMAGED_SGIX                   0x8020
-</MACRO>
-<MACRO>
-<NAME>GLX_SAVED_SGIX</NAME>
-#define GLX_SAVED_SGIX                     0x8021
-</MACRO>
-<MACRO>
-<NAME>GLX_WINDOW_SGIX</NAME>
-#define GLX_WINDOW_SGIX                    0x8022
-</MACRO>
-<MACRO>
-<NAME>GLX_PBUFFER_SGIX</NAME>
-#define GLX_PBUFFER_SGIX                   0x8023
-</MACRO>
-<MACRO>
-<NAME>GLX_SYNC_FRAME_SGIX</NAME>
-#define GLX_SYNC_FRAME_SGIX                0x00000000
-</MACRO>
-<MACRO>
-<NAME>GLX_SYNC_SWAP_SGIX</NAME>
-#define GLX_SYNC_SWAP_SGIX                 0x00000001
-</MACRO>
-<MACRO>
-<NAME>GLX_DIGITAL_MEDIA_PBUFFER_SGIX</NAME>
-#define GLX_DIGITAL_MEDIA_PBUFFER_SGIX     0x8024
-</MACRO>
-<MACRO>
-<NAME>GLX_BLENDED_RGBA_SGIS</NAME>
-#define GLX_BLENDED_RGBA_SGIS              0x8025
-</MACRO>
-<MACRO>
-<NAME>GLX_MULTISAMPLE_SUB_RECT_WIDTH_SGIS</NAME>
-#define GLX_MULTISAMPLE_SUB_RECT_WIDTH_SGIS 0x8026
-</MACRO>
-<MACRO>
-<NAME>GLX_MULTISAMPLE_SUB_RECT_HEIGHT_SGIS</NAME>
-#define GLX_MULTISAMPLE_SUB_RECT_HEIGHT_SGIS 0x8027
-</MACRO>
-<MACRO>
-<NAME>GLX_SAMPLE_BUFFERS_3DFX</NAME>
-#define GLX_SAMPLE_BUFFERS_3DFX            0x8050
-</MACRO>
-<MACRO>
-<NAME>GLX_SAMPLES_3DFX</NAME>
-#define GLX_SAMPLES_3DFX                   0x8051
-</MACRO>
-<MACRO>
-<NAME>GLX_3DFX_WINDOW_MODE_MESA</NAME>
-#define GLX_3DFX_WINDOW_MODE_MESA          0x1
-</MACRO>
-<MACRO>
-<NAME>GLX_3DFX_FULLSCREEN_MODE_MESA</NAME>
-#define GLX_3DFX_FULLSCREEN_MODE_MESA      0x2
-</MACRO>
-<MACRO>
-<NAME>GLX_VISUAL_SELECT_GROUP_SGIX</NAME>
-#define GLX_VISUAL_SELECT_GROUP_SGIX       0x8028
-</MACRO>
-<MACRO>
-<NAME>GLX_SWAP_METHOD_OML</NAME>
-#define GLX_SWAP_METHOD_OML                0x8060
-</MACRO>
-<MACRO>
-<NAME>GLX_SWAP_EXCHANGE_OML</NAME>
-#define GLX_SWAP_EXCHANGE_OML              0x8061
-</MACRO>
-<MACRO>
-<NAME>GLX_SWAP_COPY_OML</NAME>
-#define GLX_SWAP_COPY_OML                  0x8062
-</MACRO>
-<MACRO>
-<NAME>GLX_SWAP_UNDEFINED_OML</NAME>
-#define GLX_SWAP_UNDEFINED_OML             0x8063
-</MACRO>
-<USER_FUNCTION>
-<NAME>__GLXextFuncPtr</NAME>
-<RETURNS>void </RETURNS>
-void
-</USER_FUNCTION>
-<TYPEDEF>
-<NAME>GLXVideoSourceSGIX</NAME>
-typedef XID GLXVideoSourceSGIX;
-</TYPEDEF>
-<TYPEDEF>
-<NAME>GLXFBConfigIDSGIX</NAME>
-typedef XID GLXFBConfigIDSGIX;
-</TYPEDEF>
-<TYPEDEF>
-<NAME>GLXPbufferSGIX</NAME>
-typedef XID GLXPbufferSGIX;
-</TYPEDEF>
-<TYPEDEF>
-<NAME>GLXBufferClobberEventSGIX</NAME>
-typedef struct {
-    int type;
-    unsigned long serial;	  /* # of last request processed by server */
-    Bool send_event;		  /* true if this came for SendEvent request */
-    Display *display;		  /* display the event was read from */
-    GLXDrawable drawable;	  /* i.d. of Drawable */
-    int event_type;		  /* GLX_DAMAGED_SGIX or GLX_SAVED_SGIX */
-    int draw_type;		  /* GLX_WINDOW_SGIX or GLX_PBUFFER_SGIX */
-    unsigned int mask;	  /* mask indicating which buffers are affected*/
-    int x, y;
-    int width, height;
-    int count;		  /* if nonzero, at least this many more */
-} GLXBufferClobberEventSGIX;
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_VERSION_1_3</NAME>
-#define GLX_VERSION_1_3 1
-</MACRO>
-<FUNCTION>
-<NAME>glXGetFBConfigs</NAME>
-<RETURNS>GLXFBConfig  *</RETURNS>
-Display *, int, int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXChooseFBConfig</NAME>
-<RETURNS>GLXFBConfig  *</RETURNS>
-Display *, int, const int *, int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetFBConfigAttrib</NAME>
-<RETURNS>int  </RETURNS>
-Display *, GLXFBConfig, int, int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetVisualFromFBConfig</NAME>
-<RETURNS>XVisualInfo  *</RETURNS>
-Display *, GLXFBConfig
-</FUNCTION>
-<FUNCTION>
-<NAME>glXCreateWindow</NAME>
-<RETURNS>GLXWindow  </RETURNS>
-Display *, GLXFBConfig, Window, const int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXDestroyWindow</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXWindow
-</FUNCTION>
-<FUNCTION>
-<NAME>glXCreatePixmap</NAME>
-<RETURNS>GLXPixmap  </RETURNS>
-Display *, GLXFBConfig, Pixmap, const int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXDestroyPixmap</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXPixmap
-</FUNCTION>
-<FUNCTION>
-<NAME>glXCreatePbuffer</NAME>
-<RETURNS>GLXPbuffer  </RETURNS>
-Display *, GLXFBConfig, const int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXDestroyPbuffer</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXPbuffer
-</FUNCTION>
-<FUNCTION>
-<NAME>glXQueryDrawable</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXDrawable, int, unsigned int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXCreateNewContext</NAME>
-<RETURNS>GLXContext  </RETURNS>
-Display *, GLXFBConfig, int, GLXContext, Bool
-</FUNCTION>
-<FUNCTION>
-<NAME>glXMakeContextCurrent</NAME>
-<RETURNS>Bool  </RETURNS>
-Display *, GLXDrawable, GLXDrawable, GLXContext
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetCurrentReadDrawable</NAME>
-<RETURNS>GLXDrawable  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetCurrentDisplay</NAME>
-<RETURNS>Display  *</RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>glXQueryContext</NAME>
-<RETURNS>int  </RETURNS>
-Display *, GLXContext, int, int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXSelectEvent</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXDrawable, unsigned long
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetSelectedEvent</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXDrawable, unsigned long *
-</FUNCTION>
-<TYPEDEF>
-<NAME>nelements)</NAME>
-typedef GLXFBConfig * ( * PFNGLXGETFBCONFIGSPROC) (Display *dpy, int screen, int *nelements);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>nelements)</NAME>
-typedef GLXFBConfig * ( * PFNGLXCHOOSEFBCONFIGPROC) (Display *dpy, int screen, const int *attrib_list, int *nelements);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>value)</NAME>
-typedef int ( * PFNGLXGETFBCONFIGATTRIBPROC) (Display *dpy, GLXFBConfig config, int attribute, int *value);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>config)</NAME>
-typedef XVisualInfo * ( * PFNGLXGETVISUALFROMFBCONFIGPROC) (Display *dpy, GLXFBConfig config);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>attrib_list)</NAME>
-typedef GLXWindow ( * PFNGLXCREATEWINDOWPROC) (Display *dpy, GLXFBConfig config, Window win, const int *attrib_list);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>win)</NAME>
-typedef void ( * PFNGLXDESTROYWINDOWPROC) (Display *dpy, GLXWindow win);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>attrib_list)</NAME>
-typedef GLXPixmap ( * PFNGLXCREATEPIXMAPPROC) (Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>pixmap)</NAME>
-typedef void ( * PFNGLXDESTROYPIXMAPPROC) (Display *dpy, GLXPixmap pixmap);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>attrib_list)</NAME>
-typedef GLXPbuffer ( * PFNGLXCREATEPBUFFERPROC) (Display *dpy, GLXFBConfig config, const int *attrib_list);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>pbuf)</NAME>
-typedef void ( * PFNGLXDESTROYPBUFFERPROC) (Display *dpy, GLXPbuffer pbuf);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>value)</NAME>
-typedef void ( * PFNGLXQUERYDRAWABLEPROC) (Display *dpy, GLXDrawable draw, int attribute, unsigned int *value);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>direct)</NAME>
-typedef GLXContext ( * PFNGLXCREATENEWCONTEXTPROC) (Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>ctx)</NAME>
-typedef Bool ( * PFNGLXMAKECONTEXTCURRENTPROC) (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>value)</NAME>
-typedef int ( * PFNGLXQUERYCONTEXTPROC) (Display *dpy, GLXContext ctx, int attribute, int *value);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>event_mask)</NAME>
-typedef void ( * PFNGLXSELECTEVENTPROC) (Display *dpy, GLXDrawable draw, unsigned long event_mask);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>event_mask)</NAME>
-typedef void ( * PFNGLXGETSELECTEDEVENTPROC) (Display *dpy, GLXDrawable draw, unsigned long *event_mask);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_VERSION_1_4</NAME>
-#define GLX_VERSION_1_4 1
-</MACRO>
-<FUNCTION>
-<NAME>glXGetProcAddress</NAME>
-<RETURNS>__GLXextFuncPtr  </RETURNS>
-const GLubyte *
-</FUNCTION>
-<TYPEDEF>
-<NAME>procName)</NAME>
-typedef __GLXextFuncPtr ( * PFNGLXGETPROCADDRESSPROC) (const GLubyte *procName);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_ARB_get_proc_address</NAME>
-#define GLX_ARB_get_proc_address 1
-</MACRO>
-<FUNCTION>
-<NAME>glXGetProcAddressARB</NAME>
-<RETURNS>__GLXextFuncPtr  </RETURNS>
-const GLubyte *
-</FUNCTION>
-<TYPEDEF>
-<NAME>procName)</NAME>
-typedef __GLXextFuncPtr ( * PFNGLXGETPROCADDRESSARBPROC) (const GLubyte *procName);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_ARB_multisample</NAME>
-#define GLX_ARB_multisample 1
-</MACRO>
-<MACRO>
-<NAME>GLX_SGIS_multisample</NAME>
-#define GLX_SGIS_multisample 1
-</MACRO>
-<MACRO>
-<NAME>GLX_EXT_visual_info</NAME>
-#define GLX_EXT_visual_info 1
-</MACRO>
-<MACRO>
-<NAME>GLX_SGI_swap_control</NAME>
-#define GLX_SGI_swap_control 1
-</MACRO>
-<FUNCTION>
-<NAME>glXSwapIntervalSGI</NAME>
-<RETURNS>int  </RETURNS>
-int
-</FUNCTION>
-<TYPEDEF>
-<NAME>interval)</NAME>
-typedef int ( * PFNGLXSWAPINTERVALSGIPROC) (int interval);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGI_video_sync</NAME>
-#define GLX_SGI_video_sync 1
-</MACRO>
-<FUNCTION>
-<NAME>glXGetVideoSyncSGI</NAME>
-<RETURNS>int  </RETURNS>
-unsigned int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXWaitVideoSyncSGI</NAME>
-<RETURNS>int  </RETURNS>
-int, int, unsigned int *
-</FUNCTION>
-<TYPEDEF>
-<NAME>count)</NAME>
-typedef int ( * PFNGLXGETVIDEOSYNCSGIPROC) (unsigned int *count);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>count)</NAME>
-typedef int ( * PFNGLXWAITVIDEOSYNCSGIPROC) (int divisor, int remainder, unsigned int *count);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGI_make_current_read</NAME>
-#define GLX_SGI_make_current_read 1
-</MACRO>
-<FUNCTION>
-<NAME>glXMakeCurrentReadSGI</NAME>
-<RETURNS>Bool  </RETURNS>
-Display *, GLXDrawable, GLXDrawable, GLXContext
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetCurrentReadDrawableSGI</NAME>
-<RETURNS>GLXDrawable  </RETURNS>
-void
-</FUNCTION>
-<TYPEDEF>
-<NAME>ctx)</NAME>
-typedef Bool ( * PFNGLXMAKECURRENTREADSGIPROC) (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGIX_video_source</NAME>
-#define GLX_SGIX_video_source 1
-</MACRO>
-<FUNCTION>
-<NAME>glXCreateGLXVideoSourceSGIX</NAME>
-<RETURNS>GLXVideoSourceSGIX  </RETURNS>
-Display *, int, VLServer, VLPath, int, VLNode
-</FUNCTION>
-<FUNCTION>
-<NAME>glXDestroyGLXVideoSourceSGIX</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXVideoSourceSGIX
-</FUNCTION>
-<TYPEDEF>
-<NAME>drainNode)</NAME>
-typedef GLXVideoSourceSGIX ( * PFNGLXCREATEGLXVIDEOSOURCESGIXPROC) (Display *display, int screen, VLServer server, VLPath path, int nodeClass, VLNode drainNode);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>glxvideosource)</NAME>
-typedef void ( * PFNGLXDESTROYGLXVIDEOSOURCESGIXPROC) (Display *dpy, GLXVideoSourceSGIX glxvideosource);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_EXT_visual_rating</NAME>
-#define GLX_EXT_visual_rating 1
-</MACRO>
-<MACRO>
-<NAME>GLX_EXT_import_context</NAME>
-#define GLX_EXT_import_context 1
-</MACRO>
-<FUNCTION>
-<NAME>glXGetCurrentDisplayEXT</NAME>
-<RETURNS>Display  *</RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>glXQueryContextInfoEXT</NAME>
-<RETURNS>int  </RETURNS>
-Display *, GLXContext, int, int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetContextIDEXT</NAME>
-<RETURNS>GLXContextID  </RETURNS>
-const GLXContext
-</FUNCTION>
-<FUNCTION>
-<NAME>glXImportContextEXT</NAME>
-<RETURNS>GLXContext  </RETURNS>
-Display *, GLXContextID
-</FUNCTION>
-<FUNCTION>
-<NAME>glXFreeContextEXT</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXContext
-</FUNCTION>
-<TYPEDEF>
-<NAME>value)</NAME>
-typedef int ( * PFNGLXQUERYCONTEXTINFOEXTPROC) (Display *dpy, GLXContext context, int attribute, int *value);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>context)</NAME>
-typedef GLXContextID ( * PFNGLXGETCONTEXTIDEXTPROC) (const GLXContext context);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>contextID)</NAME>
-typedef GLXContext ( * PFNGLXIMPORTCONTEXTEXTPROC) (Display *dpy, GLXContextID contextID);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>context)</NAME>
-typedef void ( * PFNGLXFREECONTEXTEXTPROC) (Display *dpy, GLXContext context);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGIX_fbconfig</NAME>
-#define GLX_SGIX_fbconfig 1
-</MACRO>
-<FUNCTION>
-<NAME>glXGetFBConfigAttribSGIX</NAME>
-<RETURNS>int  </RETURNS>
-Display *, GLXFBConfigSGIX, int, int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXChooseFBConfigSGIX</NAME>
-<RETURNS>GLXFBConfigSGIX  *</RETURNS>
-Display *, int, int *, int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXCreateGLXPixmapWithConfigSGIX</NAME>
-<RETURNS>GLXPixmap  </RETURNS>
-Display *, GLXFBConfigSGIX, Pixmap
-</FUNCTION>
-<FUNCTION>
-<NAME>glXCreateContextWithConfigSGIX</NAME>
-<RETURNS>GLXContext  </RETURNS>
-Display *, GLXFBConfigSGIX, int, GLXContext, Bool
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetVisualFromFBConfigSGIX</NAME>
-<RETURNS>XVisualInfo  *</RETURNS>
-Display *, GLXFBConfigSGIX
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetFBConfigFromVisualSGIX</NAME>
-<RETURNS>GLXFBConfigSGIX  </RETURNS>
-Display *, XVisualInfo *
-</FUNCTION>
-<TYPEDEF>
-<NAME>value)</NAME>
-typedef int ( * PFNGLXGETFBCONFIGATTRIBSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, int attribute, int *value);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>nelements)</NAME>
-typedef GLXFBConfigSGIX * ( * PFNGLXCHOOSEFBCONFIGSGIXPROC) (Display *dpy, int screen, int *attrib_list, int *nelements);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>pixmap)</NAME>
-typedef GLXPixmap ( * PFNGLXCREATEGLXPIXMAPWITHCONFIGSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, Pixmap pixmap);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>direct)</NAME>
-typedef GLXContext ( * PFNGLXCREATECONTEXTWITHCONFIGSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, int render_type, GLXContext share_list, Bool direct);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>config)</NAME>
-typedef XVisualInfo * ( * PFNGLXGETVISUALFROMFBCONFIGSGIXPROC) (Display *dpy, GLXFBConfigSGIX config);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>vis)</NAME>
-typedef GLXFBConfigSGIX ( * PFNGLXGETFBCONFIGFROMVISUALSGIXPROC) (Display *dpy, XVisualInfo *vis);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGIX_pbuffer</NAME>
-#define GLX_SGIX_pbuffer 1
-</MACRO>
-<FUNCTION>
-<NAME>glXCreateGLXPbufferSGIX</NAME>
-<RETURNS>GLXPbufferSGIX  </RETURNS>
-Display *, GLXFBConfigSGIX, unsigned int, unsigned int, int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXDestroyGLXPbufferSGIX</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXPbufferSGIX
-</FUNCTION>
-<FUNCTION>
-<NAME>glXQueryGLXPbufferSGIX</NAME>
-<RETURNS>int  </RETURNS>
-Display *, GLXPbufferSGIX, int, unsigned int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXSelectEventSGIX</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXDrawable, unsigned long
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetSelectedEventSGIX</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXDrawable, unsigned long *
-</FUNCTION>
-<TYPEDEF>
-<NAME>attrib_list)</NAME>
-typedef GLXPbufferSGIX ( * PFNGLXCREATEGLXPBUFFERSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, unsigned int width, unsigned int height, int *attrib_list);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>pbuf)</NAME>
-typedef void ( * PFNGLXDESTROYGLXPBUFFERSGIXPROC) (Display *dpy, GLXPbufferSGIX pbuf);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>value)</NAME>
-typedef int ( * PFNGLXQUERYGLXPBUFFERSGIXPROC) (Display *dpy, GLXPbufferSGIX pbuf, int attribute, unsigned int *value);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>mask)</NAME>
-typedef void ( * PFNGLXSELECTEVENTSGIXPROC) (Display *dpy, GLXDrawable drawable, unsigned long mask);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>mask)</NAME>
-typedef void ( * PFNGLXGETSELECTEDEVENTSGIXPROC) (Display *dpy, GLXDrawable drawable, unsigned long *mask);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGI_cushion</NAME>
-#define GLX_SGI_cushion 1
-</MACRO>
-<FUNCTION>
-<NAME>glXCushionSGI</NAME>
-<RETURNS>void  </RETURNS>
-Display *, Window, float
-</FUNCTION>
-<TYPEDEF>
-<NAME>cushion)</NAME>
-typedef void ( * PFNGLXCUSHIONSGIPROC) (Display *dpy, Window window, float cushion);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGIX_video_resize</NAME>
-#define GLX_SGIX_video_resize 1
-</MACRO>
-<FUNCTION>
-<NAME>glXBindChannelToWindowSGIX</NAME>
-<RETURNS>int  </RETURNS>
-Display *, int, int, Window
-</FUNCTION>
-<FUNCTION>
-<NAME>glXChannelRectSGIX</NAME>
-<RETURNS>int  </RETURNS>
-Display *, int, int, int, int, int, int
-</FUNCTION>
-<FUNCTION>
-<NAME>glXQueryChannelRectSGIX</NAME>
-<RETURNS>int  </RETURNS>
-Display *, int, int, int *, int *, int *, int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXQueryChannelDeltasSGIX</NAME>
-<RETURNS>int  </RETURNS>
-Display *, int, int, int *, int *, int *, int *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXChannelRectSyncSGIX</NAME>
-<RETURNS>int  </RETURNS>
-Display *, int, int, GLenum
-</FUNCTION>
-<TYPEDEF>
-<NAME>window)</NAME>
-typedef int ( * PFNGLXBINDCHANNELTOWINDOWSGIXPROC) (Display *display, int screen, int channel, Window window);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>h)</NAME>
-typedef int ( * PFNGLXCHANNELRECTSGIXPROC) (Display *display, int screen, int channel, int x, int y, int w, int h);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>dh)</NAME>
-typedef int ( * PFNGLXQUERYCHANNELRECTSGIXPROC) (Display *display, int screen, int channel, int *dx, int *dy, int *dw, int *dh);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>h)</NAME>
-typedef int ( * PFNGLXQUERYCHANNELDELTASSGIXPROC) (Display *display, int screen, int channel, int *x, int *y, int *w, int *h);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>synctype)</NAME>
-typedef int ( * PFNGLXCHANNELRECTSYNCSGIXPROC) (Display *display, int screen, int channel, GLenum synctype);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGIX_dmbuffer</NAME>
-#define GLX_SGIX_dmbuffer 1
-</MACRO>
-<FUNCTION>
-<NAME>glXAssociateDMPbufferSGIX</NAME>
-<RETURNS>Bool  </RETURNS>
-Display *, GLXPbufferSGIX, DMparams *, DMbuffer
-</FUNCTION>
-<TYPEDEF>
-<NAME>dmbuffer)</NAME>
-typedef Bool ( * PFNGLXASSOCIATEDMPBUFFERSGIXPROC) (Display *dpy, GLXPbufferSGIX pbuffer, DMparams *params, DMbuffer dmbuffer);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGIX_swap_group</NAME>
-#define GLX_SGIX_swap_group 1
-</MACRO>
-<FUNCTION>
-<NAME>glXJoinSwapGroupSGIX</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXDrawable, GLXDrawable
-</FUNCTION>
-<TYPEDEF>
-<NAME>member)</NAME>
-typedef void ( * PFNGLXJOINSWAPGROUPSGIXPROC) (Display *dpy, GLXDrawable drawable, GLXDrawable member);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGIX_swap_barrier</NAME>
-#define GLX_SGIX_swap_barrier 1
-</MACRO>
-<FUNCTION>
-<NAME>glXBindSwapBarrierSGIX</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXDrawable, int
-</FUNCTION>
-<FUNCTION>
-<NAME>glXQueryMaxSwapBarriersSGIX</NAME>
-<RETURNS>Bool  </RETURNS>
-Display *, int, int *
-</FUNCTION>
-<TYPEDEF>
-<NAME>barrier)</NAME>
-typedef void ( * PFNGLXBINDSWAPBARRIERSGIXPROC) (Display *dpy, GLXDrawable drawable, int barrier);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>max)</NAME>
-typedef Bool ( * PFNGLXQUERYMAXSWAPBARRIERSSGIXPROC) (Display *dpy, int screen, int *max);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SUN_get_transparent_index</NAME>
-#define GLX_SUN_get_transparent_index 1
-</MACRO>
-<FUNCTION>
-<NAME>glXGetTransparentIndexSUN</NAME>
-<RETURNS>Status  </RETURNS>
-Display *, Window, Window, long *
-</FUNCTION>
-<TYPEDEF>
-<NAME>pTransparentIndex)</NAME>
-typedef Status ( * PFNGLXGETTRANSPARENTINDEXSUNPROC) (Display *dpy, Window overlay, Window underlay, long *pTransparentIndex);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_MESA_copy_sub_buffer</NAME>
-#define GLX_MESA_copy_sub_buffer 1
-</MACRO>
-<FUNCTION>
-<NAME>glXCopySubBufferMESA</NAME>
-<RETURNS>void  </RETURNS>
-Display *, GLXDrawable, int, int, int, int
-</FUNCTION>
-<TYPEDEF>
-<NAME>height)</NAME>
-typedef void ( * PFNGLXCOPYSUBBUFFERMESAPROC) (Display *dpy, GLXDrawable drawable, int x, int y, int width, int height);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_MESA_pixmap_colormap</NAME>
-#define GLX_MESA_pixmap_colormap 1
-</MACRO>
-<FUNCTION>
-<NAME>glXCreateGLXPixmapMESA</NAME>
-<RETURNS>GLXPixmap  </RETURNS>
-Display *, XVisualInfo *, Pixmap, Colormap
-</FUNCTION>
-<TYPEDEF>
-<NAME>cmap)</NAME>
-typedef GLXPixmap ( * PFNGLXCREATEGLXPIXMAPMESAPROC) (Display *dpy, XVisualInfo *visual, Pixmap pixmap, Colormap cmap);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_MESA_release_buffers</NAME>
-#define GLX_MESA_release_buffers 1
-</MACRO>
-<FUNCTION>
-<NAME>glXReleaseBuffersMESA</NAME>
-<RETURNS>Bool  </RETURNS>
-Display *, GLXDrawable
-</FUNCTION>
-<TYPEDEF>
-<NAME>drawable)</NAME>
-typedef Bool ( * PFNGLXRELEASEBUFFERSMESAPROC) (Display *dpy, GLXDrawable drawable);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_MESA_set_3dfx_mode</NAME>
-#define GLX_MESA_set_3dfx_mode 1
-</MACRO>
-<FUNCTION>
-<NAME>glXSet3DfxModeMESA</NAME>
-<RETURNS>Bool  </RETURNS>
-int
-</FUNCTION>
-<TYPEDEF>
-<NAME>mode)</NAME>
-typedef Bool ( * PFNGLXSET3DFXMODEMESAPROC) (int mode);
-</TYPEDEF>
-<MACRO>
-<NAME>GLX_SGIX_visual_select_group</NAME>
-#define GLX_SGIX_visual_select_group 1
-</MACRO>
-<MACRO>
-<NAME>GLX_OML_swap_method</NAME>
-#define GLX_OML_swap_method 1
-</MACRO>
-<MACRO>
-<NAME>GLX_OML_sync_control</NAME>
-#define GLX_OML_sync_control 1
-</MACRO>
-<FUNCTION>
-<NAME>glXGetSyncValuesOML</NAME>
-<RETURNS>Bool  </RETURNS>
-Display *, GLXDrawable, int64_t *, int64_t *, int64_t *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXGetMscRateOML</NAME>
-<RETURNS>Bool  </RETURNS>
-Display *, GLXDrawable, int32_t *, int32_t *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXSwapBuffersMscOML</NAME>
-<RETURNS>int64_t  </RETURNS>
-Display *, GLXDrawable, int64_t, int64_t, int64_t
-</FUNCTION>
-<FUNCTION>
-<NAME>glXWaitForMscOML</NAME>
-<RETURNS>Bool  </RETURNS>
-Display *, GLXDrawable, int64_t, int64_t, int64_t, int64_t *, int64_t *, int64_t *
-</FUNCTION>
-<FUNCTION>
-<NAME>glXWaitForSbcOML</NAME>
-<RETURNS>Bool  </RETURNS>
-Display *, GLXDrawable, int64_t, int64_t *, int64_t *, int64_t *
-</FUNCTION>
-<TYPEDEF>
-<NAME>sbc)</NAME>
-typedef Bool ( * PFNGLXGETSYNCVALUESOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>denominator)</NAME>
-typedef Bool ( * PFNGLXGETMSCRATEOMLPROC) (Display *dpy, GLXDrawable drawable, int32_t *numerator, int32_t *denominator);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>remainder)</NAME>
-typedef int64_t ( * PFNGLXSWAPBUFFERSMSCOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>sbc)</NAME>
-typedef Bool ( * PFNGLXWAITFORMSCOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t *ust, int64_t *msc, int64_t *sbc);
-</TYPEDEF>
-<TYPEDEF>
-<NAME>sbc)</NAME>
-typedef Bool ( * PFNGLXWAITFORSBCOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t target_sbc, int64_t *ust, int64_t *msc, int64_t *sbc);
-</TYPEDEF>
-<MACRO>
-<NAME>WIN32_LEAN_AND_MEAN</NAME>
-#define WIN32_LEAN_AND_MEAN 1
-</MACRO>
-<MACRO>
-<NAME>APIENTRY</NAME>
-#define APIENTRY
-</MACRO>
-<MACRO>
-<NAME>GLAPI</NAME>
-#define GLAPI extern
-</MACRO>
-<MACRO>
 <NAME>GL_GLEXT_VERSION</NAME>
 #define GL_GLEXT_VERSION 17
 </MACRO>
@@ -13222,6 +11978,1250 @@ typedef void (APIENTRY * PFNGLPOINTPARAMETERIVNVPROC) (GLenum pname, const GLint
 <TYPEDEF>
 <NAME>face)</NAME>
 typedef void (APIENTRY * PFNGLACTIVESTENCILFACEEXTPROC) (GLenum face);
+</TYPEDEF>
+<MACRO>
+<NAME>WIN32_LEAN_AND_MEAN</NAME>
+#define WIN32_LEAN_AND_MEAN 1
+</MACRO>
+<MACRO>
+<NAME>APIENTRY</NAME>
+#define APIENTRY
+</MACRO>
+<MACRO>
+<NAME>GLAPI</NAME>
+#define GLAPI extern
+</MACRO>
+<MACRO>
+<NAME>GLX_GLXEXT_VERSION</NAME>
+#define GLX_GLXEXT_VERSION 5
+</MACRO>
+<MACRO>
+<NAME>GLX_WINDOW_BIT</NAME>
+#define GLX_WINDOW_BIT                     0x00000001
+</MACRO>
+<MACRO>
+<NAME>GLX_PIXMAP_BIT</NAME>
+#define GLX_PIXMAP_BIT                     0x00000002
+</MACRO>
+<MACRO>
+<NAME>GLX_PBUFFER_BIT</NAME>
+#define GLX_PBUFFER_BIT                    0x00000004
+</MACRO>
+<MACRO>
+<NAME>GLX_RGBA_BIT</NAME>
+#define GLX_RGBA_BIT                       0x00000001
+</MACRO>
+<MACRO>
+<NAME>GLX_COLOR_INDEX_BIT</NAME>
+#define GLX_COLOR_INDEX_BIT                0x00000002
+</MACRO>
+<MACRO>
+<NAME>GLX_PBUFFER_CLOBBER_MASK</NAME>
+#define GLX_PBUFFER_CLOBBER_MASK           0x08000000
+</MACRO>
+<MACRO>
+<NAME>GLX_FRONT_LEFT_BUFFER_BIT</NAME>
+#define GLX_FRONT_LEFT_BUFFER_BIT          0x00000001
+</MACRO>
+<MACRO>
+<NAME>GLX_FRONT_RIGHT_BUFFER_BIT</NAME>
+#define GLX_FRONT_RIGHT_BUFFER_BIT         0x00000002
+</MACRO>
+<MACRO>
+<NAME>GLX_BACK_LEFT_BUFFER_BIT</NAME>
+#define GLX_BACK_LEFT_BUFFER_BIT           0x00000004
+</MACRO>
+<MACRO>
+<NAME>GLX_BACK_RIGHT_BUFFER_BIT</NAME>
+#define GLX_BACK_RIGHT_BUFFER_BIT          0x00000008
+</MACRO>
+<MACRO>
+<NAME>GLX_AUX_BUFFERS_BIT</NAME>
+#define GLX_AUX_BUFFERS_BIT                0x00000010
+</MACRO>
+<MACRO>
+<NAME>GLX_DEPTH_BUFFER_BIT</NAME>
+#define GLX_DEPTH_BUFFER_BIT               0x00000020
+</MACRO>
+<MACRO>
+<NAME>GLX_STENCIL_BUFFER_BIT</NAME>
+#define GLX_STENCIL_BUFFER_BIT             0x00000040
+</MACRO>
+<MACRO>
+<NAME>GLX_ACCUM_BUFFER_BIT</NAME>
+#define GLX_ACCUM_BUFFER_BIT               0x00000080
+</MACRO>
+<MACRO>
+<NAME>GLX_CONFIG_CAVEAT</NAME>
+#define GLX_CONFIG_CAVEAT                  0x20
+</MACRO>
+<MACRO>
+<NAME>GLX_X_VISUAL_TYPE</NAME>
+#define GLX_X_VISUAL_TYPE                  0x22
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_TYPE</NAME>
+#define GLX_TRANSPARENT_TYPE               0x23
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_INDEX_VALUE</NAME>
+#define GLX_TRANSPARENT_INDEX_VALUE        0x24
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_RED_VALUE</NAME>
+#define GLX_TRANSPARENT_RED_VALUE          0x25
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_GREEN_VALUE</NAME>
+#define GLX_TRANSPARENT_GREEN_VALUE        0x26
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_BLUE_VALUE</NAME>
+#define GLX_TRANSPARENT_BLUE_VALUE         0x27
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_ALPHA_VALUE</NAME>
+#define GLX_TRANSPARENT_ALPHA_VALUE        0x28
+</MACRO>
+<MACRO>
+<NAME>GLX_DONT_CARE</NAME>
+#define GLX_DONT_CARE                      0xFFFFFFFF
+</MACRO>
+<MACRO>
+<NAME>GLX_NONE</NAME>
+#define GLX_NONE                           0x8000
+</MACRO>
+<MACRO>
+<NAME>GLX_SLOW_CONFIG</NAME>
+#define GLX_SLOW_CONFIG                    0x8001
+</MACRO>
+<MACRO>
+<NAME>GLX_TRUE_COLOR</NAME>
+#define GLX_TRUE_COLOR                     0x8002
+</MACRO>
+<MACRO>
+<NAME>GLX_DIRECT_COLOR</NAME>
+#define GLX_DIRECT_COLOR                   0x8003
+</MACRO>
+<MACRO>
+<NAME>GLX_PSEUDO_COLOR</NAME>
+#define GLX_PSEUDO_COLOR                   0x8004
+</MACRO>
+<MACRO>
+<NAME>GLX_STATIC_COLOR</NAME>
+#define GLX_STATIC_COLOR                   0x8005
+</MACRO>
+<MACRO>
+<NAME>GLX_GRAY_SCALE</NAME>
+#define GLX_GRAY_SCALE                     0x8006
+</MACRO>
+<MACRO>
+<NAME>GLX_STATIC_GRAY</NAME>
+#define GLX_STATIC_GRAY                    0x8007
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_RGB</NAME>
+#define GLX_TRANSPARENT_RGB                0x8008
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_INDEX</NAME>
+#define GLX_TRANSPARENT_INDEX              0x8009
+</MACRO>
+<MACRO>
+<NAME>GLX_VISUAL_ID</NAME>
+#define GLX_VISUAL_ID                      0x800B
+</MACRO>
+<MACRO>
+<NAME>GLX_SCREEN</NAME>
+#define GLX_SCREEN                         0x800C
+</MACRO>
+<MACRO>
+<NAME>GLX_NON_CONFORMANT_CONFIG</NAME>
+#define GLX_NON_CONFORMANT_CONFIG          0x800D
+</MACRO>
+<MACRO>
+<NAME>GLX_DRAWABLE_TYPE</NAME>
+#define GLX_DRAWABLE_TYPE                  0x8010
+</MACRO>
+<MACRO>
+<NAME>GLX_RENDER_TYPE</NAME>
+#define GLX_RENDER_TYPE                    0x8011
+</MACRO>
+<MACRO>
+<NAME>GLX_X_RENDERABLE</NAME>
+#define GLX_X_RENDERABLE                   0x8012
+</MACRO>
+<MACRO>
+<NAME>GLX_FBCONFIG_ID</NAME>
+#define GLX_FBCONFIG_ID                    0x8013
+</MACRO>
+<MACRO>
+<NAME>GLX_RGBA_TYPE</NAME>
+#define GLX_RGBA_TYPE                      0x8014
+</MACRO>
+<MACRO>
+<NAME>GLX_COLOR_INDEX_TYPE</NAME>
+#define GLX_COLOR_INDEX_TYPE               0x8015
+</MACRO>
+<MACRO>
+<NAME>GLX_MAX_PBUFFER_WIDTH</NAME>
+#define GLX_MAX_PBUFFER_WIDTH              0x8016
+</MACRO>
+<MACRO>
+<NAME>GLX_MAX_PBUFFER_HEIGHT</NAME>
+#define GLX_MAX_PBUFFER_HEIGHT             0x8017
+</MACRO>
+<MACRO>
+<NAME>GLX_MAX_PBUFFER_PIXELS</NAME>
+#define GLX_MAX_PBUFFER_PIXELS             0x8018
+</MACRO>
+<MACRO>
+<NAME>GLX_PRESERVED_CONTENTS</NAME>
+#define GLX_PRESERVED_CONTENTS             0x801B
+</MACRO>
+<MACRO>
+<NAME>GLX_LARGEST_PBUFFER</NAME>
+#define GLX_LARGEST_PBUFFER                0x801C
+</MACRO>
+<MACRO>
+<NAME>GLX_WIDTH</NAME>
+#define GLX_WIDTH                          0x801D
+</MACRO>
+<MACRO>
+<NAME>GLX_HEIGHT</NAME>
+#define GLX_HEIGHT                         0x801E
+</MACRO>
+<MACRO>
+<NAME>GLX_EVENT_MASK</NAME>
+#define GLX_EVENT_MASK                     0x801F
+</MACRO>
+<MACRO>
+<NAME>GLX_DAMAGED</NAME>
+#define GLX_DAMAGED                        0x8020
+</MACRO>
+<MACRO>
+<NAME>GLX_SAVED</NAME>
+#define GLX_SAVED                          0x8021
+</MACRO>
+<MACRO>
+<NAME>GLX_WINDOW</NAME>
+#define GLX_WINDOW                         0x8022
+</MACRO>
+<MACRO>
+<NAME>GLX_PBUFFER</NAME>
+#define GLX_PBUFFER                        0x8023
+</MACRO>
+<MACRO>
+<NAME>GLX_PBUFFER_HEIGHT</NAME>
+#define GLX_PBUFFER_HEIGHT                 0x8040
+</MACRO>
+<MACRO>
+<NAME>GLX_PBUFFER_WIDTH</NAME>
+#define GLX_PBUFFER_WIDTH                  0x8041
+</MACRO>
+<MACRO>
+<NAME>GLX_SAMPLE_BUFFERS</NAME>
+#define GLX_SAMPLE_BUFFERS                 100000
+</MACRO>
+<MACRO>
+<NAME>GLX_SAMPLES</NAME>
+#define GLX_SAMPLES                        100001
+</MACRO>
+<MACRO>
+<NAME>GLX_SAMPLE_BUFFERS_ARB</NAME>
+#define GLX_SAMPLE_BUFFERS_ARB             100000
+</MACRO>
+<MACRO>
+<NAME>GLX_SAMPLES_ARB</NAME>
+#define GLX_SAMPLES_ARB                    100001
+</MACRO>
+<MACRO>
+<NAME>GLX_SAMPLE_BUFFERS_SGIS</NAME>
+#define GLX_SAMPLE_BUFFERS_SGIS            100000
+</MACRO>
+<MACRO>
+<NAME>GLX_SAMPLES_SGIS</NAME>
+#define GLX_SAMPLES_SGIS                   100001
+</MACRO>
+<MACRO>
+<NAME>GLX_X_VISUAL_TYPE_EXT</NAME>
+#define GLX_X_VISUAL_TYPE_EXT              0x22
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_TYPE_EXT</NAME>
+#define GLX_TRANSPARENT_TYPE_EXT           0x23
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_INDEX_VALUE_EXT</NAME>
+#define GLX_TRANSPARENT_INDEX_VALUE_EXT    0x24
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_RED_VALUE_EXT</NAME>
+#define GLX_TRANSPARENT_RED_VALUE_EXT      0x25
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_GREEN_VALUE_EXT</NAME>
+#define GLX_TRANSPARENT_GREEN_VALUE_EXT    0x26
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_BLUE_VALUE_EXT</NAME>
+#define GLX_TRANSPARENT_BLUE_VALUE_EXT     0x27
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_ALPHA_VALUE_EXT</NAME>
+#define GLX_TRANSPARENT_ALPHA_VALUE_EXT    0x28
+</MACRO>
+<MACRO>
+<NAME>GLX_NONE_EXT</NAME>
+#define GLX_NONE_EXT                       0x8000
+</MACRO>
+<MACRO>
+<NAME>GLX_TRUE_COLOR_EXT</NAME>
+#define GLX_TRUE_COLOR_EXT                 0x8002
+</MACRO>
+<MACRO>
+<NAME>GLX_DIRECT_COLOR_EXT</NAME>
+#define GLX_DIRECT_COLOR_EXT               0x8003
+</MACRO>
+<MACRO>
+<NAME>GLX_PSEUDO_COLOR_EXT</NAME>
+#define GLX_PSEUDO_COLOR_EXT               0x8004
+</MACRO>
+<MACRO>
+<NAME>GLX_STATIC_COLOR_EXT</NAME>
+#define GLX_STATIC_COLOR_EXT               0x8005
+</MACRO>
+<MACRO>
+<NAME>GLX_GRAY_SCALE_EXT</NAME>
+#define GLX_GRAY_SCALE_EXT                 0x8006
+</MACRO>
+<MACRO>
+<NAME>GLX_STATIC_GRAY_EXT</NAME>
+#define GLX_STATIC_GRAY_EXT                0x8007
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_RGB_EXT</NAME>
+#define GLX_TRANSPARENT_RGB_EXT            0x8008
+</MACRO>
+<MACRO>
+<NAME>GLX_TRANSPARENT_INDEX_EXT</NAME>
+#define GLX_TRANSPARENT_INDEX_EXT          0x8009
+</MACRO>
+<MACRO>
+<NAME>GLX_VISUAL_CAVEAT_EXT</NAME>
+#define GLX_VISUAL_CAVEAT_EXT              0x20
+</MACRO>
+<MACRO>
+<NAME>GLX_SLOW_VISUAL_EXT</NAME>
+#define GLX_SLOW_VISUAL_EXT                0x8001
+</MACRO>
+<MACRO>
+<NAME>GLX_NON_CONFORMANT_VISUAL_EXT</NAME>
+#define GLX_NON_CONFORMANT_VISUAL_EXT      0x800D
+</MACRO>
+<MACRO>
+<NAME>GLX_SHARE_CONTEXT_EXT</NAME>
+#define GLX_SHARE_CONTEXT_EXT              0x800A
+</MACRO>
+<MACRO>
+<NAME>GLX_VISUAL_ID_EXT</NAME>
+#define GLX_VISUAL_ID_EXT                  0x800B
+</MACRO>
+<MACRO>
+<NAME>GLX_SCREEN_EXT</NAME>
+#define GLX_SCREEN_EXT                     0x800C
+</MACRO>
+<MACRO>
+<NAME>GLX_WINDOW_BIT_SGIX</NAME>
+#define GLX_WINDOW_BIT_SGIX                0x00000001
+</MACRO>
+<MACRO>
+<NAME>GLX_PIXMAP_BIT_SGIX</NAME>
+#define GLX_PIXMAP_BIT_SGIX                0x00000002
+</MACRO>
+<MACRO>
+<NAME>GLX_RGBA_BIT_SGIX</NAME>
+#define GLX_RGBA_BIT_SGIX                  0x00000001
+</MACRO>
+<MACRO>
+<NAME>GLX_COLOR_INDEX_BIT_SGIX</NAME>
+#define GLX_COLOR_INDEX_BIT_SGIX           0x00000002
+</MACRO>
+<MACRO>
+<NAME>GLX_DRAWABLE_TYPE_SGIX</NAME>
+#define GLX_DRAWABLE_TYPE_SGIX             0x8010
+</MACRO>
+<MACRO>
+<NAME>GLX_RENDER_TYPE_SGIX</NAME>
+#define GLX_RENDER_TYPE_SGIX               0x8011
+</MACRO>
+<MACRO>
+<NAME>GLX_X_RENDERABLE_SGIX</NAME>
+#define GLX_X_RENDERABLE_SGIX              0x8012
+</MACRO>
+<MACRO>
+<NAME>GLX_FBCONFIG_ID_SGIX</NAME>
+#define GLX_FBCONFIG_ID_SGIX               0x8013
+</MACRO>
+<MACRO>
+<NAME>GLX_RGBA_TYPE_SGIX</NAME>
+#define GLX_RGBA_TYPE_SGIX                 0x8014
+</MACRO>
+<MACRO>
+<NAME>GLX_COLOR_INDEX_TYPE_SGIX</NAME>
+#define GLX_COLOR_INDEX_TYPE_SGIX          0x8015
+</MACRO>
+<MACRO>
+<NAME>GLX_PBUFFER_BIT_SGIX</NAME>
+#define GLX_PBUFFER_BIT_SGIX               0x00000004
+</MACRO>
+<MACRO>
+<NAME>GLX_BUFFER_CLOBBER_MASK_SGIX</NAME>
+#define GLX_BUFFER_CLOBBER_MASK_SGIX       0x08000000
+</MACRO>
+<MACRO>
+<NAME>GLX_FRONT_LEFT_BUFFER_BIT_SGIX</NAME>
+#define GLX_FRONT_LEFT_BUFFER_BIT_SGIX     0x00000001
+</MACRO>
+<MACRO>
+<NAME>GLX_FRONT_RIGHT_BUFFER_BIT_SGIX</NAME>
+#define GLX_FRONT_RIGHT_BUFFER_BIT_SGIX    0x00000002
+</MACRO>
+<MACRO>
+<NAME>GLX_BACK_LEFT_BUFFER_BIT_SGIX</NAME>
+#define GLX_BACK_LEFT_BUFFER_BIT_SGIX      0x00000004
+</MACRO>
+<MACRO>
+<NAME>GLX_BACK_RIGHT_BUFFER_BIT_SGIX</NAME>
+#define GLX_BACK_RIGHT_BUFFER_BIT_SGIX     0x00000008
+</MACRO>
+<MACRO>
+<NAME>GLX_AUX_BUFFERS_BIT_SGIX</NAME>
+#define GLX_AUX_BUFFERS_BIT_SGIX           0x00000010
+</MACRO>
+<MACRO>
+<NAME>GLX_DEPTH_BUFFER_BIT_SGIX</NAME>
+#define GLX_DEPTH_BUFFER_BIT_SGIX          0x00000020
+</MACRO>
+<MACRO>
+<NAME>GLX_STENCIL_BUFFER_BIT_SGIX</NAME>
+#define GLX_STENCIL_BUFFER_BIT_SGIX        0x00000040
+</MACRO>
+<MACRO>
+<NAME>GLX_ACCUM_BUFFER_BIT_SGIX</NAME>
+#define GLX_ACCUM_BUFFER_BIT_SGIX          0x00000080
+</MACRO>
+<MACRO>
+<NAME>GLX_SAMPLE_BUFFERS_BIT_SGIX</NAME>
+#define GLX_SAMPLE_BUFFERS_BIT_SGIX        0x00000100
+</MACRO>
+<MACRO>
+<NAME>GLX_MAX_PBUFFER_WIDTH_SGIX</NAME>
+#define GLX_MAX_PBUFFER_WIDTH_SGIX         0x8016
+</MACRO>
+<MACRO>
+<NAME>GLX_MAX_PBUFFER_HEIGHT_SGIX</NAME>
+#define GLX_MAX_PBUFFER_HEIGHT_SGIX        0x8017
+</MACRO>
+<MACRO>
+<NAME>GLX_MAX_PBUFFER_PIXELS_SGIX</NAME>
+#define GLX_MAX_PBUFFER_PIXELS_SGIX        0x8018
+</MACRO>
+<MACRO>
+<NAME>GLX_OPTIMAL_PBUFFER_WIDTH_SGIX</NAME>
+#define GLX_OPTIMAL_PBUFFER_WIDTH_SGIX     0x8019
+</MACRO>
+<MACRO>
+<NAME>GLX_OPTIMAL_PBUFFER_HEIGHT_SGIX</NAME>
+#define GLX_OPTIMAL_PBUFFER_HEIGHT_SGIX    0x801A
+</MACRO>
+<MACRO>
+<NAME>GLX_PRESERVED_CONTENTS_SGIX</NAME>
+#define GLX_PRESERVED_CONTENTS_SGIX        0x801B
+</MACRO>
+<MACRO>
+<NAME>GLX_LARGEST_PBUFFER_SGIX</NAME>
+#define GLX_LARGEST_PBUFFER_SGIX           0x801C
+</MACRO>
+<MACRO>
+<NAME>GLX_WIDTH_SGIX</NAME>
+#define GLX_WIDTH_SGIX                     0x801D
+</MACRO>
+<MACRO>
+<NAME>GLX_HEIGHT_SGIX</NAME>
+#define GLX_HEIGHT_SGIX                    0x801E
+</MACRO>
+<MACRO>
+<NAME>GLX_EVENT_MASK_SGIX</NAME>
+#define GLX_EVENT_MASK_SGIX                0x801F
+</MACRO>
+<MACRO>
+<NAME>GLX_DAMAGED_SGIX</NAME>
+#define GLX_DAMAGED_SGIX                   0x8020
+</MACRO>
+<MACRO>
+<NAME>GLX_SAVED_SGIX</NAME>
+#define GLX_SAVED_SGIX                     0x8021
+</MACRO>
+<MACRO>
+<NAME>GLX_WINDOW_SGIX</NAME>
+#define GLX_WINDOW_SGIX                    0x8022
+</MACRO>
+<MACRO>
+<NAME>GLX_PBUFFER_SGIX</NAME>
+#define GLX_PBUFFER_SGIX                   0x8023
+</MACRO>
+<MACRO>
+<NAME>GLX_SYNC_FRAME_SGIX</NAME>
+#define GLX_SYNC_FRAME_SGIX                0x00000000
+</MACRO>
+<MACRO>
+<NAME>GLX_SYNC_SWAP_SGIX</NAME>
+#define GLX_SYNC_SWAP_SGIX                 0x00000001
+</MACRO>
+<MACRO>
+<NAME>GLX_DIGITAL_MEDIA_PBUFFER_SGIX</NAME>
+#define GLX_DIGITAL_MEDIA_PBUFFER_SGIX     0x8024
+</MACRO>
+<MACRO>
+<NAME>GLX_BLENDED_RGBA_SGIS</NAME>
+#define GLX_BLENDED_RGBA_SGIS              0x8025
+</MACRO>
+<MACRO>
+<NAME>GLX_MULTISAMPLE_SUB_RECT_WIDTH_SGIS</NAME>
+#define GLX_MULTISAMPLE_SUB_RECT_WIDTH_SGIS 0x8026
+</MACRO>
+<MACRO>
+<NAME>GLX_MULTISAMPLE_SUB_RECT_HEIGHT_SGIS</NAME>
+#define GLX_MULTISAMPLE_SUB_RECT_HEIGHT_SGIS 0x8027
+</MACRO>
+<MACRO>
+<NAME>GLX_SAMPLE_BUFFERS_3DFX</NAME>
+#define GLX_SAMPLE_BUFFERS_3DFX            0x8050
+</MACRO>
+<MACRO>
+<NAME>GLX_SAMPLES_3DFX</NAME>
+#define GLX_SAMPLES_3DFX                   0x8051
+</MACRO>
+<MACRO>
+<NAME>GLX_3DFX_WINDOW_MODE_MESA</NAME>
+#define GLX_3DFX_WINDOW_MODE_MESA          0x1
+</MACRO>
+<MACRO>
+<NAME>GLX_3DFX_FULLSCREEN_MODE_MESA</NAME>
+#define GLX_3DFX_FULLSCREEN_MODE_MESA      0x2
+</MACRO>
+<MACRO>
+<NAME>GLX_VISUAL_SELECT_GROUP_SGIX</NAME>
+#define GLX_VISUAL_SELECT_GROUP_SGIX       0x8028
+</MACRO>
+<MACRO>
+<NAME>GLX_SWAP_METHOD_OML</NAME>
+#define GLX_SWAP_METHOD_OML                0x8060
+</MACRO>
+<MACRO>
+<NAME>GLX_SWAP_EXCHANGE_OML</NAME>
+#define GLX_SWAP_EXCHANGE_OML              0x8061
+</MACRO>
+<MACRO>
+<NAME>GLX_SWAP_COPY_OML</NAME>
+#define GLX_SWAP_COPY_OML                  0x8062
+</MACRO>
+<MACRO>
+<NAME>GLX_SWAP_UNDEFINED_OML</NAME>
+#define GLX_SWAP_UNDEFINED_OML             0x8063
+</MACRO>
+<USER_FUNCTION>
+<NAME>__GLXextFuncPtr</NAME>
+<RETURNS>void </RETURNS>
+void
+</USER_FUNCTION>
+<TYPEDEF>
+<NAME>GLXVideoSourceSGIX</NAME>
+typedef XID GLXVideoSourceSGIX;
+</TYPEDEF>
+<TYPEDEF>
+<NAME>GLXFBConfigIDSGIX</NAME>
+typedef XID GLXFBConfigIDSGIX;
+</TYPEDEF>
+<TYPEDEF>
+<NAME>GLXPbufferSGIX</NAME>
+typedef XID GLXPbufferSGIX;
+</TYPEDEF>
+<TYPEDEF>
+<NAME>GLXBufferClobberEventSGIX</NAME>
+typedef struct {
+    int type;
+    unsigned long serial;	  /* # of last request processed by server */
+    Bool send_event;		  /* true if this came for SendEvent request */
+    Display *display;		  /* display the event was read from */
+    GLXDrawable drawable;	  /* i.d. of Drawable */
+    int event_type;		  /* GLX_DAMAGED_SGIX or GLX_SAVED_SGIX */
+    int draw_type;		  /* GLX_WINDOW_SGIX or GLX_PBUFFER_SGIX */
+    unsigned int mask;	  /* mask indicating which buffers are affected*/
+    int x, y;
+    int width, height;
+    int count;		  /* if nonzero, at least this many more */
+} GLXBufferClobberEventSGIX;
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_VERSION_1_3</NAME>
+#define GLX_VERSION_1_3 1
+</MACRO>
+<FUNCTION>
+<NAME>glXGetFBConfigs</NAME>
+<RETURNS>GLXFBConfig  *</RETURNS>
+Display *, int, int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXChooseFBConfig</NAME>
+<RETURNS>GLXFBConfig  *</RETURNS>
+Display *, int, const int *, int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetFBConfigAttrib</NAME>
+<RETURNS>int  </RETURNS>
+Display *, GLXFBConfig, int, int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetVisualFromFBConfig</NAME>
+<RETURNS>XVisualInfo  *</RETURNS>
+Display *, GLXFBConfig
+</FUNCTION>
+<FUNCTION>
+<NAME>glXCreateWindow</NAME>
+<RETURNS>GLXWindow  </RETURNS>
+Display *, GLXFBConfig, Window, const int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXDestroyWindow</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXWindow
+</FUNCTION>
+<FUNCTION>
+<NAME>glXCreatePixmap</NAME>
+<RETURNS>GLXPixmap  </RETURNS>
+Display *, GLXFBConfig, Pixmap, const int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXDestroyPixmap</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXPixmap
+</FUNCTION>
+<FUNCTION>
+<NAME>glXCreatePbuffer</NAME>
+<RETURNS>GLXPbuffer  </RETURNS>
+Display *, GLXFBConfig, const int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXDestroyPbuffer</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXPbuffer
+</FUNCTION>
+<FUNCTION>
+<NAME>glXQueryDrawable</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXDrawable, int, unsigned int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXCreateNewContext</NAME>
+<RETURNS>GLXContext  </RETURNS>
+Display *, GLXFBConfig, int, GLXContext, Bool
+</FUNCTION>
+<FUNCTION>
+<NAME>glXMakeContextCurrent</NAME>
+<RETURNS>Bool  </RETURNS>
+Display *, GLXDrawable, GLXDrawable, GLXContext
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetCurrentReadDrawable</NAME>
+<RETURNS>GLXDrawable  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetCurrentDisplay</NAME>
+<RETURNS>Display  *</RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>glXQueryContext</NAME>
+<RETURNS>int  </RETURNS>
+Display *, GLXContext, int, int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXSelectEvent</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXDrawable, unsigned long
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetSelectedEvent</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXDrawable, unsigned long *
+</FUNCTION>
+<TYPEDEF>
+<NAME>nelements)</NAME>
+typedef GLXFBConfig * ( * PFNGLXGETFBCONFIGSPROC) (Display *dpy, int screen, int *nelements);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>nelements)</NAME>
+typedef GLXFBConfig * ( * PFNGLXCHOOSEFBCONFIGPROC) (Display *dpy, int screen, const int *attrib_list, int *nelements);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>value)</NAME>
+typedef int ( * PFNGLXGETFBCONFIGATTRIBPROC) (Display *dpy, GLXFBConfig config, int attribute, int *value);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>config)</NAME>
+typedef XVisualInfo * ( * PFNGLXGETVISUALFROMFBCONFIGPROC) (Display *dpy, GLXFBConfig config);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>attrib_list)</NAME>
+typedef GLXWindow ( * PFNGLXCREATEWINDOWPROC) (Display *dpy, GLXFBConfig config, Window win, const int *attrib_list);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>win)</NAME>
+typedef void ( * PFNGLXDESTROYWINDOWPROC) (Display *dpy, GLXWindow win);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>attrib_list)</NAME>
+typedef GLXPixmap ( * PFNGLXCREATEPIXMAPPROC) (Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>pixmap)</NAME>
+typedef void ( * PFNGLXDESTROYPIXMAPPROC) (Display *dpy, GLXPixmap pixmap);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>attrib_list)</NAME>
+typedef GLXPbuffer ( * PFNGLXCREATEPBUFFERPROC) (Display *dpy, GLXFBConfig config, const int *attrib_list);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>pbuf)</NAME>
+typedef void ( * PFNGLXDESTROYPBUFFERPROC) (Display *dpy, GLXPbuffer pbuf);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>value)</NAME>
+typedef void ( * PFNGLXQUERYDRAWABLEPROC) (Display *dpy, GLXDrawable draw, int attribute, unsigned int *value);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>direct)</NAME>
+typedef GLXContext ( * PFNGLXCREATENEWCONTEXTPROC) (Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>ctx)</NAME>
+typedef Bool ( * PFNGLXMAKECONTEXTCURRENTPROC) (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>value)</NAME>
+typedef int ( * PFNGLXQUERYCONTEXTPROC) (Display *dpy, GLXContext ctx, int attribute, int *value);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>event_mask)</NAME>
+typedef void ( * PFNGLXSELECTEVENTPROC) (Display *dpy, GLXDrawable draw, unsigned long event_mask);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>event_mask)</NAME>
+typedef void ( * PFNGLXGETSELECTEDEVENTPROC) (Display *dpy, GLXDrawable draw, unsigned long *event_mask);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_VERSION_1_4</NAME>
+#define GLX_VERSION_1_4 1
+</MACRO>
+<FUNCTION>
+<NAME>glXGetProcAddress</NAME>
+<RETURNS>__GLXextFuncPtr  </RETURNS>
+const GLubyte *
+</FUNCTION>
+<TYPEDEF>
+<NAME>procName)</NAME>
+typedef __GLXextFuncPtr ( * PFNGLXGETPROCADDRESSPROC) (const GLubyte *procName);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_ARB_get_proc_address</NAME>
+#define GLX_ARB_get_proc_address 1
+</MACRO>
+<FUNCTION>
+<NAME>glXGetProcAddressARB</NAME>
+<RETURNS>__GLXextFuncPtr  </RETURNS>
+const GLubyte *
+</FUNCTION>
+<TYPEDEF>
+<NAME>procName)</NAME>
+typedef __GLXextFuncPtr ( * PFNGLXGETPROCADDRESSARBPROC) (const GLubyte *procName);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_ARB_multisample</NAME>
+#define GLX_ARB_multisample 1
+</MACRO>
+<MACRO>
+<NAME>GLX_SGIS_multisample</NAME>
+#define GLX_SGIS_multisample 1
+</MACRO>
+<MACRO>
+<NAME>GLX_EXT_visual_info</NAME>
+#define GLX_EXT_visual_info 1
+</MACRO>
+<MACRO>
+<NAME>GLX_SGI_swap_control</NAME>
+#define GLX_SGI_swap_control 1
+</MACRO>
+<FUNCTION>
+<NAME>glXSwapIntervalSGI</NAME>
+<RETURNS>int  </RETURNS>
+int
+</FUNCTION>
+<TYPEDEF>
+<NAME>interval)</NAME>
+typedef int ( * PFNGLXSWAPINTERVALSGIPROC) (int interval);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGI_video_sync</NAME>
+#define GLX_SGI_video_sync 1
+</MACRO>
+<FUNCTION>
+<NAME>glXGetVideoSyncSGI</NAME>
+<RETURNS>int  </RETURNS>
+unsigned int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXWaitVideoSyncSGI</NAME>
+<RETURNS>int  </RETURNS>
+int, int, unsigned int *
+</FUNCTION>
+<TYPEDEF>
+<NAME>count)</NAME>
+typedef int ( * PFNGLXGETVIDEOSYNCSGIPROC) (unsigned int *count);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>count)</NAME>
+typedef int ( * PFNGLXWAITVIDEOSYNCSGIPROC) (int divisor, int remainder, unsigned int *count);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGI_make_current_read</NAME>
+#define GLX_SGI_make_current_read 1
+</MACRO>
+<FUNCTION>
+<NAME>glXMakeCurrentReadSGI</NAME>
+<RETURNS>Bool  </RETURNS>
+Display *, GLXDrawable, GLXDrawable, GLXContext
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetCurrentReadDrawableSGI</NAME>
+<RETURNS>GLXDrawable  </RETURNS>
+void
+</FUNCTION>
+<TYPEDEF>
+<NAME>ctx)</NAME>
+typedef Bool ( * PFNGLXMAKECURRENTREADSGIPROC) (Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGIX_video_source</NAME>
+#define GLX_SGIX_video_source 1
+</MACRO>
+<FUNCTION>
+<NAME>glXCreateGLXVideoSourceSGIX</NAME>
+<RETURNS>GLXVideoSourceSGIX  </RETURNS>
+Display *, int, VLServer, VLPath, int, VLNode
+</FUNCTION>
+<FUNCTION>
+<NAME>glXDestroyGLXVideoSourceSGIX</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXVideoSourceSGIX
+</FUNCTION>
+<TYPEDEF>
+<NAME>drainNode)</NAME>
+typedef GLXVideoSourceSGIX ( * PFNGLXCREATEGLXVIDEOSOURCESGIXPROC) (Display *display, int screen, VLServer server, VLPath path, int nodeClass, VLNode drainNode);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>glxvideosource)</NAME>
+typedef void ( * PFNGLXDESTROYGLXVIDEOSOURCESGIXPROC) (Display *dpy, GLXVideoSourceSGIX glxvideosource);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_EXT_visual_rating</NAME>
+#define GLX_EXT_visual_rating 1
+</MACRO>
+<MACRO>
+<NAME>GLX_EXT_import_context</NAME>
+#define GLX_EXT_import_context 1
+</MACRO>
+<FUNCTION>
+<NAME>glXGetCurrentDisplayEXT</NAME>
+<RETURNS>Display  *</RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>glXQueryContextInfoEXT</NAME>
+<RETURNS>int  </RETURNS>
+Display *, GLXContext, int, int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetContextIDEXT</NAME>
+<RETURNS>GLXContextID  </RETURNS>
+const GLXContext
+</FUNCTION>
+<FUNCTION>
+<NAME>glXImportContextEXT</NAME>
+<RETURNS>GLXContext  </RETURNS>
+Display *, GLXContextID
+</FUNCTION>
+<FUNCTION>
+<NAME>glXFreeContextEXT</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXContext
+</FUNCTION>
+<TYPEDEF>
+<NAME>value)</NAME>
+typedef int ( * PFNGLXQUERYCONTEXTINFOEXTPROC) (Display *dpy, GLXContext context, int attribute, int *value);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>context)</NAME>
+typedef GLXContextID ( * PFNGLXGETCONTEXTIDEXTPROC) (const GLXContext context);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>contextID)</NAME>
+typedef GLXContext ( * PFNGLXIMPORTCONTEXTEXTPROC) (Display *dpy, GLXContextID contextID);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>context)</NAME>
+typedef void ( * PFNGLXFREECONTEXTEXTPROC) (Display *dpy, GLXContext context);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGIX_fbconfig</NAME>
+#define GLX_SGIX_fbconfig 1
+</MACRO>
+<FUNCTION>
+<NAME>glXGetFBConfigAttribSGIX</NAME>
+<RETURNS>int  </RETURNS>
+Display *, GLXFBConfigSGIX, int, int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXChooseFBConfigSGIX</NAME>
+<RETURNS>GLXFBConfigSGIX  *</RETURNS>
+Display *, int, int *, int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXCreateGLXPixmapWithConfigSGIX</NAME>
+<RETURNS>GLXPixmap  </RETURNS>
+Display *, GLXFBConfigSGIX, Pixmap
+</FUNCTION>
+<FUNCTION>
+<NAME>glXCreateContextWithConfigSGIX</NAME>
+<RETURNS>GLXContext  </RETURNS>
+Display *, GLXFBConfigSGIX, int, GLXContext, Bool
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetVisualFromFBConfigSGIX</NAME>
+<RETURNS>XVisualInfo  *</RETURNS>
+Display *, GLXFBConfigSGIX
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetFBConfigFromVisualSGIX</NAME>
+<RETURNS>GLXFBConfigSGIX  </RETURNS>
+Display *, XVisualInfo *
+</FUNCTION>
+<TYPEDEF>
+<NAME>value)</NAME>
+typedef int ( * PFNGLXGETFBCONFIGATTRIBSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, int attribute, int *value);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>nelements)</NAME>
+typedef GLXFBConfigSGIX * ( * PFNGLXCHOOSEFBCONFIGSGIXPROC) (Display *dpy, int screen, int *attrib_list, int *nelements);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>pixmap)</NAME>
+typedef GLXPixmap ( * PFNGLXCREATEGLXPIXMAPWITHCONFIGSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, Pixmap pixmap);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>direct)</NAME>
+typedef GLXContext ( * PFNGLXCREATECONTEXTWITHCONFIGSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, int render_type, GLXContext share_list, Bool direct);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>config)</NAME>
+typedef XVisualInfo * ( * PFNGLXGETVISUALFROMFBCONFIGSGIXPROC) (Display *dpy, GLXFBConfigSGIX config);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>vis)</NAME>
+typedef GLXFBConfigSGIX ( * PFNGLXGETFBCONFIGFROMVISUALSGIXPROC) (Display *dpy, XVisualInfo *vis);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGIX_pbuffer</NAME>
+#define GLX_SGIX_pbuffer 1
+</MACRO>
+<FUNCTION>
+<NAME>glXCreateGLXPbufferSGIX</NAME>
+<RETURNS>GLXPbufferSGIX  </RETURNS>
+Display *, GLXFBConfigSGIX, unsigned int, unsigned int, int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXDestroyGLXPbufferSGIX</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXPbufferSGIX
+</FUNCTION>
+<FUNCTION>
+<NAME>glXQueryGLXPbufferSGIX</NAME>
+<RETURNS>int  </RETURNS>
+Display *, GLXPbufferSGIX, int, unsigned int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXSelectEventSGIX</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXDrawable, unsigned long
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetSelectedEventSGIX</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXDrawable, unsigned long *
+</FUNCTION>
+<TYPEDEF>
+<NAME>attrib_list)</NAME>
+typedef GLXPbufferSGIX ( * PFNGLXCREATEGLXPBUFFERSGIXPROC) (Display *dpy, GLXFBConfigSGIX config, unsigned int width, unsigned int height, int *attrib_list);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>pbuf)</NAME>
+typedef void ( * PFNGLXDESTROYGLXPBUFFERSGIXPROC) (Display *dpy, GLXPbufferSGIX pbuf);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>value)</NAME>
+typedef int ( * PFNGLXQUERYGLXPBUFFERSGIXPROC) (Display *dpy, GLXPbufferSGIX pbuf, int attribute, unsigned int *value);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>mask)</NAME>
+typedef void ( * PFNGLXSELECTEVENTSGIXPROC) (Display *dpy, GLXDrawable drawable, unsigned long mask);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>mask)</NAME>
+typedef void ( * PFNGLXGETSELECTEDEVENTSGIXPROC) (Display *dpy, GLXDrawable drawable, unsigned long *mask);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGI_cushion</NAME>
+#define GLX_SGI_cushion 1
+</MACRO>
+<FUNCTION>
+<NAME>glXCushionSGI</NAME>
+<RETURNS>void  </RETURNS>
+Display *, Window, float
+</FUNCTION>
+<TYPEDEF>
+<NAME>cushion)</NAME>
+typedef void ( * PFNGLXCUSHIONSGIPROC) (Display *dpy, Window window, float cushion);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGIX_video_resize</NAME>
+#define GLX_SGIX_video_resize 1
+</MACRO>
+<FUNCTION>
+<NAME>glXBindChannelToWindowSGIX</NAME>
+<RETURNS>int  </RETURNS>
+Display *, int, int, Window
+</FUNCTION>
+<FUNCTION>
+<NAME>glXChannelRectSGIX</NAME>
+<RETURNS>int  </RETURNS>
+Display *, int, int, int, int, int, int
+</FUNCTION>
+<FUNCTION>
+<NAME>glXQueryChannelRectSGIX</NAME>
+<RETURNS>int  </RETURNS>
+Display *, int, int, int *, int *, int *, int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXQueryChannelDeltasSGIX</NAME>
+<RETURNS>int  </RETURNS>
+Display *, int, int, int *, int *, int *, int *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXChannelRectSyncSGIX</NAME>
+<RETURNS>int  </RETURNS>
+Display *, int, int, GLenum
+</FUNCTION>
+<TYPEDEF>
+<NAME>window)</NAME>
+typedef int ( * PFNGLXBINDCHANNELTOWINDOWSGIXPROC) (Display *display, int screen, int channel, Window window);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>h)</NAME>
+typedef int ( * PFNGLXCHANNELRECTSGIXPROC) (Display *display, int screen, int channel, int x, int y, int w, int h);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>dh)</NAME>
+typedef int ( * PFNGLXQUERYCHANNELRECTSGIXPROC) (Display *display, int screen, int channel, int *dx, int *dy, int *dw, int *dh);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>h)</NAME>
+typedef int ( * PFNGLXQUERYCHANNELDELTASSGIXPROC) (Display *display, int screen, int channel, int *x, int *y, int *w, int *h);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>synctype)</NAME>
+typedef int ( * PFNGLXCHANNELRECTSYNCSGIXPROC) (Display *display, int screen, int channel, GLenum synctype);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGIX_dmbuffer</NAME>
+#define GLX_SGIX_dmbuffer 1
+</MACRO>
+<FUNCTION>
+<NAME>glXAssociateDMPbufferSGIX</NAME>
+<RETURNS>Bool  </RETURNS>
+Display *, GLXPbufferSGIX, DMparams *, DMbuffer
+</FUNCTION>
+<TYPEDEF>
+<NAME>dmbuffer)</NAME>
+typedef Bool ( * PFNGLXASSOCIATEDMPBUFFERSGIXPROC) (Display *dpy, GLXPbufferSGIX pbuffer, DMparams *params, DMbuffer dmbuffer);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGIX_swap_group</NAME>
+#define GLX_SGIX_swap_group 1
+</MACRO>
+<FUNCTION>
+<NAME>glXJoinSwapGroupSGIX</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXDrawable, GLXDrawable
+</FUNCTION>
+<TYPEDEF>
+<NAME>member)</NAME>
+typedef void ( * PFNGLXJOINSWAPGROUPSGIXPROC) (Display *dpy, GLXDrawable drawable, GLXDrawable member);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGIX_swap_barrier</NAME>
+#define GLX_SGIX_swap_barrier 1
+</MACRO>
+<FUNCTION>
+<NAME>glXBindSwapBarrierSGIX</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXDrawable, int
+</FUNCTION>
+<FUNCTION>
+<NAME>glXQueryMaxSwapBarriersSGIX</NAME>
+<RETURNS>Bool  </RETURNS>
+Display *, int, int *
+</FUNCTION>
+<TYPEDEF>
+<NAME>barrier)</NAME>
+typedef void ( * PFNGLXBINDSWAPBARRIERSGIXPROC) (Display *dpy, GLXDrawable drawable, int barrier);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>max)</NAME>
+typedef Bool ( * PFNGLXQUERYMAXSWAPBARRIERSSGIXPROC) (Display *dpy, int screen, int *max);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SUN_get_transparent_index</NAME>
+#define GLX_SUN_get_transparent_index 1
+</MACRO>
+<FUNCTION>
+<NAME>glXGetTransparentIndexSUN</NAME>
+<RETURNS>Status  </RETURNS>
+Display *, Window, Window, long *
+</FUNCTION>
+<TYPEDEF>
+<NAME>pTransparentIndex)</NAME>
+typedef Status ( * PFNGLXGETTRANSPARENTINDEXSUNPROC) (Display *dpy, Window overlay, Window underlay, long *pTransparentIndex);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_MESA_copy_sub_buffer</NAME>
+#define GLX_MESA_copy_sub_buffer 1
+</MACRO>
+<FUNCTION>
+<NAME>glXCopySubBufferMESA</NAME>
+<RETURNS>void  </RETURNS>
+Display *, GLXDrawable, int, int, int, int
+</FUNCTION>
+<TYPEDEF>
+<NAME>height)</NAME>
+typedef void ( * PFNGLXCOPYSUBBUFFERMESAPROC) (Display *dpy, GLXDrawable drawable, int x, int y, int width, int height);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_MESA_pixmap_colormap</NAME>
+#define GLX_MESA_pixmap_colormap 1
+</MACRO>
+<FUNCTION>
+<NAME>glXCreateGLXPixmapMESA</NAME>
+<RETURNS>GLXPixmap  </RETURNS>
+Display *, XVisualInfo *, Pixmap, Colormap
+</FUNCTION>
+<TYPEDEF>
+<NAME>cmap)</NAME>
+typedef GLXPixmap ( * PFNGLXCREATEGLXPIXMAPMESAPROC) (Display *dpy, XVisualInfo *visual, Pixmap pixmap, Colormap cmap);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_MESA_release_buffers</NAME>
+#define GLX_MESA_release_buffers 1
+</MACRO>
+<FUNCTION>
+<NAME>glXReleaseBuffersMESA</NAME>
+<RETURNS>Bool  </RETURNS>
+Display *, GLXDrawable
+</FUNCTION>
+<TYPEDEF>
+<NAME>drawable)</NAME>
+typedef Bool ( * PFNGLXRELEASEBUFFERSMESAPROC) (Display *dpy, GLXDrawable drawable);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_MESA_set_3dfx_mode</NAME>
+#define GLX_MESA_set_3dfx_mode 1
+</MACRO>
+<FUNCTION>
+<NAME>glXSet3DfxModeMESA</NAME>
+<RETURNS>Bool  </RETURNS>
+int
+</FUNCTION>
+<TYPEDEF>
+<NAME>mode)</NAME>
+typedef Bool ( * PFNGLXSET3DFXMODEMESAPROC) (int mode);
+</TYPEDEF>
+<MACRO>
+<NAME>GLX_SGIX_visual_select_group</NAME>
+#define GLX_SGIX_visual_select_group 1
+</MACRO>
+<MACRO>
+<NAME>GLX_OML_swap_method</NAME>
+#define GLX_OML_swap_method 1
+</MACRO>
+<MACRO>
+<NAME>GLX_OML_sync_control</NAME>
+#define GLX_OML_sync_control 1
+</MACRO>
+<FUNCTION>
+<NAME>glXGetSyncValuesOML</NAME>
+<RETURNS>Bool  </RETURNS>
+Display *, GLXDrawable, int64_t *, int64_t *, int64_t *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXGetMscRateOML</NAME>
+<RETURNS>Bool  </RETURNS>
+Display *, GLXDrawable, int32_t *, int32_t *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXSwapBuffersMscOML</NAME>
+<RETURNS>int64_t  </RETURNS>
+Display *, GLXDrawable, int64_t, int64_t, int64_t
+</FUNCTION>
+<FUNCTION>
+<NAME>glXWaitForMscOML</NAME>
+<RETURNS>Bool  </RETURNS>
+Display *, GLXDrawable, int64_t, int64_t, int64_t, int64_t *, int64_t *, int64_t *
+</FUNCTION>
+<FUNCTION>
+<NAME>glXWaitForSbcOML</NAME>
+<RETURNS>Bool  </RETURNS>
+Display *, GLXDrawable, int64_t, int64_t *, int64_t *, int64_t *
+</FUNCTION>
+<TYPEDEF>
+<NAME>sbc)</NAME>
+typedef Bool ( * PFNGLXGETSYNCVALUESOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>denominator)</NAME>
+typedef Bool ( * PFNGLXGETMSCRATEOMLPROC) (Display *dpy, GLXDrawable drawable, int32_t *numerator, int32_t *denominator);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>remainder)</NAME>
+typedef int64_t ( * PFNGLXSWAPBUFFERSMSCOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>sbc)</NAME>
+typedef Bool ( * PFNGLXWAITFORMSCOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t *ust, int64_t *msc, int64_t *sbc);
+</TYPEDEF>
+<TYPEDEF>
+<NAME>sbc)</NAME>
+typedef Bool ( * PFNGLXWAITFORSBCOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t target_sbc, int64_t *ust, int64_t *msc, int64_t *sbc);
 </TYPEDEF>
 <MACRO>
 <NAME>WIN32_LEAN_AND_MEAN</NAME>

@@ -1,7 +1,7 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/gdk/win32
 
-libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk
+libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk/win32
 
 INCLUDES = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\

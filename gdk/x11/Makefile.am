@@ -1,7 +1,7 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/gdk/x11
 
-libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk
+libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk/x11
 
 INCLUDES = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\

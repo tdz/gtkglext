@@ -136,7 +136,7 @@ gtkglext_targetlib = @gtkglext_targetlib@
 install_sh = @install_sh@
 ms_librarian = @ms_librarian@
 
-libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk
+libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk/win32
 
 INCLUDES = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
