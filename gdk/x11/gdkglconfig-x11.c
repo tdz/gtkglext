@@ -287,7 +287,7 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
 #endif /* _GDK_HAS_COLORMAP_FOREIGN_NEW */
 
 /* 
- * Setup colormap
+ * Setup colormap.
  */
 
 #ifdef GDK_MULTIHEAD_SAFE
@@ -305,7 +305,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
   if (is_rgba)
     {
-      /* For RGBA mode */
+      /* For RGBA mode. */
 
       /* Try default colormap. */
 
@@ -338,7 +338,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
     }
   else
     {
-      /* For color index mode */
+      /* For color index mode. */
 
       GDK_GL_NOTE (MISC, g_message (" -- colormap: new private"));
 
@@ -367,15 +367,15 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
   if (is_rgba)
     {
-      /* For RGBA mode */
+      /* For RGBA mode. */
 
       /* Try default colormap. */
 
-      colormap = gdk_rgb_get_colormap ();
+      colormap = gdk_colormap_get_system ();
       visual = gdk_colormap_get_visual (colormap);
       if (GDK_VISUAL_XVISUAL (visual)->visualid == xvinfo->visualid)
         {
-          GDK_GL_NOTE (MISC, g_message (" -- colormap: default GDK RGB"));
+          GDK_GL_NOTE (MISC, g_message (" -- colormap: system default"));
 
           g_object_ref (G_OBJECT (colormap));
           return colormap;
@@ -392,7 +392,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
     }
   else
     {
-      /* For color index mode */
+      /* For color index mode. */
 
       GDK_GL_NOTE (MISC, g_message (" -- colormap: new private"));
 
@@ -456,7 +456,7 @@ gdk_gl_config_fb_configuration (GdkGLConfigImplX11 *impl,
   glXGetConfig (impl->xdisplay, impl->xvinfo, (attrib), &value)
 
   /*
-   * Setup colormap
+   * Setup colormap.
    */
 
   /* RGBA mode? */
@@ -473,7 +473,7 @@ gdk_gl_config_fb_configuration (GdkGLConfigImplX11 *impl,
     }
   impl->is_mesa_glx = is_mesa_glx ? TRUE : FALSE;
 
-  /* get an appropriate colormap */
+  /* get an appropriate colormap. */
   glconfig->colormap = gdk_gl_config_setup_colormap (glconfig->screen,
                                                      impl->xvinfo,
                                                      glconfig->is_rgba,

@@ -95,24 +95,6 @@ static GdkColor colors[4] = {
 #define GREEN colors[2].pixel
 #define BLUE  colors[3].pixel
 
-static void
-init (GtkWidget *widget,
-      gpointer   data)
-{
-  GdkColormap *colormap = gtk_widget_get_colormap (widget);
-  GdkColor color;
-  int i;
-
-  for (i = 0; i < 4; i++)
-    {
-      gdk_colormap_query_color (colormap, i, &color);
-      g_print ("colors[%d] = { %u, 0x%x, 0x%x, 0x%x }\n",
-               i, colors[i].pixel,
-               colors[i].red, colors[i].green, colors[i].blue);
-    }
-  g_print ("\n");
-}
-
 static gboolean
 reshape (GtkWidget         *widget,
          GdkEventConfigure *event,
@@ -251,26 +233,30 @@ main (int argc,
 
   examine_gl_config_attrib (glconfig);
 
-  //gtk_widget_set_default_colormap (gdk_gl_config_get_colormap (glconfig));
-
   /* 
    * Allocate colors.
    */
 
-  gdk_colormap_alloc_colors (gdk_gl_config_get_colormap (glconfig),
-                             colors, 4, FALSE, FALSE, &success);
-  if (!success)
-    g_print ("*** color allocation failed.\n");
-  else
-    g_print ("colors ware successfully allocated.\n");
-
-  for (i = 0; i < 4; i++)
+  if (!gdk_gl_config_is_rgba (glconfig))
     {
-      g_print ("colors[%d] = { %u, 0x%x, 0x%x, 0x%x }\n",
-               i, colors[i].pixel,
-               colors[i].red, colors[i].green, colors[i].blue);
+
+      gdk_colormap_alloc_colors (gdk_gl_config_get_colormap (glconfig),
+                                 colors, 4, FALSE, FALSE, &success);
+      if (!success)
+        g_print ("*** color allocation failed.\n");
+      else
+        g_print ("colors ware successfully allocated.\n");
+
+      for (i = 0; i < 4; i++)
+        {
+          g_print ("colors[%d] = { %u, 0x%x, 0x%x, 0x%x }\n",
+                   i, colors[i].pixel,
+                   colors[i].red, colors[i].green, colors[i].blue);
+        }
+      g_print ("\n");
+
+      /* gtk_widget_set_default_colormap (gdk_gl_config_get_colormap (glconfig)); */
     }
-  g_print ("\n");
 
   /*
    * Top-level window.
@@ -306,8 +292,6 @@ main (int argc,
                          GDK_EXPOSURE_MASK |
                          GDK_BUTTON_PRESS_MASK);
 
-  g_signal_connect (G_OBJECT (drawing_area), "realize",
-		    G_CALLBACK (init), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (reshape), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
