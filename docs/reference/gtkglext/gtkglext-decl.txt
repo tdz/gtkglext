@@ -506,17 +506,17 @@ GdkDisplay                 *display,const PangoFontDescription *font_desc,int   
 <FUNCTION>
 <NAME>gdk_gl_parse_args</NAME>
 <RETURNS>gboolean  </RETURNS>
-gint    *argc,gchar ***argv
+int    *argc,char ***argv
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_init_check</NAME>
 <RETURNS>gboolean  </RETURNS>
-gint    *argc,gchar ***argv
+int    *argc,char ***argv
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_init</NAME>
 <RETURNS>void  </RETURNS>
-gint    *argc,gchar ***argv
+int    *argc,char ***argv
 </FUNCTION>
 <STRUCT>
 <NAME>GdkGLPixmapClass</NAME>
@@ -1174,17 +1174,17 @@ void
 <FUNCTION>
 <NAME>gtk_gl_parse_args</NAME>
 <RETURNS>gboolean  </RETURNS>
-gint    *argc,gchar ***argv
+int    *argc,char ***argv
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_gl_init_check</NAME>
 <RETURNS>gboolean  </RETURNS>
-gint    *argc,gchar ***argv
+int    *argc,char ***argv
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_gl_init</NAME>
 <RETURNS>void  </RETURNS>
-gint    *argc,gchar ***argv
+int    *argc,char ***argv
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_widget_set_gl_capability</NAME>

@@ -54,8 +54,8 @@ static const guint gtk_gl_ndebug_keys = G_N_ELEMENTS (gtk_gl_debug_keys);
  * Return value: %TRUE if initialization succeeded, otherwise %FALSE.
  **/
 gboolean
-gtk_gl_parse_args (gint    *argc,
-                   gchar ***argv)
+gtk_gl_parse_args (int    *argc,
+                   char ***argv)
 {
   const gchar *env_string;
 
@@ -187,8 +187,8 @@ gtk_gl_parse_args (gint    *argc,
  *               %FALSE otherwise.
  **/
 gboolean
-gtk_gl_init_check (gint    *argc,
-                   gchar ***argv)
+gtk_gl_init_check (int    *argc,
+                   char ***argv)
 {
   /* Init GdkGLExt library. */
   if (!gdk_gl_init_check (argc, argv))
@@ -226,8 +226,8 @@ gtk_gl_init_check (gint    *argc,
  * </para></note>
  **/
 void
-gtk_gl_init (gint    *argc,
-             gchar ***argv)
+gtk_gl_init (int    *argc,
+             char ***argv)
 {
   if (!gtk_gl_init_check (argc, argv))
     exit (1);

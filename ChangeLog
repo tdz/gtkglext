@@ -1,5 +1,10 @@
 2003-03-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglinit.h: 
+	* gdk/gdkglinit.c: 
+	* gtk/gtkglinit.h: 
+	* gtk/gtkglinit.c: Use int* and char*** for args.
+
 	* gdk/gdkglshapes.h: 
 	* gdk/gdkglshapes.c: Don't use GLtypes in API.
 
