@@ -30,7 +30,6 @@ typedef struct
 
   GdkGLContext *glcontext;
 
-  gulong size_allocate_handler;
   gulong unrealize_handler;
   gulong destroy_handler;
 
@@ -92,12 +91,6 @@ gtk_gl_widget_realize (GtkWidget       *widget,
           return;
         }
 
-      /* Connect "size_allocate" signal handler. */
-      if (private->size_allocate_handler == 0)
-        private->size_allocate_handler = g_signal_connect_after (G_OBJECT (widget), "size_allocate",
-                                                                 G_CALLBACK (gtk_gl_widget_size_allocate),
-                                                                 NULL);
-
       /* Connect "unrealize" signal handler. */
       if (private->unrealize_handler == 0)
         private->unrealize_handler = g_signal_connect (G_OBJECT (widget), "unrealize",
@@ -134,10 +127,10 @@ gtk_gl_widget_size_allocate (GtkWidget     *widget,
   GTK_GL_NOTE_FUNC_PRIVATE ();
 
   /*
-   * Synchronize OpenGL rendering pipeline on resizing X window.
+   * Synchronize OpenGL and window resizing request streams.
    */
 
-  if (widget->window != NULL)
+  if (GTK_WIDGET_REALIZED (widget))
     {
       gldrawable = gdk_window_get_gl_drawable (widget->window);
       gdk_gl_drawable_wait_gdk (gldrawable);
@@ -154,7 +147,7 @@ gtk_gl_widget_unrealize (GtkWidget       *widget,
    * Remove OpenGL-capability from widget->window.
    */
 
-  if (widget->window != NULL)
+  if (GTK_WIDGET_REALIZED (widget))
     gdk_window_unset_gl_capability (widget->window);
 
   private->is_realized = FALSE;
@@ -334,7 +327,6 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
 
   private->glcontext = NULL;
 
-  private->size_allocate_handler = 0;
   private->unrealize_handler = 0;
   private->destroy_handler = 0;
 
@@ -355,6 +347,15 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   g_signal_connect (G_OBJECT (widget), "configure_event",
                     G_CALLBACK (gtk_gl_widget_configure_event),
                     private);
+
+  /*
+   * Connect "size_allocate" signal handler to synchronize OpenGL and
+   * window resizing request streams.
+   */
+
+  g_signal_connect_after (G_OBJECT (widget), "size_allocate",
+                          G_CALLBACK (gtk_gl_widget_size_allocate),
+                          NULL);
 
   return TRUE;
 }
