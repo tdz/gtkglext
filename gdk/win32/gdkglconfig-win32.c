@@ -405,6 +405,9 @@ gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
   /* Stereo is supported? (not work on Windows) */
   glconfig->is_stereo = (pfd->dwFlags & PFD_STEREO) ? TRUE : FALSE;
 
+  /* Number of aux buffers */
+  glconfig->n_aux_buffers = pfd->cAuxBuffers;
+
   /* Has alpha bits? */
   glconfig->has_alpha = pfd->cAlphaBits ? TRUE : FALSE;
 
@@ -417,11 +420,8 @@ gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
   /* Has accumulation buffer? */
   glconfig->has_accum_buffer = pfd->cAccumBits ? TRUE : FALSE;
 
-  /* Support multisample antialiasing? */
-  glconfig->is_multisample = FALSE;
-
-  /* Support luminance color model? */
-  glconfig->is_luminance = FALSE;
+  /* Number of multisample buffers (not supported yet) */
+  glconfig->n_sample_buffers = 0;
 }
 
 static GdkGLConfig *

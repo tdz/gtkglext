@@ -59,6 +59,10 @@ struct _GdkGLConfig
 
   gint layer_plane;
 
+  gint n_aux_buffers;
+
+  gint n_sample_buffers;
+
   guint is_rgba            : 1;
   guint is_double_buffered : 1;
   guint as_single_mode     : 1;
@@ -67,9 +71,6 @@ struct _GdkGLConfig
   guint has_depth_buffer   : 1;
   guint has_stencil_buffer : 1;
   guint has_accum_buffer   : 1;
-  guint is_multisample     : 1;
-  guint is_luminance       : 1;
-
 };
 
 struct _GdkGLConfigClass
@@ -108,6 +109,12 @@ GdkColormap *gdk_gl_config_get_colormap           (GdkGLConfig     *glconfig);
 GdkVisual   *gdk_gl_config_get_visual             (GdkGLConfig     *glconfig);
 
 gint         gdk_gl_config_get_depth              (GdkGLConfig     *glconfig);
+
+gint         gdk_gl_config_get_layer_plane        (GdkGLConfig     *glconfig);
+
+gint         gdk_gl_config_get_n_aux_buffers      (GdkGLConfig     *glconfig);
+
+gint         gdk_gl_config_get_n_sample_buffers   (GdkGLConfig     *glconfig);
 
 gboolean     gdk_gl_config_is_rgba                (GdkGLConfig     *glconfig);
 

@@ -280,6 +280,58 @@ gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /**
+ * gdk_gl_config_get_layer_plane:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Gets the layer plane (level) of the frame buffer.
+ * Zero is the default frame buffer.
+ * Positive layer planes correspond to frame buffers that overlay the default
+ * buffer, and negative layer planes correspond to frame buffers that underlie
+ * the default frame buffer.
+ *
+ * Return value: layer plane.
+ **/
+gint
+gdk_gl_config_get_layer_plane (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
+
+  return glconfig->layer_plane;
+}
+
+/**
+ * gdk_gl_config_get_n_aux_buffers:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Gets the number of auxiliary color buffers.
+ *
+ * Return value: number of auxiliary color buffers.
+ **/
+gint
+gdk_gl_config_get_n_aux_buffers (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
+
+  return glconfig->n_aux_buffers;
+}
+
+/**
+ * gdk_gl_config_get_n_sample_buffers:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Gets the number of multisample buffers.
+ *
+ * Return value: number of multisample buffers.
+ **/
+gint
+gdk_gl_config_get_n_sample_buffers (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
+
+  return glconfig->n_sample_buffers;
+}
+
+/**
  * gdk_gl_config_is_rgba:
  * @glconfig: a #GdkGLConfig.
  *

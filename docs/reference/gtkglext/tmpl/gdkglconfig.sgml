@@ -125,6 +125,33 @@ and is afterwards used in #gtk_widget_set_gl_capability.
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_gl_config_get_layer_plane ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_get_n_aux_buffers ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_get_n_sample_buffers ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gdk_gl_config_is_rgba ##### -->
 <para>
 

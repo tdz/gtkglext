@@ -1,5 +1,27 @@
 2003-01-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglconfig.[ch] (gdk_gl_config_get_layer_plane): Added.
+
+	* gdk/gdkglconfig.[ch] (gdk_gl_config_get_n_sample_buffers):
+	Added.
+
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_init_attrib): 
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_init_attrib): 
+	* gdk/gdkglconfig.h (struct _GdkGLConfig): Removed is_multisample
+	flag and added n_sample_buffers member.
+
+	* gdk/gdkglconfig.[ch] (gdk_gl_config_get_n_aux_buffers): Added.
+
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_init_attrib): 
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_init_attrib): 
+	* gdk/gdkglconfig.h (struct _GdkGLConfig): Added n_aux_buffers
+	member.
+
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_init_attrib): 
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_init_attrib): 
+	* gdk/gdkglconfig.h (struct _GdkGLConfig): Removed is_luminance
+	flag.
+
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability) 
 	(gl_param_destroy): Added and unref glparam->glconfig.
 

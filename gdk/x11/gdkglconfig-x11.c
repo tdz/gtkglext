@@ -449,6 +449,10 @@ gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
   GET_CONFIG (GLX_STEREO);
   glconfig->is_stereo = value ? TRUE : FALSE;
 
+  /* Number of aux buffers */
+  GET_CONFIG (GLX_AUX_BUFFERS);
+  glconfig->n_aux_buffers = value;
+
   /* Has alpha bits? */
   GET_CONFIG (GLX_ALPHA_SIZE);
   glconfig->has_alpha = value ? TRUE : FALSE;
@@ -465,11 +469,8 @@ gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
   GET_CONFIG (GLX_ACCUM_RED_SIZE);
   glconfig->has_accum_buffer = value ? TRUE : FALSE;
 
-  /* Support multisample antialiasing? */
-  glconfig->is_multisample = FALSE;
-
-  /* Support luminance color model? */
-  glconfig->is_luminance = FALSE;
+  /* Number of multisample buffers (not supported yet) */
+  glconfig->n_sample_buffers = 0;
 
 #undef GET_CONFIG
 }

@@ -11,6 +11,9 @@ gdk_gl_config_get_attrib
 gdk_gl_config_get_colormap
 gdk_gl_config_get_visual
 gdk_gl_config_get_depth
+gdk_gl_config_get_layer_plane
+gdk_gl_config_get_n_aux_buffers
+gdk_gl_config_get_n_sample_buffers
 gdk_gl_config_is_rgba
 gdk_gl_config_is_double_buffered
 gdk_gl_config_is_stereo
