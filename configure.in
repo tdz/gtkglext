@@ -74,7 +74,7 @@ m4_define([gtk_required_version], [2.0.0])
 
 # Process this file with autoconf to produce a configure script.
 AC_INIT([gtkglext], [gtkglext_version],
-        [gtkglext-develop@lists.sourceforge.net])
+        [gtkglext-list@gnome.org])
 
 AC_CONFIG_SRCDIR([gdk/gdkgl.h])
 

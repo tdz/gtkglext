@@ -11,7 +11,7 @@
 !define GTKGLEXT_PUBLISHER       "GtkGLExt"
 !define GTKGLEXT_URL_INFO_ABOUT  "http://gtkglext.sourceforge.net/"
 !define GTKGLEXT_URL_UPDATE_INFO "http://sourceforge.net/projects/gtkglext/"
-!define GTKGLEXT_HELP_LINK       "mailto:gtkglext-users@lists.sourceforge.net"
+!define GTKGLEXT_HELP_LINK       "mailto:gtkglext-list@gnome.org"
 
 ;--------------------------------
 ;Configuration
