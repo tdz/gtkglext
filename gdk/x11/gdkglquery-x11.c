@@ -115,7 +115,7 @@ gdk_gl_query_get_proc_address (const char *proc_name)
   static __GLXGetProcAddressFunc glx_get_proc_address = NULL;
   static gboolean init_glx_get_proc_address = FALSE;
   GModule *module;
-  GdkGLProc proc_address;
+  GdkGLProc proc_address = NULL;
 
   if (!init_glx_get_proc_address)
     {
@@ -137,29 +137,23 @@ gdk_gl_query_get_proc_address (const char *proc_name)
 
       g_module_close (module);
 
+      GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () - %s",
+                                    (glx_get_proc_address == NULL) ? "not supported" : "supported"));
+
       init_glx_get_proc_address = TRUE;
     }
 
-  if (glx_get_proc_address == NULL)
+  if (glx_get_proc_address != NULL)
+    proc_address = glx_get_proc_address (proc_name);
+
+  if (proc_address == NULL)
     {
-      /* glXGetProcAddress () is not supported. */
-
-      GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () is not supported."));
-
       module = g_module_open (NULL, G_MODULE_BIND_LAZY);
       g_return_val_if_fail (module != NULL, NULL);
 
       g_module_symbol (module, proc_name, (gpointer) &proc_address);
 
       g_module_close (module);
-    }
-  else
-    {
-      /* glXGetProcAddress () is supported. */
-
-      GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () is supported."));
-
-      proc_address = glx_get_proc_address (proc_name);
     }
 
   return proc_address;
