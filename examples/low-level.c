@@ -11,7 +11,7 @@ static GdkGLConfig *glconfig = NULL;
 static GdkGLWindow *glwindow = NULL;
 static GdkGLContext *glcontext = NULL;
 
-static const gint config_attributes[] = {
+static const int config_attributes[] = {
   GDK_GL_DOUBLEBUFFER,
   GDK_GL_RGBA,
   GDK_GL_RED_SIZE,        1,
@@ -24,10 +24,10 @@ static const gint config_attributes[] = {
 static void
 print_gl_config_attrib (GdkGLConfig *glconfig,
                         const gchar *attrib_str,
-                        gint         attrib,
+                        int          attrib,
                         gboolean     is_boolean)
 {
-  gint value;
+  int value;
 
   g_print ("%s = ", attrib_str);
   if (gdk_gl_config_get_attrib (glconfig, attrib, &value))

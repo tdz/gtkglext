@@ -471,7 +471,7 @@ gdk_gl_config_impl_win32_finalize (GObject *object)
 }
 
 GdkGLConfig *
-gdk_gl_config_new (const gint *attrib_list)
+gdk_gl_config_new (const int *attrib_list)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplWin32 *impl;
@@ -508,8 +508,8 @@ gdk_gl_config_new (const gint *attrib_list)
 #ifdef GDK_MULTIHEAD_SAFE
 
 GdkGLConfig *
-gdk_gl_config_new_for_screen (GdkScreen  *screen,
-                              const gint *attrib_list)
+gdk_gl_config_new_for_screen (GdkScreen *screen,
+                              const int *attrib_list)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplWin32 *impl;
@@ -552,8 +552,8 @@ gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
  */
 static gboolean
 gdk_win32_gl_config_get_attrib (GdkGLConfig *glconfig,
-                                gint         attribute,
-                                gint        *value)
+                                int          attribute,
+                                int         *value)
 {
   GdkGLConfigImplWin32 *impl;
 

@@ -10,10 +10,10 @@
 static void
 print_gl_config_attrib (GdkGLConfig *glconfig,
                         const gchar *attrib_str,
-                        gint         attrib,
+                        int          attrib,
                         gboolean     is_boolean)
 {
-  gint value;
+  int value;
 
   g_print ("%s = ", attrib_str);
   if (gdk_gl_config_get_attrib (glconfig, attrib, &value))

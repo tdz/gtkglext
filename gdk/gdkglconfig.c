@@ -236,9 +236,9 @@ gdk_gl_config_finalize (GObject *object)
 static GdkGLConfig *
 gdk_gl_config_new_ci (GdkGLConfigMode mode)
 {
-  static const gint buf_size_list[] = { 16, 12, 8, 4, 2, 1, 0 };
-  gint list[32];
   GdkGLConfig *glconfig = NULL;
+  static const int buf_size_list[] = { 16, 12, 8, 4, 2, 1, 0 };
+  int list[32];
   int n = 0;
   int i;
 
@@ -288,7 +288,7 @@ gdk_gl_config_new_ci (GdkGLConfigMode mode)
 static GdkGLConfig *
 gdk_gl_config_new_rgb (GdkGLConfigMode mode)
 {
-  gint list[32];
+  int list[32];
   int n = 0;
 
   list[n++] = GDK_GL_RGBA;
@@ -409,8 +409,8 @@ gdk_gl_config_get_screen (GdkGLConfig *glconfig)
  **/
 gboolean
 gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
-                          gint         attribute,
-                          gint        *value)
+                          int          attribute,
+                          int         *value)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 

@@ -334,7 +334,7 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
  * Return value: the new #GdkGLConfig.
  **/
 GdkGLConfig *
-gdk_gl_config_new (const gint *attrib_list)
+gdk_gl_config_new (const int *attrib_list)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplX11 *impl;
@@ -371,8 +371,8 @@ gdk_gl_config_new (const gint *attrib_list)
 #ifdef GDK_MULTIHEAD_SAFE
 
 GdkGLConfig *
-gdk_gl_config_new_for_screen (GdkScreen  *screen,
-                              const gint *attrib_list)
+gdk_gl_config_new_for_screen (GdkScreen *screen,
+                              const int *attrib_list)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplX11 *impl;
@@ -479,8 +479,8 @@ gdk_x11_gl_config_get_xvinfo (GdkGLConfig *glconfig)
 
 static gboolean
 gdk_x11_gl_config_get_attrib (GdkGLConfig *glconfig,
-                              gint         attribute,
-                              gint        *value)
+                              int          attribute,
+                              int         *value)
 {
   GdkGLConfigImplX11 *impl;
   int ret;

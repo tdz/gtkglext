@@ -81,36 +81,36 @@ struct _GdkGLConfigClass
   GObjectClass parent_class;
 
   gboolean (*get_attrib) (GdkGLConfig *glconfig,
-                          gint         attribute,
-                          gint        *value);
+                          int          attribute,
+                          int         *value);
 };
 
 GType        gdk_gl_config_get_type           (void);
 
-GdkGLConfig *gdk_gl_config_new                (const gint  *attrib_list);
+GdkGLConfig *gdk_gl_config_new                (const int      *attrib_list);
 
 #ifdef GDK_MULTIHEAD_SAFE
-GdkGLConfig *gdk_gl_config_new_for_screen     (GdkScreen   *screen,
-                                               const gint  *attrib_list);
+GdkGLConfig *gdk_gl_config_new_for_screen     (GdkScreen      *screen,
+                                               const int      *attrib_list);
 #endif /* GDK_MULTIHEAD_SAFE */
 
 GdkGLConfig *gdk_gl_config_new_by_mode        (GdkGLConfigMode mode);
 
 #ifdef GDK_MULTIHEAD_SAFE
-GdkScreen   *gdk_gl_config_get_screen         (GdkGLConfig *glconfig);
+GdkScreen   *gdk_gl_config_get_screen         (GdkGLConfig    *glconfig);
 #endif /* GDK_MULTIHEAD_SAFE */
 
-gboolean     gdk_gl_config_get_attrib         (GdkGLConfig *glconfig,
-                                               gint         attribute,
-                                               gint        *value);
+gboolean     gdk_gl_config_get_attrib         (GdkGLConfig    *glconfig,
+                                               int             attribute,
+                                               int            *value);
 
-GdkColormap *gdk_gl_config_get_colormap       (GdkGLConfig *glconfig);
+GdkColormap *gdk_gl_config_get_colormap       (GdkGLConfig    *glconfig);
 
-gint         gdk_gl_config_get_depth          (GdkGLConfig *glconfig);
+gint         gdk_gl_config_get_depth          (GdkGLConfig    *glconfig);
 
-gboolean     gdk_gl_config_is_double_buffered (GdkGLConfig *glconfig);
+gboolean     gdk_gl_config_is_double_buffered (GdkGLConfig    *glconfig);
 
-gboolean     gdk_gl_config_is_stereo          (GdkGLConfig *glconfig);
+gboolean     gdk_gl_config_is_stereo          (GdkGLConfig    *glconfig);
 
 G_END_DECLS
 

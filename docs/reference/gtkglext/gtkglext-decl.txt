@@ -146,12 +146,12 @@ void
 <FUNCTION>
 <NAME>gdk_gl_config_new</NAME>
 <RETURNS>GdkGLConfig  *</RETURNS>
-const gint  *attrib_list
+const int      *attrib_list
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_new_for_screen</NAME>
 <RETURNS>GdkGLConfig  *</RETURNS>
-GdkScreen   *screen,const gint  *attrib_list
+GdkScreen      *screen,const int      *attrib_list
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_new_by_mode</NAME>
@@ -161,32 +161,32 @@ GdkGLConfigMode mode
 <FUNCTION>
 <NAME>gdk_gl_config_get_screen</NAME>
 <RETURNS>GdkScreen    *</RETURNS>
-GdkGLConfig *glconfig
+GdkGLConfig    *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_get_attrib</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig *glconfig,gint         attribute,gint        *value
+GdkGLConfig    *glconfig,int             attribute,int            *value
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_get_colormap</NAME>
 <RETURNS>GdkColormap  *</RETURNS>
-GdkGLConfig *glconfig
+GdkGLConfig    *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_get_depth</NAME>
 <RETURNS>gint  </RETURNS>
-GdkGLConfig *glconfig
+GdkGLConfig    *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_is_double_buffered</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig *glconfig
+GdkGLConfig    *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_is_stereo</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig *glconfig
+GdkGLConfig    *glconfig
 </FUNCTION>
 <STRUCT>
 <NAME>GdkGLContextClass</NAME>
