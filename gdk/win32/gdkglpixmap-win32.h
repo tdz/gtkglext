@@ -38,10 +38,10 @@ struct _GdkGLPixmapImplWin32
 {
   GdkGLPixmap parent_instance;
 
-  GdkPixmap *aux_pixmap;
+  GdkPixmap *pixmap_gl;
 
-  HBITMAP gl_hbitmap;
-  HBITMAP gdk_hbitmap;
+  int width;
+  int height;
 
   PIXELFORMATDESCRIPTOR pfd;
   int pixel_format;
@@ -49,7 +49,10 @@ struct _GdkGLPixmapImplWin32
   GdkGLConfig *glconfig;
 
   /*< private >*/
-  HDC hdc;
+  HDC hdc_gl;
+
+  HDC hdc_gdk;
+  HBITMAP hbitmap_gdk;
 
   guint is_destroyed : 1;
 };
@@ -62,7 +65,7 @@ struct _GdkGLPixmapImplWin32Class
 GType gdk_gl_pixmap_impl_win32_get_type (void);
 
 #define GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET(impl) \
-  ( (SelectObject ((impl)->hdc, (impl)->gl_hbitmap)) ? (impl)->hdc : (impl)->hdc )
+  ( (impl)->hdc_gl )
 
 #define GDK_GL_PIXMAP_IMPL_WIN32_HDC_RELEASE(impl) \
   ( (void) 0 )

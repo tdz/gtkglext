@@ -1,3 +1,17 @@
+2003-08-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/Makefile.am (gdkglext_win32_private_h_sources): 
+	* gdk/win32/gdkinternal-win32.h: Removed.
+
+	* gdk/win32/gdkglpixmap-win32.h (struct _GdkGLPixmapImplWin32): 
+	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_new) 
+	(gdk_gl_pixmap_sync_gl, gdk_gl_pixmap_sync_gdk): Don't use
+	GdkPixmapImplWin32 private data. In the latest CVS version of
+	GTK+, GdkPixmapImplWin32 data structure has been changed, so old
+	code doesn't work. New code doesn't use GdkPixmap's internal data,
+	so it works well with both GTK+ <= 2.2.2 and later.
+	(Reported by Bruce Hochstetler. Thanks Bruce.)
+
 2003-07-31  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/template.c (expose_event): Do glClear().

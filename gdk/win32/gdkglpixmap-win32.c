@@ -22,9 +22,6 @@
 #include "gdkglcontext-win32.h"
 #include "gdkglpixmap-win32.h"
 
-/* For direct access to GDK objects' internal data. */
-#include "gdkinternal-win32.h"
-
 static void gdk_gl_pixmap_sync_gl  (GdkGLPixmap *glpixmap);
 static void gdk_gl_pixmap_sync_gdk (GdkGLPixmap *glpixmap);
 
@@ -104,7 +101,7 @@ _gdk_gl_pixmap_destroy (GdkGLPixmap *glpixmap)
   if (impl->is_destroyed)
     return;
 
-  if (impl->hdc == wglGetCurrentDC ())
+  if (impl->hdc_gl == wglGetCurrentDC ())
     {
       glFinish ();
 
@@ -112,15 +109,14 @@ _gdk_gl_pixmap_destroy (GdkGLPixmap *glpixmap)
       wglMakeCurrent (NULL, NULL);
     }
 
-  /* Delete the memory DC. */
-  DeleteDC (impl->hdc);
-  impl->hdc = NULL;
+  DeleteDC (impl->hdc_gl);
+  impl->hdc_gl = NULL;
 
-  g_object_unref (G_OBJECT (impl->aux_pixmap));
-  impl->aux_pixmap = NULL;
+  DeleteDC (impl->hdc_gdk);
+  impl->hdc_gdk = NULL;
 
-  impl->gl_hbitmap = NULL;
-  impl->gdk_hbitmap = NULL;
+  g_object_unref (G_OBJECT (impl->pixmap_gl));
+  impl->pixmap_gl = NULL;
 
   impl->is_destroyed = TRUE;
 }
@@ -170,13 +166,15 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
 
   gint width, height;
   gint depth;
-  GdkPixmap *aux_pixmap = NULL;
+  GdkPixmap *pixmap_gl = NULL;
 
-  HBITMAP gl_hbitmap;
-  HBITMAP gdk_hbitmap;
-  HDC hdc = NULL;
+  HBITMAP hbitmap_gl;
+  HDC hdc_gl = NULL;
   PIXELFORMATDESCRIPTOR pfd;
   int pixel_format;
+
+  HBITMAP hbitmap_gdk;
+  HDC hdc_gdk = NULL;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_new ()"));
 
@@ -190,32 +188,26 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   gdk_drawable_get_size (GDK_DRAWABLE (pixmap), &width, &height);
   depth = gdk_drawable_get_depth (GDK_DRAWABLE (pixmap));
 
-  aux_pixmap = gdk_pixmap_new (NULL, width, height, depth);
-  if (aux_pixmap == NULL)
+  pixmap_gl = gdk_pixmap_new (NULL, width, height, depth);
+  if (pixmap_gl == NULL)
     goto FAIL;
 
-  /* Source (OpenGL) DIB */
-  gl_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (GDK_DRAWABLE (aux_pixmap));
-
-  /* Destination (GDK) DIB */
-  gdk_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (GDK_DRAWABLE (pixmap));
-
   /*
-   * Create a memory DC.
+   * Source (OpenGL) DIB
    */
 
-  hdc = CreateCompatibleDC (NULL);
-  if (hdc == NULL)
+  hbitmap_gl = (HBITMAP) gdk_win32_drawable_get_handle (GDK_DRAWABLE (pixmap_gl));
+
+  /* Create a memory DC. */
+  hdc_gl = CreateCompatibleDC (NULL);
+  if (hdc_gl == NULL)
     {
       g_warning ("cannot create a memory DC");
       goto FAIL;
     }
 
-  /*
-   * Select the bitmap.
-   */
-
-  if (SelectObject (hdc, gl_hbitmap) == NULL)
+  /* Select the bitmap. */
+  if (SelectObject (hdc_gl, hbitmap_gl) == NULL)
     {
       g_warning ("cannot select DIB");
       goto FAIL;
@@ -235,7 +227,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
 
   GDK_GL_NOTE (IMPL, g_message (" * ChoosePixelFormat ()"));
 
-  pixel_format = ChoosePixelFormat (hdc, &pfd);
+  pixel_format = ChoosePixelFormat (hdc_gl, &pfd);
   if (pixel_format == 0)
     {
       g_warning ("cannot choose pixel format");
@@ -251,9 +243,23 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
 
   GDK_GL_NOTE (IMPL, g_message (" * SetPixelFormat ()"));
 
-  if (!SetPixelFormat (hdc, pixel_format, &pfd))
+  if (!SetPixelFormat (hdc_gl, pixel_format, &pfd))
     {
       g_warning ("cannot set pixel format");
+      goto FAIL;
+    }
+
+  /*
+   * Destination (GDK) DIB
+   */
+
+  hbitmap_gdk = (HBITMAP) gdk_win32_drawable_get_handle (GDK_DRAWABLE (pixmap));
+
+  /* Create a memory DC. */
+  hdc_gdk = CreateCompatibleDC (hdc_gl);
+  if (hdc_gdk == NULL)
+    {
+      g_warning ("cannot create a memory DC");
       goto FAIL;
     }
 
@@ -268,10 +274,10 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   g_object_add_weak_pointer (G_OBJECT (glpixmap->drawable),
                              (gpointer *) &(glpixmap->drawable));
 
-  impl->aux_pixmap = aux_pixmap;
+  impl->pixmap_gl = pixmap_gl;
 
-  impl->gl_hbitmap = gl_hbitmap;
-  impl->gdk_hbitmap = gdk_hbitmap;
+  impl->width = width;
+  impl->height = height;
 
   impl->pfd = pfd;
   impl->pixel_format = pixel_format;
@@ -279,7 +285,10 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   impl->glconfig = glconfig;
   g_object_ref (G_OBJECT (impl->glconfig));
 
-  impl->hdc = hdc;
+  impl->hdc_gl = hdc_gl;
+
+  impl->hdc_gdk = hdc_gdk;
+  impl->hbitmap_gdk = hbitmap_gdk;
 
   impl->is_destroyed = FALSE;
 
@@ -287,11 +296,14 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
 
  FAIL:
 
-  if (hdc != NULL)
-    DeleteDC (hdc);
+  if (hdc_gdk != NULL)
+    DeleteDC (hdc_gdk);
 
-  if (aux_pixmap != NULL)
-    g_object_unref (G_OBJECT (aux_pixmap));
+  if (hdc_gl != NULL)
+    DeleteDC (hdc_gl);
+
+  if (pixmap_gl != NULL)
+    g_object_unref (G_OBJECT (pixmap_gl));
 
   return NULL;  
 }
@@ -300,10 +312,8 @@ static void
 gdk_gl_pixmap_sync_gl (GdkGLPixmap *glpixmap)
 {
   GdkGLPixmapImplWin32 *impl;
-  GdkImage *gl_image;
-  BITMAPINFO bmi;
-  UINT usage;
-  HBITMAP old_hbitmap;
+  int width, height;
+  HBITMAP hbitmap_old;
 
   g_return_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (glpixmap));
 
@@ -311,55 +321,34 @@ gdk_gl_pixmap_sync_gl (GdkGLPixmap *glpixmap)
 
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
 
-  /*
-   * Get OpenGL DIB info.
-   */
-
-  /* Access directly to GdkPixmap's internal image data
-     for performance reason. */
-  gl_image = ((GdkPixmapImplWin32 *) (GDK_PIXMAP_OBJECT (impl->aux_pixmap)->impl))->image;
-
-  /* See gdkpixmap-win32.c. */
-  usage = DIB_RGB_COLORS;
-  if (gl_image->depth <= 8)
-    usage = DIB_PAL_COLORS;
-
-  memset (&bmi, 0, sizeof (bmi));
-  bmi.bmiHeader.biSize = sizeof (BITMAPINFOHEADER);
-
-  GetDIBits (impl->hdc, impl->gl_hbitmap, 0, 1, NULL,
-	     (BITMAPINFO *) &bmi, usage);
+  width = impl->width;
+  height = impl->height;
 
   /*
-   * Set OpenGL DIB bits to GDK DIB.
+   * Copy OpenGL bitmap to GDK bitmap.
    */
 
-  if (SetDIBits (impl->hdc, impl->gdk_hbitmap,
-		 0, gl_image->height,
-		 gl_image->mem,
-		 (BITMAPINFO *) &bmi, usage) == 0)
-    g_warning ("cannot set DIB bits");
+  hbitmap_old = SelectObject (impl->hdc_gdk, impl->hbitmap_gdk);
+  if (hbitmap_old == NULL)
+    {
+      g_warning ("cannot select DIB");
+      return;
+    }
 
-  old_hbitmap = SelectObject (impl->hdc, impl->gdk_hbitmap);
-  if (old_hbitmap == NULL)
-    g_warning ("cannot select DIB");
+  if (!StretchBlt (impl->hdc_gdk, 0, 0,      width,  height,
+		   impl->hdc_gl,  0, height, width, -height,
+		   SRCCOPY))
+    g_warning ("StretchBlt() failed");
 
-  /*
-   * Reset selected object.
-   */
-
-  if (SelectObject (impl->hdc, old_hbitmap) == NULL)
-    g_warning ("cannot select old DIB");
+  SelectObject (impl->hdc_gdk, hbitmap_old);
 }
 
 static void
 gdk_gl_pixmap_sync_gdk (GdkGLPixmap *glpixmap)
 {
   GdkGLPixmapImplWin32 *impl;
-  GdkImage *gdk_image;
-  BITMAPINFO bmi;
-  UINT usage;
-  HBITMAP old_hbitmap;
+  int width, height;
+  HBITMAP hbitmap_old;
 
   g_return_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (glpixmap));
 
@@ -367,45 +356,26 @@ gdk_gl_pixmap_sync_gdk (GdkGLPixmap *glpixmap)
 
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
 
-  /*
-   * Get GDK DIB info.
-   */
-
-  /* Access directly to GdkPixmap's internal image data
-     for performance reason. */
-  gdk_image = ((GdkPixmapImplWin32 *) (GDK_PIXMAP_OBJECT (glpixmap->drawable)->impl))->image;
-
-  /* See gdkpixmap-win32.c. */
-  usage = DIB_RGB_COLORS;
-  if (gdk_image->depth <= 8)
-    usage = DIB_PAL_COLORS;
-
-  memset (&bmi, 0, sizeof (bmi));
-  bmi.bmiHeader.biSize = sizeof (BITMAPINFOHEADER);
-
-  GetDIBits (impl->hdc, impl->gdk_hbitmap, 0, 1, NULL,
-	     (BITMAPINFO *) &bmi, usage);
+  width = impl->width;
+  height = impl->height;
 
   /*
-   * Set GDK DIB bits to OpenGL DIB.
+   * Copy GDK bitmap to OpenGL bitmap.
    */
 
-  if (SetDIBits (impl->hdc, impl->gl_hbitmap,
-		 0, gdk_image->height,
-		 gdk_image->mem,
-		 (BITMAPINFO *) &bmi, usage) == 0)
-    g_warning ("cannot set DIB bits");
+  hbitmap_old = SelectObject (impl->hdc_gdk, impl->hbitmap_gdk);
+  if (hbitmap_old == NULL)
+    {
+      g_warning ("cannot select DIB");
+      return;
+    }
 
-  old_hbitmap = SelectObject (impl->hdc, impl->gl_hbitmap);
-  if (old_hbitmap == NULL)
-    g_warning ("cannot select DIB");
+  if (!StretchBlt (impl->hdc_gl,  0, 0,      width,  height,
+		   impl->hdc_gdk, 0, height, width, -height,
+		   SRCCOPY))
+    g_warning ("StretchBlt() failed");
 
-  /*
-   * Reset selected object.
-   */
-
-  if (SelectObject (impl->hdc, old_hbitmap) == NULL)
-    g_warning ("cannot select old DIB");
+  SelectObject (impl->hdc_gdk, hbitmap_old);
 }
 
 static gboolean

@@ -27,8 +27,7 @@ gdkglext_win32_private_h_sources = \
 	gdkglcontext-win32.h	\
 	gdkglpixmap-win32.h	\
 	gdkglwindow-win32.h	\
-	gdkglprivate-win32.h	\
-	gdkinternal-win32.h
+	gdkglprivate-win32.h
 
 gdkglext_win32_c_sources = \
 	gdkglquery-win32.c	\
