@@ -1,7 +1,7 @@
 EXPORTS
-	gdk_gl_attrib_list_none_get_type
+	gdk_gl_buffer_mask_get_type
 	gdk_gl_config_attrib_get_type
-	gdk_gl_config_attrib_value_get_type
+	gdk_gl_config_caveat_get_type
 	gdk_gl_config_error_get_type
 	gdk_gl_config_get_attrib
 	gdk_gl_config_get_colormap
@@ -39,6 +39,7 @@ EXPORTS
 	gdk_gl_draw_teapot
 	gdk_gl_draw_tetrahedron
 	gdk_gl_draw_torus
+	gdk_gl_drawable_attrib_get_type
 	gdk_gl_drawable_get_current
 	gdk_gl_drawable_get_gl_config
 	gdk_gl_drawable_get_size
@@ -48,8 +49,12 @@ EXPORTS
 	gdk_gl_drawable_is_double_buffered
 	gdk_gl_drawable_make_current
 	gdk_gl_drawable_swap_buffers
+	gdk_gl_drawable_type_get_type
+	gdk_gl_drawable_type_mask_get_type
 	gdk_gl_drawable_wait_gdk
 	gdk_gl_drawable_wait_gl
+	gdk_gl_event_mask_get_type
+	gdk_gl_event_type_get_type
 	gdk_gl_font_use_pango_font
 	gdk_gl_get_GL_3DFX_tbuffer
 	gdk_gl_get_GL_ARB_matrix_palette
@@ -1048,6 +1053,7 @@ EXPORTS
 	gdk_gl_init
 	gdk_gl_init_check
 	gdk_gl_parse_args
+	gdk_gl_pbuffer_attrib_get_type
 	gdk_gl_pixmap_get_pixmap
 	gdk_gl_pixmap_get_type
 	gdk_gl_pixmap_new
@@ -1055,7 +1061,10 @@ EXPORTS
 	gdk_gl_query_get_proc_address
 	gdk_gl_query_gl_extension
 	gdk_gl_query_version
-	gdk_gl_success_get_type
+	gdk_gl_render_type_get_type
+	gdk_gl_render_type_mask_get_type
+	gdk_gl_transparent_type_get_type
+	gdk_gl_visual_type_get_type
 	gdk_gl_window_get_type
 	gdk_gl_window_get_window
 	gdk_gl_window_new
