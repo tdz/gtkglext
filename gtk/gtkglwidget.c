@@ -31,7 +31,6 @@ typedef struct
   GdkGLContext *glcontext;
 
   gulong unrealize_handler;
-  gulong destroy_handler;
 
   guint is_realized : 1;
 
@@ -58,8 +57,6 @@ static void     gtk_gl_widget_parent_set         (GtkWidget         *widget,
 static void     gtk_gl_widget_style_set          (GtkWidget         *widget,
                                                   GtkStyle          *previous_style,
                                                   gpointer           user_data);
-static void     gtk_gl_widget_destroy_gl_context (GtkWidget         *widget,
-                                                  GLWidgetPrivate   *private);
 
 static void     gl_widget_private_destroy        (GLWidgetPrivate   *private);
 
@@ -142,6 +139,16 @@ gtk_gl_widget_unrealize (GtkWidget       *widget,
                          GLWidgetPrivate *private)
 {
   GTK_GL_NOTE_FUNC_PRIVATE ();
+
+  /*
+   * Destroy OpenGL rendering context.
+   */
+
+  if (private->glcontext != NULL)
+    {
+      gdk_gl_context_destroy (private->glcontext);
+      private->glcontext = NULL;
+    }
 
   /*
    * Remove OpenGL-capability from widget->window.
@@ -328,7 +335,6 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   private->glcontext = NULL;
 
   private->unrealize_handler = 0;
-  private->destroy_handler = 0;
 
   private->is_realized = FALSE;
 
@@ -449,23 +455,6 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
   return glcontext;
 }
 
-static void
-gtk_gl_widget_destroy_gl_context (GtkWidget       *widget,
-                                  GLWidgetPrivate *private)
-{
-  GTK_GL_NOTE_FUNC_PRIVATE ();
-
-  /*
-   * Destroy OpenGL rendering context.
-   */
-
-  if (private->glcontext != NULL)
-    {
-      gdk_gl_context_destroy (private->glcontext);
-      private->glcontext = NULL;
-    }
-}
-
 /**
  * gtk_widget_get_gl_context:
  * @widget: a #GtkWidget.
@@ -492,23 +481,10 @@ gtk_widget_get_gl_context (GtkWidget *widget)
     return NULL;
 
   if (private->glcontext == NULL)
-    {
-      private->glcontext = gtk_widget_create_gl_context (widget,
-                                                         private->share_list,
-                                                         private->direct,
-                                                         private->render_type);
-
-      /*
-       * Destroy the OpenGL-capable widget on quit
-       * in order to destroy the OpenGL rendering context explicitly.
-       */
-
-      private->destroy_handler = g_signal_connect (G_OBJECT (widget), "destroy",
-                                                   G_CALLBACK (gtk_gl_widget_destroy_gl_context),
-                                                   private);
-
-      gtk_quit_add_destroy (gtk_main_level () + 1, GTK_OBJECT (widget));
-    }
+    private->glcontext = gtk_widget_create_gl_context (widget,
+                                                       private->share_list,
+                                                       private->direct,
+                                                       private->render_type);
 
   return private->glcontext;
 }
