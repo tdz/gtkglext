@@ -114,7 +114,7 @@ gdk_gl_query_get_proc_address (const char *proc_name)
   typedef GdkGLProc (*__glXGetProcAddressFunc) (const GLubyte *);
   static __glXGetProcAddressFunc glx_get_proc_address = NULL;
   static gboolean init_glx_get_proc_address = FALSE;
-  GModule *module;
+  static GModule *main_module = NULL;
   GdkGLProc proc_address = NULL;
 
   if (!init_glx_get_proc_address)
@@ -123,19 +123,20 @@ gdk_gl_query_get_proc_address (const char *proc_name)
        * Look up glXGetProcAddress () function.
        */
 
-      module = g_module_open (NULL, G_MODULE_BIND_LAZY);
-      g_return_val_if_fail (module != NULL, NULL);
+      main_module = g_module_open (NULL, G_MODULE_BIND_LAZY);
+      g_return_val_if_fail (main_module != NULL, NULL);
 
-      g_module_symbol (module, "glXGetProcAddressARB",
+      g_module_symbol (main_module, "glXGetProcAddressARB",
                        (gpointer) &glx_get_proc_address);
       if (glx_get_proc_address == NULL)
-        g_module_symbol (module, "glXGetProcAddressEXT",
+        g_module_symbol (main_module, "glXGetProcAddressEXT",
                          (gpointer) &glx_get_proc_address);
       if (glx_get_proc_address == NULL)
-        g_module_symbol (module, "glXGetProcAddress",
+        g_module_symbol (main_module, "glXGetProcAddress",
                          (gpointer) &glx_get_proc_address);
 
-      g_module_close (module);
+      /* main_module is resident */
+      /* g_module_close (main_module); */
 
       GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () - %s",
                                     (glx_get_proc_address == NULL) ? "not supported" : "supported"));
@@ -146,15 +147,8 @@ gdk_gl_query_get_proc_address (const char *proc_name)
   if (glx_get_proc_address != NULL)
     proc_address = glx_get_proc_address (proc_name);
 
-  if (proc_address == NULL)
-    {
-      module = g_module_open (NULL, G_MODULE_BIND_LAZY);
-      g_return_val_if_fail (module != NULL, NULL);
-
-      g_module_symbol (module, proc_name, (gpointer) &proc_address);
-
-      g_module_close (module);
-    }
+  if (proc_address == NULL && main_module != NULL)
+    g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
 
   return proc_address;
 }
