@@ -32,7 +32,7 @@ static PangoContext *ft2_context = NULL;
 
 typedef struct _TextTexture {
   GLuint  name;
-  GLint   size;
+  GLsizei size;
   GLvoid *texels;
 } TextTexture;
 
@@ -262,7 +262,7 @@ configure_event (GtkWidget         *widget,
   gluPerspective (2.0 * FOVY_2,
                   (GLfloat) w / (GLfloat) h,
                   Z_NEAR,
-                  2.0 * Z_NEAR);
+                  4.0 * Z_NEAR);
 
   glMatrixMode (GL_MODELVIEW);
   glLoadIdentity ();
@@ -278,10 +278,11 @@ configure_event (GtkWidget         *widget,
 }
 
 #define ANGLE   60.0
-#define TANGENT 1.732051
+/* tan (30.0 * PI / 180.0) */
+#define TANGENT 0.577350
 
-#define TEXT_Z_NEAR  1.0
-#define TEXT_Z_FAR  -1.5
+#define TEXT_Z_NEAR  2.0
+#define TEXT_Z_FAR  -4.0
 #define TEXT_Z_DIFF  0.001
 
 static GLfloat text_z = TEXT_Z_NEAR;
