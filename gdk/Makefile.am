@@ -114,27 +114,27 @@ INCLUDES = $(common_includes)
 lib_LTLIBRARIES = $(gdkglext_targetlib)
 
 EXTRA_LTLIBRARIES = \
-	libgdkglext-x11-@API_MJ_LT@.@API_MI_LT@.la	\
-	libgdkglext-win32-@API_MJ_LT@.@API_MI_LT@.la
+	libgdkglext-x11-@API_MJ@.@API_MI@.la	\
+	libgdkglext-win32-@API_MJ@.@API_MI@.la
 
-libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
+libgdkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = \
 	$(gdkglext_c_sources)	\
 	gdkglenumtypes.c
-libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
+libgdkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = \
 	$(common_ldflags)
-libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
+libgdkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = \
 	x11/libgdkglext-x11.la	\
 	$(common_libadd)
 
-libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
+libgdkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = \
 	$(gdkglext_c_sources)	\
 	gdkglenumtypes.c
-libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
+libgdkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = \
 	$(common_ldflags)
-libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
+libgdkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = \
 	win32/libgdkglext-win32.la	\
 	$(common_libadd)
-libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES = \
+libgdkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = \
 	$(gdkglext_def)
 
 MAINTAINERCLEANFILES = gdkglenumtypes.h stamp-gdkglenumtypes.h
@@ -145,7 +145,7 @@ EXTRA_HEADERS =
 BUILT_SOURCES = @REBUILD@ gdkglenumtypes.h stamp-gdkglext-config.h
 
 # Generate built header without using automake BUILT_SOURCES
-$(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS): gdkglenumtypes.h
+$(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS): gdkglenumtypes.h
 
 $(srcdir)/gdkglenumtypes.h: stamp-gdkglenumtypes.h
 	@true

@@ -66,8 +66,8 @@ EXEEXT = @EXEEXT@
 OBJEXT = @OBJEXT@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 AMTAR = @AMTAR@
-API_MI_LT = @API_MI_LT@
-API_MJ_LT = @API_MJ_LT@
+API_MI = @API_MI@
+API_MJ = @API_MJ@
 AS = @AS@
 AWK = @AWK@
 CC = @CC@
@@ -96,7 +96,6 @@ GTKGLEXT_API_MAJOR_VERSION = @GTKGLEXT_API_MAJOR_VERSION@
 GTKGLEXT_API_MINOR_VERSION = @GTKGLEXT_API_MINOR_VERSION@
 GTKGLEXT_API_VERSION = @GTKGLEXT_API_VERSION@
 GTKGLEXT_BINARY_AGE = @GTKGLEXT_BINARY_AGE@
-GTKGLEXT_BINARY_VERSION = @GTKGLEXT_BINARY_VERSION@
 GTKGLEXT_DEBUG_FLAGS = @GTKGLEXT_DEBUG_FLAGS@
 GTKGLEXT_DEP_CFLAGS = @GTKGLEXT_DEP_CFLAGS@
 GTKGLEXT_DEP_LIBS = @GTKGLEXT_DEP_LIBS@
@@ -236,34 +235,34 @@ INCLUDES = $(common_includes)
 lib_LTLIBRARIES = $(gdkglext_targetlib)
 
 EXTRA_LTLIBRARIES = \
-	libgdkglext-x11-@API_MJ_LT@.@API_MI_LT@.la	\
-	libgdkglext-win32-@API_MJ_LT@.@API_MI_LT@.la
+	libgdkglext-x11-@API_MJ@.@API_MI@.la	\
+	libgdkglext-win32-@API_MJ@.@API_MI@.la
 
 
-libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
+libgdkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = \
 	$(gdkglext_c_sources)	\
 	gdkglenumtypes.c
 
-libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
+libgdkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = \
 	$(common_ldflags)
 
-libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
+libgdkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = \
 	x11/libgdkglext-x11.la	\
 	$(common_libadd)
 
 
-libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
+libgdkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = \
 	$(gdkglext_c_sources)	\
 	gdkglenumtypes.c
 
-libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
+libgdkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = \
 	$(common_ldflags)
 
-libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
+libgdkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = \
 	win32/libgdkglext-win32.la	\
 	$(common_libadd)
 
-libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES = \
+libgdkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = \
 	$(gdkglext_def)
 
 
@@ -293,16 +292,16 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 am__objects_1 = gdkglversion.lo gdkglinit.lo gdkglquery.lo \
 	gdkglconfig.lo gdkglcontext.lo gdkgldrawable.lo gdkglpixmap.lo \
 	gdkglwindow.lo gdkglshapes.lo gdkglglext.lo
-am_libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
-	$(am__objects_1) gdkglenumtypes.lo
-libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
-	$(am_libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS)
-libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES = \
-	x11/libgdkglext-x11.la
-am_libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = $(am__objects_1) \
+am_libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS = $(am__objects_1) \
 	gdkglenumtypes.lo
-libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
-	$(am_libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS)
+libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS = \
+	$(am_libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS)
+libgdkglext_x11_@API_MJ@_@API_MI@_la_DEPENDENCIES = \
+	x11/libgdkglext-x11.la
+am_libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS = $(am__objects_1) \
+	gdkglenumtypes.lo
+libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS = \
+	$(am_libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS)
 
 DEFS = @DEFS@
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
@@ -330,8 +329,8 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
-DIST_SOURCES = $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES) \
-	$(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES)
+DIST_SOURCES = $(libgdkglext_win32_@API_MJ@_@API_MI@_la_SOURCES) \
+	$(libgdkglext_x11_@API_MJ@_@API_MI@_la_SOURCES)
 DATA = $(noinst_DATA)
 
 HEADERS = $(gdkglextinclude_HEADERS)
@@ -343,7 +342,7 @@ RECURSIVE_TARGETS = info-recursive dvi-recursive install-info-recursive \
 	uninstall-recursive check-recursive installcheck-recursive
 DIST_COMMON = $(gdkglextinclude_HEADERS) Makefile.am Makefile.in \
 	gdkglversion.h.in
-SOURCES = $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES) $(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES)
+SOURCES = $(libgdkglext_win32_@API_MJ@_@API_MI@_la_SOURCES) $(libgdkglext_x11_@API_MJ@_@API_MI@_la_SOURCES)
 
 all: $(BUILT_SOURCES)
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
@@ -385,10 +384,10 @@ clean-libLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-libgdkglext-win32-@API_MJ_LT@.@API_MI_LT@.la: $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES) 
-	$(LINK)  $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS) $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LIBADD) $(LIBS)
-libgdkglext-x11-@API_MJ_LT@.@API_MI_LT@.la: $(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES) 
-	$(LINK)  $(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS) $(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LIBADD) $(LIBS)
+libgdkglext-win32-@API_MJ@.@API_MI@.la: $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES) 
+	$(LINK)  $(libgdkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_LIBADD) $(LIBS)
+libgdkglext-x11-@API_MJ@.@API_MI@.la: $(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_x11_@API_MJ@_@API_MI@_la_DEPENDENCIES) 
+	$(LINK)  $(libgdkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS) $(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_x11_@API_MJ@_@API_MI@_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT) core *.core
@@ -707,7 +706,7 @@ uninstall-info: uninstall-info-recursive
 @MS_LIB_AVAILABLE_FALSE@uninstall-ms-lib:
 
 # Generate built header without using automake BUILT_SOURCES
-$(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS): gdkglenumtypes.h
+$(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS): gdkglenumtypes.h
 
 $(srcdir)/gdkglenumtypes.h: stamp-gdkglenumtypes.h
 	@true

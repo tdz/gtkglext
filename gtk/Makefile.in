@@ -66,8 +66,8 @@ EXEEXT = @EXEEXT@
 OBJEXT = @OBJEXT@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 AMTAR = @AMTAR@
-API_MI_LT = @API_MI_LT@
-API_MJ_LT = @API_MJ_LT@
+API_MI = @API_MI@
+API_MJ = @API_MJ@
 AS = @AS@
 AWK = @AWK@
 CC = @CC@
@@ -96,7 +96,6 @@ GTKGLEXT_API_MAJOR_VERSION = @GTKGLEXT_API_MAJOR_VERSION@
 GTKGLEXT_API_MINOR_VERSION = @GTKGLEXT_API_MINOR_VERSION@
 GTKGLEXT_API_VERSION = @GTKGLEXT_API_VERSION@
 GTKGLEXT_BINARY_AGE = @GTKGLEXT_BINARY_AGE@
-GTKGLEXT_BINARY_VERSION = @GTKGLEXT_BINARY_VERSION@
 GTKGLEXT_DEBUG_FLAGS = @GTKGLEXT_DEBUG_FLAGS@
 GTKGLEXT_DEP_CFLAGS = @GTKGLEXT_DEP_CFLAGS@
 GTKGLEXT_DEP_LIBS = @GTKGLEXT_DEP_LIBS@
@@ -218,30 +217,30 @@ INCLUDES = $(common_includes)
 lib_LTLIBRARIES = $(gtkglext_targetlib)
 
 EXTRA_LTLIBRARIES = \
-	libgtkglext-x11-@API_MJ_LT@.@API_MI_LT@.la	\
-	libgtkglext-win32-@API_MJ_LT@.@API_MI_LT@.la
+	libgtkglext-x11-@API_MJ@.@API_MI@.la	\
+	libgtkglext-win32-@API_MJ@.@API_MI@.la
 
 
-libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
+libgtkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = \
 	$(gtkglext_c_sources)
 
-libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
+libgtkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = \
 	$(common_ldflags)
 
-libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
+libgtkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = \
 	$(common_libadd)
 
 
-libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
+libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = \
 	$(gtkglext_c_sources)
 
-libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
+libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = \
 	$(common_ldflags)
 
-libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
+libgtkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = \
 	$(common_libadd)
 
-libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES = \
+libgtkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = \
 	$(gtkglext_def)
 
 
@@ -259,15 +258,14 @@ CONFIG_CLEAN_FILES = gtkglversion.h
 LTLIBRARIES = $(lib_LTLIBRARIES)
 
 am__objects_1 = gtkglversion.lo gtkglinit.lo gtkglwidget.lo
-am_libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
-	$(am__objects_1)
-libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
-	$(am_libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS)
-libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES = \
+am_libgtkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS = $(am__objects_1)
+libgtkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS = \
+	$(am_libgtkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS)
+libgtkglext_x11_@API_MJ@_@API_MI@_la_DEPENDENCIES = \
 	$(top_builddir)/gdk/$(gdkglext_targetlib)
-am_libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = $(am__objects_1)
-libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
-	$(am_libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS)
+am_libgtkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS = $(am__objects_1)
+libgtkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS = \
+	$(am_libgtkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS)
 
 DEFS = @DEFS@
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
@@ -287,15 +285,15 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
-DIST_SOURCES = $(libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES) \
-	$(libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES)
+DIST_SOURCES = $(libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES) \
+	$(libgtkglext_x11_@API_MJ@_@API_MI@_la_SOURCES)
 DATA = $(noinst_DATA)
 
 HEADERS = $(gtkglextinclude_HEADERS)
 
 DIST_COMMON = $(gtkglextinclude_HEADERS) Makefile.am Makefile.in \
 	gtkglversion.h.in
-SOURCES = $(libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES) $(libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES)
+SOURCES = $(libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES) $(libgtkglext_x11_@API_MJ@_@API_MI@_la_SOURCES)
 
 all: all-am
 
@@ -336,10 +334,10 @@ clean-libLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-libgtkglext-win32-@API_MJ_LT@.@API_MI_LT@.la: $(libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES) 
-	$(LINK)  $(libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS) $(libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LIBADD) $(LIBS)
-libgtkglext-x11-@API_MJ_LT@.@API_MI_LT@.la: $(libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES) 
-	$(LINK)  $(libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS) $(libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LIBADD) $(LIBS)
+libgtkglext-win32-@API_MJ@.@API_MI@.la: $(libgtkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS) $(libgtkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES) 
+	$(LINK)  $(libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS) $(libgtkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS) $(libgtkglext_win32_@API_MJ@_@API_MI@_la_LIBADD) $(LIBS)
+libgtkglext-x11-@API_MJ@.@API_MI@.la: $(libgtkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgtkglext_x11_@API_MJ@_@API_MI@_la_DEPENDENCIES) 
+	$(LINK)  $(libgtkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS) $(libgtkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgtkglext_x11_@API_MJ@_@API_MI@_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT) core *.core

@@ -93,23 +93,23 @@ INCLUDES = $(common_includes)
 lib_LTLIBRARIES = $(gtkglext_targetlib)
 
 EXTRA_LTLIBRARIES = \
-	libgtkglext-x11-@API_MJ_LT@.@API_MI_LT@.la	\
-	libgtkglext-win32-@API_MJ_LT@.@API_MI_LT@.la
+	libgtkglext-x11-@API_MJ@.@API_MI@.la	\
+	libgtkglext-win32-@API_MJ@.@API_MI@.la
 
-libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
+libgtkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = \
 	$(gtkglext_c_sources)
-libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
+libgtkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = \
 	$(common_ldflags)
-libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
+libgtkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = \
 	$(common_libadd)
 
-libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
+libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = \
 	$(gtkglext_c_sources)
-libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
+libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = \
 	$(common_ldflags)
-libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
+libgtkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = \
 	$(common_libadd)
-libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES = \
+libgtkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = \
 	$(gtkglext_def)
 
 MAINTAINERCLEANFILES =
