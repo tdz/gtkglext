@@ -1,5 +1,9 @@
 2003-01-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglconfig.h (GdkGLConfigMode): Removed
+	GDK_GL_MODE_LUMINANCE bit mask (it will not be supported in
+	gtkglext-1.0).
+
 	* examples/coolwave.c (realize): 
 	* gdk/gdkglglext.c: 
 	* gdk/win32/gdkglwglext.c: 

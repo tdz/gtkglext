@@ -28,13 +28,12 @@ and is afterwards used in #gtk_widget_set_gl_capability.
 @GDK_GL_MODE_INDEX: 
 @GDK_GL_MODE_SINGLE: 
 @GDK_GL_MODE_DOUBLE: 
-@GDK_GL_MODE_ACCUM: 
+@GDK_GL_MODE_STEREO: 
 @GDK_GL_MODE_ALPHA: 
 @GDK_GL_MODE_DEPTH: 
 @GDK_GL_MODE_STENCIL: 
-@GDK_GL_MODE_STEREO: 
+@GDK_GL_MODE_ACCUM: 
 @GDK_GL_MODE_MULTISAMPLE: 
-@GDK_GL_MODE_LUMINANCE: 
 
 <!-- ##### STRUCT GdkGLConfig ##### -->
 <para>
