@@ -412,10 +412,11 @@ button_press_event (GtkWidget      *widget,
       beginY = event->y;
       return TRUE;
     }
- 
+
   if (event->button == 2)
     {
-      /*** Fill in the details here. ***/
+      beginX = event->x;
+      beginY = event->y;
       return TRUE;
     }
 
