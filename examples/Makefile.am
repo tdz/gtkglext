@@ -35,7 +35,10 @@ common_programs = \
 	logo		\
 	gears		\
 	multiarb	\
-	viewlw
+	viewlw		\
+	rotating-square	\
+	coolwave	\
+	template
 
 x11_programs = \
 	glxinfo
@@ -90,6 +93,18 @@ multiarb_LDADD = $(LDADDS)
 viewlw_SOURCES = viewlw.c lw.h lw.c trackball.h trackball.c
 viewlw_DEPENDENCIES = $(DEPS)
 viewlw_LDADD = $(LDADDS)
+
+rotating_square_SOURCES = rotating-square.c
+rotating_square_DEPENDENCIES = $(DEPS)
+rotating_square_LDADD = $(LDADDS)
+
+coolwave_SOURCES = coolwave.c
+coolwave_DEPENDENCIES = $(DEPS)
+coolwave_LDADD = $(LDADDS)
+
+template_SOURCES = template.c
+template_DEPENDENCIES = $(DEPS)
+template_LDADD = $(LDADDS)
 
 glxinfo_SOURCES = glxinfo.c
 glxinfo_DEPENDENCIES = $(DEPS)

@@ -1,3 +1,10 @@
+2002-12-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/rotating-square.c: 
+	* examples/coolwave.c: 
+	* examples/template.c: Added new useful demo programs written by
+	Alif Wahid. Thank you, Alif ;-)
+
 2002-12-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/readtex.[ch]: 
