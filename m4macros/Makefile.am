@@ -16,10 +16,3 @@ $(m4data_DATA): $(top_builddir)/config.status
 
 DISTCLEANFILES = gtkglext-$(API_VER).m4
 
-.PHONY: files
-
-files:
-	@files=`ls $(DISTFILES) 2> /dev/null `; for p in $$files; do \
-	  echo $$p; \
-	done
-

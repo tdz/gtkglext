@@ -1,5 +1,17 @@
 2003-04-17  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* Makefile.am: 
+	* gdk/Makefile.am: 
+	* gdk/GL/Makefile.am: 
+	* gdk/x11/Makefile.am: 
+	* gdk/win32/Makefile.am: 
+	* gtk/Makefile.am: 
+	* m4macros/Makefile.am: 
+	* docs/Makefile.am: 
+	* docs/reference/Makefile.am: 
+	* docs/reference/gtkglext/Makefile.am: 
+	* examples/Makefile.am: Removed 'files' target which is not used.
+
 	* Makefile.am ($(pkgconfig_DATA)): 
 	* m4macros/Makefile.am ($(m4data_DATA)): 
 	* gdk/Makefile.am (stamp-gdkglext-config-h): Changed to use
@@ -9,8 +21,7 @@
 
 	* examples/pixmap-mixed.c (configure_event): 
 	* examples/pixmap.c (configure_event): Dan't call gtk_main_quit()
-	and simply exit if gtk_main_level() == 0 when context
-	instantiation fails.
+	if gtk_main_level() == 0 when context instantiation fails.
 
 2003-04-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 

@@ -53,10 +53,3 @@ noinst_LTLIBRARIES = libgdkglext-win32.la
 
 libgdkglext_win32_la_SOURCES = $(gdkglext_win32_sources)
 
-.PHONY: files
-
-files:
-	@files=`ls $(DISTFILES) 2> /dev/null `; for p in $$files; do \
-	  echo $$p; \
-	done
-

@@ -207,10 +207,5 @@ dist-hook: dist-check-gtkdoc dist-hook-local
 	-cp $(srcdir)/xml/*.xml $(distdir)/xml
 	-cp $(srcdir)/html/* $(distdir)/html
 
-.PHONY : dist-hook-local files
-
-files:
-	@files=`ls $(DISTFILES) 2> /dev/null `; for p in $$files; do \
-	  echo $$p; \
-	done
+.PHONY : dist-hook-local
 

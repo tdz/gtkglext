@@ -12,10 +12,3 @@ gdkglext_gl_public_h_sources = \
 gdkglextglincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk/GL
 gdkglextglinclude_HEADERS = $(gdkglext_gl_public_h_sources)
 
-.PHONY: files
-
-files:
-	@files=`ls $(DISTFILES) 2> /dev/null `; for p in $$files; do \
-	  echo $$p; \
-	done
-

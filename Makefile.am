@@ -61,19 +61,8 @@ DISTCLEANFILES = \
 	gtkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc	\
 	gtkglext-$(API_VER)-uninstalled.pc
 
-.PHONY: examples files
+.PHONY: examples
 
 examples: all
 	(cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) examples)
-
-files:
-	@files=`ls $(DISTFILES) 2> /dev/null `; for p in $$files; do \
-	  echo $$p; \
-	done
-	@for subdir in $(SUBDIRS); do \
-	  files=`cd $$subdir; $(MAKE) files | grep -v "make\[[1-9]\]"`; \
-	  for file in $$files; do \
-	    echo $$subdir/$$file; \
-	  done; \
-	done
 

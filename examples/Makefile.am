@@ -131,15 +131,10 @@ wglinfo_DEPENDENCIES = $(DEPS)
 wglinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS)
 
 
-.PHONY: examples files
+.PHONY: examples
 
 examples: $(EXTRA_PROGRAMS)
 
 clean-local:
 	-rm -f $(EXTRA_PROGRAMS)
-
-files:
-	@files=`ls $(DISTFILES) 2> /dev/null `; for p in $$files; do \
-	  echo $$p; \
-	done
 
