@@ -138,7 +138,8 @@ EXTRA_DIST = \
 	gtkglext.pc.in			\
 	gdkglext-uninstalled.pc.in	\
 	gtkglext-uninstalled.pc.in	\
-	gtkglext.spec.in
+	gtkglext.spec.in		\
+	gtkglext.spec
 
 
 PCFILE_EXT = @gdktarget@-@GTKGLEXT_API_VERSION@

@@ -99,7 +99,7 @@ init (GtkWidget *widget,
 
   font_height = pango_font_metrics_get_ascent (font_metrics) +
                 pango_font_metrics_get_descent (font_metrics);
-  font_height = PANGO_PIXELS(font_height);
+  font_height = PANGO_PIXELS (font_height);
 
   pango_font_description_free (font_desc);
   pango_font_metrics_unref (font_metrics);
