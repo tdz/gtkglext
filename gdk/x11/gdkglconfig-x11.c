@@ -139,7 +139,6 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
 
   if (is_mesa_glx)
     {
-
       if (xa_hp_cr_maps == -1) {
         xa_hp_cr_maps = XInternAtom (xdisplay, "_HP_RGB_SMOOTH_MAP_LIST", True);
       }
@@ -148,6 +147,9 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
           xvinfo->visual->class == TrueColor &&
           xvinfo->depth == 8)
         {
+          GDK_GL_NOTE (MISC,
+            g_message (" -- Try to find a standard RGB colormap with HP Color Recovery"));
+
           status = XGetRGBColormaps (xdisplay, xroot_window,
                                      &standard_cmaps, &num_cmaps,
                                      xa_hp_cr_maps);
@@ -166,7 +168,8 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
 
           if (xcolormap != None)
             {
-              GDK_GL_NOTE (MISC, g_message (" -- Colormap: standard RGB for HP Color Recovery"));
+              GDK_GL_NOTE (MISC,
+                g_message (" -- Colormap: standard RGB with HP Color Recovery"));
 
               visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
               return gdk_x11_colormap_foreign_new (visual, xcolormap);
@@ -189,34 +192,40 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
    * this bug in Solaris 2.6.
    */
 
-  status = XmuLookupStandardColormap (xdisplay, screen_num,
-                                      xvinfo->visualid, xvinfo->depth,
-                                      XA_RGB_DEFAULT_MAP,
-                                      False, True);
-  if (status)
+  if (!_gdk_gl_config_no_standard_colormap)
     {
-      status = XGetRGBColormaps (xdisplay, xroot_window,
-                                 &standard_cmaps, &num_cmaps,
-                                 XA_RGB_DEFAULT_MAP);
+      GDK_GL_NOTE (MISC,
+        g_message (" -- Try to find a standard RGB colormap"));
+
+      status = XmuLookupStandardColormap (xdisplay, screen_num,
+                                          xvinfo->visualid, xvinfo->depth,
+                                          XA_RGB_DEFAULT_MAP,
+                                          False, True);
       if (status)
         {
-          for (i = 0; i < num_cmaps; i++)
+          status = XGetRGBColormaps (xdisplay, xroot_window,
+                                     &standard_cmaps, &num_cmaps,
+                                     XA_RGB_DEFAULT_MAP);
+          if (status)
             {
-              if (standard_cmaps[i].visualid == xvinfo->visualid)
+              for (i = 0; i < num_cmaps; i++)
                 {
-                  xcolormap = standard_cmaps[i].colormap;
-                  break;
+                  if (standard_cmaps[i].visualid == xvinfo->visualid)
+                    {
+                      xcolormap = standard_cmaps[i].colormap;
+                      break;
+                    }
                 }
+              XFree (standard_cmaps);
             }
-          XFree (standard_cmaps);
-        }
 
-      if (xcolormap != None)
-        {
-          GDK_GL_NOTE (MISC, g_message (" -- Colormap: standard RGB"));
+          if (xcolormap != None)
+            {
+              GDK_GL_NOTE (MISC, g_message (" -- Colormap: standard RGB"));
 
-          visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
-          return gdk_x11_colormap_foreign_new (visual, xcolormap);
+              visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
+              return gdk_x11_colormap_foreign_new (visual, xcolormap);
+            }
         }
     }
 

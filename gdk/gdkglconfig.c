@@ -23,6 +23,8 @@
 #include <gdk/gdkscreen.h>
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
+gboolean _gdk_gl_config_no_standard_colormap = FALSE;
+
 static void gdk_gl_config_class_init (GdkGLConfigClass *klass);
 static void gdk_gl_config_finalize   (GObject          *object);
 

@@ -45,6 +45,8 @@ void _gdk_gl_window_get_size (GdkGLDrawable *gldrawable,
 
 /* Internal globals */
 
+extern gboolean _gdk_gl_config_no_standard_colormap;
+
 extern gboolean _gdk_gl_context_force_indirect;
 
 G_END_DECLS

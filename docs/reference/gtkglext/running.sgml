@@ -64,6 +64,20 @@ The following options are really used by GdkGLExt library.
 </para>
 
 <formalpara>
+<title><systemitem>--gdk-gl-no-standard-colormap</systemitem></title>
+
+<para>
+This option disables GdkGLExt library to find a standard RGB colormap
+using XmuLookupStandardColormap(). If your application gets a BadColor
+X Window System error, try this option.
+On Solaris 2.4 and 2.5, they have a bug in XmuLookupStandardColormap()
+implementation. If your application gets a BadMatch X Window System
+error from XCreateWindow(), pass this option to avoid using broken
+XmuLookupStandardColormap(). Sun fixed this bug in Solaris 2.6.
+</para>
+</formalpara>
+
+<formalpara>
 <title><systemitem>--gdk-gl-force-indirect</systemitem></title>
 
 <para>
@@ -136,6 +150,22 @@ GtkGLExt inspects the following environment variables.
     </varlistentry>
   </variablelist>
   The special value <literal>all</literal> can be used to turn on all debug options.
+  </para>
+</formalpara>
+
+<formalpara>
+  <title><envar>GDK_GL_NO_STANDARD_COLORMAP</envar></title>
+
+  <para>
+    If this variable is set to 1, GdkGLExt library doesn't try to
+    find a standard RGB colormap using XmuLookupStandardColormap().
+    If your application gets a BadColor X Window System error,
+    try to set this environment variable.
+    On Solaris 2.4 and 2.5, they have a bug in XmuLookupStandardColormap()
+    implementation. If your application gets a BadMatch X Window
+    System error from XCreateWindow(), set this environment variable
+    to avoid using broken XmuLookupStandardColormap(). Sun fixed this
+    bug in Solaris 2.6.
   </para>
 </formalpara>
 

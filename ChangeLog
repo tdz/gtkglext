@@ -1,5 +1,19 @@
 2003-05-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_get_std_rgb_colormap): 
+	If _gdk_gl_config_no_standard_colormap is TRUE, don't try to find
+	a standard RGB colormap.
+
+	* gdk/gdkglprivate.h: 
+	* gdk/gdkglconfig.c: Added _gdk_gl_config_no_standard_colormap
+	global variable.
+
+	* gdk/gdkglinit.c (gdk_gl_parse_args): Added
+	GDK_GL_NO_STANDARD_COLORMAP environment variable and
+	--gdk-gl-no-standard-colormap option. These disable GdkGLExt
+	library to find a standard RGB colormap using
+	XmuLookupStandardColormap().
+
 	* gdk/x11/gdkglcontext-x11.c (_gdk_x11_gl_context_new): 
 	If _gdk_gl_context_force_indirect flag is set TRUE, creates
 	indirect rendering context.
