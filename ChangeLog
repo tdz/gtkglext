@@ -1,5 +1,9 @@
 2003-07-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglglxext.[ch]: Updated.
+
+	* gdk/GL/glxext-extra.h: Added GLX_MESA_agp_offset extension.
+
 	* gdk/gdkglglext.h: 
 	* gdk/x11/gdkglglxext.h: 
 	* gdk/win32/gdkglwglext.h: Updated.

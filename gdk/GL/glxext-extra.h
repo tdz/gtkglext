@@ -67,6 +67,14 @@ extern "C" {
  * MESA
  */
 
+#ifndef GLX_MESA_agp_offset
+#define GLX_MESA_agp_offset 1
+#ifdef GLX_GLXEXT_PROTOTYPES
+extern GLuint glXGetAGPOffsetMESA (const GLvoid *);
+#endif /* GLX_GLXEXT_PROTOTYPES */
+typedef GLuint ( * PFNGLXGETAGPOFFSETMESAPROC) (const GLvoid *pointer);
+#endif
+
 /*
  * NV
  */

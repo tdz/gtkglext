@@ -834,6 +834,27 @@ struct _GdkGL_GLX_OML_sync_control
 GdkGL_GLX_OML_sync_control *gdk_gl_get_GLX_OML_sync_control (GdkGLConfig *glconfig);
 
 /*
+ * GLX_MESA_agp_offset
+ */
+
+/* glXGetAGPOffsetMESA */
+typedef GLuint ( * GdkGLProc_glXGetAGPOffsetMESA) (const GLvoid *pointer);
+GdkGLProc    gdk_gl_get_glXGetAGPOffsetMESA (void);
+#define      gdk_gl_glXGetAGPOffsetMESA(proc, pointer) \
+  ( ((GdkGLProc_glXGetAGPOffsetMESA) (proc)) (pointer) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GLX_MESA_agp_offset GdkGL_GLX_MESA_agp_offset;
+
+struct _GdkGL_GLX_MESA_agp_offset
+{
+  GdkGLProc_glXGetAGPOffsetMESA glXGetAGPOffsetMESA;
+};
+
+GdkGL_GLX_MESA_agp_offset *gdk_gl_get_GLX_MESA_agp_offset (GdkGLConfig *glconfig);
+
+/*
  * GLX_NV_vertex_array_range
  */
 

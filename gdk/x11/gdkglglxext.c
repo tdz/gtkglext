@@ -1766,6 +1766,55 @@ gdk_gl_get_GLX_OML_sync_control (GdkGLConfig *glconfig)
 }
 
 /*
+ * GLX_MESA_agp_offset
+ */
+
+static GdkGL_GLX_MESA_agp_offset _procs_GLX_MESA_agp_offset = {
+  (GdkGLProc_glXGetAGPOffsetMESA) -1
+};
+
+/* glXGetAGPOffsetMESA */
+GdkGLProc
+gdk_gl_get_glXGetAGPOffsetMESA (void)
+{
+  if (_procs_GLX_MESA_agp_offset.glXGetAGPOffsetMESA == (GdkGLProc_glXGetAGPOffsetMESA) -1)
+    _procs_GLX_MESA_agp_offset.glXGetAGPOffsetMESA =
+      (GdkGLProc_glXGetAGPOffsetMESA) gdk_gl_get_proc_address ("glXGetAGPOffsetMESA");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glXGetAGPOffsetMESA () - %s",
+               (_procs_GLX_MESA_agp_offset.glXGetAGPOffsetMESA) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GLX_MESA_agp_offset.glXGetAGPOffsetMESA);
+}
+
+/* Get GLX_MESA_agp_offset functions */
+GdkGL_GLX_MESA_agp_offset *
+gdk_gl_get_GLX_MESA_agp_offset (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (supported == -1)
+    {
+      supported = gdk_x11_gl_query_glx_extension (glconfig, "GLX_MESA_agp_offset");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glXGetAGPOffsetMESA () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GLX_MESA_agp_offset () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GLX_MESA_agp_offset;
+}
+
+/*
  * GLX_NV_vertex_array_range
  */
 
