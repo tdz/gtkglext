@@ -65,7 +65,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_buffer_region), wglSaveBufferRegi
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_buffer_region), wglRestoreBufferRegionARB)
 
 GdkGL_WGL_ARB_buffer_region *
-gdk_gl_get_WGL_ARB_buffer_region (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_ARB_buffer_region (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -107,7 +107,7 @@ static GdkGL_WGL_ARB_extensions_string _GDK_GL_PROCS (GdkGL_WGL_ARB_extensions_s
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_extensions_string), wglGetExtensionsStringARB)
 
 GdkGL_WGL_ARB_extensions_string *
-gdk_gl_get_WGL_ARB_extensions_string (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_ARB_extensions_string (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -148,7 +148,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_pixel_format), wglGetPixelFormatA
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_pixel_format), wglChoosePixelFormatARB)
 
 GdkGL_WGL_ARB_pixel_format *
-gdk_gl_get_WGL_ARB_pixel_format (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_ARB_pixel_format (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -190,7 +190,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_make_current_read), wglMakeContex
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_make_current_read), wglGetCurrentReadDCARB)
 
 GdkGL_WGL_ARB_make_current_read *
-gdk_gl_get_WGL_ARB_make_current_read (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_ARB_make_current_read (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -234,7 +234,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_pbuffer), wglDestroyPbufferARB)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_pbuffer), wglQueryPbufferARB)
 
 GdkGL_WGL_ARB_pbuffer *
-gdk_gl_get_WGL_ARB_pbuffer (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_ARB_pbuffer (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -279,7 +279,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_render_texture), wglReleaseTexIma
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_render_texture), wglSetPbufferAttribARB)
 
 GdkGL_WGL_ARB_render_texture *
-gdk_gl_get_WGL_ARB_render_texture (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_ARB_render_texture (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -323,7 +323,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_display_color_table), wglBindDisp
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_display_color_table), wglDestroyDisplayColorTableEXT)
 
 GdkGL_WGL_EXT_display_color_table *
-gdk_gl_get_WGL_EXT_display_color_table (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_EXT_display_color_table (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -365,7 +365,7 @@ static GdkGL_WGL_EXT_extensions_string _GDK_GL_PROCS (GdkGL_WGL_EXT_extensions_s
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_extensions_string), wglGetExtensionsStringEXT)
 
 GdkGL_WGL_EXT_extensions_string *
-gdk_gl_get_WGL_EXT_extensions_string (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_EXT_extensions_string (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -405,7 +405,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_make_current_read), wglMakeContex
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_make_current_read), wglGetCurrentReadDCEXT)
 
 GdkGL_WGL_EXT_make_current_read *
-gdk_gl_get_WGL_EXT_make_current_read (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_EXT_make_current_read (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -449,7 +449,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_pbuffer), wglDestroyPbufferEXT)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_pbuffer), wglQueryPbufferEXT)
 
 GdkGL_WGL_EXT_pbuffer *
-gdk_gl_get_WGL_EXT_pbuffer (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_EXT_pbuffer (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -494,7 +494,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_pixel_format), wglGetPixelFormatA
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_pixel_format), wglChoosePixelFormatEXT)
 
 GdkGL_WGL_EXT_pixel_format *
-gdk_gl_get_WGL_EXT_pixel_format (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_EXT_pixel_format (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -536,7 +536,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_swap_control), wglSwapIntervalEXT
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_swap_control), wglGetSwapIntervalEXT)
 
 GdkGL_WGL_EXT_swap_control *
-gdk_gl_get_WGL_EXT_swap_control (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_EXT_swap_control (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -577,7 +577,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_NV_vertex_array_range), wglAllocateMe
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_NV_vertex_array_range), wglFreeMemoryNV)
 
 GdkGL_WGL_NV_vertex_array_range *
-gdk_gl_get_WGL_NV_vertex_array_range (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_NV_vertex_array_range (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -622,7 +622,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_OML_sync_control), wglWaitForMscOML)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_OML_sync_control), wglWaitForSbcOML)
 
 GdkGL_WGL_OML_sync_control *
-gdk_gl_get_WGL_OML_sync_control (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_OML_sync_control (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -667,7 +667,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_digital_video_control), wglGetDig
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_digital_video_control), wglSetDigitalVideoParametersI3D)
 
 GdkGL_WGL_I3D_digital_video_control *
-gdk_gl_get_WGL_I3D_digital_video_control (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_I3D_digital_video_control (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -710,7 +710,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_gamma), wglGetGammaTableI3D)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_gamma), wglSetGammaTableI3D)
 
 GdkGL_WGL_I3D_gamma *
-gdk_gl_get_WGL_I3D_gamma (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_I3D_gamma (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -764,7 +764,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_genlock), wglGetGenlockSourceDela
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_genlock), wglQueryGenlockMaxSourceDelayI3D)
 
 GdkGL_WGL_I3D_genlock *
-gdk_gl_get_WGL_I3D_genlock (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_I3D_genlock (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -817,7 +817,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_image_buffer), wglAssociateImageB
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_image_buffer), wglReleaseImageBufferEventsI3D)
 
 GdkGL_WGL_I3D_image_buffer *
-gdk_gl_get_WGL_I3D_image_buffer (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_I3D_image_buffer (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -862,7 +862,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_swap_frame_lock), wglIsEnabledFra
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_swap_frame_lock), wglQueryFrameLockMasterI3D)
 
 GdkGL_WGL_I3D_swap_frame_lock *
-gdk_gl_get_WGL_I3D_swap_frame_lock (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_I3D_swap_frame_lock (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -908,7 +908,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_swap_frame_usage), wglQueryFrameT
 
 
 GdkGL_WGL_I3D_swap_frame_usage *
-gdk_gl_get_WGL_I3D_swap_frame_usage (GdkGLConfig *glconfig);
+gdk_gl_get_WGL_I3D_swap_frame_usage (GdkGLConfig *glconfig)
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;

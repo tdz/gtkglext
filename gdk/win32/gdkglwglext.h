@@ -58,7 +58,7 @@ GdkGLProc    gdk_gl_get_wglRestoreBufferRegionARB (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_ARB_buffer_region GdkGL_WGL_ARB_buffer_region;
+typedef struct _GdkGL_WGL_ARB_buffer_region GdkGL_WGL_ARB_buffer_region;
 
 struct _GdkGL_WGL_ARB_buffer_region
 {
@@ -82,7 +82,7 @@ GdkGLProc    gdk_gl_get_wglGetExtensionsStringARB (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_ARB_extensions_string GdkGL_WGL_ARB_extensions_string;
+typedef struct _GdkGL_WGL_ARB_extensions_string GdkGL_WGL_ARB_extensions_string;
 
 struct _GdkGL_WGL_ARB_extensions_string
 {
@@ -115,7 +115,7 @@ GdkGLProc    gdk_gl_get_wglChoosePixelFormatARB (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_ARB_pixel_format GdkGL_WGL_ARB_pixel_format;
+typedef struct _GdkGL_WGL_ARB_pixel_format GdkGL_WGL_ARB_pixel_format;
 
 struct _GdkGL_WGL_ARB_pixel_format
 {
@@ -144,7 +144,7 @@ GdkGLProc    gdk_gl_get_wglGetCurrentReadDCARB (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_ARB_make_current_read GdkGL_WGL_ARB_make_current_read;
+typedef struct _GdkGL_WGL_ARB_make_current_read GdkGL_WGL_ARB_make_current_read;
 
 struct _GdkGL_WGL_ARB_make_current_read
 {
@@ -190,7 +190,7 @@ GdkGLProc    gdk_gl_get_wglQueryPbufferARB (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_ARB_pbuffer GdkGL_WGL_ARB_pbuffer;
+typedef struct _GdkGL_WGL_ARB_pbuffer GdkGL_WGL_ARB_pbuffer;
 
 struct _GdkGL_WGL_ARB_pbuffer
 {
@@ -227,7 +227,7 @@ GdkGLProc    gdk_gl_get_wglSetPbufferAttribARB (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_ARB_render_texture GdkGL_WGL_ARB_render_texture;
+typedef struct _GdkGL_WGL_ARB_render_texture GdkGL_WGL_ARB_render_texture;
 
 struct _GdkGL_WGL_ARB_render_texture
 {
@@ -268,7 +268,7 @@ GdkGLProc    gdk_gl_get_wglDestroyDisplayColorTableEXT (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_EXT_display_color_table GdkGL_WGL_EXT_display_color_table;
+typedef struct _GdkGL_WGL_EXT_display_color_table GdkGL_WGL_EXT_display_color_table;
 
 struct _GdkGL_WGL_EXT_display_color_table
 {
@@ -292,7 +292,7 @@ GdkGLProc    gdk_gl_get_wglGetExtensionsStringEXT (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_EXT_extensions_string GdkGL_WGL_EXT_extensions_string;
+typedef struct _GdkGL_WGL_EXT_extensions_string GdkGL_WGL_EXT_extensions_string;
 
 struct _GdkGL_WGL_EXT_extensions_string
 {
@@ -319,7 +319,7 @@ GdkGLProc    gdk_gl_get_wglGetCurrentReadDCEXT (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_EXT_make_current_read GdkGL_WGL_EXT_make_current_read;
+typedef struct _GdkGL_WGL_EXT_make_current_read GdkGL_WGL_EXT_make_current_read;
 
 struct _GdkGL_WGL_EXT_make_current_read
 {
@@ -365,7 +365,7 @@ GdkGLProc    gdk_gl_get_wglQueryPbufferEXT (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_EXT_pbuffer GdkGL_WGL_EXT_pbuffer;
+typedef struct _GdkGL_WGL_EXT_pbuffer GdkGL_WGL_EXT_pbuffer;
 
 struct _GdkGL_WGL_EXT_pbuffer
 {
@@ -402,7 +402,7 @@ GdkGLProc    gdk_gl_get_wglChoosePixelFormatEXT (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_EXT_pixel_format GdkGL_WGL_EXT_pixel_format;
+typedef struct _GdkGL_WGL_EXT_pixel_format GdkGL_WGL_EXT_pixel_format;
 
 struct _GdkGL_WGL_EXT_pixel_format
 {
@@ -431,7 +431,7 @@ GdkGLProc    gdk_gl_get_wglGetSwapIntervalEXT (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_EXT_swap_control GdkGL_WGL_EXT_swap_control;
+typedef struct _GdkGL_WGL_EXT_swap_control GdkGL_WGL_EXT_swap_control;
 
 struct _GdkGL_WGL_EXT_swap_control
 {
@@ -459,7 +459,7 @@ GdkGLProc    gdk_gl_get_wglFreeMemoryNV (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_NV_vertex_array_range GdkGL_WGL_NV_vertex_array_range;
+typedef struct _GdkGL_WGL_NV_vertex_array_range GdkGL_WGL_NV_vertex_array_range;
 
 struct _GdkGL_WGL_NV_vertex_array_range
 {
@@ -511,7 +511,7 @@ GdkGLProc    gdk_gl_get_wglWaitForSbcOML (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_OML_sync_control GdkGL_WGL_OML_sync_control;
+typedef struct _GdkGL_WGL_OML_sync_control GdkGL_WGL_OML_sync_control;
 
 struct _GdkGL_WGL_OML_sync_control
 {
@@ -543,7 +543,7 @@ GdkGLProc    gdk_gl_get_wglSetDigitalVideoParametersI3D (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_I3D_digital_video_control GdkGL_WGL_I3D_digital_video_control;
+typedef struct _GdkGL_WGL_I3D_digital_video_control GdkGL_WGL_I3D_digital_video_control;
 
 struct _GdkGL_WGL_I3D_digital_video_control
 {
@@ -583,7 +583,7 @@ GdkGLProc    gdk_gl_get_wglSetGammaTableI3D (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_I3D_gamma GdkGL_WGL_I3D_gamma;
+typedef struct _GdkGL_WGL_I3D_gamma GdkGL_WGL_I3D_gamma;
 
 struct _GdkGL_WGL_I3D_gamma
 {
@@ -673,7 +673,7 @@ GdkGLProc    gdk_gl_get_wglQueryGenlockMaxSourceDelayI3D (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_I3D_genlock GdkGL_WGL_I3D_genlock;
+typedef struct _GdkGL_WGL_I3D_genlock GdkGL_WGL_I3D_genlock;
 
 struct _GdkGL_WGL_I3D_genlock
 {
@@ -723,7 +723,7 @@ GdkGLProc    gdk_gl_get_wglReleaseImageBufferEventsI3D (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_I3D_image_buffer GdkGL_WGL_I3D_image_buffer;
+typedef struct _GdkGL_WGL_I3D_image_buffer GdkGL_WGL_I3D_image_buffer;
 
 struct _GdkGL_WGL_I3D_image_buffer
 {
@@ -765,7 +765,7 @@ GdkGLProc    gdk_gl_get_wglQueryFrameLockMasterI3D (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_I3D_swap_frame_lock GdkGL_WGL_I3D_swap_frame_lock;
+typedef struct _GdkGL_WGL_I3D_swap_frame_lock GdkGL_WGL_I3D_swap_frame_lock;
 
 struct _GdkGL_WGL_I3D_swap_frame_lock
 {
@@ -807,7 +807,7 @@ GdkGLProc    gdk_gl_get_wglQueryFrameTrackingI3D (void);
 
 /* proc struct */
 
-typedef _GdkGL_WGL_I3D_swap_frame_usage GdkGL_WGL_I3D_swap_frame_usage;
+typedef struct _GdkGL_WGL_I3D_swap_frame_usage GdkGL_WGL_I3D_swap_frame_usage;
 
 struct _GdkGL_WGL_I3D_swap_frame_usage
 {
