@@ -1,5 +1,8 @@
 2003-07-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/GL/glext-extra.h: 
+	* gdk/gdkglglext.[ch]: Added extra APPLE extensions.
+
 	* gdk/GL/glxext-extra.h: 
 	* gdk/GL/wglext-extra.h: Added.
 

@@ -7824,6 +7824,97 @@ struct _GdkGL_GL_ATI_vertex_attrib_array_object
 GdkGL_GL_ATI_vertex_attrib_array_object *gdk_gl_get_GL_ATI_vertex_attrib_array_object (void);
 
 /*
+ * GL_APPLE_texture_range
+ */
+
+/* glTextureRangeAPPLE */
+typedef void (APIENTRY * GdkGLProc_glTextureRangeAPPLE) (GLenum target, GLsizei length, const GLvoid *pointer);
+GdkGLProc    gdk_gl_get_glTextureRangeAPPLE (void);
+#define      gdk_gl_glTextureRangeAPPLE(proc, target, length, pointer) \
+  ( ((GdkGLProc_glTextureRangeAPPLE) (proc)) (target, length, pointer) )
+
+/* glGetTexParameterPointervAPPLE */
+typedef void (APIENTRY * GdkGLProc_glGetTexParameterPointervAPPLE) (GLenum target, GLenum pname, GLvoid **params);
+GdkGLProc    gdk_gl_get_glGetTexParameterPointervAPPLE (void);
+#define      gdk_gl_glGetTexParameterPointervAPPLE(proc, target, pname, params) \
+  ( ((GdkGLProc_glGetTexParameterPointervAPPLE) (proc)) (target, pname, params) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GL_APPLE_texture_range GdkGL_GL_APPLE_texture_range;
+
+struct _GdkGL_GL_APPLE_texture_range
+{
+  GdkGLProc_glTextureRangeAPPLE glTextureRangeAPPLE;
+  GdkGLProc_glGetTexParameterPointervAPPLE glGetTexParameterPointervAPPLE;
+};
+
+GdkGL_GL_APPLE_texture_range *gdk_gl_get_GL_APPLE_texture_range (void);
+
+/*
+ * GL_APPLE_vertex_program_evaluators
+ */
+
+/* glEnableVertexAttribAPPLE */
+typedef void (APIENTRY * GdkGLProc_glEnableVertexAttribAPPLE) (GLuint index, GLenum pname);
+GdkGLProc    gdk_gl_get_glEnableVertexAttribAPPLE (void);
+#define      gdk_gl_glEnableVertexAttribAPPLE(proc, index, pname) \
+  ( ((GdkGLProc_glEnableVertexAttribAPPLE) (proc)) (index, pname) )
+
+/* glDisableVertexAttribAPPLE */
+typedef void (APIENTRY * GdkGLProc_glDisableVertexAttribAPPLE) (GLuint index, GLenum pname);
+GdkGLProc    gdk_gl_get_glDisableVertexAttribAPPLE (void);
+#define      gdk_gl_glDisableVertexAttribAPPLE(proc, index, pname) \
+  ( ((GdkGLProc_glDisableVertexAttribAPPLE) (proc)) (index, pname) )
+
+/* glIsVertexAttribEnabledAPPLE */
+typedef GLboolean (APIENTRY * GdkGLProc_glIsVertexAttribEnabledAPPLE) (GLuint index, GLenum pname);
+GdkGLProc    gdk_gl_get_glIsVertexAttribEnabledAPPLE (void);
+#define      gdk_gl_glIsVertexAttribEnabledAPPLE(proc, index, pname) \
+  ( ((GdkGLProc_glIsVertexAttribEnabledAPPLE) (proc)) (index, pname) )
+
+/* glMapVertexAttrib1dAPPLE */
+typedef void (APIENTRY * GdkGLProc_glMapVertexAttrib1dAPPLE) (GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points);
+GdkGLProc    gdk_gl_get_glMapVertexAttrib1dAPPLE (void);
+#define      gdk_gl_glMapVertexAttrib1dAPPLE(proc, index, size, u1, u2, stride, order, points) \
+  ( ((GdkGLProc_glMapVertexAttrib1dAPPLE) (proc)) (index, size, u1, u2, stride, order, points) )
+
+/* glMapVertexAttrib1fAPPLE */
+typedef void (APIENTRY * GdkGLProc_glMapVertexAttrib1fAPPLE) (GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points);
+GdkGLProc    gdk_gl_get_glMapVertexAttrib1fAPPLE (void);
+#define      gdk_gl_glMapVertexAttrib1fAPPLE(proc, index, size, u1, u2, stride, order, points) \
+  ( ((GdkGLProc_glMapVertexAttrib1fAPPLE) (proc)) (index, size, u1, u2, stride, order, points) )
+
+/* glMapVertexAttrib2dAPPLE */
+typedef void (APIENTRY * GdkGLProc_glMapVertexAttrib2dAPPLE) (GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points);
+GdkGLProc    gdk_gl_get_glMapVertexAttrib2dAPPLE (void);
+#define      gdk_gl_glMapVertexAttrib2dAPPLE(proc, index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points) \
+  ( ((GdkGLProc_glMapVertexAttrib2dAPPLE) (proc)) (index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points) )
+
+/* glMapVertexAttrib2fAPPLE */
+typedef void (APIENTRY * GdkGLProc_glMapVertexAttrib2fAPPLE) (GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points);
+GdkGLProc    gdk_gl_get_glMapVertexAttrib2fAPPLE (void);
+#define      gdk_gl_glMapVertexAttrib2fAPPLE(proc, index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points) \
+  ( ((GdkGLProc_glMapVertexAttrib2fAPPLE) (proc)) (index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GL_APPLE_vertex_program_evaluators GdkGL_GL_APPLE_vertex_program_evaluators;
+
+struct _GdkGL_GL_APPLE_vertex_program_evaluators
+{
+  GdkGLProc_glEnableVertexAttribAPPLE glEnableVertexAttribAPPLE;
+  GdkGLProc_glDisableVertexAttribAPPLE glDisableVertexAttribAPPLE;
+  GdkGLProc_glIsVertexAttribEnabledAPPLE glIsVertexAttribEnabledAPPLE;
+  GdkGLProc_glMapVertexAttrib1dAPPLE glMapVertexAttrib1dAPPLE;
+  GdkGLProc_glMapVertexAttrib1fAPPLE glMapVertexAttrib1fAPPLE;
+  GdkGLProc_glMapVertexAttrib2dAPPLE glMapVertexAttrib2dAPPLE;
+  GdkGLProc_glMapVertexAttrib2fAPPLE glMapVertexAttrib2fAPPLE;
+};
+
+GdkGL_GL_APPLE_vertex_program_evaluators *gdk_gl_get_GL_APPLE_vertex_program_evaluators (void);
+
+/*
  * GL_Autodesk_facet_normal
  */
 

@@ -21726,6 +21726,256 @@ gdk_gl_get_GL_ATI_vertex_attrib_array_object (void)
 }
 
 /*
+ * GL_APPLE_texture_range
+ */
+
+static GdkGL_GL_APPLE_texture_range _procs_GL_APPLE_texture_range = {
+  (GdkGLProc_glTextureRangeAPPLE) -1,
+  (GdkGLProc_glGetTexParameterPointervAPPLE) -1
+};
+
+/* glTextureRangeAPPLE */
+GdkGLProc
+gdk_gl_get_glTextureRangeAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_texture_range.glTextureRangeAPPLE == (GdkGLProc_glTextureRangeAPPLE) -1)
+    _procs_GL_APPLE_texture_range.glTextureRangeAPPLE =
+      (GdkGLProc_glTextureRangeAPPLE) gdk_gl_get_proc_address ("glTextureRangeAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureRangeAPPLE () - %s",
+               (_procs_GL_APPLE_texture_range.glTextureRangeAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_texture_range.glTextureRangeAPPLE);
+}
+
+/* glGetTexParameterPointervAPPLE */
+GdkGLProc
+gdk_gl_get_glGetTexParameterPointervAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_texture_range.glGetTexParameterPointervAPPLE == (GdkGLProc_glGetTexParameterPointervAPPLE) -1)
+    _procs_GL_APPLE_texture_range.glGetTexParameterPointervAPPLE =
+      (GdkGLProc_glGetTexParameterPointervAPPLE) gdk_gl_get_proc_address ("glGetTexParameterPointervAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTexParameterPointervAPPLE () - %s",
+               (_procs_GL_APPLE_texture_range.glGetTexParameterPointervAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_texture_range.glGetTexParameterPointervAPPLE);
+}
+
+/* Get GL_APPLE_texture_range functions */
+GdkGL_GL_APPLE_texture_range *
+gdk_gl_get_GL_APPLE_texture_range (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_APPLE_texture_range");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glTextureRangeAPPLE () != NULL);
+          supported &= (gdk_gl_get_glGetTexParameterPointervAPPLE () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_APPLE_texture_range () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_APPLE_texture_range;
+}
+
+/*
+ * GL_APPLE_vertex_program_evaluators
+ */
+
+static GdkGL_GL_APPLE_vertex_program_evaluators _procs_GL_APPLE_vertex_program_evaluators = {
+  (GdkGLProc_glEnableVertexAttribAPPLE) -1,
+  (GdkGLProc_glDisableVertexAttribAPPLE) -1,
+  (GdkGLProc_glIsVertexAttribEnabledAPPLE) -1,
+  (GdkGLProc_glMapVertexAttrib1dAPPLE) -1,
+  (GdkGLProc_glMapVertexAttrib1fAPPLE) -1,
+  (GdkGLProc_glMapVertexAttrib2dAPPLE) -1,
+  (GdkGLProc_glMapVertexAttrib2fAPPLE) -1
+};
+
+/* glEnableVertexAttribAPPLE */
+GdkGLProc
+gdk_gl_get_glEnableVertexAttribAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_vertex_program_evaluators.glEnableVertexAttribAPPLE == (GdkGLProc_glEnableVertexAttribAPPLE) -1)
+    _procs_GL_APPLE_vertex_program_evaluators.glEnableVertexAttribAPPLE =
+      (GdkGLProc_glEnableVertexAttribAPPLE) gdk_gl_get_proc_address ("glEnableVertexAttribAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEnableVertexAttribAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_program_evaluators.glEnableVertexAttribAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_vertex_program_evaluators.glEnableVertexAttribAPPLE);
+}
+
+/* glDisableVertexAttribAPPLE */
+GdkGLProc
+gdk_gl_get_glDisableVertexAttribAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_vertex_program_evaluators.glDisableVertexAttribAPPLE == (GdkGLProc_glDisableVertexAttribAPPLE) -1)
+    _procs_GL_APPLE_vertex_program_evaluators.glDisableVertexAttribAPPLE =
+      (GdkGLProc_glDisableVertexAttribAPPLE) gdk_gl_get_proc_address ("glDisableVertexAttribAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDisableVertexAttribAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_program_evaluators.glDisableVertexAttribAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_vertex_program_evaluators.glDisableVertexAttribAPPLE);
+}
+
+/* glIsVertexAttribEnabledAPPLE */
+GdkGLProc
+gdk_gl_get_glIsVertexAttribEnabledAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_vertex_program_evaluators.glIsVertexAttribEnabledAPPLE == (GdkGLProc_glIsVertexAttribEnabledAPPLE) -1)
+    _procs_GL_APPLE_vertex_program_evaluators.glIsVertexAttribEnabledAPPLE =
+      (GdkGLProc_glIsVertexAttribEnabledAPPLE) gdk_gl_get_proc_address ("glIsVertexAttribEnabledAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsVertexAttribEnabledAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_program_evaluators.glIsVertexAttribEnabledAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_vertex_program_evaluators.glIsVertexAttribEnabledAPPLE);
+}
+
+/* glMapVertexAttrib1dAPPLE */
+GdkGLProc
+gdk_gl_get_glMapVertexAttrib1dAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib1dAPPLE == (GdkGLProc_glMapVertexAttrib1dAPPLE) -1)
+    _procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib1dAPPLE =
+      (GdkGLProc_glMapVertexAttrib1dAPPLE) gdk_gl_get_proc_address ("glMapVertexAttrib1dAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapVertexAttrib1dAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib1dAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib1dAPPLE);
+}
+
+/* glMapVertexAttrib1fAPPLE */
+GdkGLProc
+gdk_gl_get_glMapVertexAttrib1fAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib1fAPPLE == (GdkGLProc_glMapVertexAttrib1fAPPLE) -1)
+    _procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib1fAPPLE =
+      (GdkGLProc_glMapVertexAttrib1fAPPLE) gdk_gl_get_proc_address ("glMapVertexAttrib1fAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapVertexAttrib1fAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib1fAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib1fAPPLE);
+}
+
+/* glMapVertexAttrib2dAPPLE */
+GdkGLProc
+gdk_gl_get_glMapVertexAttrib2dAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib2dAPPLE == (GdkGLProc_glMapVertexAttrib2dAPPLE) -1)
+    _procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib2dAPPLE =
+      (GdkGLProc_glMapVertexAttrib2dAPPLE) gdk_gl_get_proc_address ("glMapVertexAttrib2dAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapVertexAttrib2dAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib2dAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib2dAPPLE);
+}
+
+/* glMapVertexAttrib2fAPPLE */
+GdkGLProc
+gdk_gl_get_glMapVertexAttrib2fAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib2fAPPLE == (GdkGLProc_glMapVertexAttrib2fAPPLE) -1)
+    _procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib2fAPPLE =
+      (GdkGLProc_glMapVertexAttrib2fAPPLE) gdk_gl_get_proc_address ("glMapVertexAttrib2fAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapVertexAttrib2fAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib2fAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_vertex_program_evaluators.glMapVertexAttrib2fAPPLE);
+}
+
+/* Get GL_APPLE_vertex_program_evaluators functions */
+GdkGL_GL_APPLE_vertex_program_evaluators *
+gdk_gl_get_GL_APPLE_vertex_program_evaluators (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_APPLE_vertex_program_evaluators");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glEnableVertexAttribAPPLE () != NULL);
+          supported &= (gdk_gl_get_glDisableVertexAttribAPPLE () != NULL);
+          supported &= (gdk_gl_get_glIsVertexAttribEnabledAPPLE () != NULL);
+          supported &= (gdk_gl_get_glMapVertexAttrib1dAPPLE () != NULL);
+          supported &= (gdk_gl_get_glMapVertexAttrib1fAPPLE () != NULL);
+          supported &= (gdk_gl_get_glMapVertexAttrib2dAPPLE () != NULL);
+          supported &= (gdk_gl_get_glMapVertexAttrib2fAPPLE () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_APPLE_vertex_program_evaluators () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_APPLE_vertex_program_evaluators;
+}
+
+/*
  * GL_Autodesk_facet_normal
  */
 
