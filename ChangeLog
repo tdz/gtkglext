@@ -1,5 +1,12 @@
 2003-05-03  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglpixmap-win32.c
+	(gdk_gl_pixmap_impl_win32_make_context_current): 
+	* gdk/win32/gdkglwindow-win32.c
+	(gdk_gl_window_impl_win32_make_context_current): Clean up and
+	simplify the code. Don't check the current rendering context, and
+	simply call wglMakeCurrent().
+
 	* gdk/win32/gdkglcontext-win32.c: Include gdkglconfig-win32.h.
 
 	* gdk/x11/gdkglpixmap-x11.c

@@ -273,7 +273,6 @@ gdk_gl_window_impl_win32_make_context_current (GdkGLDrawable *draw,
   GdkGLWindowImplWin32 *impl;
   HDC hdc;
   HGLRC hglrc;
-  gboolean ret = TRUE;
 
   g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), FALSE);
@@ -290,10 +289,6 @@ gdk_gl_window_impl_win32_make_context_current (GdkGLDrawable *draw,
   /* Get GLRC. */
   hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
 
-  if (hglrc == wglGetCurrentContext () &&
-      hdc == wglGetCurrentDC ())
-    goto DONE;
-
   GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
 
   if (!wglMakeCurrent (hdc, hglrc))
@@ -302,8 +297,7 @@ gdk_gl_window_impl_win32_make_context_current (GdkGLDrawable *draw,
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
       /* currently unused. */
       /* _gdk_gl_context_set_gl_drawable_read (glcontext, NULL); */
-      ret = FALSE;
-      goto DONE;
+      return FALSE;
     }
 
   _gdk_gl_context_set_gl_drawable (glcontext, draw);
@@ -320,15 +314,13 @@ gdk_gl_window_impl_win32_make_context_current (GdkGLDrawable *draw,
       glReadBuffer (GL_FRONT);
     }
 
- DONE:
-
   /*
    * Do *NOT* release DC.
    *
    * With some graphics card, DC owned by rendering thread will be needed.
    */
 
-  return ret;
+  return TRUE;
 }
 
 static gboolean
