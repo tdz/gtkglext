@@ -122,7 +122,7 @@ gdkglext_built_sources = \
 	$(gdkglext_built_c_sources)
 
 stamp_files = \
-	stamp-gdkglenumtypes.h
+	stamp-gdkglenumtypes-h
 
 #
 # setup GdkGLExt sources and their dependancies
@@ -161,9 +161,9 @@ EXTRA_HEADERS =
 # Generate built header without using automake BUILT_SOURCES
 $(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS): $(gdkglext_built_public_h_sources)
 
-$(srcdir)/gdkglenumtypes.h: stamp-gdkglenumtypes.h
+$(srcdir)/gdkglenumtypes.h: stamp-gdkglenumtypes-h
 	@true
-stamp-gdkglenumtypes.h: @REBUILD@ $(gdkglext_public_h_sources) Makefile
+stamp-gdkglenumtypes-h: @REBUILD@ $(gdkglext_public_h_sources) Makefile
 	( cd $(srcdir) && glib-mkenums \
 			--fhead "#ifndef __GDK_GL_ENUM_TYPES_H__\n#define __GDK_GL_ENUM_TYPES_H__\n\n#include <glib-object.h>\n\nG_BEGIN_DECLS\n" \
 			--fprod "/* enumerations from \"@filename@\" */\n" \
@@ -196,15 +196,15 @@ install-exec-local: gdkglext-config.h
 	if test -r $$file && cmp -s gdkglext-config.h $$file; then :; \
 	else $(INSTALL_DATA) gdkglext-config.h $$file; fi
 
-gdkglext-config.h: stamp-gdkglext-config.h
+gdkglext-config.h: stamp-gdkglext-config-h
 	@if test -f gdkglext-config.h; then :; \
-	else rm -f stamp-gdkglext-config.h; $(MAKE) stamp-gdkglext-config.h; fi
+	else rm -f stamp-gdkglext-config-h; $(MAKE) stamp-gdkglext-config-h; fi
 
-stamp-gdkglext-config.h: ../config.status
+stamp-gdkglext-config-h: ../config.status
 	cd .. && CONFIG_FILES= CONFIG_HEADERS= CONFIG_OTHER=gdk/gdkglext-config.h ./config.status
-	echo timestamp > stamp-gdkglext-config.h
+	echo timestamp > stamp-gdkglext-config-h
 
-DISTCLEANFILES = gdkglext-config.h stamp-gdkglext-config.h
+DISTCLEANFILES = gdkglext-config.h stamp-gdkglext-config-h
 
 #
 # Extra rules

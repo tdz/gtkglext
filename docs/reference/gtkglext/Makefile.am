@@ -37,14 +37,11 @@ IGNORE_HFILES = \
 	x11			\
 	win32			\
 	gdkglext-config.h	\
-	gdkgltemplate.h		\
 	gdkglprivate.h		\
 	gdkgldebug.h		\
 	gdkglglext.h		\
-	gtkgltemplate.h		\
 	gtkglprivate.h		\
-	gtkgldebug.h		\
-	gtkglwidgetparam.h
+	gtkgldebug.h
 
 # Extra files to add when scanning (relative to $srcdir)
 EXTRA_HFILES = \
