@@ -343,9 +343,9 @@ timeout_add(GtkWidget *widget)
 
   if (info->timeout_id == 0)
     {
-      info->timeout_id = gtk_timeout_add(TIMEOUT_INTERVAL,
-                                         (GtkFunction) timeout,
-                                         widget);
+      info->timeout_id = g_timeout_add(TIMEOUT_INTERVAL,
+                                       (GSourceFunc) timeout,
+                                       widget);
     }
 }
 
@@ -356,7 +356,7 @@ timeout_remove(GtkWidget *widget)
 
   if (info->timeout_id != 0)
     {
-      gtk_timeout_remove(info->timeout_id);
+      g_source_remove(info->timeout_id);
       info->timeout_id = 0;
     }
 }

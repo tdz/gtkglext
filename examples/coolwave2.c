@@ -534,9 +534,9 @@ timeout_add (GtkWidget *widget)
 {
   if (timeout_id == 0)
     {
-      timeout_id = gtk_timeout_add (TIMEOUT_INTERVAL,
-                                    (GtkFunction) timeout,
-                                    widget);
+      timeout_id = g_timeout_add (TIMEOUT_INTERVAL,
+                                  (GSourceFunc) timeout,
+                                  widget);
     }
 }
 
@@ -545,7 +545,7 @@ timeout_remove (GtkWidget *widget)
 {
   if (timeout_id != 0)
     {
-      gtk_timeout_remove (timeout_id);
+      g_source_remove (timeout_id);
       timeout_id = 0;
     }
 }
