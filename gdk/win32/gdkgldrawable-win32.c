@@ -26,9 +26,15 @@ HDC
 gdk_win32_gl_drawable_hdc_get (GdkGLDrawable *gldrawable)
 {
   if (GDK_IS_GL_PIXMAP (gldrawable))
-    return GDK_GL_PIXMAP_HDC_GET (gldrawable);
+    {
+      GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
+      return GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET (impl);
+    }
   else if (GDK_IS_GL_WINDOW (gldrawable))
-    return GDK_GL_WINDOW_HDC_GET (gldrawable);
+    {
+      GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
+      return GDK_GL_WINDOW_IMPL_WIN32_HDC_GET (impl);
+    }
   else
     g_warning ("GLDrawable should be GLPixmap or GLWindow");
 
@@ -39,9 +45,19 @@ void
 gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable)
 {
   if (GDK_IS_GL_PIXMAP (gldrawable))
-    GDK_GL_PIXMAP_HDC_RELEASE (gldrawable);
+    {
+      /* GLPixmap's memory DC doesn't need to be released. */
+      /*
+      GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
+      GDK_GL_PIXMAP_IMPL_WIN32_HDC_RELEASE (impl);
+      */
+      return;
+    }
   else if (GDK_IS_GL_WINDOW (gldrawable))
-    GDK_GL_WINDOW_HDC_RELEASE (gldrawable);
+    {
+      GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
+      GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE (impl);
+    }
   else
     g_warning ("GLDrawable should be GLPixmap or GLWindow");
 }

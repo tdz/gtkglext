@@ -270,31 +270,6 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   return NULL;  
 }
 
-/*< private >*/
-HDC
-_gdk_win32_gl_pixmap_hdc_get (GdkGLDrawable *gldrawable)
-{
-  GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
-
-  g_assert (impl->hdc != NULL);
-
-  /*
-   * Select the OpenGL bitmap.
-   */
-
-  if (SelectObject (impl->hdc, impl->gl_hbitmap) == NULL)
-    g_warning ("cannot select DIB");
-
-  return impl->hdc;
-}
-
-/*< private >*/
-void
-_gdk_win32_gl_pixmap_hdc_release (GdkGLDrawable *gldrawable)
-{
-  /* Do nothing. */
-}
-
 static void
 gdk_gl_pixmap_sync_gl (GdkGLPixmap *glpixmap)
 {
@@ -420,11 +395,13 @@ gdk_gl_pixmap_impl_win32_make_context_current (GdkGLDrawable *draw,
   g_return_val_if_fail (GDK_IS_GL_PIXMAP (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
+  impl = GDK_GL_PIXMAP_IMPL_WIN32 (draw);
+
   /* Sync. */
   gdk_gl_pixmap_sync_gdk (GDK_GL_PIXMAP (draw));
 
   /* Get DC. */
-  hdc = GDK_GL_PIXMAP_HDC_GET (draw);
+  hdc = GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET (impl);
 
   /* Get GLRC. */
   hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
@@ -448,7 +425,6 @@ gdk_gl_pixmap_impl_win32_make_context_current (GdkGLDrawable *draw,
   /* currently unused. */
   /* _gdk_gl_context_set_gl_drawable_read (glcontext, read); */
 
-  impl = GDK_GL_PIXMAP_IMPL_WIN32 (draw);
   if (GDK_GL_CONFIG_AS_SINGLE_MODE (impl->glconfig))
     {
       /* We do this because we are treating a double-buffered frame
@@ -461,8 +437,7 @@ gdk_gl_pixmap_impl_win32_make_context_current (GdkGLDrawable *draw,
 
  DONE:
 
-  /* Release DC. */
-  GDK_GL_PIXMAP_HDC_RELEASE (draw);
+  /* Do *NOT* release DC. */
 
   return ret;
 }
@@ -478,19 +453,22 @@ gdk_gl_pixmap_impl_win32_is_double_buffered (GdkGLDrawable *gldrawable)
 static void
 gdk_gl_pixmap_impl_win32_swap_buffers (GdkGLDrawable *gldrawable)
 {
+  GdkGLPixmapImplWin32 *impl;
   HDC hdc;
 
   g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
 
+  impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
+
   /* Get DC. */
-  hdc = GDK_GL_PIXMAP_HDC_GET (gldrawable);
+  hdc = GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET (impl);
 
   GDK_GL_NOTE (IMPL, g_message (" * SwapBuffers ()"));
 
   SwapBuffers (hdc);
 
   /* Release DC. */
-  GDK_GL_PIXMAP_HDC_RELEASE (gldrawable);
+  /* GDK_GL_PIXMAP_IMPL_WIN32_HDC_RELEASE (impl); */
 }
 
 static void

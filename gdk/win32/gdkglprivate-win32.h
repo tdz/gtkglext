@@ -45,18 +45,20 @@ void _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
                                            GdkGLDrawable *gldrawable_read);
 */
 
-HDC  _gdk_win32_gl_pixmap_hdc_get     (GdkGLDrawable *gldrawable);
-void _gdk_win32_gl_pixmap_hdc_release (GdkGLDrawable *gldrawable);
+#define GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET(impl) \
+  ( (SelectObject ((impl)->hdc, (impl)->gl_hbitmap)) ? (impl)->hdc : (impl)->hdc )
 
-#define GDK_GL_PIXMAP_HDC_GET(gldrawable)     (_gdk_win32_gl_pixmap_hdc_get (gldrawable))
-/* #define GDK_GL_PIXMAP_HDC_RELEASE(gldrawable) (_gdk_win32_gl_pixmap_hdc_release (gldrawable)) */
-#define GDK_GL_PIXMAP_HDC_RELEASE(gldrawable) ((void)0)
+#define GDK_GL_PIXMAP_IMPL_WIN32_HDC_RELEASE(impl) \
+  ((void)0)
 
-HDC  _gdk_win32_gl_window_hdc_get     (GdkGLDrawable *gldrawable);
-void _gdk_win32_gl_window_hdc_release (GdkGLDrawable *gldrawable);
+#define GDK_GL_WINDOW_IMPL_WIN32_HDC_GET(impl) \
+  ( ((impl)->hdc != NULL) ? (impl)->hdc : ((impl)->hdc = GetDC ((impl)->hwnd)) )
 
-#define GDK_GL_WINDOW_HDC_GET(gldrawable)     (_gdk_win32_gl_window_hdc_get (gldrawable))
-#define GDK_GL_WINDOW_HDC_RELEASE(gldrawable) (_gdk_win32_gl_window_hdc_release (gldrawable))
+#define GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE(impl)                      \
+  G_STMT_START {                                                        \
+    if ((impl)->hdc != NULL)                                            \
+      { ReleaseDC ((impl)->hwnd, (impl)->hdc); (impl)->hdc = NULL; };   \
+  } G_STMT_END
 
 G_END_DECLS
 

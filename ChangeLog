@@ -1,3 +1,25 @@
+2003-03-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglwindow-win32.c
+	(gdk_gl_window_impl_win32_make_context_current): Don't release DC.
+	With some graphics card, DC owned by rendering thread will be
+	needed. (reported by Bill Souliotis)
+
+	* gdk/win32/gdkgldrawable-win32.c (gdk_win32_gl_drawable_hdc_get) 
+	(gdk_win32_gl_drawable_hdc_release): Use new HDC_GET() and
+	HDC_RELEASE() macros defined in gdkglprivate-win32.h.
+
+	* gdk/win32/gdkglpixmap-win32.c (_gdk_win32_gl_pixmap_hdc_get) 
+	(_gdk_win32_gl_pixmap_hdc_release): Removed. Use new HDC_GET() and
+	HDC_RELEASE() macros defined in gdkglprivate-win32.h.
+
+	* gdk/win32/gdkglwindow-win32.c (_gdk_win32_gl_window_hdc_get) 
+	(_gdk_win32_gl_window_hdc_release): Removed. Use new HDC_GET() and
+	HDC_RELEASE() macros defined in gdkglprivate-win32.h.
+
+	* gdk/win32/gdkglprivate-win32.h: Added new HDC_GET() and
+	HDC_RELEASE() macro.
+
 2003-03-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability) 
@@ -36,7 +58,7 @@
 
 	* gdk/gdkglwindow.c (gdk_window_set_gl_capability): Unset
 	window's background pixmap explicitly to avoid AIX X server crash.
-	(reported and solved by B. Souliotis)
+	(reported and solved by Bill Souliotis)
 
 2003-03-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
