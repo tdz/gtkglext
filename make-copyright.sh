@@ -5,7 +5,7 @@
 # Naofumi Yasufuku <naofumi@users.sourceforge.net>
 #
 
-exclude_files="config.h docs examples GL"
+exclude_files="config.h glext.h glxext.h wglext.h docs examples"
 
 header_files=`find . -name '*.h' -print`
 source_files=`find . -name '*.c' -print`
@@ -35,6 +35,11 @@ copyright_gdk ()
  */
 
 EOF
+}
+
+copyright_gdk_glext ()
+{
+  copyright_gdk
 }
 
 copyright_gdk_x11 ()
