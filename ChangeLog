@@ -1,3 +1,9 @@
+2003-02-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gtkglext.spec.in: 
+	* configure.in: Re-enabled configure to build static libraries as
+	default.
+
 2003-02-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* configure.in: Use AM_PATH_GLIB_2_0 and AM_PATH_GTK_2_0 macros

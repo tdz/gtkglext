@@ -41,8 +41,8 @@ Requires: glib2-devel
 Requires: XFree86-devel
 
 %description devel
-The gtkglext-devel package contains the header files and developer
-docs for GtkGLExt.
+The gtkglext-devel package contains the header files, static libraries,
+and developer docs for GtkGLExt.
 
 %prep
 %setup -q
@@ -93,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_libdir}/gtkglext-%{api_version}
 %{_libdir}/lib*.so
-#%{_libdir}/lib*.a
+%{_libdir}/lib*.a
 %{_libdir}/lib*.la
 %{_libdir}/pkgconfig/*
 %{_datadir}/aclocal/*
@@ -102,6 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Mon Feb 24 2003 Naofumi Yasufuku <naofumi@users.sourceforge.net>
 - Added %{_datadir}/aclocal/* to the file list.
+- Re-enabled static libraries by default.
 
 * Tue Dec  3 2002 Naofumi Yasufuku <naofumi@users.sourceforge.net>
 - Added %{_libdir}/gtkglext-%{api_version} to the file list.
