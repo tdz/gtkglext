@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#include <gdk/gdkdrawable.h>
 #include "gdkglprivate.h"
 #include "gdkgldrawable.h"
 
@@ -120,3 +121,100 @@ gdk_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
 
   GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->wait_gdk (gldrawable);
 }
+
+/**
+ * gdk_gl_drawable_get_gl_config:
+ * @gldrawable: a #GdkGLDrawable.
+ *
+ * Get #GdkGLConfig with which the #GdkGLDrawable is configured.
+ *
+ * Return value: the #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_gl_drawable_get_gl_config (GdkGLDrawable *gldrawable)
+{
+  g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
+
+  return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->get_gl_config (gldrawable);
+}
+
+/**
+ * gdk_gl_drawable_get_drawable:
+ * @gldrawable: a #GdkGLDrawable.
+ *
+ * Get #GdkDrawable associated with the #GdkGLDrawable.
+ *
+ * Return value: the #GdkDrawable.
+ **/
+GdkDrawable *
+gdk_gl_drawable_get_drawable (GdkGLDrawable *gldrawable)
+{
+  g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
+
+  return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->get_drawable (gldrawable);
+}
+
+/**
+ * gdk_gl_drawable_get_size:
+ * @gldrawable: a #GdkGLDrawable
+ * @width: location to store GL drawable's width, or %NULL
+ * @height: location to store GL drawable's height, or %NULL
+ *
+ * Fills *@width and *@height with the size of @gldrawable.
+ * @width or @height can be %NULL if you only want the other one.
+ * 
+ **/
+void
+gdk_gl_drawable_get_size (GdkGLDrawable *gldrawable,
+                          gint          *width,
+                          gint          *height)
+{
+  gdk_drawable_get_size (gdk_gl_drawable_get_drawable (gldrawable),
+                         width, height);
+}
+
+/**
+ * gdk_gl_drawable_get_colormap:
+ * @gldrawable: a #GdkGLDrawable
+ * 
+ * Gets the colormap for @gldrawable, if one is set; returns
+ * %NULL otherwise.
+ * 
+ * Return value: the colormap, or %NULL
+ **/
+GdkColormap *
+gdk_gl_drawable_get_colormap (GdkGLDrawable *gldrawable)
+{
+  return gdk_drawable_get_colormap (gdk_gl_drawable_get_drawable (gldrawable));
+}
+
+/**
+ * gdk_gl_drawable_get_visual:
+ * @gldrawable: a #GdkGLDrawable
+ * 
+ * Gets the #GdkVisual describing the pixel format of @gldrawable.
+ * 
+ * Return value: a #GdkVisual
+ **/
+GdkVisual *
+gdk_gl_drawable_get_visual (GdkGLDrawable *gldrawable)
+{
+  return gdk_drawable_get_visual (gdk_gl_drawable_get_drawable (gldrawable));
+}
+
+/**
+ * gdk_gl_drawable_get_depth:
+ * @gldrawable: a #GdkGLDrawable
+ * 
+ * Obtains the bit depth of the GL drawable, that is, the number of bits
+ * that make up a pixel in the GL drawable's visual. Examples are 8 bits
+ * per pixel, 24 bits per pixel, etc.
+ * 
+ * Return value: number of bits per pixel
+ **/
+gint
+gdk_gl_drawable_get_depth (GdkGLDrawable *gldrawable)
+{
+  return gdk_drawable_get_depth (gdk_gl_drawable_get_drawable (gldrawable));
+}
+

@@ -1,5 +1,11 @@
 2002-08-03  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkgldrawable.[ch]: Added get_size(), get_colormap(),
+	get_visual(), and get_depth() functions for convenience.
+
+	* gdk/gdkgldrawable.[ch] (struct _GdkGLDrawableClass): Added
+	get_gl_config() and get_drawable() interfaces.
+
 	* gdk/x11/gdkglconfig-x11.h (struct _GdkGLConfigImplX11): Added
 	screen number.
 

@@ -184,6 +184,24 @@ _gdk_gl_pixmap_is_double_buffered (GdkGLDrawable *gldrawable)
   return gdk_gl_config_is_double_buffered (GDK_GL_PIXMAP (gldrawable)->glconfig);
 }
 
+/*< private >*/
+GdkGLConfig *
+_gdk_gl_pixmap_get_gl_config (GdkGLDrawable *gldrawable)
+{
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
+
+  return GDK_GL_PIXMAP (gldrawable)->glconfig;
+}
+
+/*< private >*/
+GdkDrawable *
+_gdk_gl_pixmap_get_drawable (GdkGLDrawable *gldrawable)
+{
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
+
+  return GDK_GL_PIXMAP (gldrawable)->wrapper;
+}
+
 /*
  * OpenGL extension to GdkPixmap
  */

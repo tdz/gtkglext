@@ -329,6 +329,36 @@ GdkGLDrawable *gldrawable
   while (0)
 </MACRO>
 <FUNCTION>
+<NAME>gdk_gl_drawable_get_gl_config</NAME>
+<RETURNS>GdkGLConfig  *</RETURNS>
+GdkGLDrawable *gldrawable
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_get_drawable</NAME>
+<RETURNS>GdkDrawable  *</RETURNS>
+GdkGLDrawable *gldrawable
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_get_size</NAME>
+<RETURNS>void  </RETURNS>
+GdkGLDrawable *gldrawable,gint          *width,gint          *height
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_get_colormap</NAME>
+<RETURNS>GdkColormap  *</RETURNS>
+GdkGLDrawable *gldrawable
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_get_visual</NAME>
+<RETURNS>GdkVisual    *</RETURNS>
+GdkGLDrawable *gldrawable
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_drawable_get_depth</NAME>
+<RETURNS>gint  </RETURNS>
+GdkGLDrawable *gldrawable
+</FUNCTION>
+<FUNCTION>
 <NAME>gdk_gl_font_use_pango_font</NAME>
 <RETURNS>PangoFont  *</RETURNS>
 const PangoFontDescription *font_desc,gint                        first,gint                        count,gint                        list_base
