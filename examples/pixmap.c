@@ -5,12 +5,12 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-GdkGLConfig *glconfig = NULL;
-GdkGLContext *glcontext = NULL;
-GdkPixmap *pixmap = NULL;
-GdkGLPixmap *glpixmap = NULL;
+static GdkGLConfig *glconfig = NULL;
+static GdkGLContext *glcontext = NULL;
+static GdkPixmap *pixmap = NULL;
+static GdkGLPixmap *glpixmap = NULL;
 
-const gint config_attributes[] = {
+static const gint config_attributes[] = {
   GDK_GL_DOUBLEBUFFER,
   GDK_GL_RGBA,
   GDK_GL_RED_SIZE,        1,
@@ -20,7 +20,7 @@ const gint config_attributes[] = {
   GDK_GL_ATTRIB_LIST_NONE
 };
 
-void
+static void
 print_gl_config_attrib (GdkGLConfig *glconfig,
                         const gchar *attrib_str,
                         gint         attrib,
@@ -40,7 +40,7 @@ print_gl_config_attrib (GdkGLConfig *glconfig,
     g_print ("*** Cannot get %s attribute value\n", attrib_str);
 }
 
-void
+static void
 examine_gl_config_attrib (GdkGLConfig *glconfig)
 {
   g_print ("\nOpenGL visual configurations :\n");
@@ -66,7 +66,7 @@ examine_gl_config_attrib (GdkGLConfig *glconfig)
   g_print ("\n");
 }
 
-void
+static void
 init (void)
 {
   GLUquadricObj *qobj;
@@ -100,7 +100,7 @@ init (void)
   glTranslatef (0.0, 0.0, -3.0);
 }
 
-gboolean
+static gboolean
 configure (GtkWidget         *widget,
            GdkEventConfigure *event,
            gpointer           data)
@@ -108,6 +108,8 @@ configure (GtkWidget         *widget,
   /*
    * Configure OpenGL-capable visual.
    */
+
+  /* gtk_drawing_area sends configure_event when it is realized. */
 
   if (glconfig == NULL)
     {
@@ -130,7 +132,13 @@ configure (GtkWidget         *widget,
       examine_gl_config_attrib (glconfig);
 
       /* Set the appropriate colormap for OpenGL. */
+      /* XXX
+         This may cause BadMatch X Window System error
+         at XGetWMColormapWindows () call in
+         gdk_window_add_colormap_windows (). */
+#if 0
       gdk_drawable_set_colormap (widget->window, gdk_gl_config_get_colormap (glconfig));
+#endif
     }
 
   /*
@@ -216,7 +224,7 @@ configure (GtkWidget         *widget,
   return TRUE;
 }
 
-gboolean
+static gboolean
 expose (GtkWidget      *widget,
         GdkEventExpose *event,
         gpointer        data)
@@ -231,7 +239,7 @@ expose (GtkWidget      *widget,
   return FALSE;
 }
 
-gboolean
+static gboolean
 destroy_gl_context (GdkGLContext *glcontext)
 {
   if (glcontext != NULL)
@@ -240,7 +248,7 @@ destroy_gl_context (GdkGLContext *glcontext)
   return FALSE;
 }
 
-gint
+static gint
 quit (GtkWidget *widget,
       GdkEvent  *event,
       gpointer   data)

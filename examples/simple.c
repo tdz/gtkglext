@@ -5,7 +5,7 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-const gint config_attributes[] = {
+static const gint config_attributes[] = {
   GDK_GL_DOUBLEBUFFER,
   GDK_GL_RGBA,
   GDK_GL_RED_SIZE,        1,
@@ -15,7 +15,7 @@ const gint config_attributes[] = {
   GDK_GL_ATTRIB_LIST_NONE
 };
 
-void
+static void
 print_gl_config_attrib (GdkGLConfig *glconfig,
                         const gchar *attrib_str,
                         gint         attrib,
@@ -35,7 +35,7 @@ print_gl_config_attrib (GdkGLConfig *glconfig,
     g_print ("*** Cannot get %s attribute value\n", attrib_str);
 }
 
-void
+static void
 examine_gl_config_attrib (GdkGLConfig *glconfig)
 {
   g_print ("\nOpenGL visual configurations :\n");
@@ -61,7 +61,7 @@ examine_gl_config_attrib (GdkGLConfig *glconfig)
   g_print ("\n");
 }
 
-void
+static void
 init (GtkWidget *widget,
       gpointer   data)
 {
@@ -110,7 +110,7 @@ init (GtkWidget *widget,
   /* OpenGL end. */
 }
 
-gboolean
+static gboolean
 reshape (GtkWidget         *widget,
          GdkEventConfigure *event,
          gpointer           data)
@@ -127,7 +127,7 @@ reshape (GtkWidget         *widget,
   return TRUE;
 }
 
-gboolean
+static gboolean
 display (GtkWidget      *widget,
          GdkEventExpose *event,
          gpointer        data)
@@ -163,7 +163,8 @@ display (GtkWidget      *widget,
   return TRUE;
 }
 
-gboolean
+#if 0
+static gboolean
 idle (GtkWidget *widget)
 {
   /* OpenGL begin. */
@@ -183,8 +184,9 @@ idle (GtkWidget *widget)
 
   return TRUE;
 }
+#endif
 
-gint
+static gint
 quit (GtkWidget *widget,
       GdkEvent  *event,
       gpointer   data)
@@ -284,7 +286,9 @@ main (int argc,
    * Main loop.
    */
 
-  /* gtk_idle_add((GtkFunction) idle, drawing_area); */
+#if 0
+  gtk_idle_add((GtkFunction) idle, drawing_area);
+#endif
 
   gtk_main ();
 

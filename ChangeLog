@@ -1,3 +1,14 @@
+2002-06-02  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* Win32 target works!
+
+	* gdk/gdkglconfig.h: 
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new): 
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_new): It's
+	interface is changed for Win32. Win32 ChoosePixelFormat ()
+	requires target window's HDC, and now gdk_gl_config_new () needs
+	taking a realized GdkWindow instance.
+
 2002-05-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* First pre-alpha release.

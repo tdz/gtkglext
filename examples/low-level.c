@@ -5,11 +5,11 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-GdkGLConfig *glconfig = NULL;
-GdkGLContext *glcontext = NULL;
-GdkGLWindow *glwindow = NULL;
+static GdkGLConfig *glconfig = NULL;
+static GdkGLContext *glcontext = NULL;
+static GdkGLWindow *glwindow = NULL;
 
-const gint config_attributes[] = {
+static const gint config_attributes[] = {
   GDK_GL_DOUBLEBUFFER,
   GDK_GL_RGBA,
   GDK_GL_RED_SIZE,        1,
@@ -19,7 +19,7 @@ const gint config_attributes[] = {
   GDK_GL_ATTRIB_LIST_NONE
 };
 
-void
+static void
 print_gl_config_attrib (GdkGLConfig *glconfig,
                         const gchar *attrib_str,
                         gint         attrib,
@@ -39,7 +39,7 @@ print_gl_config_attrib (GdkGLConfig *glconfig,
     g_print ("*** Cannot get %s attribute value\n", attrib_str);
 }
 
-void
+static void
 examine_gl_config_attrib (GdkGLConfig *glconfig)
 {
   g_print ("\nOpenGL visual configurations :\n");
@@ -65,7 +65,7 @@ examine_gl_config_attrib (GdkGLConfig *glconfig)
   g_print ("\n");
 }
 
-void
+static void
 init (GtkWidget *widget,
       gpointer   data)
 {
@@ -73,23 +73,26 @@ init (GtkWidget *widget,
    * Configure OpenGL-capable visual.
    */
 
-  /* Try double buffered visual */
-  glconfig = gdk_gl_config_new (widget->window, &config_attributes[0]);
   if (glconfig == NULL)
     {
-      g_print ("*** Cannot find the OpenGL-capable visual with double buffering support.\n");
-      g_print ("*** Trying single buffering visual.\n");
-
-      /* Try single buffered visual */
-      glconfig = gdk_gl_config_new (widget->window, &config_attributes[1]);
+      /* Try double buffered visual */
+      glconfig = gdk_gl_config_new (widget->window, &config_attributes[0]);
       if (glconfig == NULL)
-	{
-	  g_print ("*** Cannot find an OpenGL-capable visual\n");
-	  gtk_exit (1);
-	}
-    }
+        {
+          g_print ("*** Cannot find the OpenGL-capable visual with double buffering support.\n");
+          g_print ("*** Trying single buffering visual.\n");
 
-  examine_gl_config_attrib (glconfig);
+          /* Try single buffered visual */
+          glconfig = gdk_gl_config_new (widget->window, &config_attributes[1]);
+          if (glconfig == NULL)
+            {
+              g_print ("*** Cannot find an OpenGL-capable visual\n");
+              gtk_exit (1);
+            }
+        }
+
+      examine_gl_config_attrib (glconfig);
+    }
 
   /*
    * Set OpenGL-capability to widget->window
@@ -156,7 +159,7 @@ init (GtkWidget *widget,
   /* OpenGL end. */
 }
 
-void
+static void
 destroy (GtkWidget *widget,
          gpointer   data)
 {
@@ -164,7 +167,7 @@ destroy (GtkWidget *widget,
     g_object_unref (G_OBJECT (glwindow));
 }
 
-gboolean
+static gboolean
 reshape (GtkWidget         *widget,
          GdkEventConfigure *event,
          gpointer           data)
@@ -188,7 +191,7 @@ reshape (GtkWidget         *widget,
   return TRUE;
 }
 
-gboolean
+static gboolean
 display (GtkWidget      *widget,
          GdkEventExpose *event,
          gpointer        data)
@@ -227,7 +230,8 @@ display (GtkWidget      *widget,
   return TRUE;
 }
 
-gboolean
+#if 0
+static gboolean
 idle (GtkWidget *widget)
 {
   /* OpenGL begin. */
@@ -250,8 +254,9 @@ idle (GtkWidget *widget)
 
   return TRUE;
 }
+#endif
 
-gboolean
+static gboolean
 destroy_gl_context (GtkWidget *widget)
 {
   if (widget->window != NULL)
@@ -260,7 +265,7 @@ destroy_gl_context (GtkWidget *widget)
   return FALSE;
 }
 
-gint
+static gint
 quit (GtkWidget *widget,
       GdkEvent  *event,
       gpointer   data)
@@ -360,7 +365,9 @@ main (int argc,
   /* Destroy the GLX context explicitly when application is terminated. */
   gtk_quit_add (0, (GtkFunction) destroy_gl_context, drawing_area);
 
-  /* gtk_idle_add((GtkFunction) idle, drawing_area); */
+#if 0
+  gtk_idle_add((GtkFunction) idle, drawing_area);
+#endif
 
   gtk_main ();
 
