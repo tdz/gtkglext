@@ -45,21 +45,6 @@ void _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
                                            GdkGLDrawable *gldrawable_read);
 */
 
-#define GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET(impl) \
-  ( (SelectObject ((impl)->hdc, (impl)->gl_hbitmap)) ? (impl)->hdc : (impl)->hdc )
-
-#define GDK_GL_PIXMAP_IMPL_WIN32_HDC_RELEASE(impl) \
-  ((void)0)
-
-#define GDK_GL_WINDOW_IMPL_WIN32_HDC_GET(impl) \
-  ( ((impl)->hdc != NULL) ? (impl)->hdc : ((impl)->hdc = GetDC ((impl)->hwnd)) )
-
-#define GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE(impl)                      \
-  G_STMT_START {                                                        \
-    if ((impl)->hdc != NULL)                                            \
-      { ReleaseDC ((impl)->hwnd, (impl)->hdc); (impl)->hdc = NULL; };   \
-  } G_STMT_END
-
 G_END_DECLS
 
 #endif /* __GDK_GL_PRIVATE_WIN32_H__ */

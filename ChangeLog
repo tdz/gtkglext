@@ -1,5 +1,11 @@
 2003-03-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglprivate-win32.h (GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET) 
+	(GDK_GL_PIXMAP_IMPL_WIN32_HDC_RELEASE): Moved into gdkglpixmap-win32.h.
+
+	* gdk/win32/gdkglprivate-win32.h (GDK_GL_WINDOW_IMPL_WIN32_HDC_GET) 
+	(GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE): Moved into gdkglwindow-win32.h.
+
 	* gdk/win32/gdkglwindow-win32.c
 	(gdk_gl_window_impl_win32_make_context_current): Don't release DC.
 	With some graphics card, DC owned by rendering thread will be

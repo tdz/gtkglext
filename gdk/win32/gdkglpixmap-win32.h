@@ -59,6 +59,12 @@ struct _GdkGLPixmapImplWin32Class
 
 GType gdk_gl_pixmap_impl_win32_get_type (void);
 
+#define GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET(impl) \
+  ( (SelectObject ((impl)->hdc, (impl)->gl_hbitmap)) ? (impl)->hdc : (impl)->hdc )
+
+#define GDK_GL_PIXMAP_IMPL_WIN32_HDC_RELEASE(impl) \
+  ( (void) 0 )
+
 G_END_DECLS
 
 #endif /* __GDK_GL_PIXMAP_WIN32_H__ */

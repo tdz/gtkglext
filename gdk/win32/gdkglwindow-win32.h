@@ -56,6 +56,15 @@ struct _GdkGLWindowImplWin32Class
 
 GType gdk_gl_window_impl_win32_get_type (void);
 
+#define GDK_GL_WINDOW_IMPL_WIN32_HDC_GET(impl) \
+  ( ((impl)->hdc != NULL) ? (impl)->hdc : ((impl)->hdc = GetDC ((impl)->hwnd)) )
+
+#define GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE(impl)                      \
+  G_STMT_START {                                                        \
+    if ((impl)->hdc != NULL)                                            \
+      { ReleaseDC ((impl)->hwnd, (impl)->hdc); (impl)->hdc = NULL; };   \
+  } G_STMT_END
+
 G_END_DECLS
 
 #endif /* __GDK_GL_WINDOW_WIN32_H__ */
