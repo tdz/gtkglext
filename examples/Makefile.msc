@@ -96,6 +96,7 @@ SOURCES = \
 	share-lists.c		\
 	color.c			\
 	font.c			\
+	button.c		\
 	trackball.c		\
 	shapes.c		\
 	logo-model.c		\
@@ -126,6 +127,7 @@ PROGRAMS = \
 	share-lists$(EXEEXT)		\
 	color$(EXEEXT)			\
 	font$(EXEEXT)			\
+	button$(EXEEXT)			\
 	shapes$(EXEEXT)			\
 	logo$(EXEEXT)			\
 	gears$(EXEEXT)			\
@@ -174,6 +176,9 @@ color$(EXEEXT): color.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
 
 font$(EXEEXT): font.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+button$(EXEEXT): button.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
 
 shapes$(EXEEXT): trackball.obj shapes.obj

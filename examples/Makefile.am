@@ -38,6 +38,7 @@ common_programs = \
 	share-lists	\
 	color		\
 	font		\
+	button		\
 	shapes		\
 	logo		\
 	gears		\
@@ -90,6 +91,10 @@ color_LDADD = $(LDADDS)
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
+
+button_SOURCES = button.c
+button_DEPENDENCIES = $(DEPS)
+button_LDADD = $(LDADDS)
 
 shapes_SOURCES = trackball.h trackball.c shapes.c
 shapes_DEPENDENCIES = $(DEPS)

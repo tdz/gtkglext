@@ -39,6 +39,7 @@ SOURCES = \
 	share-lists.c		\
 	color.c			\
 	font.c			\
+	button.c		\
 	trackball.c		\
 	shapes.c		\
 	logo-model.c		\
@@ -69,6 +70,7 @@ PROGRAMS = \
 	share-lists$(EXEEXT)		\
 	color$(EXEEXT)			\
 	font$(EXEEXT)			\
+	button$(EXEEXT)			\
 	shapes$(EXEEXT)			\
 	logo$(EXEEXT)			\
 	gears$(EXEEXT)			\
@@ -133,6 +135,9 @@ color$(EXEEXT): color.o
 	$(LINK) -o $@ $^ $(LIBS)
 
 font$(EXEEXT): font.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+button$(EXEEXT): button.o
 	$(LINK) -o $@ $^ $(LIBS)
 
 shapes$(EXEEXT): trackball.o shapes.o
