@@ -26,7 +26,8 @@
 
 enum {
   PROP_0,
-  PROP_GLXCONTEXT
+  PROP_GLXCONTEXT,
+  PROP_IS_FOREIGN
 };
 
 static void          gdk_gl_context_insert (GdkGLContext *glcontext);
@@ -109,6 +110,13 @@ gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass)
                                                          "GLXContext",
                                                          "Pointer to the GLXContext.",
                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+  g_object_class_install_property (object_class,
+                                   PROP_IS_FOREIGN,
+                                   g_param_spec_boolean ("is_foreign",
+                                                         "Is foreign",
+                                                         "Foreign GLXContext.",
+                                                         FALSE,
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
 static GObject *
@@ -160,6 +168,10 @@ gdk_gl_context_impl_x11_set_property (GObject      *object,
       impl->glxcontext = *((GLXContext *) g_value_get_pointer (value));
       g_object_notify (object, "glxcontext");
       break;
+    case PROP_IS_FOREIGN:
+      impl->is_foreign = g_value_get_boolean (value);
+      g_object_notify (object, "is_foreign");
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
       break;
@@ -191,7 +203,7 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
 
   gdk_gl_context_remove (glcontext);
 
-  if (impl->glxcontext != NULL)
+  if (impl->glxcontext != NULL && !impl->is_foreign)
     {
       xdisplay = GDK_GL_CONFIG_XDISPLAY (glcontext->glconfig);
 
@@ -215,7 +227,8 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
                            GdkGLContext  *share_list,
                            gboolean       is_direct,
                            int            render_type,
-                           GLXContext    *glxcontext)
+                           GLXContext    *glxcontext,
+                           gboolean       is_foreign)
 {
   GdkGLContext *glcontext;
   GdkGLContextImplX11 *impl;
@@ -234,6 +247,7 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
                             "is_direct",       is_direct,
                             "render_type",     render_type,
                             "glxcontext",      glxcontext,
+                            "is_foreign",      is_foreign,
                             NULL);
   impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
 
@@ -300,7 +314,8 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
                                     share_list,
                                     direct,
                                     render_type,
-                                    &glxcontext);
+                                    &glxcontext,
+                                    FALSE);
 }
 
 GdkGLContext *
@@ -309,6 +324,7 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
                                 GLXContext    glxcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (glxcontext != NULL, NULL);
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_context_foreign_new ()"));
 
@@ -321,7 +337,8 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
                                     share_list,
                                     FALSE, /* is_direct is set by constructor() */
                                     (glconfig->is_rgba) ? GDK_GL_RGBA_TYPE : GDK_GL_COLOR_INDEX_TYPE,
-                                    &glxcontext);
+                                    &glxcontext,
+                                    TRUE);
 }
 
 /**
