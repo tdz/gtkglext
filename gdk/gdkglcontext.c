@@ -278,6 +278,9 @@ _gdk_gl_context_set_gl_drawable (GdkGLContext  *glcontext,
 
   g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
 
+  if (glcontext->gldrawable == gldrawable)
+    return;
+
   if (glcontext->gldrawable != NULL)
     {
       g_object_unref (G_OBJECT (glcontext->gldrawable));

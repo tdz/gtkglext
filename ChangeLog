@@ -1,3 +1,8 @@
+2002-08-02  Naofumi Yasufuku  <naofumi@yasufuku.net>
+
+	* gdk/gdkglcontext.c (_gdk_gl_context_set_gl_drawable):
+	If glcontext->gldrawable == gldrawable, simply return.
+
 2002-07-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* Version 0.4.1.

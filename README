@@ -127,7 +127,7 @@ ACLOCAL_FLAGS is for pkg-config's PKG_CHECK_MODULES macro in configure.in.
 I use the following versions of the GNU auto-tools.
 
   autoconf 2.52 (libtool's AC_LIBTOOL_WIN32_DLL macro has a problem with 2.53)
-  automake 1.6.2
+  automake 1.6.3
   libtool  1.4.2
 
 
