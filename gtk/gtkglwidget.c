@@ -124,6 +124,16 @@ gtk_widget_gl_parent_set (GtkWidget   *widget,
     }
 }
 
+static void
+gl_param_destroy (GLWidgetParam *glparam)
+{
+  GTK_GL_NOTE (FUNC, g_message (" - gl_param_destroy ()"));
+
+  g_object_unref (G_OBJECT (glparam->glconfig));
+
+  g_free (glparam);
+}
+
 /**
  * gtk_widget_set_gl_capability:
  * @widget: the #GtkWidget to be used as the rendering area.
@@ -216,7 +226,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   glparam->render_type = render_type;
 
   g_object_set_qdata_full (G_OBJECT (widget), quark_gl_param, glparam,
-                           (GDestroyNotify) g_free);
+                           (GDestroyNotify) gl_param_destroy);
 
   /*
    * Signal handler for realizing a OpenGL-capable GdkWindow.

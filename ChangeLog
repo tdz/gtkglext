@@ -1,6 +1,9 @@
 2003-01-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability) 
+	(gl_param_destroy): Added and unref glparam->glconfig.
+
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability) 
 	(gtk_widget_get_gl_config): Removed quark_gl_config and use
 	quark_gl_param qdata.
 
