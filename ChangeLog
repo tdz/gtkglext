@@ -1,3 +1,9 @@
+2003-08-18  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* ==== Released 1.0.3 ====
+
+	* configure.in: Version 1.0.3, Binary age 3, interface age 1.
+
 2003-08-17  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/Makefile.am (x11_programs): 

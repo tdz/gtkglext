@@ -86,7 +86,7 @@ PROGRAMS = \
 	scribble-gl$(EXEEXT)		\
 	wglinfo$(EXEEXT)
 
-.PHONY: all clean clean-deps distclean
+.PHONY: all clean-deps clean-obj clean distclean
 
 .SUFFIXES:
 .SUFFIXES: .c .o
