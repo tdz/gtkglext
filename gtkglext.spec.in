@@ -25,7 +25,7 @@ BuildPrereq: glib2-devel
 BuildPrereq: XFree86-devel
 
 %description
-GtkGLExt is an OpenGL extention to GTK 2.0 or later. It provides
+GtkGLExt is an OpenGL extension to GTK 2.0 or later. It provides
 the GDK objects which support OpenGL in GTK, and GTK+ widget API
 add-ons which extend *ANY* GTK+ widget to an OpenGL-capable widget.
 
