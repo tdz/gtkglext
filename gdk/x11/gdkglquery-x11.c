@@ -233,54 +233,25 @@ gdk_gl_get_proc_address (const char *proc_name)
       initialized = TRUE;
     }
 
-  /*
-   * Try glXGetProcAddress ()
-   */
-
-  if (glx_get_proc_address != NULL)
+  if (strncmp ("glu", proc_name, 3) != 0)
     {
-      proc_address = glx_get_proc_address (proc_name);
+      /* Try glXGetProcAddress () */
 
-      GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () - %s",
-                                    proc_address ? "succeeded" : "failed"));
+      if (glx_get_proc_address != NULL)
+        {
+          proc_address = glx_get_proc_address (proc_name);
 
-      if (proc_address != NULL)
-        return proc_address;
-    }
+          GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () - %s",
+                                        proc_address ? "succeeded" : "failed"));
 
-  /*
-   * Try g_module_symbol ()
-   */
+          if (proc_address != NULL)
+            return proc_address;
+        }
 
-  /* libGL or libGLU */
-  if (strncmp ("glu", proc_name, 3) == 0)
-    file_name = g_module_build_path (NULL, "GLU");
-  else
-    file_name = g_module_build_path (NULL, "GL");
+      /* Try g_module_symbol () */
 
-  GDK_GL_NOTE (MISC, g_message (" - Open %s", file_name));
-
-  module = g_module_open (file_name, G_MODULE_BIND_LAZY);
-  if (module != NULL)
-    {
-      g_module_symbol (module, proc_name, (gpointer) &proc_address);
-
-      GDK_GL_NOTE (MISC, g_message (" - g_module_symbol () - %s",
-                                    proc_address ? "succeeded" : "failed"));
-
-      g_module_close (module);
-    }
-  else
-    {
-      g_warning ("Cannot open %s", file_name);
-    }
-
-  g_free (file_name);
-
-  if (proc_address == NULL)
-    {
-      /* libGLcore */
-      file_name = g_module_build_path (NULL, "GLcore");
+      /* libGL */
+      file_name = g_module_build_path (NULL, "GL");
 
       GDK_GL_NOTE (MISC, g_message (" - Open %s", file_name));
 
@@ -293,6 +264,55 @@ gdk_gl_get_proc_address (const char *proc_name)
                                         proc_address ? "succeeded" : "failed"));
 
           g_module_close (module);
+        }
+      else
+        {
+          g_warning ("Cannot open %s", file_name);
+        }
+
+      g_free (file_name);
+
+      if (proc_address == NULL)
+        {
+          /* libGLcore */
+          file_name = g_module_build_path (NULL, "GLcore");
+
+          GDK_GL_NOTE (MISC, g_message (" - Open %s", file_name));
+
+          module = g_module_open (file_name, G_MODULE_BIND_LAZY);
+          if (module != NULL)
+            {
+              g_module_symbol (module, proc_name, (gpointer) &proc_address);
+
+              GDK_GL_NOTE (MISC, g_message (" - g_module_symbol () - %s",
+                                            proc_address ? "succeeded" : "failed"));
+
+              g_module_close (module);
+            }
+
+          g_free (file_name);
+        }
+    }
+  else
+    {
+      /* libGLU */
+      file_name = g_module_build_path (NULL, "GLU");
+
+      GDK_GL_NOTE (MISC, g_message (" - Open %s", file_name));
+
+      module = g_module_open (file_name, G_MODULE_BIND_LAZY);
+      if (module != NULL)
+        {
+          g_module_symbol (module, proc_name, (gpointer) &proc_address);
+
+          GDK_GL_NOTE (MISC, g_message (" - g_module_symbol () - %s",
+                                        proc_address ? "succeeded" : "failed"));
+
+          g_module_close (module);
+        }
+      else
+        {
+          g_warning ("Cannot open %s", file_name);
         }
 
       g_free (file_name);
