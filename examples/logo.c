@@ -468,6 +468,8 @@ motion_notify_event(GtkWidget      *widget,
               (2.0 * x - w) / w,
               (h - 2.0 * y) / h);
     add_quats(d_quat, view_quat, view_quat);
+    if (!enable_logo_anim)
+      gtk_widget_queue_draw(widget);
   }
 
   /* Scaling. */
@@ -477,6 +479,8 @@ motion_notify_event(GtkWidget      *widget,
       view_scale = VIEW_SCALE_MAX;
     else if (view_scale < VIEW_SCALE_MIN)
       view_scale = VIEW_SCALE_MIN;
+    if (!enable_logo_anim)
+      gtk_widget_queue_draw(widget);
   }
 
   begin_x = x;
