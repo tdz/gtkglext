@@ -16,8 +16,9 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include "gdkglconfig.h"
+#include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
+#include "gdkglconfig-win32.h"
 #include "gdkglcontext-win32.h"
 
 static void          gdk_gl_context_insert (GdkGLContext *glcontext);
