@@ -69,9 +69,9 @@ gtkglext_public_h_sources = \
 	gtkglwidget.h
 
 gtkglext_headers = \
-	$(gtkglext_public_h_sources)
-	gtkglwidgetparam.h	\
-	gtkgldebug.h		\
+	$(gtkglext_public_h_sources)	\
+	gtkglwidgetparam.h		\
+	gtkgldebug.h			\
 	gtkglprivate.h
 
 gtkglext_c_sources = \
