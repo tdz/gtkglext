@@ -311,13 +311,7 @@ gdk_x11_gl_pixmap_gl_begin (GdkGLDrawable *draw,
                             GdkGLDrawable *read,
                             GdkGLContext  *glcontext)
 {
-  gboolean ret;
-
-  ret = gdk_x11_gl_pixmap_make_context_current (draw, read, glcontext);
-  if (!ret)
-    return FALSE;
-
-  return TRUE;
+  return gdk_x11_gl_pixmap_make_context_current (draw, read, glcontext);
 }
 
 static void

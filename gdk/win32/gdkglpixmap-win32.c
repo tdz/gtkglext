@@ -256,6 +256,8 @@ gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->swap_buffers         =  gdk_win32_gl_pixmap_swap_buffers;
   iface->wait_gl              =  gdk_win32_gl_pixmap_wait_gl;
   iface->wait_gdk             =  gdk_win32_gl_pixmap_wait_gdk;
+  iface->gl_begin             =  gdk_win32_gl_pixmap_gl_begin;
+  iface->gl_end               =  gdk_win32_gl_pixmap_gl_end;
   iface->get_gl_config        = _gdk_gl_pixmap_get_gl_config;
   iface->get_size             = _gdk_gl_pixmap_get_size;
 }

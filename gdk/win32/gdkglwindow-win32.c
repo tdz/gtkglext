@@ -217,6 +217,8 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->swap_buffers         =  gdk_win32_gl_window_swap_buffers;
   iface->wait_gl              =  gdk_win32_gl_window_wait_gl;
   iface->wait_gdk             =  gdk_win32_gl_window_wait_gdk;
+  iface->gl_begin             =  gdk_win32_gl_window_gl_begin;
+  iface->gl_end               =  gdk_win32_gl_window_gl_end;
   iface->get_gl_config        = _gdk_gl_window_get_gl_config;
   iface->get_size             = _gdk_gl_window_get_size;
 }
@@ -339,15 +341,7 @@ gdk_win32_gl_window_gl_begin (GdkGLDrawable *draw,
                               GdkGLDrawable *read,
                               GdkGLContext  *glcontext)
 {
-  gboolean ret;
-
-  ret = gdk_win32_gl_window_make_context_current (draw, read, glcontext);
-  if (!ret)
-    return FALSE;
-
-  /* gdk_win32_gl_window_wait_gdk (draw); */
-
-  return TRUE;
+  return gdk_win32_gl_window_make_context_current (draw, read, glcontext);
 }
 
 static void
