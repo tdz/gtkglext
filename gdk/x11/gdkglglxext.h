@@ -29,6 +29,14 @@
 
 G_BEGIN_DECLS
 
+#ifndef GLX_VERSION_1_3
+typedef struct __GLXFBConfigRec *GLXFBConfig;
+typedef XID GLXFBConfigID;
+typedef XID GLXContextID;
+typedef XID GLXWindow;
+typedef XID GLXPbuffer;
+#endif
+
 #ifndef GLX_SGIX_video_source
 typedef XID GLXVideoSourceSGIX;
 #endif
