@@ -1,5 +1,13 @@
 2002-12-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidgetparam.h (struct _GtkGLWidgetParam): Removed
+	quit_handler_id field.
+
+	* gtk/gtkglwidget.c (gtk_widget_gl_realize) 
+	(gtk_widget_gl_unrealize): Simplify GL context destruction on
+	quit. Now use gtk_quit_add_destroy() instead of gtk_quit_add().
+	Complicated quit handler management is no longer needed.
+
 	* gtk/gtkglwidget.c (gtk_widget_gl_configure_event): Clean up
 	duplicated code.
 

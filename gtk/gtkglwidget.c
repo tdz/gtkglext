@@ -119,10 +119,12 @@ gtk_widget_gl_realize (GtkWidget *widget,
   g_object_set_qdata_full (G_OBJECT (widget), quark_gl_context, glcontext,
                            (GDestroyNotify) gl_context_destroy);
 
-  /* Destroy OpenGL rendering context explicitly. */
-  param->quit_handler_id = gtk_quit_add (gtk_main_level () + 1,
-                                         (GtkFunction) gtk_widget_destroy_gl_context,
-                                         widget);
+  /*
+   * Destroy the OpenGL-capable widget on quit
+   * in order to destroy the OpenGL rendering context explicitly.
+   */
+
+  gtk_quit_add_destroy (gtk_main_level () + 1, GTK_OBJECT (widget));
 }
 
 static gboolean
@@ -150,20 +152,10 @@ static void
 gtk_widget_gl_unrealize (GtkWidget *widget,
                          gpointer   data)
 {
-  GtkGLWidgetParam *param;
-
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_unrealize ()"));
 
   /* Call quit handler to destroy OpenGL rendering context. */
   gtk_widget_destroy_gl_context (widget);
-
-  /* Remove the quit handler */
-  param = g_object_get_qdata (G_OBJECT (widget), quark_param);
-  if (param != NULL && param->quit_handler_id != 0)
-    {
-      gtk_quit_remove (param->quit_handler_id);
-      param->quit_handler_id = 0;
-    }
 }
 
 /**
@@ -228,7 +220,6 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   param.share_list = share_list;
   param.direct = direct;
   param.render_type = render_type;
-  param.quit_handler_id = 0;
 
   if (quark_param == 0)
     quark_param = g_quark_from_static_string (quark_param_string);
