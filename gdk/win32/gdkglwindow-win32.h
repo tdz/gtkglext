@@ -43,7 +43,7 @@ struct _GdkGLWindowImplWin32
   PIXELFORMATDESCRIPTOR pfd;
   int pixel_format;
 
-  guint is_constructed : 1;
+  GdkGLConfig *glconfig;
 
   /*< private >*/
   HDC hdc;
