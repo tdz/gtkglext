@@ -28,14 +28,14 @@ typedef enum
   GDK_GL_TRANSPARENT_NONE,
   GDK_GL_TRANSPARENT_PIXEL,
   GDK_GL_TRANSPARENT_MASK
-} GdkGLTransparentType;
+} GdkGLOverlayTransparentType;
 
 typedef struct _GdkGLOverlayInfo GdkGLOverlayInfo;
 
 struct _GdkGLOverlayInfo
 {
   GdkVisual *visual;
-  GdkGLTransparentType transparent_type;
+  GdkGLOverlayTransparentType transparent_type;
   guint32 value;
   gint32 layer;
 };
