@@ -19,21 +19,25 @@
 #include "gdkglprivate-x11.h"
 #include "gdkglglxext.h"
 
-#define _GDK_GL_GET_PROC(proc_name)                                     \
-GdkGLProc                                                               \
-_GDK_GL_CONCAT(gdk_gl_get_, proc_name) (void)                           \
-{                                                                       \
-  static gboolean init = FALSE;                                         \
-  static GdkGLProc proc_address = NULL;                                 \
-                                                                        \
-  if (!init)                                                            \
-    {                                                                   \
-      GDK_GL_NOTE (IMPL, g_message (" * Get %s ()", #proc_name));       \
-      proc_address = gdk_gl_query_get_proc_address (#proc_name);        \
-      init = TRUE;                                                      \
-    }                                                                   \
-                                                                        \
-  return proc_address;                                                  \
+#define _GDK_GL_GET_PROC(proc_name)                                                             \
+GdkGLProc                                                                                       \
+_GDK_GL_CONCAT(gdk_gl_get_, proc_name) (void)                                                   \
+{                                                                                               \
+  static gboolean init = FALSE;                                                                 \
+  static GdkGLProc proc_address = NULL;                                                         \
+                                                                                                \
+  if (!init)                                                                                    \
+    {                                                                                           \
+      proc_address = gdk_gl_query_get_proc_address (#proc_name);                                \
+                                                                                                \
+      GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_%s () - %s",                                 \
+                                    #proc_name,                                                 \
+                                    (proc_address == NULL) ? "not supported" : "supported"));   \
+                                                                                                \
+      init = TRUE;                                                                              \
+    }                                                                                           \
+                                                                                                \
+  return proc_address;                                                                          \
 }
 
 _GDK_GL_GET_PROC(glXGetProcAddressARB)
