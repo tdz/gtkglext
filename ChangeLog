@@ -1,3 +1,9 @@
+2002-12-21  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new) 
+	(gdk_gl_config_new_for_screen): Rewritten. Now glXChooseVisual()
+	is done by these config_new() functions.
+
 2002-12-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglconfig-x11.c: 
