@@ -108,24 +108,6 @@ Section "GtkGLExt Development" SecDevelopment
   File share\gtk-doc\html\gtkglext\*.devhelp
   File share\gtk-doc\html\gtkglext\*.png
 
-SectionEnd
-
-Section "GtkGLExt Examples" SecExamples
-  SectionIn 1
-
-  SetOutPath $INSTDIR\examples
-  File examples\Makefile.mingw
-  File examples\Makefile.msc
-  File examples\*.h
-  File examples\*.c
-  File examples\*.lwo
-  File examples\*.rgb
-  File examples\*.exe
-
-SectionEnd
-
-Section -post
-
   ; Update .pc files
   GetFullPathName /SHORT $0 $INSTDIR
   Push $0
@@ -147,6 +129,24 @@ Section -post
   Push $INSTDIR\lib\pkgconfig\gtkglext-win32-${GTKGLEXT_API_VERSION}.pc
   Push $0
   Call UpdatePCFile
+
+SectionEnd
+
+Section "GtkGLExt Examples" SecExamples
+  SectionIn 1
+
+  SetOutPath $INSTDIR\examples
+  File examples\Makefile.mingw
+  File examples\Makefile.msc
+  File examples\*.h
+  File examples\*.c
+  File examples\*.lwo
+  File examples\*.rgb
+  File examples\*.exe
+
+SectionEnd
+
+Section -post
 
   ; Registry
   WriteRegStr HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION} "Path" $INSTDIR
