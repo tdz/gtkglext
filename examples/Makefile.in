@@ -165,6 +165,7 @@ common_programs = \
 	pixmap		\
 	pixmap-mixed	\
 	font		\
+	logo		\
 	gears		\
 	viewlw
 
@@ -200,6 +201,10 @@ font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
 
+logo_SOURCES = logo-model.h logo-g.h logo-t.h logo-k.h logo-model.c logo.c
+logo_DEPENDENCIES = $(DEPS)
+logo_LDADD = $(LDADDS)
+
 gears_SOURCES = gears.c
 gears_DEPENDENCIES = $(DEPS)
 gears_LDADD = $(LDADDS)
@@ -223,12 +228,14 @@ CONFIG_CLEAN_FILES =
 @PLATFORM_WIN32_TRUE@EXTRA_PROGRAMS = low-level$(EXEEXT) simple$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	simple-mixed$(EXEEXT) pixmap$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	pixmap-mixed$(EXEEXT) font$(EXEEXT) \
-@PLATFORM_WIN32_TRUE@	gears$(EXEEXT) viewlw$(EXEEXT)
+@PLATFORM_WIN32_TRUE@	logo$(EXEEXT) gears$(EXEEXT) \
+@PLATFORM_WIN32_TRUE@	viewlw$(EXEEXT)
 @PLATFORM_WIN32_FALSE@EXTRA_PROGRAMS = low-level$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	simple$(EXEEXT) simple-mixed$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	pixmap$(EXEEXT) pixmap-mixed$(EXEEXT) \
-@PLATFORM_WIN32_FALSE@	font$(EXEEXT) gears$(EXEEXT) \
-@PLATFORM_WIN32_FALSE@	viewlw$(EXEEXT) glxinfo$(EXEEXT)
+@PLATFORM_WIN32_FALSE@	font$(EXEEXT) logo$(EXEEXT) \
+@PLATFORM_WIN32_FALSE@	gears$(EXEEXT) viewlw$(EXEEXT) \
+@PLATFORM_WIN32_FALSE@	glxinfo$(EXEEXT)
 am_font_OBJECTS = font.$(OBJEXT)
 font_OBJECTS = $(am_font_OBJECTS)
 font_LDFLAGS =
@@ -238,6 +245,9 @@ gears_LDFLAGS =
 am_glxinfo_OBJECTS = glxinfo.$(OBJEXT)
 glxinfo_OBJECTS = $(am_glxinfo_OBJECTS)
 glxinfo_LDFLAGS =
+am_logo_OBJECTS = logo-model.$(OBJEXT) logo.$(OBJEXT)
+logo_OBJECTS = $(am_logo_OBJECTS)
+logo_LDFLAGS =
 am_low_level_OBJECTS = low-level.$(OBJEXT)
 low_level_OBJECTS = $(am_low_level_OBJECTS)
 low_level_LDFLAGS =
@@ -265,7 +275,8 @@ LIBS = @LIBS@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/font.Po ./$(DEPDIR)/gears.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/glxinfo.Po ./$(DEPDIR)/low-level.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/glxinfo.Po ./$(DEPDIR)/logo-model.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/logo.Po ./$(DEPDIR)/low-level.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/lw.Po ./$(DEPDIR)/pixmap-mixed.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/pixmap.Po ./$(DEPDIR)/simple-mixed.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/simple.Po ./$(DEPDIR)/trackball.Po \
@@ -279,10 +290,11 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
 DIST_SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) \
-	$(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) \
-	$(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
+	$(logo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) \
+	$(pixmap_mixed_SOURCES) $(simple_SOURCES) \
+	$(simple_mixed_SOURCES) $(viewlw_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
+SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
 
 all: all-am
 
@@ -302,6 +314,9 @@ gears$(EXEEXT): $(gears_OBJECTS) $(gears_DEPENDENCIES)
 glxinfo$(EXEEXT): $(glxinfo_OBJECTS) $(glxinfo_DEPENDENCIES) 
 	@rm -f glxinfo$(EXEEXT)
 	$(LINK) $(glxinfo_LDFLAGS) $(glxinfo_OBJECTS) $(glxinfo_LDADD) $(LIBS)
+logo$(EXEEXT): $(logo_OBJECTS) $(logo_DEPENDENCIES) 
+	@rm -f logo$(EXEEXT)
+	$(LINK) $(logo_LDFLAGS) $(logo_OBJECTS) $(logo_LDADD) $(LIBS)
 low-level$(EXEEXT): $(low_level_OBJECTS) $(low_level_DEPENDENCIES) 
 	@rm -f low-level$(EXEEXT)
 	$(LINK) $(low_level_LDFLAGS) $(low_level_OBJECTS) $(low_level_LDADD) $(LIBS)
@@ -330,6 +345,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/font.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gears.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/glxinfo.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logo-model.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logo.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/low-level.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lw.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pixmap-mixed.Po@am__quote@

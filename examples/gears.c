@@ -13,6 +13,7 @@
 
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
+
 #include <gtk/gtkgl.h>
 
 #include <GL/gl.h>
