@@ -46,6 +46,6 @@ done
 echo "done."
 
 echo ""
-echo "Path:            ${PREFIX}/lib"
+echo "PATH:            ${PREFIX}/bin"
 echo "PKG_CONFIG_PATH: ${PREFIX}/lib/pkgconfig"
 echo ""
