@@ -348,11 +348,12 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
  * @widget: a #GtkWidget.
  *
  * Returns the #GdkGLContext with the appropriate #GdkGLDrawable
- * for this widget.
+ * for this widget. Unlike the GL context returned by
+ * gtk_widget_create_gl_context(),  this context is owned by the widget.
  *
  * #GdkGLContext is needed for the function gdk_gl_drawable_begin,
  * or for sharing display lists
- * (see #gtk_widget_set_gl_capability).
+ * (see gtk_widget_set_gl_capability()).
  *
  * Return value: the #GdkGLContext.
  **/
@@ -389,7 +390,7 @@ gtk_widget_get_gl_context (GtkWidget *widget)
  * gtk_widget_get_gl_window:
  * @widget: a #GtkWidget.
  *
- * Returns the #GdkGLWindow holded by the @widget.
+ * Returns the #GdkGLWindow owned by the @widget.
  *
  * Return value: the #GdkGLWindow.
  **/
