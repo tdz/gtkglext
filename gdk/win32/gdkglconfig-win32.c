@@ -142,7 +142,7 @@ _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
       if (pfd.cDepthBits   <  req_pfd->cDepthBits)   continue;
       if (pfd.cStencilBits <  req_pfd->cStencilBits) continue;
       if (pfd.cAuxBuffers  <  req_pfd->cAuxBuffers)  continue;
-      if (pfd.iLayerType   != req_pfd->iLayerType)   continue;
+      /* if (pfd.iLayerType   != req_pfd->iLayerType)   continue; */
 
       /* Check whether pfd is better than chosen_pfd. */
       if (pixel_format != 0)

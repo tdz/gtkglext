@@ -151,10 +151,10 @@ display (GtkWidget      *widget,
   gdk_draw_rectangle (widget->window,
 		      widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
 		      TRUE,
-		      0.2*widget->allocation.width,
-		      0.2*widget->allocation.height,
-		      0.6*widget->allocation.width,
-		      0.6*widget->allocation.height);
+		      0.1*widget->allocation.width,
+		      0.1*widget->allocation.height,
+		      0.8*widget->allocation.width,
+		      0.8*widget->allocation.height);
 
   /* Sync. */
   gdk_gl_drawable_wait_gdk (gldrawable);
