@@ -341,11 +341,11 @@ gdk_gl_config_new (const gint *attrib_list)
 }
 
 PIXELFORMATDESCRIPTOR *
-gdk_x11_gl_config_get_pfd (GdkGLConfig *glconfig)
+gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
-  return &(GDK_GL_CONFIG_IMPL_X11 (glconfig)->pfd);
+  return &(GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->pfd);
 }
 
 
@@ -358,7 +358,6 @@ gdk_win32_gl_config_get_attrib (GdkGLConfig *glconfig,
                                 gint        *value)
 {
   GdkGLConfigImplWin32 *impl;
-  int ret;
 
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 

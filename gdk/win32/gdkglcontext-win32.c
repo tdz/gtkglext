@@ -111,7 +111,7 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
    */
 
   /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  drawable = GDK_GL_DRAWABLE_GET_CLASS (glcontext->gldrawable)->real_drawable (gldrawable);
+  drawable = GDK_GL_DRAWABLE_GET_CLASS (glcontext->gldrawable)->real_drawable (glcontext->gldrawable);
 
   hwnd = (HWND) gdk_win32_drawable_get_handle (drawable);
 
@@ -151,7 +151,7 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
 
   if (impl->hdc != NULL)
     {
-      Release (impl->hdc);
+      ReleaseDC (hwnd, impl->hdc);
       impl->hdc = NULL;
     }
 

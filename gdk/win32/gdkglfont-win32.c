@@ -33,7 +33,7 @@ gdk_gl_font_use_gdk_font (GdkFont *font,
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_gdk_font ()"));
 
   hdc = CreateCompatibleDC (NULL);
-  orig_hgdiobj = SelectObject (hdc, gdk_font_id (font));
+  orig_hgdiobj = SelectObject (hdc, (HGDIOBJ) gdk_font_id (font));
 
   wglUseFontBitmaps (hdc, first, count, list_base);
 

@@ -1,0 +1,107 @@
+
+
+  G t k G L E x t
+
+  - OpenGL Extension to GTK
+
+
+General Information
+===================
+
+GtkGLExt is an OpenGL extention to GTK 2.0 or later.
+
+This package is composed of GdkGLExt library and GtkGLExt library.
+GdkGLExt library includes low-level OpenGL related objects,
+GdkGLConfig, GdkGLContext, GdkGLDrawable, GdkGLWindow, and so on,
+which has GLX 1.3 like interface. GtkGLExt library includes high-level
+gtk_widget API extentions using GdkGLExt, which extends *ANY* widget
+in GTK+ to an OpenGL-capable widget.
+
+The objects included in these libraries are implemented using C and
+fully compliant with GLib's GObject and it's latest features.
+
+The official web site is:
+  http://gtkglext.sourceforge.net/
+
+The official download & development information site is:
+  http://sourceforge.net/projects/gtkglext/
+
+
+Licensing
+=========
+
+GtkGLExt libraries are released under the terms of the GNU Lesser
+General Public License (GNU LGPL). While components and programs
+included with this release are licensed under the terms of the GNU
+General Public License (GNU GPL).
+
+
+Supported Platforms
+===================
+
+Currently GtkGLExt supports
+
+  * UNIX platforms
+      Tested on Linux (RedHat 7.2) and IRIX (6.5).
+
+  * Win32 platforms
+      Tested on Windows 2000 Professional using Cygwin and MinGW
+      environment.
+
+
+Requirements
+============
+
+  * GNU C compiler
+
+  * GNU make
+
+  * GTK 2.0 or later (http://www.gtk.org/)
+
+  * OpenGL or Mesa (http://www.mesa3d.org/)
+
+
+Installation
+============
+
+To build and install GtkGLExt, type follows (use GNU make)
+
+  $ ./configure --prefix=/foo/bar (other options...)
+  $ make (or gmake)
+  $ make install
+
+To compile example programs, type
+
+  $ make examples
+
+Please read INSTALL or type "./configure --help" for more details.
+
+
+Configure Options
+=================
+
+OpenGL options
+
+  --with-GL-prefix=DIR    prefix where GL/MesaGL is installed
+  --with-lib-GL           use '-lGL'
+  --with-lib-MesaGL       use '-lMesaGL'
+  --with-lib-opengl32     use '-lopengl32'
+
+Win32 build options
+
+  --enable-native-win32   build native Win32 binary on Windows platform
+                          [default=yes]
+
+Debug options
+
+  --enable-debug          turn on debugging [default=no]
+
+
+Contact
+=======
+
+I am looking forward to receiving any bug fixes and patches ;-)
+
+  Naofumi Yasufuku (°ÂÊ¡ ¾°Ê¸)  <naofumi@users.sourceforge.net>
+
+

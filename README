@@ -39,9 +39,14 @@ General Public License (GNU GPL).
 Supported Platforms
 ===================
 
-Currently GtkGLExt supports UNIX platforms and tested on Linux and
-IRIX. Win32 support is not implemented yet, but it will be supported
-soon.
+Currently GtkGLExt supports
+
+  * UNIX platforms
+      Tested on Linux (RedHat 7.2) and IRIX (6.5).
+
+  * Win32 platforms
+      Tested on Windows 2000 Professional using Cygwin and MinGW
+      environment.
 
 
 Requirements
@@ -82,6 +87,11 @@ OpenGL options
   --with-lib-MesaGL       use '-lMesaGL'
   --with-lib-opengl32     use '-lopengl32'
 
+Win32 build options
+
+  --enable-native-win32   build native Win32 binary on Windows platform
+                          [default=yes]
+
 Debug options
 
   --enable-debug          turn on debugging [default=no]
@@ -90,7 +100,7 @@ Debug options
 Contact
 =======
 
-I am looking forward to receive any bug fixes and patches ;-)
+I am looking forward to receiving any bug fixes and patches ;-)
 
   Naofumi Yasufuku (°ÂÊ¡ ¾°Ê¸)  <naofumi@users.sourceforge.net>
 

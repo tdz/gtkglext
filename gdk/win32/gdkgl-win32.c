@@ -52,6 +52,8 @@ gdk_gl_query_version (gint *major,
   /* return Windows version. */
   *major = (gint) (LOBYTE (LOWORD (version)));
   *minor = (gint) (HIBYTE (LOWORD (version)));
+
+  return TRUE;
 }
 
 void

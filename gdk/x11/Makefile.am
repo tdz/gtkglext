@@ -9,7 +9,8 @@ INCLUDES = \
 	-I$(top_srcdir)/gdk		\
 	-I$(top_builddir)/gdk		\
 	$(GTKGLEXT_DEBUG_FLAGS)		\
-	$(GDKGLEXT_DEP_CFLAGS)
+	$(GDKGLEXT_DEP_CFLAGS)		\
+	-DGDK_GL_COMPILATION
 
 LDADDS = \
 	$(GDKGLEXT_DEP_LIBS)

@@ -9,7 +9,8 @@ common_includes = \
 	-I$(top_srcdir)			\
 	-I$(top_builddir)/gdk		\
 	$(GTKGLEXT_DEBUG_FLAGS)		\
-	$(GDKGLEXT_DEP_CFLAGS)
+	$(GDKGLEXT_DEP_CFLAGS)		\
+	-DGDK_GL_COMPILATION
 
 INCLUDES = $(common_includes)
 
