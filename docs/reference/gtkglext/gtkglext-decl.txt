@@ -344,11 +344,6 @@ GdkGLContext  *glcontext
 GdkGLContext  *glcontext
 </FUNCTION>
 <FUNCTION>
-<NAME>gdk_gl_context_get_colormap</NAME>
-<RETURNS>GdkColormap    *</RETURNS>
-GdkGLContext  *glcontext
-</FUNCTION>
-<FUNCTION>
 <NAME>gdk_gl_context_get_current</NAME>
 <RETURNS>GdkGLContext   *</RETURNS>
 void

@@ -372,14 +372,6 @@ gdk_gl_context_get_render_type (GdkGLContext *glcontext)
   return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->render_type;
 }
 
-GdkColormap *
-gdk_gl_context_get_colormap (GdkGLContext *glcontext)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
-
-  return gdk_gl_config_get_colormap (GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->glconfig);
-}
-
 GdkGLContext *
 gdk_gl_context_get_current (void)
 {

@@ -20,7 +20,6 @@ EXPORTS
 	gdk_gl_config_new
 	gdk_gl_config_new_by_mode
 	gdk_gl_context_copy
-	gdk_gl_context_get_colormap
 	gdk_gl_context_get_current
 	gdk_gl_context_get_gl_config
 	gdk_gl_context_get_gl_drawable

@@ -436,22 +436,6 @@ gdk_gl_context_get_render_type (GdkGLContext *glcontext)
 }
 
 /**
- * gdk_gl_context_get_colormap:
- * @glcontext: a #GdkGLContext.
- *
- * Get #GdkColormap with which the @glcontext is configured.
- *
- * Return value: the #GdkColormap.
- **/
-GdkColormap *
-gdk_gl_context_get_colormap (GdkGLContext *glcontext)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
-
-  return gdk_gl_config_get_colormap (GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glconfig);
-}
-
-/**
  * gdk_gl_context_get_current:
  *
  * Returns the current #GdkGLContext.

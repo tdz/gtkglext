@@ -1,4 +1,8 @@
-2003-01-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+2003-01-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_get_colormap): 
+	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_get_colormap): 
+	* gdk/gdkglcontext.h: Removed gdk_gl_context_get_colormap() function.
 
 	* gdk/win32/gdkglwindow-win32.c (gdk_win32_gl_window_make_context_current): 
 	* gdk/x11/gdkglwindow-x11.c (gdk_x11_gl_window_make_context_current): 
