@@ -131,6 +131,10 @@ gl_param_destroy (GLWidgetParam *glparam)
 
   g_object_unref (G_OBJECT (glparam->glconfig));
 
+  if (glparam->share_list != NULL)
+    g_object_remove_weak_pointer (G_OBJECT (glparam->share_list),
+                                  (gpointer *) &(glparam->share_list));
+
   g_free (glparam);
 }
 
@@ -221,7 +225,12 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
 
   glparam->glconfig = glconfig;
   g_object_ref (G_OBJECT (glparam->glconfig));
+
   glparam->share_list = share_list;
+  if (glparam->share_list != NULL)
+    g_object_add_weak_pointer (G_OBJECT (glparam->share_list),
+                               (gpointer *) &(glparam->share_list));
+
   glparam->direct = direct;
   glparam->render_type = render_type;
 
