@@ -170,9 +170,14 @@ font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
 
-viewlw_SOURCES = viewlw.c lw.c trackball.c
+viewlw_SOURCES = viewlw.c lw.h lw.c trackball.h trackball.c
 viewlw_DEPENDENCIES = $(DEPS)
 viewlw_LDADD = $(LDADDS)
+
+EXTRA_DIST = \
+	alien.lwo	\
+	penguin.lwo
+
 subdir = examples
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
