@@ -75,6 +75,44 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_VERSION_1_3), glXQueryContext)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_VERSION_1_3), glXSelectEvent)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_VERSION_1_3), glXGetSelectedEvent)
 
+GdkGL_GLX_VERSION_1_3 *
+gdk_gl_get_GLX_VERSION_1_3 (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_VERSION_1_3 ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXGetFBConfigs ()           != NULL);
+      is_supported &= (gdk_gl_get_glXChooseFBConfig ()         != NULL);
+      is_supported &= (gdk_gl_get_glXGetFBConfigAttrib ()      != NULL);
+      is_supported &= (gdk_gl_get_glXGetVisualFromFBConfig ()  != NULL);
+      is_supported &= (gdk_gl_get_glXCreateWindow ()           != NULL);
+      is_supported &= (gdk_gl_get_glXDestroyWindow ()          != NULL);
+      is_supported &= (gdk_gl_get_glXCreatePixmap ()           != NULL);
+      is_supported &= (gdk_gl_get_glXDestroyPixmap ()          != NULL);
+      is_supported &= (gdk_gl_get_glXCreatePbuffer ()          != NULL);
+      is_supported &= (gdk_gl_get_glXDestroyPbuffer ()         != NULL);
+      is_supported &= (gdk_gl_get_glXQueryDrawable ()          != NULL);
+      is_supported &= (gdk_gl_get_glXCreateNewContext ()       != NULL);
+      is_supported &= (gdk_gl_get_glXMakeContextCurrent ()     != NULL);
+      is_supported &= (gdk_gl_get_glXGetCurrentReadDrawable () != NULL);
+      is_supported &= (gdk_gl_get_glXGetCurrentDisplay ()      != NULL);
+      is_supported &= (gdk_gl_get_glXQueryContext ()           != NULL);
+      is_supported &= (gdk_gl_get_glXSelectEvent ()            != NULL);
+      is_supported &= (gdk_gl_get_glXGetSelectedEvent ()       != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_VERSION_1_3));
+}
+
 /* 
  * GLX_VERSION_1_4
  */
@@ -84,6 +122,27 @@ static GdkGL_GLX_VERSION_1_4 _GDK_GL_PROCS (GdkGL_GLX_VERSION_1_4) = {
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_VERSION_1_4), glXGetProcAddress)
+
+GdkGL_GLX_VERSION_1_4 *
+gdk_gl_get_GLX_VERSION_1_4 (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_VERSION_1_4 ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXGetProcAddress () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_VERSION_1_4));
+}
 
 /* 
  * GLX_ARB_get_proc_address
@@ -95,6 +154,27 @@ static GdkGL_GLX_ARB_get_proc_address _GDK_GL_PROCS (GdkGL_GLX_ARB_get_proc_addr
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_ARB_get_proc_address), glXGetProcAddressARB)
 
+GdkGL_GLX_ARB_get_proc_address *
+gdk_gl_get_GLX_ARB_get_proc_address (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_ARB_get_proc_address ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXGetProcAddressARB () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_ARB_get_proc_address));
+}
+
 /* 
  * GLX_SGI_swap_control
  */
@@ -104,6 +184,27 @@ static GdkGL_GLX_SGI_swap_control _GDK_GL_PROCS (GdkGL_GLX_SGI_swap_control) = {
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGI_swap_control), glXSwapIntervalSGI)
+
+GdkGL_GLX_SGI_swap_control *
+gdk_gl_get_GLX_SGI_swap_control (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGI_swap_control ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXSwapIntervalSGI () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGI_swap_control));
+}
 
 /* 
  * GLX_SGI_video_sync
@@ -116,6 +217,28 @@ static GdkGL_GLX_SGI_video_sync _GDK_GL_PROCS (GdkGL_GLX_SGI_video_sync) = {
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGI_video_sync), glXGetVideoSyncSGI)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGI_video_sync), glXWaitVideoSyncSGI)
 
+GdkGL_GLX_SGI_video_sync *
+gdk_gl_get_GLX_SGI_video_sync (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGI_video_sync ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXGetVideoSyncSGI ()  != NULL);
+      is_supported &= (gdk_gl_get_glXWaitVideoSyncSGI () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGI_video_sync));
+}
+
 /* 
  * GLX_SGI_make_current_read
  */
@@ -126,6 +249,28 @@ static GdkGL_GLX_SGI_make_current_read _GDK_GL_PROCS (GdkGL_GLX_SGI_make_current
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGI_make_current_read), glXMakeCurrentReadSGI)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGI_make_current_read), glXGetCurrentReadDrawableSGI)
+
+GdkGL_GLX_SGI_make_current_read *
+gdk_gl_get_GLX_SGI_make_current_read (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGI_make_current_read ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXMakeCurrentReadSGI ()        != NULL);
+      is_supported &= (gdk_gl_get_glXGetCurrentReadDrawableSGI () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGI_make_current_read));
+}
 
 /* 
  * GLX_SGIX_video_source
@@ -139,6 +284,28 @@ static GdkGL_GLX_SGIX_video_source _GDK_GL_PROCS (GdkGL_GLX_SGIX_video_source) =
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_video_source), glXCreateGLXVideoSourceSGIX)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_video_source), glXDestroyGLXVideoSourceSGIX)
+
+GdkGL_GLX_SGIX_video_source *
+gdk_gl_get_GLX_SGIX_video_source (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_video_source ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXCreateGLXVideoSourceSGIX ()  != NULL);
+      is_supported &= (gdk_gl_get_glXDestroyGLXVideoSourceSGIX () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGIX_video_source));
+}
 
 #endif /* _VL_H */
 
@@ -156,6 +323,31 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_EXT_import_context), glXGetContextIDE
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_EXT_import_context), glXImportContextEXT)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_EXT_import_context), glXFreeContextEXT)
 
+GdkGL_GLX_EXT_import_context *
+gdk_gl_get_GLX_EXT_import_context (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_EXT_import_context ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXGetCurrentDisplayEXT () != NULL);
+      is_supported &= (gdk_gl_get_glXQueryContextInfoEXT ()  != NULL);
+      is_supported &= (gdk_gl_get_glXGetContextIDEXT ()      != NULL);
+      is_supported &= (gdk_gl_get_glXImportContextEXT ()     != NULL);
+      is_supported &= (gdk_gl_get_glXFreeContextEXT ()       != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_EXT_import_context));
+}
+
 /* 
  * GLX_SGIX_fbconfig
  */
@@ -171,6 +363,32 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_fbconfig), glXCreateContextWithC
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_fbconfig), glXGetVisualFromFBConfigSGIX)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_fbconfig), glXGetFBConfigFromVisualSGIX)
 
+GdkGL_GLX_SGIX_fbconfig *
+gdk_gl_get_GLX_SGIX_fbconfig (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_fbconfig ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXGetFBConfigAttribSGIX ()         != NULL);
+      is_supported &= (gdk_gl_get_glXChooseFBConfigSGIX ()            != NULL);
+      is_supported &= (gdk_gl_get_glXCreateGLXPixmapWithConfigSGIX () != NULL);
+      is_supported &= (gdk_gl_get_glXCreateContextWithConfigSGIX ()   != NULL);
+      is_supported &= (gdk_gl_get_glXGetVisualFromFBConfigSGIX ()     != NULL);
+      is_supported &= (gdk_gl_get_glXGetFBConfigFromVisualSGIX ()     != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGIX_fbconfig));
+}
+
 /* 
  * GLX_SGIX_pbuffer
  */
@@ -185,6 +403,31 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_pbuffer), glXQueryGLXPbufferSGIX
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_pbuffer), glXSelectEventSGIX)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_pbuffer), glXGetSelectedEventSGIX)
 
+GdkGL_GLX_SGIX_pbuffer *
+gdk_gl_get_GLX_SGIX_pbuffer (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_pbuffer ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXCreateGLXPbufferSGIX ()  != NULL);
+      is_supported &= (gdk_gl_get_glXDestroyGLXPbufferSGIX () != NULL);
+      is_supported &= (gdk_gl_get_glXQueryGLXPbufferSGIX ()   != NULL);
+      is_supported &= (gdk_gl_get_glXSelectEventSGIX ()       != NULL);
+      is_supported &= (gdk_gl_get_glXGetSelectedEventSGIX ()  != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGIX_pbuffer));
+}
+
 /* 
  * GLX_SGI_cushion
  */
@@ -194,6 +437,27 @@ static GdkGL_GLX_SGI_cushion _GDK_GL_PROCS (GdkGL_GLX_SGI_cushion) = {
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGI_cushion), glXCushionSGI)
+
+GdkGL_GLX_SGI_cushion *
+gdk_gl_get_GLX_SGI_cushion (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGI_cushion ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXCushionSGI ()  != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGI_cushion));
+}
 
 /* 
  * GLX_SGIX_video_resize
@@ -209,6 +473,31 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_video_resize), glXQueryChannelRe
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_video_resize), glXQueryChannelDeltasSGIX)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_video_resize), glXChannelRectSyncSGIX)
 
+GdkGL_GLX_SGIX_video_resize *
+gdk_gl_get_GLX_SGIX_video_resize (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_video_resize ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXBindChannelToWindowSGIX () != NULL);
+      is_supported &= (gdk_gl_get_glXChannelRectSGIX ()         != NULL);
+      is_supported &= (gdk_gl_get_glXQueryChannelRectSGIX ()    != NULL);
+      is_supported &= (gdk_gl_get_glXQueryChannelDeltasSGIX ()  != NULL);
+      is_supported &= (gdk_gl_get_glXChannelRectSyncSGIX ()     != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGIX_video_resize));
+}
+
 /* 
  * GLX_SGIX_dmbuffer
  */
@@ -220,6 +509,27 @@ static GdkGL_GLX_SGIX_dmbuffer _GDK_GL_PROCS (GdkGL_GLX_SGIX_dmbuffer) = {
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_dmbuffer), glXAssociateDMPbufferSGIX)
+
+GdkGL_GLX_SGIX_dmbuffer *
+gdk_gl_get_GLX_SGIX_dmbuffer (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_dmbuffer ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXAssociateDMPbufferSGIX () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGIX_dmbuffer));
+}
 
 #endif /* _DM_BUFFER_H_ */
 
@@ -233,6 +543,27 @@ static GdkGL_GLX_SGIX_swap_group _GDK_GL_PROCS (GdkGL_GLX_SGIX_swap_group) = {
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_swap_group), glXJoinSwapGroupSGIX)
 
+GdkGL_GLX_SGIX_swap_group *
+gdk_gl_get_GLX_SGIX_swap_group (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_swap_group ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXJoinSwapGroupSGIX () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGIX_swap_group));
+}
+
 /* 
  * GLX_SGIX_swap_barrier
  */
@@ -244,6 +575,28 @@ static GdkGL_GLX_SGIX_swap_barrier _GDK_GL_PROCS (GdkGL_GLX_SGIX_swap_barrier) =
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_swap_barrier), glXBindSwapBarrierSGIX)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SGIX_swap_barrier), glXQueryMaxSwapBarriersSGIX)
 
+GdkGL_GLX_SGIX_swap_barrier *
+gdk_gl_get_GLX_SGIX_swap_barrier (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SGIX_swap_barrier ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXBindSwapBarrierSGIX ()      != NULL);
+      is_supported &= (gdk_gl_get_glXQueryMaxSwapBarriersSGIX () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SGIX_swap_barrier));
+}
+
 /* 
  * GLX_SUN_get_transparent_index
  */
@@ -253,6 +606,27 @@ static GdkGL_GLX_SUN_get_transparent_index _GDK_GL_PROCS (GdkGL_GLX_SUN_get_tran
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_SUN_get_transparent_index), glXGetTransparentIndexSUN)
+
+GdkGL_GLX_SUN_get_transparent_index *
+gdk_gl_get_GLX_SUN_get_transparent_index (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_SUN_get_transparent_index ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXGetTransparentIndexSUN () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_SUN_get_transparent_index));
+}
 
 /*
  * GLX_MESA_copy_sub_buffer
@@ -264,6 +638,27 @@ static GdkGL_GLX_MESA_copy_sub_buffer _GDK_GL_PROCS (GdkGL_GLX_MESA_copy_sub_buf
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_MESA_copy_sub_buffer), glXCopySubBufferMESA)
 
+GdkGL_GLX_MESA_copy_sub_buffer *
+gdk_gl_get_GLX_MESA_copy_sub_buffer (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_MESA_copy_sub_buffer ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXCopySubBufferMESA () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_MESA_copy_sub_buffer));
+}
+
 /*
  * GLX_MESA_pixmap_colormap
  */
@@ -273,6 +668,27 @@ static GdkGL_GLX_MESA_pixmap_colormap _GDK_GL_PROCS (GdkGL_GLX_MESA_pixmap_color
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_MESA_pixmap_colormap), glXCreateGLXPixmapMESA)
+
+GdkGL_GLX_MESA_pixmap_colormap *
+gdk_gl_get_GLX_MESA_pixmap_colormap (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_MESA_pixmap_colormap ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXCreateGLXPixmapMESA () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_MESA_pixmap_colormap));
+}
 
 /*
  * GLX_MESA_release_buffers
@@ -284,6 +700,27 @@ static GdkGL_GLX_MESA_release_buffers _GDK_GL_PROCS (GdkGL_GLX_MESA_release_buff
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_MESA_release_buffers), glXReleaseBuffersMESA)
 
+GdkGL_GLX_MESA_release_buffers *
+gdk_gl_get_GLX_MESA_release_buffers (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_MESA_release_buffers ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXReleaseBuffersMESA () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_MESA_release_buffers));
+}
+
 /*
  * GLX_MESA_set_3dfx_mode
  */
@@ -293,6 +730,27 @@ static GdkGL_GLX_MESA_set_3dfx_mode _GDK_GL_PROCS (GdkGL_GLX_MESA_set_3dfx_mode)
 };
 
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_MESA_set_3dfx_mode), glXSet3DfxModeMESA)
+
+GdkGL_GLX_MESA_set_3dfx_mode *
+gdk_gl_get_GLX_MESA_set_3dfx_mode (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_MESA_set_3dfx_mode ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXSet3DfxModeMESA () != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_MESA_set_3dfx_mode));
+}
 
 /* 
  * GLX_OML_sync_control
@@ -307,3 +765,28 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_OML_sync_control), glXGetMscRateOML)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_OML_sync_control), glXSwapBuffersMscOML)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_OML_sync_control), glXWaitForMscOML)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GLX_OML_sync_control), glXWaitForSbcOML)
+
+GdkGL_GLX_OML_sync_control *
+gdk_gl_get_GLX_OML_sync_control (void)
+{
+  static gboolean init = FALSE;
+  static gboolean is_supported = TRUE;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_GLX_OML_sync_control ()"));
+
+  if (!init)
+    {
+      is_supported &= (gdk_gl_get_glXGetSyncValuesOML ()  != NULL);
+      is_supported &= (gdk_gl_get_glXGetMscRateOML ()     != NULL);
+      is_supported &= (gdk_gl_get_glXSwapBuffersMscOML () != NULL);
+      is_supported &= (gdk_gl_get_glXWaitForMscOML ()     != NULL);
+      is_supported &= (gdk_gl_get_glXWaitForSbcOML ()     != NULL);
+
+      init = TRUE;
+    }
+
+  if (!is_supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GLX_OML_sync_control));
+}
