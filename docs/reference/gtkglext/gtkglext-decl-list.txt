@@ -134,6 +134,10 @@ gdk_gl_font_use_pango_font_for_display
 </SECTION>
 
 <SECTION>
+<FILE>gdkglpixbuf</FILE>
+</SECTION>
+
+<SECTION>
 <FILE>gdkglquery</FILE>
 gdk_gl_query_extension
 gdk_gl_query_extension_for_display
@@ -189,10 +193,6 @@ GDK_TYPE_GL_CONFIG_MODE
 
 <SECTION>
 <FILE>stamp-gdkglenumtypes</FILE>
-</SECTION>
-
-<SECTION>
-<FILE>gdkglpixbuf</FILE>
 </SECTION>
 
 <SECTION>
