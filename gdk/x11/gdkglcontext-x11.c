@@ -122,8 +122,7 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
 }
 
 static GdkGLContext *
-gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
-                           GdkGLConfig   *glconfig,
+gdk_gl_context_new_common (GdkGLConfig   *glconfig,
                            GdkGLContext  *share_list,
                            int            render_type,
                            GLXContext     glxcontext,
@@ -227,8 +226,7 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
    * Instanciate the GdkGLContextImplX11 object.
    */
 
-  return gdk_gl_context_new_common (gldrawable,
-                                    glconfig,
+  return gdk_gl_context_new_common (glconfig,
                                     share_list,
                                     render_type,
                                     glxcontext,
@@ -249,8 +247,7 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
    * Instanciate the GdkGLContextImplX11 object.
    */
 
-  return gdk_gl_context_new_common (NULL,
-                                    glconfig,
+  return gdk_gl_context_new_common (glconfig,
                                     share_list,
                                     (glconfig->is_rgba) ? GDK_GL_RGBA_TYPE : GDK_GL_COLOR_INDEX_TYPE,
                                     glxcontext,
