@@ -1029,6 +1029,64 @@ gdk_gl_get_GL_ARB_vertex_program (void)
 }
 
 /* 
+ * GL_ARB_vertex_buffer_object
+ */
+
+static GdkGL_GL_ARB_vertex_buffer_object _GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object) = {
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glBindBufferARB)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glDeleteBuffersARB)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glGenBuffersARB)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glIsBufferARB)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glBufferDataARB)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glBufferSubDataARB)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glGetBufferSubDataARB)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glMapBufferARB)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glUnmapBufferARB)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glGetBufferParameterivARB)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object), glGetBufferPointervARB)
+
+GdkGL_GL_ARB_vertex_buffer_object *
+gdk_gl_get_GL_ARB_vertex_buffer_object (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_vertex_buffer_object ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_vertex_buffer_object");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBindBufferARB ()           != NULL);
+          supported &= (gdk_gl_get_glDeleteBuffersARB ()        != NULL);
+          supported &= (gdk_gl_get_glGenBuffersARB ()           != NULL);
+          supported &= (gdk_gl_get_glIsBufferARB ()             != NULL);
+          supported &= (gdk_gl_get_glBufferDataARB ()           != NULL);
+          supported &= (gdk_gl_get_glBufferSubDataARB ()        != NULL);
+          supported &= (gdk_gl_get_glGetBufferSubDataARB ()     != NULL);
+          supported &= (gdk_gl_get_glMapBufferARB ()            != NULL);
+          supported &= (gdk_gl_get_glUnmapBufferARB ()          != NULL);
+          supported &= (gdk_gl_get_glGetBufferParameterivARB () != NULL);
+          supported &= (gdk_gl_get_glGetBufferPointervARB ()    != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_ARB_vertex_buffer_object));
+}
+
+/* 
  * GL_EXT_blend_color
  */
 
@@ -4392,7 +4450,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glIsObjectBu
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glUpdateObjectBufferATI)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glGetObjectBufferfvATI)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glGetObjectBufferivATI)
-_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glDeleteObjectBufferATI)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glFreeObjectBufferATI)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glArrayObjectATI)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glGetArrayObjectfvATI)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_array_object), glGetArrayObjectivATI)
@@ -4421,7 +4479,7 @@ gdk_gl_get_GL_ATI_vertex_array_object (void)
           supported &= (gdk_gl_get_glUpdateObjectBufferATI ()      != NULL);
           supported &= (gdk_gl_get_glGetObjectBufferfvATI ()       != NULL);
           supported &= (gdk_gl_get_glGetObjectBufferivATI ()       != NULL);
-          supported &= (gdk_gl_get_glDeleteObjectBufferATI ()      != NULL);
+          supported &= (gdk_gl_get_glFreeObjectBufferATI ()        != NULL);
           supported &= (gdk_gl_get_glArrayObjectATI ()             != NULL);
           supported &= (gdk_gl_get_glGetArrayObjectfvATI ()        != NULL);
           supported &= (gdk_gl_get_glGetArrayObjectivATI ()        != NULL);
@@ -4892,6 +4950,593 @@ gdk_gl_get_GL_EXT_stencil_two_side (void)
     return NULL;
 
   return &(_GDK_GL_PROCS (GdkGL_GL_EXT_stencil_two_side));
+}
+
+/* 
+ * GL_APPLE_element_array
+ */
+
+static GdkGL_GL_APPLE_element_array _GDK_GL_PROCS (GdkGL_GL_APPLE_element_array) = {
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_element_array), glElementPointerAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_element_array), glDrawElementArrayAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_element_array), glDrawRangeElementArrayAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_element_array), glMultiDrawElementArrayAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_element_array), glMultiDrawRangeElementArrayAPPLE)
+
+GdkGL_GL_APPLE_element_array *
+gdk_gl_get_GL_APPLE_element_array (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_APPLE_element_array ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_APPLE_element_array");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glElementPointerAPPLE ()             != NULL);
+          supported &= (gdk_gl_get_glDrawElementArrayAPPLE ()           != NULL);
+          supported &= (gdk_gl_get_glDrawRangeElementArrayAPPLE ()      != NULL);
+          supported &= (gdk_gl_get_glMultiDrawElementArrayAPPLE ()      != NULL);
+          supported &= (gdk_gl_get_glMultiDrawRangeElementArrayAPPLE () != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_APPLE_element_array));
+}
+
+/* 
+ * GL_APPLE_fence
+ */
+
+static GdkGL_GL_APPLE_fence _GDK_GL_PROCS (GdkGL_GL_APPLE_fence) = {
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_fence), glGenFencesAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_fence), glDeleteFencesAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_fence), glSetFenceAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_fence), glIsFenceAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_fence), glTestFenceAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_fence), glFinishFenceAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_fence), glTestObjectAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_fence), glFinishObjectAPPLE)
+
+GdkGL_GL_APPLE_fence *
+gdk_gl_get_GL_APPLE_fence (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_APPLE_fence ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_APPLE_fence");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glGenFencesAPPLE ()    != NULL);
+          supported &= (gdk_gl_get_glDeleteFencesAPPLE () != NULL);
+          supported &= (gdk_gl_get_glSetFenceAPPLE ()     != NULL);
+          supported &= (gdk_gl_get_glIsFenceAPPLE ()      != NULL);
+          supported &= (gdk_gl_get_glTestFenceAPPLE ()    != NULL);
+          supported &= (gdk_gl_get_glFinishFenceAPPLE ()  != NULL);
+          supported &= (gdk_gl_get_glTestObjectAPPLE ()   != NULL);
+          supported &= (gdk_gl_get_glFinishObjectAPPLE () != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_APPLE_fence));
+}
+
+/* 
+ * GL_APPLE_vertex_array_object
+ */
+
+static GdkGL_GL_APPLE_vertex_array_object _GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_object) = {
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_object), glBindVertexArrayAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_object), glDeleteVertexArraysAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_object), glGenVertexArraysAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_object), glIsVertexArrayAPPLE)
+
+GdkGL_GL_APPLE_vertex_array_object *
+gdk_gl_get_GL_APPLE_vertex_array_object (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_APPLE_vertex_array_object ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_APPLE_vertex_array_object");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBindVertexArrayAPPLE ()    != NULL);
+          supported &= (gdk_gl_get_glDeleteVertexArraysAPPLE () != NULL);
+          supported &= (gdk_gl_get_glGenVertexArraysAPPLE ()    != NULL);
+          supported &= (gdk_gl_get_glIsVertexArrayAPPLE ()      != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_object));
+}
+
+/* 
+ * GL_APPLE_vertex_array_range
+ */
+
+static GdkGL_GL_APPLE_vertex_array_range _GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_range) = {
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_range), glVertexArrayRangeAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_range), glFlushVertexArrayRangeAPPLE)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_range), glVertexArrayParameteriAPPLE)
+
+GdkGL_GL_APPLE_vertex_array_range *
+gdk_gl_get_GL_APPLE_vertex_array_range (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_APPLE_vertex_array_range ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_APPLE_vertex_array_range");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glVertexArrayRangeAPPLE ()      != NULL);
+          supported &= (gdk_gl_get_glFlushVertexArrayRangeAPPLE () != NULL);
+          supported &= (gdk_gl_get_glVertexArrayParameteriAPPLE () != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_APPLE_vertex_array_range));
+}
+
+/* 
+ * GL_ATI_draw_buffers
+ */
+
+static GdkGL_GL_ATI_draw_buffers _GDK_GL_PROCS (GdkGL_GL_ATI_draw_buffers) = {
+  (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_draw_buffers), glDrawBuffersATI)
+
+GdkGL_GL_ATI_draw_buffers *
+gdk_gl_get_GL_ATI_draw_buffers (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_draw_buffers ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ATI_draw_buffers");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glDrawBuffersATI () != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_ATI_draw_buffers));
+}
+
+/* 
+ * GL_NV_fragment_program
+ */
+
+static GdkGL_GL_NV_fragment_program _GDK_GL_PROCS (GdkGL_GL_NV_fragment_program) = {
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_fragment_program), glProgramNamedParameter4fNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_fragment_program), glProgramNamedParameter4dNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_fragment_program), glProgramNamedParameter4fvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_fragment_program), glProgramNamedParameter4dvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_fragment_program), glGetProgramNamedParameterfvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_fragment_program), glGetProgramNamedParameterdvNV)
+
+GdkGL_GL_NV_fragment_program *
+gdk_gl_get_GL_NV_fragment_program (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_fragment_program ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_fragment_program");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glProgramNamedParameter4fNV ()    != NULL);
+          supported &= (gdk_gl_get_glProgramNamedParameter4dNV ()    != NULL);
+          supported &= (gdk_gl_get_glProgramNamedParameter4fvNV ()   != NULL);
+          supported &= (gdk_gl_get_glProgramNamedParameter4dvNV ()   != NULL);
+          supported &= (gdk_gl_get_glGetProgramNamedParameterfvNV () != NULL);
+          supported &= (gdk_gl_get_glGetProgramNamedParameterdvNV () != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_NV_fragment_program));
+}
+
+/* 
+ * GL_NV_half_float
+ */
+
+static GdkGL_GL_NV_half_float _GDK_GL_PROCS (GdkGL_GL_NV_half_float) = {
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1, (gpointer) -1,
+  (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertex2hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertex2hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertex3hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertex3hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertex4hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertex4hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glNormal3hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glNormal3hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glColor3hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glColor3hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glColor4hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glColor4hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glTexCoord1hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glTexCoord1hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glTexCoord2hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glTexCoord2hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glTexCoord3hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glTexCoord3hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glTexCoord4hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glTexCoord4hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glMultiTexCoord1hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glMultiTexCoord1hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glMultiTexCoord2hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glMultiTexCoord2hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glMultiTexCoord3hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glMultiTexCoord3hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glMultiTexCoord4hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glMultiTexCoord4hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glFogCoordhNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glFogCoordhvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glSecondaryColor3hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glSecondaryColor3hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexWeighthNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexWeighthvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttrib1hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttrib1hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttrib2hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttrib2hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttrib3hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttrib3hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttrib4hNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttrib4hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttribs1hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttribs2hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttribs3hvNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_half_float), glVertexAttribs4hvNV)
+
+GdkGL_GL_NV_half_float *
+gdk_gl_get_GL_NV_half_float (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_half_float ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_half_float");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glVertex2hNV ()          != NULL);
+          supported &= (gdk_gl_get_glVertex2hvNV ()         != NULL);
+          supported &= (gdk_gl_get_glVertex3hNV ()          != NULL);
+          supported &= (gdk_gl_get_glVertex3hvNV ()         != NULL);
+          supported &= (gdk_gl_get_glVertex4hNV ()          != NULL);
+          supported &= (gdk_gl_get_glVertex4hvNV ()         != NULL);
+          supported &= (gdk_gl_get_glNormal3hNV ()          != NULL);
+          supported &= (gdk_gl_get_glNormal3hvNV ()         != NULL);
+          supported &= (gdk_gl_get_glColor3hNV ()           != NULL);
+          supported &= (gdk_gl_get_glColor3hvNV ()          != NULL);
+          supported &= (gdk_gl_get_glColor4hNV ()           != NULL);
+          supported &= (gdk_gl_get_glColor4hvNV ()          != NULL);
+          supported &= (gdk_gl_get_glTexCoord1hNV ()        != NULL);
+          supported &= (gdk_gl_get_glTexCoord1hvNV ()       != NULL);
+          supported &= (gdk_gl_get_glTexCoord2hNV ()        != NULL);
+          supported &= (gdk_gl_get_glTexCoord2hvNV ()       != NULL);
+          supported &= (gdk_gl_get_glTexCoord3hNV ()        != NULL);
+          supported &= (gdk_gl_get_glTexCoord3hvNV ()       != NULL);
+          supported &= (gdk_gl_get_glTexCoord4hNV ()        != NULL);
+          supported &= (gdk_gl_get_glTexCoord4hvNV ()       != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1hNV ()   != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord1hvNV ()  != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2hNV ()   != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord2hvNV ()  != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3hNV ()   != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord3hvNV ()  != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4hNV ()   != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoord4hvNV ()  != NULL);
+          supported &= (gdk_gl_get_glFogCoordhNV ()         != NULL);
+          supported &= (gdk_gl_get_glFogCoordhvNV ()        != NULL);
+          supported &= (gdk_gl_get_glSecondaryColor3hNV ()  != NULL);
+          supported &= (gdk_gl_get_glSecondaryColor3hvNV () != NULL);
+          supported &= (gdk_gl_get_glVertexWeighthNV ()     != NULL);
+          supported &= (gdk_gl_get_glVertexWeighthvNV ()    != NULL);
+          supported &= (gdk_gl_get_glVertexAttrib1hNV ()    != NULL);
+          supported &= (gdk_gl_get_glVertexAttrib1hvNV ()   != NULL);
+          supported &= (gdk_gl_get_glVertexAttrib2hNV ()    != NULL);
+          supported &= (gdk_gl_get_glVertexAttrib2hvNV ()   != NULL);
+          supported &= (gdk_gl_get_glVertexAttrib3hNV ()    != NULL);
+          supported &= (gdk_gl_get_glVertexAttrib3hvNV ()   != NULL);
+          supported &= (gdk_gl_get_glVertexAttrib4hNV ()    != NULL);
+          supported &= (gdk_gl_get_glVertexAttrib4hvNV ()   != NULL);
+          supported &= (gdk_gl_get_glVertexAttribs1hvNV ()  != NULL);
+          supported &= (gdk_gl_get_glVertexAttribs2hvNV ()  != NULL);
+          supported &= (gdk_gl_get_glVertexAttribs3hvNV ()  != NULL);
+          supported &= (gdk_gl_get_glVertexAttribs4hvNV ()  != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_NV_half_float));
+}
+
+/* 
+ * GL_NV_pixel_data_range
+ */
+
+static GdkGL_GL_NV_pixel_data_range _GDK_GL_PROCS (GdkGL_GL_NV_pixel_data_range) = {
+  (gpointer) -1, (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_pixel_data_range), glPixelDataRangeNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_pixel_data_range), glFlushPixelDataRangeNV)
+
+GdkGL_GL_NV_pixel_data_range *
+gdk_gl_get_GL_NV_pixel_data_range (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_pixel_data_range ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_pixel_data_range");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glPixelDataRangeNV ()      != NULL);
+          supported &= (gdk_gl_get_glFlushPixelDataRangeNV () != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_NV_pixel_data_range));
+}
+
+/* 
+ * GL_NV_primitive_restart
+ */
+
+static GdkGL_GL_NV_primitive_restart _GDK_GL_PROCS (GdkGL_GL_NV_primitive_restart) = {
+  (gpointer) -1, (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_primitive_restart), glPrimitiveRestartNV)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_NV_primitive_restart), glPrimitiveRestartIndexNV)
+
+GdkGL_GL_NV_primitive_restart *
+gdk_gl_get_GL_NV_primitive_restart (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_primitive_restart ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_primitive_restart");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glPrimitiveRestartNV ()      != NULL);
+          supported &= (gdk_gl_get_glPrimitiveRestartIndexNV () != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_NV_primitive_restart));
+}
+
+/* 
+ * GL_ATI_map_object_buffer
+ */
+
+static GdkGL_GL_ATI_map_object_buffer _GDK_GL_PROCS (GdkGL_GL_ATI_map_object_buffer) = {
+  (gpointer) -1, (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_map_object_buffer), glMapObjectBufferATI)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_map_object_buffer), glUnmapObjectBufferATI)
+
+GdkGL_GL_ATI_map_object_buffer *
+gdk_gl_get_GL_ATI_map_object_buffer (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_map_object_buffer ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ATI_map_object_buffer");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glMapObjectBufferATI ()   != NULL);
+          supported &= (gdk_gl_get_glUnmapObjectBufferATI () != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_ATI_map_object_buffer));
+}
+
+/* 
+ * GL_ATI_separate_stencil
+ */
+
+static GdkGL_GL_ATI_separate_stencil _GDK_GL_PROCS (GdkGL_GL_ATI_separate_stencil) = {
+  (gpointer) -1, (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_separate_stencil), glStencilOpSeparateATI)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_separate_stencil), glStencilFuncSeparateATI)
+
+GdkGL_GL_ATI_separate_stencil *
+gdk_gl_get_GL_ATI_separate_stencil (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_separate_stencil ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ATI_separate_stencil");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glStencilOpSeparateATI ()   != NULL);
+          supported &= (gdk_gl_get_glStencilFuncSeparateATI () != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_ATI_separate_stencil));
+}
+
+/* 
+ * GL_ATI_vertex_attrib_array_object
+ */
+
+static GdkGL_GL_ATI_vertex_attrib_array_object _GDK_GL_PROCS (GdkGL_GL_ATI_vertex_attrib_array_object) = {
+  (gpointer) -1, (gpointer) -1, (gpointer) -1
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_attrib_array_object), glVertexAttribArrayObjectATI)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_attrib_array_object), glGetVertexAttribArrayObjectfvATI)
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_attrib_array_object), glGetVertexAttribArrayObjectivATI)
+
+GdkGL_GL_ATI_vertex_attrib_array_object *
+gdk_gl_get_GL_ATI_vertex_attrib_array_object (void)
+{
+  static gint supported = -1;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_vertex_attrib_array_object ()"));
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ATI_vertex_attrib_array_object");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glVertexAttribArrayObjectATI ()      != NULL);
+          supported &= (gdk_gl_get_glGetVertexAttribArrayObjectfvATI () != NULL);
+          supported &= (gdk_gl_get_glGetVertexAttribArrayObjectivATI () != NULL);
+        }
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_ATI_vertex_attrib_array_object));
 }
 
 /*

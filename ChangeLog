@@ -1,5 +1,8 @@
 2003-07-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglglext.[ch]: Added new OpenGL extensions defined in
+	glext.h version 18.
+
 	* gdk/GL/glext.h: 
 	* gdk/GL/glxext.h: 
 	* gdk/GL/wglext.h: Updated.
