@@ -59,7 +59,9 @@ gboolean
 gdk_gl_parse_args (int    *argc,
                    char ***argv)
 {
+#ifdef G_ENABLE_DEBUG
   const gchar *env_string;
+#endif	/* G_ENABLE_DEBUG */
 
   if (gdk_gl_initialized)
     return TRUE;

@@ -1,5 +1,8 @@
 2003-05-02  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglinit.c (gdk_gl_parse_args): Supress "unused variable"
+	warning.
+
 	* gdk/win32/gdkglquery-win32.c: 
 	* gdk/win32/gdkglconfig-win32.c: 
 	* gdk/win32/gdkglcontext-win32.c: 
