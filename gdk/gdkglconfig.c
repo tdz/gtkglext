@@ -80,6 +80,8 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
 static void
 gdk_gl_config_finalize (GObject *object)
 {
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_finalize ()"));
+
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
