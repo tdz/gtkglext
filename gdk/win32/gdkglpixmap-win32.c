@@ -105,7 +105,7 @@ _gdk_gl_pixmap_destroy (GdkGLPixmap *glpixmap)
     {
       glFinish ();
 
-      GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
+      GDK_GL_NOTE_FUNC_IMPL ("wglMakeCurrent");
       wglMakeCurrent (NULL, NULL);
     }
 
@@ -225,7 +225,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   /* Request pfd.cColorBits should exclude alpha bitplanes. */
   pfd.cColorBits = pfd.cRedBits + pfd.cGreenBits + pfd.cBlueBits;
 
-  GDK_GL_NOTE (IMPL, g_message (" * ChoosePixelFormat ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("ChoosePixelFormat");
 
   pixel_format = ChoosePixelFormat (hdc_gl, &pfd);
   if (pixel_format == 0)
@@ -238,7 +238,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
    * Set pixel format.
    */
 
-  GDK_GL_NOTE (IMPL, g_message (" * SetPixelFormat ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("SetPixelFormat");
 
   if (!SetPixelFormat (hdc_gl, pixel_format, &pfd))
     {
@@ -319,7 +319,7 @@ gdk_gl_pixmap_sync_gl (GdkGLPixmap *glpixmap)
 
   g_return_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (glpixmap));
 
-  GDK_GL_NOTE (IMPL, g_message (" -- gdk_gl_pixmap_sync_gl ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
 
@@ -354,7 +354,7 @@ gdk_gl_pixmap_sync_gdk (GdkGLPixmap *glpixmap)
 
   g_return_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (glpixmap));
 
-  GDK_GL_NOTE (IMPL, g_message (" -- gdk_gl_pixmap_sync_gdk ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
 
@@ -404,7 +404,7 @@ gdk_gl_pixmap_impl_win32_make_context_current (GdkGLDrawable *draw,
   /* Get GLRC. */
   hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
 
-  GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("wglMakeCurrent");
 
   if (!wglMakeCurrent (hdc, hglrc))
     {
@@ -459,7 +459,7 @@ gdk_gl_pixmap_impl_win32_swap_buffers (GdkGLDrawable *gldrawable)
   /* Get DC. */
   hdc = GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET (impl);
 
-  GDK_GL_NOTE (IMPL, g_message (" * SwapBuffers ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("SwapBuffers");
 
   SwapBuffers (hdc);
 

@@ -514,7 +514,7 @@ gdk_gl_config_new_common (GdkScreen *screen,
    * Find an OpenGL-capable visual.
    */
 
-  GDK_GL_NOTE (IMPL, g_message (" * glXChooseVisual ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("glXChooseVisual");
 
   xvinfo = glXChooseVisual (xdisplay, screen_num, (int *) attrib_list);
   if (xvinfo == NULL)

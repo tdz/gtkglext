@@ -112,7 +112,7 @@ _gdk_gl_window_destroy (GdkGLWindow *glwindow)
     {
       glFinish ();
 
-      GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
+      GDK_GL_NOTE_FUNC_IMPL ("wglMakeCurrent");
       wglMakeCurrent (NULL, NULL);
     }
 
@@ -216,7 +216,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   /* Request pfd.cColorBits should exclude alpha bitplanes. */
   pfd.cColorBits = pfd.cRedBits + pfd.cGreenBits + pfd.cBlueBits;
 
-  GDK_GL_NOTE (IMPL, g_message (" * ChoosePixelFormat ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("ChoosePixelFormat");
 
   pixel_format = ChoosePixelFormat (hdc, &pfd);
   if (pixel_format == 0)
@@ -229,7 +229,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
    * Set pixel format.
    */
 
-  GDK_GL_NOTE (IMPL, g_message (" * SetPixelFormat ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("SetPixelFormat");
 
   if (!SetPixelFormat (hdc, pixel_format, &pfd))
     {
@@ -308,7 +308,7 @@ gdk_gl_window_impl_win32_make_context_current (GdkGLDrawable *draw,
   /* Get GLRC. */
   hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
 
-  GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("wglMakeCurrent");
 
   if (!wglMakeCurrent (hdc, hglrc))
     {
@@ -368,7 +368,7 @@ gdk_gl_window_impl_win32_swap_buffers (GdkGLDrawable *gldrawable)
   /* Get DC. */
   hdc = GDK_GL_WINDOW_IMPL_WIN32_HDC_GET (impl);
 
-  GDK_GL_NOTE (IMPL, g_message (" * SwapBuffers ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("SwapBuffers");
 
   SwapBuffers (hdc);
 

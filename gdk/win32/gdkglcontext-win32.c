@@ -88,13 +88,13 @@ _gdk_gl_context_destroy (GdkGLContext *glcontext)
     {
       glFinish ();
 
-      GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
+      GDK_GL_NOTE_FUNC_IMPL ("wglMakeCurrent");
       wglMakeCurrent (NULL, NULL);
     }
 
   if (!impl->is_foreign)
     {
-      GDK_GL_NOTE (IMPL, g_message (" * wglDeleteContext ()"));
+      GDK_GL_NOTE_FUNC_IMPL ("wglDeleteContext");
       wglDeleteContext (impl->hglrc);
       impl->hglrc = NULL;
     }
@@ -213,7 +213,7 @@ _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
   if (hdc == NULL)
     return NULL;
 
-  GDK_GL_NOTE (IMPL, g_message (" * wglCreateContext ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("wglCreateContext");
 
   hglrc = wglCreateContext (hdc);
 
@@ -225,7 +225,7 @@ _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
 
   if (share_list != NULL && GDK_IS_GL_CONTEXT (share_list))
     {
-      GDK_GL_NOTE (IMPL, g_message (" * wglShareLists ()"));
+      GDK_GL_NOTE_FUNC_IMPL ("wglShareLists");
 
       share_impl = GDK_GL_CONTEXT_IMPL_WIN32 (share_list);
       if (!wglShareLists (share_impl->hglrc, hglrc))
@@ -285,7 +285,7 @@ gdk_gl_context_copy (GdkGLContext  *glcontext,
   if (src_hglrc == NULL)
     return FALSE;
 
-  GDK_GL_NOTE (IMPL, g_message (" * wglCopyContext ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("wglCopyContext");
 
   return wglCopyContext (src_hglrc, dst_hglrc, mask);
 }

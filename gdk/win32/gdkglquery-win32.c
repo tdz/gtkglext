@@ -211,7 +211,7 @@ gdk_gl_get_proc_address (const char *proc_name)
 
       proc_address = (GdkGLProc) wglGetProcAddress (proc_name);
 
-      GDK_GL_NOTE (IMPL, g_message (" * wglGetProcAddress () - %s",
+      GDK_GL_NOTE (IMPL, g_message (" ** wglGetProcAddress () - %s",
                                     proc_address ? "succeeded" : "failed"));
 
       if (proc_address != NULL)
@@ -229,7 +229,7 @@ gdk_gl_get_proc_address (const char *proc_name)
       else
         proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
 
-      GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
+      GDK_GL_NOTE (IMPL, g_message (" ** GetProcAddress () - %s",
                                     proc_address ? "succeeded" : "failed"));
     }
   else
@@ -244,7 +244,7 @@ gdk_gl_get_proc_address (const char *proc_name)
       else
         proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
 
-      GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
+      GDK_GL_NOTE (IMPL, g_message (" ** GetProcAddress () - %s",
                                     proc_address ? "succeeded" : "failed"));
     }
 

@@ -110,7 +110,7 @@ _gdk_gl_window_destroy (GdkGLWindow *glwindow)
     {
       glXWaitGL ();
 
-      GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
+      GDK_GL_NOTE_FUNC_IMPL ("glXMakeCurrent");
       glXMakeCurrent (xdisplay, None, NULL);
     }
 
@@ -118,7 +118,7 @@ _gdk_gl_window_destroy (GdkGLWindow *glwindow)
   mesa_ext = gdk_gl_get_GLX_MESA_release_buffers (impl->glconfig);
   if (mesa_ext)
     {
-      GDK_GL_NOTE (IMPL, g_message (" * glXReleaseBuffersMESA ()"));
+      GDK_GL_NOTE_FUNC_IMPL ("glXReleaseBuffersMESA");
       mesa_ext->glXReleaseBuffersMESA (xdisplay, impl->glxwindow);
     }
 
@@ -245,7 +245,7 @@ gdk_gl_window_impl_x11_make_context_current (GdkGLDrawable *draw,
     g_message (" -- Window: visual id = 0x%lx",
       GDK_VISUAL_XVISUAL (gdk_drawable_get_visual (GDK_DRAWABLE (draw)))->visualid));
 
-  GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("glXMakeCurrent");
 
   if (!glXMakeCurrent (GDK_GL_CONFIG_XDISPLAY (glconfig), glxwindow, glxcontext))
     {
@@ -297,7 +297,7 @@ gdk_gl_window_impl_x11_swap_buffers (GdkGLDrawable *gldrawable)
   if (glxwindow == None)
     return;
 
-  GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("glXSwapBuffers");
 
   glXSwapBuffers (xdisplay, glxwindow);
 }

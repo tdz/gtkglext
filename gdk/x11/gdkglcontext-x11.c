@@ -94,13 +94,13 @@ _gdk_gl_context_destroy (GdkGLContext *glcontext)
     {
       glXWaitGL ();
 
-      GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
+      GDK_GL_NOTE_FUNC_IMPL ("glXMakeCurrent");
       glXMakeCurrent (xdisplay, None, NULL);
     }
 
   if (!impl->is_foreign)
     {
-      GDK_GL_NOTE (IMPL, g_message (" * glXDestroyContext ()"));
+      GDK_GL_NOTE_FUNC_IMPL ("glXDestroyContext");
       glXDestroyContext (xdisplay, impl->glxcontext);
       impl->glxcontext = NULL;
     }
@@ -231,7 +231,7 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
       share_glxcontext = share_impl->glxcontext;
     }
 
-  GDK_GL_NOTE (IMPL, g_message (" * glXCreateContext ()"));
+  GDK_GL_NOTE_FUNC_IMPL ("glXCreateContext");
 
   if (_gdk_gl_context_force_indirect)
     {
