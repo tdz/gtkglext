@@ -723,4 +723,5 @@ examples/Makefile
 docs/Makefile
 docs/reference/Makefile
 docs/reference/gtkglext/Makefile
+docs/reference/gtkglext/version.xml
 ])

@@ -19,7 +19,7 @@ SCANOBJ_OPTIONS =
 SCAN_OPTIONS =
 
 # Extra options to supply to gtkdoc-mkdb.
-MKDB_OPTIONS = --sgml-mode
+MKDB_OPTIONS = --sgml-mode --output-format=xml
 
 # Extra options to supply to gtkdoc-fixref.
 FIXXREF_OPTIONS =
@@ -53,10 +53,12 @@ EXTRA_HFILES = \
 HTML_IMAGES =
 
 # Extra SGML files that are included by $(DOC_MAIN_SGML_FILE).
-content_files =
+content_files = \
+	version.xml
 
 # Other files to distribute.
-extra_files =
+extra_files = \
+	version.xml.in
 
 # CFLAGS and LDFLAGS for compiling scan program. Only needed if your app/lib
 # contains GtkObjects/GObjects and you want to document signals and properties.
@@ -102,9 +104,11 @@ EXTRA_DIST = 				\
 DOC_STAMPS=scan-build.stamp tmpl-build.stamp sgml-build.stamp html-build.stamp \
 	   $(srcdir)/tmpl.stamp $(srcdir)/sgml.stamp $(srcdir)/html.stamp
 
-SCANOBJ_FILES = 		\
-	$(DOC_MODULE).args 	\
-	$(DOC_MODULE).hierarchy \
+SCANOBJ_FILES = 			\
+	$(DOC_MODULE).args 		\
+	$(DOC_MODULE).hierarchy 	\
+	$(DOC_MODULE).interfaces	\
+	$(DOC_MODULE).prerequisites	\
 	$(DOC_MODULE).signals
 
 if ENABLE_GTK_DOC
@@ -172,8 +176,8 @@ maintainer-clean-local: clean
 
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(TARGET_DIR)
-	(installfiles=`echo $(srcdir)/html/*.html`; \
-	if test "$$installfiles" = '$(srcdir)/html/*.html'; \
+	(installfiles=`echo $(srcdir)/html/*`; \
+	if test "$$installfiles" = '$(srcdir)/html/*'; \
 	then echo '-- Nothing to install' ; \
 	else \
 	  for i in $$installfiles; do \
@@ -197,17 +201,11 @@ endif
 
 dist-hook: dist-check-gtkdoc dist-hook-local
 	mkdir $(distdir)/tmpl
-	mkdir $(distdir)/sgml
+	mkdir $(distdir)/xml
 	mkdir $(distdir)/html
 	-cp $(srcdir)/tmpl/*.sgml $(distdir)/tmpl
-	-cp $(srcdir)/sgml/*.sgml $(distdir)/sgml
-	-cp $(srcdir)/html/index.sgml $(distdir)/html
-	-cp $(srcdir)/html/*.html $(srcdir)/html/*.css $(distdir)/html
-
-	images=$(HTML_IMAGES) ;    	      \
-	for i in $$images ; do		      \
-	  cp $(srcdir)/$$i $(distdir)/html ;  \
-	done
+	-cp $(srcdir)/xml/*.xml $(distdir)/xml
+	-cp $(srcdir)/html/* $(distdir)/html
 
 .PHONY : dist-hook-local files
 

@@ -1,18 +1,22 @@
-<!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN" [
-<!ENTITY gtkglext-gdkglquery SYSTEM "sgml/gdkglquery.sgml">
-<!ENTITY gtkglext-GdkGLConfig SYSTEM "sgml/gdkglconfig.sgml">
-<!ENTITY gtkglext-GdkGLContext SYSTEM "sgml/gdkglcontext.sgml">
-<!ENTITY gtkglext-GdkGLDrawable SYSTEM "sgml/gdkgldrawable.sgml">
-<!ENTITY gtkglext-GdkGLPixmap SYSTEM "sgml/gdkglpixmap.sgml">
-<!ENTITY gtkglext-GdkGLWindow SYSTEM "sgml/gdkglwindow.sgml">
-<!ENTITY gtkglext-gdkglfont SYSTEM "sgml/gdkglfont.sgml">
-<!ENTITY gtkglext-gdkgltokens SYSTEM "sgml/gdkgltokens.sgml">
-<!ENTITY gtkglext-gdkglx SYSTEM "sgml/gdkglx.sgml">
-<!ENTITY gtkglext-gtkglwidget SYSTEM "sgml/gtkglwidget.sgml">
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY version SYSTEM "version.xml">
+<!ENTITY gtkglext-gdkglquery SYSTEM "xml/gdkglquery.xml">
+<!ENTITY gtkglext-GdkGLConfig SYSTEM "xml/gdkglconfig.xml">
+<!ENTITY gtkglext-GdkGLContext SYSTEM "xml/gdkglcontext.xml">
+<!ENTITY gtkglext-GdkGLDrawable SYSTEM "xml/gdkgldrawable.xml">
+<!ENTITY gtkglext-GdkGLPixmap SYSTEM "xml/gdkglpixmap.xml">
+<!ENTITY gtkglext-GdkGLWindow SYSTEM "xml/gdkglwindow.xml">
+<!ENTITY gtkglext-gdkglfont SYSTEM "xml/gdkglfont.xml">
+<!ENTITY gtkglext-gdkgltokens SYSTEM "xml/gdkgltokens.xml">
+<!ENTITY gtkglext-gdkglx SYSTEM "xml/gdkglx.xml">
+<!ENTITY gtkglext-gtkglwidget SYSTEM "xml/gtkglwidget.xml">
 ]>
 <book id="index">
   <bookinfo>
     <title>GtkGLExt Reference Manual</title>
+    <releaseinfo>for GtkGLExt &version;</releaseinfo>
   </bookinfo>
 
   <reference>

@@ -154,7 +154,7 @@ SCANOBJ_OPTIONS =
 SCAN_OPTIONS = 
 
 # Extra options to supply to gtkdoc-mkdb.
-MKDB_OPTIONS = --sgml-mode
+MKDB_OPTIONS = --sgml-mode --output-format=xml
 
 # Extra options to supply to gtkdoc-fixref.
 FIXXREF_OPTIONS = 
@@ -190,10 +190,14 @@ EXTRA_HFILES = \
 HTML_IMAGES = 
 
 # Extra SGML files that are included by $(DOC_MAIN_SGML_FILE).
-content_files = 
+content_files = \
+	version.xml
+
 
 # Other files to distribute.
-extra_files = 
+extra_files = \
+	version.xml.in
+
 
 # CFLAGS and LDFLAGS for compiling scan program. Only needed if your app/lib
 # contains GtkObjects/GObjects and you want to document signals and properties.
@@ -242,16 +246,18 @@ DOC_STAMPS = scan-build.stamp tmpl-build.stamp sgml-build.stamp html-build.stamp
 
 
 SCANOBJ_FILES = \
-	$(DOC_MODULE).args 	\
-	$(DOC_MODULE).hierarchy \
+	$(DOC_MODULE).args 		\
+	$(DOC_MODULE).hierarchy 	\
+	$(DOC_MODULE).interfaces	\
+	$(DOC_MODULE).prerequisites	\
 	$(DOC_MODULE).signals
 
 subdir = docs/reference/gtkglext
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES =
+CONFIG_CLEAN_FILES = version.xml
 DIST_SOURCES =
-DIST_COMMON = Makefile.am Makefile.in
+DIST_COMMON = Makefile.am Makefile.in version.xml.in
 all: all-am
 
 .SUFFIXES:
@@ -260,6 +266,8 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am  $(top_srcdir)/configu
 	  $(AUTOMAKE) --gnu  docs/reference/gtkglext/Makefile
 Makefile: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__depfiles_maybe)
+version.xml: $(top_builddir)/config.status version.xml.in
+	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -443,8 +451,8 @@ maintainer-clean-local: clean
 
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(TARGET_DIR)
-	(installfiles=`echo $(srcdir)/html/*.html`; \
-	if test "$$installfiles" = '$(srcdir)/html/*.html'; \
+	(installfiles=`echo $(srcdir)/html/*`; \
+	if test "$$installfiles" = '$(srcdir)/html/*'; \
 	then echo '-- Nothing to install' ; \
 	else \
 	  for i in $$installfiles; do \
@@ -465,17 +473,11 @@ install-data-local:
 
 dist-hook: dist-check-gtkdoc dist-hook-local
 	mkdir $(distdir)/tmpl
-	mkdir $(distdir)/sgml
+	mkdir $(distdir)/xml
 	mkdir $(distdir)/html
 	-cp $(srcdir)/tmpl/*.sgml $(distdir)/tmpl
-	-cp $(srcdir)/sgml/*.sgml $(distdir)/sgml
-	-cp $(srcdir)/html/index.sgml $(distdir)/html
-	-cp $(srcdir)/html/*.html $(srcdir)/html/*.css $(distdir)/html
-
-	images=$(HTML_IMAGES) ;    	      \
-	for i in $$images ; do		      \
-	  cp $(srcdir)/$$i $(distdir)/html ;  \
-	done
+	-cp $(srcdir)/xml/*.xml $(distdir)/xml
+	-cp $(srcdir)/html/* $(distdir)/html
 
 .PHONY : dist-hook-local files
 
