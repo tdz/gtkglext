@@ -107,6 +107,16 @@ realize (GtkWidget *widget,
   /*** OpenGL END ***/
 }
 
+static void
+size_allocate (GtkWidget     *widget,
+               GtkAllocation *allocation,
+               gpointer       data)
+{
+  /*  Synchronize OpenGL rendering pipeline on resizing X window. */
+  if (glwindow != NULL)
+    gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
+}
+
 static gboolean
 configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
@@ -162,13 +172,22 @@ unrealize (GtkWidget *widget,
            gpointer   data)
 {
   if (widget->window != NULL)
-    gdk_window_unset_gl_capability (widget->window);
+    {
+      gdk_window_unset_gl_capability (widget->window);
+      glwindow = NULL;
+    }
 
   if (glconfig != NULL)
-    g_object_unref (G_OBJECT (glconfig));
+    {
+      g_object_unref (G_OBJECT (glconfig));
+      glconfig = NULL;
+    }
 
   if (glcontext != NULL)
-    g_object_unref (G_OBJECT (glcontext));
+    {
+      g_object_unref (G_OBJECT (glcontext));
+      glcontext = NULL;
+    }
 }
 
 static void
@@ -302,10 +321,6 @@ main (int   argc,
   gtk_widget_set_colormap (window,
                            gdk_gl_config_get_colormap (glconfig));
 
-#ifndef G_OS_WIN32
-  /* Perform the resizes immediately */
-  gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
-#endif
   /* Get automatically redrawn if any of their children changed allocation. */
   gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
 
@@ -338,6 +353,8 @@ main (int   argc,
                           G_CALLBACK (realize), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (configure_event), NULL);
+  g_signal_connect_after (G_OBJECT (drawing_area), "size_allocate",
+                          G_CALLBACK (size_allocate), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
 		    G_CALLBACK (expose_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "unrealize",

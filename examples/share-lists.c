@@ -196,10 +196,6 @@ main (int   argc,
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window), "share-lists");
 
-#ifndef G_OS_WIN32
-  /* Perform the resizes immediately */
-  gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
-#endif
   /* Get automatically redrawn if any of their children changed allocation. */
   gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
   /* Set border width */

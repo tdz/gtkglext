@@ -187,9 +187,6 @@ main (int   argc,
 
   window = glade_xml_get_widget (xml, "window1");
 
-#ifndef G_OS_WIN32
-  gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
-#endif
   gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
 
   /*

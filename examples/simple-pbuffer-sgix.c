@@ -319,7 +319,7 @@ main (int   argc,
     }
 
   pb = gdk_gl_get_GLX_SGIX_pbuffer (glconfig);
-  if (!fbc)
+  if (!pb)
     {
       g_print ("GLX_SGIX_pbuffer extension is not supported.\n");
       exit (1);
@@ -331,9 +331,6 @@ main (int   argc,
 
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window), "simple");
-
-  /* Perform the resizes immediately */
-  gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
 
   /* Get automatically redrawn if any of their children changed allocation. */
   gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);

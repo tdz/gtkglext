@@ -1,5 +1,35 @@
 2003-11-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/low-level.c (main): 
+	* examples/simple.c (main): 
+	* examples/simple-mixed.c (main): 
+	* examples/share-lists.c (main): 
+	* examples/color.c (main): 
+	* examples/font.c (main): 
+	* examples/button.c (main): 
+	* examples/shapes.c (main): 
+	* examples/logo.c (main): 
+	* examples/gears.c (main): 
+	* examples/multiarb.c (main): 
+	* examples/viewlw.c (show_lwobject): 
+	* examples/rotating-square.c (create_window): 
+	* examples/coolwave.c (create_window): 
+	* examples/coolwave2.c (create_window): 
+	* examples/template.c (create_window): 
+	* examples/scribble-gl.c (create_window): 
+	* examples/font-pangoft2.c (main): 
+	* examples/font-pangoft2-tex.c (main):
+	* examples/simple-pbuffer-sgix.c (main): 
+	* examples/glade/simple.c (main): 
+	* examples/glade/share-lists.c (main): 
+	gtk_container_set_resize_mode() call is unnecessary.
+
+	* examples/low-level.c (size_allocate): Added "size_allocate"
+	signal handler. It synchronizes OpenGL rendering pipeline, and
+	reduces flickering on resizing X window.
+
+2003-11-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* examples/logo.c (timeout): 
 	* examples/shapes.c (idle): 
 	* examples/multiarb.c (timeout): 

@@ -609,9 +609,6 @@ show_lwobject(const char *lwobject_name)
   window = gtk_window_new( GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title(GTK_WINDOW(window), lwobject_name);
   gtk_container_set_border_width(GTK_CONTAINER(window), 10);
-#ifndef G_OS_WIN32
-  gtk_container_set_resize_mode(GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
-#endif
   gtk_container_set_reallocate_redraws(GTK_CONTAINER (window), TRUE);
   create_popup_menu(window); /* add popup menu to window */
   /* key_press_event handler for top-level window */
