@@ -10,5 +10,8 @@ Contributors
 
 Alif Wahid  <awah005@varsity.co.nz>
   * Port of viewlw, the LightWave 3D object viewer demo, that comes
-  with the GtkGLArea. The program is originally written by Janne Lof.
+    with the GtkGLArea. The program is originally written by Janne Lof.
+
+Igor Fernandez de Bustos  <impfedei@bi.ehu.es>
+  * Documentations.
 
