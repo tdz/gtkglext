@@ -175,7 +175,7 @@ stamp-gdkglenumtypes.h: @REBUILD@ $(gdkglext_public_h_sources) Makefile
 	&& echo timestamp > $(@F)
 $(srcdir)/gdkglenumtypes.c: @REBUILD@ $(gdkglext_public_h_sources) Makefile
 	( cd $(srcdir) && glib-mkenums \
-			--fhead "#define GDK_GL_ENABLE_BROKEN\n#include \"gdkgl.h\"" \
+			--fhead "#include \"gdkgl.h\"" \
 			--fprod "\n/* enumerations from \"@filename@\" */" \
 			--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 			--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
