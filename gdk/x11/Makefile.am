@@ -3,8 +3,6 @@
 
 INCLUDES = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
-	-DGDKGLEXT_LIBDIR=\"$(libdir)\"	\
-	-DGDKGLEXT_LIBNAME=\"gdkglext-@gdktarget@-@GTKGLEXT_API_VERSION@\" \
 	-DGDK_GL_COMPILATION		\
 	-DINSIDE_GDK_GL_X11		\
 	-I$(top_srcdir)			\
