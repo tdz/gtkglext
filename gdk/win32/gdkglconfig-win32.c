@@ -171,8 +171,6 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
   GdkGLConfig *glconfig;
   GdkGLConfigImplWin32 *impl;
 
-  GdkVisual *visual;
-
   HDC hdc;
   PIXELFORMATDESCRIPTOR found_pfd;
   int pixel_format;
@@ -222,14 +220,10 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
                     found_pfd.cBlueBits;
 
   /*
-   * Get appropriate colormap.
+   * Get colormap.
    */
 
-  visual = gdk_visual_get_best_with_depth (glconfig->depth);
-  if (visual == gdk_visual_get_system ())
-    glconfig->colormap = g_object_ref (G_OBJECT (gdk_colormap_get_system ()));
-  else
-    glconfig->colormap = gdk_colormap_new (visual, FALSE);
+  glconfig->colormap = g_object_ref (G_OBJECT (gdk_colormap_get_system ()));
 
   /*
    * Get configuration results.
