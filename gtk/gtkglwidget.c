@@ -226,10 +226,16 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   glparam->glconfig = glconfig;
   g_object_ref (G_OBJECT (glparam->glconfig));
 
-  glparam->share_list = share_list;
-  if (glparam->share_list != NULL)
-    g_object_add_weak_pointer (G_OBJECT (glparam->share_list),
-                               (gpointer *) &(glparam->share_list));
+  if (share_list != NULL && GDK_IS_GL_CONTEXT (share_list))
+    {
+      glparam->share_list = share_list;
+      g_object_add_weak_pointer (G_OBJECT (glparam->share_list),
+                                 (gpointer *) &(glparam->share_list));
+    }
+  else
+    {
+      glparam->share_list = NULL;
+    }
 
   glparam->direct = direct;
   glparam->render_type = render_type;
