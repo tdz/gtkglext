@@ -215,8 +215,8 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
 
 #ifdef __APPLE__
 
-#define _GDK_GL_LIBGL_PATH  "/usr/X11R6/lib/libGL.1.dylib";
-#define _GDK_GL_LIBGLU_PATH "/usr/X11R6/lib/libGLU.1.dylib";
+#define _GDK_GL_LIBGL_PATH  "/usr/X11R6/lib/libGL.1.dylib"
+#define _GDK_GL_LIBGLU_PATH "/usr/X11R6/lib/libGLU.1.dylib"
 
 GdkGLProc
 gdk_gl_get_proc_address (const char *proc_name)
