@@ -1,3 +1,9 @@
+2002-11-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* configure.in: GLU checks have been modified for Mesa 5.0. Added
+	gmodule package to PKG_CHECK_MODULES. Disabled static libraries by
+	default.
+
 2002-10-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* configure.in: Added checks for win32 gcc3 "-mms-bitfields"
