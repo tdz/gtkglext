@@ -173,7 +173,19 @@ gdk_gl_pixmap_impl_win32_constructor (GType                  type,
   impl->pfd.dwFlags &= ~PFD_DRAW_TO_WINDOW;
   impl->pfd.dwFlags |= PFD_DRAW_TO_BITMAP;
 
+  /* Request pfd.cColorBits should exclude alpha bitplanes. */
+  impl->pfd.cColorBits = impl->pfd.cRedBits +
+                         impl->pfd.cGreenBits +
+                         impl->pfd.cBlueBits;
+
   impl->pixel_format = ChoosePixelFormat (impl->hdc, &(impl->pfd));
+
+  /*
+  impl->pixel_format = _gdk_win32_gl_config_find_pixel_format (impl->hdc,
+							       &(impl->pfd),
+							       &(impl->pfd));
+  */
+
   if (impl->pixel_format == 0)
     {
       g_warning ("cannot choose pixel format");

@@ -26,11 +26,15 @@
 
 G_BEGIN_DECLS
 
-GdkGLContext *_gdk_win32_gl_context_new        (GdkGLDrawable *gldrawable,
-                                                GdkGLConfig   *glconfig,
-                                                GdkGLContext  *share_list,
-                                                gboolean       direct,
-                                                gint           render_type);
+int _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
+					    CONST PIXELFORMATDESCRIPTOR* req_pfd,
+					    PIXELFORMATDESCRIPTOR*       found_pfd);
+
+GdkGLContext *_gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
+					 GdkGLConfig   *glconfig,
+					 GdkGLContext  *share_list,
+					 gboolean       direct,
+					 gint           render_type);
 
 HDC     _gdk_win32_gl_pixmap_hdc_get     (GdkGLDrawable *gldrawable);
 void    _gdk_win32_gl_pixmap_hdc_release (GdkGLDrawable *gldrawable);

@@ -114,6 +114,56 @@ gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass)
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
+/*
+ * Find an appropriate pixel format.
+ * Basic idea of this code is ripped from FLTK.
+ */
+int
+_gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
+					CONST PIXELFORMATDESCRIPTOR* req_pfd,
+					PIXELFORMATDESCRIPTOR*       found_pfd)
+{
+  PIXELFORMATDESCRIPTOR pfd, chosen_pfd;
+  int pixel_format = 0;
+  int i;
+
+  memset (&chosen_pfd, 0, sizeof (chosen_pfd));
+
+  for (i = 1; ; i++)
+    {
+      if (DescribePixelFormat (hdc, i, sizeof (pfd), &pfd) == 0)
+	break;
+
+      if (~(pfd.dwFlags)   &  req_pfd->dwFlags)      continue;
+      if (pfd.iPixelType   != req_pfd->iPixelType)   continue;
+      if (pfd.cColorBits   <  req_pfd->cColorBits)   continue;
+      if (pfd.cAlphaBits   <  req_pfd->cAlphaBits)   continue;
+      if (pfd.cAccumBits   <  req_pfd->cAccumBits)   continue;
+      if (pfd.cDepthBits   <  req_pfd->cDepthBits)   continue;
+      if (pfd.cStencilBits <  req_pfd->cStencilBits) continue;
+      if (pfd.cAuxBuffers  <  req_pfd->cAuxBuffers)  continue;
+      if (pfd.iLayerType   != req_pfd->iLayerType)   continue;
+
+      /* Check whether pfd is better than chosen_pfd. */
+      if (pixel_format != 0)
+	{
+	  /* Offering overlay is better. */
+	  if ((pfd.bReserved & 0x0f) && !(chosen_pfd.bReserved & 0x0f)) {}
+	  /* More color bitplanes is better. */
+	  else if (pfd.cColorBits > chosen_pfd.cColorBits) {}
+	  /* pfd is not better than chosen_pfd. */
+	  else continue;
+	}
+
+      pixel_format = i;
+      chosen_pfd = pfd;
+    }
+
+  *found_pfd = chosen_pfd;
+
+  return pixel_format;
+}
+
 static GObject *
 gdk_gl_config_impl_win32_constructor (GType                  type,
                                       guint                  n_construct_properties,
@@ -128,10 +178,8 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
 
   HWND hwnd;
   HDC hdc;
-  int saved_dc = 0;
-  int pf;
-
-  gboolean stereo_is_requested = FALSE;
+  PIXELFORMATDESCRIPTOR found_pfd;
+  int pixel_format;
 
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
                                                        n_construct_properties,
@@ -141,9 +189,6 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
 
   glconfig = GDK_GL_CONFIG (object);
   impl = GDK_GL_CONFIG_IMPL_WIN32 (object);
-
-  if (impl->pfd.dwFlags & PFD_STEREO)
-    stereo_is_requested = TRUE;
 
   root_window = gdk_get_default_root_window ();
   hwnd = (HWND) gdk_win32_drawable_get_handle (GDK_DRAWABLE (root_window));
@@ -156,71 +201,29 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
   if (hdc == NULL)
     goto FAIL;
 
-  saved_dc = SaveDC (hdc);
-  if (saved_dc == 0)
+  /*
+   * Determine whether requested pixel format is supported.
+   */
+
+  pixel_format = _gdk_win32_gl_config_find_pixel_format (hdc,
+							 &(impl->pfd),
+							 &found_pfd);
+  if (pixel_format == 0)
     goto FAIL;
 
   /*
-   * Choose an appropriate pixel format.
+   * Setup PFD from the found description.
    */
 
-  pf = ChoosePixelFormat (hdc, &(impl->pfd));
-  if (pf == 0)
-    goto FAIL;
-
-  memset (&(impl->pfd), 0, sizeof (PIXELFORMATDESCRIPTOR));
-  if (DescribePixelFormat (hdc, pf, sizeof (PIXELFORMATDESCRIPTOR), &(impl->pfd)) == 0)
-    goto FAIL;
-
-  /* Nate Robins says ...
-     ChoosePixelFormat is dumb in that it will return a pixel
-     format that doesn't have stereo even if it was requested
-     so we need to make sure that if stereo was selected, we got it. */
-  if (stereo_is_requested && !(impl->pfd.dwFlags & PFD_STEREO))
-    goto FAIL;
-
-  /* Mark J. Kilgard says ...
-     XXX Brad's Matrox Millenium II has problems creating
-     color index windows in 24-bit mode (lead to GDI crash)
-     and 32-bit mode (lead to black window).  The cColorBits
-     filed of the PIXELFORMATDESCRIPTOR returned claims to
-     have 24 and 32 bits respectively of color indices. 2^24
-     and 2^32 are ridiculously huge writable colormaps.
-     Assume that if we get back a color index
-     PIXELFORMATDESCRIPTOR with 24 or more bits, the
-     PIXELFORMATDESCRIPTOR doesn't really work and skip it.
-     -mjk */
-#if 0
-  if (impl->pfd.iPixelType == PFD_TYPE_COLORINDEX &&
-      impl->pfd.cColorBits >= 24)
-    goto FAIL;
-#endif
-
-  /*
-   * Setup PFD from the description.
-   */
-
-  /* PFD_DRAW_TO_WINDOW or PFD_DRAW_TO_BITMAP is not specified at this stage.
-     The flag is specified by _gdk_win32_gl_(window|pixmap)_hdc_get (). */
-  if (impl->pfd.dwFlags & PFD_DOUBLEBUFFER)
-    impl->pfd.dwFlags = PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
-  else if (impl->pfd.dwFlags & PFD_SUPPORT_GDI)
-    impl->pfd.dwFlags = PFD_SUPPORT_OPENGL | PFD_SUPPORT_GDI;
-  else
-    impl->pfd.dwFlags = PFD_SUPPORT_OPENGL;
-
-  /* I think returned pfd.cColorBits isn't appropriate for SetPixelFormat ()
-     (returned description data includes alpha bitplanes,
-     but request should exclude it). */
-  impl->pfd.cColorBits = impl->pfd.cRedBits +
-                         impl->pfd.cGreenBits +
-                         impl->pfd.cBlueBits;
+  impl->pfd = found_pfd;
 
   /*
    * Set depth (number of bits per pixel).
    */
 
-  glconfig->depth = impl->pfd.cColorBits;
+  glconfig->depth = found_pfd.cRedBits +
+                    found_pfd.cGreenBits +
+                    found_pfd.cBlueBits;
 
   /*
    * Get appropriate colormap.
@@ -247,27 +250,16 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
     glconfig->is_stereo = TRUE;
 
   /*
-   * Restore and release DC.
-   */
-
-  if (!RestoreDC (hdc, saved_dc))
-    goto FAIL;
-
-  if (!ReleaseDC (hwnd, hdc))
-    goto FAIL;
-
-  /*
    * Successfully constructed?
    */
 
   impl->is_constructed = TRUE;
 
-  return object;
-
  FAIL:
 
-  if (saved_dc != 0)
-    RestoreDC (hdc, saved_dc);
+  /*
+   * Release DC.
+   */
 
   if (hdc != NULL)
     ReleaseDC (hwnd, hdc);
@@ -309,7 +301,7 @@ parse_attrib_list (GdkGLConfig *glconfig,
   /* Specifies the number of color bitplanes in each color buffer.
      For RGBA pixel types, it is the size of the color buffer, excluding the alpha bitplanes.
      For color-index pixels, it is the size of the color-index buffer. */
-  pfd->cColorBits = 24;		/* Max */
+  pfd->cColorBits = 32;		/* Max */
 
   /* Ignored. Earlier implementations of OpenGL used this member,
      but it is no longer used. */

@@ -1,3 +1,8 @@
+2002-08-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_impl_win32_constructor):
+	Rewritten.
+
 2002-08-06  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/gdkgldrawable.[ch] (gdk_gl_drawable_gl_begin): 
