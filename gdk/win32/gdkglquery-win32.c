@@ -129,8 +129,6 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
   char *where, *terminator;
   HDC hdc;
 
-  /* g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), FALSE); */
-
   /* Extension names should not have spaces. */
   where = strchr (extension, ' ');
   if (where || *extension == '\0')
@@ -138,7 +136,6 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
 
   if (!extensions)
     {
-
       /* Try wglGetExtensionsStringARB. */
 
       wgl_get_extensions_string_arb =
@@ -171,7 +168,6 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
 
       if (!extensions)
         return FALSE;
-
     }
 
   /* It takes a bit of care to be fool-proof about parsing
@@ -225,11 +221,11 @@ gdk_gl_get_proc_address (const char *proc_name)
 
       /* opengl32.dll */
 
-      GDK_GL_NOTE (MISC, g_message (" - Get opengl32 module handle"));
+      GDK_GL_NOTE (MISC, g_message (" - Get opengl32.dll module handle"));
 
-      hmodule = GetModuleHandle ("opengl32");
+      hmodule = GetModuleHandle ("opengl32.dll");
       if (hmodule == NULL)
-        g_warning ("Cannot get opengl32 module handle");
+        g_warning ("Cannot get opengl32.dll module handle");
       else
         proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
 
@@ -240,11 +236,11 @@ gdk_gl_get_proc_address (const char *proc_name)
     {
       /* glu32.dll */
 
-      GDK_GL_NOTE (MISC, g_message (" - Get glu32 module handle"));
+      GDK_GL_NOTE (MISC, g_message (" - Get glu32.dll module handle"));
 
-      hmodule = GetModuleHandle ("glu32");
+      hmodule = GetModuleHandle ("glu32.dll");
       if (hmodule == NULL)
-        g_warning ("Cannot get glu32 module handle");
+        g_warning ("Cannot get glu32.dll module handle");
       else
         proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
 
