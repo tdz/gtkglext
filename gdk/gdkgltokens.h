@@ -206,9 +206,9 @@ typedef enum
  */
 typedef enum
 {
-  GDK_GL_WINDOW_BIT                 = 0x00000001,
-  GDK_GL_PIXMAP_BIT                 = 0x00000002,
-  GDK_GL_PBUFFER_BIT                = 0x00000004
+  GDK_GL_WINDOW_BIT                 = 1 << 0, /* 0x00000001 */
+  GDK_GL_PIXMAP_BIT                 = 1 << 1, /* 0x00000002 */
+  GDK_GL_PBUFFER_BIT                = 1 << 2  /* 0x00000004 */
 } GdkGLDrawableTypeMask;
 
 /*
@@ -217,8 +217,8 @@ typedef enum
  */
 typedef enum
 {
-  GDK_GL_RGBA_BIT                   = 0x00000001,
-  GDK_GL_COLOR_INDEX_BIT            = 0x00000002
+  GDK_GL_RGBA_BIT                   = 1 << 0, /* 0x00000001 */
+  GDK_GL_COLOR_INDEX_BIT            = 1 << 1  /* 0x00000002 */
 } GdkGLRenderTypeMask;
 
 /*
@@ -227,14 +227,14 @@ typedef enum
  */
 typedef enum
 {
-  GDK_GL_FRONT_LEFT_BUFFER_BIT      = 0x00000001,
-  GDK_GL_FRONT_RIGHT_BUFFER_BIT     = 0x00000002,
-  GDK_GL_BACK_LEFT_BUFFER_BIT       = 0x00000004,
-  GDK_GL_BACK_RIGHT_BUFFER_BIT      = 0x00000008,
-  GDK_GL_AUX_BUFFERS_BIT            = 0x00000010,
-  GDK_GL_DEPTH_BUFFER_BIT           = 0x00000020,
-  GDK_GL_STENCIL_BUFFER_BIT         = 0x00000040,
-  GDK_GL_ACCUM_BUFFER_BIT           = 0x00000080
+  GDK_GL_FRONT_LEFT_BUFFER_BIT      = 1 << 0, /* 0x00000001 */
+  GDK_GL_FRONT_RIGHT_BUFFER_BIT     = 1 << 1, /* 0x00000002 */
+  GDK_GL_BACK_LEFT_BUFFER_BIT       = 1 << 2, /* 0x00000004 */
+  GDK_GL_BACK_RIGHT_BUFFER_BIT      = 1 << 3, /* 0x00000008 */
+  GDK_GL_AUX_BUFFERS_BIT            = 1 << 4, /* 0x00000010 */
+  GDK_GL_DEPTH_BUFFER_BIT           = 1 << 5, /* 0x00000020 */
+  GDK_GL_STENCIL_BUFFER_BIT         = 1 << 6, /* 0x00000040 */
+  GDK_GL_ACCUM_BUFFER_BIT           = 1 << 7, /* 0x00000080 */
 } GdkGLBufferMask;
 
 /*
