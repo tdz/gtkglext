@@ -310,6 +310,7 @@ key_press_event (GtkWidget   *widget,
       break;
 
     default:
+      g_print("\n");
       return FALSE;
     }
 
@@ -371,6 +372,7 @@ map_event (GtkWidget *widget,
 	   GdkEvent  *event,
 	   gpointer   data)
 {
+  g_print ("%s: \"map_event\":\n", gtk_widget_get_name (widget));
   if (animate)
     idle_add (widget);
 
@@ -386,6 +388,7 @@ unmap_event (GtkWidget *widget,
 	     GdkEvent  *event,
 	     gpointer   data)
 {
+  g_print ("%s: \"unmap_event\":\n", gtk_widget_get_name (widget));
   idle_remove (widget);
 
   return TRUE;

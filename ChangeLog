@@ -1,3 +1,9 @@
+2003-05-14  Alif Wahid  <awah005@users.sourceforge.net>
+
+    * examples/template.c: minor improvement of 
+    console printouts in key_press_event, map_event 
+    and unmap_event signal handlers.
+
 2003-05-13  Alif Wahid  <awah005@users.sourceforge.net>
 
     * examples/coolwave.c:
