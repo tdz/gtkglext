@@ -373,12 +373,13 @@ if test "x$gdktarget" = "xx11"; then
   save_CPPFLAGS="$CPPFLAGS"
   CPPFLAGS="$CPPFLAGS $X_CFLAGS"
   save_LIBS="$LIBS"
-  LIBS="$LIBS $X_LIBS $X_PRE_LIBS"
+  LIBS="$LIBS $X_LIBS $X_PRE_LIBS -lXext -lX11 $X_EXTRA_LIBS"
 
   AC_CHECK_HEADERS([X11/Xmu/StdCmap.h Xmu/StdCmap.h])
 
   XMU_LIBS=""
-  AC_CHECK_LIB(Xmu, XmuLookupStandardColormap)
+  AC_CHECK_LIB(Xmu, XmuLookupStandardColormap, , ,
+               [ -lXt ])
   if test "x$ac_cv_lib_Xmu_XmuLookupStandardColormap" = "xyes" ; then
     XMU_LIBS="-lXmu -lXt"
   fi
