@@ -327,7 +327,7 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 ## calls. Oh, also the later pkg-config calls don't include 
 ## the version requirements since those make the module lists 
 ## annoying to construct
-PKG_CHECK_MODULES([BASE_DEPENDENCIES], [
+PKG_CHECK_MODULES([BASE_DEPENDENCIES], [\
 gtk_pkg >= gtk_required_version \
 gdk_pkg >= gdk_required_version \
 pango_pkg >= pango_required_version \
