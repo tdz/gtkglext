@@ -1,5 +1,21 @@
 2003-07-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.c (struct GLWidgetPrivate): Added
+	unrealize_handler and destroy_handler members. Removed
+	need_unrealize flag.
+	(gtk_gl_widget_realize, gtk_gl_widget_unrealize) 
+	(gtk_widget_set_gl_capability): "unrealize" signal handler
+	connection is done by "realize" handler. This change makes
+	user's "unrealize" handler possible to call OpenGL functions.
+	(gtk_widget_get_gl_context, gtk_widget_destroy_gl_context):
+	"destroy" signal handler connection is done by
+	gtk_widget_get_gl_context().
+
+	* examples/template.c (unrealize): OpenGL functions can be called
+	in "unrealize" handler.
+
+2003-07-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* examples/font-pangoft2-tex.c: 
 	* examples/Makefile.am (common_programs): 
 	* examples/Makefile.mingw (PROGRAMS): 

@@ -540,10 +540,6 @@ main (int   argc,
   drawing_area = gtk_drawing_area_new ();
   gtk_widget_set_size_request (drawing_area, 200, 200);
 
-  /* unrealize should be called before OpenGL-capable widget's unrealize handler. */
-  g_signal_connect (G_OBJECT (drawing_area), "unrealize",
-		    G_CALLBACK (unrealize), NULL);
-
   /* Set OpenGL-capability to the widget. */
   gtk_widget_set_gl_capability (drawing_area,
                                 glconfig,
@@ -557,6 +553,8 @@ main (int   argc,
 		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
 		    G_CALLBACK (expose_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "unrealize",
+		    G_CALLBACK (unrealize), NULL);
 
   g_signal_connect (G_OBJECT (drawing_area), "map_event",
 		    G_CALLBACK (map_event), NULL);

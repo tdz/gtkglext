@@ -108,8 +108,6 @@ realize (GtkWidget *widget,
 
   gdk_gl_drawable_gl_end (gldrawable);
   /*** OpenGL END ***/
-
-  return;
 }
 
 /***
@@ -193,6 +191,29 @@ idle (GtkWidget *widget)
   gtk_widget_queue_draw (widget);
 
   return TRUE;
+}
+
+/***
+ *** The "unrealize" signal handler. Any processing required when
+ *** the OpenGL-capable window is unrealized should be done here.
+ ***/
+static void
+unrealize (GtkWidget *widget,
+	   gpointer   data)
+{
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
+  g_print ("%s: \"unrealize\"\n", gtk_widget_get_name (widget));
+
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    return;
+
+  /*** Fill in the details here. ***/
+
+  gdk_gl_drawable_gl_end (gldrawable);
+  /*** OpenGL END ***/
 }
 
 /***
@@ -315,20 +336,6 @@ key_press_event (GtkWidget   *widget,
     }
 
   return TRUE;
-}
-
-/***
- *** The "unrealize" signal handler. Any processing required when
- *** the OpenGL-capable window is unrealized should be done here.
- ***/
-static void
-unrealize (GtkWidget *widget,
-	   gpointer   data)
-{
-  g_print ("%s: \"unrealize\"\n", gtk_widget_get_name (widget));
-
-  /*** Fill in the details here ***/
-
 }
 
 
@@ -538,13 +545,13 @@ create_window (GdkGLConfig *glconfig)
 		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
 		    G_CALLBACK (expose_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "unrealize",
+		    G_CALLBACK (unrealize), NULL);
 
   g_signal_connect (G_OBJECT (drawing_area), "motion_notify_event",
 		    G_CALLBACK (motion_notify_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "button_press_event",
 		    G_CALLBACK (button_press_event), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "unrealize",
-		    G_CALLBACK (unrealize), NULL);
 
   /* key_press_event handler for top-level window */
   g_signal_connect_swapped (G_OBJECT (window), "key_press_event",

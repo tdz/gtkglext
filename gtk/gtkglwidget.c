@@ -30,8 +30,10 @@ typedef struct
 
   GdkGLContext *glcontext;
 
+  gulong unrealize_handler;
+  gulong destroy_handler;
+
   guint is_realized : 1;
-  guint need_unrealize : 1;
 
 } GLWidgetPrivate;
 
@@ -39,6 +41,23 @@ static const gchar quark_gl_private_string[] = "gtk-gl-widget-private";
 static GQuark quark_gl_private = 0;
 
 gboolean _gtk_gl_widget_install_toplevel_cmap = FALSE;
+
+static void     gtk_gl_widget_realize         (GtkWidget         *widget,
+                                               GLWidgetPrivate   *private);
+static gboolean gtk_gl_widget_configure_event (GtkWidget         *widget,
+                                               GdkEventConfigure *event,
+                                               GLWidgetPrivate   *private);
+static void     gtk_gl_widget_unrealize       (GtkWidget         *widget,
+                                               GLWidgetPrivate   *private);
+static void     gtk_gl_widget_parent_set      (GtkWidget         *widget,
+                                               GtkObject         *old_parent,
+                                               GdkColormap       *colormap);
+static void     gtk_gl_widget_style_set       (GtkWidget         *widget,
+                                               GtkStyle          *previous_style,
+                                               gpointer           user_data);
+static void     gl_widget_private_destroy     (GLWidgetPrivate   *private);
+static void     gtk_widget_destroy_gl_context (GtkWidget         *widget,
+                                               GLWidgetPrivate   *private);
 
 /* 
  * Signal handlers.
@@ -67,7 +86,14 @@ gtk_gl_widget_realize (GtkWidget       *widget,
           return;
         }
 
-      private->need_unrealize = TRUE;
+      /*
+       * Connect "unrealize" signal handler.
+       */
+
+      if (private->unrealize_handler == 0)
+        private->unrealize_handler = g_signal_connect (G_OBJECT (widget), "unrealize",
+                                                       G_CALLBACK (gtk_gl_widget_unrealize),
+                                                       private);
     }
 
   private->is_realized = TRUE;
@@ -95,35 +121,16 @@ gtk_gl_widget_unrealize (GtkWidget       *widget,
 {
   GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_unrealize ()"));
 
-  if (widget->window != NULL && private->need_unrealize)
+  if (widget->window != NULL)
     {
       /*
        * Remove OpenGL-capability from widget->window.
        */
 
       gdk_window_unset_gl_capability (widget->window);
-
-      private->need_unrealize = FALSE;
     }
 
   private->is_realized = FALSE;
-}
-
-static void
-gtk_gl_widget_destroy (GtkWidget       *widget,
-                       GLWidgetPrivate *private)
-{
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_destroy ()"));
-
-  /*
-   * Destroy OpenGL rendering context.
-   */
-
-  if (private->glcontext != NULL)
-    {
-      gdk_gl_context_destroy (private->glcontext);
-      private->glcontext = NULL;
-    }
 }
 
 static void
@@ -297,14 +304,16 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
 
   private->glcontext = NULL;
 
+  private->unrealize_handler = 0;
+  private->destroy_handler = 0;
+
   private->is_realized = FALSE;
-  private->need_unrealize = FALSE;
 
   g_object_set_qdata_full (G_OBJECT (widget), quark_gl_private, private,
                            (GDestroyNotify) gl_widget_private_destroy);
 
   /*
-   * Signal handlers.
+   * Connect signal handlers to realize OpenGL-capable widget.
    */
 
   g_signal_connect_after (G_OBJECT (widget), "realize",
@@ -315,21 +324,6 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   g_signal_connect (G_OBJECT (widget), "configure_event",
                     G_CALLBACK (gtk_gl_widget_configure_event),
                     private);
-
-  g_signal_connect (G_OBJECT (widget), "unrealize",
-		    G_CALLBACK (gtk_gl_widget_unrealize),
-                    private);
-
-  g_signal_connect (G_OBJECT (widget), "destroy",
-		    G_CALLBACK (gtk_gl_widget_destroy),
-                    private);
-
-  /*
-   * Destroy the OpenGL-capable widget on quit
-   * in order to destroy the OpenGL rendering context explicitly.
-   */
-
-  gtk_quit_add_destroy (gtk_main_level () + 1, GTK_OBJECT (widget));
 
   return TRUE;
 }
@@ -421,6 +415,23 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
   return glcontext;
 }
 
+static void
+gtk_widget_destroy_gl_context (GtkWidget       *widget,
+                               GLWidgetPrivate *private)
+{
+  GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_destroy_gl_context ()"));
+
+  /*
+   * Destroy OpenGL rendering context.
+   */
+
+  if (private->glcontext != NULL)
+    {
+      gdk_gl_context_destroy (private->glcontext);
+      private->glcontext = NULL;
+    }
+}
+
 /**
  * gtk_widget_get_gl_context:
  * @widget: a #GtkWidget.
@@ -447,10 +458,23 @@ gtk_widget_get_gl_context (GtkWidget *widget)
     return NULL;
 
   if (private->glcontext == NULL)
-    private->glcontext = gtk_widget_create_gl_context (widget,
-                                                       private->share_list,
-                                                       private->direct,
-                                                       private->render_type);
+    {
+      private->glcontext = gtk_widget_create_gl_context (widget,
+                                                         private->share_list,
+                                                         private->direct,
+                                                         private->render_type);
+
+      /*
+       * Destroy the OpenGL-capable widget on quit
+       * in order to destroy the OpenGL rendering context explicitly.
+       */
+
+      private->destroy_handler = g_signal_connect (G_OBJECT (widget), "destroy",
+                                                   G_CALLBACK (gtk_widget_destroy_gl_context),
+                                                   private);
+
+      gtk_quit_add_destroy (gtk_main_level () + 1, GTK_OBJECT (widget));
+    }
 
   return private->glcontext;
 }
