@@ -6964,6 +6964,31 @@ struct _GdkGL_GL_EXT_stencil_two_side
 
 GdkGL_GL_EXT_stencil_two_side *gdk_gl_get_GL_EXT_stencil_two_side (void);
 
+/*
+ * Microsoft OpenGL Extensions
+ */
+
+/* 
+ * GL_WIN_swap_hint
+ */
+
+/* glAddSwapHintRectWIN */
+typedef void (APIENTRY * GdkGLProc_glAddSwapHintRectWIN) (GLint x, GLint y, GLsizei width, GLsizei height);
+GdkGLProc    gdk_gl_get_glAddSwapHintRectWIN (void);
+#define      gdk_gl_glAddSwapHintRectWIN(proc, x, y, width, height) \
+  ( ((GdkGLProc_glAddSwapHintRectWIN) (proc)) (x, y, width, height) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GL_WIN_swap_hint GdkGL_GL_WIN_swap_hint;
+
+struct _GdkGL_GL_WIN_swap_hint
+{
+  GdkGLProc_glAddSwapHintRectWIN glAddSwapHintRectWIN;
+};
+
+GdkGL_GL_WIN_swap_hint *gdk_gl_get_GL_WIN_swap_hint (void);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_GLEXT_H__ */

@@ -5315,3 +5315,48 @@ gdk_gl_get_GL_EXT_stencil_two_side (void)
 
   return &(_GDK_GL_PROCS (GdkGL_GL_EXT_stencil_two_side));
 }
+
+/*
+ * Microsoft OpenGL Extensions
+ */
+
+/* 
+ * GL_WIN_swap_hint
+ */
+
+static GdkGL_GL_WIN_swap_hint _GDK_GL_PROCS (GdkGL_GL_WIN_swap_hint) = {
+  NULL
+};
+
+_GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_GL_WIN_swap_hint), glAddSwapHintRectWIN)
+
+GdkGL_GL_WIN_swap_hint *
+gdk_gl_get_GL_WIN_swap_hint (void)
+{
+  static gboolean init = FALSE;
+  static gboolean supported = TRUE;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_WIN_swap_hint ()"));
+
+#ifdef G_OS_WIN32
+  if (!wglGetCurrentContext ())
+    return NULL;
+#endif
+
+  if (!init)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_WIN_swap_hint");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glAddSwapHintRectWIN () != NULL);
+        }
+
+      init = TRUE;
+    }
+
+  if (!supported)
+    return NULL;
+
+  return &(_GDK_GL_PROCS (GdkGL_GL_WIN_swap_hint));
+}
