@@ -403,8 +403,8 @@ gdk_gl_pixmap_impl_win32_make_context_current (GdkGLDrawable *draw,
   /* Get GLRC. */
   hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
 
-  if (hdc == wglGetCurrentDC () &&
-      hglrc == wglGetCurrentContext ())
+  if (hglrc == wglGetCurrentContext () &&
+      hdc == wglGetCurrentDC ())
     goto DONE;
 
   GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));

@@ -251,9 +251,9 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
   xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
   glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
 
-  if (xdisplay == glXGetCurrentDisplay () &&
-      glxcontext == glXGetCurrentContext () &&
-      impl->glxpixmap == glXGetCurrentDrawable ())
+  if (glxcontext == glXGetCurrentContext () &&
+      impl->glxpixmap == glXGetCurrentDrawable () &&
+      xdisplay == glXGetCurrentDisplay ())
     return TRUE;
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
