@@ -567,6 +567,96 @@ const char *extension
 <RETURNS>GdkGLProc  </RETURNS>
 const char *proc_name
 </FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_solid_cube</NAME>
+<RETURNS>void  </RETURNS>
+GLdouble size
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_wire_cube</NAME>
+<RETURNS>void  </RETURNS>
+GLdouble size
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_solid_sphere</NAME>
+<RETURNS>void  </RETURNS>
+GLdouble radius,GLint    slices,GLint    stacks
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_wire_sphere</NAME>
+<RETURNS>void  </RETURNS>
+GLdouble radius,GLint    slices,GLint    stacks
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_solid_cone</NAME>
+<RETURNS>void  </RETURNS>
+GLdouble base,GLdouble height,GLint    slices,GLint    stacks
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_wire_cone</NAME>
+<RETURNS>void  </RETURNS>
+GLdouble base,GLdouble height,GLint    slices,GLint    stacks
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_solid_torus</NAME>
+<RETURNS>void  </RETURNS>
+GLdouble inner_radius,GLdouble outer_radius,GLint    nsides,GLint    rings
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_wire_torus</NAME>
+<RETURNS>void  </RETURNS>
+GLdouble inner_radius,GLdouble outer_radius,GLint    nsides,GLint    rings
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_solid_tetrahedron</NAME>
+<RETURNS>void  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_wire_tetrahedron</NAME>
+<RETURNS>void  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_solid_octahedron</NAME>
+<RETURNS>void  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_wire_octahedron</NAME>
+<RETURNS>void  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_solid_dodecahedron</NAME>
+<RETURNS>void  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_wire_dodecahedron</NAME>
+<RETURNS>void  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_solid_icosahedron</NAME>
+<RETURNS>void  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_wire_icosahedron</NAME>
+<RETURNS>void  </RETURNS>
+void
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_solid_teapot</NAME>
+<RETURNS>void  </RETURNS>
+GLdouble scale
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_wire_teapot</NAME>
+<RETURNS>void  </RETURNS>
+GLdouble scale
+</FUNCTION>
 <ENUM>
 <NAME>GdkGLSuccess</NAME>
 typedef enum
@@ -868,96 +958,6 @@ GdkWindow   *window
 #define      gdk_window_get_gl_drawable(window)         \
   GDK_GL_DRAWABLE (gdk_window_get_gl_window (window))
 </MACRO>
-<FUNCTION>
-<NAME>gdk_gl_solid_cube</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble size
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_cube</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble size
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_sphere</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble radius,GLint    slices,GLint    stacks
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_sphere</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble radius,GLint    slices,GLint    stacks
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_cone</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble base,GLdouble height,GLint    slices,GLint    stacks
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_cone</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble base,GLdouble height,GLint    slices,GLint    stacks
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_torus</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble inner_radius,GLdouble outer_radius,GLint    nsides,GLint    rings
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_torus</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble inner_radius,GLdouble outer_radius,GLint    nsides,GLint    rings
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_tetrahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_tetrahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_octahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_octahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_dodecahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_dodecahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_icosahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_icosahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_teapot</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble scale
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_teapot</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble scale
-</FUNCTION>
 <MACRO>
 <NAME>GDKGLEXT_MAJOR_VERSION</NAME>
 #define GDKGLEXT_MAJOR_VERSION (0)
