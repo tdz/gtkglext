@@ -84,7 +84,7 @@ gdk_gl_pixmap_impl_win32_class_init (GdkGLPixmapImplWin32Class *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_class_init ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -96,7 +96,7 @@ _gdk_gl_pixmap_destroy (GdkGLPixmap *glpixmap)
 {
   GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_gl_pixmap_destroy ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   if (impl->is_destroyed)
     return;
@@ -126,7 +126,7 @@ gdk_gl_pixmap_impl_win32_finalize (GObject *object)
 {
   GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (object);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_finalize ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   _gdk_gl_pixmap_destroy (GDK_GL_PIXMAP (object));
 
@@ -138,7 +138,7 @@ gdk_gl_pixmap_impl_win32_finalize (GObject *object)
 static void
 gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 {
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_gl_drawable_interface_init ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   iface->create_new_context   = _gdk_win32_gl_context_new;
   iface->make_context_current =  gdk_gl_pixmap_impl_win32_make_context_current;
@@ -176,7 +176,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   HBITMAP hbitmap_gdk;
   HDC hdc_gdk = NULL;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_new ()"));
+  GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
   g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), NULL);

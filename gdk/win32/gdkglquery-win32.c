@@ -203,7 +203,7 @@ gdk_gl_get_proc_address (const char *proc_name)
   GdkGLProc proc_address = NULL;
   HMODULE hmodule;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_proc_address ()"));
+  GDK_GL_NOTE_FUNC ();
 
   if (strncmp ("glu", proc_name, 3) != 0)
     {

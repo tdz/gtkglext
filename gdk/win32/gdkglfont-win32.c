@@ -41,7 +41,7 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
 
   g_return_val_if_fail (font_desc != NULL, NULL);
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font ()"));
+  GDK_GL_NOTE_FUNC ();
 
   font_map = pango_win32_font_map_for_display ();
 

@@ -180,7 +180,7 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GdkDrawableClass *drawable_class = GDK_DRAWABLE_CLASS (klass);
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_class_init ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -223,7 +223,7 @@ gdk_gl_pixmap_finalize (GObject *object)
 {
   GdkGLPixmap *glpixmap = GDK_GL_PIXMAP (object);
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_finalize ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   if (glpixmap->drawable != NULL)
     g_object_remove_weak_pointer (G_OBJECT (glpixmap->drawable),
@@ -709,7 +709,7 @@ gdk_pixmap_set_gl_capability (GdkPixmap   *pixmap,
 {
   GdkGLPixmap *glpixmap;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_pixmap_set_gl_capability ()"));
+  GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), NULL);
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
@@ -752,7 +752,7 @@ gdk_pixmap_unset_gl_capability (GdkPixmap *pixmap)
 {
   GdkGLPixmap *glpixmap;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_pixmap_unset_gl_capability ()"));
+  GDK_GL_NOTE_FUNC ();
 
   if (quark_gl_pixmap == 0)
     quark_gl_pixmap = g_quark_from_static_string (quark_gl_pixmap_string);

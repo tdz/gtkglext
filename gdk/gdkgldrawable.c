@@ -208,7 +208,7 @@ gdk_gl_drawable_get_current (void)
 {
   GdkGLContext *glcontext;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_drawable_get_current ()"));
+  GDK_GL_NOTE_FUNC ();
 
   glcontext = gdk_gl_context_get_current ();
   if (glcontext == NULL)

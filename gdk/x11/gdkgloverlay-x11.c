@@ -89,7 +89,7 @@ gdk_gl_overlay_get_sov_props (GdkScreen *screen)
   unsigned long nitems, bytes_after;
   unsigned char *prop = NULL;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_overlay_get_sov_props ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   root_window = gdk_screen_get_root_window (screen);
@@ -179,7 +179,7 @@ _gdk_x11_gl_overlay_get_info (GdkVisual        *visual,
   VisualID xvisualid;
   int i;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_x11_gl_overlay_get_info ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   g_return_val_if_fail (GDK_IS_VISUAL (visual), FALSE);
   g_return_val_if_fail (overlay_info != NULL, FALSE);

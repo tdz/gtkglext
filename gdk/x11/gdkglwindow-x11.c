@@ -85,7 +85,7 @@ gdk_gl_window_impl_x11_class_init (GdkGLWindowImplX11Class *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_class_init ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -99,7 +99,7 @@ _gdk_gl_window_destroy (GdkGLWindow *glwindow)
   Display *xdisplay;
   GdkGL_GLX_MESA_release_buffers *mesa_ext;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_gl_window_destroy ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   if (impl->is_destroyed)
     return;
@@ -132,7 +132,7 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
 {
   GdkGLWindowImplX11 *impl = GDK_GL_WINDOW_IMPL_X11 (object);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_finalize ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   _gdk_gl_window_destroy (GDK_GL_WINDOW (object));
 
@@ -144,7 +144,7 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
 static void
 gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 {
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_gl_drawable_interface_init ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   iface->create_new_context   = _gdk_x11_gl_context_new;
   iface->make_context_current =  gdk_gl_window_impl_x11_make_context_current;
@@ -185,7 +185,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   /* GLXWindow glxwindow; */
   Window glxwindow;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_window_new ()"));
+  GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);

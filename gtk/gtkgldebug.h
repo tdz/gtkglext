@@ -44,19 +44,19 @@ typedef enum {
 #  endif
 #endif
 
-#define GTK_GL_NOTE_FUNC                        G_STMT_START {  \
+#define GTK_GL_NOTE_FUNC()                      G_STMT_START {  \
   if (gtk_gl_debug_flags & GTK_GL_DEBUG_FUNC)                   \
-    { g_message (" - %s ()", __func__); };      } G_STMT_END
+    g_message (" - %s ()", __func__);           } G_STMT_END
 
-#define GTK_GL_NOTE_FUNC_INTERNAL               G_STMT_START {  \
+#define GTK_GL_NOTE_FUNC_PRIVATE()              G_STMT_START {  \
   if (gtk_gl_debug_flags & GTK_GL_DEBUG_FUNC)                   \
-    { g_message (" -- %s ()", __func__); };     } G_STMT_END
+    g_message (" -- %s ()", __func__);          } G_STMT_END
 
 #else /* !G_ENABLE_DEBUG */
 
 #define GTK_GL_NOTE(type, action)
-#define GTK_GL_NOTE_FUNC
-#define GTK_GL_NOTE_FUNC_INTERNAL
+#define GTK_GL_NOTE_FUNC()
+#define GTK_GL_NOTE_FUNC_PRIVATE()
 
 #endif /* G_ENABLE_DEBUG */
 

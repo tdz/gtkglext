@@ -68,7 +68,7 @@ gdk_gl_font_charset_for_locale (void)
     return g_strdup ("iso8859-1");
 }
 
-PangoFont *
+static PangoFont *
 gdk_gl_font_use_pango_font_common (PangoFontMap               *font_map,
                                    const PangoFontDescription *font_desc,
                                    int                         first,
@@ -82,7 +82,7 @@ gdk_gl_font_use_pango_font_common (PangoFontMap               *font_map,
   PangoXFontCache *font_cache;
   XFontStruct *fs;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font_common ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   font = pango_font_map_load_font (font_map, NULL, font_desc);
   if (font == NULL)
@@ -147,7 +147,7 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
 
   g_return_val_if_fail (font_desc != NULL, NULL);
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font ()"));
+  GDK_GL_NOTE_FUNC ();
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
@@ -185,7 +185,7 @@ gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
   g_return_val_if_fail (font_desc != NULL, NULL);
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font_for_display ()"));
+  GDK_GL_NOTE_FUNC ();
 
   font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (display));
 

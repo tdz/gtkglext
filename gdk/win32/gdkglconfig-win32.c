@@ -61,7 +61,7 @@ gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_win32_class_init ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -73,7 +73,7 @@ gdk_gl_config_impl_win32_finalize (GObject *object)
 {
   GdkGLConfigImplWin32 *impl = GDK_GL_CONFIG_IMPL_WIN32 (object);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_win32_finalize ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   g_object_unref (G_OBJECT (impl->colormap));
 
@@ -92,7 +92,7 @@ gdk_gl_config_parse_attrib_list (const int             *attrib_list,
   BYTE buffer_size;
   int layer_plane;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_parse_attrib_list ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   memset (pfd, 0, sizeof (PIXELFORMATDESCRIPTOR));
 
@@ -252,7 +252,7 @@ _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
   int pixel_format = 0;
   int i;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- _gdk_win32_gl_config_find_pixel_format ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   memset (&chosen_pfd, 0, sizeof (chosen_pfd));
 
@@ -304,7 +304,7 @@ gdk_gl_config_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
   PIXELFORMATDESCRIPTOR w_pfd, b_pfd;
   int w_pf, b_pf;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_setup_pfd ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   /* Get DC. */
   hdc = GetDC (NULL);
@@ -398,7 +398,7 @@ gdk_gl_config_setup_colormap (GdkScreen             *screen,
                               PIXELFORMATDESCRIPTOR *pfd,
                               gboolean               is_rgba)
 {
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_setup_colormap ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   if (is_rgba)
     {
@@ -436,7 +436,7 @@ gdk_gl_config_setup_colormap (GdkScreen             *screen,
                               PIXELFORMATDESCRIPTOR *pfd,
                               gboolean               is_rgba)
 {
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_setup_colormap ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   if (is_rgba)
     {
@@ -524,7 +524,7 @@ gdk_gl_config_new_common (GdkScreen *screen,
   GdkGLConfigImplWin32 *impl;
   PIXELFORMATDESCRIPTOR pfd;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_new_common ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   /*
    * Parse GLX style attrib_list.
@@ -583,7 +583,7 @@ gdk_gl_config_new (const int *attrib_list)
 {
   GdkScreen *screen;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
+  GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (attrib_list != NULL, NULL);
 
@@ -602,7 +602,7 @@ GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
                               const int *attrib_list)
 {
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_for_screen ()"));
+  GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
   g_return_val_if_fail (attrib_list != NULL, NULL);
@@ -622,7 +622,7 @@ gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
   PIXELFORMATDESCRIPTOR pfd;
   int result;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_win32_gl_config_new_from_pixel_format ()"));
+  GDK_GL_NOTE_FUNC ();
 
   /*
    * Get PFD.

@@ -60,7 +60,7 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_class_init ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -70,7 +70,7 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
 static void
 gdk_gl_context_finalize (GObject *object)
 {
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_finalize ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }

@@ -80,7 +80,7 @@ gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_x11_class_init ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -92,7 +92,7 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
 {
   GdkGLConfigImplX11 *impl = GDK_GL_CONFIG_IMPL_X11 (object);
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_x11_finalize ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   XFree (impl->xvinfo);
 
@@ -122,7 +122,7 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
   int i, num_cmaps;
   GdkVisual *visual;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_get_std_rgb_colormap ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   display = gdk_screen_get_display (screen);
   xdisplay = GDK_DISPLAY_XDISPLAY (display);
@@ -254,7 +254,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
   GdkGLOverlayInfo overlay_info;
   gboolean overlay_supported;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_setup_colormap ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   if (is_rgba)
     {
@@ -352,7 +352,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
   GdkGLOverlayInfo overlay_info;
   gboolean overlay_supported;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_setup_colormap ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   if (is_rgba)
     {
@@ -498,7 +498,7 @@ gdk_gl_config_new_common (GdkScreen *screen,
   XVisualInfo *xvinfo;
   int is_rgba;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_new_common ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   xdisplay = GDK_SCREEN_XDISPLAY (screen);
@@ -592,7 +592,7 @@ gdk_gl_config_new (const int *attrib_list)
 {
   GdkScreen *screen;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
+  GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (attrib_list != NULL, NULL);
 
@@ -622,7 +622,7 @@ GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
                               const int *attrib_list)
 {
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_for_screen ()"));
+  GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
   g_return_val_if_fail (attrib_list != NULL, NULL);
@@ -644,7 +644,7 @@ gdk_x11_gl_get_xvinfo (Display  *xdisplay,
   XVisualInfo *xvinfo_list;
   int nitems_return;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_x11_gl_get_xvinfo ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   xvinfo_template.visualid = xvisualid;
   xvinfo_template.screen = screen_num;
@@ -672,7 +672,7 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
   XVisualInfo *xvinfo;
   int is_rgba;
 
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_x11_gl_config_new_from_visualid_common ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   xdisplay = GDK_SCREEN_XDISPLAY (screen);
@@ -763,7 +763,7 @@ gdk_x11_gl_config_new_from_visualid (VisualID xvisualid)
 {
   GdkScreen *screen;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_config_new_from_visualid ()"));
+  GDK_GL_NOTE_FUNC ();
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   screen = gdk_screen_get_default ();
@@ -790,7 +790,7 @@ GdkGLConfig *
 gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
                                                 VisualID   xvisualid)
 {
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_config_new_from_visualid_for_screen ()"));
+  GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 

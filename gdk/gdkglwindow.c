@@ -180,7 +180,7 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GdkDrawableClass *drawable_class = GDK_DRAWABLE_CLASS (klass);
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_window_class_init ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -223,7 +223,7 @@ gdk_gl_window_finalize (GObject *object)
 {
   GdkGLWindow *glwindow = GDK_GL_WINDOW (object);
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_window_finalize ()"));
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 
   if (glwindow->drawable != NULL)
     g_object_remove_weak_pointer (G_OBJECT (glwindow->drawable),
@@ -709,7 +709,7 @@ gdk_window_set_gl_capability (GdkWindow   *window,
 {
   GdkGLWindow *glwindow;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_window_set_gl_capability ()"));
+  GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
@@ -766,7 +766,7 @@ gdk_window_unset_gl_capability (GdkWindow *window)
 {
   GdkGLWindow *glwindow;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_window_unset_gl_capability ()"));
+  GDK_GL_NOTE_FUNC ();
 
   if (quark_gl_window == 0)
     quark_gl_window = g_quark_from_static_string (quark_gl_window_string);

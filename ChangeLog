@@ -6,6 +6,11 @@
 	* examples/font-pangoft2.c (gl_pango_ft2_render_layout): Fixed
 	pixel store setup code.
 
+	* gdk/*.c: 
+	* gdk/x11/*.c: 
+	* gdk/win32/*.c: 
+	* gtk/*.c: Use new function call debug macros.
+
 2003-08-26  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c: Use new debug macros.
