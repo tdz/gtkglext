@@ -123,6 +123,8 @@ gdk_gl_query_get_proc_address (const char *proc_name)
        * Look up glXGetProcAddress () function.
        */
 
+      GDK_GL_NOTE (IMPL, g_message (" * get main_module"));
+
       main_module = g_module_open (NULL, G_MODULE_BIND_LAZY);
       g_return_val_if_fail (main_module != NULL, NULL);
 
@@ -144,10 +146,10 @@ gdk_gl_query_get_proc_address (const char *proc_name)
       init_glx_get_proc_address = TRUE;
     }
 
-  if (glx_get_proc_address != NULL)
+  if (glx_get_proc_address)
     proc_address = glx_get_proc_address (proc_name);
 
-  if (proc_address == NULL && main_module != NULL)
+  if (!proc_address)
     g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
 
   return proc_address;

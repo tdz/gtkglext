@@ -118,54 +118,23 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 GdkGLProc
 gdk_gl_query_get_proc_address (const char *proc_name)
 {
-  static GModule *opengl32_module = NULL;
-  static GModule *glu32_module = NULL;
-  GdkGLProc proc_address = wglGetProcAddress (proc_name);
+  static GModule *main_module = NULL;
+  GdkGLProc proc_address = (GdkGLProc) wglGetProcAddress (proc_name);
 
   if (proc_address != NULL)
     return proc_address;
 
-  /*
-   * When no current rendering context exists, wglGetProcAddress returns NULL.
-   */
-
   GDK_GL_NOTE (IMPL, g_message (" * wglGetProcAddress () - failed"));
 
-  /* Try to get the symbol from opengl32.dll */
-
-  if (opengl32_module == NULL)
+  if (!main_module)
     {
-      GDK_GL_NOTE (IMPL, g_message (" * open opengl32.dll"));
+      GDK_GL_NOTE (IMPL, g_message (" * get main_module"));
 
-      opengl32_module = g_module_open ("opengl32.dll", G_MODULE_BIND_LAZY);
-
-      if (opengl32_module != NULL)
-        g_module_make_resident (opengl32_module);
+      main_module = g_module_open (NULL, G_MODULE_BIND_LAZY);
     }
 
-  if (opengl32_module != NULL)
-    {
-      g_module_symbol (opengl32_module, proc_name, (gpointer) &proc_address);
-      if (proc_address != NULL)
-        return proc_address;
-    }
-
-  /* Try to get the symbol from glu32.dll */
-
-  if (glu32_module == NULL)
-    {
-      GDK_GL_NOTE (IMPL, g_message (" * open glu32.dll"));
-
-      glu32_module = g_module_open ("glu32.dll", G_MODULE_BIND_LAZY);
-
-      if (glu32_module != NULL)
-        g_module_make_resident (glu32_module);
-    }
-
-  if (glu32_module != NULL)
-    {
-      g_module_symbol (glu32_module, proc_name, (gpointer) &proc_address);
-    }
+  if (main_module)
+    g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
 
   return proc_address;
 }
