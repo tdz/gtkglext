@@ -589,12 +589,38 @@ if test "x$gdktarget" = "xx11"; then
   AC_MSG_CHECKING([whether libGLU needs to be linked with the std C++ library])
   AC_MSG_RESULT($have_SGI_GLU)
 
-  # Checks for GLXPbufferSGIX type definition.
+  # Checks for some types in gdk/GL/glxext.h
+
+  # GLXFBConfigSGIX
+  GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF=no
+  AC_CHECK_TYPES(GLXFBConfigSGIX, , ,
+                 [ #include <GL/glx.h> ])
+  if test "x$ac_cv_type_GLXFBConfigSGIX" = "xno" ; then
+    GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF=yes
+  fi
+
+  # GLXFBConfigIDSGIX
+  GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF=no
+  AC_CHECK_TYPES(GLXFBConfigIDSGIX, , ,
+                 [ #include <GL/glx.h> ])
+  if test "x$ac_cv_type_GLXFBConfigIDSGIX" = "xno" ; then
+    GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF=yes
+  fi
+
+  # GLXPbufferSGIX
   GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF=no
   AC_CHECK_TYPES(GLXPbufferSGIX, , ,
                  [ #include <GL/glx.h> ])
   if test "x$ac_cv_type_GLXPbufferSGIX" = "xno" ; then
     GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF=yes
+  fi
+
+  # __GLXextFuncPtr
+  GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF=no
+  AC_CHECK_TYPES(__GLXextFuncPtr, , ,
+                 [ #include <GL/glx.h> ])
+  if test "x$ac_cv_type___GLXextFuncPtr" = "xno" ; then
+    GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF=yes
   fi
 
 else
@@ -803,7 +829,10 @@ _______EOF
 _______EOF
 
 	cat >>$outfile <<_______EOF
+$gdkglext_need_glxfbconfigsgix_typedef
+$gdkglext_need_glxfbconfigidsgix_typedef
 $gdkglext_need_glxpbuffersgix_typedef
+$gdkglext_need_glxextfuncptr_typedef
 _______EOF
 
 	cat >>$outfile <<_______EOF
@@ -839,9 +868,24 @@ if test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"; then
 #define GDKGLEXT_MULTIHEAD_SUPPORT'
 fi
 
+if test "x$GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF" = "xyes"; then
+  gdkglext_need_glxfbconfigsgix_typedef='
+#define GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF'
+fi
+
+if test "x$GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF" = "xyes"; then
+  gdkglext_need_glxfbconfigidsgix_typedef='
+#define GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF'
+fi
+
 if test "x$GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF" = "xyes"; then
   gdkglext_need_glxpbuffersgix_typedef='
 #define GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF'
+fi
+
+if test "x$GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF" = "xyes"; then
+  gdkglext_need_glxextfuncptr_typedef='
+#define GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF'
 fi
 
 ])

@@ -1,3 +1,11 @@
+2003-01-25  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglglxext.h: Added GLX_SGIX_fbconfig specific typedef.
+
+	* configure.in: Added checks for GLX_SGIX_fbconfig specific type
+	definitions.
+	Added check for __GLXextFuncPtr typedef in SGI's glxext.h.
+
 2003-01-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* configure.in: Modified X11 library dependencies.
