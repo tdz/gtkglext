@@ -95,7 +95,7 @@ gdk_gl_window_impl_x11_class_init (GdkGLWindowImplX11Class *klass)
 void
 _gdk_gl_window_destroy (GdkGLWindow *glwindow)
 {
-  GdkGLWindowImplX11 *impl = GDK_GL_WINDOW_IMPL_X11 (glwindow);;
+  GdkGLWindowImplX11 *impl = GDK_GL_WINDOW_IMPL_X11 (glwindow);
   Display *xdisplay;
   GdkGL_GLX_MESA_release_buffers *mesa_ext;
 

@@ -1,3 +1,7 @@
+2003-04-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglwindow-x11.c (_gdk_gl_window_destroy): Fixed Typo.
+
 2003-04-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* Version 0.99.0
