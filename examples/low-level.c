@@ -70,7 +70,7 @@ realize (GtkWidget *widget,
 
   /*** OpenGL BEGIN ***/
 
-  if (!gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
+  if (!gdk_gl_drawable_gl_begin (GDK_GL_DRAWABLE (glwindow), glcontext))
     return;
 
   qobj = gluNewQuadric ();
@@ -102,6 +102,8 @@ realize (GtkWidget *widget,
 	     0.0, 1.0, 0.0);
   glTranslatef (0.0, 0.0, -3.0);
 
+  gdk_gl_drawable_gl_end (GDK_GL_DRAWABLE (glwindow));
+
   /*** OpenGL END ***/
 }
 
@@ -116,11 +118,13 @@ configure_event (GtkWidget         *widget,
 
   /*** OpenGL BEGIN ***/
 
-  if (!gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
+  if (!gdk_gl_drawable_gl_begin (GDK_GL_DRAWABLE (glwindow), glcontext))
     return FALSE;
 
   glViewport (0, 0,
 	      widget->allocation.width, widget->allocation.height);
+
+  gdk_gl_drawable_gl_end (GDK_GL_DRAWABLE (glwindow));
 
   /*** OpenGL END ***/
 
@@ -134,7 +138,7 @@ expose_event (GtkWidget      *widget,
 {
   /*** OpenGL BEGIN ***/
 
-  if (!gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
+  if (!gdk_gl_drawable_gl_begin (GDK_GL_DRAWABLE (glwindow), glcontext))
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -145,6 +149,8 @@ expose_event (GtkWidget      *widget,
     gdk_gl_drawable_swap_buffers (GDK_GL_DRAWABLE (glwindow));
   else
     glFlush ();
+
+  gdk_gl_drawable_gl_end (GDK_GL_DRAWABLE (glwindow));
 
   /*** OpenGL END ***/
 

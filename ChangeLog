@@ -1,3 +1,8 @@
+2003-09-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/low-level.c (realize, configure_event, expose_event):
+	make_current() -> gl_begin().
+
 2003-09-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/simple-mixed.c (expose_event): 
@@ -6,7 +11,7 @@
 
 	* examples/pixmap-mixed.c (configure_event): 
 	* examples/pixmap.c (configure_event): Don't need to pass
-	widget->window to gdk_pixmap_new().
+	depth argument.
 
 2003-09-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 

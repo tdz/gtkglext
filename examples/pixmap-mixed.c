@@ -72,10 +72,10 @@ configure_event (GtkWidget         *widget,
   if (pixmap != NULL)
     g_object_unref (G_OBJECT (pixmap));
 
-  pixmap = gdk_pixmap_new (NULL,
+  pixmap = gdk_pixmap_new (widget->window,
 			   widget->allocation.width,
 			   widget->allocation.height,
-			   gdk_gl_config_get_depth (glconfig));
+                           -1);
 
   /*
    * Set OpenGL-capability to the pixmap
