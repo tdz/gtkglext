@@ -38,6 +38,7 @@ gdk_gl_context_get_share_list
 gdk_gl_context_is_direct
 gdk_gl_context_get_render_type
 gdk_gl_context_get_colormap
+gdk_gl_context_get_current
 <SUBSECTION Standard>
 GDK_GL_CONTEXT
 GDK_IS_GL_CONTEXT
@@ -117,6 +118,7 @@ gdk_x11_gl_config_get_xdisplay
 gdk_x11_gl_config_get_screen_number
 gdk_x11_gl_config_get_xvinfo
 gdk_x11_gl_context_get_glxcontext
+gdk_x11_gl_context_lookup
 gdk_x11_gl_pixmap_get_glxpixmap
 gdk_x11_gl_window_get_glxwindow
 GDK_GL_CONFIG_XDISPLAY
@@ -2737,6 +2739,11 @@ gdk_gl_get_glActiveStencilFaceEXT
 gdk_gl_glActiveStencilFaceEXT
 GdkGL_GL_EXT_stencil_two_side
 gdk_gl_get_GL_EXT_stencil_two_side
+height)
+gdk_gl_get_glAddSwapHintRectWIN
+gdk_gl_glAddSwapHintRectWIN
+GdkGL_GL_WIN_swap_hint
+gdk_gl_get_GL_WIN_swap_hint
 </SECTION>
 
 <SECTION>

@@ -24,6 +24,14 @@
 #include "gdkglconfig-x11.h"
 #include "gdkglcontext-x11.h"
 
+static void          gdk_x11_gl_context_insert (GdkGLContext *glcontext);
+static void          gdk_x11_gl_context_remove (GdkGLContext *glcontext);
+static guint         gdk_x11_gl_context_hash   (GLXContext   *glxcontext);
+static gboolean      gdk_x11_gl_context_equal  (GLXContext   *a,
+                                                GLXContext   *b);
+
+static GHashTable *gl_context_ht = NULL;
+
 static void     gdk_gl_context_impl_x11_init        (GdkGLContextImplX11      *impl);
 static void     gdk_gl_context_impl_x11_class_init  (GdkGLContextImplX11Class *klass);
 
@@ -149,6 +157,8 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_x11_finalize ()"));
 
+  gdk_x11_gl_context_remove (glcontext);
+
   if (impl->glxcontext != NULL)
     {
       xdisplay = GDK_GL_CONFIG_XDISPLAY (glcontext->glconfig);
@@ -198,6 +208,8 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
       return NULL;
     }
 
+  gdk_x11_gl_context_insert (glcontext);
+
   return glcontext;
 }
 
@@ -222,6 +234,8 @@ gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
                      GdkGLContext  *src_glcontext,
                      unsigned long  mask)
 {
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_copy ()"));
+
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (dst_glcontext), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (src_glcontext), FALSE);
 
@@ -233,6 +247,28 @@ gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
                   mask);
 
   return gdk_error_trap_pop () == Success;
+}
+
+/**
+ * gdk_gl_context_get_current:
+ *
+ * Returns the current #GdkGLContext.
+ *
+ * Return value: the current #GdkGLContext or NULL if there is no current context.
+ **/
+GdkGLContext *
+gdk_gl_context_get_current (void)
+{
+  GLXContext glxcontext;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_get_current ()"));
+
+  glxcontext = glXGetCurrentContext ();
+
+  if (!glxcontext)
+    return NULL;
+
+  return gdk_x11_gl_context_lookup (glxcontext);
 }
 
 /**
@@ -249,4 +285,68 @@ gdk_x11_gl_context_get_glxcontext (GdkGLContext *glcontext)
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
 
   return GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glxcontext;
+}
+
+/*
+ * GdkGLContext hash table.
+ */
+
+static void
+gdk_x11_gl_context_insert (GdkGLContext *glcontext)
+{
+  GdkGLContextImplX11 *impl;
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_x11_gl_context_insert ()"));
+
+  g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
+
+  if (!gl_context_ht)
+    gl_context_ht = g_hash_table_new ((GHashFunc) gdk_x11_gl_context_hash,
+                                      (GEqualFunc) gdk_x11_gl_context_equal);
+
+  impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
+
+  g_hash_table_insert (gl_context_ht, &(impl->glxcontext), glcontext);
+}
+
+static void
+gdk_x11_gl_context_remove (GdkGLContext *glcontext)
+{
+  GdkGLContextImplX11 *impl;
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_x11_gl_context_remove ()"));
+
+  g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
+
+  if (!gl_context_ht)
+    gl_context_ht = g_hash_table_new ((GHashFunc) gdk_x11_gl_context_hash,
+                                      (GEqualFunc) gdk_x11_gl_context_equal);
+
+  impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
+
+  g_hash_table_remove (gl_context_ht, &(impl->glxcontext));
+}
+
+GdkGLContext *
+gdk_x11_gl_context_lookup (GLXContext glxcontext)
+{
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_x11_gl_context_lookup ()"));
+
+  if (!gl_context_ht)
+    return NULL;
+
+  return g_hash_table_lookup (gl_context_ht, &glxcontext);
+}
+
+static guint
+gdk_x11_gl_context_hash (GLXContext *glxcontext)
+{
+  return (guint) *glxcontext;
+}
+
+static gboolean
+gdk_x11_gl_context_equal (GLXContext *a,
+                          GLXContext *b)
+{
+  return (*a == *b);
 }

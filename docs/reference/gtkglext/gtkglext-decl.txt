@@ -5,7 +5,7 @@ GdkGLConfig  *glconfig,const char   *extension
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_config_get_xdisplay</NAME>
-<RETURNS>Display      *</RETURNS>
+<RETURNS>Display       *</RETURNS>
 GdkGLConfig  *glconfig
 </FUNCTION>
 <FUNCTION>
@@ -15,13 +15,18 @@ GdkGLConfig  *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_config_get_xvinfo</NAME>
-<RETURNS>XVisualInfo  *</RETURNS>
+<RETURNS>XVisualInfo   *</RETURNS>
 GdkGLConfig  *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_context_get_glxcontext</NAME>
 <RETURNS>GLXContext  </RETURNS>
 GdkGLContext *glcontext
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_x11_gl_context_lookup</NAME>
+<RETURNS>GdkGLContext  *</RETURNS>
+GLXContext    glxcontext
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_pixmap_get_glxpixmap</NAME>
@@ -323,6 +328,11 @@ GdkGLContext  *glcontext
 <NAME>gdk_gl_context_get_colormap</NAME>
 <RETURNS>GdkColormap    *</RETURNS>
 GdkGLContext  *glcontext
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_context_get_current</NAME>
+<RETURNS>GdkGLContext   *</RETURNS>
+void
 </FUNCTION>
 <MACRO>
 <NAME>GDK_GL_VAR</NAME>
@@ -13762,6 +13772,35 @@ struct GdkGL_GL_EXT_stencil_two_side
 <FUNCTION>
 <NAME>gdk_gl_get_GL_EXT_stencil_two_side</NAME>
 <RETURNS>GdkGL_GL_EXT_stencil_two_side  *</RETURNS>
+void
+</FUNCTION>
+<TYPEDEF>
+<NAME>height)</NAME>
+typedef void (APIENTRY * GdkGLProc_glAddSwapHintRectWIN) (GLint x, GLint y, GLsizei width, GLsizei height);
+</TYPEDEF>
+<FUNCTION>
+<NAME>gdk_gl_get_glAddSwapHintRectWIN</NAME>
+<RETURNS>GdkGLProc  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>gdk_gl_glAddSwapHintRectWIN</NAME>
+#define      gdk_gl_glAddSwapHintRectWIN(proc, x, y, width, height) \
+  ( ((GdkGLProc_glAddSwapHintRectWIN) (proc)) (x, y, width, height) )
+</MACRO>
+<STRUCT>
+<NAME>GdkGL_GL_WIN_swap_hint</NAME>
+</STRUCT>
+<STRUCT>
+<NAME>GdkGL_GL_WIN_swap_hint</NAME>
+struct GdkGL_GL_WIN_swap_hint
+{
+  GdkGLProc_glAddSwapHintRectWIN glAddSwapHintRectWIN;
+};
+</STRUCT>
+<FUNCTION>
+<NAME>gdk_gl_get_GL_WIN_swap_hint</NAME>
+<RETURNS>GdkGL_GL_WIN_swap_hint  *</RETURNS>
 void
 </FUNCTION>
 <STRUCT>

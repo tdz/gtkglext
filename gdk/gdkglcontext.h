@@ -77,6 +77,8 @@ int            gdk_gl_context_get_render_type (GdkGLContext  *glcontext);
 
 GdkColormap   *gdk_gl_context_get_colormap    (GdkGLContext  *glcontext);
 
+GdkGLContext  *gdk_gl_context_get_current     (void);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_CONTEXT_H__ */
