@@ -1,3 +1,8 @@
+2003-11-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/low-level.c (realize): Set a background of "None" on
+	window to avoid AIX X server crash.
+
 2003-11-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (gtk_gl_widget_size_allocate): Check whether

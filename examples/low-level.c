@@ -49,6 +49,9 @@ realize (GtkWidget *widget,
                                 widget->window,
                                 NULL);
 
+  /* Set a background of "None" on window to avoid AIX X server crash */
+  gdk_window_set_back_pixmap (widget->window, NULL, FALSE);
+
   /*
    * Create OpenGL rendering context.
    */
