@@ -121,15 +121,15 @@ Documentation options
 Building GtkGLExt on Win32
 ==========================
 
-Please note that GTK for Win32 is successfully installed and
-non-Cygwin version pkg-config.exe works with appropriate PKG_CONFIG_PATH.
+Please note that GTK for Win32 is successfully installed and Win32-native
+(non-Cygwin) pkg-config.exe works with appropriate PKG_CONFIG_PATH.
 
 Personally I run configure like this:
 
   (GTK is installed in C:\gtk)
   $ ln -s /cygdrive/c/gtk /target
   $ export PATH=/target/bin:$PATH
-  $ export PKG_CONFIG_PATH=/target/lib/pkgconfig
+  $ export PKG_CONFIG_PATH=c:/gtk/lib/pkgconfig
 
   (MinGW is installed in C:\mingw)
   $ export PATH=/cygdrive/c/mingw/bin:$PATH
@@ -142,7 +142,9 @@ Personally I run configure like this:
                     --enable-debug=yes
   $ make
   $ make install
-  $ make examples
+  $ export PKG_CONFIG_PATH="c:/gtkglext/lib/pkgconfig;${PKG_CONFIG_PATH}"
+  $ cd examples
+  $ make -f Makefile.mingw
 
 Notice that you should use not MinGW's ar but Cygwin's ar under Cygwin
 environment.
@@ -174,7 +176,9 @@ for generating configure script and Makefiles.
                      --enable-debug=yes
   $ make
   $ make install
-  $ make examples
+  $ export PKG_CONFIG_PATH="c:/gtkglext/lib/pkgconfig;${PKG_CONFIG_PATH}"
+  $ cd examples
+  $ make -f Makefile.mingw
 
 ACLOCAL_FLAGS may be needed for PKG_CHECK_MODULES (pkg-config),
 AM_PATH_GLIB_2_0 (Glib), and AM_PATH_GTK_2_0 (GTK+) m4 macros in
