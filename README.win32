@@ -122,7 +122,7 @@ Personally I run configure like this:
   $ env CC='gcc -mpentium' \
         LDFLAGS='-Lc:/gtkglext/lib' \
         AR=/usr/bin/ar \
-        ./configure --host=i386-pc-mingw32 --prefix=c:/gtkglext
+        ./configure --build=i386-pc-mingw32 --prefix=c:/gtkglext
   $ make
   $ make install
   $ make examples
@@ -154,7 +154,7 @@ for generating configure script and Makefiles.
         CC='gcc -mpentium' \
         LDFLAGS='-Lc:/gtkglext/lib' \
         AR=/usr/bin/ar \
-        ./autogen.sh --host=i386-pc-mingw32 --prefix=c:/gtkglext
+        ./autogen.sh --build=i386-pc-mingw32 --prefix=c:/gtkglext
   $ make
   $ make install
   $ make examples
