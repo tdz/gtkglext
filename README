@@ -120,7 +120,8 @@ for generating configure script and Makefiles.
 
   $ libtoolize
   $ env ACLOCAL_FLAGS='-I /pkgconfig/is/installed/share/aclocal' \
-        ./autogen.sh --prefix=${HOME}/gtkglext --enable-debug
+        ./autogen.sh --prefix=${HOME}/gtkglext \
+                     --enable-debug=yes
   $ make
   $ make install
   $ make examples
