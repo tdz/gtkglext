@@ -1,5 +1,8 @@
 2003-08-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* README: 
+	* README.win32: Updated CVS pserver info.
+
 	* examples/Makefile.mingw (clean-obj): 
 	* examples/Makefile.msc (clean-obj): Added clean-obj target for
 	convenience.

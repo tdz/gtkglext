@@ -165,11 +165,13 @@ anonymous (pserver) CVS with the following instruction set.
 When prompted for a password for anonymous, simply press the Enter key. 
 
   $ cvs \
-      -d:pserver:anonymous@cvs.gtkglext.sourceforge.net:/cvsroot/gtkglext \
+      -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gtkglext \
       login
   $ cvs -z3 \
-      -d:pserver:anonymous@cvs.gtkglext.sourceforge.net:/cvsroot/gtkglext \
-      co gtkglext
+      -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gtkglext \
+      co -r gtkglext-X-Y gtkglext
+
+  (gtkglext-X-Y is a branch name. e.g. gtkglext-1-0 is 1.0.x branch.)
 
 When you are at work on the CVS version of GtkGLExt, you can use autogen.sh
 for generating configure script and Makefiles.
