@@ -6,11 +6,7 @@ OpenGL frame buffer configuration object
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
-Under #GdkGLConfig there is a set of functions which allows to
-configure the framebuffer, i.e, all those things we have to define
-before anything is drawn. In order to get this sorted, a #GdkGLConfig
-struct is arranged. This #GdkGLconfig is created with #gdk_gl_config_new
-and is afterwards used in #gtk_widget_set_gl_capability.
+
 </para>
 
 <!-- ##### SECTION See_Also ##### -->

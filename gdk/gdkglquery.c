@@ -39,7 +39,7 @@
  *
  * Determines whether a given OpenGL extension is supported.
  *
- * There must be a valid current #GdkGLDrawable to call
+ * There must be a valid current rendering context to call
  * gdk_gl_query_gl_extension().
  *
  * gdk_gl_query_gl_extension() returns information about OpenGL extensions
