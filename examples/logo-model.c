@@ -10,9 +10,6 @@
 #include <GL/gl.h>
 
 #include "logo-model.h"
-#include "logo-g.h"
-#include "logo-t.h"
-#include "logo-k.h"
 
 void
 logo_draw_cube(void)
@@ -156,6 +153,9 @@ logo_draw_triangle(GLfloat *v0, GLfloat *v1, GLfloat *v2)
   glEnd();
 }
 
+/* AC3D triangle data */
+#include "logo-g.c"
+
 void
 logo_draw_g(void)
 {
@@ -167,6 +167,9 @@ logo_draw_g(void)
                        &logo_g_v[i][0][0]);
 }
 
+/* AC3D triangle data */
+#include "logo-t.c"
+
 void
 logo_draw_t(void)
 {
@@ -177,6 +180,9 @@ logo_draw_t(void)
                        &logo_t_v[i][1][0],
                        &logo_t_v[i][0][0]);
 }
+
+/* AC3D triangle data */
+#include "logo-k.c"
 
 void
 logo_draw_k(void)

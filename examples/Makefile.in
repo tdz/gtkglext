@@ -201,7 +201,8 @@ font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
 
-logo_SOURCES = logo-model.h logo-g.h logo-t.h logo-k.h logo-model.c logo.c
+logo_SOURCES = logo-model.h logo-model.c logo.c
+EXTRA_logo_SOURCES = logo-g.c logo-t.c logo-k.c
 logo_DEPENDENCIES = $(DEPS)
 logo_LDADD = $(LDADDS)
 
@@ -275,12 +276,13 @@ LIBS = @LIBS@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/font.Po ./$(DEPDIR)/gears.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/glxinfo.Po ./$(DEPDIR)/logo-model.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/logo.Po ./$(DEPDIR)/low-level.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/lw.Po ./$(DEPDIR)/pixmap-mixed.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/pixmap.Po ./$(DEPDIR)/simple-mixed.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/simple.Po ./$(DEPDIR)/trackball.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/viewlw.Po
+@AMDEP_TRUE@	./$(DEPDIR)/glxinfo.Po ./$(DEPDIR)/logo-g.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/logo-k.Po ./$(DEPDIR)/logo-model.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/logo-t.Po ./$(DEPDIR)/logo.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/low-level.Po ./$(DEPDIR)/lw.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/pixmap-mixed.Po ./$(DEPDIR)/pixmap.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/simple-mixed.Po ./$(DEPDIR)/simple.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/trackball.Po ./$(DEPDIR)/viewlw.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -290,11 +292,11 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
 DIST_SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) \
-	$(logo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) \
-	$(pixmap_mixed_SOURCES) $(simple_SOURCES) \
+	$(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) \
+	$(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) \
 	$(simple_mixed_SOURCES) $(viewlw_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
+SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
 
 all: all-am
 
@@ -345,7 +347,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/font.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gears.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/glxinfo.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logo-g.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logo-k.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logo-model.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logo-t.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logo.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/low-level.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lw.Po@am__quote@
