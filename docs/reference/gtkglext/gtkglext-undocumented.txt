@@ -1,8 +1,10 @@
-67% function docs coverage.
+64% function docs coverage.
 35 functions documented.
-17 not documented.
+20 not documented.
 
 
+GDK_GL_CONFIG_SCREEN_XNUMBER
+GDK_GL_CONFIG_XCOLORMAP
 GDK_GL_CONFIG_XDISPLAY
 GDK_GL_CONFIG_XVINFO
 GDK_GL_CONTEXT_GLXCONTEXT
@@ -15,6 +17,7 @@ gdk_gl_query_extension_for_display
 gdk_gl_query_version_for_display
 gdk_pixmap_get_gl_drawable
 gdk_window_get_gl_drawable
+gdk_x11_gl_config_get_screen_number
 gdk_x11_gl_config_get_xdisplay
 gdk_x11_gl_config_get_xvinfo
 gdk_x11_gl_context_get_glxcontext

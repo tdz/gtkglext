@@ -23,6 +23,15 @@ gdkglx
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_x11_gl_config_get_screen_number ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gdk_x11_gl_config_get_xvinfo ##### -->
 <para>
 
@@ -67,7 +76,23 @@ gdkglx
 @glconfig: 
 
 
+<!-- ##### MACRO GDK_GL_CONFIG_SCREEN_XNUMBER ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+
+
 <!-- ##### MACRO GDK_GL_CONFIG_XVINFO ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+
+
+<!-- ##### MACRO GDK_GL_CONFIG_XCOLORMAP ##### -->
 <para>
 
 </para>
