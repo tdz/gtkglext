@@ -1,3 +1,10 @@
+2003-04-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/pixmap-mixed.c (configure_event): 
+	* examples/pixmap.c (configure_event): Dan't call gtk_main_quit()
+	and simply exit if gtk_main_level() == 0 when context
+	instantiation fails.
+
 2003-04-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/Makefile.am (install-libtool-import-lib) 
