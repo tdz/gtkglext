@@ -1,5 +1,8 @@
 2003-11-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.c (gtk_gl_widget_size_allocate): Check whether
+	GdkGLWindow is already realized.
+
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability):
 	"size_allocate" signal handler is connected by set_gl_capability()
 	function instead of "realize" handler.

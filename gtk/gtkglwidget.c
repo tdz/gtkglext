@@ -49,7 +49,7 @@ static gboolean gtk_gl_widget_configure_event    (GtkWidget         *widget,
                                                   GLWidgetPrivate   *private);
 static void     gtk_gl_widget_size_allocate      (GtkWidget         *widget,
                                                   GtkAllocation     *allocation,
-                                                  gpointer           user_data);
+                                                  GLWidgetPrivate   *private);
 static void     gtk_gl_widget_unrealize          (GtkWidget         *widget,
                                                   GLWidgetPrivate   *private);
 static void     gtk_gl_widget_parent_set         (GtkWidget         *widget,
@@ -118,9 +118,9 @@ gtk_gl_widget_configure_event (GtkWidget         *widget,
 }
 
 static void
-gtk_gl_widget_size_allocate (GtkWidget     *widget,
-                             GtkAllocation *allocation,
-                             gpointer       user_data)
+gtk_gl_widget_size_allocate (GtkWidget       *widget,
+                             GtkAllocation   *allocation,
+                             GLWidgetPrivate *private)
 {
   GdkGLDrawable *gldrawable;
 
@@ -130,7 +130,7 @@ gtk_gl_widget_size_allocate (GtkWidget     *widget,
    * Synchronize OpenGL and window resizing request streams.
    */
 
-  if (GTK_WIDGET_REALIZED (widget))
+  if (GTK_WIDGET_REALIZED (widget) && private->is_realized)
     {
       gldrawable = gdk_window_get_gl_drawable (widget->window);
       gdk_gl_drawable_wait_gdk (gldrawable);
@@ -355,7 +355,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
 
   g_signal_connect_after (G_OBJECT (widget), "size_allocate",
                           G_CALLBACK (gtk_gl_widget_size_allocate),
-                          NULL);
+                          private);
 
   return TRUE;
 }
