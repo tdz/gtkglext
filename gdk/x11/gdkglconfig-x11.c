@@ -139,9 +139,8 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
 
   if (is_mesa_glx)
     {
-      if (xa_hp_cr_maps == -1) {
+      if (xa_hp_cr_maps == -1)
         xa_hp_cr_maps = XInternAtom (xdisplay, "_HP_RGB_SMOOTH_MAP_LIST", True);
-      }
 
       if (xa_hp_cr_maps &&
           xvinfo->visual->class == TrueColor &&
