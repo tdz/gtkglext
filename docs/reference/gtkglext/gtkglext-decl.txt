@@ -5,7 +5,7 @@ GdkGLConfig  *glconfig,const char   *extension
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_config_get_xdisplay</NAME>
-<RETURNS>Display       *</RETURNS>
+<RETURNS>Display      *</RETURNS>
 GdkGLConfig  *glconfig
 </FUNCTION>
 <FUNCTION>
@@ -15,18 +15,13 @@ GdkGLConfig  *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_config_get_xvinfo</NAME>
-<RETURNS>XVisualInfo   *</RETURNS>
+<RETURNS>XVisualInfo  *</RETURNS>
 GdkGLConfig  *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_context_get_glxcontext</NAME>
 <RETURNS>GLXContext  </RETURNS>
 GdkGLContext *glcontext
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_x11_gl_context_lookup</NAME>
-<RETURNS>GdkGLContext  *</RETURNS>
-GLXContext    glxcontext
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_pixmap_get_glxpixmap</NAME>

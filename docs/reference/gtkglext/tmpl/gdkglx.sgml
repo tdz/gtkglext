@@ -60,15 +60,6 @@ internal X-related functions.
 @Returns: 
 
 
-<!-- ##### FUNCTION gdk_x11_gl_context_lookup ##### -->
-<para>
-
-</para>
-
-@glxcontext: 
-@Returns: 
-
-
 <!-- ##### FUNCTION gdk_x11_gl_pixmap_get_glxpixmap ##### -->
 <para>
 

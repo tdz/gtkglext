@@ -40,8 +40,7 @@ gboolean gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
 
 PIXELFORMATDESCRIPTOR *gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig);
 
-HGLRC         gdk_win32_gl_context_get_hglrc    (GdkGLContext  *glcontext);
-GdkGLContext *gdk_win32_gl_context_lookup       (HGLRC          hglrc);
+HGLRC gdk_win32_gl_context_get_hglrc (GdkGLContext *glcontext);
 
 HDC   gdk_win32_gl_drawable_hdc_get     (GdkGLDrawable *gldrawable);
 void  gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable);
