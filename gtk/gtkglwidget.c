@@ -42,22 +42,23 @@ static GQuark quark_gl_private = 0;
 
 gboolean _gtk_gl_widget_install_toplevel_cmap = FALSE;
 
-static void     gtk_gl_widget_realize         (GtkWidget         *widget,
-                                               GLWidgetPrivate   *private);
-static gboolean gtk_gl_widget_configure_event (GtkWidget         *widget,
-                                               GdkEventConfigure *event,
-                                               GLWidgetPrivate   *private);
-static void     gtk_gl_widget_unrealize       (GtkWidget         *widget,
-                                               GLWidgetPrivate   *private);
-static void     gtk_gl_widget_parent_set      (GtkWidget         *widget,
-                                               GtkObject         *old_parent,
-                                               GdkColormap       *colormap);
-static void     gtk_gl_widget_style_set       (GtkWidget         *widget,
-                                               GtkStyle          *previous_style,
-                                               gpointer           user_data);
-static void     gl_widget_private_destroy     (GLWidgetPrivate   *private);
-static void     gtk_widget_destroy_gl_context (GtkWidget         *widget,
-                                               GLWidgetPrivate   *private);
+static void     gtk_gl_widget_realize            (GtkWidget         *widget,
+                                                  GLWidgetPrivate   *private);
+static gboolean gtk_gl_widget_configure_event    (GtkWidget         *widget,
+                                                  GdkEventConfigure *event,
+                                                  GLWidgetPrivate   *private);
+static void     gtk_gl_widget_unrealize          (GtkWidget         *widget,
+                                                  GLWidgetPrivate   *private);
+static void     gtk_gl_widget_parent_set         (GtkWidget         *widget,
+                                                  GtkObject         *old_parent,
+                                                  GdkColormap       *colormap);
+static void     gtk_gl_widget_style_set          (GtkWidget         *widget,
+                                                  GtkStyle          *previous_style,
+                                                  gpointer           user_data);
+static void     gtk_gl_widget_destroy_gl_context (GtkWidget         *widget,
+                                                  GLWidgetPrivate   *private);
+
+static void     gl_widget_private_destroy        (GLWidgetPrivate   *private);
 
 /* 
  * Signal handlers.
@@ -416,10 +417,10 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
 }
 
 static void
-gtk_widget_destroy_gl_context (GtkWidget       *widget,
-                               GLWidgetPrivate *private)
+gtk_gl_widget_destroy_gl_context (GtkWidget       *widget,
+                                  GLWidgetPrivate *private)
 {
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_destroy_gl_context ()"));
+  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_destroy_gl_context ()"));
 
   /*
    * Destroy OpenGL rendering context.
@@ -470,7 +471,7 @@ gtk_widget_get_gl_context (GtkWidget *widget)
        */
 
       private->destroy_handler = g_signal_connect (G_OBJECT (widget), "destroy",
-                                                   G_CALLBACK (gtk_widget_destroy_gl_context),
+                                                   G_CALLBACK (gtk_gl_widget_destroy_gl_context),
                                                    private);
 
       gtk_quit_add_destroy (gtk_main_level () + 1, GTK_OBJECT (widget));

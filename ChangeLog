@@ -7,7 +7,7 @@
 	(gtk_widget_set_gl_capability): "unrealize" signal handler
 	connection is done by "realize" handler. This change makes
 	user's "unrealize" handler possible to call OpenGL functions.
-	(gtk_widget_get_gl_context, gtk_widget_destroy_gl_context):
+	(gtk_widget_get_gl_context, gtk_gl_widget_destroy_gl_context):
 	"destroy" signal handler connection is done by
 	gtk_widget_get_gl_context().
 
