@@ -863,8 +863,8 @@ main (int   argc,
    */
 
   /* Try double-buffered visual */
-  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
-					GDK_GL_MODE_DEPTH |
+  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB    |
+					GDK_GL_MODE_DEPTH  |
 					GDK_GL_MODE_DOUBLE);
   if (glconfig == NULL)
     {
@@ -872,7 +872,7 @@ main (int   argc,
       g_print ("*** Trying single-buffered visual.\n");
 
       /* Try single-buffered visual */
-      glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
+      glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB   |
 					    GDK_GL_MODE_DEPTH);
       if (glconfig == NULL)
 	{
@@ -922,12 +922,11 @@ main (int   argc,
 				TRUE,
 				GDK_GL_RGBA_TYPE);
 
-  gtk_widget_set_events (drawing_area,
-			 GDK_EXPOSURE_MASK |
-			 GDK_BUTTON1_MOTION_MASK |
-			 GDK_BUTTON2_MOTION_MASK |
-			 GDK_BUTTON_PRESS_MASK |
-                         GDK_BUTTON_RELEASE_MASK |
+  gtk_widget_add_events (drawing_area,
+			 GDK_BUTTON1_MOTION_MASK    |
+			 GDK_BUTTON2_MOTION_MASK    |
+			 GDK_BUTTON_PRESS_MASK      |
+                         GDK_BUTTON_RELEASE_MASK    |
 			 GDK_VISIBILITY_NOTIFY_MASK);
 
   g_signal_connect_after (G_OBJECT (drawing_area), "realize",

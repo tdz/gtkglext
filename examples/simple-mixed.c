@@ -227,8 +227,8 @@ main (int   argc,
    */
 
   /* Try single-buffered visual */
-  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
-                                        GDK_GL_MODE_DEPTH |
+  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB    |
+                                        GDK_GL_MODE_DEPTH  |
                                         GDK_GL_MODE_SINGLE);
   if (glconfig == NULL)
     {

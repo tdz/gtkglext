@@ -256,7 +256,7 @@ main (int   argc,
    */
 
   /* Try double-buffered visual */
-  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
+  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB    |
                                         GDK_GL_MODE_DOUBLE);
   if (glconfig == NULL)
     {

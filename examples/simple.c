@@ -215,8 +215,8 @@ main (int   argc,
    */
 
   /* Try double-buffered visual */
-  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
-                                        GDK_GL_MODE_DEPTH |
+  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB    |
+                                        GDK_GL_MODE_DEPTH  |
                                         GDK_GL_MODE_DOUBLE);
   if (glconfig == NULL)
     {
@@ -224,7 +224,7 @@ main (int   argc,
       g_print ("*** Trying single-buffered visual.\n");
 
       /* Try single-buffered visual */
-      glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
+      glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB   |
                                             GDK_GL_MODE_DEPTH);
       if (glconfig == NULL)
         {

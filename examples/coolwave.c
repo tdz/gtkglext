@@ -706,8 +706,7 @@ create_window (GdkGLConfig *glconfig)
 				TRUE,
 				GDK_GL_RGBA_TYPE);
 
-  gtk_widget_set_events (drawing_area,
-			 GDK_EXPOSURE_MASK          |
+  gtk_widget_add_events (drawing_area,
 			 GDK_BUTTON1_MOTION_MASK    |
 			 GDK_BUTTON2_MOTION_MASK    |
 			 GDK_BUTTON_PRESS_MASK      |
