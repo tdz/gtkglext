@@ -395,7 +395,7 @@ gdk_gl_context_get_current (void)
 
   hglrc = wglGetCurrentContext ();
 
-  if (!hglrc)
+  if (hglrc == NULL)
     return NULL;
 
   if (current && GDK_GL_CONTEXT_HGLRC (current) == hglrc)
@@ -429,7 +429,7 @@ gdk_gl_context_insert (GdkGLContext *glcontext)
 
   g_return_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext));
 
-  if (!gl_context_ht)
+  if (gl_context_ht == NULL)
     {
       GDK_GL_NOTE (MISC, g_message (" -- Create GL context hash table."));
       gl_context_ht = g_hash_table_new ((GHashFunc) gdk_gl_context_hash,
@@ -450,7 +450,7 @@ gdk_gl_context_remove (GdkGLContext *glcontext)
 
   g_return_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext));
 
-  if (!gl_context_ht)
+  if (gl_context_ht == NULL)
     return;
 
   impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
@@ -470,7 +470,7 @@ gdk_gl_context_lookup (HGLRC hglrc)
 {
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_lookup ()"));
 
-  if (!gl_context_ht)
+  if (gl_context_ht == NULL)
     return NULL;
 
   return g_hash_table_lookup (gl_context_ht, &hglrc);

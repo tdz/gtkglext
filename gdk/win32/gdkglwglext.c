@@ -32,7 +32,7 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
 {                                                                                       \
   static gboolean init = FALSE;                                                         \
                                                                                         \
-  if (!wglGetCurrentContext ())                                                         \
+  if (wglGetCurrentContext () == NULL)                                                  \
     return NULL;                                                                        \
                                                                                         \
   if (!init)                                                                            \
@@ -72,7 +72,7 @@ gdk_gl_get_WGL_ARB_buffer_region (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_buffer_region ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -114,7 +114,7 @@ gdk_gl_get_WGL_ARB_extensions_string (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_extensions_string ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -155,7 +155,7 @@ gdk_gl_get_WGL_ARB_pixel_format (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_pixel_format ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -197,7 +197,7 @@ gdk_gl_get_WGL_ARB_make_current_read (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_make_current_read ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -241,7 +241,7 @@ gdk_gl_get_WGL_ARB_pbuffer (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_pbuffer ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -286,7 +286,7 @@ gdk_gl_get_WGL_ARB_render_texture (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_ARB_render_texture ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -330,7 +330,7 @@ gdk_gl_get_WGL_EXT_display_color_table (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_display_color_table ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -372,7 +372,7 @@ gdk_gl_get_WGL_EXT_extensions_string (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_extensions_string ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -412,7 +412,7 @@ gdk_gl_get_WGL_EXT_make_current_read (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_make_current_read ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -456,7 +456,7 @@ gdk_gl_get_WGL_EXT_pbuffer (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_pbuffer ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -501,7 +501,7 @@ gdk_gl_get_WGL_EXT_pixel_format (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_pixel_format ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -543,7 +543,7 @@ gdk_gl_get_WGL_EXT_swap_control (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_EXT_swap_control ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -584,7 +584,7 @@ gdk_gl_get_WGL_NV_vertex_array_range (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_NV_vertex_array_range ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -629,7 +629,7 @@ gdk_gl_get_WGL_OML_sync_control (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_OML_sync_control ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -674,7 +674,7 @@ gdk_gl_get_WGL_I3D_digital_video_control (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_digital_video_control ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -717,7 +717,7 @@ gdk_gl_get_WGL_I3D_gamma (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_gamma ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -771,7 +771,7 @@ gdk_gl_get_WGL_I3D_genlock (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_genlock ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -824,7 +824,7 @@ gdk_gl_get_WGL_I3D_image_buffer (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_image_buffer ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -869,7 +869,7 @@ gdk_gl_get_WGL_I3D_swap_frame_lock (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_swap_frame_lock ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)
@@ -915,7 +915,7 @@ gdk_gl_get_WGL_I3D_swap_frame_usage (GdkGLConfig *glconfig)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_WGL_I3D_swap_frame_usage ()"));
 
-  if (!wglGetCurrentContext ())
+  if (wglGetCurrentContext () == NULL)
     return NULL;
 
   if (!init)

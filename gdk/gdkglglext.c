@@ -33,7 +33,7 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
 {                                                                                       \
   static gboolean init = FALSE;                                                         \
                                                                                         \
-  if (!gdk_gl_context_get_current ())                                                   \
+  if (gdk_gl_context_get_current () == NULL)                                            \
     return NULL;                                                                        \
                                                                                         \
   if (!init)                                                                            \
@@ -110,7 +110,7 @@ gdk_gl_get_GL_VERSION_1_2 (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_2 ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -230,7 +230,7 @@ gdk_gl_get_GL_VERSION_1_3 (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_3 ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -357,7 +357,7 @@ gdk_gl_get_GL_VERSION_1_4 (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_VERSION_1_4 ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -471,7 +471,7 @@ gdk_gl_get_GL_ARB_multitexture (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_multitexture ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -546,7 +546,7 @@ gdk_gl_get_GL_ARB_transpose_matrix (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_transpose_matrix ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -588,7 +588,7 @@ gdk_gl_get_GL_ARB_multisample (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_multisample ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -633,7 +633,7 @@ gdk_gl_get_GL_ARB_texture_compression (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_texture_compression ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -679,7 +679,7 @@ gdk_gl_get_GL_ARB_point_parameters (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_point_parameters ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -728,7 +728,7 @@ gdk_gl_get_GL_ARB_vertex_blend (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_vertex_blend ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -780,7 +780,7 @@ gdk_gl_get_GL_ARB_matrix_palette (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_matrix_palette ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -839,7 +839,7 @@ gdk_gl_get_GL_ARB_window_pos (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_window_pos ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -960,7 +960,7 @@ gdk_gl_get_GL_ARB_vertex_program (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ARB_vertex_program ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1060,7 +1060,7 @@ gdk_gl_get_GL_EXT_blend_color (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_color ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1099,7 +1099,7 @@ gdk_gl_get_GL_EXT_polygon_offset (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_polygon_offset ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1139,7 +1139,7 @@ gdk_gl_get_GL_EXT_texture3D (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture3D ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1180,7 +1180,7 @@ gdk_gl_get_GL_SGIS_texture_filter4 (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture_filter4 ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1221,7 +1221,7 @@ gdk_gl_get_GL_EXT_subtexture (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_subtexture ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1265,7 +1265,7 @@ gdk_gl_get_GL_EXT_copy_texture (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_copy_texture ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1317,7 +1317,7 @@ gdk_gl_get_GL_EXT_histogram (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_histogram ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1378,7 +1378,7 @@ gdk_gl_get_GL_EXT_convolution (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_convolution ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1435,7 +1435,7 @@ gdk_gl_get_GL_SGI_color_table (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGI_color_table ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1480,7 +1480,7 @@ gdk_gl_get_GL_SGIX_pixel_texture (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_pixel_texture ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1524,7 +1524,7 @@ gdk_gl_get_GL_SGIS_pixel_texture (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_pixel_texture ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1569,7 +1569,7 @@ gdk_gl_get_GL_SGIS_texture4D (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture4D ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1614,7 +1614,7 @@ gdk_gl_get_GL_EXT_texture_object (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture_object ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1659,7 +1659,7 @@ gdk_gl_get_GL_SGIS_detail_texture (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_detail_texture ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1700,7 +1700,7 @@ gdk_gl_get_GL_SGIS_sharpen_texture (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_sharpen_texture ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1741,7 +1741,7 @@ gdk_gl_get_GL_SGIS_multisample (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_multisample ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1789,7 +1789,7 @@ gdk_gl_get_GL_EXT_vertex_array (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_array ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1836,7 +1836,7 @@ gdk_gl_get_GL_EXT_blend_minmax (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_minmax ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1878,7 +1878,7 @@ gdk_gl_get_GL_SGIX_sprite (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_sprite ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1921,7 +1921,7 @@ gdk_gl_get_GL_EXT_point_parameters (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_point_parameters ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -1962,7 +1962,7 @@ gdk_gl_get_GL_SGIS_point_parameters (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_point_parameters ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2007,7 +2007,7 @@ gdk_gl_get_GL_SGIX_instruments (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_instruments ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2051,7 +2051,7 @@ gdk_gl_get_GL_SGIX_framezoom (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_framezoom ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2090,7 +2090,7 @@ gdk_gl_get_GL_SGIX_tag_sample_buffer (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_tag_sample_buffer ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2132,7 +2132,7 @@ gdk_gl_get_GL_SGIX_polynomial_ffd (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_polynomial_ffd ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2174,7 +2174,7 @@ gdk_gl_get_GL_SGIX_reference_plane (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_reference_plane ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2213,7 +2213,7 @@ gdk_gl_get_GL_SGIX_flush_raster (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_flush_raster ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2253,7 +2253,7 @@ gdk_gl_get_GL_SGIS_fog_function (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_fog_function ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2298,7 +2298,7 @@ gdk_gl_get_GL_HP_image_transform (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_HP_image_transform ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2343,7 +2343,7 @@ gdk_gl_get_GL_EXT_color_subtable (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_color_subtable ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2383,7 +2383,7 @@ gdk_gl_get_GL_PGI_misc_hints (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_PGI_misc_hints ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2425,7 +2425,7 @@ gdk_gl_get_GL_EXT_paletted_texture (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_paletted_texture ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2472,7 +2472,7 @@ gdk_gl_get_GL_SGIX_list_priority (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_list_priority ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2516,7 +2516,7 @@ gdk_gl_get_GL_EXT_index_material (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_index_material ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2555,7 +2555,7 @@ gdk_gl_get_GL_EXT_index_func (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_index_func ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2595,7 +2595,7 @@ gdk_gl_get_GL_EXT_compiled_vertex_array (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_compiled_vertex_array ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2636,7 +2636,7 @@ gdk_gl_get_GL_EXT_cull_vertex (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_cull_vertex ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2694,7 +2694,7 @@ gdk_gl_get_GL_SGIX_fragment_lighting (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_fragment_lighting ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2750,7 +2750,7 @@ gdk_gl_get_GL_EXT_draw_range_elements (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_draw_range_elements ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2791,7 +2791,7 @@ gdk_gl_get_GL_EXT_light_texture (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_light_texture ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2837,7 +2837,7 @@ gdk_gl_get_GL_SGIX_async (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_async ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2884,7 +2884,7 @@ gdk_gl_get_GL_INTEL_parallel_arrays (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_INTEL_parallel_arrays ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2929,7 +2929,7 @@ gdk_gl_get_GL_EXT_pixel_transform (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_pixel_transform ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -2988,7 +2988,7 @@ gdk_gl_get_GL_EXT_secondary_color (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_secondary_color ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3043,7 +3043,7 @@ gdk_gl_get_GL_EXT_texture_perturb_normal (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_texture_perturb_normal ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3083,7 +3083,7 @@ gdk_gl_get_GL_EXT_multi_draw_arrays (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_multi_draw_arrays ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3127,7 +3127,7 @@ gdk_gl_get_GL_EXT_fog_coord (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_fog_coord ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3193,7 +3193,7 @@ gdk_gl_get_GL_EXT_coordinate_frame (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_coordinate_frame ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3253,7 +3253,7 @@ gdk_gl_get_GL_SUNX_constant_data (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUNX_constant_data ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3299,7 +3299,7 @@ gdk_gl_get_GL_SUN_global_alpha (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_global_alpha ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3351,7 +3351,7 @@ gdk_gl_get_GL_SUN_triangle_list (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_triangle_list ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3438,7 +3438,7 @@ gdk_gl_get_GL_SUN_vertex (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_vertex ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3516,7 +3516,7 @@ gdk_gl_get_GL_EXT_blend_func_separate (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_blend_func_separate ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3555,7 +3555,7 @@ gdk_gl_get_GL_INGR_blend_func_separate (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_INGR_blend_func_separate ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3596,7 +3596,7 @@ gdk_gl_get_GL_EXT_vertex_weighting (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_weighting ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3638,7 +3638,7 @@ gdk_gl_get_GL_NV_vertex_array_range (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_vertex_array_range ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3691,7 +3691,7 @@ gdk_gl_get_GL_NV_register_combiners (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_register_combiners ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3742,7 +3742,7 @@ gdk_gl_get_GL_MESA_resize_buffers (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_MESA_resize_buffers ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3806,7 +3806,7 @@ gdk_gl_get_GL_MESA_window_pos (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_MESA_window_pos ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3869,7 +3869,7 @@ gdk_gl_get_GL_IBM_multimode_draw_arrays (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_IBM_multimode_draw_arrays ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3916,7 +3916,7 @@ gdk_gl_get_GL_IBM_vertex_array_lists (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_IBM_vertex_array_lists ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -3962,7 +3962,7 @@ gdk_gl_get_GL_3DFX_tbuffer (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_3DFX_tbuffer ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4002,7 +4002,7 @@ gdk_gl_get_GL_EXT_multisample (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_multisample ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4042,7 +4042,7 @@ gdk_gl_get_GL_SGIS_texture_color_mask (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIS_texture_color_mask ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4081,7 +4081,7 @@ gdk_gl_get_GL_SGIX_igloo_interface (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SGIX_igloo_interface ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4126,7 +4126,7 @@ gdk_gl_get_GL_NV_fence (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_fence ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4179,7 +4179,7 @@ gdk_gl_get_GL_NV_evaluators (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_evaluators ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4227,7 +4227,7 @@ gdk_gl_get_GL_NV_register_combiners2 (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_register_combiners2 ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4336,7 +4336,7 @@ gdk_gl_get_GL_NV_vertex_program (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_vertex_program ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4441,7 +4441,7 @@ gdk_gl_get_GL_ATI_envmap_bumpmap (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_envmap_bumpmap ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4497,7 +4497,7 @@ gdk_gl_get_GL_ATI_fragment_shader (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_fragment_shader ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4550,7 +4550,7 @@ gdk_gl_get_GL_ATI_pn_triangles (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_pn_triangles ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4602,7 +4602,7 @@ gdk_gl_get_GL_ATI_vertex_array_object (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_vertex_array_object ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4697,7 +4697,7 @@ gdk_gl_get_GL_EXT_vertex_shader (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_vertex_shader ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4825,7 +4825,7 @@ gdk_gl_get_GL_ATI_vertex_streams (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_vertex_streams ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4910,7 +4910,7 @@ gdk_gl_get_GL_ATI_element_array (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_ATI_element_array ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4951,7 +4951,7 @@ gdk_gl_get_GL_SUN_mesh_array (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_SUN_mesh_array ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -4996,7 +4996,7 @@ gdk_gl_get_GL_NV_occlusion_query (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_occlusion_query ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -5042,7 +5042,7 @@ gdk_gl_get_GL_NV_point_sprite (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_NV_point_sprite ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -5082,7 +5082,7 @@ gdk_gl_get_GL_EXT_stencil_two_side (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_EXT_stencil_two_side ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)
@@ -5125,7 +5125,7 @@ gdk_gl_get_GL_WIN_swap_hint (void)
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_GL_WIN_swap_hint ()"));
 
-  if (!gdk_gl_context_get_current ())
+  if (gdk_gl_context_get_current () == NULL)
     return NULL;
 
   if (!init)

@@ -134,7 +134,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
   if (where || *extension == '\0')
     return FALSE;
 
-  if (!extensions)
+  if (extensions == NULL)
     {
       /* Try wglGetExtensionsStringARB. */
 
@@ -144,7 +144,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
       if (wgl_get_extensions_string_arb)
         {
           hdc = GetDC (NULL);
-          if (!hdc)
+          if (hdc == NULL)
             {
               g_warning ("cannot get DC");
             }
@@ -155,7 +155,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
             }
         }
 
-      if (!extensions)
+      if (extensions == NULL)
         {
           /* Try wglGetExtensionsStringEXT. */
 
@@ -166,7 +166,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
             extensions = wgl_get_extensions_string_ext ();
         }
 
-      if (!extensions)
+      if (extensions == NULL)
         return FALSE;
     }
 
@@ -177,7 +177,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
   for (;;)
     {
       where = strstr (start, extension);
-      if (!where)
+      if (where == NULL)
         break;
 
       terminator = where + strlen (extension);

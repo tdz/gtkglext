@@ -61,7 +61,7 @@ gdk_gl_query_gl_extension (const char *extension)
   if (where || *extension == '\0')
     return FALSE;
 
-  if (!extensions)
+  if (extensions == NULL)
     extensions = glGetString (GL_EXTENSIONS);
 
   /* It takes a bit of care to be fool-proof about parsing the
@@ -76,7 +76,7 @@ gdk_gl_query_gl_extension (const char *extension)
          a current OpenGL context has unpredictable results.
          Please fix your program. */
       where = (GLubyte *) strstr ((const char *) start, extension);
-      if (!where)
+      if (where == NULL)
         break;
 
       terminator = where + strlen (extension);

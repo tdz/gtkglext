@@ -156,7 +156,7 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
   if (where || *extension == '\0')
     return FALSE;
 
-  if (!extensions)
+  if (extensions == NULL)
     {
       /* Be careful not to call glXQueryExtensionsString if it
          looks like the server doesn't support GLX 1.1.
@@ -180,7 +180,7 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
   for (;;)
     {
       where = strstr (start, extension);
-      if (!where)
+      if (where == NULL)
         break;
 
       terminator = where + strlen (extension);
