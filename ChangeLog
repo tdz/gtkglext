@@ -1,5 +1,9 @@
 2003-04-30  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Use
+	g_signal_connect_after() instead of g_signal_connect() to connect
+	"realize" signal handler.
+
 	* examples/low-level.c (main): 
 	* examples/simple.c (main): 
 	* examples/simple-mixed.c (main): 

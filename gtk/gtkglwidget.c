@@ -296,9 +296,9 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    * Signal handlers.
    */
 
-  g_signal_connect (G_OBJECT (widget), "realize",
-		    G_CALLBACK (gtk_gl_widget_realize),
-                    private);
+  g_signal_connect_after (G_OBJECT (widget), "realize",
+                          G_CALLBACK (gtk_gl_widget_realize),
+                          private);
 
   /* gtk_drawing_area sends configure_event when it is realized. */
   g_signal_connect (G_OBJECT (widget), "configure_event",
