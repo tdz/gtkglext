@@ -377,7 +377,8 @@ gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
              buffers as no-ops. */
           mode |= GDK_GL_MODE_DOUBLE;
           glconfig = gdk_gl_config_new_internal (mode);
-          glconfig->as_single_mode = TRUE;
+          if (glconfig != NULL)
+            glconfig->as_single_mode = TRUE;
         }
     }
 
