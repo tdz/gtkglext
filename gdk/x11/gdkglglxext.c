@@ -40,6 +40,44 @@ _GDK_GL_CONCAT(gdk_gl_get_, proc_name) (void)                                   
   return proc_address;                                                                          \
 }
 
+_GDK_GL_GET_PROC(glXGetFBConfigs)
+
+_GDK_GL_GET_PROC(glXChooseFBConfig)
+
+_GDK_GL_GET_PROC(glXGetFBConfigAttrib)
+
+_GDK_GL_GET_PROC(glXGetVisualFromFBConfig)
+
+_GDK_GL_GET_PROC(glXCreateWindow)
+
+_GDK_GL_GET_PROC(glXDestroyWindow)
+
+_GDK_GL_GET_PROC(glXCreatePixmap)
+
+_GDK_GL_GET_PROC(glXDestroyPixmap)
+
+_GDK_GL_GET_PROC(glXCreatePbuffer)
+
+_GDK_GL_GET_PROC(glXDestroyPbuffer)
+
+_GDK_GL_GET_PROC(glXQueryDrawable)
+
+_GDK_GL_GET_PROC(glXCreateNewContext)
+
+_GDK_GL_GET_PROC(glXMakeContextCurrent)
+
+_GDK_GL_GET_PROC(glXGetCurrentReadDrawable)
+
+_GDK_GL_GET_PROC(glXGetCurrentDisplay)
+
+_GDK_GL_GET_PROC(glXQueryContext)
+
+_GDK_GL_GET_PROC(glXSelectEvent)
+
+_GDK_GL_GET_PROC(glXGetSelectedEvent)
+
+_GDK_GL_GET_PROC(glXGetProcAddress)
+
 _GDK_GL_GET_PROC(glXGetProcAddressARB)
 
 _GDK_GL_GET_PROC(glXSwapIntervalSGI)
