@@ -16,10 +16,17 @@
  * Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 
-/* Modified on 10th June 2002, for porting this program
+/*
+ * Modified on 10th June 2002, for porting this program
  * to the 'gtkglext-0.1.0` extension of gtk-2.0.
  *
  * Alif Wahid, <awah005@users.sourceforge.net>
+ */
+
+/*
+ * Improved mouse operation.
+ *
+ * Naofumi Yasufuku  <naofumi@users.sourceforge.net>
  */
 
 #include <stdlib.h>
@@ -39,14 +46,14 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-
 #include "trackball.h"
 #include "lw.h"
 
 #define VIEW_ASPECT 1.3
 
-void select_lwobject(void);
-gint show_lwobject(const char *lwobject_name);
+#define ANIMATE_THRESHOLD 25.0
+
+#define TIMEOUT_INTERVAL 10
 
 /* information needed to display lightwave mesh */
 typedef struct
@@ -54,12 +61,15 @@ typedef struct
   gint do_init;         /* true if initgl not yet called */
   lwObject *lwobject;   /* lightwave object mesh */
   float beginx,beginy;  /* position of mouse */
+  float dx,dy;
   float quat[4];        /* orientation of object */
+  float dquat[4];
   float zoom;           /* field of view in degrees */
-
+  gboolean animate;
+  guint timeout_id;
 } mesh_info;
 
-char help_text[] = "Usage: viewlw [OPTION]... [FILE]...\n"
+const char help_text[] = "Usage: viewlw [OPTION]... [FILE]...\n"
 "View LightWave 3D objects.\n"
 "\n"
 "Options:\n"
@@ -73,7 +83,15 @@ char help_text[] = "Usage: viewlw [OPTION]... [FILE]...\n"
 
 static GdkGLConfig *glconfig = NULL;
 
-void initgl (void)
+static void select_lwobject(void);
+static gint show_lwobject(const char *lwobject_name);
+
+static void timeout_add(GtkWidget *widget);
+static void timeout_remove(GtkWidget *widget);
+static void toggle_animation(GtkWidget *widget);
+
+static void
+initgl(void)
 {
   GLfloat light0_pos[4]   = { -50.0, 50.0, 0.0, 0.0 };
   GLfloat light0_color[4] = { .6, .6, .6, 1.0 }; /* white light */
@@ -103,7 +121,9 @@ void initgl (void)
   glEnable(GL_COLOR_MATERIAL);
 }
 
-gint expose(GtkWidget *widget, GdkEventExpose *event)
+static gboolean
+expose(GtkWidget      *widget,
+       GdkEventExpose *event)
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
@@ -138,6 +158,7 @@ gint expose(GtkWidget *widget, GdkEventExpose *event)
 
   glLoadIdentity();
   glTranslatef(0,0,-30);
+  add_quats(info->dquat, info->quat, info->quat);
   build_rotmatrix(m,info->quat);
   glMultMatrixf(&m[0][0]);
 
@@ -157,7 +178,9 @@ gint expose(GtkWidget *widget, GdkEventExpose *event)
   return TRUE;
 }
 
-gint configure(GtkWidget *widget, GdkEventConfigure *event, gpointer data)
+static gboolean
+configure(GtkWidget         *widget,
+          GdkEventConfigure *event)
 {
   GdkGLContext *glcontext;
   GdkGLDrawable *gldrawable;
@@ -181,39 +204,71 @@ gint configure(GtkWidget *widget, GdkEventConfigure *event, gpointer data)
   return TRUE;
 }
 
-gint destroy(GtkWidget *widget)
+static void
+destroy(GtkWidget *widget)
 {
   /* delete mesh info */
   mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
-  if (info)
-    {
-      lw_object_free(info->lwobject);
-      g_free(info);
-    }
 
-  return TRUE;
+  timeout_remove(widget);
+  lw_object_free(info->lwobject);
+  g_free(info);
 }
 
-gint button_press(GtkWidget *widget, GdkEventButton *event)
+static gboolean
+button_press(GtkWidget      *widget,
+             GdkEventButton *event)
 {
   mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
-  if (event->button == 1)
+
+  if (info->animate)
     {
-      /* beginning of drag, reset mouse position */
-      info->beginx = event->x;
-      info->beginy = event->y;
-      return TRUE;
+      if (event->button == 1)
+        toggle_animation (widget);
     }
+  else
+    {
+      info->dquat[0] = 0.0;
+      info->dquat[1] = 0.0;
+      info->dquat[2] = 0.0;
+      info->dquat[3] = 1.0;
+    }
+
+  /* beginning of drag, reset mouse position */
+  info->beginx = event->x;
+  info->beginy = event->y;
 
   return FALSE;
 }
 
-gint motion_notify(GtkWidget *widget, GdkEventMotion *event)
+static gboolean
+button_release(GtkWidget      *widget,
+               GdkEventButton *event)
+{
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
+
+  if (!info->animate)
+    {
+      if (event->button == 1 &&
+          ((info->dx*info->dx + info->dy*info->dy) > ANIMATE_THRESHOLD))
+        toggle_animation (widget);
+    }
+
+  info->dx = 0.0;
+  info->dy = 0.0;
+
+  return FALSE;
+}
+
+static gboolean
+motion_notify(GtkWidget      *widget,
+              GdkEventMotion *event)
 {
   int x = 0;
   int y = 0;
   GdkModifierType state = 0;
   float width, height;
+  gboolean redraw = FALSE;
   mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
 
   if (event->is_hint)
@@ -236,16 +291,17 @@ gint motion_notify(GtkWidget *widget, GdkEventMotion *event)
   if (state & GDK_BUTTON1_MASK)
     {
       /* drag in progress, simulate trackball */
-      float spin_quat[4];
-      trackball( spin_quat,
+      trackball( info->dquat,
                  (2.0*info->beginx -            width) / width,
                  (          height - 2.0*info->beginy) / height,
                  (           2.0*x -            width) / width,
                  (          height -            2.0*y) / height );
-      add_quats(spin_quat, info->quat, info->quat);
+
+      info->dx = x - info->beginx;
+      info->dy = y - info->beginy;
 
       /* orientation has changed, redraw mesh */
-      gtk_widget_queue_draw(widget);
+      redraw = TRUE;
     }
 
   if (state & GDK_BUTTON2_MASK)
@@ -254,20 +310,116 @@ gint motion_notify(GtkWidget *widget, GdkEventMotion *event)
       info->zoom -= ((y - info->beginy) / height) * 40.0;
       if (info->zoom < 5.0) info->zoom = 5.0;
       if (info->zoom > 120.0) info->zoom = 120.0;
+
       /* zoom has changed, redraw mesh */
-      gtk_widget_queue_draw(widget);
+      redraw = TRUE;
     }
 
   info->beginx = x;
   info->beginy = y;
 
+  if (redraw && !info->animate)
+    gtk_widget_queue_draw(widget);
+
   return TRUE;
 }
 
-gboolean
-key_press_event (GtkWidget   *widget,
-		 GdkEventKey *event,
-		 gpointer     data)
+static gboolean
+timeout(GtkWidget *widget)
+{
+  gtk_widget_queue_draw (widget);
+
+  return TRUE;
+}
+
+static void
+timeout_add(GtkWidget *widget)
+{
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
+
+  if (info->timeout_id == 0)
+    {
+      info->timeout_id = gtk_timeout_add(TIMEOUT_INTERVAL,
+                                         (GtkFunction) timeout,
+                                         widget);
+    }
+}
+
+static void
+timeout_remove(GtkWidget *widget)
+{
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
+
+  if (info->timeout_id != 0)
+    {
+      gtk_timeout_remove(info->timeout_id);
+      info->timeout_id = 0;
+    }
+}
+
+static void
+toggle_animation(GtkWidget *widget)
+{
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
+
+  info->animate = !info->animate;
+
+  if (info->animate)
+    {
+      timeout_add(widget);
+    }
+  else
+    {
+      timeout_remove(widget);
+      info->dquat[0] = 0.0;
+      info->dquat[1] = 0.0;
+      info->dquat[2] = 0.0;
+      info->dquat[3] = 1.0;
+      gtk_widget_queue_draw(widget);
+    }
+}
+
+static gboolean
+map_event(GtkWidget *widget,
+          GdkEvent  *event)
+{
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
+
+  if (info->animate)
+    timeout_add(widget);
+
+  return TRUE;
+}
+
+static gboolean
+unmap_event(GtkWidget *widget,
+            GdkEvent  *event)
+{
+  timeout_remove(widget);
+
+  return TRUE;
+}
+
+static gboolean
+visibility_notify_event(GtkWidget          *widget,
+                        GdkEventVisibility *event)
+{
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
+
+  if (info->animate)
+    {
+      if (event->state == GDK_VISIBILITY_FULLY_OBSCURED)
+	timeout_remove(widget);
+      else
+	timeout_add(widget);
+    }
+
+  return TRUE;
+}
+
+static gboolean
+key_press_event(GtkWidget   *widget,
+                GdkEventKey *event)
 {
   mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
 
@@ -292,7 +444,7 @@ key_press_event (GtkWidget   *widget,
       break;
 
     case GDK_Escape:
-      gtk_main_quit ();
+      gtk_main_quit();
       break;
 
     default:
@@ -302,7 +454,9 @@ key_press_event (GtkWidget   *widget,
   return TRUE;
 }
 
-gint popup_menu_handler(GtkWidget *widget, GdkEventButton *event)
+static gboolean
+popup_menu_handler(GtkWidget      *widget,
+                   GdkEventButton *event)
 {
   if (event->button == 3)
     {
@@ -313,11 +467,14 @@ gint popup_menu_handler(GtkWidget *widget, GdkEventButton *event)
   return FALSE;
 }
 
-void popup_menu_detacher(GtkWidget *attach_widget,GtkMenu *menu)
+static void
+popup_menu_detacher(GtkWidget *attach_widget,
+                    GtkMenu   *menu)
 {
 }
 
-void create_popup_menu(GtkWidget *widget)
+static void
+create_popup_menu(GtkWidget *widget)
 {
   GtkWidget *menu          = gtk_menu_new();
   GtkWidget *open_item     = gtk_menu_item_new_with_label("Open");
@@ -336,22 +493,20 @@ void create_popup_menu(GtkWidget *widget)
 
   g_signal_connect_swapped(G_OBJECT(widget), "destroy",
                            G_CALLBACK(gtk_menu_detach), menu);
-
   g_signal_connect_swapped(G_OBJECT(widget), "button_press_event",
                            G_CALLBACK(popup_menu_handler), menu);
-
   g_signal_connect(G_OBJECT(open_item), "activate",
                    G_CALLBACK(select_lwobject), NULL);
-
   g_signal_connect_swapped(G_OBJECT(quit_item), "activate",
                            G_CALLBACK(gtk_widget_destroy), widget);
-
   g_signal_connect(G_OBJECT(quit_all_item), "activate",
                    G_CALLBACK(gtk_main_quit), NULL);
 }
 
-gint window_count = 0; /* number of windows on screen */
-gint window_destroy(GtkWidget *widget)
+static gint window_count = 0; /* number of windows on screen */
+
+static gint
+window_destroy(GtkWidget *widget)
 {
   /* if this was last window quit */
   if (--window_count == 0)
@@ -359,7 +514,8 @@ gint window_destroy(GtkWidget *widget)
   return TRUE;
 }
 
-gint show_lwobject(const char *lwobject_name)
+static gint
+show_lwobject(const char *lwobject_name)
 {
   GtkWidget *window, *frame, *glarea;
   mesh_info *info;
@@ -384,7 +540,7 @@ gint show_lwobject(const char *lwobject_name)
   frame = gtk_aspect_frame_new(NULL, 0.5,0.5, VIEW_ASPECT, FALSE);
 
   /* create new OpenGL widget */
-  glarea = gtk_drawing_area_new ();
+  glarea = gtk_drawing_area_new();
   if (glarea == NULL)
     {
       lw_object_free(lwobject);
@@ -393,11 +549,11 @@ gint show_lwobject(const char *lwobject_name)
     }
 
   /* Set OpenGL-capability to the widget. */
-  gtk_widget_set_gl_capability (GTK_WIDGET (glarea),
-                                glconfig,
-                                NULL,
-                                TRUE,
-                                GDK_GL_RGBA_TYPE);
+  gtk_widget_set_gl_capability(GTK_WIDGET (glarea),
+                               glconfig,
+                               NULL,
+                               TRUE,
+                               GDK_GL_RGBA_TYPE);
 
   /* set up events and signals for OpenGL widget */
   gtk_widget_set_events(glarea,
@@ -407,20 +563,24 @@ gint show_lwobject(const char *lwobject_name)
      			GDK_POINTER_MOTION_MASK|
      			GDK_POINTER_MOTION_HINT_MASK);
 
-  g_signal_connect (G_OBJECT(glarea), "expose_event",
-                    G_CALLBACK(expose), NULL);
-
-  g_signal_connect (G_OBJECT(glarea), "motion_notify_event",
-                    G_CALLBACK(motion_notify), NULL);
-
-  g_signal_connect (G_OBJECT(glarea), "button_press_event",
-                    G_CALLBACK(button_press), NULL);
-
-  g_signal_connect (G_OBJECT(glarea), "configure_event",
-                    G_CALLBACK(configure), NULL);
-
-  g_signal_connect (G_OBJECT(glarea), "destroy",
-                    G_CALLBACK(destroy), NULL);
+  g_signal_connect(G_OBJECT(glarea), "expose_event",
+                   G_CALLBACK(expose), NULL);
+  g_signal_connect(G_OBJECT(glarea), "motion_notify_event",
+                   G_CALLBACK(motion_notify), NULL);
+  g_signal_connect(G_OBJECT(glarea), "button_press_event",
+                   G_CALLBACK(button_press), NULL);
+  g_signal_connect(G_OBJECT(glarea), "button_release_event",
+                   G_CALLBACK(button_release), NULL);
+  g_signal_connect(G_OBJECT(glarea), "configure_event",
+                   G_CALLBACK(configure), NULL);
+  g_signal_connect(G_OBJECT (glarea), "map_event",
+		   G_CALLBACK (map_event), NULL);
+  g_signal_connect(G_OBJECT (glarea), "unmap_event",
+		   G_CALLBACK (unmap_event), NULL);
+  g_signal_connect(G_OBJECT (glarea), "visibility_notify_event",
+		   G_CALLBACK (visibility_notify_event), NULL);
+  g_signal_connect(G_OBJECT(glarea), "destroy",
+                   G_CALLBACK(destroy), NULL);
 
   gtk_widget_set_size_request(glarea, 200,200/VIEW_ASPECT); /* minimum size */
 
@@ -430,7 +590,13 @@ gint show_lwobject(const char *lwobject_name)
   info->lwobject = lwobject;
   info->beginx = 0;
   info->beginy = 0;
+  info->dx = 0;
+  info->dy = 0;
+  info->quat[0] = 0;  info->quat[1] = 0;  info->quat[2] = 0;  info->quat[3] = 1;
+  info->dquat[0] = 0; info->dquat[1] = 0; info->dquat[2] = 0; info->dquat[3] = 1;
   info->zoom   = 45;
+  info->animate = FALSE;
+  info->timeout_id = 0;
   trackball(info->quat , 0.0, 0.0, 0.0, 0.0);
   g_object_set_data(G_OBJECT(glarea), "mesh_info", info);
 
@@ -440,15 +606,15 @@ gint show_lwobject(const char *lwobject_name)
   gtk_window_set_title(GTK_WINDOW(window), lwobject_name);
   gtk_container_set_border_width(GTK_CONTAINER(window), 10);
 #ifndef G_OS_WIN32
-  gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
+  gtk_container_set_resize_mode(GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
 #endif
-  gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
+  gtk_container_set_reallocate_redraws(GTK_CONTAINER (window), TRUE);
   create_popup_menu(window); /* add popup menu to window */
   /* key_press_event handler for top-level window */
-  g_signal_connect_swapped (G_OBJECT (window), "key_press_event",
-			    G_CALLBACK (key_press_event), glarea);
-  g_signal_connect (G_OBJECT(window), "destroy",
-                    G_CALLBACK(window_destroy), NULL);
+  g_signal_connect_swapped(G_OBJECT (window), "key_press_event",
+                           G_CALLBACK (key_press_event), glarea);
+  g_signal_connect(G_OBJECT(window), "destroy",
+                   G_CALLBACK(window_destroy), NULL);
   window_count++;
 
   /* destroy this window when exiting from gtk_main() */
@@ -464,16 +630,17 @@ gint show_lwobject(const char *lwobject_name)
   return TRUE;
 }
 
-
-
-gint filew_ok(GtkWidget *widget, GtkWidget *filew)
+static gint
+filew_ok(GtkWidget *widget,
+         GtkWidget *filew)
 {
   if (show_lwobject(gtk_file_selection_get_filename(GTK_FILE_SELECTION(filew))) == TRUE)
     gtk_widget_destroy(filew);
   return TRUE;
 }
 
-void select_lwobject()
+static void
+select_lwobject(void)
 {
   GtkWidget *filew = gtk_file_selection_new("Select LightWave 3D object");
 
@@ -484,40 +651,42 @@ void select_lwobject()
                            "clicked", G_CALLBACK(gtk_widget_destroy),
                            filew);
 
-  g_signal_connect (G_OBJECT(filew), "destroy",
-                    G_CALLBACK(window_destroy), NULL);
+  g_signal_connect(G_OBJECT(filew), "destroy",
+                   G_CALLBACK(window_destroy), NULL);
 
   window_count++;
 
   gtk_widget_show(filew);
 }
 
-int main (int argc, char **argv)
+int
+main(int    argc,
+     char **argv)
 {
   /* initialize gtk */
-  gtk_init (&argc, &argv);
+  gtk_init(&argc, &argv);
 
   /* initialize gtkglext */
-  gtk_gl_init (&argc, &argv);
+  gtk_gl_init(&argc, &argv);
 
   /* Configure OpenGL-capable visual. */
 
   /* Try double-buffered visual */
-  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
-                                        GDK_GL_MODE_DEPTH |
-                                        GDK_GL_MODE_DOUBLE);
+  glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB |
+                                       GDK_GL_MODE_DEPTH |
+                                       GDK_GL_MODE_DOUBLE);
   if (glconfig == NULL)
     {
-      g_print ("*** Cannot find the double-buffered visual.\n");
-      g_print ("*** Trying single-buffered visual.\n");
+      g_print("*** Cannot find the double-buffered visual.\n");
+      g_print("*** Trying single-buffered visual.\n");
 
       /* Try single-buffered visual */
-      glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
-                                            GDK_GL_MODE_DEPTH);
+      glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB |
+                                           GDK_GL_MODE_DEPTH);
       if (glconfig == NULL)
         {
-          g_print ("*** No appropriate OpenGL-capable visual found.\n");
-          exit (1);
+          g_print("*** No appropriate OpenGL-capable visual found.\n");
+          exit(1);
         }
     }
 

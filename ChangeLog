@@ -1,5 +1,7 @@
 2003-07-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/viewlw.c: Improved mouse operation.
+
 	* examples/button.c: 
 	* examples/multiarb.c: 
 	* examples/coolwave.c: 
