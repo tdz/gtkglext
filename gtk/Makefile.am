@@ -1,6 +1,10 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/gtk
 
+EXTRA_DIST = \
+	gtkglversion.h.in	\
+	gtkglext.def
+
 if PLATFORM_WIN32
 no_undefined = -no-undefined
 endif
@@ -71,15 +75,18 @@ gtkglext_public_h_sources = \
 	gtkglinit.h	\
 	gtkglwidget.h
 
+gtkglext_c_sources = \
+	gtkglversion.c		\
+	gtkglinit.c		\
+	gtkglwidget.c
+
 gtkglext_headers = \
 	$(gtkglext_public_h_sources)	\
 	gtkgldebug.h			\
 	gtkglprivate.h
 
-gtkglext_c_sources = \
-	gtkglversion.c		\
-	gtkglinit.c		\
-	gtkglwidget.c
+gtkglext_sources = \
+	$(gtkglext_c_sources)
 
 #
 # setup GtkGLExt sources and their dependancies
@@ -96,21 +103,14 @@ EXTRA_LTLIBRARIES = \
 	libgtkglext-x11-@API_MJ@.@API_MI@.la	\
 	libgtkglext-win32-@API_MJ@.@API_MI@.la
 
-libgtkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = \
-	$(gtkglext_c_sources)
-libgtkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = \
-	$(common_ldflags)
-libgtkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = \
-	$(common_libadd)
+libgtkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
+libgtkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
+libgtkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
 
-libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = \
-	$(gtkglext_c_sources)
-libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = \
-	$(common_ldflags)
-libgtkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = \
-	$(common_libadd)
-libgtkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = \
-	$(gtkglext_def)
+libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
+libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
+libgtkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
+libgtkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = $(gtkglext_def)
 
 MAINTAINERCLEANFILES =
 EXTRA_HEADERS =
@@ -130,6 +130,3 @@ files:
 	  echo $$p; \
 	done
 
-EXTRA_DIST = \
-	gtkglversion.h.in	\
-	gtkglext.def

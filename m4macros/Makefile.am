@@ -4,18 +4,17 @@
 EXTRA_DIST = \
 	gtkglext.m4
 
-M4MACRO_EXT = @GTKGLEXT_API_VERSION@
+API_VER = @GTKGLEXT_API_VERSION@
 
-gtkglext-$(M4MACRO_EXT).m4: gtkglext.m4
+gtkglext-$(API_VER).m4: gtkglext.m4
 	rm -f $@ && cp gtkglext.m4 $@
 
 m4datadir = $(datadir)/aclocal
-m4data_DATA = \
-	gtkglext-$(M4MACRO_EXT).m4
+m4data_DATA = gtkglext-$(API_VER).m4
+
 $(m4data_DATA): ../config.status
 
-DISTCLEANFILES = \
-	gtkglext-$(M4MACRO_EXT).m4
+DISTCLEANFILES = gtkglext-$(API_VER).m4
 
 .PHONY: files
 

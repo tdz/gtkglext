@@ -145,6 +145,11 @@ gtkglext_targetlib = @gtkglext_targetlib@
 install_sh = @install_sh@
 ms_librarian = @ms_librarian@
 
+EXTRA_DIST = \
+	gtkglversion.h.in	\
+	gtkglext.def
+
+
 @PLATFORM_WIN32_TRUE@no_undefined = -no-undefined
 
 @OS_WIN32_TRUE@gtkglext_def = gtkglext.def
@@ -193,16 +198,20 @@ gtkglext_public_h_sources = \
 	gtkglwidget.h
 
 
+gtkglext_c_sources = \
+	gtkglversion.c		\
+	gtkglinit.c		\
+	gtkglwidget.c
+
+
 gtkglext_headers = \
 	$(gtkglext_public_h_sources)	\
 	gtkgldebug.h			\
 	gtkglprivate.h
 
 
-gtkglext_c_sources = \
-	gtkglversion.c		\
-	gtkglinit.c		\
-	gtkglwidget.c
+gtkglext_sources = \
+	$(gtkglext_c_sources)
 
 
 
@@ -221,36 +230,17 @@ EXTRA_LTLIBRARIES = \
 	libgtkglext-win32-@API_MJ@.@API_MI@.la
 
 
-libgtkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = \
-	$(gtkglext_c_sources)
+libgtkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
+libgtkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
+libgtkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
 
-libgtkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = \
-	$(common_ldflags)
-
-libgtkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = \
-	$(common_libadd)
-
-
-libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = \
-	$(gtkglext_c_sources)
-
-libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = \
-	$(common_ldflags)
-
-libgtkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = \
-	$(common_libadd)
-
-libgtkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = \
-	$(gtkglext_def)
-
+libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
+libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
+libgtkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
+libgtkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = $(gtkglext_def)
 
 MAINTAINERCLEANFILES = 
 EXTRA_HEADERS = 
-
-EXTRA_DIST = \
-	gtkglversion.h.in	\
-	gtkglext.def
-
 subdir = gtk
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
@@ -258,12 +248,13 @@ CONFIG_CLEAN_FILES = gtkglversion.h
 LTLIBRARIES = $(lib_LTLIBRARIES)
 
 am__objects_1 = gtkglversion.lo gtkglinit.lo gtkglwidget.lo
-am_libgtkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS = $(am__objects_1)
+am__objects_2 = $(am__objects_1)
+am_libgtkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS = $(am__objects_2)
 libgtkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS = \
 	$(am_libgtkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS)
 libgtkglext_x11_@API_MJ@_@API_MI@_la_DEPENDENCIES = \
 	$(top_builddir)/gdk/$(gdkglext_targetlib)
-am_libgtkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS = $(am__objects_1)
+am_libgtkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS = $(am__objects_2)
 libgtkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS = \
 	$(am_libgtkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS)
 

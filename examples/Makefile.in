@@ -145,6 +145,15 @@ gtkglext_targetlib = @gtkglext_targetlib@
 install_sh = @install_sh@
 ms_librarian = @ms_librarian@
 
+EXTRA_DIST = \
+	Makefile.mingw	\
+	Makefile.msc	\
+	alien.lwo	\
+	penguin.lwo	\
+	girl.rgb	\
+	reflect.rgb
+
+
 INCLUDES = \
 	-I$(top_srcdir) 		\
 	-I$(top_srcdir)/gdk 		\
@@ -268,15 +277,6 @@ glxinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS) $(MATH_LIB)
 wglinfo_SOURCES = wglinfo.c
 wglinfo_DEPENDENCIES = $(DEPS)
 wglinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS)
-
-EXTRA_DIST = \
-	Makefile.mingw	\
-	Makefile.msc	\
-	alien.lwo	\
-	penguin.lwo	\
-	girl.rgb	\
-	reflect.rgb
-
 subdir = examples
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h

@@ -16,50 +16,50 @@ EXTRA_DIST = \
 	setup-gtkglext.sh
 
 ## Copy .pc files to target-specific names
-PCFILE_EXT = @gdktarget@-@GTKGLEXT_API_VERSION@
-PCFILE_API_EXT = @GTKGLEXT_API_VERSION@
+GDK_TARGET = @gdktarget@
+API_VER = @GTKGLEXT_API_VERSION@
 
-gdkglext-$(PCFILE_EXT).pc: gdkglext.pc gdkglext-$(PCFILE_EXT)-uninstalled.pc
+gdkglext-$(GDK_TARGET)-$(API_VER).pc: gdkglext.pc gdkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc
 	rm -f $@ && cp gdkglext.pc $@
 
-gdkglext-$(PCFILE_API_EXT).pc: gdkglext.pc gdkglext-$(PCFILE_API_EXT)-uninstalled.pc
+gdkglext-$(API_VER).pc: gdkglext.pc gdkglext-$(API_VER)-uninstalled.pc
 	rm -f $@ && cp gdkglext.pc $@
 
-gtkglext-$(PCFILE_EXT).pc: gtkglext.pc gtkglext-$(PCFILE_EXT)-uninstalled.pc
+gtkglext-$(GDK_TARGET)-$(API_VER).pc: gtkglext.pc gtkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc
 	rm -f $@ && cp gtkglext.pc $@
 
-gtkglext-$(PCFILE_API_EXT).pc: gtkglext.pc gtkglext-$(PCFILE_API_EXT)-uninstalled.pc
+gtkglext-$(API_VER).pc: gtkglext.pc gtkglext-$(API_VER)-uninstalled.pc
 	rm -f $@ && cp gtkglext.pc $@
 
-gdkglext-$(PCFILE_EXT)-uninstalled.pc: gdkglext-uninstalled.pc
+gdkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc: gdkglext-uninstalled.pc
 	rm -f $@ && cp gdkglext-uninstalled.pc $@
 
-gdkglext-$(PCFILE_API_EXT)-uninstalled.pc: gdkglext-uninstalled.pc gdkglext-$(PCFILE_EXT)-uninstalled.pc
+gdkglext-$(API_VER)-uninstalled.pc: gdkglext-uninstalled.pc gdkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc
 	rm -f $@ && cp gdkglext-uninstalled.pc $@
 
-gtkglext-$(PCFILE_EXT)-uninstalled.pc: gtkglext-uninstalled.pc
+gtkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc: gtkglext-uninstalled.pc
 	rm -f $@ && cp gtkglext-uninstalled.pc $@
 
-gtkglext-$(PCFILE_API_EXT)-uninstalled.pc: gtkglext-uninstalled.pc gtkglext-$(PCFILE_EXT)-uninstalled.pc
+gtkglext-$(API_VER)-uninstalled.pc: gtkglext-uninstalled.pc gtkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc
 	rm -f $@ && cp gtkglext-uninstalled.pc $@
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = \
-	gdkglext-$(PCFILE_EXT).pc	\
-	gdkglext-$(PCFILE_API_EXT).pc	\
-	gtkglext-$(PCFILE_EXT).pc	\
-	gtkglext-$(PCFILE_API_EXT).pc
+	gdkglext-$(GDK_TARGET)-$(API_VER).pc	\
+	gdkglext-$(API_VER).pc			\
+	gtkglext-$(GDK_TARGET)-$(API_VER).pc	\
+	gtkglext-$(API_VER).pc
 $(pkgconfig_DATA): config.status
 
 DISTCLEANFILES = \
-	gdkglext-$(PCFILE_EXT).pc			\
-	gdkglext-$(PCFILE_API_EXT).pc			\
-	gtkglext-$(PCFILE_EXT).pc			\
-	gtkglext-$(PCFILE_API_EXT).pc			\
-	gdkglext-$(PCFILE_EXT)-uninstalled.pc		\
-	gdkglext-$(PCFILE_API_EXT)-uninstalled.pc	\
-	gtkglext-$(PCFILE_EXT)-uninstalled.pc		\
-	gtkglext-$(PCFILE_API_EXT)-uninstalled.pc
+	gdkglext-$(GDK_TARGET)-$(API_VER).pc			\
+	gdkglext-$(API_VER).pc					\
+	gtkglext-$(GDK_TARGET)-$(API_VER).pc			\
+	gtkglext-$(API_VER).pc					\
+	gdkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc	\
+	gdkglext-$(API_VER)-uninstalled.pc			\
+	gtkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc	\
+	gtkglext-$(API_VER)-uninstalled.pc
 
 .PHONY: examples files
 

@@ -145,8 +145,6 @@ gtkglext_targetlib = @gtkglext_targetlib@
 install_sh = @install_sh@
 ms_librarian = @ms_librarian@
 
-libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk/x11
-
 INCLUDES = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
 	-DINSIDE_GDK_GL_X11		\
@@ -165,32 +163,47 @@ LDADDS = \
 	$(GDKGLEXT_DEP_LIBS)
 
 
-noinst_LTLIBRARIES = libgdkglext-x11.la
+gdkglext_x11_public_h_sources = \
+	gdkglx.h		\
+	gdkglglxext.h
 
-libgdkglext_x11_la_SOURCES = \
-	gdkglquery-x11.c	\
+
+gdkglext_x11_private_h_sources = \
 	gdkglconfig-x11.h	\
-	gdkglconfig-x11.c	\
 	gdkgloverlay-x11.h	\
-	gdkgloverlay-x11.c	\
 	gdkglcontext-x11.h	\
-	gdkglcontext-x11.c	\
-	gdkgldrawable-x11.c	\
 	gdkglpixmap-x11.h	\
-	gdkglpixmap-x11.c	\
 	gdkglwindow-x11.h	\
-	gdkglwindow-x11.c	\
-	gdkglfont-x11.c		\
-	gdkglglxext.c		\
 	gdkglprivate-x11.h
 
 
-libgdkglextinclude_HEADERS = \
-	gdkglglxext.h		\
-	gdkglx.h
+gdkglext_x11_c_sources = \
+	gdkglquery-x11.c	\
+	gdkglconfig-x11.c	\
+	gdkgloverlay-x11.c	\
+	gdkglcontext-x11.c	\
+	gdkgldrawable-x11.c	\
+	gdkglpixmap-x11.c	\
+	gdkglwindow-x11.c	\
+	gdkglfont-x11.c		\
+	gdkglglxext.c
 
 
-EXTRA_DIST = 
+gdkglext_x11_headers = \
+	$(gdkglext_x11_public_h_sources)
+
+
+gdkglext_x11_sources = \
+	$(gdkglext_x11_private_h_sources)	\
+	$(gdkglext_x11_c_sources)
+
+
+gdkglextx11includedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk/x11
+gdkglextx11include_HEADERS = $(gdkglext_x11_headers)
+
+noinst_LTLIBRARIES = libgdkglext-x11.la
+
+libgdkglext_x11_la_SOURCES = $(gdkglext_x11_sources)
 subdir = gdk/x11
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
@@ -199,10 +212,12 @@ LTLIBRARIES = $(noinst_LTLIBRARIES)
 
 libgdkglext_x11_la_LDFLAGS =
 libgdkglext_x11_la_LIBADD =
-am_libgdkglext_x11_la_OBJECTS = gdkglquery-x11.lo gdkglconfig-x11.lo \
-	gdkgloverlay-x11.lo gdkglcontext-x11.lo gdkgldrawable-x11.lo \
-	gdkglpixmap-x11.lo gdkglwindow-x11.lo gdkglfont-x11.lo \
-	gdkglglxext.lo
+am__objects_1 =
+am__objects_2 = gdkglquery-x11.lo gdkglconfig-x11.lo gdkgloverlay-x11.lo \
+	gdkglcontext-x11.lo gdkgldrawable-x11.lo gdkglpixmap-x11.lo \
+	gdkglwindow-x11.lo gdkglfont-x11.lo gdkglglxext.lo
+am__objects_3 = $(am__objects_1) $(am__objects_2)
+am_libgdkglext_x11_la_OBJECTS = $(am__objects_3)
 libgdkglext_x11_la_OBJECTS = $(am_libgdkglext_x11_la_OBJECTS)
 
 DEFS = @DEFS@
@@ -230,9 +245,9 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
 DIST_SOURCES = $(libgdkglext_x11_la_SOURCES)
-HEADERS = $(libgdkglextinclude_HEADERS)
+HEADERS = $(gdkglextx11include_HEADERS)
 
-DIST_COMMON = $(libgdkglextinclude_HEADERS) Makefile.am Makefile.in
+DIST_COMMON = $(gdkglextx11include_HEADERS) Makefile.am Makefile.in
 SOURCES = $(libgdkglext_x11_la_SOURCES)
 
 all: all-am
@@ -303,23 +318,23 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
-libgdkglextincludeHEADERS_INSTALL = $(INSTALL_HEADER)
-install-libgdkglextincludeHEADERS: $(libgdkglextinclude_HEADERS)
+gdkglextx11includeHEADERS_INSTALL = $(INSTALL_HEADER)
+install-gdkglextx11includeHEADERS: $(gdkglextx11include_HEADERS)
 	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(libgdkglextincludedir)
-	@list='$(libgdkglextinclude_HEADERS)'; for p in $$list; do \
+	$(mkinstalldirs) $(DESTDIR)$(gdkglextx11includedir)
+	@list='$(gdkglextx11include_HEADERS)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(libgdkglextincludeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(libgdkglextincludedir)/$$f"; \
-	  $(libgdkglextincludeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(libgdkglextincludedir)/$$f; \
+	  echo " $(gdkglextx11includeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(gdkglextx11includedir)/$$f"; \
+	  $(gdkglextx11includeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(gdkglextx11includedir)/$$f; \
 	done
 
-uninstall-libgdkglextincludeHEADERS:
+uninstall-gdkglextx11includeHEADERS:
 	@$(NORMAL_UNINSTALL)
-	@list='$(libgdkglextinclude_HEADERS)'; for p in $$list; do \
+	@list='$(gdkglextx11include_HEADERS)'; for p in $$list; do \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(libgdkglextincludedir)/$$f"; \
-	  rm -f $(DESTDIR)$(libgdkglextincludedir)/$$f; \
+	  echo " rm -f $(DESTDIR)$(gdkglextx11includedir)/$$f"; \
+	  rm -f $(DESTDIR)$(gdkglextx11includedir)/$$f; \
 	done
 
 ETAGS = etags
@@ -388,7 +403,7 @@ check: check-am
 all-am: Makefile $(LTLIBRARIES) $(HEADERS)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(libgdkglextincludedir)
+	$(mkinstalldirs) $(DESTDIR)$(gdkglextx11includedir)
 
 install: install-am
 install-exec: install-exec-am
@@ -432,7 +447,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-libgdkglextincludeHEADERS
+install-data-am: install-gdkglextx11includeHEADERS
 
 install-exec-am:
 
@@ -451,20 +466,20 @@ mostlyclean: mostlyclean-am
 mostlyclean-am: mostlyclean-compile mostlyclean-generic \
 	mostlyclean-libtool
 
-uninstall-am: uninstall-info-am uninstall-libgdkglextincludeHEADERS
+uninstall-am: uninstall-gdkglextx11includeHEADERS uninstall-info-am
 
 .PHONY: GTAGS all all-am check check-am clean clean-generic \
 	clean-libtool clean-noinstLTLIBRARIES distclean \
 	distclean-compile distclean-depend distclean-generic \
 	distclean-libtool distclean-tags distdir dvi dvi-am info \
 	info-am install install-am install-data install-data-am \
-	install-exec install-exec-am install-info install-info-am \
-	install-libgdkglextincludeHEADERS install-man install-strip \
+	install-exec install-exec-am install-gdkglextx11includeHEADERS \
+	install-info install-info-am install-man install-strip \
 	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic mostlyclean-libtool tags uninstall \
-	uninstall-am uninstall-info-am \
-	uninstall-libgdkglextincludeHEADERS
+	uninstall-am uninstall-gdkglextx11includeHEADERS \
+	uninstall-info-am
 
 
 .PHONY: files

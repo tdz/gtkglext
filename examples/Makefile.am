@@ -1,6 +1,14 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/examples
 
+EXTRA_DIST = \
+	Makefile.mingw	\
+	Makefile.msc	\
+	alien.lwo	\
+	penguin.lwo	\
+	girl.rgb	\
+	reflect.rgb
+
 INCLUDES = \
 	-I$(top_srcdir) 		\
 	-I$(top_srcdir)/gdk 		\
@@ -135,10 +143,3 @@ files:
 	  echo $$p; \
 	done
 
-EXTRA_DIST = \
-	Makefile.mingw	\
-	Makefile.msc	\
-	alien.lwo	\
-	penguin.lwo	\
-	girl.rgb	\
-	reflect.rgb

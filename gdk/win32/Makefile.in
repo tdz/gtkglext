@@ -145,8 +145,6 @@ gtkglext_targetlib = @gtkglext_targetlib@
 install_sh = @install_sh@
 ms_librarian = @ms_librarian@
 
-libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk/win32
-
 INCLUDES = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
 	-DINSIDE_GDK_GL_WIN32		\
@@ -165,31 +163,46 @@ LDADDS = \
 	$(GDKGLEXT_DEP_LIBS)
 
 
-noinst_LTLIBRARIES = libgdkglext-win32.la
+gdkglext_win32_public_h_sources = \
+	gdkglwin32.h		\
+	gdkglwglext.h
 
-libgdkglext_win32_la_SOURCES = \
-	gdkglquery-win32.c	\
+
+gdkglext_win32_private_h_sources = \
 	gdkglconfig-win32.h	\
-	gdkglconfig-win32.c	\
 	gdkglcontext-win32.h	\
-	gdkglcontext-win32.c	\
-	gdkgldrawable-win32.c	\
 	gdkglpixmap-win32.h	\
-	gdkglpixmap-win32.c	\
 	gdkglwindow-win32.h	\
-	gdkglwindow-win32.c	\
-	gdkglfont-win32.c	\
-	gdkglwglext.c		\
 	gdkglprivate-win32.h	\
 	gdkinternal-win32.h
 
 
-libgdkglextinclude_HEADERS = \
-	gdkglwglext.h		\
-	gdkglwin32.h
+gdkglext_win32_c_sources = \
+	gdkglquery-win32.c	\
+	gdkglconfig-win32.c	\
+	gdkglcontext-win32.c	\
+	gdkgldrawable-win32.c	\
+	gdkglpixmap-win32.c	\
+	gdkglwindow-win32.c	\
+	gdkglfont-win32.c	\
+	gdkglwglext.c
 
 
-EXTRA_DIST = 
+gdkglext_win32_headers = \
+	$(gdkglext_win32_public_h_sources)
+
+
+gdkglext_win32_sources = \
+	$(gdkglext_win32_private_h_sources)	\
+	$(gdkglext_win32_c_sources)
+
+
+gdkglextwin32includedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk/win32
+gdkglextwin32include_HEADERS = $(gdkglext_win32_headers)
+
+noinst_LTLIBRARIES = libgdkglext-win32.la
+
+libgdkglext_win32_la_SOURCES = $(gdkglext_win32_sources)
 subdir = gdk/win32
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
@@ -198,10 +211,13 @@ LTLIBRARIES = $(noinst_LTLIBRARIES)
 
 libgdkglext_win32_la_LDFLAGS =
 libgdkglext_win32_la_LIBADD =
-am_libgdkglext_win32_la_OBJECTS = gdkglquery-win32.lo \
-	gdkglconfig-win32.lo gdkglcontext-win32.lo \
-	gdkgldrawable-win32.lo gdkglpixmap-win32.lo \
-	gdkglwindow-win32.lo gdkglfont-win32.lo gdkglwglext.lo
+am__objects_1 =
+am__objects_2 = gdkglquery-win32.lo gdkglconfig-win32.lo \
+	gdkglcontext-win32.lo gdkgldrawable-win32.lo \
+	gdkglpixmap-win32.lo gdkglwindow-win32.lo gdkglfont-win32.lo \
+	gdkglwglext.lo
+am__objects_3 = $(am__objects_1) $(am__objects_2)
+am_libgdkglext_win32_la_OBJECTS = $(am__objects_3)
 libgdkglext_win32_la_OBJECTS = $(am_libgdkglext_win32_la_OBJECTS)
 
 DEFS = @DEFS@
@@ -228,9 +244,9 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
 DIST_SOURCES = $(libgdkglext_win32_la_SOURCES)
-HEADERS = $(libgdkglextinclude_HEADERS)
+HEADERS = $(gdkglextwin32include_HEADERS)
 
-DIST_COMMON = $(libgdkglextinclude_HEADERS) Makefile.am Makefile.in
+DIST_COMMON = $(gdkglextwin32include_HEADERS) Makefile.am Makefile.in
 SOURCES = $(libgdkglext_win32_la_SOURCES)
 
 all: all-am
@@ -300,23 +316,23 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
-libgdkglextincludeHEADERS_INSTALL = $(INSTALL_HEADER)
-install-libgdkglextincludeHEADERS: $(libgdkglextinclude_HEADERS)
+gdkglextwin32includeHEADERS_INSTALL = $(INSTALL_HEADER)
+install-gdkglextwin32includeHEADERS: $(gdkglextwin32include_HEADERS)
 	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(libgdkglextincludedir)
-	@list='$(libgdkglextinclude_HEADERS)'; for p in $$list; do \
+	$(mkinstalldirs) $(DESTDIR)$(gdkglextwin32includedir)
+	@list='$(gdkglextwin32include_HEADERS)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(libgdkglextincludeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(libgdkglextincludedir)/$$f"; \
-	  $(libgdkglextincludeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(libgdkglextincludedir)/$$f; \
+	  echo " $(gdkglextwin32includeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(gdkglextwin32includedir)/$$f"; \
+	  $(gdkglextwin32includeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(gdkglextwin32includedir)/$$f; \
 	done
 
-uninstall-libgdkglextincludeHEADERS:
+uninstall-gdkglextwin32includeHEADERS:
 	@$(NORMAL_UNINSTALL)
-	@list='$(libgdkglextinclude_HEADERS)'; for p in $$list; do \
+	@list='$(gdkglextwin32include_HEADERS)'; for p in $$list; do \
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(libgdkglextincludedir)/$$f"; \
-	  rm -f $(DESTDIR)$(libgdkglextincludedir)/$$f; \
+	  echo " rm -f $(DESTDIR)$(gdkglextwin32includedir)/$$f"; \
+	  rm -f $(DESTDIR)$(gdkglextwin32includedir)/$$f; \
 	done
 
 ETAGS = etags
@@ -385,7 +401,7 @@ check: check-am
 all-am: Makefile $(LTLIBRARIES) $(HEADERS)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(libgdkglextincludedir)
+	$(mkinstalldirs) $(DESTDIR)$(gdkglextwin32includedir)
 
 install: install-am
 install-exec: install-exec-am
@@ -429,7 +445,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-libgdkglextincludeHEADERS
+install-data-am: install-gdkglextwin32includeHEADERS
 
 install-exec-am:
 
@@ -448,20 +464,21 @@ mostlyclean: mostlyclean-am
 mostlyclean-am: mostlyclean-compile mostlyclean-generic \
 	mostlyclean-libtool
 
-uninstall-am: uninstall-info-am uninstall-libgdkglextincludeHEADERS
+uninstall-am: uninstall-gdkglextwin32includeHEADERS uninstall-info-am
 
 .PHONY: GTAGS all all-am check check-am clean clean-generic \
 	clean-libtool clean-noinstLTLIBRARIES distclean \
 	distclean-compile distclean-depend distclean-generic \
 	distclean-libtool distclean-tags distdir dvi dvi-am info \
 	info-am install install-am install-data install-data-am \
-	install-exec install-exec-am install-info install-info-am \
-	install-libgdkglextincludeHEADERS install-man install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
+	install-exec install-exec-am \
+	install-gdkglextwin32includeHEADERS install-info \
+	install-info-am install-man install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic mostlyclean-libtool tags uninstall \
-	uninstall-am uninstall-info-am \
-	uninstall-libgdkglextincludeHEADERS
+	uninstall-am uninstall-gdkglextwin32includeHEADERS \
+	uninstall-info-am
 
 
 .PHONY: files

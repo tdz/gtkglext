@@ -1,8 +1,6 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/gdk/win32
 
-libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk/win32
-
 INCLUDES = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
 	-DINSIDE_GDK_GL_WIN32		\
@@ -19,27 +17,41 @@ INCLUDES = \
 LDADDS = \
 	$(GDKGLEXT_DEP_LIBS)
 
-noinst_LTLIBRARIES = libgdkglext-win32.la
+gdkglext_win32_public_h_sources = \
+	gdkglwin32.h		\
+	gdkglwglext.h
 
-libgdkglext_win32_la_SOURCES = \
-	gdkglquery-win32.c	\
+gdkglext_win32_private_h_sources = \
 	gdkglconfig-win32.h	\
-	gdkglconfig-win32.c	\
 	gdkglcontext-win32.h	\
-	gdkglcontext-win32.c	\
-	gdkgldrawable-win32.c	\
 	gdkglpixmap-win32.h	\
-	gdkglpixmap-win32.c	\
 	gdkglwindow-win32.h	\
-	gdkglwindow-win32.c	\
-	gdkglfont-win32.c	\
-	gdkglwglext.c		\
 	gdkglprivate-win32.h	\
 	gdkinternal-win32.h
 
-libgdkglextinclude_HEADERS = \
-	gdkglwglext.h		\
-	gdkglwin32.h
+gdkglext_win32_c_sources = \
+	gdkglquery-win32.c	\
+	gdkglconfig-win32.c	\
+	gdkglcontext-win32.c	\
+	gdkgldrawable-win32.c	\
+	gdkglpixmap-win32.c	\
+	gdkglwindow-win32.c	\
+	gdkglfont-win32.c	\
+	gdkglwglext.c
+
+gdkglext_win32_headers = \
+	$(gdkglext_win32_public_h_sources)
+
+gdkglext_win32_sources = \
+	$(gdkglext_win32_private_h_sources)	\
+	$(gdkglext_win32_c_sources)
+
+gdkglextwin32includedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk/win32
+gdkglextwin32include_HEADERS = $(gdkglext_win32_headers)
+
+noinst_LTLIBRARIES = libgdkglext-win32.la
+
+libgdkglext_win32_la_SOURCES = $(gdkglext_win32_sources)
 
 .PHONY: files
 
@@ -47,6 +59,4 @@ files:
 	@files=`ls $(DISTFILES) 2> /dev/null `; for p in $$files; do \
 	  echo $$p; \
 	done
-
-EXTRA_DIST = 
 

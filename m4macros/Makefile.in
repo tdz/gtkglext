@@ -149,16 +149,12 @@ EXTRA_DIST = \
 	gtkglext.m4
 
 
-M4MACRO_EXT = @GTKGLEXT_API_VERSION@
+API_VER = @GTKGLEXT_API_VERSION@
 
 m4datadir = $(datadir)/aclocal
-m4data_DATA = \
-	gtkglext-$(M4MACRO_EXT).m4
+m4data_DATA = gtkglext-$(API_VER).m4
 
-
-DISTCLEANFILES = \
-	gtkglext-$(M4MACRO_EXT).m4
-
+DISTCLEANFILES = gtkglext-$(API_VER).m4
 subdir = m4macros
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
@@ -311,8 +307,9 @@ uninstall-am: uninstall-info-am uninstall-m4dataDATA
 	uninstall-m4dataDATA
 
 
-gtkglext-$(M4MACRO_EXT).m4: gtkglext.m4
+gtkglext-$(API_VER).m4: gtkglext.m4
 	rm -f $@ && cp gtkglext.m4 $@
+
 $(m4data_DATA): ../config.status
 
 .PHONY: files
