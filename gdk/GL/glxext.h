@@ -24,7 +24,7 @@ extern "C" {
 ** 
 ** Original Code. The Original Code is: OpenGL Sample Implementation,
 ** Version 1.2.1, released January 26, 2000, developed by Silicon Graphics,
-** Inc. The Original Code is Copyright (c) 1991-2000 Silicon Graphics, Inc.
+** Inc. The Original Code is Copyright (c) 1991-2002 Silicon Graphics, Inc.
 ** Copyright in any portions created by third parties is as indicated
 ** elsewhere herein. All Rights Reserved.
 ** 
@@ -410,9 +410,9 @@ typedef Bool ( * PFNGLXMAKECURRENTREADSGIPROC) (Display *dpy, GLXDrawable draw, 
 typedef GLXDrawable ( * PFNGLXGETCURRENTREADDRAWABLESGIPROC) (void);
 #endif
 
-#ifdef _VL_H
 #ifndef GLX_SGIX_video_source
 #define GLX_SGIX_video_source 1
+#ifdef _VL_H
 #ifdef GLX_GLXEXT_PROTOTYPES
 extern GLXVideoSourceSGIX glXCreateGLXVideoSourceSGIX (Display *, int, VLServer, VLPath, int, VLNode);
 extern void glXDestroyGLXVideoSourceSGIX (Display *, GLXVideoSourceSGIX);
@@ -500,9 +500,9 @@ typedef int ( * PFNGLXQUERYCHANNELDELTASSGIXPROC) (Display *display, int screen,
 typedef int ( * PFNGLXCHANNELRECTSYNCSGIXPROC) (Display *display, int screen, int channel, GLenum synctype);
 #endif
 
-#ifdef _DM_BUFFER_H_
 #ifndef GLX_SGIX_dmbuffer
 #define GLX_SGIX_dmbuffer 1
+#ifdef _DM_BUFFER_H_
 #ifdef GLX_GLXEXT_PROTOTYPES
 extern Bool glXAssociateDMPbufferSGIX (Display *, GLXPbufferSGIX, DMparams *, DMbuffer);
 #endif /* GLX_GLXEXT_PROTOTYPES */
@@ -576,13 +576,13 @@ typedef Bool ( * PFNGLXSET3DFXMODEMESAPROC) (int mode);
 #define GLX_OML_swap_method 1
 #endif
 
+#ifndef GLX_OML_sync_control
+#define GLX_OML_sync_control 1
 #if defined(__STDC_VERSION__)
 #if __STDC_VERSION__ >= 199901L
 /* Include ISO C99 integer types for OML_sync_control; need a better test */
 #include <inttypes.h>
 
-#ifndef GLX_OML_sync_control
-#define GLX_OML_sync_control 1
 #ifdef GLX_GLXEXT_PROTOTYPES
 extern Bool glXGetSyncValuesOML (Display *, GLXDrawable, int64_t *, int64_t *, int64_t *);
 extern Bool glXGetMscRateOML (Display *, GLXDrawable, int32_t *, int32_t *);

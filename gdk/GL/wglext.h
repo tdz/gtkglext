@@ -24,7 +24,7 @@ extern "C" {
 ** 
 ** Original Code. The Original Code is: OpenGL Sample Implementation,
 ** Version 1.2.1, released January 26, 2000, developed by Silicon Graphics,
-** Inc. The Original Code is Copyright (c) 1991-2000 Silicon Graphics, Inc.
+** Inc. The Original Code is Copyright (c) 1991-2002 Silicon Graphics, Inc.
 ** Copyright in any portions created by third parties is as indicated
 ** elsewhere herein. All Rights Reserved.
 ** 
@@ -280,6 +280,32 @@ extern "C" {
 #endif
 
 #ifndef WGL_I3D_swap_frame_lock
+#endif
+
+#ifndef WGL_NV_render_depth_texture
+#define WGL_BIND_TO_TEXTURE_DEPTH_NV   0x20A3
+#define WGL_BIND_TO_TEXTURE_RECTANGLE_DEPTH_NV 0x20A4
+#define WGL_DEPTH_TEXTURE_FORMAT_NV    0x20A5
+#define WGL_TEXTURE_DEPTH_COMPONENT_NV 0x20A6
+#define WGL_DEPTH_COMPONENT_NV         0x20A7
+#endif
+
+#ifndef WGL_NV_render_texture_rectangle
+#define WGL_BIND_TO_TEXTURE_RECTANGLE_RGB_NV 0x20A0
+#define WGL_BIND_TO_TEXTURE_RECTANGLE_RGBA_NV 0x20A1
+#define WGL_TEXTURE_RECTANGLE_NV       0x20A2
+#endif
+
+#ifndef WGL_NV_float_buffer
+#define WGL_FLOAT_COMPONENTS_NV        0x20B0
+#define WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_R_NV 0x20B1
+#define WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_RG_NV 0x20B2
+#define WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_RGB_NV 0x20B3
+#define WGL_BIND_TO_TEXTURE_RECTANGLE_FLOAT_RGBA_NV 0x20B4
+#define WGL_TEXTURE_FLOAT_R_NV         0x20B5
+#define WGL_TEXTURE_FLOAT_RG_NV        0x20B6
+#define WGL_TEXTURE_FLOAT_RGB_NV       0x20B7
+#define WGL_TEXTURE_FLOAT_RGBA_NV      0x20B8
 #endif
 
 

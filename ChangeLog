@@ -1,3 +1,9 @@
+2003-07-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/GL/glext.h: 
+	* gdk/GL/glxext.h: 
+	* gdk/GL/wglext.h: Updated.
+
 2003-07-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/gdkglglext.c: 
