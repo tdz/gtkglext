@@ -16,6 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#ifdef GDK_MULTIHEAD_SAFE
+#include <gdk/gdkscreen.h>
+#endif /* GDK_MULTIHEAD_SAFE */
+
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglconfig-win32.h"
@@ -478,9 +482,17 @@ gdk_gl_config_new (const gint *attrib_list)
    * Instanciate the GdkGLConfigImplWin32 object.
    */
 
+#ifdef GDK_MULTIHEAD_SAFE
   glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
+                           "screen",      gdk_screen_get_default (),
                            "attrib_list", attrib_list,
                            NULL);
+#else  /* GDK_MULTIHEAD_SAFE */
+  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
+                           "screen",      NULL,
+                           "attrib_list", attrib_list,
+                           NULL);
+#endif /* GDK_MULTIHEAD_SAFE */
 
   impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
 
@@ -492,6 +504,40 @@ gdk_gl_config_new (const gint *attrib_list)
 
   return glconfig;
 }
+
+#ifdef GDK_MULTIHEAD_SAFE
+
+GdkGLConfig *
+gdk_gl_config_new_for_screen (GdkScreen  *screen,
+                              const gint *attrib_list)
+{
+  GdkGLConfig *glconfig;
+  GdkGLConfigImplWin32 *impl;
+
+  g_return_val_if_fail (screen == gdk_screen_get_default (), NULL);
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
+
+  /*
+   * Instanciate the GdkGLConfigImplWin32 object.
+   */
+
+  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
+                           "screen",      screen,
+                           "attrib_list", attrib_list,
+                           NULL);
+  impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
+
+  if (!impl->is_constructed)
+    {
+      g_object_unref (G_OBJECT (glconfig));
+      return NULL;
+    }
+
+  return glconfig;
+}
+
+#endif /* GDK_MULTIHEAD_SAFE */
 
 PIXELFORMATDESCRIPTOR *
 gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)

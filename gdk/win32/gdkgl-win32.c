@@ -16,6 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#ifdef GDK_MULTIHEAD_SAFE
+#include <gdk/gdkdisplay.h>
+#endif /* GDK_MULTIHEAD_SAFE */
+
 #include "gdkglprivate-win32.h"
 #include "gdkglwin32.h"
 
@@ -43,6 +47,36 @@ gdk_gl_query_extension (void)
 #endif
 }
 
+#ifdef GDK_MULTIHEAD_SAFE
+
+gboolean
+gdk_gl_query_extension_for_display (GdkDisplay *display)
+{
+  g_return_val_if_fail (display == gdk_display_get_default (), FALSE);
+
+  return TRUE;
+
+#if 0
+  DWORD version = GetVersion ();
+  DWORD major = (DWORD) (LOBYTE (LOWORD (version)));
+
+  if (version < 0x80000000)     /* Windows NT/2000/XP */
+    {
+      if (major >= 3)
+        return TRUE;
+    }
+  else                          /* Windows 95/98/Me */
+    {
+      if (major >= 4)
+        return TRUE;
+    }
+
+  return FALSE;
+#endif
+}
+
+#endif /* GDK_MULTIHEAD_SAFE */
+
 gboolean
 gdk_gl_query_version (gint *major,
                       gint *minor)
@@ -55,3 +89,25 @@ gdk_gl_query_version (gint *major,
 
   return TRUE;
 }
+
+#ifdef GDK_MULTIHEAD_SAFE
+
+gboolean
+gdk_gl_query_version_for_display (GdkDisplay *display,
+                                  gint       *major,
+                                  gint       *minor)
+{
+  DWORD version;
+
+  g_return_val_if_fail (display == gdk_display_get_default (), FALSE);
+
+  version = GetVersion ();
+
+  /* return Windows version. */
+  *major = (gint) (LOBYTE (LOWORD (version)));
+  *minor = (gint) (HIBYTE (LOWORD (version)));
+
+  return TRUE;
+}
+
+#endif /* GDK_MULTIHEAD_SAFE */

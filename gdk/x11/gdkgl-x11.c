@@ -43,12 +43,16 @@ gdk_gl_query_extension (void)
 }
 
 #ifdef GDK_MULTIHEAD_SAFE
+
 gboolean
 gdk_gl_query_extension_for_display (GdkDisplay *display)
 {
+  g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
+
   return glXQueryExtension (GDK_DISPLAY_XDISPLAY (display),
                             NULL, NULL);
 }
+
 #endif /* GDK_MULTIHEAD_SAFE */
 
 /**
@@ -74,12 +78,16 @@ gdk_gl_query_version (gint *major,
 }
 
 #ifdef GDK_MULTIHEAD_SAFE
+
 gboolean
 gdk_gl_query_version_for_display (GdkDisplay *display,
                                   gint       *major,
                                   gint       *minor)
 {
+  g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
+
   return glXQueryVersion (GDK_DISPLAY_XDISPLAY (display),
                           major, minor);
 }
+
 #endif /* GDK_MULTIHEAD_SAFE */
