@@ -334,8 +334,8 @@ main (int   argc,
                          GDK_EXPOSURE_MASK |
                          GDK_BUTTON_PRESS_MASK);
 
-  g_signal_connect (G_OBJECT (drawing_area), "realize",
-		    G_CALLBACK (realize), NULL);
+  g_signal_connect_after (G_OBJECT (drawing_area), "realize",
+                          G_CALLBACK (realize), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",

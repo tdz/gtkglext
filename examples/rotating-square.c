@@ -502,8 +502,8 @@ create_window (GdkGLConfig *glconfig)
 				GDK_GL_RGBA_TYPE);
 
   /* Connect signal handlers to the drawing area */
-  g_signal_connect (G_OBJECT (drawing_area), "realize",
-		    G_CALLBACK (realize), NULL);
+  g_signal_connect_after (G_OBJECT (drawing_area), "realize",
+                          G_CALLBACK (realize), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",

@@ -1,3 +1,18 @@
+2003-04-30  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/low-level.c (main): 
+	* examples/simple.c (main): 
+	* examples/simple-mixed.c (main): 
+	* examples/font.c (main): 
+	* examples/shapes.c (main): 
+	* examples/gears.c (main): 
+	* examples/logo.c (main): 
+	* examples/multiarb.c (main): 
+	* examples/coolwave.c (create_window): 
+	* examples/rotating-square.c (create_window): 
+	* examples/template.c (create_window): Use g_signal_connect_after()
+	instead of g_signal_connect() to connect "realize" signal handler.
+
 2003-04-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglwindow-x11.c (_gdk_gl_window_destroy): Fixed Typo.
