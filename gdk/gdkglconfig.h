@@ -108,6 +108,8 @@ gboolean     gdk_gl_config_get_attrib         (GdkGLConfig    *glconfig,
 
 GdkColormap *gdk_gl_config_get_colormap       (GdkGLConfig    *glconfig);
 
+GdkVisual   *gdk_gl_config_get_visual         (GdkGLConfig    *glconfig);
+
 gint         gdk_gl_config_get_depth          (GdkGLConfig    *glconfig);
 
 gboolean     gdk_gl_config_is_rgba            (GdkGLConfig *glconfig);

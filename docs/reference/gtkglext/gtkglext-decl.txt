@@ -187,6 +187,11 @@ GdkGLConfig    *glconfig,int             attribute,int            *value
 GdkGLConfig    *glconfig
 </FUNCTION>
 <FUNCTION>
+<NAME>gdk_gl_config_get_visual</NAME>
+<RETURNS>GdkVisual    *</RETURNS>
+GdkGLConfig    *glconfig
+</FUNCTION>
+<FUNCTION>
 <NAME>gdk_gl_config_get_depth</NAME>
 <RETURNS>gint  </RETURNS>
 GdkGLConfig    *glconfig

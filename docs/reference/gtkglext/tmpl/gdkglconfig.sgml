@@ -123,6 +123,15 @@ Useful to get the appropiate colormap (GdkColormap) for the OpenGL framebuffer.
 @Returns: The appropiate GdkColormap
 
 
+<!-- ##### FUNCTION gdk_gl_config_get_visual ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gdk_gl_config_get_depth ##### -->
 <para>
 Color depth is a somehow confusing term. It is defined as the amount of bits per pixel used to define a color. It is confusing because in some environments is expressed as the amount of bits used to define each of the components (RGBA) of the color. Here it will be named as the total amount of bits required to define the whole color. 

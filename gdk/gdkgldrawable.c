@@ -226,7 +226,7 @@ gdk_gl_drawable_get_size (GdkGLDrawable *gldrawable,
  * gdk_gl_drawable_get_colormap:
  * @gldrawable: a #GdkGLDrawable
  * 
- * Gets the colormap for @gldrawable, if one is set; returns
+ * Gets the #GdkColormap for @gldrawable, if one is set; returns
  * %NULL otherwise.
  * 
  * Return value: the colormap, or %NULL

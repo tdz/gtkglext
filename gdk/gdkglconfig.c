@@ -392,10 +392,10 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
  * gdk_gl_config_get_colormap:
  * @glconfig: a #GdkGLConfig.
  *
- * Get the colormap that is appropriate for the OpenGL frame buffer
+ * Get the #GdkColormap that is appropriate for the OpenGL frame buffer
  * configuration.
  *
- * Return value: the appropriate colormap.
+ * Return value: the appropriate #GdkColormap.
  **/
 GdkColormap *
 gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
@@ -403,6 +403,23 @@ gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
   return glconfig->colormap;
+}
+
+/**
+ * gdk_gl_config_get_visual:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Get the #GdkVisual that is appropriate for the OpenGL frame buffer
+ * configuration.
+ *
+ * Return value: the appropriate #GdkVisual.
+ **/
+GdkVisual *
+gdk_gl_config_get_visual (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+
+  return gdk_colormap_get_visual (glconfig->colormap);
 }
 
 /**

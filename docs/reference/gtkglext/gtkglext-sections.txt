@@ -24,6 +24,7 @@ gdk_gl_config_new_by_mode
 gdk_gl_config_get_screen
 gdk_gl_config_get_attrib
 gdk_gl_config_get_colormap
+gdk_gl_config_get_visual
 gdk_gl_config_get_depth
 gdk_gl_config_is_rgba
 gdk_gl_config_is_double_buffered

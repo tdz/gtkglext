@@ -3,6 +3,7 @@
 	* gdk/gdkgltokens.h: Updated.
 
 	* gdk/gdkglconfig.[ch]
+	(gdk_gl_config_get_visual)
 	(gdk_gl_config_is_rgba) 
 	(gdk_gl_config_has_alpha)
 	(gdk_gl_config_has_depth_buffer) 
