@@ -38,7 +38,7 @@ G_BEGIN_DECLS
  * Check whether a GdkGLExt version equal to or greater than
  * major.minor.micro is present.
  */
-#define	GDKGLEXT_CHECK_VERSION(major,minor,micro)                            \
+#define	GDKGLEXT_CHECK_VERSION(major, minor, micro)                          \
   (GDKGLEXT_MAJOR_VERSION > (major) ||                                       \
   (GDKGLEXT_MAJOR_VERSION == (major) && GDKGLEXT_MINOR_VERSION > (minor)) || \
   (GDKGLEXT_MAJOR_VERSION == (major) && GDKGLEXT_MINOR_VERSION == (minor) && \
