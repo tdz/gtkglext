@@ -2,7 +2,7 @@
 gtkglwidget
 
 <!-- ##### SECTION Short_Description ##### -->
-
+OpenGL extension API to GtkWidget.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
