@@ -40,11 +40,10 @@ endif
 
 common_includes = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
+	-DGDK_GL_COMPILATION		\
 	-I$(top_srcdir)			\
-	-I$(top_builddir)/gdk		\
 	$(GTKGLEXT_DEBUG_FLAGS)		\
 	$(GDKGLEXT_DEP_CFLAGS)		\
-	-DGDK_GL_COMPILATION		\
 	-DG_DISABLE_DEPRECATED		\
 	-DGDK_DISABLE_DEPRECATED	\
 	-DGDK_PIXBUF_DISABLE_DEPRECATED

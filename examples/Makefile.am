@@ -11,9 +11,6 @@ EXTRA_DIST = \
 
 INCLUDES = \
 	-I$(top_srcdir) 		\
-	-I$(top_srcdir)/gdk 		\
-	-I$(top_srcdir)/gtk 		\
-	-I$(top_builddir)		\
 	-I$(top_builddir)/gdk		\
 	-I$(top_builddir)/gtk		\
 	$(GTKGLEXT_DEBUG_FLAGS)		\

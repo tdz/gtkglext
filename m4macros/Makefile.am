@@ -6,8 +6,8 @@ EXTRA_DIST = \
 
 API_VER = @GTKGLEXT_API_VERSION@
 
-gtkglext-$(API_VER).m4: gtkglext.m4
-	rm -f $@ && cp gtkglext.m4 $@
+gtkglext-$(API_VER).m4: $(srcdir)/gtkglext.m4
+	rm -f $@ && cp $< $@
 
 m4datadir = $(datadir)/aclocal
 m4data_DATA = gtkglext-$(API_VER).m4

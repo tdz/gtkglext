@@ -2,18 +2,18 @@
 ## Makefile.am for gtkglext/gdk/x11
 
 INCLUDES = \
-	-DG_LOG_DOMAIN=\"GdkGLExt\"		\
-	-DGDKGLEXT_LIBDIR=\"$(libdir)\"		\
+	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
+	-DGDKGLEXT_LIBDIR=\"$(libdir)\"	\
 	-DGDKGLEXT_LIBNAME=\"gdkglext-@gdktarget@-@GTKGLEXT_API_VERSION@\" \
-	-DINSIDE_GDK_GL_X11			\
-	-I$(top_srcdir)				\
-	-I$(top_srcdir)/gdk			\
-	-I$(top_builddir)/gdk			\
-	$(GTKGLEXT_DEBUG_FLAGS)			\
-	$(GDKGLEXT_DEP_CFLAGS)			\
-	-DGDK_GL_COMPILATION			\
-	-DG_DISABLE_DEPRECATED			\
-	-DGDK_DISABLE_DEPRECATED		\
+	-DGDK_GL_COMPILATION		\
+	-DINSIDE_GDK_GL_X11		\
+	-I$(top_srcdir)			\
+	-I$(top_srcdir)/gdk		\
+	-I$(top_builddir)/gdk		\
+	$(GTKGLEXT_DEBUG_FLAGS)		\
+	$(GDKGLEXT_DEP_CFLAGS)		\
+	-DG_DISABLE_DEPRECATED		\
+	-DGDK_DISABLE_DEPRECATED	\
 	-DGDK_PIXBUF_DISABLE_DEPRECATED
 
 LDADDS = \
