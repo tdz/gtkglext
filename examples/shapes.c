@@ -516,9 +516,17 @@ toggle_animation (GtkWidget *widget)
   animate = !animate;
 
   if (animate)
-    idle_add (widget);
+    {
+      idle_add (widget);
+    }
   else
-    idle_remove (widget);
+    {
+      idle_remove (widget);
+      view_quat_diff[0] = 0.0;
+      view_quat_diff[1] = 0.0;
+      view_quat_diff[2] = 0.0;
+      view_quat_diff[3] = 1.0;
+    }
 }
 
 static void
