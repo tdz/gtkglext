@@ -66,8 +66,8 @@ gtkglext_public_h_sources = \
 	gtkglwidget.h
 
 gtkglext_c_sources = \
-	gtkglversion.c		\
-	gtkglinit.c		\
+	gtkglversion.c	\
+	gtkglinit.c	\
 	gtkglwidget.c
 
 gtkglext_headers = \

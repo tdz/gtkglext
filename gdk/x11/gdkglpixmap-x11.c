@@ -201,12 +201,12 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
    * Check depth of the X pixmap.
    */
 
-  if (!XGetGeometry(xdisplay, xpixmap,
-                    &root_return,
-                    &x_return, &y_return,
-                    &width_return, &height_return,
-                    &border_width_return,
-                    &depth_return))
+  if (!XGetGeometry (xdisplay, xpixmap,
+                     &root_return,
+                     &x_return, &y_return,
+                     &width_return, &height_return,
+                     &border_width_return,
+                     &depth_return))
     return NULL;
 
   if (depth_return != xvinfo->depth)

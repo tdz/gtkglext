@@ -499,13 +499,13 @@ gdk_gl_config_new_common (GdkScreen *screen,
 
   GDK_GL_NOTE (MISC,
                g_message (" -- GLX_VENDOR     : %s",
-                          glXGetClientString(xdisplay, GLX_VENDOR)));
+                          glXGetClientString (xdisplay, GLX_VENDOR)));
   GDK_GL_NOTE (MISC,
                g_message (" -- GLX_VERSION    : %s",
-                          glXGetClientString(xdisplay, GLX_VERSION)));
+                          glXGetClientString (xdisplay, GLX_VERSION)));
   GDK_GL_NOTE (MISC,
                g_message (" -- GLX_EXTENSIONS : %s",
-                          glXGetClientString(xdisplay, GLX_EXTENSIONS)));
+                          glXGetClientString (xdisplay, GLX_EXTENSIONS)));
 
   /*
    * Find an OpenGL-capable visual.
@@ -673,13 +673,13 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
 
   GDK_GL_NOTE (MISC,
                g_message (" -- GLX_VENDOR     : %s",
-                          glXGetClientString(xdisplay, GLX_VENDOR)));
+                          glXGetClientString (xdisplay, GLX_VENDOR)));
   GDK_GL_NOTE (MISC,
                g_message (" -- GLX_VERSION    : %s",
-                          glXGetClientString(xdisplay, GLX_VERSION)));
+                          glXGetClientString (xdisplay, GLX_VERSION)));
   GDK_GL_NOTE (MISC,
                g_message (" -- GLX_EXTENSIONS : %s",
-                          glXGetClientString(xdisplay, GLX_EXTENSIONS)));
+                          glXGetClientString (xdisplay, GLX_EXTENSIONS)));
 
   /*
    * Get XVisualInfo.
@@ -796,7 +796,7 @@ gdk_gl_config_get_screen (GdkGLConfig *glconfig)
  * Returns the value one of the attributes which can be specified in
  * #gdk_gl_config_new.
  *
- * Return value: an error code if it fails for any reason, otherwise, GDK_GL_SUCCESS is returned.
+ * Return value: TRUE if it succeeded, FALSE otherwise.
  **/
 gboolean
 gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
@@ -811,12 +811,8 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
   impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
 
   ret = glXGetConfig (impl->xdisplay, impl->xvinfo, attribute, value);
-  if (ret == Success)
-    return TRUE;
 
-  /* Error handling? */
-
-  return FALSE;
+  return (ret == Success);
 }
 
 /**

@@ -184,7 +184,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
       if (!where)
         break;
 
-      terminator = where + strlen(extension);
+      terminator = where + strlen (extension);
 
       if (where == start || *(where - 1) == ' ')
         if (*terminator == ' ' || *terminator == '\0')
