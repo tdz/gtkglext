@@ -106,7 +106,12 @@ gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
                                  SGI_XA_SERVER_OVERLAY_VISUALS,
                                  True);
   if (xa_sov == None)
-    return NULL;
+    {
+      GDK_GL_NOTE (MISC, g_message (" -- SERVER_OVERLAY_VISUALS: not supported"));
+      return NULL;
+    }
+
+  GDK_GL_NOTE (MISC, g_message (" -- SERVER_OVERLAY_VISUALS: supported"));
 
   if (!init)
     {
@@ -141,6 +146,26 @@ gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
               sov_props_per_screen[i].props = props;
               /* Four 32-bit quantities per SERVER_OVERLAY_VISUALS entry. */
               sov_props_per_screen[i].num_props = nitems / 4;
+
+#ifdef G_ENABLE_DEBUG
+              {
+                int j;
+                g_message (" -- SERVER_OVERLAY_VISUALS: properties");
+                g_print ("\n<screen>\t<overlay_visual>\t<transparent_type>\t<value>\t<layer>\n");
+                num_props = sov_props_per_screen[i].num_props;
+                for (j = 0; j < num_props; j++)
+                  {
+                    g_print ("%d\t0x%lx\t%lu\t%lu\t%ld\n",
+                             i,
+                             (VisualID) (props[j].overlay_visual),
+                             (CARD32)   (props[j].transparent_type),
+                             (CARD32)   (props[j].value),
+                             (INT32)    (props[j].layer));
+                  }
+                g_print ("\n");
+              }
+#endif /* G_ENABLE_DEBUG */
+
             }
         }
 
@@ -163,7 +188,10 @@ gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
   for (i = 0; i < num_props; i++)
     {
       if ((VisualID) (props[i].overlay_visual) == xvisual->visualid)
-        return &props[i];
+        {
+          GDK_GL_NOTE (MISC, g_message (" -- SERVER_OVERLAY_VISUALS: property was found"));
+          return &props[i];
+        }
     }
 
   return NULL;
@@ -188,11 +216,11 @@ _gdk_x11_gl_overlay_get_info (GdkScreen        *screen,
   sov_prop = gdk_gl_overlay_get_sov_prop (screen, visual);
   if (sov_prop == NULL)
     {
-      GDK_GL_NOTE (MISC, g_message (" -- SERVER_OVERLAY_VISUALS : not supported"));
+      GDK_GL_NOTE (MISC, g_message (" -- this visual is not overlay visual"));
       return FALSE;
     }
 
-  GDK_GL_NOTE (MISC, g_message (" -- SERVER_OVERLAY_VISUALS : supported"));
+  GDK_GL_NOTE (MISC, g_message (" -- overlay visual"));
 
   overlay_info->visual           = visual;
   overlay_info->transparent_type = sov_prop->transparent_type;
