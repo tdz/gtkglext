@@ -23,13 +23,6 @@
 #include <gdk/gdkscreen.h>
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-static GdkGLConfig *gdk_gl_config_new_ci       (GdkScreen       *screen,
-                                                GdkGLConfigMode  mode);
-static GdkGLConfig *gdk_gl_config_new_rgb      (GdkScreen       *screen,
-                                                GdkGLConfigMode  mode);
-static GdkGLConfig *gdk_gl_config_new_internal (GdkScreen       *screen,
-                                                GdkGLConfigMode  mode);
-
 static void gdk_gl_config_class_init (GdkGLConfigClass *klass);
 static void gdk_gl_config_finalize   (GObject          *object);
 

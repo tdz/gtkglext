@@ -142,9 +142,8 @@ static GdkImage    *gdk_gl_pixmap_copy_to_image (GdkDrawable *drawable,
                                                  gint         width,
                                                  gint         height);
 
-static void gdk_gl_pixmap_class_init   (GdkGLPixmapClass *klass);
-
-static void gdk_gl_pixmap_finalize     (GObject          *object);
+static void gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass);
+static void gdk_gl_pixmap_finalize   (GObject          *object);
 
 static gpointer parent_class = NULL;
 

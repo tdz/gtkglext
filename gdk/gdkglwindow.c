@@ -142,9 +142,8 @@ static GdkImage    *gdk_gl_window_copy_to_image (GdkDrawable *drawable,
                                                  gint         width,
                                                  gint         height);
 
-static void gdk_gl_window_class_init   (GdkGLWindowClass *klass);
-
-static void gdk_gl_window_finalize     (GObject          *object);
+static void gdk_gl_window_class_init (GdkGLWindowClass *klass);
+static void gdk_gl_window_finalize   (GObject          *object);
 
 static gpointer parent_class = NULL;
 
