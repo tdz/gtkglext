@@ -63,11 +63,11 @@ DISTCLEANFILES = \
 	gtkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc	\
 	gtkglext-$(API_VER)-uninstalled.pc
 
-.PHONY: examples examples-clean
+.PHONY: examples clean-examples
 
 examples: all
 	( cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) )
 
-examples-clean:
+clean-examples:
 	( cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) clean )
 
