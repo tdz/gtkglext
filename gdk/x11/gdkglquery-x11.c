@@ -117,6 +117,8 @@ gdk_gl_query_get_proc_address (const char *proc_name)
   static GModule *main_module = NULL;
   GdkGLProc proc_address = NULL;
 
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_query_get_proc_address ()"));
+
   if (!init_glx_get_proc_address)
     {
       /*
@@ -146,8 +148,12 @@ gdk_gl_query_get_proc_address (const char *proc_name)
       init_glx_get_proc_address = TRUE;
     }
 
+  /* Try glXGetProcAddress () */
+
   if (glx_get_proc_address)
     proc_address = glx_get_proc_address (proc_name);
+
+  /* Try g_module_symbol () */
 
   if (!proc_address)
     g_module_symbol (main_module, proc_name, (gpointer) &proc_address);

@@ -119,12 +119,20 @@ GdkGLProc
 gdk_gl_query_get_proc_address (const char *proc_name)
 {
   static GModule *main_module = NULL;
-  GdkGLProc proc_address = (GdkGLProc) wglGetProcAddress (proc_name);
+  GdkGLProc proc_address;
+
+  GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_query_get_proc_address ()"));
+
+  /* Try wglGetProcAddress () */
+
+  proc_address = (GdkGLProc) wglGetProcAddress (proc_name);
 
   if (proc_address != NULL)
     return proc_address;
 
   GDK_GL_NOTE (IMPL, g_message (" * wglGetProcAddress () - failed"));
+
+  /* Try g_module_symbol () */
 
   if (!main_module)
     {
