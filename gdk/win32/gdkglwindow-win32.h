@@ -48,6 +48,7 @@ struct _GdkGLWindowImplWin32
   /*< private >*/
   HDC hdc;
 
+  guint need_release_dc : 1;
   guint is_destroyed : 1;
 };
 
@@ -63,7 +64,7 @@ GType gdk_gl_window_impl_win32_get_type (void);
 
 #define GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE(impl)                      \
   G_STMT_START {                                                        \
-    if ((impl)->hdc != NULL)                                            \
+    if ((impl)->need_release_dc && (impl)->hdc != NULL)                 \
       { ReleaseDC ((impl)->hwnd, (impl)->hdc); (impl)->hdc = NULL; };   \
   } G_STMT_END
 

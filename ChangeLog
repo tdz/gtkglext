@@ -1,5 +1,17 @@
 2003-05-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglwindow-win32.c (gdk_gl_window_new): Check whether
+	given window has its own private DC. If private DC is used,
+	GdkGLWindow continues using the HDC which is obtained first.
+
+	* gdk/win32/gdkglwindow-win32.h (struct _GdkGLWindowImplWin32):
+	Added need_release_dc flag. This flag is set FALSE if private DC
+	is used, TRUE otherwise.
+	(GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE): Call ReleaseDC() if
+	need_release_dc is TRUE.
+
+2003-05-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* README: 
 	* configure.in: Added --disable-standard-rgb-cmap configure
 	option to avoid XmuLookupStandardColormap() bug on Solaris 2.4 and

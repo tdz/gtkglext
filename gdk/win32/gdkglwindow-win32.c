@@ -117,7 +117,8 @@ _gdk_gl_window_destroy (GdkGLWindow *glwindow)
     }
 
   /* Release DC. */
-  ReleaseDC (impl->hwnd, impl->hdc);
+  if (impl->need_release_dc)
+    ReleaseDC (impl->hwnd, impl->hdc);
   impl->hdc = NULL;
 
   impl->hwnd = NULL;
@@ -169,6 +170,8 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   GdkGLWindowImplWin32 *impl;
 
   HWND hwnd;
+  DWORD wndclass_style;
+  gboolean need_release_dc;
   HDC hdc = NULL;
   PIXELFORMATDESCRIPTOR pfd;
   int pixel_format;
@@ -179,6 +182,19 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
 
   hwnd = (HWND) gdk_win32_drawable_get_handle (GDK_DRAWABLE (window));
+
+  /* Private DC? */
+  wndclass_style = GetClassLong (hwnd, GCL_STYLE);
+  if (wndclass_style & CS_OWNDC)
+    {
+      GDK_GL_NOTE (MISC, g_message (" -- Private DC"));
+      need_release_dc = FALSE;
+    }
+  else
+    {
+      GDK_GL_NOTE (MISC, g_message (" -- Common DC"));
+      need_release_dc = TRUE;
+    }
 
   /* Get DC. */
   hdc = GetDC (hwnd);
@@ -228,8 +244,12 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
       goto FAIL;
     }
 
-  /* Release DC. */
-  ReleaseDC (hwnd, hdc);
+  if (need_release_dc)
+    {
+      /* Release DC. */
+      ReleaseDC (hwnd, hdc);
+      hdc = NULL;
+    }
 
   /*
    * Instantiate the GdkGLWindowImplWin32 object.
@@ -250,7 +270,8 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   impl->glconfig = glconfig;
   g_object_ref (G_OBJECT (impl->glconfig));
 
-  impl->hdc = NULL;
+  impl->hdc = hdc;
+  impl->need_release_dc = need_release_dc;
 
   impl->is_destroyed = FALSE;
 
@@ -259,7 +280,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
  FAIL:
 
   /* Release DC. */
-  if (hdc != NULL)
+  if (need_release_dc && hdc != NULL)
     ReleaseDC (hwnd, hdc);
 
   return NULL;
