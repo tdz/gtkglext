@@ -172,7 +172,7 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
                          GdkGLConfig   *glconfig,
                          GdkGLContext  *share_list,
                          gboolean       direct,
-                         gint           render_type)
+                         int            render_type)
 {
   GdkGLContext *glcontext;
   GdkGLContextImplX11 *impl;

@@ -45,7 +45,7 @@ struct _GdkGLContext
   GdkGLContext *share_list;
 
   gboolean is_direct;
-  gint render_type;
+  int render_type;
 };
 
 struct _GdkGLContextClass
@@ -59,7 +59,7 @@ GdkGLContext  *gdk_gl_context_new             (GdkGLDrawable *gldrawable,
                                                GdkGLConfig   *glconfig,
                                                GdkGLContext  *share_list,
                                                gboolean       direct,
-                                               gint           render_type);
+                                               int            render_type);
 
 gboolean       gdk_gl_context_copy            (GdkGLContext  *dst_glcontext,
                                                GdkGLContext  *src_glcontext,
@@ -73,7 +73,7 @@ GdkGLContext  *gdk_gl_context_get_share_list  (GdkGLContext  *glcontext);
 
 gboolean       gdk_gl_context_is_direct       (GdkGLContext  *glcontext);
 
-gint           gdk_gl_context_get_render_type (GdkGLContext  *glcontext);
+int            gdk_gl_context_get_render_type (GdkGLContext  *glcontext);
 
 GdkColormap   *gdk_gl_context_get_colormap    (GdkGLContext  *glcontext);
 

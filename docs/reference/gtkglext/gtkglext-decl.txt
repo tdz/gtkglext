@@ -271,7 +271,7 @@ struct GdkGLContext
   GdkGLContext *share_list;
 
   gboolean is_direct;
-  gint render_type;
+  int render_type;
 };
 </STRUCT>
 <FUNCTION>
@@ -282,7 +282,7 @@ void
 <FUNCTION>
 <NAME>gdk_gl_context_new</NAME>
 <RETURNS>GdkGLContext   *</RETURNS>
-GdkGLDrawable *gldrawable,GdkGLConfig   *glconfig,GdkGLContext  *share_list,gboolean       direct,gint           render_type
+GdkGLDrawable *gldrawable,GdkGLConfig   *glconfig,GdkGLContext  *share_list,gboolean       direct,int            render_type
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_context_copy</NAME>
@@ -311,7 +311,7 @@ GdkGLContext  *glcontext
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_context_get_render_type</NAME>
-<RETURNS>gint  </RETURNS>
+<RETURNS>int  </RETURNS>
 GdkGLContext  *glcontext
 </FUNCTION>
 <FUNCTION>
@@ -411,12 +411,12 @@ GdkGLDrawable *gldrawable,gint          *width,gint          *height
 <FUNCTION>
 <NAME>gdk_gl_font_use_pango_font</NAME>
 <RETURNS>PangoFont  *</RETURNS>
-const PangoFontDescription *font_desc,gint                        first,gint                        count,gint                        list_base
+const PangoFontDescription *font_desc,int                         first,int                         count,int                         list_base
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_font_use_pango_font_for_display</NAME>
 <RETURNS>PangoFont  *</RETURNS>
-GdkDisplay                 *display,const PangoFontDescription *font_desc,gint                        first,gint                        count,gint                        list_base
+GdkDisplay                 *display,const PangoFontDescription *font_desc,int                         first,int                         count,int                         list_base
 </FUNCTION>
 <STRUCT>
 <NAME>GdkGLPixmapClass</NAME>
@@ -984,7 +984,7 @@ void
 <FUNCTION>
 <NAME>gtk_widget_set_gl_capability</NAME>
 <RETURNS>gboolean  </RETURNS>
-GtkWidget    *widget,GdkGLConfig  *glconfig,GdkGLContext *share_list,gboolean      direct,gint          render_type
+GtkWidget    *widget,GdkGLConfig  *glconfig,GdkGLContext *share_list,gboolean      direct,int           render_type
 </FUNCTION>
 <FUNCTION>
 <NAME>gtk_widget_is_gl_capable</NAME>

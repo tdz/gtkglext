@@ -29,7 +29,7 @@ GdkGLContext *_gdk_x11_gl_context_new       (GdkGLDrawable *gldrawable,
                                              GdkGLConfig   *glconfig,
                                              GdkGLContext  *share_list,
                                              gboolean       direct,
-                                             gint           render_type);
+                                             int            render_type);
 
 void          _gdk_x11_gl_drawable_wait_gl  (GdkGLDrawable *gldrawable);
 void          _gdk_x11_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable);

@@ -1,5 +1,13 @@
 2002-08-31  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.[ch]: 
+	* gtk/gtkglwidgetparam.h (struct _GtkGLWidgetParam): 
+	* gdk/gdkglcontext.[ch]: render_type changed gint -> int.
+
+	* gdk/x11/gdkglfont-x11.c
+	* gdk/win32/gdkglfont-win32.c
+	* gdk/gdkglfont.h: gint -> int.
+
 	* gdk/gdkglwindow.h (struct _GdkGLWindow): 
 	* gdk/gdkglpixmap.h (struct _GdkGLPixmap): wrapper -> drawable.
 

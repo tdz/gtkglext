@@ -230,7 +230,7 @@ gdk_gl_context_new (GdkGLDrawable *gldrawable,
                     GdkGLConfig   *glconfig,
                     GdkGLContext  *share_list,
                     gboolean       direct,
-                    gint           render_type)
+                    int            render_type)
 {
   g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
 
@@ -241,6 +241,7 @@ gdk_gl_context_new (GdkGLDrawable *gldrawable,
                                                                      render_type);
 }
 
+/*< private >*/
 void
 _gdk_gl_context_set_gl_drawable (GdkGLContext  *glcontext,
                                  GdkGLDrawable *gldrawable)
@@ -339,7 +340,7 @@ gdk_gl_context_is_direct (GdkGLContext *glcontext)
  *
  * Return value: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE.
  **/
-gint
+int
 gdk_gl_context_get_render_type (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), 0);

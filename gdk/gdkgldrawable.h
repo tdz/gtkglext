@@ -42,7 +42,7 @@ struct _GdkGLDrawableClass
                                          GdkGLConfig   *glconfig,
                                          GdkGLContext  *share_list,
                                          gboolean       direct,
-                                         gint           render_type);
+                                         int            render_type);
 
   gboolean      (*make_context_current) (GdkGLDrawable *draw,
                                          GdkGLDrawable *read,

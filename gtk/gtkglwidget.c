@@ -228,7 +228,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
                               GdkGLConfig  *glconfig,
                               GdkGLContext *share_list,
                               gboolean      direct,
-                              gint          render_type)
+                              int           render_type)
 {
   GtkGLWidgetParam param;
 

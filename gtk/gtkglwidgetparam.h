@@ -34,7 +34,7 @@ struct _GtkGLWidgetParam
   GdkGLConfig *glconfig;
   GdkGLContext *share_list;
   gboolean direct;
-  gint render_type;
+  int render_type;
 
   guint quit_handler_id;
 };

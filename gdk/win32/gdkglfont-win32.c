@@ -27,9 +27,9 @@
 
 PangoFont *
 gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
-                            gint                        first,
-                            gint                        count,
-                            gint                        list_base)
+                            int                         first,
+                            int                         count,
+                            int                         list_base)
 {
   PangoFontMap *font_map;
   PangoWin32FontCache *font_cache;
@@ -97,9 +97,9 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
 PangoFont *
 gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
                                         const PangoFontDescription *font_desc,
-                                        gint                        first,
-                                        gint                        count,
-                                        gint                        list_base)
+                                        int                         first,
+                                        int                         count,
+                                        int                         list_base)
 {
   PangoFontMap *font_map;
   PangoWin32FontCache *font_cache;
