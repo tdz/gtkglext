@@ -1,18 +1,6 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/gtk
 
-common_includes = \
-	-DG_LOG_DOMAIN=\"GtkGLExt\"	\
-	-I$(top_srcdir)			\
-	-I$(top_srcdir)/gdk		\
-	-I$(top_builddir)/gtk		\
-	-I../gdk			\
-	$(GTKGLEXT_DEBUG_FLAGS)		\
-	$(GTKGLEXT_DEP_CFLAGS)		\
-	-DGTK_GL_COMPILATION
-
-INCLUDES = $(common_includes)
-
 if PLATFORM_WIN32
 no_undefined = -no-undefined
 endif
@@ -46,16 +34,25 @@ install-ms-lib:
 uninstall-ms-lib:
 endif
 
-# libtool stuff: set version and export symbols for resolving
-# since automake doesn't support conditionalized libsomething_la_LDFLAGS
-# we use the general approach here
-LDFLAGS = \
+common_includes = \
+	-DG_LOG_DOMAIN=\"GtkGLExt\"	\
+	-I$(top_srcdir)			\
+	-I$(top_srcdir)/gdk		\
+	-I$(top_builddir)/gtk		\
+	-I../gdk			\
+	$(GTKGLEXT_DEBUG_FLAGS)		\
+	$(GTKGLEXT_DEP_CFLAGS)		\
+	-DGTK_GL_COMPILATION
+
+common_ldflags = \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) 	\
 	-export-dynamic 					\
 	-rpath $(libdir) 					\
 	$(no_undefined)						\
 	@LIBTOOL_EXPORT_OPTIONS@				\
-	$(gtkglext_win32_symbols)				\
+	$(gtkglext_win32_symbols)
+
+common_libadd = \
 	$(top_builddir)/gdk/$(gdkglext_targetlib)		\
 	$(GTKGLEXT_DEP_LIBS)
 
@@ -82,6 +79,8 @@ gtkglext_c_sources = \
 gtkglextincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gtk
 gtkglextinclude_HEADERS = $(gtkglext_headers)
 
+INCLUDES = $(common_includes)
+
 lib_LTLIBRARIES = $(gtkglext_targetlib)
 
 EXTRA_LTLIBRARIES = \
@@ -90,9 +89,17 @@ EXTRA_LTLIBRARIES = \
 
 libgtkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_SOURCES = \
 	$(gtkglext_c_sources)
+libgtkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LDFLAGS = \
+	$(common_ldflags)
+libgtkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LIBADD = \
+	$(common_libadd)
 
 libgtkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_SOURCES = \
 	$(gtkglext_c_sources)
+libgtkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LDFLAGS = \
+	$(common_ldflags)
+libgtkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LIBADD = \
+	$(common_libadd)
 libgtkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_DEPENDENCIES = \
 	$(gtkglext_def)
 

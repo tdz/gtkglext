@@ -136,6 +136,13 @@ ms_librarian = @ms_librarian@
 SUBDIRS = $(gdktarget)
 DIST_SUBDIRS = x11 win32
 
+@PLATFORM_WIN32_TRUE@no_undefined = -no-undefined
+
+@OS_WIN32_TRUE@gdkglext_def = gdkglext.def
+@OS_WIN32_TRUE@gdkglext_win32_symbols = -export-symbols $(gdkglext_def)
+
+@MS_LIB_AVAILABLE_TRUE@noinst_DATA = gdkglext-win32-@GTKGLEXT_API_VERSION@.lib
+
 common_includes = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
 	-I$(top_srcdir)			\
@@ -145,25 +152,16 @@ common_includes = \
 	-DGDK_GL_COMPILATION
 
 
-INCLUDES = $(common_includes)
-
-@PLATFORM_WIN32_TRUE@no_undefined = -no-undefined
-
-@OS_WIN32_TRUE@gdkglext_def = gdkglext.def
-@OS_WIN32_TRUE@gdkglext_win32_symbols = -export-symbols $(gdkglext_def)
-
-@MS_LIB_AVAILABLE_TRUE@noinst_DATA = gdkglext-win32-@GTKGLEXT_API_VERSION@.lib
-
-# libtool stuff: set version and export symbols for resolving
-# since automake doesn't support conditionalized libsomething_la_LDFLAGS
-# we use the general approach here
-LDFLAGS = \
+common_ldflags = \
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) 	\
 	-export-dynamic 					\
 	-rpath $(libdir) 					\
 	$(no_undefined)						\
 	@LIBTOOL_EXPORT_OPTIONS@				\
-	$(gdkglext_win32_symbols)				\
+	$(gdkglext_win32_symbols)
+
+
+common_libadd = \
 	$(GDKGLEXT_DEP_LIBS)
 
 
@@ -201,6 +199,8 @@ gdkglext_c_sources = \
 gdkglextincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk
 gdkglextinclude_HEADERS = $(gdkglext_headers)
 
+INCLUDES = $(common_includes)
+
 lib_LTLIBRARIES = $(gdkglext_targetlib)
 
 EXTRA_LTLIBRARIES = \
@@ -211,15 +211,23 @@ EXTRA_LTLIBRARIES = \
 libgdkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_SOURCES = \
 	$(gdkglext_c_sources)
 
+libgdkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LDFLAGS = \
+	$(common_ldflags)
+
 libgdkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LIBADD = \
-	x11/libgdkglext-x11.la
+	x11/libgdkglext-x11.la	\
+	$(common_libadd)
 
 
 libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_SOURCES = \
 	$(gdkglext_c_sources)
 
+libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LDFLAGS = \
+	$(common_ldflags)
+
 libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LIBADD = \
-	win32/libgdkglext-win32.la
+	win32/libgdkglext-win32.la	\
+	$(common_libadd)
 
 libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_DEPENDENCIES = \
 	$(gdkglext_def)
@@ -237,14 +245,12 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(lib_LTLIBRARIES)
 
-libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LDFLAGS =
 am__objects_1 = gdkglconfig.lo gdkglcontext.lo gdkgldrawable.lo \
 	gdkglpixmap.lo gdkglwindow.lo gdkgldebug.lo
 am_libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_OBJECTS = \
 	$(am__objects_1)
 libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_OBJECTS = \
 	$(am_libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_OBJECTS)
-libgdkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LDFLAGS =
 libgdkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_DEPENDENCIES = \
 	x11/libgdkglext-x11.la
 am_libgdkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_OBJECTS = \
@@ -255,6 +261,7 @@ libgdkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_OBJ
 DEFS = @DEFS@
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
 CPPFLAGS = @CPPFLAGS@
+LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
