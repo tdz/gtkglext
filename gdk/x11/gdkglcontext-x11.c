@@ -16,6 +16,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#include <gdk/gdk.h>
+
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
 #include "gdkgldrawable.h"
@@ -193,6 +195,35 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
     }
 
   return glcontext;
+}
+
+/**
+ * gdk_gl_context_copy:
+ * @dst_glcontext: the destination context.
+ * @src_glcontext: the source context.
+ * @mask: which portions of @src_glcontext state are to be copied to @dst_glcontext.
+ *
+ * Copy state from one rendering context to another.
+ * Notice that dst and src arguments' order is different from glXCopyContext().
+ *
+ * Return value: FALSE if it fails, TRUE otherwise.
+ **/
+gboolean
+gdk_gl_context_copy (GdkGLContext *dst_glcontext,
+                     GdkGLContext *src_glcontext,
+                     gulong        mask)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (dst_glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (src_glcontext), FALSE);
+
+  gdk_error_trap_push ();
+
+  glXCopyContext (GDK_GL_CONFIG_XDISPLAY (dst_glcontext->glconfig),
+                  GDK_GL_CONTEXT_GLXCONTEXT (src_glcontext),
+                  GDK_GL_CONTEXT_GLXCONTEXT (dst_glcontext),
+                  mask);
+
+  return gdk_error_trap_pop () == Success;
 }
 
 GLXContext

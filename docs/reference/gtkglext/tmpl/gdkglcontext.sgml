@@ -27,3 +27,14 @@ OpenGL rendering context.
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_gl_context_copy ##### -->
+<para>
+
+</para>
+
+@dst_glcontext: 
+@src_glcontext: 
+@mask: 
+@Returns: 
+
+

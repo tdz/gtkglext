@@ -1,3 +1,9 @@
+2002-07-17  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_copy): 
+	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_copy): 
+	* gdk/gdkglcontext.h: Added gdk_gl_context_copy() function.
+
 2002-07-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Argument order

@@ -208,6 +208,11 @@ void
 <RETURNS>GdkGLContext  *</RETURNS>
 GdkGLDrawable *gldrawable,GdkGLConfig   *glconfig,GdkGLContext  *share_list,gboolean       direct,gint           render_type
 </FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_context_copy</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLContext  *dst_glcontext,GdkGLContext  *src_glcontext,gulong         mask
+</FUNCTION>
 <STRUCT>
 <NAME>GdkGLDrawableClass</NAME>
 </STRUCT>

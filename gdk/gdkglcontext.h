@@ -61,6 +61,10 @@ GdkGLContext *gdk_gl_context_new       (GdkGLDrawable *gldrawable,
                                         gboolean       direct,
                                         gint           render_type);
 
+gboolean      gdk_gl_context_copy      (GdkGLContext  *dst_glcontext,
+                                        GdkGLContext  *src_glcontext,
+                                        gulong         mask);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_CONTEXT_H__ */

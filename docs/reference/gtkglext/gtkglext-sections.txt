@@ -23,6 +23,7 @@ GDK_GL_CONFIG_GET_CLASS
 <FILE>gdkglcontext</FILE>
 <TITLE>GdkGLContext</TITLE>
 gdk_gl_context_new
+gdk_gl_context_copy
 <SUBSECTION Standard>
 GDK_GL_CONTEXT
 GDK_IS_GL_CONTEXT

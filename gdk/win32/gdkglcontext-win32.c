@@ -209,6 +209,19 @@ _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
   return glcontext;
 }
 
+gboolean
+gdk_gl_context_copy (GdkGLContext *dst_glcontext,
+                     GdkGLContext *src_glcontext,
+                     gulong        mask)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (dst_glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (src_glcontext), FALSE);
+
+  return wglCopyContext (GDK_GL_CONTEXT_HGLRC (src_glcontext),
+                         GDK_GL_CONTEXT_HGLRC (dst_glcontext),
+                         mask);
+}
+
 HGLRC
 gdk_win32_gl_context_get_hglrc (GdkGLContext *glcontext)
 {
