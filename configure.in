@@ -768,6 +768,16 @@ dnl   # force a failed check
 dnl   AM_CONDITIONAL(ENABLE_XMESA_FX, test "no" = "yes")
 dnl fi
 
+# Checks for typedefs in gdk/GL/glext.h
+
+# GLhalfNV
+GDKGLEXT_NEED_GLHALFNV_TYPEDEF=no
+AC_CHECK_TYPES([GLhalfNV], , ,
+               [#include <GL/gl.h>])
+if test "x$ac_cv_type_GLhalfNV" = "xno" ; then
+  GDKGLEXT_NEED_GLHALFNV_TYPEDEF=yes
+fi
+
 GL_LIBS="$GL_LDFLAGS $GL_LIBS"
 
 AC_SUBST([GL_CFLAGS])
@@ -913,6 +923,7 @@ $gdkglext_need_glxfbconfigsgix_typedef
 $gdkglext_need_glxfbconfigidsgix_typedef
 $gdkglext_need_glxpbuffersgix_typedef
 $gdkglext_need_glxextfuncptr_typedef
+$gdkglext_need_glhalfnv_typedef
 _______EOF
 
 	cat >>$outfile <<_______EOF
@@ -965,6 +976,11 @@ fi
 if test "x$GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF" = "xyes"; then
   gdkglext_need_glxextfuncptr_typedef='
 #define GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF'
+fi
+
+if test "x$GDKGLEXT_NEED_GLHALFNV_TYPEDEF" = "xyes"; then
+  gdkglext_need_glhalfnv_typedef='
+#define GDKGLEXT_NEED_GLHALFNV_TYPEDEF'
 fi
 
 ])

@@ -1,3 +1,29 @@
+2003-07-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/gdkglglext.h: 
+	* gdk/x11/gdkglglxext.h: 
+	* gdk/win32/gdkglwglext.h: Updated.
+
+	* gdk/GL/gen-gdkglglext-h.pl: Define __glext_h_ before
+	#include <GL/gl.h> to avoid including system's glext.h.
+
+	* gdk/GL/gen-gdkglglxext-h.pl: Define __glxext_h_ before
+	#include <GL/glx.h> to avoid including system's glxext.h.
+
+	* gdk/GL/gen-gdkglwglext-h.pl: Define __wglext_h_ before
+	#include <GL/gl.h> to avoid including system's wglext.h.
+
+	* gdk/gdkglglext.h: 
+	* gdk/GL/gen-gdkglglext-h.pl: Typedef GLhalfNV if needed.
+
+	* configure.in: Check whether GLhalfNV typedef is needed.
+
+2003-07-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* ==== Released 1.0.1 ====
+
+	* configure.in: Version 1.0.1, Binary age 1, interface age 0.
+
 2003-07-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/font-pangoft2.c (gl_pango_ft2_render_layout): 

@@ -26,7 +26,9 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
+#define __glxext_h_
 #include <GL/glx.h>
+#undef __glxext_h_
 
 #include <gdk/gdkgldefs.h>
 #include <gdk/gdkglquery.h>

@@ -44,13 +44,16 @@ print <<EOF;
 #include <windows.h>
 #endif
 
+#define __wglext_h_
 #include <GL/gl.h>
+#undef __wglext_h_
+
+#include <gdk/gdkgldefs.h>
+#include <gdk/gdkglquery.h>
+#include <gdk/gdkglconfig.h>
 
 #include <gdk/GL/wglext.h>
 #include <gdk/GL/wglext-extra.h>
-
-#include <gdk/gdkglquery.h>
-#include <gdk/gdkglconfig.h>
 
 G_BEGIN_DECLS
 
