@@ -57,6 +57,11 @@ typedef unsigned short GLhalfNV;
 #endif
 #endif
 
+/* Avoid old glext.h bug. */
+#if !defined(GL_SGIS_point_parameters) && defined(GL_POINT_SIZE_MIN_SGIS)
+#define GL_SGIS_point_parameters 1
+#endif
+
 #undef __glext_h_
 #undef GL_GLEXT_VERSION
 #include <gdk/glext/glext.h>
