@@ -31,13 +31,13 @@ enum {
 
 /* Forward declarations */
 
-static GdkColormap *gdk_gl_config_setup_colormap   (GdkScreen                   *screen,
-                                                    PIXELFORMATDESCRIPTOR       *pfd,
-                                                    gboolean                     is_rgba);
+static GdkColormap *gdk_gl_config_setup_colormap   (GdkScreen             *screen,
+                                                    PIXELFORMATDESCRIPTOR *pfd,
+                                                    gboolean               is_rgba);
 
-static gboolean     gdk_win32_gl_config_get_attrib (GdkGLConfig                 *glconfig,
-                                                    gint                         attribute,
-                                                    gint                        *value);
+static gboolean     gdk_win32_gl_config_get_attrib (GdkGLConfig           *glconfig,
+                                                    gint                   attribute,
+                                                    gint                  *value);
 
 static void     gdk_gl_config_impl_win32_init         (GdkGLConfigImplWin32      *impl);
 static void     gdk_gl_config_impl_win32_class_init   (GdkGLConfigImplWin32Class *klass);

@@ -32,13 +32,6 @@ static guint         gdk_gl_context_hash   (HGLRC        *hglrc);
 static gboolean      gdk_gl_context_equal  (HGLRC        *a,
                                             HGLRC        *b);
 
-static GdkGLContext *gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
-                                                GdkGLConfig   *glconfig,
-                                                GdkGLContext  *share_list,
-                                                gboolean       is_direct,
-                                                int            render_type,
-                                                HGLRC          hglrc);
-
 static void     gdk_gl_context_impl_win32_init         (GdkGLContextImplWin32      *impl);
 static void     gdk_gl_context_impl_win32_class_init   (GdkGLContextImplWin32Class *klass);
 
@@ -220,7 +213,7 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
   GdkGLContext *glcontext;
   GdkGLContextImplWin32 *impl;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_new_common ()"));
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_new_common ()"));
 
   /*
    * Instanciate the GdkGLContextImplWin32 object.
