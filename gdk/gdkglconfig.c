@@ -197,13 +197,37 @@ gdk_gl_config_new_rgb (GdkScreen       *screen,
 }
 
 static GdkGLConfig *
-gdk_gl_config_new_internal (GdkScreen       *screen,
-                            GdkGLConfigMode  mode)
+gdk_gl_config_new_by_mode_common (GdkScreen       *screen,
+                                  GdkGLConfigMode  mode)
 {
-  if (mode & GDK_GL_MODE_INDEX)
-    return gdk_gl_config_new_ci (screen, mode);
-  else
-    return gdk_gl_config_new_rgb (screen, mode);
+  GdkGLConfig *glconfig;
+
+#define _GL_CONFIG_NEW_BY_MODE(__screen, __mode)        \
+  ( ((__mode) & GDK_GL_MODE_INDEX) ?                    \
+    gdk_gl_config_new_ci (__screen, __mode) :           \
+    gdk_gl_config_new_rgb (__screen, __mode) )
+
+  glconfig = _GL_CONFIG_NEW_BY_MODE (screen, mode);
+  if (glconfig == NULL)
+    {
+      /* Fallback cases when can't get exactly what was asked for... */
+      if (!(mode & GDK_GL_MODE_DOUBLE))
+        {
+          /* If we can't find a single buffered visual, try looking
+             for a double buffered visual.  We can treat a double
+             buffered visual as a single buffered visual by changing
+             the draw buffer to GL_FRONT and treating any swap
+             buffers as no-ops. */
+          mode |= GDK_GL_MODE_DOUBLE;
+          glconfig = _GL_CONFIG_NEW_BY_MODE (screen, mode);
+          if (glconfig != NULL)
+            glconfig->as_single_mode = TRUE;
+        }
+    }
+
+#undef _GL_CONFIG_NEW_BY_MODE
+
+  return glconfig;
 }
 
 /**
@@ -219,7 +243,6 @@ GdkGLConfig *
 gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
 {
   GdkScreen *screen;
-  GdkGLConfig *glconfig;
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   screen = gdk_screen_get_default ();
@@ -227,26 +250,7 @@ gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
   screen = NULL;
 #endif
 
-  glconfig = gdk_gl_config_new_internal (screen, mode);
-
-  if (glconfig == NULL)
-    {
-      /* Fallback cases when can't get exactly what was asked for... */
-      if (!(mode & GDK_GL_MODE_DOUBLE))
-        {
-          /* If we can't find a single buffered visual, try looking
-             for a double buffered visual.  We can treat a double
-             buffered visual as a single buffered visual by changing
-             the draw buffer to GL_FRONT and treating any swap
-             buffers as no-ops. */
-          mode |= GDK_GL_MODE_DOUBLE;
-          glconfig = gdk_gl_config_new_internal (screen, mode);
-          if (glconfig != NULL)
-            glconfig->as_single_mode = TRUE;
-        }
-    }
-
-  return glconfig;
+  return gdk_gl_config_new_by_mode_common (screen, mode);
 }
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
@@ -265,28 +269,7 @@ GdkGLConfig *
 gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
                                       GdkGLConfigMode  mode)
 {
-  GdkGLConfig *glconfig;
-
-  glconfig = gdk_gl_config_new_internal (screen, mode);
-
-  if (glconfig == NULL)
-    {
-      /* Fallback cases when can't get exactly what was asked for... */
-      if (!(mode & GDK_GL_MODE_DOUBLE))
-        {
-          /* If we can't find a single buffered visual, try looking
-             for a double buffered visual.  We can treat a double
-             buffered visual as a single buffered visual by changing
-             the draw buffer to GL_FRONT and treating any swap
-             buffers as no-ops. */
-          mode |= GDK_GL_MODE_DOUBLE;
-          glconfig = gdk_gl_config_new_internal (screen, mode);
-          if (glconfig != NULL)
-            glconfig->as_single_mode = TRUE;
-        }
-    }
-
-  return glconfig;
+  return gdk_gl_config_new_by_mode_common (screen, mode);
 }
 
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
