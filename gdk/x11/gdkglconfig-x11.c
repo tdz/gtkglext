@@ -450,6 +450,8 @@ gdk_gl_config_fb_configuration (GdkGLConfigImplX11 *impl,
   if (impl->xvinfo == NULL)
     return;
 
+  GDK_GL_NOTE (MISC, g_message (" -- visual id : 0x%lx", impl->xvinfo->visualid));
+
 #define GET_CONFIG(attrib) \
   glXGetConfig (impl->xdisplay, impl->xvinfo, (attrib), &value)
 
