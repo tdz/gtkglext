@@ -100,3 +100,11 @@ OpenGL rendering surface interface.
 @height: 
 
 
+<!-- ##### FUNCTION gdk_gl_drawable_get_current ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+

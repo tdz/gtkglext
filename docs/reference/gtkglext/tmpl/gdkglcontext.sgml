@@ -107,3 +107,11 @@ OpenGL rendering context object.
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_gl_context_get_current ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+

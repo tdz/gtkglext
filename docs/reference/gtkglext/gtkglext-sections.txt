@@ -27,11 +27,13 @@ gdkglext_binary_age
 
 <SECTION>
 <FILE>gdkglquery</FILE>
+GdkGLProc
 gdk_gl_query_extension
 gdk_gl_query_extension_for_display
 gdk_gl_query_version
 gdk_gl_query_version_for_display
 gdk_gl_query_gl_extension
+gdk_gl_query_get_proc_address
 </SECTION>
 
 <SECTION>
@@ -78,6 +80,7 @@ gdk_gl_context_get_share_list
 gdk_gl_context_is_direct
 gdk_gl_context_get_render_type
 gdk_gl_context_get_colormap
+gdk_gl_context_get_current
 <SUBSECTION Standard>
 GDK_GL_CONTEXT
 GDK_IS_GL_CONTEXT
@@ -101,6 +104,7 @@ gdk_gl_drawable_gl_begin
 gdk_gl_drawable_gl_end
 gdk_gl_drawable_get_gl_config
 gdk_gl_drawable_get_size
+gdk_gl_drawable_get_current
 <SUBSECTION Standard>
 GDK_GL_DRAWABLE
 GDK_IS_GL_DRAWABLE
@@ -198,10 +202,12 @@ gdk_gl_context_info_extension_attribute_get_type
 
 <SECTION>
 <FILE>gdkglx</FILE>
+gdk_x11_gl_query_glx_extension
 gdk_x11_gl_config_get_xdisplay
 gdk_x11_gl_config_get_screen_number
 gdk_x11_gl_config_get_xvinfo
 gdk_x11_gl_context_get_glxcontext
+gdk_x11_gl_context_lookup
 gdk_x11_gl_pixmap_get_glxpixmap
 gdk_x11_gl_window_get_glxwindow
 GDK_GL_CONFIG_XDISPLAY

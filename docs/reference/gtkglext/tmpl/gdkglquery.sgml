@@ -14,6 +14,13 @@ functions to query OpenGL support information.
 
 </para>
 
+<!-- ##### USER_FUNCTION GdkGLProc ##### -->
+<para>
+
+</para>
+
+
+
 <!-- ##### FUNCTION gdk_gl_query_extension ##### -->
 <para>
 
@@ -58,6 +65,15 @@ functions to query OpenGL support information.
 </para>
 
 @extension: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_query_get_proc_address ##### -->
+<para>
+
+</para>
+
+@proc_name: 
 @Returns: 
 
 

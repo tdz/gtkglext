@@ -33,11 +33,13 @@ IGNORE_HFILES = \
 	config.h		\
 	docs			\
 	examples		\
+	GL			\
 	x11			\
 	win32			\
 	gdkgltemplate.h		\
 	gdkglprivate.h		\
 	gdkgldebug.h		\
+	gdkglglext.h		\
 	gtkgltemplate.h		\
 	gtkglprivate.h		\
 	gtkgldebug.h		\

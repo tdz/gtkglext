@@ -14,6 +14,16 @@ internal X-related functions.
 
 </para>
 
+<!-- ##### FUNCTION gdk_x11_gl_query_glx_extension ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@extension: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gdk_x11_gl_config_get_xdisplay ##### -->
 <para>
 
@@ -47,6 +57,15 @@ internal X-related functions.
 </para>
 
 @glcontext: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_x11_gl_context_lookup ##### -->
+<para>
+
+</para>
+
+@glxcontext: 
 @Returns: 
 
 
