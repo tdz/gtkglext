@@ -35,21 +35,21 @@
 
 G_BEGIN_DECLS
 
-gboolean gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
-                                           const char  *extension);
+gboolean               gdk_win32_gl_query_wgl_extension     (GdkGLConfig   *glconfig,
+                                                             const char    *extension);
 
-PIXELFORMATDESCRIPTOR *gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig);
+PIXELFORMATDESCRIPTOR *gdk_win32_gl_config_get_pfd          (GdkGLConfig   *glconfig);
 
-HGLRC gdk_win32_gl_context_get_hglrc (GdkGLContext *glcontext);
+HGLRC                  gdk_win32_gl_context_get_hglrc       (GdkGLContext  *glcontext);
 
-HDC   gdk_win32_gl_drawable_hdc_get     (GdkGLDrawable *gldrawable);
-void  gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable);
+HDC                    gdk_win32_gl_drawable_hdc_get        (GdkGLDrawable *gldrawable);
+void                   gdk_win32_gl_drawable_hdc_release    (GdkGLDrawable *gldrawable);
 
-PIXELFORMATDESCRIPTOR *gdk_win32_gl_pixmap_get_pfd          (GdkGLPixmap *glpixmap);
-int                    gdk_win32_gl_pixmap_get_pixel_format (GdkGLPixmap *glpixmap);
+PIXELFORMATDESCRIPTOR *gdk_win32_gl_pixmap_get_pfd          (GdkGLPixmap   *glpixmap);
+int                    gdk_win32_gl_pixmap_get_pixel_format (GdkGLPixmap   *glpixmap);
 
-PIXELFORMATDESCRIPTOR *gdk_win32_gl_window_get_pfd          (GdkGLWindow *glwindow);
-int                    gdk_win32_gl_window_get_pixel_format (GdkGLWindow *glwindow);
+PIXELFORMATDESCRIPTOR *gdk_win32_gl_window_get_pfd          (GdkGLWindow   *glwindow);
+int                    gdk_win32_gl_window_get_pixel_format (GdkGLWindow   *glwindow);
 
 #ifdef INSIDE_GDK_GL_WIN32
 

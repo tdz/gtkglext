@@ -1,5 +1,4 @@
 EXPORTS
-	gdk_gl_get_glLoadProgramNV
 	gdk_gl_attrib_list_none_get_type
 	gdk_gl_client_string_attribute_get_type
 	gdk_gl_config_error_get_type
@@ -20,6 +19,7 @@ EXPORTS
 	gdk_gl_config_new_by_mode
 	gdk_gl_context_copy
 	gdk_gl_context_get_colormap
+	gdk_gl_context_get_current
 	gdk_gl_context_get_gl_config
 	gdk_gl_context_get_gl_drawable
 	gdk_gl_context_get_render_type
@@ -29,6 +29,7 @@ EXPORTS
 	gdk_gl_context_is_direct
 	gdk_gl_context_new
 	gdk_gl_debug_flags
+	gdk_gl_drawable_get_current
 	gdk_gl_drawable_get_gl_config
 	gdk_gl_drawable_get_size
 	gdk_gl_drawable_get_type
@@ -43,9 +44,123 @@ EXPORTS
 	gdk_gl_fb_config_attribute_get_type
 	gdk_gl_font_use_pango_font
 	gdk_gl_generic_value_get_type
+	gdk_gl_get_GL_3DFX_tbuffer
+	gdk_gl_get_GL_ARB_matrix_palette
+	gdk_gl_get_GL_ARB_multisample
+	gdk_gl_get_GL_ARB_multitexture
+	gdk_gl_get_GL_ARB_point_parameters
+	gdk_gl_get_GL_ARB_texture_compression
+	gdk_gl_get_GL_ARB_transpose_matrix
+	gdk_gl_get_GL_ARB_vertex_blend
+	gdk_gl_get_GL_ARB_vertex_program
+	gdk_gl_get_GL_ARB_window_pos
+	gdk_gl_get_GL_ATI_element_array
+	gdk_gl_get_GL_ATI_envmap_bumpmap
+	gdk_gl_get_GL_ATI_fragment_shader
+	gdk_gl_get_GL_ATI_pn_triangles
+	gdk_gl_get_GL_ATI_vertex_array_object
+	gdk_gl_get_GL_ATI_vertex_streams
+	gdk_gl_get_GL_EXT_blend_color
+	gdk_gl_get_GL_EXT_blend_func_separate
+	gdk_gl_get_GL_EXT_blend_minmax
+	gdk_gl_get_GL_EXT_color_subtable
+	gdk_gl_get_GL_EXT_compiled_vertex_array
+	gdk_gl_get_GL_EXT_convolution
+	gdk_gl_get_GL_EXT_coordinate_frame
+	gdk_gl_get_GL_EXT_copy_texture
+	gdk_gl_get_GL_EXT_cull_vertex
+	gdk_gl_get_GL_EXT_draw_range_elements
+	gdk_gl_get_GL_EXT_fog_coord
+	gdk_gl_get_GL_EXT_histogram
+	gdk_gl_get_GL_EXT_index_func
+	gdk_gl_get_GL_EXT_index_material
+	gdk_gl_get_GL_EXT_light_texture
+	gdk_gl_get_GL_EXT_multi_draw_arrays
+	gdk_gl_get_GL_EXT_multisample
+	gdk_gl_get_GL_EXT_paletted_texture
+	gdk_gl_get_GL_EXT_pixel_transform
+	gdk_gl_get_GL_EXT_point_parameters
+	gdk_gl_get_GL_EXT_polygon_offset
+	gdk_gl_get_GL_EXT_secondary_color
+	gdk_gl_get_GL_EXT_stencil_two_side
+	gdk_gl_get_GL_EXT_subtexture
+	gdk_gl_get_GL_EXT_texture3D
+	gdk_gl_get_GL_EXT_texture_object
+	gdk_gl_get_GL_EXT_texture_perturb_normal
+	gdk_gl_get_GL_EXT_vertex_array
+	gdk_gl_get_GL_EXT_vertex_shader
+	gdk_gl_get_GL_EXT_vertex_weighting
+	gdk_gl_get_GL_HP_image_transform
+	gdk_gl_get_GL_IBM_multimode_draw_arrays
+	gdk_gl_get_GL_IBM_vertex_array_lists
+	gdk_gl_get_GL_INGR_blend_func_separate
+	gdk_gl_get_GL_INTEL_parallel_arrays
+	gdk_gl_get_GL_MESA_resize_buffers
+	gdk_gl_get_GL_MESA_window_pos
+	gdk_gl_get_GL_NV_evaluators
+	gdk_gl_get_GL_NV_fence
+	gdk_gl_get_GL_NV_occlusion_query
+	gdk_gl_get_GL_NV_point_sprite
+	gdk_gl_get_GL_NV_register_combiners
+	gdk_gl_get_GL_NV_register_combiners2
+	gdk_gl_get_GL_NV_vertex_array_range
+	gdk_gl_get_GL_NV_vertex_program
+	gdk_gl_get_GL_PGI_misc_hints
+	gdk_gl_get_GL_SGIS_detail_texture
+	gdk_gl_get_GL_SGIS_fog_function
+	gdk_gl_get_GL_SGIS_multisample
+	gdk_gl_get_GL_SGIS_pixel_texture
+	gdk_gl_get_GL_SGIS_point_parameters
+	gdk_gl_get_GL_SGIS_sharpen_texture
+	gdk_gl_get_GL_SGIS_texture4D
+	gdk_gl_get_GL_SGIS_texture_color_mask
+	gdk_gl_get_GL_SGIS_texture_filter4
+	gdk_gl_get_GL_SGIX_async
+	gdk_gl_get_GL_SGIX_flush_raster
+	gdk_gl_get_GL_SGIX_fragment_lighting
+	gdk_gl_get_GL_SGIX_framezoom
+	gdk_gl_get_GL_SGIX_igloo_interface
+	gdk_gl_get_GL_SGIX_instruments
+	gdk_gl_get_GL_SGIX_list_priority
+	gdk_gl_get_GL_SGIX_pixel_texture
+	gdk_gl_get_GL_SGIX_polynomial_ffd
+	gdk_gl_get_GL_SGIX_reference_plane
+	gdk_gl_get_GL_SGIX_sprite
+	gdk_gl_get_GL_SGIX_tag_sample_buffer
+	gdk_gl_get_GL_SGI_color_table
+	gdk_gl_get_GL_SUNX_constant_data
+	gdk_gl_get_GL_SUN_global_alpha
+	gdk_gl_get_GL_SUN_mesh_array
+	gdk_gl_get_GL_SUN_triangle_list
+	gdk_gl_get_GL_SUN_vertex
+	gdk_gl_get_GL_VERSION_1_2
+	gdk_gl_get_GL_VERSION_1_3
+	gdk_gl_get_GL_VERSION_1_4
+	gdk_gl_get_GL_WIN_swap_hint
+	gdk_gl_get_WGL_ARB_buffer_region
+	gdk_gl_get_WGL_ARB_extensions_string
+	gdk_gl_get_WGL_ARB_make_current_read
+	gdk_gl_get_WGL_ARB_pbuffer
+	gdk_gl_get_WGL_ARB_pixel_format
+	gdk_gl_get_WGL_ARB_render_texture
+	gdk_gl_get_WGL_EXT_display_color_table
+	gdk_gl_get_WGL_EXT_extensions_string
+	gdk_gl_get_WGL_EXT_make_current_read
+	gdk_gl_get_WGL_EXT_pbuffer
+	gdk_gl_get_WGL_EXT_pixel_format
+	gdk_gl_get_WGL_EXT_swap_control
+	gdk_gl_get_WGL_I3D_digital_video_control
+	gdk_gl_get_WGL_I3D_gamma
+	gdk_gl_get_WGL_I3D_genlock
+	gdk_gl_get_WGL_I3D_image_buffer
+	gdk_gl_get_WGL_I3D_swap_frame_lock
+	gdk_gl_get_WGL_I3D_swap_frame_usage
+	gdk_gl_get_WGL_NV_vertex_array_range
+	gdk_gl_get_WGL_OML_sync_control
 	gdk_gl_get_glActiveStencilFaceEXT
 	gdk_gl_get_glActiveTexture
 	gdk_gl_get_glActiveTextureARB
+	gdk_gl_get_glAddSwapHintRectWIN
 	gdk_gl_get_glAlphaFragmentOp1ATI
 	gdk_gl_get_glAlphaFragmentOp2ATI
 	gdk_gl_get_glAlphaFragmentOp3ATI
@@ -368,6 +483,7 @@ EXPORTS
 	gdk_gl_get_glListParameteriSGIX
 	gdk_gl_get_glListParameterivSGIX
 	gdk_gl_get_glLoadIdentityDeformationMapSGIX
+	gdk_gl_get_glLoadProgramNV
 	gdk_gl_get_glLoadTransposeMatrixd
 	gdk_gl_get_glLoadTransposeMatrixdARB
 	gdk_gl_get_glLoadTransposeMatrixf
@@ -945,6 +1061,7 @@ EXPORTS
 	gdk_win32_gl_drawable_hdc_release
 	gdk_win32_gl_pixmap_get_pfd
 	gdk_win32_gl_pixmap_get_pixel_format
+	gdk_win32_gl_query_wgl_extension
 	gdk_win32_gl_window_get_pfd
 	gdk_win32_gl_window_get_pixel_format
 	gdk_window_get_gl_window

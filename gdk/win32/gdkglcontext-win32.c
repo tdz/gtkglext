@@ -162,6 +162,7 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
 static void
 gdk_gl_context_impl_win32_finalize (GObject *object)
 {
+  GdkGLContext *glcontext = GDK_GL_CONTEXT (object);
   GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (object);
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_win32_finalize ()"));
