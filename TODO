@@ -3,6 +3,7 @@ All
 ===
 
  - Multisample antialiasing support.
+ - Pbuffer support.
  - Overlay support.
  - Documentations.
 

@@ -37,7 +37,7 @@ Supported Platforms
 Currently GtkGLExt supports
 
   * UNIX and UNIX-like platforms
-      Tested under Linux (RedHat 8.0) and IRIX (6.5).
+      Tested under Linux and IRIX.
 
   * Win32 platforms
       Tested under Windows XP & 2000 Professional using MinGW/Cygwin
@@ -61,9 +61,7 @@ Requirements
 Multihead Support
 =================
 
-Multihead support requires
-
-  * GTK+ >= 2.1
+Multihead support requires GTK+ 2.1 or above.
 
 If GtkGLExt is already installed, you can check whether installed
 GtkGLExt library supports multihead using the following command.
@@ -138,14 +136,13 @@ for generating configure script and Makefiles.
   $ make install
   $ make examples
 
-ACLOCAL_FLAGS may be needed for PKG_CHECK_MODULES (pkg-config),
-AM_PATH_GLIB_2_0 (Glib), and AM_PATH_GTK_2_0 (GTK+) m4 macros in
-configure.in.
+You may have to set ACLOCAL_FLAGS environment variable for some m4
+macros used in configure.in.
 
 I use the following versions of the GNU autotools.
 
   autoconf 2.57
-  automake 1.7.3
+  automake 1.7.4
   libtool  1.5
 
 
