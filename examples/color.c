@@ -247,7 +247,8 @@ main (int argc,
     {
       g_print ("\nAllocate colors.\n");
 
-      gdk_colormap_alloc_colors (colormap, colors, 4, FALSE, FALSE, &success);
+      gdk_colormap_alloc_colors (colormap, colors, NUM_COLORS,
+                                 FALSE, FALSE, &success);
       if (!success)
         g_print ("*** Color allocation failed.\n");
       else
