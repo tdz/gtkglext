@@ -25,6 +25,29 @@
 
 G_BEGIN_DECLS
 
+/* Display mode bit masks.
+ */
+typedef enum
+{
+  GDK_GL_MODE_RGB         = 1 << 1,
+  GDK_GL_MODE_RGBA        = 1 << 1,   /* same as RGB */
+  GDK_GL_MODE_INDEX       = 1 << 2,
+  GDK_GL_MODE_SINGLE      = 1 << 3,
+  GDK_GL_MODE_DOUBLE      = 1 << 4,
+  GDK_GL_MODE_ACCUM       = 1 << 5,
+  GDK_GL_MODE_ALPHA       = 1 << 6,
+  GDK_GL_MODE_DEPTH       = 1 << 7,
+  GDK_GL_MODE_STENCIL     = 1 << 8,
+  GDK_GL_MODE_STEREO      = 1 << 9,
+  GDK_GL_MODE_MULTISAMPLE = 1 << 10,  /* not supported yet */
+  GDK_GL_MODE_LUMINANCE   = 1 << 11   /* not supported yet */
+} GdkGLConfigMode;
+
+#define GDK_TYPE_GL_CONFIG_MODE         (gdk_gl_config_mode_get_type ())
+
+GType gdk_gl_config_mode_get_type (void);
+
+
 typedef struct _GdkGLConfigClass GdkGLConfigClass;
 
 #define GDK_TYPE_GL_CONFIG              (gdk_gl_config_get_type ())
@@ -43,6 +66,7 @@ struct _GdkGLConfig
 
   guint is_double_buffered : 1;
   guint is_stereo : 1;
+  guint as_single_mode : 1;
 
 #ifdef GDK_MULTIHEAD_SAFE
   GdkScreen *screen;
@@ -66,12 +90,14 @@ GType        gdk_gl_config_get_type           (void);
 GdkGLConfig *gdk_gl_config_new                (const gint  *attrib_list);
 
 #ifdef GDK_MULTIHEAD_SAFE
-
 GdkGLConfig *gdk_gl_config_new_for_screen     (GdkScreen   *screen,
                                                const gint  *attrib_list);
+#endif /* GDK_MULTIHEAD_SAFE */
 
+GdkGLConfig *gdk_gl_config_new_by_mode        (GdkGLConfigMode mode);
+
+#ifdef GDK_MULTIHEAD_SAFE
 GdkScreen   *gdk_gl_config_get_screen         (GdkGLConfig *glconfig);
-
 #endif /* GDK_MULTIHEAD_SAFE */
 
 gboolean     gdk_gl_config_get_attrib         (GdkGLConfig *glconfig,

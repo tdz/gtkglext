@@ -58,7 +58,6 @@ struct _GdkGLPixmap
 
   GdkGLConfig *glconfig;
 
-  /* XXX GdkGLPixmap is not GdkPixmap for the moment :-< */
   GdkDrawable *wrapper;         /* Real GdkPixmap */
 };
 

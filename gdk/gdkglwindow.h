@@ -58,7 +58,6 @@ struct _GdkGLWindow
 
   GdkGLConfig *glconfig;
 
-  /* XXX GdkGLWindow is not GdkWindow for the moment :-< */
   GdkDrawable *wrapper;         /* Real GdkWindow */
 };
 

@@ -429,16 +429,6 @@ main(int   argc,
   GtkWidget *drawing_area;
   GtkWidget *button;
 
-  const gint config_attributes[] = {
-    GDK_GL_DOUBLEBUFFER,
-    GDK_GL_RGBA,
-    GDK_GL_RED_SIZE,        1,
-    GDK_GL_GREEN_SIZE,      1,
-    GDK_GL_BLUE_SIZE,       1,
-    GDK_GL_DEPTH_SIZE,      12,
-    GDK_GL_ATTRIB_LIST_NONE
-  };
-
   /*
    * Init
    */
@@ -459,13 +449,16 @@ main(int   argc,
    */
 
   /* Try double-buffered visual */
-  glconfig = gdk_gl_config_new(&config_attributes[0]);
+  glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB |
+                                       GDK_GL_MODE_DEPTH |
+                                       GDK_GL_MODE_DOUBLE);
   if (glconfig == NULL) {
     g_print("*** Cannot find the double-buffered visual.\n");
     g_print("*** Trying single-buffered visual.\n");
 
     /* Try single-buffered visual */
-    glconfig = gdk_gl_config_new(&config_attributes[1]);
+    glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB |
+                                         GDK_GL_MODE_DEPTH);
     if (glconfig == NULL) {
       g_print("*** Cannot find an OpenGL-capable visual\n");
       exit(1);

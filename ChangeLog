@@ -1,5 +1,8 @@
 2002-07-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglconfig.c (gdk_gl_config_new_by_mode): Added GLUT like
+	configuration function.
+
 	* examples/glxinfo.c: Added.
 
 2002-07-18  Naofumi Yasufuku  <naofumi@users.sourceforge.net>

@@ -364,7 +364,6 @@ struct GdkGLPixmap
 
   GdkGLConfig *glconfig;
 
-  /* XXX GdkGLPixmap is not GdkPixmap for the moment :-< */
   GdkDrawable *wrapper;         /* Real GdkPixmap */
 };
 </STRUCT>
@@ -669,7 +668,6 @@ struct GdkGLWindow
 
   GdkGLConfig *glconfig;
 
-  /* XXX GdkGLWindow is not GdkWindow for the moment :-< */
   GdkDrawable *wrapper;         /* Real GdkWindow */
 };
 </STRUCT>

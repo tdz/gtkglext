@@ -6,6 +6,7 @@ EXPORTS
 	gdk_gl_config_is_double_buffered
 	gdk_gl_config_is_stereo
 	gdk_gl_config_new
+	gdk_gl_config_new_by_mode
 	gdk_gl_context_get_type
 	gdk_gl_context_new
 	gdk_gl_context_copy

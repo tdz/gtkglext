@@ -11,16 +11,6 @@ static GdkGLConfig *glconfig = NULL;
 static GdkGLContext *glcontext = NULL;
 static GdkPixmap *pixmap = NULL;
 
-static const gint config_attributes[] = {
-  GDK_GL_DOUBLEBUFFER,
-  GDK_GL_RGBA,
-  GDK_GL_RED_SIZE,        1,
-  GDK_GL_GREEN_SIZE,      1,
-  GDK_GL_BLUE_SIZE,       1,
-  GDK_GL_DEPTH_SIZE,      12,
-  GDK_GL_ATTRIB_LIST_NONE
-};
-
 static void
 print_gl_config_attrib (GdkGLConfig *glconfig,
                         const gchar *attrib_str,
@@ -258,19 +248,13 @@ main (int argc,
    */
 
   /* Try single-buffered visual */
-  glconfig = gdk_gl_config_new (&config_attributes[1]);
+  glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB |
+                                        GDK_GL_MODE_DEPTH |
+                                        GDK_GL_MODE_SINGLE);
   if (glconfig == NULL)
     {
-      g_print ("*** Cannot find the single-buffered visual.\n");
-      g_print ("*** Trying double-buffered visual.\n");
-
-      /* Try double-buffered visual */
-      glconfig = gdk_gl_config_new (&config_attributes[0]);
-      if (glconfig == NULL)
-        {
-          g_print ("*** Cannot find an OpenGL-capable visual\n");
-          exit (1);
-        }
+      g_print ("*** Cannot find an OpenGL-capable visual\n");
+      exit (1);
     }
 
   examine_gl_config_attrib (glconfig);
