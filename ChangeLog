@@ -2,6 +2,10 @@
 
 	* Version 0.6.1
 
+	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_remove): 
+	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_remove): 
+	Set gl_context_ht NULL if hash table is destroyed.
+
 	* gdk/win32/gdkglcontext-win32.c
 	(gdk_win32_gl_context_foreign_new): 
 	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_new) 

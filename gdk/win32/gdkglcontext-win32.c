@@ -426,6 +426,7 @@ gdk_gl_context_remove (GdkGLContext *glcontext)
     {
       GDK_GL_NOTE (MISC, g_message (" -- Destroy GL context hash table."));
       g_hash_table_destroy (gl_context_ht);
+      gl_context_ht = NULL;
     }
 }
 
