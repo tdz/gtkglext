@@ -117,8 +117,8 @@ gdk_gl_window_impl_x11_constructor (GType                  type,
    * XXX GdkGLWindow is not GdkWindow for the moment :-<
    *     use glwindow->wrapper.
    */
-  impl->xdisplay = gdk_x11_drawable_get_xdisplay (glwindow->wrapper);
-  impl->glxwindow = gdk_x11_drawable_get_xid (glwindow->wrapper);
+  impl->xdisplay = GDK_DRAWABLE_XDISPLAY (glwindow->wrapper);
+  impl->glxwindow = GDK_DRAWABLE_XID (glwindow->wrapper);
 
   /*
    * Successfully constructed?

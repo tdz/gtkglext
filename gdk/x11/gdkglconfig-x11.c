@@ -327,7 +327,7 @@ gdk_x11_visual_get_xvinfo (GdkVisual *visual)
   XVisualInfo *xvinfo_list;
   int nitems_return;
 
-  xvinfo_template.visualid = XVisualIDFromVisual (gdk_x11_visual_get_xvisual (visual));
+  xvinfo_template.visualid = XVisualIDFromVisual (GDK_VISUAL_XVISUAL (visual));
   xvinfo_template.screen = gdk_x11_get_default_screen ();
 
   xvinfo_list = XGetVisualInfo (gdk_x11_get_default_xdisplay (),

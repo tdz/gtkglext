@@ -133,7 +133,7 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
    * XXX GdkGLPixmap is not GdkPixmap for the moment :-<
    *     use glpixmap->wrapper.
    */
-  xpixmap = gdk_x11_drawable_get_xid (glpixmap->wrapper);
+  xpixmap = GDK_DRAWABLE_XID (glpixmap->wrapper);
 
   /*
    * Check depth of the X pixmap.

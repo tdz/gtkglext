@@ -32,8 +32,8 @@ _gdk_x11_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable)
 
   GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
 
-  glXSwapBuffers (gdk_x11_drawable_get_xdisplay (drawable),
-                  gdk_x11_drawable_get_xid (drawable));
+  glXSwapBuffers (GDK_DRAWABLE_XDISPLAY (drawable),
+                  GDK_DRAWABLE_XID (drawable));
 }
 
 void
