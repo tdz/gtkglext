@@ -11,14 +11,15 @@ Release: %{rel}
 License: LGPL
 Group: System Environment/Libraries
 URL: http://gtkglext.sourceforge.net
-Source0: ftp://ftp.sourceforge.net/pub/sourceforge/gtkglext/%{name}-%{version}.tar.gz
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Source0: ftp://ftp.sourceforge.net/pub/sourceforge/gtkglext/gtkglext-%{version}.tar.gz
+BuildRoot: %{_tmppath}/gtkglext-%{version}-root
 
 Requires: gtk2
 Requires: XFree86-libs
 
-BuildPreReq: gtk2-devel
-BuildPreReq: XFree86-devel
+BuildRequires: pkgconfig
+BuildRequires: gtk2-devel
+BuildRequires: XFree86-devel
 
 %description
 GtkGLExt is an OpenGL extension to GTK. It provides the GDK objects
@@ -38,7 +39,7 @@ The gtkglext-devel package contains the header files, static libraries,
 and developer docs for GtkGLExt.
 
 %prep
-%setup -q
+%setup -q -n gtkglext-%{version}
 
 %build
 %configure --disable-gtk-doc
