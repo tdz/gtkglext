@@ -18,7 +18,6 @@
 
 #include "gdkglprivate.h"
 #include "gdkglconfig.h"
-#include "gdkglcontext.h"
 #include "gdkglwindow.h"
 
 enum {
