@@ -101,8 +101,8 @@ Section "GtkGLExt Development" SecDevelopment
   SetOutPath $INSTDIR\include\gtkglext-${GTKGLEXT_API_VERSION}\gdk
   File include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\*.h
 
-  SetOutPath $INSTDIR\include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\GL
-  File include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\GL\*.h
+  SetOutPath $INSTDIR\include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\glext
+  File include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\glext\*.h
 
   SetOutPath $INSTDIR\include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\win32
   File include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\win32\*.h
