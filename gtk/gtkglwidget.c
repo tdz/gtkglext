@@ -138,13 +138,13 @@ gtk_gl_widget_style_set (GtkWidget *widget,
   if (GTK_WIDGET_REALIZED (widget))
     {
       GTK_GL_NOTE (MISC,
-        g_message (" - window->bg_pixmap = 0x%lx",
+        g_message (" - window->bg_pixmap = %p",
                    ((GdkWindowObject *) (widget->window))->bg_pixmap));
 
       gdk_window_set_back_pixmap (widget->window, NULL, FALSE);
 
       GTK_GL_NOTE (MISC,
-        g_message (" - window->bg_pixmap = 0x%lx",
+        g_message (" - window->bg_pixmap = %p",
                    ((GdkWindowObject *) (widget->window))->bg_pixmap));
     }
 }

@@ -692,6 +692,8 @@ gdk_window_set_gl_capability (GdkWindow   *window,
 {
   GdkGLWindow *glwindow;
 
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_window_set_gl_capability ()"));
+
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
@@ -726,13 +728,13 @@ gdk_window_set_gl_capability (GdkWindow   *window,
    */
 
   GDK_GL_NOTE (MISC,
-    g_message (" - window->bg_pixmap = 0x%lx",
+    g_message (" - window->bg_pixmap = %p",
                ((GdkWindowObject *) window)->bg_pixmap));
 
   gdk_window_set_back_pixmap (window, NULL, FALSE);
 
   GDK_GL_NOTE (MISC,
-    g_message (" - window->bg_pixmap = 0x%lx",
+    g_message (" - window->bg_pixmap = %p",
                ((GdkWindowObject *) window)->bg_pixmap));
 
   return glwindow;
@@ -749,6 +751,8 @@ gdk_window_set_gl_capability (GdkWindow   *window,
 void
 gdk_window_unset_gl_capability (GdkWindow *window)
 {
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_window_unset_gl_capability ()"));
+
   /*
    * If quarks are not initialized
    */

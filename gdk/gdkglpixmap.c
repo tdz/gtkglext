@@ -692,6 +692,8 @@ gdk_pixmap_set_gl_capability (GdkPixmap   *pixmap,
 {
   GdkGLPixmap *glpixmap;
 
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_pixmap_set_gl_capability ()"));
+
   g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), NULL);
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
@@ -735,6 +737,8 @@ gdk_pixmap_set_gl_capability (GdkPixmap   *pixmap,
 void
 gdk_pixmap_unset_gl_capability (GdkPixmap *pixmap)
 {
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_pixmap_unset_gl_capability ()"));
+
   /*
    * If quarks are not initialized
    */
