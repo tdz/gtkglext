@@ -1,3 +1,8 @@
+2003-05-02  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglquery-win32.c (gdk_gl_get_proc_address): Returns
+	immediately if proc_address is found.
+
 2003-05-01  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglquery-x11.c (gdk_gl_get_proc_address): Rewritten.

@@ -216,39 +216,39 @@ gdk_gl_get_proc_address (const char *proc_name)
   GDK_GL_NOTE (IMPL, g_message (" * wglGetProcAddress () - %s",
                                 proc_address ? "succeeded" : "failed"));
 
+  if (proc_address != NULL)
+    return proc_address;
+
   /* Try GetProcAddress () */
 
-  if (proc_address == NULL)
-    {
-      /* opengl32.dll */
+  /* opengl32.dll */
 
-      GDK_GL_NOTE (MISC, g_message (" - Get opengl32 module handle"));
+  GDK_GL_NOTE (MISC, g_message (" - Get opengl32 module handle"));
 
-      hmodule = GetModuleHandle ("opengl32");
-      if (hmodule == NULL)
-        g_warning ("Cannot get opengl32 module handle");
-      else
-        proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
+  hmodule = GetModuleHandle ("opengl32");
+  if (hmodule == NULL)
+    g_warning ("Cannot get opengl32 module handle");
+  else
+    proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
 
-      GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
-                                    proc_address ? "succeeded" : "failed"));
-    }
+  GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
+                                proc_address ? "succeeded" : "failed"));
 
-  if (proc_address == NULL)
-    {
-      /* glu32.dll */
+  if (proc_address != NULL)
+    return proc_address;
 
-      GDK_GL_NOTE (MISC, g_message (" - Get glu32 module handle"));
+  /* glu32.dll */
 
-      hmodule = GetModuleHandle ("glu32");
-      if (hmodule == NULL)
-        g_warning ("Cannot get glu32 module handle");
-      else
-        proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
+  GDK_GL_NOTE (MISC, g_message (" - Get glu32 module handle"));
 
-      GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
-                                    proc_address ? "succeeded" : "failed"));
-    }
+  hmodule = GetModuleHandle ("glu32");
+  if (hmodule == NULL)
+    g_warning ("Cannot get glu32 module handle");
+  else
+    proc_address = (GdkGLProc) GetProcAddress (hmodule, proc_name);
+
+  GDK_GL_NOTE (IMPL, g_message (" * GetProcAddress () - %s",
+                                proc_address ? "succeeded" : "failed"));
 
   return proc_address;
 }
