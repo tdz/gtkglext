@@ -1,5 +1,9 @@
 2003-04-25  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglquery-x11.c (gdk_gl_get_proc_address): Modified to
+	open the GdkGLExt shared library file. Now it works well with
+	python binding.
+
 	* gtk/gtkglwidget.c (struct GLWidgetPrivate): Added glcontext
 	field, and quark_gl_context quark data is no longer used.
 	(gtk_widget_get_gl_context): Use private->glcontext.

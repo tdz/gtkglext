@@ -176,6 +176,18 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
   return FALSE;
 }
 
+static const gchar *
+gdk_gl_get_libdir (void)
+{
+  const gchar *libdir;
+
+  libdir = g_getenv ("GDKGLEXT_LIBDIR");
+  if (libdir)
+    return libdir;
+
+  return GDKGLEXT_LIBDIR;
+}
+
 /**
  * gdk_gl_get_proc_address:
  * @proc_name: extension function name.
@@ -189,8 +201,9 @@ gdk_gl_get_proc_address (const char *proc_name)
 {
   typedef GdkGLProc (*__glXGetProcAddressProc) (const GLubyte *);
   static __glXGetProcAddressProc glx_get_proc_address = NULL;
-  static GModule *main_module = NULL;
   static gboolean initialized = FALSE;
+  static GModule *module = NULL;
+  gchar *file_name;
   GdkGLProc proc_address = NULL;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_proc_address ()"));
@@ -201,22 +214,27 @@ gdk_gl_get_proc_address (const char *proc_name)
        * Look up glXGetProcAddress () function.
        */
 
-      GDK_GL_NOTE (MISC, g_message (" - get main_module"));
+      file_name = g_module_build_path (gdk_gl_get_libdir (), GDKGLEXT_LIBNAME);
 
-      main_module = g_module_open (NULL, G_MODULE_BIND_LAZY);
-      g_return_val_if_fail (main_module != NULL, NULL);
+      GDK_GL_NOTE (MISC, g_message (" - Open %s", file_name));
 
-      g_module_symbol (main_module, "glXGetProcAddress",
+      module = g_module_open (file_name, G_MODULE_BIND_LAZY);
+      if (module == NULL)
+        {
+          g_warning ("Cannot open %s", file_name);
+          g_free (file_name);
+          return NULL;
+        }
+      g_free (file_name);
+
+      g_module_symbol (module, "glXGetProcAddress",
                        (gpointer) &glx_get_proc_address);
       if (glx_get_proc_address == NULL)
-        g_module_symbol (main_module, "glXGetProcAddressARB",
+        g_module_symbol (module, "glXGetProcAddressARB",
                          (gpointer) &glx_get_proc_address);
       if (glx_get_proc_address == NULL)
-        g_module_symbol (main_module, "glXGetProcAddressEXT",
+        g_module_symbol (module, "glXGetProcAddressEXT",
                          (gpointer) &glx_get_proc_address);
-
-      /* main_module is resident */
-      /* g_module_close (main_module); */
 
       GDK_GL_NOTE (MISC, g_message (" - glXGetProcAddress () - %s",
                                     glx_get_proc_address ? "supported" : "not supported"));
@@ -238,7 +256,7 @@ gdk_gl_get_proc_address (const char *proc_name)
 
   if (proc_address == NULL)
     {
-      g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
+      g_module_symbol (module, proc_name, (gpointer) &proc_address);
 
       GDK_GL_NOTE (MISC, g_message (" - g_module_symbol () - %s",
                                     proc_address ? "succeeded" : "failed"));
