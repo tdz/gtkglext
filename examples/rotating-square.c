@@ -1,7 +1,7 @@
 /**************************************************************************
  * rotatingSquare.c
  *
- * Copyright (c) 2002 Alif Wahid <awah005@varsity.co.nz>
+ * Copyright (c) 2002 Alif Wahid <awah005@users.sourceforge.net>
  *
  * A simple animation to demonstrate GtkGLExt.
  *

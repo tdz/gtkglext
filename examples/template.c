@@ -1,7 +1,7 @@
 /**************************************************************************
  * template.c
  *
- * Copyright (c) 2002 Alif Wahid <awah005@varsity.co.nz>
+ * Copyright (c) 2002 Alif Wahid <awah005@users.sourceforge.net>
  *
  * This is a template of the essential source code to write useful but
  * simple programs using GtkGLExt and Gtk. It compiles into an executable

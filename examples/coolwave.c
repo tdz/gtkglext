@@ -1,7 +1,7 @@
 /**************************************************************************
  * coolwave.c
  *
- * Copyright (c) 2002 Alif Wahid <awah005@varsity.co.nz>
+ * Copyright (c) 2002 Alif Wahid <awah005@users.sourceforge.net>
  *
  * A program to demonstrate GtkGLExt. It's a modified version
  * of the old IrisGL demo 'newave', first ported to OpenGL and

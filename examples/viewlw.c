@@ -19,7 +19,7 @@
 /* Modified on 10th June 2002, for porting this program
  * to the 'gtkglext-0.1.0` extension of gtk-2.0.
  *
- * Alif Wahid, <awah005@varsity.co.nz>
+ * Alif Wahid, <awah005@users.sourceforge.net>
  */
 
 #include <stdlib.h>
