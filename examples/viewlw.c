@@ -344,7 +344,7 @@ timeout_add(GtkWidget *widget)
   if (info->timeout_id == 0)
     {
       info->timeout_id = g_timeout_add(TIMEOUT_INTERVAL,
-                                       (GSourceFunc) timeout,
+                                       (GSourceFunc)timeout,
                                        widget);
     }
 }
