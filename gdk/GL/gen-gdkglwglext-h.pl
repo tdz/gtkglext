@@ -61,7 +61,7 @@ foreach $in (@input_headers) {
     open(IN, $in) || die "cannot open $in";
 
     while (<IN>) {
-	if (/^#ifndef\s+WGL_/) {
+	if (/^#ifndef\s+WGL_[A-Z0-9]+_[a-z0-9_]+/) {
 	    @line = split;
 	    $_ = <IN>;
 	    if (/^#define\s+$line[1]/) {
