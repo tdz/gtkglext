@@ -39,8 +39,6 @@ struct _GdkGLConfigImplWin32
   GdkGLConfig parent_instance;
 
   PIXELFORMATDESCRIPTOR pfd;
-
-  guint is_constructed : 1;
 };
 
 struct _GdkGLConfigImplWin32Class

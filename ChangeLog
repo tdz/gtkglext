@@ -1,25 +1,44 @@
 2003-01-25  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
-	* gdk/x11/gdkglwindow-x11.h (struct _GdkGLWindowImplX11): 
+	* gdk/win32/gdkglcontext-win32.h (struct _GdkGLContextImplWin32):
+	Removed is_constructed flag.
+	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_impl_win32_init) 
+	(gdk_gl_context_impl_win32_constructor): Removed.
+	(gdk_gl_context_new_common): Removed unnecessary g_object_new()
+	object instantiation check.
+
+	* gdk/win32/gdkglconfig-win32.h (struct _GdkGLConfigImplWin32):
+	Removed is_constructed flag.
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_impl_win32_init):
+	Removed.
+	(gdk_gl_config_impl_win32_constructor, gdk_gl_config_new_common) 
+	(gdk_win32_gl_config_new_from_pixel_format): Removed unnecessary
+	g_object_new() object instantiation check.
+
+	* gdk/x11/gdkglwindow-x11.h (struct _GdkGLWindowImplX11): Removed
+	is_constructed flag.
 	* gdk/x11/gdkglwindow-x11.c (gdk_gl_window_impl_x11_constructor): 
 	(gdk_gl_window_impl_x11_init): Removed.
 	(gdk_gl_window_impl_x11_class_init): Added glxwindow property.
 	(gdk_gl_window_new): Construct by using glxwindow property.
 
-	* gdk/x11/gdkglpixmap-x11.h (struct _GdkGLPixmapImplX11): 
+	* gdk/x11/gdkglpixmap-x11.h (struct _GdkGLPixmapImplX11): Removed
+	is_constructed flag.
 	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_impl_x11_constructor) 
 	(gdk_gl_pixmap_impl_x11_init): Removed.
 	(gdk_gl_pixmap_impl_x11_class_init): Added glxpixmap property.
 	(gdk_gl_pixmap_new): Create GLXPimxpa in gdk_gl_pixmap_new()
 	instead of gdk_gl_pixmap_impl_x11_constructor().
 
-	* gdk/x11/gdkglconfig-x11.h (struct _GdkGLConfigImplX11): 
+	* gdk/x11/gdkglconfig-x11.h (struct _GdkGLConfigImplX11): Removed
+	is_constructed flag.
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new_common) 
 	(gdk_x11_gl_config_new_from_visualid_common): Removed unnecessary
 	g_object_new() object instantiation check.
 	(gdk_gl_config_impl_x11_init): Removed.
 
-	* gdk/x11/gdkglcontext-x11.h (struct _GdkGLContextImplX11): 
+	* gdk/x11/gdkglcontext-x11.h (struct _GdkGLContextImplX11):
+	Removed is_constructed flag.
 	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_new_common): Removed
 	unnecessary g_object_new() object instantiation check.
 	(gdk_gl_context_impl_x11_init): Removed.

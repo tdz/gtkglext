@@ -41,8 +41,6 @@ struct _GdkGLContextImplWin32
   HGLRC hglrc;
 
   guint is_foreign : 1;
-
-  guint is_constructed : 1;
 };
 
 struct _GdkGLContextImplWin32Class

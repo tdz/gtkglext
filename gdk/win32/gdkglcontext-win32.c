@@ -33,12 +33,8 @@ static guint         gdk_gl_context_hash   (HGLRC        *hglrc);
 static gboolean      gdk_gl_context_equal  (HGLRC        *a,
                                             HGLRC        *b);
 
-static void     gdk_gl_context_impl_win32_init         (GdkGLContextImplWin32      *impl);
 static void     gdk_gl_context_impl_win32_class_init   (GdkGLContextImplWin32Class *klass);
 
-static GObject *gdk_gl_context_impl_win32_constructor  (GType                       type,
-                                                        guint                       n_construct_properties,
-                                                        GObjectConstructParam      *construct_properties);
 static void     gdk_gl_context_impl_win32_set_property (GObject                    *object,
                                                         guint                       property_id,
                                                         const GValue               *value,
@@ -67,7 +63,7 @@ gdk_gl_context_impl_win32_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLContextImplWin32),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) gdk_gl_context_impl_win32_init,
+        (GInstanceInitFunc) NULL,
       };
 
       type = g_type_register_static (GDK_TYPE_GL_CONTEXT,
@@ -79,14 +75,6 @@ gdk_gl_context_impl_win32_get_type (void)
 }
 
 static void
-gdk_gl_context_impl_win32_init (GdkGLContextImplWin32 *impl)
-{
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_win32_init ()"));
-
-  impl->is_constructed = FALSE;
-}
-
-static void
 gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -95,7 +83,6 @@ gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->constructor  = gdk_gl_context_impl_win32_constructor;
   object_class->set_property = gdk_gl_context_impl_win32_set_property;
   object_class->get_property = gdk_gl_context_impl_win32_get_property;
   object_class->finalize     = gdk_gl_context_impl_win32_finalize;
@@ -113,33 +100,6 @@ gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass)
                                                          "Foreign HGLRC.",
                                                          FALSE,
                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-}
-
-static GObject *
-gdk_gl_context_impl_win32_constructor (GType                  type,
-                                       guint                  n_construct_properties,
-                                       GObjectConstructParam *construct_properties)
-{
-  GObject *object;
-  GdkGLContext *glcontext;
-  GdkGLContextImplWin32 *impl;
-
-  object = G_OBJECT_CLASS (parent_class)->constructor (type,
-                                                       n_construct_properties,
-                                                       construct_properties);
-
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_win32_constructor ()"));
-
-  glcontext = GDK_GL_CONTEXT (object);
-  impl = GDK_GL_CONTEXT_IMPL_WIN32 (object);
-
-  /*
-   * Successfully constructed?
-   */
-
-  impl->is_constructed = TRUE;
-
-  return object;
 }
 
 static void
@@ -224,7 +184,6 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
                            gboolean       is_foreign)
 {
   GdkGLContext *glcontext;
-  GdkGLContextImplWin32 *impl;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_new_common ()"));
 
@@ -242,13 +201,6 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
                             "hglrc",           hglrc,
                             "is_foreign",      is_foreign,
                             NULL);
-  impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
-
-  if (!impl->is_constructed)
-    {
-      g_object_unref (G_OBJECT (glcontext));
-      return NULL;
-    }
 
   gdk_gl_context_insert (glcontext);
 
