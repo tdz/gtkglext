@@ -167,7 +167,10 @@ configure (GtkWidget         *widget,
 
       glCallList (1);
 
-      glFlush ();
+      if (gdk_gl_config_is_double_buffer (glconfig))
+        gdk_gl_drawable_swap_buffers (GDK_GL_DRAWABLE (glpixmap));
+      else
+        glFlush ();
 
       gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glpixmap));
     }
