@@ -8,6 +8,7 @@
 
 !define GTKGLEXT_VERSION     @GTKGLEXT_VERSION@
 !define GTKGLEXT_API_VERSION @GTKGLEXT_API_VERSION@
+!define GTKGLEXT_PUBLISHER   "Naofumi Yasufuku"
 
 ;--------------------------------
 ;Configuration
@@ -149,8 +150,13 @@ SectionEnd
 Section -post
 
   ; Registry
-  WriteRegStr HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION} "Path" $INSTDIR
-  WriteRegStr HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION} "Version" ${GTKGLEXT_VERSION}
+  WriteRegStr HKLM "SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}" "Path" "$INSTDIR"
+  WriteRegStr HKLM "SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}" "Version" "${GTKGLEXT_VERSION}"
+
+  WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "DisplayName" "${MUI_PRODUCT} ${MUI_VERSION}"
+  WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "DisplayVersion" "${MUI_VERSION}"
+  WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "Publisher" "${GTKGLEXT_PUBLISHER}"
+  WriteRegExpandStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "UninstallString" "$INSTDIR\uninst-gtkglext.exe"
 
   ;; Uninstaller
   Delete $INSTDIR\uninst-gtkglext.exe
@@ -237,7 +243,8 @@ FunctionEnd
 
 Section Uninstall
 
-  DeleteRegKey HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}
+  DeleteRegKey HKLM "SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}"
+  DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt"
 
   Delete $INSTDIR\uninst-gtkglext.exe
   RMDir /r $INSTDIR\bin
