@@ -204,5 +204,5 @@ gdk_gl_drawable_get_size (GdkGLDrawable *gldrawable,
 {
   g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
 
-  return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->get_size (gldrawable, width, height);
+  GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->get_size (gldrawable, width, height);
 }
