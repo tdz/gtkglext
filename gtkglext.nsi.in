@@ -81,13 +81,11 @@ LicenseData COPYING.LIB
 ;--------------------------------
 ;Installer Sections
 
-!define SF_SELECTED 1
-
 Section "GtkGLExt Runtime" SecRuntime
   SectionIn 1 2 RO
 
   SetOutPath $INSTDIR\bin
-  File lib\*.dll
+  File bin\*.dll
 
 SectionEnd
 
@@ -177,7 +175,7 @@ Section "Start Menu" SecStartMenu
     IfFileExists "$INSTDIR\share\gtk-doc\html\gtkglext\index.html" "" +2
       CreateShortCut "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}\GtkGLExt Reference Manual.lnk" "$INSTDIR\share\gtk-doc\html\gtkglext\index.html"
 
-    CreateShortCut "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}\Uninstall.lnk" "$INSTDIR\uninst-gtkglext.exe"
+    CreateShortCut "$SMPROGRAMS\${MUI_STARTMENUPAGE_VARIABLE}\Uninstall GtkGLExt.lnk" "$INSTDIR\uninst-gtkglext.exe"
 
   !insertmacro MUI_STARTMENU_WRITE_END
 
@@ -216,13 +214,6 @@ SectionEnd
 ;--------------------------------
 ;Installer Functions
 
-!macro secSelected SEC
-  SectionGetFlags ${SEC} $R7
-  IntOp $R7 $R7 & ${SF_SELECTED}
-  IntCmp $R7 ${SF_SELECTED} 0 +2 +2
-    IntOp $R0 $R0 + 1
-!macroend
-
 ; ChangeDirSeparator
 ; input, top of stack  (e.g. C:\Program Files\...)
 ; output, top of stack (replaces, with e.g. C:/Program Files/...)
@@ -252,7 +243,8 @@ Function ChangeDirSeparator
   Exch $R0
 FunctionEnd
 
-; update a pkg-config .pc file
+; UpdatePCFile
+; update pkg-config .pc file
 Function UpdatePCFile
   pop $R0 ; prefix
   pop $R1 ; target .pc file
@@ -289,7 +281,7 @@ Section Uninstall
   StrCmp $0 "" noshortcuts
     Delete "$SMPROGRAMS\$0\GtkGLExt Homepage.url"
     Delete "$SMPROGRAMS\$0\GtkGLExt Reference Manual.lnk"
-    Delete "$SMPROGRAMS\$0\Uninstall.lnk"
+    Delete "$SMPROGRAMS\$0\Uninstall GtkGLExt.lnk"
     RMDir "$SMPROGRAMS\$0" ;Only if empty, so it won't delete other shortcuts
   noshortcuts:
 
