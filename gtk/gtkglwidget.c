@@ -30,6 +30,7 @@ typedef struct
 
   GdkGLContext *glcontext;
 
+  gulong size_allocate_handler;
   gulong unrealize_handler;
   gulong destroy_handler;
 
@@ -47,6 +48,9 @@ static void     gtk_gl_widget_realize            (GtkWidget         *widget,
 static gboolean gtk_gl_widget_configure_event    (GtkWidget         *widget,
                                                   GdkEventConfigure *event,
                                                   GLWidgetPrivate   *private);
+static void     gtk_gl_widget_size_allocate      (GtkWidget         *widget,
+                                                  GtkAllocation     *allocation,
+                                                  gpointer           user_data);
 static void     gtk_gl_widget_unrealize          (GtkWidget         *widget,
                                                   GLWidgetPrivate   *private);
 static void     gtk_gl_widget_parent_set         (GtkWidget         *widget,
@@ -72,12 +76,13 @@ gtk_gl_widget_realize (GtkWidget       *widget,
 
   GTK_GL_NOTE_FUNC_PRIVATE ();
 
+  /*
+   * Set OpenGL-capability to widget->window, then connect some signal
+   * handlers.
+   */
+
   if (!gdk_window_is_gl_capable (widget->window))
     {
-      /*
-       * Set OpenGL-capability to widget->window.
-       */
-
       glwindow = gdk_window_set_gl_capability (widget->window,
                                                private->glconfig,
                                                NULL);
@@ -87,10 +92,13 @@ gtk_gl_widget_realize (GtkWidget       *widget,
           return;
         }
 
-      /*
-       * Connect "unrealize" signal handler.
-       */
+      /* Connect "size_allocate" signal handler. */
+      if (private->size_allocate_handler == 0)
+        private->size_allocate_handler = g_signal_connect_after (G_OBJECT (widget), "size_allocate",
+                                                                 G_CALLBACK (gtk_gl_widget_size_allocate),
+                                                                 NULL);
 
+      /* Connect "unrealize" signal handler. */
       if (private->unrealize_handler == 0)
         private->unrealize_handler = g_signal_connect (G_OBJECT (widget), "unrealize",
                                                        G_CALLBACK (gtk_gl_widget_unrealize),
@@ -109,11 +117,31 @@ gtk_gl_widget_configure_event (GtkWidget         *widget,
 
   if (!private->is_realized)
     {
-      /* Realize. */
+      /* Realize if OpenGL-capable window is not realized yet. */
       gtk_gl_widget_realize (widget, private);
     }
 
   return FALSE;
+}
+
+static void
+gtk_gl_widget_size_allocate (GtkWidget     *widget,
+                             GtkAllocation *allocation,
+                             gpointer       user_data)
+{
+  GdkGLDrawable *gldrawable;
+
+  GTK_GL_NOTE_FUNC_PRIVATE ();
+
+  /*
+   * Synchronize OpenGL rendering pipeline on resizing X window.
+   */
+
+  if (widget->window != NULL)
+    {
+      gldrawable = gdk_window_get_gl_drawable (widget->window);
+      gdk_gl_drawable_wait_gdk (gldrawable);
+    }
 }
 
 static void
@@ -122,14 +150,12 @@ gtk_gl_widget_unrealize (GtkWidget       *widget,
 {
   GTK_GL_NOTE_FUNC_PRIVATE ();
 
-  if (widget->window != NULL)
-    {
-      /*
-       * Remove OpenGL-capability from widget->window.
-       */
+  /*
+   * Remove OpenGL-capability from widget->window.
+   */
 
-      gdk_window_unset_gl_capability (widget->window);
-    }
+  if (widget->window != NULL)
+    gdk_window_unset_gl_capability (widget->window);
 
   private->is_realized = FALSE;
 }
@@ -142,6 +168,10 @@ gtk_gl_widget_parent_set (GtkWidget   *widget,
   GtkWidget *toplevel;
 
   GTK_GL_NOTE_FUNC_PRIVATE ();
+
+  /*
+   * Try to install colormap to the top-level window.
+   */
 
   toplevel = gtk_widget_get_toplevel (widget);
   if (GTK_WIDGET_TOPLEVEL (toplevel) && !GTK_WIDGET_REALIZED (toplevel))
@@ -304,6 +334,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
 
   private->glcontext = NULL;
 
+  private->size_allocate_handler = 0;
   private->unrealize_handler = 0;
   private->destroy_handler = 0;
 
