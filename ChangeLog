@@ -1,3 +1,7 @@
+2002-12-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* setup-gtkglext.sh: Added.
+
 2002-12-22  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* Version 0.6.1
