@@ -1,5 +1,10 @@
 2003-05-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglfont-x11.c (gdk_gl_font_use_pango_font_common) 
+	(gdk_gl_font_use_pango_font) 
+	(gdk_gl_font_use_pango_font_for_display): 
+	Cleaned duplicated code.
+
 	* gdk/gdkglprivate.h: 
 	* gdk/gdkglquery.c (_gdk_gl_print_gl_info): 
 	* gdk/x11/gdkglpixmap-x11.c

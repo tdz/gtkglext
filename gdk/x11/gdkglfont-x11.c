@@ -66,44 +66,23 @@ gdk_gl_font_charset_for_locale (void)
     return g_strdup (result);
   else
     return g_strdup ("iso8859-1");
-};
+}
 
-/**
- * gdk_gl_font_use_pango_font:
- * @font_desc: a #PangoFontDescription describing the font to use.
- * @first: the index of the first glyph to be taken.
- * @count: the number of glyphs to be taken.
- * @list_base: the index of the first display list to be generated.
- *
- * Create bitmap display lists from a #PangoFont.
- *
- * Return value: the #PangoFont used, or NULL if no font matched.
- **/
 PangoFont *
-gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
-                            int                         first,
-                            int                         count,
-                            int                         list_base)
+gdk_gl_font_use_pango_font_common (PangoFontMap               *font_map,
+                                   const PangoFontDescription *font_desc,
+                                   int                         first,
+                                   int                         count,
+                                   int                         list_base)
 {
-  PangoFontMap *font_map;
-  PangoXFontCache *font_cache;
   PangoFont *font = NULL;
   gchar *charset = NULL;
   PangoXSubfont subfont_id;
   gchar *xlfd = NULL;
+  PangoXFontCache *font_cache;
   XFontStruct *fs;
 
-  g_return_val_if_fail (font_desc != NULL, NULL);
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font ()"));
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-  font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  font_map = pango_x_font_map_for_display (gdk_x11_get_default_xdisplay ());
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-
-  font_cache = pango_x_font_map_get_font_cache (font_map);
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font_common ()"));
 
   font = pango_font_map_load_font (font_map, NULL, font_desc);
   if (font == NULL)
@@ -128,6 +107,8 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
       goto FAIL;
     }
 
+  font_cache = pango_x_font_map_get_font_cache (font_map);
+
   fs = pango_x_font_cache_load (font_cache, xlfd);
 
   glXUseXFont (fs->fid, first, count, list_base);
@@ -143,6 +124,39 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
     g_free (xlfd);
 
   return font;
+}
+
+/**
+ * gdk_gl_font_use_pango_font:
+ * @font_desc: a #PangoFontDescription describing the font to use.
+ * @first: the index of the first glyph to be taken.
+ * @count: the number of glyphs to be taken.
+ * @list_base: the index of the first display list to be generated.
+ *
+ * Create bitmap display lists from a #PangoFont.
+ *
+ * Return value: the #PangoFont used, or NULL if no font matched.
+ **/
+PangoFont *
+gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
+                            int                         first,
+                            int                         count,
+                            int                         list_base)
+{
+  PangoFontMap *font_map;
+
+  g_return_val_if_fail (font_desc != NULL, NULL);
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font ()"));
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+  font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
+  font_map = pango_x_font_map_for_display (gdk_x11_get_default_xdisplay ());
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+  return gdk_gl_font_use_pango_font_common (font_map, font_desc,
+                                            first, count, list_base);
 }
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
@@ -167,12 +181,6 @@ gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
                                         int                         list_base)
 {
   PangoFontMap *font_map;
-  PangoXFontCache *font_cache;
-  PangoFont *font = NULL;
-  gchar *charset = NULL;
-  PangoXSubfont subfont_id;
-  gchar *xlfd = NULL;
-  XFontStruct *fs;
 
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
   g_return_val_if_fail (font_desc != NULL, NULL);
@@ -180,46 +188,9 @@ gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font ()"));
 
   font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (display));
-  font_cache = pango_x_font_map_get_font_cache (font_map);
 
-  font = pango_font_map_load_font (font_map, NULL, font_desc);
-  if (font == NULL)
-    {
-      g_warning ("cannot load PangoFont");
-      goto FAIL;
-    }
-
-  charset = gdk_gl_font_charset_for_locale ();
-  if (!pango_x_find_first_subfont (font, &charset, 1, &subfont_id))
-    {
-      g_warning ("cannot find PangoXSubfont");
-      font = NULL;
-      goto FAIL;
-    }
-
-  xlfd = pango_x_font_subfont_xlfd (font, subfont_id);
-  if (xlfd == NULL)
-    {
-      g_warning ("cannot get XLFD");
-      font = NULL;
-      goto FAIL;
-    }
-
-  fs = pango_x_font_cache_load (font_cache, xlfd);
-
-  glXUseXFont (fs->fid, first, count, list_base);
-
-  pango_x_font_cache_unload (font_cache, fs);
-
- FAIL:
-
-  if (charset != NULL)
-    g_free (charset);
-
-  if (xlfd != NULL)
-    g_free (xlfd);
-
-  return font;
+  return gdk_gl_font_use_pango_font_common (font_map, font_desc,
+                                            first, count, list_base);
 }
 
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
