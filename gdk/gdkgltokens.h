@@ -24,23 +24,23 @@ extern "C" {
 #endif /* __cplusplus */
 
 /*
- * Success return value (same as 'Success' of X11)
+ * Success return value
  */
 typedef enum
 {
-  GDK_GL_SUCCESS = 0
+  GDK_GL_SUCCESS = 0  /* same as 'Success' of X11 */
 } GdkGLSuccess;
 
 /*
- * Attribute list terminator (same as 'None' of X11)
+ * Attribute list terminator
  */
 typedef enum
 {
-  GDK_GL_ATTRIB_LIST_NONE = 0
+  GDK_GL_ATTRIB_LIST_NONE = 0  /* same as 'None' of X11 */
 } GdkGLAttribListNone;
 
 /*
- * Ripped from the OpenGL(R) Sample Implementation by SGI.
+ * This source is based on the OpenGL(R) Sample Implementation by SGI.
  */
 
 /*
@@ -81,6 +81,7 @@ typedef enum
 #define GLX_VERSION_1_1 1
 #define GLX_VERSION_1_2 1
 #define GLX_VERSION_1_3 1
+#define GLX_VERSION_1_4 1
 */
 
 /*
@@ -109,6 +110,7 @@ typedef enum
 
 /*
  * FBConfig-specific attributes
+ * [ GLX 1.3 and later ]
  */
 typedef enum
 {
@@ -131,6 +133,16 @@ typedef enum
 } GdkGLFbConfigAttribute;
 
 /*
+ * Multisampling configuration attributes.
+ * [ GLX 1.4 and later ]
+ */
+typedef enum
+{
+  GDK_GL_SAMPLE_BUFFERS = 100000,
+  GDK_GL_SAMPLES        = 100001
+} GdkGLMultisampleConfigAttribute;
+
+/*
  * Error return values from glXGetConfig.  Success is indicated by
  * a value of 0.
  */
@@ -148,8 +160,9 @@ typedef enum
 /* FBConfig attribute values */
 
 /*
- * Generic "don't care" value for glX ChooseFBConfig attributes (except
- * GLX_LEVEL)
+ * Generic "don't care" value for glX ChooseFBConfig attributes
+ * (except GLX_LEVEL)
+ * [ GLX 1.3 and later ]
  */
 typedef enum
 {
@@ -227,9 +240,12 @@ typedef enum
 /*
  * Extension return values from glXGetConfig.  These are also
  * accepted as parameter values for glXChooseVisual.
+ * 
  */
 typedef enum
 {
+  /* [ GLX_EXT_visual_info extension ] */
+
   GDK_GL_X_VISUAL_TYPE_EXT           = 0x22, /* visual_info extension type */
   GDK_GL_TRANSPARENT_TYPE_EXT        = 0x23, /* visual_info extension */
   GDK_GL_TRANSPARENT_INDEX_VALUE_EXT = 0x24, /* visual_info extension */
@@ -251,6 +267,8 @@ typedef enum
   GDK_GL_TRANSPARENT_RGB_EXT         = 0x8008,
   GDK_GL_TRANSPARENT_INDEX_EXT       = 0x8009,
 
+  /* [ GLX_EXT_visual_rating extension ] */
+
   /* Property values for visual_rating */
   GDK_GL_VISUAL_CAVEAT_EXT           = 0x20,   /* visual_rating extension type */
   GDK_GL_SLOW_VISUAL_EXT             = 0x8001,
@@ -259,6 +277,7 @@ typedef enum
 
 /*
  * Names for attributes to glXGetClientString.
+ * [GLX 1.1 and later]
  */
 typedef enum
 {
@@ -269,6 +288,7 @@ typedef enum
 
 /*
  * Names for attributes to glXQueryContextInfoEXT.
+ * [ GLX_EXT_import_context ]
  */
 typedef enum
 {
@@ -276,13 +296,6 @@ typedef enum
   GDK_GL_VISUAL_ID_EXT     = 0x800B, /* id of context's visual */
   GDK_GL_SCREEN_EXT        = 0x800C  /* screen number */
 } GdkGLContextInfoExtensionAttribute;
-
-/* GLX Extension Strings */
-/*
-#define GLX_EXT_import_context	1
-#define GLX_EXT_visual_info	1
-#define GLX_EXT_visual_rating	1
-*/
 
 #ifdef __cplusplus
 }
