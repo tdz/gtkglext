@@ -721,6 +721,12 @@ gdk_window_set_gl_capability (GdkWindow   *window,
   g_object_set_qdata_full (G_OBJECT (window), quark_gl_window, glwindow,
                            (GDestroyNotify) g_object_unref);
 
+  /* 
+   * Unset background pixmap explicitly to avoid AIX X server crash.
+   */
+
+  gdk_window_set_back_pixmap (window, NULL, FALSE);
+
   return glwindow;
 }
 

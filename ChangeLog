@@ -1,3 +1,9 @@
+2003-03-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/gdkglwindow.c (gdk_window_set_gl_capability): Unset
+	window's background pixmap explicitly to avoid AIX X server crash.
+	(reported and solved by B. Souliotis)
+
 2003-03-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglglxext.h: Added #ifndef directive to disable
