@@ -39,10 +39,10 @@ Supported Platforms
 Currently GtkGLExt supports
 
   * UNIX platforms
-      Tested on Linux (RedHat 7.3) and IRIX (6.5).
+      Tested under Linux (RedHat 7.3) and IRIX (6.5).
 
   * Win32 platforms
-      Tested on Windows XP & 2000 Professional using MinGW/Cygwin
+      Tested under Windows XP & 2000 Professional using MinGW/Cygwin
       environment.
 
 
@@ -56,6 +56,8 @@ Requirements
   * GTK 2.0 or later (http://www.gtk.org/)
 
   * OpenGL or Mesa (http://www.mesa3d.org/)
+
+  * gtk-doc (http://www.gtk.org/rdp/)  [optional]
 
 
 Installation
@@ -121,7 +123,7 @@ ACLOCAL_FLAGS is for pkg-config's PKG_CHECK_MODULES macro in configure.in.
 I use the following versions of the GNU auto-tools.
 
   autoconf 2.52 (libtool's AC_LIBTOOL_WIN32_DLL macro has a problem with 2.53)
-  automake 1.6.1
+  automake 1.6.2
   libtool  1.4.2
 
 

@@ -20,13 +20,22 @@ LDADDS = \
 	$(top_builddir)/gtk/$(gtkglext_targetlib)	\
 	$(GTKGLEXT_DEP_LIBS)
 
-EXTRA_PROGRAMS = \
+common_programs = \
 	low-level	\
 	simple		\
 	pixmap		\
 	font		\
 	gears		\
 	viewlw
+
+x11_programs = \
+	glxinfo
+
+if PLATFORM_WIN32
+EXTRA_PROGRAMS = $(common_programs)
+else
+EXTRA_PROGRAMS = $(common_programs) $(x11_programs)
+endif
 
 low_level_SOURCES = low-level.c
 low_level_DEPENDENCIES = $(DEPS)
@@ -51,6 +60,10 @@ gears_LDADD = $(LDADDS)
 viewlw_SOURCES = viewlw.c lw.h lw.c trackball.h trackball.c
 viewlw_DEPENDENCIES = $(DEPS)
 viewlw_LDADD = $(LDADDS)
+
+glxinfo_SOURCES = glxinfo.c
+glxinfo_DEPENDENCIES = $(DEPS)
+glxinfo_LDADD = $(GL_LIBS) $(GDKGLEXT_WIN_LIBS)
 
 
 .PHONY: examples files
