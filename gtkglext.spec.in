@@ -30,7 +30,7 @@ the GDK objects which support OpenGL in GTK, and GTK+ widget API
 add-ons which extends *ANY* GTK+ widget to an OpenGL-capable widget.
 
 %package devel
-Summary: Development tools for GTK-based OpenGL applications.
+Summary: Development tools for GTK-based OpenGL applications
 Group: Development/Libraries
 
 Requires: %{name} = %{version}
