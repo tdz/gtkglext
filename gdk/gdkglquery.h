@@ -23,6 +23,8 @@
 
 G_BEGIN_DECLS
 
+typedef void (*GdkGLFunc)(void);
+
 gboolean gdk_gl_query_extension             (void);
 
 #ifdef GDK_MULTIHEAD_SAFE
@@ -39,6 +41,8 @@ gboolean gdk_gl_query_version_for_display   (GdkDisplay *display,
 #endif /* GDK_MULTIHEAD_SAFE */
 
 gboolean gdk_gl_query_gl_extension          (const char *extension);
+
+GdkGLFunc gdk_gl_query_get_proc_address (const char *proc_name);
 
 G_END_DECLS
 

@@ -122,6 +122,8 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
   unsigned int border_width_return;
   unsigned int depth_return;
 
+  GdkGLFunc proc;
+
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
                                                        n_construct_properties,
                                                        construct_properties);
@@ -163,16 +165,17 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
    * Create an OpenGL off-screen rendering area.
    */
 
-#if defined(GLX_MESA_pixmap_colormap) && defined(GTKGLEXT_ENABLE_MESA_EXT)
-
-  if (strstr (glXQueryExtensionsString (xdisplay, screen_num), "GLX_MESA_pixmap_colormap"))
+  /* Try glXCreateGLXPixmapMESA () */
+  proc = gdk_gl_get_glXCreateGLXPixmapMESA ();
+  if (proc != NULL)
     {
       GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmapMESA ()"));
 
-      impl->glxpixmap = glXCreateGLXPixmapMESA (xdisplay,
-                                                xvinfo,
-                                                xpixmap,
-                                                GDK_GL_CONFIG_XCOLORMAP (glpixmap->glconfig));
+      impl->glxpixmap = gdk_gl_glXCreateGLXPixmapMESA (proc,
+                                                       xdisplay,
+                                                       xvinfo,
+                                                       xpixmap,
+                                                       GDK_GL_CONFIG_XCOLORMAP (glpixmap->glconfig));
     }
   else
     {
@@ -182,16 +185,6 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
                                             xvinfo,
                                             xpixmap);
     }
-
-#else  /* defined(GLX_MESA_pixmap_colormap) && defined(GTKGLEXT_ENABLE_MESA_EXT) */
-
-  GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmap ()"));
-
-  impl->glxpixmap = glXCreateGLXPixmap (xdisplay,
-                                        xvinfo,
-                                        xpixmap);
-
-#endif /* defined(GLX_MESA_pixmap_colormap) && defined(GTKGLEXT_ENABLE_MESA_EXT) */
 
   if (impl->glxpixmap == None)
     goto FAIL;

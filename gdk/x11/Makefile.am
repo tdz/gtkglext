@@ -33,9 +33,11 @@ libgdkglext_x11_la_SOURCES = \
 	gdkglwindow-x11.h	\
 	gdkglwindow-x11.c	\
 	gdkglfont-x11.c		\
+	gdkglglxext.c		\
 	gdkglprivate-x11.h
 
 libgdkglextinclude_HEADERS = \
+	gdkglglxext.h		\
 	gdkglx.h
 
 .PHONY: files

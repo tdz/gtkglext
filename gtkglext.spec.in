@@ -52,7 +52,7 @@ and developer docs for GtkGLExt.
 LDFLAGS="-L$RPM_BUILD_ROOT%{_libdir}"
 export LDFLAGS
 
-%configure --disable-gtk-doc --disable-mesa-ext
+%configure --disable-gtk-doc
 
 make
 
@@ -92,12 +92,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_includedir}/*
 %{_libdir}/lib*.so
-%{_libdir}/lib*.a
+#%{_libdir}/lib*.a
 %{_libdir}/lib*.la
 %{_libdir}/pkgconfig/*
 %{_datadir}/gtk-doc/html/*
 
 %changelog
+* Fri Nov 15 2002 Naofumi Yasufuku <naofumi@users.sourceforge.net>
+- Removed --disable-mesa-ext configure option.
+- Disabled static libraries by default.
+
 * Sat Aug  3 2002 Naofumi Yasufuku <naofumi@users.sourceforge.net>
 - Added --disable-mesa-ext configure option.
 

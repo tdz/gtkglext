@@ -23,11 +23,17 @@
 
 #include <gdk/gdkglprivate.h>
 
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+
 #include <GL/glx.h>
 #include <GL/gl.h>
 
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
+#ifdef INSIDE_GDK_GL_X11
+#include <gdk/x11/gdkglglxext.h>
+#else
+#include <gdk/gdkglglxext.h>
+#endif
 
 G_BEGIN_DECLS
 

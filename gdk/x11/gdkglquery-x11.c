@@ -16,6 +16,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#include <gmodule.h>
+
 #ifdef GDK_MULTIHEAD_SAFE
 #include <gdk/gdkdisplay.h>
 #endif /* GDK_MULTIHEAD_SAFE */
@@ -97,3 +99,66 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 }
 
 #endif /* GDK_MULTIHEAD_SAFE */
+
+/**
+ * gdk_gl_query_get_proc_address:
+ * @proc_name: 
+ *
+ * Return value: 
+ **/
+GdkGLFunc
+gdk_gl_query_get_proc_address (const char *proc_name)
+{
+  typedef GdkGLFunc (*__GLXGetProcAddressFunc) (const GLubyte *);
+  static __GLXGetProcAddressFunc glx_get_proc_address = NULL;
+  static gboolean init_glx_get_proc_address = FALSE;
+  GModule *module;
+  GdkGLFunc proc_address;
+
+  if (!init_glx_get_proc_address)
+    {
+      /*
+       * Look up glXGetProcAddress* () function.
+       */
+
+      module = g_module_open (NULL, G_MODULE_BIND_LAZY);
+      g_return_val_if_fail (module != NULL, NULL);
+
+      g_module_symbol (module, "glXGetProcAddressARB",
+                       (gpointer) &glx_get_proc_address);
+      if (glx_get_proc_address == NULL)
+        g_module_symbol (module, "glXGetProcAddressEXT",
+                         (gpointer) &glx_get_proc_address);
+      if (glx_get_proc_address == NULL)
+        g_module_symbol (module, "glXGetProcAddress",
+                         (gpointer) &glx_get_proc_address);
+
+      g_module_close (module);
+
+      init_glx_get_proc_address = TRUE;
+    }
+
+  if (glx_get_proc_address == NULL)
+    {
+      /* glXGetProcAddress () is not supported. */
+
+      GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () is not supported."));
+
+      module = g_module_open (NULL, G_MODULE_BIND_LAZY);
+      g_return_val_if_fail (module != NULL, NULL);
+
+      g_module_symbol (module, proc_name, (gpointer) &proc_address);
+
+      g_module_close (module);
+    }
+  else
+    {
+      /* glXGetProcAddress () is supported. */
+
+      GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () is supported."));
+
+      proc_address = glx_get_proc_address (proc_name);
+    }
+
+  return proc_address;
+}
