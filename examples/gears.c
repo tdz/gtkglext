@@ -231,68 +231,6 @@ draw(GtkWidget      *widget,
   return TRUE;
 }
 
-static gboolean
-idle(GtkWidget *widget)
-{
-  GdkRectangle area;
-
-  angle += 2.0;
-
-  area.x = 0;
-  area.y = 0;
-  area.width  = widget->allocation.width;
-  area.height = widget->allocation.height;
-
-  gtk_widget_draw(widget, &area);
-
-  return TRUE;
-}
-
-/* change view angle, exit upon ESC */
-/* ARGSUSED1 */
-static gboolean
-key(GtkWidget   *widget,
-    GdkEventKey *event,
-    gpointer     data)
-{
-  GdkRectangle area;
-
-  switch (event->keyval) {
-  case GDK_z:
-    view_rotz += 5.0;
-    break;
-  case GDK_Z:
-    view_rotz -= 5.0;
-    break;
-  case GDK_Up:
-    view_rotx += 5.0;
-    break;
-  case GDK_Down:
-    view_rotx -= 5.0;
-    break;
-  case GDK_Left:
-    view_roty += 5.0;
-    break;
-  case GDK_Right:
-    view_roty -= 5.0;
-    break;
-  case GDK_Escape:
-    gtk_main_quit();
-    break;
-  default:
-    return TRUE;
-  }
-
-  area.x = 0;
-  area.y = 0;
-  area.width  = widget->allocation.width;
-  area.height = widget->allocation.height;
-
-  gtk_widget_draw(widget, &area);
-
-  return TRUE;
-}
-
 /* new window size or exposure */
 static gboolean
 reshape(GtkWidget         *widget,
@@ -369,6 +307,23 @@ init(GtkWidget *widget,
 }
 
 static gboolean
+idle(GtkWidget *widget)
+{
+  GdkRectangle area;
+
+  angle += 2.0;
+
+  area.x = 0;
+  area.y = 0;
+  area.width  = widget->allocation.width;
+  area.height = widget->allocation.height;
+
+  gtk_widget_draw(widget, &area);
+
+  return TRUE;
+}
+
+static gboolean
 visible(GtkWidget          *widget,
         GdkEventVisibility *event,
         gpointer            data)
@@ -377,13 +332,60 @@ visible(GtkWidget          *widget,
 
   if (event->state == GDK_VISIBILITY_FULLY_OBSCURED) {
     if (id != 0) {
-      gtk_idle_remove (id);
+      gtk_idle_remove(id);
       id = 0;
     }
   } else {
     if (id == 0)
-      id = gtk_idle_add((GtkFunction) idle, widget);
+      id = gtk_idle_add_priority(GDK_PRIORITY_REDRAW,
+				 (GtkFunction) idle,
+				 widget);
   }
+
+  return TRUE;
+}
+
+/* change view angle, exit upon ESC */
+/* ARGSUSED1 */
+static gboolean
+key(GtkWidget   *widget,
+    GdkEventKey *event,
+    gpointer     data)
+{
+  GdkRectangle area;
+
+  switch (event->keyval) {
+  case GDK_z:
+    view_rotz += 5.0;
+    break;
+  case GDK_Z:
+    view_rotz -= 5.0;
+    break;
+  case GDK_Up:
+    view_rotx += 5.0;
+    break;
+  case GDK_Down:
+    view_rotx -= 5.0;
+    break;
+  case GDK_Left:
+    view_roty += 5.0;
+    break;
+  case GDK_Right:
+    view_roty -= 5.0;
+    break;
+  case GDK_Escape:
+    gtk_main_quit();
+    break;
+  default:
+    return TRUE;
+  }
+
+  area.x = 0;
+  area.y = 0;
+  area.width  = widget->allocation.width;
+  area.height = widget->allocation.height;
+
+  gtk_widget_draw(widget, &area);
 
   return TRUE;
 }
