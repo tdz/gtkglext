@@ -344,7 +344,7 @@ else
 
   # for Win32
 
-  AC_MSG_CHECKING([for glNewList in opengl32])
+  AC_MSG_CHECKING([for glNewList in -lopengl32])
   LIBS="-lopengl32 $LIBS"
   AC_TRY_LINK([ #include <windows.h>
                 #include <GL/gl.h> ], 
@@ -357,7 +357,7 @@ else
     AC_MSG_ERROR(Cannot find GL library)
   fi
 
-  AC_MSG_CHECKING([for gluNewQuadric in glu32])
+  AC_MSG_CHECKING([for gluNewQuadric in -lglu32])
   LIBS="-lglu32 $LIBS"
   AC_TRY_LINK([ #include <windows.h>
                 #include <GL/gl.h>

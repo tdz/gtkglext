@@ -9583,8 +9583,8 @@ else
 
   # for Win32
 
-  echo "$as_me:9586: checking for glNewList in opengl32" >&5
-echo $ECHO_N "checking for glNewList in opengl32... $ECHO_C" >&6
+  echo "$as_me:9586: checking for glNewList in -lopengl32" >&5
+echo $ECHO_N "checking for glNewList in -lopengl32... $ECHO_C" >&6
   LIBS="-lopengl32 $LIBS"
   cat >conftest.$ac_ext <<_ACEOF
 #line 9590 "configure"
@@ -9627,8 +9627,8 @@ echo "$as_me: error: Cannot find GL library" >&2;}
    { (exit 1); exit 1; }; }
   fi
 
-  echo "$as_me:9630: checking for gluNewQuadric in glu32" >&5
-echo $ECHO_N "checking for gluNewQuadric in glu32... $ECHO_C" >&6
+  echo "$as_me:9630: checking for gluNewQuadric in -lglu32" >&5
+echo $ECHO_N "checking for gluNewQuadric in -lglu32... $ECHO_C" >&6
   LIBS="-lglu32 $LIBS"
   cat >conftest.$ac_ext <<_ACEOF
 #line 9634 "configure"
