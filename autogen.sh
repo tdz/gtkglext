@@ -14,8 +14,8 @@ FILE=gdk/gdkgl.h
 DIE=0
 
 have_libtool=false
-if libtool --version < /dev/null > /dev/null 2>&1 ; then
-	libtool_version=`libtoolize --version |  libtoolize --version | sed 's/^[^0-9]*\([0-9.][0-9.]*\).*/\1/'`
+if libtoolize --version < /dev/null > /dev/null 2>&1 ; then
+	libtool_version=`libtoolize --version | sed 's/^[^0-9]*\([0-9.][0-9.]*\).*/\1/'`
 	case $libtool_version in
 	    1.4*)
 		have_libtool=true
@@ -26,34 +26,34 @@ if $have_libtool ; then : ; else
 	echo
 	echo "You must have libtool 1.4 installed to compile $PROJECT."
 	echo "Install the appropriate package for your distribution,"
-	echo "or get the source tarball at ftp://ftp.gnu.org/pub/gnu/"
+	echo "or get the source tarball at http://ftp.gnu.org/gnu/libtool/"
 	DIE=1
 fi
+
+# (gtkdocize --version) < /dev/null > /dev/null 2>&1 || {
+# 	echo
+# 	echo "You must have gtk-doc installed to compile $PROJECT."
+# 	echo "Install the appropriate package for your distribution,"
+# 	echo "or get the source tarball at ftp://ftp.gnome.org/pub/GNOME/sources/gtk-doc/"
+# 	DIE=1
+# }
 
 (autoconf --version) < /dev/null > /dev/null 2>&1 || {
 	echo
 	echo "You must have autoconf installed to compile $PROJECT."
-	echo "libtool the appropriate package for your distribution,"
-	echo "or get the source tarball at ftp://ftp.gnu.org/pub/gnu/"
+	echo "Install the appropriate package for your distribution,"
+	echo "or get the source tarball at http://ftp.gnu.org/gnu/autoconf/"
 	DIE=1
 }
 
-have_automake=false
-if automake --version < /dev/null > /dev/null 2>&1 ; then
-	automake_version=`automake --version | grep 'automake (GNU automake)' | sed 's/^[^0-9]*\(.*\)/\1/'`
-	case $automake_version in
-	   1.2*|1.3*|1.4*|1.5*) 
-		;;
-	   *)
-		have_automake=true
-		;;
-	esac
-fi
-if $have_automake ; then : ; else
+if automake-1.6 --version < /dev/null > /dev/null 2>&1 ; then
+    AUTOMAKE=automake-1.6
+    ACLOCAL=aclocal-1.6
+else
 	echo
-	echo "You must have automake 1.6 installed to compile $PROJECT."
-	echo "Get ftp://ftp.gnu.org/pub/gnu/automake/automake-1.6.tar.gz"
-	echo "(or a newer version if it is available)"
+	echo "You must have automake 1.6.x installed to compile $PROJECT."
+	echo "Install the appropriate package for your distribution,"
+	echo "or get the source tarball at http://ftp.gnu.org/gnu/automake/"
 	DIE=1
 fi
 
@@ -73,20 +73,16 @@ if test -z "$AUTOGEN_SUBDIR_MODE"; then
         fi
 fi
 
-case $CC in
-*xlc | *xlc\ * | *lcc | *lcc\ *) am_opt=--include-deps;;
-esac
+$ACLOCAL $ACLOCAL_FLAGS || exit 1
 
-aclocal $ACLOCAL_FLAGS
+libtoolize --force || exit 1
 
-# optionally feature autoheader
-(autoheader --version)  < /dev/null > /dev/null 2>&1 && autoheader
+# gtkdocize || exit 1
 
-# run libtoolize ...
-libtoolize --force
+autoheader || exit 1
 
-automake -a $am_opt
-autoconf
+$AUTOMAKE --add-missing || exit 1
+autoconf || exit 1
 cd $ORIGDIR
 
 if test -z "$AUTOGEN_SUBDIR_MODE"; then
