@@ -29,6 +29,7 @@ EXPORTS
 	gdk_gl_context_new
 	gdk_gl_debug_flags
 	gdk_gl_drawable_get_gl_config
+	gdk_gl_drawable_get_size
 	gdk_gl_drawable_get_type
 	gdk_gl_drawable_gl_begin
 	gdk_gl_drawable_gl_end
