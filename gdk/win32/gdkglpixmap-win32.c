@@ -407,6 +407,9 @@ gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable *draw,
 
   glpixmap = GDK_GL_PIXMAP (draw);
 
+  /* Sync. */
+  gdk_gl_pixmap_sync_gdk (glpixmap);
+
   /* Get DC. */
   hdc = GDK_GL_PIXMAP_HDC_GET (draw);
 

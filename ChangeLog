@@ -1,3 +1,9 @@
+2002-08-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglpixmap-win32.c
+	(gdk_win32_gl_pixmap_make_context_current): make_context_current()
+	does sync_gdk().
+
 2002-08-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/gdkglwindow.[ch] (gdk_gl_window_get_window): Added.
