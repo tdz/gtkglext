@@ -97,6 +97,10 @@ gdk_gl_window_impl_win32_finalize (GObject *object)
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_win32_finalize ()"));
 
+  /* Get DC. */
+  if (impl->hdc == NULL)
+    impl->hdc = GetDC (impl->hwnd);
+
   if (impl->hdc == wglGetCurrentDC ())
     {
       GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
