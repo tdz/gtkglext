@@ -1,5 +1,11 @@
 2002-12-22  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new) 
+	(gdk_gl_config_new_for_screen) 
+	(gdk_x11_gl_config_new_from_visualid) 
+	(gdk_x11_gl_config_new_from_visualid_for_screen): Cleanup
+	duplicated code.
+
 	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_new) 
 	(gdk_gl_config_new_for_screen): Cleanup duplicated code.
 

@@ -36,13 +36,6 @@ static guint         gdk_gl_context_hash   (GLXContext   *glxcontext);
 static gboolean      gdk_gl_context_equal  (GLXContext   *a,
                                             GLXContext   *b);
 
-static GdkGLContext *gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
-                                                GdkGLConfig   *glconfig,
-                                                GdkGLContext  *share_list,
-                                                gboolean       is_direct,
-                                                int            render_type,
-                                                GLXContext    *glxcontext);
-
 static void     gdk_gl_context_impl_x11_init         (GdkGLContextImplX11      *impl);
 static void     gdk_gl_context_impl_x11_class_init   (GdkGLContextImplX11Class *klass);
 
@@ -227,7 +220,7 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
   GdkGLContext *glcontext;
   GdkGLContextImplX11 *impl;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_new_common ()"));
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_new_common ()"));
 
   /*
    * Instanciate the GdkGLContextImplX11 object.

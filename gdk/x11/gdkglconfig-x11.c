@@ -51,9 +51,6 @@ static GdkColormap *gdk_gl_config_setup_colormap        (GdkScreen              
                                                          gboolean                 is_rgba,
                                                          gboolean                 is_mesa_glx);
 
-static GdkGLConfig *gdk_gl_config_new_common            (GdkScreen               *screen,
-                                                         XVisualInfo             *xvinfo);
-
 static gboolean     gdk_x11_gl_config_get_attrib        (GdkGLConfig             *glconfig,
                                                          gint                     attribute,
                                                          gint                    *value);
@@ -633,13 +630,42 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
 }
 
 static GdkGLConfig *
-gdk_gl_config_new_common (GdkScreen   *screen,
-                          XVisualInfo *xvinfo)
+gdk_gl_config_new_common (GdkScreen *screen,
+                          const int *attrib_list)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplX11 *impl;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_common ()"));
+  Display *xdisplay;
+  int screen_num;
+  XVisualInfo *xvinfo;
+
+  g_return_val_if_fail (attrib_list != NULL, NULL);
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_new_common ()"));
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+  xdisplay = GDK_SCREEN_XDISPLAY (screen);
+  screen_num = GDK_SCREEN_XNUMBER (screen);
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
+  xdisplay = gdk_x11_get_default_xdisplay ();
+  screen_num = gdk_x11_get_default_screen ();
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+  /*
+   * Find an OpenGL-capable visual.
+   */
+
+  GDK_GL_NOTE (IMPL, g_message (" * glXChooseVisual ()"));
+
+  xvinfo = glXChooseVisual (xdisplay, screen_num, (int *) attrib_list);
+  if (xvinfo == NULL)
+    return NULL;
+
+  GDK_GL_NOTE (MISC,
+    g_message (" -- glXChooseVisual: screen number = %d", xvinfo->screen));
+  GDK_GL_NOTE (MISC,
+    g_message (" -- glXChooseVisual: visual id = 0x%lx", xvinfo->visualid));
 
   /*
    * Instanciate the GdkGLConfigImplX11 object.
@@ -685,44 +711,16 @@ GdkGLConfig *
 gdk_gl_config_new (const int *attrib_list)
 {
   GdkScreen *screen;
-  Display *xdisplay;
-  int screen_num;
-  XVisualInfo *xvinfo;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
 
-  g_return_val_if_fail (attrib_list != NULL, NULL);
-
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   screen = gdk_screen_get_default ();
-  xdisplay = GDK_SCREEN_XDISPLAY (screen);
-  screen_num = GDK_SCREEN_XNUMBER (screen);
 #else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   screen = NULL;
-  xdisplay = gdk_x11_get_default_xdisplay ();
-  screen_num = gdk_x11_get_default_screen ();
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-  /*
-   * Find an OpenGL-capable visual.
-   */
-
-  GDK_GL_NOTE (IMPL, g_message (" * glXChooseVisual ()"));
-
-  xvinfo = glXChooseVisual (xdisplay, screen_num, (int *) attrib_list);
-  if (xvinfo == NULL)
-    return NULL;
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - glXChooseVisual: screen number = %d", xvinfo->screen));
-  GDK_GL_NOTE (MISC,
-    g_message (" - glXChooseVisual: visual id = 0x%lx", xvinfo->visualid));
-
-  /*
-   * Instanciate the GdkGLConfigImplX11 object.
-   */
-
-  return gdk_gl_config_new_common (screen, xvinfo);
+  return gdk_gl_config_new_common (screen, attrib_list);
 }
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
@@ -731,35 +729,9 @@ GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
                               const int *attrib_list)
 {
-  Display *xdisplay;
-  int screen_num;
-  XVisualInfo *xvinfo;
-
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_for_screen ()"));
 
-  xdisplay = GDK_SCREEN_XDISPLAY (screen);
-  screen_num = GDK_SCREEN_XNUMBER (screen);
-
-  /*
-   * Find an OpenGL-capable visual.
-   */
-
-  GDK_GL_NOTE (IMPL, g_message (" * glXChooseVisual ()"));
-
-  xvinfo = glXChooseVisual (xdisplay, screen_num, (int *) attrib_list);
-  if (xvinfo == NULL)
-    return NULL;
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - glXChooseVisual: screen number = %d", xvinfo->screen));
-  GDK_GL_NOTE (MISC,
-    g_message (" - glXChooseVisual: visual id = 0x%lx", xvinfo->visualid));
-
-  /*
-   * Instanciate the GdkGLConfigImplX11 object.
-   */
-
-  return gdk_gl_config_new_common (screen, xvinfo);
+  return gdk_gl_config_new_common (screen, attrib_list);
 }
 
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
@@ -792,22 +764,23 @@ gdk_x11_gl_get_xvinfo (Display  *xdisplay,
   return xvinfo_list;
 }
 
-GdkGLConfig *
-gdk_x11_gl_config_new_from_visualid (VisualID xvisualid)
+static GdkGLConfig *
+gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
+                                            VisualID   xvisualid)
 {
-  GdkScreen *screen;
+  GdkGLConfig *glconfig;
+  GdkGLConfigImplX11 *impl;
+
   Display *xdisplay;
   int screen_num;
   XVisualInfo *xvinfo;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_config_new_from_visualid ()"));
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_x11_gl_config_new_from_visualid_common ()"));
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-  screen = gdk_screen_get_default ();
   xdisplay = GDK_SCREEN_XDISPLAY (screen);
   screen_num = GDK_SCREEN_XNUMBER (screen);
 #else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  screen = NULL;
   xdisplay = gdk_x11_get_default_xdisplay ();
   screen_num = gdk_x11_get_default_screen ();
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
@@ -829,7 +802,35 @@ gdk_x11_gl_config_new_from_visualid (VisualID xvisualid)
    * Instanciate the GdkGLConfigImplX11 object.
    */
 
-  return gdk_gl_config_new_common (screen, xvinfo);
+  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11,
+                           "screen", screen,
+                           "xvinfo", xvinfo,
+                           NULL);
+  impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
+
+  if (!impl->is_constructed)
+    {
+      g_object_unref (G_OBJECT (glconfig));
+      return NULL;
+    }
+
+  return glconfig;
+}
+
+GdkGLConfig *
+gdk_x11_gl_config_new_from_visualid (VisualID xvisualid)
+{
+  GdkScreen *screen;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_config_new_from_visualid ()"));
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+  screen = gdk_screen_get_default ();
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
+  screen = NULL;
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+  return gdk_x11_gl_config_new_from_visualid_common (screen, xvisualid);
 }
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
@@ -838,33 +839,9 @@ GdkGLConfig *
 gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
                                                 VisualID   xvisualid)
 {
-  Display *xdisplay;
-  int screen_num;
-  XVisualInfo *xvinfo;
-
   GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_config_new_from_visualid_for_screen ()"));
 
-  xdisplay = GDK_SCREEN_XDISPLAY (screen);
-  screen_num = GDK_SCREEN_XNUMBER (screen);
-
-  /*
-   * Get XVisualInfo.
-   */
-
-  xvinfo = gdk_x11_gl_get_xvinfo (xdisplay, screen_num, xvisualid);
-  if (xvinfo == NULL)
-    return NULL;
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_x11_gl_get_xvinfo: screen number = %d", xvinfo->screen));
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_x11_gl_get_xvinfo: visual id = 0x%lx", xvinfo->visualid));
-
-  /*
-   * Instanciate the GdkGLConfigImplX11 object.
-   */
-
-  return gdk_gl_config_new_common (screen, xvinfo);
+  return gdk_x11_gl_config_new_from_visualid_common (screen, xvisualid);
 }
 
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
