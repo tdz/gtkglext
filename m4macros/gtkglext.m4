@@ -168,7 +168,7 @@ main ()
   fi
   if test "x$no_gtkglext" = x ; then
      AC_MSG_RESULT(yes (version $gtkglext_config_major_version.$gtkglext_config_minor_version.$gtkglext_config_micro_version))
-     ifelse([$2], , :, [$2])     
+     ifelse([$2], , :, [$2])
   else
      AC_MSG_RESULT(no)
      if test "$PKG_CONFIG" = "no" ; then
@@ -210,4 +210,21 @@ main ()
   AC_SUBST(GTKGLEXT_CFLAGS)
   AC_SUBST(GTKGLEXT_LIBS)
   rm -f conf.gtkgltest
+])
+
+dnl AC_GTKGLEXT_SUPPORTS_MULTIHEAD([ACTION-IF-SUPPORTED [, ACTION-IF-NOT-SUPPORTED]])
+dnl Checks whether GtkGLExt supports multihead.
+dnl
+AC_DEFUN(AC_GTKGLEXT_SUPPORTS_MULTIHEAD,
+[ AC_CACHE_CHECK([whether GtkGLExt supports multihead],
+                 [ac_cv_gtkglext_supports_multihead],
+                 [AC_TRY_LINK([#include <gdk/gdkglquery.h>], 
+                              [gdk_gl_query_extension_for_display(NULL);],
+                              [ac_cv_gtkglext_supports_multihead=yes],
+                              [ac_cv_gtkglext_supports_multihead=no])])
+  if test "x$ac_cv_gtkglext_supports_multihead" = "xyes" ; then
+    ifelse([$1], , :, [$1])
+  else
+    ifelse([$2], , :, [$2])
+  fi
 ])

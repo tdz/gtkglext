@@ -1,10 +1,13 @@
 2003-02-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* m4macros/gtkglext.m4: Added AC_GTKGLEXT_SUPPORTS_MULTIHEAD macro
+	for checking whether GtkGLExt supports multihead.
+
 	* configure.in: 
 	* Makefile.am: 
 	* m4macros/Makefile.am: 
-	* m4macros/gtkglext.m4: Added m4 macro for checking GtkGLExt
-	library.
+	* m4macros/gtkglext.m4: Added AM_PATH_GTKGLEXT_1_0 macro for
+	checking GtkGLExt library.
 
 2003-02-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
