@@ -189,7 +189,7 @@ _gdk_gl_pixmap_real_drawable (GdkGLDrawable *gldrawable)
 gboolean
 _gdk_gl_pixmap_is_double_buffered (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), FALSE);
 
   return gdk_gl_config_is_double_buffered (GDK_GL_PIXMAP (gldrawable)->glconfig);
 }

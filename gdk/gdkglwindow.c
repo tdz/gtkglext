@@ -190,7 +190,7 @@ _gdk_gl_window_real_drawable (GdkGLDrawable *gldrawable)
 gboolean
 _gdk_gl_window_is_double_buffered (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), NULL);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), FALSE);
 
   return gdk_gl_config_is_double_buffered (GDK_GL_WINDOW (gldrawable)->glconfig);
 }
