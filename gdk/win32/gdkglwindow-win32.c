@@ -126,7 +126,16 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
 static void
 gdk_gl_window_impl_win32_finalize (GObject *object)
 {
+  GdkGLWindow *glwindow;
+  GdkGLWindowImplWin32 *impl;
+
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_win32_finalize ()"));
+
+  glwindow = GDK_GL_WINDOW (object);
+  impl = GDK_GL_WINDOW_IMPL_WIN32 (object);
+
+  if (impl->hdc != NULL)
+    _gdk_win32_gl_window_hdc_release (GDK_GL_DRAWABLE (glwindow));
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }

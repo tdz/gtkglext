@@ -126,7 +126,16 @@ gdk_gl_pixmap_impl_win32_constructor (GType                  type,
 static void
 gdk_gl_pixmap_impl_win32_finalize (GObject *object)
 {
+  GdkGLPixmap *glpixmap;
+  GdkGLPixmapImplWin32 *impl;
+
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_finalize ()"));
+
+  glpixmap = GDK_GL_PIXMAP (object);
+  impl = GDK_GL_PIXMAP_IMPL_WIN32 (object);
+
+  if (impl->hdc != NULL)
+    _gdk_win32_gl_pixmap_hdc_release (GDK_GL_DRAWABLE (glpixmap));
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -144,8 +153,6 @@ gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
   iface->real_drawable = _gdk_gl_pixmap_real_drawable;
 }
-
-#include "gdkglconfig-win32.h"
 
 HDC
 _gdk_win32_gl_pixmap_hdc_get (GdkGLDrawable *gldrawable)
