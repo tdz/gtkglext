@@ -23,7 +23,6 @@
 #include <X11/Xutil.h>
 
 #include <GL/glx.h>
-#include <GL/gl.h>
 
 #include <gdk/gdkgldefs.h>
 #include <gdk/gdkglquery.h>
@@ -47,6 +46,25 @@ typedef XID GLXPbufferSGIX;
 /* for __GLXextFuncPtr typedef in glxext.h */
 #  undef GLX_ARB_get_proc_address
 #endif
+
+/* Suppress 'redefined' warnings (Solaris 8, etc.) */
+
+#if !defined(GLX_ARB_multisample) && defined(GLX_SAMPLE_BUFFERS_ARB)
+#define GLX_ARB_multisample 1
+#endif
+
+#if !defined(GLX_SGIS_multisample) && defined(GLX_SAMPLE_BUFFERS_SGIS)
+#define GLX_SGIS_multisample 1
+#endif
+
+#if !defined(GLX_EXT_visual_rating) && defined(GLX_VISUAL_CAVEAT_EXT)
+#define GLX_EXT_visual_rating 1
+#endif
+
+#if !defined(GLX_EXT_import_context) && defined(GLX_SHARE_CONTEXT_EXT)
+#define GLX_EXT_import_context 1
+#endif
+
 #include <gdk/GL/glxext.h>
 
 /* 

@@ -1,13 +1,15 @@
 2003-01-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	(Bugs item #672485, Jussi Laako)
+
+	* gdk/x11/gdkglglxext.h: Suppress 'redefined' warnings on Solaris 8.
+
 	* gdk/x11/gdkglglxext.h: typedef GLXPbufferSGIX for some platforms
 	which provide GLX_SGIX_pbuffer support without GLXPbufferSGIX type
 	definition.
 
 	* configure.in: Check GLXPbufferSGIX typedef for some platforms
 	which have bad GLX headers (Solaris 8, etc.).
-
-	(Bugs item #672485, Jussi Laako)
 
 2003-01-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
