@@ -19,25 +19,13 @@
 #ifndef __GDK_GL_WGL_EXT_H__
 #define __GDK_GL_WGL_EXT_H__
 
-#define WIN32_LEAN_AND_MEAN 1
-#include <windows.h>
-
 #include <GL/gl.h>
+
+#include <gdk/glext/wglext.h>
 
 #include <gdk/gdkglquery.h>
 
 G_BEGIN_DECLS
-
-#ifndef __wglext_h_
-
-#ifndef WGL_ARB_pbuffer
-DECLARE_HANDLE(HPBUFFERARB);
-#endif
-#ifndef WGL_EXT_pbuffer
-DECLARE_HANDLE(HPBUFFEREXT);
-#endif
-
-#endif /* __wglext_h_ */
 
 /* 
  * WGL_ARB_buffer_region

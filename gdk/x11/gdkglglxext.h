@@ -25,6 +25,12 @@
 #include <GL/glx.h>
 #include <GL/gl.h>
 
+#if !defined(__glxext_h_) && defined(GLX_ARB_get_proc_address)
+/* for __GLXextFuncPtr typedef in glxext.h */
+#  undef GLX_ARB_get_proc_address
+#endif
+#include <gdk/glext/glxext.h>
+
 #include <gdk/gdkglquery.h>
 
 G_BEGIN_DECLS
@@ -36,36 +42,6 @@ typedef XID GLXContextID;
 typedef XID GLXWindow;
 typedef XID GLXPbuffer;
 #endif
-
-#ifndef __glxext_h_
-
-#ifndef GLX_SGIX_video_source
-typedef XID GLXVideoSourceSGIX;
-#endif
-
-#ifndef GLX_SGIX_fbconfig
-typedef XID GLXFBConfigIDSGIX;
-typedef struct __GLXFBConfigRec *GLXFBConfigSGIX;
-#endif
-
-#ifndef GLX_SGIX_pbuffer
-typedef XID GLXPbufferSGIX;
-typedef struct {
-    int type;
-    unsigned long serial;	  /* # of last request processed by server */
-    Bool send_event;		  /* true if this came for SendEvent request */
-    Display *display;		  /* display the event was read from */
-    GLXDrawable drawable;	  /* i.d. of Drawable */
-    int event_type;		  /* GLX_DAMAGED_SGIX or GLX_SAVED_SGIX */
-    int draw_type;		  /* GLX_WINDOW_SGIX or GLX_PBUFFER_SGIX */
-    unsigned int mask;	  /* mask indicating which buffers are affected*/
-    int x, y;
-    int width, height;
-    int count;		  /* if nonzero, at least this many more */
-} GLXBufferClobberEventSGIX;
-#endif
-
-#endif /* __glxext_h_ */
 
 /* 
  * GLX_VERSION_1_3
