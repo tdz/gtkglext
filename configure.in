@@ -77,6 +77,7 @@ AC_CANONICAL_HOST
 
 dnl Initialize libtool
 AC_PROG_CC
+AC_PROG_CPP
 AC_ISC_POSIX
 #AM_DISABLE_STATIC
 AC_LIBTOOL_WIN32_DLL
@@ -142,6 +143,8 @@ AM_SANITY_CHECK
 AM_PROG_CC_STDC
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
+AC_PROG_LN_S
+AC_PROG_AWK
 
 # debug flag
 AC_ARG_ENABLE(debug,   [  --enable-debug          turn on debugging [[default=no]]], , enable_debug=no)
@@ -221,10 +224,14 @@ AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
 # Checks for header files.
 AC_HEADER_STDC
 
+AC_CHECK_HEADERS([stdlib.h string.h])
+
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
 
 # Checks for library functions.
+
+AC_CHECK_FUNCS([memset sqrt])
 
 
 ##################################################
