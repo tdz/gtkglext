@@ -21,16 +21,24 @@
 #include "gtkglprivate.h"
 #include "gtkglwidget.h"
 
-static const gchar quark_gl_capable_string[] = "gtk-gl-widget-gl-capable";
-static GQuark quark_gl_capable = 0;
+static const gchar quark_gl_context_string[] = "gtk-gl-widget-gl-context";
+static GQuark quark_gl_context = 0;
 
-static const gboolean gl_capable = TRUE;
+static void
+gl_context_destroy (GdkGLContext *glcontext)
+{
+  if (glcontext != NULL)
+    g_object_unref (G_OBJECT (glcontext));
+}
 
 static gboolean
 gtk_widget_destroy_gl_context (GtkWidget *widget)
 {
   if (widget->window != NULL)
     gdk_window_unset_gl_capability (widget->window);
+
+  if (quark_gl_context != 0)
+    g_object_set_qdata (G_OBJECT (widget), quark_gl_context, NULL);
 
   return FALSE;
 }
@@ -40,14 +48,16 @@ gtk_widget_gl_realize (GtkWidget        *widget,
                        GtkGLWidgetParam *param)
 {
   GdkGLConfig *glconfig;
+  GdkGLWindow *glwindow;
+  GdkGLContext *glcontext;
 
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_realize ()"));
 
-  if (quark_gl_capable == 0)
-    quark_gl_capable = g_quark_from_static_string (quark_gl_capable_string);
+  if (quark_gl_context == 0)
+    quark_gl_context = g_quark_from_static_string (quark_gl_context_string);
 
   /* Already OpenGL-capable */
-  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_capable) != NULL)
+  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_context) != NULL)
     return;
 
   /*
@@ -66,20 +76,34 @@ gtk_widget_gl_realize (GtkWidget        *widget,
    * Set OpenGL-capability to widget->window.
    */
 
-  if (gdk_window_set_gl_capability (widget->window,
-				    glconfig,
-                                    param->render_type,
-                                    param->share_list,
-                                    param->direct,
-                                    (const gint *) (param->attrib_list)))
-    {
-      g_object_set_qdata (G_OBJECT (widget), quark_gl_capable,
-                          (gpointer) &gl_capable);
+  gdk_window_set_gl_capability (widget->window,
+                                glconfig,
+                                NULL);
 
-      /* Destroy OpenGL rendering context explicitly. */
-      gtk_quit_add (gtk_main_level () + 1,
-                    (GtkFunction) gtk_widget_destroy_gl_context, widget);
+  glwindow = gdk_window_get_gl_window (widget->window);
+
+  /*
+   * Create OpenGL rendering context.
+   */
+
+  glcontext = gdk_gl_context_new (GDK_GL_DRAWABLE (glwindow),
+                                  glconfig,
+                                  param->render_type,
+                                  param->share_list,
+                                  param->direct);
+  if (glcontext == NULL)
+    {
+      g_warning ("cannot create GdkGLContext\n");
+      g_object_unref (G_OBJECT (glconfig));
+      return;
     }
+
+  g_object_set_qdata_full (G_OBJECT (widget), quark_gl_context, glcontext,
+                           (GDestroyNotify) gl_context_destroy);
+
+  /* Destroy OpenGL rendering context explicitly. */
+  gtk_quit_add (gtk_main_level () + 1,
+                (GtkFunction) gtk_widget_destroy_gl_context, widget);
 
   g_object_unref (G_OBJECT (glconfig));
 }
@@ -90,14 +114,16 @@ gtk_widget_gl_configure_event (GtkWidget         *widget,
                                GtkGLWidgetParam  *param)
 {
   GdkGLConfig *glconfig;
+  GdkGLWindow *glwindow;
+  GdkGLContext *glcontext;
 
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_configure_event ()"));
 
-  if (quark_gl_capable == 0)
-    quark_gl_capable = g_quark_from_static_string (quark_gl_capable_string);
+  if (quark_gl_context == 0)
+    quark_gl_context = g_quark_from_static_string (quark_gl_context_string);
 
   /* Already OpenGL-capable */
-  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_capable) != NULL)
+  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_context) != NULL)
     goto DONE;
 
   /*
@@ -116,20 +142,34 @@ gtk_widget_gl_configure_event (GtkWidget         *widget,
    * Set OpenGL-capability to widget->window.
    */
 
-  if (gdk_window_set_gl_capability (widget->window,
-				    glconfig,
-                                    param->render_type,
-                                    param->share_list,
-                                    param->direct,
-                                    (const gint *) (param->attrib_list)))
-    {
-      g_object_set_qdata (G_OBJECT (widget), quark_gl_capable,
-                          (gpointer) &gl_capable);
+  gdk_window_set_gl_capability (widget->window,
+                                glconfig,
+                                NULL);
 
-      /* Destroy OpenGL rendering context explicitly. */
-      gtk_quit_add (gtk_main_level () + 1,
-                    (GtkFunction) gtk_widget_destroy_gl_context, widget);
+  glwindow = gdk_window_get_gl_window (widget->window);
+
+  /*
+   * Create OpenGL rendering context.
+   */
+
+  glcontext = gdk_gl_context_new (GDK_GL_DRAWABLE (glwindow),
+                                  glconfig,
+                                  param->render_type,
+                                  param->share_list,
+                                  param->direct);
+  if (glcontext == NULL)
+    {
+      g_warning ("cannot create GdkGLContext\n");
+      g_object_unref (G_OBJECT (glconfig));
+      goto DONE;
     }
+
+  g_object_set_qdata_full (G_OBJECT (widget), quark_gl_context, glcontext,
+                           (GDestroyNotify) gl_context_destroy);
+
+  /* Destroy OpenGL rendering context explicitly. */
+  gtk_quit_add (gtk_main_level () + 1,
+                (GtkFunction) gtk_widget_destroy_gl_context, widget);
 
   g_object_unref (G_OBJECT (glconfig));
 
@@ -150,12 +190,13 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
 {
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_unrealize ()"));
 
-  if (quark_gl_capable == 0)
+  if (quark_gl_context == 0)
     return;
 
-  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_capable) != NULL)
+  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_context) != NULL)
     {
       gdk_window_unset_gl_capability (widget->window);
+      g_object_set_qdata (G_OBJECT (widget), quark_gl_context, NULL);
       gtk_quit_remove_by_data (widget);
     }
 }
@@ -208,7 +249,7 @@ gtk_widget_is_gl_capable (GtkWidget *widget)
 {
   g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), FALSE);
 
-  return gdk_window_is_gl_capable (widget->window);
+  return g_object_get_qdata (G_OBJECT (widget), quark_gl_context) != NULL ? TRUE : FALSE;
 }
 
 GdkGLConfig *
@@ -224,7 +265,7 @@ gtk_widget_get_gl_context (GtkWidget *widget)
 {
   g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), NULL);
 
-  return gdk_window_get_gl_context (widget->window);
+  return g_object_get_qdata (G_OBJECT (widget), quark_gl_context);
 }
 
 GdkGLWindow *

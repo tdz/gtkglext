@@ -6,8 +6,8 @@
 #include <GL/glu.h>
 
 static GdkGLConfig *glconfig = NULL;
-static GdkGLContext *glcontext = NULL;
 static GdkGLWindow *glwindow = NULL;
+static GdkGLContext *glcontext = NULL;
 
 static const gint config_attributes[] = {
   GDK_GL_DOUBLEBUFFER,
@@ -97,24 +97,31 @@ init (GtkWidget *widget,
   /*
    * Set OpenGL-capability to widget->window
    */
-  if (!gdk_window_set_gl_capability (widget->window,
-                                     glconfig,
-                                     GDK_GL_RGBA_TYPE,
-                                     NULL,
-                                     TRUE,
-                                     NULL))
-    {
-      g_print ("*** Cannot set OpenGL-capability to widget->window\n");
-      gtk_exit (1);
-    }
+
+  gdk_window_set_gl_capability (widget->window, glconfig, NULL);
 
   /* Get GdkGLWindow */
   glwindow = gdk_window_get_gl_window (widget->window);
 
-  /* Get GdkGLContext */
-  glcontext = gdk_window_get_gl_context (widget->window);
+  /*
+   * Create OpenGL rendering context.
+   */
 
-  g_print ("The OpenGL rendering context is created\n");
+  if (glcontext == NULL)
+    {
+      glcontext = gdk_gl_context_new (GDK_GL_DRAWABLE (glwindow),
+                                      glconfig,
+                                      GDK_GL_RGBA_TYPE,
+                                      NULL,
+                                      TRUE);
+      if (glcontext == NULL)
+        {
+          g_print ("Connot create the OpenGL rendering context\n");
+          gtk_exit (1);
+        }
+
+      g_print ("The OpenGL rendering context is created\n");
+    }
 
   /* OpenGL begin. */
   if (gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
@@ -165,6 +172,12 @@ destroy (GtkWidget *widget,
 {
   if (widget->window != NULL)
     gdk_window_unset_gl_capability (widget->window);
+
+  if (glconfig != NULL)
+    g_object_unref (G_OBJECT (glconfig));
+
+  if (glcontext != NULL)
+    g_object_unref (G_OBJECT (glcontext));
 }
 
 static gboolean
@@ -261,6 +274,12 @@ destroy_gl_context (GtkWidget *widget)
 {
   if (widget->window != NULL)
     gdk_window_unset_gl_capability (widget->window);
+
+  if (glconfig != NULL)
+    g_object_unref (G_OBJECT (glconfig));
+
+  if (glcontext != NULL)
+    g_object_unref (G_OBJECT (glcontext));
 
   return FALSE;
 }

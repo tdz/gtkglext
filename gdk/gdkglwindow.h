@@ -83,9 +83,6 @@ GdkGLWindow *gdk_gl_window_new      (GdkGLConfig *glconfig,
 
 gboolean      gdk_window_set_gl_capability   (GdkWindow    *window,
                                               GdkGLConfig  *glconfig,
-                                              gint          render_type,
-                                              GdkGLContext *share_list,
-                                              gboolean      direct,
                                               const gint   *attrib_list);
 
 void          gdk_window_unset_gl_capability (GdkWindow *window);
@@ -93,8 +90,6 @@ void          gdk_window_unset_gl_capability (GdkWindow *window);
 gboolean      gdk_window_is_gl_capable       (GdkWindow *window);
 
 GdkGLConfig  *gdk_window_get_gl_config       (GdkWindow *window);
-
-GdkGLContext *gdk_window_get_gl_context      (GdkWindow *window);
 
 GdkGLWindow  *gdk_window_get_gl_window       (GdkWindow *window);
 

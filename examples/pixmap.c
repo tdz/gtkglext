@@ -157,13 +157,8 @@ configure (GtkWidget         *widget,
   /*
    * Set OpenGL-capability to the pixmap
    */
-  if (!gdk_pixmap_set_gl_capability (pixmap,
-                                     glconfig,
-                                     NULL))
-    {
-      g_print ("*** Cannot set OpenGL-capability to pixmap\n");
-      gtk_exit (1);
-    }
+
+  gdk_pixmap_set_gl_capability (pixmap, glconfig, NULL);
 
   /* Get GdkGLPixmap */
   glpixmap = gdk_pixmap_get_gl_pixmap (pixmap);
@@ -246,8 +241,11 @@ expose (GtkWidget      *widget,
 }
 
 static gboolean
-destroy_gl_context (GdkGLContext *glcontext)
+destroy_gl_context (gpointer data)
 {
+  if (glconfig != NULL)
+    g_object_unref (G_OBJECT (glconfig));
+
   if (glcontext != NULL)
     g_object_unref (G_OBJECT (glcontext));
 
@@ -346,7 +344,7 @@ main (int argc,
    */
 
   /* Destroy the GLX context explicitly when application is terminated. */
-  gtk_quit_add (0, (GtkFunction) destroy_gl_context, glcontext);
+  gtk_quit_add (0, (GtkFunction) destroy_gl_context, NULL);
 
   gtk_main ();
 
