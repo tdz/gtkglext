@@ -507,15 +507,23 @@ gdk_gl_config_new_common (GdkScreen *screen,
   screen_num = gdk_x11_get_default_screen ();
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-  GDK_GL_NOTE (MISC,
-               g_message (" -- GLX_VENDOR     : %s",
-                          glXGetClientString (xdisplay, GLX_VENDOR)));
-  GDK_GL_NOTE (MISC,
-               g_message (" -- GLX_VERSION    : %s",
-                          glXGetClientString (xdisplay, GLX_VERSION)));
-  GDK_GL_NOTE (MISC,
-               g_message (" -- GLX_EXTENSIONS : %s",
-                          glXGetClientString (xdisplay, GLX_EXTENSIONS)));
+#ifdef G_ENABLE_DEBUG
+  if (gdk_gl_debug_flags & GDK_GL_DEBUG_MISC)
+    {
+      g_message (" -- Server GLX_VENDOR     : %s",
+                 glXQueryServerString (xdisplay, screen_num, GLX_VENDOR));
+      g_message (" -- Server GLX_VERSION    : %s",
+                 glXQueryServerString (xdisplay, screen_num, GLX_VERSION));
+      g_message (" -- Server GLX_EXTENSIONS : %s",
+                 glXQueryServerString (xdisplay, screen_num, GLX_EXTENSIONS));
+      g_message (" -- Client GLX_VENDOR     : %s",
+                 glXGetClientString (xdisplay, GLX_VENDOR));
+      g_message (" -- Client GLX_VERSION    : %s",
+                 glXGetClientString (xdisplay, GLX_VERSION));
+      g_message (" -- Client GLX_EXTENSIONS : %s",
+                 glXGetClientString (xdisplay, GLX_EXTENSIONS));
+    }
+#endif /* G_ENABLE_DEBUG */
 
   /*
    * Find an OpenGL-capable visual.
