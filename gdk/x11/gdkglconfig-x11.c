@@ -228,7 +228,7 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
 
           if (xcolormap != None)
             {
-              GDK_GL_NOTE (MISC, g_message (" -- colormap: standard RGB for HP Color Recovery"));
+              GDK_GL_NOTE (MISC, g_message (" -- Colormap: standard RGB for HP Color Recovery"));
 
               visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
               return gdk_x11_colormap_foreign_new (visual, xcolormap);
@@ -273,7 +273,7 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
 
       if (xcolormap != None)
         {
-          GDK_GL_NOTE (MISC, g_message (" -- colormap: standard RGB"));
+          GDK_GL_NOTE (MISC, g_message (" -- Colormap: standard RGB"));
 
           visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
           return gdk_x11_colormap_foreign_new (visual, xcolormap);
