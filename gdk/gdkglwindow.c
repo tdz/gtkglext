@@ -248,7 +248,7 @@ gdk_window_set_gl_capability (GdkWindow    *window,
   if (quark_gl_window == 0)
     quark_gl_window = g_quark_from_static_string (quark_gl_window_string);
 
-  /* If dalready set */
+  /* If already set */
   if (g_object_get_qdata (G_OBJECT (window), quark_gl_context) != NULL)
     return FALSE;
 

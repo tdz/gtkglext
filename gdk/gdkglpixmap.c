@@ -229,7 +229,7 @@ gdk_pixmap_set_gl_capability (GdkPixmap    *pixmap,
   if (quark_gl_pixmap == 0)
     quark_gl_pixmap = g_quark_from_static_string (quark_gl_pixmap_string);
 
-  /* If dalready set */
+  /* If already set */
   if (g_object_get_qdata (G_OBJECT (pixmap), quark_gl_pixmap) != NULL)
     return FALSE;
 
