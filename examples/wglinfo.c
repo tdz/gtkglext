@@ -166,7 +166,7 @@ VisualInfo(HDC hDC, int verbose)
 
 	    printf("Visual ID: %2d  depth=%d  class=%s\n", i, pfd.cDepthBits, 
 		   pfd.cColorBits <= 8 ? "PseudoColor" : "TrueColor");
-	    printf("    bufferSize=%d level=%d renderType=%s doubleBuffer=%d stereo=%d\n", pfd.cColorBits, pfd.bReserved, pfd.iPixelType == PFD_TYPE_RGBA ? "rgba" : "ci", pfd.dwFlags & PFD_DOUBLEBUFFER, pfd.dwFlags & PFD_STEREO);
+	    printf("    bufferSize=%d level=%d renderType=%s doubleBuffer=%ld stereo=%ld\n", pfd.cColorBits, pfd.bReserved, pfd.iPixelType == PFD_TYPE_RGBA ? "rgba" : "ci", pfd.dwFlags & PFD_DOUBLEBUFFER, pfd.dwFlags & PFD_STEREO);
 	    printf("    rgba: redSize=%d greenSize=%d blueSize=%d alphaSize=%d\n", pfd.cRedBits, pfd.cGreenBits, pfd.cBlueBits, pfd.cAlphaBits);
 	    printf("    auxBuffers=%d depthSize=%d stencilSize=%d\n", pfd.cAuxBuffers, pfd.cDepthBits, pfd.cStencilBits);
 	    printf("    accum: redSize=%d greenSize=%d blueSize=%d alphaSize=%d\n", pfd.cAccumRedBits, pfd.cAccumGreenBits, pfd.cAccumBlueBits, pfd.cAccumAlphaBits);
@@ -276,7 +276,7 @@ CreateOpenGLWindow(char* title, int x, int y, int width, int height,
 
     DescribePixelFormat(hDC, pf, sizeof(PIXELFORMATDESCRIPTOR), &pfd);
 
-    ReleaseDC(hDC, hWnd);
+    ReleaseDC(hWnd, hDC);
 
     return hWnd;
 }    
@@ -337,6 +337,7 @@ main(int argc, char** argv)
     i = 0;
     s = (char*)glGetString(GL_EXTENSIONS);
     t[79] = '\0';
+    p = &t[0];
     while(*s) {
 	t[i++] = *s;
 	if(*s == ' ') {
@@ -370,7 +371,7 @@ main(int argc, char** argv)
     }
 
     wglMakeCurrent(NULL, NULL);
-    ReleaseDC(hDC, hWnd);
+    ReleaseDC(hWnd, hDC);
     wglDeleteContext(hRC);
     DestroyWindow(hWnd);
 
