@@ -16,9 +16,9 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include "gdkglcontext.h"
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
+#include "gdkglcontext-x11.h"
 
 void
 _gdk_x11_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable)

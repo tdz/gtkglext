@@ -20,6 +20,10 @@
 
 #include <pango/pangox.h>
 
+#ifdef GDK_MULTIHEAD_SAFE
+#include <gdk/gdkdisplay.h>
+#endif
+
 #include "gdkglx.h"
 #include "gdkglfont.h"
 
@@ -92,7 +96,12 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font ()"));
 
+#ifdef GDK_MULTIHEAD_SAFE
+  font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+#else
   font_map = pango_x_font_map_for_display (gdk_x11_get_default_xdisplay ());
+#endif
+
   font_cache = pango_x_font_map_get_font_cache (font_map);
 
   font = pango_font_map_load_font (font_map, NULL, font_desc);

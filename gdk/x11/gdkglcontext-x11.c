@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include "gdkgldrawable.h"
-#include "gdkglconfig.h"
+#include "gdkglx.h"
 #include "gdkglprivate-x11.h"
+#include "gdkgldrawable.h"
+#include "gdkglconfig-x11.h"
 #include "gdkglcontext-x11.h"
 
 static void     gdk_gl_context_impl_x11_init         (GdkGLContextImplX11      *impl);
@@ -93,6 +94,7 @@ gdk_gl_context_impl_x11_constructor (GType                  type,
   GdkGLContextImplX11 *share_impl = NULL;
   GLXContext share_glxcontext = NULL;
 
+  Display *xdisplay;
   XVisualInfo *xvinfo;
 
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
@@ -114,17 +116,17 @@ gdk_gl_context_impl_x11_constructor (GType                  type,
       share_glxcontext = share_impl->glxcontext;
     }
 
-  impl->xdisplay = gdk_x11_gl_config_get_xdisplay (glcontext->glconfig);
-  xvinfo = gdk_x11_gl_config_get_xvinfo (glcontext->glconfig);
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (glcontext->glconfig);
+  xvinfo = GDK_GL_CONFIG_XVINFO (glcontext->glconfig);
 
-  impl->glxcontext = glXCreateContext (impl->xdisplay,
+  impl->glxcontext = glXCreateContext (xdisplay,
                                        xvinfo,
                                        share_glxcontext,
                                        glcontext->is_direct == TRUE ? True : False );
   if (impl->glxcontext == NULL)
     goto FAIL;
 
-  glcontext->is_direct = glXIsDirect (impl->xdisplay, impl->glxcontext) ? TRUE : FALSE;
+  glcontext->is_direct = glXIsDirect (xdisplay, impl->glxcontext) ? TRUE : FALSE;
 
   /*
    * Successfully constructed?
@@ -139,16 +141,20 @@ gdk_gl_context_impl_x11_constructor (GType                  type,
 static void
 gdk_gl_context_impl_x11_finalize (GObject *object)
 {
+  GdkGLContext *glcontext = GDK_GL_CONTEXT (object);
   GdkGLContextImplX11 *impl = GDK_GL_CONTEXT_IMPL_X11 (object);
+  Display *xdisplay;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_x11_finalize ()"));
 
   if (impl->glxcontext != NULL)
     {
-      if (impl->glxcontext == glXGetCurrentContext ())
-        glXMakeCurrent (impl->xdisplay, None, NULL);
+      xdisplay = GDK_GL_CONFIG_XDISPLAY (glcontext->glconfig);
 
-      glXDestroyContext (impl->xdisplay, impl->glxcontext);
+      if (impl->glxcontext == glXGetCurrentContext ())
+        glXMakeCurrent (xdisplay, None, NULL);
+
+      glXDestroyContext (xdisplay, impl->glxcontext);
       impl->glxcontext = NULL;
     }
 
@@ -187,14 +193,6 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
     }
 
   return glcontext;
-}
-
-Display *
-gdk_x11_gl_context_get_xdisplay (GdkGLContext *glcontext)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
-
-  return GDK_GL_CONTEXT_IMPL_X11 (glcontext)->xdisplay;
 }
 
 GLXContext

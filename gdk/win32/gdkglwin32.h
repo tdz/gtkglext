@@ -39,6 +39,18 @@ HGLRC gdk_win32_gl_context_get_hglrc    (GdkGLContext  *glcontext);
 HDC   gdk_win32_gl_drawable_hdc_get     (GdkGLDrawable *gldrawable);
 void  gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable);
 
+#ifdef INSIDE_GDK_GL_WIN32
+
+#define GDK_GL_CONFIG_PFD(glconfig)     (&(GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->pfd))
+#define GDK_GL_CONTEXT_HGLRC(glcontext) (GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->hglrc)
+
+#else
+
+#define GDK_GL_CONFIG_PFD(glconfig)     (gdk_win32_gl_config_get_pfd (glconfig))
+#define GDK_GL_CONTEXT_HGLRC(glcontext) (gdk_win32_gl_context_get_hglrc (glcontext))
+
+#endif
+
 G_END_DECLS
 
 #endif /* __GDK_GL_WIN32_H__ */

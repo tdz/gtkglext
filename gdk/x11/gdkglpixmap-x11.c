@@ -16,8 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#include "gdkglx.h"
 #include "gdkglprivate-x11.h"
-#include "gdkglcontext.h"
+#include "gdkglconfig-x11.h"
+#include "gdkglcontext-x11.h"
 #include "gdkglpixmap-x11.h"
 
 /* Forward declarations */
@@ -104,8 +106,9 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
   GdkGLPixmap *glpixmap;
   GdkGLPixmapImplX11 *impl;
 
-  Pixmap xpixmap;
+  Display *xdisplay;
   XVisualInfo *xvinfo;
+  Pixmap xpixmap;
 
   Window root_return;
   int x_return, y_return;
@@ -122,8 +125,8 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
   glpixmap = GDK_GL_PIXMAP (object);
   impl = GDK_GL_PIXMAP_IMPL_X11 (object);
 
-  impl->xdisplay = gdk_x11_gl_config_get_xdisplay (glpixmap->glconfig);
-  xvinfo = gdk_x11_gl_config_get_xvinfo (glpixmap->glconfig);
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (glpixmap->glconfig);
+  xvinfo = GDK_GL_CONFIG_XVINFO (glpixmap->glconfig);
 
   /*
    * Get X Pixmap.
@@ -139,7 +142,7 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
    * Check depth of the X pixmap.
    */
 
-  if (!XGetGeometry(impl->xdisplay, xpixmap,
+  if (!XGetGeometry(xdisplay, xpixmap,
                     &root_return,
                     &x_return, &y_return,
                     &width_return, &height_return,
@@ -154,7 +157,7 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
    * Create an OpenGL off-screen rendering area.
    */
 
-  impl->glxpixmap = glXCreateGLXPixmap (impl->xdisplay,
+  impl->glxpixmap = glXCreateGLXPixmap (xdisplay,
                                         xvinfo,
                                         xpixmap);
   if (impl->glxpixmap == None)
@@ -173,13 +176,15 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
 static void
 gdk_gl_pixmap_impl_x11_finalize (GObject *object)
 {
+  GdkGLPixmap *glpixmap = GDK_GL_PIXMAP (object);
   GdkGLPixmapImplX11 *impl = GDK_GL_PIXMAP_IMPL_X11 (object);
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_finalize ()"));
 
   if (impl->glxpixmap != None)
     {
-      glXDestroyGLXPixmap (impl->xdisplay, impl->glxpixmap);
+      glXDestroyGLXPixmap (GDK_GL_CONFIG_XDISPLAY (glpixmap->glconfig),
+                           impl->glxpixmap);
       glXWaitGL ();
       impl->glxpixmap = None;
     }
@@ -209,24 +214,28 @@ gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable *draw,
                                         GdkGLDrawable *read,
                                         GdkGLContext  *glcontext)
 {
-  GdkGLPixmapImplX11 *impl;
+  GdkGLPixmap *glpixmap;
+  Display *xdisplay;
+  GLXPixmap glxpixmap;
   GLXContext glxcontext;
 
   g_return_val_if_fail (GDK_IS_GL_PIXMAP (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  impl = GDK_GL_PIXMAP_IMPL_X11 (draw);
+  glpixmap = GDK_GL_PIXMAP (draw);
 
-  glxcontext = gdk_x11_gl_context_get_glxcontext (glcontext);
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (glpixmap->glconfig);
+  glxpixmap = GDK_GL_PIXMAP_GLXPIXMAP(glpixmap);
+  glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
 
-  if (impl->xdisplay == glXGetCurrentDisplay () &&
-      impl->glxpixmap == glXGetCurrentDrawable () &&
+  if (xdisplay == glXGetCurrentDisplay () &&
+      glxpixmap == glXGetCurrentDrawable () &&
       glxcontext == glXGetCurrentContext ())
     return TRUE;
 
   GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
 
-  if (!glXMakeCurrent (impl->xdisplay, impl->glxpixmap, glxcontext))
+  if (!glXMakeCurrent (xdisplay, glxpixmap, glxcontext))
     {
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
       return FALSE;
@@ -275,14 +284,6 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
     }
 
   return glpixmap;
-}
-
-Display *
-gdk_x11_gl_pixmap_get_xdisplay (GdkGLPixmap *glpixmap)
-{
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (glpixmap), NULL);
-
-  return GDK_GL_PIXMAP_IMPL_X11 (glpixmap)->xdisplay;
 }
 
 GLXPixmap

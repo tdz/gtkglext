@@ -16,8 +16,12 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include "gdkglprivate-x11.h"
+#ifdef GDK_MULTIHEAD_SAFE
+#include <gdk/gdkdisplay.h>
+#endif
+
 #include "gdkglx.h"
+#include "gdkglprivate-x11.h"
 
 /**
  * gdk_gl_query_extension:
@@ -29,8 +33,13 @@
 gboolean
 gdk_gl_query_extension (void)
 {
+#ifdef GDK_MULTIHEAD_SAFE
+  return glXQueryExtension (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
+                            NULL, NULL);
+#else
   return glXQueryExtension (gdk_x11_get_default_xdisplay (),
                             NULL, NULL);
+#endif
 }
 
 /**
@@ -46,6 +55,11 @@ gboolean
 gdk_gl_query_version (gint *major,
                       gint *minor)
 {
+#ifdef GDK_MULTIHEAD_SAFE
+  return glXQueryVersion (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
+                          major, minor);
+#else
   return glXQueryVersion (gdk_x11_get_default_xdisplay (),
                           major, minor);
+#endif
 }

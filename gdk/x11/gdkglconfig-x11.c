@@ -16,6 +16,11 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#ifdef GDK_MULTIHEAD_SAFE
+#include <gdk/gdkscreen.h>
+#endif
+
+#include "gdkglx.h"
 #include "gdkglprivate-x11.h"
 #include "gdkglconfig-x11.h"
 
@@ -149,12 +154,26 @@ gdk_gl_config_impl_x11_constructor (GType                  type,
 static GdkColormap *
 get_colormap (GdkVisual *visual)
 {
+#ifdef GDK_MULTIHEAD_SAFE
+  GdkScreen *screen = gdk_screen_get_default ();
+#endif
   GdkColormap *colormap;
+
+#ifdef GDK_MULTIHEAD_SAFE
+
+  if (visual == gdk_screen_get_system_visual (screen))
+    colormap = g_object_ref (G_OBJECT (gdk_screen_get_system_colormap (screen)));
+  else
+    colormap = gdk_colormap_new (visual, FALSE);
+
+#else
 
   if (visual == gdk_visual_get_system ())
     colormap = g_object_ref (G_OBJECT (gdk_colormap_get_system ()));
   else
     colormap = gdk_colormap_new (visual, FALSE);
+
+#endif
 
   return colormap;
 }
@@ -165,14 +184,22 @@ set_property (GdkGLConfigImplX11 *impl,
 {
   GdkGLConfig *glconfig = GDK_GL_CONFIG (impl);
 
-  int screen;
+#ifdef GDK_MULTIHEAD_SAFE
+  GdkScreen *screen = gdk_screen_get_default ();
+#endif
+  int screen_num;
   GdkVisual *visual;
   int ret, value;
 
   g_return_if_fail (attrib_list != NULL);
 
+#ifdef GDK_MULTIHEAD_SAFE
+  impl->xdisplay = GDK_SCREEN_XDISPLAY (screen);
+  screen_num = GDK_SCREEN_XNUMBER (screen);
+#else
   impl->xdisplay = gdk_x11_get_default_xdisplay ();
-  screen = gdk_x11_get_default_screen ();
+  screen_num = gdk_x11_get_default_screen ();
+#endif
 
   GDK_GL_NOTE (MISC,
                g_message (" -- GLX_VENDOR     : %s",
@@ -188,7 +215,7 @@ set_property (GdkGLConfigImplX11 *impl,
    * Find an OpenGL-capable visual.
    */
 
-  impl->xvinfo = glXChooseVisual (impl->xdisplay, screen, attrib_list);
+  impl->xvinfo = glXChooseVisual (impl->xdisplay, screen_num, attrib_list);
   if (impl->xvinfo == NULL)
     return;
 
@@ -196,7 +223,11 @@ set_property (GdkGLConfigImplX11 *impl,
    * Get an appropriate colormap
    */
 
+#ifdef GDK_MULTIHEAD_SAFE
+  visual = gdkx_visual_get_for_screen (screen, impl->xvinfo->visualid);
+#else
   visual = gdkx_visual_get (impl->xvinfo->visualid);
+#endif
   if (visual == NULL)
     return;
 

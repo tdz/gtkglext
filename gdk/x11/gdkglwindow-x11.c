@@ -16,8 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#include "gdkglx.h"
 #include "gdkglprivate-x11.h"
-#include "gdkglcontext.h"
+#include "gdkglconfig-x11.h"
+#include "gdkglcontext-x11.h"
 #include "gdkglwindow-x11.h"
 
 /* Forward declarations */
@@ -117,7 +119,6 @@ gdk_gl_window_impl_x11_constructor (GType                  type,
    * XXX GdkGLWindow is not GdkWindow for the moment :-<
    *     use glwindow->wrapper.
    */
-  impl->xdisplay = GDK_DRAWABLE_XDISPLAY (glwindow->wrapper);
   impl->glxwindow = GDK_DRAWABLE_XID (glwindow->wrapper);
 
   /*
@@ -159,24 +160,28 @@ gdk_x11_gl_window_make_context_current (GdkGLDrawable *draw,
                                         GdkGLDrawable *read,
                                         GdkGLContext  *glcontext)
 {
-  GdkGLWindowImplX11 *impl;
+  GdkGLWindow *glwindow;
+  Display *xdisplay;
+  Window glxwindow;
   GLXContext glxcontext;
 
   g_return_val_if_fail (GDK_IS_GL_WINDOW (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  impl = GDK_GL_WINDOW_IMPL_X11 (draw);
+  glwindow = GDK_GL_WINDOW (draw);
 
-  glxcontext = gdk_x11_gl_context_get_glxcontext (glcontext);
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (glwindow->glconfig);
+  glxwindow = GDK_GL_WINDOW_GLXWINDOW (glwindow);
+  glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
 
-  if (impl->xdisplay == glXGetCurrentDisplay () &&
-      impl->glxwindow == glXGetCurrentDrawable () &&
+  if (xdisplay == glXGetCurrentDisplay () &&
+      glxwindow == glXGetCurrentDrawable () &&
       glxcontext == glXGetCurrentContext ())
     return TRUE;
 
   GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
 
-  if (!glXMakeCurrent (impl->xdisplay, impl->glxwindow, glxcontext))
+  if (!glXMakeCurrent (xdisplay, glxwindow, glxcontext))
     {
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
       return FALSE;
@@ -229,14 +234,6 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
     }
 
   return glwindow;
-}
-
-Display *
-gdk_x11_gl_window_get_xdisplay (GdkGLWindow *glwindow)
-{
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (glwindow), NULL);
-
-  return GDK_GL_WINDOW_IMPL_X11 (glwindow)->xdisplay;
 }
 
 Window

@@ -38,7 +38,6 @@ struct _GdkGLContextImplX11
 {
   GdkGLContext parent_instance;
 
-  Display *xdisplay;
   GLXContext glxcontext;
 
   guint is_constructed : 1;

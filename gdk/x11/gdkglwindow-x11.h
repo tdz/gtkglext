@@ -38,7 +38,6 @@ struct _GdkGLWindowImplX11
 {
   GdkGLWindow parent_instance;
 
-  Display *xdisplay;
   /* GLXWindow glxwindow; */
   Window glxwindow;
 

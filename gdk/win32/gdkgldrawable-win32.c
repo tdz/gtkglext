@@ -16,9 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include "gdkglpixmap.h"
-#include "gdkglwindow.h"
+#include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
+#include "gdkglpixmap-win32.h"
+#include "gdkglwindow-win32.h"
 #include "gdkgldrawable.h"
 
 HDC

@@ -19,8 +19,10 @@
 /* For direct access to GDK objects' internal data. */
 #include "gdkinternal-win32.h"
 
-#include "gdkglcontext.h"
+#include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
+#include "gdkglconfig-win32.h"
+#include "gdkglcontext-win32.h"
 #include "gdkglpixmap-win32.h"
 
 /* Forward declarations */
@@ -228,7 +230,7 @@ _gdk_win32_gl_pixmap_hdc_get (GdkGLDrawable *gldrawable)
    * Set pixel format.
    */
 
-  pfd = gdk_win32_gl_config_get_pfd (glpixmap->glconfig);
+  pfd = GDK_GL_CONFIG_PFD (glpixmap->glconfig);
   /* Draw to bitmap */
   pfd->dwFlags &= ~PFD_DRAW_TO_WINDOW;
   pfd->dwFlags |= PFD_DRAW_TO_BITMAP;
@@ -343,7 +345,7 @@ gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable *draw,
    * Get GLRC.
    */
 
-  hglrc = gdk_win32_gl_context_get_hglrc (glcontext);
+  hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
 
   if (hdc == wglGetCurrentDC () &&
       hglrc == wglGetCurrentContext ())

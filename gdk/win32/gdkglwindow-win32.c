@@ -16,8 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include "gdkglcontext.h"
+#include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
+#include "gdkglconfig-win32.h"
+#include "gdkglcontext-x11.h"
 #include "gdkglwindow-win32.h"
 
 /* Forward declarations */
@@ -204,7 +206,7 @@ _gdk_win32_gl_window_hdc_get (GdkGLDrawable *gldrawable)
    * Set pixel format.
    */
 
-  pfd = gdk_win32_gl_config_get_pfd (glwindow->glconfig);
+  pfd = GDK_GL_CONFIG_PFD (glwindow->glconfig);
   /* Draw to window */
   pfd->dwFlags &= ~PFD_DRAW_TO_BITMAP;
   pfd->dwFlags |= PFD_DRAW_TO_WINDOW;
@@ -290,7 +292,7 @@ gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
    * Get GLRC.
    */
 
-  hglrc = gdk_win32_gl_context_get_hglrc (glcontext);
+  hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
 
   if (hdc == wglGetCurrentDC () &&
       hglrc == wglGetCurrentContext ())

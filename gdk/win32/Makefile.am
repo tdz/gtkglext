@@ -5,6 +5,7 @@ libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk
 
 INCLUDES = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
+	-DINSIDE_GDK_GL_WIN32		\
 	-I$(top_srcdir)			\
 	-I$(top_srcdir)/gdk		\
 	-I$(top_builddir)/gdk		\
