@@ -293,15 +293,19 @@ AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
 
 # Checks for header files.
 AC_HEADER_STDC
-
-AC_CHECK_HEADERS([stdlib.h string.h])
+AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
 
 # Checks for library functions.
+save_LIBS="$LIBS"
+LIBS="$LIBS $MATH_LIB"
 
-AC_CHECK_FUNCS([memset sqrt])
+AC_FUNC_MALLOC
+AC_CHECK_FUNCS([memset sqrt strchr strrchr strstr])
+
+LIBS="$save_LIBS"
 
 
 ##################################################
