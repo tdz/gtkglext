@@ -6,6 +6,7 @@ AUTOMAKE_OPTIONS = dist-bzip2 dist-zip
 SUBDIRS = gdk gtk examples docs
 
 EXTRA_DIST = \
+	README.win32			\
 	gdkglext.pc.in			\
 	gtkglext.pc.in			\
 	gdkglext-uninstalled.pc.in	\
