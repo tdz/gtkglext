@@ -709,7 +709,7 @@ _gdk_gl_window_get_size (GdkGLDrawable *gldrawable,
 {
   g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
 
-  return gdk_drawable_get_size (GDK_DRAWABLE (gldrawable), width, height);
+  gdk_drawable_get_size (GDK_DRAWABLE (gldrawable), width, height);
 }
 
 /**
