@@ -435,7 +435,7 @@ motion_notify_event (GtkWidget      *widget,
   begin_y = y;
 
   if (redraw && !animate)
-    gtk_widget_queue_draw (widget);
+    gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
 
   return TRUE;
 }
@@ -461,7 +461,11 @@ key_press_event (GtkWidget   *widget,
 static gboolean
 idle (GtkWidget *widget)
 {
-  gtk_widget_queue_draw (widget);
+  /* Invalidate the whole window. */
+  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+
+  /* Update synchronously. */
+  gdk_window_process_updates (widget->window, FALSE);
 
   return TRUE;
 }
@@ -543,7 +547,7 @@ toggle_animation (GtkWidget *widget)
       view_quat_diff[1] = 0.0;
       view_quat_diff[2] = 0.0;
       view_quat_diff[3] = 1.0;
-      gtk_widget_queue_draw (widget);
+      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
     }
 }
 

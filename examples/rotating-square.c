@@ -182,7 +182,11 @@ idle (GtkWidget *widget)
   spin += 2.0;
   if (spin > 360.0) spin -= 360.0;
 
-  gtk_widget_queue_draw (widget);
+  /* Invalidate the whole window. */
+  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+
+  /* Update synchronously. */
+  gdk_window_process_updates (widget->window, FALSE);
 
   return TRUE;
 }
@@ -256,7 +260,7 @@ key_press_event (GtkWidget   *widget,
 	{
 	  spin += 2.0;
 	  if (spin > 360.0) spin -= 360.0;
-	  gtk_widget_queue_draw (widget);
+	  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
 	}
       break;
 
@@ -266,7 +270,7 @@ key_press_event (GtkWidget   *widget,
 	{
 	  spin -= 2.0;
 	  if (spin < 360.0) spin += 360.0;
-	  gtk_widget_queue_draw (widget);
+	  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
 	}
       break;
 
@@ -402,7 +406,7 @@ toggle_animation (GtkWidget *widget)
   else
     {
       idle_remove (widget);
-      gtk_widget_queue_draw (widget);
+      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
     }
 }
 

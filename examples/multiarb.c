@@ -292,7 +292,11 @@ timeout (GtkWidget *widget)
     }
   glMatrixMode (GL_MODELVIEW);
 
-  gtk_widget_queue_draw (widget);
+  /* Invalidate the whole window. */
+  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+
+  /* Update synchronously. */
+  gdk_window_process_updates (widget->window, FALSE);
 
   return TRUE;
 }
@@ -369,7 +373,7 @@ toggle_animation (GtkWidget *widget)
   else
     {
       timeout_remove (widget);
-      gtk_widget_queue_draw (widget);
+      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
     }
 }
 
@@ -419,7 +423,7 @@ key (GtkWidget   *widget,
     }
 
   if (!animate)
-    gtk_widget_queue_draw (widget);
+    gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
 
   return TRUE;
 }

@@ -9,6 +9,7 @@
 /* Conversion to GtkGLExt by Naofumi Yasufuku */
 
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
 #include <gtk/gtk.h>
@@ -162,6 +163,8 @@ static GLfloat angle = 0.0;
 
 static GTimer *timer = NULL;
 static gint frames = 0;
+
+static gboolean is_sync = TRUE;
 
 static gboolean
 draw (GtkWidget      *widget,
@@ -319,7 +322,12 @@ idle (GtkWidget *widget)
 {
   angle += 2.0;
 
-  gtk_widget_queue_draw (widget);
+  /* Invalidate the whole window. */
+  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+
+  /* Update synchronously (fast). */
+  if (is_sync)
+    gdk_window_process_updates (widget->window, FALSE);
 
   return TRUE;
 }
@@ -413,7 +421,7 @@ key (GtkWidget   *widget,
       return FALSE;
     }
 
-  gtk_widget_queue_draw (widget);
+  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
 
   return TRUE;
 }
@@ -427,6 +435,7 @@ main (int   argc,
   GtkWidget *vbox;
   GtkWidget *drawing_area;
   GtkWidget *button;
+  int i;
 
   /*
    * Init GTK.
@@ -439,6 +448,16 @@ main (int   argc,
    */
 
   gtk_gl_init (&argc, &argv);
+
+  /*
+   * Command line options.
+   */
+
+  for (i = 0; i < argc; i++)
+    {
+      if (strcmp (argv[i], "--async") == 0)
+        is_sync = FALSE;
+    }
 
   /*
    * Configure OpenGL-capable visual.
@@ -470,10 +489,6 @@ main (int   argc,
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window), "gears");
 
-#ifndef G_OS_WIN32
-  /* Perform the resizes immediately */
-  gtk_container_set_resize_mode (GTK_CONTAINER (window), GTK_RESIZE_IMMEDIATE);
-#endif
   /* Get automatically redrawn if any of their children changed allocation. */
   gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
 

@@ -420,7 +420,11 @@ timeout (GtkWidget *widget)
   if (text_z <= TEXT_Z_FAR)
     text_z = TEXT_Z_NEAR;
 
-  gtk_widget_queue_draw (widget);
+  /* Invalidate the whole window. */
+  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+
+  /* Update synchronously. */
+  gdk_window_process_updates (widget->window, FALSE);
 
   return TRUE;
 }

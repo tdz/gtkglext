@@ -1,3 +1,25 @@
+2003-11-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/logo.c (timeout): 
+	* examples/shapes.c (idle): 
+	* examples/multiarb.c (timeout): 
+	* examples/button.c (timeout): 
+	* examples/font-pangoft2-tex.c (timeout): 
+	* examples/viewlw.c (timeout): 
+	* examples/template.c (timeout): 
+	* examples/scribble-gl.c (motion_notify_event): 
+	* examples/rotating-square.c (idle): Now use
+	gdk_window_invalidate_rect() and gdk_window_process_updates()
+	instead of gtk_widget_queue_draw() to update OpenGL area
+	synchronously.
+
+	* examples/coolwave2.c (timeout): 
+	* examples/coolwave.c (timeout, motion_notify_event) 
+	(key_press_event, toggle_animation, init_wireframe): 
+	* examples/gears.c (idle): Optimized frame rate by using
+	gdk_window_invalidate_rect() + gdk_window_process_updates()
+	instead of gtk_widget_queue_draw().
+
 2003-11-06  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (gtk_gl_widget_size_allocate) 

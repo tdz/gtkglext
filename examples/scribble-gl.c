@@ -216,7 +216,7 @@ motion_notify_event (GtkWidget      *widget,
       coord->y = widget->allocation.height - event->y;
 
       brushStrokeList = g_list_append(brushStrokeList, coord);
-      gtk_widget_queue_draw(widget);
+      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
       return TRUE;
     }
 
@@ -242,7 +242,7 @@ button_press_event (GtkWidget      *widget,
       coord->y = widget->allocation.height - event->y;
 
       brushStrokeList = g_list_append(brushStrokeList, coord);
-      gtk_widget_queue_draw(widget);
+      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
       return TRUE;
     }
 
