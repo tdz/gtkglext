@@ -278,6 +278,10 @@ gdk_gl_window_impl_win32_make_context_current (GdkGLDrawable *draw,
   g_return_val_if_fail (GDK_IS_GL_WINDOW (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
+  if (GDK_GL_WINDOW_IS_DESTROYED(draw) ||
+      GDK_GL_CONTEXT_IS_DESTROYED(glcontext))
+    return FALSE;
+
   impl = GDK_GL_WINDOW_IMPL_WIN32 (draw);
 
   /* Get DC. */
@@ -342,6 +346,9 @@ gdk_gl_window_impl_win32_swap_buffers (GdkGLDrawable *gldrawable)
   HDC hdc;
 
   g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
+
+  if (GDK_GL_WINDOW_IS_DESTROYED(gldrawable))
+    return;
 
   impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
 

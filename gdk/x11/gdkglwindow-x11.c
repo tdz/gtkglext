@@ -229,6 +229,10 @@ gdk_gl_window_impl_x11_make_context_current (GdkGLDrawable *draw,
   g_return_val_if_fail (GDK_IS_GL_WINDOW (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
+  if (GDK_GL_WINDOW_IS_DESTROYED(draw) ||
+      GDK_GL_CONTEXT_IS_DESTROYED(glcontext))
+    return FALSE;
+
   impl = GDK_GL_WINDOW_IMPL_X11 (draw);
 
   xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
@@ -290,6 +294,9 @@ gdk_gl_window_impl_x11_swap_buffers (GdkGLDrawable *gldrawable)
   GdkGLWindowImplX11 *impl;
 
   g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
+
+  if (GDK_GL_WINDOW_IS_DESTROYED(gldrawable))
+    return;
 
   impl = GDK_GL_WINDOW_IMPL_X11 (gldrawable);
 

@@ -45,6 +45,15 @@ void _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
                                            GdkGLDrawable *gldrawable_read);
 */
 
+#define GDK_GL_CONTEXT_IS_DESTROYED(glcontext) \
+  ( ((GdkGLContextImplWin32 *) (glcontext))->is_destroyed )
+
+#define GDK_GL_PIXMAP_IS_DESTROYED(glpixmap) \
+  ( ((GdkGLPixmapImplWin32 *) (glpixmap))->is_destroyed )
+
+#define GDK_GL_WINDOW_IS_DESTROYED(glwindow) \
+  ( ((GdkGLWindowImplWin32 *) (glwindow))->is_destroyed )
+
 G_END_DECLS
 
 #endif /* __GDK_GL_PRIVATE_WIN32_H__ */
