@@ -187,7 +187,11 @@ x11_programs = \
 	glxinfo
 
 
-@PLATFORM_WIN32_TRUE@EXTRA_PROGRAMS = $(common_programs)
+win32_programs = \
+	wglinfo
+
+
+@PLATFORM_WIN32_TRUE@EXTRA_PROGRAMS = $(common_programs) $(win32_programs)
 @PLATFORM_WIN32_FALSE@EXTRA_PROGRAMS = $(common_programs) $(x11_programs)
 
 low_level_SOURCES = low-level.c
@@ -255,6 +259,10 @@ glxinfo_SOURCES = glxinfo.c
 glxinfo_DEPENDENCIES = $(DEPS)
 glxinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS) $(MATH_LIB)
 
+wglinfo_SOURCES = wglinfo.c
+wglinfo_DEPENDENCIES = $(DEPS)
+wglinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS)
+
 EXTRA_DIST = \
 	Makefile.mingw	\
 	Makefile.msc	\
@@ -274,7 +282,7 @@ CONFIG_CLEAN_FILES =
 @PLATFORM_WIN32_TRUE@	logo$(EXEEXT) gears$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	multiarb$(EXEEXT) viewlw$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	rotating-square$(EXEEXT) coolwave$(EXEEXT) \
-@PLATFORM_WIN32_TRUE@	template$(EXEEXT)
+@PLATFORM_WIN32_TRUE@	template$(EXEEXT) wglinfo$(EXEEXT)
 @PLATFORM_WIN32_FALSE@EXTRA_PROGRAMS = low-level$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	simple$(EXEEXT) simple-mixed$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	pixmap$(EXEEXT) pixmap-mixed$(EXEEXT) \
@@ -333,6 +341,9 @@ template_LDFLAGS =
 am_viewlw_OBJECTS = viewlw.$(OBJEXT) lw.$(OBJEXT) trackball.$(OBJEXT)
 viewlw_OBJECTS = $(am_viewlw_OBJECTS)
 viewlw_LDFLAGS =
+am_wglinfo_OBJECTS = wglinfo.$(OBJEXT)
+wglinfo_OBJECTS = $(am_wglinfo_OBJECTS)
+wglinfo_LDFLAGS =
 
 DEFS = @DEFS@
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
@@ -352,7 +363,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/rotating-square.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/shapes.Po ./$(DEPDIR)/simple-mixed.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/simple.Po ./$(DEPDIR)/template.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/trackball.Po ./$(DEPDIR)/viewlw.Po
+@AMDEP_TRUE@	./$(DEPDIR)/trackball.Po ./$(DEPDIR)/viewlw.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/wglinfo.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -366,9 +378,10 @@ DIST_SOURCES = $(color_SOURCES) $(coolwave_SOURCES) $(font_SOURCES) \
 	$(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(multiarb_SOURCES) \
 	$(pixmap_SOURCES) $(pixmap_mixed_SOURCES) \
 	$(rotating_square_SOURCES) $(shapes_SOURCES) $(simple_SOURCES) \
-	$(simple_mixed_SOURCES) $(template_SOURCES) $(viewlw_SOURCES)
+	$(simple_mixed_SOURCES) $(template_SOURCES) $(viewlw_SOURCES) \
+	$(wglinfo_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(color_SOURCES) $(coolwave_SOURCES) $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(multiarb_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(rotating_square_SOURCES) $(shapes_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(template_SOURCES) $(viewlw_SOURCES)
+SOURCES = $(color_SOURCES) $(coolwave_SOURCES) $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(multiarb_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(rotating_square_SOURCES) $(shapes_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(template_SOURCES) $(viewlw_SOURCES) $(wglinfo_SOURCES)
 
 all: all-am
 
@@ -427,6 +440,9 @@ template$(EXEEXT): $(template_OBJECTS) $(template_DEPENDENCIES)
 viewlw$(EXEEXT): $(viewlw_OBJECTS) $(viewlw_DEPENDENCIES) 
 	@rm -f viewlw$(EXEEXT)
 	$(LINK) $(viewlw_LDFLAGS) $(viewlw_OBJECTS) $(viewlw_LDADD) $(LIBS)
+wglinfo$(EXEEXT): $(wglinfo_OBJECTS) $(wglinfo_DEPENDENCIES) 
+	@rm -f wglinfo$(EXEEXT)
+	$(LINK) $(wglinfo_LDFLAGS) $(wglinfo_OBJECTS) $(wglinfo_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT) core *.core
@@ -457,6 +473,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/template.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/trackball.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/viewlw.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/wglinfo.Po@am__quote@
 
 distclean-depend:
 	-rm -rf ./$(DEPDIR)

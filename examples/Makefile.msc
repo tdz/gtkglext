@@ -106,7 +106,8 @@ SOURCES = \
 	lw.c			\
 	rotating-square.c	\
 	coolwave.c		\
-	template.c
+	template.c		\
+	wglinfo.c
 
 EXTRA_SOURCES = \
 	logo-g.c		\
@@ -130,7 +131,8 @@ PROGRAMS = \
 	viewlw$(EXEEXT)			\
 	rotating-square$(EXEEXT)	\
 	coolwave$(EXEEXT)		\
-	template$(EXEEXT)
+	template$(EXEEXT)		\
+	wglinfo$(EXEEXT)
 
 .SUFFIXES:
 .SUFFIXES: .c .obj
@@ -192,6 +194,9 @@ coolwave$(EXEEXT): coolwave.obj
 
 template$(EXEEXT): template.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+wglinfo$(EXEEXT): wglinfo.obj
+	$(link) $(linkdebug) -out:$@ $** opengl32.lib $(guilibs)
 
 #
 # Clean up

@@ -49,7 +49,8 @@ SOURCES = \
 	lw.c			\
 	rotating-square.c	\
 	coolwave.c		\
-	template.c
+	template.c		\
+	wglinfo.c
 
 EXTRA_SOURCES = \
 	logo-g.c		\
@@ -73,7 +74,8 @@ PROGRAMS = \
 	viewlw$(EXEEXT)			\
 	rotating-square$(EXEEXT)	\
 	coolwave$(EXEEXT)		\
-	template$(EXEEXT)
+	template$(EXEEXT)		\
+	wglinfo$(EXEEXT)
 
 .PHONY: all clean clean-deps distclean
 
@@ -151,6 +153,9 @@ coolwave$(EXEEXT): coolwave.o
 
 template$(EXEEXT): template.o
 	$(LINK) -o $@ $^ $(LIBS)
+
+wglinfo$(EXEEXT): wglinfo.o
+	$(LINK) -o $@ $^ -lopengl32 -lgdi32
 
 #
 # Clean up

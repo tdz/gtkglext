@@ -44,8 +44,11 @@ common_programs = \
 x11_programs = \
 	glxinfo
 
+win32_programs = \
+	wglinfo
+
 if PLATFORM_WIN32
-EXTRA_PROGRAMS = $(common_programs)
+EXTRA_PROGRAMS = $(common_programs) $(win32_programs)
 else
 EXTRA_PROGRAMS = $(common_programs) $(x11_programs)
 endif
@@ -114,6 +117,10 @@ template_LDADD = $(LDADDS)
 glxinfo_SOURCES = glxinfo.c
 glxinfo_DEPENDENCIES = $(DEPS)
 glxinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS) $(MATH_LIB)
+
+wglinfo_SOURCES = wglinfo.c
+wglinfo_DEPENDENCIES = $(DEPS)
+wglinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS)
 
 
 .PHONY: examples files
