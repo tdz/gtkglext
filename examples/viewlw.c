@@ -106,8 +106,8 @@ void initgl (void)
 
 gint expose(GtkWidget *widget, GdkEventExpose *event)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+  GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
   GLfloat m[4][4];
   mesh_info *info = (mesh_info*)gtk_object_get_data(GTK_OBJECT(widget), "mesh_info");
@@ -118,7 +118,7 @@ gint expose(GtkWidget *widget, GdkEventExpose *event)
   }
 
   /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+  gdk_gl_drawable_gl_begin(gldrawable, glcontext);
 
   /* basic initialization */
   if (info->do_init == TRUE) {
@@ -144,12 +144,12 @@ gint expose(GtkWidget *widget, GdkEventExpose *event)
   lw_object_show(info->lwobject);
 
   /* swap backbuffer to front */
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
+  if (gdk_gl_drawable_is_double_buffered(gldrawable))
+    gdk_gl_drawable_swap_buffers(gldrawable);
   else
-    glFlush ();
+    glFlush();
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gdk_gl_drawable_gl_end(gldrawable);
   /* OpenGL end. */
 
   return TRUE;
@@ -162,15 +162,15 @@ gint configure(GtkWidget *widget, GdkEventConfigure *event, gpointer data)
 
   g_return_val_if_fail(widget && event, FALSE);
 
-  glcontext = gtk_widget_get_gl_context (widget);
-  gldrawable = gtk_widget_get_gl_drawable (widget);
+  glcontext = gtk_widget_get_gl_context(widget);
+  gldrawable = gtk_widget_get_gl_drawable(widget);
 
   /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+  gdk_gl_drawable_gl_begin(gldrawable, glcontext);
 
   glViewport (0, 0, widget->allocation.width, widget->allocation.height);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gdk_gl_drawable_gl_end(gldrawable);
   /* OpenGL end. */
 
   return TRUE;
