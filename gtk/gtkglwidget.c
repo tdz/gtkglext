@@ -80,14 +80,6 @@ gtk_gl_widget_configure_event (GtkWidget         *widget,
   /* Realize. */
   gtk_gl_widget_realize (widget, user_data);
 
-  /*
-   * Once OpenGL-capable widget is realized,
-   * this callback is no longer needed.
-   */
-  g_signal_handlers_disconnect_by_func (widget,
-                                        G_CALLBACK (gtk_gl_widget_configure_event),
-                                        user_data);
-
   return FALSE;
 }
 

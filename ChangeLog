@@ -1,3 +1,9 @@
+2003-04-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gtk/gtkglwidget.c (gtk_gl_widget_configure_event): Don't
+	disconnect this "configure_event" handler to re-realize
+	OpenGL-capable DrawingArea.
+
 2003-04-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglpixmap-win32.c
