@@ -60,6 +60,8 @@ GdkGLWindow *gdk_gl_window_new      (GdkGLConfig *glconfig,
                                      GdkWindow   *window,
                                      const gint  *attrib_list);
 
+GdkWindow   *gdk_gl_window_get_window (GdkGLWindow *glwindow);
+
 /*
  * OpenGL extension to GdkWindow
  */

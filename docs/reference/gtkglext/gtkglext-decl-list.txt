@@ -73,6 +73,7 @@ GDK_GL_DRAWABLE_GET_CLASS
 <FILE>gdkglpixmap</FILE>
 <TITLE>GdkGLPixmap</TITLE>
 gdk_gl_pixmap_new
+gdk_gl_pixmap_get_pixmap
 gdk_pixmap_set_gl_capability
 gdk_pixmap_unset_gl_capability
 gdk_pixmap_is_gl_capable
@@ -92,6 +93,7 @@ GDK_GL_PIXMAP_GET_CLASS
 <FILE>gdkglwindow</FILE>
 <TITLE>GdkGLWindow</TITLE>
 gdk_gl_window_new
+gdk_gl_window_get_window
 gdk_window_set_gl_capability
 gdk_window_unset_gl_capability
 gdk_window_is_gl_capable

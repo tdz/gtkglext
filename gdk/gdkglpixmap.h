@@ -60,6 +60,8 @@ GdkGLPixmap *gdk_gl_pixmap_new      (GdkGLConfig *glconfig,
                                      GdkPixmap   *pixmap,
                                      const gint  *attrib_list);
 
+GdkPixmap   *gdk_gl_pixmap_get_pixmap (GdkGLPixmap *glpixmap);
+
 /*
  * OpenGL extension to GdkPixmap
  */

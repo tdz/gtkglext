@@ -34,6 +34,15 @@ OpenGL pixmap which is maintained offscreen.
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_gl_pixmap_get_pixmap ##### -->
+<para>
+
+</para>
+
+@glpixmap: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gdk_pixmap_set_gl_capability ##### -->
 <para>
 

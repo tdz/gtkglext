@@ -700,6 +700,25 @@ _gdk_gl_pixmap_get_gl_config (GdkGLDrawable *gldrawable)
   return GDK_GL_PIXMAP (gldrawable)->glconfig;
 }
 
+/**
+ * gdk_gl_pixmap_get_pixmap:
+ * @glpixmap: a #GdkGLPixmap.
+ *
+ * Returns the #GdkPixmap associated with @glpixmap.
+ *
+ * Notice that #GdkGLPixmap is not #GdkPixmap, but another
+ * #GdkDrawable which have an associated #GdkPixmap.
+ *
+ * Return value: the #GdkPixmap associated with @glpixmap.
+ **/
+GdkPixmap *
+gdk_gl_pixmap_get_pixmap (GdkGLPixmap *glpixmap)
+{
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP (glpixmap), NULL);
+
+  return GDK_PIXMAP (glpixmap->wrapper);
+}
+
 /*
  * OpenGL extension to GdkPixmap
  */
@@ -801,7 +820,7 @@ gdk_pixmap_unset_gl_capability (GdkPixmap *pixmap)
  * gdk_pixmap_is_gl_capable:
  * @pixmap: a #GdkPixmap.
  *
- * Return whether the @pixmap is OpenGL-capable.
+ * Returns whether the @pixmap is OpenGL-capable.
  *
  * Return value: TRUE if the @pixmap is OpenGL-capable, FALSE otherwise.
  **/
@@ -817,7 +836,7 @@ gdk_pixmap_is_gl_capable (GdkPixmap *pixmap)
  * gdk_pixmap_get_gl_pixmap:
  * @pixmap: a #GdkPixmap.
  *
- * Return the #GdkGLPixmap holded by the @pixmap.
+ * Returns the #GdkGLPixmap holded by the @pixmap.
  *
  * Return value: the #GdkGLPixmap.
  **/

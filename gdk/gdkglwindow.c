@@ -701,6 +701,25 @@ _gdk_gl_window_get_gl_config (GdkGLDrawable *gldrawable)
   return GDK_GL_WINDOW (gldrawable)->glconfig;
 }
 
+/**
+ * gdk_gl_window_get_window:
+ * @glwindow: a #GdkGLWindow.
+ *
+ * Returns the #GdkWindow associated with @glwindow.
+ *
+ * Notice that #GdkGLWindow is not #GdkWindow, but another
+ * #GdkDrawable which have an associated #GdkWindow.
+ *
+ * Return value: the #GdkWindow associated with @glwindow.
+ **/
+GdkWindow *
+gdk_gl_window_get_window (GdkGLWindow *glwindow)
+{
+  g_return_val_if_fail (GDK_IS_GL_WINDOW (glwindow), NULL);
+
+  return GDK_WINDOW (glwindow->wrapper);
+}
+
 /*
  * OpenGL extension to GdkWindow
  */
@@ -802,7 +821,7 @@ gdk_window_unset_gl_capability (GdkWindow *window)
  * gdk_window_is_gl_capable:
  * @window: a #GdkWindow.
  *
- * Return whether the @window is OpenGL-capable.
+ * Returns whether the @window is OpenGL-capable.
  *
  * Return value: TRUE if the @window is OpenGL-capable, FALSE otherwise.
  **/
@@ -818,7 +837,7 @@ gdk_window_is_gl_capable (GdkWindow *window)
  * gdk_window_get_gl_window:
  * @window: a #GdkWindow.
  *
- * Return the #GdkGLWindow holded by the @window.
+ * Returns the #GdkGLWindow holded by the @window.
  *
  * Return value: the #GdkGLWindow.
  **/
