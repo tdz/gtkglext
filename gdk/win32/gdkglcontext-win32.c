@@ -20,6 +20,11 @@
 #include "gdkglprivate-win32.h"
 #include "gdkglcontext-win32.h"
 
+enum {
+  PROP_0,
+  PROP_HGLRC
+};
+
 static void          gdk_gl_context_insert (GdkGLContext *glcontext);
 static void          gdk_gl_context_remove (GdkGLContext *glcontext);
 static GdkGLContext *gdk_gl_context_lookup (HGLRC         hglrc);
@@ -27,13 +32,28 @@ static guint         gdk_gl_context_hash   (HGLRC        *hglrc);
 static gboolean      gdk_gl_context_equal  (HGLRC        *a,
                                             HGLRC        *b);
 
-static void     gdk_gl_context_impl_win32_init        (GdkGLContextImplWin32      *impl);
-static void     gdk_gl_context_impl_win32_class_init  (GdkGLContextImplWin32Class *klass);
+static GdkGLContext *gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
+                                                GdkGLConfig   *glconfig,
+                                                GdkGLContext  *share_list,
+                                                gboolean       is_direct,
+                                                int            render_type,
+                                                HGLRC          hglrc);
 
-static GObject *gdk_gl_context_impl_win32_constructor (GType                       type,
-                                                       guint                       n_construct_properties,
-                                                       GObjectConstructParam      *construct_properties);
-static void     gdk_gl_context_impl_win32_finalize    (GObject                    *object);
+static void     gdk_gl_context_impl_win32_init         (GdkGLContextImplWin32      *impl);
+static void     gdk_gl_context_impl_win32_class_init   (GdkGLContextImplWin32Class *klass);
+
+static GObject *gdk_gl_context_impl_win32_constructor  (GType                       type,
+                                                        guint                       n_construct_properties,
+                                                        GObjectConstructParam      *construct_properties);
+static void     gdk_gl_context_impl_win32_set_property (GObject                    *object,
+                                                        guint                       property_id,
+                                                        const GValue               *value,
+                                                        GParamSpec                 *pspec);
+static void     gdk_gl_context_impl_win32_get_property (GObject                    *object,
+                                                        guint                       property_id,
+                                                        GValue                     *value,
+                                                        GParamSpec                 *pspec);
+static void     gdk_gl_context_impl_win32_finalize     (GObject                    *object);
 
 static gpointer parent_class = NULL;
 
@@ -81,8 +101,17 @@ gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->constructor = gdk_gl_context_impl_win32_constructor;
-  object_class->finalize    = gdk_gl_context_impl_win32_finalize;
+  object_class->constructor  = gdk_gl_context_impl_win32_constructor;
+  object_class->set_property = gdk_gl_context_impl_win32_set_property;
+  object_class->get_property = gdk_gl_context_impl_win32_get_property;
+  object_class->finalize     = gdk_gl_context_impl_win32_finalize;
+
+  g_object_class_install_property (object_class,
+                                   PROP_HGLRC,
+                                   g_param_spec_pointer ("hglrc",
+                                                         "HGLRC",
+                                                         "Hangle to the OpenGL rendering context.",
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
 static GObject *
@@ -94,10 +123,6 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
   GdkGLContext *glcontext;
   GdkGLContextImplWin32 *impl;
 
-  GdkGLContextImplWin32 *share_impl = NULL;
-
-  HDC hdc;
-
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
                                                        n_construct_properties,
                                                        construct_properties);
@@ -108,57 +133,48 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
   impl = GDK_GL_CONTEXT_IMPL_WIN32 (object);
 
   /*
-   * Get DC.
-   */
-
-  hdc = gdk_win32_gl_drawable_hdc_get (glcontext->gldrawable);
-  if (hdc == NULL)
-    goto FAIL;
-
-  /*
-   * Create an OpenGL rendering context.
-   */
-
-  GDK_GL_NOTE (IMPL, g_message (" * wglCreateContext ()"));
-
-  impl->hglrc = wglCreateContext (hdc);
-  if (impl->hglrc == NULL)
-    goto FAIL;
-
-  if (glcontext->share_list != NULL)
-    {
-      GDK_GL_NOTE (IMPL, g_message (" * wglShareLists ()"));
-
-      share_impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->share_list);
-      if (!wglShareLists (share_impl->hglrc, impl->hglrc))
-        goto FAIL;
-    }
-
-  /*
-   * Release DC.
-   */
-
-  gdk_win32_gl_drawable_hdc_release (glcontext->gldrawable);
-
-  /*
    * Successfully constructed?
    */
 
   impl->is_constructed = TRUE;
 
   return object;
+}
 
- FAIL:
+static void
+gdk_gl_context_impl_win32_set_property (GObject      *object,
+                                        guint         property_id,
+                                        const GValue *value,
+                                        GParamSpec   *pspec)
+{
+  GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (object);
 
-  if (impl->hglrc != NULL)
-    wglDeleteContext (impl->hglrc);
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_win32_set_property ()"));
 
-  if (hdc != NULL)
-    gdk_win32_gl_drawable_hdc_release (glcontext->gldrawable);
+  switch (property_id)
+    {
+    case PROP_HGLRC:
+      impl->hglrc = g_value_get_pointer (value);
+      g_object_notify (object, "hglrc");
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+    }
+}
 
-  impl->hglrc = NULL;
-
-  return object;
+static void
+gdk_gl_context_impl_win32_get_property (GObject    *object,
+                                        guint       property_id,
+                                        GValue     *value,
+                                        GParamSpec *pspec)
+{
+  switch (property_id)
+    {
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+    }
 }
 
 static void
@@ -193,17 +209,18 @@ gdk_gl_context_impl_win32_finalize (GObject *object)
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
-GdkGLContext *
-_gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
+static GdkGLContext *
+gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
                            GdkGLConfig   *glconfig,
                            GdkGLContext  *share_list,
-                           gboolean       direct,
-                           int            render_type)
+                           gboolean       is_direct,
+                           int            render_type,
+                           HGLRC          hglrc)
 {
   GdkGLContext *glcontext;
   GdkGLContextImplWin32 *impl;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_new ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_new_common ()"));
 
   /*
    * Instanciate the GdkGLContextImplWin32 object.
@@ -214,8 +231,9 @@ _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
                             "gldrawable_read", NULL,
                             "glconfig",        glconfig,
                             "share_list",      share_list,
-                            "is_direct",       direct,
+                            "is_direct",       is_direct,
                             "render_type",     render_type,
+                            "hglrc",           hglrc,
                             NULL);
   impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 
@@ -228,6 +246,83 @@ _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
   gdk_gl_context_insert (glcontext);
 
   return glcontext;
+}
+
+GdkGLContext *
+_gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
+                           GdkGLConfig   *glconfig,
+                           GdkGLContext  *share_list,
+                           gboolean       direct,
+                           int            render_type)
+{
+  HDC hdc;
+  HGLRC hglrc;
+  GdkGLContextImplWin32 *share_impl = NULL;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_new ()"));
+
+  g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
+
+  /*
+   * Create an OpenGL rendering context.
+   */
+
+  /* Get DC. */
+  hdc = gdk_win32_gl_drawable_hdc_get (gldrawable);
+  if (hdc == NULL)
+    return NULL;
+
+  GDK_GL_NOTE (IMPL, g_message (" * wglCreateContext ()"));
+
+  hglrc = wglCreateContext (hdc);
+
+  /* Release DC. */
+  gdk_win32_gl_drawable_hdc_release (gldrawable);
+
+  if (hglrc == NULL)
+    return NULL;
+
+  if (share_list != NULL)
+    {
+      GDK_GL_NOTE (IMPL, g_message (" * wglShareLists ()"));
+
+      share_impl = GDK_GL_CONTEXT_IMPL_WIN32 (share_list);
+      if (!wglShareLists (share_impl->hglrc, hglrc))
+        {
+          wglDeleteContext (hglrc);
+          return NULL;
+        }
+    }
+
+  /*
+   * Instanciate the GdkGLContextImplWin32 object.
+   */
+
+  return gdk_gl_context_new_common (gldrawable,
+                                    glconfig,
+                                    share_list,
+                                    direct,
+                                    render_type,
+                                    hglrc);
+}
+
+GdkGLContext *
+gdk_win32_gl_context_foreign_new (GdkGLConfig  *glconfig,
+                                  GdkGLContext *share_list,
+                                  HGLRC         hglrc)
+{
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_win32_gl_context_foreign_new ()"));
+
+  /*
+   * Instanciate the GdkGLContextImplWin32 object.
+   */
+
+  return gdk_gl_context_new_common (NULL,
+                                    glconfig,
+                                    share_list,
+                                    FALSE,
+                                    (glconfig->is_rgba) ? GDK_GL_RGBA_TYPE : GDK_GL_COLOR_INDEX_TYPE,
+                                    hglrc);
 }
 
 gboolean

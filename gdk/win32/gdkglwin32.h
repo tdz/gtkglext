@@ -42,6 +42,10 @@ GdkGLConfig           *gdk_win32_gl_config_new_from_pixel_format (int pixel_form
 
 PIXELFORMATDESCRIPTOR *gdk_win32_gl_config_get_pfd          (GdkGLConfig   *glconfig);
 
+GdkGLContext          *gdk_win32_gl_context_foreign_new     (GdkGLConfig   *glconfig,
+                                                             GdkGLContext  *share_list,
+                                                             HGLRC          hglrc);
+
 HGLRC                  gdk_win32_gl_context_get_hglrc       (GdkGLContext  *glcontext);
 
 HDC                    gdk_win32_gl_drawable_hdc_get        (GdkGLDrawable *gldrawable);
