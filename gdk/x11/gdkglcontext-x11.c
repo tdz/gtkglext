@@ -86,16 +86,18 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
 
   gdk_gl_context_remove (glcontext);
 
+  glXWaitGL ();
+
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
+
+  if (impl->glxcontext == glXGetCurrentContext ())
+    {
+      GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
+      glXMakeCurrent (xdisplay, None, NULL);
+    }
+
   if (!impl->is_foreign)
     {
-      xdisplay = GDK_GL_CONFIG_XDISPLAY (impl->glconfig);
-
-      if (impl->glxcontext == glXGetCurrentContext ())
-        {
-          GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
-          glXMakeCurrent (xdisplay, None, NULL);
-        }
-
       GDK_GL_NOTE (IMPL, g_message (" * glXDestroyContext ()"));
       glXDestroyContext (xdisplay, impl->glxcontext);
     }
