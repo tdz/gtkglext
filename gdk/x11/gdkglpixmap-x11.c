@@ -158,9 +158,21 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
    * Create an OpenGL off-screen rendering area.
    */
 
+#if defined(GLX_MESA_pixmap_colormap) && defined(GTKGLEXT_ENABLE_MESA_EXT)
+  GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmapMESA ()"));
+
+  impl->glxpixmap = glXCreateGLXPixmapMESA (xdisplay,
+                                            xvinfo,
+                                            xpixmap,
+                                            GDK_GL_CONFIG_XCOLORMAP (glpixmap->glconfig));
+#else
+  GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmap ()"));
+
   impl->glxpixmap = glXCreateGLXPixmap (xdisplay,
                                         xvinfo,
                                         xpixmap);
+#endif
+
   if (impl->glxpixmap == None)
     goto FAIL;
 
@@ -184,6 +196,8 @@ gdk_gl_pixmap_impl_x11_finalize (GObject *object)
 
   if (impl->glxpixmap != None)
     {
+      GDK_GL_NOTE (IMPL, g_message (" * glXDestroyGLXPixmap ()"));
+
       glXDestroyGLXPixmap (GDK_GL_CONFIG_XDISPLAY (glpixmap->glconfig),
                            impl->glxpixmap);
       glXWaitGL ();

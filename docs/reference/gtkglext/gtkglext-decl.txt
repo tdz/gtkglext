@@ -63,6 +63,10 @@ GdkGLWindow  *glwindow
 <NAME>GDK_GL_WINDOW_GLXWINDOW</NAME>
 #define GDK_GL_WINDOW_GLXWINDOW(glwindow)    (gdk_x11_gl_window_get_glxwindow (glwindow))
 </MACRO>
+<MACRO>
+<NAME>GDK_GL_CONFIG_XCOLORMAP</NAME>
+#define GDK_GL_CONFIG_XCOLORMAP(glconfig)    (GDK_COLORMAP_XCOLORMAP ((glconfig)->colormap))
+</MACRO>
 <ENUM>
 <NAME>GdkGLConfigMode</NAME>
 typedef enum

@@ -121,6 +121,8 @@ gdk_gl_context_impl_x11_constructor (GType                  type,
   xdisplay = GDK_GL_CONFIG_XDISPLAY (glcontext->glconfig);
   xvinfo = GDK_GL_CONFIG_XVINFO (glcontext->glconfig);
 
+  GDK_GL_NOTE (IMPL, g_message (" * glXCreateContext ()"));
+
   impl->glxcontext = glXCreateContext (xdisplay,
                                        xvinfo,
                                        share_glxcontext,
@@ -153,8 +155,12 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
     {
       xdisplay = GDK_GL_CONFIG_XDISPLAY (glcontext->glconfig);
 
+      GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
+
       if (impl->glxcontext == glXGetCurrentContext ())
         glXMakeCurrent (xdisplay, None, NULL);
+
+      GDK_GL_NOTE (IMPL, g_message (" * glXDestroyContext ()"));
 
       glXDestroyContext (xdisplay, impl->glxcontext);
       impl->glxcontext = NULL;

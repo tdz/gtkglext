@@ -62,11 +62,11 @@ gtk_widget_destroy_gl_context (GtkWidget *widget)
 {
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_destroy_gl_context ()"));
 
-  if (widget->window != NULL)
-    gdk_window_unset_gl_capability (widget->window);
-
   if (quark_gl_context != 0)
     g_object_set_qdata (G_OBJECT (widget), quark_gl_context, NULL);
+
+  if (widget->window != NULL)
+    gdk_window_unset_gl_capability (widget->window);
 
   return FALSE;
 }
@@ -201,7 +201,7 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
   /* Call quit handler to destroy OpenGL rendering context. */
   gtk_widget_destroy_gl_context (widget);
 
-  /* Remove quit handler */
+  /* Remove the quit handler */
   param = g_object_get_qdata (G_OBJECT (widget), quark_param);
   if (param != NULL && param->quit_handler_id != 0)
     {

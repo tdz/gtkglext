@@ -58,6 +58,8 @@ Window       gdk_x11_gl_window_get_glxwindow   (GdkGLWindow  *glwindow);
 
 #endif
 
+#define GDK_GL_CONFIG_XCOLORMAP(glconfig)    (GDK_COLORMAP_XCOLORMAP ((glconfig)->colormap))
+
 G_END_DECLS
 
 #endif /* __GDK_GL_X_H__ */

@@ -309,7 +309,10 @@ AC_SUBST(GDKGLEXT_WIN_LIBS)
 # Checks for OpenGL
 ##################################################
 
+AC_ARG_ENABLE(mesa-ext,   [  --enable-mesa-ext       enable Mesa-specific GL/GLX extensions [[default=yes]]], , enable_mesa_ext=yes)
+
 GL_CFLAGS=""
+GL_EXTRA_CFLAGS=""
 GL_LDFLAGS=""
 GL_LIBS=""
 
@@ -355,6 +358,7 @@ if test "x$gdktarget" = "xx11"; then
   # for X11
 
   have_GL=no
+  GL_LIB_NAME=GL
 
   # GLcore and GL (SGI)
   AC_CHECK_LIB(GLcore, glNewList,
@@ -400,7 +404,8 @@ if test "x$gdktarget" = "xx11"; then
     # if no GL, check for MesaGL
     AC_CHECK_LIB(MesaGL, glNewList,
                  [ GL_LIBS="-lMesaGL"
-                   have_GL=yes ])
+                   have_GL=yes
+                   GL_LIB_NAME=MesaGL ])
   fi
 
   if test "x$have_GL" = "xno" ; then
@@ -425,6 +430,15 @@ if test "x$gdktarget" = "xx11"; then
   if test "x$have_GLU" = "xno" ; then
     # no GLU found
     AC_MSG_ERROR(Cannot find GLU library)
+  fi
+
+  # check Mesa-specific GLX extensions
+  AC_CHECK_LIB($GL_LIB_NAME, glXCreateGLXPixmapMESA, ,
+               [ enable_mesa_ext=no ],
+               $GL_LIBS)
+
+  if test "x$enable_mesa_ext" = "xyes"; then
+    GL_EXTRA_CFLAGS="$GL_EXTRA_CFLAGS -DGTKGLEXT_ENABLE_MESA_EXT"
   fi
 
 else
@@ -482,6 +496,7 @@ dnl fi
 GL_LIBS="$GL_LDFLAGS $GL_LIBS"
 
 AC_SUBST(GL_CFLAGS)
+AC_SUBST(GL_EXTRA_CFLAGS)
 AC_SUBST(GL_LIBS)
 
 CPPFLAGS="$save_CPPFLAGS"
@@ -496,7 +511,7 @@ GDKGLEXT_PACKAGES="$GDK_PKG"
 GDKGLEXT_EXTRA_LIBS="$GL_LIBS"
 GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS"
 GDKGLEXT_DEP_LIBS="`$PKG_CONFIG --libs $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_LIBS $GDKGLEXT_WIN_LIBS $MATH_LIB"
-GDKGLEXT_DEP_CFLAGS="`$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_CFLAGS $GDKGLEXT_WIN_CFLAGS $MULTIHEAD_SAFE"
+GDKGLEXT_DEP_CFLAGS="`$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_CFLAGS $GL_EXTRA_CFLAGS $GDKGLEXT_WIN_CFLAGS $MULTIHEAD_SAFE"
 
 AC_SUBST(GDKGLEXT_PACKAGES)
 AC_SUBST(GDKGLEXT_EXTRA_LIBS)

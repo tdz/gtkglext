@@ -134,7 +134,20 @@ gdk_gl_window_impl_x11_constructor (GType                  type,
 static void
 gdk_gl_window_impl_x11_finalize (GObject *object)
 {
+  GdkGLWindow *glwindow;
+  GdkGLWindowImplX11 *impl;
+
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_finalize ()"));
+
+  glwindow = GDK_GL_WINDOW (object);
+  impl = GDK_GL_WINDOW_IMPL_X11 (object);
+
+#if defined(GLX_MESA_release_buffers) && defined(GTKGLEXT_ENABLE_MESA_EXT)
+  GDK_GL_NOTE (IMPL, g_message (" * glXReleaseBuffersMESA ()"));
+
+  glXReleaseBuffersMESA (GDK_GL_CONFIG_XDISPLAY (glwindow->glconfig),
+                         GDK_GL_WINDOW_GLXWINDOW (glwindow));
+#endif
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
