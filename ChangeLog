@@ -1,5 +1,10 @@
 2003-04-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_new_common): 
+	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_new_common): Don't
+	set impl->gldrawable on construction. It should be set if the
+	context is attached to a drawable.
+
 	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_impl_win32_finalize): 
 	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_impl_x11_finalize): 
 	Release the current context whether is_foreign is TRUE or not.

@@ -151,10 +151,7 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
   impl->glconfig = glconfig;
   g_object_ref (G_OBJECT (impl->glconfig));
 
-  impl->gldrawable = gldrawable;
-  g_object_add_weak_pointer (G_OBJECT (impl->gldrawable),
-                             (gpointer *) &(impl->gldrawable));
-
+  impl->gldrawable = NULL;
   impl->gldrawable_read = NULL;
 
   impl->is_foreign = is_foreign;
