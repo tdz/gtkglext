@@ -59,8 +59,8 @@ gdk_gl_query_extension_for_display (GdkDisplay *display)
 
 /**
  * gdk_gl_query_version:
- * @major: returns the major version number of OpenGL.
- * @minor: returns the minor version number of OpenGL.
+ * @major: returns the major version number of the OpenGL extension.
+ * @minor: returns the minor version number of the OpenGL extension.
  *
  * Returns the version numbers of the OpenGL extension to the window system.
  *
