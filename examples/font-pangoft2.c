@@ -126,7 +126,8 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
   bitmap.pixel_mode = ft_pixel_mode_grays;
 
   memset (bitmap.buffer, 0, bitmap.rows * bitmap.width);
-  pango_ft2_render_layout (&bitmap, layout, 0, 0);
+  pango_ft2_render_layout (&bitmap, layout,
+                           PANGO_PIXELS (-logical_rect.x), 0);
 
   pixels = g_malloc (bitmap.rows * bitmap.width * 4);
   p = (guint32 *) pixels;

@@ -7,7 +7,7 @@
 	function `memset'" warning.
 
 	* examples/font-pangoft2.c (gl_pango_ft2_render_layout):
-	Optimized.
+	Optimized. Fixed render position of the layout.
 
 2003-07-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
