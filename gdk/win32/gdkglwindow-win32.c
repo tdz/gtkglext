@@ -29,6 +29,10 @@ static gboolean gdk_win32_gl_window_make_context_current (GdkGLDrawable         
 static void     gdk_win32_gl_window_swap_buffers         (GdkGLDrawable             *gldrawable);
 static void     gdk_win32_gl_window_wait_gl              (GdkGLDrawable             *gldrawable);
 static void     gdk_win32_gl_window_wait_gdk             (GdkGLDrawable             *gldrawable);
+static gboolean gdk_win32_gl_window_gl_begin             (GdkGLDrawable             *draw,
+                                                          GdkGLDrawable             *read,
+                                                          GdkGLContext              *glcontext);
+static void     gdk_win32_gl_window_gl_end               (GdkGLDrawable             *gldrawable);
 
 static void     gdk_gl_window_impl_win32_init            (GdkGLWindowImplWin32      *impl);
 static void     gdk_gl_window_impl_win32_class_init      (GdkGLWindowImplWin32Class *klass);
@@ -328,6 +332,28 @@ static void
 gdk_win32_gl_window_wait_gdk (GdkGLDrawable *gldrawable)
 {
   GdiFlush ();
+}
+
+static gboolean
+gdk_win32_gl_window_gl_begin (GdkGLDrawable *draw,
+                              GdkGLDrawable *read,
+                              GdkGLContext  *glcontext)
+{
+  gboolean ret;
+
+  ret = gdk_win32_gl_window_make_context_current (draw, read, glcontext);
+  if (!ret)
+    return FALSE;
+
+  /* gdk_win32_gl_window_wait_gdk (draw); */
+
+  return TRUE;
+}
+
+static void
+gdk_win32_gl_window_gl_end (GdkGLDrawable *gldrawable)
+{
+  /* do nothing */
 }
 
 /*

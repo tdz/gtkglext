@@ -35,6 +35,10 @@ static gboolean gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable         
 static void     gdk_win32_gl_pixmap_swap_buffers         (GdkGLDrawable             *gldrawable);
 static void     gdk_win32_gl_pixmap_wait_gl              (GdkGLDrawable             *gldrawable);
 static void     gdk_win32_gl_pixmap_wait_gdk             (GdkGLDrawable             *gldrawable);
+static gboolean gdk_win32_gl_pixmap_gl_begin             (GdkGLDrawable             *draw,
+                                                          GdkGLDrawable             *read,
+                                                          GdkGLContext              *glcontext);
+static void     gdk_win32_gl_pixmap_gl_end               (GdkGLDrawable             *gldrawable);
 
 static void     gdk_gl_pixmap_impl_win32_init            (GdkGLPixmapImplWin32      *impl);
 static void     gdk_gl_pixmap_impl_win32_class_init      (GdkGLPixmapImplWin32Class *klass);
@@ -482,6 +486,28 @@ gdk_win32_gl_pixmap_wait_gdk (GdkGLDrawable *gldrawable)
 
   /* Sync. */
   gdk_gl_pixmap_sync_gdk (GDK_GL_PIXMAP (gldrawable));
+}
+
+static gboolean
+gdk_win32_gl_pixmap_gl_begin (GdkGLDrawable *draw,
+                              GdkGLDrawable *read,
+                              GdkGLContext  *glcontext)
+{
+  gboolean ret;
+
+  ret = gdk_win32_gl_pixmap_make_context_current (draw, read, glcontext);
+  if (!ret)
+    return FALSE;
+
+  gdk_win32_gl_pixmap_wait_gdk (draw);
+
+  return TRUE;
+}
+
+static void
+gdk_win32_gl_pixmap_gl_end (GdkGLDrawable *gldrawable)
+{
+  gdk_win32_gl_pixmap_wait_gl (gldrawable);
 }
 
 /*

@@ -1,3 +1,16 @@
+2002-09-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglpixmap-x11.c: 
+	* gdk/x11/gdkglwindow-x11.c: 
+	* gdk/win32/gdkglpixmap-win32.c: 
+	* gdk/win32/gdkglwindow-win32.c: Added gl_begin() and
+	gl_end(). Reduced unnecessary synchronization.
+
+	* gdk/gdkgldrawable.h (struct _GdkGLDrawableClass): 
+	* gdk/gdkgldrawable.c (gdk_gl_drawable_gl_begin) 
+	(gdk_gl_drawable_gl_end): gl_begin() and gl_end() ware changed to
+	be interface.
+
 2002-09-01  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* Version 0.5.1.

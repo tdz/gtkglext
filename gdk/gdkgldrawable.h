@@ -52,6 +52,11 @@ struct _GdkGLDrawableClass
   void          (*wait_gl)              (GdkGLDrawable *gldrawable);
   void          (*wait_gdk)             (GdkGLDrawable *gldrawable);
 
+  gboolean      (*gl_begin)             (GdkGLDrawable *draw,
+                                         GdkGLDrawable *read,
+                                         GdkGLContext  *glcontext);
+  void          (*gl_end)               (GdkGLDrawable *gldrawable);
+
   GdkGLConfig*  (*get_gl_config)        (GdkGLDrawable *gldrawable);
 
   void          (*get_size)             (GdkGLDrawable *gldrawable,

@@ -137,22 +137,11 @@ gboolean
 gdk_gl_drawable_gl_begin (GdkGLDrawable *gldrawable,
 			  GdkGLContext  *glcontext)
 {
-  GdkGLDrawableClass *klass;
-  gboolean ret;
-
   g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), FALSE);
 
-  klass = GDK_GL_DRAWABLE_GET_CLASS (gldrawable);
-
-  ret = klass->make_context_current (gldrawable,
-				     gldrawable,
-				     glcontext);
-  if (!ret)
-    return FALSE;
-
-  klass->wait_gdk (gldrawable);
-
-  return TRUE;
+  return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->gl_begin (gldrawable,
+                                                           gldrawable,
+                                                           glcontext);
 }
 
 /**
@@ -168,7 +157,7 @@ gdk_gl_drawable_gl_end (GdkGLDrawable *gldrawable)
 {
   g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
 
-  GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->wait_gl (gldrawable);
+  GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->gl_end (gldrawable);
 }
 
 /**
