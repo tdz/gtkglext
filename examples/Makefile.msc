@@ -30,12 +30,31 @@ TARGETOS = BOTH
 
 !include <WIN32.MAK>
 
-# pkg-config --msvc-syntax --cflags gtkglext-1.0
-INCLUDES = -Ie:/gtk/v2.1/include/gtk-2.0 -Ie:/gtk/v2.1/lib/gtk-2.0/include -Ie:/gtk/v2.1/include/pango-1.0 -Ie:/gtk/v2.1/include/glib-2.0 -Ie:/gtk/v2.1/lib/glib-2.0/include -Ie:/gnuwin32/include -Ie:/gtk/v2.1/include/atk-1.0 -Ic:/gtkglext/include/gtkglext-1.0 -Ic:/gtkglext/lib/gtkglext-1.0/include  
+# Generate makefile using 'pkg-config --cflags' command.
+PKGCONFIG_CFLAGS = 
+PKGCONFIG_CFLAGS_MAK = PKGCONFIG_CFLAGS.mak
+!if [echo PKGCONFIG_CFLAGS = \> $(PKGCONFIG_CFLAGS_MAK)]
+!else
+!if [pkg-config --msvc-syntax --cflags gtkglext-1.0 >> $(PKGCONFIG_CFLAGS_MAK)]
+!else
+!include $(PKGCONFIG_CFLAGS_MAK)
+!endif
+!endif
 
-# pkg-config --msvc-syntax --libs gtkglext-1.0
-LIBS = /libpath:e:/gtk/v2.1/lib /libpath:e:/gnuwin32/lib /libpath:c:/gtkglext/lib gtkglext-win32-1.0.lib gdkglext-win32-1.0.lib glu32.lib opengl32.lib gtk-win32-2.0.lib gdk-win32-2.0.lib atk-1.0.lib gdk_pixbuf-2.0.lib pangowin32-1.0.lib gdi32.lib pango-1.0.lib gobject-2.0.lib gmodule-2.0.lib glib-2.0.lib intl.lib iconv.lib  
+# Generate makefile using 'pkg-config --libs' command.
+PKGCONFIG_LIBS = 
+PKGCONFIG_LIBS_MAK = PKGCONFIG_LIBS.mak
+!if [echo PKGCONFIG_LIBS = \> $(PKGCONFIG_LIBS_MAK)]
+!else
+!if [pkg-config --msvc-syntax --libs gtkglext-1.0 >> $(PKGCONFIG_LIBS_MAK)]
+!else
+!include $(PKGCONFIG_LIBS_MAK)
+!endif
+!endif
 
+# required includes and libs
+INCLUDES = $(PKGCONFIG_CFLAGS)
+LIBS = $(PKGCONFIG_LIBS)
 DEFINES = 
 
 # debug flags (from win32.mak)
@@ -175,14 +194,16 @@ template$(EXEEXT): template.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
 
 #
-# Other targets
+# Clean up
 #
 
 clean:
-	-del $(PROGRAMS)
+	-del *$(EXEEXT)
 	-del *.obj
 	-del *.pdb
 	-del *.ilk
 
 distclean: clean
+	-del $(PKGCONFIG_CFLAGS_MAK)
+	-del $(PKGCONFIG_LIBS_MAK)
 	-del *~
