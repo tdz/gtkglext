@@ -16,6 +16,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#include <string.h>
+
 #include <gmodule.h>
 
 #ifdef GDK_MULTIHEAD_SAFE
@@ -24,6 +26,7 @@
 
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
+#include "gdkglconfig-x11.h"
 #include "gdkglquery.h"
 
 /**
@@ -99,6 +102,68 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 }
 
 #endif /* GDK_MULTIHEAD_SAFE */
+
+/**
+ * gdk_x11_gl_query_glx_extension:
+ * @glconfig: a #GdkGLConfig.
+ * @extension: name of GLX extension.
+ *
+ * Determines whether a given GLX extension is supported.
+ *
+ * Return value: TRUE if the GLX extension is supported, FALSE if not supported.
+ **/
+gboolean
+gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
+                                const char  *extension)
+{
+  static const char *extensions = NULL;
+  const char *start;
+  char *where, *terminator;
+  int major, minor;
+
+  /* Extension names should not have spaces. */
+  where = strchr (extension, ' ');
+  if (where || *extension == '\0')
+    return FALSE;
+
+  if (!extensions)
+    {
+      /* Be careful not to call glXQueryExtensionsString if it
+         looks like the server doesn't support GLX 1.1.
+         Unfortunately, the original GLX 1.0 didn't have the notion
+         of GLX extensions. */
+
+      glXQueryVersion (GDK_GL_CONFIG_XDISPLAY (glconfig),
+                       &major, &minor);
+
+      if ((major == 1 && minor < 1) || (major < 1))
+        return FALSE;
+
+      extensions = glXQueryExtensionsString (GDK_GL_CONFIG_XDISPLAY (glconfig),
+                                             GDK_GL_CONFIG_SCREEN_XNUMBER (glconfig));
+    }
+
+  /* It takes a bit of care to be fool-proof about parsing
+     the GLX extensions string.  Don't be fooled by
+     sub-strings,  etc. */
+  start = extensions;
+  for (;;)
+    {
+      where = strstr (start, extension);
+      if (!where)
+        break;
+
+      terminator = where + strlen(extension);
+
+      if (where == start || *(where - 1) == ' ')
+        if (*terminator == ' ' || *terminator == '\0')
+          return TRUE;
+
+      start = terminator;
+    }
+
+  return FALSE;
+}
 
 /**
  * gdk_gl_query_get_proc_address:

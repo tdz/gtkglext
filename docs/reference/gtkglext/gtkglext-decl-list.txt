@@ -112,6 +112,7 @@ GDK_GL_WINDOW_GET_CLASS
 
 <SECTION>
 <FILE>gdkglx</FILE>
+gdk_x11_gl_query_glx_extension
 gdk_x11_gl_config_get_xdisplay
 gdk_x11_gl_config_get_screen_number
 gdk_x11_gl_config_get_xvinfo
@@ -259,6 +260,7 @@ height)
 gdk_gl_get_glCopyTexSubImage3D
 gdk_gl_glCopyTexSubImage3D
 GdkGL_GL_VERSION_1_2
+gdk_gl_get_GL_VERSION_1_2
 texture)
 gdk_gl_get_glActiveTexture
 gdk_gl_glActiveTexture
@@ -398,6 +400,7 @@ img)
 gdk_gl_get_glGetCompressedTexImage
 gdk_gl_glGetCompressedTexImage
 GdkGL_GL_VERSION_1_3
+gdk_gl_get_GL_VERSION_1_3
 dfactorAlpha)
 gdk_gl_get_glBlendFuncSeparate
 gdk_gl_glBlendFuncSeparate
@@ -534,6 +537,7 @@ v)
 gdk_gl_get_glWindowPos3sv
 gdk_gl_glWindowPos3sv
 GdkGL_GL_VERSION_1_4
+gdk_gl_get_GL_VERSION_1_4
 texture)
 gdk_gl_get_glActiveTextureARB
 gdk_gl_glActiveTextureARB
@@ -637,6 +641,7 @@ v)
 gdk_gl_get_glMultiTexCoord4svARB
 gdk_gl_glMultiTexCoord4svARB
 GdkGL_GL_ARB_multitexture
+gdk_gl_get_GL_ARB_multitexture
 m)
 gdk_gl_get_glLoadTransposeMatrixfARB
 gdk_gl_glLoadTransposeMatrixfARB
@@ -650,10 +655,12 @@ m)
 gdk_gl_get_glMultTransposeMatrixdARB
 gdk_gl_glMultTransposeMatrixdARB
 GdkGL_GL_ARB_transpose_matrix
+gdk_gl_get_GL_ARB_transpose_matrix
 invert)
 gdk_gl_get_glSampleCoverageARB
 gdk_gl_glSampleCoverageARB
 GdkGL_GL_ARB_multisample
+gdk_gl_get_GL_ARB_multisample
 data)
 gdk_gl_get_glCompressedTexImage3DARB
 gdk_gl_glCompressedTexImage3DARB
@@ -676,6 +683,7 @@ img)
 gdk_gl_get_glGetCompressedTexImageARB
 gdk_gl_glGetCompressedTexImageARB
 GdkGL_GL_ARB_texture_compression
+gdk_gl_get_GL_ARB_texture_compression
 param)
 gdk_gl_get_glPointParameterfARB
 gdk_gl_glPointParameterfARB
@@ -683,6 +691,7 @@ params)
 gdk_gl_get_glPointParameterfvARB
 gdk_gl_glPointParameterfvARB
 GdkGL_GL_ARB_point_parameters
+gdk_gl_get_GL_ARB_point_parameters
 weights)
 gdk_gl_get_glWeightbvARB
 gdk_gl_glWeightbvARB
@@ -714,6 +723,7 @@ count)
 gdk_gl_get_glVertexBlendARB
 gdk_gl_glVertexBlendARB
 GdkGL_GL_ARB_vertex_blend
+gdk_gl_get_GL_ARB_vertex_blend
 index)
 gdk_gl_get_glCurrentPaletteMatrixARB
 gdk_gl_glCurrentPaletteMatrixARB
@@ -730,6 +740,7 @@ pointer)
 gdk_gl_get_glMatrixIndexPointerARB
 gdk_gl_glMatrixIndexPointerARB
 GdkGL_GL_ARB_matrix_palette
+gdk_gl_get_GL_ARB_matrix_palette
 y)
 gdk_gl_get_glWindowPos2dARB
 gdk_gl_glWindowPos2dARB
@@ -779,6 +790,7 @@ v)
 gdk_gl_get_glWindowPos3svARB
 gdk_gl_glWindowPos3svARB
 GdkGL_GL_ARB_window_pos
+gdk_gl_get_GL_ARB_window_pos
 x)
 gdk_gl_get_glVertexAttrib1dARB
 gdk_gl_glVertexAttrib1dARB
@@ -966,14 +978,17 @@ program)
 gdk_gl_get_glIsProgramARB
 gdk_gl_glIsProgramARB
 GdkGL_GL_ARB_vertex_program
+gdk_gl_get_GL_ARB_vertex_program
 alpha)
 gdk_gl_get_glBlendColorEXT
 gdk_gl_glBlendColorEXT
 GdkGL_GL_EXT_blend_color
+gdk_gl_get_GL_EXT_blend_color
 bias)
 gdk_gl_get_glPolygonOffsetEXT
 gdk_gl_glPolygonOffsetEXT
 GdkGL_GL_EXT_polygon_offset
+gdk_gl_get_GL_EXT_polygon_offset
 pixels)
 gdk_gl_get_glTexImage3DEXT
 gdk_gl_glTexImage3DEXT
@@ -981,6 +996,7 @@ pixels)
 gdk_gl_get_glTexSubImage3DEXT
 gdk_gl_glTexSubImage3DEXT
 GdkGL_GL_EXT_texture3D
+gdk_gl_get_GL_EXT_texture3D
 weights)
 gdk_gl_get_glGetTexFilterFuncSGIS
 gdk_gl_glGetTexFilterFuncSGIS
@@ -988,6 +1004,7 @@ weights)
 gdk_gl_get_glTexFilterFuncSGIS
 gdk_gl_glTexFilterFuncSGIS
 GdkGL_GL_SGIS_texture_filter4
+gdk_gl_get_GL_SGIS_texture_filter4
 pixels)
 gdk_gl_get_glTexSubImage1DEXT
 gdk_gl_glTexSubImage1DEXT
@@ -995,6 +1012,7 @@ pixels)
 gdk_gl_get_glTexSubImage2DEXT
 gdk_gl_glTexSubImage2DEXT
 GdkGL_GL_EXT_subtexture
+gdk_gl_get_GL_EXT_subtexture
 border)
 gdk_gl_get_glCopyTexImage1DEXT
 gdk_gl_glCopyTexImage1DEXT
@@ -1011,6 +1029,7 @@ height)
 gdk_gl_get_glCopyTexSubImage3DEXT
 gdk_gl_glCopyTexSubImage3DEXT
 GdkGL_GL_EXT_copy_texture
+gdk_gl_get_GL_EXT_copy_texture
 values)
 gdk_gl_get_glGetHistogramEXT
 gdk_gl_glGetHistogramEXT
@@ -1042,6 +1061,7 @@ target)
 gdk_gl_get_glResetMinmaxEXT
 gdk_gl_glResetMinmaxEXT
 GdkGL_GL_EXT_histogram
+gdk_gl_get_GL_EXT_histogram
 image)
 gdk_gl_get_glConvolutionFilter1DEXT
 gdk_gl_glConvolutionFilter1DEXT
@@ -1082,6 +1102,7 @@ column)
 gdk_gl_get_glSeparableFilter2DEXT
 gdk_gl_glSeparableFilter2DEXT
 GdkGL_GL_EXT_convolution
+gdk_gl_get_GL_EXT_convolution
 table)
 gdk_gl_get_glColorTableSGI
 gdk_gl_glColorTableSGI
@@ -1104,10 +1125,12 @@ params)
 gdk_gl_get_glGetColorTableParameterivSGI
 gdk_gl_glGetColorTableParameterivSGI
 GdkGL_GL_SGI_color_table
+gdk_gl_get_GL_SGI_color_table
 mode)
 gdk_gl_get_glPixelTexGenSGIX
 gdk_gl_glPixelTexGenSGIX
 GdkGL_GL_SGIX_pixel_texture
+gdk_gl_get_GL_SGIX_pixel_texture
 param)
 gdk_gl_get_glPixelTexGenParameteriSGIS
 gdk_gl_glPixelTexGenParameteriSGIS
@@ -1127,6 +1150,7 @@ params)
 gdk_gl_get_glGetPixelTexGenParameterfvSGIS
 gdk_gl_glGetPixelTexGenParameterfvSGIS
 GdkGL_GL_SGIS_pixel_texture
+gdk_gl_get_GL_SGIS_pixel_texture
 pixels)
 gdk_gl_get_glTexImage4DSGIS
 gdk_gl_glTexImage4DSGIS
@@ -1134,6 +1158,7 @@ pixels)
 gdk_gl_get_glTexSubImage4DSGIS
 gdk_gl_glTexSubImage4DSGIS
 GdkGL_GL_SGIS_texture4D
+gdk_gl_get_GL_SGIS_texture4D
 residences)
 gdk_gl_get_glAreTexturesResidentEXT
 gdk_gl_glAreTexturesResidentEXT
@@ -1153,6 +1178,7 @@ priorities)
 gdk_gl_get_glPrioritizeTexturesEXT
 gdk_gl_glPrioritizeTexturesEXT
 GdkGL_GL_EXT_texture_object
+gdk_gl_get_GL_EXT_texture_object
 points)
 gdk_gl_get_glDetailTexFuncSGIS
 gdk_gl_glDetailTexFuncSGIS
@@ -1160,6 +1186,7 @@ points)
 gdk_gl_get_glGetDetailTexFuncSGIS
 gdk_gl_glGetDetailTexFuncSGIS
 GdkGL_GL_SGIS_detail_texture
+gdk_gl_get_GL_SGIS_detail_texture
 points)
 gdk_gl_get_glSharpenTexFuncSGIS
 gdk_gl_glSharpenTexFuncSGIS
@@ -1167,6 +1194,7 @@ points)
 gdk_gl_get_glGetSharpenTexFuncSGIS
 gdk_gl_glGetSharpenTexFuncSGIS
 GdkGL_GL_SGIS_sharpen_texture
+gdk_gl_get_GL_SGIS_sharpen_texture
 invert)
 gdk_gl_get_glSampleMaskSGIS
 gdk_gl_glSampleMaskSGIS
@@ -1174,6 +1202,7 @@ pattern)
 gdk_gl_get_glSamplePatternSGIS
 gdk_gl_glSamplePatternSGIS
 GdkGL_GL_SGIS_multisample
+gdk_gl_get_GL_SGIS_multisample
 i)
 gdk_gl_get_glArrayElementEXT
 gdk_gl_glArrayElementEXT
@@ -1202,10 +1231,12 @@ pointer)
 gdk_gl_get_glVertexPointerEXT
 gdk_gl_glVertexPointerEXT
 GdkGL_GL_EXT_vertex_array
+gdk_gl_get_GL_EXT_vertex_array
 mode)
 gdk_gl_get_glBlendEquationEXT
 gdk_gl_glBlendEquationEXT
 GdkGL_GL_EXT_blend_minmax
+gdk_gl_get_GL_EXT_blend_minmax
 param)
 gdk_gl_get_glSpriteParameterfSGIX
 gdk_gl_glSpriteParameterfSGIX
@@ -1219,6 +1250,7 @@ params)
 gdk_gl_get_glSpriteParameterivSGIX
 gdk_gl_glSpriteParameterivSGIX
 GdkGL_GL_SGIX_sprite
+gdk_gl_get_GL_SGIX_sprite
 param)
 gdk_gl_get_glPointParameterfEXT
 gdk_gl_glPointParameterfEXT
@@ -1226,6 +1258,7 @@ params)
 gdk_gl_get_glPointParameterfvEXT
 gdk_gl_glPointParameterfvEXT
 GdkGL_GL_EXT_point_parameters
+gdk_gl_get_GL_EXT_point_parameters
 param)
 gdk_gl_get_glPointParameterfSGIS
 gdk_gl_glPointParameterfSGIS
@@ -1233,6 +1266,7 @@ params)
 gdk_gl_get_glPointParameterfvSGIS
 gdk_gl_glPointParameterfvSGIS
 GdkGL_GL_SGIS_point_parameters
+gdk_gl_get_GL_SGIS_point_parameters
 gdk_gl_get_glGetInstrumentsSGIX
 gdk_gl_glGetInstrumentsSGIX
 buffer)
@@ -1250,13 +1284,16 @@ marker)
 gdk_gl_get_glStopInstrumentsSGIX
 gdk_gl_glStopInstrumentsSGIX
 GdkGL_GL_SGIX_instruments
+gdk_gl_get_GL_SGIX_instruments
 factor)
 gdk_gl_get_glFrameZoomSGIX
 gdk_gl_glFrameZoomSGIX
 GdkGL_GL_SGIX_framezoom
+gdk_gl_get_GL_SGIX_framezoom
 gdk_gl_get_glTagSampleBufferSGIX
 gdk_gl_glTagSampleBufferSGIX
 GdkGL_GL_SGIX_tag_sample_buffer
+gdk_gl_get_GL_SGIX_tag_sample_buffer
 points)
 gdk_gl_get_glDeformationMap3dSGIX
 gdk_gl_glDeformationMap3dSGIX
@@ -1270,13 +1307,16 @@ mask)
 gdk_gl_get_glLoadIdentityDeformationMapSGIX
 gdk_gl_glLoadIdentityDeformationMapSGIX
 GdkGL_GL_SGIX_polynomial_ffd
+gdk_gl_get_GL_SGIX_polynomial_ffd
 equation)
 gdk_gl_get_glReferencePlaneSGIX
 gdk_gl_glReferencePlaneSGIX
 GdkGL_GL_SGIX_reference_plane
+gdk_gl_get_GL_SGIX_reference_plane
 gdk_gl_get_glFlushRasterSGIX
 gdk_gl_glFlushRasterSGIX
 GdkGL_GL_SGIX_flush_raster
+gdk_gl_get_GL_SGIX_flush_raster
 points)
 gdk_gl_get_glFogFuncSGIS
 gdk_gl_glFogFuncSGIS
@@ -1284,6 +1324,7 @@ points)
 gdk_gl_get_glGetFogFuncSGIS
 gdk_gl_glGetFogFuncSGIS
 GdkGL_GL_SGIS_fog_function
+gdk_gl_get_GL_SGIS_fog_function
 param)
 gdk_gl_get_glImageTransformParameteriHP
 gdk_gl_glImageTransformParameteriHP
@@ -1303,6 +1344,7 @@ params)
 gdk_gl_get_glGetImageTransformParameterfvHP
 gdk_gl_glGetImageTransformParameterfvHP
 GdkGL_GL_HP_image_transform
+gdk_gl_get_GL_HP_image_transform
 data)
 gdk_gl_get_glColorSubTableEXT
 gdk_gl_glColorSubTableEXT
@@ -1310,10 +1352,12 @@ width)
 gdk_gl_get_glCopyColorSubTableEXT
 gdk_gl_glCopyColorSubTableEXT
 GdkGL_GL_EXT_color_subtable
+gdk_gl_get_GL_EXT_color_subtable
 mode)
 gdk_gl_get_glHintPGI
 gdk_gl_glHintPGI
 GdkGL_GL_PGI_misc_hints
+gdk_gl_get_GL_PGI_misc_hints
 table)
 gdk_gl_get_glColorTableEXT
 gdk_gl_glColorTableEXT
@@ -1327,6 +1371,7 @@ params)
 gdk_gl_get_glGetColorTableParameterfvEXT
 gdk_gl_glGetColorTableParameterfvEXT
 GdkGL_GL_EXT_paletted_texture
+gdk_gl_get_GL_EXT_paletted_texture
 params)
 gdk_gl_get_glGetListParameterfvSGIX
 gdk_gl_glGetListParameterfvSGIX
@@ -1346,20 +1391,24 @@ params)
 gdk_gl_get_glListParameterivSGIX
 gdk_gl_glListParameterivSGIX
 GdkGL_GL_SGIX_list_priority
+gdk_gl_get_GL_SGIX_list_priority
 mode)
 gdk_gl_get_glIndexMaterialEXT
 gdk_gl_glIndexMaterialEXT
 GdkGL_GL_EXT_index_material
+gdk_gl_get_GL_EXT_index_material
 ref)
 gdk_gl_get_glIndexFuncEXT
 gdk_gl_glIndexFuncEXT
 GdkGL_GL_EXT_index_func
+gdk_gl_get_GL_EXT_index_func
 count)
 gdk_gl_get_glLockArraysEXT
 gdk_gl_glLockArraysEXT
 gdk_gl_get_glUnlockArraysEXT
 gdk_gl_glUnlockArraysEXT
 GdkGL_GL_EXT_compiled_vertex_array
+gdk_gl_get_GL_EXT_compiled_vertex_array
 params)
 gdk_gl_get_glCullParameterdvEXT
 gdk_gl_glCullParameterdvEXT
@@ -1367,6 +1416,7 @@ params)
 gdk_gl_get_glCullParameterfvEXT
 gdk_gl_glCullParameterfvEXT
 GdkGL_GL_EXT_cull_vertex
+gdk_gl_get_GL_EXT_cull_vertex
 mode)
 gdk_gl_get_glFragmentColorMaterialSGIX
 gdk_gl_glFragmentColorMaterialSGIX
@@ -1422,10 +1472,12 @@ param)
 gdk_gl_get_glLightEnviSGIX
 gdk_gl_glLightEnviSGIX
 GdkGL_GL_SGIX_fragment_lighting
+gdk_gl_get_GL_SGIX_fragment_lighting
 indices)
 gdk_gl_get_glDrawRangeElementsEXT
 gdk_gl_glDrawRangeElementsEXT
 GdkGL_GL_EXT_draw_range_elements
+gdk_gl_get_GL_EXT_draw_range_elements
 mode)
 gdk_gl_get_glApplyTextureEXT
 gdk_gl_glApplyTextureEXT
@@ -1436,6 +1488,7 @@ mode)
 gdk_gl_get_glTextureMaterialEXT
 gdk_gl_glTextureMaterialEXT
 GdkGL_GL_EXT_light_texture
+gdk_gl_get_GL_EXT_light_texture
 marker)
 gdk_gl_get_glAsyncMarkerSGIX
 gdk_gl_glAsyncMarkerSGIX
@@ -1455,6 +1508,7 @@ marker)
 gdk_gl_get_glIsAsyncMarkerSGIX
 gdk_gl_glIsAsyncMarkerSGIX
 GdkGL_GL_SGIX_async
+gdk_gl_get_GL_SGIX_async
 pointer)
 gdk_gl_get_glVertexPointervINTEL
 gdk_gl_glVertexPointervINTEL
@@ -1468,6 +1522,7 @@ pointer)
 gdk_gl_get_glTexCoordPointervINTEL
 gdk_gl_glTexCoordPointervINTEL
 GdkGL_GL_INTEL_parallel_arrays
+gdk_gl_get_GL_INTEL_parallel_arrays
 param)
 gdk_gl_get_glPixelTransformParameteriEXT
 gdk_gl_glPixelTransformParameteriEXT
@@ -1481,6 +1536,7 @@ params)
 gdk_gl_get_glPixelTransformParameterfvEXT
 gdk_gl_glPixelTransformParameterfvEXT
 GdkGL_GL_EXT_pixel_transform
+gdk_gl_get_GL_EXT_pixel_transform
 blue)
 gdk_gl_get_glSecondaryColor3bEXT
 gdk_gl_glSecondaryColor3bEXT
@@ -1533,10 +1589,12 @@ pointer)
 gdk_gl_get_glSecondaryColorPointerEXT
 gdk_gl_glSecondaryColorPointerEXT
 GdkGL_GL_EXT_secondary_color
+gdk_gl_get_GL_EXT_secondary_color
 mode)
 gdk_gl_get_glTextureNormalEXT
 gdk_gl_glTextureNormalEXT
 GdkGL_GL_EXT_texture_perturb_normal
+gdk_gl_get_GL_EXT_texture_perturb_normal
 primcount)
 gdk_gl_get_glMultiDrawArraysEXT
 gdk_gl_glMultiDrawArraysEXT
@@ -1544,6 +1602,7 @@ primcount)
 gdk_gl_get_glMultiDrawElementsEXT
 gdk_gl_glMultiDrawElementsEXT
 GdkGL_GL_EXT_multi_draw_arrays
+gdk_gl_get_GL_EXT_multi_draw_arrays
 coord)
 gdk_gl_get_glFogCoordfEXT
 gdk_gl_glFogCoordfEXT
@@ -1560,6 +1619,7 @@ pointer)
 gdk_gl_get_glFogCoordPointerEXT
 gdk_gl_glFogCoordPointerEXT
 GdkGL_GL_EXT_fog_coord
+gdk_gl_get_GL_EXT_fog_coord
 tz)
 gdk_gl_get_glTangent3bEXT
 gdk_gl_glTangent3bEXT
@@ -1627,9 +1687,11 @@ pointer)
 gdk_gl_get_glBinormalPointerEXT
 gdk_gl_glBinormalPointerEXT
 GdkGL_GL_EXT_coordinate_frame
+gdk_gl_get_GL_EXT_coordinate_frame
 gdk_gl_get_glFinishTextureSUNX
 gdk_gl_glFinishTextureSUNX
 GdkGL_GL_SUNX_constant_data
+gdk_gl_get_GL_SUNX_constant_data
 factor)
 gdk_gl_get_glGlobalAlphaFactorbSUN
 gdk_gl_glGlobalAlphaFactorbSUN
@@ -1655,6 +1717,7 @@ factor)
 gdk_gl_get_glGlobalAlphaFactoruiSUN
 gdk_gl_glGlobalAlphaFactoruiSUN
 GdkGL_GL_SUN_global_alpha
+gdk_gl_get_GL_SUN_global_alpha
 code)
 gdk_gl_get_glReplacementCodeuiSUN
 gdk_gl_glReplacementCodeuiSUN
@@ -1677,6 +1740,7 @@ pointer)
 gdk_gl_get_glReplacementCodePointerSUN
 gdk_gl_glReplacementCodePointerSUN
 GdkGL_GL_SUN_triangle_list
+gdk_gl_get_GL_SUN_triangle_list
 y)
 gdk_gl_get_glColor4ubVertex2fSUN
 gdk_gl_glColor4ubVertex2fSUN
@@ -1798,14 +1862,17 @@ v)
 gdk_gl_get_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN
 gdk_gl_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN
 GdkGL_GL_SUN_vertex
+gdk_gl_get_GL_SUN_vertex
 dfactorAlpha)
 gdk_gl_get_glBlendFuncSeparateEXT
 gdk_gl_glBlendFuncSeparateEXT
 GdkGL_GL_EXT_blend_func_separate
+gdk_gl_get_GL_EXT_blend_func_separate
 dfactorAlpha)
 gdk_gl_get_glBlendFuncSeparateINGR
 gdk_gl_glBlendFuncSeparateINGR
 GdkGL_GL_INGR_blend_func_separate
+gdk_gl_get_GL_INGR_blend_func_separate
 weight)
 gdk_gl_get_glVertexWeightfEXT
 gdk_gl_glVertexWeightfEXT
@@ -1816,12 +1883,14 @@ pointer)
 gdk_gl_get_glVertexWeightPointerEXT
 gdk_gl_glVertexWeightPointerEXT
 GdkGL_GL_EXT_vertex_weighting
+gdk_gl_get_GL_EXT_vertex_weighting
 gdk_gl_get_glFlushVertexArrayRangeNV
 gdk_gl_glFlushVertexArrayRangeNV
 pointer)
 gdk_gl_get_glVertexArrayRangeNV
 gdk_gl_glVertexArrayRangeNV
 GdkGL_GL_NV_vertex_array_range
+gdk_gl_get_GL_NV_vertex_array_range
 params)
 gdk_gl_get_glCombinerParameterfvNV
 gdk_gl_glCombinerParameterfvNV
@@ -1862,9 +1931,11 @@ params)
 gdk_gl_get_glGetFinalCombinerInputParameterivNV
 gdk_gl_glGetFinalCombinerInputParameterivNV
 GdkGL_GL_NV_register_combiners
+gdk_gl_get_GL_NV_register_combiners
 gdk_gl_get_glResizeBuffersMESA
 gdk_gl_glResizeBuffersMESA
 GdkGL_GL_MESA_resize_buffers
+gdk_gl_get_GL_MESA_resize_buffers
 y)
 gdk_gl_get_glWindowPos2dMESA
 gdk_gl_glWindowPos2dMESA
@@ -1938,6 +2009,7 @@ v)
 gdk_gl_get_glWindowPos4svMESA
 gdk_gl_glWindowPos4svMESA
 GdkGL_GL_MESA_window_pos
+gdk_gl_get_GL_MESA_window_pos
 modestride)
 gdk_gl_get_glMultiModeDrawArraysIBM
 gdk_gl_glMultiModeDrawArraysIBM
@@ -1945,6 +2017,7 @@ modestride)
 gdk_gl_get_glMultiModeDrawElementsIBM
 gdk_gl_glMultiModeDrawElementsIBM
 GdkGL_GL_IBM_multimode_draw_arrays
+gdk_gl_get_GL_IBM_multimode_draw_arrays
 ptrstride)
 gdk_gl_get_glColorPointerListIBM
 gdk_gl_glColorPointerListIBM
@@ -1970,10 +2043,12 @@ ptrstride)
 gdk_gl_get_glVertexPointerListIBM
 gdk_gl_glVertexPointerListIBM
 GdkGL_GL_IBM_vertex_array_lists
+gdk_gl_get_GL_IBM_vertex_array_lists
 mask)
 gdk_gl_get_glTbufferMask3DFX
 gdk_gl_glTbufferMask3DFX
 GdkGL_GL_3DFX_tbuffer
+gdk_gl_get_GL_3DFX_tbuffer
 invert)
 gdk_gl_get_glSampleMaskEXT
 gdk_gl_glSampleMaskEXT
@@ -1981,14 +2056,17 @@ pattern)
 gdk_gl_get_glSamplePatternEXT
 gdk_gl_glSamplePatternEXT
 GdkGL_GL_EXT_multisample
+gdk_gl_get_GL_EXT_multisample
 alpha)
 gdk_gl_get_glTextureColorMaskSGIS
 gdk_gl_glTextureColorMaskSGIS
 GdkGL_GL_SGIS_texture_color_mask
+gdk_gl_get_GL_SGIS_texture_color_mask
 params)
 gdk_gl_get_glIglooInterfaceSGIX
 gdk_gl_glIglooInterfaceSGIX
 GdkGL_GL_SGIX_igloo_interface
+gdk_gl_get_GL_SGIX_igloo_interface
 fences)
 gdk_gl_get_glDeleteFencesNV
 gdk_gl_glDeleteFencesNV
@@ -2011,6 +2089,7 @@ condition)
 gdk_gl_get_glSetFenceNV
 gdk_gl_glSetFenceNV
 GdkGL_GL_NV_fence
+gdk_gl_get_GL_NV_fence
 points)
 gdk_gl_get_glMapControlPointsNV
 gdk_gl_glMapControlPointsNV
@@ -2039,6 +2118,7 @@ mode)
 gdk_gl_get_glEvalMapsNV
 gdk_gl_glEvalMapsNV
 GdkGL_GL_NV_evaluators
+gdk_gl_get_GL_NV_evaluators
 params)
 gdk_gl_get_glCombinerStageParameterfvNV
 gdk_gl_glCombinerStageParameterfvNV
@@ -2046,6 +2126,7 @@ params)
 gdk_gl_get_glGetCombinerStageParameterfvNV
 gdk_gl_glGetCombinerStageParameterfvNV
 GdkGL_GL_NV_register_combiners2
+gdk_gl_get_GL_NV_register_combiners2
 residences)
 gdk_gl_get_glAreProgramsResidentNV
 gdk_gl_glAreProgramsResidentNV
@@ -2239,6 +2320,7 @@ v)
 gdk_gl_get_glVertexAttribs4ubvNV
 gdk_gl_glVertexAttribs4ubvNV
 GdkGL_GL_NV_vertex_program
+gdk_gl_get_GL_NV_vertex_program
 param)
 gdk_gl_get_glTexBumpParameterivATI
 gdk_gl_glTexBumpParameterivATI
@@ -2252,6 +2334,7 @@ param)
 gdk_gl_get_glGetTexBumpParameterfvATI
 gdk_gl_glGetTexBumpParameterfvATI
 GdkGL_GL_ATI_envmap_bumpmap
+gdk_gl_get_GL_ATI_envmap_bumpmap
 range)
 gdk_gl_get_glGenFragmentShadersATI
 gdk_gl_glGenFragmentShadersATI
@@ -2293,6 +2376,7 @@ value)
 gdk_gl_get_glSetFragmentShaderConstantATI
 gdk_gl_glSetFragmentShaderConstantATI
 GdkGL_GL_ATI_fragment_shader
+gdk_gl_get_GL_ATI_fragment_shader
 param)
 gdk_gl_get_glPNTrianglesiATI
 gdk_gl_glPNTrianglesiATI
@@ -2300,6 +2384,7 @@ param)
 gdk_gl_get_glPNTrianglesfATI
 gdk_gl_glPNTrianglesfATI
 GdkGL_GL_ATI_pn_triangles
+gdk_gl_get_GL_ATI_pn_triangles
 usage)
 gdk_gl_get_glNewObjectBufferATI
 gdk_gl_glNewObjectBufferATI
@@ -2337,6 +2422,7 @@ params)
 gdk_gl_get_glGetVariantArrayObjectivATI
 gdk_gl_glGetVariantArrayObjectivATI
 GdkGL_GL_ATI_vertex_array_object
+gdk_gl_get_GL_ATI_vertex_array_object
 gdk_gl_get_glBeginVertexShaderEXT
 gdk_gl_glBeginVertexShaderEXT
 gdk_gl_get_glEndVertexShaderEXT
@@ -2462,6 +2548,7 @@ data)
 gdk_gl_get_glGetLocalConstantFloatvEXT
 gdk_gl_glGetLocalConstantFloatvEXT
 GdkGL_GL_EXT_vertex_shader
+gdk_gl_get_GL_EXT_vertex_shader
 x)
 gdk_gl_get_glVertexStream1sATI
 gdk_gl_glVertexStream1sATI
@@ -2598,6 +2685,7 @@ param)
 gdk_gl_get_glVertexBlendEnvfATI
 gdk_gl_glVertexBlendEnvfATI
 GdkGL_GL_ATI_vertex_streams
+gdk_gl_get_GL_ATI_vertex_streams
 pointer)
 gdk_gl_get_glElementPointerATI
 gdk_gl_glElementPointerATI
@@ -2608,10 +2696,12 @@ count)
 gdk_gl_get_glDrawRangeElementArrayATI
 gdk_gl_glDrawRangeElementArrayATI
 GdkGL_GL_ATI_element_array
+gdk_gl_get_GL_ATI_element_array
 width)
 gdk_gl_get_glDrawMeshArraysSUN
 gdk_gl_glDrawMeshArraysSUN
 GdkGL_GL_SUN_mesh_array
+gdk_gl_get_GL_SUN_mesh_array
 ids)
 gdk_gl_get_glGenOcclusionQueriesNV
 gdk_gl_glGenOcclusionQueriesNV
@@ -2633,6 +2723,7 @@ params)
 gdk_gl_get_glGetOcclusionQueryuivNV
 gdk_gl_glGetOcclusionQueryuivNV
 GdkGL_GL_NV_occlusion_query
+gdk_gl_get_GL_NV_occlusion_query
 param)
 gdk_gl_get_glPointParameteriNV
 gdk_gl_glPointParameteriNV
@@ -2640,10 +2731,12 @@ params)
 gdk_gl_get_glPointParameterivNV
 gdk_gl_glPointParameterivNV
 GdkGL_GL_NV_point_sprite
+gdk_gl_get_GL_NV_point_sprite
 face)
 gdk_gl_get_glActiveStencilFaceEXT
 gdk_gl_glActiveStencilFaceEXT
 GdkGL_GL_EXT_stencil_two_side
+gdk_gl_get_GL_EXT_stencil_two_side
 </SECTION>
 
 <SECTION>

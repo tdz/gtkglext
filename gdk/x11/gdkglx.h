@@ -33,6 +33,9 @@
 
 G_BEGIN_DECLS
 
+gboolean     gdk_x11_gl_query_glx_extension      (GdkGLConfig  *glconfig,
+                                                  const char   *extension);
+
 Display     *gdk_x11_gl_config_get_xdisplay      (GdkGLConfig  *glconfig);
 int          gdk_x11_gl_config_get_screen_number (GdkGLConfig  *glconfig);
 XVisualInfo *gdk_x11_gl_config_get_xvinfo        (GdkGLConfig  *glconfig);
