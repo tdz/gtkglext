@@ -10,7 +10,7 @@ REQUIREMENTS
 
 To build the documentation, you must have the gtk-doc
 package installed. To rebuild the template files,
-you must have the current version of the GTK+
+you must have the current version of the GtkGLExt
 header files installed.
 
 
@@ -22,36 +22,9 @@ module. There is one option specific to this package
 
   --with-html-dir=DIR   top of installed HTML documentation tree
 
+To build and install the documentation, do:
 
-The Makefiles in the gdkglext/ and gtkglext/ subdirs each define
-three targets:
-
- templates:
-  
-  Scan the headers and merge the results with the current 
-  template files
-
- sgml:
-
-  Generate SGML files using the DocBook DTD from
-  the template files
-
- html:
-
-  Generate HTML from the SGML files.
-
-To build the documentation, do:
-
- make sgml
- make html
-
-You should only run the 'make templates' step if you
-need to regenerate the templates for a more recent
-version of the GtkGLExt sources.
-
-INSTALLATION
-============
+ make
 
  make install
-
 

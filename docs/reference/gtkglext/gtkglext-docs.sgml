@@ -1,0 +1,13 @@
+<!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN" [
+<!ENTITY gtkglext-gtkglwidget SYSTEM "sgml/gtkglwidget.sgml">
+]>
+<book id="index">
+  <bookinfo>
+    <title>GtkGLExt Reference Manual</title>
+  </bookinfo>
+
+  <chapter>
+    <title>GtkWidget OpenGL Extension API</title>
+    &gtkglext-gtkglwidget;
+  </chapter>
+</book>

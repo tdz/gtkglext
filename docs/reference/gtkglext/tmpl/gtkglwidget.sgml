@@ -1,0 +1,113 @@
+<!-- ##### SECTION Title ##### -->
+gtkglwidget
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION gtk_widget_set_gl_capability ##### -->
+<para>
+
+</para>
+
+@widget: 
+@attrib_list: 
+@render_type: 
+@share_list: 
+@direct: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gtk_widget_is_gl_capable ##### -->
+<para>
+
+</para>
+
+@widget: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gtk_widget_get_gl_config ##### -->
+<para>
+
+</para>
+
+@widget: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gtk_widget_get_gl_context ##### -->
+<para>
+
+</para>
+
+@widget: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gtk_widget_get_gl_window ##### -->
+<para>
+
+</para>
+
+@widget: 
+@Returns: 
+
+
+<!-- ##### MACRO gtk_widget_get_gl_drawable ##### -->
+<para>
+
+</para>
+
+@widget: 
+
+
+<!-- ##### MACRO gtk_widget_gl_make_current ##### -->
+<para>
+
+</para>
+
+@widget: 
+
+
+<!-- ##### MACRO gtk_widget_gl_is_double_buffer ##### -->
+<para>
+
+</para>
+
+@widget: 
+
+
+<!-- ##### MACRO gtk_widget_gl_swap_buffers ##### -->
+<para>
+
+</para>
+
+@widget: 
+
+
+<!-- ##### MACRO gtk_widget_gl_begin ##### -->
+<para>
+
+</para>
+
+@widget: 
+
+
+<!-- ##### MACRO gtk_widget_gl_end ##### -->
+<para>
+
+</para>
+
+@widget: 
+
+

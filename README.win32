@@ -95,6 +95,11 @@ Debug options
 
   --enable-debug          turn on debugging [default=no]
 
+Documentation options
+
+  --enable-gtk-doc        use gtk-doc to build documentation [default=no]
+  --with-html-dir=PATH    path to installed docs
+
 
 Building GtkGLExt on Win32
 ==========================
