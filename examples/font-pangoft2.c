@@ -105,7 +105,7 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
 {
   PangoRectangle logical_rect;
   FT_Bitmap bitmap;
-  GLubyte *pixels;
+  GLvoid *pixels;
   guint32 *p;
   GLfloat color[4];
   guint32 rgb;
