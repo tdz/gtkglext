@@ -292,6 +292,98 @@ _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
 }
 
 /* 
+ * Setup PFD.
+ */
+
+static gboolean
+gdk_gl_config_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
+			 PIXELFORMATDESCRIPTOR       *pfd)
+{
+  HDC hdc;
+  PIXELFORMATDESCRIPTOR temp_pfd;
+  PIXELFORMATDESCRIPTOR w_pfd, b_pfd;
+  int w_pf, b_pf;
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_setup_pfd ()"));
+
+  /* Get DC. */
+  hdc = GetDC (NULL);
+  if (hdc == NULL)
+    {
+      g_warning ("cannot get DC");
+      return FALSE;
+    }
+
+  w_pfd = *req_pfd;
+  w_pfd.dwFlags &= ~PFD_DRAW_TO_BITMAP;
+  w_pfd.dwFlags |= PFD_DRAW_TO_WINDOW;
+  w_pf = _gdk_win32_gl_config_find_pixel_format (hdc, &w_pfd, &w_pfd);
+
+  GDK_GL_NOTE (MISC, g_message (" -- pixel format for windows = 0x%x", w_pf));
+  GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&w_pfd));
+
+  b_pfd = *req_pfd;
+  b_pfd.dwFlags &= ~PFD_DRAW_TO_WINDOW;
+  b_pfd.dwFlags |= PFD_DRAW_TO_BITMAP;
+  b_pf = _gdk_win32_gl_config_find_pixel_format (hdc, &b_pfd, &b_pfd);
+
+  GDK_GL_NOTE (MISC, g_message (" -- pixel format for bitmaps = 0x%x", b_pf));
+  GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&b_pfd));
+
+  /* Release DC. */
+  ReleaseDC (NULL, hdc);
+
+  if (w_pf == 0 && b_pf == 0)
+    return FALSE;
+
+  if (w_pf == 0)
+    {
+      temp_pfd = b_pfd;
+      temp_pfd.dwFlags = req_pfd->dwFlags;
+    }
+  else if (b_pf == 0)
+    {
+      temp_pfd = w_pfd;
+      temp_pfd.dwFlags = req_pfd->dwFlags;
+    }
+  else
+    {
+      temp_pfd = w_pfd;
+      temp_pfd.dwFlags = req_pfd->dwFlags;
+      if (temp_pfd.cColorBits > b_pfd.cColorBits)
+        {
+          temp_pfd.cColorBits  = b_pfd.cColorBits;
+          temp_pfd.cRedBits    = b_pfd.cRedBits;
+          temp_pfd.cRedShift   = b_pfd.cRedShift;
+          temp_pfd.cGreenBits  = b_pfd.cGreenBits;
+          temp_pfd.cGreenShift = b_pfd.cGreenShift;
+          temp_pfd.cBlueBits   = b_pfd.cBlueBits;
+          temp_pfd.cBlueShift  = b_pfd.cBlueShift;
+        }
+      if (temp_pfd.cAlphaBits > b_pfd.cAlphaBits)
+        {
+          temp_pfd.cAlphaBits  = b_pfd.cAlphaBits;
+          temp_pfd.cAlphaShift = b_pfd.cAlphaShift;
+        }
+      if (temp_pfd.cAccumBits > b_pfd.cAccumBits)
+        {
+          temp_pfd.cAccumBits      = b_pfd.cAccumBits;
+          temp_pfd.cAccumRedBits   = b_pfd.cAccumRedBits;
+          temp_pfd.cAccumGreenBits = b_pfd.cAccumGreenBits;
+          temp_pfd.cAccumBlueBits  = b_pfd.cAccumBlueBits;
+          temp_pfd.cAccumAlphaBits = b_pfd.cAccumAlphaBits;
+        }
+      temp_pfd.cDepthBits   = MIN (temp_pfd.cDepthBits,   b_pfd.cDepthBits);
+      temp_pfd.cStencilBits = MIN (temp_pfd.cStencilBits, b_pfd.cStencilBits);
+      temp_pfd.cAuxBuffers  = MIN (temp_pfd.cAuxBuffers,  b_pfd.cAuxBuffers);
+    }
+
+  *pfd = temp_pfd;
+
+  return TRUE;
+}
+
+/* 
  * Setup colormap.
  */
 
@@ -430,10 +522,7 @@ gdk_gl_config_new_common (GdkScreen *screen,
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplWin32 *impl;
-
-  HDC hdc;
   PIXELFORMATDESCRIPTOR pfd;
-  int pixel_format;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_new_common ()"));
 
@@ -446,27 +535,13 @@ gdk_gl_config_new_common (GdkScreen *screen,
   GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&pfd));
 
   /*
-   * Determine whether requested pixel format is supported.
+   * Setup PFD.
    */
 
-  /* Get DC. */
-  hdc = GetDC (NULL);
-  if (hdc == NULL)
-    {
-      g_warning ("cannot get DC");
-      return NULL;
-    }
-
-  pixel_format = _gdk_win32_gl_config_find_pixel_format (hdc, &pfd, &pfd);
-
-  /* Release DC. */
-  ReleaseDC (NULL, hdc);
-
-  if (pixel_format == 0)
+  if (!gdk_gl_config_setup_pfd (&pfd, &pfd))
     return NULL;
 
-  GDK_GL_NOTE (MISC, g_message (" -- found pixel_format = 0x%x", pixel_format));
-
+  GDK_GL_NOTE (MISC, g_message (" -- created PFD"));
   GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&pfd));
 
   /*

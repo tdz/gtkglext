@@ -1,3 +1,10 @@
+2003-04-26  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_setup_pfd):
+	Added. This function tries to construct PFD for both windows and
+	bitmaps.
+	(gdk_gl_config_new_common): Use gdk_gl_config_setup_pfd().
+
 2003-04-25  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglquery-win32.c (gdk_gl_get_proc_address): Use
