@@ -1,6 +1,7 @@
 2003-01-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* configure.in: Modified Xmu library checks.
+	Modified gdk_x11_colormap_foreign_new check.
 
 2003-01-22  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 

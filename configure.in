@@ -305,37 +305,6 @@ LIBS="$save_LIBS"
 
 
 ##################################################
-# Checks for gdk_x11_colormap_foreign_new
-##################################################
-
-COLORMAP_FOREIGN_NEW_CFLAGS=""
-
-if test "x$gdktarget" = "xx11"; then
-
-  has_gdk_x11_colormap_foreign_new=yes
-
-  save_CPPFLAGS="$CPPFLAGS"
-  CPPFLAGS="$CPPFLAGS $BASE_DEPENDENCIES_CFLAGS"
-  save_LIBS="$LIBS"
-  LIBS="$LIBS $BASE_DEPENDENCIES_LIBS"
-
-  AC_MSG_CHECKING([for gdk_x11_colormap_foreign_new in GDK library])
-  AC_TRY_LINK([ #include <gdk/gdkx.h> ], 
-              [ gdk_x11_colormap_foreign_new(NULL, None); ], ,
-              [ has_gdk_x11_colormap_foreign_new=no ])
-  AC_MSG_RESULT([$has_gdk_x11_colormap_foreign_new])
-
-  CPPFLAGS="$save_CPPFLAGS"
-  LIBS="$save_LIBS"
-
-  if test "x$has_gdk_x11_colormap_foreign_new" = "xyes"; then
-    COLORMAP_FOREIGN_NEW_CFLAGS="-D__GDK_HAS_COLORMAP_FOREIGN_NEW"
-  fi
-
-fi
-
-
-##################################################
 # Checks for GDK multihead support
 ##################################################
 
@@ -368,6 +337,20 @@ fi
 
 AC_SUBST(GDKGLEXT_MULTIHEAD_SUPPORT)
 AM_CONDITIONAL(MULTIHEAD_SUPPORT, test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes")
+
+
+##################################################
+# Checks for GDK functions
+##################################################
+
+save_LIBS="$LIBS"
+LIBS="$LIBS $BASE_DEPENDENCIES_LIBS"
+
+if test "x$gdktarget" = "xx11"; then
+  AC_CHECK_FUNCS([gdk_x11_colormap_foreign_new])
+fi
+
+LIBS="$save_LIBS"
 
 
 ##################################################
@@ -637,7 +620,7 @@ GDKGLEXT_PACKAGES="$GDK_PKG $PANGO_PKG $GMODULE_PKG"
 GDKGLEXT_EXTRA_LIBS="$GL_LIBS"
 GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS"
 GDKGLEXT_DEP_LIBS="`$PKG_CONFIG --libs $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_LIBS $GDKGLEXT_WIN_LIBS $MATH_LIB"
-GDKGLEXT_DEP_CFLAGS="`$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_CFLAGS $GL_EXTRA_CFLAGS $GDKGLEXT_WIN_CFLAGS $COLORMAP_FOREIGN_NEW_CFLAGS"
+GDKGLEXT_DEP_CFLAGS="`$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_CFLAGS $GL_EXTRA_CFLAGS $GDKGLEXT_WIN_CFLAGS"
 
 AC_SUBST(GDKGLEXT_PACKAGES)
 AC_SUBST(GDKGLEXT_EXTRA_LIBS)
