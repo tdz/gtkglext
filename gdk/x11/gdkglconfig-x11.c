@@ -174,18 +174,19 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
         }
     }
 
-#if defined(HAVE_LIBXMU) && !defined(SOLARIS_2_4_BUG)
+#if defined(HAVE_LIBXMU) && !defined(_DISABLE_STANDARD_RGB_CMAP)
 
   /*
    * (ripped from GLUT)
    * Solaris 2.4 and 2.5 have a bug in their XmuLookupStandardColormap
    * implementations.  Please compile your Solaris 2.4 or 2.5 version of
-   * GtkGLExt with -DSOLARIS_2_4_BUG to work around this bug. The symptom
-   * of the bug is that programs will get a BadMatch error from XCreateWindow
-   * when creating a window because Solaris 2.4 and 2.5 create a corrupted
-   * RGB_DEFAULT_MAP property.  Note that this workaround prevents Colormap
-   * sharing between applications, perhaps leading unnecessary colormap
-   * installations or colormap flashing. Sun fixed this bug in Solaris 2.6.
+   * GtkGLExt with -D_DISABLE_STANDARD_RGB_CMAP to work around this bug.
+   * The symptom of the bug is that programs will get a BadMatch error
+   * from XCreateWindow when creating a window because Solaris 2.4 and 2.5
+   * create a corrupted RGB_DEFAULT_MAP property.  Note that this workaround
+   * prevents colormap sharing between applications, perhaps leading
+   * unnecessary colormap installations or colormap flashing.  Sun fixed
+   * this bug in Solaris 2.6.
    */
 
   status = XmuLookupStandardColormap (xdisplay, screen_num,
@@ -219,7 +220,7 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
         }
     }
 
-#endif /* defined(HAVE_LIBXMU) && !defined(SOLARIS_2_4_BUG) */
+#endif /* defined(HAVE_LIBXMU) && !defined(_DISABLE_STANDARD_RGB_CMAP) */
 
   return NULL;
 }

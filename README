@@ -111,6 +111,18 @@ Documentation options
   --enable-gtk-doc        use gtk-doc to build documentation [default=no]
   --with-html-dir=PATH    path to installed docs
 
+Solaris-specific options
+
+  --disable-standard-rgb-cmap  do not try to find a standard RGB colormap
+
+    Solaris 2.4 and 2.5 have a bug in their XmuLookupStandardColormap
+    implementations. The symptom of the bug is that programs will get
+    a BadMatch error from XCreateWindow when creating a window because
+    Solaris 2.4 and 2.5 create a corrupted RGB_DEFAULT_MAP property.
+    Note that this workaround prevents colormap sharing between
+    applications, perhaps leading unnecessary colormap installations
+    or colormap flashing. Sun fixed this bug in Solaris 2.6.
+
 SGI-specific options
 
   --disable-sgi-fast-atoms  disable SGI's fast X atoms optimization

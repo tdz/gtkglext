@@ -429,11 +429,26 @@ LIBS="$save_LIBS"
 # Checks for Window System
 ##################################################
 
+# Option to disable trying to find a standard RGB colormap
+# (Solaris 2.4 & 2.5 bug)
+AC_ARG_ENABLE([standard-rgb-cmap],
+              [AC_HELP_STRING([--disable-standard-rgb-cmap],
+                              [do not try to find a standard RGB colormap (Solaris 2.4 & 2.5 bug)])], ,
+              [enable_standard_rgb_cmap=yes])
+
+# Option to disable XSGIFastInternAtom() optimization
+AC_ARG_ENABLE([sgi-fast-atoms],
+              [AC_HELP_STRING([--disable-sgi-fast-atoms],
+                              [disable SGI's fast X atoms optimization])], ,
+              [enable_sgi_fast_atoms=yes])
+
 WINDOWING_CFLAGS=""
 WINDOWING_LIBS=""
 
 GDKGLEXT_WIN_CFLAGS=""
 GDKGLEXT_WIN_LIBS=""
+
+GDKGLEXT_WIN_EXTRA_DEFS=""
 
 if test "x$gdktarget" = "xx11"; then
   AC_PATH_XTRA
@@ -464,6 +479,13 @@ if test "x$gdktarget" = "xx11"; then
   GDKGLEXT_WIN_CFLAGS="$X_CFLAGS"
   GDKGLEXT_WIN_LIBS="$X_LIBS $XMU_LIBS"
 
+  if test "x$enable_standard_rgb_cmap" = "xno"; then
+    GDKGLEXT_WIN_EXTRA_DEFS="-D_DISABLE_STANDARD_RGB_CMAP"
+  fi
+  if test "x$enable_sgi_fast_atoms" = "xno"; then
+    GDKGLEXT_WIN_EXTRA_DEFS="$GDKGLEXT_WIN_EXTRA_DEFS -D_DISABLE_SGI_FAST_ATOMS"
+  fi
+
   CPPFLAGS="$save_CPPFLAGS"
   LIBS="$save_LIBS"
 
@@ -486,18 +508,7 @@ AC_SUBST([WINDOWING_LIBS])
 AC_SUBST([GDKGLEXT_WIN_CFLAGS])
 AC_SUBST([GDKGLEXT_WIN_LIBS])
 
-# Option to disable XSGIFastInternAtom() optimization
-AC_ARG_ENABLE([sgi-fast-atoms],
-              [AC_HELP_STRING([--disable-sgi-fast-atoms],
-                              [disable SGI's fast X atoms optimization])], ,
-              [enable_sgi_fast_atoms=yes])
-
-if test "x$enable_sgi_fast_atoms" = "xno"; then
-  DISABLE_SGI_FAST_ATOMS='-D_DISABLE_SGI_FAST_ATOMS'
-else
-  DISABLE_SGI_FAST_ATOMS=
-fi
-AC_SUBST([DISABLE_SGI_FAST_ATOMS])
+AC_SUBST([GDKGLEXT_WIN_EXTRA_DEFS])
 
 
 ##################################################
@@ -999,4 +1010,5 @@ configuration:
 	OpenGL LIBS:		$GL_LIBS
 	multihead support:	$GDKGLEXT_MULTIHEAD_SUPPORT
 	debug:			$enable_debug
+	extra defs:		$GDKGLEXT_WIN_EXTRA_DEFS
 "

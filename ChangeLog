@@ -1,3 +1,20 @@
+2003-05-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* README: 
+	* configure.in: Added --disable-standard-rgb-cmap configure
+	option to avoid XmuLookupStandardColormap() bug on Solaris 2.4 and
+	2.5.
+
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_get_std_rgb_colormap): 
+	Don't try to find a standard RGB colormap if_DISABLE_STANDARD_RGB_CMAP
+	is defined.
+
+	* configure.in: Added $(GDKGLEXT_WIN_EXTRA_DEFS) for
+	target-specific extra macro definitions.
+
+	* gdk/x11/Makefile.am (INCLUDES): 
+	* gdk/win32/Makefile.am (INCLUDES): Added $(GDKGLEXT_WIN_EXTRA_DEFS).
+
 2003-05-07  C.J. Collier  <listmail@colliertech.org>
 
 	* gdk/gdkglwindow.c (gdk_window_unset_gl_capability) 
