@@ -236,8 +236,8 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
   g_object_class_install_property (object_class,
                                    PROP_GLCONFIG,
                                    g_param_spec_object ("glconfig",
-                                                        _("GL configuration"),
-                                                        _("OpenGL configuration object."),
+                                                        _("Frame buffer configuration"),
+                                                        _("OpenGL frame buffer configuration object."),
                                                         GDK_TYPE_GL_CONFIG,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
   g_object_class_install_property (object_class,

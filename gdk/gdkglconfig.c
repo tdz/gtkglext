@@ -96,7 +96,7 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
                                    PROP_SCREEN,
                                    g_param_spec_object ("screen",
                                                         _("Screen"),
-                                                        _("Target screen for the OpenGL configuration."),
+                                                        _("Target screen for the OpenGL frame buffer configuration."),
                                                         GDK_TYPE_SCREEN,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 #else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
@@ -104,7 +104,7 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
                                    PROP_SCREEN,
                                    g_param_spec_pointer ("screen",
                                                          _("Screen"),
-                                                         _("Target screen for the OpenGL configuration."),
+                                                         _("Target screen for the OpenGL frame buffer configuration."),
                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 }
