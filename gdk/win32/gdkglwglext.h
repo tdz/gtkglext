@@ -17,7 +17,7 @@
  */
 
 /*
- * This is a generated file.  Please modify `gen-gdkglwglext-h.pl'.
+ * This is a generated file.  Please modify "gen-gdkglwglext-h.pl".
  */
 
 #ifndef __GDK_GL_WGLEXT_H__

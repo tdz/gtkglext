@@ -17,7 +17,7 @@
  */
 
 /*
- * This is a generated file.  Please modify `gen-gdkglglxext-c.pl'.
+ * This is a generated file.  Please modify "gen-gdkglglxext-c.pl".
  */
 
 #include "gdkglx.h"

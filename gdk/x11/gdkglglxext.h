@@ -17,7 +17,7 @@
  */
 
 /*
- * This is a generated file.  Please modify `gen-gdkglglxext-h.pl'.
+ * This is a generated file.  Please modify "gen-gdkglglxext-h.pl".
  */
 
 #ifndef __GDK_GL_GLXEXT_H__
@@ -61,7 +61,7 @@ typedef XID GLXPbufferSGIX;
 #endif
 #endif
 
-/* for __GLXextFuncPtr typedef in SGI's glxext.h */
+/* for __GLXextFuncPtr typedef in glxext.h */
 #ifndef HAVE___GLXEXTFUNCPTR
 #if defined(GLX_ARB_get_proc_address) && defined(GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF)
 #undef GLX_ARB_get_proc_address

@@ -17,7 +17,7 @@
  */
 
 /*
- * This is a generated file.  Please modify `gen-gdkglwglext-c.pl'.
+ * This is a generated file.  Please modify "gen-gdkglwglext-c.pl".
  */
 
 #include "gdkglwin32.h"
