@@ -1,3 +1,7 @@
+2003-01-30  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* Version 0.7.0
+
 2003-01-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/gdkglconfig.[ch] (gdk_gl_config_get_layer_plane): Added.

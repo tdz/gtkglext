@@ -25,9 +25,9 @@ BuildPrereq: glib2-devel
 BuildPrereq: XFree86-devel
 
 %description
-GtkGLExt is an OpenGL extension to GTK 2.0 or later. It provides
-the GDK objects which support OpenGL in GTK, and GTK+ widget API
-add-ons which extend *ANY* GTK+ widget to an OpenGL-capable widget.
+GtkGLExt is an OpenGL extension to GTK. It provides the GDK objects
+which support OpenGL rendering in GTK, and GtkWidget API add-ons to
+make GTK+ widgets OpenGL-capable.
 
 %package devel
 Summary: Development tools for GTK-based OpenGL applications
@@ -41,8 +41,8 @@ Requires: glib2-devel
 Requires: XFree86-devel
 
 %description devel
-The gtkglext-devel package contains the header files, static libraries,
-and developer docs for GtkGLExt.
+The gtkglext-devel package contains the header files and developer
+docs for GtkGLExt.
 
 %prep
 %setup -q

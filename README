@@ -36,7 +36,7 @@ Supported Platforms
 
 Currently GtkGLExt supports
 
-  * UNIX platforms
+  * UNIX and UNIX-like platforms
       Tested under Linux (RedHat 8.0) and IRIX (6.5).
 
   * Win32 platforms
