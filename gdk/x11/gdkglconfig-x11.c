@@ -780,7 +780,7 @@ gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
 GdkScreen *
 gdk_gl_config_get_screen (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->screen;
 }
@@ -806,7 +806,7 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
   GdkGLConfigImplX11 *impl;
   int ret;
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), FALSE);
 
   impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
 
@@ -834,7 +834,7 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
 GdkColormap *
 gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->colormap;
 }
@@ -851,7 +851,7 @@ gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
 GdkVisual *
 gdk_gl_config_get_visual (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
 
   return gdk_colormap_get_visual (GDK_GL_CONFIG_IMPL_X11 (glconfig)->colormap);
 }
@@ -873,7 +873,7 @@ gdk_gl_config_get_visual (GdkGLConfig *glconfig)
 gint
 gdk_gl_config_get_depth (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), 0);
 
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo->depth;
 }
@@ -889,7 +889,7 @@ gdk_gl_config_get_depth (GdkGLConfig *glconfig)
 Display *
 gdk_x11_gl_config_get_xdisplay (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->xdisplay;
 }
@@ -905,7 +905,7 @@ gdk_x11_gl_config_get_xdisplay (GdkGLConfig *glconfig)
 int
 gdk_x11_gl_config_get_screen_number (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), 0);
 
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->screen_num;
 }
@@ -921,7 +921,7 @@ gdk_x11_gl_config_get_screen_number (GdkGLConfig *glconfig)
 XVisualInfo *
 gdk_x11_gl_config_get_xvinfo (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo;
 }
@@ -937,7 +937,7 @@ gdk_x11_gl_config_get_xvinfo (GdkGLConfig *glconfig)
 gboolean
 gdk_x11_gl_config_is_mesa_glx (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), FALSE);
 
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->is_mesa_glx;
 }

@@ -125,7 +125,7 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
   char *where, *terminator;
   int major, minor;
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), FALSE);
 
   /* Extension names should not have spaces. */
   where = strchr (extension, ' ');

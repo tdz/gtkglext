@@ -180,7 +180,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_new ()"));
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
   g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), NULL);
 
   /*
@@ -309,7 +309,7 @@ gdk_gl_pixmap_sync_gl (GdkGLPixmap *glpixmap)
   UINT usage;
   HBITMAP old_hbitmap;
 
-  g_return_if_fail (GDK_IS_GL_PIXMAP (glpixmap));
+  g_return_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (glpixmap));
 
   GDK_GL_NOTE (IMPL, g_message (" -- gdk_gl_pixmap_sync_gl ()"));
 
@@ -365,7 +365,7 @@ gdk_gl_pixmap_sync_gdk (GdkGLPixmap *glpixmap)
   UINT usage;
   HBITMAP old_hbitmap;
 
-  g_return_if_fail (GDK_IS_GL_PIXMAP (glpixmap));
+  g_return_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (glpixmap));
 
   GDK_GL_NOTE (IMPL, g_message (" -- gdk_gl_pixmap_sync_gdk ()"));
 
@@ -422,8 +422,8 @@ gdk_gl_pixmap_impl_win32_make_context_current (GdkGLDrawable *draw,
   HGLRC hglrc;
   gboolean ret = TRUE;
 
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (draw), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (draw), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), FALSE);
 
   if (GDK_GL_PIXMAP_IS_DESTROYED (draw) ||
       GDK_GL_CONTEXT_IS_DESTROYED (glcontext))
@@ -476,7 +476,7 @@ gdk_gl_pixmap_impl_win32_make_context_current (GdkGLDrawable *draw,
 static gboolean
 gdk_gl_pixmap_impl_win32_is_double_buffered (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (gldrawable), FALSE);
 
   return gdk_gl_config_is_double_buffered (GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable)->glconfig);
 }
@@ -487,7 +487,7 @@ gdk_gl_pixmap_impl_win32_swap_buffers (GdkGLDrawable *gldrawable)
   GdkGLPixmapImplWin32 *impl;
   HDC hdc;
 
-  g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
+  g_return_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (gldrawable));
 
   if (GDK_GL_PIXMAP_IS_DESTROYED (gldrawable))
     return;
@@ -548,7 +548,7 @@ gdk_gl_pixmap_impl_win32_gl_end (GdkGLDrawable *gldrawable)
 static GdkGLConfig *
 gdk_gl_pixmap_impl_win32_get_gl_config (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (gldrawable), NULL);
 
   return GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable)->glconfig;
 }
@@ -556,7 +556,7 @@ gdk_gl_pixmap_impl_win32_get_gl_config (GdkGLDrawable *gldrawable)
 PIXELFORMATDESCRIPTOR *
 gdk_win32_gl_pixmap_get_pfd (GdkGLPixmap *glpixmap)
 {
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (glpixmap), NULL);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (glpixmap), NULL);
 
   return &(GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap)->pfd);
 }
@@ -564,7 +564,7 @@ gdk_win32_gl_pixmap_get_pfd (GdkGLPixmap *glpixmap)
 int
 gdk_win32_gl_pixmap_get_pixel_format (GdkGLPixmap *glpixmap)
 {
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (glpixmap), 0);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP_IMPL_WIN32 (glpixmap), 0);
 
   return GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap)->pixel_format;
 }

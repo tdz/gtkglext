@@ -187,7 +187,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_window_new ()"));
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
 
   /*
@@ -226,8 +226,8 @@ gdk_gl_window_impl_x11_make_context_current (GdkGLDrawable *draw,
   Display *xdisplay;
   GLXContext glxcontext;
 
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (draw), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (draw), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), FALSE);
 
   if (GDK_GL_WINDOW_IS_DESTROYED (draw) ||
       GDK_GL_CONTEXT_IS_DESTROYED (glcontext))
@@ -283,7 +283,7 @@ gdk_gl_window_impl_x11_make_context_current (GdkGLDrawable *draw,
 static gboolean
 gdk_gl_window_impl_x11_is_double_buffered (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (gldrawable), FALSE);
 
   return gdk_gl_config_is_double_buffered (GDK_GL_WINDOW_IMPL_X11 (gldrawable)->glconfig);
 }
@@ -293,7 +293,7 @@ gdk_gl_window_impl_x11_swap_buffers (GdkGLDrawable *gldrawable)
 {
   GdkGLWindowImplX11 *impl;
 
-  g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
+  g_return_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (gldrawable));
 
   if (GDK_GL_WINDOW_IS_DESTROYED (gldrawable))
     return;
@@ -325,7 +325,7 @@ gdk_gl_window_impl_x11_gl_end (GdkGLDrawable *gldrawable)
 static GdkGLConfig *
 gdk_gl_window_impl_x11_get_gl_config (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), NULL);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (gldrawable), NULL);
 
   return GDK_GL_WINDOW_IMPL_X11 (gldrawable)->glconfig;
 }
@@ -341,7 +341,7 @@ gdk_gl_window_impl_x11_get_gl_config (GdkGLDrawable *gldrawable)
 Window
 gdk_x11_gl_window_get_glxwindow (GdkGLWindow *glwindow)
 {
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (glwindow), None);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (glwindow), None);
 
   return GDK_GL_WINDOW_IMPL_X11 (glwindow)->glxwindow;
 }

@@ -689,7 +689,7 @@ gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
 GdkScreen *
 gdk_gl_config_get_screen (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->screen;
 }
@@ -704,7 +704,7 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
 {
   GdkGLConfigImplWin32 *impl;
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), FALSE);
 
   impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
 
@@ -803,7 +803,7 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
 GdkColormap *
 gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->colormap;
 }
@@ -811,7 +811,7 @@ gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
 GdkVisual *
 gdk_gl_config_get_visual (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
 
   return gdk_colormap_get_visual (GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->colormap);
 }
@@ -819,7 +819,7 @@ gdk_gl_config_get_visual (GdkGLConfig *glconfig)
 gint
 gdk_gl_config_get_depth (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), 0);
 
   return GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->depth;
 }
@@ -827,7 +827,7 @@ gdk_gl_config_get_depth (GdkGLConfig *glconfig)
 PIXELFORMATDESCRIPTOR *
 gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
 
   return &(GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->pfd);
 }

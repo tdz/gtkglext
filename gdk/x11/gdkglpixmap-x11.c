@@ -185,7 +185,7 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_pixmap_new ()"));
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
   g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), NULL);
 
   xdisplay = GDK_GL_CONFIG_XDISPLAY (glconfig);
@@ -270,8 +270,8 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
   Display *xdisplay;
   GLXContext glxcontext;
 
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (draw), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP_IMPL_X11 (draw), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), FALSE);
 
   if (GDK_GL_PIXMAP_IS_DESTROYED (draw) ||
       GDK_GL_CONTEXT_IS_DESTROYED (glcontext))
@@ -327,7 +327,7 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
 static gboolean
 gdk_gl_pixmap_impl_x11_is_double_buffered (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP_IMPL_X11 (gldrawable), FALSE);
 
   return gdk_gl_config_is_double_buffered (GDK_GL_PIXMAP_IMPL_X11 (gldrawable)->glconfig);
 }
@@ -337,7 +337,7 @@ gdk_gl_pixmap_impl_x11_swap_buffers (GdkGLDrawable *gldrawable)
 {
   GdkGLPixmapImplX11 *impl;
 
-  g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
+  g_return_if_fail (GDK_IS_GL_PIXMAP_IMPL_X11 (gldrawable));
 
   if (GDK_GL_PIXMAP_IS_DESTROYED (gldrawable))
     return;
@@ -369,7 +369,7 @@ gdk_gl_pixmap_impl_x11_gl_end (GdkGLDrawable *gldrawable)
 static GdkGLConfig *
 gdk_gl_pixmap_impl_x11_get_gl_config (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP_IMPL_X11 (gldrawable), NULL);
 
   return GDK_GL_PIXMAP_IMPL_X11 (gldrawable)->glconfig;
 }
@@ -385,7 +385,7 @@ gdk_gl_pixmap_impl_x11_get_gl_config (GdkGLDrawable *gldrawable)
 GLXPixmap
 gdk_x11_gl_pixmap_get_glxpixmap (GdkGLPixmap *glpixmap)
 {
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (glpixmap), None);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP_IMPL_X11 (glpixmap), None);
 
   return GDK_GL_PIXMAP_IMPL_X11 (glpixmap)->glxpixmap;
 }

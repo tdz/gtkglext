@@ -1,5 +1,19 @@
 2003-05-02  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglquery-win32.c: 
+	* gdk/win32/gdkglconfig-win32.c: 
+	* gdk/win32/gdkglcontext-win32.c: 
+	* gdk/win32/gdkglpixmap-win32.c: 
+	* gdk/win32/gdkglwindow-win32.c: Fixed type checks
+
+	* gdk/x11/gdkglquery-x11.c: 
+	* gdk/x11/gdkglconfig-x11.c: 
+	* gdk/x11/gdkglcontext-x11.c: 
+	* gdk/x11/gdkglpixmap-x11.c: 
+	* gdk/x11/gdkglwindow-x11.c: Fixed type checks
+
+2003-05-02  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* gdk/win32/gdkglquery-win32.c (gdk_gl_get_proc_address): Returns
 	immediately if proc_address is found.
 

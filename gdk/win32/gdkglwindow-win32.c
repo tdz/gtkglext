@@ -175,7 +175,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_window_new ()"));
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
 
   hwnd = (HWND) gdk_win32_drawable_get_handle (GDK_DRAWABLE (window));
@@ -275,8 +275,8 @@ gdk_gl_window_impl_win32_make_context_current (GdkGLDrawable *draw,
   HGLRC hglrc;
   gboolean ret = TRUE;
 
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (draw), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (draw), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), FALSE);
 
   if (GDK_GL_WINDOW_IS_DESTROYED (draw) ||
       GDK_GL_CONTEXT_IS_DESTROYED (glcontext))
@@ -334,7 +334,7 @@ gdk_gl_window_impl_win32_make_context_current (GdkGLDrawable *draw,
 static gboolean
 gdk_gl_window_impl_win32_is_double_buffered (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (gldrawable), FALSE);
 
   return gdk_gl_config_is_double_buffered (GDK_GL_WINDOW_IMPL_WIN32 (gldrawable)->glconfig);
 }
@@ -345,7 +345,7 @@ gdk_gl_window_impl_win32_swap_buffers (GdkGLDrawable *gldrawable)
   GdkGLWindowImplWin32 *impl;
   HDC hdc;
 
-  g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
+  g_return_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (gldrawable));
 
   if (GDK_GL_WINDOW_IS_DESTROYED (gldrawable))
     return;
@@ -407,7 +407,7 @@ gdk_gl_window_impl_win32_gl_end (GdkGLDrawable *gldrawable)
 static GdkGLConfig *
 gdk_gl_window_impl_win32_get_gl_config (GdkGLDrawable *gldrawable)
 {
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), NULL);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (gldrawable), NULL);
 
   return GDK_GL_WINDOW_IMPL_WIN32 (gldrawable)->glconfig;
 }
@@ -415,7 +415,7 @@ gdk_gl_window_impl_win32_get_gl_config (GdkGLDrawable *gldrawable)
 PIXELFORMATDESCRIPTOR *
 gdk_win32_gl_window_get_pfd (GdkGLWindow *glwindow)
 {
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (glwindow), NULL);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (glwindow), NULL);
 
   return &(GDK_GL_WINDOW_IMPL_WIN32 (glwindow)->pfd);
 }
@@ -423,7 +423,7 @@ gdk_win32_gl_window_get_pfd (GdkGLWindow *glwindow)
 int
 gdk_win32_gl_window_get_pixel_format (GdkGLWindow *glwindow)
 {
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (glwindow), 0);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (glwindow), 0);
 
   return GDK_GL_WINDOW_IMPL_WIN32 (glwindow)->pixel_format;
 }
