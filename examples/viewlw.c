@@ -27,6 +27,7 @@
 #include <math.h>
 
 #include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
 
 #include <gtk/gtkgl.h>
 
@@ -250,7 +251,7 @@ gint motion_notify(GtkWidget *widget, GdkEventMotion *event)
   if (state & GDK_BUTTON2_MASK)
     {
       /* zooming drag */
-      info->zoom += ((y - info->beginy) / height) * 40.0;
+      info->zoom -= ((y - info->beginy) / height) * 40.0;
       if (info->zoom < 5.0) info->zoom = 5.0;
       if (info->zoom > 120.0) info->zoom = 120.0;
       /* zoom has changed, redraw mesh */
@@ -263,6 +264,43 @@ gint motion_notify(GtkWidget *widget, GdkEventMotion *event)
   return TRUE;
 }
 
+gboolean
+key_press_event (GtkWidget   *widget,
+		 GdkEventKey *event,
+		 gpointer     data)
+{
+  mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
+
+  switch (event->keyval)
+    {
+    case GDK_plus:
+      /* zooming drag */
+      info->zoom -= 2.0;
+      if (info->zoom < 5.0) info->zoom = 5.0;
+      if (info->zoom > 120.0) info->zoom = 120.0;
+      /* zoom has changed, redraw mesh */
+      gtk_widget_queue_draw(widget);
+      break;
+
+    case GDK_minus:
+      /* zooming drag */
+      info->zoom += 2.0;
+      if (info->zoom < 5.0) info->zoom = 5.0;
+      if (info->zoom > 120.0) info->zoom = 120.0;
+      /* zoom has changed, redraw mesh */
+      gtk_widget_queue_draw(widget);
+      break;
+
+    case GDK_Escape:
+      gtk_main_quit ();
+      break;
+
+    default:
+      return FALSE;
+    }
+
+  return TRUE;
+}
 
 gint popup_menu_handler(GtkWidget *widget, GdkEventButton *event)
 {
@@ -406,6 +444,9 @@ gint show_lwobject(const char *lwobject_name)
 #endif
   gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
   create_popup_menu(window); /* add popup menu to window */
+  /* key_press_event handler for top-level window */
+  g_signal_connect_swapped (G_OBJECT (window), "key_press_event",
+			    G_CALLBACK (key_press_event), glarea);
   g_signal_connect (G_OBJECT(window), "destroy",
                     G_CALLBACK(window_destroy), NULL);
   window_count++;

@@ -1,3 +1,11 @@
+2003-05-14  Alif Wahid  <awah005@users.sourceforge.net>
+
+	* examples/viewlw.c: added a "key_press_event" handler for
+	allowing the user to zoom in/out using the +/- keys. Also now
+	need to drag down with the middle mouse-button for zooming
+	in and drag up for zooming out (previously this was the other
+	way around and that was counter-intuitive).
+
 2003-05-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/win32/gdkglfont-win32.c
