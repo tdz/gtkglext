@@ -40,6 +40,12 @@ struct _GdkGLContextImplWin32
 
   HGLRC hglrc;
 
+  GdkGLConfig *glconfig;
+
+  GdkGLContext *share_list;
+
+  int render_type;
+
   guint is_foreign : 1;
 };
 

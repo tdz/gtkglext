@@ -1,5 +1,9 @@
 2003-01-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_impl_win32_set_property) 
+	(gdk_gl_context_impl_win32_get_property): Removed.
+	(gdk_gl_context_new_common): Rewritten.
+
 	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_new_common):
 	Rewritten.
 
