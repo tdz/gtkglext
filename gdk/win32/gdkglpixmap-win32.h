@@ -40,11 +40,16 @@ struct _GdkGLPixmapImplWin32
 
   GdkPixmap *pixmap;
 
+  HBITMAP gl_hbitmap;
+  HBITMAP gdk_hbitmap;
+
+  PIXELFORMATDESCRIPTOR pfd;
+  int pixel_format;
+
   guint is_constructed : 1;
 
   /*< private >*/
   HDC hdc;
-  HBITMAP hbitmap;
 };
 
 struct _GdkGLPixmapImplWin32Class

@@ -28,6 +28,7 @@ static gboolean gdk_win32_gl_window_make_context_current (GdkGLDrawable         
                                                           GdkGLContext              *glcontext);
 static void     gdk_win32_gl_window_swap_buffers         (GdkGLDrawable             *gldrawable);
 static void     gdk_win32_gl_window_wait_gl              (GdkGLDrawable             *gldrawable);
+static void     gdk_win32_gl_window_wait_gdk             (GdkGLDrawable             *gldrawable);
 
 static void     gdk_gl_window_impl_win32_init            (GdkGLWindowImplWin32      *impl);
 static void     gdk_gl_window_impl_win32_class_init      (GdkGLWindowImplWin32Class *klass);
@@ -117,11 +118,80 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
   glwindow = GDK_GL_WINDOW (object);
   impl = GDK_GL_WINDOW_IMPL_WIN32 (object);
 
+  impl->hwnd = (HWND) gdk_win32_drawable_get_handle (glwindow->wrapper);
+
+  /*
+   * Get DC.
+   */
+
+  impl->hdc = GetDC (impl->hwnd);
+  if (impl->hdc == NULL)
+    {
+      g_warning ("cannot get DC");
+      goto FAIL;
+    }
+
+  /*
+   * Save current DC.
+   */
+      
+  impl->saved_dc = SaveDC (impl->hdc);
+  if (impl->saved_dc == 0)
+    {
+      g_warning ("cannot save DC");
+      goto FAIL;
+    }
+
+  /*
+   * Choose pixel format.
+   */
+
+  impl->pfd = *(GDK_GL_CONFIG_PFD (glwindow->glconfig));
+  /* Draw to window */
+  impl->pfd.dwFlags &= ~PFD_DRAW_TO_BITMAP;
+  impl->pfd.dwFlags |= PFD_DRAW_TO_WINDOW;
+
+  impl->pixel_format = ChoosePixelFormat (impl->hdc, &(impl->pfd));
+  if (impl->pixel_format == 0)
+    {
+      g_warning ("cannot choose pixel format");
+      goto FAIL;
+    }
+
+  /*
+   * Set pixel format.
+   */
+
+  if (!SetPixelFormat (impl->hdc, impl->pixel_format, &(impl->pfd)))
+    {
+      g_warning ("cannot set pixel format");
+      goto FAIL;
+    }
+
   /*
    * Successfully constructed?
    */
 
   impl->is_constructed = TRUE;
+
+ FAIL:
+
+  /*
+   * Restore saved DC.
+   */
+
+  if (impl->saved_dc != 0)
+    RestoreDC (impl->hdc, impl->saved_dc);
+
+  /*
+   * Release DC.
+   */
+
+  if (impl->hdc != NULL)
+    ReleaseDC (impl->hwnd, impl->hdc);
+
+  impl->hdc = NULL;
+  impl->saved_dc = 0;
 
   return object;
 }
@@ -153,7 +223,7 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->is_double_buffered   = _gdk_gl_window_is_double_buffered;
   iface->swap_buffers         = gdk_win32_gl_window_swap_buffers;
   iface->wait_gl              = gdk_win32_gl_window_wait_gl;
-  iface->wait_gdk             = _gdk_win32_gl_drawable_wait_gdk;
+  iface->wait_gdk             = gdk_win32_gl_window_wait_gdk;
   iface->get_gl_config        = _gdk_gl_window_get_gl_config;
   iface->get_drawable         = _gdk_gl_window_get_drawable;
 }
@@ -161,23 +231,13 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 HDC
 _gdk_win32_gl_window_hdc_get (GdkGLDrawable *gldrawable)
 {
-  GdkGLWindow *glwindow;
   GdkGLWindowImplWin32 *impl;
-  PIXELFORMATDESCRIPTOR *pfd;
-  int pf;
 
   g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), NULL);
 
-  glwindow = GDK_GL_WINDOW (gldrawable);
   impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
 
   g_assert (impl->hdc == NULL);
-
-  /*
-   * XXX GdkGLWindow is not GdkDrawable for the moment :-<
-   *     use glwindow->wrapper.
-   */
-  impl->hwnd = (HWND) gdk_win32_drawable_get_handle (glwindow->wrapper);
 
   /*
    * Get DC.
@@ -201,28 +261,6 @@ _gdk_win32_gl_window_hdc_get (GdkGLDrawable *gldrawable)
       goto FAIL;
     }
 
-  /*
-   * Set pixel format.
-   */
-
-  pfd = GDK_GL_CONFIG_PFD (glwindow->glconfig);
-  /* Draw to window */
-  pfd->dwFlags &= ~PFD_DRAW_TO_BITMAP;
-  pfd->dwFlags |= PFD_DRAW_TO_WINDOW;
-
-  pf = ChoosePixelFormat (impl->hdc, pfd);
-  if (pf == 0)
-    {
-      g_warning ("cannot choose pixel format");
-      goto FAIL;
-    }
-
-  if (!SetPixelFormat (impl->hdc, pf, pfd))
-    {
-      g_warning ("cannot set pixel format");
-      goto FAIL;
-    }
-
   return impl->hdc;
 
  FAIL:
@@ -233,7 +271,6 @@ _gdk_win32_gl_window_hdc_get (GdkGLDrawable *gldrawable)
   if (impl->hdc != NULL)
     ReleaseDC (impl->hwnd, impl->hdc);
 
-  impl->hwnd = NULL;
   impl->hdc = NULL;
   impl->saved_dc = 0;
 
@@ -265,7 +302,6 @@ _gdk_win32_gl_window_hdc_release (GdkGLDrawable *gldrawable)
   if (!ReleaseDC (impl->hwnd, impl->hdc))
     g_warning ("cannot release DC");
 
-  impl->hwnd = NULL;
   impl->hdc = NULL;
   impl->saved_dc = 0;
 }
@@ -284,21 +320,15 @@ gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
 
   glwindow = GDK_GL_WINDOW (draw);
 
-  /*
-   * Get DC.
-   */
-
+  /* Get DC. */
   hdc = _gdk_win32_gl_window_hdc_get (draw);
 
-  /*
-   * Get GLRC.
-   */
-
+  /* Get GLRC. */
   hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
 
   if (hdc == wglGetCurrentDC () &&
       hglrc == wglGetCurrentContext ())
-    return TRUE;
+    goto DONE;
 
   GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
 
@@ -321,35 +351,42 @@ gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
       glReadBuffer(GL_FRONT);
     }
 
+ DONE:
+
+  /* Release DC. */
+  _gdk_win32_gl_window_hdc_release (draw);
+
   return TRUE;
 }
 
 static void
 gdk_win32_gl_window_swap_buffers (GdkGLDrawable *gldrawable)
 {
-  GdkGLWindowImplWin32 *impl;
+  HDC hdc;
 
   g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
 
-  impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
-
-  g_assert (impl->hdc != NULL);
+  /* Get DC. */
+  hdc = _gdk_win32_gl_window_hdc_get (gldrawable);
 
   GDK_GL_NOTE (IMPL, g_message (" * SwapBuffers ()"));
 
-  SwapBuffers (impl->hdc);
+  SwapBuffers (hdc);
+
+  /* Release DC. */
+  _gdk_win32_gl_window_hdc_release (gldrawable);
 }
 
 static void
 gdk_win32_gl_window_wait_gl (GdkGLDrawable *gldrawable)
 {
   glFinish ();
+}
 
-  /*
-   * Release DC.
-   */
-
-  _gdk_win32_gl_window_hdc_release (gldrawable);
+static void
+gdk_win32_gl_window_wait_gdk (GdkGLDrawable *gldrawable)
+{
+  GdiFlush ();
 }
 
 /*
@@ -382,4 +419,20 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
     }
 
   return glwindow;
+}
+
+PIXELFORMATDESCRIPTOR *
+gdk_win32_gl_window_get_pfd (GdkGLWindow *glwindow)
+{
+  g_return_val_if_fail (GDK_IS_GL_WINDOW (glwindow), NULL);
+
+  return &(GDK_GL_WINDOW_IMPL_WIN32 (glwindow)->pfd);
+}
+
+int
+gdk_win32_gl_window_get_pixel_format (GdkGLWindow *glwindow)
+{
+  g_return_val_if_fail (GDK_IS_GL_WINDOW (glwindow), 0);
+
+  return GDK_GL_WINDOW_IMPL_WIN32 (glwindow)->pixel_format;
 }

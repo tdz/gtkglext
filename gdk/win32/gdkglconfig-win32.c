@@ -279,9 +279,11 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
  * This code is based on lib/glut/win32_glx.c of GLUT by Nate Robins.
  */
 static void
-set_pfd (PIXELFORMATDESCRIPTOR *pfd,
-         int                   *attrib_list)
+parse_attrib_list (GdkGLConfig *glconfig,
+		   int         *attrib_list)
 {
+  GdkGLConfigImplWin32 *impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
+  PIXELFORMATDESCRIPTOR *pfd = &(impl->pfd);
   int *p;
   gboolean buffer_size_is_specified = FALSE;
   BYTE buffer_size;
@@ -311,7 +313,8 @@ set_pfd (PIXELFORMATDESCRIPTOR *pfd,
 
   /* Ignored. Earlier implementations of OpenGL used this member,
      but it is no longer used. */
-  /* pfd->iLayerType = PFD_MAIN_PLANE; */
+  glconfig->layer_plane = 0;
+  pfd->iLayerType = PFD_MAIN_PLANE;
 
   p = attrib_list;
   while (*p != GDK_GL_ATTRIB_LIST_NONE)
@@ -328,9 +331,13 @@ set_pfd (PIXELFORMATDESCRIPTOR *pfd,
 	  buffer_size_is_specified = TRUE;
           break;
         case GDK_GL_LEVEL:
-          /* the bReserved flag of the pfd contains the
-             overlay/underlay info. */
-          pfd->bReserved = *(++p);
+	  glconfig->layer_plane = *(++p);
+	  /* Ignored. Earlier implementations of OpenGL used this member,
+	     but it is no longer used. */
+	  if (glconfig->layer_plane > 0)
+	    pfd->iLayerType = PFD_OVERLAY_PLANE;
+	  else if (glconfig->layer_plane < 0)
+	    pfd->iLayerType = PFD_UNDERLAY_PLANE;
           break;
         case GDK_GL_RGBA:
 	  /* RGBA pixels. */
@@ -429,7 +436,7 @@ gdk_gl_config_impl_win32_set_property (GObject      *object,
                                        const GValue *value,
                                        GParamSpec   *pspec)
 {
-  GdkGLConfigImplWin32 *impl = GDK_GL_CONFIG_IMPL_WIN32 (object);
+  GdkGLConfig *glconfig = GDK_GL_CONFIG (object);
   int *attrib_list;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_win32_set_property ()"));
@@ -439,7 +446,7 @@ gdk_gl_config_impl_win32_set_property (GObject      *object,
     case PROP_ATTRIB_LIST:
       attrib_list = g_value_get_pointer (value);
       if (attrib_list != NULL)
-	set_pfd (&(impl->pfd), attrib_list);
+	parse_attrib_list (glconfig, attrib_list);
       g_object_notify (object, "attrib_list");
       break;
     default:
@@ -602,9 +609,7 @@ gdk_win32_gl_config_get_attrib (GdkGLConfig *glconfig,
         *value = 8;
       break;
     case GDK_GL_LEVEL:
-      /* The bReserved flag of the pfd contains the
-         overlay/underlay info. */
-      *value = impl->pfd.bReserved;
+      *value = glconfig->layer_plane;
       break;
     case GDK_GL_RGBA:
       *value = impl->pfd.iPixelType == PFD_TYPE_RGBA;

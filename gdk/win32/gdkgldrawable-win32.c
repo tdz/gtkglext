@@ -45,9 +45,3 @@ gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable)
   else
     g_warning ("GLDrawable should be GLPixmap or GLWindow");
 }
-
-void
-_gdk_win32_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
-{
-  GdiFlush ();
-}

@@ -20,6 +20,7 @@
 #define __GDK_GL_CONFIG_H__
 
 #include <gdk/gdktypes.h>
+#include <gdk/gdkwindow.h>
 
 #include <gdk/gdkgltypes.h>
 
@@ -57,18 +58,16 @@ struct _GdkGLConfig
 {
   GObject parent_instance;
 
+  GdkScreen *screen;
+
   GdkColormap *colormap;
   gint depth;
+
+  gint layer_plane;
 
   guint is_double_buffered : 1;
   guint is_stereo : 1;
   guint as_single_mode : 1;
-
-#ifdef GDK_MULTIHEAD_SAFE
-  GdkScreen *screen;
-#else  /* GDK_MULTIHEAD_SAFE */
-  gpointer screen;
-#endif /* GDK_MULTIHEAD_SAFE */
 
 };
 

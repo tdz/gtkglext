@@ -38,10 +38,14 @@ struct _GdkGLWindowImplWin32
 {
   GdkGLWindow parent_instance;
 
+  HWND hwnd;
+
+  PIXELFORMATDESCRIPTOR pfd;
+  int pixel_format;
+
   guint is_constructed : 1;
 
   /*< private >*/
-  HWND hwnd;
   HDC hdc;
   int saved_dc;
 };

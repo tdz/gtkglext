@@ -32,8 +32,6 @@ GdkGLContext *_gdk_win32_gl_context_new        (GdkGLDrawable *gldrawable,
                                                 gboolean       direct,
                                                 gint           render_type);
 
-void          _gdk_win32_gl_drawable_wait_gdk  (GdkGLDrawable *gldrawable);
-
 HDC           _gdk_win32_gl_pixmap_hdc_get     (GdkGLDrawable *gldrawable);
 void          _gdk_win32_gl_pixmap_hdc_release (GdkGLDrawable *gldrawable);
 

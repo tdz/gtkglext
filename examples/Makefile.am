@@ -23,7 +23,9 @@ LDADDS = \
 common_programs = \
 	low-level	\
 	simple		\
+	simple-mixed	\
 	pixmap		\
+	pixmap-mixed	\
 	font		\
 	gears		\
 	viewlw
@@ -45,9 +47,17 @@ simple_SOURCES = simple.c
 simple_DEPENDENCIES = $(DEPS)
 simple_LDADD = $(LDADDS)
 
+simple_mixed_SOURCES = simple-mixed.c
+simple_mixed_DEPENDENCIES = $(DEPS)
+simple_mixed_LDADD = $(LDADDS)
+
 pixmap_SOURCES = pixmap.c
 pixmap_DEPENDENCIES = $(DEPS)
 pixmap_LDADD = $(LDADDS)
+
+pixmap_mixed_SOURCES = pixmap-mixed.c
+pixmap_mixed_DEPENDENCIES = $(DEPS)
+pixmap_mixed_LDADD = $(LDADDS)
 
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)

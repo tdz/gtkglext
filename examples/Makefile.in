@@ -161,7 +161,9 @@ LDADDS = \
 common_programs = \
 	low-level	\
 	simple		\
+	simple-mixed	\
 	pixmap		\
+	pixmap-mixed	\
 	font		\
 	gears		\
 	viewlw
@@ -182,9 +184,17 @@ simple_SOURCES = simple.c
 simple_DEPENDENCIES = $(DEPS)
 simple_LDADD = $(LDADDS)
 
+simple_mixed_SOURCES = simple-mixed.c
+simple_mixed_DEPENDENCIES = $(DEPS)
+simple_mixed_LDADD = $(LDADDS)
+
 pixmap_SOURCES = pixmap.c
 pixmap_DEPENDENCIES = $(DEPS)
 pixmap_LDADD = $(LDADDS)
+
+pixmap_mixed_SOURCES = pixmap-mixed.c
+pixmap_mixed_DEPENDENCIES = $(DEPS)
+pixmap_mixed_LDADD = $(LDADDS)
 
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
@@ -211,10 +221,12 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 @PLATFORM_WIN32_TRUE@EXTRA_PROGRAMS = low-level$(EXEEXT) simple$(EXEEXT) \
-@PLATFORM_WIN32_TRUE@	pixmap$(EXEEXT) font$(EXEEXT) \
+@PLATFORM_WIN32_TRUE@	simple-mixed$(EXEEXT) pixmap$(EXEEXT) \
+@PLATFORM_WIN32_TRUE@	pixmap-mixed$(EXEEXT) font$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	gears$(EXEEXT) viewlw$(EXEEXT)
 @PLATFORM_WIN32_FALSE@EXTRA_PROGRAMS = low-level$(EXEEXT) \
-@PLATFORM_WIN32_FALSE@	simple$(EXEEXT) pixmap$(EXEEXT) \
+@PLATFORM_WIN32_FALSE@	simple$(EXEEXT) simple-mixed$(EXEEXT) \
+@PLATFORM_WIN32_FALSE@	pixmap$(EXEEXT) pixmap-mixed$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	font$(EXEEXT) gears$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	viewlw$(EXEEXT) glxinfo$(EXEEXT)
 am_font_OBJECTS = font.$(OBJEXT)
@@ -232,9 +244,15 @@ low_level_LDFLAGS =
 am_pixmap_OBJECTS = pixmap.$(OBJEXT)
 pixmap_OBJECTS = $(am_pixmap_OBJECTS)
 pixmap_LDFLAGS =
+am_pixmap_mixed_OBJECTS = pixmap-mixed.$(OBJEXT)
+pixmap_mixed_OBJECTS = $(am_pixmap_mixed_OBJECTS)
+pixmap_mixed_LDFLAGS =
 am_simple_OBJECTS = simple.$(OBJEXT)
 simple_OBJECTS = $(am_simple_OBJECTS)
 simple_LDFLAGS =
+am_simple_mixed_OBJECTS = simple-mixed.$(OBJEXT)
+simple_mixed_OBJECTS = $(am_simple_mixed_OBJECTS)
+simple_mixed_LDFLAGS =
 am_viewlw_OBJECTS = viewlw.$(OBJEXT) lw.$(OBJEXT) trackball.$(OBJEXT)
 viewlw_OBJECTS = $(am_viewlw_OBJECTS)
 viewlw_LDFLAGS =
@@ -248,7 +266,8 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/font.Po ./$(DEPDIR)/gears.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/glxinfo.Po ./$(DEPDIR)/low-level.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/lw.Po ./$(DEPDIR)/pixmap.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/lw.Po ./$(DEPDIR)/pixmap-mixed.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/pixmap.Po ./$(DEPDIR)/simple-mixed.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/simple.Po ./$(DEPDIR)/trackball.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/viewlw.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -260,10 +279,10 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
 DIST_SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) \
-	$(low_level_SOURCES) $(pixmap_SOURCES) $(simple_SOURCES) \
-	$(viewlw_SOURCES)
+	$(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) \
+	$(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(simple_SOURCES) $(viewlw_SOURCES)
+SOURCES = $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
 
 all: all-am
 
@@ -289,9 +308,15 @@ low-level$(EXEEXT): $(low_level_OBJECTS) $(low_level_DEPENDENCIES)
 pixmap$(EXEEXT): $(pixmap_OBJECTS) $(pixmap_DEPENDENCIES) 
 	@rm -f pixmap$(EXEEXT)
 	$(LINK) $(pixmap_LDFLAGS) $(pixmap_OBJECTS) $(pixmap_LDADD) $(LIBS)
+pixmap-mixed$(EXEEXT): $(pixmap_mixed_OBJECTS) $(pixmap_mixed_DEPENDENCIES) 
+	@rm -f pixmap-mixed$(EXEEXT)
+	$(LINK) $(pixmap_mixed_LDFLAGS) $(pixmap_mixed_OBJECTS) $(pixmap_mixed_LDADD) $(LIBS)
 simple$(EXEEXT): $(simple_OBJECTS) $(simple_DEPENDENCIES) 
 	@rm -f simple$(EXEEXT)
 	$(LINK) $(simple_LDFLAGS) $(simple_OBJECTS) $(simple_LDADD) $(LIBS)
+simple-mixed$(EXEEXT): $(simple_mixed_OBJECTS) $(simple_mixed_DEPENDENCIES) 
+	@rm -f simple-mixed$(EXEEXT)
+	$(LINK) $(simple_mixed_LDFLAGS) $(simple_mixed_OBJECTS) $(simple_mixed_LDADD) $(LIBS)
 viewlw$(EXEEXT): $(viewlw_OBJECTS) $(viewlw_DEPENDENCIES) 
 	@rm -f viewlw$(EXEEXT)
 	$(LINK) $(viewlw_LDFLAGS) $(viewlw_OBJECTS) $(viewlw_LDADD) $(LIBS)
@@ -307,7 +332,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/glxinfo.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/low-level.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lw.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pixmap-mixed.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pixmap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simple-mixed.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simple.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/trackball.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/viewlw.Po@am__quote@
