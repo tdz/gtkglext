@@ -414,6 +414,11 @@ GdkGLProc gdk_gl_get_glXSet3DfxModeMESA (void);
  * GLX_OML_sync_control
  */
 
+#if defined(__STDC_VERSION__)
+#if __STDC_VERSION__ >= 199901L
+/* Include ISO C99 integer types for OML_sync_control; need a better test */
+#include <inttypes.h>
+
 /* glXGetSyncValuesOML */
 typedef Bool ( * GDK_GL_GLXGETSYNCVALUESOMLPROC) (Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc);
 GdkGLProc gdk_gl_get_glXGetSyncValuesOML (void);
@@ -444,6 +449,8 @@ GdkGLProc gdk_gl_get_glXWaitForSbcOML (void);
 #define gdk_gl_glXWaitForSbcOML(proc, dpy, drawable, target_sbc, ust, msc, sbc) \
   (((GDK_GL_GLXWAITFORSBCOMLPROC) (proc)) (dpy, drawable, target_sbc, ust, msc, sbc))
 
+#endif /* C99 version test */
+#endif /* STDC test */
 
 G_END_DECLS
 
