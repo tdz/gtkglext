@@ -1,0 +1,36 @@
+## -*- Makefile -*-
+## Makefile.am for gtkglext/gdk/win32
+
+libgdkglextincludedir = $(includedir)/gtkglext-$(GTKGLEXT_API_VERSION)/gdk
+
+INCLUDES = \
+	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
+	-I$(top_srcdir)			\
+	-I$(top_srcdir)/gdk		\
+	-I$(top_builddir)/gdk		\
+	$(GTKGLEXT_DEBUG_FLAGS)		\
+	$(GDKGLEXT_DEP_CFLAGS)
+
+LDADDS = \
+	$(GDKGLEXT_DEP_LIBS)
+
+noinst_LTLIBRARIES = libgdkglext-win32.la
+
+libgdkglext_win32_la_SOURCES = \
+	gdkgl-win32.c		\
+	gdkglconfig-win32.h	\
+	gdkglconfig-win32.c	\
+	gdkglprivate-win32.h
+
+libgdkglextinclude_HEADERS = \
+	gdkglwin32.h
+
+.PHONY: files
+
+files:
+	@files=`ls $(DISTFILES) 2> /dev/null `; for p in $$files; do \
+	  echo $$p; \
+	done
+
+EXTRA_DIST = 
+

@@ -1,0 +1,6 @@
+2002-05-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* First pre-alpha release.
+
+	* X11 target is implemented and tested on Linux and IRIX.
+

@@ -1,0 +1,440 @@
+# Process this file with autoconf to produce a configure script.
+AC_INIT(gdk/gdkgl.h)
+
+#
+# Making releases:
+#   GTKGLEXT_MICRO_VERSION += 1;
+#   GTKGLEXT_INTERFACE_AGE += 1;
+#   GTKGLEXT_BINARY_AGE += 1;
+# if any functions have been added, set GTKGLEXT_INTERFACE_AGE to 0.
+# if backwards compatibility has been broken,
+# set GTKGLEXT_BINARY_AGE and GTKGLEXT_INTERFACE_AGE to 0.
+#
+GTKGLEXT_MAJOR_VERSION=0
+GTKGLEXT_MINOR_VERSION=0
+GTKGLEXT_MICRO_VERSION=1
+GTKGLEXT_INTERFACE_AGE=0
+GTKGLEXT_BINARY_AGE=0
+GTKGLEXT_VERSION=$GTKGLEXT_MAJOR_VERSION.$GTKGLEXT_MINOR_VERSION.$GTKGLEXT_MICRO_VERSION
+dnl This is the X.Y used in -lgtkglextontext-FOO-X.Y
+GTKGLEXT_API_MAJOR_VERSION=0
+GTKGLEXT_API_MINOR_VERSION=x
+GTKGLEXT_API_VERSION=$GTKGLEXT_API_MAJOR_VERSION.$GTKGLEXT_API_MINOR_VERSION
+AC_SUBST(GTKGLEXT_MAJOR_VERSION)
+AC_SUBST(GTKGLEXT_MINOR_VERSION)
+AC_SUBST(GTKGLEXT_MICRO_VERSION)
+AC_SUBST(GTKGLEXT_INTERFACE_AGE)
+AC_SUBST(GTKGLEXT_BINARY_AGE)
+AC_SUBST(GTKGLEXT_VERSION)
+AC_SUBST(GTKGLEXT_API_MAJOR_VERSION)
+AC_SUBST(GTKGLEXT_API_MINOR_VERSION)
+AC_SUBST(GTKGLEXT_API_VERSION)
+
+# libtool versioning
+LT_RELEASE=$GTKGLEXT_MAJOR_VERSION.$GTKGLEXT_MINOR_VERSION
+LT_CURRENT=`expr $GTKGLEXT_MICRO_VERSION - $GTKGLEXT_INTERFACE_AGE`
+LT_REVISION=$GTKGLEXT_INTERFACE_AGE
+LT_AGE=`expr $GTKGLEXT_BINARY_AGE - $GTKGLEXT_INTERFACE_AGE`
+LT_CURRENT_MINUS_AGE=`expr $LT_CURRENT - $LT_AGE`
+AC_SUBST(LT_RELEASE)
+AC_SUBST(LT_CURRENT)
+AC_SUBST(LT_REVISION)
+AC_SUBST(LT_AGE)
+AC_SUBST(LT_CURRENT_MINUS_AGE)
+
+# Define a string for the earliest version that this release has
+# binary compatibility with. This is used for module locations.
+#
+GTKGLEXT_BINARY_VERSION=$GTKGLEXT_MAJOR_VERSION.$GTKGLEXT_MINOR_VERSION.$LT_CURRENT
+AC_SUBST(GTKGLEXT_BINARY_VERSION)
+
+## Versions of dependencies
+GDK_PKG=gdk-2.0
+GDK_REQUIRED_VERSION=2.0.0
+GTK_PKG=gtk+-2.0
+GTK_REQUIRED_VERSION=2.0.0
+
+# For automake.
+VERSION=$GTKGLEXT_VERSION
+PACKAGE=gtkglext
+
+# Save this value here, since automake will set cflags later
+cflags_set=${CFLAGS+set}
+
+dnl Initialize automake stuff
+AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
+
+# Specify a configuration file
+AM_CONFIG_HEADER(config.h)
+
+dnl Initialize libtool
+AC_PROG_CC
+AM_DISABLE_STATIC
+AC_LIBTOOL_WIN32_DLL
+AM_PROG_LIBTOOL
+
+dnl Initialize maintainer mode
+AM_MAINTAINER_MODE
+
+#AC_CANONICAL_HOST
+
+AC_MSG_CHECKING([for some Win32 platform])
+case "$host" in
+  *-*-mingw*|*-*-cygwin*)
+    platform_win32=yes
+    ;;
+  *)
+    platform_win32=no
+    ;;
+esac
+AC_MSG_RESULT([$platform_win32])
+AM_CONDITIONAL(PLATFORM_WIN32, test "$platform_win32" = "yes")
+
+MATH_LIB=-lm
+AC_MSG_CHECKING([for native Win32])
+case "$host" in
+  *-*-mingw*)
+    os_win32=yes
+    MATH_LIB=
+    ;;
+  *)
+    os_win32=no
+    ;;
+esac
+AC_MSG_RESULT([$os_win32])
+AM_CONDITIONAL(OS_WIN32, test "$os_win32" = "yes")
+
+if test "$os_win32" = "yes"; then
+  AC_CHECK_PROG(ms_librarian, lib.exe, yes, no)
+fi
+AM_CONDITIONAL(MS_LIB_AVAILABLE, test x$ms_librarian = xyes)
+
+if test "$platform_win32" = yes; then
+  gdktarget=win32
+else
+  gdktarget=x11
+fi
+
+AC_ARG_WITH(gdktarget, [  --with-gdktarget=[[x11/win32]] select GDK target],
+	gdktarget=$with_gdktarget)
+
+AC_SUBST(gdktarget)
+case $gdktarget in
+  x11|win32) ;;
+  *) AC_MSG_ERROR([Invalid target for GDK: use x11 or win32.]);;
+esac
+
+gdkglext_targetlib=libgdkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
+gtkglext_targetlib=libgtkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
+
+AC_SUBST(gdkglext_targetlib)
+AC_SUBST(gtkglext_targetlib)
+
+
+# Build time sanity check...
+AM_SANITY_CHECK
+
+# Checks for programs.
+AC_ISC_POSIX
+AM_PROG_CC_STDC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+
+# debug flag
+AC_ARG_ENABLE(debug,   [  --enable-debug          turn on debugging [[default=no]]], , enable_debug=no)
+
+changequote(,)dnl
+if test "x$GCC" = "xyes"; then
+  case " $CFLAGS " in
+  *[\ \	]-Wall[\ \	]*) ;;
+  *) CFLAGS="$CFLAGS -Wall" ;;
+  esac
+
+  if test "x$enable_ansi" = "xyes"; then
+    case " $CFLAGS " in
+    *[\ \	]-ansi[\ \	]*) ;;
+    *) CFLAGS="$CFLAGS -ansi" ;;
+    esac
+
+    case " $CFLAGS " in
+    *[\ \	]-pedantic[\ \	]*) ;;
+    *) CFLAGS="$CFLAGS -pedantic" ;;
+    esac
+  fi
+
+  if test "$os_win32" = "yes"; then
+    case "$CC $CFLAGS " in
+    *[[\ \	]]-fnative-struct[[\ \	]]*) ;;
+    *) CFLAGS="$CFLAGS -fnative-struct" ;;
+    esac
+  fi
+fi
+
+if test "x$enable_debug" = "xyes"; then
+  if test x$cflags_set != xset ; then
+      case " $CFLAGS " in
+      *[[\ \	]]-g[[\ \	]]*) ;;
+      *) CFLAGS="$CFLAGS -g" ;;
+      esac
+  fi
+	
+  GTKGLEXT_DEBUG_FLAGS="-DG_ENABLE_DEBUG"
+else
+  if test "x$enable_debug" = "xno"; then
+    GTKGLEXT_DEBUG_FLAGS="-DG_DISABLE_ASSERT -DG_DISABLE_CHECKS"
+  fi
+fi
+changequote([,])dnl
+
+AC_SUBST(GTKGLEXT_DEBUG_FLAGS)
+
+# Honor aclocal flags
+ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+
+## Initial sanity check, done here so that users get told they 
+## have the wrong dependencies as early in the process as possible.
+## Later on we actually use the cflags/libs from separate pkg-config
+## calls. Oh, also the later pkg-config calls don't include 
+## the version requirements since those make the module lists 
+## annoying to construct
+PKG_CHECK_MODULES(BASE_DEPENDENCIES, $GDK_PKG >= $GDK_REQUIRED_VERSION $GTK_PKG >= $GTK_REQUIRED_VERSION)
+
+if test "$os_win32" != yes; then
+    # libtool option to control which symbols are exported
+    # right now, symbols starting with _ are not exported
+    LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^[[^_]].*"'
+else
+    # We currently use .def files on Windows (for gdk-pixbuf, gdk and gtk)
+    LIBTOOL_EXPORT_OPTIONS=
+fi
+AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
+
+
+# Checks for libraries.
+
+# Checks for header files.
+AC_HEADER_STDC
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+
+# Checks for library functions.
+
+
+##################################################
+# Checks for Window System
+##################################################
+
+GDKGLEXT_WIN_CFLAGS=""
+GDKGLEXT_WIN_LIBS=""
+
+if test "x$gdktarget" = "xx11"; then
+  AC_PATH_XTRA
+  GDKGLEXT_WIN_CFLAGS="$X_CFLAGS"
+  GDKGLEXT_WIN_LIBS=""
+  if test "x$have_x" = "xyes"; then
+    save_LIBS="$LIBS"
+    LIBS="$LIBS $X_LIBS $X_PRE_LIBS"
+    AC_CHECK_LIB(Xmu, XmuLookupStandardColormap, GDKGLEXT_WIN_LIBS="-lXmu -lXt $GDKGLEXT_WIN_LIBS")
+    LIBS="$save_LIBS"
+  fi
+  GDKGLEXT_WIN_LIBS="$X_LIBS $GDKGLEXT_WIN_LIBS $X_PRE_LIBS -lXi -lXext -lX11 $X_EXTRA_LIBS"
+  AM_CONDITIONAL(USE_X11, true)
+else
+  AM_CONDITIONAL(USE_X11, false)
+fi
+
+if test "x$gdktarget" = "xwin32"; then
+  GDKGLEXT_WIN_LIBS="-lgdi32 -user32 -limm32 -lshell32 -lole32 -luuid"
+  AM_CONDITIONAL(USE_WIN32, true)
+else
+  AM_CONDITIONAL(USE_WIN32, false)
+fi
+
+AC_SUBST(GDKGLEXT_WIN_CFLAGS)
+AC_SUBST(GDKGLEXT_WIN_LIBS)
+
+
+##################################################
+# Checks for OpenGL (ripped from GtkGLArea)
+##################################################
+
+AC_ARG_WITH(GL-prefix,   [  --with-GL-prefix=DIR    prefix where GL/MesaGL is installed])
+AC_ARG_WITH(lib-GL,      [  --with-lib-GL           use '-lGL'])
+AC_ARG_WITH(lib-MesaGL,  [  --with-lib-MesaGL       use '-lMesaGL'])
+AC_ARG_WITH(lib-opengl32,[  --with-lib-opengl32     use '-lopengl32'])
+
+if test "x$with_GL_prefix" = "x" ; then
+ GL_LDOPTS=""
+ GL_CFLAGS=""
+else
+ GL_LDOPTS="-L$with_GL_prefix/lib"
+ GL_CFLAGS="-I$with_GL_prefix/include"
+fi
+
+saved_LIBS="$LIBS"
+
+AC_MSG_CHECKING([OpenGL])
+LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lGL"
+AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_GL=yes, 
+  LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lopengl32"
+  [AC_TRY_LINK([ #include <windows.h>
+                 #include <GL/gl.h>], 
+               [ glBegin(GL_TRIANGLES); ], 
+    [have_opengl32=yes
+     have_GL=yes],
+    have_GL=no)])
+AC_MSG_RESULT($have_GL)
+
+AC_MSG_CHECKING([Mesa])
+LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lMesaGL"
+AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_MesaGL=yes, have_MesaGL=no)
+AC_MSG_RESULT($have_MesaGL)
+
+if test "x$have_MesaGL" = "xno"; then
+ AC_MSG_CHECKING([Mesa with pthreads])
+ LIBS="$saved_LIBS $GTK_LIBS $GL_LDOPTS -lMesaGL -lpthread"
+ AC_TRY_LINK( ,[ char glBegin(); glBegin(); ], have_MesaGL_pthread=yes, have_MesaGL_pthread=no)
+ AC_MSG_RESULT($have_MesaGL_pthread)
+fi
+
+LIBS="$saved_LIBS"
+
+
+if test "x$with_lib_GL" = "xyes"; then
+
+ if test "x$have_GL" = "xyes"; then
+  GL_LIBS="$GL_LDOPTS -lGLU -lGL"
+ else
+  AC_MSG_ERROR([Missing GL library])
+ fi
+
+elif test "x$with_lib_MesaGL" = "xyes"; then
+
+ if test "x$have_MesaGL" = "xyes"; then
+  GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL"
+ elif test "x$have_MesaGL_pthread" = "xyes"; then
+  GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL -lpthread"
+ else
+  AC_MSG_ERROR([Missing MesaGL library])
+ fi
+
+elif test "x$with_lib_opengl32" = "xyes"; then
+
+ if test "x$have_opengl32" = "xyes"; then
+  GL_LIBS="$GL_LDOPTS -lglu32 -lopengl32"
+ else
+  AC_MSG_ERROR([Missing OpenGL32 library])
+ fi
+
+else
+
+ if test "x$have_opengl32" = "xyes"; then
+  GL_LIBS="$GL_LDOPTS -lglu32 -lopengl32"
+ elif test "x$have_GL" = "xyes"; then
+  GL_LIBS="$GL_LDOPTS -lGLU -lGL"
+ elif test "x$have_MesaGL" = "xyes"; then
+  GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL"
+ elif test "x$have_MesaGL_pthread" = "xyes"; then
+  GL_LIBS="$GL_LDOPTS -lMesaGLU -lMesaGL -lpthread"
+ else
+  AC_MSG_ERROR([You need GL or MesaGL libraries])
+ fi
+
+fi
+
+AC_SUBST(GL_CFLAGS)
+AC_SUBST(GL_LIBS)
+
+
+GDKGLEXT_PACKAGES="$GDK_PKG"
+GDKGLEXT_EXTRA_LIBS="$GL_LIBS"
+GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS"
+GDKGLEXT_DEP_LIBS="`$PKG_CONFIG --libs $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_LIBS $GDKGLEXT_WIN_LIBS $MATH_LIB"
+GDKGLEXT_DEP_CFLAGS="`$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_CFLAGS $GDKGLEXT_WIN_CFLAGS"
+
+AC_SUBST(GDKGLEXT_PACKAGES)
+AC_SUBST(GDKGLEXT_EXTRA_LIBS)
+AC_SUBST(GDKGLEXT_EXTRA_CFLAGS)
+AC_SUBST(GDKGLEXT_DEP_LIBS)
+AC_SUBST(GDKGLEXT_DEP_CFLAGS)
+
+
+GTKGLEXT_PACKAGES="$GTK_PKG"
+GTKGLEXT_EXTRA_LIBS=""
+GTKGLEXT_EXTRA_CFLAGS=""
+GTKGLEXT_DEP_LIBS="`$PKG_CONFIG --libs $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES` $GTKGLEXT_EXTRA_LIBS $GDKGLEXT_EXTRA_LIBS $GDKGLEXT_WIN_LIBS $MATH_LIB"
+GTKGLEXT_DEP_CFLAGS="`$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_CFLAGS $GTKGLEXT_EXTRA_CFLAGS $GDKGLEXT_WIN_CFLAGS"
+
+AC_SUBST(GTKGLEXT_PACKAGES)
+AC_SUBST(GTKGLEXT_EXTRA_LIBS)
+AC_SUBST(GTKGLEXT_EXTRA_CFLAGS)
+AC_SUBST(GTKGLEXT_DEP_LIBS)
+AC_SUBST(GTKGLEXT_DEP_CFLAGS)
+
+
+##################################################
+# Checks for gtk-doc and docbook-tools
+##################################################
+
+AC_ARG_WITH(html-dir, [  --with-html-dir=PATH    path to installed docs ])
+
+if test "x$with_html_dir" = "x" ; then
+  HTML_DIR='${datadir}/gtk-doc/html'
+else
+  HTML_DIR=$with_html_dir
+fi
+
+AC_SUBST(HTML_DIR)
+
+AC_CHECK_PROG(GTKDOC, gtkdoc-mkdb, true, false)
+
+gtk_doc_min_version=0.9
+if $GTKDOC ; then 
+    gtk_doc_version=`gtkdoc-mkdb --version`
+    AC_MSG_CHECKING([gtk-doc version ($gtk_doc_version) >= $gtk_doc_min_version])
+    if perl <<EOF ; then
+      exit (("$gtk_doc_version" =~ /^[[0-9]]+\.[[0-9]]+$/) &&
+            ("$gtk_doc_version" >= "$gtk_doc_min_version") ? 0 : 1);
+EOF
+      AC_MSG_RESULT(yes)
+   else
+      AC_MSG_RESULT(no)
+      GTKDOC=false
+   fi
+fi
+
+AC_CHECK_PROG(DB2HTML, db2html, true, false)
+AM_CONDITIONAL(HAVE_DOCBOOK, $DB2HTML)
+
+dnl Make people enable the gtk-doc stuff explicitely.
+AC_ARG_ENABLE(gtk-doc, [  --enable-gtk-doc        use gtk-doc to build documentation [[default=no]]], enable_gtk_doc="$enableval", enable_gtk_doc=auto)
+
+if test x$enable_gtk_doc = xyes ; then
+  if test x$GTKDOC != xtrue ; then
+    enable_gtk_doc=no 
+  fi
+fi
+
+dnl NOTE: We need to use a separate automake conditional for this
+dnl       to make this work with the tarballs.
+AM_CONDITIONAL(ENABLE_GTK_DOC, test x$enable_gtk_doc = xyes)
+
+AC_PATH_PROG(SGML2HTML, sgml2html, no)
+AM_CONDITIONAL(HAVE_SGML2HTML, test x$SGML2HTML != xno)
+
+
+
+AC_OUTPUT([
+Makefile
+gdkglext.pc
+gtkglext.pc
+gdkglext-uninstalled.pc
+gtkglext-uninstalled.pc
+gdk/Makefile
+gdk/x11/Makefile
+gdk/win32/Makefile
+gtk/Makefile
+examples/Makefile
+docs/Makefile
+])
