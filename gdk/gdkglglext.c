@@ -78,14 +78,12 @@ gdk_gl_get_glBlendColor (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glBlendColor == (GdkGLProc_glBlendColor) -1)
-    {
-      _procs_GL_VERSION_1_2.glBlendColor =
-        (GdkGLProc_glBlendColor) gdk_gl_get_proc_address ("glBlendColor");
+    _procs_GL_VERSION_1_2.glBlendColor =
+      (GdkGLProc_glBlendColor) gdk_gl_get_proc_address ("glBlendColor");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBlendColor () - %s",
-                   (_procs_GL_VERSION_1_2.glBlendColor) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendColor () - %s",
+               (_procs_GL_VERSION_1_2.glBlendColor) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glBlendColor);
 }
@@ -98,14 +96,12 @@ gdk_gl_get_glBlendEquation (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glBlendEquation == (GdkGLProc_glBlendEquation) -1)
-    {
-      _procs_GL_VERSION_1_2.glBlendEquation =
-        (GdkGLProc_glBlendEquation) gdk_gl_get_proc_address ("glBlendEquation");
+    _procs_GL_VERSION_1_2.glBlendEquation =
+      (GdkGLProc_glBlendEquation) gdk_gl_get_proc_address ("glBlendEquation");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBlendEquation () - %s",
-                   (_procs_GL_VERSION_1_2.glBlendEquation) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendEquation () - %s",
+               (_procs_GL_VERSION_1_2.glBlendEquation) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glBlendEquation);
 }
@@ -118,14 +114,12 @@ gdk_gl_get_glDrawRangeElements (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glDrawRangeElements == (GdkGLProc_glDrawRangeElements) -1)
-    {
-      _procs_GL_VERSION_1_2.glDrawRangeElements =
-        (GdkGLProc_glDrawRangeElements) gdk_gl_get_proc_address ("glDrawRangeElements");
+    _procs_GL_VERSION_1_2.glDrawRangeElements =
+      (GdkGLProc_glDrawRangeElements) gdk_gl_get_proc_address ("glDrawRangeElements");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDrawRangeElements () - %s",
-                   (_procs_GL_VERSION_1_2.glDrawRangeElements) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawRangeElements () - %s",
+               (_procs_GL_VERSION_1_2.glDrawRangeElements) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glDrawRangeElements);
 }
@@ -138,14 +132,12 @@ gdk_gl_get_glColorTable (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glColorTable == (GdkGLProc_glColorTable) -1)
-    {
-      _procs_GL_VERSION_1_2.glColorTable =
-        (GdkGLProc_glColorTable) gdk_gl_get_proc_address ("glColorTable");
+    _procs_GL_VERSION_1_2.glColorTable =
+      (GdkGLProc_glColorTable) gdk_gl_get_proc_address ("glColorTable");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorTable () - %s",
-                   (_procs_GL_VERSION_1_2.glColorTable) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorTable () - %s",
+               (_procs_GL_VERSION_1_2.glColorTable) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glColorTable);
 }
@@ -158,14 +150,12 @@ gdk_gl_get_glColorTableParameterfv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glColorTableParameterfv == (GdkGLProc_glColorTableParameterfv) -1)
-    {
-      _procs_GL_VERSION_1_2.glColorTableParameterfv =
-        (GdkGLProc_glColorTableParameterfv) gdk_gl_get_proc_address ("glColorTableParameterfv");
+    _procs_GL_VERSION_1_2.glColorTableParameterfv =
+      (GdkGLProc_glColorTableParameterfv) gdk_gl_get_proc_address ("glColorTableParameterfv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorTableParameterfv () - %s",
-                   (_procs_GL_VERSION_1_2.glColorTableParameterfv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorTableParameterfv () - %s",
+               (_procs_GL_VERSION_1_2.glColorTableParameterfv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glColorTableParameterfv);
 }
@@ -178,14 +168,12 @@ gdk_gl_get_glColorTableParameteriv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glColorTableParameteriv == (GdkGLProc_glColorTableParameteriv) -1)
-    {
-      _procs_GL_VERSION_1_2.glColorTableParameteriv =
-        (GdkGLProc_glColorTableParameteriv) gdk_gl_get_proc_address ("glColorTableParameteriv");
+    _procs_GL_VERSION_1_2.glColorTableParameteriv =
+      (GdkGLProc_glColorTableParameteriv) gdk_gl_get_proc_address ("glColorTableParameteriv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorTableParameteriv () - %s",
-                   (_procs_GL_VERSION_1_2.glColorTableParameteriv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorTableParameteriv () - %s",
+               (_procs_GL_VERSION_1_2.glColorTableParameteriv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glColorTableParameteriv);
 }
@@ -198,14 +186,12 @@ gdk_gl_get_glCopyColorTable (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glCopyColorTable == (GdkGLProc_glCopyColorTable) -1)
-    {
-      _procs_GL_VERSION_1_2.glCopyColorTable =
-        (GdkGLProc_glCopyColorTable) gdk_gl_get_proc_address ("glCopyColorTable");
+    _procs_GL_VERSION_1_2.glCopyColorTable =
+      (GdkGLProc_glCopyColorTable) gdk_gl_get_proc_address ("glCopyColorTable");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyColorTable () - %s",
-                   (_procs_GL_VERSION_1_2.glCopyColorTable) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyColorTable () - %s",
+               (_procs_GL_VERSION_1_2.glCopyColorTable) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glCopyColorTable);
 }
@@ -218,14 +204,12 @@ gdk_gl_get_glGetColorTable (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetColorTable == (GdkGLProc_glGetColorTable) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetColorTable =
-        (GdkGLProc_glGetColorTable) gdk_gl_get_proc_address ("glGetColorTable");
+    _procs_GL_VERSION_1_2.glGetColorTable =
+      (GdkGLProc_glGetColorTable) gdk_gl_get_proc_address ("glGetColorTable");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetColorTable () - %s",
-                   (_procs_GL_VERSION_1_2.glGetColorTable) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTable () - %s",
+               (_procs_GL_VERSION_1_2.glGetColorTable) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetColorTable);
 }
@@ -238,14 +222,12 @@ gdk_gl_get_glGetColorTableParameterfv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetColorTableParameterfv == (GdkGLProc_glGetColorTableParameterfv) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetColorTableParameterfv =
-        (GdkGLProc_glGetColorTableParameterfv) gdk_gl_get_proc_address ("glGetColorTableParameterfv");
+    _procs_GL_VERSION_1_2.glGetColorTableParameterfv =
+      (GdkGLProc_glGetColorTableParameterfv) gdk_gl_get_proc_address ("glGetColorTableParameterfv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetColorTableParameterfv () - %s",
-                   (_procs_GL_VERSION_1_2.glGetColorTableParameterfv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTableParameterfv () - %s",
+               (_procs_GL_VERSION_1_2.glGetColorTableParameterfv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetColorTableParameterfv);
 }
@@ -258,14 +240,12 @@ gdk_gl_get_glGetColorTableParameteriv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetColorTableParameteriv == (GdkGLProc_glGetColorTableParameteriv) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetColorTableParameteriv =
-        (GdkGLProc_glGetColorTableParameteriv) gdk_gl_get_proc_address ("glGetColorTableParameteriv");
+    _procs_GL_VERSION_1_2.glGetColorTableParameteriv =
+      (GdkGLProc_glGetColorTableParameteriv) gdk_gl_get_proc_address ("glGetColorTableParameteriv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetColorTableParameteriv () - %s",
-                   (_procs_GL_VERSION_1_2.glGetColorTableParameteriv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTableParameteriv () - %s",
+               (_procs_GL_VERSION_1_2.glGetColorTableParameteriv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetColorTableParameteriv);
 }
@@ -278,14 +258,12 @@ gdk_gl_get_glColorSubTable (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glColorSubTable == (GdkGLProc_glColorSubTable) -1)
-    {
-      _procs_GL_VERSION_1_2.glColorSubTable =
-        (GdkGLProc_glColorSubTable) gdk_gl_get_proc_address ("glColorSubTable");
+    _procs_GL_VERSION_1_2.glColorSubTable =
+      (GdkGLProc_glColorSubTable) gdk_gl_get_proc_address ("glColorSubTable");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorSubTable () - %s",
-                   (_procs_GL_VERSION_1_2.glColorSubTable) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorSubTable () - %s",
+               (_procs_GL_VERSION_1_2.glColorSubTable) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glColorSubTable);
 }
@@ -298,14 +276,12 @@ gdk_gl_get_glCopyColorSubTable (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glCopyColorSubTable == (GdkGLProc_glCopyColorSubTable) -1)
-    {
-      _procs_GL_VERSION_1_2.glCopyColorSubTable =
-        (GdkGLProc_glCopyColorSubTable) gdk_gl_get_proc_address ("glCopyColorSubTable");
+    _procs_GL_VERSION_1_2.glCopyColorSubTable =
+      (GdkGLProc_glCopyColorSubTable) gdk_gl_get_proc_address ("glCopyColorSubTable");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyColorSubTable () - %s",
-                   (_procs_GL_VERSION_1_2.glCopyColorSubTable) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyColorSubTable () - %s",
+               (_procs_GL_VERSION_1_2.glCopyColorSubTable) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glCopyColorSubTable);
 }
@@ -318,14 +294,12 @@ gdk_gl_get_glConvolutionFilter1D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glConvolutionFilter1D == (GdkGLProc_glConvolutionFilter1D) -1)
-    {
-      _procs_GL_VERSION_1_2.glConvolutionFilter1D =
-        (GdkGLProc_glConvolutionFilter1D) gdk_gl_get_proc_address ("glConvolutionFilter1D");
+    _procs_GL_VERSION_1_2.glConvolutionFilter1D =
+      (GdkGLProc_glConvolutionFilter1D) gdk_gl_get_proc_address ("glConvolutionFilter1D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionFilter1D () - %s",
-                   (_procs_GL_VERSION_1_2.glConvolutionFilter1D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionFilter1D () - %s",
+               (_procs_GL_VERSION_1_2.glConvolutionFilter1D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionFilter1D);
 }
@@ -338,14 +312,12 @@ gdk_gl_get_glConvolutionFilter2D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glConvolutionFilter2D == (GdkGLProc_glConvolutionFilter2D) -1)
-    {
-      _procs_GL_VERSION_1_2.glConvolutionFilter2D =
-        (GdkGLProc_glConvolutionFilter2D) gdk_gl_get_proc_address ("glConvolutionFilter2D");
+    _procs_GL_VERSION_1_2.glConvolutionFilter2D =
+      (GdkGLProc_glConvolutionFilter2D) gdk_gl_get_proc_address ("glConvolutionFilter2D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionFilter2D () - %s",
-                   (_procs_GL_VERSION_1_2.glConvolutionFilter2D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionFilter2D () - %s",
+               (_procs_GL_VERSION_1_2.glConvolutionFilter2D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionFilter2D);
 }
@@ -358,14 +330,12 @@ gdk_gl_get_glConvolutionParameterf (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glConvolutionParameterf == (GdkGLProc_glConvolutionParameterf) -1)
-    {
-      _procs_GL_VERSION_1_2.glConvolutionParameterf =
-        (GdkGLProc_glConvolutionParameterf) gdk_gl_get_proc_address ("glConvolutionParameterf");
+    _procs_GL_VERSION_1_2.glConvolutionParameterf =
+      (GdkGLProc_glConvolutionParameterf) gdk_gl_get_proc_address ("glConvolutionParameterf");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionParameterf () - %s",
-                   (_procs_GL_VERSION_1_2.glConvolutionParameterf) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameterf () - %s",
+               (_procs_GL_VERSION_1_2.glConvolutionParameterf) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionParameterf);
 }
@@ -378,14 +348,12 @@ gdk_gl_get_glConvolutionParameterfv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glConvolutionParameterfv == (GdkGLProc_glConvolutionParameterfv) -1)
-    {
-      _procs_GL_VERSION_1_2.glConvolutionParameterfv =
-        (GdkGLProc_glConvolutionParameterfv) gdk_gl_get_proc_address ("glConvolutionParameterfv");
+    _procs_GL_VERSION_1_2.glConvolutionParameterfv =
+      (GdkGLProc_glConvolutionParameterfv) gdk_gl_get_proc_address ("glConvolutionParameterfv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionParameterfv () - %s",
-                   (_procs_GL_VERSION_1_2.glConvolutionParameterfv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameterfv () - %s",
+               (_procs_GL_VERSION_1_2.glConvolutionParameterfv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionParameterfv);
 }
@@ -398,14 +366,12 @@ gdk_gl_get_glConvolutionParameteri (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glConvolutionParameteri == (GdkGLProc_glConvolutionParameteri) -1)
-    {
-      _procs_GL_VERSION_1_2.glConvolutionParameteri =
-        (GdkGLProc_glConvolutionParameteri) gdk_gl_get_proc_address ("glConvolutionParameteri");
+    _procs_GL_VERSION_1_2.glConvolutionParameteri =
+      (GdkGLProc_glConvolutionParameteri) gdk_gl_get_proc_address ("glConvolutionParameteri");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionParameteri () - %s",
-                   (_procs_GL_VERSION_1_2.glConvolutionParameteri) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameteri () - %s",
+               (_procs_GL_VERSION_1_2.glConvolutionParameteri) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionParameteri);
 }
@@ -418,14 +384,12 @@ gdk_gl_get_glConvolutionParameteriv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glConvolutionParameteriv == (GdkGLProc_glConvolutionParameteriv) -1)
-    {
-      _procs_GL_VERSION_1_2.glConvolutionParameteriv =
-        (GdkGLProc_glConvolutionParameteriv) gdk_gl_get_proc_address ("glConvolutionParameteriv");
+    _procs_GL_VERSION_1_2.glConvolutionParameteriv =
+      (GdkGLProc_glConvolutionParameteriv) gdk_gl_get_proc_address ("glConvolutionParameteriv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionParameteriv () - %s",
-                   (_procs_GL_VERSION_1_2.glConvolutionParameteriv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameteriv () - %s",
+               (_procs_GL_VERSION_1_2.glConvolutionParameteriv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionParameteriv);
 }
@@ -438,14 +402,12 @@ gdk_gl_get_glCopyConvolutionFilter1D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glCopyConvolutionFilter1D == (GdkGLProc_glCopyConvolutionFilter1D) -1)
-    {
-      _procs_GL_VERSION_1_2.glCopyConvolutionFilter1D =
-        (GdkGLProc_glCopyConvolutionFilter1D) gdk_gl_get_proc_address ("glCopyConvolutionFilter1D");
+    _procs_GL_VERSION_1_2.glCopyConvolutionFilter1D =
+      (GdkGLProc_glCopyConvolutionFilter1D) gdk_gl_get_proc_address ("glCopyConvolutionFilter1D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyConvolutionFilter1D () - %s",
-                   (_procs_GL_VERSION_1_2.glCopyConvolutionFilter1D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyConvolutionFilter1D () - %s",
+               (_procs_GL_VERSION_1_2.glCopyConvolutionFilter1D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glCopyConvolutionFilter1D);
 }
@@ -458,14 +420,12 @@ gdk_gl_get_glCopyConvolutionFilter2D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glCopyConvolutionFilter2D == (GdkGLProc_glCopyConvolutionFilter2D) -1)
-    {
-      _procs_GL_VERSION_1_2.glCopyConvolutionFilter2D =
-        (GdkGLProc_glCopyConvolutionFilter2D) gdk_gl_get_proc_address ("glCopyConvolutionFilter2D");
+    _procs_GL_VERSION_1_2.glCopyConvolutionFilter2D =
+      (GdkGLProc_glCopyConvolutionFilter2D) gdk_gl_get_proc_address ("glCopyConvolutionFilter2D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyConvolutionFilter2D () - %s",
-                   (_procs_GL_VERSION_1_2.glCopyConvolutionFilter2D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyConvolutionFilter2D () - %s",
+               (_procs_GL_VERSION_1_2.glCopyConvolutionFilter2D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glCopyConvolutionFilter2D);
 }
@@ -478,14 +438,12 @@ gdk_gl_get_glGetConvolutionFilter (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetConvolutionFilter == (GdkGLProc_glGetConvolutionFilter) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetConvolutionFilter =
-        (GdkGLProc_glGetConvolutionFilter) gdk_gl_get_proc_address ("glGetConvolutionFilter");
+    _procs_GL_VERSION_1_2.glGetConvolutionFilter =
+      (GdkGLProc_glGetConvolutionFilter) gdk_gl_get_proc_address ("glGetConvolutionFilter");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetConvolutionFilter () - %s",
-                   (_procs_GL_VERSION_1_2.glGetConvolutionFilter) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetConvolutionFilter () - %s",
+               (_procs_GL_VERSION_1_2.glGetConvolutionFilter) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetConvolutionFilter);
 }
@@ -498,14 +456,12 @@ gdk_gl_get_glGetConvolutionParameterfv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetConvolutionParameterfv == (GdkGLProc_glGetConvolutionParameterfv) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetConvolutionParameterfv =
-        (GdkGLProc_glGetConvolutionParameterfv) gdk_gl_get_proc_address ("glGetConvolutionParameterfv");
+    _procs_GL_VERSION_1_2.glGetConvolutionParameterfv =
+      (GdkGLProc_glGetConvolutionParameterfv) gdk_gl_get_proc_address ("glGetConvolutionParameterfv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetConvolutionParameterfv () - %s",
-                   (_procs_GL_VERSION_1_2.glGetConvolutionParameterfv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetConvolutionParameterfv () - %s",
+               (_procs_GL_VERSION_1_2.glGetConvolutionParameterfv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetConvolutionParameterfv);
 }
@@ -518,14 +474,12 @@ gdk_gl_get_glGetConvolutionParameteriv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetConvolutionParameteriv == (GdkGLProc_glGetConvolutionParameteriv) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetConvolutionParameteriv =
-        (GdkGLProc_glGetConvolutionParameteriv) gdk_gl_get_proc_address ("glGetConvolutionParameteriv");
+    _procs_GL_VERSION_1_2.glGetConvolutionParameteriv =
+      (GdkGLProc_glGetConvolutionParameteriv) gdk_gl_get_proc_address ("glGetConvolutionParameteriv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetConvolutionParameteriv () - %s",
-                   (_procs_GL_VERSION_1_2.glGetConvolutionParameteriv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetConvolutionParameteriv () - %s",
+               (_procs_GL_VERSION_1_2.glGetConvolutionParameteriv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetConvolutionParameteriv);
 }
@@ -538,14 +492,12 @@ gdk_gl_get_glGetSeparableFilter (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetSeparableFilter == (GdkGLProc_glGetSeparableFilter) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetSeparableFilter =
-        (GdkGLProc_glGetSeparableFilter) gdk_gl_get_proc_address ("glGetSeparableFilter");
+    _procs_GL_VERSION_1_2.glGetSeparableFilter =
+      (GdkGLProc_glGetSeparableFilter) gdk_gl_get_proc_address ("glGetSeparableFilter");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetSeparableFilter () - %s",
-                   (_procs_GL_VERSION_1_2.glGetSeparableFilter) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetSeparableFilter () - %s",
+               (_procs_GL_VERSION_1_2.glGetSeparableFilter) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetSeparableFilter);
 }
@@ -558,14 +510,12 @@ gdk_gl_get_glSeparableFilter2D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glSeparableFilter2D == (GdkGLProc_glSeparableFilter2D) -1)
-    {
-      _procs_GL_VERSION_1_2.glSeparableFilter2D =
-        (GdkGLProc_glSeparableFilter2D) gdk_gl_get_proc_address ("glSeparableFilter2D");
+    _procs_GL_VERSION_1_2.glSeparableFilter2D =
+      (GdkGLProc_glSeparableFilter2D) gdk_gl_get_proc_address ("glSeparableFilter2D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSeparableFilter2D () - %s",
-                   (_procs_GL_VERSION_1_2.glSeparableFilter2D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSeparableFilter2D () - %s",
+               (_procs_GL_VERSION_1_2.glSeparableFilter2D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glSeparableFilter2D);
 }
@@ -578,14 +528,12 @@ gdk_gl_get_glGetHistogram (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetHistogram == (GdkGLProc_glGetHistogram) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetHistogram =
-        (GdkGLProc_glGetHistogram) gdk_gl_get_proc_address ("glGetHistogram");
+    _procs_GL_VERSION_1_2.glGetHistogram =
+      (GdkGLProc_glGetHistogram) gdk_gl_get_proc_address ("glGetHistogram");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetHistogram () - %s",
-                   (_procs_GL_VERSION_1_2.glGetHistogram) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetHistogram () - %s",
+               (_procs_GL_VERSION_1_2.glGetHistogram) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetHistogram);
 }
@@ -598,14 +546,12 @@ gdk_gl_get_glGetHistogramParameterfv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetHistogramParameterfv == (GdkGLProc_glGetHistogramParameterfv) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetHistogramParameterfv =
-        (GdkGLProc_glGetHistogramParameterfv) gdk_gl_get_proc_address ("glGetHistogramParameterfv");
+    _procs_GL_VERSION_1_2.glGetHistogramParameterfv =
+      (GdkGLProc_glGetHistogramParameterfv) gdk_gl_get_proc_address ("glGetHistogramParameterfv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetHistogramParameterfv () - %s",
-                   (_procs_GL_VERSION_1_2.glGetHistogramParameterfv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetHistogramParameterfv () - %s",
+               (_procs_GL_VERSION_1_2.glGetHistogramParameterfv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetHistogramParameterfv);
 }
@@ -618,14 +564,12 @@ gdk_gl_get_glGetHistogramParameteriv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetHistogramParameteriv == (GdkGLProc_glGetHistogramParameteriv) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetHistogramParameteriv =
-        (GdkGLProc_glGetHistogramParameteriv) gdk_gl_get_proc_address ("glGetHistogramParameteriv");
+    _procs_GL_VERSION_1_2.glGetHistogramParameteriv =
+      (GdkGLProc_glGetHistogramParameteriv) gdk_gl_get_proc_address ("glGetHistogramParameteriv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetHistogramParameteriv () - %s",
-                   (_procs_GL_VERSION_1_2.glGetHistogramParameteriv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetHistogramParameteriv () - %s",
+               (_procs_GL_VERSION_1_2.glGetHistogramParameteriv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetHistogramParameteriv);
 }
@@ -638,14 +582,12 @@ gdk_gl_get_glGetMinmax (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetMinmax == (GdkGLProc_glGetMinmax) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetMinmax =
-        (GdkGLProc_glGetMinmax) gdk_gl_get_proc_address ("glGetMinmax");
+    _procs_GL_VERSION_1_2.glGetMinmax =
+      (GdkGLProc_glGetMinmax) gdk_gl_get_proc_address ("glGetMinmax");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMinmax () - %s",
-                   (_procs_GL_VERSION_1_2.glGetMinmax) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMinmax () - %s",
+               (_procs_GL_VERSION_1_2.glGetMinmax) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetMinmax);
 }
@@ -658,14 +600,12 @@ gdk_gl_get_glGetMinmaxParameterfv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetMinmaxParameterfv == (GdkGLProc_glGetMinmaxParameterfv) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetMinmaxParameterfv =
-        (GdkGLProc_glGetMinmaxParameterfv) gdk_gl_get_proc_address ("glGetMinmaxParameterfv");
+    _procs_GL_VERSION_1_2.glGetMinmaxParameterfv =
+      (GdkGLProc_glGetMinmaxParameterfv) gdk_gl_get_proc_address ("glGetMinmaxParameterfv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMinmaxParameterfv () - %s",
-                   (_procs_GL_VERSION_1_2.glGetMinmaxParameterfv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMinmaxParameterfv () - %s",
+               (_procs_GL_VERSION_1_2.glGetMinmaxParameterfv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetMinmaxParameterfv);
 }
@@ -678,14 +618,12 @@ gdk_gl_get_glGetMinmaxParameteriv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glGetMinmaxParameteriv == (GdkGLProc_glGetMinmaxParameteriv) -1)
-    {
-      _procs_GL_VERSION_1_2.glGetMinmaxParameteriv =
-        (GdkGLProc_glGetMinmaxParameteriv) gdk_gl_get_proc_address ("glGetMinmaxParameteriv");
+    _procs_GL_VERSION_1_2.glGetMinmaxParameteriv =
+      (GdkGLProc_glGetMinmaxParameteriv) gdk_gl_get_proc_address ("glGetMinmaxParameteriv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMinmaxParameteriv () - %s",
-                   (_procs_GL_VERSION_1_2.glGetMinmaxParameteriv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMinmaxParameteriv () - %s",
+               (_procs_GL_VERSION_1_2.glGetMinmaxParameteriv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetMinmaxParameteriv);
 }
@@ -698,14 +636,12 @@ gdk_gl_get_glHistogram (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glHistogram == (GdkGLProc_glHistogram) -1)
-    {
-      _procs_GL_VERSION_1_2.glHistogram =
-        (GdkGLProc_glHistogram) gdk_gl_get_proc_address ("glHistogram");
+    _procs_GL_VERSION_1_2.glHistogram =
+      (GdkGLProc_glHistogram) gdk_gl_get_proc_address ("glHistogram");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glHistogram () - %s",
-                   (_procs_GL_VERSION_1_2.glHistogram) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glHistogram () - %s",
+               (_procs_GL_VERSION_1_2.glHistogram) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glHistogram);
 }
@@ -718,14 +654,12 @@ gdk_gl_get_glMinmax (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glMinmax == (GdkGLProc_glMinmax) -1)
-    {
-      _procs_GL_VERSION_1_2.glMinmax =
-        (GdkGLProc_glMinmax) gdk_gl_get_proc_address ("glMinmax");
+    _procs_GL_VERSION_1_2.glMinmax =
+      (GdkGLProc_glMinmax) gdk_gl_get_proc_address ("glMinmax");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMinmax () - %s",
-                   (_procs_GL_VERSION_1_2.glMinmax) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMinmax () - %s",
+               (_procs_GL_VERSION_1_2.glMinmax) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glMinmax);
 }
@@ -738,14 +672,12 @@ gdk_gl_get_glResetHistogram (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glResetHistogram == (GdkGLProc_glResetHistogram) -1)
-    {
-      _procs_GL_VERSION_1_2.glResetHistogram =
-        (GdkGLProc_glResetHistogram) gdk_gl_get_proc_address ("glResetHistogram");
+    _procs_GL_VERSION_1_2.glResetHistogram =
+      (GdkGLProc_glResetHistogram) gdk_gl_get_proc_address ("glResetHistogram");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glResetHistogram () - %s",
-                   (_procs_GL_VERSION_1_2.glResetHistogram) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glResetHistogram () - %s",
+               (_procs_GL_VERSION_1_2.glResetHistogram) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glResetHistogram);
 }
@@ -758,14 +690,12 @@ gdk_gl_get_glResetMinmax (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glResetMinmax == (GdkGLProc_glResetMinmax) -1)
-    {
-      _procs_GL_VERSION_1_2.glResetMinmax =
-        (GdkGLProc_glResetMinmax) gdk_gl_get_proc_address ("glResetMinmax");
+    _procs_GL_VERSION_1_2.glResetMinmax =
+      (GdkGLProc_glResetMinmax) gdk_gl_get_proc_address ("glResetMinmax");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glResetMinmax () - %s",
-                   (_procs_GL_VERSION_1_2.glResetMinmax) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glResetMinmax () - %s",
+               (_procs_GL_VERSION_1_2.glResetMinmax) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glResetMinmax);
 }
@@ -778,14 +708,12 @@ gdk_gl_get_glTexImage3D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glTexImage3D == (GdkGLProc_glTexImage3D) -1)
-    {
-      _procs_GL_VERSION_1_2.glTexImage3D =
-        (GdkGLProc_glTexImage3D) gdk_gl_get_proc_address ("glTexImage3D");
+    _procs_GL_VERSION_1_2.glTexImage3D =
+      (GdkGLProc_glTexImage3D) gdk_gl_get_proc_address ("glTexImage3D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexImage3D () - %s",
-                   (_procs_GL_VERSION_1_2.glTexImage3D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexImage3D () - %s",
+               (_procs_GL_VERSION_1_2.glTexImage3D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glTexImage3D);
 }
@@ -798,14 +726,12 @@ gdk_gl_get_glTexSubImage3D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glTexSubImage3D == (GdkGLProc_glTexSubImage3D) -1)
-    {
-      _procs_GL_VERSION_1_2.glTexSubImage3D =
-        (GdkGLProc_glTexSubImage3D) gdk_gl_get_proc_address ("glTexSubImage3D");
+    _procs_GL_VERSION_1_2.glTexSubImage3D =
+      (GdkGLProc_glTexSubImage3D) gdk_gl_get_proc_address ("glTexSubImage3D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexSubImage3D () - %s",
-                   (_procs_GL_VERSION_1_2.glTexSubImage3D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexSubImage3D () - %s",
+               (_procs_GL_VERSION_1_2.glTexSubImage3D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glTexSubImage3D);
 }
@@ -818,14 +744,12 @@ gdk_gl_get_glCopyTexSubImage3D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_2.glCopyTexSubImage3D == (GdkGLProc_glCopyTexSubImage3D) -1)
-    {
-      _procs_GL_VERSION_1_2.glCopyTexSubImage3D =
-        (GdkGLProc_glCopyTexSubImage3D) gdk_gl_get_proc_address ("glCopyTexSubImage3D");
+    _procs_GL_VERSION_1_2.glCopyTexSubImage3D =
+      (GdkGLProc_glCopyTexSubImage3D) gdk_gl_get_proc_address ("glCopyTexSubImage3D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyTexSubImage3D () - %s",
-                   (_procs_GL_VERSION_1_2.glCopyTexSubImage3D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTexSubImage3D () - %s",
+               (_procs_GL_VERSION_1_2.glCopyTexSubImage3D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glCopyTexSubImage3D);
 }
@@ -952,14 +876,12 @@ gdk_gl_get_glActiveTexture (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glActiveTexture == (GdkGLProc_glActiveTexture) -1)
-    {
-      _procs_GL_VERSION_1_3.glActiveTexture =
-        (GdkGLProc_glActiveTexture) gdk_gl_get_proc_address ("glActiveTexture");
+    _procs_GL_VERSION_1_3.glActiveTexture =
+      (GdkGLProc_glActiveTexture) gdk_gl_get_proc_address ("glActiveTexture");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glActiveTexture () - %s",
-                   (_procs_GL_VERSION_1_3.glActiveTexture) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glActiveTexture () - %s",
+               (_procs_GL_VERSION_1_3.glActiveTexture) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glActiveTexture);
 }
@@ -972,14 +894,12 @@ gdk_gl_get_glClientActiveTexture (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glClientActiveTexture == (GdkGLProc_glClientActiveTexture) -1)
-    {
-      _procs_GL_VERSION_1_3.glClientActiveTexture =
-        (GdkGLProc_glClientActiveTexture) gdk_gl_get_proc_address ("glClientActiveTexture");
+    _procs_GL_VERSION_1_3.glClientActiveTexture =
+      (GdkGLProc_glClientActiveTexture) gdk_gl_get_proc_address ("glClientActiveTexture");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glClientActiveTexture () - %s",
-                   (_procs_GL_VERSION_1_3.glClientActiveTexture) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClientActiveTexture () - %s",
+               (_procs_GL_VERSION_1_3.glClientActiveTexture) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glClientActiveTexture);
 }
@@ -992,14 +912,12 @@ gdk_gl_get_glMultiTexCoord1d (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord1d == (GdkGLProc_glMultiTexCoord1d) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord1d =
-        (GdkGLProc_glMultiTexCoord1d) gdk_gl_get_proc_address ("glMultiTexCoord1d");
+    _procs_GL_VERSION_1_3.glMultiTexCoord1d =
+      (GdkGLProc_glMultiTexCoord1d) gdk_gl_get_proc_address ("glMultiTexCoord1d");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1d () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord1d) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1d () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord1d) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1d);
 }
@@ -1012,14 +930,12 @@ gdk_gl_get_glMultiTexCoord1dv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord1dv == (GdkGLProc_glMultiTexCoord1dv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord1dv =
-        (GdkGLProc_glMultiTexCoord1dv) gdk_gl_get_proc_address ("glMultiTexCoord1dv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord1dv =
+      (GdkGLProc_glMultiTexCoord1dv) gdk_gl_get_proc_address ("glMultiTexCoord1dv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1dv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord1dv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1dv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord1dv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1dv);
 }
@@ -1032,14 +948,12 @@ gdk_gl_get_glMultiTexCoord1f (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord1f == (GdkGLProc_glMultiTexCoord1f) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord1f =
-        (GdkGLProc_glMultiTexCoord1f) gdk_gl_get_proc_address ("glMultiTexCoord1f");
+    _procs_GL_VERSION_1_3.glMultiTexCoord1f =
+      (GdkGLProc_glMultiTexCoord1f) gdk_gl_get_proc_address ("glMultiTexCoord1f");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1f () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord1f) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1f () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord1f) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1f);
 }
@@ -1052,14 +966,12 @@ gdk_gl_get_glMultiTexCoord1fv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord1fv == (GdkGLProc_glMultiTexCoord1fv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord1fv =
-        (GdkGLProc_glMultiTexCoord1fv) gdk_gl_get_proc_address ("glMultiTexCoord1fv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord1fv =
+      (GdkGLProc_glMultiTexCoord1fv) gdk_gl_get_proc_address ("glMultiTexCoord1fv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1fv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord1fv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1fv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord1fv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1fv);
 }
@@ -1072,14 +984,12 @@ gdk_gl_get_glMultiTexCoord1i (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord1i == (GdkGLProc_glMultiTexCoord1i) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord1i =
-        (GdkGLProc_glMultiTexCoord1i) gdk_gl_get_proc_address ("glMultiTexCoord1i");
+    _procs_GL_VERSION_1_3.glMultiTexCoord1i =
+      (GdkGLProc_glMultiTexCoord1i) gdk_gl_get_proc_address ("glMultiTexCoord1i");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1i () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord1i) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1i () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord1i) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1i);
 }
@@ -1092,14 +1002,12 @@ gdk_gl_get_glMultiTexCoord1iv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord1iv == (GdkGLProc_glMultiTexCoord1iv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord1iv =
-        (GdkGLProc_glMultiTexCoord1iv) gdk_gl_get_proc_address ("glMultiTexCoord1iv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord1iv =
+      (GdkGLProc_glMultiTexCoord1iv) gdk_gl_get_proc_address ("glMultiTexCoord1iv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1iv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord1iv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1iv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord1iv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1iv);
 }
@@ -1112,14 +1020,12 @@ gdk_gl_get_glMultiTexCoord1s (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord1s == (GdkGLProc_glMultiTexCoord1s) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord1s =
-        (GdkGLProc_glMultiTexCoord1s) gdk_gl_get_proc_address ("glMultiTexCoord1s");
+    _procs_GL_VERSION_1_3.glMultiTexCoord1s =
+      (GdkGLProc_glMultiTexCoord1s) gdk_gl_get_proc_address ("glMultiTexCoord1s");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1s () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord1s) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1s () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord1s) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1s);
 }
@@ -1132,14 +1038,12 @@ gdk_gl_get_glMultiTexCoord1sv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord1sv == (GdkGLProc_glMultiTexCoord1sv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord1sv =
-        (GdkGLProc_glMultiTexCoord1sv) gdk_gl_get_proc_address ("glMultiTexCoord1sv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord1sv =
+      (GdkGLProc_glMultiTexCoord1sv) gdk_gl_get_proc_address ("glMultiTexCoord1sv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1sv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord1sv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1sv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord1sv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1sv);
 }
@@ -1152,14 +1056,12 @@ gdk_gl_get_glMultiTexCoord2d (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord2d == (GdkGLProc_glMultiTexCoord2d) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord2d =
-        (GdkGLProc_glMultiTexCoord2d) gdk_gl_get_proc_address ("glMultiTexCoord2d");
+    _procs_GL_VERSION_1_3.glMultiTexCoord2d =
+      (GdkGLProc_glMultiTexCoord2d) gdk_gl_get_proc_address ("glMultiTexCoord2d");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2d () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord2d) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2d () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord2d) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2d);
 }
@@ -1172,14 +1074,12 @@ gdk_gl_get_glMultiTexCoord2dv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord2dv == (GdkGLProc_glMultiTexCoord2dv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord2dv =
-        (GdkGLProc_glMultiTexCoord2dv) gdk_gl_get_proc_address ("glMultiTexCoord2dv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord2dv =
+      (GdkGLProc_glMultiTexCoord2dv) gdk_gl_get_proc_address ("glMultiTexCoord2dv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2dv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord2dv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2dv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord2dv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2dv);
 }
@@ -1192,14 +1092,12 @@ gdk_gl_get_glMultiTexCoord2f (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord2f == (GdkGLProc_glMultiTexCoord2f) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord2f =
-        (GdkGLProc_glMultiTexCoord2f) gdk_gl_get_proc_address ("glMultiTexCoord2f");
+    _procs_GL_VERSION_1_3.glMultiTexCoord2f =
+      (GdkGLProc_glMultiTexCoord2f) gdk_gl_get_proc_address ("glMultiTexCoord2f");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2f () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord2f) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2f () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord2f) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2f);
 }
@@ -1212,14 +1110,12 @@ gdk_gl_get_glMultiTexCoord2fv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord2fv == (GdkGLProc_glMultiTexCoord2fv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord2fv =
-        (GdkGLProc_glMultiTexCoord2fv) gdk_gl_get_proc_address ("glMultiTexCoord2fv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord2fv =
+      (GdkGLProc_glMultiTexCoord2fv) gdk_gl_get_proc_address ("glMultiTexCoord2fv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2fv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord2fv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2fv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord2fv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2fv);
 }
@@ -1232,14 +1128,12 @@ gdk_gl_get_glMultiTexCoord2i (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord2i == (GdkGLProc_glMultiTexCoord2i) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord2i =
-        (GdkGLProc_glMultiTexCoord2i) gdk_gl_get_proc_address ("glMultiTexCoord2i");
+    _procs_GL_VERSION_1_3.glMultiTexCoord2i =
+      (GdkGLProc_glMultiTexCoord2i) gdk_gl_get_proc_address ("glMultiTexCoord2i");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2i () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord2i) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2i () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord2i) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2i);
 }
@@ -1252,14 +1146,12 @@ gdk_gl_get_glMultiTexCoord2iv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord2iv == (GdkGLProc_glMultiTexCoord2iv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord2iv =
-        (GdkGLProc_glMultiTexCoord2iv) gdk_gl_get_proc_address ("glMultiTexCoord2iv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord2iv =
+      (GdkGLProc_glMultiTexCoord2iv) gdk_gl_get_proc_address ("glMultiTexCoord2iv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2iv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord2iv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2iv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord2iv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2iv);
 }
@@ -1272,14 +1164,12 @@ gdk_gl_get_glMultiTexCoord2s (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord2s == (GdkGLProc_glMultiTexCoord2s) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord2s =
-        (GdkGLProc_glMultiTexCoord2s) gdk_gl_get_proc_address ("glMultiTexCoord2s");
+    _procs_GL_VERSION_1_3.glMultiTexCoord2s =
+      (GdkGLProc_glMultiTexCoord2s) gdk_gl_get_proc_address ("glMultiTexCoord2s");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2s () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord2s) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2s () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord2s) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2s);
 }
@@ -1292,14 +1182,12 @@ gdk_gl_get_glMultiTexCoord2sv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord2sv == (GdkGLProc_glMultiTexCoord2sv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord2sv =
-        (GdkGLProc_glMultiTexCoord2sv) gdk_gl_get_proc_address ("glMultiTexCoord2sv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord2sv =
+      (GdkGLProc_glMultiTexCoord2sv) gdk_gl_get_proc_address ("glMultiTexCoord2sv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2sv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord2sv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2sv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord2sv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2sv);
 }
@@ -1312,14 +1200,12 @@ gdk_gl_get_glMultiTexCoord3d (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord3d == (GdkGLProc_glMultiTexCoord3d) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord3d =
-        (GdkGLProc_glMultiTexCoord3d) gdk_gl_get_proc_address ("glMultiTexCoord3d");
+    _procs_GL_VERSION_1_3.glMultiTexCoord3d =
+      (GdkGLProc_glMultiTexCoord3d) gdk_gl_get_proc_address ("glMultiTexCoord3d");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3d () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord3d) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3d () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord3d) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3d);
 }
@@ -1332,14 +1218,12 @@ gdk_gl_get_glMultiTexCoord3dv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord3dv == (GdkGLProc_glMultiTexCoord3dv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord3dv =
-        (GdkGLProc_glMultiTexCoord3dv) gdk_gl_get_proc_address ("glMultiTexCoord3dv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord3dv =
+      (GdkGLProc_glMultiTexCoord3dv) gdk_gl_get_proc_address ("glMultiTexCoord3dv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3dv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord3dv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3dv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord3dv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3dv);
 }
@@ -1352,14 +1236,12 @@ gdk_gl_get_glMultiTexCoord3f (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord3f == (GdkGLProc_glMultiTexCoord3f) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord3f =
-        (GdkGLProc_glMultiTexCoord3f) gdk_gl_get_proc_address ("glMultiTexCoord3f");
+    _procs_GL_VERSION_1_3.glMultiTexCoord3f =
+      (GdkGLProc_glMultiTexCoord3f) gdk_gl_get_proc_address ("glMultiTexCoord3f");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3f () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord3f) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3f () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord3f) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3f);
 }
@@ -1372,14 +1254,12 @@ gdk_gl_get_glMultiTexCoord3fv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord3fv == (GdkGLProc_glMultiTexCoord3fv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord3fv =
-        (GdkGLProc_glMultiTexCoord3fv) gdk_gl_get_proc_address ("glMultiTexCoord3fv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord3fv =
+      (GdkGLProc_glMultiTexCoord3fv) gdk_gl_get_proc_address ("glMultiTexCoord3fv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3fv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord3fv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3fv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord3fv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3fv);
 }
@@ -1392,14 +1272,12 @@ gdk_gl_get_glMultiTexCoord3i (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord3i == (GdkGLProc_glMultiTexCoord3i) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord3i =
-        (GdkGLProc_glMultiTexCoord3i) gdk_gl_get_proc_address ("glMultiTexCoord3i");
+    _procs_GL_VERSION_1_3.glMultiTexCoord3i =
+      (GdkGLProc_glMultiTexCoord3i) gdk_gl_get_proc_address ("glMultiTexCoord3i");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3i () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord3i) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3i () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord3i) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3i);
 }
@@ -1412,14 +1290,12 @@ gdk_gl_get_glMultiTexCoord3iv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord3iv == (GdkGLProc_glMultiTexCoord3iv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord3iv =
-        (GdkGLProc_glMultiTexCoord3iv) gdk_gl_get_proc_address ("glMultiTexCoord3iv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord3iv =
+      (GdkGLProc_glMultiTexCoord3iv) gdk_gl_get_proc_address ("glMultiTexCoord3iv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3iv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord3iv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3iv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord3iv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3iv);
 }
@@ -1432,14 +1308,12 @@ gdk_gl_get_glMultiTexCoord3s (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord3s == (GdkGLProc_glMultiTexCoord3s) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord3s =
-        (GdkGLProc_glMultiTexCoord3s) gdk_gl_get_proc_address ("glMultiTexCoord3s");
+    _procs_GL_VERSION_1_3.glMultiTexCoord3s =
+      (GdkGLProc_glMultiTexCoord3s) gdk_gl_get_proc_address ("glMultiTexCoord3s");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3s () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord3s) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3s () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord3s) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3s);
 }
@@ -1452,14 +1326,12 @@ gdk_gl_get_glMultiTexCoord3sv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord3sv == (GdkGLProc_glMultiTexCoord3sv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord3sv =
-        (GdkGLProc_glMultiTexCoord3sv) gdk_gl_get_proc_address ("glMultiTexCoord3sv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord3sv =
+      (GdkGLProc_glMultiTexCoord3sv) gdk_gl_get_proc_address ("glMultiTexCoord3sv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3sv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord3sv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3sv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord3sv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3sv);
 }
@@ -1472,14 +1344,12 @@ gdk_gl_get_glMultiTexCoord4d (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord4d == (GdkGLProc_glMultiTexCoord4d) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord4d =
-        (GdkGLProc_glMultiTexCoord4d) gdk_gl_get_proc_address ("glMultiTexCoord4d");
+    _procs_GL_VERSION_1_3.glMultiTexCoord4d =
+      (GdkGLProc_glMultiTexCoord4d) gdk_gl_get_proc_address ("glMultiTexCoord4d");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4d () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord4d) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4d () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord4d) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4d);
 }
@@ -1492,14 +1362,12 @@ gdk_gl_get_glMultiTexCoord4dv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord4dv == (GdkGLProc_glMultiTexCoord4dv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord4dv =
-        (GdkGLProc_glMultiTexCoord4dv) gdk_gl_get_proc_address ("glMultiTexCoord4dv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord4dv =
+      (GdkGLProc_glMultiTexCoord4dv) gdk_gl_get_proc_address ("glMultiTexCoord4dv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4dv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord4dv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4dv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord4dv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4dv);
 }
@@ -1512,14 +1380,12 @@ gdk_gl_get_glMultiTexCoord4f (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord4f == (GdkGLProc_glMultiTexCoord4f) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord4f =
-        (GdkGLProc_glMultiTexCoord4f) gdk_gl_get_proc_address ("glMultiTexCoord4f");
+    _procs_GL_VERSION_1_3.glMultiTexCoord4f =
+      (GdkGLProc_glMultiTexCoord4f) gdk_gl_get_proc_address ("glMultiTexCoord4f");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4f () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord4f) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4f () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord4f) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4f);
 }
@@ -1532,14 +1398,12 @@ gdk_gl_get_glMultiTexCoord4fv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord4fv == (GdkGLProc_glMultiTexCoord4fv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord4fv =
-        (GdkGLProc_glMultiTexCoord4fv) gdk_gl_get_proc_address ("glMultiTexCoord4fv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord4fv =
+      (GdkGLProc_glMultiTexCoord4fv) gdk_gl_get_proc_address ("glMultiTexCoord4fv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4fv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord4fv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4fv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord4fv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4fv);
 }
@@ -1552,14 +1416,12 @@ gdk_gl_get_glMultiTexCoord4i (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord4i == (GdkGLProc_glMultiTexCoord4i) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord4i =
-        (GdkGLProc_glMultiTexCoord4i) gdk_gl_get_proc_address ("glMultiTexCoord4i");
+    _procs_GL_VERSION_1_3.glMultiTexCoord4i =
+      (GdkGLProc_glMultiTexCoord4i) gdk_gl_get_proc_address ("glMultiTexCoord4i");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4i () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord4i) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4i () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord4i) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4i);
 }
@@ -1572,14 +1434,12 @@ gdk_gl_get_glMultiTexCoord4iv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord4iv == (GdkGLProc_glMultiTexCoord4iv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord4iv =
-        (GdkGLProc_glMultiTexCoord4iv) gdk_gl_get_proc_address ("glMultiTexCoord4iv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord4iv =
+      (GdkGLProc_glMultiTexCoord4iv) gdk_gl_get_proc_address ("glMultiTexCoord4iv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4iv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord4iv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4iv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord4iv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4iv);
 }
@@ -1592,14 +1452,12 @@ gdk_gl_get_glMultiTexCoord4s (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord4s == (GdkGLProc_glMultiTexCoord4s) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord4s =
-        (GdkGLProc_glMultiTexCoord4s) gdk_gl_get_proc_address ("glMultiTexCoord4s");
+    _procs_GL_VERSION_1_3.glMultiTexCoord4s =
+      (GdkGLProc_glMultiTexCoord4s) gdk_gl_get_proc_address ("glMultiTexCoord4s");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4s () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord4s) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4s () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord4s) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4s);
 }
@@ -1612,14 +1470,12 @@ gdk_gl_get_glMultiTexCoord4sv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultiTexCoord4sv == (GdkGLProc_glMultiTexCoord4sv) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultiTexCoord4sv =
-        (GdkGLProc_glMultiTexCoord4sv) gdk_gl_get_proc_address ("glMultiTexCoord4sv");
+    _procs_GL_VERSION_1_3.glMultiTexCoord4sv =
+      (GdkGLProc_glMultiTexCoord4sv) gdk_gl_get_proc_address ("glMultiTexCoord4sv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4sv () - %s",
-                   (_procs_GL_VERSION_1_3.glMultiTexCoord4sv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4sv () - %s",
+               (_procs_GL_VERSION_1_3.glMultiTexCoord4sv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4sv);
 }
@@ -1632,14 +1488,12 @@ gdk_gl_get_glLoadTransposeMatrixf (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glLoadTransposeMatrixf == (GdkGLProc_glLoadTransposeMatrixf) -1)
-    {
-      _procs_GL_VERSION_1_3.glLoadTransposeMatrixf =
-        (GdkGLProc_glLoadTransposeMatrixf) gdk_gl_get_proc_address ("glLoadTransposeMatrixf");
+    _procs_GL_VERSION_1_3.glLoadTransposeMatrixf =
+      (GdkGLProc_glLoadTransposeMatrixf) gdk_gl_get_proc_address ("glLoadTransposeMatrixf");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glLoadTransposeMatrixf () - %s",
-                   (_procs_GL_VERSION_1_3.glLoadTransposeMatrixf) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLoadTransposeMatrixf () - %s",
+               (_procs_GL_VERSION_1_3.glLoadTransposeMatrixf) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glLoadTransposeMatrixf);
 }
@@ -1652,14 +1506,12 @@ gdk_gl_get_glLoadTransposeMatrixd (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glLoadTransposeMatrixd == (GdkGLProc_glLoadTransposeMatrixd) -1)
-    {
-      _procs_GL_VERSION_1_3.glLoadTransposeMatrixd =
-        (GdkGLProc_glLoadTransposeMatrixd) gdk_gl_get_proc_address ("glLoadTransposeMatrixd");
+    _procs_GL_VERSION_1_3.glLoadTransposeMatrixd =
+      (GdkGLProc_glLoadTransposeMatrixd) gdk_gl_get_proc_address ("glLoadTransposeMatrixd");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glLoadTransposeMatrixd () - %s",
-                   (_procs_GL_VERSION_1_3.glLoadTransposeMatrixd) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLoadTransposeMatrixd () - %s",
+               (_procs_GL_VERSION_1_3.glLoadTransposeMatrixd) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glLoadTransposeMatrixd);
 }
@@ -1672,14 +1524,12 @@ gdk_gl_get_glMultTransposeMatrixf (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultTransposeMatrixf == (GdkGLProc_glMultTransposeMatrixf) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultTransposeMatrixf =
-        (GdkGLProc_glMultTransposeMatrixf) gdk_gl_get_proc_address ("glMultTransposeMatrixf");
+    _procs_GL_VERSION_1_3.glMultTransposeMatrixf =
+      (GdkGLProc_glMultTransposeMatrixf) gdk_gl_get_proc_address ("glMultTransposeMatrixf");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultTransposeMatrixf () - %s",
-                   (_procs_GL_VERSION_1_3.glMultTransposeMatrixf) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultTransposeMatrixf () - %s",
+               (_procs_GL_VERSION_1_3.glMultTransposeMatrixf) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultTransposeMatrixf);
 }
@@ -1692,14 +1542,12 @@ gdk_gl_get_glMultTransposeMatrixd (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glMultTransposeMatrixd == (GdkGLProc_glMultTransposeMatrixd) -1)
-    {
-      _procs_GL_VERSION_1_3.glMultTransposeMatrixd =
-        (GdkGLProc_glMultTransposeMatrixd) gdk_gl_get_proc_address ("glMultTransposeMatrixd");
+    _procs_GL_VERSION_1_3.glMultTransposeMatrixd =
+      (GdkGLProc_glMultTransposeMatrixd) gdk_gl_get_proc_address ("glMultTransposeMatrixd");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultTransposeMatrixd () - %s",
-                   (_procs_GL_VERSION_1_3.glMultTransposeMatrixd) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultTransposeMatrixd () - %s",
+               (_procs_GL_VERSION_1_3.glMultTransposeMatrixd) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultTransposeMatrixd);
 }
@@ -1712,14 +1560,12 @@ gdk_gl_get_glSampleCoverage (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glSampleCoverage == (GdkGLProc_glSampleCoverage) -1)
-    {
-      _procs_GL_VERSION_1_3.glSampleCoverage =
-        (GdkGLProc_glSampleCoverage) gdk_gl_get_proc_address ("glSampleCoverage");
+    _procs_GL_VERSION_1_3.glSampleCoverage =
+      (GdkGLProc_glSampleCoverage) gdk_gl_get_proc_address ("glSampleCoverage");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSampleCoverage () - %s",
-                   (_procs_GL_VERSION_1_3.glSampleCoverage) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSampleCoverage () - %s",
+               (_procs_GL_VERSION_1_3.glSampleCoverage) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glSampleCoverage);
 }
@@ -1732,14 +1578,12 @@ gdk_gl_get_glCompressedTexImage3D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glCompressedTexImage3D == (GdkGLProc_glCompressedTexImage3D) -1)
-    {
-      _procs_GL_VERSION_1_3.glCompressedTexImage3D =
-        (GdkGLProc_glCompressedTexImage3D) gdk_gl_get_proc_address ("glCompressedTexImage3D");
+    _procs_GL_VERSION_1_3.glCompressedTexImage3D =
+      (GdkGLProc_glCompressedTexImage3D) gdk_gl_get_proc_address ("glCompressedTexImage3D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexImage3D () - %s",
-                   (_procs_GL_VERSION_1_3.glCompressedTexImage3D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexImage3D () - %s",
+               (_procs_GL_VERSION_1_3.glCompressedTexImage3D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glCompressedTexImage3D);
 }
@@ -1752,14 +1596,12 @@ gdk_gl_get_glCompressedTexImage2D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glCompressedTexImage2D == (GdkGLProc_glCompressedTexImage2D) -1)
-    {
-      _procs_GL_VERSION_1_3.glCompressedTexImage2D =
-        (GdkGLProc_glCompressedTexImage2D) gdk_gl_get_proc_address ("glCompressedTexImage2D");
+    _procs_GL_VERSION_1_3.glCompressedTexImage2D =
+      (GdkGLProc_glCompressedTexImage2D) gdk_gl_get_proc_address ("glCompressedTexImage2D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexImage2D () - %s",
-                   (_procs_GL_VERSION_1_3.glCompressedTexImage2D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexImage2D () - %s",
+               (_procs_GL_VERSION_1_3.glCompressedTexImage2D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glCompressedTexImage2D);
 }
@@ -1772,14 +1614,12 @@ gdk_gl_get_glCompressedTexImage1D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glCompressedTexImage1D == (GdkGLProc_glCompressedTexImage1D) -1)
-    {
-      _procs_GL_VERSION_1_3.glCompressedTexImage1D =
-        (GdkGLProc_glCompressedTexImage1D) gdk_gl_get_proc_address ("glCompressedTexImage1D");
+    _procs_GL_VERSION_1_3.glCompressedTexImage1D =
+      (GdkGLProc_glCompressedTexImage1D) gdk_gl_get_proc_address ("glCompressedTexImage1D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexImage1D () - %s",
-                   (_procs_GL_VERSION_1_3.glCompressedTexImage1D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexImage1D () - %s",
+               (_procs_GL_VERSION_1_3.glCompressedTexImage1D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glCompressedTexImage1D);
 }
@@ -1792,14 +1632,12 @@ gdk_gl_get_glCompressedTexSubImage3D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glCompressedTexSubImage3D == (GdkGLProc_glCompressedTexSubImage3D) -1)
-    {
-      _procs_GL_VERSION_1_3.glCompressedTexSubImage3D =
-        (GdkGLProc_glCompressedTexSubImage3D) gdk_gl_get_proc_address ("glCompressedTexSubImage3D");
+    _procs_GL_VERSION_1_3.glCompressedTexSubImage3D =
+      (GdkGLProc_glCompressedTexSubImage3D) gdk_gl_get_proc_address ("glCompressedTexSubImage3D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexSubImage3D () - %s",
-                   (_procs_GL_VERSION_1_3.glCompressedTexSubImage3D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexSubImage3D () - %s",
+               (_procs_GL_VERSION_1_3.glCompressedTexSubImage3D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glCompressedTexSubImage3D);
 }
@@ -1812,14 +1650,12 @@ gdk_gl_get_glCompressedTexSubImage2D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glCompressedTexSubImage2D == (GdkGLProc_glCompressedTexSubImage2D) -1)
-    {
-      _procs_GL_VERSION_1_3.glCompressedTexSubImage2D =
-        (GdkGLProc_glCompressedTexSubImage2D) gdk_gl_get_proc_address ("glCompressedTexSubImage2D");
+    _procs_GL_VERSION_1_3.glCompressedTexSubImage2D =
+      (GdkGLProc_glCompressedTexSubImage2D) gdk_gl_get_proc_address ("glCompressedTexSubImage2D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexSubImage2D () - %s",
-                   (_procs_GL_VERSION_1_3.glCompressedTexSubImage2D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexSubImage2D () - %s",
+               (_procs_GL_VERSION_1_3.glCompressedTexSubImage2D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glCompressedTexSubImage2D);
 }
@@ -1832,14 +1668,12 @@ gdk_gl_get_glCompressedTexSubImage1D (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glCompressedTexSubImage1D == (GdkGLProc_glCompressedTexSubImage1D) -1)
-    {
-      _procs_GL_VERSION_1_3.glCompressedTexSubImage1D =
-        (GdkGLProc_glCompressedTexSubImage1D) gdk_gl_get_proc_address ("glCompressedTexSubImage1D");
+    _procs_GL_VERSION_1_3.glCompressedTexSubImage1D =
+      (GdkGLProc_glCompressedTexSubImage1D) gdk_gl_get_proc_address ("glCompressedTexSubImage1D");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexSubImage1D () - %s",
-                   (_procs_GL_VERSION_1_3.glCompressedTexSubImage1D) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexSubImage1D () - %s",
+               (_procs_GL_VERSION_1_3.glCompressedTexSubImage1D) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glCompressedTexSubImage1D);
 }
@@ -1852,14 +1686,12 @@ gdk_gl_get_glGetCompressedTexImage (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_3.glGetCompressedTexImage == (GdkGLProc_glGetCompressedTexImage) -1)
-    {
-      _procs_GL_VERSION_1_3.glGetCompressedTexImage =
-        (GdkGLProc_glGetCompressedTexImage) gdk_gl_get_proc_address ("glGetCompressedTexImage");
+    _procs_GL_VERSION_1_3.glGetCompressedTexImage =
+      (GdkGLProc_glGetCompressedTexImage) gdk_gl_get_proc_address ("glGetCompressedTexImage");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetCompressedTexImage () - %s",
-                   (_procs_GL_VERSION_1_3.glGetCompressedTexImage) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetCompressedTexImage () - %s",
+               (_procs_GL_VERSION_1_3.glGetCompressedTexImage) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glGetCompressedTexImage);
 }
@@ -1993,14 +1825,12 @@ gdk_gl_get_glBlendFuncSeparate (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glBlendFuncSeparate == (GdkGLProc_glBlendFuncSeparate) -1)
-    {
-      _procs_GL_VERSION_1_4.glBlendFuncSeparate =
-        (GdkGLProc_glBlendFuncSeparate) gdk_gl_get_proc_address ("glBlendFuncSeparate");
+    _procs_GL_VERSION_1_4.glBlendFuncSeparate =
+      (GdkGLProc_glBlendFuncSeparate) gdk_gl_get_proc_address ("glBlendFuncSeparate");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBlendFuncSeparate () - %s",
-                   (_procs_GL_VERSION_1_4.glBlendFuncSeparate) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendFuncSeparate () - %s",
+               (_procs_GL_VERSION_1_4.glBlendFuncSeparate) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glBlendFuncSeparate);
 }
@@ -2013,14 +1843,12 @@ gdk_gl_get_glFogCoordf (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glFogCoordf == (GdkGLProc_glFogCoordf) -1)
-    {
-      _procs_GL_VERSION_1_4.glFogCoordf =
-        (GdkGLProc_glFogCoordf) gdk_gl_get_proc_address ("glFogCoordf");
+    _procs_GL_VERSION_1_4.glFogCoordf =
+      (GdkGLProc_glFogCoordf) gdk_gl_get_proc_address ("glFogCoordf");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoordf () - %s",
-                   (_procs_GL_VERSION_1_4.glFogCoordf) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordf () - %s",
+               (_procs_GL_VERSION_1_4.glFogCoordf) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glFogCoordf);
 }
@@ -2033,14 +1861,12 @@ gdk_gl_get_glFogCoordfv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glFogCoordfv == (GdkGLProc_glFogCoordfv) -1)
-    {
-      _procs_GL_VERSION_1_4.glFogCoordfv =
-        (GdkGLProc_glFogCoordfv) gdk_gl_get_proc_address ("glFogCoordfv");
+    _procs_GL_VERSION_1_4.glFogCoordfv =
+      (GdkGLProc_glFogCoordfv) gdk_gl_get_proc_address ("glFogCoordfv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoordfv () - %s",
-                   (_procs_GL_VERSION_1_4.glFogCoordfv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordfv () - %s",
+               (_procs_GL_VERSION_1_4.glFogCoordfv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glFogCoordfv);
 }
@@ -2053,14 +1879,12 @@ gdk_gl_get_glFogCoordd (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glFogCoordd == (GdkGLProc_glFogCoordd) -1)
-    {
-      _procs_GL_VERSION_1_4.glFogCoordd =
-        (GdkGLProc_glFogCoordd) gdk_gl_get_proc_address ("glFogCoordd");
+    _procs_GL_VERSION_1_4.glFogCoordd =
+      (GdkGLProc_glFogCoordd) gdk_gl_get_proc_address ("glFogCoordd");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoordd () - %s",
-                   (_procs_GL_VERSION_1_4.glFogCoordd) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordd () - %s",
+               (_procs_GL_VERSION_1_4.glFogCoordd) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glFogCoordd);
 }
@@ -2073,14 +1897,12 @@ gdk_gl_get_glFogCoorddv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glFogCoorddv == (GdkGLProc_glFogCoorddv) -1)
-    {
-      _procs_GL_VERSION_1_4.glFogCoorddv =
-        (GdkGLProc_glFogCoorddv) gdk_gl_get_proc_address ("glFogCoorddv");
+    _procs_GL_VERSION_1_4.glFogCoorddv =
+      (GdkGLProc_glFogCoorddv) gdk_gl_get_proc_address ("glFogCoorddv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoorddv () - %s",
-                   (_procs_GL_VERSION_1_4.glFogCoorddv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoorddv () - %s",
+               (_procs_GL_VERSION_1_4.glFogCoorddv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glFogCoorddv);
 }
@@ -2093,14 +1915,12 @@ gdk_gl_get_glFogCoordPointer (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glFogCoordPointer == (GdkGLProc_glFogCoordPointer) -1)
-    {
-      _procs_GL_VERSION_1_4.glFogCoordPointer =
-        (GdkGLProc_glFogCoordPointer) gdk_gl_get_proc_address ("glFogCoordPointer");
+    _procs_GL_VERSION_1_4.glFogCoordPointer =
+      (GdkGLProc_glFogCoordPointer) gdk_gl_get_proc_address ("glFogCoordPointer");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoordPointer () - %s",
-                   (_procs_GL_VERSION_1_4.glFogCoordPointer) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordPointer () - %s",
+               (_procs_GL_VERSION_1_4.glFogCoordPointer) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glFogCoordPointer);
 }
@@ -2113,14 +1933,12 @@ gdk_gl_get_glMultiDrawArrays (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glMultiDrawArrays == (GdkGLProc_glMultiDrawArrays) -1)
-    {
-      _procs_GL_VERSION_1_4.glMultiDrawArrays =
-        (GdkGLProc_glMultiDrawArrays) gdk_gl_get_proc_address ("glMultiDrawArrays");
+    _procs_GL_VERSION_1_4.glMultiDrawArrays =
+      (GdkGLProc_glMultiDrawArrays) gdk_gl_get_proc_address ("glMultiDrawArrays");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiDrawArrays () - %s",
-                   (_procs_GL_VERSION_1_4.glMultiDrawArrays) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawArrays () - %s",
+               (_procs_GL_VERSION_1_4.glMultiDrawArrays) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glMultiDrawArrays);
 }
@@ -2133,14 +1951,12 @@ gdk_gl_get_glMultiDrawElements (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glMultiDrawElements == (GdkGLProc_glMultiDrawElements) -1)
-    {
-      _procs_GL_VERSION_1_4.glMultiDrawElements =
-        (GdkGLProc_glMultiDrawElements) gdk_gl_get_proc_address ("glMultiDrawElements");
+    _procs_GL_VERSION_1_4.glMultiDrawElements =
+      (GdkGLProc_glMultiDrawElements) gdk_gl_get_proc_address ("glMultiDrawElements");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiDrawElements () - %s",
-                   (_procs_GL_VERSION_1_4.glMultiDrawElements) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawElements () - %s",
+               (_procs_GL_VERSION_1_4.glMultiDrawElements) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glMultiDrawElements);
 }
@@ -2153,14 +1969,12 @@ gdk_gl_get_glPointParameterf (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glPointParameterf == (GdkGLProc_glPointParameterf) -1)
-    {
-      _procs_GL_VERSION_1_4.glPointParameterf =
-        (GdkGLProc_glPointParameterf) gdk_gl_get_proc_address ("glPointParameterf");
+    _procs_GL_VERSION_1_4.glPointParameterf =
+      (GdkGLProc_glPointParameterf) gdk_gl_get_proc_address ("glPointParameterf");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameterf () - %s",
-                   (_procs_GL_VERSION_1_4.glPointParameterf) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameterf () - %s",
+               (_procs_GL_VERSION_1_4.glPointParameterf) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glPointParameterf);
 }
@@ -2173,14 +1987,12 @@ gdk_gl_get_glPointParameterfv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glPointParameterfv == (GdkGLProc_glPointParameterfv) -1)
-    {
-      _procs_GL_VERSION_1_4.glPointParameterfv =
-        (GdkGLProc_glPointParameterfv) gdk_gl_get_proc_address ("glPointParameterfv");
+    _procs_GL_VERSION_1_4.glPointParameterfv =
+      (GdkGLProc_glPointParameterfv) gdk_gl_get_proc_address ("glPointParameterfv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameterfv () - %s",
-                   (_procs_GL_VERSION_1_4.glPointParameterfv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameterfv () - %s",
+               (_procs_GL_VERSION_1_4.glPointParameterfv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glPointParameterfv);
 }
@@ -2193,14 +2005,12 @@ gdk_gl_get_glPointParameteri (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glPointParameteri == (GdkGLProc_glPointParameteri) -1)
-    {
-      _procs_GL_VERSION_1_4.glPointParameteri =
-        (GdkGLProc_glPointParameteri) gdk_gl_get_proc_address ("glPointParameteri");
+    _procs_GL_VERSION_1_4.glPointParameteri =
+      (GdkGLProc_glPointParameteri) gdk_gl_get_proc_address ("glPointParameteri");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameteri () - %s",
-                   (_procs_GL_VERSION_1_4.glPointParameteri) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameteri () - %s",
+               (_procs_GL_VERSION_1_4.glPointParameteri) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glPointParameteri);
 }
@@ -2213,14 +2023,12 @@ gdk_gl_get_glPointParameteriv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glPointParameteriv == (GdkGLProc_glPointParameteriv) -1)
-    {
-      _procs_GL_VERSION_1_4.glPointParameteriv =
-        (GdkGLProc_glPointParameteriv) gdk_gl_get_proc_address ("glPointParameteriv");
+    _procs_GL_VERSION_1_4.glPointParameteriv =
+      (GdkGLProc_glPointParameteriv) gdk_gl_get_proc_address ("glPointParameteriv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameteriv () - %s",
-                   (_procs_GL_VERSION_1_4.glPointParameteriv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameteriv () - %s",
+               (_procs_GL_VERSION_1_4.glPointParameteriv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glPointParameteriv);
 }
@@ -2233,14 +2041,12 @@ gdk_gl_get_glSecondaryColor3b (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3b == (GdkGLProc_glSecondaryColor3b) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3b =
-        (GdkGLProc_glSecondaryColor3b) gdk_gl_get_proc_address ("glSecondaryColor3b");
+    _procs_GL_VERSION_1_4.glSecondaryColor3b =
+      (GdkGLProc_glSecondaryColor3b) gdk_gl_get_proc_address ("glSecondaryColor3b");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3b () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3b) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3b () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3b) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3b);
 }
@@ -2253,14 +2059,12 @@ gdk_gl_get_glSecondaryColor3bv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3bv == (GdkGLProc_glSecondaryColor3bv) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3bv =
-        (GdkGLProc_glSecondaryColor3bv) gdk_gl_get_proc_address ("glSecondaryColor3bv");
+    _procs_GL_VERSION_1_4.glSecondaryColor3bv =
+      (GdkGLProc_glSecondaryColor3bv) gdk_gl_get_proc_address ("glSecondaryColor3bv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3bv () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3bv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3bv () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3bv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3bv);
 }
@@ -2273,14 +2077,12 @@ gdk_gl_get_glSecondaryColor3d (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3d == (GdkGLProc_glSecondaryColor3d) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3d =
-        (GdkGLProc_glSecondaryColor3d) gdk_gl_get_proc_address ("glSecondaryColor3d");
+    _procs_GL_VERSION_1_4.glSecondaryColor3d =
+      (GdkGLProc_glSecondaryColor3d) gdk_gl_get_proc_address ("glSecondaryColor3d");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3d () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3d) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3d () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3d) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3d);
 }
@@ -2293,14 +2095,12 @@ gdk_gl_get_glSecondaryColor3dv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3dv == (GdkGLProc_glSecondaryColor3dv) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3dv =
-        (GdkGLProc_glSecondaryColor3dv) gdk_gl_get_proc_address ("glSecondaryColor3dv");
+    _procs_GL_VERSION_1_4.glSecondaryColor3dv =
+      (GdkGLProc_glSecondaryColor3dv) gdk_gl_get_proc_address ("glSecondaryColor3dv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3dv () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3dv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3dv () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3dv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3dv);
 }
@@ -2313,14 +2113,12 @@ gdk_gl_get_glSecondaryColor3f (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3f == (GdkGLProc_glSecondaryColor3f) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3f =
-        (GdkGLProc_glSecondaryColor3f) gdk_gl_get_proc_address ("glSecondaryColor3f");
+    _procs_GL_VERSION_1_4.glSecondaryColor3f =
+      (GdkGLProc_glSecondaryColor3f) gdk_gl_get_proc_address ("glSecondaryColor3f");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3f () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3f) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3f () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3f) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3f);
 }
@@ -2333,14 +2131,12 @@ gdk_gl_get_glSecondaryColor3fv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3fv == (GdkGLProc_glSecondaryColor3fv) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3fv =
-        (GdkGLProc_glSecondaryColor3fv) gdk_gl_get_proc_address ("glSecondaryColor3fv");
+    _procs_GL_VERSION_1_4.glSecondaryColor3fv =
+      (GdkGLProc_glSecondaryColor3fv) gdk_gl_get_proc_address ("glSecondaryColor3fv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3fv () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3fv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3fv () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3fv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3fv);
 }
@@ -2353,14 +2149,12 @@ gdk_gl_get_glSecondaryColor3i (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3i == (GdkGLProc_glSecondaryColor3i) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3i =
-        (GdkGLProc_glSecondaryColor3i) gdk_gl_get_proc_address ("glSecondaryColor3i");
+    _procs_GL_VERSION_1_4.glSecondaryColor3i =
+      (GdkGLProc_glSecondaryColor3i) gdk_gl_get_proc_address ("glSecondaryColor3i");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3i () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3i) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3i () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3i) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3i);
 }
@@ -2373,14 +2167,12 @@ gdk_gl_get_glSecondaryColor3iv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3iv == (GdkGLProc_glSecondaryColor3iv) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3iv =
-        (GdkGLProc_glSecondaryColor3iv) gdk_gl_get_proc_address ("glSecondaryColor3iv");
+    _procs_GL_VERSION_1_4.glSecondaryColor3iv =
+      (GdkGLProc_glSecondaryColor3iv) gdk_gl_get_proc_address ("glSecondaryColor3iv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3iv () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3iv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3iv () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3iv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3iv);
 }
@@ -2393,14 +2185,12 @@ gdk_gl_get_glSecondaryColor3s (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3s == (GdkGLProc_glSecondaryColor3s) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3s =
-        (GdkGLProc_glSecondaryColor3s) gdk_gl_get_proc_address ("glSecondaryColor3s");
+    _procs_GL_VERSION_1_4.glSecondaryColor3s =
+      (GdkGLProc_glSecondaryColor3s) gdk_gl_get_proc_address ("glSecondaryColor3s");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3s () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3s) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3s () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3s) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3s);
 }
@@ -2413,14 +2203,12 @@ gdk_gl_get_glSecondaryColor3sv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3sv == (GdkGLProc_glSecondaryColor3sv) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3sv =
-        (GdkGLProc_glSecondaryColor3sv) gdk_gl_get_proc_address ("glSecondaryColor3sv");
+    _procs_GL_VERSION_1_4.glSecondaryColor3sv =
+      (GdkGLProc_glSecondaryColor3sv) gdk_gl_get_proc_address ("glSecondaryColor3sv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3sv () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3sv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3sv () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3sv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3sv);
 }
@@ -2433,14 +2221,12 @@ gdk_gl_get_glSecondaryColor3ub (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3ub == (GdkGLProc_glSecondaryColor3ub) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3ub =
-        (GdkGLProc_glSecondaryColor3ub) gdk_gl_get_proc_address ("glSecondaryColor3ub");
+    _procs_GL_VERSION_1_4.glSecondaryColor3ub =
+      (GdkGLProc_glSecondaryColor3ub) gdk_gl_get_proc_address ("glSecondaryColor3ub");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3ub () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3ub) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3ub () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3ub) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3ub);
 }
@@ -2453,14 +2239,12 @@ gdk_gl_get_glSecondaryColor3ubv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3ubv == (GdkGLProc_glSecondaryColor3ubv) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3ubv =
-        (GdkGLProc_glSecondaryColor3ubv) gdk_gl_get_proc_address ("glSecondaryColor3ubv");
+    _procs_GL_VERSION_1_4.glSecondaryColor3ubv =
+      (GdkGLProc_glSecondaryColor3ubv) gdk_gl_get_proc_address ("glSecondaryColor3ubv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3ubv () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3ubv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3ubv () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3ubv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3ubv);
 }
@@ -2473,14 +2257,12 @@ gdk_gl_get_glSecondaryColor3ui (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3ui == (GdkGLProc_glSecondaryColor3ui) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3ui =
-        (GdkGLProc_glSecondaryColor3ui) gdk_gl_get_proc_address ("glSecondaryColor3ui");
+    _procs_GL_VERSION_1_4.glSecondaryColor3ui =
+      (GdkGLProc_glSecondaryColor3ui) gdk_gl_get_proc_address ("glSecondaryColor3ui");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3ui () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3ui) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3ui () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3ui) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3ui);
 }
@@ -2493,14 +2275,12 @@ gdk_gl_get_glSecondaryColor3uiv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3uiv == (GdkGLProc_glSecondaryColor3uiv) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3uiv =
-        (GdkGLProc_glSecondaryColor3uiv) gdk_gl_get_proc_address ("glSecondaryColor3uiv");
+    _procs_GL_VERSION_1_4.glSecondaryColor3uiv =
+      (GdkGLProc_glSecondaryColor3uiv) gdk_gl_get_proc_address ("glSecondaryColor3uiv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3uiv () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3uiv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3uiv () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3uiv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3uiv);
 }
@@ -2513,14 +2293,12 @@ gdk_gl_get_glSecondaryColor3us (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3us == (GdkGLProc_glSecondaryColor3us) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3us =
-        (GdkGLProc_glSecondaryColor3us) gdk_gl_get_proc_address ("glSecondaryColor3us");
+    _procs_GL_VERSION_1_4.glSecondaryColor3us =
+      (GdkGLProc_glSecondaryColor3us) gdk_gl_get_proc_address ("glSecondaryColor3us");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3us () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3us) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3us () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3us) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3us);
 }
@@ -2533,14 +2311,12 @@ gdk_gl_get_glSecondaryColor3usv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColor3usv == (GdkGLProc_glSecondaryColor3usv) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColor3usv =
-        (GdkGLProc_glSecondaryColor3usv) gdk_gl_get_proc_address ("glSecondaryColor3usv");
+    _procs_GL_VERSION_1_4.glSecondaryColor3usv =
+      (GdkGLProc_glSecondaryColor3usv) gdk_gl_get_proc_address ("glSecondaryColor3usv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3usv () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColor3usv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3usv () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColor3usv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3usv);
 }
@@ -2553,14 +2329,12 @@ gdk_gl_get_glSecondaryColorPointer (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glSecondaryColorPointer == (GdkGLProc_glSecondaryColorPointer) -1)
-    {
-      _procs_GL_VERSION_1_4.glSecondaryColorPointer =
-        (GdkGLProc_glSecondaryColorPointer) gdk_gl_get_proc_address ("glSecondaryColorPointer");
+    _procs_GL_VERSION_1_4.glSecondaryColorPointer =
+      (GdkGLProc_glSecondaryColorPointer) gdk_gl_get_proc_address ("glSecondaryColorPointer");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColorPointer () - %s",
-                   (_procs_GL_VERSION_1_4.glSecondaryColorPointer) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColorPointer () - %s",
+               (_procs_GL_VERSION_1_4.glSecondaryColorPointer) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColorPointer);
 }
@@ -2573,14 +2347,12 @@ gdk_gl_get_glWindowPos2d (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos2d == (GdkGLProc_glWindowPos2d) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos2d =
-        (GdkGLProc_glWindowPos2d) gdk_gl_get_proc_address ("glWindowPos2d");
+    _procs_GL_VERSION_1_4.glWindowPos2d =
+      (GdkGLProc_glWindowPos2d) gdk_gl_get_proc_address ("glWindowPos2d");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2d () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos2d) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2d () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos2d) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2d);
 }
@@ -2593,14 +2365,12 @@ gdk_gl_get_glWindowPos2dv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos2dv == (GdkGLProc_glWindowPos2dv) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos2dv =
-        (GdkGLProc_glWindowPos2dv) gdk_gl_get_proc_address ("glWindowPos2dv");
+    _procs_GL_VERSION_1_4.glWindowPos2dv =
+      (GdkGLProc_glWindowPos2dv) gdk_gl_get_proc_address ("glWindowPos2dv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2dv () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos2dv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2dv () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos2dv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2dv);
 }
@@ -2613,14 +2383,12 @@ gdk_gl_get_glWindowPos2f (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos2f == (GdkGLProc_glWindowPos2f) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos2f =
-        (GdkGLProc_glWindowPos2f) gdk_gl_get_proc_address ("glWindowPos2f");
+    _procs_GL_VERSION_1_4.glWindowPos2f =
+      (GdkGLProc_glWindowPos2f) gdk_gl_get_proc_address ("glWindowPos2f");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2f () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos2f) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2f () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos2f) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2f);
 }
@@ -2633,14 +2401,12 @@ gdk_gl_get_glWindowPos2fv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos2fv == (GdkGLProc_glWindowPos2fv) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos2fv =
-        (GdkGLProc_glWindowPos2fv) gdk_gl_get_proc_address ("glWindowPos2fv");
+    _procs_GL_VERSION_1_4.glWindowPos2fv =
+      (GdkGLProc_glWindowPos2fv) gdk_gl_get_proc_address ("glWindowPos2fv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2fv () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos2fv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2fv () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos2fv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2fv);
 }
@@ -2653,14 +2419,12 @@ gdk_gl_get_glWindowPos2i (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos2i == (GdkGLProc_glWindowPos2i) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos2i =
-        (GdkGLProc_glWindowPos2i) gdk_gl_get_proc_address ("glWindowPos2i");
+    _procs_GL_VERSION_1_4.glWindowPos2i =
+      (GdkGLProc_glWindowPos2i) gdk_gl_get_proc_address ("glWindowPos2i");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2i () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos2i) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2i () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos2i) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2i);
 }
@@ -2673,14 +2437,12 @@ gdk_gl_get_glWindowPos2iv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos2iv == (GdkGLProc_glWindowPos2iv) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos2iv =
-        (GdkGLProc_glWindowPos2iv) gdk_gl_get_proc_address ("glWindowPos2iv");
+    _procs_GL_VERSION_1_4.glWindowPos2iv =
+      (GdkGLProc_glWindowPos2iv) gdk_gl_get_proc_address ("glWindowPos2iv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2iv () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos2iv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2iv () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos2iv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2iv);
 }
@@ -2693,14 +2455,12 @@ gdk_gl_get_glWindowPos2s (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos2s == (GdkGLProc_glWindowPos2s) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos2s =
-        (GdkGLProc_glWindowPos2s) gdk_gl_get_proc_address ("glWindowPos2s");
+    _procs_GL_VERSION_1_4.glWindowPos2s =
+      (GdkGLProc_glWindowPos2s) gdk_gl_get_proc_address ("glWindowPos2s");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2s () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos2s) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2s () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos2s) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2s);
 }
@@ -2713,14 +2473,12 @@ gdk_gl_get_glWindowPos2sv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos2sv == (GdkGLProc_glWindowPos2sv) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos2sv =
-        (GdkGLProc_glWindowPos2sv) gdk_gl_get_proc_address ("glWindowPos2sv");
+    _procs_GL_VERSION_1_4.glWindowPos2sv =
+      (GdkGLProc_glWindowPos2sv) gdk_gl_get_proc_address ("glWindowPos2sv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2sv () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos2sv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2sv () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos2sv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2sv);
 }
@@ -2733,14 +2491,12 @@ gdk_gl_get_glWindowPos3d (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos3d == (GdkGLProc_glWindowPos3d) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos3d =
-        (GdkGLProc_glWindowPos3d) gdk_gl_get_proc_address ("glWindowPos3d");
+    _procs_GL_VERSION_1_4.glWindowPos3d =
+      (GdkGLProc_glWindowPos3d) gdk_gl_get_proc_address ("glWindowPos3d");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3d () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos3d) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3d () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos3d) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3d);
 }
@@ -2753,14 +2509,12 @@ gdk_gl_get_glWindowPos3dv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos3dv == (GdkGLProc_glWindowPos3dv) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos3dv =
-        (GdkGLProc_glWindowPos3dv) gdk_gl_get_proc_address ("glWindowPos3dv");
+    _procs_GL_VERSION_1_4.glWindowPos3dv =
+      (GdkGLProc_glWindowPos3dv) gdk_gl_get_proc_address ("glWindowPos3dv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3dv () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos3dv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3dv () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos3dv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3dv);
 }
@@ -2773,14 +2527,12 @@ gdk_gl_get_glWindowPos3f (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos3f == (GdkGLProc_glWindowPos3f) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos3f =
-        (GdkGLProc_glWindowPos3f) gdk_gl_get_proc_address ("glWindowPos3f");
+    _procs_GL_VERSION_1_4.glWindowPos3f =
+      (GdkGLProc_glWindowPos3f) gdk_gl_get_proc_address ("glWindowPos3f");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3f () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos3f) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3f () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos3f) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3f);
 }
@@ -2793,14 +2545,12 @@ gdk_gl_get_glWindowPos3fv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos3fv == (GdkGLProc_glWindowPos3fv) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos3fv =
-        (GdkGLProc_glWindowPos3fv) gdk_gl_get_proc_address ("glWindowPos3fv");
+    _procs_GL_VERSION_1_4.glWindowPos3fv =
+      (GdkGLProc_glWindowPos3fv) gdk_gl_get_proc_address ("glWindowPos3fv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3fv () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos3fv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3fv () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos3fv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3fv);
 }
@@ -2813,14 +2563,12 @@ gdk_gl_get_glWindowPos3i (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos3i == (GdkGLProc_glWindowPos3i) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos3i =
-        (GdkGLProc_glWindowPos3i) gdk_gl_get_proc_address ("glWindowPos3i");
+    _procs_GL_VERSION_1_4.glWindowPos3i =
+      (GdkGLProc_glWindowPos3i) gdk_gl_get_proc_address ("glWindowPos3i");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3i () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos3i) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3i () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos3i) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3i);
 }
@@ -2833,14 +2581,12 @@ gdk_gl_get_glWindowPos3iv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos3iv == (GdkGLProc_glWindowPos3iv) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos3iv =
-        (GdkGLProc_glWindowPos3iv) gdk_gl_get_proc_address ("glWindowPos3iv");
+    _procs_GL_VERSION_1_4.glWindowPos3iv =
+      (GdkGLProc_glWindowPos3iv) gdk_gl_get_proc_address ("glWindowPos3iv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3iv () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos3iv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3iv () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos3iv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3iv);
 }
@@ -2853,14 +2599,12 @@ gdk_gl_get_glWindowPos3s (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos3s == (GdkGLProc_glWindowPos3s) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos3s =
-        (GdkGLProc_glWindowPos3s) gdk_gl_get_proc_address ("glWindowPos3s");
+    _procs_GL_VERSION_1_4.glWindowPos3s =
+      (GdkGLProc_glWindowPos3s) gdk_gl_get_proc_address ("glWindowPos3s");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3s () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos3s) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3s () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos3s) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3s);
 }
@@ -2873,14 +2617,12 @@ gdk_gl_get_glWindowPos3sv (void)
     return NULL;
 
   if (_procs_GL_VERSION_1_4.glWindowPos3sv == (GdkGLProc_glWindowPos3sv) -1)
-    {
-      _procs_GL_VERSION_1_4.glWindowPos3sv =
-        (GdkGLProc_glWindowPos3sv) gdk_gl_get_proc_address ("glWindowPos3sv");
+    _procs_GL_VERSION_1_4.glWindowPos3sv =
+      (GdkGLProc_glWindowPos3sv) gdk_gl_get_proc_address ("glWindowPos3sv");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3sv () - %s",
-                   (_procs_GL_VERSION_1_4.glWindowPos3sv) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3sv () - %s",
+               (_procs_GL_VERSION_1_4.glWindowPos3sv) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3sv);
 }
@@ -3002,14 +2744,12 @@ gdk_gl_get_glActiveTextureARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glActiveTextureARB == (GdkGLProc_glActiveTextureARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glActiveTextureARB =
-        (GdkGLProc_glActiveTextureARB) gdk_gl_get_proc_address ("glActiveTextureARB");
+    _procs_GL_ARB_multitexture.glActiveTextureARB =
+      (GdkGLProc_glActiveTextureARB) gdk_gl_get_proc_address ("glActiveTextureARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glActiveTextureARB () - %s",
-                   (_procs_GL_ARB_multitexture.glActiveTextureARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glActiveTextureARB () - %s",
+               (_procs_GL_ARB_multitexture.glActiveTextureARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glActiveTextureARB);
 }
@@ -3022,14 +2762,12 @@ gdk_gl_get_glClientActiveTextureARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glClientActiveTextureARB == (GdkGLProc_glClientActiveTextureARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glClientActiveTextureARB =
-        (GdkGLProc_glClientActiveTextureARB) gdk_gl_get_proc_address ("glClientActiveTextureARB");
+    _procs_GL_ARB_multitexture.glClientActiveTextureARB =
+      (GdkGLProc_glClientActiveTextureARB) gdk_gl_get_proc_address ("glClientActiveTextureARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glClientActiveTextureARB () - %s",
-                   (_procs_GL_ARB_multitexture.glClientActiveTextureARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClientActiveTextureARB () - %s",
+               (_procs_GL_ARB_multitexture.glClientActiveTextureARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glClientActiveTextureARB);
 }
@@ -3042,14 +2780,12 @@ gdk_gl_get_glMultiTexCoord1dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord1dARB == (GdkGLProc_glMultiTexCoord1dARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord1dARB =
-        (GdkGLProc_glMultiTexCoord1dARB) gdk_gl_get_proc_address ("glMultiTexCoord1dARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord1dARB =
+      (GdkGLProc_glMultiTexCoord1dARB) gdk_gl_get_proc_address ("glMultiTexCoord1dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1dARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord1dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1dARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord1dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord1dARB);
 }
@@ -3062,14 +2798,12 @@ gdk_gl_get_glMultiTexCoord1dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord1dvARB == (GdkGLProc_glMultiTexCoord1dvARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord1dvARB =
-        (GdkGLProc_glMultiTexCoord1dvARB) gdk_gl_get_proc_address ("glMultiTexCoord1dvARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord1dvARB =
+      (GdkGLProc_glMultiTexCoord1dvARB) gdk_gl_get_proc_address ("glMultiTexCoord1dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1dvARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord1dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1dvARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord1dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord1dvARB);
 }
@@ -3082,14 +2816,12 @@ gdk_gl_get_glMultiTexCoord1fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord1fARB == (GdkGLProc_glMultiTexCoord1fARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord1fARB =
-        (GdkGLProc_glMultiTexCoord1fARB) gdk_gl_get_proc_address ("glMultiTexCoord1fARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord1fARB =
+      (GdkGLProc_glMultiTexCoord1fARB) gdk_gl_get_proc_address ("glMultiTexCoord1fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1fARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord1fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1fARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord1fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord1fARB);
 }
@@ -3102,14 +2834,12 @@ gdk_gl_get_glMultiTexCoord1fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord1fvARB == (GdkGLProc_glMultiTexCoord1fvARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord1fvARB =
-        (GdkGLProc_glMultiTexCoord1fvARB) gdk_gl_get_proc_address ("glMultiTexCoord1fvARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord1fvARB =
+      (GdkGLProc_glMultiTexCoord1fvARB) gdk_gl_get_proc_address ("glMultiTexCoord1fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1fvARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord1fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1fvARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord1fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord1fvARB);
 }
@@ -3122,14 +2852,12 @@ gdk_gl_get_glMultiTexCoord1iARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord1iARB == (GdkGLProc_glMultiTexCoord1iARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord1iARB =
-        (GdkGLProc_glMultiTexCoord1iARB) gdk_gl_get_proc_address ("glMultiTexCoord1iARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord1iARB =
+      (GdkGLProc_glMultiTexCoord1iARB) gdk_gl_get_proc_address ("glMultiTexCoord1iARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1iARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord1iARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1iARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord1iARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord1iARB);
 }
@@ -3142,14 +2870,12 @@ gdk_gl_get_glMultiTexCoord1ivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord1ivARB == (GdkGLProc_glMultiTexCoord1ivARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord1ivARB =
-        (GdkGLProc_glMultiTexCoord1ivARB) gdk_gl_get_proc_address ("glMultiTexCoord1ivARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord1ivARB =
+      (GdkGLProc_glMultiTexCoord1ivARB) gdk_gl_get_proc_address ("glMultiTexCoord1ivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1ivARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord1ivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1ivARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord1ivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord1ivARB);
 }
@@ -3162,14 +2888,12 @@ gdk_gl_get_glMultiTexCoord1sARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord1sARB == (GdkGLProc_glMultiTexCoord1sARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord1sARB =
-        (GdkGLProc_glMultiTexCoord1sARB) gdk_gl_get_proc_address ("glMultiTexCoord1sARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord1sARB =
+      (GdkGLProc_glMultiTexCoord1sARB) gdk_gl_get_proc_address ("glMultiTexCoord1sARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1sARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord1sARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1sARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord1sARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord1sARB);
 }
@@ -3182,14 +2906,12 @@ gdk_gl_get_glMultiTexCoord1svARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord1svARB == (GdkGLProc_glMultiTexCoord1svARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord1svARB =
-        (GdkGLProc_glMultiTexCoord1svARB) gdk_gl_get_proc_address ("glMultiTexCoord1svARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord1svARB =
+      (GdkGLProc_glMultiTexCoord1svARB) gdk_gl_get_proc_address ("glMultiTexCoord1svARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1svARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord1svARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1svARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord1svARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord1svARB);
 }
@@ -3202,14 +2924,12 @@ gdk_gl_get_glMultiTexCoord2dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord2dARB == (GdkGLProc_glMultiTexCoord2dARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord2dARB =
-        (GdkGLProc_glMultiTexCoord2dARB) gdk_gl_get_proc_address ("glMultiTexCoord2dARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord2dARB =
+      (GdkGLProc_glMultiTexCoord2dARB) gdk_gl_get_proc_address ("glMultiTexCoord2dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2dARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord2dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2dARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord2dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord2dARB);
 }
@@ -3222,14 +2942,12 @@ gdk_gl_get_glMultiTexCoord2dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord2dvARB == (GdkGLProc_glMultiTexCoord2dvARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord2dvARB =
-        (GdkGLProc_glMultiTexCoord2dvARB) gdk_gl_get_proc_address ("glMultiTexCoord2dvARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord2dvARB =
+      (GdkGLProc_glMultiTexCoord2dvARB) gdk_gl_get_proc_address ("glMultiTexCoord2dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2dvARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord2dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2dvARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord2dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord2dvARB);
 }
@@ -3242,14 +2960,12 @@ gdk_gl_get_glMultiTexCoord2fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord2fARB == (GdkGLProc_glMultiTexCoord2fARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord2fARB =
-        (GdkGLProc_glMultiTexCoord2fARB) gdk_gl_get_proc_address ("glMultiTexCoord2fARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord2fARB =
+      (GdkGLProc_glMultiTexCoord2fARB) gdk_gl_get_proc_address ("glMultiTexCoord2fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2fARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord2fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2fARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord2fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord2fARB);
 }
@@ -3262,14 +2978,12 @@ gdk_gl_get_glMultiTexCoord2fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord2fvARB == (GdkGLProc_glMultiTexCoord2fvARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord2fvARB =
-        (GdkGLProc_glMultiTexCoord2fvARB) gdk_gl_get_proc_address ("glMultiTexCoord2fvARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord2fvARB =
+      (GdkGLProc_glMultiTexCoord2fvARB) gdk_gl_get_proc_address ("glMultiTexCoord2fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2fvARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord2fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2fvARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord2fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord2fvARB);
 }
@@ -3282,14 +2996,12 @@ gdk_gl_get_glMultiTexCoord2iARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord2iARB == (GdkGLProc_glMultiTexCoord2iARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord2iARB =
-        (GdkGLProc_glMultiTexCoord2iARB) gdk_gl_get_proc_address ("glMultiTexCoord2iARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord2iARB =
+      (GdkGLProc_glMultiTexCoord2iARB) gdk_gl_get_proc_address ("glMultiTexCoord2iARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2iARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord2iARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2iARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord2iARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord2iARB);
 }
@@ -3302,14 +3014,12 @@ gdk_gl_get_glMultiTexCoord2ivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord2ivARB == (GdkGLProc_glMultiTexCoord2ivARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord2ivARB =
-        (GdkGLProc_glMultiTexCoord2ivARB) gdk_gl_get_proc_address ("glMultiTexCoord2ivARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord2ivARB =
+      (GdkGLProc_glMultiTexCoord2ivARB) gdk_gl_get_proc_address ("glMultiTexCoord2ivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2ivARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord2ivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2ivARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord2ivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord2ivARB);
 }
@@ -3322,14 +3032,12 @@ gdk_gl_get_glMultiTexCoord2sARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord2sARB == (GdkGLProc_glMultiTexCoord2sARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord2sARB =
-        (GdkGLProc_glMultiTexCoord2sARB) gdk_gl_get_proc_address ("glMultiTexCoord2sARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord2sARB =
+      (GdkGLProc_glMultiTexCoord2sARB) gdk_gl_get_proc_address ("glMultiTexCoord2sARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2sARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord2sARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2sARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord2sARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord2sARB);
 }
@@ -3342,14 +3050,12 @@ gdk_gl_get_glMultiTexCoord2svARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord2svARB == (GdkGLProc_glMultiTexCoord2svARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord2svARB =
-        (GdkGLProc_glMultiTexCoord2svARB) gdk_gl_get_proc_address ("glMultiTexCoord2svARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord2svARB =
+      (GdkGLProc_glMultiTexCoord2svARB) gdk_gl_get_proc_address ("glMultiTexCoord2svARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2svARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord2svARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2svARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord2svARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord2svARB);
 }
@@ -3362,14 +3068,12 @@ gdk_gl_get_glMultiTexCoord3dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord3dARB == (GdkGLProc_glMultiTexCoord3dARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord3dARB =
-        (GdkGLProc_glMultiTexCoord3dARB) gdk_gl_get_proc_address ("glMultiTexCoord3dARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord3dARB =
+      (GdkGLProc_glMultiTexCoord3dARB) gdk_gl_get_proc_address ("glMultiTexCoord3dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3dARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord3dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3dARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord3dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord3dARB);
 }
@@ -3382,14 +3086,12 @@ gdk_gl_get_glMultiTexCoord3dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord3dvARB == (GdkGLProc_glMultiTexCoord3dvARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord3dvARB =
-        (GdkGLProc_glMultiTexCoord3dvARB) gdk_gl_get_proc_address ("glMultiTexCoord3dvARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord3dvARB =
+      (GdkGLProc_glMultiTexCoord3dvARB) gdk_gl_get_proc_address ("glMultiTexCoord3dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3dvARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord3dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3dvARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord3dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord3dvARB);
 }
@@ -3402,14 +3104,12 @@ gdk_gl_get_glMultiTexCoord3fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord3fARB == (GdkGLProc_glMultiTexCoord3fARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord3fARB =
-        (GdkGLProc_glMultiTexCoord3fARB) gdk_gl_get_proc_address ("glMultiTexCoord3fARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord3fARB =
+      (GdkGLProc_glMultiTexCoord3fARB) gdk_gl_get_proc_address ("glMultiTexCoord3fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3fARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord3fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3fARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord3fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord3fARB);
 }
@@ -3422,14 +3122,12 @@ gdk_gl_get_glMultiTexCoord3fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord3fvARB == (GdkGLProc_glMultiTexCoord3fvARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord3fvARB =
-        (GdkGLProc_glMultiTexCoord3fvARB) gdk_gl_get_proc_address ("glMultiTexCoord3fvARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord3fvARB =
+      (GdkGLProc_glMultiTexCoord3fvARB) gdk_gl_get_proc_address ("glMultiTexCoord3fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3fvARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord3fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3fvARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord3fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord3fvARB);
 }
@@ -3442,14 +3140,12 @@ gdk_gl_get_glMultiTexCoord3iARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord3iARB == (GdkGLProc_glMultiTexCoord3iARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord3iARB =
-        (GdkGLProc_glMultiTexCoord3iARB) gdk_gl_get_proc_address ("glMultiTexCoord3iARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord3iARB =
+      (GdkGLProc_glMultiTexCoord3iARB) gdk_gl_get_proc_address ("glMultiTexCoord3iARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3iARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord3iARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3iARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord3iARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord3iARB);
 }
@@ -3462,14 +3158,12 @@ gdk_gl_get_glMultiTexCoord3ivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord3ivARB == (GdkGLProc_glMultiTexCoord3ivARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord3ivARB =
-        (GdkGLProc_glMultiTexCoord3ivARB) gdk_gl_get_proc_address ("glMultiTexCoord3ivARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord3ivARB =
+      (GdkGLProc_glMultiTexCoord3ivARB) gdk_gl_get_proc_address ("glMultiTexCoord3ivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3ivARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord3ivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3ivARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord3ivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord3ivARB);
 }
@@ -3482,14 +3176,12 @@ gdk_gl_get_glMultiTexCoord3sARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord3sARB == (GdkGLProc_glMultiTexCoord3sARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord3sARB =
-        (GdkGLProc_glMultiTexCoord3sARB) gdk_gl_get_proc_address ("glMultiTexCoord3sARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord3sARB =
+      (GdkGLProc_glMultiTexCoord3sARB) gdk_gl_get_proc_address ("glMultiTexCoord3sARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3sARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord3sARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3sARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord3sARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord3sARB);
 }
@@ -3502,14 +3194,12 @@ gdk_gl_get_glMultiTexCoord3svARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord3svARB == (GdkGLProc_glMultiTexCoord3svARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord3svARB =
-        (GdkGLProc_glMultiTexCoord3svARB) gdk_gl_get_proc_address ("glMultiTexCoord3svARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord3svARB =
+      (GdkGLProc_glMultiTexCoord3svARB) gdk_gl_get_proc_address ("glMultiTexCoord3svARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3svARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord3svARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3svARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord3svARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord3svARB);
 }
@@ -3522,14 +3212,12 @@ gdk_gl_get_glMultiTexCoord4dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord4dARB == (GdkGLProc_glMultiTexCoord4dARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord4dARB =
-        (GdkGLProc_glMultiTexCoord4dARB) gdk_gl_get_proc_address ("glMultiTexCoord4dARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord4dARB =
+      (GdkGLProc_glMultiTexCoord4dARB) gdk_gl_get_proc_address ("glMultiTexCoord4dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4dARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord4dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4dARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord4dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord4dARB);
 }
@@ -3542,14 +3230,12 @@ gdk_gl_get_glMultiTexCoord4dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord4dvARB == (GdkGLProc_glMultiTexCoord4dvARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord4dvARB =
-        (GdkGLProc_glMultiTexCoord4dvARB) gdk_gl_get_proc_address ("glMultiTexCoord4dvARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord4dvARB =
+      (GdkGLProc_glMultiTexCoord4dvARB) gdk_gl_get_proc_address ("glMultiTexCoord4dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4dvARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord4dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4dvARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord4dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord4dvARB);
 }
@@ -3562,14 +3248,12 @@ gdk_gl_get_glMultiTexCoord4fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord4fARB == (GdkGLProc_glMultiTexCoord4fARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord4fARB =
-        (GdkGLProc_glMultiTexCoord4fARB) gdk_gl_get_proc_address ("glMultiTexCoord4fARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord4fARB =
+      (GdkGLProc_glMultiTexCoord4fARB) gdk_gl_get_proc_address ("glMultiTexCoord4fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4fARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord4fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4fARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord4fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord4fARB);
 }
@@ -3582,14 +3266,12 @@ gdk_gl_get_glMultiTexCoord4fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord4fvARB == (GdkGLProc_glMultiTexCoord4fvARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord4fvARB =
-        (GdkGLProc_glMultiTexCoord4fvARB) gdk_gl_get_proc_address ("glMultiTexCoord4fvARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord4fvARB =
+      (GdkGLProc_glMultiTexCoord4fvARB) gdk_gl_get_proc_address ("glMultiTexCoord4fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4fvARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord4fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4fvARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord4fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord4fvARB);
 }
@@ -3602,14 +3284,12 @@ gdk_gl_get_glMultiTexCoord4iARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord4iARB == (GdkGLProc_glMultiTexCoord4iARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord4iARB =
-        (GdkGLProc_glMultiTexCoord4iARB) gdk_gl_get_proc_address ("glMultiTexCoord4iARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord4iARB =
+      (GdkGLProc_glMultiTexCoord4iARB) gdk_gl_get_proc_address ("glMultiTexCoord4iARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4iARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord4iARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4iARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord4iARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord4iARB);
 }
@@ -3622,14 +3302,12 @@ gdk_gl_get_glMultiTexCoord4ivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord4ivARB == (GdkGLProc_glMultiTexCoord4ivARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord4ivARB =
-        (GdkGLProc_glMultiTexCoord4ivARB) gdk_gl_get_proc_address ("glMultiTexCoord4ivARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord4ivARB =
+      (GdkGLProc_glMultiTexCoord4ivARB) gdk_gl_get_proc_address ("glMultiTexCoord4ivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4ivARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord4ivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4ivARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord4ivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord4ivARB);
 }
@@ -3642,14 +3320,12 @@ gdk_gl_get_glMultiTexCoord4sARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord4sARB == (GdkGLProc_glMultiTexCoord4sARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord4sARB =
-        (GdkGLProc_glMultiTexCoord4sARB) gdk_gl_get_proc_address ("glMultiTexCoord4sARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord4sARB =
+      (GdkGLProc_glMultiTexCoord4sARB) gdk_gl_get_proc_address ("glMultiTexCoord4sARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4sARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord4sARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4sARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord4sARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord4sARB);
 }
@@ -3662,14 +3338,12 @@ gdk_gl_get_glMultiTexCoord4svARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multitexture.glMultiTexCoord4svARB == (GdkGLProc_glMultiTexCoord4svARB) -1)
-    {
-      _procs_GL_ARB_multitexture.glMultiTexCoord4svARB =
-        (GdkGLProc_glMultiTexCoord4svARB) gdk_gl_get_proc_address ("glMultiTexCoord4svARB");
+    _procs_GL_ARB_multitexture.glMultiTexCoord4svARB =
+      (GdkGLProc_glMultiTexCoord4svARB) gdk_gl_get_proc_address ("glMultiTexCoord4svARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4svARB () - %s",
-                   (_procs_GL_ARB_multitexture.glMultiTexCoord4svARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4svARB () - %s",
+               (_procs_GL_ARB_multitexture.glMultiTexCoord4svARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multitexture.glMultiTexCoord4svARB);
 }
@@ -3755,14 +3429,12 @@ gdk_gl_get_glLoadTransposeMatrixfARB (void)
     return NULL;
 
   if (_procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixfARB == (GdkGLProc_glLoadTransposeMatrixfARB) -1)
-    {
-      _procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixfARB =
-        (GdkGLProc_glLoadTransposeMatrixfARB) gdk_gl_get_proc_address ("glLoadTransposeMatrixfARB");
+    _procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixfARB =
+      (GdkGLProc_glLoadTransposeMatrixfARB) gdk_gl_get_proc_address ("glLoadTransposeMatrixfARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glLoadTransposeMatrixfARB () - %s",
-                   (_procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixfARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLoadTransposeMatrixfARB () - %s",
+               (_procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixfARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixfARB);
 }
@@ -3775,14 +3447,12 @@ gdk_gl_get_glLoadTransposeMatrixdARB (void)
     return NULL;
 
   if (_procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixdARB == (GdkGLProc_glLoadTransposeMatrixdARB) -1)
-    {
-      _procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixdARB =
-        (GdkGLProc_glLoadTransposeMatrixdARB) gdk_gl_get_proc_address ("glLoadTransposeMatrixdARB");
+    _procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixdARB =
+      (GdkGLProc_glLoadTransposeMatrixdARB) gdk_gl_get_proc_address ("glLoadTransposeMatrixdARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glLoadTransposeMatrixdARB () - %s",
-                   (_procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixdARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLoadTransposeMatrixdARB () - %s",
+               (_procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixdARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_transpose_matrix.glLoadTransposeMatrixdARB);
 }
@@ -3795,14 +3465,12 @@ gdk_gl_get_glMultTransposeMatrixfARB (void)
     return NULL;
 
   if (_procs_GL_ARB_transpose_matrix.glMultTransposeMatrixfARB == (GdkGLProc_glMultTransposeMatrixfARB) -1)
-    {
-      _procs_GL_ARB_transpose_matrix.glMultTransposeMatrixfARB =
-        (GdkGLProc_glMultTransposeMatrixfARB) gdk_gl_get_proc_address ("glMultTransposeMatrixfARB");
+    _procs_GL_ARB_transpose_matrix.glMultTransposeMatrixfARB =
+      (GdkGLProc_glMultTransposeMatrixfARB) gdk_gl_get_proc_address ("glMultTransposeMatrixfARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultTransposeMatrixfARB () - %s",
-                   (_procs_GL_ARB_transpose_matrix.glMultTransposeMatrixfARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultTransposeMatrixfARB () - %s",
+               (_procs_GL_ARB_transpose_matrix.glMultTransposeMatrixfARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_transpose_matrix.glMultTransposeMatrixfARB);
 }
@@ -3815,14 +3483,12 @@ gdk_gl_get_glMultTransposeMatrixdARB (void)
     return NULL;
 
   if (_procs_GL_ARB_transpose_matrix.glMultTransposeMatrixdARB == (GdkGLProc_glMultTransposeMatrixdARB) -1)
-    {
-      _procs_GL_ARB_transpose_matrix.glMultTransposeMatrixdARB =
-        (GdkGLProc_glMultTransposeMatrixdARB) gdk_gl_get_proc_address ("glMultTransposeMatrixdARB");
+    _procs_GL_ARB_transpose_matrix.glMultTransposeMatrixdARB =
+      (GdkGLProc_glMultTransposeMatrixdARB) gdk_gl_get_proc_address ("glMultTransposeMatrixdARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultTransposeMatrixdARB () - %s",
-                   (_procs_GL_ARB_transpose_matrix.glMultTransposeMatrixdARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultTransposeMatrixdARB () - %s",
+               (_procs_GL_ARB_transpose_matrix.glMultTransposeMatrixdARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_transpose_matrix.glMultTransposeMatrixdARB);
 }
@@ -3875,14 +3541,12 @@ gdk_gl_get_glSampleCoverageARB (void)
     return NULL;
 
   if (_procs_GL_ARB_multisample.glSampleCoverageARB == (GdkGLProc_glSampleCoverageARB) -1)
-    {
-      _procs_GL_ARB_multisample.glSampleCoverageARB =
-        (GdkGLProc_glSampleCoverageARB) gdk_gl_get_proc_address ("glSampleCoverageARB");
+    _procs_GL_ARB_multisample.glSampleCoverageARB =
+      (GdkGLProc_glSampleCoverageARB) gdk_gl_get_proc_address ("glSampleCoverageARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSampleCoverageARB () - %s",
-                   (_procs_GL_ARB_multisample.glSampleCoverageARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSampleCoverageARB () - %s",
+               (_procs_GL_ARB_multisample.glSampleCoverageARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_multisample.glSampleCoverageARB);
 }
@@ -3938,14 +3602,12 @@ gdk_gl_get_glCompressedTexImage3DARB (void)
     return NULL;
 
   if (_procs_GL_ARB_texture_compression.glCompressedTexImage3DARB == (GdkGLProc_glCompressedTexImage3DARB) -1)
-    {
-      _procs_GL_ARB_texture_compression.glCompressedTexImage3DARB =
-        (GdkGLProc_glCompressedTexImage3DARB) gdk_gl_get_proc_address ("glCompressedTexImage3DARB");
+    _procs_GL_ARB_texture_compression.glCompressedTexImage3DARB =
+      (GdkGLProc_glCompressedTexImage3DARB) gdk_gl_get_proc_address ("glCompressedTexImage3DARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexImage3DARB () - %s",
-                   (_procs_GL_ARB_texture_compression.glCompressedTexImage3DARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexImage3DARB () - %s",
+               (_procs_GL_ARB_texture_compression.glCompressedTexImage3DARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_texture_compression.glCompressedTexImage3DARB);
 }
@@ -3958,14 +3620,12 @@ gdk_gl_get_glCompressedTexImage2DARB (void)
     return NULL;
 
   if (_procs_GL_ARB_texture_compression.glCompressedTexImage2DARB == (GdkGLProc_glCompressedTexImage2DARB) -1)
-    {
-      _procs_GL_ARB_texture_compression.glCompressedTexImage2DARB =
-        (GdkGLProc_glCompressedTexImage2DARB) gdk_gl_get_proc_address ("glCompressedTexImage2DARB");
+    _procs_GL_ARB_texture_compression.glCompressedTexImage2DARB =
+      (GdkGLProc_glCompressedTexImage2DARB) gdk_gl_get_proc_address ("glCompressedTexImage2DARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexImage2DARB () - %s",
-                   (_procs_GL_ARB_texture_compression.glCompressedTexImage2DARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexImage2DARB () - %s",
+               (_procs_GL_ARB_texture_compression.glCompressedTexImage2DARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_texture_compression.glCompressedTexImage2DARB);
 }
@@ -3978,14 +3638,12 @@ gdk_gl_get_glCompressedTexImage1DARB (void)
     return NULL;
 
   if (_procs_GL_ARB_texture_compression.glCompressedTexImage1DARB == (GdkGLProc_glCompressedTexImage1DARB) -1)
-    {
-      _procs_GL_ARB_texture_compression.glCompressedTexImage1DARB =
-        (GdkGLProc_glCompressedTexImage1DARB) gdk_gl_get_proc_address ("glCompressedTexImage1DARB");
+    _procs_GL_ARB_texture_compression.glCompressedTexImage1DARB =
+      (GdkGLProc_glCompressedTexImage1DARB) gdk_gl_get_proc_address ("glCompressedTexImage1DARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexImage1DARB () - %s",
-                   (_procs_GL_ARB_texture_compression.glCompressedTexImage1DARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexImage1DARB () - %s",
+               (_procs_GL_ARB_texture_compression.glCompressedTexImage1DARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_texture_compression.glCompressedTexImage1DARB);
 }
@@ -3998,14 +3656,12 @@ gdk_gl_get_glCompressedTexSubImage3DARB (void)
     return NULL;
 
   if (_procs_GL_ARB_texture_compression.glCompressedTexSubImage3DARB == (GdkGLProc_glCompressedTexSubImage3DARB) -1)
-    {
-      _procs_GL_ARB_texture_compression.glCompressedTexSubImage3DARB =
-        (GdkGLProc_glCompressedTexSubImage3DARB) gdk_gl_get_proc_address ("glCompressedTexSubImage3DARB");
+    _procs_GL_ARB_texture_compression.glCompressedTexSubImage3DARB =
+      (GdkGLProc_glCompressedTexSubImage3DARB) gdk_gl_get_proc_address ("glCompressedTexSubImage3DARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexSubImage3DARB () - %s",
-                   (_procs_GL_ARB_texture_compression.glCompressedTexSubImage3DARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexSubImage3DARB () - %s",
+               (_procs_GL_ARB_texture_compression.glCompressedTexSubImage3DARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_texture_compression.glCompressedTexSubImage3DARB);
 }
@@ -4018,14 +3674,12 @@ gdk_gl_get_glCompressedTexSubImage2DARB (void)
     return NULL;
 
   if (_procs_GL_ARB_texture_compression.glCompressedTexSubImage2DARB == (GdkGLProc_glCompressedTexSubImage2DARB) -1)
-    {
-      _procs_GL_ARB_texture_compression.glCompressedTexSubImage2DARB =
-        (GdkGLProc_glCompressedTexSubImage2DARB) gdk_gl_get_proc_address ("glCompressedTexSubImage2DARB");
+    _procs_GL_ARB_texture_compression.glCompressedTexSubImage2DARB =
+      (GdkGLProc_glCompressedTexSubImage2DARB) gdk_gl_get_proc_address ("glCompressedTexSubImage2DARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexSubImage2DARB () - %s",
-                   (_procs_GL_ARB_texture_compression.glCompressedTexSubImage2DARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexSubImage2DARB () - %s",
+               (_procs_GL_ARB_texture_compression.glCompressedTexSubImage2DARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_texture_compression.glCompressedTexSubImage2DARB);
 }
@@ -4038,14 +3692,12 @@ gdk_gl_get_glCompressedTexSubImage1DARB (void)
     return NULL;
 
   if (_procs_GL_ARB_texture_compression.glCompressedTexSubImage1DARB == (GdkGLProc_glCompressedTexSubImage1DARB) -1)
-    {
-      _procs_GL_ARB_texture_compression.glCompressedTexSubImage1DARB =
-        (GdkGLProc_glCompressedTexSubImage1DARB) gdk_gl_get_proc_address ("glCompressedTexSubImage1DARB");
+    _procs_GL_ARB_texture_compression.glCompressedTexSubImage1DARB =
+      (GdkGLProc_glCompressedTexSubImage1DARB) gdk_gl_get_proc_address ("glCompressedTexSubImage1DARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCompressedTexSubImage1DARB () - %s",
-                   (_procs_GL_ARB_texture_compression.glCompressedTexSubImage1DARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTexSubImage1DARB () - %s",
+               (_procs_GL_ARB_texture_compression.glCompressedTexSubImage1DARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_texture_compression.glCompressedTexSubImage1DARB);
 }
@@ -4058,14 +3710,12 @@ gdk_gl_get_glGetCompressedTexImageARB (void)
     return NULL;
 
   if (_procs_GL_ARB_texture_compression.glGetCompressedTexImageARB == (GdkGLProc_glGetCompressedTexImageARB) -1)
-    {
-      _procs_GL_ARB_texture_compression.glGetCompressedTexImageARB =
-        (GdkGLProc_glGetCompressedTexImageARB) gdk_gl_get_proc_address ("glGetCompressedTexImageARB");
+    _procs_GL_ARB_texture_compression.glGetCompressedTexImageARB =
+      (GdkGLProc_glGetCompressedTexImageARB) gdk_gl_get_proc_address ("glGetCompressedTexImageARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetCompressedTexImageARB () - %s",
-                   (_procs_GL_ARB_texture_compression.glGetCompressedTexImageARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetCompressedTexImageARB () - %s",
+               (_procs_GL_ARB_texture_compression.glGetCompressedTexImageARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_texture_compression.glGetCompressedTexImageARB);
 }
@@ -4122,14 +3772,12 @@ gdk_gl_get_glPointParameterfARB (void)
     return NULL;
 
   if (_procs_GL_ARB_point_parameters.glPointParameterfARB == (GdkGLProc_glPointParameterfARB) -1)
-    {
-      _procs_GL_ARB_point_parameters.glPointParameterfARB =
-        (GdkGLProc_glPointParameterfARB) gdk_gl_get_proc_address ("glPointParameterfARB");
+    _procs_GL_ARB_point_parameters.glPointParameterfARB =
+      (GdkGLProc_glPointParameterfARB) gdk_gl_get_proc_address ("glPointParameterfARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameterfARB () - %s",
-                   (_procs_GL_ARB_point_parameters.glPointParameterfARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameterfARB () - %s",
+               (_procs_GL_ARB_point_parameters.glPointParameterfARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_point_parameters.glPointParameterfARB);
 }
@@ -4142,14 +3790,12 @@ gdk_gl_get_glPointParameterfvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_point_parameters.glPointParameterfvARB == (GdkGLProc_glPointParameterfvARB) -1)
-    {
-      _procs_GL_ARB_point_parameters.glPointParameterfvARB =
-        (GdkGLProc_glPointParameterfvARB) gdk_gl_get_proc_address ("glPointParameterfvARB");
+    _procs_GL_ARB_point_parameters.glPointParameterfvARB =
+      (GdkGLProc_glPointParameterfvARB) gdk_gl_get_proc_address ("glPointParameterfvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameterfvARB () - %s",
-                   (_procs_GL_ARB_point_parameters.glPointParameterfvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameterfvARB () - %s",
+               (_procs_GL_ARB_point_parameters.glPointParameterfvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_point_parameters.glPointParameterfvARB);
 }
@@ -4209,14 +3855,12 @@ gdk_gl_get_glWeightbvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_blend.glWeightbvARB == (GdkGLProc_glWeightbvARB) -1)
-    {
-      _procs_GL_ARB_vertex_blend.glWeightbvARB =
-        (GdkGLProc_glWeightbvARB) gdk_gl_get_proc_address ("glWeightbvARB");
+    _procs_GL_ARB_vertex_blend.glWeightbvARB =
+      (GdkGLProc_glWeightbvARB) gdk_gl_get_proc_address ("glWeightbvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWeightbvARB () - %s",
-                   (_procs_GL_ARB_vertex_blend.glWeightbvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWeightbvARB () - %s",
+               (_procs_GL_ARB_vertex_blend.glWeightbvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_blend.glWeightbvARB);
 }
@@ -4229,14 +3873,12 @@ gdk_gl_get_glWeightsvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_blend.glWeightsvARB == (GdkGLProc_glWeightsvARB) -1)
-    {
-      _procs_GL_ARB_vertex_blend.glWeightsvARB =
-        (GdkGLProc_glWeightsvARB) gdk_gl_get_proc_address ("glWeightsvARB");
+    _procs_GL_ARB_vertex_blend.glWeightsvARB =
+      (GdkGLProc_glWeightsvARB) gdk_gl_get_proc_address ("glWeightsvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWeightsvARB () - %s",
-                   (_procs_GL_ARB_vertex_blend.glWeightsvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWeightsvARB () - %s",
+               (_procs_GL_ARB_vertex_blend.glWeightsvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_blend.glWeightsvARB);
 }
@@ -4249,14 +3891,12 @@ gdk_gl_get_glWeightivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_blend.glWeightivARB == (GdkGLProc_glWeightivARB) -1)
-    {
-      _procs_GL_ARB_vertex_blend.glWeightivARB =
-        (GdkGLProc_glWeightivARB) gdk_gl_get_proc_address ("glWeightivARB");
+    _procs_GL_ARB_vertex_blend.glWeightivARB =
+      (GdkGLProc_glWeightivARB) gdk_gl_get_proc_address ("glWeightivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWeightivARB () - %s",
-                   (_procs_GL_ARB_vertex_blend.glWeightivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWeightivARB () - %s",
+               (_procs_GL_ARB_vertex_blend.glWeightivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_blend.glWeightivARB);
 }
@@ -4269,14 +3909,12 @@ gdk_gl_get_glWeightfvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_blend.glWeightfvARB == (GdkGLProc_glWeightfvARB) -1)
-    {
-      _procs_GL_ARB_vertex_blend.glWeightfvARB =
-        (GdkGLProc_glWeightfvARB) gdk_gl_get_proc_address ("glWeightfvARB");
+    _procs_GL_ARB_vertex_blend.glWeightfvARB =
+      (GdkGLProc_glWeightfvARB) gdk_gl_get_proc_address ("glWeightfvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWeightfvARB () - %s",
-                   (_procs_GL_ARB_vertex_blend.glWeightfvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWeightfvARB () - %s",
+               (_procs_GL_ARB_vertex_blend.glWeightfvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_blend.glWeightfvARB);
 }
@@ -4289,14 +3927,12 @@ gdk_gl_get_glWeightdvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_blend.glWeightdvARB == (GdkGLProc_glWeightdvARB) -1)
-    {
-      _procs_GL_ARB_vertex_blend.glWeightdvARB =
-        (GdkGLProc_glWeightdvARB) gdk_gl_get_proc_address ("glWeightdvARB");
+    _procs_GL_ARB_vertex_blend.glWeightdvARB =
+      (GdkGLProc_glWeightdvARB) gdk_gl_get_proc_address ("glWeightdvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWeightdvARB () - %s",
-                   (_procs_GL_ARB_vertex_blend.glWeightdvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWeightdvARB () - %s",
+               (_procs_GL_ARB_vertex_blend.glWeightdvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_blend.glWeightdvARB);
 }
@@ -4309,14 +3945,12 @@ gdk_gl_get_glWeightubvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_blend.glWeightubvARB == (GdkGLProc_glWeightubvARB) -1)
-    {
-      _procs_GL_ARB_vertex_blend.glWeightubvARB =
-        (GdkGLProc_glWeightubvARB) gdk_gl_get_proc_address ("glWeightubvARB");
+    _procs_GL_ARB_vertex_blend.glWeightubvARB =
+      (GdkGLProc_glWeightubvARB) gdk_gl_get_proc_address ("glWeightubvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWeightubvARB () - %s",
-                   (_procs_GL_ARB_vertex_blend.glWeightubvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWeightubvARB () - %s",
+               (_procs_GL_ARB_vertex_blend.glWeightubvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_blend.glWeightubvARB);
 }
@@ -4329,14 +3963,12 @@ gdk_gl_get_glWeightusvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_blend.glWeightusvARB == (GdkGLProc_glWeightusvARB) -1)
-    {
-      _procs_GL_ARB_vertex_blend.glWeightusvARB =
-        (GdkGLProc_glWeightusvARB) gdk_gl_get_proc_address ("glWeightusvARB");
+    _procs_GL_ARB_vertex_blend.glWeightusvARB =
+      (GdkGLProc_glWeightusvARB) gdk_gl_get_proc_address ("glWeightusvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWeightusvARB () - %s",
-                   (_procs_GL_ARB_vertex_blend.glWeightusvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWeightusvARB () - %s",
+               (_procs_GL_ARB_vertex_blend.glWeightusvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_blend.glWeightusvARB);
 }
@@ -4349,14 +3981,12 @@ gdk_gl_get_glWeightuivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_blend.glWeightuivARB == (GdkGLProc_glWeightuivARB) -1)
-    {
-      _procs_GL_ARB_vertex_blend.glWeightuivARB =
-        (GdkGLProc_glWeightuivARB) gdk_gl_get_proc_address ("glWeightuivARB");
+    _procs_GL_ARB_vertex_blend.glWeightuivARB =
+      (GdkGLProc_glWeightuivARB) gdk_gl_get_proc_address ("glWeightuivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWeightuivARB () - %s",
-                   (_procs_GL_ARB_vertex_blend.glWeightuivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWeightuivARB () - %s",
+               (_procs_GL_ARB_vertex_blend.glWeightuivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_blend.glWeightuivARB);
 }
@@ -4369,14 +3999,12 @@ gdk_gl_get_glWeightPointerARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_blend.glWeightPointerARB == (GdkGLProc_glWeightPointerARB) -1)
-    {
-      _procs_GL_ARB_vertex_blend.glWeightPointerARB =
-        (GdkGLProc_glWeightPointerARB) gdk_gl_get_proc_address ("glWeightPointerARB");
+    _procs_GL_ARB_vertex_blend.glWeightPointerARB =
+      (GdkGLProc_glWeightPointerARB) gdk_gl_get_proc_address ("glWeightPointerARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWeightPointerARB () - %s",
-                   (_procs_GL_ARB_vertex_blend.glWeightPointerARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWeightPointerARB () - %s",
+               (_procs_GL_ARB_vertex_blend.glWeightPointerARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_blend.glWeightPointerARB);
 }
@@ -4389,14 +4017,12 @@ gdk_gl_get_glVertexBlendARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_blend.glVertexBlendARB == (GdkGLProc_glVertexBlendARB) -1)
-    {
-      _procs_GL_ARB_vertex_blend.glVertexBlendARB =
-        (GdkGLProc_glVertexBlendARB) gdk_gl_get_proc_address ("glVertexBlendARB");
+    _procs_GL_ARB_vertex_blend.glVertexBlendARB =
+      (GdkGLProc_glVertexBlendARB) gdk_gl_get_proc_address ("glVertexBlendARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexBlendARB () - %s",
-                   (_procs_GL_ARB_vertex_blend.glVertexBlendARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexBlendARB () - %s",
+               (_procs_GL_ARB_vertex_blend.glVertexBlendARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_blend.glVertexBlendARB);
 }
@@ -4459,14 +4085,12 @@ gdk_gl_get_glCurrentPaletteMatrixARB (void)
     return NULL;
 
   if (_procs_GL_ARB_matrix_palette.glCurrentPaletteMatrixARB == (GdkGLProc_glCurrentPaletteMatrixARB) -1)
-    {
-      _procs_GL_ARB_matrix_palette.glCurrentPaletteMatrixARB =
-        (GdkGLProc_glCurrentPaletteMatrixARB) gdk_gl_get_proc_address ("glCurrentPaletteMatrixARB");
+    _procs_GL_ARB_matrix_palette.glCurrentPaletteMatrixARB =
+      (GdkGLProc_glCurrentPaletteMatrixARB) gdk_gl_get_proc_address ("glCurrentPaletteMatrixARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCurrentPaletteMatrixARB () - %s",
-                   (_procs_GL_ARB_matrix_palette.glCurrentPaletteMatrixARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCurrentPaletteMatrixARB () - %s",
+               (_procs_GL_ARB_matrix_palette.glCurrentPaletteMatrixARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_matrix_palette.glCurrentPaletteMatrixARB);
 }
@@ -4479,14 +4103,12 @@ gdk_gl_get_glMatrixIndexubvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_matrix_palette.glMatrixIndexubvARB == (GdkGLProc_glMatrixIndexubvARB) -1)
-    {
-      _procs_GL_ARB_matrix_palette.glMatrixIndexubvARB =
-        (GdkGLProc_glMatrixIndexubvARB) gdk_gl_get_proc_address ("glMatrixIndexubvARB");
+    _procs_GL_ARB_matrix_palette.glMatrixIndexubvARB =
+      (GdkGLProc_glMatrixIndexubvARB) gdk_gl_get_proc_address ("glMatrixIndexubvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMatrixIndexubvARB () - %s",
-                   (_procs_GL_ARB_matrix_palette.glMatrixIndexubvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixIndexubvARB () - %s",
+               (_procs_GL_ARB_matrix_palette.glMatrixIndexubvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_matrix_palette.glMatrixIndexubvARB);
 }
@@ -4499,14 +4121,12 @@ gdk_gl_get_glMatrixIndexusvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_matrix_palette.glMatrixIndexusvARB == (GdkGLProc_glMatrixIndexusvARB) -1)
-    {
-      _procs_GL_ARB_matrix_palette.glMatrixIndexusvARB =
-        (GdkGLProc_glMatrixIndexusvARB) gdk_gl_get_proc_address ("glMatrixIndexusvARB");
+    _procs_GL_ARB_matrix_palette.glMatrixIndexusvARB =
+      (GdkGLProc_glMatrixIndexusvARB) gdk_gl_get_proc_address ("glMatrixIndexusvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMatrixIndexusvARB () - %s",
-                   (_procs_GL_ARB_matrix_palette.glMatrixIndexusvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixIndexusvARB () - %s",
+               (_procs_GL_ARB_matrix_palette.glMatrixIndexusvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_matrix_palette.glMatrixIndexusvARB);
 }
@@ -4519,14 +4139,12 @@ gdk_gl_get_glMatrixIndexuivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_matrix_palette.glMatrixIndexuivARB == (GdkGLProc_glMatrixIndexuivARB) -1)
-    {
-      _procs_GL_ARB_matrix_palette.glMatrixIndexuivARB =
-        (GdkGLProc_glMatrixIndexuivARB) gdk_gl_get_proc_address ("glMatrixIndexuivARB");
+    _procs_GL_ARB_matrix_palette.glMatrixIndexuivARB =
+      (GdkGLProc_glMatrixIndexuivARB) gdk_gl_get_proc_address ("glMatrixIndexuivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMatrixIndexuivARB () - %s",
-                   (_procs_GL_ARB_matrix_palette.glMatrixIndexuivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixIndexuivARB () - %s",
+               (_procs_GL_ARB_matrix_palette.glMatrixIndexuivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_matrix_palette.glMatrixIndexuivARB);
 }
@@ -4539,14 +4157,12 @@ gdk_gl_get_glMatrixIndexPointerARB (void)
     return NULL;
 
   if (_procs_GL_ARB_matrix_palette.glMatrixIndexPointerARB == (GdkGLProc_glMatrixIndexPointerARB) -1)
-    {
-      _procs_GL_ARB_matrix_palette.glMatrixIndexPointerARB =
-        (GdkGLProc_glMatrixIndexPointerARB) gdk_gl_get_proc_address ("glMatrixIndexPointerARB");
+    _procs_GL_ARB_matrix_palette.glMatrixIndexPointerARB =
+      (GdkGLProc_glMatrixIndexPointerARB) gdk_gl_get_proc_address ("glMatrixIndexPointerARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMatrixIndexPointerARB () - %s",
-                   (_procs_GL_ARB_matrix_palette.glMatrixIndexPointerARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixIndexPointerARB () - %s",
+               (_procs_GL_ARB_matrix_palette.glMatrixIndexPointerARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_matrix_palette.glMatrixIndexPointerARB);
 }
@@ -4615,14 +4231,12 @@ gdk_gl_get_glWindowPos2dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos2dARB == (GdkGLProc_glWindowPos2dARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos2dARB =
-        (GdkGLProc_glWindowPos2dARB) gdk_gl_get_proc_address ("glWindowPos2dARB");
+    _procs_GL_ARB_window_pos.glWindowPos2dARB =
+      (GdkGLProc_glWindowPos2dARB) gdk_gl_get_proc_address ("glWindowPos2dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2dARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos2dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2dARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos2dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos2dARB);
 }
@@ -4635,14 +4249,12 @@ gdk_gl_get_glWindowPos2dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos2dvARB == (GdkGLProc_glWindowPos2dvARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos2dvARB =
-        (GdkGLProc_glWindowPos2dvARB) gdk_gl_get_proc_address ("glWindowPos2dvARB");
+    _procs_GL_ARB_window_pos.glWindowPos2dvARB =
+      (GdkGLProc_glWindowPos2dvARB) gdk_gl_get_proc_address ("glWindowPos2dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2dvARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos2dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2dvARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos2dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos2dvARB);
 }
@@ -4655,14 +4267,12 @@ gdk_gl_get_glWindowPos2fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos2fARB == (GdkGLProc_glWindowPos2fARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos2fARB =
-        (GdkGLProc_glWindowPos2fARB) gdk_gl_get_proc_address ("glWindowPos2fARB");
+    _procs_GL_ARB_window_pos.glWindowPos2fARB =
+      (GdkGLProc_glWindowPos2fARB) gdk_gl_get_proc_address ("glWindowPos2fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2fARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos2fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2fARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos2fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos2fARB);
 }
@@ -4675,14 +4285,12 @@ gdk_gl_get_glWindowPos2fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos2fvARB == (GdkGLProc_glWindowPos2fvARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos2fvARB =
-        (GdkGLProc_glWindowPos2fvARB) gdk_gl_get_proc_address ("glWindowPos2fvARB");
+    _procs_GL_ARB_window_pos.glWindowPos2fvARB =
+      (GdkGLProc_glWindowPos2fvARB) gdk_gl_get_proc_address ("glWindowPos2fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2fvARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos2fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2fvARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos2fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos2fvARB);
 }
@@ -4695,14 +4303,12 @@ gdk_gl_get_glWindowPos2iARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos2iARB == (GdkGLProc_glWindowPos2iARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos2iARB =
-        (GdkGLProc_glWindowPos2iARB) gdk_gl_get_proc_address ("glWindowPos2iARB");
+    _procs_GL_ARB_window_pos.glWindowPos2iARB =
+      (GdkGLProc_glWindowPos2iARB) gdk_gl_get_proc_address ("glWindowPos2iARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2iARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos2iARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2iARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos2iARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos2iARB);
 }
@@ -4715,14 +4321,12 @@ gdk_gl_get_glWindowPos2ivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos2ivARB == (GdkGLProc_glWindowPos2ivARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos2ivARB =
-        (GdkGLProc_glWindowPos2ivARB) gdk_gl_get_proc_address ("glWindowPos2ivARB");
+    _procs_GL_ARB_window_pos.glWindowPos2ivARB =
+      (GdkGLProc_glWindowPos2ivARB) gdk_gl_get_proc_address ("glWindowPos2ivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2ivARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos2ivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2ivARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos2ivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos2ivARB);
 }
@@ -4735,14 +4339,12 @@ gdk_gl_get_glWindowPos2sARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos2sARB == (GdkGLProc_glWindowPos2sARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos2sARB =
-        (GdkGLProc_glWindowPos2sARB) gdk_gl_get_proc_address ("glWindowPos2sARB");
+    _procs_GL_ARB_window_pos.glWindowPos2sARB =
+      (GdkGLProc_glWindowPos2sARB) gdk_gl_get_proc_address ("glWindowPos2sARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2sARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos2sARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2sARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos2sARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos2sARB);
 }
@@ -4755,14 +4357,12 @@ gdk_gl_get_glWindowPos2svARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos2svARB == (GdkGLProc_glWindowPos2svARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos2svARB =
-        (GdkGLProc_glWindowPos2svARB) gdk_gl_get_proc_address ("glWindowPos2svARB");
+    _procs_GL_ARB_window_pos.glWindowPos2svARB =
+      (GdkGLProc_glWindowPos2svARB) gdk_gl_get_proc_address ("glWindowPos2svARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2svARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos2svARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2svARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos2svARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos2svARB);
 }
@@ -4775,14 +4375,12 @@ gdk_gl_get_glWindowPos3dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos3dARB == (GdkGLProc_glWindowPos3dARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos3dARB =
-        (GdkGLProc_glWindowPos3dARB) gdk_gl_get_proc_address ("glWindowPos3dARB");
+    _procs_GL_ARB_window_pos.glWindowPos3dARB =
+      (GdkGLProc_glWindowPos3dARB) gdk_gl_get_proc_address ("glWindowPos3dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3dARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos3dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3dARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos3dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos3dARB);
 }
@@ -4795,14 +4393,12 @@ gdk_gl_get_glWindowPos3dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos3dvARB == (GdkGLProc_glWindowPos3dvARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos3dvARB =
-        (GdkGLProc_glWindowPos3dvARB) gdk_gl_get_proc_address ("glWindowPos3dvARB");
+    _procs_GL_ARB_window_pos.glWindowPos3dvARB =
+      (GdkGLProc_glWindowPos3dvARB) gdk_gl_get_proc_address ("glWindowPos3dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3dvARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos3dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3dvARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos3dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos3dvARB);
 }
@@ -4815,14 +4411,12 @@ gdk_gl_get_glWindowPos3fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos3fARB == (GdkGLProc_glWindowPos3fARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos3fARB =
-        (GdkGLProc_glWindowPos3fARB) gdk_gl_get_proc_address ("glWindowPos3fARB");
+    _procs_GL_ARB_window_pos.glWindowPos3fARB =
+      (GdkGLProc_glWindowPos3fARB) gdk_gl_get_proc_address ("glWindowPos3fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3fARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos3fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3fARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos3fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos3fARB);
 }
@@ -4835,14 +4429,12 @@ gdk_gl_get_glWindowPos3fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos3fvARB == (GdkGLProc_glWindowPos3fvARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos3fvARB =
-        (GdkGLProc_glWindowPos3fvARB) gdk_gl_get_proc_address ("glWindowPos3fvARB");
+    _procs_GL_ARB_window_pos.glWindowPos3fvARB =
+      (GdkGLProc_glWindowPos3fvARB) gdk_gl_get_proc_address ("glWindowPos3fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3fvARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos3fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3fvARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos3fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos3fvARB);
 }
@@ -4855,14 +4447,12 @@ gdk_gl_get_glWindowPos3iARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos3iARB == (GdkGLProc_glWindowPos3iARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos3iARB =
-        (GdkGLProc_glWindowPos3iARB) gdk_gl_get_proc_address ("glWindowPos3iARB");
+    _procs_GL_ARB_window_pos.glWindowPos3iARB =
+      (GdkGLProc_glWindowPos3iARB) gdk_gl_get_proc_address ("glWindowPos3iARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3iARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos3iARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3iARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos3iARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos3iARB);
 }
@@ -4875,14 +4465,12 @@ gdk_gl_get_glWindowPos3ivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos3ivARB == (GdkGLProc_glWindowPos3ivARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos3ivARB =
-        (GdkGLProc_glWindowPos3ivARB) gdk_gl_get_proc_address ("glWindowPos3ivARB");
+    _procs_GL_ARB_window_pos.glWindowPos3ivARB =
+      (GdkGLProc_glWindowPos3ivARB) gdk_gl_get_proc_address ("glWindowPos3ivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3ivARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos3ivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3ivARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos3ivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos3ivARB);
 }
@@ -4895,14 +4483,12 @@ gdk_gl_get_glWindowPos3sARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos3sARB == (GdkGLProc_glWindowPos3sARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos3sARB =
-        (GdkGLProc_glWindowPos3sARB) gdk_gl_get_proc_address ("glWindowPos3sARB");
+    _procs_GL_ARB_window_pos.glWindowPos3sARB =
+      (GdkGLProc_glWindowPos3sARB) gdk_gl_get_proc_address ("glWindowPos3sARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3sARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos3sARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3sARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos3sARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos3sARB);
 }
@@ -4915,14 +4501,12 @@ gdk_gl_get_glWindowPos3svARB (void)
     return NULL;
 
   if (_procs_GL_ARB_window_pos.glWindowPos3svARB == (GdkGLProc_glWindowPos3svARB) -1)
-    {
-      _procs_GL_ARB_window_pos.glWindowPos3svARB =
-        (GdkGLProc_glWindowPos3svARB) gdk_gl_get_proc_address ("glWindowPos3svARB");
+    _procs_GL_ARB_window_pos.glWindowPos3svARB =
+      (GdkGLProc_glWindowPos3svARB) gdk_gl_get_proc_address ("glWindowPos3svARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3svARB () - %s",
-                   (_procs_GL_ARB_window_pos.glWindowPos3svARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3svARB () - %s",
+               (_procs_GL_ARB_window_pos.glWindowPos3svARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_window_pos.glWindowPos3svARB);
 }
@@ -5048,14 +4632,12 @@ gdk_gl_get_glVertexAttrib1dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib1dARB == (GdkGLProc_glVertexAttrib1dARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib1dARB =
-        (GdkGLProc_glVertexAttrib1dARB) gdk_gl_get_proc_address ("glVertexAttrib1dARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib1dARB =
+      (GdkGLProc_glVertexAttrib1dARB) gdk_gl_get_proc_address ("glVertexAttrib1dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1dARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib1dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1dARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib1dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib1dARB);
 }
@@ -5068,14 +4650,12 @@ gdk_gl_get_glVertexAttrib1dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib1dvARB == (GdkGLProc_glVertexAttrib1dvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib1dvARB =
-        (GdkGLProc_glVertexAttrib1dvARB) gdk_gl_get_proc_address ("glVertexAttrib1dvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib1dvARB =
+      (GdkGLProc_glVertexAttrib1dvARB) gdk_gl_get_proc_address ("glVertexAttrib1dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1dvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib1dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1dvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib1dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib1dvARB);
 }
@@ -5088,14 +4668,12 @@ gdk_gl_get_glVertexAttrib1fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib1fARB == (GdkGLProc_glVertexAttrib1fARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib1fARB =
-        (GdkGLProc_glVertexAttrib1fARB) gdk_gl_get_proc_address ("glVertexAttrib1fARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib1fARB =
+      (GdkGLProc_glVertexAttrib1fARB) gdk_gl_get_proc_address ("glVertexAttrib1fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1fARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib1fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1fARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib1fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib1fARB);
 }
@@ -5108,14 +4686,12 @@ gdk_gl_get_glVertexAttrib1fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib1fvARB == (GdkGLProc_glVertexAttrib1fvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib1fvARB =
-        (GdkGLProc_glVertexAttrib1fvARB) gdk_gl_get_proc_address ("glVertexAttrib1fvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib1fvARB =
+      (GdkGLProc_glVertexAttrib1fvARB) gdk_gl_get_proc_address ("glVertexAttrib1fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1fvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib1fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1fvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib1fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib1fvARB);
 }
@@ -5128,14 +4704,12 @@ gdk_gl_get_glVertexAttrib1sARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib1sARB == (GdkGLProc_glVertexAttrib1sARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib1sARB =
-        (GdkGLProc_glVertexAttrib1sARB) gdk_gl_get_proc_address ("glVertexAttrib1sARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib1sARB =
+      (GdkGLProc_glVertexAttrib1sARB) gdk_gl_get_proc_address ("glVertexAttrib1sARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1sARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib1sARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1sARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib1sARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib1sARB);
 }
@@ -5148,14 +4722,12 @@ gdk_gl_get_glVertexAttrib1svARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib1svARB == (GdkGLProc_glVertexAttrib1svARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib1svARB =
-        (GdkGLProc_glVertexAttrib1svARB) gdk_gl_get_proc_address ("glVertexAttrib1svARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib1svARB =
+      (GdkGLProc_glVertexAttrib1svARB) gdk_gl_get_proc_address ("glVertexAttrib1svARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1svARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib1svARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1svARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib1svARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib1svARB);
 }
@@ -5168,14 +4740,12 @@ gdk_gl_get_glVertexAttrib2dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib2dARB == (GdkGLProc_glVertexAttrib2dARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib2dARB =
-        (GdkGLProc_glVertexAttrib2dARB) gdk_gl_get_proc_address ("glVertexAttrib2dARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib2dARB =
+      (GdkGLProc_glVertexAttrib2dARB) gdk_gl_get_proc_address ("glVertexAttrib2dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2dARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib2dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2dARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib2dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib2dARB);
 }
@@ -5188,14 +4758,12 @@ gdk_gl_get_glVertexAttrib2dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib2dvARB == (GdkGLProc_glVertexAttrib2dvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib2dvARB =
-        (GdkGLProc_glVertexAttrib2dvARB) gdk_gl_get_proc_address ("glVertexAttrib2dvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib2dvARB =
+      (GdkGLProc_glVertexAttrib2dvARB) gdk_gl_get_proc_address ("glVertexAttrib2dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2dvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib2dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2dvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib2dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib2dvARB);
 }
@@ -5208,14 +4776,12 @@ gdk_gl_get_glVertexAttrib2fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib2fARB == (GdkGLProc_glVertexAttrib2fARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib2fARB =
-        (GdkGLProc_glVertexAttrib2fARB) gdk_gl_get_proc_address ("glVertexAttrib2fARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib2fARB =
+      (GdkGLProc_glVertexAttrib2fARB) gdk_gl_get_proc_address ("glVertexAttrib2fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2fARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib2fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2fARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib2fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib2fARB);
 }
@@ -5228,14 +4794,12 @@ gdk_gl_get_glVertexAttrib2fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib2fvARB == (GdkGLProc_glVertexAttrib2fvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib2fvARB =
-        (GdkGLProc_glVertexAttrib2fvARB) gdk_gl_get_proc_address ("glVertexAttrib2fvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib2fvARB =
+      (GdkGLProc_glVertexAttrib2fvARB) gdk_gl_get_proc_address ("glVertexAttrib2fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2fvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib2fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2fvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib2fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib2fvARB);
 }
@@ -5248,14 +4812,12 @@ gdk_gl_get_glVertexAttrib2sARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib2sARB == (GdkGLProc_glVertexAttrib2sARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib2sARB =
-        (GdkGLProc_glVertexAttrib2sARB) gdk_gl_get_proc_address ("glVertexAttrib2sARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib2sARB =
+      (GdkGLProc_glVertexAttrib2sARB) gdk_gl_get_proc_address ("glVertexAttrib2sARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2sARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib2sARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2sARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib2sARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib2sARB);
 }
@@ -5268,14 +4830,12 @@ gdk_gl_get_glVertexAttrib2svARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib2svARB == (GdkGLProc_glVertexAttrib2svARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib2svARB =
-        (GdkGLProc_glVertexAttrib2svARB) gdk_gl_get_proc_address ("glVertexAttrib2svARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib2svARB =
+      (GdkGLProc_glVertexAttrib2svARB) gdk_gl_get_proc_address ("glVertexAttrib2svARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2svARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib2svARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2svARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib2svARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib2svARB);
 }
@@ -5288,14 +4848,12 @@ gdk_gl_get_glVertexAttrib3dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib3dARB == (GdkGLProc_glVertexAttrib3dARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib3dARB =
-        (GdkGLProc_glVertexAttrib3dARB) gdk_gl_get_proc_address ("glVertexAttrib3dARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib3dARB =
+      (GdkGLProc_glVertexAttrib3dARB) gdk_gl_get_proc_address ("glVertexAttrib3dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3dARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib3dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3dARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib3dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib3dARB);
 }
@@ -5308,14 +4866,12 @@ gdk_gl_get_glVertexAttrib3dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib3dvARB == (GdkGLProc_glVertexAttrib3dvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib3dvARB =
-        (GdkGLProc_glVertexAttrib3dvARB) gdk_gl_get_proc_address ("glVertexAttrib3dvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib3dvARB =
+      (GdkGLProc_glVertexAttrib3dvARB) gdk_gl_get_proc_address ("glVertexAttrib3dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3dvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib3dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3dvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib3dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib3dvARB);
 }
@@ -5328,14 +4884,12 @@ gdk_gl_get_glVertexAttrib3fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib3fARB == (GdkGLProc_glVertexAttrib3fARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib3fARB =
-        (GdkGLProc_glVertexAttrib3fARB) gdk_gl_get_proc_address ("glVertexAttrib3fARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib3fARB =
+      (GdkGLProc_glVertexAttrib3fARB) gdk_gl_get_proc_address ("glVertexAttrib3fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3fARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib3fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3fARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib3fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib3fARB);
 }
@@ -5348,14 +4902,12 @@ gdk_gl_get_glVertexAttrib3fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib3fvARB == (GdkGLProc_glVertexAttrib3fvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib3fvARB =
-        (GdkGLProc_glVertexAttrib3fvARB) gdk_gl_get_proc_address ("glVertexAttrib3fvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib3fvARB =
+      (GdkGLProc_glVertexAttrib3fvARB) gdk_gl_get_proc_address ("glVertexAttrib3fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3fvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib3fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3fvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib3fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib3fvARB);
 }
@@ -5368,14 +4920,12 @@ gdk_gl_get_glVertexAttrib3sARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib3sARB == (GdkGLProc_glVertexAttrib3sARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib3sARB =
-        (GdkGLProc_glVertexAttrib3sARB) gdk_gl_get_proc_address ("glVertexAttrib3sARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib3sARB =
+      (GdkGLProc_glVertexAttrib3sARB) gdk_gl_get_proc_address ("glVertexAttrib3sARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3sARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib3sARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3sARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib3sARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib3sARB);
 }
@@ -5388,14 +4938,12 @@ gdk_gl_get_glVertexAttrib3svARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib3svARB == (GdkGLProc_glVertexAttrib3svARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib3svARB =
-        (GdkGLProc_glVertexAttrib3svARB) gdk_gl_get_proc_address ("glVertexAttrib3svARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib3svARB =
+      (GdkGLProc_glVertexAttrib3svARB) gdk_gl_get_proc_address ("glVertexAttrib3svARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3svARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib3svARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3svARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib3svARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib3svARB);
 }
@@ -5408,14 +4956,12 @@ gdk_gl_get_glVertexAttrib4NbvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4NbvARB == (GdkGLProc_glVertexAttrib4NbvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4NbvARB =
-        (GdkGLProc_glVertexAttrib4NbvARB) gdk_gl_get_proc_address ("glVertexAttrib4NbvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4NbvARB =
+      (GdkGLProc_glVertexAttrib4NbvARB) gdk_gl_get_proc_address ("glVertexAttrib4NbvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4NbvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4NbvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4NbvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4NbvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4NbvARB);
 }
@@ -5428,14 +4974,12 @@ gdk_gl_get_glVertexAttrib4NivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4NivARB == (GdkGLProc_glVertexAttrib4NivARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4NivARB =
-        (GdkGLProc_glVertexAttrib4NivARB) gdk_gl_get_proc_address ("glVertexAttrib4NivARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4NivARB =
+      (GdkGLProc_glVertexAttrib4NivARB) gdk_gl_get_proc_address ("glVertexAttrib4NivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4NivARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4NivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4NivARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4NivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4NivARB);
 }
@@ -5448,14 +4992,12 @@ gdk_gl_get_glVertexAttrib4NsvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4NsvARB == (GdkGLProc_glVertexAttrib4NsvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4NsvARB =
-        (GdkGLProc_glVertexAttrib4NsvARB) gdk_gl_get_proc_address ("glVertexAttrib4NsvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4NsvARB =
+      (GdkGLProc_glVertexAttrib4NsvARB) gdk_gl_get_proc_address ("glVertexAttrib4NsvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4NsvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4NsvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4NsvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4NsvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4NsvARB);
 }
@@ -5468,14 +5010,12 @@ gdk_gl_get_glVertexAttrib4NubARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4NubARB == (GdkGLProc_glVertexAttrib4NubARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4NubARB =
-        (GdkGLProc_glVertexAttrib4NubARB) gdk_gl_get_proc_address ("glVertexAttrib4NubARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4NubARB =
+      (GdkGLProc_glVertexAttrib4NubARB) gdk_gl_get_proc_address ("glVertexAttrib4NubARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4NubARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4NubARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4NubARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4NubARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4NubARB);
 }
@@ -5488,14 +5028,12 @@ gdk_gl_get_glVertexAttrib4NubvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4NubvARB == (GdkGLProc_glVertexAttrib4NubvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4NubvARB =
-        (GdkGLProc_glVertexAttrib4NubvARB) gdk_gl_get_proc_address ("glVertexAttrib4NubvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4NubvARB =
+      (GdkGLProc_glVertexAttrib4NubvARB) gdk_gl_get_proc_address ("glVertexAttrib4NubvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4NubvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4NubvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4NubvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4NubvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4NubvARB);
 }
@@ -5508,14 +5046,12 @@ gdk_gl_get_glVertexAttrib4NuivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4NuivARB == (GdkGLProc_glVertexAttrib4NuivARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4NuivARB =
-        (GdkGLProc_glVertexAttrib4NuivARB) gdk_gl_get_proc_address ("glVertexAttrib4NuivARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4NuivARB =
+      (GdkGLProc_glVertexAttrib4NuivARB) gdk_gl_get_proc_address ("glVertexAttrib4NuivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4NuivARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4NuivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4NuivARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4NuivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4NuivARB);
 }
@@ -5528,14 +5064,12 @@ gdk_gl_get_glVertexAttrib4NusvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4NusvARB == (GdkGLProc_glVertexAttrib4NusvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4NusvARB =
-        (GdkGLProc_glVertexAttrib4NusvARB) gdk_gl_get_proc_address ("glVertexAttrib4NusvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4NusvARB =
+      (GdkGLProc_glVertexAttrib4NusvARB) gdk_gl_get_proc_address ("glVertexAttrib4NusvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4NusvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4NusvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4NusvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4NusvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4NusvARB);
 }
@@ -5548,14 +5082,12 @@ gdk_gl_get_glVertexAttrib4bvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4bvARB == (GdkGLProc_glVertexAttrib4bvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4bvARB =
-        (GdkGLProc_glVertexAttrib4bvARB) gdk_gl_get_proc_address ("glVertexAttrib4bvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4bvARB =
+      (GdkGLProc_glVertexAttrib4bvARB) gdk_gl_get_proc_address ("glVertexAttrib4bvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4bvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4bvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4bvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4bvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4bvARB);
 }
@@ -5568,14 +5100,12 @@ gdk_gl_get_glVertexAttrib4dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4dARB == (GdkGLProc_glVertexAttrib4dARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4dARB =
-        (GdkGLProc_glVertexAttrib4dARB) gdk_gl_get_proc_address ("glVertexAttrib4dARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4dARB =
+      (GdkGLProc_glVertexAttrib4dARB) gdk_gl_get_proc_address ("glVertexAttrib4dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4dARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4dARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4dARB);
 }
@@ -5588,14 +5118,12 @@ gdk_gl_get_glVertexAttrib4dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4dvARB == (GdkGLProc_glVertexAttrib4dvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4dvARB =
-        (GdkGLProc_glVertexAttrib4dvARB) gdk_gl_get_proc_address ("glVertexAttrib4dvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4dvARB =
+      (GdkGLProc_glVertexAttrib4dvARB) gdk_gl_get_proc_address ("glVertexAttrib4dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4dvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4dvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4dvARB);
 }
@@ -5608,14 +5136,12 @@ gdk_gl_get_glVertexAttrib4fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4fARB == (GdkGLProc_glVertexAttrib4fARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4fARB =
-        (GdkGLProc_glVertexAttrib4fARB) gdk_gl_get_proc_address ("glVertexAttrib4fARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4fARB =
+      (GdkGLProc_glVertexAttrib4fARB) gdk_gl_get_proc_address ("glVertexAttrib4fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4fARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4fARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4fARB);
 }
@@ -5628,14 +5154,12 @@ gdk_gl_get_glVertexAttrib4fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4fvARB == (GdkGLProc_glVertexAttrib4fvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4fvARB =
-        (GdkGLProc_glVertexAttrib4fvARB) gdk_gl_get_proc_address ("glVertexAttrib4fvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4fvARB =
+      (GdkGLProc_glVertexAttrib4fvARB) gdk_gl_get_proc_address ("glVertexAttrib4fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4fvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4fvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4fvARB);
 }
@@ -5648,14 +5172,12 @@ gdk_gl_get_glVertexAttrib4ivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4ivARB == (GdkGLProc_glVertexAttrib4ivARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4ivARB =
-        (GdkGLProc_glVertexAttrib4ivARB) gdk_gl_get_proc_address ("glVertexAttrib4ivARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4ivARB =
+      (GdkGLProc_glVertexAttrib4ivARB) gdk_gl_get_proc_address ("glVertexAttrib4ivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4ivARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4ivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4ivARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4ivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4ivARB);
 }
@@ -5668,14 +5190,12 @@ gdk_gl_get_glVertexAttrib4sARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4sARB == (GdkGLProc_glVertexAttrib4sARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4sARB =
-        (GdkGLProc_glVertexAttrib4sARB) gdk_gl_get_proc_address ("glVertexAttrib4sARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4sARB =
+      (GdkGLProc_glVertexAttrib4sARB) gdk_gl_get_proc_address ("glVertexAttrib4sARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4sARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4sARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4sARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4sARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4sARB);
 }
@@ -5688,14 +5208,12 @@ gdk_gl_get_glVertexAttrib4svARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4svARB == (GdkGLProc_glVertexAttrib4svARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4svARB =
-        (GdkGLProc_glVertexAttrib4svARB) gdk_gl_get_proc_address ("glVertexAttrib4svARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4svARB =
+      (GdkGLProc_glVertexAttrib4svARB) gdk_gl_get_proc_address ("glVertexAttrib4svARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4svARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4svARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4svARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4svARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4svARB);
 }
@@ -5708,14 +5226,12 @@ gdk_gl_get_glVertexAttrib4ubvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4ubvARB == (GdkGLProc_glVertexAttrib4ubvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4ubvARB =
-        (GdkGLProc_glVertexAttrib4ubvARB) gdk_gl_get_proc_address ("glVertexAttrib4ubvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4ubvARB =
+      (GdkGLProc_glVertexAttrib4ubvARB) gdk_gl_get_proc_address ("glVertexAttrib4ubvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4ubvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4ubvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4ubvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4ubvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4ubvARB);
 }
@@ -5728,14 +5244,12 @@ gdk_gl_get_glVertexAttrib4uivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4uivARB == (GdkGLProc_glVertexAttrib4uivARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4uivARB =
-        (GdkGLProc_glVertexAttrib4uivARB) gdk_gl_get_proc_address ("glVertexAttrib4uivARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4uivARB =
+      (GdkGLProc_glVertexAttrib4uivARB) gdk_gl_get_proc_address ("glVertexAttrib4uivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4uivARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4uivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4uivARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4uivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4uivARB);
 }
@@ -5748,14 +5262,12 @@ gdk_gl_get_glVertexAttrib4usvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttrib4usvARB == (GdkGLProc_glVertexAttrib4usvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttrib4usvARB =
-        (GdkGLProc_glVertexAttrib4usvARB) gdk_gl_get_proc_address ("glVertexAttrib4usvARB");
+    _procs_GL_ARB_vertex_program.glVertexAttrib4usvARB =
+      (GdkGLProc_glVertexAttrib4usvARB) gdk_gl_get_proc_address ("glVertexAttrib4usvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4usvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttrib4usvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4usvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttrib4usvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttrib4usvARB);
 }
@@ -5768,14 +5280,12 @@ gdk_gl_get_glVertexAttribPointerARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glVertexAttribPointerARB == (GdkGLProc_glVertexAttribPointerARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glVertexAttribPointerARB =
-        (GdkGLProc_glVertexAttribPointerARB) gdk_gl_get_proc_address ("glVertexAttribPointerARB");
+    _procs_GL_ARB_vertex_program.glVertexAttribPointerARB =
+      (GdkGLProc_glVertexAttribPointerARB) gdk_gl_get_proc_address ("glVertexAttribPointerARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribPointerARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glVertexAttribPointerARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribPointerARB () - %s",
+               (_procs_GL_ARB_vertex_program.glVertexAttribPointerARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glVertexAttribPointerARB);
 }
@@ -5788,14 +5298,12 @@ gdk_gl_get_glEnableVertexAttribArrayARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glEnableVertexAttribArrayARB == (GdkGLProc_glEnableVertexAttribArrayARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glEnableVertexAttribArrayARB =
-        (GdkGLProc_glEnableVertexAttribArrayARB) gdk_gl_get_proc_address ("glEnableVertexAttribArrayARB");
+    _procs_GL_ARB_vertex_program.glEnableVertexAttribArrayARB =
+      (GdkGLProc_glEnableVertexAttribArrayARB) gdk_gl_get_proc_address ("glEnableVertexAttribArrayARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glEnableVertexAttribArrayARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glEnableVertexAttribArrayARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEnableVertexAttribArrayARB () - %s",
+               (_procs_GL_ARB_vertex_program.glEnableVertexAttribArrayARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glEnableVertexAttribArrayARB);
 }
@@ -5808,14 +5316,12 @@ gdk_gl_get_glDisableVertexAttribArrayARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glDisableVertexAttribArrayARB == (GdkGLProc_glDisableVertexAttribArrayARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glDisableVertexAttribArrayARB =
-        (GdkGLProc_glDisableVertexAttribArrayARB) gdk_gl_get_proc_address ("glDisableVertexAttribArrayARB");
+    _procs_GL_ARB_vertex_program.glDisableVertexAttribArrayARB =
+      (GdkGLProc_glDisableVertexAttribArrayARB) gdk_gl_get_proc_address ("glDisableVertexAttribArrayARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDisableVertexAttribArrayARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glDisableVertexAttribArrayARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDisableVertexAttribArrayARB () - %s",
+               (_procs_GL_ARB_vertex_program.glDisableVertexAttribArrayARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glDisableVertexAttribArrayARB);
 }
@@ -5828,14 +5334,12 @@ gdk_gl_get_glProgramStringARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glProgramStringARB == (GdkGLProc_glProgramStringARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glProgramStringARB =
-        (GdkGLProc_glProgramStringARB) gdk_gl_get_proc_address ("glProgramStringARB");
+    _procs_GL_ARB_vertex_program.glProgramStringARB =
+      (GdkGLProc_glProgramStringARB) gdk_gl_get_proc_address ("glProgramStringARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramStringARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glProgramStringARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramStringARB () - %s",
+               (_procs_GL_ARB_vertex_program.glProgramStringARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glProgramStringARB);
 }
@@ -5848,14 +5352,12 @@ gdk_gl_get_glBindProgramARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glBindProgramARB == (GdkGLProc_glBindProgramARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glBindProgramARB =
-        (GdkGLProc_glBindProgramARB) gdk_gl_get_proc_address ("glBindProgramARB");
+    _procs_GL_ARB_vertex_program.glBindProgramARB =
+      (GdkGLProc_glBindProgramARB) gdk_gl_get_proc_address ("glBindProgramARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindProgramARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glBindProgramARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindProgramARB () - %s",
+               (_procs_GL_ARB_vertex_program.glBindProgramARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glBindProgramARB);
 }
@@ -5868,14 +5370,12 @@ gdk_gl_get_glDeleteProgramsARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glDeleteProgramsARB == (GdkGLProc_glDeleteProgramsARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glDeleteProgramsARB =
-        (GdkGLProc_glDeleteProgramsARB) gdk_gl_get_proc_address ("glDeleteProgramsARB");
+    _procs_GL_ARB_vertex_program.glDeleteProgramsARB =
+      (GdkGLProc_glDeleteProgramsARB) gdk_gl_get_proc_address ("glDeleteProgramsARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteProgramsARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glDeleteProgramsARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteProgramsARB () - %s",
+               (_procs_GL_ARB_vertex_program.glDeleteProgramsARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glDeleteProgramsARB);
 }
@@ -5888,14 +5388,12 @@ gdk_gl_get_glGenProgramsARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGenProgramsARB == (GdkGLProc_glGenProgramsARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGenProgramsARB =
-        (GdkGLProc_glGenProgramsARB) gdk_gl_get_proc_address ("glGenProgramsARB");
+    _procs_GL_ARB_vertex_program.glGenProgramsARB =
+      (GdkGLProc_glGenProgramsARB) gdk_gl_get_proc_address ("glGenProgramsARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenProgramsARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGenProgramsARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenProgramsARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGenProgramsARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGenProgramsARB);
 }
@@ -5908,14 +5406,12 @@ gdk_gl_get_glProgramEnvParameter4dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glProgramEnvParameter4dARB == (GdkGLProc_glProgramEnvParameter4dARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glProgramEnvParameter4dARB =
-        (GdkGLProc_glProgramEnvParameter4dARB) gdk_gl_get_proc_address ("glProgramEnvParameter4dARB");
+    _procs_GL_ARB_vertex_program.glProgramEnvParameter4dARB =
+      (GdkGLProc_glProgramEnvParameter4dARB) gdk_gl_get_proc_address ("glProgramEnvParameter4dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramEnvParameter4dARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glProgramEnvParameter4dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParameter4dARB () - %s",
+               (_procs_GL_ARB_vertex_program.glProgramEnvParameter4dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glProgramEnvParameter4dARB);
 }
@@ -5928,14 +5424,12 @@ gdk_gl_get_glProgramEnvParameter4dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glProgramEnvParameter4dvARB == (GdkGLProc_glProgramEnvParameter4dvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glProgramEnvParameter4dvARB =
-        (GdkGLProc_glProgramEnvParameter4dvARB) gdk_gl_get_proc_address ("glProgramEnvParameter4dvARB");
+    _procs_GL_ARB_vertex_program.glProgramEnvParameter4dvARB =
+      (GdkGLProc_glProgramEnvParameter4dvARB) gdk_gl_get_proc_address ("glProgramEnvParameter4dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramEnvParameter4dvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glProgramEnvParameter4dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParameter4dvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glProgramEnvParameter4dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glProgramEnvParameter4dvARB);
 }
@@ -5948,14 +5442,12 @@ gdk_gl_get_glProgramEnvParameter4fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glProgramEnvParameter4fARB == (GdkGLProc_glProgramEnvParameter4fARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glProgramEnvParameter4fARB =
-        (GdkGLProc_glProgramEnvParameter4fARB) gdk_gl_get_proc_address ("glProgramEnvParameter4fARB");
+    _procs_GL_ARB_vertex_program.glProgramEnvParameter4fARB =
+      (GdkGLProc_glProgramEnvParameter4fARB) gdk_gl_get_proc_address ("glProgramEnvParameter4fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramEnvParameter4fARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glProgramEnvParameter4fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParameter4fARB () - %s",
+               (_procs_GL_ARB_vertex_program.glProgramEnvParameter4fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glProgramEnvParameter4fARB);
 }
@@ -5968,14 +5460,12 @@ gdk_gl_get_glProgramEnvParameter4fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glProgramEnvParameter4fvARB == (GdkGLProc_glProgramEnvParameter4fvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glProgramEnvParameter4fvARB =
-        (GdkGLProc_glProgramEnvParameter4fvARB) gdk_gl_get_proc_address ("glProgramEnvParameter4fvARB");
+    _procs_GL_ARB_vertex_program.glProgramEnvParameter4fvARB =
+      (GdkGLProc_glProgramEnvParameter4fvARB) gdk_gl_get_proc_address ("glProgramEnvParameter4fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramEnvParameter4fvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glProgramEnvParameter4fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParameter4fvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glProgramEnvParameter4fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glProgramEnvParameter4fvARB);
 }
@@ -5988,14 +5478,12 @@ gdk_gl_get_glProgramLocalParameter4dARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glProgramLocalParameter4dARB == (GdkGLProc_glProgramLocalParameter4dARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glProgramLocalParameter4dARB =
-        (GdkGLProc_glProgramLocalParameter4dARB) gdk_gl_get_proc_address ("glProgramLocalParameter4dARB");
+    _procs_GL_ARB_vertex_program.glProgramLocalParameter4dARB =
+      (GdkGLProc_glProgramLocalParameter4dARB) gdk_gl_get_proc_address ("glProgramLocalParameter4dARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramLocalParameter4dARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glProgramLocalParameter4dARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParameter4dARB () - %s",
+               (_procs_GL_ARB_vertex_program.glProgramLocalParameter4dARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glProgramLocalParameter4dARB);
 }
@@ -6008,14 +5496,12 @@ gdk_gl_get_glProgramLocalParameter4dvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glProgramLocalParameter4dvARB == (GdkGLProc_glProgramLocalParameter4dvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glProgramLocalParameter4dvARB =
-        (GdkGLProc_glProgramLocalParameter4dvARB) gdk_gl_get_proc_address ("glProgramLocalParameter4dvARB");
+    _procs_GL_ARB_vertex_program.glProgramLocalParameter4dvARB =
+      (GdkGLProc_glProgramLocalParameter4dvARB) gdk_gl_get_proc_address ("glProgramLocalParameter4dvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramLocalParameter4dvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glProgramLocalParameter4dvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParameter4dvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glProgramLocalParameter4dvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glProgramLocalParameter4dvARB);
 }
@@ -6028,14 +5514,12 @@ gdk_gl_get_glProgramLocalParameter4fARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glProgramLocalParameter4fARB == (GdkGLProc_glProgramLocalParameter4fARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glProgramLocalParameter4fARB =
-        (GdkGLProc_glProgramLocalParameter4fARB) gdk_gl_get_proc_address ("glProgramLocalParameter4fARB");
+    _procs_GL_ARB_vertex_program.glProgramLocalParameter4fARB =
+      (GdkGLProc_glProgramLocalParameter4fARB) gdk_gl_get_proc_address ("glProgramLocalParameter4fARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramLocalParameter4fARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glProgramLocalParameter4fARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParameter4fARB () - %s",
+               (_procs_GL_ARB_vertex_program.glProgramLocalParameter4fARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glProgramLocalParameter4fARB);
 }
@@ -6048,14 +5532,12 @@ gdk_gl_get_glProgramLocalParameter4fvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glProgramLocalParameter4fvARB == (GdkGLProc_glProgramLocalParameter4fvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glProgramLocalParameter4fvARB =
-        (GdkGLProc_glProgramLocalParameter4fvARB) gdk_gl_get_proc_address ("glProgramLocalParameter4fvARB");
+    _procs_GL_ARB_vertex_program.glProgramLocalParameter4fvARB =
+      (GdkGLProc_glProgramLocalParameter4fvARB) gdk_gl_get_proc_address ("glProgramLocalParameter4fvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramLocalParameter4fvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glProgramLocalParameter4fvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParameter4fvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glProgramLocalParameter4fvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glProgramLocalParameter4fvARB);
 }
@@ -6068,14 +5550,12 @@ gdk_gl_get_glGetProgramEnvParameterdvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGetProgramEnvParameterdvARB == (GdkGLProc_glGetProgramEnvParameterdvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGetProgramEnvParameterdvARB =
-        (GdkGLProc_glGetProgramEnvParameterdvARB) gdk_gl_get_proc_address ("glGetProgramEnvParameterdvARB");
+    _procs_GL_ARB_vertex_program.glGetProgramEnvParameterdvARB =
+      (GdkGLProc_glGetProgramEnvParameterdvARB) gdk_gl_get_proc_address ("glGetProgramEnvParameterdvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramEnvParameterdvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGetProgramEnvParameterdvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramEnvParameterdvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGetProgramEnvParameterdvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGetProgramEnvParameterdvARB);
 }
@@ -6088,14 +5568,12 @@ gdk_gl_get_glGetProgramEnvParameterfvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGetProgramEnvParameterfvARB == (GdkGLProc_glGetProgramEnvParameterfvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGetProgramEnvParameterfvARB =
-        (GdkGLProc_glGetProgramEnvParameterfvARB) gdk_gl_get_proc_address ("glGetProgramEnvParameterfvARB");
+    _procs_GL_ARB_vertex_program.glGetProgramEnvParameterfvARB =
+      (GdkGLProc_glGetProgramEnvParameterfvARB) gdk_gl_get_proc_address ("glGetProgramEnvParameterfvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramEnvParameterfvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGetProgramEnvParameterfvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramEnvParameterfvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGetProgramEnvParameterfvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGetProgramEnvParameterfvARB);
 }
@@ -6108,14 +5586,12 @@ gdk_gl_get_glGetProgramLocalParameterdvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGetProgramLocalParameterdvARB == (GdkGLProc_glGetProgramLocalParameterdvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGetProgramLocalParameterdvARB =
-        (GdkGLProc_glGetProgramLocalParameterdvARB) gdk_gl_get_proc_address ("glGetProgramLocalParameterdvARB");
+    _procs_GL_ARB_vertex_program.glGetProgramLocalParameterdvARB =
+      (GdkGLProc_glGetProgramLocalParameterdvARB) gdk_gl_get_proc_address ("glGetProgramLocalParameterdvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramLocalParameterdvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGetProgramLocalParameterdvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramLocalParameterdvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGetProgramLocalParameterdvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGetProgramLocalParameterdvARB);
 }
@@ -6128,14 +5604,12 @@ gdk_gl_get_glGetProgramLocalParameterfvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGetProgramLocalParameterfvARB == (GdkGLProc_glGetProgramLocalParameterfvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGetProgramLocalParameterfvARB =
-        (GdkGLProc_glGetProgramLocalParameterfvARB) gdk_gl_get_proc_address ("glGetProgramLocalParameterfvARB");
+    _procs_GL_ARB_vertex_program.glGetProgramLocalParameterfvARB =
+      (GdkGLProc_glGetProgramLocalParameterfvARB) gdk_gl_get_proc_address ("glGetProgramLocalParameterfvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramLocalParameterfvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGetProgramLocalParameterfvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramLocalParameterfvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGetProgramLocalParameterfvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGetProgramLocalParameterfvARB);
 }
@@ -6148,14 +5622,12 @@ gdk_gl_get_glGetProgramivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGetProgramivARB == (GdkGLProc_glGetProgramivARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGetProgramivARB =
-        (GdkGLProc_glGetProgramivARB) gdk_gl_get_proc_address ("glGetProgramivARB");
+    _procs_GL_ARB_vertex_program.glGetProgramivARB =
+      (GdkGLProc_glGetProgramivARB) gdk_gl_get_proc_address ("glGetProgramivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramivARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGetProgramivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramivARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGetProgramivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGetProgramivARB);
 }
@@ -6168,14 +5640,12 @@ gdk_gl_get_glGetProgramStringARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGetProgramStringARB == (GdkGLProc_glGetProgramStringARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGetProgramStringARB =
-        (GdkGLProc_glGetProgramStringARB) gdk_gl_get_proc_address ("glGetProgramStringARB");
+    _procs_GL_ARB_vertex_program.glGetProgramStringARB =
+      (GdkGLProc_glGetProgramStringARB) gdk_gl_get_proc_address ("glGetProgramStringARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramStringARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGetProgramStringARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramStringARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGetProgramStringARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGetProgramStringARB);
 }
@@ -6188,14 +5658,12 @@ gdk_gl_get_glGetVertexAttribdvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGetVertexAttribdvARB == (GdkGLProc_glGetVertexAttribdvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGetVertexAttribdvARB =
-        (GdkGLProc_glGetVertexAttribdvARB) gdk_gl_get_proc_address ("glGetVertexAttribdvARB");
+    _procs_GL_ARB_vertex_program.glGetVertexAttribdvARB =
+      (GdkGLProc_glGetVertexAttribdvARB) gdk_gl_get_proc_address ("glGetVertexAttribdvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVertexAttribdvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGetVertexAttribdvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribdvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGetVertexAttribdvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGetVertexAttribdvARB);
 }
@@ -6208,14 +5676,12 @@ gdk_gl_get_glGetVertexAttribfvARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGetVertexAttribfvARB == (GdkGLProc_glGetVertexAttribfvARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGetVertexAttribfvARB =
-        (GdkGLProc_glGetVertexAttribfvARB) gdk_gl_get_proc_address ("glGetVertexAttribfvARB");
+    _procs_GL_ARB_vertex_program.glGetVertexAttribfvARB =
+      (GdkGLProc_glGetVertexAttribfvARB) gdk_gl_get_proc_address ("glGetVertexAttribfvARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVertexAttribfvARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGetVertexAttribfvARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribfvARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGetVertexAttribfvARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGetVertexAttribfvARB);
 }
@@ -6228,14 +5694,12 @@ gdk_gl_get_glGetVertexAttribivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGetVertexAttribivARB == (GdkGLProc_glGetVertexAttribivARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGetVertexAttribivARB =
-        (GdkGLProc_glGetVertexAttribivARB) gdk_gl_get_proc_address ("glGetVertexAttribivARB");
+    _procs_GL_ARB_vertex_program.glGetVertexAttribivARB =
+      (GdkGLProc_glGetVertexAttribivARB) gdk_gl_get_proc_address ("glGetVertexAttribivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVertexAttribivARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGetVertexAttribivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribivARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGetVertexAttribivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGetVertexAttribivARB);
 }
@@ -6248,14 +5712,12 @@ gdk_gl_get_glGetVertexAttribPointervARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glGetVertexAttribPointervARB == (GdkGLProc_glGetVertexAttribPointervARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glGetVertexAttribPointervARB =
-        (GdkGLProc_glGetVertexAttribPointervARB) gdk_gl_get_proc_address ("glGetVertexAttribPointervARB");
+    _procs_GL_ARB_vertex_program.glGetVertexAttribPointervARB =
+      (GdkGLProc_glGetVertexAttribPointervARB) gdk_gl_get_proc_address ("glGetVertexAttribPointervARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVertexAttribPointervARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glGetVertexAttribPointervARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribPointervARB () - %s",
+               (_procs_GL_ARB_vertex_program.glGetVertexAttribPointervARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glGetVertexAttribPointervARB);
 }
@@ -6268,14 +5730,12 @@ gdk_gl_get_glIsProgramARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_program.glIsProgramARB == (GdkGLProc_glIsProgramARB) -1)
-    {
-      _procs_GL_ARB_vertex_program.glIsProgramARB =
-        (GdkGLProc_glIsProgramARB) gdk_gl_get_proc_address ("glIsProgramARB");
+    _procs_GL_ARB_vertex_program.glIsProgramARB =
+      (GdkGLProc_glIsProgramARB) gdk_gl_get_proc_address ("glIsProgramARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsProgramARB () - %s",
-                   (_procs_GL_ARB_vertex_program.glIsProgramARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsProgramARB () - %s",
+               (_procs_GL_ARB_vertex_program.glIsProgramARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_program.glIsProgramARB);
 }
@@ -6396,14 +5856,12 @@ gdk_gl_get_glBindBufferARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glBindBufferARB == (GdkGLProc_glBindBufferARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glBindBufferARB =
-        (GdkGLProc_glBindBufferARB) gdk_gl_get_proc_address ("glBindBufferARB");
+    _procs_GL_ARB_vertex_buffer_object.glBindBufferARB =
+      (GdkGLProc_glBindBufferARB) gdk_gl_get_proc_address ("glBindBufferARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindBufferARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glBindBufferARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindBufferARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glBindBufferARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glBindBufferARB);
 }
@@ -6416,14 +5874,12 @@ gdk_gl_get_glDeleteBuffersARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glDeleteBuffersARB == (GdkGLProc_glDeleteBuffersARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glDeleteBuffersARB =
-        (GdkGLProc_glDeleteBuffersARB) gdk_gl_get_proc_address ("glDeleteBuffersARB");
+    _procs_GL_ARB_vertex_buffer_object.glDeleteBuffersARB =
+      (GdkGLProc_glDeleteBuffersARB) gdk_gl_get_proc_address ("glDeleteBuffersARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteBuffersARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glDeleteBuffersARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteBuffersARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glDeleteBuffersARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glDeleteBuffersARB);
 }
@@ -6436,14 +5892,12 @@ gdk_gl_get_glGenBuffersARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glGenBuffersARB == (GdkGLProc_glGenBuffersARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glGenBuffersARB =
-        (GdkGLProc_glGenBuffersARB) gdk_gl_get_proc_address ("glGenBuffersARB");
+    _procs_GL_ARB_vertex_buffer_object.glGenBuffersARB =
+      (GdkGLProc_glGenBuffersARB) gdk_gl_get_proc_address ("glGenBuffersARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenBuffersARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glGenBuffersARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenBuffersARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glGenBuffersARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glGenBuffersARB);
 }
@@ -6456,14 +5910,12 @@ gdk_gl_get_glIsBufferARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glIsBufferARB == (GdkGLProc_glIsBufferARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glIsBufferARB =
-        (GdkGLProc_glIsBufferARB) gdk_gl_get_proc_address ("glIsBufferARB");
+    _procs_GL_ARB_vertex_buffer_object.glIsBufferARB =
+      (GdkGLProc_glIsBufferARB) gdk_gl_get_proc_address ("glIsBufferARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsBufferARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glIsBufferARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsBufferARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glIsBufferARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glIsBufferARB);
 }
@@ -6476,14 +5928,12 @@ gdk_gl_get_glBufferDataARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glBufferDataARB == (GdkGLProc_glBufferDataARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glBufferDataARB =
-        (GdkGLProc_glBufferDataARB) gdk_gl_get_proc_address ("glBufferDataARB");
+    _procs_GL_ARB_vertex_buffer_object.glBufferDataARB =
+      (GdkGLProc_glBufferDataARB) gdk_gl_get_proc_address ("glBufferDataARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBufferDataARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glBufferDataARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBufferDataARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glBufferDataARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glBufferDataARB);
 }
@@ -6496,14 +5946,12 @@ gdk_gl_get_glBufferSubDataARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glBufferSubDataARB == (GdkGLProc_glBufferSubDataARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glBufferSubDataARB =
-        (GdkGLProc_glBufferSubDataARB) gdk_gl_get_proc_address ("glBufferSubDataARB");
+    _procs_GL_ARB_vertex_buffer_object.glBufferSubDataARB =
+      (GdkGLProc_glBufferSubDataARB) gdk_gl_get_proc_address ("glBufferSubDataARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBufferSubDataARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glBufferSubDataARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBufferSubDataARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glBufferSubDataARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glBufferSubDataARB);
 }
@@ -6516,14 +5964,12 @@ gdk_gl_get_glGetBufferSubDataARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glGetBufferSubDataARB == (GdkGLProc_glGetBufferSubDataARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glGetBufferSubDataARB =
-        (GdkGLProc_glGetBufferSubDataARB) gdk_gl_get_proc_address ("glGetBufferSubDataARB");
+    _procs_GL_ARB_vertex_buffer_object.glGetBufferSubDataARB =
+      (GdkGLProc_glGetBufferSubDataARB) gdk_gl_get_proc_address ("glGetBufferSubDataARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetBufferSubDataARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glGetBufferSubDataARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetBufferSubDataARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glGetBufferSubDataARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glGetBufferSubDataARB);
 }
@@ -6536,14 +5982,12 @@ gdk_gl_get_glMapBufferARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glMapBufferARB == (GdkGLProc_glMapBufferARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glMapBufferARB =
-        (GdkGLProc_glMapBufferARB) gdk_gl_get_proc_address ("glMapBufferARB");
+    _procs_GL_ARB_vertex_buffer_object.glMapBufferARB =
+      (GdkGLProc_glMapBufferARB) gdk_gl_get_proc_address ("glMapBufferARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMapBufferARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glMapBufferARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapBufferARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glMapBufferARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glMapBufferARB);
 }
@@ -6556,14 +6000,12 @@ gdk_gl_get_glUnmapBufferARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glUnmapBufferARB == (GdkGLProc_glUnmapBufferARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glUnmapBufferARB =
-        (GdkGLProc_glUnmapBufferARB) gdk_gl_get_proc_address ("glUnmapBufferARB");
+    _procs_GL_ARB_vertex_buffer_object.glUnmapBufferARB =
+      (GdkGLProc_glUnmapBufferARB) gdk_gl_get_proc_address ("glUnmapBufferARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glUnmapBufferARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glUnmapBufferARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUnmapBufferARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glUnmapBufferARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glUnmapBufferARB);
 }
@@ -6576,14 +6018,12 @@ gdk_gl_get_glGetBufferParameterivARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glGetBufferParameterivARB == (GdkGLProc_glGetBufferParameterivARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glGetBufferParameterivARB =
-        (GdkGLProc_glGetBufferParameterivARB) gdk_gl_get_proc_address ("glGetBufferParameterivARB");
+    _procs_GL_ARB_vertex_buffer_object.glGetBufferParameterivARB =
+      (GdkGLProc_glGetBufferParameterivARB) gdk_gl_get_proc_address ("glGetBufferParameterivARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetBufferParameterivARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glGetBufferParameterivARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetBufferParameterivARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glGetBufferParameterivARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glGetBufferParameterivARB);
 }
@@ -6596,14 +6036,12 @@ gdk_gl_get_glGetBufferPointervARB (void)
     return NULL;
 
   if (_procs_GL_ARB_vertex_buffer_object.glGetBufferPointervARB == (GdkGLProc_glGetBufferPointervARB) -1)
-    {
-      _procs_GL_ARB_vertex_buffer_object.glGetBufferPointervARB =
-        (GdkGLProc_glGetBufferPointervARB) gdk_gl_get_proc_address ("glGetBufferPointervARB");
+    _procs_GL_ARB_vertex_buffer_object.glGetBufferPointervARB =
+      (GdkGLProc_glGetBufferPointervARB) gdk_gl_get_proc_address ("glGetBufferPointervARB");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetBufferPointervARB () - %s",
-                   (_procs_GL_ARB_vertex_buffer_object.glGetBufferPointervARB) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetBufferPointervARB () - %s",
+               (_procs_GL_ARB_vertex_buffer_object.glGetBufferPointervARB) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ARB_vertex_buffer_object.glGetBufferPointervARB);
 }
@@ -6663,14 +6101,12 @@ gdk_gl_get_glBlendColorEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_blend_color.glBlendColorEXT == (GdkGLProc_glBlendColorEXT) -1)
-    {
-      _procs_GL_EXT_blend_color.glBlendColorEXT =
-        (GdkGLProc_glBlendColorEXT) gdk_gl_get_proc_address ("glBlendColorEXT");
+    _procs_GL_EXT_blend_color.glBlendColorEXT =
+      (GdkGLProc_glBlendColorEXT) gdk_gl_get_proc_address ("glBlendColorEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBlendColorEXT () - %s",
-                   (_procs_GL_EXT_blend_color.glBlendColorEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendColorEXT () - %s",
+               (_procs_GL_EXT_blend_color.glBlendColorEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_blend_color.glBlendColorEXT);
 }
@@ -6720,14 +6156,12 @@ gdk_gl_get_glPolygonOffsetEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_polygon_offset.glPolygonOffsetEXT == (GdkGLProc_glPolygonOffsetEXT) -1)
-    {
-      _procs_GL_EXT_polygon_offset.glPolygonOffsetEXT =
-        (GdkGLProc_glPolygonOffsetEXT) gdk_gl_get_proc_address ("glPolygonOffsetEXT");
+    _procs_GL_EXT_polygon_offset.glPolygonOffsetEXT =
+      (GdkGLProc_glPolygonOffsetEXT) gdk_gl_get_proc_address ("glPolygonOffsetEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPolygonOffsetEXT () - %s",
-                   (_procs_GL_EXT_polygon_offset.glPolygonOffsetEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPolygonOffsetEXT () - %s",
+               (_procs_GL_EXT_polygon_offset.glPolygonOffsetEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_polygon_offset.glPolygonOffsetEXT);
 }
@@ -6778,14 +6212,12 @@ gdk_gl_get_glTexImage3DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_texture3D.glTexImage3DEXT == (GdkGLProc_glTexImage3DEXT) -1)
-    {
-      _procs_GL_EXT_texture3D.glTexImage3DEXT =
-        (GdkGLProc_glTexImage3DEXT) gdk_gl_get_proc_address ("glTexImage3DEXT");
+    _procs_GL_EXT_texture3D.glTexImage3DEXT =
+      (GdkGLProc_glTexImage3DEXT) gdk_gl_get_proc_address ("glTexImage3DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexImage3DEXT () - %s",
-                   (_procs_GL_EXT_texture3D.glTexImage3DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexImage3DEXT () - %s",
+               (_procs_GL_EXT_texture3D.glTexImage3DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_texture3D.glTexImage3DEXT);
 }
@@ -6798,14 +6230,12 @@ gdk_gl_get_glTexSubImage3DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_texture3D.glTexSubImage3DEXT == (GdkGLProc_glTexSubImage3DEXT) -1)
-    {
-      _procs_GL_EXT_texture3D.glTexSubImage3DEXT =
-        (GdkGLProc_glTexSubImage3DEXT) gdk_gl_get_proc_address ("glTexSubImage3DEXT");
+    _procs_GL_EXT_texture3D.glTexSubImage3DEXT =
+      (GdkGLProc_glTexSubImage3DEXT) gdk_gl_get_proc_address ("glTexSubImage3DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexSubImage3DEXT () - %s",
-                   (_procs_GL_EXT_texture3D.glTexSubImage3DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexSubImage3DEXT () - %s",
+               (_procs_GL_EXT_texture3D.glTexSubImage3DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_texture3D.glTexSubImage3DEXT);
 }
@@ -6857,14 +6287,12 @@ gdk_gl_get_glGetTexFilterFuncSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_texture_filter4.glGetTexFilterFuncSGIS == (GdkGLProc_glGetTexFilterFuncSGIS) -1)
-    {
-      _procs_GL_SGIS_texture_filter4.glGetTexFilterFuncSGIS =
-        (GdkGLProc_glGetTexFilterFuncSGIS) gdk_gl_get_proc_address ("glGetTexFilterFuncSGIS");
+    _procs_GL_SGIS_texture_filter4.glGetTexFilterFuncSGIS =
+      (GdkGLProc_glGetTexFilterFuncSGIS) gdk_gl_get_proc_address ("glGetTexFilterFuncSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetTexFilterFuncSGIS () - %s",
-                   (_procs_GL_SGIS_texture_filter4.glGetTexFilterFuncSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTexFilterFuncSGIS () - %s",
+               (_procs_GL_SGIS_texture_filter4.glGetTexFilterFuncSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_texture_filter4.glGetTexFilterFuncSGIS);
 }
@@ -6877,14 +6305,12 @@ gdk_gl_get_glTexFilterFuncSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_texture_filter4.glTexFilterFuncSGIS == (GdkGLProc_glTexFilterFuncSGIS) -1)
-    {
-      _procs_GL_SGIS_texture_filter4.glTexFilterFuncSGIS =
-        (GdkGLProc_glTexFilterFuncSGIS) gdk_gl_get_proc_address ("glTexFilterFuncSGIS");
+    _procs_GL_SGIS_texture_filter4.glTexFilterFuncSGIS =
+      (GdkGLProc_glTexFilterFuncSGIS) gdk_gl_get_proc_address ("glTexFilterFuncSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexFilterFuncSGIS () - %s",
-                   (_procs_GL_SGIS_texture_filter4.glTexFilterFuncSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexFilterFuncSGIS () - %s",
+               (_procs_GL_SGIS_texture_filter4.glTexFilterFuncSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_texture_filter4.glTexFilterFuncSGIS);
 }
@@ -6936,14 +6362,12 @@ gdk_gl_get_glTexSubImage1DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_subtexture.glTexSubImage1DEXT == (GdkGLProc_glTexSubImage1DEXT) -1)
-    {
-      _procs_GL_EXT_subtexture.glTexSubImage1DEXT =
-        (GdkGLProc_glTexSubImage1DEXT) gdk_gl_get_proc_address ("glTexSubImage1DEXT");
+    _procs_GL_EXT_subtexture.glTexSubImage1DEXT =
+      (GdkGLProc_glTexSubImage1DEXT) gdk_gl_get_proc_address ("glTexSubImage1DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexSubImage1DEXT () - %s",
-                   (_procs_GL_EXT_subtexture.glTexSubImage1DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexSubImage1DEXT () - %s",
+               (_procs_GL_EXT_subtexture.glTexSubImage1DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_subtexture.glTexSubImage1DEXT);
 }
@@ -6956,14 +6380,12 @@ gdk_gl_get_glTexSubImage2DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_subtexture.glTexSubImage2DEXT == (GdkGLProc_glTexSubImage2DEXT) -1)
-    {
-      _procs_GL_EXT_subtexture.glTexSubImage2DEXT =
-        (GdkGLProc_glTexSubImage2DEXT) gdk_gl_get_proc_address ("glTexSubImage2DEXT");
+    _procs_GL_EXT_subtexture.glTexSubImage2DEXT =
+      (GdkGLProc_glTexSubImage2DEXT) gdk_gl_get_proc_address ("glTexSubImage2DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexSubImage2DEXT () - %s",
-                   (_procs_GL_EXT_subtexture.glTexSubImage2DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexSubImage2DEXT () - %s",
+               (_procs_GL_EXT_subtexture.glTexSubImage2DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_subtexture.glTexSubImage2DEXT);
 }
@@ -7018,14 +6440,12 @@ gdk_gl_get_glCopyTexImage1DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_copy_texture.glCopyTexImage1DEXT == (GdkGLProc_glCopyTexImage1DEXT) -1)
-    {
-      _procs_GL_EXT_copy_texture.glCopyTexImage1DEXT =
-        (GdkGLProc_glCopyTexImage1DEXT) gdk_gl_get_proc_address ("glCopyTexImage1DEXT");
+    _procs_GL_EXT_copy_texture.glCopyTexImage1DEXT =
+      (GdkGLProc_glCopyTexImage1DEXT) gdk_gl_get_proc_address ("glCopyTexImage1DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyTexImage1DEXT () - %s",
-                   (_procs_GL_EXT_copy_texture.glCopyTexImage1DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTexImage1DEXT () - %s",
+               (_procs_GL_EXT_copy_texture.glCopyTexImage1DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_copy_texture.glCopyTexImage1DEXT);
 }
@@ -7038,14 +6458,12 @@ gdk_gl_get_glCopyTexImage2DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_copy_texture.glCopyTexImage2DEXT == (GdkGLProc_glCopyTexImage2DEXT) -1)
-    {
-      _procs_GL_EXT_copy_texture.glCopyTexImage2DEXT =
-        (GdkGLProc_glCopyTexImage2DEXT) gdk_gl_get_proc_address ("glCopyTexImage2DEXT");
+    _procs_GL_EXT_copy_texture.glCopyTexImage2DEXT =
+      (GdkGLProc_glCopyTexImage2DEXT) gdk_gl_get_proc_address ("glCopyTexImage2DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyTexImage2DEXT () - %s",
-                   (_procs_GL_EXT_copy_texture.glCopyTexImage2DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTexImage2DEXT () - %s",
+               (_procs_GL_EXT_copy_texture.glCopyTexImage2DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_copy_texture.glCopyTexImage2DEXT);
 }
@@ -7058,14 +6476,12 @@ gdk_gl_get_glCopyTexSubImage1DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_copy_texture.glCopyTexSubImage1DEXT == (GdkGLProc_glCopyTexSubImage1DEXT) -1)
-    {
-      _procs_GL_EXT_copy_texture.glCopyTexSubImage1DEXT =
-        (GdkGLProc_glCopyTexSubImage1DEXT) gdk_gl_get_proc_address ("glCopyTexSubImage1DEXT");
+    _procs_GL_EXT_copy_texture.glCopyTexSubImage1DEXT =
+      (GdkGLProc_glCopyTexSubImage1DEXT) gdk_gl_get_proc_address ("glCopyTexSubImage1DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyTexSubImage1DEXT () - %s",
-                   (_procs_GL_EXT_copy_texture.glCopyTexSubImage1DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTexSubImage1DEXT () - %s",
+               (_procs_GL_EXT_copy_texture.glCopyTexSubImage1DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_copy_texture.glCopyTexSubImage1DEXT);
 }
@@ -7078,14 +6494,12 @@ gdk_gl_get_glCopyTexSubImage2DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_copy_texture.glCopyTexSubImage2DEXT == (GdkGLProc_glCopyTexSubImage2DEXT) -1)
-    {
-      _procs_GL_EXT_copy_texture.glCopyTexSubImage2DEXT =
-        (GdkGLProc_glCopyTexSubImage2DEXT) gdk_gl_get_proc_address ("glCopyTexSubImage2DEXT");
+    _procs_GL_EXT_copy_texture.glCopyTexSubImage2DEXT =
+      (GdkGLProc_glCopyTexSubImage2DEXT) gdk_gl_get_proc_address ("glCopyTexSubImage2DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyTexSubImage2DEXT () - %s",
-                   (_procs_GL_EXT_copy_texture.glCopyTexSubImage2DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTexSubImage2DEXT () - %s",
+               (_procs_GL_EXT_copy_texture.glCopyTexSubImage2DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_copy_texture.glCopyTexSubImage2DEXT);
 }
@@ -7098,14 +6512,12 @@ gdk_gl_get_glCopyTexSubImage3DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_copy_texture.glCopyTexSubImage3DEXT == (GdkGLProc_glCopyTexSubImage3DEXT) -1)
-    {
-      _procs_GL_EXT_copy_texture.glCopyTexSubImage3DEXT =
-        (GdkGLProc_glCopyTexSubImage3DEXT) gdk_gl_get_proc_address ("glCopyTexSubImage3DEXT");
+    _procs_GL_EXT_copy_texture.glCopyTexSubImage3DEXT =
+      (GdkGLProc_glCopyTexSubImage3DEXT) gdk_gl_get_proc_address ("glCopyTexSubImage3DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyTexSubImage3DEXT () - %s",
-                   (_procs_GL_EXT_copy_texture.glCopyTexSubImage3DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTexSubImage3DEXT () - %s",
+               (_procs_GL_EXT_copy_texture.glCopyTexSubImage3DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_copy_texture.glCopyTexSubImage3DEXT);
 }
@@ -7168,14 +6580,12 @@ gdk_gl_get_glGetHistogramEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_histogram.glGetHistogramEXT == (GdkGLProc_glGetHistogramEXT) -1)
-    {
-      _procs_GL_EXT_histogram.glGetHistogramEXT =
-        (GdkGLProc_glGetHistogramEXT) gdk_gl_get_proc_address ("glGetHistogramEXT");
+    _procs_GL_EXT_histogram.glGetHistogramEXT =
+      (GdkGLProc_glGetHistogramEXT) gdk_gl_get_proc_address ("glGetHistogramEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetHistogramEXT () - %s",
-                   (_procs_GL_EXT_histogram.glGetHistogramEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetHistogramEXT () - %s",
+               (_procs_GL_EXT_histogram.glGetHistogramEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_histogram.glGetHistogramEXT);
 }
@@ -7188,14 +6598,12 @@ gdk_gl_get_glGetHistogramParameterfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_histogram.glGetHistogramParameterfvEXT == (GdkGLProc_glGetHistogramParameterfvEXT) -1)
-    {
-      _procs_GL_EXT_histogram.glGetHistogramParameterfvEXT =
-        (GdkGLProc_glGetHistogramParameterfvEXT) gdk_gl_get_proc_address ("glGetHistogramParameterfvEXT");
+    _procs_GL_EXT_histogram.glGetHistogramParameterfvEXT =
+      (GdkGLProc_glGetHistogramParameterfvEXT) gdk_gl_get_proc_address ("glGetHistogramParameterfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetHistogramParameterfvEXT () - %s",
-                   (_procs_GL_EXT_histogram.glGetHistogramParameterfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetHistogramParameterfvEXT () - %s",
+               (_procs_GL_EXT_histogram.glGetHistogramParameterfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_histogram.glGetHistogramParameterfvEXT);
 }
@@ -7208,14 +6616,12 @@ gdk_gl_get_glGetHistogramParameterivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_histogram.glGetHistogramParameterivEXT == (GdkGLProc_glGetHistogramParameterivEXT) -1)
-    {
-      _procs_GL_EXT_histogram.glGetHistogramParameterivEXT =
-        (GdkGLProc_glGetHistogramParameterivEXT) gdk_gl_get_proc_address ("glGetHistogramParameterivEXT");
+    _procs_GL_EXT_histogram.glGetHistogramParameterivEXT =
+      (GdkGLProc_glGetHistogramParameterivEXT) gdk_gl_get_proc_address ("glGetHistogramParameterivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetHistogramParameterivEXT () - %s",
-                   (_procs_GL_EXT_histogram.glGetHistogramParameterivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetHistogramParameterivEXT () - %s",
+               (_procs_GL_EXT_histogram.glGetHistogramParameterivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_histogram.glGetHistogramParameterivEXT);
 }
@@ -7228,14 +6634,12 @@ gdk_gl_get_glGetMinmaxEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_histogram.glGetMinmaxEXT == (GdkGLProc_glGetMinmaxEXT) -1)
-    {
-      _procs_GL_EXT_histogram.glGetMinmaxEXT =
-        (GdkGLProc_glGetMinmaxEXT) gdk_gl_get_proc_address ("glGetMinmaxEXT");
+    _procs_GL_EXT_histogram.glGetMinmaxEXT =
+      (GdkGLProc_glGetMinmaxEXT) gdk_gl_get_proc_address ("glGetMinmaxEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMinmaxEXT () - %s",
-                   (_procs_GL_EXT_histogram.glGetMinmaxEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMinmaxEXT () - %s",
+               (_procs_GL_EXT_histogram.glGetMinmaxEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_histogram.glGetMinmaxEXT);
 }
@@ -7248,14 +6652,12 @@ gdk_gl_get_glGetMinmaxParameterfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_histogram.glGetMinmaxParameterfvEXT == (GdkGLProc_glGetMinmaxParameterfvEXT) -1)
-    {
-      _procs_GL_EXT_histogram.glGetMinmaxParameterfvEXT =
-        (GdkGLProc_glGetMinmaxParameterfvEXT) gdk_gl_get_proc_address ("glGetMinmaxParameterfvEXT");
+    _procs_GL_EXT_histogram.glGetMinmaxParameterfvEXT =
+      (GdkGLProc_glGetMinmaxParameterfvEXT) gdk_gl_get_proc_address ("glGetMinmaxParameterfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMinmaxParameterfvEXT () - %s",
-                   (_procs_GL_EXT_histogram.glGetMinmaxParameterfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMinmaxParameterfvEXT () - %s",
+               (_procs_GL_EXT_histogram.glGetMinmaxParameterfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_histogram.glGetMinmaxParameterfvEXT);
 }
@@ -7268,14 +6670,12 @@ gdk_gl_get_glGetMinmaxParameterivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_histogram.glGetMinmaxParameterivEXT == (GdkGLProc_glGetMinmaxParameterivEXT) -1)
-    {
-      _procs_GL_EXT_histogram.glGetMinmaxParameterivEXT =
-        (GdkGLProc_glGetMinmaxParameterivEXT) gdk_gl_get_proc_address ("glGetMinmaxParameterivEXT");
+    _procs_GL_EXT_histogram.glGetMinmaxParameterivEXT =
+      (GdkGLProc_glGetMinmaxParameterivEXT) gdk_gl_get_proc_address ("glGetMinmaxParameterivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMinmaxParameterivEXT () - %s",
-                   (_procs_GL_EXT_histogram.glGetMinmaxParameterivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMinmaxParameterivEXT () - %s",
+               (_procs_GL_EXT_histogram.glGetMinmaxParameterivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_histogram.glGetMinmaxParameterivEXT);
 }
@@ -7288,14 +6688,12 @@ gdk_gl_get_glHistogramEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_histogram.glHistogramEXT == (GdkGLProc_glHistogramEXT) -1)
-    {
-      _procs_GL_EXT_histogram.glHistogramEXT =
-        (GdkGLProc_glHistogramEXT) gdk_gl_get_proc_address ("glHistogramEXT");
+    _procs_GL_EXT_histogram.glHistogramEXT =
+      (GdkGLProc_glHistogramEXT) gdk_gl_get_proc_address ("glHistogramEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glHistogramEXT () - %s",
-                   (_procs_GL_EXT_histogram.glHistogramEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glHistogramEXT () - %s",
+               (_procs_GL_EXT_histogram.glHistogramEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_histogram.glHistogramEXT);
 }
@@ -7308,14 +6706,12 @@ gdk_gl_get_glMinmaxEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_histogram.glMinmaxEXT == (GdkGLProc_glMinmaxEXT) -1)
-    {
-      _procs_GL_EXT_histogram.glMinmaxEXT =
-        (GdkGLProc_glMinmaxEXT) gdk_gl_get_proc_address ("glMinmaxEXT");
+    _procs_GL_EXT_histogram.glMinmaxEXT =
+      (GdkGLProc_glMinmaxEXT) gdk_gl_get_proc_address ("glMinmaxEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMinmaxEXT () - %s",
-                   (_procs_GL_EXT_histogram.glMinmaxEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMinmaxEXT () - %s",
+               (_procs_GL_EXT_histogram.glMinmaxEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_histogram.glMinmaxEXT);
 }
@@ -7328,14 +6724,12 @@ gdk_gl_get_glResetHistogramEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_histogram.glResetHistogramEXT == (GdkGLProc_glResetHistogramEXT) -1)
-    {
-      _procs_GL_EXT_histogram.glResetHistogramEXT =
-        (GdkGLProc_glResetHistogramEXT) gdk_gl_get_proc_address ("glResetHistogramEXT");
+    _procs_GL_EXT_histogram.glResetHistogramEXT =
+      (GdkGLProc_glResetHistogramEXT) gdk_gl_get_proc_address ("glResetHistogramEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glResetHistogramEXT () - %s",
-                   (_procs_GL_EXT_histogram.glResetHistogramEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glResetHistogramEXT () - %s",
+               (_procs_GL_EXT_histogram.glResetHistogramEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_histogram.glResetHistogramEXT);
 }
@@ -7348,14 +6742,12 @@ gdk_gl_get_glResetMinmaxEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_histogram.glResetMinmaxEXT == (GdkGLProc_glResetMinmaxEXT) -1)
-    {
-      _procs_GL_EXT_histogram.glResetMinmaxEXT =
-        (GdkGLProc_glResetMinmaxEXT) gdk_gl_get_proc_address ("glResetMinmaxEXT");
+    _procs_GL_EXT_histogram.glResetMinmaxEXT =
+      (GdkGLProc_glResetMinmaxEXT) gdk_gl_get_proc_address ("glResetMinmaxEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glResetMinmaxEXT () - %s",
-                   (_procs_GL_EXT_histogram.glResetMinmaxEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glResetMinmaxEXT () - %s",
+               (_procs_GL_EXT_histogram.glResetMinmaxEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_histogram.glResetMinmaxEXT);
 }
@@ -7426,14 +6818,12 @@ gdk_gl_get_glConvolutionFilter1DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glConvolutionFilter1DEXT == (GdkGLProc_glConvolutionFilter1DEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glConvolutionFilter1DEXT =
-        (GdkGLProc_glConvolutionFilter1DEXT) gdk_gl_get_proc_address ("glConvolutionFilter1DEXT");
+    _procs_GL_EXT_convolution.glConvolutionFilter1DEXT =
+      (GdkGLProc_glConvolutionFilter1DEXT) gdk_gl_get_proc_address ("glConvolutionFilter1DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionFilter1DEXT () - %s",
-                   (_procs_GL_EXT_convolution.glConvolutionFilter1DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionFilter1DEXT () - %s",
+               (_procs_GL_EXT_convolution.glConvolutionFilter1DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glConvolutionFilter1DEXT);
 }
@@ -7446,14 +6836,12 @@ gdk_gl_get_glConvolutionFilter2DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glConvolutionFilter2DEXT == (GdkGLProc_glConvolutionFilter2DEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glConvolutionFilter2DEXT =
-        (GdkGLProc_glConvolutionFilter2DEXT) gdk_gl_get_proc_address ("glConvolutionFilter2DEXT");
+    _procs_GL_EXT_convolution.glConvolutionFilter2DEXT =
+      (GdkGLProc_glConvolutionFilter2DEXT) gdk_gl_get_proc_address ("glConvolutionFilter2DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionFilter2DEXT () - %s",
-                   (_procs_GL_EXT_convolution.glConvolutionFilter2DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionFilter2DEXT () - %s",
+               (_procs_GL_EXT_convolution.glConvolutionFilter2DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glConvolutionFilter2DEXT);
 }
@@ -7466,14 +6854,12 @@ gdk_gl_get_glConvolutionParameterfEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glConvolutionParameterfEXT == (GdkGLProc_glConvolutionParameterfEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glConvolutionParameterfEXT =
-        (GdkGLProc_glConvolutionParameterfEXT) gdk_gl_get_proc_address ("glConvolutionParameterfEXT");
+    _procs_GL_EXT_convolution.glConvolutionParameterfEXT =
+      (GdkGLProc_glConvolutionParameterfEXT) gdk_gl_get_proc_address ("glConvolutionParameterfEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionParameterfEXT () - %s",
-                   (_procs_GL_EXT_convolution.glConvolutionParameterfEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameterfEXT () - %s",
+               (_procs_GL_EXT_convolution.glConvolutionParameterfEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glConvolutionParameterfEXT);
 }
@@ -7486,14 +6872,12 @@ gdk_gl_get_glConvolutionParameterfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glConvolutionParameterfvEXT == (GdkGLProc_glConvolutionParameterfvEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glConvolutionParameterfvEXT =
-        (GdkGLProc_glConvolutionParameterfvEXT) gdk_gl_get_proc_address ("glConvolutionParameterfvEXT");
+    _procs_GL_EXT_convolution.glConvolutionParameterfvEXT =
+      (GdkGLProc_glConvolutionParameterfvEXT) gdk_gl_get_proc_address ("glConvolutionParameterfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionParameterfvEXT () - %s",
-                   (_procs_GL_EXT_convolution.glConvolutionParameterfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameterfvEXT () - %s",
+               (_procs_GL_EXT_convolution.glConvolutionParameterfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glConvolutionParameterfvEXT);
 }
@@ -7506,14 +6890,12 @@ gdk_gl_get_glConvolutionParameteriEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glConvolutionParameteriEXT == (GdkGLProc_glConvolutionParameteriEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glConvolutionParameteriEXT =
-        (GdkGLProc_glConvolutionParameteriEXT) gdk_gl_get_proc_address ("glConvolutionParameteriEXT");
+    _procs_GL_EXT_convolution.glConvolutionParameteriEXT =
+      (GdkGLProc_glConvolutionParameteriEXT) gdk_gl_get_proc_address ("glConvolutionParameteriEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionParameteriEXT () - %s",
-                   (_procs_GL_EXT_convolution.glConvolutionParameteriEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameteriEXT () - %s",
+               (_procs_GL_EXT_convolution.glConvolutionParameteriEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glConvolutionParameteriEXT);
 }
@@ -7526,14 +6908,12 @@ gdk_gl_get_glConvolutionParameterivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glConvolutionParameterivEXT == (GdkGLProc_glConvolutionParameterivEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glConvolutionParameterivEXT =
-        (GdkGLProc_glConvolutionParameterivEXT) gdk_gl_get_proc_address ("glConvolutionParameterivEXT");
+    _procs_GL_EXT_convolution.glConvolutionParameterivEXT =
+      (GdkGLProc_glConvolutionParameterivEXT) gdk_gl_get_proc_address ("glConvolutionParameterivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glConvolutionParameterivEXT () - %s",
-                   (_procs_GL_EXT_convolution.glConvolutionParameterivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameterivEXT () - %s",
+               (_procs_GL_EXT_convolution.glConvolutionParameterivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glConvolutionParameterivEXT);
 }
@@ -7546,14 +6926,12 @@ gdk_gl_get_glCopyConvolutionFilter1DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glCopyConvolutionFilter1DEXT == (GdkGLProc_glCopyConvolutionFilter1DEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glCopyConvolutionFilter1DEXT =
-        (GdkGLProc_glCopyConvolutionFilter1DEXT) gdk_gl_get_proc_address ("glCopyConvolutionFilter1DEXT");
+    _procs_GL_EXT_convolution.glCopyConvolutionFilter1DEXT =
+      (GdkGLProc_glCopyConvolutionFilter1DEXT) gdk_gl_get_proc_address ("glCopyConvolutionFilter1DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyConvolutionFilter1DEXT () - %s",
-                   (_procs_GL_EXT_convolution.glCopyConvolutionFilter1DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyConvolutionFilter1DEXT () - %s",
+               (_procs_GL_EXT_convolution.glCopyConvolutionFilter1DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glCopyConvolutionFilter1DEXT);
 }
@@ -7566,14 +6944,12 @@ gdk_gl_get_glCopyConvolutionFilter2DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glCopyConvolutionFilter2DEXT == (GdkGLProc_glCopyConvolutionFilter2DEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glCopyConvolutionFilter2DEXT =
-        (GdkGLProc_glCopyConvolutionFilter2DEXT) gdk_gl_get_proc_address ("glCopyConvolutionFilter2DEXT");
+    _procs_GL_EXT_convolution.glCopyConvolutionFilter2DEXT =
+      (GdkGLProc_glCopyConvolutionFilter2DEXT) gdk_gl_get_proc_address ("glCopyConvolutionFilter2DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyConvolutionFilter2DEXT () - %s",
-                   (_procs_GL_EXT_convolution.glCopyConvolutionFilter2DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyConvolutionFilter2DEXT () - %s",
+               (_procs_GL_EXT_convolution.glCopyConvolutionFilter2DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glCopyConvolutionFilter2DEXT);
 }
@@ -7586,14 +6962,12 @@ gdk_gl_get_glGetConvolutionFilterEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glGetConvolutionFilterEXT == (GdkGLProc_glGetConvolutionFilterEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glGetConvolutionFilterEXT =
-        (GdkGLProc_glGetConvolutionFilterEXT) gdk_gl_get_proc_address ("glGetConvolutionFilterEXT");
+    _procs_GL_EXT_convolution.glGetConvolutionFilterEXT =
+      (GdkGLProc_glGetConvolutionFilterEXT) gdk_gl_get_proc_address ("glGetConvolutionFilterEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetConvolutionFilterEXT () - %s",
-                   (_procs_GL_EXT_convolution.glGetConvolutionFilterEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetConvolutionFilterEXT () - %s",
+               (_procs_GL_EXT_convolution.glGetConvolutionFilterEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glGetConvolutionFilterEXT);
 }
@@ -7606,14 +6980,12 @@ gdk_gl_get_glGetConvolutionParameterfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glGetConvolutionParameterfvEXT == (GdkGLProc_glGetConvolutionParameterfvEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glGetConvolutionParameterfvEXT =
-        (GdkGLProc_glGetConvolutionParameterfvEXT) gdk_gl_get_proc_address ("glGetConvolutionParameterfvEXT");
+    _procs_GL_EXT_convolution.glGetConvolutionParameterfvEXT =
+      (GdkGLProc_glGetConvolutionParameterfvEXT) gdk_gl_get_proc_address ("glGetConvolutionParameterfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetConvolutionParameterfvEXT () - %s",
-                   (_procs_GL_EXT_convolution.glGetConvolutionParameterfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetConvolutionParameterfvEXT () - %s",
+               (_procs_GL_EXT_convolution.glGetConvolutionParameterfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glGetConvolutionParameterfvEXT);
 }
@@ -7626,14 +6998,12 @@ gdk_gl_get_glGetConvolutionParameterivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glGetConvolutionParameterivEXT == (GdkGLProc_glGetConvolutionParameterivEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glGetConvolutionParameterivEXT =
-        (GdkGLProc_glGetConvolutionParameterivEXT) gdk_gl_get_proc_address ("glGetConvolutionParameterivEXT");
+    _procs_GL_EXT_convolution.glGetConvolutionParameterivEXT =
+      (GdkGLProc_glGetConvolutionParameterivEXT) gdk_gl_get_proc_address ("glGetConvolutionParameterivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetConvolutionParameterivEXT () - %s",
-                   (_procs_GL_EXT_convolution.glGetConvolutionParameterivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetConvolutionParameterivEXT () - %s",
+               (_procs_GL_EXT_convolution.glGetConvolutionParameterivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glGetConvolutionParameterivEXT);
 }
@@ -7646,14 +7016,12 @@ gdk_gl_get_glGetSeparableFilterEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glGetSeparableFilterEXT == (GdkGLProc_glGetSeparableFilterEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glGetSeparableFilterEXT =
-        (GdkGLProc_glGetSeparableFilterEXT) gdk_gl_get_proc_address ("glGetSeparableFilterEXT");
+    _procs_GL_EXT_convolution.glGetSeparableFilterEXT =
+      (GdkGLProc_glGetSeparableFilterEXT) gdk_gl_get_proc_address ("glGetSeparableFilterEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetSeparableFilterEXT () - %s",
-                   (_procs_GL_EXT_convolution.glGetSeparableFilterEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetSeparableFilterEXT () - %s",
+               (_procs_GL_EXT_convolution.glGetSeparableFilterEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glGetSeparableFilterEXT);
 }
@@ -7666,14 +7034,12 @@ gdk_gl_get_glSeparableFilter2DEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_convolution.glSeparableFilter2DEXT == (GdkGLProc_glSeparableFilter2DEXT) -1)
-    {
-      _procs_GL_EXT_convolution.glSeparableFilter2DEXT =
-        (GdkGLProc_glSeparableFilter2DEXT) gdk_gl_get_proc_address ("glSeparableFilter2DEXT");
+    _procs_GL_EXT_convolution.glSeparableFilter2DEXT =
+      (GdkGLProc_glSeparableFilter2DEXT) gdk_gl_get_proc_address ("glSeparableFilter2DEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSeparableFilter2DEXT () - %s",
-                   (_procs_GL_EXT_convolution.glSeparableFilter2DEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSeparableFilter2DEXT () - %s",
+               (_procs_GL_EXT_convolution.glSeparableFilter2DEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_convolution.glSeparableFilter2DEXT);
 }
@@ -7741,14 +7107,12 @@ gdk_gl_get_glColorTableSGI (void)
     return NULL;
 
   if (_procs_GL_SGI_color_table.glColorTableSGI == (GdkGLProc_glColorTableSGI) -1)
-    {
-      _procs_GL_SGI_color_table.glColorTableSGI =
-        (GdkGLProc_glColorTableSGI) gdk_gl_get_proc_address ("glColorTableSGI");
+    _procs_GL_SGI_color_table.glColorTableSGI =
+      (GdkGLProc_glColorTableSGI) gdk_gl_get_proc_address ("glColorTableSGI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorTableSGI () - %s",
-                   (_procs_GL_SGI_color_table.glColorTableSGI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorTableSGI () - %s",
+               (_procs_GL_SGI_color_table.glColorTableSGI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGI_color_table.glColorTableSGI);
 }
@@ -7761,14 +7125,12 @@ gdk_gl_get_glColorTableParameterfvSGI (void)
     return NULL;
 
   if (_procs_GL_SGI_color_table.glColorTableParameterfvSGI == (GdkGLProc_glColorTableParameterfvSGI) -1)
-    {
-      _procs_GL_SGI_color_table.glColorTableParameterfvSGI =
-        (GdkGLProc_glColorTableParameterfvSGI) gdk_gl_get_proc_address ("glColorTableParameterfvSGI");
+    _procs_GL_SGI_color_table.glColorTableParameterfvSGI =
+      (GdkGLProc_glColorTableParameterfvSGI) gdk_gl_get_proc_address ("glColorTableParameterfvSGI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorTableParameterfvSGI () - %s",
-                   (_procs_GL_SGI_color_table.glColorTableParameterfvSGI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorTableParameterfvSGI () - %s",
+               (_procs_GL_SGI_color_table.glColorTableParameterfvSGI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGI_color_table.glColorTableParameterfvSGI);
 }
@@ -7781,14 +7143,12 @@ gdk_gl_get_glColorTableParameterivSGI (void)
     return NULL;
 
   if (_procs_GL_SGI_color_table.glColorTableParameterivSGI == (GdkGLProc_glColorTableParameterivSGI) -1)
-    {
-      _procs_GL_SGI_color_table.glColorTableParameterivSGI =
-        (GdkGLProc_glColorTableParameterivSGI) gdk_gl_get_proc_address ("glColorTableParameterivSGI");
+    _procs_GL_SGI_color_table.glColorTableParameterivSGI =
+      (GdkGLProc_glColorTableParameterivSGI) gdk_gl_get_proc_address ("glColorTableParameterivSGI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorTableParameterivSGI () - %s",
-                   (_procs_GL_SGI_color_table.glColorTableParameterivSGI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorTableParameterivSGI () - %s",
+               (_procs_GL_SGI_color_table.glColorTableParameterivSGI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGI_color_table.glColorTableParameterivSGI);
 }
@@ -7801,14 +7161,12 @@ gdk_gl_get_glCopyColorTableSGI (void)
     return NULL;
 
   if (_procs_GL_SGI_color_table.glCopyColorTableSGI == (GdkGLProc_glCopyColorTableSGI) -1)
-    {
-      _procs_GL_SGI_color_table.glCopyColorTableSGI =
-        (GdkGLProc_glCopyColorTableSGI) gdk_gl_get_proc_address ("glCopyColorTableSGI");
+    _procs_GL_SGI_color_table.glCopyColorTableSGI =
+      (GdkGLProc_glCopyColorTableSGI) gdk_gl_get_proc_address ("glCopyColorTableSGI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyColorTableSGI () - %s",
-                   (_procs_GL_SGI_color_table.glCopyColorTableSGI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyColorTableSGI () - %s",
+               (_procs_GL_SGI_color_table.glCopyColorTableSGI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGI_color_table.glCopyColorTableSGI);
 }
@@ -7821,14 +7179,12 @@ gdk_gl_get_glGetColorTableSGI (void)
     return NULL;
 
   if (_procs_GL_SGI_color_table.glGetColorTableSGI == (GdkGLProc_glGetColorTableSGI) -1)
-    {
-      _procs_GL_SGI_color_table.glGetColorTableSGI =
-        (GdkGLProc_glGetColorTableSGI) gdk_gl_get_proc_address ("glGetColorTableSGI");
+    _procs_GL_SGI_color_table.glGetColorTableSGI =
+      (GdkGLProc_glGetColorTableSGI) gdk_gl_get_proc_address ("glGetColorTableSGI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetColorTableSGI () - %s",
-                   (_procs_GL_SGI_color_table.glGetColorTableSGI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTableSGI () - %s",
+               (_procs_GL_SGI_color_table.glGetColorTableSGI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGI_color_table.glGetColorTableSGI);
 }
@@ -7841,14 +7197,12 @@ gdk_gl_get_glGetColorTableParameterfvSGI (void)
     return NULL;
 
   if (_procs_GL_SGI_color_table.glGetColorTableParameterfvSGI == (GdkGLProc_glGetColorTableParameterfvSGI) -1)
-    {
-      _procs_GL_SGI_color_table.glGetColorTableParameterfvSGI =
-        (GdkGLProc_glGetColorTableParameterfvSGI) gdk_gl_get_proc_address ("glGetColorTableParameterfvSGI");
+    _procs_GL_SGI_color_table.glGetColorTableParameterfvSGI =
+      (GdkGLProc_glGetColorTableParameterfvSGI) gdk_gl_get_proc_address ("glGetColorTableParameterfvSGI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetColorTableParameterfvSGI () - %s",
-                   (_procs_GL_SGI_color_table.glGetColorTableParameterfvSGI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTableParameterfvSGI () - %s",
+               (_procs_GL_SGI_color_table.glGetColorTableParameterfvSGI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGI_color_table.glGetColorTableParameterfvSGI);
 }
@@ -7861,14 +7215,12 @@ gdk_gl_get_glGetColorTableParameterivSGI (void)
     return NULL;
 
   if (_procs_GL_SGI_color_table.glGetColorTableParameterivSGI == (GdkGLProc_glGetColorTableParameterivSGI) -1)
-    {
-      _procs_GL_SGI_color_table.glGetColorTableParameterivSGI =
-        (GdkGLProc_glGetColorTableParameterivSGI) gdk_gl_get_proc_address ("glGetColorTableParameterivSGI");
+    _procs_GL_SGI_color_table.glGetColorTableParameterivSGI =
+      (GdkGLProc_glGetColorTableParameterivSGI) gdk_gl_get_proc_address ("glGetColorTableParameterivSGI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetColorTableParameterivSGI () - %s",
-                   (_procs_GL_SGI_color_table.glGetColorTableParameterivSGI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTableParameterivSGI () - %s",
+               (_procs_GL_SGI_color_table.glGetColorTableParameterivSGI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGI_color_table.glGetColorTableParameterivSGI);
 }
@@ -7924,14 +7276,12 @@ gdk_gl_get_glPixelTexGenSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_pixel_texture.glPixelTexGenSGIX == (GdkGLProc_glPixelTexGenSGIX) -1)
-    {
-      _procs_GL_SGIX_pixel_texture.glPixelTexGenSGIX =
-        (GdkGLProc_glPixelTexGenSGIX) gdk_gl_get_proc_address ("glPixelTexGenSGIX");
+    _procs_GL_SGIX_pixel_texture.glPixelTexGenSGIX =
+      (GdkGLProc_glPixelTexGenSGIX) gdk_gl_get_proc_address ("glPixelTexGenSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPixelTexGenSGIX () - %s",
-                   (_procs_GL_SGIX_pixel_texture.glPixelTexGenSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPixelTexGenSGIX () - %s",
+               (_procs_GL_SGIX_pixel_texture.glPixelTexGenSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_pixel_texture.glPixelTexGenSGIX);
 }
@@ -7986,14 +7336,12 @@ gdk_gl_get_glPixelTexGenParameteriSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameteriSGIS == (GdkGLProc_glPixelTexGenParameteriSGIS) -1)
-    {
-      _procs_GL_SGIS_pixel_texture.glPixelTexGenParameteriSGIS =
-        (GdkGLProc_glPixelTexGenParameteriSGIS) gdk_gl_get_proc_address ("glPixelTexGenParameteriSGIS");
+    _procs_GL_SGIS_pixel_texture.glPixelTexGenParameteriSGIS =
+      (GdkGLProc_glPixelTexGenParameteriSGIS) gdk_gl_get_proc_address ("glPixelTexGenParameteriSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPixelTexGenParameteriSGIS () - %s",
-                   (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameteriSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPixelTexGenParameteriSGIS () - %s",
+               (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameteriSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameteriSGIS);
 }
@@ -8006,14 +7354,12 @@ gdk_gl_get_glPixelTexGenParameterivSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterivSGIS == (GdkGLProc_glPixelTexGenParameterivSGIS) -1)
-    {
-      _procs_GL_SGIS_pixel_texture.glPixelTexGenParameterivSGIS =
-        (GdkGLProc_glPixelTexGenParameterivSGIS) gdk_gl_get_proc_address ("glPixelTexGenParameterivSGIS");
+    _procs_GL_SGIS_pixel_texture.glPixelTexGenParameterivSGIS =
+      (GdkGLProc_glPixelTexGenParameterivSGIS) gdk_gl_get_proc_address ("glPixelTexGenParameterivSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPixelTexGenParameterivSGIS () - %s",
-                   (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterivSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPixelTexGenParameterivSGIS () - %s",
+               (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterivSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterivSGIS);
 }
@@ -8026,14 +7372,12 @@ gdk_gl_get_glPixelTexGenParameterfSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfSGIS == (GdkGLProc_glPixelTexGenParameterfSGIS) -1)
-    {
-      _procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfSGIS =
-        (GdkGLProc_glPixelTexGenParameterfSGIS) gdk_gl_get_proc_address ("glPixelTexGenParameterfSGIS");
+    _procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfSGIS =
+      (GdkGLProc_glPixelTexGenParameterfSGIS) gdk_gl_get_proc_address ("glPixelTexGenParameterfSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPixelTexGenParameterfSGIS () - %s",
-                   (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPixelTexGenParameterfSGIS () - %s",
+               (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfSGIS);
 }
@@ -8046,14 +7390,12 @@ gdk_gl_get_glPixelTexGenParameterfvSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfvSGIS == (GdkGLProc_glPixelTexGenParameterfvSGIS) -1)
-    {
-      _procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfvSGIS =
-        (GdkGLProc_glPixelTexGenParameterfvSGIS) gdk_gl_get_proc_address ("glPixelTexGenParameterfvSGIS");
+    _procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfvSGIS =
+      (GdkGLProc_glPixelTexGenParameterfvSGIS) gdk_gl_get_proc_address ("glPixelTexGenParameterfvSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPixelTexGenParameterfvSGIS () - %s",
-                   (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfvSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPixelTexGenParameterfvSGIS () - %s",
+               (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfvSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_pixel_texture.glPixelTexGenParameterfvSGIS);
 }
@@ -8066,14 +7408,12 @@ gdk_gl_get_glGetPixelTexGenParameterivSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterivSGIS == (GdkGLProc_glGetPixelTexGenParameterivSGIS) -1)
-    {
-      _procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterivSGIS =
-        (GdkGLProc_glGetPixelTexGenParameterivSGIS) gdk_gl_get_proc_address ("glGetPixelTexGenParameterivSGIS");
+    _procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterivSGIS =
+      (GdkGLProc_glGetPixelTexGenParameterivSGIS) gdk_gl_get_proc_address ("glGetPixelTexGenParameterivSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetPixelTexGenParameterivSGIS () - %s",
-                   (_procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterivSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetPixelTexGenParameterivSGIS () - %s",
+               (_procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterivSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterivSGIS);
 }
@@ -8086,14 +7426,12 @@ gdk_gl_get_glGetPixelTexGenParameterfvSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterfvSGIS == (GdkGLProc_glGetPixelTexGenParameterfvSGIS) -1)
-    {
-      _procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterfvSGIS =
-        (GdkGLProc_glGetPixelTexGenParameterfvSGIS) gdk_gl_get_proc_address ("glGetPixelTexGenParameterfvSGIS");
+    _procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterfvSGIS =
+      (GdkGLProc_glGetPixelTexGenParameterfvSGIS) gdk_gl_get_proc_address ("glGetPixelTexGenParameterfvSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetPixelTexGenParameterfvSGIS () - %s",
-                   (_procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterfvSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetPixelTexGenParameterfvSGIS () - %s",
+               (_procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterfvSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_pixel_texture.glGetPixelTexGenParameterfvSGIS);
 }
@@ -8149,14 +7487,12 @@ gdk_gl_get_glTexImage4DSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_texture4D.glTexImage4DSGIS == (GdkGLProc_glTexImage4DSGIS) -1)
-    {
-      _procs_GL_SGIS_texture4D.glTexImage4DSGIS =
-        (GdkGLProc_glTexImage4DSGIS) gdk_gl_get_proc_address ("glTexImage4DSGIS");
+    _procs_GL_SGIS_texture4D.glTexImage4DSGIS =
+      (GdkGLProc_glTexImage4DSGIS) gdk_gl_get_proc_address ("glTexImage4DSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexImage4DSGIS () - %s",
-                   (_procs_GL_SGIS_texture4D.glTexImage4DSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexImage4DSGIS () - %s",
+               (_procs_GL_SGIS_texture4D.glTexImage4DSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_texture4D.glTexImage4DSGIS);
 }
@@ -8169,14 +7505,12 @@ gdk_gl_get_glTexSubImage4DSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_texture4D.glTexSubImage4DSGIS == (GdkGLProc_glTexSubImage4DSGIS) -1)
-    {
-      _procs_GL_SGIS_texture4D.glTexSubImage4DSGIS =
-        (GdkGLProc_glTexSubImage4DSGIS) gdk_gl_get_proc_address ("glTexSubImage4DSGIS");
+    _procs_GL_SGIS_texture4D.glTexSubImage4DSGIS =
+      (GdkGLProc_glTexSubImage4DSGIS) gdk_gl_get_proc_address ("glTexSubImage4DSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexSubImage4DSGIS () - %s",
-                   (_procs_GL_SGIS_texture4D.glTexSubImage4DSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexSubImage4DSGIS () - %s",
+               (_procs_GL_SGIS_texture4D.glTexSubImage4DSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_texture4D.glTexSubImage4DSGIS);
 }
@@ -8232,14 +7566,12 @@ gdk_gl_get_glAreTexturesResidentEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_texture_object.glAreTexturesResidentEXT == (GdkGLProc_glAreTexturesResidentEXT) -1)
-    {
-      _procs_GL_EXT_texture_object.glAreTexturesResidentEXT =
-        (GdkGLProc_glAreTexturesResidentEXT) gdk_gl_get_proc_address ("glAreTexturesResidentEXT");
+    _procs_GL_EXT_texture_object.glAreTexturesResidentEXT =
+      (GdkGLProc_glAreTexturesResidentEXT) gdk_gl_get_proc_address ("glAreTexturesResidentEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glAreTexturesResidentEXT () - %s",
-                   (_procs_GL_EXT_texture_object.glAreTexturesResidentEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glAreTexturesResidentEXT () - %s",
+               (_procs_GL_EXT_texture_object.glAreTexturesResidentEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_texture_object.glAreTexturesResidentEXT);
 }
@@ -8252,14 +7584,12 @@ gdk_gl_get_glBindTextureEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_texture_object.glBindTextureEXT == (GdkGLProc_glBindTextureEXT) -1)
-    {
-      _procs_GL_EXT_texture_object.glBindTextureEXT =
-        (GdkGLProc_glBindTextureEXT) gdk_gl_get_proc_address ("glBindTextureEXT");
+    _procs_GL_EXT_texture_object.glBindTextureEXT =
+      (GdkGLProc_glBindTextureEXT) gdk_gl_get_proc_address ("glBindTextureEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindTextureEXT () - %s",
-                   (_procs_GL_EXT_texture_object.glBindTextureEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindTextureEXT () - %s",
+               (_procs_GL_EXT_texture_object.glBindTextureEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_texture_object.glBindTextureEXT);
 }
@@ -8272,14 +7602,12 @@ gdk_gl_get_glDeleteTexturesEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_texture_object.glDeleteTexturesEXT == (GdkGLProc_glDeleteTexturesEXT) -1)
-    {
-      _procs_GL_EXT_texture_object.glDeleteTexturesEXT =
-        (GdkGLProc_glDeleteTexturesEXT) gdk_gl_get_proc_address ("glDeleteTexturesEXT");
+    _procs_GL_EXT_texture_object.glDeleteTexturesEXT =
+      (GdkGLProc_glDeleteTexturesEXT) gdk_gl_get_proc_address ("glDeleteTexturesEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteTexturesEXT () - %s",
-                   (_procs_GL_EXT_texture_object.glDeleteTexturesEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteTexturesEXT () - %s",
+               (_procs_GL_EXT_texture_object.glDeleteTexturesEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_texture_object.glDeleteTexturesEXT);
 }
@@ -8292,14 +7620,12 @@ gdk_gl_get_glGenTexturesEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_texture_object.glGenTexturesEXT == (GdkGLProc_glGenTexturesEXT) -1)
-    {
-      _procs_GL_EXT_texture_object.glGenTexturesEXT =
-        (GdkGLProc_glGenTexturesEXT) gdk_gl_get_proc_address ("glGenTexturesEXT");
+    _procs_GL_EXT_texture_object.glGenTexturesEXT =
+      (GdkGLProc_glGenTexturesEXT) gdk_gl_get_proc_address ("glGenTexturesEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenTexturesEXT () - %s",
-                   (_procs_GL_EXT_texture_object.glGenTexturesEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenTexturesEXT () - %s",
+               (_procs_GL_EXT_texture_object.glGenTexturesEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_texture_object.glGenTexturesEXT);
 }
@@ -8312,14 +7638,12 @@ gdk_gl_get_glIsTextureEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_texture_object.glIsTextureEXT == (GdkGLProc_glIsTextureEXT) -1)
-    {
-      _procs_GL_EXT_texture_object.glIsTextureEXT =
-        (GdkGLProc_glIsTextureEXT) gdk_gl_get_proc_address ("glIsTextureEXT");
+    _procs_GL_EXT_texture_object.glIsTextureEXT =
+      (GdkGLProc_glIsTextureEXT) gdk_gl_get_proc_address ("glIsTextureEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsTextureEXT () - %s",
-                   (_procs_GL_EXT_texture_object.glIsTextureEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsTextureEXT () - %s",
+               (_procs_GL_EXT_texture_object.glIsTextureEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_texture_object.glIsTextureEXT);
 }
@@ -8332,14 +7656,12 @@ gdk_gl_get_glPrioritizeTexturesEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_texture_object.glPrioritizeTexturesEXT == (GdkGLProc_glPrioritizeTexturesEXT) -1)
-    {
-      _procs_GL_EXT_texture_object.glPrioritizeTexturesEXT =
-        (GdkGLProc_glPrioritizeTexturesEXT) gdk_gl_get_proc_address ("glPrioritizeTexturesEXT");
+    _procs_GL_EXT_texture_object.glPrioritizeTexturesEXT =
+      (GdkGLProc_glPrioritizeTexturesEXT) gdk_gl_get_proc_address ("glPrioritizeTexturesEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPrioritizeTexturesEXT () - %s",
-                   (_procs_GL_EXT_texture_object.glPrioritizeTexturesEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPrioritizeTexturesEXT () - %s",
+               (_procs_GL_EXT_texture_object.glPrioritizeTexturesEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_texture_object.glPrioritizeTexturesEXT);
 }
@@ -8395,14 +7717,12 @@ gdk_gl_get_glDetailTexFuncSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_detail_texture.glDetailTexFuncSGIS == (GdkGLProc_glDetailTexFuncSGIS) -1)
-    {
-      _procs_GL_SGIS_detail_texture.glDetailTexFuncSGIS =
-        (GdkGLProc_glDetailTexFuncSGIS) gdk_gl_get_proc_address ("glDetailTexFuncSGIS");
+    _procs_GL_SGIS_detail_texture.glDetailTexFuncSGIS =
+      (GdkGLProc_glDetailTexFuncSGIS) gdk_gl_get_proc_address ("glDetailTexFuncSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDetailTexFuncSGIS () - %s",
-                   (_procs_GL_SGIS_detail_texture.glDetailTexFuncSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDetailTexFuncSGIS () - %s",
+               (_procs_GL_SGIS_detail_texture.glDetailTexFuncSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_detail_texture.glDetailTexFuncSGIS);
 }
@@ -8415,14 +7735,12 @@ gdk_gl_get_glGetDetailTexFuncSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_detail_texture.glGetDetailTexFuncSGIS == (GdkGLProc_glGetDetailTexFuncSGIS) -1)
-    {
-      _procs_GL_SGIS_detail_texture.glGetDetailTexFuncSGIS =
-        (GdkGLProc_glGetDetailTexFuncSGIS) gdk_gl_get_proc_address ("glGetDetailTexFuncSGIS");
+    _procs_GL_SGIS_detail_texture.glGetDetailTexFuncSGIS =
+      (GdkGLProc_glGetDetailTexFuncSGIS) gdk_gl_get_proc_address ("glGetDetailTexFuncSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetDetailTexFuncSGIS () - %s",
-                   (_procs_GL_SGIS_detail_texture.glGetDetailTexFuncSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetDetailTexFuncSGIS () - %s",
+               (_procs_GL_SGIS_detail_texture.glGetDetailTexFuncSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_detail_texture.glGetDetailTexFuncSGIS);
 }
@@ -8474,14 +7792,12 @@ gdk_gl_get_glSharpenTexFuncSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_sharpen_texture.glSharpenTexFuncSGIS == (GdkGLProc_glSharpenTexFuncSGIS) -1)
-    {
-      _procs_GL_SGIS_sharpen_texture.glSharpenTexFuncSGIS =
-        (GdkGLProc_glSharpenTexFuncSGIS) gdk_gl_get_proc_address ("glSharpenTexFuncSGIS");
+    _procs_GL_SGIS_sharpen_texture.glSharpenTexFuncSGIS =
+      (GdkGLProc_glSharpenTexFuncSGIS) gdk_gl_get_proc_address ("glSharpenTexFuncSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSharpenTexFuncSGIS () - %s",
-                   (_procs_GL_SGIS_sharpen_texture.glSharpenTexFuncSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSharpenTexFuncSGIS () - %s",
+               (_procs_GL_SGIS_sharpen_texture.glSharpenTexFuncSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_sharpen_texture.glSharpenTexFuncSGIS);
 }
@@ -8494,14 +7810,12 @@ gdk_gl_get_glGetSharpenTexFuncSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_sharpen_texture.glGetSharpenTexFuncSGIS == (GdkGLProc_glGetSharpenTexFuncSGIS) -1)
-    {
-      _procs_GL_SGIS_sharpen_texture.glGetSharpenTexFuncSGIS =
-        (GdkGLProc_glGetSharpenTexFuncSGIS) gdk_gl_get_proc_address ("glGetSharpenTexFuncSGIS");
+    _procs_GL_SGIS_sharpen_texture.glGetSharpenTexFuncSGIS =
+      (GdkGLProc_glGetSharpenTexFuncSGIS) gdk_gl_get_proc_address ("glGetSharpenTexFuncSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetSharpenTexFuncSGIS () - %s",
-                   (_procs_GL_SGIS_sharpen_texture.glGetSharpenTexFuncSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetSharpenTexFuncSGIS () - %s",
+               (_procs_GL_SGIS_sharpen_texture.glGetSharpenTexFuncSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_sharpen_texture.glGetSharpenTexFuncSGIS);
 }
@@ -8553,14 +7867,12 @@ gdk_gl_get_glSampleMaskSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_multisample.glSampleMaskSGIS == (GdkGLProc_glSampleMaskSGIS) -1)
-    {
-      _procs_GL_SGIS_multisample.glSampleMaskSGIS =
-        (GdkGLProc_glSampleMaskSGIS) gdk_gl_get_proc_address ("glSampleMaskSGIS");
+    _procs_GL_SGIS_multisample.glSampleMaskSGIS =
+      (GdkGLProc_glSampleMaskSGIS) gdk_gl_get_proc_address ("glSampleMaskSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSampleMaskSGIS () - %s",
-                   (_procs_GL_SGIS_multisample.glSampleMaskSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSampleMaskSGIS () - %s",
+               (_procs_GL_SGIS_multisample.glSampleMaskSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_multisample.glSampleMaskSGIS);
 }
@@ -8573,14 +7885,12 @@ gdk_gl_get_glSamplePatternSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_multisample.glSamplePatternSGIS == (GdkGLProc_glSamplePatternSGIS) -1)
-    {
-      _procs_GL_SGIS_multisample.glSamplePatternSGIS =
-        (GdkGLProc_glSamplePatternSGIS) gdk_gl_get_proc_address ("glSamplePatternSGIS");
+    _procs_GL_SGIS_multisample.glSamplePatternSGIS =
+      (GdkGLProc_glSamplePatternSGIS) gdk_gl_get_proc_address ("glSamplePatternSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSamplePatternSGIS () - %s",
-                   (_procs_GL_SGIS_multisample.glSamplePatternSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSamplePatternSGIS () - %s",
+               (_procs_GL_SGIS_multisample.glSamplePatternSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_multisample.glSamplePatternSGIS);
 }
@@ -8639,14 +7949,12 @@ gdk_gl_get_glArrayElementEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_array.glArrayElementEXT == (GdkGLProc_glArrayElementEXT) -1)
-    {
-      _procs_GL_EXT_vertex_array.glArrayElementEXT =
-        (GdkGLProc_glArrayElementEXT) gdk_gl_get_proc_address ("glArrayElementEXT");
+    _procs_GL_EXT_vertex_array.glArrayElementEXT =
+      (GdkGLProc_glArrayElementEXT) gdk_gl_get_proc_address ("glArrayElementEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glArrayElementEXT () - %s",
-                   (_procs_GL_EXT_vertex_array.glArrayElementEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glArrayElementEXT () - %s",
+               (_procs_GL_EXT_vertex_array.glArrayElementEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_array.glArrayElementEXT);
 }
@@ -8659,14 +7967,12 @@ gdk_gl_get_glColorPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_array.glColorPointerEXT == (GdkGLProc_glColorPointerEXT) -1)
-    {
-      _procs_GL_EXT_vertex_array.glColorPointerEXT =
-        (GdkGLProc_glColorPointerEXT) gdk_gl_get_proc_address ("glColorPointerEXT");
+    _procs_GL_EXT_vertex_array.glColorPointerEXT =
+      (GdkGLProc_glColorPointerEXT) gdk_gl_get_proc_address ("glColorPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorPointerEXT () - %s",
-                   (_procs_GL_EXT_vertex_array.glColorPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorPointerEXT () - %s",
+               (_procs_GL_EXT_vertex_array.glColorPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_array.glColorPointerEXT);
 }
@@ -8679,14 +7985,12 @@ gdk_gl_get_glDrawArraysEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_array.glDrawArraysEXT == (GdkGLProc_glDrawArraysEXT) -1)
-    {
-      _procs_GL_EXT_vertex_array.glDrawArraysEXT =
-        (GdkGLProc_glDrawArraysEXT) gdk_gl_get_proc_address ("glDrawArraysEXT");
+    _procs_GL_EXT_vertex_array.glDrawArraysEXT =
+      (GdkGLProc_glDrawArraysEXT) gdk_gl_get_proc_address ("glDrawArraysEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDrawArraysEXT () - %s",
-                   (_procs_GL_EXT_vertex_array.glDrawArraysEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawArraysEXT () - %s",
+               (_procs_GL_EXT_vertex_array.glDrawArraysEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_array.glDrawArraysEXT);
 }
@@ -8699,14 +8003,12 @@ gdk_gl_get_glEdgeFlagPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_array.glEdgeFlagPointerEXT == (GdkGLProc_glEdgeFlagPointerEXT) -1)
-    {
-      _procs_GL_EXT_vertex_array.glEdgeFlagPointerEXT =
-        (GdkGLProc_glEdgeFlagPointerEXT) gdk_gl_get_proc_address ("glEdgeFlagPointerEXT");
+    _procs_GL_EXT_vertex_array.glEdgeFlagPointerEXT =
+      (GdkGLProc_glEdgeFlagPointerEXT) gdk_gl_get_proc_address ("glEdgeFlagPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glEdgeFlagPointerEXT () - %s",
-                   (_procs_GL_EXT_vertex_array.glEdgeFlagPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEdgeFlagPointerEXT () - %s",
+               (_procs_GL_EXT_vertex_array.glEdgeFlagPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_array.glEdgeFlagPointerEXT);
 }
@@ -8719,14 +8021,12 @@ gdk_gl_get_glGetPointervEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_array.glGetPointervEXT == (GdkGLProc_glGetPointervEXT) -1)
-    {
-      _procs_GL_EXT_vertex_array.glGetPointervEXT =
-        (GdkGLProc_glGetPointervEXT) gdk_gl_get_proc_address ("glGetPointervEXT");
+    _procs_GL_EXT_vertex_array.glGetPointervEXT =
+      (GdkGLProc_glGetPointervEXT) gdk_gl_get_proc_address ("glGetPointervEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetPointervEXT () - %s",
-                   (_procs_GL_EXT_vertex_array.glGetPointervEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetPointervEXT () - %s",
+               (_procs_GL_EXT_vertex_array.glGetPointervEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_array.glGetPointervEXT);
 }
@@ -8739,14 +8039,12 @@ gdk_gl_get_glIndexPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_array.glIndexPointerEXT == (GdkGLProc_glIndexPointerEXT) -1)
-    {
-      _procs_GL_EXT_vertex_array.glIndexPointerEXT =
-        (GdkGLProc_glIndexPointerEXT) gdk_gl_get_proc_address ("glIndexPointerEXT");
+    _procs_GL_EXT_vertex_array.glIndexPointerEXT =
+      (GdkGLProc_glIndexPointerEXT) gdk_gl_get_proc_address ("glIndexPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIndexPointerEXT () - %s",
-                   (_procs_GL_EXT_vertex_array.glIndexPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIndexPointerEXT () - %s",
+               (_procs_GL_EXT_vertex_array.glIndexPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_array.glIndexPointerEXT);
 }
@@ -8759,14 +8057,12 @@ gdk_gl_get_glNormalPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_array.glNormalPointerEXT == (GdkGLProc_glNormalPointerEXT) -1)
-    {
-      _procs_GL_EXT_vertex_array.glNormalPointerEXT =
-        (GdkGLProc_glNormalPointerEXT) gdk_gl_get_proc_address ("glNormalPointerEXT");
+    _procs_GL_EXT_vertex_array.glNormalPointerEXT =
+      (GdkGLProc_glNormalPointerEXT) gdk_gl_get_proc_address ("glNormalPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalPointerEXT () - %s",
-                   (_procs_GL_EXT_vertex_array.glNormalPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalPointerEXT () - %s",
+               (_procs_GL_EXT_vertex_array.glNormalPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_array.glNormalPointerEXT);
 }
@@ -8779,14 +8075,12 @@ gdk_gl_get_glTexCoordPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_array.glTexCoordPointerEXT == (GdkGLProc_glTexCoordPointerEXT) -1)
-    {
-      _procs_GL_EXT_vertex_array.glTexCoordPointerEXT =
-        (GdkGLProc_glTexCoordPointerEXT) gdk_gl_get_proc_address ("glTexCoordPointerEXT");
+    _procs_GL_EXT_vertex_array.glTexCoordPointerEXT =
+      (GdkGLProc_glTexCoordPointerEXT) gdk_gl_get_proc_address ("glTexCoordPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoordPointerEXT () - %s",
-                   (_procs_GL_EXT_vertex_array.glTexCoordPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoordPointerEXT () - %s",
+               (_procs_GL_EXT_vertex_array.glTexCoordPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_array.glTexCoordPointerEXT);
 }
@@ -8799,14 +8093,12 @@ gdk_gl_get_glVertexPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_array.glVertexPointerEXT == (GdkGLProc_glVertexPointerEXT) -1)
-    {
-      _procs_GL_EXT_vertex_array.glVertexPointerEXT =
-        (GdkGLProc_glVertexPointerEXT) gdk_gl_get_proc_address ("glVertexPointerEXT");
+    _procs_GL_EXT_vertex_array.glVertexPointerEXT =
+      (GdkGLProc_glVertexPointerEXT) gdk_gl_get_proc_address ("glVertexPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexPointerEXT () - %s",
-                   (_procs_GL_EXT_vertex_array.glVertexPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexPointerEXT () - %s",
+               (_procs_GL_EXT_vertex_array.glVertexPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_array.glVertexPointerEXT);
 }
@@ -8864,14 +8156,12 @@ gdk_gl_get_glBlendEquationEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_blend_minmax.glBlendEquationEXT == (GdkGLProc_glBlendEquationEXT) -1)
-    {
-      _procs_GL_EXT_blend_minmax.glBlendEquationEXT =
-        (GdkGLProc_glBlendEquationEXT) gdk_gl_get_proc_address ("glBlendEquationEXT");
+    _procs_GL_EXT_blend_minmax.glBlendEquationEXT =
+      (GdkGLProc_glBlendEquationEXT) gdk_gl_get_proc_address ("glBlendEquationEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBlendEquationEXT () - %s",
-                   (_procs_GL_EXT_blend_minmax.glBlendEquationEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendEquationEXT () - %s",
+               (_procs_GL_EXT_blend_minmax.glBlendEquationEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_blend_minmax.glBlendEquationEXT);
 }
@@ -8924,14 +8214,12 @@ gdk_gl_get_glSpriteParameterfSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_sprite.glSpriteParameterfSGIX == (GdkGLProc_glSpriteParameterfSGIX) -1)
-    {
-      _procs_GL_SGIX_sprite.glSpriteParameterfSGIX =
-        (GdkGLProc_glSpriteParameterfSGIX) gdk_gl_get_proc_address ("glSpriteParameterfSGIX");
+    _procs_GL_SGIX_sprite.glSpriteParameterfSGIX =
+      (GdkGLProc_glSpriteParameterfSGIX) gdk_gl_get_proc_address ("glSpriteParameterfSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSpriteParameterfSGIX () - %s",
-                   (_procs_GL_SGIX_sprite.glSpriteParameterfSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSpriteParameterfSGIX () - %s",
+               (_procs_GL_SGIX_sprite.glSpriteParameterfSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_sprite.glSpriteParameterfSGIX);
 }
@@ -8944,14 +8232,12 @@ gdk_gl_get_glSpriteParameterfvSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_sprite.glSpriteParameterfvSGIX == (GdkGLProc_glSpriteParameterfvSGIX) -1)
-    {
-      _procs_GL_SGIX_sprite.glSpriteParameterfvSGIX =
-        (GdkGLProc_glSpriteParameterfvSGIX) gdk_gl_get_proc_address ("glSpriteParameterfvSGIX");
+    _procs_GL_SGIX_sprite.glSpriteParameterfvSGIX =
+      (GdkGLProc_glSpriteParameterfvSGIX) gdk_gl_get_proc_address ("glSpriteParameterfvSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSpriteParameterfvSGIX () - %s",
-                   (_procs_GL_SGIX_sprite.glSpriteParameterfvSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSpriteParameterfvSGIX () - %s",
+               (_procs_GL_SGIX_sprite.glSpriteParameterfvSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_sprite.glSpriteParameterfvSGIX);
 }
@@ -8964,14 +8250,12 @@ gdk_gl_get_glSpriteParameteriSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_sprite.glSpriteParameteriSGIX == (GdkGLProc_glSpriteParameteriSGIX) -1)
-    {
-      _procs_GL_SGIX_sprite.glSpriteParameteriSGIX =
-        (GdkGLProc_glSpriteParameteriSGIX) gdk_gl_get_proc_address ("glSpriteParameteriSGIX");
+    _procs_GL_SGIX_sprite.glSpriteParameteriSGIX =
+      (GdkGLProc_glSpriteParameteriSGIX) gdk_gl_get_proc_address ("glSpriteParameteriSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSpriteParameteriSGIX () - %s",
-                   (_procs_GL_SGIX_sprite.glSpriteParameteriSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSpriteParameteriSGIX () - %s",
+               (_procs_GL_SGIX_sprite.glSpriteParameteriSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_sprite.glSpriteParameteriSGIX);
 }
@@ -8984,14 +8268,12 @@ gdk_gl_get_glSpriteParameterivSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_sprite.glSpriteParameterivSGIX == (GdkGLProc_glSpriteParameterivSGIX) -1)
-    {
-      _procs_GL_SGIX_sprite.glSpriteParameterivSGIX =
-        (GdkGLProc_glSpriteParameterivSGIX) gdk_gl_get_proc_address ("glSpriteParameterivSGIX");
+    _procs_GL_SGIX_sprite.glSpriteParameterivSGIX =
+      (GdkGLProc_glSpriteParameterivSGIX) gdk_gl_get_proc_address ("glSpriteParameterivSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSpriteParameterivSGIX () - %s",
-                   (_procs_GL_SGIX_sprite.glSpriteParameterivSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSpriteParameterivSGIX () - %s",
+               (_procs_GL_SGIX_sprite.glSpriteParameterivSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_sprite.glSpriteParameterivSGIX);
 }
@@ -9045,14 +8327,12 @@ gdk_gl_get_glPointParameterfEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_point_parameters.glPointParameterfEXT == (GdkGLProc_glPointParameterfEXT) -1)
-    {
-      _procs_GL_EXT_point_parameters.glPointParameterfEXT =
-        (GdkGLProc_glPointParameterfEXT) gdk_gl_get_proc_address ("glPointParameterfEXT");
+    _procs_GL_EXT_point_parameters.glPointParameterfEXT =
+      (GdkGLProc_glPointParameterfEXT) gdk_gl_get_proc_address ("glPointParameterfEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameterfEXT () - %s",
-                   (_procs_GL_EXT_point_parameters.glPointParameterfEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameterfEXT () - %s",
+               (_procs_GL_EXT_point_parameters.glPointParameterfEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_point_parameters.glPointParameterfEXT);
 }
@@ -9065,14 +8345,12 @@ gdk_gl_get_glPointParameterfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_point_parameters.glPointParameterfvEXT == (GdkGLProc_glPointParameterfvEXT) -1)
-    {
-      _procs_GL_EXT_point_parameters.glPointParameterfvEXT =
-        (GdkGLProc_glPointParameterfvEXT) gdk_gl_get_proc_address ("glPointParameterfvEXT");
+    _procs_GL_EXT_point_parameters.glPointParameterfvEXT =
+      (GdkGLProc_glPointParameterfvEXT) gdk_gl_get_proc_address ("glPointParameterfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameterfvEXT () - %s",
-                   (_procs_GL_EXT_point_parameters.glPointParameterfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameterfvEXT () - %s",
+               (_procs_GL_EXT_point_parameters.glPointParameterfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_point_parameters.glPointParameterfvEXT);
 }
@@ -9124,14 +8402,12 @@ gdk_gl_get_glPointParameterfSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_point_parameters.glPointParameterfSGIS == (GdkGLProc_glPointParameterfSGIS) -1)
-    {
-      _procs_GL_SGIS_point_parameters.glPointParameterfSGIS =
-        (GdkGLProc_glPointParameterfSGIS) gdk_gl_get_proc_address ("glPointParameterfSGIS");
+    _procs_GL_SGIS_point_parameters.glPointParameterfSGIS =
+      (GdkGLProc_glPointParameterfSGIS) gdk_gl_get_proc_address ("glPointParameterfSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameterfSGIS () - %s",
-                   (_procs_GL_SGIS_point_parameters.glPointParameterfSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameterfSGIS () - %s",
+               (_procs_GL_SGIS_point_parameters.glPointParameterfSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_point_parameters.glPointParameterfSGIS);
 }
@@ -9144,14 +8420,12 @@ gdk_gl_get_glPointParameterfvSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_point_parameters.glPointParameterfvSGIS == (GdkGLProc_glPointParameterfvSGIS) -1)
-    {
-      _procs_GL_SGIS_point_parameters.glPointParameterfvSGIS =
-        (GdkGLProc_glPointParameterfvSGIS) gdk_gl_get_proc_address ("glPointParameterfvSGIS");
+    _procs_GL_SGIS_point_parameters.glPointParameterfvSGIS =
+      (GdkGLProc_glPointParameterfvSGIS) gdk_gl_get_proc_address ("glPointParameterfvSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameterfvSGIS () - %s",
-                   (_procs_GL_SGIS_point_parameters.glPointParameterfvSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameterfvSGIS () - %s",
+               (_procs_GL_SGIS_point_parameters.glPointParameterfvSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_point_parameters.glPointParameterfvSGIS);
 }
@@ -9207,14 +8481,12 @@ gdk_gl_get_glGetInstrumentsSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_instruments.glGetInstrumentsSGIX == (GdkGLProc_glGetInstrumentsSGIX) -1)
-    {
-      _procs_GL_SGIX_instruments.glGetInstrumentsSGIX =
-        (GdkGLProc_glGetInstrumentsSGIX) gdk_gl_get_proc_address ("glGetInstrumentsSGIX");
+    _procs_GL_SGIX_instruments.glGetInstrumentsSGIX =
+      (GdkGLProc_glGetInstrumentsSGIX) gdk_gl_get_proc_address ("glGetInstrumentsSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetInstrumentsSGIX () - %s",
-                   (_procs_GL_SGIX_instruments.glGetInstrumentsSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetInstrumentsSGIX () - %s",
+               (_procs_GL_SGIX_instruments.glGetInstrumentsSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_instruments.glGetInstrumentsSGIX);
 }
@@ -9227,14 +8499,12 @@ gdk_gl_get_glInstrumentsBufferSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_instruments.glInstrumentsBufferSGIX == (GdkGLProc_glInstrumentsBufferSGIX) -1)
-    {
-      _procs_GL_SGIX_instruments.glInstrumentsBufferSGIX =
-        (GdkGLProc_glInstrumentsBufferSGIX) gdk_gl_get_proc_address ("glInstrumentsBufferSGIX");
+    _procs_GL_SGIX_instruments.glInstrumentsBufferSGIX =
+      (GdkGLProc_glInstrumentsBufferSGIX) gdk_gl_get_proc_address ("glInstrumentsBufferSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glInstrumentsBufferSGIX () - %s",
-                   (_procs_GL_SGIX_instruments.glInstrumentsBufferSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glInstrumentsBufferSGIX () - %s",
+               (_procs_GL_SGIX_instruments.glInstrumentsBufferSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_instruments.glInstrumentsBufferSGIX);
 }
@@ -9247,14 +8517,12 @@ gdk_gl_get_glPollInstrumentsSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_instruments.glPollInstrumentsSGIX == (GdkGLProc_glPollInstrumentsSGIX) -1)
-    {
-      _procs_GL_SGIX_instruments.glPollInstrumentsSGIX =
-        (GdkGLProc_glPollInstrumentsSGIX) gdk_gl_get_proc_address ("glPollInstrumentsSGIX");
+    _procs_GL_SGIX_instruments.glPollInstrumentsSGIX =
+      (GdkGLProc_glPollInstrumentsSGIX) gdk_gl_get_proc_address ("glPollInstrumentsSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPollInstrumentsSGIX () - %s",
-                   (_procs_GL_SGIX_instruments.glPollInstrumentsSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPollInstrumentsSGIX () - %s",
+               (_procs_GL_SGIX_instruments.glPollInstrumentsSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_instruments.glPollInstrumentsSGIX);
 }
@@ -9267,14 +8535,12 @@ gdk_gl_get_glReadInstrumentsSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_instruments.glReadInstrumentsSGIX == (GdkGLProc_glReadInstrumentsSGIX) -1)
-    {
-      _procs_GL_SGIX_instruments.glReadInstrumentsSGIX =
-        (GdkGLProc_glReadInstrumentsSGIX) gdk_gl_get_proc_address ("glReadInstrumentsSGIX");
+    _procs_GL_SGIX_instruments.glReadInstrumentsSGIX =
+      (GdkGLProc_glReadInstrumentsSGIX) gdk_gl_get_proc_address ("glReadInstrumentsSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReadInstrumentsSGIX () - %s",
-                   (_procs_GL_SGIX_instruments.glReadInstrumentsSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReadInstrumentsSGIX () - %s",
+               (_procs_GL_SGIX_instruments.glReadInstrumentsSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_instruments.glReadInstrumentsSGIX);
 }
@@ -9287,14 +8553,12 @@ gdk_gl_get_glStartInstrumentsSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_instruments.glStartInstrumentsSGIX == (GdkGLProc_glStartInstrumentsSGIX) -1)
-    {
-      _procs_GL_SGIX_instruments.glStartInstrumentsSGIX =
-        (GdkGLProc_glStartInstrumentsSGIX) gdk_gl_get_proc_address ("glStartInstrumentsSGIX");
+    _procs_GL_SGIX_instruments.glStartInstrumentsSGIX =
+      (GdkGLProc_glStartInstrumentsSGIX) gdk_gl_get_proc_address ("glStartInstrumentsSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glStartInstrumentsSGIX () - %s",
-                   (_procs_GL_SGIX_instruments.glStartInstrumentsSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glStartInstrumentsSGIX () - %s",
+               (_procs_GL_SGIX_instruments.glStartInstrumentsSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_instruments.glStartInstrumentsSGIX);
 }
@@ -9307,14 +8571,12 @@ gdk_gl_get_glStopInstrumentsSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_instruments.glStopInstrumentsSGIX == (GdkGLProc_glStopInstrumentsSGIX) -1)
-    {
-      _procs_GL_SGIX_instruments.glStopInstrumentsSGIX =
-        (GdkGLProc_glStopInstrumentsSGIX) gdk_gl_get_proc_address ("glStopInstrumentsSGIX");
+    _procs_GL_SGIX_instruments.glStopInstrumentsSGIX =
+      (GdkGLProc_glStopInstrumentsSGIX) gdk_gl_get_proc_address ("glStopInstrumentsSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glStopInstrumentsSGIX () - %s",
-                   (_procs_GL_SGIX_instruments.glStopInstrumentsSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glStopInstrumentsSGIX () - %s",
+               (_procs_GL_SGIX_instruments.glStopInstrumentsSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_instruments.glStopInstrumentsSGIX);
 }
@@ -9369,14 +8631,12 @@ gdk_gl_get_glFrameZoomSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_framezoom.glFrameZoomSGIX == (GdkGLProc_glFrameZoomSGIX) -1)
-    {
-      _procs_GL_SGIX_framezoom.glFrameZoomSGIX =
-        (GdkGLProc_glFrameZoomSGIX) gdk_gl_get_proc_address ("glFrameZoomSGIX");
+    _procs_GL_SGIX_framezoom.glFrameZoomSGIX =
+      (GdkGLProc_glFrameZoomSGIX) gdk_gl_get_proc_address ("glFrameZoomSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFrameZoomSGIX () - %s",
-                   (_procs_GL_SGIX_framezoom.glFrameZoomSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFrameZoomSGIX () - %s",
+               (_procs_GL_SGIX_framezoom.glFrameZoomSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_framezoom.glFrameZoomSGIX);
 }
@@ -9426,14 +8686,12 @@ gdk_gl_get_glTagSampleBufferSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_tag_sample_buffer.glTagSampleBufferSGIX == (GdkGLProc_glTagSampleBufferSGIX) -1)
-    {
-      _procs_GL_SGIX_tag_sample_buffer.glTagSampleBufferSGIX =
-        (GdkGLProc_glTagSampleBufferSGIX) gdk_gl_get_proc_address ("glTagSampleBufferSGIX");
+    _procs_GL_SGIX_tag_sample_buffer.glTagSampleBufferSGIX =
+      (GdkGLProc_glTagSampleBufferSGIX) gdk_gl_get_proc_address ("glTagSampleBufferSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTagSampleBufferSGIX () - %s",
-                   (_procs_GL_SGIX_tag_sample_buffer.glTagSampleBufferSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTagSampleBufferSGIX () - %s",
+               (_procs_GL_SGIX_tag_sample_buffer.glTagSampleBufferSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_tag_sample_buffer.glTagSampleBufferSGIX);
 }
@@ -9486,14 +8744,12 @@ gdk_gl_get_glDeformationMap3dSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_polynomial_ffd.glDeformationMap3dSGIX == (GdkGLProc_glDeformationMap3dSGIX) -1)
-    {
-      _procs_GL_SGIX_polynomial_ffd.glDeformationMap3dSGIX =
-        (GdkGLProc_glDeformationMap3dSGIX) gdk_gl_get_proc_address ("glDeformationMap3dSGIX");
+    _procs_GL_SGIX_polynomial_ffd.glDeformationMap3dSGIX =
+      (GdkGLProc_glDeformationMap3dSGIX) gdk_gl_get_proc_address ("glDeformationMap3dSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeformationMap3dSGIX () - %s",
-                   (_procs_GL_SGIX_polynomial_ffd.glDeformationMap3dSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeformationMap3dSGIX () - %s",
+               (_procs_GL_SGIX_polynomial_ffd.glDeformationMap3dSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_polynomial_ffd.glDeformationMap3dSGIX);
 }
@@ -9506,14 +8762,12 @@ gdk_gl_get_glDeformationMap3fSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_polynomial_ffd.glDeformationMap3fSGIX == (GdkGLProc_glDeformationMap3fSGIX) -1)
-    {
-      _procs_GL_SGIX_polynomial_ffd.glDeformationMap3fSGIX =
-        (GdkGLProc_glDeformationMap3fSGIX) gdk_gl_get_proc_address ("glDeformationMap3fSGIX");
+    _procs_GL_SGIX_polynomial_ffd.glDeformationMap3fSGIX =
+      (GdkGLProc_glDeformationMap3fSGIX) gdk_gl_get_proc_address ("glDeformationMap3fSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeformationMap3fSGIX () - %s",
-                   (_procs_GL_SGIX_polynomial_ffd.glDeformationMap3fSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeformationMap3fSGIX () - %s",
+               (_procs_GL_SGIX_polynomial_ffd.glDeformationMap3fSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_polynomial_ffd.glDeformationMap3fSGIX);
 }
@@ -9526,14 +8780,12 @@ gdk_gl_get_glDeformSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_polynomial_ffd.glDeformSGIX == (GdkGLProc_glDeformSGIX) -1)
-    {
-      _procs_GL_SGIX_polynomial_ffd.glDeformSGIX =
-        (GdkGLProc_glDeformSGIX) gdk_gl_get_proc_address ("glDeformSGIX");
+    _procs_GL_SGIX_polynomial_ffd.glDeformSGIX =
+      (GdkGLProc_glDeformSGIX) gdk_gl_get_proc_address ("glDeformSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeformSGIX () - %s",
-                   (_procs_GL_SGIX_polynomial_ffd.glDeformSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeformSGIX () - %s",
+               (_procs_GL_SGIX_polynomial_ffd.glDeformSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_polynomial_ffd.glDeformSGIX);
 }
@@ -9546,14 +8798,12 @@ gdk_gl_get_glLoadIdentityDeformationMapSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_polynomial_ffd.glLoadIdentityDeformationMapSGIX == (GdkGLProc_glLoadIdentityDeformationMapSGIX) -1)
-    {
-      _procs_GL_SGIX_polynomial_ffd.glLoadIdentityDeformationMapSGIX =
-        (GdkGLProc_glLoadIdentityDeformationMapSGIX) gdk_gl_get_proc_address ("glLoadIdentityDeformationMapSGIX");
+    _procs_GL_SGIX_polynomial_ffd.glLoadIdentityDeformationMapSGIX =
+      (GdkGLProc_glLoadIdentityDeformationMapSGIX) gdk_gl_get_proc_address ("glLoadIdentityDeformationMapSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glLoadIdentityDeformationMapSGIX () - %s",
-                   (_procs_GL_SGIX_polynomial_ffd.glLoadIdentityDeformationMapSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLoadIdentityDeformationMapSGIX () - %s",
+               (_procs_GL_SGIX_polynomial_ffd.glLoadIdentityDeformationMapSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_polynomial_ffd.glLoadIdentityDeformationMapSGIX);
 }
@@ -9606,14 +8856,12 @@ gdk_gl_get_glReferencePlaneSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_reference_plane.glReferencePlaneSGIX == (GdkGLProc_glReferencePlaneSGIX) -1)
-    {
-      _procs_GL_SGIX_reference_plane.glReferencePlaneSGIX =
-        (GdkGLProc_glReferencePlaneSGIX) gdk_gl_get_proc_address ("glReferencePlaneSGIX");
+    _procs_GL_SGIX_reference_plane.glReferencePlaneSGIX =
+      (GdkGLProc_glReferencePlaneSGIX) gdk_gl_get_proc_address ("glReferencePlaneSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReferencePlaneSGIX () - %s",
-                   (_procs_GL_SGIX_reference_plane.glReferencePlaneSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReferencePlaneSGIX () - %s",
+               (_procs_GL_SGIX_reference_plane.glReferencePlaneSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_reference_plane.glReferencePlaneSGIX);
 }
@@ -9663,14 +8911,12 @@ gdk_gl_get_glFlushRasterSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_flush_raster.glFlushRasterSGIX == (GdkGLProc_glFlushRasterSGIX) -1)
-    {
-      _procs_GL_SGIX_flush_raster.glFlushRasterSGIX =
-        (GdkGLProc_glFlushRasterSGIX) gdk_gl_get_proc_address ("glFlushRasterSGIX");
+    _procs_GL_SGIX_flush_raster.glFlushRasterSGIX =
+      (GdkGLProc_glFlushRasterSGIX) gdk_gl_get_proc_address ("glFlushRasterSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFlushRasterSGIX () - %s",
-                   (_procs_GL_SGIX_flush_raster.glFlushRasterSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFlushRasterSGIX () - %s",
+               (_procs_GL_SGIX_flush_raster.glFlushRasterSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_flush_raster.glFlushRasterSGIX);
 }
@@ -9721,14 +8967,12 @@ gdk_gl_get_glFogFuncSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_fog_function.glFogFuncSGIS == (GdkGLProc_glFogFuncSGIS) -1)
-    {
-      _procs_GL_SGIS_fog_function.glFogFuncSGIS =
-        (GdkGLProc_glFogFuncSGIS) gdk_gl_get_proc_address ("glFogFuncSGIS");
+    _procs_GL_SGIS_fog_function.glFogFuncSGIS =
+      (GdkGLProc_glFogFuncSGIS) gdk_gl_get_proc_address ("glFogFuncSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogFuncSGIS () - %s",
-                   (_procs_GL_SGIS_fog_function.glFogFuncSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogFuncSGIS () - %s",
+               (_procs_GL_SGIS_fog_function.glFogFuncSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_fog_function.glFogFuncSGIS);
 }
@@ -9741,14 +8985,12 @@ gdk_gl_get_glGetFogFuncSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_fog_function.glGetFogFuncSGIS == (GdkGLProc_glGetFogFuncSGIS) -1)
-    {
-      _procs_GL_SGIS_fog_function.glGetFogFuncSGIS =
-        (GdkGLProc_glGetFogFuncSGIS) gdk_gl_get_proc_address ("glGetFogFuncSGIS");
+    _procs_GL_SGIS_fog_function.glGetFogFuncSGIS =
+      (GdkGLProc_glGetFogFuncSGIS) gdk_gl_get_proc_address ("glGetFogFuncSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetFogFuncSGIS () - %s",
-                   (_procs_GL_SGIS_fog_function.glGetFogFuncSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFogFuncSGIS () - %s",
+               (_procs_GL_SGIS_fog_function.glGetFogFuncSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_fog_function.glGetFogFuncSGIS);
 }
@@ -9804,14 +9046,12 @@ gdk_gl_get_glImageTransformParameteriHP (void)
     return NULL;
 
   if (_procs_GL_HP_image_transform.glImageTransformParameteriHP == (GdkGLProc_glImageTransformParameteriHP) -1)
-    {
-      _procs_GL_HP_image_transform.glImageTransformParameteriHP =
-        (GdkGLProc_glImageTransformParameteriHP) gdk_gl_get_proc_address ("glImageTransformParameteriHP");
+    _procs_GL_HP_image_transform.glImageTransformParameteriHP =
+      (GdkGLProc_glImageTransformParameteriHP) gdk_gl_get_proc_address ("glImageTransformParameteriHP");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glImageTransformParameteriHP () - %s",
-                   (_procs_GL_HP_image_transform.glImageTransformParameteriHP) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glImageTransformParameteriHP () - %s",
+               (_procs_GL_HP_image_transform.glImageTransformParameteriHP) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_HP_image_transform.glImageTransformParameteriHP);
 }
@@ -9824,14 +9064,12 @@ gdk_gl_get_glImageTransformParameterfHP (void)
     return NULL;
 
   if (_procs_GL_HP_image_transform.glImageTransformParameterfHP == (GdkGLProc_glImageTransformParameterfHP) -1)
-    {
-      _procs_GL_HP_image_transform.glImageTransformParameterfHP =
-        (GdkGLProc_glImageTransformParameterfHP) gdk_gl_get_proc_address ("glImageTransformParameterfHP");
+    _procs_GL_HP_image_transform.glImageTransformParameterfHP =
+      (GdkGLProc_glImageTransformParameterfHP) gdk_gl_get_proc_address ("glImageTransformParameterfHP");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glImageTransformParameterfHP () - %s",
-                   (_procs_GL_HP_image_transform.glImageTransformParameterfHP) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glImageTransformParameterfHP () - %s",
+               (_procs_GL_HP_image_transform.glImageTransformParameterfHP) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_HP_image_transform.glImageTransformParameterfHP);
 }
@@ -9844,14 +9082,12 @@ gdk_gl_get_glImageTransformParameterivHP (void)
     return NULL;
 
   if (_procs_GL_HP_image_transform.glImageTransformParameterivHP == (GdkGLProc_glImageTransformParameterivHP) -1)
-    {
-      _procs_GL_HP_image_transform.glImageTransformParameterivHP =
-        (GdkGLProc_glImageTransformParameterivHP) gdk_gl_get_proc_address ("glImageTransformParameterivHP");
+    _procs_GL_HP_image_transform.glImageTransformParameterivHP =
+      (GdkGLProc_glImageTransformParameterivHP) gdk_gl_get_proc_address ("glImageTransformParameterivHP");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glImageTransformParameterivHP () - %s",
-                   (_procs_GL_HP_image_transform.glImageTransformParameterivHP) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glImageTransformParameterivHP () - %s",
+               (_procs_GL_HP_image_transform.glImageTransformParameterivHP) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_HP_image_transform.glImageTransformParameterivHP);
 }
@@ -9864,14 +9100,12 @@ gdk_gl_get_glImageTransformParameterfvHP (void)
     return NULL;
 
   if (_procs_GL_HP_image_transform.glImageTransformParameterfvHP == (GdkGLProc_glImageTransformParameterfvHP) -1)
-    {
-      _procs_GL_HP_image_transform.glImageTransformParameterfvHP =
-        (GdkGLProc_glImageTransformParameterfvHP) gdk_gl_get_proc_address ("glImageTransformParameterfvHP");
+    _procs_GL_HP_image_transform.glImageTransformParameterfvHP =
+      (GdkGLProc_glImageTransformParameterfvHP) gdk_gl_get_proc_address ("glImageTransformParameterfvHP");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glImageTransformParameterfvHP () - %s",
-                   (_procs_GL_HP_image_transform.glImageTransformParameterfvHP) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glImageTransformParameterfvHP () - %s",
+               (_procs_GL_HP_image_transform.glImageTransformParameterfvHP) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_HP_image_transform.glImageTransformParameterfvHP);
 }
@@ -9884,14 +9118,12 @@ gdk_gl_get_glGetImageTransformParameterivHP (void)
     return NULL;
 
   if (_procs_GL_HP_image_transform.glGetImageTransformParameterivHP == (GdkGLProc_glGetImageTransformParameterivHP) -1)
-    {
-      _procs_GL_HP_image_transform.glGetImageTransformParameterivHP =
-        (GdkGLProc_glGetImageTransformParameterivHP) gdk_gl_get_proc_address ("glGetImageTransformParameterivHP");
+    _procs_GL_HP_image_transform.glGetImageTransformParameterivHP =
+      (GdkGLProc_glGetImageTransformParameterivHP) gdk_gl_get_proc_address ("glGetImageTransformParameterivHP");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetImageTransformParameterivHP () - %s",
-                   (_procs_GL_HP_image_transform.glGetImageTransformParameterivHP) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetImageTransformParameterivHP () - %s",
+               (_procs_GL_HP_image_transform.glGetImageTransformParameterivHP) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_HP_image_transform.glGetImageTransformParameterivHP);
 }
@@ -9904,14 +9136,12 @@ gdk_gl_get_glGetImageTransformParameterfvHP (void)
     return NULL;
 
   if (_procs_GL_HP_image_transform.glGetImageTransformParameterfvHP == (GdkGLProc_glGetImageTransformParameterfvHP) -1)
-    {
-      _procs_GL_HP_image_transform.glGetImageTransformParameterfvHP =
-        (GdkGLProc_glGetImageTransformParameterfvHP) gdk_gl_get_proc_address ("glGetImageTransformParameterfvHP");
+    _procs_GL_HP_image_transform.glGetImageTransformParameterfvHP =
+      (GdkGLProc_glGetImageTransformParameterfvHP) gdk_gl_get_proc_address ("glGetImageTransformParameterfvHP");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetImageTransformParameterfvHP () - %s",
-                   (_procs_GL_HP_image_transform.glGetImageTransformParameterfvHP) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetImageTransformParameterfvHP () - %s",
+               (_procs_GL_HP_image_transform.glGetImageTransformParameterfvHP) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_HP_image_transform.glGetImageTransformParameterfvHP);
 }
@@ -9967,14 +9197,12 @@ gdk_gl_get_glColorSubTableEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_color_subtable.glColorSubTableEXT == (GdkGLProc_glColorSubTableEXT) -1)
-    {
-      _procs_GL_EXT_color_subtable.glColorSubTableEXT =
-        (GdkGLProc_glColorSubTableEXT) gdk_gl_get_proc_address ("glColorSubTableEXT");
+    _procs_GL_EXT_color_subtable.glColorSubTableEXT =
+      (GdkGLProc_glColorSubTableEXT) gdk_gl_get_proc_address ("glColorSubTableEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorSubTableEXT () - %s",
-                   (_procs_GL_EXT_color_subtable.glColorSubTableEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorSubTableEXT () - %s",
+               (_procs_GL_EXT_color_subtable.glColorSubTableEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_color_subtable.glColorSubTableEXT);
 }
@@ -9987,14 +9215,12 @@ gdk_gl_get_glCopyColorSubTableEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_color_subtable.glCopyColorSubTableEXT == (GdkGLProc_glCopyColorSubTableEXT) -1)
-    {
-      _procs_GL_EXT_color_subtable.glCopyColorSubTableEXT =
-        (GdkGLProc_glCopyColorSubTableEXT) gdk_gl_get_proc_address ("glCopyColorSubTableEXT");
+    _procs_GL_EXT_color_subtable.glCopyColorSubTableEXT =
+      (GdkGLProc_glCopyColorSubTableEXT) gdk_gl_get_proc_address ("glCopyColorSubTableEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCopyColorSubTableEXT () - %s",
-                   (_procs_GL_EXT_color_subtable.glCopyColorSubTableEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyColorSubTableEXT () - %s",
+               (_procs_GL_EXT_color_subtable.glCopyColorSubTableEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_color_subtable.glCopyColorSubTableEXT);
 }
@@ -10045,14 +9271,12 @@ gdk_gl_get_glHintPGI (void)
     return NULL;
 
   if (_procs_GL_PGI_misc_hints.glHintPGI == (GdkGLProc_glHintPGI) -1)
-    {
-      _procs_GL_PGI_misc_hints.glHintPGI =
-        (GdkGLProc_glHintPGI) gdk_gl_get_proc_address ("glHintPGI");
+    _procs_GL_PGI_misc_hints.glHintPGI =
+      (GdkGLProc_glHintPGI) gdk_gl_get_proc_address ("glHintPGI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glHintPGI () - %s",
-                   (_procs_GL_PGI_misc_hints.glHintPGI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glHintPGI () - %s",
+               (_procs_GL_PGI_misc_hints.glHintPGI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_PGI_misc_hints.glHintPGI);
 }
@@ -10105,14 +9329,12 @@ gdk_gl_get_glColorTableEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_paletted_texture.glColorTableEXT == (GdkGLProc_glColorTableEXT) -1)
-    {
-      _procs_GL_EXT_paletted_texture.glColorTableEXT =
-        (GdkGLProc_glColorTableEXT) gdk_gl_get_proc_address ("glColorTableEXT");
+    _procs_GL_EXT_paletted_texture.glColorTableEXT =
+      (GdkGLProc_glColorTableEXT) gdk_gl_get_proc_address ("glColorTableEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorTableEXT () - %s",
-                   (_procs_GL_EXT_paletted_texture.glColorTableEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorTableEXT () - %s",
+               (_procs_GL_EXT_paletted_texture.glColorTableEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_paletted_texture.glColorTableEXT);
 }
@@ -10125,14 +9347,12 @@ gdk_gl_get_glGetColorTableEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_paletted_texture.glGetColorTableEXT == (GdkGLProc_glGetColorTableEXT) -1)
-    {
-      _procs_GL_EXT_paletted_texture.glGetColorTableEXT =
-        (GdkGLProc_glGetColorTableEXT) gdk_gl_get_proc_address ("glGetColorTableEXT");
+    _procs_GL_EXT_paletted_texture.glGetColorTableEXT =
+      (GdkGLProc_glGetColorTableEXT) gdk_gl_get_proc_address ("glGetColorTableEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetColorTableEXT () - %s",
-                   (_procs_GL_EXT_paletted_texture.glGetColorTableEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTableEXT () - %s",
+               (_procs_GL_EXT_paletted_texture.glGetColorTableEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_paletted_texture.glGetColorTableEXT);
 }
@@ -10145,14 +9365,12 @@ gdk_gl_get_glGetColorTableParameterivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_paletted_texture.glGetColorTableParameterivEXT == (GdkGLProc_glGetColorTableParameterivEXT) -1)
-    {
-      _procs_GL_EXT_paletted_texture.glGetColorTableParameterivEXT =
-        (GdkGLProc_glGetColorTableParameterivEXT) gdk_gl_get_proc_address ("glGetColorTableParameterivEXT");
+    _procs_GL_EXT_paletted_texture.glGetColorTableParameterivEXT =
+      (GdkGLProc_glGetColorTableParameterivEXT) gdk_gl_get_proc_address ("glGetColorTableParameterivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetColorTableParameterivEXT () - %s",
-                   (_procs_GL_EXT_paletted_texture.glGetColorTableParameterivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTableParameterivEXT () - %s",
+               (_procs_GL_EXT_paletted_texture.glGetColorTableParameterivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_paletted_texture.glGetColorTableParameterivEXT);
 }
@@ -10165,14 +9383,12 @@ gdk_gl_get_glGetColorTableParameterfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_paletted_texture.glGetColorTableParameterfvEXT == (GdkGLProc_glGetColorTableParameterfvEXT) -1)
-    {
-      _procs_GL_EXT_paletted_texture.glGetColorTableParameterfvEXT =
-        (GdkGLProc_glGetColorTableParameterfvEXT) gdk_gl_get_proc_address ("glGetColorTableParameterfvEXT");
+    _procs_GL_EXT_paletted_texture.glGetColorTableParameterfvEXT =
+      (GdkGLProc_glGetColorTableParameterfvEXT) gdk_gl_get_proc_address ("glGetColorTableParameterfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetColorTableParameterfvEXT () - %s",
-                   (_procs_GL_EXT_paletted_texture.glGetColorTableParameterfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTableParameterfvEXT () - %s",
+               (_procs_GL_EXT_paletted_texture.glGetColorTableParameterfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_paletted_texture.glGetColorTableParameterfvEXT);
 }
@@ -10230,14 +9446,12 @@ gdk_gl_get_glGetListParameterfvSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_list_priority.glGetListParameterfvSGIX == (GdkGLProc_glGetListParameterfvSGIX) -1)
-    {
-      _procs_GL_SGIX_list_priority.glGetListParameterfvSGIX =
-        (GdkGLProc_glGetListParameterfvSGIX) gdk_gl_get_proc_address ("glGetListParameterfvSGIX");
+    _procs_GL_SGIX_list_priority.glGetListParameterfvSGIX =
+      (GdkGLProc_glGetListParameterfvSGIX) gdk_gl_get_proc_address ("glGetListParameterfvSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetListParameterfvSGIX () - %s",
-                   (_procs_GL_SGIX_list_priority.glGetListParameterfvSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetListParameterfvSGIX () - %s",
+               (_procs_GL_SGIX_list_priority.glGetListParameterfvSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_list_priority.glGetListParameterfvSGIX);
 }
@@ -10250,14 +9464,12 @@ gdk_gl_get_glGetListParameterivSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_list_priority.glGetListParameterivSGIX == (GdkGLProc_glGetListParameterivSGIX) -1)
-    {
-      _procs_GL_SGIX_list_priority.glGetListParameterivSGIX =
-        (GdkGLProc_glGetListParameterivSGIX) gdk_gl_get_proc_address ("glGetListParameterivSGIX");
+    _procs_GL_SGIX_list_priority.glGetListParameterivSGIX =
+      (GdkGLProc_glGetListParameterivSGIX) gdk_gl_get_proc_address ("glGetListParameterivSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetListParameterivSGIX () - %s",
-                   (_procs_GL_SGIX_list_priority.glGetListParameterivSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetListParameterivSGIX () - %s",
+               (_procs_GL_SGIX_list_priority.glGetListParameterivSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_list_priority.glGetListParameterivSGIX);
 }
@@ -10270,14 +9482,12 @@ gdk_gl_get_glListParameterfSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_list_priority.glListParameterfSGIX == (GdkGLProc_glListParameterfSGIX) -1)
-    {
-      _procs_GL_SGIX_list_priority.glListParameterfSGIX =
-        (GdkGLProc_glListParameterfSGIX) gdk_gl_get_proc_address ("glListParameterfSGIX");
+    _procs_GL_SGIX_list_priority.glListParameterfSGIX =
+      (GdkGLProc_glListParameterfSGIX) gdk_gl_get_proc_address ("glListParameterfSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glListParameterfSGIX () - %s",
-                   (_procs_GL_SGIX_list_priority.glListParameterfSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glListParameterfSGIX () - %s",
+               (_procs_GL_SGIX_list_priority.glListParameterfSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_list_priority.glListParameterfSGIX);
 }
@@ -10290,14 +9500,12 @@ gdk_gl_get_glListParameterfvSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_list_priority.glListParameterfvSGIX == (GdkGLProc_glListParameterfvSGIX) -1)
-    {
-      _procs_GL_SGIX_list_priority.glListParameterfvSGIX =
-        (GdkGLProc_glListParameterfvSGIX) gdk_gl_get_proc_address ("glListParameterfvSGIX");
+    _procs_GL_SGIX_list_priority.glListParameterfvSGIX =
+      (GdkGLProc_glListParameterfvSGIX) gdk_gl_get_proc_address ("glListParameterfvSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glListParameterfvSGIX () - %s",
-                   (_procs_GL_SGIX_list_priority.glListParameterfvSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glListParameterfvSGIX () - %s",
+               (_procs_GL_SGIX_list_priority.glListParameterfvSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_list_priority.glListParameterfvSGIX);
 }
@@ -10310,14 +9518,12 @@ gdk_gl_get_glListParameteriSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_list_priority.glListParameteriSGIX == (GdkGLProc_glListParameteriSGIX) -1)
-    {
-      _procs_GL_SGIX_list_priority.glListParameteriSGIX =
-        (GdkGLProc_glListParameteriSGIX) gdk_gl_get_proc_address ("glListParameteriSGIX");
+    _procs_GL_SGIX_list_priority.glListParameteriSGIX =
+      (GdkGLProc_glListParameteriSGIX) gdk_gl_get_proc_address ("glListParameteriSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glListParameteriSGIX () - %s",
-                   (_procs_GL_SGIX_list_priority.glListParameteriSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glListParameteriSGIX () - %s",
+               (_procs_GL_SGIX_list_priority.glListParameteriSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_list_priority.glListParameteriSGIX);
 }
@@ -10330,14 +9536,12 @@ gdk_gl_get_glListParameterivSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_list_priority.glListParameterivSGIX == (GdkGLProc_glListParameterivSGIX) -1)
-    {
-      _procs_GL_SGIX_list_priority.glListParameterivSGIX =
-        (GdkGLProc_glListParameterivSGIX) gdk_gl_get_proc_address ("glListParameterivSGIX");
+    _procs_GL_SGIX_list_priority.glListParameterivSGIX =
+      (GdkGLProc_glListParameterivSGIX) gdk_gl_get_proc_address ("glListParameterivSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glListParameterivSGIX () - %s",
-                   (_procs_GL_SGIX_list_priority.glListParameterivSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glListParameterivSGIX () - %s",
+               (_procs_GL_SGIX_list_priority.glListParameterivSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_list_priority.glListParameterivSGIX);
 }
@@ -10392,14 +9596,12 @@ gdk_gl_get_glIndexMaterialEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_index_material.glIndexMaterialEXT == (GdkGLProc_glIndexMaterialEXT) -1)
-    {
-      _procs_GL_EXT_index_material.glIndexMaterialEXT =
-        (GdkGLProc_glIndexMaterialEXT) gdk_gl_get_proc_address ("glIndexMaterialEXT");
+    _procs_GL_EXT_index_material.glIndexMaterialEXT =
+      (GdkGLProc_glIndexMaterialEXT) gdk_gl_get_proc_address ("glIndexMaterialEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIndexMaterialEXT () - %s",
-                   (_procs_GL_EXT_index_material.glIndexMaterialEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIndexMaterialEXT () - %s",
+               (_procs_GL_EXT_index_material.glIndexMaterialEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_index_material.glIndexMaterialEXT);
 }
@@ -10449,14 +9651,12 @@ gdk_gl_get_glIndexFuncEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_index_func.glIndexFuncEXT == (GdkGLProc_glIndexFuncEXT) -1)
-    {
-      _procs_GL_EXT_index_func.glIndexFuncEXT =
-        (GdkGLProc_glIndexFuncEXT) gdk_gl_get_proc_address ("glIndexFuncEXT");
+    _procs_GL_EXT_index_func.glIndexFuncEXT =
+      (GdkGLProc_glIndexFuncEXT) gdk_gl_get_proc_address ("glIndexFuncEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIndexFuncEXT () - %s",
-                   (_procs_GL_EXT_index_func.glIndexFuncEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIndexFuncEXT () - %s",
+               (_procs_GL_EXT_index_func.glIndexFuncEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_index_func.glIndexFuncEXT);
 }
@@ -10507,14 +9707,12 @@ gdk_gl_get_glLockArraysEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_compiled_vertex_array.glLockArraysEXT == (GdkGLProc_glLockArraysEXT) -1)
-    {
-      _procs_GL_EXT_compiled_vertex_array.glLockArraysEXT =
-        (GdkGLProc_glLockArraysEXT) gdk_gl_get_proc_address ("glLockArraysEXT");
+    _procs_GL_EXT_compiled_vertex_array.glLockArraysEXT =
+      (GdkGLProc_glLockArraysEXT) gdk_gl_get_proc_address ("glLockArraysEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glLockArraysEXT () - %s",
-                   (_procs_GL_EXT_compiled_vertex_array.glLockArraysEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLockArraysEXT () - %s",
+               (_procs_GL_EXT_compiled_vertex_array.glLockArraysEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_compiled_vertex_array.glLockArraysEXT);
 }
@@ -10527,14 +9725,12 @@ gdk_gl_get_glUnlockArraysEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_compiled_vertex_array.glUnlockArraysEXT == (GdkGLProc_glUnlockArraysEXT) -1)
-    {
-      _procs_GL_EXT_compiled_vertex_array.glUnlockArraysEXT =
-        (GdkGLProc_glUnlockArraysEXT) gdk_gl_get_proc_address ("glUnlockArraysEXT");
+    _procs_GL_EXT_compiled_vertex_array.glUnlockArraysEXT =
+      (GdkGLProc_glUnlockArraysEXT) gdk_gl_get_proc_address ("glUnlockArraysEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glUnlockArraysEXT () - %s",
-                   (_procs_GL_EXT_compiled_vertex_array.glUnlockArraysEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUnlockArraysEXT () - %s",
+               (_procs_GL_EXT_compiled_vertex_array.glUnlockArraysEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_compiled_vertex_array.glUnlockArraysEXT);
 }
@@ -10586,14 +9782,12 @@ gdk_gl_get_glCullParameterdvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_cull_vertex.glCullParameterdvEXT == (GdkGLProc_glCullParameterdvEXT) -1)
-    {
-      _procs_GL_EXT_cull_vertex.glCullParameterdvEXT =
-        (GdkGLProc_glCullParameterdvEXT) gdk_gl_get_proc_address ("glCullParameterdvEXT");
+    _procs_GL_EXT_cull_vertex.glCullParameterdvEXT =
+      (GdkGLProc_glCullParameterdvEXT) gdk_gl_get_proc_address ("glCullParameterdvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCullParameterdvEXT () - %s",
-                   (_procs_GL_EXT_cull_vertex.glCullParameterdvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCullParameterdvEXT () - %s",
+               (_procs_GL_EXT_cull_vertex.glCullParameterdvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_cull_vertex.glCullParameterdvEXT);
 }
@@ -10606,14 +9800,12 @@ gdk_gl_get_glCullParameterfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_cull_vertex.glCullParameterfvEXT == (GdkGLProc_glCullParameterfvEXT) -1)
-    {
-      _procs_GL_EXT_cull_vertex.glCullParameterfvEXT =
-        (GdkGLProc_glCullParameterfvEXT) gdk_gl_get_proc_address ("glCullParameterfvEXT");
+    _procs_GL_EXT_cull_vertex.glCullParameterfvEXT =
+      (GdkGLProc_glCullParameterfvEXT) gdk_gl_get_proc_address ("glCullParameterfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCullParameterfvEXT () - %s",
-                   (_procs_GL_EXT_cull_vertex.glCullParameterfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCullParameterfvEXT () - %s",
+               (_procs_GL_EXT_cull_vertex.glCullParameterfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_cull_vertex.glCullParameterfvEXT);
 }
@@ -10681,14 +9873,12 @@ gdk_gl_get_glFragmentColorMaterialSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentColorMaterialSGIX == (GdkGLProc_glFragmentColorMaterialSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentColorMaterialSGIX =
-        (GdkGLProc_glFragmentColorMaterialSGIX) gdk_gl_get_proc_address ("glFragmentColorMaterialSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentColorMaterialSGIX =
+      (GdkGLProc_glFragmentColorMaterialSGIX) gdk_gl_get_proc_address ("glFragmentColorMaterialSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentColorMaterialSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentColorMaterialSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentColorMaterialSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentColorMaterialSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentColorMaterialSGIX);
 }
@@ -10701,14 +9891,12 @@ gdk_gl_get_glFragmentLightfSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentLightfSGIX == (GdkGLProc_glFragmentLightfSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentLightfSGIX =
-        (GdkGLProc_glFragmentLightfSGIX) gdk_gl_get_proc_address ("glFragmentLightfSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentLightfSGIX =
+      (GdkGLProc_glFragmentLightfSGIX) gdk_gl_get_proc_address ("glFragmentLightfSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentLightfSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentLightfSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightfSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentLightfSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentLightfSGIX);
 }
@@ -10721,14 +9909,12 @@ gdk_gl_get_glFragmentLightfvSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentLightfvSGIX == (GdkGLProc_glFragmentLightfvSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentLightfvSGIX =
-        (GdkGLProc_glFragmentLightfvSGIX) gdk_gl_get_proc_address ("glFragmentLightfvSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentLightfvSGIX =
+      (GdkGLProc_glFragmentLightfvSGIX) gdk_gl_get_proc_address ("glFragmentLightfvSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentLightfvSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentLightfvSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightfvSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentLightfvSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentLightfvSGIX);
 }
@@ -10741,14 +9927,12 @@ gdk_gl_get_glFragmentLightiSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentLightiSGIX == (GdkGLProc_glFragmentLightiSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentLightiSGIX =
-        (GdkGLProc_glFragmentLightiSGIX) gdk_gl_get_proc_address ("glFragmentLightiSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentLightiSGIX =
+      (GdkGLProc_glFragmentLightiSGIX) gdk_gl_get_proc_address ("glFragmentLightiSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentLightiSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentLightiSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightiSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentLightiSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentLightiSGIX);
 }
@@ -10761,14 +9945,12 @@ gdk_gl_get_glFragmentLightivSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentLightivSGIX == (GdkGLProc_glFragmentLightivSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentLightivSGIX =
-        (GdkGLProc_glFragmentLightivSGIX) gdk_gl_get_proc_address ("glFragmentLightivSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentLightivSGIX =
+      (GdkGLProc_glFragmentLightivSGIX) gdk_gl_get_proc_address ("glFragmentLightivSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentLightivSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentLightivSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightivSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentLightivSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentLightivSGIX);
 }
@@ -10781,14 +9963,12 @@ gdk_gl_get_glFragmentLightModelfSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelfSGIX == (GdkGLProc_glFragmentLightModelfSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentLightModelfSGIX =
-        (GdkGLProc_glFragmentLightModelfSGIX) gdk_gl_get_proc_address ("glFragmentLightModelfSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentLightModelfSGIX =
+      (GdkGLProc_glFragmentLightModelfSGIX) gdk_gl_get_proc_address ("glFragmentLightModelfSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentLightModelfSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelfSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightModelfSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelfSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelfSGIX);
 }
@@ -10801,14 +9981,12 @@ gdk_gl_get_glFragmentLightModelfvSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelfvSGIX == (GdkGLProc_glFragmentLightModelfvSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentLightModelfvSGIX =
-        (GdkGLProc_glFragmentLightModelfvSGIX) gdk_gl_get_proc_address ("glFragmentLightModelfvSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentLightModelfvSGIX =
+      (GdkGLProc_glFragmentLightModelfvSGIX) gdk_gl_get_proc_address ("glFragmentLightModelfvSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentLightModelfvSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelfvSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightModelfvSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelfvSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelfvSGIX);
 }
@@ -10821,14 +9999,12 @@ gdk_gl_get_glFragmentLightModeliSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentLightModeliSGIX == (GdkGLProc_glFragmentLightModeliSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentLightModeliSGIX =
-        (GdkGLProc_glFragmentLightModeliSGIX) gdk_gl_get_proc_address ("glFragmentLightModeliSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentLightModeliSGIX =
+      (GdkGLProc_glFragmentLightModeliSGIX) gdk_gl_get_proc_address ("glFragmentLightModeliSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentLightModeliSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentLightModeliSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightModeliSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentLightModeliSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentLightModeliSGIX);
 }
@@ -10841,14 +10017,12 @@ gdk_gl_get_glFragmentLightModelivSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelivSGIX == (GdkGLProc_glFragmentLightModelivSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentLightModelivSGIX =
-        (GdkGLProc_glFragmentLightModelivSGIX) gdk_gl_get_proc_address ("glFragmentLightModelivSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentLightModelivSGIX =
+      (GdkGLProc_glFragmentLightModelivSGIX) gdk_gl_get_proc_address ("glFragmentLightModelivSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentLightModelivSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelivSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentLightModelivSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelivSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentLightModelivSGIX);
 }
@@ -10861,14 +10035,12 @@ gdk_gl_get_glFragmentMaterialfSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialfSGIX == (GdkGLProc_glFragmentMaterialfSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentMaterialfSGIX =
-        (GdkGLProc_glFragmentMaterialfSGIX) gdk_gl_get_proc_address ("glFragmentMaterialfSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentMaterialfSGIX =
+      (GdkGLProc_glFragmentMaterialfSGIX) gdk_gl_get_proc_address ("glFragmentMaterialfSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentMaterialfSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialfSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentMaterialfSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialfSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialfSGIX);
 }
@@ -10881,14 +10053,12 @@ gdk_gl_get_glFragmentMaterialfvSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialfvSGIX == (GdkGLProc_glFragmentMaterialfvSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentMaterialfvSGIX =
-        (GdkGLProc_glFragmentMaterialfvSGIX) gdk_gl_get_proc_address ("glFragmentMaterialfvSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentMaterialfvSGIX =
+      (GdkGLProc_glFragmentMaterialfvSGIX) gdk_gl_get_proc_address ("glFragmentMaterialfvSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentMaterialfvSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialfvSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentMaterialfvSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialfvSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialfvSGIX);
 }
@@ -10901,14 +10071,12 @@ gdk_gl_get_glFragmentMaterialiSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialiSGIX == (GdkGLProc_glFragmentMaterialiSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentMaterialiSGIX =
-        (GdkGLProc_glFragmentMaterialiSGIX) gdk_gl_get_proc_address ("glFragmentMaterialiSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentMaterialiSGIX =
+      (GdkGLProc_glFragmentMaterialiSGIX) gdk_gl_get_proc_address ("glFragmentMaterialiSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentMaterialiSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialiSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentMaterialiSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialiSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialiSGIX);
 }
@@ -10921,14 +10089,12 @@ gdk_gl_get_glFragmentMaterialivSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialivSGIX == (GdkGLProc_glFragmentMaterialivSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glFragmentMaterialivSGIX =
-        (GdkGLProc_glFragmentMaterialivSGIX) gdk_gl_get_proc_address ("glFragmentMaterialivSGIX");
+    _procs_GL_SGIX_fragment_lighting.glFragmentMaterialivSGIX =
+      (GdkGLProc_glFragmentMaterialivSGIX) gdk_gl_get_proc_address ("glFragmentMaterialivSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFragmentMaterialivSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialivSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFragmentMaterialivSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialivSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glFragmentMaterialivSGIX);
 }
@@ -10941,14 +10107,12 @@ gdk_gl_get_glGetFragmentLightfvSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glGetFragmentLightfvSGIX == (GdkGLProc_glGetFragmentLightfvSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glGetFragmentLightfvSGIX =
-        (GdkGLProc_glGetFragmentLightfvSGIX) gdk_gl_get_proc_address ("glGetFragmentLightfvSGIX");
+    _procs_GL_SGIX_fragment_lighting.glGetFragmentLightfvSGIX =
+      (GdkGLProc_glGetFragmentLightfvSGIX) gdk_gl_get_proc_address ("glGetFragmentLightfvSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetFragmentLightfvSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glGetFragmentLightfvSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFragmentLightfvSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glGetFragmentLightfvSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glGetFragmentLightfvSGIX);
 }
@@ -10961,14 +10125,12 @@ gdk_gl_get_glGetFragmentLightivSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glGetFragmentLightivSGIX == (GdkGLProc_glGetFragmentLightivSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glGetFragmentLightivSGIX =
-        (GdkGLProc_glGetFragmentLightivSGIX) gdk_gl_get_proc_address ("glGetFragmentLightivSGIX");
+    _procs_GL_SGIX_fragment_lighting.glGetFragmentLightivSGIX =
+      (GdkGLProc_glGetFragmentLightivSGIX) gdk_gl_get_proc_address ("glGetFragmentLightivSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetFragmentLightivSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glGetFragmentLightivSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFragmentLightivSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glGetFragmentLightivSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glGetFragmentLightivSGIX);
 }
@@ -10981,14 +10143,12 @@ gdk_gl_get_glGetFragmentMaterialfvSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialfvSGIX == (GdkGLProc_glGetFragmentMaterialfvSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialfvSGIX =
-        (GdkGLProc_glGetFragmentMaterialfvSGIX) gdk_gl_get_proc_address ("glGetFragmentMaterialfvSGIX");
+    _procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialfvSGIX =
+      (GdkGLProc_glGetFragmentMaterialfvSGIX) gdk_gl_get_proc_address ("glGetFragmentMaterialfvSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetFragmentMaterialfvSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialfvSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFragmentMaterialfvSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialfvSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialfvSGIX);
 }
@@ -11001,14 +10161,12 @@ gdk_gl_get_glGetFragmentMaterialivSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialivSGIX == (GdkGLProc_glGetFragmentMaterialivSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialivSGIX =
-        (GdkGLProc_glGetFragmentMaterialivSGIX) gdk_gl_get_proc_address ("glGetFragmentMaterialivSGIX");
+    _procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialivSGIX =
+      (GdkGLProc_glGetFragmentMaterialivSGIX) gdk_gl_get_proc_address ("glGetFragmentMaterialivSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetFragmentMaterialivSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialivSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFragmentMaterialivSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialivSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glGetFragmentMaterialivSGIX);
 }
@@ -11021,14 +10179,12 @@ gdk_gl_get_glLightEnviSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_fragment_lighting.glLightEnviSGIX == (GdkGLProc_glLightEnviSGIX) -1)
-    {
-      _procs_GL_SGIX_fragment_lighting.glLightEnviSGIX =
-        (GdkGLProc_glLightEnviSGIX) gdk_gl_get_proc_address ("glLightEnviSGIX");
+    _procs_GL_SGIX_fragment_lighting.glLightEnviSGIX =
+      (GdkGLProc_glLightEnviSGIX) gdk_gl_get_proc_address ("glLightEnviSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glLightEnviSGIX () - %s",
-                   (_procs_GL_SGIX_fragment_lighting.glLightEnviSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLightEnviSGIX () - %s",
+               (_procs_GL_SGIX_fragment_lighting.glLightEnviSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_fragment_lighting.glLightEnviSGIX);
 }
@@ -11095,14 +10251,12 @@ gdk_gl_get_glDrawRangeElementsEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_draw_range_elements.glDrawRangeElementsEXT == (GdkGLProc_glDrawRangeElementsEXT) -1)
-    {
-      _procs_GL_EXT_draw_range_elements.glDrawRangeElementsEXT =
-        (GdkGLProc_glDrawRangeElementsEXT) gdk_gl_get_proc_address ("glDrawRangeElementsEXT");
+    _procs_GL_EXT_draw_range_elements.glDrawRangeElementsEXT =
+      (GdkGLProc_glDrawRangeElementsEXT) gdk_gl_get_proc_address ("glDrawRangeElementsEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDrawRangeElementsEXT () - %s",
-                   (_procs_GL_EXT_draw_range_elements.glDrawRangeElementsEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawRangeElementsEXT () - %s",
+               (_procs_GL_EXT_draw_range_elements.glDrawRangeElementsEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_draw_range_elements.glDrawRangeElementsEXT);
 }
@@ -11154,14 +10308,12 @@ gdk_gl_get_glApplyTextureEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_light_texture.glApplyTextureEXT == (GdkGLProc_glApplyTextureEXT) -1)
-    {
-      _procs_GL_EXT_light_texture.glApplyTextureEXT =
-        (GdkGLProc_glApplyTextureEXT) gdk_gl_get_proc_address ("glApplyTextureEXT");
+    _procs_GL_EXT_light_texture.glApplyTextureEXT =
+      (GdkGLProc_glApplyTextureEXT) gdk_gl_get_proc_address ("glApplyTextureEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glApplyTextureEXT () - %s",
-                   (_procs_GL_EXT_light_texture.glApplyTextureEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glApplyTextureEXT () - %s",
+               (_procs_GL_EXT_light_texture.glApplyTextureEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_light_texture.glApplyTextureEXT);
 }
@@ -11174,14 +10326,12 @@ gdk_gl_get_glTextureLightEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_light_texture.glTextureLightEXT == (GdkGLProc_glTextureLightEXT) -1)
-    {
-      _procs_GL_EXT_light_texture.glTextureLightEXT =
-        (GdkGLProc_glTextureLightEXT) gdk_gl_get_proc_address ("glTextureLightEXT");
+    _procs_GL_EXT_light_texture.glTextureLightEXT =
+      (GdkGLProc_glTextureLightEXT) gdk_gl_get_proc_address ("glTextureLightEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTextureLightEXT () - %s",
-                   (_procs_GL_EXT_light_texture.glTextureLightEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureLightEXT () - %s",
+               (_procs_GL_EXT_light_texture.glTextureLightEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_light_texture.glTextureLightEXT);
 }
@@ -11194,14 +10344,12 @@ gdk_gl_get_glTextureMaterialEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_light_texture.glTextureMaterialEXT == (GdkGLProc_glTextureMaterialEXT) -1)
-    {
-      _procs_GL_EXT_light_texture.glTextureMaterialEXT =
-        (GdkGLProc_glTextureMaterialEXT) gdk_gl_get_proc_address ("glTextureMaterialEXT");
+    _procs_GL_EXT_light_texture.glTextureMaterialEXT =
+      (GdkGLProc_glTextureMaterialEXT) gdk_gl_get_proc_address ("glTextureMaterialEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTextureMaterialEXT () - %s",
-                   (_procs_GL_EXT_light_texture.glTextureMaterialEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureMaterialEXT () - %s",
+               (_procs_GL_EXT_light_texture.glTextureMaterialEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_light_texture.glTextureMaterialEXT);
 }
@@ -11258,14 +10406,12 @@ gdk_gl_get_glAsyncMarkerSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_async.glAsyncMarkerSGIX == (GdkGLProc_glAsyncMarkerSGIX) -1)
-    {
-      _procs_GL_SGIX_async.glAsyncMarkerSGIX =
-        (GdkGLProc_glAsyncMarkerSGIX) gdk_gl_get_proc_address ("glAsyncMarkerSGIX");
+    _procs_GL_SGIX_async.glAsyncMarkerSGIX =
+      (GdkGLProc_glAsyncMarkerSGIX) gdk_gl_get_proc_address ("glAsyncMarkerSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glAsyncMarkerSGIX () - %s",
-                   (_procs_GL_SGIX_async.glAsyncMarkerSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glAsyncMarkerSGIX () - %s",
+               (_procs_GL_SGIX_async.glAsyncMarkerSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_async.glAsyncMarkerSGIX);
 }
@@ -11278,14 +10424,12 @@ gdk_gl_get_glFinishAsyncSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_async.glFinishAsyncSGIX == (GdkGLProc_glFinishAsyncSGIX) -1)
-    {
-      _procs_GL_SGIX_async.glFinishAsyncSGIX =
-        (GdkGLProc_glFinishAsyncSGIX) gdk_gl_get_proc_address ("glFinishAsyncSGIX");
+    _procs_GL_SGIX_async.glFinishAsyncSGIX =
+      (GdkGLProc_glFinishAsyncSGIX) gdk_gl_get_proc_address ("glFinishAsyncSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFinishAsyncSGIX () - %s",
-                   (_procs_GL_SGIX_async.glFinishAsyncSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFinishAsyncSGIX () - %s",
+               (_procs_GL_SGIX_async.glFinishAsyncSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_async.glFinishAsyncSGIX);
 }
@@ -11298,14 +10442,12 @@ gdk_gl_get_glPollAsyncSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_async.glPollAsyncSGIX == (GdkGLProc_glPollAsyncSGIX) -1)
-    {
-      _procs_GL_SGIX_async.glPollAsyncSGIX =
-        (GdkGLProc_glPollAsyncSGIX) gdk_gl_get_proc_address ("glPollAsyncSGIX");
+    _procs_GL_SGIX_async.glPollAsyncSGIX =
+      (GdkGLProc_glPollAsyncSGIX) gdk_gl_get_proc_address ("glPollAsyncSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPollAsyncSGIX () - %s",
-                   (_procs_GL_SGIX_async.glPollAsyncSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPollAsyncSGIX () - %s",
+               (_procs_GL_SGIX_async.glPollAsyncSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_async.glPollAsyncSGIX);
 }
@@ -11318,14 +10460,12 @@ gdk_gl_get_glGenAsyncMarkersSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_async.glGenAsyncMarkersSGIX == (GdkGLProc_glGenAsyncMarkersSGIX) -1)
-    {
-      _procs_GL_SGIX_async.glGenAsyncMarkersSGIX =
-        (GdkGLProc_glGenAsyncMarkersSGIX) gdk_gl_get_proc_address ("glGenAsyncMarkersSGIX");
+    _procs_GL_SGIX_async.glGenAsyncMarkersSGIX =
+      (GdkGLProc_glGenAsyncMarkersSGIX) gdk_gl_get_proc_address ("glGenAsyncMarkersSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenAsyncMarkersSGIX () - %s",
-                   (_procs_GL_SGIX_async.glGenAsyncMarkersSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenAsyncMarkersSGIX () - %s",
+               (_procs_GL_SGIX_async.glGenAsyncMarkersSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_async.glGenAsyncMarkersSGIX);
 }
@@ -11338,14 +10478,12 @@ gdk_gl_get_glDeleteAsyncMarkersSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_async.glDeleteAsyncMarkersSGIX == (GdkGLProc_glDeleteAsyncMarkersSGIX) -1)
-    {
-      _procs_GL_SGIX_async.glDeleteAsyncMarkersSGIX =
-        (GdkGLProc_glDeleteAsyncMarkersSGIX) gdk_gl_get_proc_address ("glDeleteAsyncMarkersSGIX");
+    _procs_GL_SGIX_async.glDeleteAsyncMarkersSGIX =
+      (GdkGLProc_glDeleteAsyncMarkersSGIX) gdk_gl_get_proc_address ("glDeleteAsyncMarkersSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteAsyncMarkersSGIX () - %s",
-                   (_procs_GL_SGIX_async.glDeleteAsyncMarkersSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteAsyncMarkersSGIX () - %s",
+               (_procs_GL_SGIX_async.glDeleteAsyncMarkersSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_async.glDeleteAsyncMarkersSGIX);
 }
@@ -11358,14 +10496,12 @@ gdk_gl_get_glIsAsyncMarkerSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_async.glIsAsyncMarkerSGIX == (GdkGLProc_glIsAsyncMarkerSGIX) -1)
-    {
-      _procs_GL_SGIX_async.glIsAsyncMarkerSGIX =
-        (GdkGLProc_glIsAsyncMarkerSGIX) gdk_gl_get_proc_address ("glIsAsyncMarkerSGIX");
+    _procs_GL_SGIX_async.glIsAsyncMarkerSGIX =
+      (GdkGLProc_glIsAsyncMarkerSGIX) gdk_gl_get_proc_address ("glIsAsyncMarkerSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsAsyncMarkerSGIX () - %s",
-                   (_procs_GL_SGIX_async.glIsAsyncMarkerSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsAsyncMarkerSGIX () - %s",
+               (_procs_GL_SGIX_async.glIsAsyncMarkerSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_async.glIsAsyncMarkerSGIX);
 }
@@ -11423,14 +10559,12 @@ gdk_gl_get_glVertexPointervINTEL (void)
     return NULL;
 
   if (_procs_GL_INTEL_parallel_arrays.glVertexPointervINTEL == (GdkGLProc_glVertexPointervINTEL) -1)
-    {
-      _procs_GL_INTEL_parallel_arrays.glVertexPointervINTEL =
-        (GdkGLProc_glVertexPointervINTEL) gdk_gl_get_proc_address ("glVertexPointervINTEL");
+    _procs_GL_INTEL_parallel_arrays.glVertexPointervINTEL =
+      (GdkGLProc_glVertexPointervINTEL) gdk_gl_get_proc_address ("glVertexPointervINTEL");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexPointervINTEL () - %s",
-                   (_procs_GL_INTEL_parallel_arrays.glVertexPointervINTEL) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexPointervINTEL () - %s",
+               (_procs_GL_INTEL_parallel_arrays.glVertexPointervINTEL) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_INTEL_parallel_arrays.glVertexPointervINTEL);
 }
@@ -11443,14 +10577,12 @@ gdk_gl_get_glNormalPointervINTEL (void)
     return NULL;
 
   if (_procs_GL_INTEL_parallel_arrays.glNormalPointervINTEL == (GdkGLProc_glNormalPointervINTEL) -1)
-    {
-      _procs_GL_INTEL_parallel_arrays.glNormalPointervINTEL =
-        (GdkGLProc_glNormalPointervINTEL) gdk_gl_get_proc_address ("glNormalPointervINTEL");
+    _procs_GL_INTEL_parallel_arrays.glNormalPointervINTEL =
+      (GdkGLProc_glNormalPointervINTEL) gdk_gl_get_proc_address ("glNormalPointervINTEL");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalPointervINTEL () - %s",
-                   (_procs_GL_INTEL_parallel_arrays.glNormalPointervINTEL) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalPointervINTEL () - %s",
+               (_procs_GL_INTEL_parallel_arrays.glNormalPointervINTEL) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_INTEL_parallel_arrays.glNormalPointervINTEL);
 }
@@ -11463,14 +10595,12 @@ gdk_gl_get_glColorPointervINTEL (void)
     return NULL;
 
   if (_procs_GL_INTEL_parallel_arrays.glColorPointervINTEL == (GdkGLProc_glColorPointervINTEL) -1)
-    {
-      _procs_GL_INTEL_parallel_arrays.glColorPointervINTEL =
-        (GdkGLProc_glColorPointervINTEL) gdk_gl_get_proc_address ("glColorPointervINTEL");
+    _procs_GL_INTEL_parallel_arrays.glColorPointervINTEL =
+      (GdkGLProc_glColorPointervINTEL) gdk_gl_get_proc_address ("glColorPointervINTEL");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorPointervINTEL () - %s",
-                   (_procs_GL_INTEL_parallel_arrays.glColorPointervINTEL) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorPointervINTEL () - %s",
+               (_procs_GL_INTEL_parallel_arrays.glColorPointervINTEL) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_INTEL_parallel_arrays.glColorPointervINTEL);
 }
@@ -11483,14 +10613,12 @@ gdk_gl_get_glTexCoordPointervINTEL (void)
     return NULL;
 
   if (_procs_GL_INTEL_parallel_arrays.glTexCoordPointervINTEL == (GdkGLProc_glTexCoordPointervINTEL) -1)
-    {
-      _procs_GL_INTEL_parallel_arrays.glTexCoordPointervINTEL =
-        (GdkGLProc_glTexCoordPointervINTEL) gdk_gl_get_proc_address ("glTexCoordPointervINTEL");
+    _procs_GL_INTEL_parallel_arrays.glTexCoordPointervINTEL =
+      (GdkGLProc_glTexCoordPointervINTEL) gdk_gl_get_proc_address ("glTexCoordPointervINTEL");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoordPointervINTEL () - %s",
-                   (_procs_GL_INTEL_parallel_arrays.glTexCoordPointervINTEL) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoordPointervINTEL () - %s",
+               (_procs_GL_INTEL_parallel_arrays.glTexCoordPointervINTEL) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_INTEL_parallel_arrays.glTexCoordPointervINTEL);
 }
@@ -11546,14 +10674,12 @@ gdk_gl_get_glPixelTransformParameteriEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_pixel_transform.glPixelTransformParameteriEXT == (GdkGLProc_glPixelTransformParameteriEXT) -1)
-    {
-      _procs_GL_EXT_pixel_transform.glPixelTransformParameteriEXT =
-        (GdkGLProc_glPixelTransformParameteriEXT) gdk_gl_get_proc_address ("glPixelTransformParameteriEXT");
+    _procs_GL_EXT_pixel_transform.glPixelTransformParameteriEXT =
+      (GdkGLProc_glPixelTransformParameteriEXT) gdk_gl_get_proc_address ("glPixelTransformParameteriEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPixelTransformParameteriEXT () - %s",
-                   (_procs_GL_EXT_pixel_transform.glPixelTransformParameteriEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPixelTransformParameteriEXT () - %s",
+               (_procs_GL_EXT_pixel_transform.glPixelTransformParameteriEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_pixel_transform.glPixelTransformParameteriEXT);
 }
@@ -11566,14 +10692,12 @@ gdk_gl_get_glPixelTransformParameterfEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_pixel_transform.glPixelTransformParameterfEXT == (GdkGLProc_glPixelTransformParameterfEXT) -1)
-    {
-      _procs_GL_EXT_pixel_transform.glPixelTransformParameterfEXT =
-        (GdkGLProc_glPixelTransformParameterfEXT) gdk_gl_get_proc_address ("glPixelTransformParameterfEXT");
+    _procs_GL_EXT_pixel_transform.glPixelTransformParameterfEXT =
+      (GdkGLProc_glPixelTransformParameterfEXT) gdk_gl_get_proc_address ("glPixelTransformParameterfEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPixelTransformParameterfEXT () - %s",
-                   (_procs_GL_EXT_pixel_transform.glPixelTransformParameterfEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPixelTransformParameterfEXT () - %s",
+               (_procs_GL_EXT_pixel_transform.glPixelTransformParameterfEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_pixel_transform.glPixelTransformParameterfEXT);
 }
@@ -11586,14 +10710,12 @@ gdk_gl_get_glPixelTransformParameterivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_pixel_transform.glPixelTransformParameterivEXT == (GdkGLProc_glPixelTransformParameterivEXT) -1)
-    {
-      _procs_GL_EXT_pixel_transform.glPixelTransformParameterivEXT =
-        (GdkGLProc_glPixelTransformParameterivEXT) gdk_gl_get_proc_address ("glPixelTransformParameterivEXT");
+    _procs_GL_EXT_pixel_transform.glPixelTransformParameterivEXT =
+      (GdkGLProc_glPixelTransformParameterivEXT) gdk_gl_get_proc_address ("glPixelTransformParameterivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPixelTransformParameterivEXT () - %s",
-                   (_procs_GL_EXT_pixel_transform.glPixelTransformParameterivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPixelTransformParameterivEXT () - %s",
+               (_procs_GL_EXT_pixel_transform.glPixelTransformParameterivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_pixel_transform.glPixelTransformParameterivEXT);
 }
@@ -11606,14 +10728,12 @@ gdk_gl_get_glPixelTransformParameterfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_pixel_transform.glPixelTransformParameterfvEXT == (GdkGLProc_glPixelTransformParameterfvEXT) -1)
-    {
-      _procs_GL_EXT_pixel_transform.glPixelTransformParameterfvEXT =
-        (GdkGLProc_glPixelTransformParameterfvEXT) gdk_gl_get_proc_address ("glPixelTransformParameterfvEXT");
+    _procs_GL_EXT_pixel_transform.glPixelTransformParameterfvEXT =
+      (GdkGLProc_glPixelTransformParameterfvEXT) gdk_gl_get_proc_address ("glPixelTransformParameterfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPixelTransformParameterfvEXT () - %s",
-                   (_procs_GL_EXT_pixel_transform.glPixelTransformParameterfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPixelTransformParameterfvEXT () - %s",
+               (_procs_GL_EXT_pixel_transform.glPixelTransformParameterfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_pixel_transform.glPixelTransformParameterfvEXT);
 }
@@ -11682,14 +10802,12 @@ gdk_gl_get_glSecondaryColor3bEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3bEXT == (GdkGLProc_glSecondaryColor3bEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3bEXT =
-        (GdkGLProc_glSecondaryColor3bEXT) gdk_gl_get_proc_address ("glSecondaryColor3bEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3bEXT =
+      (GdkGLProc_glSecondaryColor3bEXT) gdk_gl_get_proc_address ("glSecondaryColor3bEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3bEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3bEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3bEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3bEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3bEXT);
 }
@@ -11702,14 +10820,12 @@ gdk_gl_get_glSecondaryColor3bvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3bvEXT == (GdkGLProc_glSecondaryColor3bvEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3bvEXT =
-        (GdkGLProc_glSecondaryColor3bvEXT) gdk_gl_get_proc_address ("glSecondaryColor3bvEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3bvEXT =
+      (GdkGLProc_glSecondaryColor3bvEXT) gdk_gl_get_proc_address ("glSecondaryColor3bvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3bvEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3bvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3bvEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3bvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3bvEXT);
 }
@@ -11722,14 +10838,12 @@ gdk_gl_get_glSecondaryColor3dEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3dEXT == (GdkGLProc_glSecondaryColor3dEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3dEXT =
-        (GdkGLProc_glSecondaryColor3dEXT) gdk_gl_get_proc_address ("glSecondaryColor3dEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3dEXT =
+      (GdkGLProc_glSecondaryColor3dEXT) gdk_gl_get_proc_address ("glSecondaryColor3dEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3dEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3dEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3dEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3dEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3dEXT);
 }
@@ -11742,14 +10856,12 @@ gdk_gl_get_glSecondaryColor3dvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3dvEXT == (GdkGLProc_glSecondaryColor3dvEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3dvEXT =
-        (GdkGLProc_glSecondaryColor3dvEXT) gdk_gl_get_proc_address ("glSecondaryColor3dvEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3dvEXT =
+      (GdkGLProc_glSecondaryColor3dvEXT) gdk_gl_get_proc_address ("glSecondaryColor3dvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3dvEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3dvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3dvEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3dvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3dvEXT);
 }
@@ -11762,14 +10874,12 @@ gdk_gl_get_glSecondaryColor3fEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3fEXT == (GdkGLProc_glSecondaryColor3fEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3fEXT =
-        (GdkGLProc_glSecondaryColor3fEXT) gdk_gl_get_proc_address ("glSecondaryColor3fEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3fEXT =
+      (GdkGLProc_glSecondaryColor3fEXT) gdk_gl_get_proc_address ("glSecondaryColor3fEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3fEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3fEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3fEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3fEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3fEXT);
 }
@@ -11782,14 +10892,12 @@ gdk_gl_get_glSecondaryColor3fvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3fvEXT == (GdkGLProc_glSecondaryColor3fvEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3fvEXT =
-        (GdkGLProc_glSecondaryColor3fvEXT) gdk_gl_get_proc_address ("glSecondaryColor3fvEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3fvEXT =
+      (GdkGLProc_glSecondaryColor3fvEXT) gdk_gl_get_proc_address ("glSecondaryColor3fvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3fvEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3fvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3fvEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3fvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3fvEXT);
 }
@@ -11802,14 +10910,12 @@ gdk_gl_get_glSecondaryColor3iEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3iEXT == (GdkGLProc_glSecondaryColor3iEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3iEXT =
-        (GdkGLProc_glSecondaryColor3iEXT) gdk_gl_get_proc_address ("glSecondaryColor3iEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3iEXT =
+      (GdkGLProc_glSecondaryColor3iEXT) gdk_gl_get_proc_address ("glSecondaryColor3iEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3iEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3iEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3iEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3iEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3iEXT);
 }
@@ -11822,14 +10928,12 @@ gdk_gl_get_glSecondaryColor3ivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3ivEXT == (GdkGLProc_glSecondaryColor3ivEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3ivEXT =
-        (GdkGLProc_glSecondaryColor3ivEXT) gdk_gl_get_proc_address ("glSecondaryColor3ivEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3ivEXT =
+      (GdkGLProc_glSecondaryColor3ivEXT) gdk_gl_get_proc_address ("glSecondaryColor3ivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3ivEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3ivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3ivEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3ivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3ivEXT);
 }
@@ -11842,14 +10946,12 @@ gdk_gl_get_glSecondaryColor3sEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3sEXT == (GdkGLProc_glSecondaryColor3sEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3sEXT =
-        (GdkGLProc_glSecondaryColor3sEXT) gdk_gl_get_proc_address ("glSecondaryColor3sEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3sEXT =
+      (GdkGLProc_glSecondaryColor3sEXT) gdk_gl_get_proc_address ("glSecondaryColor3sEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3sEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3sEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3sEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3sEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3sEXT);
 }
@@ -11862,14 +10964,12 @@ gdk_gl_get_glSecondaryColor3svEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3svEXT == (GdkGLProc_glSecondaryColor3svEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3svEXT =
-        (GdkGLProc_glSecondaryColor3svEXT) gdk_gl_get_proc_address ("glSecondaryColor3svEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3svEXT =
+      (GdkGLProc_glSecondaryColor3svEXT) gdk_gl_get_proc_address ("glSecondaryColor3svEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3svEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3svEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3svEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3svEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3svEXT);
 }
@@ -11882,14 +10982,12 @@ gdk_gl_get_glSecondaryColor3ubEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3ubEXT == (GdkGLProc_glSecondaryColor3ubEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3ubEXT =
-        (GdkGLProc_glSecondaryColor3ubEXT) gdk_gl_get_proc_address ("glSecondaryColor3ubEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3ubEXT =
+      (GdkGLProc_glSecondaryColor3ubEXT) gdk_gl_get_proc_address ("glSecondaryColor3ubEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3ubEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3ubEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3ubEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3ubEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3ubEXT);
 }
@@ -11902,14 +11000,12 @@ gdk_gl_get_glSecondaryColor3ubvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3ubvEXT == (GdkGLProc_glSecondaryColor3ubvEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3ubvEXT =
-        (GdkGLProc_glSecondaryColor3ubvEXT) gdk_gl_get_proc_address ("glSecondaryColor3ubvEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3ubvEXT =
+      (GdkGLProc_glSecondaryColor3ubvEXT) gdk_gl_get_proc_address ("glSecondaryColor3ubvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3ubvEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3ubvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3ubvEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3ubvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3ubvEXT);
 }
@@ -11922,14 +11018,12 @@ gdk_gl_get_glSecondaryColor3uiEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3uiEXT == (GdkGLProc_glSecondaryColor3uiEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3uiEXT =
-        (GdkGLProc_glSecondaryColor3uiEXT) gdk_gl_get_proc_address ("glSecondaryColor3uiEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3uiEXT =
+      (GdkGLProc_glSecondaryColor3uiEXT) gdk_gl_get_proc_address ("glSecondaryColor3uiEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3uiEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3uiEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3uiEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3uiEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3uiEXT);
 }
@@ -11942,14 +11036,12 @@ gdk_gl_get_glSecondaryColor3uivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3uivEXT == (GdkGLProc_glSecondaryColor3uivEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3uivEXT =
-        (GdkGLProc_glSecondaryColor3uivEXT) gdk_gl_get_proc_address ("glSecondaryColor3uivEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3uivEXT =
+      (GdkGLProc_glSecondaryColor3uivEXT) gdk_gl_get_proc_address ("glSecondaryColor3uivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3uivEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3uivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3uivEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3uivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3uivEXT);
 }
@@ -11962,14 +11054,12 @@ gdk_gl_get_glSecondaryColor3usEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3usEXT == (GdkGLProc_glSecondaryColor3usEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3usEXT =
-        (GdkGLProc_glSecondaryColor3usEXT) gdk_gl_get_proc_address ("glSecondaryColor3usEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3usEXT =
+      (GdkGLProc_glSecondaryColor3usEXT) gdk_gl_get_proc_address ("glSecondaryColor3usEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3usEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3usEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3usEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3usEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3usEXT);
 }
@@ -11982,14 +11072,12 @@ gdk_gl_get_glSecondaryColor3usvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColor3usvEXT == (GdkGLProc_glSecondaryColor3usvEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColor3usvEXT =
-        (GdkGLProc_glSecondaryColor3usvEXT) gdk_gl_get_proc_address ("glSecondaryColor3usvEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColor3usvEXT =
+      (GdkGLProc_glSecondaryColor3usvEXT) gdk_gl_get_proc_address ("glSecondaryColor3usvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3usvEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColor3usvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3usvEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColor3usvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColor3usvEXT);
 }
@@ -12002,14 +11090,12 @@ gdk_gl_get_glSecondaryColorPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_secondary_color.glSecondaryColorPointerEXT == (GdkGLProc_glSecondaryColorPointerEXT) -1)
-    {
-      _procs_GL_EXT_secondary_color.glSecondaryColorPointerEXT =
-        (GdkGLProc_glSecondaryColorPointerEXT) gdk_gl_get_proc_address ("glSecondaryColorPointerEXT");
+    _procs_GL_EXT_secondary_color.glSecondaryColorPointerEXT =
+      (GdkGLProc_glSecondaryColorPointerEXT) gdk_gl_get_proc_address ("glSecondaryColorPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColorPointerEXT () - %s",
-                   (_procs_GL_EXT_secondary_color.glSecondaryColorPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColorPointerEXT () - %s",
+               (_procs_GL_EXT_secondary_color.glSecondaryColorPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_secondary_color.glSecondaryColorPointerEXT);
 }
@@ -12075,14 +11161,12 @@ gdk_gl_get_glTextureNormalEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_texture_perturb_normal.glTextureNormalEXT == (GdkGLProc_glTextureNormalEXT) -1)
-    {
-      _procs_GL_EXT_texture_perturb_normal.glTextureNormalEXT =
-        (GdkGLProc_glTextureNormalEXT) gdk_gl_get_proc_address ("glTextureNormalEXT");
+    _procs_GL_EXT_texture_perturb_normal.glTextureNormalEXT =
+      (GdkGLProc_glTextureNormalEXT) gdk_gl_get_proc_address ("glTextureNormalEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTextureNormalEXT () - %s",
-                   (_procs_GL_EXT_texture_perturb_normal.glTextureNormalEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureNormalEXT () - %s",
+               (_procs_GL_EXT_texture_perturb_normal.glTextureNormalEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_texture_perturb_normal.glTextureNormalEXT);
 }
@@ -12133,14 +11217,12 @@ gdk_gl_get_glMultiDrawArraysEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_multi_draw_arrays.glMultiDrawArraysEXT == (GdkGLProc_glMultiDrawArraysEXT) -1)
-    {
-      _procs_GL_EXT_multi_draw_arrays.glMultiDrawArraysEXT =
-        (GdkGLProc_glMultiDrawArraysEXT) gdk_gl_get_proc_address ("glMultiDrawArraysEXT");
+    _procs_GL_EXT_multi_draw_arrays.glMultiDrawArraysEXT =
+      (GdkGLProc_glMultiDrawArraysEXT) gdk_gl_get_proc_address ("glMultiDrawArraysEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiDrawArraysEXT () - %s",
-                   (_procs_GL_EXT_multi_draw_arrays.glMultiDrawArraysEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawArraysEXT () - %s",
+               (_procs_GL_EXT_multi_draw_arrays.glMultiDrawArraysEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_multi_draw_arrays.glMultiDrawArraysEXT);
 }
@@ -12153,14 +11235,12 @@ gdk_gl_get_glMultiDrawElementsEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_multi_draw_arrays.glMultiDrawElementsEXT == (GdkGLProc_glMultiDrawElementsEXT) -1)
-    {
-      _procs_GL_EXT_multi_draw_arrays.glMultiDrawElementsEXT =
-        (GdkGLProc_glMultiDrawElementsEXT) gdk_gl_get_proc_address ("glMultiDrawElementsEXT");
+    _procs_GL_EXT_multi_draw_arrays.glMultiDrawElementsEXT =
+      (GdkGLProc_glMultiDrawElementsEXT) gdk_gl_get_proc_address ("glMultiDrawElementsEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiDrawElementsEXT () - %s",
-                   (_procs_GL_EXT_multi_draw_arrays.glMultiDrawElementsEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawElementsEXT () - %s",
+               (_procs_GL_EXT_multi_draw_arrays.glMultiDrawElementsEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_multi_draw_arrays.glMultiDrawElementsEXT);
 }
@@ -12215,14 +11295,12 @@ gdk_gl_get_glFogCoordfEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_fog_coord.glFogCoordfEXT == (GdkGLProc_glFogCoordfEXT) -1)
-    {
-      _procs_GL_EXT_fog_coord.glFogCoordfEXT =
-        (GdkGLProc_glFogCoordfEXT) gdk_gl_get_proc_address ("glFogCoordfEXT");
+    _procs_GL_EXT_fog_coord.glFogCoordfEXT =
+      (GdkGLProc_glFogCoordfEXT) gdk_gl_get_proc_address ("glFogCoordfEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoordfEXT () - %s",
-                   (_procs_GL_EXT_fog_coord.glFogCoordfEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordfEXT () - %s",
+               (_procs_GL_EXT_fog_coord.glFogCoordfEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_fog_coord.glFogCoordfEXT);
 }
@@ -12235,14 +11313,12 @@ gdk_gl_get_glFogCoordfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_fog_coord.glFogCoordfvEXT == (GdkGLProc_glFogCoordfvEXT) -1)
-    {
-      _procs_GL_EXT_fog_coord.glFogCoordfvEXT =
-        (GdkGLProc_glFogCoordfvEXT) gdk_gl_get_proc_address ("glFogCoordfvEXT");
+    _procs_GL_EXT_fog_coord.glFogCoordfvEXT =
+      (GdkGLProc_glFogCoordfvEXT) gdk_gl_get_proc_address ("glFogCoordfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoordfvEXT () - %s",
-                   (_procs_GL_EXT_fog_coord.glFogCoordfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordfvEXT () - %s",
+               (_procs_GL_EXT_fog_coord.glFogCoordfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_fog_coord.glFogCoordfvEXT);
 }
@@ -12255,14 +11331,12 @@ gdk_gl_get_glFogCoorddEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_fog_coord.glFogCoorddEXT == (GdkGLProc_glFogCoorddEXT) -1)
-    {
-      _procs_GL_EXT_fog_coord.glFogCoorddEXT =
-        (GdkGLProc_glFogCoorddEXT) gdk_gl_get_proc_address ("glFogCoorddEXT");
+    _procs_GL_EXT_fog_coord.glFogCoorddEXT =
+      (GdkGLProc_glFogCoorddEXT) gdk_gl_get_proc_address ("glFogCoorddEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoorddEXT () - %s",
-                   (_procs_GL_EXT_fog_coord.glFogCoorddEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoorddEXT () - %s",
+               (_procs_GL_EXT_fog_coord.glFogCoorddEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_fog_coord.glFogCoorddEXT);
 }
@@ -12275,14 +11349,12 @@ gdk_gl_get_glFogCoorddvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_fog_coord.glFogCoorddvEXT == (GdkGLProc_glFogCoorddvEXT) -1)
-    {
-      _procs_GL_EXT_fog_coord.glFogCoorddvEXT =
-        (GdkGLProc_glFogCoorddvEXT) gdk_gl_get_proc_address ("glFogCoorddvEXT");
+    _procs_GL_EXT_fog_coord.glFogCoorddvEXT =
+      (GdkGLProc_glFogCoorddvEXT) gdk_gl_get_proc_address ("glFogCoorddvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoorddvEXT () - %s",
-                   (_procs_GL_EXT_fog_coord.glFogCoorddvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoorddvEXT () - %s",
+               (_procs_GL_EXT_fog_coord.glFogCoorddvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_fog_coord.glFogCoorddvEXT);
 }
@@ -12295,14 +11367,12 @@ gdk_gl_get_glFogCoordPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_fog_coord.glFogCoordPointerEXT == (GdkGLProc_glFogCoordPointerEXT) -1)
-    {
-      _procs_GL_EXT_fog_coord.glFogCoordPointerEXT =
-        (GdkGLProc_glFogCoordPointerEXT) gdk_gl_get_proc_address ("glFogCoordPointerEXT");
+    _procs_GL_EXT_fog_coord.glFogCoordPointerEXT =
+      (GdkGLProc_glFogCoordPointerEXT) gdk_gl_get_proc_address ("glFogCoordPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoordPointerEXT () - %s",
-                   (_procs_GL_EXT_fog_coord.glFogCoordPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordPointerEXT () - %s",
+               (_procs_GL_EXT_fog_coord.glFogCoordPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_fog_coord.glFogCoordPointerEXT);
 }
@@ -12377,14 +11447,12 @@ gdk_gl_get_glTangent3bEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangent3bEXT == (GdkGLProc_glTangent3bEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangent3bEXT =
-        (GdkGLProc_glTangent3bEXT) gdk_gl_get_proc_address ("glTangent3bEXT");
+    _procs_GL_EXT_coordinate_frame.glTangent3bEXT =
+      (GdkGLProc_glTangent3bEXT) gdk_gl_get_proc_address ("glTangent3bEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangent3bEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangent3bEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangent3bEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangent3bEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangent3bEXT);
 }
@@ -12397,14 +11465,12 @@ gdk_gl_get_glTangent3bvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangent3bvEXT == (GdkGLProc_glTangent3bvEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangent3bvEXT =
-        (GdkGLProc_glTangent3bvEXT) gdk_gl_get_proc_address ("glTangent3bvEXT");
+    _procs_GL_EXT_coordinate_frame.glTangent3bvEXT =
+      (GdkGLProc_glTangent3bvEXT) gdk_gl_get_proc_address ("glTangent3bvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangent3bvEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangent3bvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangent3bvEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangent3bvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangent3bvEXT);
 }
@@ -12417,14 +11483,12 @@ gdk_gl_get_glTangent3dEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangent3dEXT == (GdkGLProc_glTangent3dEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangent3dEXT =
-        (GdkGLProc_glTangent3dEXT) gdk_gl_get_proc_address ("glTangent3dEXT");
+    _procs_GL_EXT_coordinate_frame.glTangent3dEXT =
+      (GdkGLProc_glTangent3dEXT) gdk_gl_get_proc_address ("glTangent3dEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangent3dEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangent3dEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangent3dEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangent3dEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangent3dEXT);
 }
@@ -12437,14 +11501,12 @@ gdk_gl_get_glTangent3dvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangent3dvEXT == (GdkGLProc_glTangent3dvEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangent3dvEXT =
-        (GdkGLProc_glTangent3dvEXT) gdk_gl_get_proc_address ("glTangent3dvEXT");
+    _procs_GL_EXT_coordinate_frame.glTangent3dvEXT =
+      (GdkGLProc_glTangent3dvEXT) gdk_gl_get_proc_address ("glTangent3dvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangent3dvEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangent3dvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangent3dvEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangent3dvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangent3dvEXT);
 }
@@ -12457,14 +11519,12 @@ gdk_gl_get_glTangent3fEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangent3fEXT == (GdkGLProc_glTangent3fEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangent3fEXT =
-        (GdkGLProc_glTangent3fEXT) gdk_gl_get_proc_address ("glTangent3fEXT");
+    _procs_GL_EXT_coordinate_frame.glTangent3fEXT =
+      (GdkGLProc_glTangent3fEXT) gdk_gl_get_proc_address ("glTangent3fEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangent3fEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangent3fEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangent3fEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangent3fEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangent3fEXT);
 }
@@ -12477,14 +11537,12 @@ gdk_gl_get_glTangent3fvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangent3fvEXT == (GdkGLProc_glTangent3fvEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangent3fvEXT =
-        (GdkGLProc_glTangent3fvEXT) gdk_gl_get_proc_address ("glTangent3fvEXT");
+    _procs_GL_EXT_coordinate_frame.glTangent3fvEXT =
+      (GdkGLProc_glTangent3fvEXT) gdk_gl_get_proc_address ("glTangent3fvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangent3fvEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangent3fvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangent3fvEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangent3fvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangent3fvEXT);
 }
@@ -12497,14 +11555,12 @@ gdk_gl_get_glTangent3iEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangent3iEXT == (GdkGLProc_glTangent3iEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangent3iEXT =
-        (GdkGLProc_glTangent3iEXT) gdk_gl_get_proc_address ("glTangent3iEXT");
+    _procs_GL_EXT_coordinate_frame.glTangent3iEXT =
+      (GdkGLProc_glTangent3iEXT) gdk_gl_get_proc_address ("glTangent3iEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangent3iEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangent3iEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangent3iEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangent3iEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangent3iEXT);
 }
@@ -12517,14 +11573,12 @@ gdk_gl_get_glTangent3ivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangent3ivEXT == (GdkGLProc_glTangent3ivEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangent3ivEXT =
-        (GdkGLProc_glTangent3ivEXT) gdk_gl_get_proc_address ("glTangent3ivEXT");
+    _procs_GL_EXT_coordinate_frame.glTangent3ivEXT =
+      (GdkGLProc_glTangent3ivEXT) gdk_gl_get_proc_address ("glTangent3ivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangent3ivEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangent3ivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangent3ivEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangent3ivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangent3ivEXT);
 }
@@ -12537,14 +11591,12 @@ gdk_gl_get_glTangent3sEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangent3sEXT == (GdkGLProc_glTangent3sEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangent3sEXT =
-        (GdkGLProc_glTangent3sEXT) gdk_gl_get_proc_address ("glTangent3sEXT");
+    _procs_GL_EXT_coordinate_frame.glTangent3sEXT =
+      (GdkGLProc_glTangent3sEXT) gdk_gl_get_proc_address ("glTangent3sEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangent3sEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangent3sEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangent3sEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangent3sEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangent3sEXT);
 }
@@ -12557,14 +11609,12 @@ gdk_gl_get_glTangent3svEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangent3svEXT == (GdkGLProc_glTangent3svEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangent3svEXT =
-        (GdkGLProc_glTangent3svEXT) gdk_gl_get_proc_address ("glTangent3svEXT");
+    _procs_GL_EXT_coordinate_frame.glTangent3svEXT =
+      (GdkGLProc_glTangent3svEXT) gdk_gl_get_proc_address ("glTangent3svEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangent3svEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangent3svEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangent3svEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangent3svEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangent3svEXT);
 }
@@ -12577,14 +11627,12 @@ gdk_gl_get_glBinormal3bEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormal3bEXT == (GdkGLProc_glBinormal3bEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormal3bEXT =
-        (GdkGLProc_glBinormal3bEXT) gdk_gl_get_proc_address ("glBinormal3bEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormal3bEXT =
+      (GdkGLProc_glBinormal3bEXT) gdk_gl_get_proc_address ("glBinormal3bEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormal3bEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormal3bEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormal3bEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormal3bEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormal3bEXT);
 }
@@ -12597,14 +11645,12 @@ gdk_gl_get_glBinormal3bvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormal3bvEXT == (GdkGLProc_glBinormal3bvEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormal3bvEXT =
-        (GdkGLProc_glBinormal3bvEXT) gdk_gl_get_proc_address ("glBinormal3bvEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormal3bvEXT =
+      (GdkGLProc_glBinormal3bvEXT) gdk_gl_get_proc_address ("glBinormal3bvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormal3bvEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormal3bvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormal3bvEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormal3bvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormal3bvEXT);
 }
@@ -12617,14 +11663,12 @@ gdk_gl_get_glBinormal3dEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormal3dEXT == (GdkGLProc_glBinormal3dEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormal3dEXT =
-        (GdkGLProc_glBinormal3dEXT) gdk_gl_get_proc_address ("glBinormal3dEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormal3dEXT =
+      (GdkGLProc_glBinormal3dEXT) gdk_gl_get_proc_address ("glBinormal3dEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormal3dEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormal3dEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormal3dEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormal3dEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormal3dEXT);
 }
@@ -12637,14 +11681,12 @@ gdk_gl_get_glBinormal3dvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormal3dvEXT == (GdkGLProc_glBinormal3dvEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormal3dvEXT =
-        (GdkGLProc_glBinormal3dvEXT) gdk_gl_get_proc_address ("glBinormal3dvEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormal3dvEXT =
+      (GdkGLProc_glBinormal3dvEXT) gdk_gl_get_proc_address ("glBinormal3dvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormal3dvEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormal3dvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormal3dvEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormal3dvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormal3dvEXT);
 }
@@ -12657,14 +11699,12 @@ gdk_gl_get_glBinormal3fEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormal3fEXT == (GdkGLProc_glBinormal3fEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormal3fEXT =
-        (GdkGLProc_glBinormal3fEXT) gdk_gl_get_proc_address ("glBinormal3fEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormal3fEXT =
+      (GdkGLProc_glBinormal3fEXT) gdk_gl_get_proc_address ("glBinormal3fEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormal3fEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormal3fEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormal3fEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormal3fEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormal3fEXT);
 }
@@ -12677,14 +11717,12 @@ gdk_gl_get_glBinormal3fvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormal3fvEXT == (GdkGLProc_glBinormal3fvEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormal3fvEXT =
-        (GdkGLProc_glBinormal3fvEXT) gdk_gl_get_proc_address ("glBinormal3fvEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormal3fvEXT =
+      (GdkGLProc_glBinormal3fvEXT) gdk_gl_get_proc_address ("glBinormal3fvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormal3fvEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormal3fvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormal3fvEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormal3fvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormal3fvEXT);
 }
@@ -12697,14 +11735,12 @@ gdk_gl_get_glBinormal3iEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormal3iEXT == (GdkGLProc_glBinormal3iEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormal3iEXT =
-        (GdkGLProc_glBinormal3iEXT) gdk_gl_get_proc_address ("glBinormal3iEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormal3iEXT =
+      (GdkGLProc_glBinormal3iEXT) gdk_gl_get_proc_address ("glBinormal3iEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormal3iEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormal3iEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormal3iEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormal3iEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormal3iEXT);
 }
@@ -12717,14 +11753,12 @@ gdk_gl_get_glBinormal3ivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormal3ivEXT == (GdkGLProc_glBinormal3ivEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormal3ivEXT =
-        (GdkGLProc_glBinormal3ivEXT) gdk_gl_get_proc_address ("glBinormal3ivEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormal3ivEXT =
+      (GdkGLProc_glBinormal3ivEXT) gdk_gl_get_proc_address ("glBinormal3ivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormal3ivEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormal3ivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormal3ivEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormal3ivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormal3ivEXT);
 }
@@ -12737,14 +11771,12 @@ gdk_gl_get_glBinormal3sEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormal3sEXT == (GdkGLProc_glBinormal3sEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormal3sEXT =
-        (GdkGLProc_glBinormal3sEXT) gdk_gl_get_proc_address ("glBinormal3sEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormal3sEXT =
+      (GdkGLProc_glBinormal3sEXT) gdk_gl_get_proc_address ("glBinormal3sEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormal3sEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormal3sEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormal3sEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormal3sEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormal3sEXT);
 }
@@ -12757,14 +11789,12 @@ gdk_gl_get_glBinormal3svEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormal3svEXT == (GdkGLProc_glBinormal3svEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormal3svEXT =
-        (GdkGLProc_glBinormal3svEXT) gdk_gl_get_proc_address ("glBinormal3svEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormal3svEXT =
+      (GdkGLProc_glBinormal3svEXT) gdk_gl_get_proc_address ("glBinormal3svEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormal3svEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormal3svEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormal3svEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormal3svEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormal3svEXT);
 }
@@ -12777,14 +11807,12 @@ gdk_gl_get_glTangentPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glTangentPointerEXT == (GdkGLProc_glTangentPointerEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glTangentPointerEXT =
-        (GdkGLProc_glTangentPointerEXT) gdk_gl_get_proc_address ("glTangentPointerEXT");
+    _procs_GL_EXT_coordinate_frame.glTangentPointerEXT =
+      (GdkGLProc_glTangentPointerEXT) gdk_gl_get_proc_address ("glTangentPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTangentPointerEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glTangentPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTangentPointerEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glTangentPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glTangentPointerEXT);
 }
@@ -12797,14 +11825,12 @@ gdk_gl_get_glBinormalPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_coordinate_frame.glBinormalPointerEXT == (GdkGLProc_glBinormalPointerEXT) -1)
-    {
-      _procs_GL_EXT_coordinate_frame.glBinormalPointerEXT =
-        (GdkGLProc_glBinormalPointerEXT) gdk_gl_get_proc_address ("glBinormalPointerEXT");
+    _procs_GL_EXT_coordinate_frame.glBinormalPointerEXT =
+      (GdkGLProc_glBinormalPointerEXT) gdk_gl_get_proc_address ("glBinormalPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBinormalPointerEXT () - %s",
-                   (_procs_GL_EXT_coordinate_frame.glBinormalPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBinormalPointerEXT () - %s",
+               (_procs_GL_EXT_coordinate_frame.glBinormalPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_coordinate_frame.glBinormalPointerEXT);
 }
@@ -12875,14 +11901,12 @@ gdk_gl_get_glFinishTextureSUNX (void)
     return NULL;
 
   if (_procs_GL_SUNX_constant_data.glFinishTextureSUNX == (GdkGLProc_glFinishTextureSUNX) -1)
-    {
-      _procs_GL_SUNX_constant_data.glFinishTextureSUNX =
-        (GdkGLProc_glFinishTextureSUNX) gdk_gl_get_proc_address ("glFinishTextureSUNX");
+    _procs_GL_SUNX_constant_data.glFinishTextureSUNX =
+      (GdkGLProc_glFinishTextureSUNX) gdk_gl_get_proc_address ("glFinishTextureSUNX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFinishTextureSUNX () - %s",
-                   (_procs_GL_SUNX_constant_data.glFinishTextureSUNX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFinishTextureSUNX () - %s",
+               (_procs_GL_SUNX_constant_data.glFinishTextureSUNX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUNX_constant_data.glFinishTextureSUNX);
 }
@@ -12939,14 +11963,12 @@ gdk_gl_get_glGlobalAlphaFactorbSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorbSUN == (GdkGLProc_glGlobalAlphaFactorbSUN) -1)
-    {
-      _procs_GL_SUN_global_alpha.glGlobalAlphaFactorbSUN =
-        (GdkGLProc_glGlobalAlphaFactorbSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactorbSUN");
+    _procs_GL_SUN_global_alpha.glGlobalAlphaFactorbSUN =
+      (GdkGLProc_glGlobalAlphaFactorbSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactorbSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGlobalAlphaFactorbSUN () - %s",
-                   (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorbSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGlobalAlphaFactorbSUN () - %s",
+               (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorbSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorbSUN);
 }
@@ -12959,14 +11981,12 @@ gdk_gl_get_glGlobalAlphaFactorsSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorsSUN == (GdkGLProc_glGlobalAlphaFactorsSUN) -1)
-    {
-      _procs_GL_SUN_global_alpha.glGlobalAlphaFactorsSUN =
-        (GdkGLProc_glGlobalAlphaFactorsSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactorsSUN");
+    _procs_GL_SUN_global_alpha.glGlobalAlphaFactorsSUN =
+      (GdkGLProc_glGlobalAlphaFactorsSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactorsSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGlobalAlphaFactorsSUN () - %s",
-                   (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorsSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGlobalAlphaFactorsSUN () - %s",
+               (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorsSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorsSUN);
 }
@@ -12979,14 +11999,12 @@ gdk_gl_get_glGlobalAlphaFactoriSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_global_alpha.glGlobalAlphaFactoriSUN == (GdkGLProc_glGlobalAlphaFactoriSUN) -1)
-    {
-      _procs_GL_SUN_global_alpha.glGlobalAlphaFactoriSUN =
-        (GdkGLProc_glGlobalAlphaFactoriSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactoriSUN");
+    _procs_GL_SUN_global_alpha.glGlobalAlphaFactoriSUN =
+      (GdkGLProc_glGlobalAlphaFactoriSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactoriSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGlobalAlphaFactoriSUN () - %s",
-                   (_procs_GL_SUN_global_alpha.glGlobalAlphaFactoriSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGlobalAlphaFactoriSUN () - %s",
+               (_procs_GL_SUN_global_alpha.glGlobalAlphaFactoriSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_global_alpha.glGlobalAlphaFactoriSUN);
 }
@@ -12999,14 +12017,12 @@ gdk_gl_get_glGlobalAlphaFactorfSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorfSUN == (GdkGLProc_glGlobalAlphaFactorfSUN) -1)
-    {
-      _procs_GL_SUN_global_alpha.glGlobalAlphaFactorfSUN =
-        (GdkGLProc_glGlobalAlphaFactorfSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactorfSUN");
+    _procs_GL_SUN_global_alpha.glGlobalAlphaFactorfSUN =
+      (GdkGLProc_glGlobalAlphaFactorfSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactorfSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGlobalAlphaFactorfSUN () - %s",
-                   (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorfSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGlobalAlphaFactorfSUN () - %s",
+               (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorfSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorfSUN);
 }
@@ -13019,14 +12035,12 @@ gdk_gl_get_glGlobalAlphaFactordSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_global_alpha.glGlobalAlphaFactordSUN == (GdkGLProc_glGlobalAlphaFactordSUN) -1)
-    {
-      _procs_GL_SUN_global_alpha.glGlobalAlphaFactordSUN =
-        (GdkGLProc_glGlobalAlphaFactordSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactordSUN");
+    _procs_GL_SUN_global_alpha.glGlobalAlphaFactordSUN =
+      (GdkGLProc_glGlobalAlphaFactordSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactordSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGlobalAlphaFactordSUN () - %s",
-                   (_procs_GL_SUN_global_alpha.glGlobalAlphaFactordSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGlobalAlphaFactordSUN () - %s",
+               (_procs_GL_SUN_global_alpha.glGlobalAlphaFactordSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_global_alpha.glGlobalAlphaFactordSUN);
 }
@@ -13039,14 +12053,12 @@ gdk_gl_get_glGlobalAlphaFactorubSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorubSUN == (GdkGLProc_glGlobalAlphaFactorubSUN) -1)
-    {
-      _procs_GL_SUN_global_alpha.glGlobalAlphaFactorubSUN =
-        (GdkGLProc_glGlobalAlphaFactorubSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactorubSUN");
+    _procs_GL_SUN_global_alpha.glGlobalAlphaFactorubSUN =
+      (GdkGLProc_glGlobalAlphaFactorubSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactorubSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGlobalAlphaFactorubSUN () - %s",
-                   (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorubSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGlobalAlphaFactorubSUN () - %s",
+               (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorubSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorubSUN);
 }
@@ -13059,14 +12071,12 @@ gdk_gl_get_glGlobalAlphaFactorusSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorusSUN == (GdkGLProc_glGlobalAlphaFactorusSUN) -1)
-    {
-      _procs_GL_SUN_global_alpha.glGlobalAlphaFactorusSUN =
-        (GdkGLProc_glGlobalAlphaFactorusSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactorusSUN");
+    _procs_GL_SUN_global_alpha.glGlobalAlphaFactorusSUN =
+      (GdkGLProc_glGlobalAlphaFactorusSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactorusSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGlobalAlphaFactorusSUN () - %s",
-                   (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorusSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGlobalAlphaFactorusSUN () - %s",
+               (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorusSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_global_alpha.glGlobalAlphaFactorusSUN);
 }
@@ -13079,14 +12089,12 @@ gdk_gl_get_glGlobalAlphaFactoruiSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_global_alpha.glGlobalAlphaFactoruiSUN == (GdkGLProc_glGlobalAlphaFactoruiSUN) -1)
-    {
-      _procs_GL_SUN_global_alpha.glGlobalAlphaFactoruiSUN =
-        (GdkGLProc_glGlobalAlphaFactoruiSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactoruiSUN");
+    _procs_GL_SUN_global_alpha.glGlobalAlphaFactoruiSUN =
+      (GdkGLProc_glGlobalAlphaFactoruiSUN) gdk_gl_get_proc_address ("glGlobalAlphaFactoruiSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGlobalAlphaFactoruiSUN () - %s",
-                   (_procs_GL_SUN_global_alpha.glGlobalAlphaFactoruiSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGlobalAlphaFactoruiSUN () - %s",
+               (_procs_GL_SUN_global_alpha.glGlobalAlphaFactoruiSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_global_alpha.glGlobalAlphaFactoruiSUN);
 }
@@ -13149,14 +12157,12 @@ gdk_gl_get_glReplacementCodeuiSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_triangle_list.glReplacementCodeuiSUN == (GdkGLProc_glReplacementCodeuiSUN) -1)
-    {
-      _procs_GL_SUN_triangle_list.glReplacementCodeuiSUN =
-        (GdkGLProc_glReplacementCodeuiSUN) gdk_gl_get_proc_address ("glReplacementCodeuiSUN");
+    _procs_GL_SUN_triangle_list.glReplacementCodeuiSUN =
+      (GdkGLProc_glReplacementCodeuiSUN) gdk_gl_get_proc_address ("glReplacementCodeuiSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiSUN () - %s",
-                   (_procs_GL_SUN_triangle_list.glReplacementCodeuiSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiSUN () - %s",
+               (_procs_GL_SUN_triangle_list.glReplacementCodeuiSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_triangle_list.glReplacementCodeuiSUN);
 }
@@ -13169,14 +12175,12 @@ gdk_gl_get_glReplacementCodeusSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_triangle_list.glReplacementCodeusSUN == (GdkGLProc_glReplacementCodeusSUN) -1)
-    {
-      _procs_GL_SUN_triangle_list.glReplacementCodeusSUN =
-        (GdkGLProc_glReplacementCodeusSUN) gdk_gl_get_proc_address ("glReplacementCodeusSUN");
+    _procs_GL_SUN_triangle_list.glReplacementCodeusSUN =
+      (GdkGLProc_glReplacementCodeusSUN) gdk_gl_get_proc_address ("glReplacementCodeusSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeusSUN () - %s",
-                   (_procs_GL_SUN_triangle_list.glReplacementCodeusSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeusSUN () - %s",
+               (_procs_GL_SUN_triangle_list.glReplacementCodeusSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_triangle_list.glReplacementCodeusSUN);
 }
@@ -13189,14 +12193,12 @@ gdk_gl_get_glReplacementCodeubSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_triangle_list.glReplacementCodeubSUN == (GdkGLProc_glReplacementCodeubSUN) -1)
-    {
-      _procs_GL_SUN_triangle_list.glReplacementCodeubSUN =
-        (GdkGLProc_glReplacementCodeubSUN) gdk_gl_get_proc_address ("glReplacementCodeubSUN");
+    _procs_GL_SUN_triangle_list.glReplacementCodeubSUN =
+      (GdkGLProc_glReplacementCodeubSUN) gdk_gl_get_proc_address ("glReplacementCodeubSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeubSUN () - %s",
-                   (_procs_GL_SUN_triangle_list.glReplacementCodeubSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeubSUN () - %s",
+               (_procs_GL_SUN_triangle_list.glReplacementCodeubSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_triangle_list.glReplacementCodeubSUN);
 }
@@ -13209,14 +12211,12 @@ gdk_gl_get_glReplacementCodeuivSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_triangle_list.glReplacementCodeuivSUN == (GdkGLProc_glReplacementCodeuivSUN) -1)
-    {
-      _procs_GL_SUN_triangle_list.glReplacementCodeuivSUN =
-        (GdkGLProc_glReplacementCodeuivSUN) gdk_gl_get_proc_address ("glReplacementCodeuivSUN");
+    _procs_GL_SUN_triangle_list.glReplacementCodeuivSUN =
+      (GdkGLProc_glReplacementCodeuivSUN) gdk_gl_get_proc_address ("glReplacementCodeuivSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuivSUN () - %s",
-                   (_procs_GL_SUN_triangle_list.glReplacementCodeuivSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuivSUN () - %s",
+               (_procs_GL_SUN_triangle_list.glReplacementCodeuivSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_triangle_list.glReplacementCodeuivSUN);
 }
@@ -13229,14 +12229,12 @@ gdk_gl_get_glReplacementCodeusvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_triangle_list.glReplacementCodeusvSUN == (GdkGLProc_glReplacementCodeusvSUN) -1)
-    {
-      _procs_GL_SUN_triangle_list.glReplacementCodeusvSUN =
-        (GdkGLProc_glReplacementCodeusvSUN) gdk_gl_get_proc_address ("glReplacementCodeusvSUN");
+    _procs_GL_SUN_triangle_list.glReplacementCodeusvSUN =
+      (GdkGLProc_glReplacementCodeusvSUN) gdk_gl_get_proc_address ("glReplacementCodeusvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeusvSUN () - %s",
-                   (_procs_GL_SUN_triangle_list.glReplacementCodeusvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeusvSUN () - %s",
+               (_procs_GL_SUN_triangle_list.glReplacementCodeusvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_triangle_list.glReplacementCodeusvSUN);
 }
@@ -13249,14 +12247,12 @@ gdk_gl_get_glReplacementCodeubvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_triangle_list.glReplacementCodeubvSUN == (GdkGLProc_glReplacementCodeubvSUN) -1)
-    {
-      _procs_GL_SUN_triangle_list.glReplacementCodeubvSUN =
-        (GdkGLProc_glReplacementCodeubvSUN) gdk_gl_get_proc_address ("glReplacementCodeubvSUN");
+    _procs_GL_SUN_triangle_list.glReplacementCodeubvSUN =
+      (GdkGLProc_glReplacementCodeubvSUN) gdk_gl_get_proc_address ("glReplacementCodeubvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeubvSUN () - %s",
-                   (_procs_GL_SUN_triangle_list.glReplacementCodeubvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeubvSUN () - %s",
+               (_procs_GL_SUN_triangle_list.glReplacementCodeubvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_triangle_list.glReplacementCodeubvSUN);
 }
@@ -13269,14 +12265,12 @@ gdk_gl_get_glReplacementCodePointerSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_triangle_list.glReplacementCodePointerSUN == (GdkGLProc_glReplacementCodePointerSUN) -1)
-    {
-      _procs_GL_SUN_triangle_list.glReplacementCodePointerSUN =
-        (GdkGLProc_glReplacementCodePointerSUN) gdk_gl_get_proc_address ("glReplacementCodePointerSUN");
+    _procs_GL_SUN_triangle_list.glReplacementCodePointerSUN =
+      (GdkGLProc_glReplacementCodePointerSUN) gdk_gl_get_proc_address ("glReplacementCodePointerSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodePointerSUN () - %s",
-                   (_procs_GL_SUN_triangle_list.glReplacementCodePointerSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodePointerSUN () - %s",
+               (_procs_GL_SUN_triangle_list.glReplacementCodePointerSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_triangle_list.glReplacementCodePointerSUN);
 }
@@ -13371,14 +12365,12 @@ gdk_gl_get_glColor4ubVertex2fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glColor4ubVertex2fSUN == (GdkGLProc_glColor4ubVertex2fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glColor4ubVertex2fSUN =
-        (GdkGLProc_glColor4ubVertex2fSUN) gdk_gl_get_proc_address ("glColor4ubVertex2fSUN");
+    _procs_GL_SUN_vertex.glColor4ubVertex2fSUN =
+      (GdkGLProc_glColor4ubVertex2fSUN) gdk_gl_get_proc_address ("glColor4ubVertex2fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor4ubVertex2fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glColor4ubVertex2fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor4ubVertex2fSUN () - %s",
+               (_procs_GL_SUN_vertex.glColor4ubVertex2fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glColor4ubVertex2fSUN);
 }
@@ -13391,14 +12383,12 @@ gdk_gl_get_glColor4ubVertex2fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glColor4ubVertex2fvSUN == (GdkGLProc_glColor4ubVertex2fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glColor4ubVertex2fvSUN =
-        (GdkGLProc_glColor4ubVertex2fvSUN) gdk_gl_get_proc_address ("glColor4ubVertex2fvSUN");
+    _procs_GL_SUN_vertex.glColor4ubVertex2fvSUN =
+      (GdkGLProc_glColor4ubVertex2fvSUN) gdk_gl_get_proc_address ("glColor4ubVertex2fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor4ubVertex2fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glColor4ubVertex2fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor4ubVertex2fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glColor4ubVertex2fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glColor4ubVertex2fvSUN);
 }
@@ -13411,14 +12401,12 @@ gdk_gl_get_glColor4ubVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glColor4ubVertex3fSUN == (GdkGLProc_glColor4ubVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glColor4ubVertex3fSUN =
-        (GdkGLProc_glColor4ubVertex3fSUN) gdk_gl_get_proc_address ("glColor4ubVertex3fSUN");
+    _procs_GL_SUN_vertex.glColor4ubVertex3fSUN =
+      (GdkGLProc_glColor4ubVertex3fSUN) gdk_gl_get_proc_address ("glColor4ubVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor4ubVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glColor4ubVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor4ubVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glColor4ubVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glColor4ubVertex3fSUN);
 }
@@ -13431,14 +12419,12 @@ gdk_gl_get_glColor4ubVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glColor4ubVertex3fvSUN == (GdkGLProc_glColor4ubVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glColor4ubVertex3fvSUN =
-        (GdkGLProc_glColor4ubVertex3fvSUN) gdk_gl_get_proc_address ("glColor4ubVertex3fvSUN");
+    _procs_GL_SUN_vertex.glColor4ubVertex3fvSUN =
+      (GdkGLProc_glColor4ubVertex3fvSUN) gdk_gl_get_proc_address ("glColor4ubVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor4ubVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glColor4ubVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor4ubVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glColor4ubVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glColor4ubVertex3fvSUN);
 }
@@ -13451,14 +12437,12 @@ gdk_gl_get_glColor3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glColor3fVertex3fSUN == (GdkGLProc_glColor3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glColor3fVertex3fSUN =
-        (GdkGLProc_glColor3fVertex3fSUN) gdk_gl_get_proc_address ("glColor3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glColor3fVertex3fSUN =
+      (GdkGLProc_glColor3fVertex3fSUN) gdk_gl_get_proc_address ("glColor3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glColor3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glColor3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glColor3fVertex3fSUN);
 }
@@ -13471,14 +12455,12 @@ gdk_gl_get_glColor3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glColor3fVertex3fvSUN == (GdkGLProc_glColor3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glColor3fVertex3fvSUN =
-        (GdkGLProc_glColor3fVertex3fvSUN) gdk_gl_get_proc_address ("glColor3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glColor3fVertex3fvSUN =
+      (GdkGLProc_glColor3fVertex3fvSUN) gdk_gl_get_proc_address ("glColor3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glColor3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glColor3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glColor3fVertex3fvSUN);
 }
@@ -13491,14 +12473,12 @@ gdk_gl_get_glNormal3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glNormal3fVertex3fSUN == (GdkGLProc_glNormal3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glNormal3fVertex3fSUN =
-        (GdkGLProc_glNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glNormal3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glNormal3fVertex3fSUN =
+      (GdkGLProc_glNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glNormal3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormal3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glNormal3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormal3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glNormal3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glNormal3fVertex3fSUN);
 }
@@ -13511,14 +12491,12 @@ gdk_gl_get_glNormal3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glNormal3fVertex3fvSUN == (GdkGLProc_glNormal3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glNormal3fVertex3fvSUN =
-        (GdkGLProc_glNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glNormal3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glNormal3fVertex3fvSUN =
+      (GdkGLProc_glNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glNormal3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormal3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glNormal3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormal3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glNormal3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glNormal3fVertex3fvSUN);
 }
@@ -13531,14 +12509,12 @@ gdk_gl_get_glColor4fNormal3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glColor4fNormal3fVertex3fSUN == (GdkGLProc_glColor4fNormal3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glColor4fNormal3fVertex3fSUN =
-        (GdkGLProc_glColor4fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glColor4fNormal3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glColor4fNormal3fVertex3fSUN =
+      (GdkGLProc_glColor4fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glColor4fNormal3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor4fNormal3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glColor4fNormal3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor4fNormal3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glColor4fNormal3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glColor4fNormal3fVertex3fSUN);
 }
@@ -13551,14 +12527,12 @@ gdk_gl_get_glColor4fNormal3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glColor4fNormal3fVertex3fvSUN == (GdkGLProc_glColor4fNormal3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glColor4fNormal3fVertex3fvSUN =
-        (GdkGLProc_glColor4fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glColor4fNormal3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glColor4fNormal3fVertex3fvSUN =
+      (GdkGLProc_glColor4fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glColor4fNormal3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor4fNormal3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glColor4fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor4fNormal3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glColor4fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glColor4fNormal3fVertex3fvSUN);
 }
@@ -13571,14 +12545,12 @@ gdk_gl_get_glTexCoord2fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord2fVertex3fSUN == (GdkGLProc_glTexCoord2fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord2fVertex3fSUN =
-        (GdkGLProc_glTexCoord2fVertex3fSUN) gdk_gl_get_proc_address ("glTexCoord2fVertex3fSUN");
+    _procs_GL_SUN_vertex.glTexCoord2fVertex3fSUN =
+      (GdkGLProc_glTexCoord2fVertex3fSUN) gdk_gl_get_proc_address ("glTexCoord2fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord2fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord2fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord2fVertex3fSUN);
 }
@@ -13591,14 +12563,12 @@ gdk_gl_get_glTexCoord2fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord2fVertex3fvSUN == (GdkGLProc_glTexCoord2fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord2fVertex3fvSUN =
-        (GdkGLProc_glTexCoord2fVertex3fvSUN) gdk_gl_get_proc_address ("glTexCoord2fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glTexCoord2fVertex3fvSUN =
+      (GdkGLProc_glTexCoord2fVertex3fvSUN) gdk_gl_get_proc_address ("glTexCoord2fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord2fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord2fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord2fVertex3fvSUN);
 }
@@ -13611,14 +12581,12 @@ gdk_gl_get_glTexCoord4fVertex4fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord4fVertex4fSUN == (GdkGLProc_glTexCoord4fVertex4fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord4fVertex4fSUN =
-        (GdkGLProc_glTexCoord4fVertex4fSUN) gdk_gl_get_proc_address ("glTexCoord4fVertex4fSUN");
+    _procs_GL_SUN_vertex.glTexCoord4fVertex4fSUN =
+      (GdkGLProc_glTexCoord4fVertex4fSUN) gdk_gl_get_proc_address ("glTexCoord4fVertex4fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord4fVertex4fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord4fVertex4fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord4fVertex4fSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord4fVertex4fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord4fVertex4fSUN);
 }
@@ -13631,14 +12599,12 @@ gdk_gl_get_glTexCoord4fVertex4fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord4fVertex4fvSUN == (GdkGLProc_glTexCoord4fVertex4fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord4fVertex4fvSUN =
-        (GdkGLProc_glTexCoord4fVertex4fvSUN) gdk_gl_get_proc_address ("glTexCoord4fVertex4fvSUN");
+    _procs_GL_SUN_vertex.glTexCoord4fVertex4fvSUN =
+      (GdkGLProc_glTexCoord4fVertex4fvSUN) gdk_gl_get_proc_address ("glTexCoord4fVertex4fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord4fVertex4fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord4fVertex4fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord4fVertex4fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord4fVertex4fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord4fVertex4fvSUN);
 }
@@ -13651,14 +12617,12 @@ gdk_gl_get_glTexCoord2fColor4ubVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fSUN == (GdkGLProc_glTexCoord2fColor4ubVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fSUN =
-        (GdkGLProc_glTexCoord2fColor4ubVertex3fSUN) gdk_gl_get_proc_address ("glTexCoord2fColor4ubVertex3fSUN");
+    _procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fSUN =
+      (GdkGLProc_glTexCoord2fColor4ubVertex3fSUN) gdk_gl_get_proc_address ("glTexCoord2fColor4ubVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2fColor4ubVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2fColor4ubVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fSUN);
 }
@@ -13671,14 +12635,12 @@ gdk_gl_get_glTexCoord2fColor4ubVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fvSUN == (GdkGLProc_glTexCoord2fColor4ubVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fvSUN =
-        (GdkGLProc_glTexCoord2fColor4ubVertex3fvSUN) gdk_gl_get_proc_address ("glTexCoord2fColor4ubVertex3fvSUN");
+    _procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fvSUN =
+      (GdkGLProc_glTexCoord2fColor4ubVertex3fvSUN) gdk_gl_get_proc_address ("glTexCoord2fColor4ubVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2fColor4ubVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2fColor4ubVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord2fColor4ubVertex3fvSUN);
 }
@@ -13691,14 +12653,12 @@ gdk_gl_get_glTexCoord2fColor3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fSUN == (GdkGLProc_glTexCoord2fColor3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fSUN =
-        (GdkGLProc_glTexCoord2fColor3fVertex3fSUN) gdk_gl_get_proc_address ("glTexCoord2fColor3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fSUN =
+      (GdkGLProc_glTexCoord2fColor3fVertex3fSUN) gdk_gl_get_proc_address ("glTexCoord2fColor3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2fColor3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2fColor3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fSUN);
 }
@@ -13711,14 +12671,12 @@ gdk_gl_get_glTexCoord2fColor3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fvSUN == (GdkGLProc_glTexCoord2fColor3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fvSUN =
-        (GdkGLProc_glTexCoord2fColor3fVertex3fvSUN) gdk_gl_get_proc_address ("glTexCoord2fColor3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fvSUN =
+      (GdkGLProc_glTexCoord2fColor3fVertex3fvSUN) gdk_gl_get_proc_address ("glTexCoord2fColor3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2fColor3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2fColor3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord2fColor3fVertex3fvSUN);
 }
@@ -13731,14 +12689,12 @@ gdk_gl_get_glTexCoord2fNormal3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fSUN == (GdkGLProc_glTexCoord2fNormal3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fSUN =
-        (GdkGLProc_glTexCoord2fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glTexCoord2fNormal3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fSUN =
+      (GdkGLProc_glTexCoord2fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glTexCoord2fNormal3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2fNormal3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2fNormal3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fSUN);
 }
@@ -13751,14 +12707,12 @@ gdk_gl_get_glTexCoord2fNormal3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fvSUN == (GdkGLProc_glTexCoord2fNormal3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fvSUN =
-        (GdkGLProc_glTexCoord2fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glTexCoord2fNormal3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fvSUN =
+      (GdkGLProc_glTexCoord2fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glTexCoord2fNormal3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2fNormal3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2fNormal3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord2fNormal3fVertex3fvSUN);
 }
@@ -13771,14 +12725,12 @@ gdk_gl_get_glTexCoord2fColor4fNormal3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fSUN == (GdkGLProc_glTexCoord2fColor4fNormal3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fSUN =
-        (GdkGLProc_glTexCoord2fColor4fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glTexCoord2fColor4fNormal3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fSUN =
+      (GdkGLProc_glTexCoord2fColor4fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glTexCoord2fColor4fNormal3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2fColor4fNormal3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2fColor4fNormal3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fSUN);
 }
@@ -13791,14 +12743,12 @@ gdk_gl_get_glTexCoord2fColor4fNormal3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fvSUN == (GdkGLProc_glTexCoord2fColor4fNormal3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fvSUN =
-        (GdkGLProc_glTexCoord2fColor4fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glTexCoord2fColor4fNormal3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fvSUN =
+      (GdkGLProc_glTexCoord2fColor4fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glTexCoord2fColor4fNormal3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2fColor4fNormal3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2fColor4fNormal3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord2fColor4fNormal3fVertex3fvSUN);
 }
@@ -13811,14 +12761,12 @@ gdk_gl_get_glTexCoord4fColor4fNormal3fVertex4fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fSUN == (GdkGLProc_glTexCoord4fColor4fNormal3fVertex4fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fSUN =
-        (GdkGLProc_glTexCoord4fColor4fNormal3fVertex4fSUN) gdk_gl_get_proc_address ("glTexCoord4fColor4fNormal3fVertex4fSUN");
+    _procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fSUN =
+      (GdkGLProc_glTexCoord4fColor4fNormal3fVertex4fSUN) gdk_gl_get_proc_address ("glTexCoord4fColor4fNormal3fVertex4fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord4fColor4fNormal3fVertex4fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord4fColor4fNormal3fVertex4fSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fSUN);
 }
@@ -13831,14 +12779,12 @@ gdk_gl_get_glTexCoord4fColor4fNormal3fVertex4fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fvSUN == (GdkGLProc_glTexCoord4fColor4fNormal3fVertex4fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fvSUN =
-        (GdkGLProc_glTexCoord4fColor4fNormal3fVertex4fvSUN) gdk_gl_get_proc_address ("glTexCoord4fColor4fNormal3fVertex4fvSUN");
+    _procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fvSUN =
+      (GdkGLProc_glTexCoord4fColor4fNormal3fVertex4fvSUN) gdk_gl_get_proc_address ("glTexCoord4fColor4fNormal3fVertex4fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord4fColor4fNormal3fVertex4fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord4fColor4fNormal3fVertex4fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glTexCoord4fColor4fNormal3fVertex4fvSUN);
 }
@@ -13851,14 +12797,12 @@ gdk_gl_get_glReplacementCodeuiVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiVertex3fSUN == (GdkGLProc_glReplacementCodeuiVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiVertex3fSUN =
-        (GdkGLProc_glReplacementCodeuiVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiVertex3fSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiVertex3fSUN =
+      (GdkGLProc_glReplacementCodeuiVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiVertex3fSUN);
 }
@@ -13871,14 +12815,12 @@ gdk_gl_get_glReplacementCodeuiVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiVertex3fvSUN == (GdkGLProc_glReplacementCodeuiVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiVertex3fvSUN =
-        (GdkGLProc_glReplacementCodeuiVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiVertex3fvSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiVertex3fvSUN =
+      (GdkGLProc_glReplacementCodeuiVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiVertex3fvSUN);
 }
@@ -13891,14 +12833,12 @@ gdk_gl_get_glReplacementCodeuiColor4ubVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fSUN == (GdkGLProc_glReplacementCodeuiColor4ubVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fSUN =
-        (GdkGLProc_glReplacementCodeuiColor4ubVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor4ubVertex3fSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fSUN =
+      (GdkGLProc_glReplacementCodeuiColor4ubVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor4ubVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiColor4ubVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiColor4ubVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fSUN);
 }
@@ -13911,14 +12851,12 @@ gdk_gl_get_glReplacementCodeuiColor4ubVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fvSUN == (GdkGLProc_glReplacementCodeuiColor4ubVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fvSUN =
-        (GdkGLProc_glReplacementCodeuiColor4ubVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor4ubVertex3fvSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fvSUN =
+      (GdkGLProc_glReplacementCodeuiColor4ubVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor4ubVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiColor4ubVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiColor4ubVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiColor4ubVertex3fvSUN);
 }
@@ -13931,14 +12869,12 @@ gdk_gl_get_glReplacementCodeuiColor3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fSUN == (GdkGLProc_glReplacementCodeuiColor3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fSUN =
-        (GdkGLProc_glReplacementCodeuiColor3fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fSUN =
+      (GdkGLProc_glReplacementCodeuiColor3fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiColor3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiColor3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fSUN);
 }
@@ -13951,14 +12887,12 @@ gdk_gl_get_glReplacementCodeuiColor3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fvSUN == (GdkGLProc_glReplacementCodeuiColor3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fvSUN =
-        (GdkGLProc_glReplacementCodeuiColor3fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fvSUN =
+      (GdkGLProc_glReplacementCodeuiColor3fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiColor3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiColor3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiColor3fVertex3fvSUN);
 }
@@ -13971,14 +12905,12 @@ gdk_gl_get_glReplacementCodeuiNormal3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fSUN == (GdkGLProc_glReplacementCodeuiNormal3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fSUN =
-        (GdkGLProc_glReplacementCodeuiNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiNormal3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fSUN =
+      (GdkGLProc_glReplacementCodeuiNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiNormal3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiNormal3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiNormal3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fSUN);
 }
@@ -13991,14 +12923,12 @@ gdk_gl_get_glReplacementCodeuiNormal3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fvSUN == (GdkGLProc_glReplacementCodeuiNormal3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fvSUN =
-        (GdkGLProc_glReplacementCodeuiNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiNormal3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fvSUN =
+      (GdkGLProc_glReplacementCodeuiNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiNormal3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiNormal3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiNormal3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiNormal3fVertex3fvSUN);
 }
@@ -14011,14 +12941,12 @@ gdk_gl_get_glReplacementCodeuiColor4fNormal3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fSUN == (GdkGLProc_glReplacementCodeuiColor4fNormal3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fSUN =
-        (GdkGLProc_glReplacementCodeuiColor4fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor4fNormal3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fSUN =
+      (GdkGLProc_glReplacementCodeuiColor4fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor4fNormal3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiColor4fNormal3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiColor4fNormal3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fSUN);
 }
@@ -14031,14 +12959,12 @@ gdk_gl_get_glReplacementCodeuiColor4fNormal3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fvSUN == (GdkGLProc_glReplacementCodeuiColor4fNormal3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fvSUN =
-        (GdkGLProc_glReplacementCodeuiColor4fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor4fNormal3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fvSUN =
+      (GdkGLProc_glReplacementCodeuiColor4fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiColor4fNormal3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiColor4fNormal3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiColor4fNormal3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiColor4fNormal3fVertex3fvSUN);
 }
@@ -14051,14 +12977,12 @@ gdk_gl_get_glReplacementCodeuiTexCoord2fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fSUN == (GdkGLProc_glReplacementCodeuiTexCoord2fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fSUN =
-        (GdkGLProc_glReplacementCodeuiTexCoord2fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fVertex3fSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fSUN =
+      (GdkGLProc_glReplacementCodeuiTexCoord2fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fSUN);
 }
@@ -14071,14 +12995,12 @@ gdk_gl_get_glReplacementCodeuiTexCoord2fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fvSUN == (GdkGLProc_glReplacementCodeuiTexCoord2fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fvSUN =
-        (GdkGLProc_glReplacementCodeuiTexCoord2fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fvSUN =
+      (GdkGLProc_glReplacementCodeuiTexCoord2fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fVertex3fvSUN);
 }
@@ -14091,14 +13013,12 @@ gdk_gl_get_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN == (GdkGLProc_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN =
-        (GdkGLProc_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN =
+      (GdkGLProc_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN);
 }
@@ -14111,14 +13031,12 @@ gdk_gl_get_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN == (GdkGLProc_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN =
-        (GdkGLProc_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN =
+      (GdkGLProc_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN);
 }
@@ -14131,14 +13049,12 @@ gdk_gl_get_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN == (GdkGLProc_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN =
-        (GdkGLProc_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN =
+      (GdkGLProc_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN);
 }
@@ -14151,14 +13067,12 @@ gdk_gl_get_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN == (GdkGLProc_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN) -1)
-    {
-      _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN =
-        (GdkGLProc_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN");
+    _procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN =
+      (GdkGLProc_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN) gdk_gl_get_proc_address ("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN () - %s",
-                   (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN () - %s",
+               (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_vertex.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN);
 }
@@ -14247,14 +13161,12 @@ gdk_gl_get_glBlendFuncSeparateEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_blend_func_separate.glBlendFuncSeparateEXT == (GdkGLProc_glBlendFuncSeparateEXT) -1)
-    {
-      _procs_GL_EXT_blend_func_separate.glBlendFuncSeparateEXT =
-        (GdkGLProc_glBlendFuncSeparateEXT) gdk_gl_get_proc_address ("glBlendFuncSeparateEXT");
+    _procs_GL_EXT_blend_func_separate.glBlendFuncSeparateEXT =
+      (GdkGLProc_glBlendFuncSeparateEXT) gdk_gl_get_proc_address ("glBlendFuncSeparateEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBlendFuncSeparateEXT () - %s",
-                   (_procs_GL_EXT_blend_func_separate.glBlendFuncSeparateEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendFuncSeparateEXT () - %s",
+               (_procs_GL_EXT_blend_func_separate.glBlendFuncSeparateEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_blend_func_separate.glBlendFuncSeparateEXT);
 }
@@ -14304,14 +13216,12 @@ gdk_gl_get_glBlendFuncSeparateINGR (void)
     return NULL;
 
   if (_procs_GL_INGR_blend_func_separate.glBlendFuncSeparateINGR == (GdkGLProc_glBlendFuncSeparateINGR) -1)
-    {
-      _procs_GL_INGR_blend_func_separate.glBlendFuncSeparateINGR =
-        (GdkGLProc_glBlendFuncSeparateINGR) gdk_gl_get_proc_address ("glBlendFuncSeparateINGR");
+    _procs_GL_INGR_blend_func_separate.glBlendFuncSeparateINGR =
+      (GdkGLProc_glBlendFuncSeparateINGR) gdk_gl_get_proc_address ("glBlendFuncSeparateINGR");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBlendFuncSeparateINGR () - %s",
-                   (_procs_GL_INGR_blend_func_separate.glBlendFuncSeparateINGR) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendFuncSeparateINGR () - %s",
+               (_procs_GL_INGR_blend_func_separate.glBlendFuncSeparateINGR) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_INGR_blend_func_separate.glBlendFuncSeparateINGR);
 }
@@ -14363,14 +13273,12 @@ gdk_gl_get_glVertexWeightfEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_weighting.glVertexWeightfEXT == (GdkGLProc_glVertexWeightfEXT) -1)
-    {
-      _procs_GL_EXT_vertex_weighting.glVertexWeightfEXT =
-        (GdkGLProc_glVertexWeightfEXT) gdk_gl_get_proc_address ("glVertexWeightfEXT");
+    _procs_GL_EXT_vertex_weighting.glVertexWeightfEXT =
+      (GdkGLProc_glVertexWeightfEXT) gdk_gl_get_proc_address ("glVertexWeightfEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexWeightfEXT () - %s",
-                   (_procs_GL_EXT_vertex_weighting.glVertexWeightfEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexWeightfEXT () - %s",
+               (_procs_GL_EXT_vertex_weighting.glVertexWeightfEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_weighting.glVertexWeightfEXT);
 }
@@ -14383,14 +13291,12 @@ gdk_gl_get_glVertexWeightfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_weighting.glVertexWeightfvEXT == (GdkGLProc_glVertexWeightfvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_weighting.glVertexWeightfvEXT =
-        (GdkGLProc_glVertexWeightfvEXT) gdk_gl_get_proc_address ("glVertexWeightfvEXT");
+    _procs_GL_EXT_vertex_weighting.glVertexWeightfvEXT =
+      (GdkGLProc_glVertexWeightfvEXT) gdk_gl_get_proc_address ("glVertexWeightfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexWeightfvEXT () - %s",
-                   (_procs_GL_EXT_vertex_weighting.glVertexWeightfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexWeightfvEXT () - %s",
+               (_procs_GL_EXT_vertex_weighting.glVertexWeightfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_weighting.glVertexWeightfvEXT);
 }
@@ -14403,14 +13309,12 @@ gdk_gl_get_glVertexWeightPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_weighting.glVertexWeightPointerEXT == (GdkGLProc_glVertexWeightPointerEXT) -1)
-    {
-      _procs_GL_EXT_vertex_weighting.glVertexWeightPointerEXT =
-        (GdkGLProc_glVertexWeightPointerEXT) gdk_gl_get_proc_address ("glVertexWeightPointerEXT");
+    _procs_GL_EXT_vertex_weighting.glVertexWeightPointerEXT =
+      (GdkGLProc_glVertexWeightPointerEXT) gdk_gl_get_proc_address ("glVertexWeightPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexWeightPointerEXT () - %s",
-                   (_procs_GL_EXT_vertex_weighting.glVertexWeightPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexWeightPointerEXT () - %s",
+               (_procs_GL_EXT_vertex_weighting.glVertexWeightPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_weighting.glVertexWeightPointerEXT);
 }
@@ -14463,14 +13367,12 @@ gdk_gl_get_glFlushVertexArrayRangeNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_array_range.glFlushVertexArrayRangeNV == (GdkGLProc_glFlushVertexArrayRangeNV) -1)
-    {
-      _procs_GL_NV_vertex_array_range.glFlushVertexArrayRangeNV =
-        (GdkGLProc_glFlushVertexArrayRangeNV) gdk_gl_get_proc_address ("glFlushVertexArrayRangeNV");
+    _procs_GL_NV_vertex_array_range.glFlushVertexArrayRangeNV =
+      (GdkGLProc_glFlushVertexArrayRangeNV) gdk_gl_get_proc_address ("glFlushVertexArrayRangeNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFlushVertexArrayRangeNV () - %s",
-                   (_procs_GL_NV_vertex_array_range.glFlushVertexArrayRangeNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFlushVertexArrayRangeNV () - %s",
+               (_procs_GL_NV_vertex_array_range.glFlushVertexArrayRangeNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_array_range.glFlushVertexArrayRangeNV);
 }
@@ -14483,14 +13385,12 @@ gdk_gl_get_glVertexArrayRangeNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_array_range.glVertexArrayRangeNV == (GdkGLProc_glVertexArrayRangeNV) -1)
-    {
-      _procs_GL_NV_vertex_array_range.glVertexArrayRangeNV =
-        (GdkGLProc_glVertexArrayRangeNV) gdk_gl_get_proc_address ("glVertexArrayRangeNV");
+    _procs_GL_NV_vertex_array_range.glVertexArrayRangeNV =
+      (GdkGLProc_glVertexArrayRangeNV) gdk_gl_get_proc_address ("glVertexArrayRangeNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexArrayRangeNV () - %s",
-                   (_procs_GL_NV_vertex_array_range.glVertexArrayRangeNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexArrayRangeNV () - %s",
+               (_procs_GL_NV_vertex_array_range.glVertexArrayRangeNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_array_range.glVertexArrayRangeNV);
 }
@@ -14553,14 +13453,12 @@ gdk_gl_get_glCombinerParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glCombinerParameterfvNV == (GdkGLProc_glCombinerParameterfvNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glCombinerParameterfvNV =
-        (GdkGLProc_glCombinerParameterfvNV) gdk_gl_get_proc_address ("glCombinerParameterfvNV");
+    _procs_GL_NV_register_combiners.glCombinerParameterfvNV =
+      (GdkGLProc_glCombinerParameterfvNV) gdk_gl_get_proc_address ("glCombinerParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCombinerParameterfvNV () - %s",
-                   (_procs_GL_NV_register_combiners.glCombinerParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCombinerParameterfvNV () - %s",
+               (_procs_GL_NV_register_combiners.glCombinerParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glCombinerParameterfvNV);
 }
@@ -14573,14 +13471,12 @@ gdk_gl_get_glCombinerParameterfNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glCombinerParameterfNV == (GdkGLProc_glCombinerParameterfNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glCombinerParameterfNV =
-        (GdkGLProc_glCombinerParameterfNV) gdk_gl_get_proc_address ("glCombinerParameterfNV");
+    _procs_GL_NV_register_combiners.glCombinerParameterfNV =
+      (GdkGLProc_glCombinerParameterfNV) gdk_gl_get_proc_address ("glCombinerParameterfNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCombinerParameterfNV () - %s",
-                   (_procs_GL_NV_register_combiners.glCombinerParameterfNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCombinerParameterfNV () - %s",
+               (_procs_GL_NV_register_combiners.glCombinerParameterfNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glCombinerParameterfNV);
 }
@@ -14593,14 +13489,12 @@ gdk_gl_get_glCombinerParameterivNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glCombinerParameterivNV == (GdkGLProc_glCombinerParameterivNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glCombinerParameterivNV =
-        (GdkGLProc_glCombinerParameterivNV) gdk_gl_get_proc_address ("glCombinerParameterivNV");
+    _procs_GL_NV_register_combiners.glCombinerParameterivNV =
+      (GdkGLProc_glCombinerParameterivNV) gdk_gl_get_proc_address ("glCombinerParameterivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCombinerParameterivNV () - %s",
-                   (_procs_GL_NV_register_combiners.glCombinerParameterivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCombinerParameterivNV () - %s",
+               (_procs_GL_NV_register_combiners.glCombinerParameterivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glCombinerParameterivNV);
 }
@@ -14613,14 +13507,12 @@ gdk_gl_get_glCombinerParameteriNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glCombinerParameteriNV == (GdkGLProc_glCombinerParameteriNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glCombinerParameteriNV =
-        (GdkGLProc_glCombinerParameteriNV) gdk_gl_get_proc_address ("glCombinerParameteriNV");
+    _procs_GL_NV_register_combiners.glCombinerParameteriNV =
+      (GdkGLProc_glCombinerParameteriNV) gdk_gl_get_proc_address ("glCombinerParameteriNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCombinerParameteriNV () - %s",
-                   (_procs_GL_NV_register_combiners.glCombinerParameteriNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCombinerParameteriNV () - %s",
+               (_procs_GL_NV_register_combiners.glCombinerParameteriNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glCombinerParameteriNV);
 }
@@ -14633,14 +13525,12 @@ gdk_gl_get_glCombinerInputNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glCombinerInputNV == (GdkGLProc_glCombinerInputNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glCombinerInputNV =
-        (GdkGLProc_glCombinerInputNV) gdk_gl_get_proc_address ("glCombinerInputNV");
+    _procs_GL_NV_register_combiners.glCombinerInputNV =
+      (GdkGLProc_glCombinerInputNV) gdk_gl_get_proc_address ("glCombinerInputNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCombinerInputNV () - %s",
-                   (_procs_GL_NV_register_combiners.glCombinerInputNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCombinerInputNV () - %s",
+               (_procs_GL_NV_register_combiners.glCombinerInputNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glCombinerInputNV);
 }
@@ -14653,14 +13543,12 @@ gdk_gl_get_glCombinerOutputNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glCombinerOutputNV == (GdkGLProc_glCombinerOutputNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glCombinerOutputNV =
-        (GdkGLProc_glCombinerOutputNV) gdk_gl_get_proc_address ("glCombinerOutputNV");
+    _procs_GL_NV_register_combiners.glCombinerOutputNV =
+      (GdkGLProc_glCombinerOutputNV) gdk_gl_get_proc_address ("glCombinerOutputNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCombinerOutputNV () - %s",
-                   (_procs_GL_NV_register_combiners.glCombinerOutputNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCombinerOutputNV () - %s",
+               (_procs_GL_NV_register_combiners.glCombinerOutputNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glCombinerOutputNV);
 }
@@ -14673,14 +13561,12 @@ gdk_gl_get_glFinalCombinerInputNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glFinalCombinerInputNV == (GdkGLProc_glFinalCombinerInputNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glFinalCombinerInputNV =
-        (GdkGLProc_glFinalCombinerInputNV) gdk_gl_get_proc_address ("glFinalCombinerInputNV");
+    _procs_GL_NV_register_combiners.glFinalCombinerInputNV =
+      (GdkGLProc_glFinalCombinerInputNV) gdk_gl_get_proc_address ("glFinalCombinerInputNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFinalCombinerInputNV () - %s",
-                   (_procs_GL_NV_register_combiners.glFinalCombinerInputNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFinalCombinerInputNV () - %s",
+               (_procs_GL_NV_register_combiners.glFinalCombinerInputNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glFinalCombinerInputNV);
 }
@@ -14693,14 +13579,12 @@ gdk_gl_get_glGetCombinerInputParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glGetCombinerInputParameterfvNV == (GdkGLProc_glGetCombinerInputParameterfvNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glGetCombinerInputParameterfvNV =
-        (GdkGLProc_glGetCombinerInputParameterfvNV) gdk_gl_get_proc_address ("glGetCombinerInputParameterfvNV");
+    _procs_GL_NV_register_combiners.glGetCombinerInputParameterfvNV =
+      (GdkGLProc_glGetCombinerInputParameterfvNV) gdk_gl_get_proc_address ("glGetCombinerInputParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetCombinerInputParameterfvNV () - %s",
-                   (_procs_GL_NV_register_combiners.glGetCombinerInputParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetCombinerInputParameterfvNV () - %s",
+               (_procs_GL_NV_register_combiners.glGetCombinerInputParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glGetCombinerInputParameterfvNV);
 }
@@ -14713,14 +13597,12 @@ gdk_gl_get_glGetCombinerInputParameterivNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glGetCombinerInputParameterivNV == (GdkGLProc_glGetCombinerInputParameterivNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glGetCombinerInputParameterivNV =
-        (GdkGLProc_glGetCombinerInputParameterivNV) gdk_gl_get_proc_address ("glGetCombinerInputParameterivNV");
+    _procs_GL_NV_register_combiners.glGetCombinerInputParameterivNV =
+      (GdkGLProc_glGetCombinerInputParameterivNV) gdk_gl_get_proc_address ("glGetCombinerInputParameterivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetCombinerInputParameterivNV () - %s",
-                   (_procs_GL_NV_register_combiners.glGetCombinerInputParameterivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetCombinerInputParameterivNV () - %s",
+               (_procs_GL_NV_register_combiners.glGetCombinerInputParameterivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glGetCombinerInputParameterivNV);
 }
@@ -14733,14 +13615,12 @@ gdk_gl_get_glGetCombinerOutputParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glGetCombinerOutputParameterfvNV == (GdkGLProc_glGetCombinerOutputParameterfvNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glGetCombinerOutputParameterfvNV =
-        (GdkGLProc_glGetCombinerOutputParameterfvNV) gdk_gl_get_proc_address ("glGetCombinerOutputParameterfvNV");
+    _procs_GL_NV_register_combiners.glGetCombinerOutputParameterfvNV =
+      (GdkGLProc_glGetCombinerOutputParameterfvNV) gdk_gl_get_proc_address ("glGetCombinerOutputParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetCombinerOutputParameterfvNV () - %s",
-                   (_procs_GL_NV_register_combiners.glGetCombinerOutputParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetCombinerOutputParameterfvNV () - %s",
+               (_procs_GL_NV_register_combiners.glGetCombinerOutputParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glGetCombinerOutputParameterfvNV);
 }
@@ -14753,14 +13633,12 @@ gdk_gl_get_glGetCombinerOutputParameterivNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glGetCombinerOutputParameterivNV == (GdkGLProc_glGetCombinerOutputParameterivNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glGetCombinerOutputParameterivNV =
-        (GdkGLProc_glGetCombinerOutputParameterivNV) gdk_gl_get_proc_address ("glGetCombinerOutputParameterivNV");
+    _procs_GL_NV_register_combiners.glGetCombinerOutputParameterivNV =
+      (GdkGLProc_glGetCombinerOutputParameterivNV) gdk_gl_get_proc_address ("glGetCombinerOutputParameterivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetCombinerOutputParameterivNV () - %s",
-                   (_procs_GL_NV_register_combiners.glGetCombinerOutputParameterivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetCombinerOutputParameterivNV () - %s",
+               (_procs_GL_NV_register_combiners.glGetCombinerOutputParameterivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glGetCombinerOutputParameterivNV);
 }
@@ -14773,14 +13651,12 @@ gdk_gl_get_glGetFinalCombinerInputParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterfvNV == (GdkGLProc_glGetFinalCombinerInputParameterfvNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterfvNV =
-        (GdkGLProc_glGetFinalCombinerInputParameterfvNV) gdk_gl_get_proc_address ("glGetFinalCombinerInputParameterfvNV");
+    _procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterfvNV =
+      (GdkGLProc_glGetFinalCombinerInputParameterfvNV) gdk_gl_get_proc_address ("glGetFinalCombinerInputParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetFinalCombinerInputParameterfvNV () - %s",
-                   (_procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFinalCombinerInputParameterfvNV () - %s",
+               (_procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterfvNV);
 }
@@ -14793,14 +13669,12 @@ gdk_gl_get_glGetFinalCombinerInputParameterivNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterivNV == (GdkGLProc_glGetFinalCombinerInputParameterivNV) -1)
-    {
-      _procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterivNV =
-        (GdkGLProc_glGetFinalCombinerInputParameterivNV) gdk_gl_get_proc_address ("glGetFinalCombinerInputParameterivNV");
+    _procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterivNV =
+      (GdkGLProc_glGetFinalCombinerInputParameterivNV) gdk_gl_get_proc_address ("glGetFinalCombinerInputParameterivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetFinalCombinerInputParameterivNV () - %s",
-                   (_procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFinalCombinerInputParameterivNV () - %s",
+               (_procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners.glGetFinalCombinerInputParameterivNV);
 }
@@ -14862,14 +13736,12 @@ gdk_gl_get_glResizeBuffersMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_resize_buffers.glResizeBuffersMESA == (GdkGLProc_glResizeBuffersMESA) -1)
-    {
-      _procs_GL_MESA_resize_buffers.glResizeBuffersMESA =
-        (GdkGLProc_glResizeBuffersMESA) gdk_gl_get_proc_address ("glResizeBuffersMESA");
+    _procs_GL_MESA_resize_buffers.glResizeBuffersMESA =
+      (GdkGLProc_glResizeBuffersMESA) gdk_gl_get_proc_address ("glResizeBuffersMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glResizeBuffersMESA () - %s",
-                   (_procs_GL_MESA_resize_buffers.glResizeBuffersMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glResizeBuffersMESA () - %s",
+               (_procs_GL_MESA_resize_buffers.glResizeBuffersMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_resize_buffers.glResizeBuffersMESA);
 }
@@ -14942,14 +13814,12 @@ gdk_gl_get_glWindowPos2dMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos2dMESA == (GdkGLProc_glWindowPos2dMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos2dMESA =
-        (GdkGLProc_glWindowPos2dMESA) gdk_gl_get_proc_address ("glWindowPos2dMESA");
+    _procs_GL_MESA_window_pos.glWindowPos2dMESA =
+      (GdkGLProc_glWindowPos2dMESA) gdk_gl_get_proc_address ("glWindowPos2dMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2dMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos2dMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2dMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos2dMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos2dMESA);
 }
@@ -14962,14 +13832,12 @@ gdk_gl_get_glWindowPos2dvMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos2dvMESA == (GdkGLProc_glWindowPos2dvMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos2dvMESA =
-        (GdkGLProc_glWindowPos2dvMESA) gdk_gl_get_proc_address ("glWindowPos2dvMESA");
+    _procs_GL_MESA_window_pos.glWindowPos2dvMESA =
+      (GdkGLProc_glWindowPos2dvMESA) gdk_gl_get_proc_address ("glWindowPos2dvMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2dvMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos2dvMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2dvMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos2dvMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos2dvMESA);
 }
@@ -14982,14 +13850,12 @@ gdk_gl_get_glWindowPos2fMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos2fMESA == (GdkGLProc_glWindowPos2fMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos2fMESA =
-        (GdkGLProc_glWindowPos2fMESA) gdk_gl_get_proc_address ("glWindowPos2fMESA");
+    _procs_GL_MESA_window_pos.glWindowPos2fMESA =
+      (GdkGLProc_glWindowPos2fMESA) gdk_gl_get_proc_address ("glWindowPos2fMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2fMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos2fMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2fMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos2fMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos2fMESA);
 }
@@ -15002,14 +13868,12 @@ gdk_gl_get_glWindowPos2fvMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos2fvMESA == (GdkGLProc_glWindowPos2fvMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos2fvMESA =
-        (GdkGLProc_glWindowPos2fvMESA) gdk_gl_get_proc_address ("glWindowPos2fvMESA");
+    _procs_GL_MESA_window_pos.glWindowPos2fvMESA =
+      (GdkGLProc_glWindowPos2fvMESA) gdk_gl_get_proc_address ("glWindowPos2fvMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2fvMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos2fvMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2fvMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos2fvMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos2fvMESA);
 }
@@ -15022,14 +13886,12 @@ gdk_gl_get_glWindowPos2iMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos2iMESA == (GdkGLProc_glWindowPos2iMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos2iMESA =
-        (GdkGLProc_glWindowPos2iMESA) gdk_gl_get_proc_address ("glWindowPos2iMESA");
+    _procs_GL_MESA_window_pos.glWindowPos2iMESA =
+      (GdkGLProc_glWindowPos2iMESA) gdk_gl_get_proc_address ("glWindowPos2iMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2iMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos2iMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2iMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos2iMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos2iMESA);
 }
@@ -15042,14 +13904,12 @@ gdk_gl_get_glWindowPos2ivMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos2ivMESA == (GdkGLProc_glWindowPos2ivMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos2ivMESA =
-        (GdkGLProc_glWindowPos2ivMESA) gdk_gl_get_proc_address ("glWindowPos2ivMESA");
+    _procs_GL_MESA_window_pos.glWindowPos2ivMESA =
+      (GdkGLProc_glWindowPos2ivMESA) gdk_gl_get_proc_address ("glWindowPos2ivMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2ivMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos2ivMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2ivMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos2ivMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos2ivMESA);
 }
@@ -15062,14 +13922,12 @@ gdk_gl_get_glWindowPos2sMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos2sMESA == (GdkGLProc_glWindowPos2sMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos2sMESA =
-        (GdkGLProc_glWindowPos2sMESA) gdk_gl_get_proc_address ("glWindowPos2sMESA");
+    _procs_GL_MESA_window_pos.glWindowPos2sMESA =
+      (GdkGLProc_glWindowPos2sMESA) gdk_gl_get_proc_address ("glWindowPos2sMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2sMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos2sMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2sMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos2sMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos2sMESA);
 }
@@ -15082,14 +13940,12 @@ gdk_gl_get_glWindowPos2svMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos2svMESA == (GdkGLProc_glWindowPos2svMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos2svMESA =
-        (GdkGLProc_glWindowPos2svMESA) gdk_gl_get_proc_address ("glWindowPos2svMESA");
+    _procs_GL_MESA_window_pos.glWindowPos2svMESA =
+      (GdkGLProc_glWindowPos2svMESA) gdk_gl_get_proc_address ("glWindowPos2svMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos2svMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos2svMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2svMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos2svMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos2svMESA);
 }
@@ -15102,14 +13958,12 @@ gdk_gl_get_glWindowPos3dMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos3dMESA == (GdkGLProc_glWindowPos3dMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos3dMESA =
-        (GdkGLProc_glWindowPos3dMESA) gdk_gl_get_proc_address ("glWindowPos3dMESA");
+    _procs_GL_MESA_window_pos.glWindowPos3dMESA =
+      (GdkGLProc_glWindowPos3dMESA) gdk_gl_get_proc_address ("glWindowPos3dMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3dMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos3dMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3dMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos3dMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos3dMESA);
 }
@@ -15122,14 +13976,12 @@ gdk_gl_get_glWindowPos3dvMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos3dvMESA == (GdkGLProc_glWindowPos3dvMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos3dvMESA =
-        (GdkGLProc_glWindowPos3dvMESA) gdk_gl_get_proc_address ("glWindowPos3dvMESA");
+    _procs_GL_MESA_window_pos.glWindowPos3dvMESA =
+      (GdkGLProc_glWindowPos3dvMESA) gdk_gl_get_proc_address ("glWindowPos3dvMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3dvMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos3dvMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3dvMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos3dvMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos3dvMESA);
 }
@@ -15142,14 +13994,12 @@ gdk_gl_get_glWindowPos3fMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos3fMESA == (GdkGLProc_glWindowPos3fMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos3fMESA =
-        (GdkGLProc_glWindowPos3fMESA) gdk_gl_get_proc_address ("glWindowPos3fMESA");
+    _procs_GL_MESA_window_pos.glWindowPos3fMESA =
+      (GdkGLProc_glWindowPos3fMESA) gdk_gl_get_proc_address ("glWindowPos3fMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3fMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos3fMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3fMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos3fMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos3fMESA);
 }
@@ -15162,14 +14012,12 @@ gdk_gl_get_glWindowPos3fvMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos3fvMESA == (GdkGLProc_glWindowPos3fvMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos3fvMESA =
-        (GdkGLProc_glWindowPos3fvMESA) gdk_gl_get_proc_address ("glWindowPos3fvMESA");
+    _procs_GL_MESA_window_pos.glWindowPos3fvMESA =
+      (GdkGLProc_glWindowPos3fvMESA) gdk_gl_get_proc_address ("glWindowPos3fvMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3fvMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos3fvMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3fvMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos3fvMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos3fvMESA);
 }
@@ -15182,14 +14030,12 @@ gdk_gl_get_glWindowPos3iMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos3iMESA == (GdkGLProc_glWindowPos3iMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos3iMESA =
-        (GdkGLProc_glWindowPos3iMESA) gdk_gl_get_proc_address ("glWindowPos3iMESA");
+    _procs_GL_MESA_window_pos.glWindowPos3iMESA =
+      (GdkGLProc_glWindowPos3iMESA) gdk_gl_get_proc_address ("glWindowPos3iMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3iMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos3iMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3iMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos3iMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos3iMESA);
 }
@@ -15202,14 +14048,12 @@ gdk_gl_get_glWindowPos3ivMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos3ivMESA == (GdkGLProc_glWindowPos3ivMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos3ivMESA =
-        (GdkGLProc_glWindowPos3ivMESA) gdk_gl_get_proc_address ("glWindowPos3ivMESA");
+    _procs_GL_MESA_window_pos.glWindowPos3ivMESA =
+      (GdkGLProc_glWindowPos3ivMESA) gdk_gl_get_proc_address ("glWindowPos3ivMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3ivMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos3ivMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3ivMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos3ivMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos3ivMESA);
 }
@@ -15222,14 +14066,12 @@ gdk_gl_get_glWindowPos3sMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos3sMESA == (GdkGLProc_glWindowPos3sMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos3sMESA =
-        (GdkGLProc_glWindowPos3sMESA) gdk_gl_get_proc_address ("glWindowPos3sMESA");
+    _procs_GL_MESA_window_pos.glWindowPos3sMESA =
+      (GdkGLProc_glWindowPos3sMESA) gdk_gl_get_proc_address ("glWindowPos3sMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3sMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos3sMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3sMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos3sMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos3sMESA);
 }
@@ -15242,14 +14084,12 @@ gdk_gl_get_glWindowPos3svMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos3svMESA == (GdkGLProc_glWindowPos3svMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos3svMESA =
-        (GdkGLProc_glWindowPos3svMESA) gdk_gl_get_proc_address ("glWindowPos3svMESA");
+    _procs_GL_MESA_window_pos.glWindowPos3svMESA =
+      (GdkGLProc_glWindowPos3svMESA) gdk_gl_get_proc_address ("glWindowPos3svMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos3svMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos3svMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3svMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos3svMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos3svMESA);
 }
@@ -15262,14 +14102,12 @@ gdk_gl_get_glWindowPos4dMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos4dMESA == (GdkGLProc_glWindowPos4dMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos4dMESA =
-        (GdkGLProc_glWindowPos4dMESA) gdk_gl_get_proc_address ("glWindowPos4dMESA");
+    _procs_GL_MESA_window_pos.glWindowPos4dMESA =
+      (GdkGLProc_glWindowPos4dMESA) gdk_gl_get_proc_address ("glWindowPos4dMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos4dMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos4dMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos4dMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos4dMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos4dMESA);
 }
@@ -15282,14 +14120,12 @@ gdk_gl_get_glWindowPos4dvMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos4dvMESA == (GdkGLProc_glWindowPos4dvMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos4dvMESA =
-        (GdkGLProc_glWindowPos4dvMESA) gdk_gl_get_proc_address ("glWindowPos4dvMESA");
+    _procs_GL_MESA_window_pos.glWindowPos4dvMESA =
+      (GdkGLProc_glWindowPos4dvMESA) gdk_gl_get_proc_address ("glWindowPos4dvMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos4dvMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos4dvMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos4dvMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos4dvMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos4dvMESA);
 }
@@ -15302,14 +14138,12 @@ gdk_gl_get_glWindowPos4fMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos4fMESA == (GdkGLProc_glWindowPos4fMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos4fMESA =
-        (GdkGLProc_glWindowPos4fMESA) gdk_gl_get_proc_address ("glWindowPos4fMESA");
+    _procs_GL_MESA_window_pos.glWindowPos4fMESA =
+      (GdkGLProc_glWindowPos4fMESA) gdk_gl_get_proc_address ("glWindowPos4fMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos4fMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos4fMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos4fMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos4fMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos4fMESA);
 }
@@ -15322,14 +14156,12 @@ gdk_gl_get_glWindowPos4fvMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos4fvMESA == (GdkGLProc_glWindowPos4fvMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos4fvMESA =
-        (GdkGLProc_glWindowPos4fvMESA) gdk_gl_get_proc_address ("glWindowPos4fvMESA");
+    _procs_GL_MESA_window_pos.glWindowPos4fvMESA =
+      (GdkGLProc_glWindowPos4fvMESA) gdk_gl_get_proc_address ("glWindowPos4fvMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos4fvMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos4fvMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos4fvMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos4fvMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos4fvMESA);
 }
@@ -15342,14 +14174,12 @@ gdk_gl_get_glWindowPos4iMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos4iMESA == (GdkGLProc_glWindowPos4iMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos4iMESA =
-        (GdkGLProc_glWindowPos4iMESA) gdk_gl_get_proc_address ("glWindowPos4iMESA");
+    _procs_GL_MESA_window_pos.glWindowPos4iMESA =
+      (GdkGLProc_glWindowPos4iMESA) gdk_gl_get_proc_address ("glWindowPos4iMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos4iMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos4iMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos4iMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos4iMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos4iMESA);
 }
@@ -15362,14 +14192,12 @@ gdk_gl_get_glWindowPos4ivMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos4ivMESA == (GdkGLProc_glWindowPos4ivMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos4ivMESA =
-        (GdkGLProc_glWindowPos4ivMESA) gdk_gl_get_proc_address ("glWindowPos4ivMESA");
+    _procs_GL_MESA_window_pos.glWindowPos4ivMESA =
+      (GdkGLProc_glWindowPos4ivMESA) gdk_gl_get_proc_address ("glWindowPos4ivMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos4ivMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos4ivMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos4ivMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos4ivMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos4ivMESA);
 }
@@ -15382,14 +14210,12 @@ gdk_gl_get_glWindowPos4sMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos4sMESA == (GdkGLProc_glWindowPos4sMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos4sMESA =
-        (GdkGLProc_glWindowPos4sMESA) gdk_gl_get_proc_address ("glWindowPos4sMESA");
+    _procs_GL_MESA_window_pos.glWindowPos4sMESA =
+      (GdkGLProc_glWindowPos4sMESA) gdk_gl_get_proc_address ("glWindowPos4sMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos4sMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos4sMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos4sMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos4sMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos4sMESA);
 }
@@ -15402,14 +14228,12 @@ gdk_gl_get_glWindowPos4svMESA (void)
     return NULL;
 
   if (_procs_GL_MESA_window_pos.glWindowPos4svMESA == (GdkGLProc_glWindowPos4svMESA) -1)
-    {
-      _procs_GL_MESA_window_pos.glWindowPos4svMESA =
-        (GdkGLProc_glWindowPos4svMESA) gdk_gl_get_proc_address ("glWindowPos4svMESA");
+    _procs_GL_MESA_window_pos.glWindowPos4svMESA =
+      (GdkGLProc_glWindowPos4svMESA) gdk_gl_get_proc_address ("glWindowPos4svMESA");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWindowPos4svMESA () - %s",
-                   (_procs_GL_MESA_window_pos.glWindowPos4svMESA) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos4svMESA () - %s",
+               (_procs_GL_MESA_window_pos.glWindowPos4svMESA) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_MESA_window_pos.glWindowPos4svMESA);
 }
@@ -15483,14 +14307,12 @@ gdk_gl_get_glMultiModeDrawArraysIBM (void)
     return NULL;
 
   if (_procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawArraysIBM == (GdkGLProc_glMultiModeDrawArraysIBM) -1)
-    {
-      _procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawArraysIBM =
-        (GdkGLProc_glMultiModeDrawArraysIBM) gdk_gl_get_proc_address ("glMultiModeDrawArraysIBM");
+    _procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawArraysIBM =
+      (GdkGLProc_glMultiModeDrawArraysIBM) gdk_gl_get_proc_address ("glMultiModeDrawArraysIBM");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiModeDrawArraysIBM () - %s",
-                   (_procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawArraysIBM) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiModeDrawArraysIBM () - %s",
+               (_procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawArraysIBM) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawArraysIBM);
 }
@@ -15503,14 +14325,12 @@ gdk_gl_get_glMultiModeDrawElementsIBM (void)
     return NULL;
 
   if (_procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawElementsIBM == (GdkGLProc_glMultiModeDrawElementsIBM) -1)
-    {
-      _procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawElementsIBM =
-        (GdkGLProc_glMultiModeDrawElementsIBM) gdk_gl_get_proc_address ("glMultiModeDrawElementsIBM");
+    _procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawElementsIBM =
+      (GdkGLProc_glMultiModeDrawElementsIBM) gdk_gl_get_proc_address ("glMultiModeDrawElementsIBM");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiModeDrawElementsIBM () - %s",
-                   (_procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawElementsIBM) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiModeDrawElementsIBM () - %s",
+               (_procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawElementsIBM) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_IBM_multimode_draw_arrays.glMultiModeDrawElementsIBM);
 }
@@ -15568,14 +14388,12 @@ gdk_gl_get_glColorPointerListIBM (void)
     return NULL;
 
   if (_procs_GL_IBM_vertex_array_lists.glColorPointerListIBM == (GdkGLProc_glColorPointerListIBM) -1)
-    {
-      _procs_GL_IBM_vertex_array_lists.glColorPointerListIBM =
-        (GdkGLProc_glColorPointerListIBM) gdk_gl_get_proc_address ("glColorPointerListIBM");
+    _procs_GL_IBM_vertex_array_lists.glColorPointerListIBM =
+      (GdkGLProc_glColorPointerListIBM) gdk_gl_get_proc_address ("glColorPointerListIBM");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorPointerListIBM () - %s",
-                   (_procs_GL_IBM_vertex_array_lists.glColorPointerListIBM) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorPointerListIBM () - %s",
+               (_procs_GL_IBM_vertex_array_lists.glColorPointerListIBM) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_IBM_vertex_array_lists.glColorPointerListIBM);
 }
@@ -15588,14 +14406,12 @@ gdk_gl_get_glSecondaryColorPointerListIBM (void)
     return NULL;
 
   if (_procs_GL_IBM_vertex_array_lists.glSecondaryColorPointerListIBM == (GdkGLProc_glSecondaryColorPointerListIBM) -1)
-    {
-      _procs_GL_IBM_vertex_array_lists.glSecondaryColorPointerListIBM =
-        (GdkGLProc_glSecondaryColorPointerListIBM) gdk_gl_get_proc_address ("glSecondaryColorPointerListIBM");
+    _procs_GL_IBM_vertex_array_lists.glSecondaryColorPointerListIBM =
+      (GdkGLProc_glSecondaryColorPointerListIBM) gdk_gl_get_proc_address ("glSecondaryColorPointerListIBM");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColorPointerListIBM () - %s",
-                   (_procs_GL_IBM_vertex_array_lists.glSecondaryColorPointerListIBM) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColorPointerListIBM () - %s",
+               (_procs_GL_IBM_vertex_array_lists.glSecondaryColorPointerListIBM) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_IBM_vertex_array_lists.glSecondaryColorPointerListIBM);
 }
@@ -15608,14 +14424,12 @@ gdk_gl_get_glEdgeFlagPointerListIBM (void)
     return NULL;
 
   if (_procs_GL_IBM_vertex_array_lists.glEdgeFlagPointerListIBM == (GdkGLProc_glEdgeFlagPointerListIBM) -1)
-    {
-      _procs_GL_IBM_vertex_array_lists.glEdgeFlagPointerListIBM =
-        (GdkGLProc_glEdgeFlagPointerListIBM) gdk_gl_get_proc_address ("glEdgeFlagPointerListIBM");
+    _procs_GL_IBM_vertex_array_lists.glEdgeFlagPointerListIBM =
+      (GdkGLProc_glEdgeFlagPointerListIBM) gdk_gl_get_proc_address ("glEdgeFlagPointerListIBM");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glEdgeFlagPointerListIBM () - %s",
-                   (_procs_GL_IBM_vertex_array_lists.glEdgeFlagPointerListIBM) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEdgeFlagPointerListIBM () - %s",
+               (_procs_GL_IBM_vertex_array_lists.glEdgeFlagPointerListIBM) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_IBM_vertex_array_lists.glEdgeFlagPointerListIBM);
 }
@@ -15628,14 +14442,12 @@ gdk_gl_get_glFogCoordPointerListIBM (void)
     return NULL;
 
   if (_procs_GL_IBM_vertex_array_lists.glFogCoordPointerListIBM == (GdkGLProc_glFogCoordPointerListIBM) -1)
-    {
-      _procs_GL_IBM_vertex_array_lists.glFogCoordPointerListIBM =
-        (GdkGLProc_glFogCoordPointerListIBM) gdk_gl_get_proc_address ("glFogCoordPointerListIBM");
+    _procs_GL_IBM_vertex_array_lists.glFogCoordPointerListIBM =
+      (GdkGLProc_glFogCoordPointerListIBM) gdk_gl_get_proc_address ("glFogCoordPointerListIBM");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoordPointerListIBM () - %s",
-                   (_procs_GL_IBM_vertex_array_lists.glFogCoordPointerListIBM) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordPointerListIBM () - %s",
+               (_procs_GL_IBM_vertex_array_lists.glFogCoordPointerListIBM) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_IBM_vertex_array_lists.glFogCoordPointerListIBM);
 }
@@ -15648,14 +14460,12 @@ gdk_gl_get_glIndexPointerListIBM (void)
     return NULL;
 
   if (_procs_GL_IBM_vertex_array_lists.glIndexPointerListIBM == (GdkGLProc_glIndexPointerListIBM) -1)
-    {
-      _procs_GL_IBM_vertex_array_lists.glIndexPointerListIBM =
-        (GdkGLProc_glIndexPointerListIBM) gdk_gl_get_proc_address ("glIndexPointerListIBM");
+    _procs_GL_IBM_vertex_array_lists.glIndexPointerListIBM =
+      (GdkGLProc_glIndexPointerListIBM) gdk_gl_get_proc_address ("glIndexPointerListIBM");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIndexPointerListIBM () - %s",
-                   (_procs_GL_IBM_vertex_array_lists.glIndexPointerListIBM) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIndexPointerListIBM () - %s",
+               (_procs_GL_IBM_vertex_array_lists.glIndexPointerListIBM) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_IBM_vertex_array_lists.glIndexPointerListIBM);
 }
@@ -15668,14 +14478,12 @@ gdk_gl_get_glNormalPointerListIBM (void)
     return NULL;
 
   if (_procs_GL_IBM_vertex_array_lists.glNormalPointerListIBM == (GdkGLProc_glNormalPointerListIBM) -1)
-    {
-      _procs_GL_IBM_vertex_array_lists.glNormalPointerListIBM =
-        (GdkGLProc_glNormalPointerListIBM) gdk_gl_get_proc_address ("glNormalPointerListIBM");
+    _procs_GL_IBM_vertex_array_lists.glNormalPointerListIBM =
+      (GdkGLProc_glNormalPointerListIBM) gdk_gl_get_proc_address ("glNormalPointerListIBM");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalPointerListIBM () - %s",
-                   (_procs_GL_IBM_vertex_array_lists.glNormalPointerListIBM) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalPointerListIBM () - %s",
+               (_procs_GL_IBM_vertex_array_lists.glNormalPointerListIBM) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_IBM_vertex_array_lists.glNormalPointerListIBM);
 }
@@ -15688,14 +14496,12 @@ gdk_gl_get_glTexCoordPointerListIBM (void)
     return NULL;
 
   if (_procs_GL_IBM_vertex_array_lists.glTexCoordPointerListIBM == (GdkGLProc_glTexCoordPointerListIBM) -1)
-    {
-      _procs_GL_IBM_vertex_array_lists.glTexCoordPointerListIBM =
-        (GdkGLProc_glTexCoordPointerListIBM) gdk_gl_get_proc_address ("glTexCoordPointerListIBM");
+    _procs_GL_IBM_vertex_array_lists.glTexCoordPointerListIBM =
+      (GdkGLProc_glTexCoordPointerListIBM) gdk_gl_get_proc_address ("glTexCoordPointerListIBM");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoordPointerListIBM () - %s",
-                   (_procs_GL_IBM_vertex_array_lists.glTexCoordPointerListIBM) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoordPointerListIBM () - %s",
+               (_procs_GL_IBM_vertex_array_lists.glTexCoordPointerListIBM) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_IBM_vertex_array_lists.glTexCoordPointerListIBM);
 }
@@ -15708,14 +14514,12 @@ gdk_gl_get_glVertexPointerListIBM (void)
     return NULL;
 
   if (_procs_GL_IBM_vertex_array_lists.glVertexPointerListIBM == (GdkGLProc_glVertexPointerListIBM) -1)
-    {
-      _procs_GL_IBM_vertex_array_lists.glVertexPointerListIBM =
-        (GdkGLProc_glVertexPointerListIBM) gdk_gl_get_proc_address ("glVertexPointerListIBM");
+    _procs_GL_IBM_vertex_array_lists.glVertexPointerListIBM =
+      (GdkGLProc_glVertexPointerListIBM) gdk_gl_get_proc_address ("glVertexPointerListIBM");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexPointerListIBM () - %s",
-                   (_procs_GL_IBM_vertex_array_lists.glVertexPointerListIBM) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexPointerListIBM () - %s",
+               (_procs_GL_IBM_vertex_array_lists.glVertexPointerListIBM) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_IBM_vertex_array_lists.glVertexPointerListIBM);
 }
@@ -15772,14 +14576,12 @@ gdk_gl_get_glTbufferMask3DFX (void)
     return NULL;
 
   if (_procs_GL_3DFX_tbuffer.glTbufferMask3DFX == (GdkGLProc_glTbufferMask3DFX) -1)
-    {
-      _procs_GL_3DFX_tbuffer.glTbufferMask3DFX =
-        (GdkGLProc_glTbufferMask3DFX) gdk_gl_get_proc_address ("glTbufferMask3DFX");
+    _procs_GL_3DFX_tbuffer.glTbufferMask3DFX =
+      (GdkGLProc_glTbufferMask3DFX) gdk_gl_get_proc_address ("glTbufferMask3DFX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTbufferMask3DFX () - %s",
-                   (_procs_GL_3DFX_tbuffer.glTbufferMask3DFX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTbufferMask3DFX () - %s",
+               (_procs_GL_3DFX_tbuffer.glTbufferMask3DFX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_3DFX_tbuffer.glTbufferMask3DFX);
 }
@@ -15830,14 +14632,12 @@ gdk_gl_get_glSampleMaskEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_multisample.glSampleMaskEXT == (GdkGLProc_glSampleMaskEXT) -1)
-    {
-      _procs_GL_EXT_multisample.glSampleMaskEXT =
-        (GdkGLProc_glSampleMaskEXT) gdk_gl_get_proc_address ("glSampleMaskEXT");
+    _procs_GL_EXT_multisample.glSampleMaskEXT =
+      (GdkGLProc_glSampleMaskEXT) gdk_gl_get_proc_address ("glSampleMaskEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSampleMaskEXT () - %s",
-                   (_procs_GL_EXT_multisample.glSampleMaskEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSampleMaskEXT () - %s",
+               (_procs_GL_EXT_multisample.glSampleMaskEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_multisample.glSampleMaskEXT);
 }
@@ -15850,14 +14650,12 @@ gdk_gl_get_glSamplePatternEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_multisample.glSamplePatternEXT == (GdkGLProc_glSamplePatternEXT) -1)
-    {
-      _procs_GL_EXT_multisample.glSamplePatternEXT =
-        (GdkGLProc_glSamplePatternEXT) gdk_gl_get_proc_address ("glSamplePatternEXT");
+    _procs_GL_EXT_multisample.glSamplePatternEXT =
+      (GdkGLProc_glSamplePatternEXT) gdk_gl_get_proc_address ("glSamplePatternEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSamplePatternEXT () - %s",
-                   (_procs_GL_EXT_multisample.glSamplePatternEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSamplePatternEXT () - %s",
+               (_procs_GL_EXT_multisample.glSamplePatternEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_multisample.glSamplePatternEXT);
 }
@@ -15908,14 +14706,12 @@ gdk_gl_get_glTextureColorMaskSGIS (void)
     return NULL;
 
   if (_procs_GL_SGIS_texture_color_mask.glTextureColorMaskSGIS == (GdkGLProc_glTextureColorMaskSGIS) -1)
-    {
-      _procs_GL_SGIS_texture_color_mask.glTextureColorMaskSGIS =
-        (GdkGLProc_glTextureColorMaskSGIS) gdk_gl_get_proc_address ("glTextureColorMaskSGIS");
+    _procs_GL_SGIS_texture_color_mask.glTextureColorMaskSGIS =
+      (GdkGLProc_glTextureColorMaskSGIS) gdk_gl_get_proc_address ("glTextureColorMaskSGIS");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTextureColorMaskSGIS () - %s",
-                   (_procs_GL_SGIS_texture_color_mask.glTextureColorMaskSGIS) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureColorMaskSGIS () - %s",
+               (_procs_GL_SGIS_texture_color_mask.glTextureColorMaskSGIS) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIS_texture_color_mask.glTextureColorMaskSGIS);
 }
@@ -15965,14 +14761,12 @@ gdk_gl_get_glIglooInterfaceSGIX (void)
     return NULL;
 
   if (_procs_GL_SGIX_igloo_interface.glIglooInterfaceSGIX == (GdkGLProc_glIglooInterfaceSGIX) -1)
-    {
-      _procs_GL_SGIX_igloo_interface.glIglooInterfaceSGIX =
-        (GdkGLProc_glIglooInterfaceSGIX) gdk_gl_get_proc_address ("glIglooInterfaceSGIX");
+    _procs_GL_SGIX_igloo_interface.glIglooInterfaceSGIX =
+      (GdkGLProc_glIglooInterfaceSGIX) gdk_gl_get_proc_address ("glIglooInterfaceSGIX");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIglooInterfaceSGIX () - %s",
-                   (_procs_GL_SGIX_igloo_interface.glIglooInterfaceSGIX) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIglooInterfaceSGIX () - %s",
+               (_procs_GL_SGIX_igloo_interface.glIglooInterfaceSGIX) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SGIX_igloo_interface.glIglooInterfaceSGIX);
 }
@@ -16028,14 +14822,12 @@ gdk_gl_get_glDeleteFencesNV (void)
     return NULL;
 
   if (_procs_GL_NV_fence.glDeleteFencesNV == (GdkGLProc_glDeleteFencesNV) -1)
-    {
-      _procs_GL_NV_fence.glDeleteFencesNV =
-        (GdkGLProc_glDeleteFencesNV) gdk_gl_get_proc_address ("glDeleteFencesNV");
+    _procs_GL_NV_fence.glDeleteFencesNV =
+      (GdkGLProc_glDeleteFencesNV) gdk_gl_get_proc_address ("glDeleteFencesNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteFencesNV () - %s",
-                   (_procs_GL_NV_fence.glDeleteFencesNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteFencesNV () - %s",
+               (_procs_GL_NV_fence.glDeleteFencesNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fence.glDeleteFencesNV);
 }
@@ -16048,14 +14840,12 @@ gdk_gl_get_glGenFencesNV (void)
     return NULL;
 
   if (_procs_GL_NV_fence.glGenFencesNV == (GdkGLProc_glGenFencesNV) -1)
-    {
-      _procs_GL_NV_fence.glGenFencesNV =
-        (GdkGLProc_glGenFencesNV) gdk_gl_get_proc_address ("glGenFencesNV");
+    _procs_GL_NV_fence.glGenFencesNV =
+      (GdkGLProc_glGenFencesNV) gdk_gl_get_proc_address ("glGenFencesNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenFencesNV () - %s",
-                   (_procs_GL_NV_fence.glGenFencesNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenFencesNV () - %s",
+               (_procs_GL_NV_fence.glGenFencesNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fence.glGenFencesNV);
 }
@@ -16068,14 +14858,12 @@ gdk_gl_get_glIsFenceNV (void)
     return NULL;
 
   if (_procs_GL_NV_fence.glIsFenceNV == (GdkGLProc_glIsFenceNV) -1)
-    {
-      _procs_GL_NV_fence.glIsFenceNV =
-        (GdkGLProc_glIsFenceNV) gdk_gl_get_proc_address ("glIsFenceNV");
+    _procs_GL_NV_fence.glIsFenceNV =
+      (GdkGLProc_glIsFenceNV) gdk_gl_get_proc_address ("glIsFenceNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsFenceNV () - %s",
-                   (_procs_GL_NV_fence.glIsFenceNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsFenceNV () - %s",
+               (_procs_GL_NV_fence.glIsFenceNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fence.glIsFenceNV);
 }
@@ -16088,14 +14876,12 @@ gdk_gl_get_glTestFenceNV (void)
     return NULL;
 
   if (_procs_GL_NV_fence.glTestFenceNV == (GdkGLProc_glTestFenceNV) -1)
-    {
-      _procs_GL_NV_fence.glTestFenceNV =
-        (GdkGLProc_glTestFenceNV) gdk_gl_get_proc_address ("glTestFenceNV");
+    _procs_GL_NV_fence.glTestFenceNV =
+      (GdkGLProc_glTestFenceNV) gdk_gl_get_proc_address ("glTestFenceNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTestFenceNV () - %s",
-                   (_procs_GL_NV_fence.glTestFenceNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTestFenceNV () - %s",
+               (_procs_GL_NV_fence.glTestFenceNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fence.glTestFenceNV);
 }
@@ -16108,14 +14894,12 @@ gdk_gl_get_glGetFenceivNV (void)
     return NULL;
 
   if (_procs_GL_NV_fence.glGetFenceivNV == (GdkGLProc_glGetFenceivNV) -1)
-    {
-      _procs_GL_NV_fence.glGetFenceivNV =
-        (GdkGLProc_glGetFenceivNV) gdk_gl_get_proc_address ("glGetFenceivNV");
+    _procs_GL_NV_fence.glGetFenceivNV =
+      (GdkGLProc_glGetFenceivNV) gdk_gl_get_proc_address ("glGetFenceivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetFenceivNV () - %s",
-                   (_procs_GL_NV_fence.glGetFenceivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFenceivNV () - %s",
+               (_procs_GL_NV_fence.glGetFenceivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fence.glGetFenceivNV);
 }
@@ -16128,14 +14912,12 @@ gdk_gl_get_glFinishFenceNV (void)
     return NULL;
 
   if (_procs_GL_NV_fence.glFinishFenceNV == (GdkGLProc_glFinishFenceNV) -1)
-    {
-      _procs_GL_NV_fence.glFinishFenceNV =
-        (GdkGLProc_glFinishFenceNV) gdk_gl_get_proc_address ("glFinishFenceNV");
+    _procs_GL_NV_fence.glFinishFenceNV =
+      (GdkGLProc_glFinishFenceNV) gdk_gl_get_proc_address ("glFinishFenceNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFinishFenceNV () - %s",
-                   (_procs_GL_NV_fence.glFinishFenceNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFinishFenceNV () - %s",
+               (_procs_GL_NV_fence.glFinishFenceNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fence.glFinishFenceNV);
 }
@@ -16148,14 +14930,12 @@ gdk_gl_get_glSetFenceNV (void)
     return NULL;
 
   if (_procs_GL_NV_fence.glSetFenceNV == (GdkGLProc_glSetFenceNV) -1)
-    {
-      _procs_GL_NV_fence.glSetFenceNV =
-        (GdkGLProc_glSetFenceNV) gdk_gl_get_proc_address ("glSetFenceNV");
+    _procs_GL_NV_fence.glSetFenceNV =
+      (GdkGLProc_glSetFenceNV) gdk_gl_get_proc_address ("glSetFenceNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSetFenceNV () - %s",
-                   (_procs_GL_NV_fence.glSetFenceNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSetFenceNV () - %s",
+               (_procs_GL_NV_fence.glSetFenceNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fence.glSetFenceNV);
 }
@@ -16219,14 +14999,12 @@ gdk_gl_get_glMapControlPointsNV (void)
     return NULL;
 
   if (_procs_GL_NV_evaluators.glMapControlPointsNV == (GdkGLProc_glMapControlPointsNV) -1)
-    {
-      _procs_GL_NV_evaluators.glMapControlPointsNV =
-        (GdkGLProc_glMapControlPointsNV) gdk_gl_get_proc_address ("glMapControlPointsNV");
+    _procs_GL_NV_evaluators.glMapControlPointsNV =
+      (GdkGLProc_glMapControlPointsNV) gdk_gl_get_proc_address ("glMapControlPointsNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMapControlPointsNV () - %s",
-                   (_procs_GL_NV_evaluators.glMapControlPointsNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapControlPointsNV () - %s",
+               (_procs_GL_NV_evaluators.glMapControlPointsNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_evaluators.glMapControlPointsNV);
 }
@@ -16239,14 +15017,12 @@ gdk_gl_get_glMapParameterivNV (void)
     return NULL;
 
   if (_procs_GL_NV_evaluators.glMapParameterivNV == (GdkGLProc_glMapParameterivNV) -1)
-    {
-      _procs_GL_NV_evaluators.glMapParameterivNV =
-        (GdkGLProc_glMapParameterivNV) gdk_gl_get_proc_address ("glMapParameterivNV");
+    _procs_GL_NV_evaluators.glMapParameterivNV =
+      (GdkGLProc_glMapParameterivNV) gdk_gl_get_proc_address ("glMapParameterivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMapParameterivNV () - %s",
-                   (_procs_GL_NV_evaluators.glMapParameterivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapParameterivNV () - %s",
+               (_procs_GL_NV_evaluators.glMapParameterivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_evaluators.glMapParameterivNV);
 }
@@ -16259,14 +15035,12 @@ gdk_gl_get_glMapParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_evaluators.glMapParameterfvNV == (GdkGLProc_glMapParameterfvNV) -1)
-    {
-      _procs_GL_NV_evaluators.glMapParameterfvNV =
-        (GdkGLProc_glMapParameterfvNV) gdk_gl_get_proc_address ("glMapParameterfvNV");
+    _procs_GL_NV_evaluators.glMapParameterfvNV =
+      (GdkGLProc_glMapParameterfvNV) gdk_gl_get_proc_address ("glMapParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMapParameterfvNV () - %s",
-                   (_procs_GL_NV_evaluators.glMapParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapParameterfvNV () - %s",
+               (_procs_GL_NV_evaluators.glMapParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_evaluators.glMapParameterfvNV);
 }
@@ -16279,14 +15053,12 @@ gdk_gl_get_glGetMapControlPointsNV (void)
     return NULL;
 
   if (_procs_GL_NV_evaluators.glGetMapControlPointsNV == (GdkGLProc_glGetMapControlPointsNV) -1)
-    {
-      _procs_GL_NV_evaluators.glGetMapControlPointsNV =
-        (GdkGLProc_glGetMapControlPointsNV) gdk_gl_get_proc_address ("glGetMapControlPointsNV");
+    _procs_GL_NV_evaluators.glGetMapControlPointsNV =
+      (GdkGLProc_glGetMapControlPointsNV) gdk_gl_get_proc_address ("glGetMapControlPointsNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMapControlPointsNV () - %s",
-                   (_procs_GL_NV_evaluators.glGetMapControlPointsNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMapControlPointsNV () - %s",
+               (_procs_GL_NV_evaluators.glGetMapControlPointsNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_evaluators.glGetMapControlPointsNV);
 }
@@ -16299,14 +15071,12 @@ gdk_gl_get_glGetMapParameterivNV (void)
     return NULL;
 
   if (_procs_GL_NV_evaluators.glGetMapParameterivNV == (GdkGLProc_glGetMapParameterivNV) -1)
-    {
-      _procs_GL_NV_evaluators.glGetMapParameterivNV =
-        (GdkGLProc_glGetMapParameterivNV) gdk_gl_get_proc_address ("glGetMapParameterivNV");
+    _procs_GL_NV_evaluators.glGetMapParameterivNV =
+      (GdkGLProc_glGetMapParameterivNV) gdk_gl_get_proc_address ("glGetMapParameterivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMapParameterivNV () - %s",
-                   (_procs_GL_NV_evaluators.glGetMapParameterivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMapParameterivNV () - %s",
+               (_procs_GL_NV_evaluators.glGetMapParameterivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_evaluators.glGetMapParameterivNV);
 }
@@ -16319,14 +15089,12 @@ gdk_gl_get_glGetMapParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_evaluators.glGetMapParameterfvNV == (GdkGLProc_glGetMapParameterfvNV) -1)
-    {
-      _procs_GL_NV_evaluators.glGetMapParameterfvNV =
-        (GdkGLProc_glGetMapParameterfvNV) gdk_gl_get_proc_address ("glGetMapParameterfvNV");
+    _procs_GL_NV_evaluators.glGetMapParameterfvNV =
+      (GdkGLProc_glGetMapParameterfvNV) gdk_gl_get_proc_address ("glGetMapParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMapParameterfvNV () - %s",
-                   (_procs_GL_NV_evaluators.glGetMapParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMapParameterfvNV () - %s",
+               (_procs_GL_NV_evaluators.glGetMapParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_evaluators.glGetMapParameterfvNV);
 }
@@ -16339,14 +15107,12 @@ gdk_gl_get_glGetMapAttribParameterivNV (void)
     return NULL;
 
   if (_procs_GL_NV_evaluators.glGetMapAttribParameterivNV == (GdkGLProc_glGetMapAttribParameterivNV) -1)
-    {
-      _procs_GL_NV_evaluators.glGetMapAttribParameterivNV =
-        (GdkGLProc_glGetMapAttribParameterivNV) gdk_gl_get_proc_address ("glGetMapAttribParameterivNV");
+    _procs_GL_NV_evaluators.glGetMapAttribParameterivNV =
+      (GdkGLProc_glGetMapAttribParameterivNV) gdk_gl_get_proc_address ("glGetMapAttribParameterivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMapAttribParameterivNV () - %s",
-                   (_procs_GL_NV_evaluators.glGetMapAttribParameterivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMapAttribParameterivNV () - %s",
+               (_procs_GL_NV_evaluators.glGetMapAttribParameterivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_evaluators.glGetMapAttribParameterivNV);
 }
@@ -16359,14 +15125,12 @@ gdk_gl_get_glGetMapAttribParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_evaluators.glGetMapAttribParameterfvNV == (GdkGLProc_glGetMapAttribParameterfvNV) -1)
-    {
-      _procs_GL_NV_evaluators.glGetMapAttribParameterfvNV =
-        (GdkGLProc_glGetMapAttribParameterfvNV) gdk_gl_get_proc_address ("glGetMapAttribParameterfvNV");
+    _procs_GL_NV_evaluators.glGetMapAttribParameterfvNV =
+      (GdkGLProc_glGetMapAttribParameterfvNV) gdk_gl_get_proc_address ("glGetMapAttribParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetMapAttribParameterfvNV () - %s",
-                   (_procs_GL_NV_evaluators.glGetMapAttribParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMapAttribParameterfvNV () - %s",
+               (_procs_GL_NV_evaluators.glGetMapAttribParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_evaluators.glGetMapAttribParameterfvNV);
 }
@@ -16379,14 +15143,12 @@ gdk_gl_get_glEvalMapsNV (void)
     return NULL;
 
   if (_procs_GL_NV_evaluators.glEvalMapsNV == (GdkGLProc_glEvalMapsNV) -1)
-    {
-      _procs_GL_NV_evaluators.glEvalMapsNV =
-        (GdkGLProc_glEvalMapsNV) gdk_gl_get_proc_address ("glEvalMapsNV");
+    _procs_GL_NV_evaluators.glEvalMapsNV =
+      (GdkGLProc_glEvalMapsNV) gdk_gl_get_proc_address ("glEvalMapsNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glEvalMapsNV () - %s",
-                   (_procs_GL_NV_evaluators.glEvalMapsNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEvalMapsNV () - %s",
+               (_procs_GL_NV_evaluators.glEvalMapsNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_evaluators.glEvalMapsNV);
 }
@@ -16445,14 +15207,12 @@ gdk_gl_get_glCombinerStageParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners2.glCombinerStageParameterfvNV == (GdkGLProc_glCombinerStageParameterfvNV) -1)
-    {
-      _procs_GL_NV_register_combiners2.glCombinerStageParameterfvNV =
-        (GdkGLProc_glCombinerStageParameterfvNV) gdk_gl_get_proc_address ("glCombinerStageParameterfvNV");
+    _procs_GL_NV_register_combiners2.glCombinerStageParameterfvNV =
+      (GdkGLProc_glCombinerStageParameterfvNV) gdk_gl_get_proc_address ("glCombinerStageParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glCombinerStageParameterfvNV () - %s",
-                   (_procs_GL_NV_register_combiners2.glCombinerStageParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCombinerStageParameterfvNV () - %s",
+               (_procs_GL_NV_register_combiners2.glCombinerStageParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners2.glCombinerStageParameterfvNV);
 }
@@ -16465,14 +15225,12 @@ gdk_gl_get_glGetCombinerStageParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_register_combiners2.glGetCombinerStageParameterfvNV == (GdkGLProc_glGetCombinerStageParameterfvNV) -1)
-    {
-      _procs_GL_NV_register_combiners2.glGetCombinerStageParameterfvNV =
-        (GdkGLProc_glGetCombinerStageParameterfvNV) gdk_gl_get_proc_address ("glGetCombinerStageParameterfvNV");
+    _procs_GL_NV_register_combiners2.glGetCombinerStageParameterfvNV =
+      (GdkGLProc_glGetCombinerStageParameterfvNV) gdk_gl_get_proc_address ("glGetCombinerStageParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetCombinerStageParameterfvNV () - %s",
-                   (_procs_GL_NV_register_combiners2.glGetCombinerStageParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetCombinerStageParameterfvNV () - %s",
+               (_procs_GL_NV_register_combiners2.glGetCombinerStageParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_register_combiners2.glGetCombinerStageParameterfvNV);
 }
@@ -16586,14 +15344,12 @@ gdk_gl_get_glAreProgramsResidentNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glAreProgramsResidentNV == (GdkGLProc_glAreProgramsResidentNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glAreProgramsResidentNV =
-        (GdkGLProc_glAreProgramsResidentNV) gdk_gl_get_proc_address ("glAreProgramsResidentNV");
+    _procs_GL_NV_vertex_program.glAreProgramsResidentNV =
+      (GdkGLProc_glAreProgramsResidentNV) gdk_gl_get_proc_address ("glAreProgramsResidentNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glAreProgramsResidentNV () - %s",
-                   (_procs_GL_NV_vertex_program.glAreProgramsResidentNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glAreProgramsResidentNV () - %s",
+               (_procs_GL_NV_vertex_program.glAreProgramsResidentNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glAreProgramsResidentNV);
 }
@@ -16606,14 +15362,12 @@ gdk_gl_get_glBindProgramNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glBindProgramNV == (GdkGLProc_glBindProgramNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glBindProgramNV =
-        (GdkGLProc_glBindProgramNV) gdk_gl_get_proc_address ("glBindProgramNV");
+    _procs_GL_NV_vertex_program.glBindProgramNV =
+      (GdkGLProc_glBindProgramNV) gdk_gl_get_proc_address ("glBindProgramNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindProgramNV () - %s",
-                   (_procs_GL_NV_vertex_program.glBindProgramNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindProgramNV () - %s",
+               (_procs_GL_NV_vertex_program.glBindProgramNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glBindProgramNV);
 }
@@ -16626,14 +15380,12 @@ gdk_gl_get_glDeleteProgramsNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glDeleteProgramsNV == (GdkGLProc_glDeleteProgramsNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glDeleteProgramsNV =
-        (GdkGLProc_glDeleteProgramsNV) gdk_gl_get_proc_address ("glDeleteProgramsNV");
+    _procs_GL_NV_vertex_program.glDeleteProgramsNV =
+      (GdkGLProc_glDeleteProgramsNV) gdk_gl_get_proc_address ("glDeleteProgramsNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteProgramsNV () - %s",
-                   (_procs_GL_NV_vertex_program.glDeleteProgramsNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteProgramsNV () - %s",
+               (_procs_GL_NV_vertex_program.glDeleteProgramsNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glDeleteProgramsNV);
 }
@@ -16646,14 +15398,12 @@ gdk_gl_get_glExecuteProgramNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glExecuteProgramNV == (GdkGLProc_glExecuteProgramNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glExecuteProgramNV =
-        (GdkGLProc_glExecuteProgramNV) gdk_gl_get_proc_address ("glExecuteProgramNV");
+    _procs_GL_NV_vertex_program.glExecuteProgramNV =
+      (GdkGLProc_glExecuteProgramNV) gdk_gl_get_proc_address ("glExecuteProgramNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glExecuteProgramNV () - %s",
-                   (_procs_GL_NV_vertex_program.glExecuteProgramNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glExecuteProgramNV () - %s",
+               (_procs_GL_NV_vertex_program.glExecuteProgramNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glExecuteProgramNV);
 }
@@ -16666,14 +15416,12 @@ gdk_gl_get_glGenProgramsNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glGenProgramsNV == (GdkGLProc_glGenProgramsNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glGenProgramsNV =
-        (GdkGLProc_glGenProgramsNV) gdk_gl_get_proc_address ("glGenProgramsNV");
+    _procs_GL_NV_vertex_program.glGenProgramsNV =
+      (GdkGLProc_glGenProgramsNV) gdk_gl_get_proc_address ("glGenProgramsNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenProgramsNV () - %s",
-                   (_procs_GL_NV_vertex_program.glGenProgramsNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenProgramsNV () - %s",
+               (_procs_GL_NV_vertex_program.glGenProgramsNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glGenProgramsNV);
 }
@@ -16686,14 +15434,12 @@ gdk_gl_get_glGetProgramParameterdvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glGetProgramParameterdvNV == (GdkGLProc_glGetProgramParameterdvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glGetProgramParameterdvNV =
-        (GdkGLProc_glGetProgramParameterdvNV) gdk_gl_get_proc_address ("glGetProgramParameterdvNV");
+    _procs_GL_NV_vertex_program.glGetProgramParameterdvNV =
+      (GdkGLProc_glGetProgramParameterdvNV) gdk_gl_get_proc_address ("glGetProgramParameterdvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramParameterdvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glGetProgramParameterdvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramParameterdvNV () - %s",
+               (_procs_GL_NV_vertex_program.glGetProgramParameterdvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glGetProgramParameterdvNV);
 }
@@ -16706,14 +15452,12 @@ gdk_gl_get_glGetProgramParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glGetProgramParameterfvNV == (GdkGLProc_glGetProgramParameterfvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glGetProgramParameterfvNV =
-        (GdkGLProc_glGetProgramParameterfvNV) gdk_gl_get_proc_address ("glGetProgramParameterfvNV");
+    _procs_GL_NV_vertex_program.glGetProgramParameterfvNV =
+      (GdkGLProc_glGetProgramParameterfvNV) gdk_gl_get_proc_address ("glGetProgramParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramParameterfvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glGetProgramParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramParameterfvNV () - %s",
+               (_procs_GL_NV_vertex_program.glGetProgramParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glGetProgramParameterfvNV);
 }
@@ -16726,14 +15470,12 @@ gdk_gl_get_glGetProgramivNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glGetProgramivNV == (GdkGLProc_glGetProgramivNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glGetProgramivNV =
-        (GdkGLProc_glGetProgramivNV) gdk_gl_get_proc_address ("glGetProgramivNV");
+    _procs_GL_NV_vertex_program.glGetProgramivNV =
+      (GdkGLProc_glGetProgramivNV) gdk_gl_get_proc_address ("glGetProgramivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramivNV () - %s",
-                   (_procs_GL_NV_vertex_program.glGetProgramivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramivNV () - %s",
+               (_procs_GL_NV_vertex_program.glGetProgramivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glGetProgramivNV);
 }
@@ -16746,14 +15488,12 @@ gdk_gl_get_glGetProgramStringNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glGetProgramStringNV == (GdkGLProc_glGetProgramStringNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glGetProgramStringNV =
-        (GdkGLProc_glGetProgramStringNV) gdk_gl_get_proc_address ("glGetProgramStringNV");
+    _procs_GL_NV_vertex_program.glGetProgramStringNV =
+      (GdkGLProc_glGetProgramStringNV) gdk_gl_get_proc_address ("glGetProgramStringNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramStringNV () - %s",
-                   (_procs_GL_NV_vertex_program.glGetProgramStringNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramStringNV () - %s",
+               (_procs_GL_NV_vertex_program.glGetProgramStringNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glGetProgramStringNV);
 }
@@ -16766,14 +15506,12 @@ gdk_gl_get_glGetTrackMatrixivNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glGetTrackMatrixivNV == (GdkGLProc_glGetTrackMatrixivNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glGetTrackMatrixivNV =
-        (GdkGLProc_glGetTrackMatrixivNV) gdk_gl_get_proc_address ("glGetTrackMatrixivNV");
+    _procs_GL_NV_vertex_program.glGetTrackMatrixivNV =
+      (GdkGLProc_glGetTrackMatrixivNV) gdk_gl_get_proc_address ("glGetTrackMatrixivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetTrackMatrixivNV () - %s",
-                   (_procs_GL_NV_vertex_program.glGetTrackMatrixivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTrackMatrixivNV () - %s",
+               (_procs_GL_NV_vertex_program.glGetTrackMatrixivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glGetTrackMatrixivNV);
 }
@@ -16786,14 +15524,12 @@ gdk_gl_get_glGetVertexAttribdvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glGetVertexAttribdvNV == (GdkGLProc_glGetVertexAttribdvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glGetVertexAttribdvNV =
-        (GdkGLProc_glGetVertexAttribdvNV) gdk_gl_get_proc_address ("glGetVertexAttribdvNV");
+    _procs_GL_NV_vertex_program.glGetVertexAttribdvNV =
+      (GdkGLProc_glGetVertexAttribdvNV) gdk_gl_get_proc_address ("glGetVertexAttribdvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVertexAttribdvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glGetVertexAttribdvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribdvNV () - %s",
+               (_procs_GL_NV_vertex_program.glGetVertexAttribdvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glGetVertexAttribdvNV);
 }
@@ -16806,14 +15542,12 @@ gdk_gl_get_glGetVertexAttribfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glGetVertexAttribfvNV == (GdkGLProc_glGetVertexAttribfvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glGetVertexAttribfvNV =
-        (GdkGLProc_glGetVertexAttribfvNV) gdk_gl_get_proc_address ("glGetVertexAttribfvNV");
+    _procs_GL_NV_vertex_program.glGetVertexAttribfvNV =
+      (GdkGLProc_glGetVertexAttribfvNV) gdk_gl_get_proc_address ("glGetVertexAttribfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVertexAttribfvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glGetVertexAttribfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribfvNV () - %s",
+               (_procs_GL_NV_vertex_program.glGetVertexAttribfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glGetVertexAttribfvNV);
 }
@@ -16826,14 +15560,12 @@ gdk_gl_get_glGetVertexAttribivNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glGetVertexAttribivNV == (GdkGLProc_glGetVertexAttribivNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glGetVertexAttribivNV =
-        (GdkGLProc_glGetVertexAttribivNV) gdk_gl_get_proc_address ("glGetVertexAttribivNV");
+    _procs_GL_NV_vertex_program.glGetVertexAttribivNV =
+      (GdkGLProc_glGetVertexAttribivNV) gdk_gl_get_proc_address ("glGetVertexAttribivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVertexAttribivNV () - %s",
-                   (_procs_GL_NV_vertex_program.glGetVertexAttribivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribivNV () - %s",
+               (_procs_GL_NV_vertex_program.glGetVertexAttribivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glGetVertexAttribivNV);
 }
@@ -16846,14 +15578,12 @@ gdk_gl_get_glGetVertexAttribPointervNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glGetVertexAttribPointervNV == (GdkGLProc_glGetVertexAttribPointervNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glGetVertexAttribPointervNV =
-        (GdkGLProc_glGetVertexAttribPointervNV) gdk_gl_get_proc_address ("glGetVertexAttribPointervNV");
+    _procs_GL_NV_vertex_program.glGetVertexAttribPointervNV =
+      (GdkGLProc_glGetVertexAttribPointervNV) gdk_gl_get_proc_address ("glGetVertexAttribPointervNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVertexAttribPointervNV () - %s",
-                   (_procs_GL_NV_vertex_program.glGetVertexAttribPointervNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribPointervNV () - %s",
+               (_procs_GL_NV_vertex_program.glGetVertexAttribPointervNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glGetVertexAttribPointervNV);
 }
@@ -16866,14 +15596,12 @@ gdk_gl_get_glIsProgramNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glIsProgramNV == (GdkGLProc_glIsProgramNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glIsProgramNV =
-        (GdkGLProc_glIsProgramNV) gdk_gl_get_proc_address ("glIsProgramNV");
+    _procs_GL_NV_vertex_program.glIsProgramNV =
+      (GdkGLProc_glIsProgramNV) gdk_gl_get_proc_address ("glIsProgramNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsProgramNV () - %s",
-                   (_procs_GL_NV_vertex_program.glIsProgramNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsProgramNV () - %s",
+               (_procs_GL_NV_vertex_program.glIsProgramNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glIsProgramNV);
 }
@@ -16886,14 +15614,12 @@ gdk_gl_get_glLoadProgramNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glLoadProgramNV == (GdkGLProc_glLoadProgramNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glLoadProgramNV =
-        (GdkGLProc_glLoadProgramNV) gdk_gl_get_proc_address ("glLoadProgramNV");
+    _procs_GL_NV_vertex_program.glLoadProgramNV =
+      (GdkGLProc_glLoadProgramNV) gdk_gl_get_proc_address ("glLoadProgramNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glLoadProgramNV () - %s",
-                   (_procs_GL_NV_vertex_program.glLoadProgramNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLoadProgramNV () - %s",
+               (_procs_GL_NV_vertex_program.glLoadProgramNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glLoadProgramNV);
 }
@@ -16906,14 +15632,12 @@ gdk_gl_get_glProgramParameter4dNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glProgramParameter4dNV == (GdkGLProc_glProgramParameter4dNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glProgramParameter4dNV =
-        (GdkGLProc_glProgramParameter4dNV) gdk_gl_get_proc_address ("glProgramParameter4dNV");
+    _procs_GL_NV_vertex_program.glProgramParameter4dNV =
+      (GdkGLProc_glProgramParameter4dNV) gdk_gl_get_proc_address ("glProgramParameter4dNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramParameter4dNV () - %s",
-                   (_procs_GL_NV_vertex_program.glProgramParameter4dNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramParameter4dNV () - %s",
+               (_procs_GL_NV_vertex_program.glProgramParameter4dNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glProgramParameter4dNV);
 }
@@ -16926,14 +15650,12 @@ gdk_gl_get_glProgramParameter4dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glProgramParameter4dvNV == (GdkGLProc_glProgramParameter4dvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glProgramParameter4dvNV =
-        (GdkGLProc_glProgramParameter4dvNV) gdk_gl_get_proc_address ("glProgramParameter4dvNV");
+    _procs_GL_NV_vertex_program.glProgramParameter4dvNV =
+      (GdkGLProc_glProgramParameter4dvNV) gdk_gl_get_proc_address ("glProgramParameter4dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramParameter4dvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glProgramParameter4dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramParameter4dvNV () - %s",
+               (_procs_GL_NV_vertex_program.glProgramParameter4dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glProgramParameter4dvNV);
 }
@@ -16946,14 +15668,12 @@ gdk_gl_get_glProgramParameter4fNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glProgramParameter4fNV == (GdkGLProc_glProgramParameter4fNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glProgramParameter4fNV =
-        (GdkGLProc_glProgramParameter4fNV) gdk_gl_get_proc_address ("glProgramParameter4fNV");
+    _procs_GL_NV_vertex_program.glProgramParameter4fNV =
+      (GdkGLProc_glProgramParameter4fNV) gdk_gl_get_proc_address ("glProgramParameter4fNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramParameter4fNV () - %s",
-                   (_procs_GL_NV_vertex_program.glProgramParameter4fNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramParameter4fNV () - %s",
+               (_procs_GL_NV_vertex_program.glProgramParameter4fNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glProgramParameter4fNV);
 }
@@ -16966,14 +15686,12 @@ gdk_gl_get_glProgramParameter4fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glProgramParameter4fvNV == (GdkGLProc_glProgramParameter4fvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glProgramParameter4fvNV =
-        (GdkGLProc_glProgramParameter4fvNV) gdk_gl_get_proc_address ("glProgramParameter4fvNV");
+    _procs_GL_NV_vertex_program.glProgramParameter4fvNV =
+      (GdkGLProc_glProgramParameter4fvNV) gdk_gl_get_proc_address ("glProgramParameter4fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramParameter4fvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glProgramParameter4fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramParameter4fvNV () - %s",
+               (_procs_GL_NV_vertex_program.glProgramParameter4fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glProgramParameter4fvNV);
 }
@@ -16986,14 +15704,12 @@ gdk_gl_get_glProgramParameters4dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glProgramParameters4dvNV == (GdkGLProc_glProgramParameters4dvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glProgramParameters4dvNV =
-        (GdkGLProc_glProgramParameters4dvNV) gdk_gl_get_proc_address ("glProgramParameters4dvNV");
+    _procs_GL_NV_vertex_program.glProgramParameters4dvNV =
+      (GdkGLProc_glProgramParameters4dvNV) gdk_gl_get_proc_address ("glProgramParameters4dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramParameters4dvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glProgramParameters4dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramParameters4dvNV () - %s",
+               (_procs_GL_NV_vertex_program.glProgramParameters4dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glProgramParameters4dvNV);
 }
@@ -17006,14 +15722,12 @@ gdk_gl_get_glProgramParameters4fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glProgramParameters4fvNV == (GdkGLProc_glProgramParameters4fvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glProgramParameters4fvNV =
-        (GdkGLProc_glProgramParameters4fvNV) gdk_gl_get_proc_address ("glProgramParameters4fvNV");
+    _procs_GL_NV_vertex_program.glProgramParameters4fvNV =
+      (GdkGLProc_glProgramParameters4fvNV) gdk_gl_get_proc_address ("glProgramParameters4fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramParameters4fvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glProgramParameters4fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramParameters4fvNV () - %s",
+               (_procs_GL_NV_vertex_program.glProgramParameters4fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glProgramParameters4fvNV);
 }
@@ -17026,14 +15740,12 @@ gdk_gl_get_glRequestResidentProgramsNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glRequestResidentProgramsNV == (GdkGLProc_glRequestResidentProgramsNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glRequestResidentProgramsNV =
-        (GdkGLProc_glRequestResidentProgramsNV) gdk_gl_get_proc_address ("glRequestResidentProgramsNV");
+    _procs_GL_NV_vertex_program.glRequestResidentProgramsNV =
+      (GdkGLProc_glRequestResidentProgramsNV) gdk_gl_get_proc_address ("glRequestResidentProgramsNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glRequestResidentProgramsNV () - %s",
-                   (_procs_GL_NV_vertex_program.glRequestResidentProgramsNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glRequestResidentProgramsNV () - %s",
+               (_procs_GL_NV_vertex_program.glRequestResidentProgramsNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glRequestResidentProgramsNV);
 }
@@ -17046,14 +15758,12 @@ gdk_gl_get_glTrackMatrixNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glTrackMatrixNV == (GdkGLProc_glTrackMatrixNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glTrackMatrixNV =
-        (GdkGLProc_glTrackMatrixNV) gdk_gl_get_proc_address ("glTrackMatrixNV");
+    _procs_GL_NV_vertex_program.glTrackMatrixNV =
+      (GdkGLProc_glTrackMatrixNV) gdk_gl_get_proc_address ("glTrackMatrixNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTrackMatrixNV () - %s",
-                   (_procs_GL_NV_vertex_program.glTrackMatrixNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTrackMatrixNV () - %s",
+               (_procs_GL_NV_vertex_program.glTrackMatrixNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glTrackMatrixNV);
 }
@@ -17066,14 +15776,12 @@ gdk_gl_get_glVertexAttribPointerNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribPointerNV == (GdkGLProc_glVertexAttribPointerNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribPointerNV =
-        (GdkGLProc_glVertexAttribPointerNV) gdk_gl_get_proc_address ("glVertexAttribPointerNV");
+    _procs_GL_NV_vertex_program.glVertexAttribPointerNV =
+      (GdkGLProc_glVertexAttribPointerNV) gdk_gl_get_proc_address ("glVertexAttribPointerNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribPointerNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribPointerNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribPointerNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribPointerNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribPointerNV);
 }
@@ -17086,14 +15794,12 @@ gdk_gl_get_glVertexAttrib1dNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib1dNV == (GdkGLProc_glVertexAttrib1dNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib1dNV =
-        (GdkGLProc_glVertexAttrib1dNV) gdk_gl_get_proc_address ("glVertexAttrib1dNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib1dNV =
+      (GdkGLProc_glVertexAttrib1dNV) gdk_gl_get_proc_address ("glVertexAttrib1dNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1dNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib1dNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1dNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib1dNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib1dNV);
 }
@@ -17106,14 +15812,12 @@ gdk_gl_get_glVertexAttrib1dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib1dvNV == (GdkGLProc_glVertexAttrib1dvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib1dvNV =
-        (GdkGLProc_glVertexAttrib1dvNV) gdk_gl_get_proc_address ("glVertexAttrib1dvNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib1dvNV =
+      (GdkGLProc_glVertexAttrib1dvNV) gdk_gl_get_proc_address ("glVertexAttrib1dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1dvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib1dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1dvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib1dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib1dvNV);
 }
@@ -17126,14 +15830,12 @@ gdk_gl_get_glVertexAttrib1fNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib1fNV == (GdkGLProc_glVertexAttrib1fNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib1fNV =
-        (GdkGLProc_glVertexAttrib1fNV) gdk_gl_get_proc_address ("glVertexAttrib1fNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib1fNV =
+      (GdkGLProc_glVertexAttrib1fNV) gdk_gl_get_proc_address ("glVertexAttrib1fNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1fNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib1fNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1fNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib1fNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib1fNV);
 }
@@ -17146,14 +15848,12 @@ gdk_gl_get_glVertexAttrib1fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib1fvNV == (GdkGLProc_glVertexAttrib1fvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib1fvNV =
-        (GdkGLProc_glVertexAttrib1fvNV) gdk_gl_get_proc_address ("glVertexAttrib1fvNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib1fvNV =
+      (GdkGLProc_glVertexAttrib1fvNV) gdk_gl_get_proc_address ("glVertexAttrib1fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1fvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib1fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1fvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib1fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib1fvNV);
 }
@@ -17166,14 +15866,12 @@ gdk_gl_get_glVertexAttrib1sNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib1sNV == (GdkGLProc_glVertexAttrib1sNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib1sNV =
-        (GdkGLProc_glVertexAttrib1sNV) gdk_gl_get_proc_address ("glVertexAttrib1sNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib1sNV =
+      (GdkGLProc_glVertexAttrib1sNV) gdk_gl_get_proc_address ("glVertexAttrib1sNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1sNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib1sNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1sNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib1sNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib1sNV);
 }
@@ -17186,14 +15884,12 @@ gdk_gl_get_glVertexAttrib1svNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib1svNV == (GdkGLProc_glVertexAttrib1svNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib1svNV =
-        (GdkGLProc_glVertexAttrib1svNV) gdk_gl_get_proc_address ("glVertexAttrib1svNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib1svNV =
+      (GdkGLProc_glVertexAttrib1svNV) gdk_gl_get_proc_address ("glVertexAttrib1svNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1svNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib1svNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1svNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib1svNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib1svNV);
 }
@@ -17206,14 +15902,12 @@ gdk_gl_get_glVertexAttrib2dNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib2dNV == (GdkGLProc_glVertexAttrib2dNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib2dNV =
-        (GdkGLProc_glVertexAttrib2dNV) gdk_gl_get_proc_address ("glVertexAttrib2dNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib2dNV =
+      (GdkGLProc_glVertexAttrib2dNV) gdk_gl_get_proc_address ("glVertexAttrib2dNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2dNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib2dNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2dNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib2dNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib2dNV);
 }
@@ -17226,14 +15920,12 @@ gdk_gl_get_glVertexAttrib2dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib2dvNV == (GdkGLProc_glVertexAttrib2dvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib2dvNV =
-        (GdkGLProc_glVertexAttrib2dvNV) gdk_gl_get_proc_address ("glVertexAttrib2dvNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib2dvNV =
+      (GdkGLProc_glVertexAttrib2dvNV) gdk_gl_get_proc_address ("glVertexAttrib2dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2dvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib2dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2dvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib2dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib2dvNV);
 }
@@ -17246,14 +15938,12 @@ gdk_gl_get_glVertexAttrib2fNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib2fNV == (GdkGLProc_glVertexAttrib2fNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib2fNV =
-        (GdkGLProc_glVertexAttrib2fNV) gdk_gl_get_proc_address ("glVertexAttrib2fNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib2fNV =
+      (GdkGLProc_glVertexAttrib2fNV) gdk_gl_get_proc_address ("glVertexAttrib2fNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2fNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib2fNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2fNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib2fNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib2fNV);
 }
@@ -17266,14 +15956,12 @@ gdk_gl_get_glVertexAttrib2fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib2fvNV == (GdkGLProc_glVertexAttrib2fvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib2fvNV =
-        (GdkGLProc_glVertexAttrib2fvNV) gdk_gl_get_proc_address ("glVertexAttrib2fvNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib2fvNV =
+      (GdkGLProc_glVertexAttrib2fvNV) gdk_gl_get_proc_address ("glVertexAttrib2fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2fvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib2fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2fvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib2fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib2fvNV);
 }
@@ -17286,14 +15974,12 @@ gdk_gl_get_glVertexAttrib2sNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib2sNV == (GdkGLProc_glVertexAttrib2sNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib2sNV =
-        (GdkGLProc_glVertexAttrib2sNV) gdk_gl_get_proc_address ("glVertexAttrib2sNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib2sNV =
+      (GdkGLProc_glVertexAttrib2sNV) gdk_gl_get_proc_address ("glVertexAttrib2sNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2sNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib2sNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2sNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib2sNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib2sNV);
 }
@@ -17306,14 +15992,12 @@ gdk_gl_get_glVertexAttrib2svNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib2svNV == (GdkGLProc_glVertexAttrib2svNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib2svNV =
-        (GdkGLProc_glVertexAttrib2svNV) gdk_gl_get_proc_address ("glVertexAttrib2svNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib2svNV =
+      (GdkGLProc_glVertexAttrib2svNV) gdk_gl_get_proc_address ("glVertexAttrib2svNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2svNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib2svNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2svNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib2svNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib2svNV);
 }
@@ -17326,14 +16010,12 @@ gdk_gl_get_glVertexAttrib3dNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib3dNV == (GdkGLProc_glVertexAttrib3dNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib3dNV =
-        (GdkGLProc_glVertexAttrib3dNV) gdk_gl_get_proc_address ("glVertexAttrib3dNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib3dNV =
+      (GdkGLProc_glVertexAttrib3dNV) gdk_gl_get_proc_address ("glVertexAttrib3dNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3dNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib3dNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3dNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib3dNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib3dNV);
 }
@@ -17346,14 +16028,12 @@ gdk_gl_get_glVertexAttrib3dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib3dvNV == (GdkGLProc_glVertexAttrib3dvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib3dvNV =
-        (GdkGLProc_glVertexAttrib3dvNV) gdk_gl_get_proc_address ("glVertexAttrib3dvNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib3dvNV =
+      (GdkGLProc_glVertexAttrib3dvNV) gdk_gl_get_proc_address ("glVertexAttrib3dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3dvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib3dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3dvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib3dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib3dvNV);
 }
@@ -17366,14 +16046,12 @@ gdk_gl_get_glVertexAttrib3fNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib3fNV == (GdkGLProc_glVertexAttrib3fNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib3fNV =
-        (GdkGLProc_glVertexAttrib3fNV) gdk_gl_get_proc_address ("glVertexAttrib3fNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib3fNV =
+      (GdkGLProc_glVertexAttrib3fNV) gdk_gl_get_proc_address ("glVertexAttrib3fNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3fNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib3fNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3fNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib3fNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib3fNV);
 }
@@ -17386,14 +16064,12 @@ gdk_gl_get_glVertexAttrib3fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib3fvNV == (GdkGLProc_glVertexAttrib3fvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib3fvNV =
-        (GdkGLProc_glVertexAttrib3fvNV) gdk_gl_get_proc_address ("glVertexAttrib3fvNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib3fvNV =
+      (GdkGLProc_glVertexAttrib3fvNV) gdk_gl_get_proc_address ("glVertexAttrib3fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3fvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib3fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3fvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib3fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib3fvNV);
 }
@@ -17406,14 +16082,12 @@ gdk_gl_get_glVertexAttrib3sNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib3sNV == (GdkGLProc_glVertexAttrib3sNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib3sNV =
-        (GdkGLProc_glVertexAttrib3sNV) gdk_gl_get_proc_address ("glVertexAttrib3sNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib3sNV =
+      (GdkGLProc_glVertexAttrib3sNV) gdk_gl_get_proc_address ("glVertexAttrib3sNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3sNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib3sNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3sNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib3sNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib3sNV);
 }
@@ -17426,14 +16100,12 @@ gdk_gl_get_glVertexAttrib3svNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib3svNV == (GdkGLProc_glVertexAttrib3svNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib3svNV =
-        (GdkGLProc_glVertexAttrib3svNV) gdk_gl_get_proc_address ("glVertexAttrib3svNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib3svNV =
+      (GdkGLProc_glVertexAttrib3svNV) gdk_gl_get_proc_address ("glVertexAttrib3svNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3svNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib3svNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3svNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib3svNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib3svNV);
 }
@@ -17446,14 +16118,12 @@ gdk_gl_get_glVertexAttrib4dNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib4dNV == (GdkGLProc_glVertexAttrib4dNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib4dNV =
-        (GdkGLProc_glVertexAttrib4dNV) gdk_gl_get_proc_address ("glVertexAttrib4dNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib4dNV =
+      (GdkGLProc_glVertexAttrib4dNV) gdk_gl_get_proc_address ("glVertexAttrib4dNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4dNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib4dNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4dNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib4dNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib4dNV);
 }
@@ -17466,14 +16136,12 @@ gdk_gl_get_glVertexAttrib4dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib4dvNV == (GdkGLProc_glVertexAttrib4dvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib4dvNV =
-        (GdkGLProc_glVertexAttrib4dvNV) gdk_gl_get_proc_address ("glVertexAttrib4dvNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib4dvNV =
+      (GdkGLProc_glVertexAttrib4dvNV) gdk_gl_get_proc_address ("glVertexAttrib4dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4dvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib4dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4dvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib4dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib4dvNV);
 }
@@ -17486,14 +16154,12 @@ gdk_gl_get_glVertexAttrib4fNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib4fNV == (GdkGLProc_glVertexAttrib4fNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib4fNV =
-        (GdkGLProc_glVertexAttrib4fNV) gdk_gl_get_proc_address ("glVertexAttrib4fNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib4fNV =
+      (GdkGLProc_glVertexAttrib4fNV) gdk_gl_get_proc_address ("glVertexAttrib4fNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4fNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib4fNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4fNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib4fNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib4fNV);
 }
@@ -17506,14 +16172,12 @@ gdk_gl_get_glVertexAttrib4fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib4fvNV == (GdkGLProc_glVertexAttrib4fvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib4fvNV =
-        (GdkGLProc_glVertexAttrib4fvNV) gdk_gl_get_proc_address ("glVertexAttrib4fvNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib4fvNV =
+      (GdkGLProc_glVertexAttrib4fvNV) gdk_gl_get_proc_address ("glVertexAttrib4fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4fvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib4fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4fvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib4fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib4fvNV);
 }
@@ -17526,14 +16190,12 @@ gdk_gl_get_glVertexAttrib4sNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib4sNV == (GdkGLProc_glVertexAttrib4sNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib4sNV =
-        (GdkGLProc_glVertexAttrib4sNV) gdk_gl_get_proc_address ("glVertexAttrib4sNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib4sNV =
+      (GdkGLProc_glVertexAttrib4sNV) gdk_gl_get_proc_address ("glVertexAttrib4sNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4sNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib4sNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4sNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib4sNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib4sNV);
 }
@@ -17546,14 +16208,12 @@ gdk_gl_get_glVertexAttrib4svNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib4svNV == (GdkGLProc_glVertexAttrib4svNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib4svNV =
-        (GdkGLProc_glVertexAttrib4svNV) gdk_gl_get_proc_address ("glVertexAttrib4svNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib4svNV =
+      (GdkGLProc_glVertexAttrib4svNV) gdk_gl_get_proc_address ("glVertexAttrib4svNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4svNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib4svNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4svNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib4svNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib4svNV);
 }
@@ -17566,14 +16226,12 @@ gdk_gl_get_glVertexAttrib4ubNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib4ubNV == (GdkGLProc_glVertexAttrib4ubNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib4ubNV =
-        (GdkGLProc_glVertexAttrib4ubNV) gdk_gl_get_proc_address ("glVertexAttrib4ubNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib4ubNV =
+      (GdkGLProc_glVertexAttrib4ubNV) gdk_gl_get_proc_address ("glVertexAttrib4ubNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4ubNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib4ubNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4ubNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib4ubNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib4ubNV);
 }
@@ -17586,14 +16244,12 @@ gdk_gl_get_glVertexAttrib4ubvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttrib4ubvNV == (GdkGLProc_glVertexAttrib4ubvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttrib4ubvNV =
-        (GdkGLProc_glVertexAttrib4ubvNV) gdk_gl_get_proc_address ("glVertexAttrib4ubvNV");
+    _procs_GL_NV_vertex_program.glVertexAttrib4ubvNV =
+      (GdkGLProc_glVertexAttrib4ubvNV) gdk_gl_get_proc_address ("glVertexAttrib4ubvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4ubvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttrib4ubvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4ubvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttrib4ubvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttrib4ubvNV);
 }
@@ -17606,14 +16262,12 @@ gdk_gl_get_glVertexAttribs1dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs1dvNV == (GdkGLProc_glVertexAttribs1dvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs1dvNV =
-        (GdkGLProc_glVertexAttribs1dvNV) gdk_gl_get_proc_address ("glVertexAttribs1dvNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs1dvNV =
+      (GdkGLProc_glVertexAttribs1dvNV) gdk_gl_get_proc_address ("glVertexAttribs1dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs1dvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs1dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs1dvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs1dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs1dvNV);
 }
@@ -17626,14 +16280,12 @@ gdk_gl_get_glVertexAttribs1fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs1fvNV == (GdkGLProc_glVertexAttribs1fvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs1fvNV =
-        (GdkGLProc_glVertexAttribs1fvNV) gdk_gl_get_proc_address ("glVertexAttribs1fvNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs1fvNV =
+      (GdkGLProc_glVertexAttribs1fvNV) gdk_gl_get_proc_address ("glVertexAttribs1fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs1fvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs1fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs1fvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs1fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs1fvNV);
 }
@@ -17646,14 +16298,12 @@ gdk_gl_get_glVertexAttribs1svNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs1svNV == (GdkGLProc_glVertexAttribs1svNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs1svNV =
-        (GdkGLProc_glVertexAttribs1svNV) gdk_gl_get_proc_address ("glVertexAttribs1svNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs1svNV =
+      (GdkGLProc_glVertexAttribs1svNV) gdk_gl_get_proc_address ("glVertexAttribs1svNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs1svNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs1svNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs1svNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs1svNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs1svNV);
 }
@@ -17666,14 +16316,12 @@ gdk_gl_get_glVertexAttribs2dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs2dvNV == (GdkGLProc_glVertexAttribs2dvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs2dvNV =
-        (GdkGLProc_glVertexAttribs2dvNV) gdk_gl_get_proc_address ("glVertexAttribs2dvNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs2dvNV =
+      (GdkGLProc_glVertexAttribs2dvNV) gdk_gl_get_proc_address ("glVertexAttribs2dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs2dvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs2dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs2dvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs2dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs2dvNV);
 }
@@ -17686,14 +16334,12 @@ gdk_gl_get_glVertexAttribs2fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs2fvNV == (GdkGLProc_glVertexAttribs2fvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs2fvNV =
-        (GdkGLProc_glVertexAttribs2fvNV) gdk_gl_get_proc_address ("glVertexAttribs2fvNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs2fvNV =
+      (GdkGLProc_glVertexAttribs2fvNV) gdk_gl_get_proc_address ("glVertexAttribs2fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs2fvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs2fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs2fvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs2fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs2fvNV);
 }
@@ -17706,14 +16352,12 @@ gdk_gl_get_glVertexAttribs2svNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs2svNV == (GdkGLProc_glVertexAttribs2svNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs2svNV =
-        (GdkGLProc_glVertexAttribs2svNV) gdk_gl_get_proc_address ("glVertexAttribs2svNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs2svNV =
+      (GdkGLProc_glVertexAttribs2svNV) gdk_gl_get_proc_address ("glVertexAttribs2svNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs2svNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs2svNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs2svNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs2svNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs2svNV);
 }
@@ -17726,14 +16370,12 @@ gdk_gl_get_glVertexAttribs3dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs3dvNV == (GdkGLProc_glVertexAttribs3dvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs3dvNV =
-        (GdkGLProc_glVertexAttribs3dvNV) gdk_gl_get_proc_address ("glVertexAttribs3dvNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs3dvNV =
+      (GdkGLProc_glVertexAttribs3dvNV) gdk_gl_get_proc_address ("glVertexAttribs3dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs3dvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs3dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs3dvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs3dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs3dvNV);
 }
@@ -17746,14 +16388,12 @@ gdk_gl_get_glVertexAttribs3fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs3fvNV == (GdkGLProc_glVertexAttribs3fvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs3fvNV =
-        (GdkGLProc_glVertexAttribs3fvNV) gdk_gl_get_proc_address ("glVertexAttribs3fvNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs3fvNV =
+      (GdkGLProc_glVertexAttribs3fvNV) gdk_gl_get_proc_address ("glVertexAttribs3fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs3fvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs3fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs3fvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs3fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs3fvNV);
 }
@@ -17766,14 +16406,12 @@ gdk_gl_get_glVertexAttribs3svNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs3svNV == (GdkGLProc_glVertexAttribs3svNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs3svNV =
-        (GdkGLProc_glVertexAttribs3svNV) gdk_gl_get_proc_address ("glVertexAttribs3svNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs3svNV =
+      (GdkGLProc_glVertexAttribs3svNV) gdk_gl_get_proc_address ("glVertexAttribs3svNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs3svNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs3svNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs3svNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs3svNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs3svNV);
 }
@@ -17786,14 +16424,12 @@ gdk_gl_get_glVertexAttribs4dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs4dvNV == (GdkGLProc_glVertexAttribs4dvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs4dvNV =
-        (GdkGLProc_glVertexAttribs4dvNV) gdk_gl_get_proc_address ("glVertexAttribs4dvNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs4dvNV =
+      (GdkGLProc_glVertexAttribs4dvNV) gdk_gl_get_proc_address ("glVertexAttribs4dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs4dvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs4dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs4dvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs4dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs4dvNV);
 }
@@ -17806,14 +16442,12 @@ gdk_gl_get_glVertexAttribs4fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs4fvNV == (GdkGLProc_glVertexAttribs4fvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs4fvNV =
-        (GdkGLProc_glVertexAttribs4fvNV) gdk_gl_get_proc_address ("glVertexAttribs4fvNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs4fvNV =
+      (GdkGLProc_glVertexAttribs4fvNV) gdk_gl_get_proc_address ("glVertexAttribs4fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs4fvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs4fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs4fvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs4fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs4fvNV);
 }
@@ -17826,14 +16460,12 @@ gdk_gl_get_glVertexAttribs4svNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs4svNV == (GdkGLProc_glVertexAttribs4svNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs4svNV =
-        (GdkGLProc_glVertexAttribs4svNV) gdk_gl_get_proc_address ("glVertexAttribs4svNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs4svNV =
+      (GdkGLProc_glVertexAttribs4svNV) gdk_gl_get_proc_address ("glVertexAttribs4svNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs4svNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs4svNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs4svNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs4svNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs4svNV);
 }
@@ -17846,14 +16478,12 @@ gdk_gl_get_glVertexAttribs4ubvNV (void)
     return NULL;
 
   if (_procs_GL_NV_vertex_program.glVertexAttribs4ubvNV == (GdkGLProc_glVertexAttribs4ubvNV) -1)
-    {
-      _procs_GL_NV_vertex_program.glVertexAttribs4ubvNV =
-        (GdkGLProc_glVertexAttribs4ubvNV) gdk_gl_get_proc_address ("glVertexAttribs4ubvNV");
+    _procs_GL_NV_vertex_program.glVertexAttribs4ubvNV =
+      (GdkGLProc_glVertexAttribs4ubvNV) gdk_gl_get_proc_address ("glVertexAttribs4ubvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs4ubvNV () - %s",
-                   (_procs_GL_NV_vertex_program.glVertexAttribs4ubvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs4ubvNV () - %s",
+               (_procs_GL_NV_vertex_program.glVertexAttribs4ubvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_vertex_program.glVertexAttribs4ubvNV);
 }
@@ -17969,14 +16599,12 @@ gdk_gl_get_glTexBumpParameterivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_envmap_bumpmap.glTexBumpParameterivATI == (GdkGLProc_glTexBumpParameterivATI) -1)
-    {
-      _procs_GL_ATI_envmap_bumpmap.glTexBumpParameterivATI =
-        (GdkGLProc_glTexBumpParameterivATI) gdk_gl_get_proc_address ("glTexBumpParameterivATI");
+    _procs_GL_ATI_envmap_bumpmap.glTexBumpParameterivATI =
+      (GdkGLProc_glTexBumpParameterivATI) gdk_gl_get_proc_address ("glTexBumpParameterivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexBumpParameterivATI () - %s",
-                   (_procs_GL_ATI_envmap_bumpmap.glTexBumpParameterivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexBumpParameterivATI () - %s",
+               (_procs_GL_ATI_envmap_bumpmap.glTexBumpParameterivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_envmap_bumpmap.glTexBumpParameterivATI);
 }
@@ -17989,14 +16617,12 @@ gdk_gl_get_glTexBumpParameterfvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_envmap_bumpmap.glTexBumpParameterfvATI == (GdkGLProc_glTexBumpParameterfvATI) -1)
-    {
-      _procs_GL_ATI_envmap_bumpmap.glTexBumpParameterfvATI =
-        (GdkGLProc_glTexBumpParameterfvATI) gdk_gl_get_proc_address ("glTexBumpParameterfvATI");
+    _procs_GL_ATI_envmap_bumpmap.glTexBumpParameterfvATI =
+      (GdkGLProc_glTexBumpParameterfvATI) gdk_gl_get_proc_address ("glTexBumpParameterfvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexBumpParameterfvATI () - %s",
-                   (_procs_GL_ATI_envmap_bumpmap.glTexBumpParameterfvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexBumpParameterfvATI () - %s",
+               (_procs_GL_ATI_envmap_bumpmap.glTexBumpParameterfvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_envmap_bumpmap.glTexBumpParameterfvATI);
 }
@@ -18009,14 +16635,12 @@ gdk_gl_get_glGetTexBumpParameterivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterivATI == (GdkGLProc_glGetTexBumpParameterivATI) -1)
-    {
-      _procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterivATI =
-        (GdkGLProc_glGetTexBumpParameterivATI) gdk_gl_get_proc_address ("glGetTexBumpParameterivATI");
+    _procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterivATI =
+      (GdkGLProc_glGetTexBumpParameterivATI) gdk_gl_get_proc_address ("glGetTexBumpParameterivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetTexBumpParameterivATI () - %s",
-                   (_procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTexBumpParameterivATI () - %s",
+               (_procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterivATI);
 }
@@ -18029,14 +16653,12 @@ gdk_gl_get_glGetTexBumpParameterfvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterfvATI == (GdkGLProc_glGetTexBumpParameterfvATI) -1)
-    {
-      _procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterfvATI =
-        (GdkGLProc_glGetTexBumpParameterfvATI) gdk_gl_get_proc_address ("glGetTexBumpParameterfvATI");
+    _procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterfvATI =
+      (GdkGLProc_glGetTexBumpParameterfvATI) gdk_gl_get_proc_address ("glGetTexBumpParameterfvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetTexBumpParameterfvATI () - %s",
-                   (_procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterfvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTexBumpParameterfvATI () - %s",
+               (_procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterfvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_envmap_bumpmap.glGetTexBumpParameterfvATI);
 }
@@ -18102,14 +16724,12 @@ gdk_gl_get_glGenFragmentShadersATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glGenFragmentShadersATI == (GdkGLProc_glGenFragmentShadersATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glGenFragmentShadersATI =
-        (GdkGLProc_glGenFragmentShadersATI) gdk_gl_get_proc_address ("glGenFragmentShadersATI");
+    _procs_GL_ATI_fragment_shader.glGenFragmentShadersATI =
+      (GdkGLProc_glGenFragmentShadersATI) gdk_gl_get_proc_address ("glGenFragmentShadersATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenFragmentShadersATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glGenFragmentShadersATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenFragmentShadersATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glGenFragmentShadersATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glGenFragmentShadersATI);
 }
@@ -18122,14 +16742,12 @@ gdk_gl_get_glBindFragmentShaderATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glBindFragmentShaderATI == (GdkGLProc_glBindFragmentShaderATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glBindFragmentShaderATI =
-        (GdkGLProc_glBindFragmentShaderATI) gdk_gl_get_proc_address ("glBindFragmentShaderATI");
+    _procs_GL_ATI_fragment_shader.glBindFragmentShaderATI =
+      (GdkGLProc_glBindFragmentShaderATI) gdk_gl_get_proc_address ("glBindFragmentShaderATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindFragmentShaderATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glBindFragmentShaderATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindFragmentShaderATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glBindFragmentShaderATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glBindFragmentShaderATI);
 }
@@ -18142,14 +16760,12 @@ gdk_gl_get_glDeleteFragmentShaderATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glDeleteFragmentShaderATI == (GdkGLProc_glDeleteFragmentShaderATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glDeleteFragmentShaderATI =
-        (GdkGLProc_glDeleteFragmentShaderATI) gdk_gl_get_proc_address ("glDeleteFragmentShaderATI");
+    _procs_GL_ATI_fragment_shader.glDeleteFragmentShaderATI =
+      (GdkGLProc_glDeleteFragmentShaderATI) gdk_gl_get_proc_address ("glDeleteFragmentShaderATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteFragmentShaderATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glDeleteFragmentShaderATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteFragmentShaderATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glDeleteFragmentShaderATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glDeleteFragmentShaderATI);
 }
@@ -18162,14 +16778,12 @@ gdk_gl_get_glBeginFragmentShaderATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glBeginFragmentShaderATI == (GdkGLProc_glBeginFragmentShaderATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glBeginFragmentShaderATI =
-        (GdkGLProc_glBeginFragmentShaderATI) gdk_gl_get_proc_address ("glBeginFragmentShaderATI");
+    _procs_GL_ATI_fragment_shader.glBeginFragmentShaderATI =
+      (GdkGLProc_glBeginFragmentShaderATI) gdk_gl_get_proc_address ("glBeginFragmentShaderATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBeginFragmentShaderATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glBeginFragmentShaderATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginFragmentShaderATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glBeginFragmentShaderATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glBeginFragmentShaderATI);
 }
@@ -18182,14 +16796,12 @@ gdk_gl_get_glEndFragmentShaderATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glEndFragmentShaderATI == (GdkGLProc_glEndFragmentShaderATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glEndFragmentShaderATI =
-        (GdkGLProc_glEndFragmentShaderATI) gdk_gl_get_proc_address ("glEndFragmentShaderATI");
+    _procs_GL_ATI_fragment_shader.glEndFragmentShaderATI =
+      (GdkGLProc_glEndFragmentShaderATI) gdk_gl_get_proc_address ("glEndFragmentShaderATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glEndFragmentShaderATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glEndFragmentShaderATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndFragmentShaderATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glEndFragmentShaderATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glEndFragmentShaderATI);
 }
@@ -18202,14 +16814,12 @@ gdk_gl_get_glPassTexCoordATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glPassTexCoordATI == (GdkGLProc_glPassTexCoordATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glPassTexCoordATI =
-        (GdkGLProc_glPassTexCoordATI) gdk_gl_get_proc_address ("glPassTexCoordATI");
+    _procs_GL_ATI_fragment_shader.glPassTexCoordATI =
+      (GdkGLProc_glPassTexCoordATI) gdk_gl_get_proc_address ("glPassTexCoordATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPassTexCoordATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glPassTexCoordATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPassTexCoordATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glPassTexCoordATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glPassTexCoordATI);
 }
@@ -18222,14 +16832,12 @@ gdk_gl_get_glSampleMapATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glSampleMapATI == (GdkGLProc_glSampleMapATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glSampleMapATI =
-        (GdkGLProc_glSampleMapATI) gdk_gl_get_proc_address ("glSampleMapATI");
+    _procs_GL_ATI_fragment_shader.glSampleMapATI =
+      (GdkGLProc_glSampleMapATI) gdk_gl_get_proc_address ("glSampleMapATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSampleMapATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glSampleMapATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSampleMapATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glSampleMapATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glSampleMapATI);
 }
@@ -18242,14 +16850,12 @@ gdk_gl_get_glColorFragmentOp1ATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glColorFragmentOp1ATI == (GdkGLProc_glColorFragmentOp1ATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glColorFragmentOp1ATI =
-        (GdkGLProc_glColorFragmentOp1ATI) gdk_gl_get_proc_address ("glColorFragmentOp1ATI");
+    _procs_GL_ATI_fragment_shader.glColorFragmentOp1ATI =
+      (GdkGLProc_glColorFragmentOp1ATI) gdk_gl_get_proc_address ("glColorFragmentOp1ATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorFragmentOp1ATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glColorFragmentOp1ATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorFragmentOp1ATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glColorFragmentOp1ATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glColorFragmentOp1ATI);
 }
@@ -18262,14 +16868,12 @@ gdk_gl_get_glColorFragmentOp2ATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glColorFragmentOp2ATI == (GdkGLProc_glColorFragmentOp2ATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glColorFragmentOp2ATI =
-        (GdkGLProc_glColorFragmentOp2ATI) gdk_gl_get_proc_address ("glColorFragmentOp2ATI");
+    _procs_GL_ATI_fragment_shader.glColorFragmentOp2ATI =
+      (GdkGLProc_glColorFragmentOp2ATI) gdk_gl_get_proc_address ("glColorFragmentOp2ATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorFragmentOp2ATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glColorFragmentOp2ATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorFragmentOp2ATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glColorFragmentOp2ATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glColorFragmentOp2ATI);
 }
@@ -18282,14 +16886,12 @@ gdk_gl_get_glColorFragmentOp3ATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glColorFragmentOp3ATI == (GdkGLProc_glColorFragmentOp3ATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glColorFragmentOp3ATI =
-        (GdkGLProc_glColorFragmentOp3ATI) gdk_gl_get_proc_address ("glColorFragmentOp3ATI");
+    _procs_GL_ATI_fragment_shader.glColorFragmentOp3ATI =
+      (GdkGLProc_glColorFragmentOp3ATI) gdk_gl_get_proc_address ("glColorFragmentOp3ATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColorFragmentOp3ATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glColorFragmentOp3ATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorFragmentOp3ATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glColorFragmentOp3ATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glColorFragmentOp3ATI);
 }
@@ -18302,14 +16904,12 @@ gdk_gl_get_glAlphaFragmentOp1ATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp1ATI == (GdkGLProc_glAlphaFragmentOp1ATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glAlphaFragmentOp1ATI =
-        (GdkGLProc_glAlphaFragmentOp1ATI) gdk_gl_get_proc_address ("glAlphaFragmentOp1ATI");
+    _procs_GL_ATI_fragment_shader.glAlphaFragmentOp1ATI =
+      (GdkGLProc_glAlphaFragmentOp1ATI) gdk_gl_get_proc_address ("glAlphaFragmentOp1ATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glAlphaFragmentOp1ATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp1ATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glAlphaFragmentOp1ATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp1ATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp1ATI);
 }
@@ -18322,14 +16922,12 @@ gdk_gl_get_glAlphaFragmentOp2ATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp2ATI == (GdkGLProc_glAlphaFragmentOp2ATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glAlphaFragmentOp2ATI =
-        (GdkGLProc_glAlphaFragmentOp2ATI) gdk_gl_get_proc_address ("glAlphaFragmentOp2ATI");
+    _procs_GL_ATI_fragment_shader.glAlphaFragmentOp2ATI =
+      (GdkGLProc_glAlphaFragmentOp2ATI) gdk_gl_get_proc_address ("glAlphaFragmentOp2ATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glAlphaFragmentOp2ATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp2ATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glAlphaFragmentOp2ATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp2ATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp2ATI);
 }
@@ -18342,14 +16940,12 @@ gdk_gl_get_glAlphaFragmentOp3ATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp3ATI == (GdkGLProc_glAlphaFragmentOp3ATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glAlphaFragmentOp3ATI =
-        (GdkGLProc_glAlphaFragmentOp3ATI) gdk_gl_get_proc_address ("glAlphaFragmentOp3ATI");
+    _procs_GL_ATI_fragment_shader.glAlphaFragmentOp3ATI =
+      (GdkGLProc_glAlphaFragmentOp3ATI) gdk_gl_get_proc_address ("glAlphaFragmentOp3ATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glAlphaFragmentOp3ATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp3ATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glAlphaFragmentOp3ATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp3ATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glAlphaFragmentOp3ATI);
 }
@@ -18362,14 +16958,12 @@ gdk_gl_get_glSetFragmentShaderConstantATI (void)
     return NULL;
 
   if (_procs_GL_ATI_fragment_shader.glSetFragmentShaderConstantATI == (GdkGLProc_glSetFragmentShaderConstantATI) -1)
-    {
-      _procs_GL_ATI_fragment_shader.glSetFragmentShaderConstantATI =
-        (GdkGLProc_glSetFragmentShaderConstantATI) gdk_gl_get_proc_address ("glSetFragmentShaderConstantATI");
+    _procs_GL_ATI_fragment_shader.glSetFragmentShaderConstantATI =
+      (GdkGLProc_glSetFragmentShaderConstantATI) gdk_gl_get_proc_address ("glSetFragmentShaderConstantATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSetFragmentShaderConstantATI () - %s",
-                   (_procs_GL_ATI_fragment_shader.glSetFragmentShaderConstantATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSetFragmentShaderConstantATI () - %s",
+               (_procs_GL_ATI_fragment_shader.glSetFragmentShaderConstantATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_fragment_shader.glSetFragmentShaderConstantATI);
 }
@@ -18433,14 +17027,12 @@ gdk_gl_get_glPNTrianglesiATI (void)
     return NULL;
 
   if (_procs_GL_ATI_pn_triangles.glPNTrianglesiATI == (GdkGLProc_glPNTrianglesiATI) -1)
-    {
-      _procs_GL_ATI_pn_triangles.glPNTrianglesiATI =
-        (GdkGLProc_glPNTrianglesiATI) gdk_gl_get_proc_address ("glPNTrianglesiATI");
+    _procs_GL_ATI_pn_triangles.glPNTrianglesiATI =
+      (GdkGLProc_glPNTrianglesiATI) gdk_gl_get_proc_address ("glPNTrianglesiATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPNTrianglesiATI () - %s",
-                   (_procs_GL_ATI_pn_triangles.glPNTrianglesiATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPNTrianglesiATI () - %s",
+               (_procs_GL_ATI_pn_triangles.glPNTrianglesiATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_pn_triangles.glPNTrianglesiATI);
 }
@@ -18453,14 +17045,12 @@ gdk_gl_get_glPNTrianglesfATI (void)
     return NULL;
 
   if (_procs_GL_ATI_pn_triangles.glPNTrianglesfATI == (GdkGLProc_glPNTrianglesfATI) -1)
-    {
-      _procs_GL_ATI_pn_triangles.glPNTrianglesfATI =
-        (GdkGLProc_glPNTrianglesfATI) gdk_gl_get_proc_address ("glPNTrianglesfATI");
+    _procs_GL_ATI_pn_triangles.glPNTrianglesfATI =
+      (GdkGLProc_glPNTrianglesfATI) gdk_gl_get_proc_address ("glPNTrianglesfATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPNTrianglesfATI () - %s",
-                   (_procs_GL_ATI_pn_triangles.glPNTrianglesfATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPNTrianglesfATI () - %s",
+               (_procs_GL_ATI_pn_triangles.glPNTrianglesfATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_pn_triangles.glPNTrianglesfATI);
 }
@@ -18522,14 +17112,12 @@ gdk_gl_get_glNewObjectBufferATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glNewObjectBufferATI == (GdkGLProc_glNewObjectBufferATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glNewObjectBufferATI =
-        (GdkGLProc_glNewObjectBufferATI) gdk_gl_get_proc_address ("glNewObjectBufferATI");
+    _procs_GL_ATI_vertex_array_object.glNewObjectBufferATI =
+      (GdkGLProc_glNewObjectBufferATI) gdk_gl_get_proc_address ("glNewObjectBufferATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNewObjectBufferATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glNewObjectBufferATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNewObjectBufferATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glNewObjectBufferATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glNewObjectBufferATI);
 }
@@ -18542,14 +17130,12 @@ gdk_gl_get_glIsObjectBufferATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glIsObjectBufferATI == (GdkGLProc_glIsObjectBufferATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glIsObjectBufferATI =
-        (GdkGLProc_glIsObjectBufferATI) gdk_gl_get_proc_address ("glIsObjectBufferATI");
+    _procs_GL_ATI_vertex_array_object.glIsObjectBufferATI =
+      (GdkGLProc_glIsObjectBufferATI) gdk_gl_get_proc_address ("glIsObjectBufferATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsObjectBufferATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glIsObjectBufferATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsObjectBufferATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glIsObjectBufferATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glIsObjectBufferATI);
 }
@@ -18562,14 +17148,12 @@ gdk_gl_get_glUpdateObjectBufferATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glUpdateObjectBufferATI == (GdkGLProc_glUpdateObjectBufferATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glUpdateObjectBufferATI =
-        (GdkGLProc_glUpdateObjectBufferATI) gdk_gl_get_proc_address ("glUpdateObjectBufferATI");
+    _procs_GL_ATI_vertex_array_object.glUpdateObjectBufferATI =
+      (GdkGLProc_glUpdateObjectBufferATI) gdk_gl_get_proc_address ("glUpdateObjectBufferATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glUpdateObjectBufferATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glUpdateObjectBufferATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUpdateObjectBufferATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glUpdateObjectBufferATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glUpdateObjectBufferATI);
 }
@@ -18582,14 +17166,12 @@ gdk_gl_get_glGetObjectBufferfvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glGetObjectBufferfvATI == (GdkGLProc_glGetObjectBufferfvATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glGetObjectBufferfvATI =
-        (GdkGLProc_glGetObjectBufferfvATI) gdk_gl_get_proc_address ("glGetObjectBufferfvATI");
+    _procs_GL_ATI_vertex_array_object.glGetObjectBufferfvATI =
+      (GdkGLProc_glGetObjectBufferfvATI) gdk_gl_get_proc_address ("glGetObjectBufferfvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetObjectBufferfvATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glGetObjectBufferfvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetObjectBufferfvATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glGetObjectBufferfvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glGetObjectBufferfvATI);
 }
@@ -18602,14 +17184,12 @@ gdk_gl_get_glGetObjectBufferivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glGetObjectBufferivATI == (GdkGLProc_glGetObjectBufferivATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glGetObjectBufferivATI =
-        (GdkGLProc_glGetObjectBufferivATI) gdk_gl_get_proc_address ("glGetObjectBufferivATI");
+    _procs_GL_ATI_vertex_array_object.glGetObjectBufferivATI =
+      (GdkGLProc_glGetObjectBufferivATI) gdk_gl_get_proc_address ("glGetObjectBufferivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetObjectBufferivATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glGetObjectBufferivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetObjectBufferivATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glGetObjectBufferivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glGetObjectBufferivATI);
 }
@@ -18622,14 +17202,12 @@ gdk_gl_get_glFreeObjectBufferATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glFreeObjectBufferATI == (GdkGLProc_glFreeObjectBufferATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glFreeObjectBufferATI =
-        (GdkGLProc_glFreeObjectBufferATI) gdk_gl_get_proc_address ("glFreeObjectBufferATI");
+    _procs_GL_ATI_vertex_array_object.glFreeObjectBufferATI =
+      (GdkGLProc_glFreeObjectBufferATI) gdk_gl_get_proc_address ("glFreeObjectBufferATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFreeObjectBufferATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glFreeObjectBufferATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFreeObjectBufferATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glFreeObjectBufferATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glFreeObjectBufferATI);
 }
@@ -18642,14 +17220,12 @@ gdk_gl_get_glArrayObjectATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glArrayObjectATI == (GdkGLProc_glArrayObjectATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glArrayObjectATI =
-        (GdkGLProc_glArrayObjectATI) gdk_gl_get_proc_address ("glArrayObjectATI");
+    _procs_GL_ATI_vertex_array_object.glArrayObjectATI =
+      (GdkGLProc_glArrayObjectATI) gdk_gl_get_proc_address ("glArrayObjectATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glArrayObjectATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glArrayObjectATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glArrayObjectATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glArrayObjectATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glArrayObjectATI);
 }
@@ -18662,14 +17238,12 @@ gdk_gl_get_glGetArrayObjectfvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glGetArrayObjectfvATI == (GdkGLProc_glGetArrayObjectfvATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glGetArrayObjectfvATI =
-        (GdkGLProc_glGetArrayObjectfvATI) gdk_gl_get_proc_address ("glGetArrayObjectfvATI");
+    _procs_GL_ATI_vertex_array_object.glGetArrayObjectfvATI =
+      (GdkGLProc_glGetArrayObjectfvATI) gdk_gl_get_proc_address ("glGetArrayObjectfvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetArrayObjectfvATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glGetArrayObjectfvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetArrayObjectfvATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glGetArrayObjectfvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glGetArrayObjectfvATI);
 }
@@ -18682,14 +17256,12 @@ gdk_gl_get_glGetArrayObjectivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glGetArrayObjectivATI == (GdkGLProc_glGetArrayObjectivATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glGetArrayObjectivATI =
-        (GdkGLProc_glGetArrayObjectivATI) gdk_gl_get_proc_address ("glGetArrayObjectivATI");
+    _procs_GL_ATI_vertex_array_object.glGetArrayObjectivATI =
+      (GdkGLProc_glGetArrayObjectivATI) gdk_gl_get_proc_address ("glGetArrayObjectivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetArrayObjectivATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glGetArrayObjectivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetArrayObjectivATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glGetArrayObjectivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glGetArrayObjectivATI);
 }
@@ -18702,14 +17274,12 @@ gdk_gl_get_glVariantArrayObjectATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glVariantArrayObjectATI == (GdkGLProc_glVariantArrayObjectATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glVariantArrayObjectATI =
-        (GdkGLProc_glVariantArrayObjectATI) gdk_gl_get_proc_address ("glVariantArrayObjectATI");
+    _procs_GL_ATI_vertex_array_object.glVariantArrayObjectATI =
+      (GdkGLProc_glVariantArrayObjectATI) gdk_gl_get_proc_address ("glVariantArrayObjectATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVariantArrayObjectATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glVariantArrayObjectATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVariantArrayObjectATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glVariantArrayObjectATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glVariantArrayObjectATI);
 }
@@ -18722,14 +17292,12 @@ gdk_gl_get_glGetVariantArrayObjectfvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectfvATI == (GdkGLProc_glGetVariantArrayObjectfvATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectfvATI =
-        (GdkGLProc_glGetVariantArrayObjectfvATI) gdk_gl_get_proc_address ("glGetVariantArrayObjectfvATI");
+    _procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectfvATI =
+      (GdkGLProc_glGetVariantArrayObjectfvATI) gdk_gl_get_proc_address ("glGetVariantArrayObjectfvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVariantArrayObjectfvATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectfvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVariantArrayObjectfvATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectfvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectfvATI);
 }
@@ -18742,14 +17310,12 @@ gdk_gl_get_glGetVariantArrayObjectivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectivATI == (GdkGLProc_glGetVariantArrayObjectivATI) -1)
-    {
-      _procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectivATI =
-        (GdkGLProc_glGetVariantArrayObjectivATI) gdk_gl_get_proc_address ("glGetVariantArrayObjectivATI");
+    _procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectivATI =
+      (GdkGLProc_glGetVariantArrayObjectivATI) gdk_gl_get_proc_address ("glGetVariantArrayObjectivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVariantArrayObjectivATI () - %s",
-                   (_procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVariantArrayObjectivATI () - %s",
+               (_procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_array_object.glGetVariantArrayObjectivATI);
 }
@@ -18851,14 +17417,12 @@ gdk_gl_get_glBeginVertexShaderEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glBeginVertexShaderEXT == (GdkGLProc_glBeginVertexShaderEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glBeginVertexShaderEXT =
-        (GdkGLProc_glBeginVertexShaderEXT) gdk_gl_get_proc_address ("glBeginVertexShaderEXT");
+    _procs_GL_EXT_vertex_shader.glBeginVertexShaderEXT =
+      (GdkGLProc_glBeginVertexShaderEXT) gdk_gl_get_proc_address ("glBeginVertexShaderEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBeginVertexShaderEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glBeginVertexShaderEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginVertexShaderEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glBeginVertexShaderEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glBeginVertexShaderEXT);
 }
@@ -18871,14 +17435,12 @@ gdk_gl_get_glEndVertexShaderEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glEndVertexShaderEXT == (GdkGLProc_glEndVertexShaderEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glEndVertexShaderEXT =
-        (GdkGLProc_glEndVertexShaderEXT) gdk_gl_get_proc_address ("glEndVertexShaderEXT");
+    _procs_GL_EXT_vertex_shader.glEndVertexShaderEXT =
+      (GdkGLProc_glEndVertexShaderEXT) gdk_gl_get_proc_address ("glEndVertexShaderEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glEndVertexShaderEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glEndVertexShaderEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndVertexShaderEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glEndVertexShaderEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glEndVertexShaderEXT);
 }
@@ -18891,14 +17453,12 @@ gdk_gl_get_glBindVertexShaderEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glBindVertexShaderEXT == (GdkGLProc_glBindVertexShaderEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glBindVertexShaderEXT =
-        (GdkGLProc_glBindVertexShaderEXT) gdk_gl_get_proc_address ("glBindVertexShaderEXT");
+    _procs_GL_EXT_vertex_shader.glBindVertexShaderEXT =
+      (GdkGLProc_glBindVertexShaderEXT) gdk_gl_get_proc_address ("glBindVertexShaderEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindVertexShaderEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glBindVertexShaderEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindVertexShaderEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glBindVertexShaderEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glBindVertexShaderEXT);
 }
@@ -18911,14 +17471,12 @@ gdk_gl_get_glGenVertexShadersEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGenVertexShadersEXT == (GdkGLProc_glGenVertexShadersEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGenVertexShadersEXT =
-        (GdkGLProc_glGenVertexShadersEXT) gdk_gl_get_proc_address ("glGenVertexShadersEXT");
+    _procs_GL_EXT_vertex_shader.glGenVertexShadersEXT =
+      (GdkGLProc_glGenVertexShadersEXT) gdk_gl_get_proc_address ("glGenVertexShadersEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenVertexShadersEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGenVertexShadersEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenVertexShadersEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGenVertexShadersEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGenVertexShadersEXT);
 }
@@ -18931,14 +17489,12 @@ gdk_gl_get_glDeleteVertexShaderEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glDeleteVertexShaderEXT == (GdkGLProc_glDeleteVertexShaderEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glDeleteVertexShaderEXT =
-        (GdkGLProc_glDeleteVertexShaderEXT) gdk_gl_get_proc_address ("glDeleteVertexShaderEXT");
+    _procs_GL_EXT_vertex_shader.glDeleteVertexShaderEXT =
+      (GdkGLProc_glDeleteVertexShaderEXT) gdk_gl_get_proc_address ("glDeleteVertexShaderEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteVertexShaderEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glDeleteVertexShaderEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteVertexShaderEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glDeleteVertexShaderEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glDeleteVertexShaderEXT);
 }
@@ -18951,14 +17507,12 @@ gdk_gl_get_glShaderOp1EXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glShaderOp1EXT == (GdkGLProc_glShaderOp1EXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glShaderOp1EXT =
-        (GdkGLProc_glShaderOp1EXT) gdk_gl_get_proc_address ("glShaderOp1EXT");
+    _procs_GL_EXT_vertex_shader.glShaderOp1EXT =
+      (GdkGLProc_glShaderOp1EXT) gdk_gl_get_proc_address ("glShaderOp1EXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glShaderOp1EXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glShaderOp1EXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glShaderOp1EXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glShaderOp1EXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glShaderOp1EXT);
 }
@@ -18971,14 +17525,12 @@ gdk_gl_get_glShaderOp2EXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glShaderOp2EXT == (GdkGLProc_glShaderOp2EXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glShaderOp2EXT =
-        (GdkGLProc_glShaderOp2EXT) gdk_gl_get_proc_address ("glShaderOp2EXT");
+    _procs_GL_EXT_vertex_shader.glShaderOp2EXT =
+      (GdkGLProc_glShaderOp2EXT) gdk_gl_get_proc_address ("glShaderOp2EXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glShaderOp2EXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glShaderOp2EXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glShaderOp2EXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glShaderOp2EXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glShaderOp2EXT);
 }
@@ -18991,14 +17543,12 @@ gdk_gl_get_glShaderOp3EXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glShaderOp3EXT == (GdkGLProc_glShaderOp3EXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glShaderOp3EXT =
-        (GdkGLProc_glShaderOp3EXT) gdk_gl_get_proc_address ("glShaderOp3EXT");
+    _procs_GL_EXT_vertex_shader.glShaderOp3EXT =
+      (GdkGLProc_glShaderOp3EXT) gdk_gl_get_proc_address ("glShaderOp3EXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glShaderOp3EXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glShaderOp3EXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glShaderOp3EXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glShaderOp3EXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glShaderOp3EXT);
 }
@@ -19011,14 +17561,12 @@ gdk_gl_get_glSwizzleEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glSwizzleEXT == (GdkGLProc_glSwizzleEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glSwizzleEXT =
-        (GdkGLProc_glSwizzleEXT) gdk_gl_get_proc_address ("glSwizzleEXT");
+    _procs_GL_EXT_vertex_shader.glSwizzleEXT =
+      (GdkGLProc_glSwizzleEXT) gdk_gl_get_proc_address ("glSwizzleEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSwizzleEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glSwizzleEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSwizzleEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glSwizzleEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glSwizzleEXT);
 }
@@ -19031,14 +17579,12 @@ gdk_gl_get_glWriteMaskEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glWriteMaskEXT == (GdkGLProc_glWriteMaskEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glWriteMaskEXT =
-        (GdkGLProc_glWriteMaskEXT) gdk_gl_get_proc_address ("glWriteMaskEXT");
+    _procs_GL_EXT_vertex_shader.glWriteMaskEXT =
+      (GdkGLProc_glWriteMaskEXT) gdk_gl_get_proc_address ("glWriteMaskEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glWriteMaskEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glWriteMaskEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWriteMaskEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glWriteMaskEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glWriteMaskEXT);
 }
@@ -19051,14 +17597,12 @@ gdk_gl_get_glInsertComponentEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glInsertComponentEXT == (GdkGLProc_glInsertComponentEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glInsertComponentEXT =
-        (GdkGLProc_glInsertComponentEXT) gdk_gl_get_proc_address ("glInsertComponentEXT");
+    _procs_GL_EXT_vertex_shader.glInsertComponentEXT =
+      (GdkGLProc_glInsertComponentEXT) gdk_gl_get_proc_address ("glInsertComponentEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glInsertComponentEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glInsertComponentEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glInsertComponentEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glInsertComponentEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glInsertComponentEXT);
 }
@@ -19071,14 +17615,12 @@ gdk_gl_get_glExtractComponentEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glExtractComponentEXT == (GdkGLProc_glExtractComponentEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glExtractComponentEXT =
-        (GdkGLProc_glExtractComponentEXT) gdk_gl_get_proc_address ("glExtractComponentEXT");
+    _procs_GL_EXT_vertex_shader.glExtractComponentEXT =
+      (GdkGLProc_glExtractComponentEXT) gdk_gl_get_proc_address ("glExtractComponentEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glExtractComponentEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glExtractComponentEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glExtractComponentEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glExtractComponentEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glExtractComponentEXT);
 }
@@ -19091,14 +17633,12 @@ gdk_gl_get_glGenSymbolsEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGenSymbolsEXT == (GdkGLProc_glGenSymbolsEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGenSymbolsEXT =
-        (GdkGLProc_glGenSymbolsEXT) gdk_gl_get_proc_address ("glGenSymbolsEXT");
+    _procs_GL_EXT_vertex_shader.glGenSymbolsEXT =
+      (GdkGLProc_glGenSymbolsEXT) gdk_gl_get_proc_address ("glGenSymbolsEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenSymbolsEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGenSymbolsEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenSymbolsEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGenSymbolsEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGenSymbolsEXT);
 }
@@ -19111,14 +17651,12 @@ gdk_gl_get_glSetInvariantEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glSetInvariantEXT == (GdkGLProc_glSetInvariantEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glSetInvariantEXT =
-        (GdkGLProc_glSetInvariantEXT) gdk_gl_get_proc_address ("glSetInvariantEXT");
+    _procs_GL_EXT_vertex_shader.glSetInvariantEXT =
+      (GdkGLProc_glSetInvariantEXT) gdk_gl_get_proc_address ("glSetInvariantEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSetInvariantEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glSetInvariantEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSetInvariantEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glSetInvariantEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glSetInvariantEXT);
 }
@@ -19131,14 +17669,12 @@ gdk_gl_get_glSetLocalConstantEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glSetLocalConstantEXT == (GdkGLProc_glSetLocalConstantEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glSetLocalConstantEXT =
-        (GdkGLProc_glSetLocalConstantEXT) gdk_gl_get_proc_address ("glSetLocalConstantEXT");
+    _procs_GL_EXT_vertex_shader.glSetLocalConstantEXT =
+      (GdkGLProc_glSetLocalConstantEXT) gdk_gl_get_proc_address ("glSetLocalConstantEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSetLocalConstantEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glSetLocalConstantEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSetLocalConstantEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glSetLocalConstantEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glSetLocalConstantEXT);
 }
@@ -19151,14 +17687,12 @@ gdk_gl_get_glVariantbvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glVariantbvEXT == (GdkGLProc_glVariantbvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glVariantbvEXT =
-        (GdkGLProc_glVariantbvEXT) gdk_gl_get_proc_address ("glVariantbvEXT");
+    _procs_GL_EXT_vertex_shader.glVariantbvEXT =
+      (GdkGLProc_glVariantbvEXT) gdk_gl_get_proc_address ("glVariantbvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVariantbvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glVariantbvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVariantbvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glVariantbvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glVariantbvEXT);
 }
@@ -19171,14 +17705,12 @@ gdk_gl_get_glVariantsvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glVariantsvEXT == (GdkGLProc_glVariantsvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glVariantsvEXT =
-        (GdkGLProc_glVariantsvEXT) gdk_gl_get_proc_address ("glVariantsvEXT");
+    _procs_GL_EXT_vertex_shader.glVariantsvEXT =
+      (GdkGLProc_glVariantsvEXT) gdk_gl_get_proc_address ("glVariantsvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVariantsvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glVariantsvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVariantsvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glVariantsvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glVariantsvEXT);
 }
@@ -19191,14 +17723,12 @@ gdk_gl_get_glVariantivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glVariantivEXT == (GdkGLProc_glVariantivEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glVariantivEXT =
-        (GdkGLProc_glVariantivEXT) gdk_gl_get_proc_address ("glVariantivEXT");
+    _procs_GL_EXT_vertex_shader.glVariantivEXT =
+      (GdkGLProc_glVariantivEXT) gdk_gl_get_proc_address ("glVariantivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVariantivEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glVariantivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVariantivEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glVariantivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glVariantivEXT);
 }
@@ -19211,14 +17741,12 @@ gdk_gl_get_glVariantfvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glVariantfvEXT == (GdkGLProc_glVariantfvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glVariantfvEXT =
-        (GdkGLProc_glVariantfvEXT) gdk_gl_get_proc_address ("glVariantfvEXT");
+    _procs_GL_EXT_vertex_shader.glVariantfvEXT =
+      (GdkGLProc_glVariantfvEXT) gdk_gl_get_proc_address ("glVariantfvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVariantfvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glVariantfvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVariantfvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glVariantfvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glVariantfvEXT);
 }
@@ -19231,14 +17759,12 @@ gdk_gl_get_glVariantdvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glVariantdvEXT == (GdkGLProc_glVariantdvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glVariantdvEXT =
-        (GdkGLProc_glVariantdvEXT) gdk_gl_get_proc_address ("glVariantdvEXT");
+    _procs_GL_EXT_vertex_shader.glVariantdvEXT =
+      (GdkGLProc_glVariantdvEXT) gdk_gl_get_proc_address ("glVariantdvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVariantdvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glVariantdvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVariantdvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glVariantdvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glVariantdvEXT);
 }
@@ -19251,14 +17777,12 @@ gdk_gl_get_glVariantubvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glVariantubvEXT == (GdkGLProc_glVariantubvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glVariantubvEXT =
-        (GdkGLProc_glVariantubvEXT) gdk_gl_get_proc_address ("glVariantubvEXT");
+    _procs_GL_EXT_vertex_shader.glVariantubvEXT =
+      (GdkGLProc_glVariantubvEXT) gdk_gl_get_proc_address ("glVariantubvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVariantubvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glVariantubvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVariantubvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glVariantubvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glVariantubvEXT);
 }
@@ -19271,14 +17795,12 @@ gdk_gl_get_glVariantusvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glVariantusvEXT == (GdkGLProc_glVariantusvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glVariantusvEXT =
-        (GdkGLProc_glVariantusvEXT) gdk_gl_get_proc_address ("glVariantusvEXT");
+    _procs_GL_EXT_vertex_shader.glVariantusvEXT =
+      (GdkGLProc_glVariantusvEXT) gdk_gl_get_proc_address ("glVariantusvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVariantusvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glVariantusvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVariantusvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glVariantusvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glVariantusvEXT);
 }
@@ -19291,14 +17813,12 @@ gdk_gl_get_glVariantuivEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glVariantuivEXT == (GdkGLProc_glVariantuivEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glVariantuivEXT =
-        (GdkGLProc_glVariantuivEXT) gdk_gl_get_proc_address ("glVariantuivEXT");
+    _procs_GL_EXT_vertex_shader.glVariantuivEXT =
+      (GdkGLProc_glVariantuivEXT) gdk_gl_get_proc_address ("glVariantuivEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVariantuivEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glVariantuivEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVariantuivEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glVariantuivEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glVariantuivEXT);
 }
@@ -19311,14 +17831,12 @@ gdk_gl_get_glVariantPointerEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glVariantPointerEXT == (GdkGLProc_glVariantPointerEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glVariantPointerEXT =
-        (GdkGLProc_glVariantPointerEXT) gdk_gl_get_proc_address ("glVariantPointerEXT");
+    _procs_GL_EXT_vertex_shader.glVariantPointerEXT =
+      (GdkGLProc_glVariantPointerEXT) gdk_gl_get_proc_address ("glVariantPointerEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVariantPointerEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glVariantPointerEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVariantPointerEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glVariantPointerEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glVariantPointerEXT);
 }
@@ -19331,14 +17849,12 @@ gdk_gl_get_glEnableVariantClientStateEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glEnableVariantClientStateEXT == (GdkGLProc_glEnableVariantClientStateEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glEnableVariantClientStateEXT =
-        (GdkGLProc_glEnableVariantClientStateEXT) gdk_gl_get_proc_address ("glEnableVariantClientStateEXT");
+    _procs_GL_EXT_vertex_shader.glEnableVariantClientStateEXT =
+      (GdkGLProc_glEnableVariantClientStateEXT) gdk_gl_get_proc_address ("glEnableVariantClientStateEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glEnableVariantClientStateEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glEnableVariantClientStateEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEnableVariantClientStateEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glEnableVariantClientStateEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glEnableVariantClientStateEXT);
 }
@@ -19351,14 +17867,12 @@ gdk_gl_get_glDisableVariantClientStateEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glDisableVariantClientStateEXT == (GdkGLProc_glDisableVariantClientStateEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glDisableVariantClientStateEXT =
-        (GdkGLProc_glDisableVariantClientStateEXT) gdk_gl_get_proc_address ("glDisableVariantClientStateEXT");
+    _procs_GL_EXT_vertex_shader.glDisableVariantClientStateEXT =
+      (GdkGLProc_glDisableVariantClientStateEXT) gdk_gl_get_proc_address ("glDisableVariantClientStateEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDisableVariantClientStateEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glDisableVariantClientStateEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDisableVariantClientStateEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glDisableVariantClientStateEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glDisableVariantClientStateEXT);
 }
@@ -19371,14 +17885,12 @@ gdk_gl_get_glBindLightParameterEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glBindLightParameterEXT == (GdkGLProc_glBindLightParameterEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glBindLightParameterEXT =
-        (GdkGLProc_glBindLightParameterEXT) gdk_gl_get_proc_address ("glBindLightParameterEXT");
+    _procs_GL_EXT_vertex_shader.glBindLightParameterEXT =
+      (GdkGLProc_glBindLightParameterEXT) gdk_gl_get_proc_address ("glBindLightParameterEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindLightParameterEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glBindLightParameterEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindLightParameterEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glBindLightParameterEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glBindLightParameterEXT);
 }
@@ -19391,14 +17903,12 @@ gdk_gl_get_glBindMaterialParameterEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glBindMaterialParameterEXT == (GdkGLProc_glBindMaterialParameterEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glBindMaterialParameterEXT =
-        (GdkGLProc_glBindMaterialParameterEXT) gdk_gl_get_proc_address ("glBindMaterialParameterEXT");
+    _procs_GL_EXT_vertex_shader.glBindMaterialParameterEXT =
+      (GdkGLProc_glBindMaterialParameterEXT) gdk_gl_get_proc_address ("glBindMaterialParameterEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindMaterialParameterEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glBindMaterialParameterEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindMaterialParameterEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glBindMaterialParameterEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glBindMaterialParameterEXT);
 }
@@ -19411,14 +17921,12 @@ gdk_gl_get_glBindTexGenParameterEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glBindTexGenParameterEXT == (GdkGLProc_glBindTexGenParameterEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glBindTexGenParameterEXT =
-        (GdkGLProc_glBindTexGenParameterEXT) gdk_gl_get_proc_address ("glBindTexGenParameterEXT");
+    _procs_GL_EXT_vertex_shader.glBindTexGenParameterEXT =
+      (GdkGLProc_glBindTexGenParameterEXT) gdk_gl_get_proc_address ("glBindTexGenParameterEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindTexGenParameterEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glBindTexGenParameterEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindTexGenParameterEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glBindTexGenParameterEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glBindTexGenParameterEXT);
 }
@@ -19431,14 +17939,12 @@ gdk_gl_get_glBindTextureUnitParameterEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glBindTextureUnitParameterEXT == (GdkGLProc_glBindTextureUnitParameterEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glBindTextureUnitParameterEXT =
-        (GdkGLProc_glBindTextureUnitParameterEXT) gdk_gl_get_proc_address ("glBindTextureUnitParameterEXT");
+    _procs_GL_EXT_vertex_shader.glBindTextureUnitParameterEXT =
+      (GdkGLProc_glBindTextureUnitParameterEXT) gdk_gl_get_proc_address ("glBindTextureUnitParameterEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindTextureUnitParameterEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glBindTextureUnitParameterEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindTextureUnitParameterEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glBindTextureUnitParameterEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glBindTextureUnitParameterEXT);
 }
@@ -19451,14 +17957,12 @@ gdk_gl_get_glBindParameterEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glBindParameterEXT == (GdkGLProc_glBindParameterEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glBindParameterEXT =
-        (GdkGLProc_glBindParameterEXT) gdk_gl_get_proc_address ("glBindParameterEXT");
+    _procs_GL_EXT_vertex_shader.glBindParameterEXT =
+      (GdkGLProc_glBindParameterEXT) gdk_gl_get_proc_address ("glBindParameterEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindParameterEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glBindParameterEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindParameterEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glBindParameterEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glBindParameterEXT);
 }
@@ -19471,14 +17975,12 @@ gdk_gl_get_glIsVariantEnabledEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glIsVariantEnabledEXT == (GdkGLProc_glIsVariantEnabledEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glIsVariantEnabledEXT =
-        (GdkGLProc_glIsVariantEnabledEXT) gdk_gl_get_proc_address ("glIsVariantEnabledEXT");
+    _procs_GL_EXT_vertex_shader.glIsVariantEnabledEXT =
+      (GdkGLProc_glIsVariantEnabledEXT) gdk_gl_get_proc_address ("glIsVariantEnabledEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsVariantEnabledEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glIsVariantEnabledEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsVariantEnabledEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glIsVariantEnabledEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glIsVariantEnabledEXT);
 }
@@ -19491,14 +17993,12 @@ gdk_gl_get_glGetVariantBooleanvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGetVariantBooleanvEXT == (GdkGLProc_glGetVariantBooleanvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGetVariantBooleanvEXT =
-        (GdkGLProc_glGetVariantBooleanvEXT) gdk_gl_get_proc_address ("glGetVariantBooleanvEXT");
+    _procs_GL_EXT_vertex_shader.glGetVariantBooleanvEXT =
+      (GdkGLProc_glGetVariantBooleanvEXT) gdk_gl_get_proc_address ("glGetVariantBooleanvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVariantBooleanvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGetVariantBooleanvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVariantBooleanvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGetVariantBooleanvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGetVariantBooleanvEXT);
 }
@@ -19511,14 +18011,12 @@ gdk_gl_get_glGetVariantIntegervEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGetVariantIntegervEXT == (GdkGLProc_glGetVariantIntegervEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGetVariantIntegervEXT =
-        (GdkGLProc_glGetVariantIntegervEXT) gdk_gl_get_proc_address ("glGetVariantIntegervEXT");
+    _procs_GL_EXT_vertex_shader.glGetVariantIntegervEXT =
+      (GdkGLProc_glGetVariantIntegervEXT) gdk_gl_get_proc_address ("glGetVariantIntegervEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVariantIntegervEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGetVariantIntegervEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVariantIntegervEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGetVariantIntegervEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGetVariantIntegervEXT);
 }
@@ -19531,14 +18029,12 @@ gdk_gl_get_glGetVariantFloatvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGetVariantFloatvEXT == (GdkGLProc_glGetVariantFloatvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGetVariantFloatvEXT =
-        (GdkGLProc_glGetVariantFloatvEXT) gdk_gl_get_proc_address ("glGetVariantFloatvEXT");
+    _procs_GL_EXT_vertex_shader.glGetVariantFloatvEXT =
+      (GdkGLProc_glGetVariantFloatvEXT) gdk_gl_get_proc_address ("glGetVariantFloatvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVariantFloatvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGetVariantFloatvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVariantFloatvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGetVariantFloatvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGetVariantFloatvEXT);
 }
@@ -19551,14 +18047,12 @@ gdk_gl_get_glGetVariantPointervEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGetVariantPointervEXT == (GdkGLProc_glGetVariantPointervEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGetVariantPointervEXT =
-        (GdkGLProc_glGetVariantPointervEXT) gdk_gl_get_proc_address ("glGetVariantPointervEXT");
+    _procs_GL_EXT_vertex_shader.glGetVariantPointervEXT =
+      (GdkGLProc_glGetVariantPointervEXT) gdk_gl_get_proc_address ("glGetVariantPointervEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVariantPointervEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGetVariantPointervEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVariantPointervEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGetVariantPointervEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGetVariantPointervEXT);
 }
@@ -19571,14 +18065,12 @@ gdk_gl_get_glGetInvariantBooleanvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGetInvariantBooleanvEXT == (GdkGLProc_glGetInvariantBooleanvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGetInvariantBooleanvEXT =
-        (GdkGLProc_glGetInvariantBooleanvEXT) gdk_gl_get_proc_address ("glGetInvariantBooleanvEXT");
+    _procs_GL_EXT_vertex_shader.glGetInvariantBooleanvEXT =
+      (GdkGLProc_glGetInvariantBooleanvEXT) gdk_gl_get_proc_address ("glGetInvariantBooleanvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetInvariantBooleanvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGetInvariantBooleanvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetInvariantBooleanvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGetInvariantBooleanvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGetInvariantBooleanvEXT);
 }
@@ -19591,14 +18083,12 @@ gdk_gl_get_glGetInvariantIntegervEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGetInvariantIntegervEXT == (GdkGLProc_glGetInvariantIntegervEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGetInvariantIntegervEXT =
-        (GdkGLProc_glGetInvariantIntegervEXT) gdk_gl_get_proc_address ("glGetInvariantIntegervEXT");
+    _procs_GL_EXT_vertex_shader.glGetInvariantIntegervEXT =
+      (GdkGLProc_glGetInvariantIntegervEXT) gdk_gl_get_proc_address ("glGetInvariantIntegervEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetInvariantIntegervEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGetInvariantIntegervEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetInvariantIntegervEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGetInvariantIntegervEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGetInvariantIntegervEXT);
 }
@@ -19611,14 +18101,12 @@ gdk_gl_get_glGetInvariantFloatvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGetInvariantFloatvEXT == (GdkGLProc_glGetInvariantFloatvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGetInvariantFloatvEXT =
-        (GdkGLProc_glGetInvariantFloatvEXT) gdk_gl_get_proc_address ("glGetInvariantFloatvEXT");
+    _procs_GL_EXT_vertex_shader.glGetInvariantFloatvEXT =
+      (GdkGLProc_glGetInvariantFloatvEXT) gdk_gl_get_proc_address ("glGetInvariantFloatvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetInvariantFloatvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGetInvariantFloatvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetInvariantFloatvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGetInvariantFloatvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGetInvariantFloatvEXT);
 }
@@ -19631,14 +18119,12 @@ gdk_gl_get_glGetLocalConstantBooleanvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGetLocalConstantBooleanvEXT == (GdkGLProc_glGetLocalConstantBooleanvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGetLocalConstantBooleanvEXT =
-        (GdkGLProc_glGetLocalConstantBooleanvEXT) gdk_gl_get_proc_address ("glGetLocalConstantBooleanvEXT");
+    _procs_GL_EXT_vertex_shader.glGetLocalConstantBooleanvEXT =
+      (GdkGLProc_glGetLocalConstantBooleanvEXT) gdk_gl_get_proc_address ("glGetLocalConstantBooleanvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetLocalConstantBooleanvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGetLocalConstantBooleanvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetLocalConstantBooleanvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGetLocalConstantBooleanvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGetLocalConstantBooleanvEXT);
 }
@@ -19651,14 +18137,12 @@ gdk_gl_get_glGetLocalConstantIntegervEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGetLocalConstantIntegervEXT == (GdkGLProc_glGetLocalConstantIntegervEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGetLocalConstantIntegervEXT =
-        (GdkGLProc_glGetLocalConstantIntegervEXT) gdk_gl_get_proc_address ("glGetLocalConstantIntegervEXT");
+    _procs_GL_EXT_vertex_shader.glGetLocalConstantIntegervEXT =
+      (GdkGLProc_glGetLocalConstantIntegervEXT) gdk_gl_get_proc_address ("glGetLocalConstantIntegervEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetLocalConstantIntegervEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGetLocalConstantIntegervEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetLocalConstantIntegervEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGetLocalConstantIntegervEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGetLocalConstantIntegervEXT);
 }
@@ -19671,14 +18155,12 @@ gdk_gl_get_glGetLocalConstantFloatvEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_vertex_shader.glGetLocalConstantFloatvEXT == (GdkGLProc_glGetLocalConstantFloatvEXT) -1)
-    {
-      _procs_GL_EXT_vertex_shader.glGetLocalConstantFloatvEXT =
-        (GdkGLProc_glGetLocalConstantFloatvEXT) gdk_gl_get_proc_address ("glGetLocalConstantFloatvEXT");
+    _procs_GL_EXT_vertex_shader.glGetLocalConstantFloatvEXT =
+      (GdkGLProc_glGetLocalConstantFloatvEXT) gdk_gl_get_proc_address ("glGetLocalConstantFloatvEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetLocalConstantFloatvEXT () - %s",
-                   (_procs_GL_EXT_vertex_shader.glGetLocalConstantFloatvEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetLocalConstantFloatvEXT () - %s",
+               (_procs_GL_EXT_vertex_shader.glGetLocalConstantFloatvEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_vertex_shader.glGetLocalConstantFloatvEXT);
 }
@@ -19813,14 +18295,12 @@ gdk_gl_get_glVertexStream1sATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream1sATI == (GdkGLProc_glVertexStream1sATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream1sATI =
-        (GdkGLProc_glVertexStream1sATI) gdk_gl_get_proc_address ("glVertexStream1sATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream1sATI =
+      (GdkGLProc_glVertexStream1sATI) gdk_gl_get_proc_address ("glVertexStream1sATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream1sATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream1sATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream1sATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream1sATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream1sATI);
 }
@@ -19833,14 +18313,12 @@ gdk_gl_get_glVertexStream1svATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream1svATI == (GdkGLProc_glVertexStream1svATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream1svATI =
-        (GdkGLProc_glVertexStream1svATI) gdk_gl_get_proc_address ("glVertexStream1svATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream1svATI =
+      (GdkGLProc_glVertexStream1svATI) gdk_gl_get_proc_address ("glVertexStream1svATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream1svATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream1svATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream1svATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream1svATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream1svATI);
 }
@@ -19853,14 +18331,12 @@ gdk_gl_get_glVertexStream1iATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream1iATI == (GdkGLProc_glVertexStream1iATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream1iATI =
-        (GdkGLProc_glVertexStream1iATI) gdk_gl_get_proc_address ("glVertexStream1iATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream1iATI =
+      (GdkGLProc_glVertexStream1iATI) gdk_gl_get_proc_address ("glVertexStream1iATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream1iATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream1iATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream1iATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream1iATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream1iATI);
 }
@@ -19873,14 +18349,12 @@ gdk_gl_get_glVertexStream1ivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream1ivATI == (GdkGLProc_glVertexStream1ivATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream1ivATI =
-        (GdkGLProc_glVertexStream1ivATI) gdk_gl_get_proc_address ("glVertexStream1ivATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream1ivATI =
+      (GdkGLProc_glVertexStream1ivATI) gdk_gl_get_proc_address ("glVertexStream1ivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream1ivATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream1ivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream1ivATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream1ivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream1ivATI);
 }
@@ -19893,14 +18367,12 @@ gdk_gl_get_glVertexStream1fATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream1fATI == (GdkGLProc_glVertexStream1fATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream1fATI =
-        (GdkGLProc_glVertexStream1fATI) gdk_gl_get_proc_address ("glVertexStream1fATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream1fATI =
+      (GdkGLProc_glVertexStream1fATI) gdk_gl_get_proc_address ("glVertexStream1fATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream1fATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream1fATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream1fATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream1fATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream1fATI);
 }
@@ -19913,14 +18385,12 @@ gdk_gl_get_glVertexStream1fvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream1fvATI == (GdkGLProc_glVertexStream1fvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream1fvATI =
-        (GdkGLProc_glVertexStream1fvATI) gdk_gl_get_proc_address ("glVertexStream1fvATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream1fvATI =
+      (GdkGLProc_glVertexStream1fvATI) gdk_gl_get_proc_address ("glVertexStream1fvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream1fvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream1fvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream1fvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream1fvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream1fvATI);
 }
@@ -19933,14 +18403,12 @@ gdk_gl_get_glVertexStream1dATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream1dATI == (GdkGLProc_glVertexStream1dATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream1dATI =
-        (GdkGLProc_glVertexStream1dATI) gdk_gl_get_proc_address ("glVertexStream1dATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream1dATI =
+      (GdkGLProc_glVertexStream1dATI) gdk_gl_get_proc_address ("glVertexStream1dATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream1dATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream1dATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream1dATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream1dATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream1dATI);
 }
@@ -19953,14 +18421,12 @@ gdk_gl_get_glVertexStream1dvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream1dvATI == (GdkGLProc_glVertexStream1dvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream1dvATI =
-        (GdkGLProc_glVertexStream1dvATI) gdk_gl_get_proc_address ("glVertexStream1dvATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream1dvATI =
+      (GdkGLProc_glVertexStream1dvATI) gdk_gl_get_proc_address ("glVertexStream1dvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream1dvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream1dvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream1dvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream1dvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream1dvATI);
 }
@@ -19973,14 +18439,12 @@ gdk_gl_get_glVertexStream2sATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream2sATI == (GdkGLProc_glVertexStream2sATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream2sATI =
-        (GdkGLProc_glVertexStream2sATI) gdk_gl_get_proc_address ("glVertexStream2sATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream2sATI =
+      (GdkGLProc_glVertexStream2sATI) gdk_gl_get_proc_address ("glVertexStream2sATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream2sATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream2sATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream2sATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream2sATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream2sATI);
 }
@@ -19993,14 +18457,12 @@ gdk_gl_get_glVertexStream2svATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream2svATI == (GdkGLProc_glVertexStream2svATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream2svATI =
-        (GdkGLProc_glVertexStream2svATI) gdk_gl_get_proc_address ("glVertexStream2svATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream2svATI =
+      (GdkGLProc_glVertexStream2svATI) gdk_gl_get_proc_address ("glVertexStream2svATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream2svATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream2svATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream2svATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream2svATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream2svATI);
 }
@@ -20013,14 +18475,12 @@ gdk_gl_get_glVertexStream2iATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream2iATI == (GdkGLProc_glVertexStream2iATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream2iATI =
-        (GdkGLProc_glVertexStream2iATI) gdk_gl_get_proc_address ("glVertexStream2iATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream2iATI =
+      (GdkGLProc_glVertexStream2iATI) gdk_gl_get_proc_address ("glVertexStream2iATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream2iATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream2iATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream2iATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream2iATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream2iATI);
 }
@@ -20033,14 +18493,12 @@ gdk_gl_get_glVertexStream2ivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream2ivATI == (GdkGLProc_glVertexStream2ivATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream2ivATI =
-        (GdkGLProc_glVertexStream2ivATI) gdk_gl_get_proc_address ("glVertexStream2ivATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream2ivATI =
+      (GdkGLProc_glVertexStream2ivATI) gdk_gl_get_proc_address ("glVertexStream2ivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream2ivATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream2ivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream2ivATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream2ivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream2ivATI);
 }
@@ -20053,14 +18511,12 @@ gdk_gl_get_glVertexStream2fATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream2fATI == (GdkGLProc_glVertexStream2fATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream2fATI =
-        (GdkGLProc_glVertexStream2fATI) gdk_gl_get_proc_address ("glVertexStream2fATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream2fATI =
+      (GdkGLProc_glVertexStream2fATI) gdk_gl_get_proc_address ("glVertexStream2fATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream2fATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream2fATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream2fATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream2fATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream2fATI);
 }
@@ -20073,14 +18529,12 @@ gdk_gl_get_glVertexStream2fvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream2fvATI == (GdkGLProc_glVertexStream2fvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream2fvATI =
-        (GdkGLProc_glVertexStream2fvATI) gdk_gl_get_proc_address ("glVertexStream2fvATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream2fvATI =
+      (GdkGLProc_glVertexStream2fvATI) gdk_gl_get_proc_address ("glVertexStream2fvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream2fvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream2fvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream2fvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream2fvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream2fvATI);
 }
@@ -20093,14 +18547,12 @@ gdk_gl_get_glVertexStream2dATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream2dATI == (GdkGLProc_glVertexStream2dATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream2dATI =
-        (GdkGLProc_glVertexStream2dATI) gdk_gl_get_proc_address ("glVertexStream2dATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream2dATI =
+      (GdkGLProc_glVertexStream2dATI) gdk_gl_get_proc_address ("glVertexStream2dATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream2dATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream2dATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream2dATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream2dATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream2dATI);
 }
@@ -20113,14 +18565,12 @@ gdk_gl_get_glVertexStream2dvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream2dvATI == (GdkGLProc_glVertexStream2dvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream2dvATI =
-        (GdkGLProc_glVertexStream2dvATI) gdk_gl_get_proc_address ("glVertexStream2dvATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream2dvATI =
+      (GdkGLProc_glVertexStream2dvATI) gdk_gl_get_proc_address ("glVertexStream2dvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream2dvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream2dvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream2dvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream2dvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream2dvATI);
 }
@@ -20133,14 +18583,12 @@ gdk_gl_get_glVertexStream3sATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream3sATI == (GdkGLProc_glVertexStream3sATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream3sATI =
-        (GdkGLProc_glVertexStream3sATI) gdk_gl_get_proc_address ("glVertexStream3sATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream3sATI =
+      (GdkGLProc_glVertexStream3sATI) gdk_gl_get_proc_address ("glVertexStream3sATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream3sATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream3sATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream3sATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream3sATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream3sATI);
 }
@@ -20153,14 +18601,12 @@ gdk_gl_get_glVertexStream3svATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream3svATI == (GdkGLProc_glVertexStream3svATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream3svATI =
-        (GdkGLProc_glVertexStream3svATI) gdk_gl_get_proc_address ("glVertexStream3svATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream3svATI =
+      (GdkGLProc_glVertexStream3svATI) gdk_gl_get_proc_address ("glVertexStream3svATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream3svATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream3svATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream3svATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream3svATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream3svATI);
 }
@@ -20173,14 +18619,12 @@ gdk_gl_get_glVertexStream3iATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream3iATI == (GdkGLProc_glVertexStream3iATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream3iATI =
-        (GdkGLProc_glVertexStream3iATI) gdk_gl_get_proc_address ("glVertexStream3iATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream3iATI =
+      (GdkGLProc_glVertexStream3iATI) gdk_gl_get_proc_address ("glVertexStream3iATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream3iATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream3iATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream3iATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream3iATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream3iATI);
 }
@@ -20193,14 +18637,12 @@ gdk_gl_get_glVertexStream3ivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream3ivATI == (GdkGLProc_glVertexStream3ivATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream3ivATI =
-        (GdkGLProc_glVertexStream3ivATI) gdk_gl_get_proc_address ("glVertexStream3ivATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream3ivATI =
+      (GdkGLProc_glVertexStream3ivATI) gdk_gl_get_proc_address ("glVertexStream3ivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream3ivATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream3ivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream3ivATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream3ivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream3ivATI);
 }
@@ -20213,14 +18655,12 @@ gdk_gl_get_glVertexStream3fATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream3fATI == (GdkGLProc_glVertexStream3fATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream3fATI =
-        (GdkGLProc_glVertexStream3fATI) gdk_gl_get_proc_address ("glVertexStream3fATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream3fATI =
+      (GdkGLProc_glVertexStream3fATI) gdk_gl_get_proc_address ("glVertexStream3fATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream3fATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream3fATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream3fATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream3fATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream3fATI);
 }
@@ -20233,14 +18673,12 @@ gdk_gl_get_glVertexStream3fvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream3fvATI == (GdkGLProc_glVertexStream3fvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream3fvATI =
-        (GdkGLProc_glVertexStream3fvATI) gdk_gl_get_proc_address ("glVertexStream3fvATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream3fvATI =
+      (GdkGLProc_glVertexStream3fvATI) gdk_gl_get_proc_address ("glVertexStream3fvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream3fvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream3fvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream3fvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream3fvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream3fvATI);
 }
@@ -20253,14 +18691,12 @@ gdk_gl_get_glVertexStream3dATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream3dATI == (GdkGLProc_glVertexStream3dATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream3dATI =
-        (GdkGLProc_glVertexStream3dATI) gdk_gl_get_proc_address ("glVertexStream3dATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream3dATI =
+      (GdkGLProc_glVertexStream3dATI) gdk_gl_get_proc_address ("glVertexStream3dATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream3dATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream3dATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream3dATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream3dATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream3dATI);
 }
@@ -20273,14 +18709,12 @@ gdk_gl_get_glVertexStream3dvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream3dvATI == (GdkGLProc_glVertexStream3dvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream3dvATI =
-        (GdkGLProc_glVertexStream3dvATI) gdk_gl_get_proc_address ("glVertexStream3dvATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream3dvATI =
+      (GdkGLProc_glVertexStream3dvATI) gdk_gl_get_proc_address ("glVertexStream3dvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream3dvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream3dvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream3dvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream3dvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream3dvATI);
 }
@@ -20293,14 +18727,12 @@ gdk_gl_get_glVertexStream4sATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream4sATI == (GdkGLProc_glVertexStream4sATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream4sATI =
-        (GdkGLProc_glVertexStream4sATI) gdk_gl_get_proc_address ("glVertexStream4sATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream4sATI =
+      (GdkGLProc_glVertexStream4sATI) gdk_gl_get_proc_address ("glVertexStream4sATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream4sATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream4sATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream4sATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream4sATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream4sATI);
 }
@@ -20313,14 +18745,12 @@ gdk_gl_get_glVertexStream4svATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream4svATI == (GdkGLProc_glVertexStream4svATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream4svATI =
-        (GdkGLProc_glVertexStream4svATI) gdk_gl_get_proc_address ("glVertexStream4svATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream4svATI =
+      (GdkGLProc_glVertexStream4svATI) gdk_gl_get_proc_address ("glVertexStream4svATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream4svATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream4svATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream4svATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream4svATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream4svATI);
 }
@@ -20333,14 +18763,12 @@ gdk_gl_get_glVertexStream4iATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream4iATI == (GdkGLProc_glVertexStream4iATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream4iATI =
-        (GdkGLProc_glVertexStream4iATI) gdk_gl_get_proc_address ("glVertexStream4iATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream4iATI =
+      (GdkGLProc_glVertexStream4iATI) gdk_gl_get_proc_address ("glVertexStream4iATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream4iATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream4iATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream4iATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream4iATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream4iATI);
 }
@@ -20353,14 +18781,12 @@ gdk_gl_get_glVertexStream4ivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream4ivATI == (GdkGLProc_glVertexStream4ivATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream4ivATI =
-        (GdkGLProc_glVertexStream4ivATI) gdk_gl_get_proc_address ("glVertexStream4ivATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream4ivATI =
+      (GdkGLProc_glVertexStream4ivATI) gdk_gl_get_proc_address ("glVertexStream4ivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream4ivATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream4ivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream4ivATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream4ivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream4ivATI);
 }
@@ -20373,14 +18799,12 @@ gdk_gl_get_glVertexStream4fATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream4fATI == (GdkGLProc_glVertexStream4fATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream4fATI =
-        (GdkGLProc_glVertexStream4fATI) gdk_gl_get_proc_address ("glVertexStream4fATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream4fATI =
+      (GdkGLProc_glVertexStream4fATI) gdk_gl_get_proc_address ("glVertexStream4fATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream4fATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream4fATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream4fATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream4fATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream4fATI);
 }
@@ -20393,14 +18817,12 @@ gdk_gl_get_glVertexStream4fvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream4fvATI == (GdkGLProc_glVertexStream4fvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream4fvATI =
-        (GdkGLProc_glVertexStream4fvATI) gdk_gl_get_proc_address ("glVertexStream4fvATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream4fvATI =
+      (GdkGLProc_glVertexStream4fvATI) gdk_gl_get_proc_address ("glVertexStream4fvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream4fvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream4fvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream4fvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream4fvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream4fvATI);
 }
@@ -20413,14 +18835,12 @@ gdk_gl_get_glVertexStream4dATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream4dATI == (GdkGLProc_glVertexStream4dATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream4dATI =
-        (GdkGLProc_glVertexStream4dATI) gdk_gl_get_proc_address ("glVertexStream4dATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream4dATI =
+      (GdkGLProc_glVertexStream4dATI) gdk_gl_get_proc_address ("glVertexStream4dATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream4dATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream4dATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream4dATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream4dATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream4dATI);
 }
@@ -20433,14 +18853,12 @@ gdk_gl_get_glVertexStream4dvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexStream4dvATI == (GdkGLProc_glVertexStream4dvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexStream4dvATI =
-        (GdkGLProc_glVertexStream4dvATI) gdk_gl_get_proc_address ("glVertexStream4dvATI");
+    _procs_GL_ATI_vertex_streams.glVertexStream4dvATI =
+      (GdkGLProc_glVertexStream4dvATI) gdk_gl_get_proc_address ("glVertexStream4dvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexStream4dvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexStream4dvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexStream4dvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexStream4dvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexStream4dvATI);
 }
@@ -20453,14 +18871,12 @@ gdk_gl_get_glNormalStream3bATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glNormalStream3bATI == (GdkGLProc_glNormalStream3bATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glNormalStream3bATI =
-        (GdkGLProc_glNormalStream3bATI) gdk_gl_get_proc_address ("glNormalStream3bATI");
+    _procs_GL_ATI_vertex_streams.glNormalStream3bATI =
+      (GdkGLProc_glNormalStream3bATI) gdk_gl_get_proc_address ("glNormalStream3bATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalStream3bATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glNormalStream3bATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalStream3bATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glNormalStream3bATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glNormalStream3bATI);
 }
@@ -20473,14 +18889,12 @@ gdk_gl_get_glNormalStream3bvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glNormalStream3bvATI == (GdkGLProc_glNormalStream3bvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glNormalStream3bvATI =
-        (GdkGLProc_glNormalStream3bvATI) gdk_gl_get_proc_address ("glNormalStream3bvATI");
+    _procs_GL_ATI_vertex_streams.glNormalStream3bvATI =
+      (GdkGLProc_glNormalStream3bvATI) gdk_gl_get_proc_address ("glNormalStream3bvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalStream3bvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glNormalStream3bvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalStream3bvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glNormalStream3bvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glNormalStream3bvATI);
 }
@@ -20493,14 +18907,12 @@ gdk_gl_get_glNormalStream3sATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glNormalStream3sATI == (GdkGLProc_glNormalStream3sATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glNormalStream3sATI =
-        (GdkGLProc_glNormalStream3sATI) gdk_gl_get_proc_address ("glNormalStream3sATI");
+    _procs_GL_ATI_vertex_streams.glNormalStream3sATI =
+      (GdkGLProc_glNormalStream3sATI) gdk_gl_get_proc_address ("glNormalStream3sATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalStream3sATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glNormalStream3sATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalStream3sATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glNormalStream3sATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glNormalStream3sATI);
 }
@@ -20513,14 +18925,12 @@ gdk_gl_get_glNormalStream3svATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glNormalStream3svATI == (GdkGLProc_glNormalStream3svATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glNormalStream3svATI =
-        (GdkGLProc_glNormalStream3svATI) gdk_gl_get_proc_address ("glNormalStream3svATI");
+    _procs_GL_ATI_vertex_streams.glNormalStream3svATI =
+      (GdkGLProc_glNormalStream3svATI) gdk_gl_get_proc_address ("glNormalStream3svATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalStream3svATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glNormalStream3svATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalStream3svATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glNormalStream3svATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glNormalStream3svATI);
 }
@@ -20533,14 +18943,12 @@ gdk_gl_get_glNormalStream3iATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glNormalStream3iATI == (GdkGLProc_glNormalStream3iATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glNormalStream3iATI =
-        (GdkGLProc_glNormalStream3iATI) gdk_gl_get_proc_address ("glNormalStream3iATI");
+    _procs_GL_ATI_vertex_streams.glNormalStream3iATI =
+      (GdkGLProc_glNormalStream3iATI) gdk_gl_get_proc_address ("glNormalStream3iATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalStream3iATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glNormalStream3iATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalStream3iATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glNormalStream3iATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glNormalStream3iATI);
 }
@@ -20553,14 +18961,12 @@ gdk_gl_get_glNormalStream3ivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glNormalStream3ivATI == (GdkGLProc_glNormalStream3ivATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glNormalStream3ivATI =
-        (GdkGLProc_glNormalStream3ivATI) gdk_gl_get_proc_address ("glNormalStream3ivATI");
+    _procs_GL_ATI_vertex_streams.glNormalStream3ivATI =
+      (GdkGLProc_glNormalStream3ivATI) gdk_gl_get_proc_address ("glNormalStream3ivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalStream3ivATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glNormalStream3ivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalStream3ivATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glNormalStream3ivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glNormalStream3ivATI);
 }
@@ -20573,14 +18979,12 @@ gdk_gl_get_glNormalStream3fATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glNormalStream3fATI == (GdkGLProc_glNormalStream3fATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glNormalStream3fATI =
-        (GdkGLProc_glNormalStream3fATI) gdk_gl_get_proc_address ("glNormalStream3fATI");
+    _procs_GL_ATI_vertex_streams.glNormalStream3fATI =
+      (GdkGLProc_glNormalStream3fATI) gdk_gl_get_proc_address ("glNormalStream3fATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalStream3fATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glNormalStream3fATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalStream3fATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glNormalStream3fATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glNormalStream3fATI);
 }
@@ -20593,14 +18997,12 @@ gdk_gl_get_glNormalStream3fvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glNormalStream3fvATI == (GdkGLProc_glNormalStream3fvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glNormalStream3fvATI =
-        (GdkGLProc_glNormalStream3fvATI) gdk_gl_get_proc_address ("glNormalStream3fvATI");
+    _procs_GL_ATI_vertex_streams.glNormalStream3fvATI =
+      (GdkGLProc_glNormalStream3fvATI) gdk_gl_get_proc_address ("glNormalStream3fvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalStream3fvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glNormalStream3fvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalStream3fvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glNormalStream3fvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glNormalStream3fvATI);
 }
@@ -20613,14 +19015,12 @@ gdk_gl_get_glNormalStream3dATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glNormalStream3dATI == (GdkGLProc_glNormalStream3dATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glNormalStream3dATI =
-        (GdkGLProc_glNormalStream3dATI) gdk_gl_get_proc_address ("glNormalStream3dATI");
+    _procs_GL_ATI_vertex_streams.glNormalStream3dATI =
+      (GdkGLProc_glNormalStream3dATI) gdk_gl_get_proc_address ("glNormalStream3dATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalStream3dATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glNormalStream3dATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalStream3dATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glNormalStream3dATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glNormalStream3dATI);
 }
@@ -20633,14 +19033,12 @@ gdk_gl_get_glNormalStream3dvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glNormalStream3dvATI == (GdkGLProc_glNormalStream3dvATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glNormalStream3dvATI =
-        (GdkGLProc_glNormalStream3dvATI) gdk_gl_get_proc_address ("glNormalStream3dvATI");
+    _procs_GL_ATI_vertex_streams.glNormalStream3dvATI =
+      (GdkGLProc_glNormalStream3dvATI) gdk_gl_get_proc_address ("glNormalStream3dvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormalStream3dvATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glNormalStream3dvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalStream3dvATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glNormalStream3dvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glNormalStream3dvATI);
 }
@@ -20653,14 +19051,12 @@ gdk_gl_get_glClientActiveVertexStreamATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glClientActiveVertexStreamATI == (GdkGLProc_glClientActiveVertexStreamATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glClientActiveVertexStreamATI =
-        (GdkGLProc_glClientActiveVertexStreamATI) gdk_gl_get_proc_address ("glClientActiveVertexStreamATI");
+    _procs_GL_ATI_vertex_streams.glClientActiveVertexStreamATI =
+      (GdkGLProc_glClientActiveVertexStreamATI) gdk_gl_get_proc_address ("glClientActiveVertexStreamATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glClientActiveVertexStreamATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glClientActiveVertexStreamATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClientActiveVertexStreamATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glClientActiveVertexStreamATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glClientActiveVertexStreamATI);
 }
@@ -20673,14 +19069,12 @@ gdk_gl_get_glVertexBlendEnviATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexBlendEnviATI == (GdkGLProc_glVertexBlendEnviATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexBlendEnviATI =
-        (GdkGLProc_glVertexBlendEnviATI) gdk_gl_get_proc_address ("glVertexBlendEnviATI");
+    _procs_GL_ATI_vertex_streams.glVertexBlendEnviATI =
+      (GdkGLProc_glVertexBlendEnviATI) gdk_gl_get_proc_address ("glVertexBlendEnviATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexBlendEnviATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexBlendEnviATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexBlendEnviATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexBlendEnviATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexBlendEnviATI);
 }
@@ -20693,14 +19087,12 @@ gdk_gl_get_glVertexBlendEnvfATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_streams.glVertexBlendEnvfATI == (GdkGLProc_glVertexBlendEnvfATI) -1)
-    {
-      _procs_GL_ATI_vertex_streams.glVertexBlendEnvfATI =
-        (GdkGLProc_glVertexBlendEnvfATI) gdk_gl_get_proc_address ("glVertexBlendEnvfATI");
+    _procs_GL_ATI_vertex_streams.glVertexBlendEnvfATI =
+      (GdkGLProc_glVertexBlendEnvfATI) gdk_gl_get_proc_address ("glVertexBlendEnvfATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexBlendEnvfATI () - %s",
-                   (_procs_GL_ATI_vertex_streams.glVertexBlendEnvfATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexBlendEnvfATI () - %s",
+               (_procs_GL_ATI_vertex_streams.glVertexBlendEnvfATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_streams.glVertexBlendEnvfATI);
 }
@@ -20796,14 +19188,12 @@ gdk_gl_get_glElementPointerATI (void)
     return NULL;
 
   if (_procs_GL_ATI_element_array.glElementPointerATI == (GdkGLProc_glElementPointerATI) -1)
-    {
-      _procs_GL_ATI_element_array.glElementPointerATI =
-        (GdkGLProc_glElementPointerATI) gdk_gl_get_proc_address ("glElementPointerATI");
+    _procs_GL_ATI_element_array.glElementPointerATI =
+      (GdkGLProc_glElementPointerATI) gdk_gl_get_proc_address ("glElementPointerATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glElementPointerATI () - %s",
-                   (_procs_GL_ATI_element_array.glElementPointerATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glElementPointerATI () - %s",
+               (_procs_GL_ATI_element_array.glElementPointerATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_element_array.glElementPointerATI);
 }
@@ -20816,14 +19206,12 @@ gdk_gl_get_glDrawElementArrayATI (void)
     return NULL;
 
   if (_procs_GL_ATI_element_array.glDrawElementArrayATI == (GdkGLProc_glDrawElementArrayATI) -1)
-    {
-      _procs_GL_ATI_element_array.glDrawElementArrayATI =
-        (GdkGLProc_glDrawElementArrayATI) gdk_gl_get_proc_address ("glDrawElementArrayATI");
+    _procs_GL_ATI_element_array.glDrawElementArrayATI =
+      (GdkGLProc_glDrawElementArrayATI) gdk_gl_get_proc_address ("glDrawElementArrayATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDrawElementArrayATI () - %s",
-                   (_procs_GL_ATI_element_array.glDrawElementArrayATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawElementArrayATI () - %s",
+               (_procs_GL_ATI_element_array.glDrawElementArrayATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_element_array.glDrawElementArrayATI);
 }
@@ -20836,14 +19224,12 @@ gdk_gl_get_glDrawRangeElementArrayATI (void)
     return NULL;
 
   if (_procs_GL_ATI_element_array.glDrawRangeElementArrayATI == (GdkGLProc_glDrawRangeElementArrayATI) -1)
-    {
-      _procs_GL_ATI_element_array.glDrawRangeElementArrayATI =
-        (GdkGLProc_glDrawRangeElementArrayATI) gdk_gl_get_proc_address ("glDrawRangeElementArrayATI");
+    _procs_GL_ATI_element_array.glDrawRangeElementArrayATI =
+      (GdkGLProc_glDrawRangeElementArrayATI) gdk_gl_get_proc_address ("glDrawRangeElementArrayATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDrawRangeElementArrayATI () - %s",
-                   (_procs_GL_ATI_element_array.glDrawRangeElementArrayATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawRangeElementArrayATI () - %s",
+               (_procs_GL_ATI_element_array.glDrawRangeElementArrayATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_element_array.glDrawRangeElementArrayATI);
 }
@@ -20895,14 +19281,12 @@ gdk_gl_get_glDrawMeshArraysSUN (void)
     return NULL;
 
   if (_procs_GL_SUN_mesh_array.glDrawMeshArraysSUN == (GdkGLProc_glDrawMeshArraysSUN) -1)
-    {
-      _procs_GL_SUN_mesh_array.glDrawMeshArraysSUN =
-        (GdkGLProc_glDrawMeshArraysSUN) gdk_gl_get_proc_address ("glDrawMeshArraysSUN");
+    _procs_GL_SUN_mesh_array.glDrawMeshArraysSUN =
+      (GdkGLProc_glDrawMeshArraysSUN) gdk_gl_get_proc_address ("glDrawMeshArraysSUN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDrawMeshArraysSUN () - %s",
-                   (_procs_GL_SUN_mesh_array.glDrawMeshArraysSUN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawMeshArraysSUN () - %s",
+               (_procs_GL_SUN_mesh_array.glDrawMeshArraysSUN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_SUN_mesh_array.glDrawMeshArraysSUN);
 }
@@ -20958,14 +19342,12 @@ gdk_gl_get_glGenOcclusionQueriesNV (void)
     return NULL;
 
   if (_procs_GL_NV_occlusion_query.glGenOcclusionQueriesNV == (GdkGLProc_glGenOcclusionQueriesNV) -1)
-    {
-      _procs_GL_NV_occlusion_query.glGenOcclusionQueriesNV =
-        (GdkGLProc_glGenOcclusionQueriesNV) gdk_gl_get_proc_address ("glGenOcclusionQueriesNV");
+    _procs_GL_NV_occlusion_query.glGenOcclusionQueriesNV =
+      (GdkGLProc_glGenOcclusionQueriesNV) gdk_gl_get_proc_address ("glGenOcclusionQueriesNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenOcclusionQueriesNV () - %s",
-                   (_procs_GL_NV_occlusion_query.glGenOcclusionQueriesNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenOcclusionQueriesNV () - %s",
+               (_procs_GL_NV_occlusion_query.glGenOcclusionQueriesNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_occlusion_query.glGenOcclusionQueriesNV);
 }
@@ -20978,14 +19360,12 @@ gdk_gl_get_glDeleteOcclusionQueriesNV (void)
     return NULL;
 
   if (_procs_GL_NV_occlusion_query.glDeleteOcclusionQueriesNV == (GdkGLProc_glDeleteOcclusionQueriesNV) -1)
-    {
-      _procs_GL_NV_occlusion_query.glDeleteOcclusionQueriesNV =
-        (GdkGLProc_glDeleteOcclusionQueriesNV) gdk_gl_get_proc_address ("glDeleteOcclusionQueriesNV");
+    _procs_GL_NV_occlusion_query.glDeleteOcclusionQueriesNV =
+      (GdkGLProc_glDeleteOcclusionQueriesNV) gdk_gl_get_proc_address ("glDeleteOcclusionQueriesNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteOcclusionQueriesNV () - %s",
-                   (_procs_GL_NV_occlusion_query.glDeleteOcclusionQueriesNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteOcclusionQueriesNV () - %s",
+               (_procs_GL_NV_occlusion_query.glDeleteOcclusionQueriesNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_occlusion_query.glDeleteOcclusionQueriesNV);
 }
@@ -20998,14 +19378,12 @@ gdk_gl_get_glIsOcclusionQueryNV (void)
     return NULL;
 
   if (_procs_GL_NV_occlusion_query.glIsOcclusionQueryNV == (GdkGLProc_glIsOcclusionQueryNV) -1)
-    {
-      _procs_GL_NV_occlusion_query.glIsOcclusionQueryNV =
-        (GdkGLProc_glIsOcclusionQueryNV) gdk_gl_get_proc_address ("glIsOcclusionQueryNV");
+    _procs_GL_NV_occlusion_query.glIsOcclusionQueryNV =
+      (GdkGLProc_glIsOcclusionQueryNV) gdk_gl_get_proc_address ("glIsOcclusionQueryNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsOcclusionQueryNV () - %s",
-                   (_procs_GL_NV_occlusion_query.glIsOcclusionQueryNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsOcclusionQueryNV () - %s",
+               (_procs_GL_NV_occlusion_query.glIsOcclusionQueryNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_occlusion_query.glIsOcclusionQueryNV);
 }
@@ -21018,14 +19396,12 @@ gdk_gl_get_glBeginOcclusionQueryNV (void)
     return NULL;
 
   if (_procs_GL_NV_occlusion_query.glBeginOcclusionQueryNV == (GdkGLProc_glBeginOcclusionQueryNV) -1)
-    {
-      _procs_GL_NV_occlusion_query.glBeginOcclusionQueryNV =
-        (GdkGLProc_glBeginOcclusionQueryNV) gdk_gl_get_proc_address ("glBeginOcclusionQueryNV");
+    _procs_GL_NV_occlusion_query.glBeginOcclusionQueryNV =
+      (GdkGLProc_glBeginOcclusionQueryNV) gdk_gl_get_proc_address ("glBeginOcclusionQueryNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBeginOcclusionQueryNV () - %s",
-                   (_procs_GL_NV_occlusion_query.glBeginOcclusionQueryNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginOcclusionQueryNV () - %s",
+               (_procs_GL_NV_occlusion_query.glBeginOcclusionQueryNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_occlusion_query.glBeginOcclusionQueryNV);
 }
@@ -21038,14 +19414,12 @@ gdk_gl_get_glEndOcclusionQueryNV (void)
     return NULL;
 
   if (_procs_GL_NV_occlusion_query.glEndOcclusionQueryNV == (GdkGLProc_glEndOcclusionQueryNV) -1)
-    {
-      _procs_GL_NV_occlusion_query.glEndOcclusionQueryNV =
-        (GdkGLProc_glEndOcclusionQueryNV) gdk_gl_get_proc_address ("glEndOcclusionQueryNV");
+    _procs_GL_NV_occlusion_query.glEndOcclusionQueryNV =
+      (GdkGLProc_glEndOcclusionQueryNV) gdk_gl_get_proc_address ("glEndOcclusionQueryNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glEndOcclusionQueryNV () - %s",
-                   (_procs_GL_NV_occlusion_query.glEndOcclusionQueryNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndOcclusionQueryNV () - %s",
+               (_procs_GL_NV_occlusion_query.glEndOcclusionQueryNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_occlusion_query.glEndOcclusionQueryNV);
 }
@@ -21058,14 +19432,12 @@ gdk_gl_get_glGetOcclusionQueryivNV (void)
     return NULL;
 
   if (_procs_GL_NV_occlusion_query.glGetOcclusionQueryivNV == (GdkGLProc_glGetOcclusionQueryivNV) -1)
-    {
-      _procs_GL_NV_occlusion_query.glGetOcclusionQueryivNV =
-        (GdkGLProc_glGetOcclusionQueryivNV) gdk_gl_get_proc_address ("glGetOcclusionQueryivNV");
+    _procs_GL_NV_occlusion_query.glGetOcclusionQueryivNV =
+      (GdkGLProc_glGetOcclusionQueryivNV) gdk_gl_get_proc_address ("glGetOcclusionQueryivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetOcclusionQueryivNV () - %s",
-                   (_procs_GL_NV_occlusion_query.glGetOcclusionQueryivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetOcclusionQueryivNV () - %s",
+               (_procs_GL_NV_occlusion_query.glGetOcclusionQueryivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_occlusion_query.glGetOcclusionQueryivNV);
 }
@@ -21078,14 +19450,12 @@ gdk_gl_get_glGetOcclusionQueryuivNV (void)
     return NULL;
 
   if (_procs_GL_NV_occlusion_query.glGetOcclusionQueryuivNV == (GdkGLProc_glGetOcclusionQueryuivNV) -1)
-    {
-      _procs_GL_NV_occlusion_query.glGetOcclusionQueryuivNV =
-        (GdkGLProc_glGetOcclusionQueryuivNV) gdk_gl_get_proc_address ("glGetOcclusionQueryuivNV");
+    _procs_GL_NV_occlusion_query.glGetOcclusionQueryuivNV =
+      (GdkGLProc_glGetOcclusionQueryuivNV) gdk_gl_get_proc_address ("glGetOcclusionQueryuivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetOcclusionQueryuivNV () - %s",
-                   (_procs_GL_NV_occlusion_query.glGetOcclusionQueryuivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetOcclusionQueryuivNV () - %s",
+               (_procs_GL_NV_occlusion_query.glGetOcclusionQueryuivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_occlusion_query.glGetOcclusionQueryuivNV);
 }
@@ -21142,14 +19512,12 @@ gdk_gl_get_glPointParameteriNV (void)
     return NULL;
 
   if (_procs_GL_NV_point_sprite.glPointParameteriNV == (GdkGLProc_glPointParameteriNV) -1)
-    {
-      _procs_GL_NV_point_sprite.glPointParameteriNV =
-        (GdkGLProc_glPointParameteriNV) gdk_gl_get_proc_address ("glPointParameteriNV");
+    _procs_GL_NV_point_sprite.glPointParameteriNV =
+      (GdkGLProc_glPointParameteriNV) gdk_gl_get_proc_address ("glPointParameteriNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameteriNV () - %s",
-                   (_procs_GL_NV_point_sprite.glPointParameteriNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameteriNV () - %s",
+               (_procs_GL_NV_point_sprite.glPointParameteriNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_point_sprite.glPointParameteriNV);
 }
@@ -21162,14 +19530,12 @@ gdk_gl_get_glPointParameterivNV (void)
     return NULL;
 
   if (_procs_GL_NV_point_sprite.glPointParameterivNV == (GdkGLProc_glPointParameterivNV) -1)
-    {
-      _procs_GL_NV_point_sprite.glPointParameterivNV =
-        (GdkGLProc_glPointParameterivNV) gdk_gl_get_proc_address ("glPointParameterivNV");
+    _procs_GL_NV_point_sprite.glPointParameterivNV =
+      (GdkGLProc_glPointParameterivNV) gdk_gl_get_proc_address ("glPointParameterivNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPointParameterivNV () - %s",
-                   (_procs_GL_NV_point_sprite.glPointParameterivNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPointParameterivNV () - %s",
+               (_procs_GL_NV_point_sprite.glPointParameterivNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_point_sprite.glPointParameterivNV);
 }
@@ -21220,14 +19586,12 @@ gdk_gl_get_glActiveStencilFaceEXT (void)
     return NULL;
 
   if (_procs_GL_EXT_stencil_two_side.glActiveStencilFaceEXT == (GdkGLProc_glActiveStencilFaceEXT) -1)
-    {
-      _procs_GL_EXT_stencil_two_side.glActiveStencilFaceEXT =
-        (GdkGLProc_glActiveStencilFaceEXT) gdk_gl_get_proc_address ("glActiveStencilFaceEXT");
+    _procs_GL_EXT_stencil_two_side.glActiveStencilFaceEXT =
+      (GdkGLProc_glActiveStencilFaceEXT) gdk_gl_get_proc_address ("glActiveStencilFaceEXT");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glActiveStencilFaceEXT () - %s",
-                   (_procs_GL_EXT_stencil_two_side.glActiveStencilFaceEXT) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glActiveStencilFaceEXT () - %s",
+               (_procs_GL_EXT_stencil_two_side.glActiveStencilFaceEXT) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_EXT_stencil_two_side.glActiveStencilFaceEXT);
 }
@@ -21281,14 +19645,12 @@ gdk_gl_get_glElementPointerAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_element_array.glElementPointerAPPLE == (GdkGLProc_glElementPointerAPPLE) -1)
-    {
-      _procs_GL_APPLE_element_array.glElementPointerAPPLE =
-        (GdkGLProc_glElementPointerAPPLE) gdk_gl_get_proc_address ("glElementPointerAPPLE");
+    _procs_GL_APPLE_element_array.glElementPointerAPPLE =
+      (GdkGLProc_glElementPointerAPPLE) gdk_gl_get_proc_address ("glElementPointerAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glElementPointerAPPLE () - %s",
-                   (_procs_GL_APPLE_element_array.glElementPointerAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glElementPointerAPPLE () - %s",
+               (_procs_GL_APPLE_element_array.glElementPointerAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_element_array.glElementPointerAPPLE);
 }
@@ -21301,14 +19663,12 @@ gdk_gl_get_glDrawElementArrayAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_element_array.glDrawElementArrayAPPLE == (GdkGLProc_glDrawElementArrayAPPLE) -1)
-    {
-      _procs_GL_APPLE_element_array.glDrawElementArrayAPPLE =
-        (GdkGLProc_glDrawElementArrayAPPLE) gdk_gl_get_proc_address ("glDrawElementArrayAPPLE");
+    _procs_GL_APPLE_element_array.glDrawElementArrayAPPLE =
+      (GdkGLProc_glDrawElementArrayAPPLE) gdk_gl_get_proc_address ("glDrawElementArrayAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDrawElementArrayAPPLE () - %s",
-                   (_procs_GL_APPLE_element_array.glDrawElementArrayAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawElementArrayAPPLE () - %s",
+               (_procs_GL_APPLE_element_array.glDrawElementArrayAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_element_array.glDrawElementArrayAPPLE);
 }
@@ -21321,14 +19681,12 @@ gdk_gl_get_glDrawRangeElementArrayAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_element_array.glDrawRangeElementArrayAPPLE == (GdkGLProc_glDrawRangeElementArrayAPPLE) -1)
-    {
-      _procs_GL_APPLE_element_array.glDrawRangeElementArrayAPPLE =
-        (GdkGLProc_glDrawRangeElementArrayAPPLE) gdk_gl_get_proc_address ("glDrawRangeElementArrayAPPLE");
+    _procs_GL_APPLE_element_array.glDrawRangeElementArrayAPPLE =
+      (GdkGLProc_glDrawRangeElementArrayAPPLE) gdk_gl_get_proc_address ("glDrawRangeElementArrayAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDrawRangeElementArrayAPPLE () - %s",
-                   (_procs_GL_APPLE_element_array.glDrawRangeElementArrayAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawRangeElementArrayAPPLE () - %s",
+               (_procs_GL_APPLE_element_array.glDrawRangeElementArrayAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_element_array.glDrawRangeElementArrayAPPLE);
 }
@@ -21341,14 +19699,12 @@ gdk_gl_get_glMultiDrawElementArrayAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_element_array.glMultiDrawElementArrayAPPLE == (GdkGLProc_glMultiDrawElementArrayAPPLE) -1)
-    {
-      _procs_GL_APPLE_element_array.glMultiDrawElementArrayAPPLE =
-        (GdkGLProc_glMultiDrawElementArrayAPPLE) gdk_gl_get_proc_address ("glMultiDrawElementArrayAPPLE");
+    _procs_GL_APPLE_element_array.glMultiDrawElementArrayAPPLE =
+      (GdkGLProc_glMultiDrawElementArrayAPPLE) gdk_gl_get_proc_address ("glMultiDrawElementArrayAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiDrawElementArrayAPPLE () - %s",
-                   (_procs_GL_APPLE_element_array.glMultiDrawElementArrayAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawElementArrayAPPLE () - %s",
+               (_procs_GL_APPLE_element_array.glMultiDrawElementArrayAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_element_array.glMultiDrawElementArrayAPPLE);
 }
@@ -21361,14 +19717,12 @@ gdk_gl_get_glMultiDrawRangeElementArrayAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_element_array.glMultiDrawRangeElementArrayAPPLE == (GdkGLProc_glMultiDrawRangeElementArrayAPPLE) -1)
-    {
-      _procs_GL_APPLE_element_array.glMultiDrawRangeElementArrayAPPLE =
-        (GdkGLProc_glMultiDrawRangeElementArrayAPPLE) gdk_gl_get_proc_address ("glMultiDrawRangeElementArrayAPPLE");
+    _procs_GL_APPLE_element_array.glMultiDrawRangeElementArrayAPPLE =
+      (GdkGLProc_glMultiDrawRangeElementArrayAPPLE) gdk_gl_get_proc_address ("glMultiDrawRangeElementArrayAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiDrawRangeElementArrayAPPLE () - %s",
-                   (_procs_GL_APPLE_element_array.glMultiDrawRangeElementArrayAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawRangeElementArrayAPPLE () - %s",
+               (_procs_GL_APPLE_element_array.glMultiDrawRangeElementArrayAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_element_array.glMultiDrawRangeElementArrayAPPLE);
 }
@@ -21429,14 +19783,12 @@ gdk_gl_get_glGenFencesAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_fence.glGenFencesAPPLE == (GdkGLProc_glGenFencesAPPLE) -1)
-    {
-      _procs_GL_APPLE_fence.glGenFencesAPPLE =
-        (GdkGLProc_glGenFencesAPPLE) gdk_gl_get_proc_address ("glGenFencesAPPLE");
+    _procs_GL_APPLE_fence.glGenFencesAPPLE =
+      (GdkGLProc_glGenFencesAPPLE) gdk_gl_get_proc_address ("glGenFencesAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenFencesAPPLE () - %s",
-                   (_procs_GL_APPLE_fence.glGenFencesAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenFencesAPPLE () - %s",
+               (_procs_GL_APPLE_fence.glGenFencesAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_fence.glGenFencesAPPLE);
 }
@@ -21449,14 +19801,12 @@ gdk_gl_get_glDeleteFencesAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_fence.glDeleteFencesAPPLE == (GdkGLProc_glDeleteFencesAPPLE) -1)
-    {
-      _procs_GL_APPLE_fence.glDeleteFencesAPPLE =
-        (GdkGLProc_glDeleteFencesAPPLE) gdk_gl_get_proc_address ("glDeleteFencesAPPLE");
+    _procs_GL_APPLE_fence.glDeleteFencesAPPLE =
+      (GdkGLProc_glDeleteFencesAPPLE) gdk_gl_get_proc_address ("glDeleteFencesAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteFencesAPPLE () - %s",
-                   (_procs_GL_APPLE_fence.glDeleteFencesAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteFencesAPPLE () - %s",
+               (_procs_GL_APPLE_fence.glDeleteFencesAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_fence.glDeleteFencesAPPLE);
 }
@@ -21469,14 +19819,12 @@ gdk_gl_get_glSetFenceAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_fence.glSetFenceAPPLE == (GdkGLProc_glSetFenceAPPLE) -1)
-    {
-      _procs_GL_APPLE_fence.glSetFenceAPPLE =
-        (GdkGLProc_glSetFenceAPPLE) gdk_gl_get_proc_address ("glSetFenceAPPLE");
+    _procs_GL_APPLE_fence.glSetFenceAPPLE =
+      (GdkGLProc_glSetFenceAPPLE) gdk_gl_get_proc_address ("glSetFenceAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSetFenceAPPLE () - %s",
-                   (_procs_GL_APPLE_fence.glSetFenceAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSetFenceAPPLE () - %s",
+               (_procs_GL_APPLE_fence.glSetFenceAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_fence.glSetFenceAPPLE);
 }
@@ -21489,14 +19837,12 @@ gdk_gl_get_glIsFenceAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_fence.glIsFenceAPPLE == (GdkGLProc_glIsFenceAPPLE) -1)
-    {
-      _procs_GL_APPLE_fence.glIsFenceAPPLE =
-        (GdkGLProc_glIsFenceAPPLE) gdk_gl_get_proc_address ("glIsFenceAPPLE");
+    _procs_GL_APPLE_fence.glIsFenceAPPLE =
+      (GdkGLProc_glIsFenceAPPLE) gdk_gl_get_proc_address ("glIsFenceAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsFenceAPPLE () - %s",
-                   (_procs_GL_APPLE_fence.glIsFenceAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsFenceAPPLE () - %s",
+               (_procs_GL_APPLE_fence.glIsFenceAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_fence.glIsFenceAPPLE);
 }
@@ -21509,14 +19855,12 @@ gdk_gl_get_glTestFenceAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_fence.glTestFenceAPPLE == (GdkGLProc_glTestFenceAPPLE) -1)
-    {
-      _procs_GL_APPLE_fence.glTestFenceAPPLE =
-        (GdkGLProc_glTestFenceAPPLE) gdk_gl_get_proc_address ("glTestFenceAPPLE");
+    _procs_GL_APPLE_fence.glTestFenceAPPLE =
+      (GdkGLProc_glTestFenceAPPLE) gdk_gl_get_proc_address ("glTestFenceAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTestFenceAPPLE () - %s",
-                   (_procs_GL_APPLE_fence.glTestFenceAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTestFenceAPPLE () - %s",
+               (_procs_GL_APPLE_fence.glTestFenceAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_fence.glTestFenceAPPLE);
 }
@@ -21529,14 +19873,12 @@ gdk_gl_get_glFinishFenceAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_fence.glFinishFenceAPPLE == (GdkGLProc_glFinishFenceAPPLE) -1)
-    {
-      _procs_GL_APPLE_fence.glFinishFenceAPPLE =
-        (GdkGLProc_glFinishFenceAPPLE) gdk_gl_get_proc_address ("glFinishFenceAPPLE");
+    _procs_GL_APPLE_fence.glFinishFenceAPPLE =
+      (GdkGLProc_glFinishFenceAPPLE) gdk_gl_get_proc_address ("glFinishFenceAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFinishFenceAPPLE () - %s",
-                   (_procs_GL_APPLE_fence.glFinishFenceAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFinishFenceAPPLE () - %s",
+               (_procs_GL_APPLE_fence.glFinishFenceAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_fence.glFinishFenceAPPLE);
 }
@@ -21549,14 +19891,12 @@ gdk_gl_get_glTestObjectAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_fence.glTestObjectAPPLE == (GdkGLProc_glTestObjectAPPLE) -1)
-    {
-      _procs_GL_APPLE_fence.glTestObjectAPPLE =
-        (GdkGLProc_glTestObjectAPPLE) gdk_gl_get_proc_address ("glTestObjectAPPLE");
+    _procs_GL_APPLE_fence.glTestObjectAPPLE =
+      (GdkGLProc_glTestObjectAPPLE) gdk_gl_get_proc_address ("glTestObjectAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTestObjectAPPLE () - %s",
-                   (_procs_GL_APPLE_fence.glTestObjectAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTestObjectAPPLE () - %s",
+               (_procs_GL_APPLE_fence.glTestObjectAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_fence.glTestObjectAPPLE);
 }
@@ -21569,14 +19909,12 @@ gdk_gl_get_glFinishObjectAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_fence.glFinishObjectAPPLE == (GdkGLProc_glFinishObjectAPPLE) -1)
-    {
-      _procs_GL_APPLE_fence.glFinishObjectAPPLE =
-        (GdkGLProc_glFinishObjectAPPLE) gdk_gl_get_proc_address ("glFinishObjectAPPLE");
+    _procs_GL_APPLE_fence.glFinishObjectAPPLE =
+      (GdkGLProc_glFinishObjectAPPLE) gdk_gl_get_proc_address ("glFinishObjectAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFinishObjectAPPLE () - %s",
-                   (_procs_GL_APPLE_fence.glFinishObjectAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFinishObjectAPPLE () - %s",
+               (_procs_GL_APPLE_fence.glFinishObjectAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_fence.glFinishObjectAPPLE);
 }
@@ -21636,14 +19974,12 @@ gdk_gl_get_glBindVertexArrayAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_vertex_array_object.glBindVertexArrayAPPLE == (GdkGLProc_glBindVertexArrayAPPLE) -1)
-    {
-      _procs_GL_APPLE_vertex_array_object.glBindVertexArrayAPPLE =
-        (GdkGLProc_glBindVertexArrayAPPLE) gdk_gl_get_proc_address ("glBindVertexArrayAPPLE");
+    _procs_GL_APPLE_vertex_array_object.glBindVertexArrayAPPLE =
+      (GdkGLProc_glBindVertexArrayAPPLE) gdk_gl_get_proc_address ("glBindVertexArrayAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glBindVertexArrayAPPLE () - %s",
-                   (_procs_GL_APPLE_vertex_array_object.glBindVertexArrayAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindVertexArrayAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_array_object.glBindVertexArrayAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_vertex_array_object.glBindVertexArrayAPPLE);
 }
@@ -21656,14 +19992,12 @@ gdk_gl_get_glDeleteVertexArraysAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_vertex_array_object.glDeleteVertexArraysAPPLE == (GdkGLProc_glDeleteVertexArraysAPPLE) -1)
-    {
-      _procs_GL_APPLE_vertex_array_object.glDeleteVertexArraysAPPLE =
-        (GdkGLProc_glDeleteVertexArraysAPPLE) gdk_gl_get_proc_address ("glDeleteVertexArraysAPPLE");
+    _procs_GL_APPLE_vertex_array_object.glDeleteVertexArraysAPPLE =
+      (GdkGLProc_glDeleteVertexArraysAPPLE) gdk_gl_get_proc_address ("glDeleteVertexArraysAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDeleteVertexArraysAPPLE () - %s",
-                   (_procs_GL_APPLE_vertex_array_object.glDeleteVertexArraysAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteVertexArraysAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_array_object.glDeleteVertexArraysAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_vertex_array_object.glDeleteVertexArraysAPPLE);
 }
@@ -21676,14 +20010,12 @@ gdk_gl_get_glGenVertexArraysAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_vertex_array_object.glGenVertexArraysAPPLE == (GdkGLProc_glGenVertexArraysAPPLE) -1)
-    {
-      _procs_GL_APPLE_vertex_array_object.glGenVertexArraysAPPLE =
-        (GdkGLProc_glGenVertexArraysAPPLE) gdk_gl_get_proc_address ("glGenVertexArraysAPPLE");
+    _procs_GL_APPLE_vertex_array_object.glGenVertexArraysAPPLE =
+      (GdkGLProc_glGenVertexArraysAPPLE) gdk_gl_get_proc_address ("glGenVertexArraysAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGenVertexArraysAPPLE () - %s",
-                   (_procs_GL_APPLE_vertex_array_object.glGenVertexArraysAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenVertexArraysAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_array_object.glGenVertexArraysAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_vertex_array_object.glGenVertexArraysAPPLE);
 }
@@ -21696,14 +20028,12 @@ gdk_gl_get_glIsVertexArrayAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_vertex_array_object.glIsVertexArrayAPPLE == (GdkGLProc_glIsVertexArrayAPPLE) -1)
-    {
-      _procs_GL_APPLE_vertex_array_object.glIsVertexArrayAPPLE =
-        (GdkGLProc_glIsVertexArrayAPPLE) gdk_gl_get_proc_address ("glIsVertexArrayAPPLE");
+    _procs_GL_APPLE_vertex_array_object.glIsVertexArrayAPPLE =
+      (GdkGLProc_glIsVertexArrayAPPLE) gdk_gl_get_proc_address ("glIsVertexArrayAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glIsVertexArrayAPPLE () - %s",
-                   (_procs_GL_APPLE_vertex_array_object.glIsVertexArrayAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsVertexArrayAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_array_object.glIsVertexArrayAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_vertex_array_object.glIsVertexArrayAPPLE);
 }
@@ -21758,14 +20088,12 @@ gdk_gl_get_glVertexArrayRangeAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_vertex_array_range.glVertexArrayRangeAPPLE == (GdkGLProc_glVertexArrayRangeAPPLE) -1)
-    {
-      _procs_GL_APPLE_vertex_array_range.glVertexArrayRangeAPPLE =
-        (GdkGLProc_glVertexArrayRangeAPPLE) gdk_gl_get_proc_address ("glVertexArrayRangeAPPLE");
+    _procs_GL_APPLE_vertex_array_range.glVertexArrayRangeAPPLE =
+      (GdkGLProc_glVertexArrayRangeAPPLE) gdk_gl_get_proc_address ("glVertexArrayRangeAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexArrayRangeAPPLE () - %s",
-                   (_procs_GL_APPLE_vertex_array_range.glVertexArrayRangeAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexArrayRangeAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_array_range.glVertexArrayRangeAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_vertex_array_range.glVertexArrayRangeAPPLE);
 }
@@ -21778,14 +20106,12 @@ gdk_gl_get_glFlushVertexArrayRangeAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_vertex_array_range.glFlushVertexArrayRangeAPPLE == (GdkGLProc_glFlushVertexArrayRangeAPPLE) -1)
-    {
-      _procs_GL_APPLE_vertex_array_range.glFlushVertexArrayRangeAPPLE =
-        (GdkGLProc_glFlushVertexArrayRangeAPPLE) gdk_gl_get_proc_address ("glFlushVertexArrayRangeAPPLE");
+    _procs_GL_APPLE_vertex_array_range.glFlushVertexArrayRangeAPPLE =
+      (GdkGLProc_glFlushVertexArrayRangeAPPLE) gdk_gl_get_proc_address ("glFlushVertexArrayRangeAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFlushVertexArrayRangeAPPLE () - %s",
-                   (_procs_GL_APPLE_vertex_array_range.glFlushVertexArrayRangeAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFlushVertexArrayRangeAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_array_range.glFlushVertexArrayRangeAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_vertex_array_range.glFlushVertexArrayRangeAPPLE);
 }
@@ -21798,14 +20124,12 @@ gdk_gl_get_glVertexArrayParameteriAPPLE (void)
     return NULL;
 
   if (_procs_GL_APPLE_vertex_array_range.glVertexArrayParameteriAPPLE == (GdkGLProc_glVertexArrayParameteriAPPLE) -1)
-    {
-      _procs_GL_APPLE_vertex_array_range.glVertexArrayParameteriAPPLE =
-        (GdkGLProc_glVertexArrayParameteriAPPLE) gdk_gl_get_proc_address ("glVertexArrayParameteriAPPLE");
+    _procs_GL_APPLE_vertex_array_range.glVertexArrayParameteriAPPLE =
+      (GdkGLProc_glVertexArrayParameteriAPPLE) gdk_gl_get_proc_address ("glVertexArrayParameteriAPPLE");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexArrayParameteriAPPLE () - %s",
-                   (_procs_GL_APPLE_vertex_array_range.glVertexArrayParameteriAPPLE) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexArrayParameteriAPPLE () - %s",
+               (_procs_GL_APPLE_vertex_array_range.glVertexArrayParameteriAPPLE) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_APPLE_vertex_array_range.glVertexArrayParameteriAPPLE);
 }
@@ -21857,14 +20181,12 @@ gdk_gl_get_glDrawBuffersATI (void)
     return NULL;
 
   if (_procs_GL_ATI_draw_buffers.glDrawBuffersATI == (GdkGLProc_glDrawBuffersATI) -1)
-    {
-      _procs_GL_ATI_draw_buffers.glDrawBuffersATI =
-        (GdkGLProc_glDrawBuffersATI) gdk_gl_get_proc_address ("glDrawBuffersATI");
+    _procs_GL_ATI_draw_buffers.glDrawBuffersATI =
+      (GdkGLProc_glDrawBuffersATI) gdk_gl_get_proc_address ("glDrawBuffersATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glDrawBuffersATI () - %s",
-                   (_procs_GL_ATI_draw_buffers.glDrawBuffersATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawBuffersATI () - %s",
+               (_procs_GL_ATI_draw_buffers.glDrawBuffersATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_draw_buffers.glDrawBuffersATI);
 }
@@ -21919,14 +20241,12 @@ gdk_gl_get_glProgramNamedParameter4fNV (void)
     return NULL;
 
   if (_procs_GL_NV_fragment_program.glProgramNamedParameter4fNV == (GdkGLProc_glProgramNamedParameter4fNV) -1)
-    {
-      _procs_GL_NV_fragment_program.glProgramNamedParameter4fNV =
-        (GdkGLProc_glProgramNamedParameter4fNV) gdk_gl_get_proc_address ("glProgramNamedParameter4fNV");
+    _procs_GL_NV_fragment_program.glProgramNamedParameter4fNV =
+      (GdkGLProc_glProgramNamedParameter4fNV) gdk_gl_get_proc_address ("glProgramNamedParameter4fNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramNamedParameter4fNV () - %s",
-                   (_procs_GL_NV_fragment_program.glProgramNamedParameter4fNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramNamedParameter4fNV () - %s",
+               (_procs_GL_NV_fragment_program.glProgramNamedParameter4fNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fragment_program.glProgramNamedParameter4fNV);
 }
@@ -21939,14 +20259,12 @@ gdk_gl_get_glProgramNamedParameter4dNV (void)
     return NULL;
 
   if (_procs_GL_NV_fragment_program.glProgramNamedParameter4dNV == (GdkGLProc_glProgramNamedParameter4dNV) -1)
-    {
-      _procs_GL_NV_fragment_program.glProgramNamedParameter4dNV =
-        (GdkGLProc_glProgramNamedParameter4dNV) gdk_gl_get_proc_address ("glProgramNamedParameter4dNV");
+    _procs_GL_NV_fragment_program.glProgramNamedParameter4dNV =
+      (GdkGLProc_glProgramNamedParameter4dNV) gdk_gl_get_proc_address ("glProgramNamedParameter4dNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramNamedParameter4dNV () - %s",
-                   (_procs_GL_NV_fragment_program.glProgramNamedParameter4dNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramNamedParameter4dNV () - %s",
+               (_procs_GL_NV_fragment_program.glProgramNamedParameter4dNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fragment_program.glProgramNamedParameter4dNV);
 }
@@ -21959,14 +20277,12 @@ gdk_gl_get_glProgramNamedParameter4fvNV (void)
     return NULL;
 
   if (_procs_GL_NV_fragment_program.glProgramNamedParameter4fvNV == (GdkGLProc_glProgramNamedParameter4fvNV) -1)
-    {
-      _procs_GL_NV_fragment_program.glProgramNamedParameter4fvNV =
-        (GdkGLProc_glProgramNamedParameter4fvNV) gdk_gl_get_proc_address ("glProgramNamedParameter4fvNV");
+    _procs_GL_NV_fragment_program.glProgramNamedParameter4fvNV =
+      (GdkGLProc_glProgramNamedParameter4fvNV) gdk_gl_get_proc_address ("glProgramNamedParameter4fvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramNamedParameter4fvNV () - %s",
-                   (_procs_GL_NV_fragment_program.glProgramNamedParameter4fvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramNamedParameter4fvNV () - %s",
+               (_procs_GL_NV_fragment_program.glProgramNamedParameter4fvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fragment_program.glProgramNamedParameter4fvNV);
 }
@@ -21979,14 +20295,12 @@ gdk_gl_get_glProgramNamedParameter4dvNV (void)
     return NULL;
 
   if (_procs_GL_NV_fragment_program.glProgramNamedParameter4dvNV == (GdkGLProc_glProgramNamedParameter4dvNV) -1)
-    {
-      _procs_GL_NV_fragment_program.glProgramNamedParameter4dvNV =
-        (GdkGLProc_glProgramNamedParameter4dvNV) gdk_gl_get_proc_address ("glProgramNamedParameter4dvNV");
+    _procs_GL_NV_fragment_program.glProgramNamedParameter4dvNV =
+      (GdkGLProc_glProgramNamedParameter4dvNV) gdk_gl_get_proc_address ("glProgramNamedParameter4dvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glProgramNamedParameter4dvNV () - %s",
-                   (_procs_GL_NV_fragment_program.glProgramNamedParameter4dvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramNamedParameter4dvNV () - %s",
+               (_procs_GL_NV_fragment_program.glProgramNamedParameter4dvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fragment_program.glProgramNamedParameter4dvNV);
 }
@@ -21999,14 +20313,12 @@ gdk_gl_get_glGetProgramNamedParameterfvNV (void)
     return NULL;
 
   if (_procs_GL_NV_fragment_program.glGetProgramNamedParameterfvNV == (GdkGLProc_glGetProgramNamedParameterfvNV) -1)
-    {
-      _procs_GL_NV_fragment_program.glGetProgramNamedParameterfvNV =
-        (GdkGLProc_glGetProgramNamedParameterfvNV) gdk_gl_get_proc_address ("glGetProgramNamedParameterfvNV");
+    _procs_GL_NV_fragment_program.glGetProgramNamedParameterfvNV =
+      (GdkGLProc_glGetProgramNamedParameterfvNV) gdk_gl_get_proc_address ("glGetProgramNamedParameterfvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramNamedParameterfvNV () - %s",
-                   (_procs_GL_NV_fragment_program.glGetProgramNamedParameterfvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramNamedParameterfvNV () - %s",
+               (_procs_GL_NV_fragment_program.glGetProgramNamedParameterfvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fragment_program.glGetProgramNamedParameterfvNV);
 }
@@ -22019,14 +20331,12 @@ gdk_gl_get_glGetProgramNamedParameterdvNV (void)
     return NULL;
 
   if (_procs_GL_NV_fragment_program.glGetProgramNamedParameterdvNV == (GdkGLProc_glGetProgramNamedParameterdvNV) -1)
-    {
-      _procs_GL_NV_fragment_program.glGetProgramNamedParameterdvNV =
-        (GdkGLProc_glGetProgramNamedParameterdvNV) gdk_gl_get_proc_address ("glGetProgramNamedParameterdvNV");
+    _procs_GL_NV_fragment_program.glGetProgramNamedParameterdvNV =
+      (GdkGLProc_glGetProgramNamedParameterdvNV) gdk_gl_get_proc_address ("glGetProgramNamedParameterdvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetProgramNamedParameterdvNV () - %s",
-                   (_procs_GL_NV_fragment_program.glGetProgramNamedParameterdvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramNamedParameterdvNV () - %s",
+               (_procs_GL_NV_fragment_program.glGetProgramNamedParameterdvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_fragment_program.glGetProgramNamedParameterdvNV);
 }
@@ -22126,14 +20436,12 @@ gdk_gl_get_glVertex2hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertex2hNV == (GdkGLProc_glVertex2hNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertex2hNV =
-        (GdkGLProc_glVertex2hNV) gdk_gl_get_proc_address ("glVertex2hNV");
+    _procs_GL_NV_half_float.glVertex2hNV =
+      (GdkGLProc_glVertex2hNV) gdk_gl_get_proc_address ("glVertex2hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertex2hNV () - %s",
-                   (_procs_GL_NV_half_float.glVertex2hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertex2hNV () - %s",
+               (_procs_GL_NV_half_float.glVertex2hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertex2hNV);
 }
@@ -22146,14 +20454,12 @@ gdk_gl_get_glVertex2hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertex2hvNV == (GdkGLProc_glVertex2hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertex2hvNV =
-        (GdkGLProc_glVertex2hvNV) gdk_gl_get_proc_address ("glVertex2hvNV");
+    _procs_GL_NV_half_float.glVertex2hvNV =
+      (GdkGLProc_glVertex2hvNV) gdk_gl_get_proc_address ("glVertex2hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertex2hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertex2hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertex2hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertex2hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertex2hvNV);
 }
@@ -22166,14 +20472,12 @@ gdk_gl_get_glVertex3hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertex3hNV == (GdkGLProc_glVertex3hNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertex3hNV =
-        (GdkGLProc_glVertex3hNV) gdk_gl_get_proc_address ("glVertex3hNV");
+    _procs_GL_NV_half_float.glVertex3hNV =
+      (GdkGLProc_glVertex3hNV) gdk_gl_get_proc_address ("glVertex3hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertex3hNV () - %s",
-                   (_procs_GL_NV_half_float.glVertex3hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertex3hNV () - %s",
+               (_procs_GL_NV_half_float.glVertex3hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertex3hNV);
 }
@@ -22186,14 +20490,12 @@ gdk_gl_get_glVertex3hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertex3hvNV == (GdkGLProc_glVertex3hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertex3hvNV =
-        (GdkGLProc_glVertex3hvNV) gdk_gl_get_proc_address ("glVertex3hvNV");
+    _procs_GL_NV_half_float.glVertex3hvNV =
+      (GdkGLProc_glVertex3hvNV) gdk_gl_get_proc_address ("glVertex3hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertex3hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertex3hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertex3hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertex3hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertex3hvNV);
 }
@@ -22206,14 +20508,12 @@ gdk_gl_get_glVertex4hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertex4hNV == (GdkGLProc_glVertex4hNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertex4hNV =
-        (GdkGLProc_glVertex4hNV) gdk_gl_get_proc_address ("glVertex4hNV");
+    _procs_GL_NV_half_float.glVertex4hNV =
+      (GdkGLProc_glVertex4hNV) gdk_gl_get_proc_address ("glVertex4hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertex4hNV () - %s",
-                   (_procs_GL_NV_half_float.glVertex4hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertex4hNV () - %s",
+               (_procs_GL_NV_half_float.glVertex4hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertex4hNV);
 }
@@ -22226,14 +20526,12 @@ gdk_gl_get_glVertex4hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertex4hvNV == (GdkGLProc_glVertex4hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertex4hvNV =
-        (GdkGLProc_glVertex4hvNV) gdk_gl_get_proc_address ("glVertex4hvNV");
+    _procs_GL_NV_half_float.glVertex4hvNV =
+      (GdkGLProc_glVertex4hvNV) gdk_gl_get_proc_address ("glVertex4hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertex4hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertex4hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertex4hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertex4hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertex4hvNV);
 }
@@ -22246,14 +20544,12 @@ gdk_gl_get_glNormal3hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glNormal3hNV == (GdkGLProc_glNormal3hNV) -1)
-    {
-      _procs_GL_NV_half_float.glNormal3hNV =
-        (GdkGLProc_glNormal3hNV) gdk_gl_get_proc_address ("glNormal3hNV");
+    _procs_GL_NV_half_float.glNormal3hNV =
+      (GdkGLProc_glNormal3hNV) gdk_gl_get_proc_address ("glNormal3hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormal3hNV () - %s",
-                   (_procs_GL_NV_half_float.glNormal3hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormal3hNV () - %s",
+               (_procs_GL_NV_half_float.glNormal3hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glNormal3hNV);
 }
@@ -22266,14 +20562,12 @@ gdk_gl_get_glNormal3hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glNormal3hvNV == (GdkGLProc_glNormal3hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glNormal3hvNV =
-        (GdkGLProc_glNormal3hvNV) gdk_gl_get_proc_address ("glNormal3hvNV");
+    _procs_GL_NV_half_float.glNormal3hvNV =
+      (GdkGLProc_glNormal3hvNV) gdk_gl_get_proc_address ("glNormal3hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glNormal3hvNV () - %s",
-                   (_procs_GL_NV_half_float.glNormal3hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormal3hvNV () - %s",
+               (_procs_GL_NV_half_float.glNormal3hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glNormal3hvNV);
 }
@@ -22286,14 +20580,12 @@ gdk_gl_get_glColor3hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glColor3hNV == (GdkGLProc_glColor3hNV) -1)
-    {
-      _procs_GL_NV_half_float.glColor3hNV =
-        (GdkGLProc_glColor3hNV) gdk_gl_get_proc_address ("glColor3hNV");
+    _procs_GL_NV_half_float.glColor3hNV =
+      (GdkGLProc_glColor3hNV) gdk_gl_get_proc_address ("glColor3hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor3hNV () - %s",
-                   (_procs_GL_NV_half_float.glColor3hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor3hNV () - %s",
+               (_procs_GL_NV_half_float.glColor3hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glColor3hNV);
 }
@@ -22306,14 +20598,12 @@ gdk_gl_get_glColor3hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glColor3hvNV == (GdkGLProc_glColor3hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glColor3hvNV =
-        (GdkGLProc_glColor3hvNV) gdk_gl_get_proc_address ("glColor3hvNV");
+    _procs_GL_NV_half_float.glColor3hvNV =
+      (GdkGLProc_glColor3hvNV) gdk_gl_get_proc_address ("glColor3hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor3hvNV () - %s",
-                   (_procs_GL_NV_half_float.glColor3hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor3hvNV () - %s",
+               (_procs_GL_NV_half_float.glColor3hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glColor3hvNV);
 }
@@ -22326,14 +20616,12 @@ gdk_gl_get_glColor4hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glColor4hNV == (GdkGLProc_glColor4hNV) -1)
-    {
-      _procs_GL_NV_half_float.glColor4hNV =
-        (GdkGLProc_glColor4hNV) gdk_gl_get_proc_address ("glColor4hNV");
+    _procs_GL_NV_half_float.glColor4hNV =
+      (GdkGLProc_glColor4hNV) gdk_gl_get_proc_address ("glColor4hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor4hNV () - %s",
-                   (_procs_GL_NV_half_float.glColor4hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor4hNV () - %s",
+               (_procs_GL_NV_half_float.glColor4hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glColor4hNV);
 }
@@ -22346,14 +20634,12 @@ gdk_gl_get_glColor4hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glColor4hvNV == (GdkGLProc_glColor4hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glColor4hvNV =
-        (GdkGLProc_glColor4hvNV) gdk_gl_get_proc_address ("glColor4hvNV");
+    _procs_GL_NV_half_float.glColor4hvNV =
+      (GdkGLProc_glColor4hvNV) gdk_gl_get_proc_address ("glColor4hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glColor4hvNV () - %s",
-                   (_procs_GL_NV_half_float.glColor4hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColor4hvNV () - %s",
+               (_procs_GL_NV_half_float.glColor4hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glColor4hvNV);
 }
@@ -22366,14 +20652,12 @@ gdk_gl_get_glTexCoord1hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glTexCoord1hNV == (GdkGLProc_glTexCoord1hNV) -1)
-    {
-      _procs_GL_NV_half_float.glTexCoord1hNV =
-        (GdkGLProc_glTexCoord1hNV) gdk_gl_get_proc_address ("glTexCoord1hNV");
+    _procs_GL_NV_half_float.glTexCoord1hNV =
+      (GdkGLProc_glTexCoord1hNV) gdk_gl_get_proc_address ("glTexCoord1hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord1hNV () - %s",
-                   (_procs_GL_NV_half_float.glTexCoord1hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord1hNV () - %s",
+               (_procs_GL_NV_half_float.glTexCoord1hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glTexCoord1hNV);
 }
@@ -22386,14 +20670,12 @@ gdk_gl_get_glTexCoord1hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glTexCoord1hvNV == (GdkGLProc_glTexCoord1hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glTexCoord1hvNV =
-        (GdkGLProc_glTexCoord1hvNV) gdk_gl_get_proc_address ("glTexCoord1hvNV");
+    _procs_GL_NV_half_float.glTexCoord1hvNV =
+      (GdkGLProc_glTexCoord1hvNV) gdk_gl_get_proc_address ("glTexCoord1hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord1hvNV () - %s",
-                   (_procs_GL_NV_half_float.glTexCoord1hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord1hvNV () - %s",
+               (_procs_GL_NV_half_float.glTexCoord1hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glTexCoord1hvNV);
 }
@@ -22406,14 +20688,12 @@ gdk_gl_get_glTexCoord2hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glTexCoord2hNV == (GdkGLProc_glTexCoord2hNV) -1)
-    {
-      _procs_GL_NV_half_float.glTexCoord2hNV =
-        (GdkGLProc_glTexCoord2hNV) gdk_gl_get_proc_address ("glTexCoord2hNV");
+    _procs_GL_NV_half_float.glTexCoord2hNV =
+      (GdkGLProc_glTexCoord2hNV) gdk_gl_get_proc_address ("glTexCoord2hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2hNV () - %s",
-                   (_procs_GL_NV_half_float.glTexCoord2hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2hNV () - %s",
+               (_procs_GL_NV_half_float.glTexCoord2hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glTexCoord2hNV);
 }
@@ -22426,14 +20706,12 @@ gdk_gl_get_glTexCoord2hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glTexCoord2hvNV == (GdkGLProc_glTexCoord2hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glTexCoord2hvNV =
-        (GdkGLProc_glTexCoord2hvNV) gdk_gl_get_proc_address ("glTexCoord2hvNV");
+    _procs_GL_NV_half_float.glTexCoord2hvNV =
+      (GdkGLProc_glTexCoord2hvNV) gdk_gl_get_proc_address ("glTexCoord2hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord2hvNV () - %s",
-                   (_procs_GL_NV_half_float.glTexCoord2hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord2hvNV () - %s",
+               (_procs_GL_NV_half_float.glTexCoord2hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glTexCoord2hvNV);
 }
@@ -22446,14 +20724,12 @@ gdk_gl_get_glTexCoord3hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glTexCoord3hNV == (GdkGLProc_glTexCoord3hNV) -1)
-    {
-      _procs_GL_NV_half_float.glTexCoord3hNV =
-        (GdkGLProc_glTexCoord3hNV) gdk_gl_get_proc_address ("glTexCoord3hNV");
+    _procs_GL_NV_half_float.glTexCoord3hNV =
+      (GdkGLProc_glTexCoord3hNV) gdk_gl_get_proc_address ("glTexCoord3hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord3hNV () - %s",
-                   (_procs_GL_NV_half_float.glTexCoord3hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord3hNV () - %s",
+               (_procs_GL_NV_half_float.glTexCoord3hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glTexCoord3hNV);
 }
@@ -22466,14 +20742,12 @@ gdk_gl_get_glTexCoord3hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glTexCoord3hvNV == (GdkGLProc_glTexCoord3hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glTexCoord3hvNV =
-        (GdkGLProc_glTexCoord3hvNV) gdk_gl_get_proc_address ("glTexCoord3hvNV");
+    _procs_GL_NV_half_float.glTexCoord3hvNV =
+      (GdkGLProc_glTexCoord3hvNV) gdk_gl_get_proc_address ("glTexCoord3hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord3hvNV () - %s",
-                   (_procs_GL_NV_half_float.glTexCoord3hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord3hvNV () - %s",
+               (_procs_GL_NV_half_float.glTexCoord3hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glTexCoord3hvNV);
 }
@@ -22486,14 +20760,12 @@ gdk_gl_get_glTexCoord4hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glTexCoord4hNV == (GdkGLProc_glTexCoord4hNV) -1)
-    {
-      _procs_GL_NV_half_float.glTexCoord4hNV =
-        (GdkGLProc_glTexCoord4hNV) gdk_gl_get_proc_address ("glTexCoord4hNV");
+    _procs_GL_NV_half_float.glTexCoord4hNV =
+      (GdkGLProc_glTexCoord4hNV) gdk_gl_get_proc_address ("glTexCoord4hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord4hNV () - %s",
-                   (_procs_GL_NV_half_float.glTexCoord4hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord4hNV () - %s",
+               (_procs_GL_NV_half_float.glTexCoord4hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glTexCoord4hNV);
 }
@@ -22506,14 +20778,12 @@ gdk_gl_get_glTexCoord4hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glTexCoord4hvNV == (GdkGLProc_glTexCoord4hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glTexCoord4hvNV =
-        (GdkGLProc_glTexCoord4hvNV) gdk_gl_get_proc_address ("glTexCoord4hvNV");
+    _procs_GL_NV_half_float.glTexCoord4hvNV =
+      (GdkGLProc_glTexCoord4hvNV) gdk_gl_get_proc_address ("glTexCoord4hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glTexCoord4hvNV () - %s",
-                   (_procs_GL_NV_half_float.glTexCoord4hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoord4hvNV () - %s",
+               (_procs_GL_NV_half_float.glTexCoord4hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glTexCoord4hvNV);
 }
@@ -22526,14 +20796,12 @@ gdk_gl_get_glMultiTexCoord1hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glMultiTexCoord1hNV == (GdkGLProc_glMultiTexCoord1hNV) -1)
-    {
-      _procs_GL_NV_half_float.glMultiTexCoord1hNV =
-        (GdkGLProc_glMultiTexCoord1hNV) gdk_gl_get_proc_address ("glMultiTexCoord1hNV");
+    _procs_GL_NV_half_float.glMultiTexCoord1hNV =
+      (GdkGLProc_glMultiTexCoord1hNV) gdk_gl_get_proc_address ("glMultiTexCoord1hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1hNV () - %s",
-                   (_procs_GL_NV_half_float.glMultiTexCoord1hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1hNV () - %s",
+               (_procs_GL_NV_half_float.glMultiTexCoord1hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glMultiTexCoord1hNV);
 }
@@ -22546,14 +20814,12 @@ gdk_gl_get_glMultiTexCoord1hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glMultiTexCoord1hvNV == (GdkGLProc_glMultiTexCoord1hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glMultiTexCoord1hvNV =
-        (GdkGLProc_glMultiTexCoord1hvNV) gdk_gl_get_proc_address ("glMultiTexCoord1hvNV");
+    _procs_GL_NV_half_float.glMultiTexCoord1hvNV =
+      (GdkGLProc_glMultiTexCoord1hvNV) gdk_gl_get_proc_address ("glMultiTexCoord1hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord1hvNV () - %s",
-                   (_procs_GL_NV_half_float.glMultiTexCoord1hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1hvNV () - %s",
+               (_procs_GL_NV_half_float.glMultiTexCoord1hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glMultiTexCoord1hvNV);
 }
@@ -22566,14 +20832,12 @@ gdk_gl_get_glMultiTexCoord2hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glMultiTexCoord2hNV == (GdkGLProc_glMultiTexCoord2hNV) -1)
-    {
-      _procs_GL_NV_half_float.glMultiTexCoord2hNV =
-        (GdkGLProc_glMultiTexCoord2hNV) gdk_gl_get_proc_address ("glMultiTexCoord2hNV");
+    _procs_GL_NV_half_float.glMultiTexCoord2hNV =
+      (GdkGLProc_glMultiTexCoord2hNV) gdk_gl_get_proc_address ("glMultiTexCoord2hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2hNV () - %s",
-                   (_procs_GL_NV_half_float.glMultiTexCoord2hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2hNV () - %s",
+               (_procs_GL_NV_half_float.glMultiTexCoord2hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glMultiTexCoord2hNV);
 }
@@ -22586,14 +20850,12 @@ gdk_gl_get_glMultiTexCoord2hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glMultiTexCoord2hvNV == (GdkGLProc_glMultiTexCoord2hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glMultiTexCoord2hvNV =
-        (GdkGLProc_glMultiTexCoord2hvNV) gdk_gl_get_proc_address ("glMultiTexCoord2hvNV");
+    _procs_GL_NV_half_float.glMultiTexCoord2hvNV =
+      (GdkGLProc_glMultiTexCoord2hvNV) gdk_gl_get_proc_address ("glMultiTexCoord2hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord2hvNV () - %s",
-                   (_procs_GL_NV_half_float.glMultiTexCoord2hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2hvNV () - %s",
+               (_procs_GL_NV_half_float.glMultiTexCoord2hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glMultiTexCoord2hvNV);
 }
@@ -22606,14 +20868,12 @@ gdk_gl_get_glMultiTexCoord3hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glMultiTexCoord3hNV == (GdkGLProc_glMultiTexCoord3hNV) -1)
-    {
-      _procs_GL_NV_half_float.glMultiTexCoord3hNV =
-        (GdkGLProc_glMultiTexCoord3hNV) gdk_gl_get_proc_address ("glMultiTexCoord3hNV");
+    _procs_GL_NV_half_float.glMultiTexCoord3hNV =
+      (GdkGLProc_glMultiTexCoord3hNV) gdk_gl_get_proc_address ("glMultiTexCoord3hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3hNV () - %s",
-                   (_procs_GL_NV_half_float.glMultiTexCoord3hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3hNV () - %s",
+               (_procs_GL_NV_half_float.glMultiTexCoord3hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glMultiTexCoord3hNV);
 }
@@ -22626,14 +20886,12 @@ gdk_gl_get_glMultiTexCoord3hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glMultiTexCoord3hvNV == (GdkGLProc_glMultiTexCoord3hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glMultiTexCoord3hvNV =
-        (GdkGLProc_glMultiTexCoord3hvNV) gdk_gl_get_proc_address ("glMultiTexCoord3hvNV");
+    _procs_GL_NV_half_float.glMultiTexCoord3hvNV =
+      (GdkGLProc_glMultiTexCoord3hvNV) gdk_gl_get_proc_address ("glMultiTexCoord3hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord3hvNV () - %s",
-                   (_procs_GL_NV_half_float.glMultiTexCoord3hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3hvNV () - %s",
+               (_procs_GL_NV_half_float.glMultiTexCoord3hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glMultiTexCoord3hvNV);
 }
@@ -22646,14 +20904,12 @@ gdk_gl_get_glMultiTexCoord4hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glMultiTexCoord4hNV == (GdkGLProc_glMultiTexCoord4hNV) -1)
-    {
-      _procs_GL_NV_half_float.glMultiTexCoord4hNV =
-        (GdkGLProc_glMultiTexCoord4hNV) gdk_gl_get_proc_address ("glMultiTexCoord4hNV");
+    _procs_GL_NV_half_float.glMultiTexCoord4hNV =
+      (GdkGLProc_glMultiTexCoord4hNV) gdk_gl_get_proc_address ("glMultiTexCoord4hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4hNV () - %s",
-                   (_procs_GL_NV_half_float.glMultiTexCoord4hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4hNV () - %s",
+               (_procs_GL_NV_half_float.glMultiTexCoord4hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glMultiTexCoord4hNV);
 }
@@ -22666,14 +20922,12 @@ gdk_gl_get_glMultiTexCoord4hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glMultiTexCoord4hvNV == (GdkGLProc_glMultiTexCoord4hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glMultiTexCoord4hvNV =
-        (GdkGLProc_glMultiTexCoord4hvNV) gdk_gl_get_proc_address ("glMultiTexCoord4hvNV");
+    _procs_GL_NV_half_float.glMultiTexCoord4hvNV =
+      (GdkGLProc_glMultiTexCoord4hvNV) gdk_gl_get_proc_address ("glMultiTexCoord4hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMultiTexCoord4hvNV () - %s",
-                   (_procs_GL_NV_half_float.glMultiTexCoord4hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4hvNV () - %s",
+               (_procs_GL_NV_half_float.glMultiTexCoord4hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glMultiTexCoord4hvNV);
 }
@@ -22686,14 +20940,12 @@ gdk_gl_get_glFogCoordhNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glFogCoordhNV == (GdkGLProc_glFogCoordhNV) -1)
-    {
-      _procs_GL_NV_half_float.glFogCoordhNV =
-        (GdkGLProc_glFogCoordhNV) gdk_gl_get_proc_address ("glFogCoordhNV");
+    _procs_GL_NV_half_float.glFogCoordhNV =
+      (GdkGLProc_glFogCoordhNV) gdk_gl_get_proc_address ("glFogCoordhNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoordhNV () - %s",
-                   (_procs_GL_NV_half_float.glFogCoordhNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordhNV () - %s",
+               (_procs_GL_NV_half_float.glFogCoordhNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glFogCoordhNV);
 }
@@ -22706,14 +20958,12 @@ gdk_gl_get_glFogCoordhvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glFogCoordhvNV == (GdkGLProc_glFogCoordhvNV) -1)
-    {
-      _procs_GL_NV_half_float.glFogCoordhvNV =
-        (GdkGLProc_glFogCoordhvNV) gdk_gl_get_proc_address ("glFogCoordhvNV");
+    _procs_GL_NV_half_float.glFogCoordhvNV =
+      (GdkGLProc_glFogCoordhvNV) gdk_gl_get_proc_address ("glFogCoordhvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFogCoordhvNV () - %s",
-                   (_procs_GL_NV_half_float.glFogCoordhvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordhvNV () - %s",
+               (_procs_GL_NV_half_float.glFogCoordhvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glFogCoordhvNV);
 }
@@ -22726,14 +20976,12 @@ gdk_gl_get_glSecondaryColor3hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glSecondaryColor3hNV == (GdkGLProc_glSecondaryColor3hNV) -1)
-    {
-      _procs_GL_NV_half_float.glSecondaryColor3hNV =
-        (GdkGLProc_glSecondaryColor3hNV) gdk_gl_get_proc_address ("glSecondaryColor3hNV");
+    _procs_GL_NV_half_float.glSecondaryColor3hNV =
+      (GdkGLProc_glSecondaryColor3hNV) gdk_gl_get_proc_address ("glSecondaryColor3hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3hNV () - %s",
-                   (_procs_GL_NV_half_float.glSecondaryColor3hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3hNV () - %s",
+               (_procs_GL_NV_half_float.glSecondaryColor3hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glSecondaryColor3hNV);
 }
@@ -22746,14 +20994,12 @@ gdk_gl_get_glSecondaryColor3hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glSecondaryColor3hvNV == (GdkGLProc_glSecondaryColor3hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glSecondaryColor3hvNV =
-        (GdkGLProc_glSecondaryColor3hvNV) gdk_gl_get_proc_address ("glSecondaryColor3hvNV");
+    _procs_GL_NV_half_float.glSecondaryColor3hvNV =
+      (GdkGLProc_glSecondaryColor3hvNV) gdk_gl_get_proc_address ("glSecondaryColor3hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glSecondaryColor3hvNV () - %s",
-                   (_procs_GL_NV_half_float.glSecondaryColor3hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3hvNV () - %s",
+               (_procs_GL_NV_half_float.glSecondaryColor3hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glSecondaryColor3hvNV);
 }
@@ -22766,14 +21012,12 @@ gdk_gl_get_glVertexWeighthNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexWeighthNV == (GdkGLProc_glVertexWeighthNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexWeighthNV =
-        (GdkGLProc_glVertexWeighthNV) gdk_gl_get_proc_address ("glVertexWeighthNV");
+    _procs_GL_NV_half_float.glVertexWeighthNV =
+      (GdkGLProc_glVertexWeighthNV) gdk_gl_get_proc_address ("glVertexWeighthNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexWeighthNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexWeighthNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexWeighthNV () - %s",
+               (_procs_GL_NV_half_float.glVertexWeighthNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexWeighthNV);
 }
@@ -22786,14 +21030,12 @@ gdk_gl_get_glVertexWeighthvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexWeighthvNV == (GdkGLProc_glVertexWeighthvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexWeighthvNV =
-        (GdkGLProc_glVertexWeighthvNV) gdk_gl_get_proc_address ("glVertexWeighthvNV");
+    _procs_GL_NV_half_float.glVertexWeighthvNV =
+      (GdkGLProc_glVertexWeighthvNV) gdk_gl_get_proc_address ("glVertexWeighthvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexWeighthvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexWeighthvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexWeighthvNV () - %s",
+               (_procs_GL_NV_half_float.glVertexWeighthvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexWeighthvNV);
 }
@@ -22806,14 +21048,12 @@ gdk_gl_get_glVertexAttrib1hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttrib1hNV == (GdkGLProc_glVertexAttrib1hNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttrib1hNV =
-        (GdkGLProc_glVertexAttrib1hNV) gdk_gl_get_proc_address ("glVertexAttrib1hNV");
+    _procs_GL_NV_half_float.glVertexAttrib1hNV =
+      (GdkGLProc_glVertexAttrib1hNV) gdk_gl_get_proc_address ("glVertexAttrib1hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1hNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttrib1hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1hNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttrib1hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttrib1hNV);
 }
@@ -22826,14 +21066,12 @@ gdk_gl_get_glVertexAttrib1hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttrib1hvNV == (GdkGLProc_glVertexAttrib1hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttrib1hvNV =
-        (GdkGLProc_glVertexAttrib1hvNV) gdk_gl_get_proc_address ("glVertexAttrib1hvNV");
+    _procs_GL_NV_half_float.glVertexAttrib1hvNV =
+      (GdkGLProc_glVertexAttrib1hvNV) gdk_gl_get_proc_address ("glVertexAttrib1hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib1hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttrib1hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttrib1hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttrib1hvNV);
 }
@@ -22846,14 +21084,12 @@ gdk_gl_get_glVertexAttrib2hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttrib2hNV == (GdkGLProc_glVertexAttrib2hNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttrib2hNV =
-        (GdkGLProc_glVertexAttrib2hNV) gdk_gl_get_proc_address ("glVertexAttrib2hNV");
+    _procs_GL_NV_half_float.glVertexAttrib2hNV =
+      (GdkGLProc_glVertexAttrib2hNV) gdk_gl_get_proc_address ("glVertexAttrib2hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2hNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttrib2hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2hNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttrib2hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttrib2hNV);
 }
@@ -22866,14 +21102,12 @@ gdk_gl_get_glVertexAttrib2hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttrib2hvNV == (GdkGLProc_glVertexAttrib2hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttrib2hvNV =
-        (GdkGLProc_glVertexAttrib2hvNV) gdk_gl_get_proc_address ("glVertexAttrib2hvNV");
+    _procs_GL_NV_half_float.glVertexAttrib2hvNV =
+      (GdkGLProc_glVertexAttrib2hvNV) gdk_gl_get_proc_address ("glVertexAttrib2hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib2hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttrib2hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttrib2hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttrib2hvNV);
 }
@@ -22886,14 +21120,12 @@ gdk_gl_get_glVertexAttrib3hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttrib3hNV == (GdkGLProc_glVertexAttrib3hNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttrib3hNV =
-        (GdkGLProc_glVertexAttrib3hNV) gdk_gl_get_proc_address ("glVertexAttrib3hNV");
+    _procs_GL_NV_half_float.glVertexAttrib3hNV =
+      (GdkGLProc_glVertexAttrib3hNV) gdk_gl_get_proc_address ("glVertexAttrib3hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3hNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttrib3hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3hNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttrib3hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttrib3hNV);
 }
@@ -22906,14 +21138,12 @@ gdk_gl_get_glVertexAttrib3hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttrib3hvNV == (GdkGLProc_glVertexAttrib3hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttrib3hvNV =
-        (GdkGLProc_glVertexAttrib3hvNV) gdk_gl_get_proc_address ("glVertexAttrib3hvNV");
+    _procs_GL_NV_half_float.glVertexAttrib3hvNV =
+      (GdkGLProc_glVertexAttrib3hvNV) gdk_gl_get_proc_address ("glVertexAttrib3hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib3hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttrib3hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttrib3hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttrib3hvNV);
 }
@@ -22926,14 +21156,12 @@ gdk_gl_get_glVertexAttrib4hNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttrib4hNV == (GdkGLProc_glVertexAttrib4hNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttrib4hNV =
-        (GdkGLProc_glVertexAttrib4hNV) gdk_gl_get_proc_address ("glVertexAttrib4hNV");
+    _procs_GL_NV_half_float.glVertexAttrib4hNV =
+      (GdkGLProc_glVertexAttrib4hNV) gdk_gl_get_proc_address ("glVertexAttrib4hNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4hNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttrib4hNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4hNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttrib4hNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttrib4hNV);
 }
@@ -22946,14 +21174,12 @@ gdk_gl_get_glVertexAttrib4hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttrib4hvNV == (GdkGLProc_glVertexAttrib4hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttrib4hvNV =
-        (GdkGLProc_glVertexAttrib4hvNV) gdk_gl_get_proc_address ("glVertexAttrib4hvNV");
+    _procs_GL_NV_half_float.glVertexAttrib4hvNV =
+      (GdkGLProc_glVertexAttrib4hvNV) gdk_gl_get_proc_address ("glVertexAttrib4hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttrib4hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttrib4hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttrib4hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttrib4hvNV);
 }
@@ -22966,14 +21192,12 @@ gdk_gl_get_glVertexAttribs1hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttribs1hvNV == (GdkGLProc_glVertexAttribs1hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttribs1hvNV =
-        (GdkGLProc_glVertexAttribs1hvNV) gdk_gl_get_proc_address ("glVertexAttribs1hvNV");
+    _procs_GL_NV_half_float.glVertexAttribs1hvNV =
+      (GdkGLProc_glVertexAttribs1hvNV) gdk_gl_get_proc_address ("glVertexAttribs1hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs1hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttribs1hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs1hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttribs1hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttribs1hvNV);
 }
@@ -22986,14 +21210,12 @@ gdk_gl_get_glVertexAttribs2hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttribs2hvNV == (GdkGLProc_glVertexAttribs2hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttribs2hvNV =
-        (GdkGLProc_glVertexAttribs2hvNV) gdk_gl_get_proc_address ("glVertexAttribs2hvNV");
+    _procs_GL_NV_half_float.glVertexAttribs2hvNV =
+      (GdkGLProc_glVertexAttribs2hvNV) gdk_gl_get_proc_address ("glVertexAttribs2hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs2hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttribs2hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs2hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttribs2hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttribs2hvNV);
 }
@@ -23006,14 +21228,12 @@ gdk_gl_get_glVertexAttribs3hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttribs3hvNV == (GdkGLProc_glVertexAttribs3hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttribs3hvNV =
-        (GdkGLProc_glVertexAttribs3hvNV) gdk_gl_get_proc_address ("glVertexAttribs3hvNV");
+    _procs_GL_NV_half_float.glVertexAttribs3hvNV =
+      (GdkGLProc_glVertexAttribs3hvNV) gdk_gl_get_proc_address ("glVertexAttribs3hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs3hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttribs3hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs3hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttribs3hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttribs3hvNV);
 }
@@ -23026,14 +21246,12 @@ gdk_gl_get_glVertexAttribs4hvNV (void)
     return NULL;
 
   if (_procs_GL_NV_half_float.glVertexAttribs4hvNV == (GdkGLProc_glVertexAttribs4hvNV) -1)
-    {
-      _procs_GL_NV_half_float.glVertexAttribs4hvNV =
-        (GdkGLProc_glVertexAttribs4hvNV) gdk_gl_get_proc_address ("glVertexAttribs4hvNV");
+    _procs_GL_NV_half_float.glVertexAttribs4hvNV =
+      (GdkGLProc_glVertexAttribs4hvNV) gdk_gl_get_proc_address ("glVertexAttribs4hvNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribs4hvNV () - %s",
-                   (_procs_GL_NV_half_float.glVertexAttribs4hvNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribs4hvNV () - %s",
+               (_procs_GL_NV_half_float.glVertexAttribs4hvNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_half_float.glVertexAttribs4hvNV);
 }
@@ -23129,14 +21347,12 @@ gdk_gl_get_glPixelDataRangeNV (void)
     return NULL;
 
   if (_procs_GL_NV_pixel_data_range.glPixelDataRangeNV == (GdkGLProc_glPixelDataRangeNV) -1)
-    {
-      _procs_GL_NV_pixel_data_range.glPixelDataRangeNV =
-        (GdkGLProc_glPixelDataRangeNV) gdk_gl_get_proc_address ("glPixelDataRangeNV");
+    _procs_GL_NV_pixel_data_range.glPixelDataRangeNV =
+      (GdkGLProc_glPixelDataRangeNV) gdk_gl_get_proc_address ("glPixelDataRangeNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPixelDataRangeNV () - %s",
-                   (_procs_GL_NV_pixel_data_range.glPixelDataRangeNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPixelDataRangeNV () - %s",
+               (_procs_GL_NV_pixel_data_range.glPixelDataRangeNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_pixel_data_range.glPixelDataRangeNV);
 }
@@ -23149,14 +21365,12 @@ gdk_gl_get_glFlushPixelDataRangeNV (void)
     return NULL;
 
   if (_procs_GL_NV_pixel_data_range.glFlushPixelDataRangeNV == (GdkGLProc_glFlushPixelDataRangeNV) -1)
-    {
-      _procs_GL_NV_pixel_data_range.glFlushPixelDataRangeNV =
-        (GdkGLProc_glFlushPixelDataRangeNV) gdk_gl_get_proc_address ("glFlushPixelDataRangeNV");
+    _procs_GL_NV_pixel_data_range.glFlushPixelDataRangeNV =
+      (GdkGLProc_glFlushPixelDataRangeNV) gdk_gl_get_proc_address ("glFlushPixelDataRangeNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glFlushPixelDataRangeNV () - %s",
-                   (_procs_GL_NV_pixel_data_range.glFlushPixelDataRangeNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFlushPixelDataRangeNV () - %s",
+               (_procs_GL_NV_pixel_data_range.glFlushPixelDataRangeNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_pixel_data_range.glFlushPixelDataRangeNV);
 }
@@ -23208,14 +21422,12 @@ gdk_gl_get_glPrimitiveRestartNV (void)
     return NULL;
 
   if (_procs_GL_NV_primitive_restart.glPrimitiveRestartNV == (GdkGLProc_glPrimitiveRestartNV) -1)
-    {
-      _procs_GL_NV_primitive_restart.glPrimitiveRestartNV =
-        (GdkGLProc_glPrimitiveRestartNV) gdk_gl_get_proc_address ("glPrimitiveRestartNV");
+    _procs_GL_NV_primitive_restart.glPrimitiveRestartNV =
+      (GdkGLProc_glPrimitiveRestartNV) gdk_gl_get_proc_address ("glPrimitiveRestartNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPrimitiveRestartNV () - %s",
-                   (_procs_GL_NV_primitive_restart.glPrimitiveRestartNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPrimitiveRestartNV () - %s",
+               (_procs_GL_NV_primitive_restart.glPrimitiveRestartNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_primitive_restart.glPrimitiveRestartNV);
 }
@@ -23228,14 +21440,12 @@ gdk_gl_get_glPrimitiveRestartIndexNV (void)
     return NULL;
 
   if (_procs_GL_NV_primitive_restart.glPrimitiveRestartIndexNV == (GdkGLProc_glPrimitiveRestartIndexNV) -1)
-    {
-      _procs_GL_NV_primitive_restart.glPrimitiveRestartIndexNV =
-        (GdkGLProc_glPrimitiveRestartIndexNV) gdk_gl_get_proc_address ("glPrimitiveRestartIndexNV");
+    _procs_GL_NV_primitive_restart.glPrimitiveRestartIndexNV =
+      (GdkGLProc_glPrimitiveRestartIndexNV) gdk_gl_get_proc_address ("glPrimitiveRestartIndexNV");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glPrimitiveRestartIndexNV () - %s",
-                   (_procs_GL_NV_primitive_restart.glPrimitiveRestartIndexNV) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPrimitiveRestartIndexNV () - %s",
+               (_procs_GL_NV_primitive_restart.glPrimitiveRestartIndexNV) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_NV_primitive_restart.glPrimitiveRestartIndexNV);
 }
@@ -23287,14 +21497,12 @@ gdk_gl_get_glMapObjectBufferATI (void)
     return NULL;
 
   if (_procs_GL_ATI_map_object_buffer.glMapObjectBufferATI == (GdkGLProc_glMapObjectBufferATI) -1)
-    {
-      _procs_GL_ATI_map_object_buffer.glMapObjectBufferATI =
-        (GdkGLProc_glMapObjectBufferATI) gdk_gl_get_proc_address ("glMapObjectBufferATI");
+    _procs_GL_ATI_map_object_buffer.glMapObjectBufferATI =
+      (GdkGLProc_glMapObjectBufferATI) gdk_gl_get_proc_address ("glMapObjectBufferATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glMapObjectBufferATI () - %s",
-                   (_procs_GL_ATI_map_object_buffer.glMapObjectBufferATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapObjectBufferATI () - %s",
+               (_procs_GL_ATI_map_object_buffer.glMapObjectBufferATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_map_object_buffer.glMapObjectBufferATI);
 }
@@ -23307,14 +21515,12 @@ gdk_gl_get_glUnmapObjectBufferATI (void)
     return NULL;
 
   if (_procs_GL_ATI_map_object_buffer.glUnmapObjectBufferATI == (GdkGLProc_glUnmapObjectBufferATI) -1)
-    {
-      _procs_GL_ATI_map_object_buffer.glUnmapObjectBufferATI =
-        (GdkGLProc_glUnmapObjectBufferATI) gdk_gl_get_proc_address ("glUnmapObjectBufferATI");
+    _procs_GL_ATI_map_object_buffer.glUnmapObjectBufferATI =
+      (GdkGLProc_glUnmapObjectBufferATI) gdk_gl_get_proc_address ("glUnmapObjectBufferATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glUnmapObjectBufferATI () - %s",
-                   (_procs_GL_ATI_map_object_buffer.glUnmapObjectBufferATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUnmapObjectBufferATI () - %s",
+               (_procs_GL_ATI_map_object_buffer.glUnmapObjectBufferATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_map_object_buffer.glUnmapObjectBufferATI);
 }
@@ -23366,14 +21572,12 @@ gdk_gl_get_glStencilOpSeparateATI (void)
     return NULL;
 
   if (_procs_GL_ATI_separate_stencil.glStencilOpSeparateATI == (GdkGLProc_glStencilOpSeparateATI) -1)
-    {
-      _procs_GL_ATI_separate_stencil.glStencilOpSeparateATI =
-        (GdkGLProc_glStencilOpSeparateATI) gdk_gl_get_proc_address ("glStencilOpSeparateATI");
+    _procs_GL_ATI_separate_stencil.glStencilOpSeparateATI =
+      (GdkGLProc_glStencilOpSeparateATI) gdk_gl_get_proc_address ("glStencilOpSeparateATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glStencilOpSeparateATI () - %s",
-                   (_procs_GL_ATI_separate_stencil.glStencilOpSeparateATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glStencilOpSeparateATI () - %s",
+               (_procs_GL_ATI_separate_stencil.glStencilOpSeparateATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_separate_stencil.glStencilOpSeparateATI);
 }
@@ -23386,14 +21590,12 @@ gdk_gl_get_glStencilFuncSeparateATI (void)
     return NULL;
 
   if (_procs_GL_ATI_separate_stencil.glStencilFuncSeparateATI == (GdkGLProc_glStencilFuncSeparateATI) -1)
-    {
-      _procs_GL_ATI_separate_stencil.glStencilFuncSeparateATI =
-        (GdkGLProc_glStencilFuncSeparateATI) gdk_gl_get_proc_address ("glStencilFuncSeparateATI");
+    _procs_GL_ATI_separate_stencil.glStencilFuncSeparateATI =
+      (GdkGLProc_glStencilFuncSeparateATI) gdk_gl_get_proc_address ("glStencilFuncSeparateATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glStencilFuncSeparateATI () - %s",
-                   (_procs_GL_ATI_separate_stencil.glStencilFuncSeparateATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glStencilFuncSeparateATI () - %s",
+               (_procs_GL_ATI_separate_stencil.glStencilFuncSeparateATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_separate_stencil.glStencilFuncSeparateATI);
 }
@@ -23446,14 +21648,12 @@ gdk_gl_get_glVertexAttribArrayObjectATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_attrib_array_object.glVertexAttribArrayObjectATI == (GdkGLProc_glVertexAttribArrayObjectATI) -1)
-    {
-      _procs_GL_ATI_vertex_attrib_array_object.glVertexAttribArrayObjectATI =
-        (GdkGLProc_glVertexAttribArrayObjectATI) gdk_gl_get_proc_address ("glVertexAttribArrayObjectATI");
+    _procs_GL_ATI_vertex_attrib_array_object.glVertexAttribArrayObjectATI =
+      (GdkGLProc_glVertexAttribArrayObjectATI) gdk_gl_get_proc_address ("glVertexAttribArrayObjectATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glVertexAttribArrayObjectATI () - %s",
-                   (_procs_GL_ATI_vertex_attrib_array_object.glVertexAttribArrayObjectATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribArrayObjectATI () - %s",
+               (_procs_GL_ATI_vertex_attrib_array_object.glVertexAttribArrayObjectATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_attrib_array_object.glVertexAttribArrayObjectATI);
 }
@@ -23466,14 +21666,12 @@ gdk_gl_get_glGetVertexAttribArrayObjectfvATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectfvATI == (GdkGLProc_glGetVertexAttribArrayObjectfvATI) -1)
-    {
-      _procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectfvATI =
-        (GdkGLProc_glGetVertexAttribArrayObjectfvATI) gdk_gl_get_proc_address ("glGetVertexAttribArrayObjectfvATI");
+    _procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectfvATI =
+      (GdkGLProc_glGetVertexAttribArrayObjectfvATI) gdk_gl_get_proc_address ("glGetVertexAttribArrayObjectfvATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVertexAttribArrayObjectfvATI () - %s",
-                   (_procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectfvATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribArrayObjectfvATI () - %s",
+               (_procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectfvATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectfvATI);
 }
@@ -23486,14 +21684,12 @@ gdk_gl_get_glGetVertexAttribArrayObjectivATI (void)
     return NULL;
 
   if (_procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectivATI == (GdkGLProc_glGetVertexAttribArrayObjectivATI) -1)
-    {
-      _procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectivATI =
-        (GdkGLProc_glGetVertexAttribArrayObjectivATI) gdk_gl_get_proc_address ("glGetVertexAttribArrayObjectivATI");
+    _procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectivATI =
+      (GdkGLProc_glGetVertexAttribArrayObjectivATI) gdk_gl_get_proc_address ("glGetVertexAttribArrayObjectivATI");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glGetVertexAttribArrayObjectivATI () - %s",
-                   (_procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectivATI) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribArrayObjectivATI () - %s",
+               (_procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectivATI) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_ATI_vertex_attrib_array_object.glGetVertexAttribArrayObjectivATI);
 }
@@ -23545,14 +21741,12 @@ gdk_gl_get_glAddSwapHintRectWIN (void)
     return NULL;
 
   if (_procs_GL_WIN_swap_hint.glAddSwapHintRectWIN == (GdkGLProc_glAddSwapHintRectWIN) -1)
-    {
-      _procs_GL_WIN_swap_hint.glAddSwapHintRectWIN =
-        (GdkGLProc_glAddSwapHintRectWIN) gdk_gl_get_proc_address ("glAddSwapHintRectWIN");
+    _procs_GL_WIN_swap_hint.glAddSwapHintRectWIN =
+      (GdkGLProc_glAddSwapHintRectWIN) gdk_gl_get_proc_address ("glAddSwapHintRectWIN");
 
-      GDK_GL_NOTE (MISC,
-        g_message (" - gdk_gl_get_glAddSwapHintRectWIN () - %s",
-                   (_procs_GL_WIN_swap_hint.glAddSwapHintRectWIN) ? "supported" : "not supported"));
-    }
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glAddSwapHintRectWIN () - %s",
+               (_procs_GL_WIN_swap_hint.glAddSwapHintRectWIN) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_WIN_swap_hint.glAddSwapHintRectWIN);
 }
