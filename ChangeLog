@@ -1,5 +1,8 @@
 2002-12-21  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglconfig-x11.c (gdk_x11_gl_config_new_from_visualid) 
+	(gdk_x11_gl_config_new_from_visualid_for_screen): Added.
+
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new) 
 	(gdk_gl_config_new_for_screen): Rewritten. Now glXChooseVisual()
 	is done by these config_new() functions.

@@ -4,6 +4,16 @@
 GdkGLConfig  *glconfig,const char   *extension
 </FUNCTION>
 <FUNCTION>
+<NAME>gdk_x11_gl_config_new_from_visualid</NAME>
+<RETURNS>GdkGLConfig  *</RETURNS>
+VisualID   xvisualid
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_x11_gl_config_new_from_visualid_for_screen</NAME>
+<RETURNS>GdkGLConfig  *</RETURNS>
+GdkScreen *screen,VisualID   xvisualid
+</FUNCTION>
+<FUNCTION>
 <NAME>gdk_x11_gl_config_get_xdisplay</NAME>
 <RETURNS>Display      *</RETURNS>
 GdkGLConfig  *glconfig

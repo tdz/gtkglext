@@ -116,6 +116,8 @@ GDK_GL_WINDOW_GET_CLASS
 <SECTION>
 <FILE>gdkglx</FILE>
 gdk_x11_gl_query_glx_extension
+gdk_x11_gl_config_new_from_visualid
+gdk_x11_gl_config_new_from_visualid_for_screen
 gdk_x11_gl_config_get_xdisplay
 gdk_x11_gl_config_get_screen_number
 gdk_x11_gl_config_get_xvinfo

@@ -36,6 +36,14 @@ G_BEGIN_DECLS
 gboolean     gdk_x11_gl_query_glx_extension      (GdkGLConfig  *glconfig,
                                                   const char   *extension);
 
+#ifndef GDK_MULTIHEAD_SAFE
+GdkGLConfig *gdk_x11_gl_config_new_from_visualid            (VisualID   xvisualid);
+#endif /* GDK_MULTIHEAD_SAFE */
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+GdkGLConfig *gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
+                                                             VisualID   xvisualid);
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
 Display     *gdk_x11_gl_config_get_xdisplay      (GdkGLConfig  *glconfig);
 int          gdk_x11_gl_config_get_screen_number (GdkGLConfig  *glconfig);
 XVisualInfo *gdk_x11_gl_config_get_xvinfo        (GdkGLConfig  *glconfig);

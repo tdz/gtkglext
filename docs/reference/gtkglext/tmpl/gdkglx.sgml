@@ -24,6 +24,25 @@ Internal X-related functions
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_x11_gl_config_new_from_visualid ##### -->
+<para>
+
+</para>
+
+@xvisualid: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_x11_gl_config_new_from_visualid_for_screen ##### -->
+<para>
+
+</para>
+
+@screen: 
+@xvisualid: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gdk_x11_gl_config_get_xdisplay ##### -->
 <para>
 
