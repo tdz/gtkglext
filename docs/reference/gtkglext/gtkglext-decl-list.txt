@@ -131,6 +131,11 @@ GDK_GL_CONFIG_XCOLORMAP
 </SECTION>
 
 <SECTION>
+<FILE>gdkgldefs</FILE>
+GDK_GL_VAR
+</SECTION>
+
+<SECTION>
 <FILE>gdkglfont</FILE>
 gdk_gl_font_use_pango_font
 gdk_gl_font_use_pango_font_for_display
@@ -188,11 +193,6 @@ gdkglext_binary_age
 </SECTION>
 
 <SECTION>
-<FILE>gdkgldefs</FILE>
-GDK_GL_VAR
-</SECTION>
-
-<SECTION>
 <FILE>gdkglenumtypes</FILE>
 gdk_gl_success_get_type
 GDK_TYPE_GL_SUCCESS
@@ -227,6 +227,11 @@ GDK_TYPE_GL_CONFIG_MODE
 </SECTION>
 
 <SECTION>
+<FILE>gtkgldefs</FILE>
+GTK_GL_VAR
+</SECTION>
+
+<SECTION>
 <FILE>gtkglwidget</FILE>
 gtk_widget_set_gl_capability
 gtk_widget_is_gl_capable
@@ -234,11 +239,6 @@ gtk_widget_get_gl_config
 gtk_widget_get_gl_context
 gtk_widget_get_gl_window
 gtk_widget_get_gl_drawable
-</SECTION>
-
-<SECTION>
-<FILE>gtkgldefs</FILE>
-GTK_GL_VAR
 </SECTION>
 
 <SECTION>
