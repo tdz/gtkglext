@@ -18,7 +18,7 @@
 
 #ifdef GDK_MULTIHEAD_SAFE
 #include <gdk/gdkdisplay.h>
-#endif
+#endif /* GDK_MULTIHEAD_SAFE */
 
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
@@ -36,11 +36,20 @@ gdk_gl_query_extension (void)
 #ifdef GDK_MULTIHEAD_SAFE
   return glXQueryExtension (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                             NULL, NULL);
-#else
+#else  /* GDK_MULTIHEAD_SAFE */
   return glXQueryExtension (gdk_x11_get_default_xdisplay (),
                             NULL, NULL);
-#endif
+#endif /* GDK_MULTIHEAD_SAFE */
 }
+
+#ifdef GDK_MULTIHEAD_SAFE
+gboolean
+gdk_gl_query_extension_for_display (GdkDisplay *display)
+{
+  return glXQueryExtension (GDK_DISPLAY_XDISPLAY (display),
+                            NULL, NULL);
+}
+#endif /* GDK_MULTIHEAD_SAFE */
 
 /**
  * gdk_gl_query_version:
@@ -58,8 +67,19 @@ gdk_gl_query_version (gint *major,
 #ifdef GDK_MULTIHEAD_SAFE
   return glXQueryVersion (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                           major, minor);
-#else
+#else  /* GDK_MULTIHEAD_SAFE */
   return glXQueryVersion (gdk_x11_get_default_xdisplay (),
                           major, minor);
-#endif
+#endif /* GDK_MULTIHEAD_SAFE */
 }
+
+#ifdef GDK_MULTIHEAD_SAFE
+gboolean
+gdk_gl_query_version_for_display (GdkDisplay *display,
+                                  gint       *major,
+                                  gint       *minor)
+{
+  return glXQueryVersion (GDK_DISPLAY_XDISPLAY (display),
+                          major, minor);
+}
+#endif /* GDK_MULTIHEAD_SAFE */

@@ -1,5 +1,13 @@
 2002-07-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglfont-x11.c: 
+	* gdk/gdkglfont.h: 
+	* gdk/x11/gdkglconfig-x11.c: 
+	* gdk/gdkglconfig.[hc]: 
+	* gdk/x11/gdkgl-x11.c: 
+	* gdk/gdkgl.h: Multihead support functions have been implemented.
+	But they are not fully tested yet.
+
 	* gdk/win32/gdkglwindow-win32.c: 
 	* gdk/win32/gdkglpixmap-win32.c: Changed to use internal macros in
 	gdkglwin32.h.

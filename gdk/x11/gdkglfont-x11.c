@@ -22,7 +22,7 @@
 
 #ifdef GDK_MULTIHEAD_SAFE
 #include <gdk/gdkdisplay.h>
-#endif
+#endif /* GDK_MULTIHEAD_SAFE */
 
 #include "gdkglx.h"
 #include "gdkglfont.h"
@@ -98,9 +98,9 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
 
 #ifdef GDK_MULTIHEAD_SAFE
   font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
-#else
+#else  /* GDK_MULTIHEAD_SAFE */
   font_map = pango_x_font_map_for_display (gdk_x11_get_default_xdisplay ());
-#endif
+#endif /* GDK_MULTIHEAD_SAFE */
 
   font_cache = pango_x_font_map_get_font_cache (font_map);
 
@@ -143,3 +143,69 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
 
   return font;
 }
+
+#ifdef GDK_MULTIHEAD_SAFE
+
+PangoFont *
+gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
+                                        const PangoFontDescription *font_desc,
+                                        gint                        first,
+                                        gint                        count,
+                                        gint                        list_base)
+{
+  PangoFontMap *font_map;
+  PangoXFontCache *font_cache;
+  PangoFont *font = NULL;
+  gchar *charset = NULL;
+  PangoXSubfont subfont_id;
+  gchar *xlfd = NULL;
+  XFontStruct *fs;
+
+  g_return_val_if_fail (font_desc != NULL, NULL);
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_font_use_pango_font ()"));
+
+  font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (display));
+  font_cache = pango_x_font_map_get_font_cache (font_map);
+
+  font = pango_font_map_load_font (font_map, NULL, font_desc);
+  if (font == NULL)
+    {
+      g_warning ("cannot load PangoFont");
+      goto FAIL;
+    }
+
+  charset = gdk_gl_font_charset_for_locale ();
+  if (!pango_x_find_first_subfont (font, &charset, 1, &subfont_id))
+    {
+      g_warning ("cannot find PangoXSubfont");
+      font = NULL;
+      goto FAIL;
+    }
+
+  xlfd = pango_x_font_subfont_xlfd (font, subfont_id);
+  if (xlfd == NULL)
+    {
+      g_warning ("cannot get XLFD");
+      font = NULL;
+      goto FAIL;
+    }
+
+  fs = pango_x_font_cache_load (font_cache, xlfd);
+
+  glXUseXFont (fs->fid, first, count, list_base);
+
+  pango_x_font_cache_unload (font_cache, fs);
+
+ FAIL:
+
+  if (charset != NULL)
+    g_free (charset);
+
+  if (xlfd != NULL)
+    g_free (xlfd);
+
+  return font;
+}
+
+#endif /* GDK_MULTIHEAD_SAFE */

@@ -32,10 +32,20 @@
 
 G_BEGIN_DECLS
 
-gboolean gdk_gl_query_extension (void);
+gboolean gdk_gl_query_extension             (void);
 
-gboolean gdk_gl_query_version   (gint *major,
-                                 gint *minor);
+#ifdef GDK_MULTIHEAD_SAFE
+gboolean gdk_gl_query_extension_for_display (GdkDisplay *display);
+#endif /* GDK_MULTIHEAD_SAFE */
+
+gboolean gdk_gl_query_version               (gint       *major,
+                                             gint       *minor);
+
+#ifdef GDK_MULTIHEAD_SAFE
+gboolean gdk_gl_query_version_for_display   (GdkDisplay *display,
+                                             gint       *major,
+                                             gint       *minor);
+#endif /* GDK_MULTIHEAD_SAFE */
 
 G_END_DECLS
 

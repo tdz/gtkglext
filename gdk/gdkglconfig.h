@@ -43,6 +43,13 @@ struct _GdkGLConfig
 
   guint is_double_buffered : 1;
   guint is_stereo : 1;
+
+#ifdef GDK_MULTIHEAD_SAFE
+  GdkScreen *screen;
+#else  /* GDK_MULTIHEAD_SAFE */
+  gpointer screen;
+#endif /* GDK_MULTIHEAD_SAFE */
+
 };
 
 struct _GdkGLConfigClass
@@ -57,6 +64,15 @@ struct _GdkGLConfigClass
 GType        gdk_gl_config_get_type           (void);
 
 GdkGLConfig *gdk_gl_config_new                (const gint  *attrib_list);
+
+#ifdef GDK_MULTIHEAD_SAFE
+
+GdkGLConfig *gdk_gl_config_new_for_screen     (GdkScreen   *screen,
+                                               const gint  *attrib_list);
+
+GdkScreen   *gdk_gl_config_get_screen         (GdkGLConfig *glconfig);
+
+#endif /* GDK_MULTIHEAD_SAFE */
 
 gboolean     gdk_gl_config_get_attrib         (GdkGLConfig *glconfig,
                                                gint         attribute,

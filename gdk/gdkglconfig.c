@@ -16,14 +16,34 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#ifdef GDK_MULTIHEAD_SAFE
+#include <gdk/gdkscreen.h>
+#endif /* GDK_MULTIHEAD_SAFE */
+
 #include <gdk/gdkwindow.h>
 #include "gdkglprivate.h"
 #include "gdkglconfig.h"
 
-static void     gdk_gl_config_init       (GdkGLConfig      *glconfig);
-static void     gdk_gl_config_class_init (GdkGLConfigClass *klass);
+enum {
+  PROP_0,
+  PROP_SCREEN,
+};
 
-static void     gdk_gl_config_finalize   (GObject          *object);
+static void     gdk_gl_config_init         (GdkGLConfig           *glconfig);
+static void     gdk_gl_config_class_init   (GdkGLConfigClass      *klass);
+
+static GObject *gdk_gl_config_constructor  (GType                  type,
+                                            guint                  n_construct_properties,
+                                            GObjectConstructParam *construct_properties);
+static void     gdk_gl_config_set_property (GObject               *object,
+                                            guint                  property_id,
+                                            const GValue          *value,
+                                            GParamSpec            *pspec);
+static void     gdk_gl_config_get_property (GObject               *object,
+                                            guint                  property_id,
+                                            GValue                *value,
+                                            GParamSpec            *pspec);
+static void     gdk_gl_config_finalize     (GObject               *object);
 
 static gpointer parent_class = NULL;
 
@@ -74,7 +94,86 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->finalize = gdk_gl_config_finalize;
+  object_class->constructor  = gdk_gl_config_constructor;
+  object_class->set_property = gdk_gl_config_set_property;
+  object_class->get_property = gdk_gl_config_get_property;
+  object_class->finalize     = gdk_gl_config_finalize;
+
+#ifdef GDK_MULTIHEAD_SAFE
+  g_object_class_install_property (object_class,
+                                   PROP_SCREEN,
+                                   g_param_spec_object ("screen",
+                                                        _("Screen"),
+                                                        _("Target screen for the OpenGL configuration."),
+                                                        GDK_TYPE_SCREEN,
+                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+#else  /* GDK_MULTIHEAD_SAFE */
+  g_object_class_install_property (object_class,
+                                   PROP_SCREEN,
+                                   g_param_spec_pointer ("screen",
+                                                         _("Screen"),
+                                                         _("Target screen for the OpenGL configuration."),
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+#endif /* GDK_MULTIHEAD_SAFE */
+}
+
+static GObject *
+gdk_gl_config_constructor (GType                  type,
+                           guint                  n_construct_properties,
+                           GObjectConstructParam *construct_properties)
+{
+  GObject *object;
+
+  object = G_OBJECT_CLASS (parent_class)->constructor (type,
+                                                       n_construct_properties,
+                                                       construct_properties);
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_constructor ()"));
+
+  return object;
+}
+
+static void
+gdk_gl_config_set_property (GObject      *object,
+                            guint         property_id,
+                            const GValue *value,
+                            GParamSpec   *pspec)
+{
+  GdkGLConfig *glconfig = GDK_GL_CONFIG (object);
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_set_property ()"));
+
+  switch (property_id)
+    {
+    case PROP_SCREEN:
+#ifdef GDK_MULTIHEAD_SAFE
+      glconfig->screen = g_value_get_object (value);
+      g_object_ref (G_OBJECT (glconfig->screen));
+#else  /* GDK_MULTIHEAD_SAFE */
+      glconfig->screen = g_value_get_pointer (value);
+#endif /* GDK_MULTIHEAD_SAFE */
+      g_object_notify (object, "screen");
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+    }
+}
+
+static void
+gdk_gl_config_get_property (GObject    *object,
+                            guint       property_id,
+                            GValue     *value,
+                            GParamSpec *pspec)
+{
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_get_property ()"));
+
+  switch (property_id)
+    {
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+    }
 }
 
 static void
@@ -90,8 +189,28 @@ gdk_gl_config_finalize (GObject *object)
       glconfig->colormap = NULL;
     }
 
+#ifdef GDK_MULTIHEAD_SAFE
+  if (glconfig->screen != NULL)
+    {
+      g_object_unref (G_OBJECT (glconfig->screen));
+      glconfig->screen = NULL;
+    }
+#endif /* GDK_MULTIHEAD_SAFE */
+
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
+
+#ifdef GDK_MULTIHEAD_SAFE
+
+GdkScreen *
+gdk_gl_config_get_screen (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+
+  return glconfig->screen;
+}
+
+#endif /* GDK_MULTIHEAD_SAFE */
 
 /**
  * gdk_gl_config_get_attrib:

@@ -18,7 +18,7 @@
 
 #ifdef GDK_MULTIHEAD_SAFE
 #include <gdk/gdkscreen.h>
-#endif
+#endif /* GDK_MULTIHEAD_SAFE */
 
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
@@ -30,8 +30,13 @@ enum {
 };
 
 /* Forward declarations */
-#if 0
+#if 1
+#ifdef GDK_MULTIHEAD_SAFE
+static XVisualInfo *gdk_x11_visual_get_xvinfo (GdkScreen *screen,
+                                               GdkVisual *visual);
+#else  /* GDK_MULTIHEAD_SAFE */
 static XVisualInfo *gdk_x11_visual_get_xvinfo (GdkVisual *visual);
+#endif /* GDK_MULTIHEAD_SAFE */
 #endif
 
 static gboolean gdk_x11_gl_config_get_attrib        (GdkGLConfig             *glconfig,
@@ -151,32 +156,38 @@ gdk_gl_config_impl_x11_constructor (GType                  type,
  *      It may need support of fixed gdkx_colormap_get () function
  *      or something.
  */
-static GdkColormap *
-get_colormap (GdkVisual *visual)
-{
 #ifdef GDK_MULTIHEAD_SAFE
-  GdkScreen *screen = gdk_screen_get_default ();
-#endif
-  GdkColormap *colormap;
 
-#ifdef GDK_MULTIHEAD_SAFE
+static GdkColormap *
+get_colormap (GdkScreen *screen,
+              GdkVisual *visual)
+{
+  GdkColormap *colormap;
 
   if (visual == gdk_screen_get_system_visual (screen))
     colormap = g_object_ref (G_OBJECT (gdk_screen_get_system_colormap (screen)));
   else
     colormap = gdk_colormap_new (visual, FALSE);
 
-#else
+  return colormap;
+}
+
+#else  /* GDK_MULTIHEAD_SAFE */
+
+static GdkColormap *
+get_colormap (GdkVisual *visual)
+{
+  GdkColormap *colormap;
 
   if (visual == gdk_visual_get_system ())
     colormap = g_object_ref (G_OBJECT (gdk_colormap_get_system ()));
   else
     colormap = gdk_colormap_new (visual, FALSE);
 
-#endif
-
   return colormap;
 }
+
+#endif /* GDK_MULTIHEAD_SAFE */
 
 static void
 set_property (GdkGLConfigImplX11 *impl,
@@ -184,9 +195,6 @@ set_property (GdkGLConfigImplX11 *impl,
 {
   GdkGLConfig *glconfig = GDK_GL_CONFIG (impl);
 
-#ifdef GDK_MULTIHEAD_SAFE
-  GdkScreen *screen = gdk_screen_get_default ();
-#endif
   int screen_num;
   GdkVisual *visual;
   int ret, value;
@@ -194,12 +202,12 @@ set_property (GdkGLConfigImplX11 *impl,
   g_return_if_fail (attrib_list != NULL);
 
 #ifdef GDK_MULTIHEAD_SAFE
-  impl->xdisplay = GDK_SCREEN_XDISPLAY (screen);
-  screen_num = GDK_SCREEN_XNUMBER (screen);
-#else
+  impl->xdisplay = GDK_SCREEN_XDISPLAY (glconfig->screen);
+  screen_num = GDK_SCREEN_XNUMBER (glconfig->screen);
+#else  /* GDK_MULTIHEAD_SAFE */
   impl->xdisplay = gdk_x11_get_default_xdisplay ();
   screen_num = gdk_x11_get_default_screen ();
-#endif
+#endif /* GDK_MULTIHEAD_SAFE */
 
   GDK_GL_NOTE (MISC,
                g_message (" -- GLX_VENDOR     : %s",
@@ -224,14 +232,18 @@ set_property (GdkGLConfigImplX11 *impl,
    */
 
 #ifdef GDK_MULTIHEAD_SAFE
-  visual = gdkx_visual_get_for_screen (screen, impl->xvinfo->visualid);
-#else
+  visual = gdkx_visual_get_for_screen (glconfig->screen, impl->xvinfo->visualid);
+#else  /* GDK_MULTIHEAD_SAFE */
   visual = gdkx_visual_get (impl->xvinfo->visualid);
-#endif
+#endif /* GDK_MULTIHEAD_SAFE */
   if (visual == NULL)
     return;
 
+#ifdef GDK_MULTIHEAD_SAFE
+  glconfig->colormap = get_colormap (glconfig->screen, visual);
+#else  /* GDK_MULTIHEAD_SAFE */
   glconfig->colormap = get_colormap (visual);
+#endif /* GDK_MULTIHEAD_SAFE */
 
   /*
    * Depth (number of bits per pixel) of the visual.
@@ -331,9 +343,17 @@ gdk_gl_config_new (const gint *attrib_list)
    * Instanciate the GdkGLConfigImplX11 object.
    */
 
+#ifdef GDK_MULTIHEAD_SAFE
   glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11,
+                           "screen",      gdk_screen_get_default (),
                            "attrib_list", attrib_list,
                            NULL);
+#else  /* GDK_MULTIHEAD_SAFE */
+  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11,
+                           "screen",      NULL,
+                           "attrib_list", attrib_list,
+                           NULL);
+#endif /* GDK_MULTIHEAD_SAFE */
 
   impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
 
@@ -346,31 +366,58 @@ gdk_gl_config_new (const gint *attrib_list)
   return glconfig;
 }
 
-#if 0
+#ifdef GDK_MULTIHEAD_SAFE
+
+GdkGLConfig *
+gdk_gl_config_new_for_screen (GdkScreen  *screen,
+                              const gint *attrib_list)
+{
+  GdkGLConfig *glconfig;
+  GdkGLConfigImplX11 *impl;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
+
+  /*
+   * Instanciate the GdkGLConfigImplX11 object.
+   */
+
+  glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11,
+                           "screen",      screen,
+                           "attrib_list", attrib_list,
+                           NULL);
+  impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
+
+  if (!impl->is_constructed)
+    {
+      g_object_unref (G_OBJECT (glconfig));
+      return NULL;
+    }
+
+  return glconfig;
+}
+
+#endif /* GDK_MULTIHEAD_SAFE */
+
+#if 1
 
 /*
  * XVisualInfo returned by this function should be freed by XFree ().
  */
-static XVisualInfo *
-gdk_x11_visual_get_xvinfo (GdkVisual *visual)
-{
+
 #ifdef GDK_MULTIHEAD_SAFE
-  GdkScreen *screen = gdk_screen_get_default ();
-#endif
+
+static XVisualInfo *
+gdk_x11_visual_get_xvinfo (GdkScreen *screen,
+                           GdkVisual *visual)
+{
   Display *xdisplay;
   XVisualInfo xvinfo_template;
   XVisualInfo *xvinfo_list;
   int nitems_return;
 
-#ifdef GDK_MULTIHEAD_SAFE
   xdisplay = GDK_SCREEN_XDISPLAY (screen);
   xvinfo_template.visualid = XVisualIDFromVisual (GDK_VISUAL_XVISUAL (visual));
   xvinfo_template.screen = GDK_SCREEN_XNUMBER (screen);
-#else
-  xdisplay = gdk_x11_get_default_xdisplay ();
-  xvinfo_template.visualid = XVisualIDFromVisual (GDK_VISUAL_XVISUAL (visual));
-  xvinfo_template.screen = gdk_x11_get_default_screen ();
-#endif
 
   xvinfo_list = XGetVisualInfo (xdisplay,
                                 VisualIDMask | VisualScreenMask,
@@ -382,6 +429,33 @@ gdk_x11_visual_get_xvinfo (GdkVisual *visual)
 
   return xvinfo_list;
 }
+
+#else  /* GDK_MULTIHEAD_SAFE */
+
+static XVisualInfo *
+gdk_x11_visual_get_xvinfo (GdkVisual *visual)
+{
+  Display *xdisplay;
+  XVisualInfo xvinfo_template;
+  XVisualInfo *xvinfo_list;
+  int nitems_return;
+
+  xdisplay = gdk_x11_get_default_xdisplay ();
+  xvinfo_template.visualid = XVisualIDFromVisual (GDK_VISUAL_XVISUAL (visual));
+  xvinfo_template.screen = gdk_x11_get_default_screen ();
+
+  xvinfo_list = XGetVisualInfo (xdisplay,
+                                VisualIDMask | VisualScreenMask,
+                                &xvinfo_template,
+                                &nitems_return);
+
+  /* Returned XVisualInfo needs to be unique */
+  g_assert (xvinfo_list != NULL && nitems_return == 1);
+
+  return xvinfo_list;
+}
+
+#endif /* GDK_MULTIHEAD_SAFE */
 
 #endif
 
