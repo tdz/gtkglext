@@ -1,5 +1,8 @@
 2003-03-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglconfig.c (gdk_gl_config_is_double_buffered): Returns
+	FALSE if as_single_mode is TRUE.
+
 	* gdk/gdkglinit.h: 
 	* gdk/gdkglinit.c: 
 	* gtk/gtkglinit.h: 

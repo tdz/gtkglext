@@ -368,7 +368,7 @@ gdk_gl_config_is_double_buffered (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return glconfig->is_double_buffered;
+  return (glconfig->is_double_buffered && (!glconfig->as_single_mode));
 }
 
 /**
