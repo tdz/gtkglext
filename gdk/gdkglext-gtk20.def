@@ -23,6 +23,7 @@ EXPORTS
 	gdk_gl_config_new
 	gdk_gl_config_new_by_mode
 	gdk_gl_context_copy
+	gdk_gl_context_destroy
 	gdk_gl_context_get_current
 	gdk_gl_context_get_gl_config
 	gdk_gl_context_get_gl_drawable
@@ -1057,6 +1058,7 @@ EXPORTS
 	gdk_gl_init_check
 	gdk_gl_parse_args
 	gdk_gl_pbuffer_attrib_get_type
+	gdk_gl_pixmap_destroy
 	gdk_gl_pixmap_get_pixmap
 	gdk_gl_pixmap_get_type
 	gdk_gl_pixmap_new
@@ -1067,6 +1069,7 @@ EXPORTS
 	gdk_gl_render_type_mask_get_type
 	gdk_gl_transparent_type_get_type
 	gdk_gl_visual_type_get_type
+	gdk_gl_window_destroy
 	gdk_gl_window_get_type
 	gdk_gl_window_get_window
 	gdk_gl_window_new
