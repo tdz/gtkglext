@@ -96,9 +96,13 @@ rm -rf $RPM_BUILD_ROOT
 #%{_libdir}/lib*.a
 %{_libdir}/lib*.la
 %{_libdir}/pkgconfig/*
+%{_datadir}/aclocal/*
 %{_datadir}/gtk-doc/html/*
 
 %changelog
+* Mon Feb 24 2003 Naofumi Yasufuku <naofumi@users.sourceforge.net>
+- Added %{_datadir}/aclocal/* to the file list.
+
 * Tue Dec  3 2002 Naofumi Yasufuku <naofumi@users.sourceforge.net>
 - Added %{_libdir}/gtkglext-%{api_version} to the file list.
 
