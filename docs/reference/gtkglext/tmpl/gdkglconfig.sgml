@@ -46,9 +46,16 @@ and is afterwards used in #gtk_widget_set_gl_capability.
 @colormap: 
 @depth: 
 @layer_plane: 
+@is_rgba: 
 @is_double_buffered: 
-@is_stereo: 
 @as_single_mode: 
+@is_stereo: 
+@has_alpha: 
+@has_depth_buffer: 
+@has_stencil_buffer: 
+@has_accum_buffer: 
+@is_multisample: 
+@is_luminance: 
 
 <!-- ##### FUNCTION gdk_gl_config_new ##### -->
 <para>
@@ -125,6 +132,15 @@ Color depth is a somehow confusing term. It is defined as the amount of bits per
 @Returns: The amounts of bits required to define RGBA components of a color.
 
 
+<!-- ##### FUNCTION gdk_gl_config_is_rgba ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gdk_gl_config_is_double_buffered ##### -->
 <para>
 Checks for double buffering use in the #GdkGLConfig struct. Double buffering is a technique use to avoid drawing directly in the viewable area. With double buffering, all entities drawn with OpenGL are stored in an invisible buffer. This buffer is then replaced by the frame buffer. Using Double-buffering, a big amount of memory is used to mantain this buffer, but quality is highly improved. Use #gdk_drawable_swap_buffers to swap buffers when drawing is complete.
@@ -141,5 +157,41 @@ Stereo Viewing deals with all techniques used to give 3D capabilities to a view,
 
 @glconfig: The #GdkGLConfig struct to check for stereo capabilities.
 @Returns: TRUE if stereo is supported, FALSE otherwise.
+
+
+<!-- ##### FUNCTION gdk_gl_config_has_alpha ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_has_depth_buffer ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_has_stencil_buffer ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_has_accum_buffer ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
 
 

@@ -1,5 +1,17 @@
 2002-08-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglconfig.[ch]
+	(gdk_gl_config_is_rgba) 
+	(gdk_gl_config_has_alpha)
+	(gdk_gl_config_has_depth_buffer) 
+	(gdk_gl_config_has_stencil_buffer) 
+	(gdk_gl_config_has_accum_buffer): Added.
+
+	* gdk/x11/gdkglconfig-x11.c:
+	* gdk/win32/gdkglconfig-win32.c:
+	* gdk/gdkglconfig.h (struct _GdkGLConfig): Added some frame buffer
+	attribute flags.
+
 	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_impl_win32_constructor):
 	Rewritten.
 

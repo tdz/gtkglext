@@ -198,7 +198,7 @@ configure_gl (GdkGLConfigImplX11 *impl,
   GdkGLConfig *glconfig = GDK_GL_CONFIG (impl);
 
   GdkVisual *visual;
-  int ret, value;
+  int value;
 
   g_return_if_fail (attrib_list != NULL);
 
@@ -253,31 +253,51 @@ configure_gl (GdkGLConfigImplX11 *impl,
   glconfig->depth = impl->xvinfo->depth;
 
   /*
-   * Layer plane.
+   * Get configuration results.
    */
 
-  glconfig->layer_plane = 0;
-  ret = glXGetConfig (impl->xdisplay, impl->xvinfo, GLX_LEVEL, &value);
-  if (ret == Success)
-    glconfig->layer_plane = value;
+#define GET_CONFIG(attrib) \
+  glXGetConfig (impl->xdisplay, impl->xvinfo, (attrib), &value)
 
-  /*
-   * Double buffering is supported?
-   */
+  /* Layer plane. */
+  GET_CONFIG (GLX_LEVEL);
+  glconfig->layer_plane = value;
 
-  glconfig->is_double_buffered = FALSE;
-  ret = glXGetConfig (impl->xdisplay, impl->xvinfo, GLX_DOUBLEBUFFER, &value);
-  if (ret == Success && value == True)
-    glconfig->is_double_buffered = TRUE;
+  /* RGBA mode? */
+  GET_CONFIG (GLX_RGBA);
+  glconfig->is_rgba = value ? TRUE : FALSE;
 
-  /*
-   * Stereo is supported?
-   */
+  /* Double buffering is supported? */
+  GET_CONFIG (GLX_DOUBLEBUFFER);
+  glconfig->is_double_buffered = value ? TRUE : FALSE;
 
-  glconfig->is_stereo = FALSE;
-  ret = glXGetConfig (impl->xdisplay, impl->xvinfo, GLX_STEREO, &value);
-  if (ret == Success && value == True)
-    glconfig->is_stereo = TRUE;
+  /* Stereo is supported? */
+  GET_CONFIG (GLX_STEREO);
+  glconfig->is_stereo = value ? TRUE : FALSE;
+
+  /* Has alpha bits? */
+  GET_CONFIG (GLX_ALPHA_SIZE);
+  glconfig->has_alpha = value ? TRUE : FALSE;
+
+  /* Has depth buffer? */
+  GET_CONFIG (GLX_DEPTH_SIZE);
+  glconfig->has_depth_buffer = value ? TRUE : FALSE;
+
+  /* Has stencil buffer? */
+  GET_CONFIG (GLX_STENCIL_SIZE);
+  glconfig->has_stencil_buffer = value ? TRUE : FALSE;
+
+  /* Has accumulation buffer? */
+  GET_CONFIG (GLX_ACCUM_RED_SIZE);
+  glconfig->has_accum_buffer = value ? TRUE : FALSE;
+
+  /* Support multisample antialiasing? */
+  glconfig->is_multisample = FALSE;
+
+  /* Support luminance color model? */
+  glconfig->is_luminance = FALSE;
+
+#undef GET_CONFIG
 }
 
 static void

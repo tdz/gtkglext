@@ -9,8 +9,13 @@ gdk_gl_config_get_screen
 gdk_gl_config_get_attrib
 gdk_gl_config_get_colormap
 gdk_gl_config_get_depth
+gdk_gl_config_is_rgba
 gdk_gl_config_is_double_buffered
 gdk_gl_config_is_stereo
+gdk_gl_config_has_alpha
+gdk_gl_config_has_depth_buffer
+gdk_gl_config_has_stencil_buffer
+gdk_gl_config_has_accum_buffer
 <SUBSECTION Standard>
 GDK_GL_CONFIG
 GDK_IS_GL_CONFIG

@@ -65,9 +65,16 @@ struct _GdkGLConfig
 
   gint layer_plane;
 
+  guint is_rgba            : 1;
   guint is_double_buffered : 1;
-  guint is_stereo : 1;
-  guint as_single_mode : 1;
+  guint as_single_mode     : 1;
+  guint is_stereo          : 1;
+  guint has_alpha          : 1;
+  guint has_depth_buffer   : 1;
+  guint has_stencil_buffer : 1;
+  guint has_accum_buffer   : 1;
+  guint is_multisample     : 1;
+  guint is_luminance       : 1;
 
 };
 
@@ -103,9 +110,19 @@ GdkColormap *gdk_gl_config_get_colormap       (GdkGLConfig    *glconfig);
 
 gint         gdk_gl_config_get_depth          (GdkGLConfig    *glconfig);
 
+gboolean     gdk_gl_config_is_rgba            (GdkGLConfig *glconfig);
+
 gboolean     gdk_gl_config_is_double_buffered (GdkGLConfig    *glconfig);
 
 gboolean     gdk_gl_config_is_stereo          (GdkGLConfig    *glconfig);
+
+gboolean     gdk_gl_config_has_alpha          (GdkGLConfig *glconfig);
+
+gboolean     gdk_gl_config_has_depth_buffer   (GdkGLConfig *glconfig);
+
+gboolean     gdk_gl_config_has_stencil_buffer (GdkGLConfig *glconfig);
+
+gboolean     gdk_gl_config_has_accum_buffer   (GdkGLConfig *glconfig);
 
 G_END_DECLS
 

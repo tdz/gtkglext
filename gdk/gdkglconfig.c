@@ -422,6 +422,22 @@ gdk_gl_config_get_depth (GdkGLConfig *glconfig)
 }
 
 /**
+ * gdk_gl_config_is_rgba:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Returns whether the configured frame buffer is RGBA mode.
+ *
+ * Return value: TRUE if the configured frame buffer is RGBA mode, FALSE otherwise.
+ **/
+gboolean
+gdk_gl_config_is_rgba (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  return glconfig->is_rgba;
+}
+
+/**
  * gdk_gl_config_is_double_buffered:
  * @glconfig: a #GdkGLConfig.
  *
@@ -451,4 +467,68 @@ gdk_gl_config_is_stereo (GdkGLConfig *glconfig)
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
   return glconfig->is_stereo;
+}
+
+/**
+ * gdk_gl_config_has_alpha:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Returns whether the configured color buffer has alpha bits.
+ *
+ * Return value: TRUE if the color buffer has alpha bits, FALSE otherwise.
+ **/
+gboolean
+gdk_gl_config_has_alpha (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  return glconfig->has_alpha;
+}
+
+/**
+ * gdk_gl_config_has_depth_buffer:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Returns whether the configured frame buffer has depth buffer.
+ *
+ * Return value: TRUE if the frame buffer has depth buffer, FALSE otherwise.
+ **/
+gboolean
+gdk_gl_config_has_depth_buffer (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  return glconfig->has_depth_buffer;
+}
+
+/**
+ * gdk_gl_config_has_stencil_buffer:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Returns whether the configured frame buffer has stencil buffer.
+ *
+ * Return value: TRUE if the frame buffer has stencil buffer, FALSE otherwise.
+ **/
+gboolean
+gdk_gl_config_has_stencil_buffer (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  return glconfig->has_stencil_buffer;
+}
+
+/**
+ * gdk_gl_config_has_accum_buffer:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Returns whether the configured frame buffer has accumulation buffer.
+ *
+ * Return value: TRUE if the frame buffer has accumulation buffer, FALSE otherwise.
+ **/
+gboolean
+gdk_gl_config_has_accum_buffer (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  return glconfig->has_accum_buffer;
 }

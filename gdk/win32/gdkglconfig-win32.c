@@ -236,18 +236,35 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
     glconfig->colormap = gdk_colormap_new (visual, FALSE);
 
   /*
-   * Double buffering is supported?
+   * Get configuration results.
    */
 
-  if (impl->pfd.dwFlags & PFD_DOUBLEBUFFER)
-    glconfig->is_double_buffered = TRUE;
+  /* RGBA mode? */
+  glconfig->is_rgba = (impl->pfd.iPixelType == PFD_TYPE_RGBA) ? TRUE : FALSE;
 
-  /*
-   * Stereo is supported? (not work on Windows)
-   */
+  /* Double buffering is supported? */
+  glconfig->is_double_buffered = (impl->pfd.dwFlags & PFD_DOUBLEBUFFER) ? TRUE : FALSE;
 
-  if (impl->pfd.dwFlags & PFD_STEREO)
-    glconfig->is_stereo = TRUE;
+  /* Stereo is supported? (not work on Windows) */
+  glconfig->is_stereo = (impl->pfd.dwFlags & PFD_STEREO) ? TRUE : FALSE;
+
+  /* Has alpha bits? */
+  glconfig->has_alpha = impl->pfd.cAlphaBits ? TRUE : FALSE;
+
+  /* Has depth buffer? */
+  glconfig->has_depth_buffer = impl->pfd.cDepthBits ? TRUE : FALSE;
+
+  /* Has stencil buffer? */
+  glconfig->has_stencil_buffer = impl->pfd.cStencilBits ? TRUE : FALSE;
+
+  /* Has accumulation buffer? */
+  glconfig->has_accum_buffer = impl->pfd.cAccumBits ? TRUE : FALSE;
+
+  /* Support multisample antialiasing? */
+  glconfig->is_multisample = FALSE;
+
+  /* Support luminance color model? */
+  glconfig->is_luminance = FALSE;
 
   /*
    * Successfully constructed?

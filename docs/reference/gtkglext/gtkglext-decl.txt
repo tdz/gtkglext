@@ -138,9 +138,16 @@ struct GdkGLConfig
 
   gint layer_plane;
 
+  guint is_rgba            : 1;
   guint is_double_buffered : 1;
-  guint is_stereo : 1;
-  guint as_single_mode : 1;
+  guint as_single_mode     : 1;
+  guint is_stereo          : 1;
+  guint has_alpha          : 1;
+  guint has_depth_buffer   : 1;
+  guint has_stencil_buffer : 1;
+  guint has_accum_buffer   : 1;
+  guint is_multisample     : 1;
+  guint is_luminance       : 1;
 
 };
 </STRUCT>
@@ -185,6 +192,11 @@ GdkGLConfig    *glconfig
 GdkGLConfig    *glconfig
 </FUNCTION>
 <FUNCTION>
+<NAME>gdk_gl_config_is_rgba</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLConfig *glconfig
+</FUNCTION>
+<FUNCTION>
 <NAME>gdk_gl_config_is_double_buffered</NAME>
 <RETURNS>gboolean  </RETURNS>
 GdkGLConfig    *glconfig
@@ -193,6 +205,26 @@ GdkGLConfig    *glconfig
 <NAME>gdk_gl_config_is_stereo</NAME>
 <RETURNS>gboolean  </RETURNS>
 GdkGLConfig    *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_has_alpha</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLConfig *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_has_depth_buffer</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLConfig *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_has_stencil_buffer</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLConfig *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_has_accum_buffer</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLConfig *glconfig
 </FUNCTION>
 <STRUCT>
 <NAME>GdkGLContextClass</NAME>
