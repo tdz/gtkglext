@@ -26,6 +26,7 @@
 #include <GL/gl.h>
 
 #include <gdk/gdkglquery.h>
+#include <gdk/gdkglconfig.h>
 
 G_BEGIN_DECLS
 
@@ -223,7 +224,7 @@ struct _GdkGL_GLX_ARB_get_proc_address
   GdkGLProc_glXGetProcAddressARB glXGetProcAddressARB;
 };
 
-GdkGL_GLX_ARB_get_proc_address *gdk_gl_get_GLX_ARB_get_proc_address (void);
+GdkGL_GLX_ARB_get_proc_address *gdk_gl_get_GLX_ARB_get_proc_address (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SGI_swap_control
@@ -244,7 +245,7 @@ struct _GdkGL_GLX_SGI_swap_control
   GdkGLProc_glXSwapIntervalSGI glXSwapIntervalSGI;
 };
 
-GdkGL_GLX_SGI_swap_control *gdk_gl_get_GLX_SGI_swap_control (void);
+GdkGL_GLX_SGI_swap_control *gdk_gl_get_GLX_SGI_swap_control (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SGI_video_sync
@@ -272,7 +273,7 @@ struct _GdkGL_GLX_SGI_video_sync
   GdkGLProc_glXWaitVideoSyncSGI glXWaitVideoSyncSGI;
 };
 
-GdkGL_GLX_SGI_video_sync *gdk_gl_get_GLX_SGI_video_sync (void);
+GdkGL_GLX_SGI_video_sync *gdk_gl_get_GLX_SGI_video_sync (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SGI_make_current_read
@@ -300,7 +301,7 @@ struct _GdkGL_GLX_SGI_make_current_read
   GdkGLProc_glXGetCurrentReadDrawableSGI glXGetCurrentReadDrawableSGI;
 };
 
-GdkGL_GLX_SGI_make_current_read *gdk_gl_get_GLX_SGI_make_current_read (void);
+GdkGL_GLX_SGI_make_current_read *gdk_gl_get_GLX_SGI_make_current_read (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SGIX_video_source
@@ -330,7 +331,7 @@ struct _GdkGL_GLX_SGIX_video_source
   GdkGLProc_glXDestroyGLXVideoSourceSGIX glXDestroyGLXVideoSourceSGIX;
 };
 
-GdkGL_GLX_SGIX_video_source *gdk_gl_get_GLX_SGIX_video_source (void);
+GdkGL_GLX_SGIX_video_source *gdk_gl_get_GLX_SGIX_video_source (GdkGLConfig *glconfig);
 
 #endif /* _VL_H */
 
@@ -381,7 +382,7 @@ struct _GdkGL_GLX_EXT_import_context
   GdkGLProc_glXFreeContextEXT       glXFreeContextEXT;
 };
 
-GdkGL_GLX_EXT_import_context *gdk_gl_get_GLX_EXT_import_context (void);
+GdkGL_GLX_EXT_import_context *gdk_gl_get_GLX_EXT_import_context (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SGIX_fbconfig
@@ -437,7 +438,7 @@ struct _GdkGL_GLX_SGIX_fbconfig
   GdkGLProc_glXGetFBConfigFromVisualSGIX     glXGetFBConfigFromVisualSGIX;
 };
 
-GdkGL_GLX_SGIX_fbconfig *gdk_gl_get_GLX_SGIX_fbconfig (void);
+GdkGL_GLX_SGIX_fbconfig *gdk_gl_get_GLX_SGIX_fbconfig (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SGIX_pbuffer
@@ -486,7 +487,7 @@ struct _GdkGL_GLX_SGIX_pbuffer
   GdkGLProc_glXGetSelectedEventSGIX  glXGetSelectedEventSGIX;
 };
 
-GdkGL_GLX_SGIX_pbuffer *gdk_gl_get_GLX_SGIX_pbuffer (void);
+GdkGL_GLX_SGIX_pbuffer *gdk_gl_get_GLX_SGIX_pbuffer (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SGI_cushion
@@ -507,7 +508,7 @@ struct _GdkGL_GLX_SGI_cushion
   GdkGLProc_glXCushionSGI glXCushionSGI;
 };
 
-GdkGL_GLX_SGI_cushion *gdk_gl_get_GLX_SGI_cushion (void);
+GdkGL_GLX_SGI_cushion *gdk_gl_get_GLX_SGI_cushion (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SGIX_video_resize
@@ -556,7 +557,7 @@ struct _GdkGL_GLX_SGIX_video_resize
   GdkGLProc_glXChannelRectSyncSGIX     glXChannelRectSyncSGIX;
 };
 
-GdkGL_GLX_SGIX_video_resize *gdk_gl_get_GLX_SGIX_video_resize (void);
+GdkGL_GLX_SGIX_video_resize *gdk_gl_get_GLX_SGIX_video_resize (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SGIX_dmbuffer
@@ -579,7 +580,7 @@ struct _GdkGL_GLX_SGIX_dmbuffer
   GdkGLProc_glXAssociateDMPbufferSGIX glXAssociateDMPbufferSGIX;
 };
 
-GdkGL_GLX_SGIX_dmbuffer *gdk_gl_get_GLX_SGIX_dmbuffer (void);
+GdkGL_GLX_SGIX_dmbuffer *gdk_gl_get_GLX_SGIX_dmbuffer (GdkGLConfig *glconfig);
 
 #endif /* _DM_BUFFER_H_ */
 
@@ -602,7 +603,7 @@ struct _GdkGL_GLX_SGIX_swap_group
   GdkGLProc_glXJoinSwapGroupSGIX glXJoinSwapGroupSGIX;
 };
 
-GdkGL_GLX_SGIX_swap_group *gdk_gl_get_GLX_SGIX_swap_group (void);
+GdkGL_GLX_SGIX_swap_group *gdk_gl_get_GLX_SGIX_swap_group (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SGIX_swap_barrier
@@ -630,7 +631,7 @@ struct _GdkGL_GLX_SGIX_swap_barrier
   GdkGLProc_glXQueryMaxSwapBarriersSGIX glXQueryMaxSwapBarriersSGIX;
 };
 
-GdkGL_GLX_SGIX_swap_barrier *gdk_gl_get_GLX_SGIX_swap_barrier (void);
+GdkGL_GLX_SGIX_swap_barrier *gdk_gl_get_GLX_SGIX_swap_barrier (GdkGLConfig *glconfig);
 
 /* 
  * GLX_SUN_get_transparent_index
@@ -651,7 +652,7 @@ struct _GdkGL_GLX_SUN_get_transparent_index
   GdkGLProc_glXGetTransparentIndexSUN glXGetTransparentIndexSUN;
 };
 
-GdkGL_GLX_SUN_get_transparent_index *gdk_gl_get_GLX_SUN_get_transparent_index (void);
+GdkGL_GLX_SUN_get_transparent_index *gdk_gl_get_GLX_SUN_get_transparent_index (GdkGLConfig *glconfig);
 
 /*
  * GLX_MESA_copy_sub_buffer
@@ -672,7 +673,7 @@ struct _GdkGL_GLX_MESA_copy_sub_buffer
   GdkGLProc_glXCopySubBufferMESA glXCopySubBufferMESA;
 };
 
-GdkGL_GLX_MESA_copy_sub_buffer *gdk_gl_get_GLX_MESA_copy_sub_buffer (void);
+GdkGL_GLX_MESA_copy_sub_buffer *gdk_gl_get_GLX_MESA_copy_sub_buffer (GdkGLConfig *glconfig);
 
 /*
  * GLX_MESA_pixmap_colormap
@@ -693,7 +694,7 @@ struct _GdkGL_GLX_MESA_pixmap_colormap
   GdkGLProc_glXCreateGLXPixmapMESA glXCreateGLXPixmapMESA;
 };
 
-GdkGL_GLX_MESA_pixmap_colormap *gdk_gl_get_GLX_MESA_pixmap_colormap (void);
+GdkGL_GLX_MESA_pixmap_colormap *gdk_gl_get_GLX_MESA_pixmap_colormap (GdkGLConfig *glconfig);
 
 /*
  * GLX_MESA_release_buffers
@@ -714,7 +715,7 @@ struct _GdkGL_GLX_MESA_release_buffers
   GdkGLProc_glXReleaseBuffersMESA glXReleaseBuffersMESA;
 };
 
-GdkGL_GLX_MESA_release_buffers *gdk_gl_get_GLX_MESA_release_buffers (void);
+GdkGL_GLX_MESA_release_buffers *gdk_gl_get_GLX_MESA_release_buffers (GdkGLConfig *glconfig);
 
 /*
  * GLX_MESA_set_3dfx_mode
@@ -735,7 +736,7 @@ struct _GdkGL_GLX_MESA_set_3dfx_mode
   GdkGLProc_glXSet3DfxModeMESA glXSet3DfxModeMESA;
 };
 
-GdkGL_GLX_MESA_set_3dfx_mode *gdk_gl_get_GLX_MESA_set_3dfx_mode (void);
+GdkGL_GLX_MESA_set_3dfx_mode *gdk_gl_get_GLX_MESA_set_3dfx_mode (GdkGLConfig *glconfig);
 
 /* 
  * GLX_OML_sync_control
@@ -784,7 +785,7 @@ struct _GdkGL_GLX_OML_sync_control
   GdkGLProc_glXWaitForSbcOML     glXWaitForSbcOML;
 };
 
-GdkGL_GLX_OML_sync_control *gdk_gl_get_GLX_OML_sync_control (void);
+GdkGL_GLX_OML_sync_control *gdk_gl_get_GLX_OML_sync_control (GdkGLConfig *glconfig);
 
 G_END_DECLS
 

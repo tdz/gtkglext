@@ -25,6 +25,7 @@
 
 #include <GL/gl.h>
 
+#include "gdkglprivate.h"
 #include "gdkglquery.h"
 
 /*
@@ -80,10 +81,15 @@ gdk_gl_query_gl_extension (const char *extension)
 
       if (where == start || *(where - 1) == ' ')
         if (*terminator == ' ' || *terminator == '\0')
-          return TRUE;
+          {
+            GDK_GL_NOTE (MISC, g_message (" - %s - supported", extension));
+            return TRUE;
+          }
 
       start = terminator;
     }
+
+  GDK_GL_NOTE (MISC, g_message (" - %s - not supported", extension));
 
   return FALSE;
 }

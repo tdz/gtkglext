@@ -122,7 +122,7 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
   unsigned int border_width_return;
   unsigned int depth_return;
 
-  GdkGLProc proc;
+  GdkGL_GLX_MESA_pixmap_colormap *mesa_ext;
 
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
                                                        n_construct_properties,
@@ -165,17 +165,16 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
    * Create an OpenGL off-screen rendering area.
    */
 
-  /* Try glXCreateGLXPixmapMESA () */
-  proc = gdk_gl_get_glXCreateGLXPixmapMESA ();
-  if (proc != NULL)
+  /* If GLX_MESA_pixmap_colormap is supported. */
+  mesa_ext = gdk_gl_get_GLX_MESA_pixmap_colormap (glpixmap->glconfig);
+  if (mesa_ext)
     {
       GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmapMESA ()"));
 
-      impl->glxpixmap = gdk_gl_glXCreateGLXPixmapMESA (proc,
-                                                       xdisplay,
-                                                       xvinfo,
-                                                       xpixmap,
-                                                       GDK_GL_CONFIG_XCOLORMAP (glpixmap->glconfig));
+      impl->glxpixmap = mesa_ext->glXCreateGLXPixmapMESA (xdisplay,
+                                                          xvinfo,
+                                                          xpixmap,
+                                                          GDK_GL_CONFIG_XCOLORMAP (glpixmap->glconfig));
     }
   else
     {

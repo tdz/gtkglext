@@ -143,7 +143,7 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
   GdkGLWindowImplX11 *impl;
   Display *xdisplay;
   int screen_num;
-  GdkGLProc proc;
+  GdkGL_GLX_MESA_release_buffers *mesa_ext;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_finalize ()"));
 
@@ -153,12 +153,13 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
   xdisplay = GDK_GL_CONFIG_XDISPLAY (glwindow->glconfig);
   screen_num = GDK_GL_CONFIG_SCREEN_XNUMBER (glwindow->glconfig);
 
-  proc = gdk_gl_get_glXReleaseBuffersMESA ();
-  if (proc != NULL)
+  /* If GLX_MESA_release_buffers is supported. */
+  mesa_ext = gdk_gl_get_GLX_MESA_release_buffers (glwindow->glconfig);
+  if (mesa_ext)
     {
       GDK_GL_NOTE (IMPL, g_message (" * glXReleaseBuffersMESA ()"));
-      gdk_gl_glXReleaseBuffersMESA (proc, xdisplay,
-                                    GDK_GL_WINDOW_GLXWINDOW (glwindow));
+      mesa_ext->glXReleaseBuffersMESA (xdisplay,
+                                       GDK_GL_WINDOW_GLXWINDOW (glwindow));
     }
 
   G_OBJECT_CLASS (parent_class)->finalize (object);

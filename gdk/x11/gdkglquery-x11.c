@@ -103,6 +103,10 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 
 #endif /* GDK_MULTIHEAD_SAFE */
 
+/*
+ * This code is based on __glutIsSupportedByGLX().
+ */
+
 /**
  * gdk_x11_gl_query_glx_extension:
  * @glconfig: a #GdkGLConfig.
@@ -120,6 +124,8 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
   const char *start;
   char *where, *terminator;
   int major, minor;
+
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
   /* Extension names should not have spaces. */
   where = strchr (extension, ' ');
@@ -157,10 +163,15 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
 
       if (where == start || *(where - 1) == ' ')
         if (*terminator == ' ' || *terminator == '\0')
-          return TRUE;
+          {
+            GDK_GL_NOTE (MISC, g_message (" - %s - supported", extension));
+            return TRUE;
+          }
 
       start = terminator;
     }
+
+  GDK_GL_NOTE (MISC, g_message (" - %s - not supported", extension));
 
   return FALSE;
 }
