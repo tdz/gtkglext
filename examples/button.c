@@ -121,13 +121,13 @@ expose_event (GtkWidget      *widget,
   glTranslatef (0.0, 0.0, -10.0);
 
   glPushMatrix ();
-  glTranslatef (0.0, pos_y, 0.0);
-  glRotatef (angle, 0.0, 1.0, 0.0);
-  glMaterialfv (GL_FRONT, GL_AMBIENT, ambient);
-  glMaterialfv (GL_FRONT, GL_DIFFUSE, diffuse);
-  glMaterialfv (GL_FRONT, GL_SPECULAR, specular);
-  glMaterialf (GL_FRONT, GL_SHININESS, shininess);
-  gdk_gl_draw_torus (TRUE, 0.3, 0.6, 30, 30);
+    glTranslatef (0.0, pos_y, 0.0);
+    glRotatef (angle, 0.0, 1.0, 0.0);
+    glMaterialfv (GL_FRONT, GL_AMBIENT, ambient);
+    glMaterialfv (GL_FRONT, GL_DIFFUSE, diffuse);
+    glMaterialfv (GL_FRONT, GL_SPECULAR, specular);
+    glMaterialf (GL_FRONT, GL_SHININESS, shininess);
+    gdk_gl_draw_torus (TRUE, 0.3, 0.6, 30, 30);
   glPopMatrix ();
 
   if (gdk_gl_drawable_is_double_buffered (gldrawable))
@@ -144,7 +144,9 @@ expose_event (GtkWidget      *widget,
 static gboolean
 idle (GtkWidget *widget)
 {
-  angle = (angle < 360.0) ? (angle + 1.0) : 0.0;
+  angle += 1.0;
+  if (angle >= 360.0)
+    angle -= 360.0;
 
   pos_y = sin (angle * G_PI / 180.0);
 
