@@ -70,6 +70,15 @@ Internal X-related functions
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_x11_gl_config_is_mesa_glx ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gdk_x11_gl_context_foreign_new ##### -->
 <para>
 

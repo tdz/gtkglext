@@ -47,6 +47,7 @@ GdkGLConfig  *gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
 Display      *gdk_x11_gl_config_get_xdisplay      (GdkGLConfig  *glconfig);
 int           gdk_x11_gl_config_get_screen_number (GdkGLConfig  *glconfig);
 XVisualInfo  *gdk_x11_gl_config_get_xvinfo        (GdkGLConfig  *glconfig);
+gboolean      gdk_x11_gl_config_is_mesa_glx       (GdkGLConfig  *glconfig);
 
 GdkGLContext *gdk_x11_gl_context_foreign_new      (GdkGLConfig  *glconfig,
                                                    GdkGLContext *share_list,

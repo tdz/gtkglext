@@ -1,5 +1,9 @@
 2003-01-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglx.h: 
+	* gdk/x11/gdkglconfig-x11.c (gdk_x11_gl_config_is_mesa_glx):
+	Added.
+
 	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_get_colormap): 
 	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_get_colormap): 
 	* gdk/gdkglcontext.h: Removed gdk_gl_context_get_colormap() function.

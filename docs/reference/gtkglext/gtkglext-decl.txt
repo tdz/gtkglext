@@ -29,6 +29,11 @@ GdkGLConfig  *glconfig
 GdkGLConfig  *glconfig
 </FUNCTION>
 <FUNCTION>
+<NAME>gdk_x11_gl_config_is_mesa_glx</NAME>
+<RETURNS>gboolean  </RETURNS>
+GdkGLConfig  *glconfig
+</FUNCTION>
+<FUNCTION>
 <NAME>gdk_x11_gl_context_foreign_new</NAME>
 <RETURNS>GdkGLContext  *</RETURNS>
 GdkGLConfig  *glconfig,GdkGLContext *share_list,GLXContext    glxcontext
