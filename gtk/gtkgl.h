@@ -19,11 +19,7 @@
 #ifndef __GTK_GL_H__
 #define __GTK_GL_H__
 
-#include <gdk/gdk.h>
-
 #include <gdk/gdkgl.h>
-
-#include <gtk/gtk.h>
 
 #include <gtk/gtkgldefs.h>
 #include <gtk/gtkglversion.h>
