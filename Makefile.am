@@ -13,6 +13,8 @@ EXTRA_DIST = \
 	gtkglext-uninstalled.pc.in	\
 	gtkglext.spec.in		\
 	gtkglext.spec			\
+	gtkglext.nsi.in			\
+	gtkglext.nsi
 	setup-gtkglext.sh
 
 ## Copy .pc files to target-specific names
