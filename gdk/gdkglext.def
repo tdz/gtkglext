@@ -8,6 +8,7 @@ EXPORTS
 	gdk_gl_context_get_type
 	gdk_gl_context_is_direct
 	gdk_gl_context_new
+	gdk_gl_debug_flags
 	gdk_gl_drawable_get_type
 	gdk_gl_drawable_make_current
 	gdk_gl_drawable_swap_buffers
@@ -26,3 +27,5 @@ EXPORTS
 	gdk_window_is_gl_capable
 	gdk_window_set_gl_capability
 	gdk_window_unset_gl_capability
+	gdk_win32_gl_context_get_hdc
+	gdk_win32_gl_context_get_hglrc

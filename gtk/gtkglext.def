@@ -1,4 +1,5 @@
 EXPORTS
+	gtk_gl_debug_flags
 	gtk_gl_widget_param_get_type
 	gtk_widget_get_gl_config
 	gtk_widget_get_gl_context
