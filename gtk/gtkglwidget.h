@@ -45,32 +45,6 @@ GdkGLWindow  *gtk_widget_get_gl_window     (GtkWidget    *widget);
 #define       gtk_widget_get_gl_drawable(widget)        \
   GDK_GL_DRAWABLE (gtk_widget_get_gl_window (widget))
 
-
-#define       gtk_widget_gl_make_current(widget)                        \
-  gdk_gl_drawable_make_current (gtk_widget_get_gl_drawable (widget),    \
-                                gtk_widget_get_gl_context (widget))
-
-#define       gtk_widget_gl_is_double_buffered(widget)                  \
-  gdk_gl_drawable_is_double_buffered (gtk_widget_get_gl_drawable (widget))
-
-#define       gtk_widget_gl_swap_buffers(widget)                        \
-  gdk_gl_drawable_swap_buffers (gtk_widget_get_gl_drawable (widget))
-
-
-#define       gtk_widget_gl_begin(widget)				\
-  do									\
-    {									\
-      if (gtk_widget_gl_make_current (widget))				\
-        {								\
-          gdk_gl_drawable_wait_gdk (gtk_widget_get_gl_drawable(widget))
-
-#define       gtk_widget_gl_end(widget)					\
-          gdk_gl_drawable_wait_gl (gtk_widget_get_gl_drawable(widget));	\
-        }								\
-    }									\
-  while (0)
-
-
 G_END_DECLS
 
 #endif /* __GTK_GL_WIDGET_H__ */

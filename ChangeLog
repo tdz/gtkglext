@@ -1,5 +1,15 @@
 2002-06-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.h: Removed the following macros.
+	
+	    gtk_widget_gl_make_current(widget)
+	    gtk_widget_gl_is_double_buffered(widget)
+	    gtk_widget_gl_swap_buffers(widget)
+	    gtk_widget_gl_begin(widget)
+	    gtk_widget_gl_end(widget)
+
+	Use gdk_gl_drawable_* () instead of gtk_widget_gl_* ().
+
 	* The codes that contain the deprecated functions have been
 	cleaned.
 
