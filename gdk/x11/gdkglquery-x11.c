@@ -143,7 +143,7 @@ gdk_gl_query_get_proc_address (const char *proc_name)
       /* g_module_close (main_module); */
 
       GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () - %s",
-                                    (glx_get_proc_address == NULL) ? "not supported" : "supported"));
+                                    glx_get_proc_address ? "supported" : "not supported"));
 
       init_glx_get_proc_address = TRUE;
     }
