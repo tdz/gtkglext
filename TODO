@@ -2,14 +2,11 @@
 All
 ===
 
- - Performance.
  - Documentations.
 
 
 GTK
 ===
-
- - Pango font in OpenGL.
 
 
 X11 Target
@@ -17,6 +14,8 @@ X11 Target
 
  - Colormap sharing support.
  - GLX Version 1.3 support.
+ - Single-buffered programs make X server down if we use 16bpp display
+   with NVIDIA driver (It might be a NVIDIA driver's issue).
 
 
 Win32 Target
