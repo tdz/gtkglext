@@ -1,3 +1,4 @@
+/* -*- coding: utf-8 -*- */
 /*
  * font-pangoft2.c:
  * Simple example for text rendering with PangoFT2.
@@ -28,80 +29,6 @@
 static const char *text = "This text is rendered with Παν語FT2.";
 
 static PangoContext *ft2_context = NULL;
-
-static void
-realize (GtkWidget *widget,
-         gpointer   data)
-{
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
-  GLUquadricObj *qobj;
-  static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
-  static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
-
-  /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
-    return;
-
-  qobj = gluNewQuadric ();
-  gluQuadricDrawStyle (qobj, GLU_FILL);
-  glNewList (1, GL_COMPILE);
-  gluSphere (qobj, 1.0, 20, 20);
-  glEndList ();
-
-  glLightfv (GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-  glLightfv (GL_LIGHT0, GL_POSITION, light_position);
-  glEnable (GL_LIGHTING);
-  glEnable (GL_LIGHT0);
-  glEnable (GL_DEPTH_TEST);
-
-  glClearColor (1.0, 1.0, 1.0, 1.0);
-  glClearDepth (1.0);
-
-  gdk_gl_drawable_gl_end (gldrawable);
-  /*** OpenGL END ***/
-
-  /* Get PangoFT2 context. */
-  ft2_context = pango_ft2_get_context (72, 72);
-}
-
-static gboolean
-configure_event (GtkWidget         *widget,
-                 GdkEventConfigure *event,
-                 gpointer           data)
-{
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
-  GLsizei w = widget->allocation.width;
-  GLsizei h = widget->allocation.height;
-
-  /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
-    return FALSE;
-
-  glViewport (0, 0, w, h);
-
-  glMatrixMode (GL_PROJECTION);
-  glLoadIdentity ();
-  gluPerspective (2.0 * FOVY_2,
-                  (GLfloat) w / (GLfloat) h,
-                  Z_NEAR,
-                  2.0 * Z_NEAR);
-
-  glMatrixMode (GL_MODELVIEW);
-  glLoadIdentity ();
-  gluLookAt (0.0, 0.0, Z_NEAR,
-             0.0, 0.0, 0.0,
-             0.0, 1.0, 0.0);
-  glTranslatef (0.0, 0.0, -Z_NEAR);
-
-  gdk_gl_drawable_gl_end (gldrawable);
-  /*** OpenGL END ***/
-
-  return TRUE;
-}
 
 static void
 gl_pango_ft2_render_layout (PangoLayout *layout)
@@ -178,6 +105,80 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
   g_free (pixels);
 }
 
+static void
+realize (GtkWidget *widget,
+         gpointer   data)
+{
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
+  GLUquadricObj *qobj;
+  static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
+  static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
+
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    return;
+
+  qobj = gluNewQuadric ();
+  gluQuadricDrawStyle (qobj, GLU_FILL);
+  glNewList (1, GL_COMPILE);
+  gluSphere (qobj, 1.0, 20, 20);
+  glEndList ();
+
+  glLightfv (GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+  glLightfv (GL_LIGHT0, GL_POSITION, light_position);
+  glEnable (GL_LIGHTING);
+  glEnable (GL_LIGHT0);
+  glEnable (GL_DEPTH_TEST);
+
+  glClearColor (0.0, 0.0, 0.0, 0.0);
+  glClearDepth (1.0);
+
+  gdk_gl_drawable_gl_end (gldrawable);
+  /*** OpenGL END ***/
+
+  /* Get PangoFT2 context. */
+  ft2_context = pango_ft2_get_context (72, 72);
+}
+
+static gboolean
+configure_event (GtkWidget         *widget,
+                 GdkEventConfigure *event,
+                 gpointer           data)
+{
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
+  GLsizei w = widget->allocation.width;
+  GLsizei h = widget->allocation.height;
+
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    return FALSE;
+
+  glViewport (0, 0, w, h);
+
+  glMatrixMode (GL_PROJECTION);
+  glLoadIdentity ();
+  gluPerspective (2.0 * FOVY_2,
+                  (GLfloat) w / (GLfloat) h,
+                  Z_NEAR,
+                  2.0 * Z_NEAR);
+
+  glMatrixMode (GL_MODELVIEW);
+  glLoadIdentity ();
+  gluLookAt (0.0, 0.0, Z_NEAR,
+             0.0, 0.0, 0.0,
+             0.0, 1.0, 0.0);
+  glTranslatef (0.0, 0.0, -Z_NEAR);
+
+  gdk_gl_drawable_gl_end (gldrawable);
+  /*** OpenGL END ***/
+
+  return TRUE;
+}
+
 static gboolean
 expose_event (GtkWidget      *widget,
               GdkEventExpose *event,
@@ -214,7 +215,7 @@ expose_event (GtkWidget      *widget,
   glCallList (1);
 
   /* Text color */
-  glColor3f (0.0, 1.0, 0.0);
+  glColor3f (1.0, 0.9, 0.0);
 
   /* Text position */
   pango_layout_get_extents (layout, NULL, &logical_rect);

@@ -45,7 +45,6 @@ gl_tex_create_texture (GLuint *texture)
 {
   GLuint tex_name;
   GLint size;
-  GLint width;
   GLvoid *texels;
 
   glGetIntegerv (GL_MAX_TEXTURE_SIZE, &size);
