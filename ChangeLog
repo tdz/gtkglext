@@ -1,5 +1,9 @@
 2003-05-01  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_copy): 
+	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_copy): Check whether
+	given GdkGLContext has a valid GLXContext (or HGLRC).
+
 	* gtk/gtkglwidget.c (struct GLWidgetPrivate): 
 	(gtk_widget_set_gl_capability): Added need_unrealize flag.
 	(gtk_gl_widget_realize, gtk_gl_widget_unrealize): Call

@@ -271,14 +271,22 @@ gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
                      GdkGLContext  *src_glcontext,
                      unsigned long  mask)
 {
+  HGLRC dst_hglrc, src_hglrc;
+
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (dst_glcontext), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (src_glcontext), FALSE);
 
+  dst_hglrc = GDK_GL_CONTEXT_HGLRC (dst_glcontext);
+  if (dst_hglrc == NULL)
+    return FALSE;
+
+  src_hglrc = GDK_GL_CONTEXT_HGLRC (src_glcontext);
+  if (src_hglrc == NULL)
+    return FALSE;
+
   GDK_GL_NOTE (IMPL, g_message (" * wglCopyContext ()"));
 
-  return wglCopyContext (GDK_GL_CONTEXT_HGLRC (src_glcontext),
-                         GDK_GL_CONTEXT_HGLRC (dst_glcontext),
-                         mask);
+  return wglCopyContext (src_hglrc, dst_hglrc, mask);
 }
 
 /*< private >*/

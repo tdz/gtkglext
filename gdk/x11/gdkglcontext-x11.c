@@ -298,6 +298,7 @@ gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
                      GdkGLContext  *src_glcontext,
                      unsigned long  mask)
 {
+  GLXContext dst_glxcontext, src_glxcontext;
   GdkGLConfig *glconfig;
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_copy ()"));
@@ -305,13 +306,20 @@ gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (dst_glcontext), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (src_glcontext), FALSE);
 
+  dst_glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (dst_glcontext);
+  if (dst_glxcontext == NULL)
+    return FALSE;
+
+  src_glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (src_glcontext);
+  if (src_glxcontext == NULL)
+    return FALSE;
+
   glconfig = GDK_GL_CONTEXT_IMPL_X11 (dst_glcontext)->glconfig;
 
   gdk_error_trap_push ();
 
   glXCopyContext (GDK_GL_CONFIG_XDISPLAY (glconfig),
-                  GDK_GL_CONTEXT_GLXCONTEXT (src_glcontext),
-                  GDK_GL_CONTEXT_GLXCONTEXT (dst_glcontext),
+                  src_glxcontext, dst_glxcontext,
                   mask);
 
   return gdk_error_trap_pop () == Success;
