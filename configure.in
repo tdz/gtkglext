@@ -304,18 +304,34 @@ AC_CHECK_FUNCS([memset sqrt])
 
 
 ##################################################
-# Checks for MULTIHEAD_SAFE CPPFLAGS
+# Checks for GTK multihead support
 ##################################################
 
-MULTIHEAD_SAFE=""
+gtk_multihead_support=yes
 
 save_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BASE_DEPENDENCIES_CFLAGS"
+save_LIBS="$LIBS"
+LIBS="$LIBS $BASE_DEPENDENCIES_LIBS"
 
-AC_CHECK_HEADERS(gdk/gdkdisplay.h gdk/gdkscreen.h,
-                 MULTIHEAD_SAFE="-DGDK_MULTIHEAD_SAFE")
+AC_CHECK_HEADERS([ gdk/gdkdisplay.h gdk/gdkscreen.h ], ,
+                 [ gtk_multihead_support=no ])
+
+if test "x$gtk_multihead_support" = "xyes"; then
+  AC_MSG_CHECKING([for gdk_display_get_default in GDK library])
+  AC_TRY_LINK([ #include <gdk/gdk.h> ], 
+              [ gdk_display_get_default(); ], ,
+              [ gtk_multihead_support=no ])
+  AC_MSG_RESULT([$gtk_multihead_support])
+fi
 
 CPPFLAGS="$save_CPPFLAGS"
+LIBS="$save_LIBS"
+
+MULTIHEAD_SAFE=""
+if test "x$gtk_multihead_support" = "xyes"; then
+  MULTIHEAD_SAFE="-DGDK_MULTIHEAD_SAFE"
+fi
 
 
 ##################################################
