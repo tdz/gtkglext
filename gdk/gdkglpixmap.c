@@ -714,10 +714,6 @@ gdk_pixmap_set_gl_capability (GdkPixmap   *pixmap,
   g_return_val_if_fail (GDK_IS_PIXMAP (pixmap), NULL);
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
-  /*
-   * Initialize quarks
-   */
-
   if (quark_gl_pixmap == 0)
     quark_gl_pixmap = g_quark_from_static_string (quark_gl_pixmap_string);
 

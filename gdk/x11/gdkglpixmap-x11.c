@@ -304,7 +304,7 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
   /* currently unused. */
   /* _gdk_gl_context_set_gl_drawable_read (glcontext, read); */
 
-  if (GDK_GL_CONFIG_AS_SINGLE_MODE (glconfig))
+  if (_GDK_GL_CONFIG_AS_SINGLE_MODE (glconfig))
     {
       /* We do this because we are treating a double-buffered frame
          buffer as a single-buffered frame buffer because the system

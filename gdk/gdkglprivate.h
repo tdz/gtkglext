@@ -29,7 +29,7 @@ G_BEGIN_DECLS
 
 #define _GDK_GL_CONCAT(x, y) x##y
 
-#define GDK_GL_CONFIG_AS_SINGLE_MODE(glconfig) ((glconfig)->as_single_mode)
+#define _GDK_GL_CONFIG_AS_SINGLE_MODE(glconfig) ((glconfig)->as_single_mode)
 
 void _gdk_gl_context_destroy (GdkGLContext  *glcontext);
 

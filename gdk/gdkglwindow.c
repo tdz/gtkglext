@@ -714,10 +714,6 @@ gdk_window_set_gl_capability (GdkWindow   *window,
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
-  /*
-   * Initialize quarks
-   */
-
   if (quark_gl_window == 0)
     quark_gl_window = g_quark_from_static_string (quark_gl_window_string);
 
