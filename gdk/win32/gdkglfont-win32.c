@@ -27,12 +27,12 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
                             gint                        count,
                             gint                        list_base)
 {
-  HDC hdc;
   PangoFontMap *font_map;
   PangoWin32FontCache *font_cache;
   PangoFont *font = NULL;
   LOGFONT *logfont;
   HFONT hfont;
+  HDC hdc;
 
   g_return_if_fail (font != NULL);
 
