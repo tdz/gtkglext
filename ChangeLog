@@ -1,5 +1,7 @@
 2003-02-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/GL/Makefile.am: Fixed header installation problem.
+
 	* gtkglext.spec.in: 
 	* configure.in: Re-enabled configure to build static libraries as
 	default.

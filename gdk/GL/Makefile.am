@@ -4,9 +4,9 @@
 EXTRA_DIST = \
 	README
 
-includedir = $(prefix)/include/gtkglext-$(GTKGLEXT_API_VERSION)/gdk/GL
+gdkglextglincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk/GL
 
-nobase_include_HEADERS = \
+gdkglextglinclude_HEADERS = \
 	glext.h		\
 	glxext.h	\
 	wglext.h

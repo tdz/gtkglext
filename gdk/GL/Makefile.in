@@ -31,6 +31,7 @@ localstatedir = @localstatedir@
 libdir = @libdir@
 infodir = @infodir@
 mandir = @mandir@
+includedir = @includedir@
 oldincludedir = /usr/include
 pkgdatadir = $(datadir)/@PACKAGE@
 pkglibdir = $(libdir)/@PACKAGE@
@@ -64,8 +65,6 @@ host_triplet = @host@
 EXEEXT = @EXEEXT@
 OBJEXT = @OBJEXT@
 PATH_SEPARATOR = @PATH_SEPARATOR@
-
-includedir = $(prefix)/include/gtkglext-$(GTKGLEXT_API_VERSION)/gdk/GL
 AMTAR = @AMTAR@
 API_MI = @API_MI@
 API_MJ = @API_MJ@
@@ -150,7 +149,9 @@ EXTRA_DIST = \
 	README
 
 
-nobase_include_HEADERS = \
+gdkglextglincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk/GL
+
+gdkglextglinclude_HEADERS = \
 	glext.h		\
 	glxext.h	\
 	wglext.h
@@ -160,9 +161,10 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 DIST_SOURCES =
-HEADERS = $(nobase_include_HEADERS)
+HEADERS = $(gdkglextglinclude_HEADERS)
 
-DIST_COMMON = README $(nobase_include_HEADERS) Makefile.am Makefile.in
+DIST_COMMON = README $(gdkglextglinclude_HEADERS) Makefile.am \
+	Makefile.in
 all: all-am
 
 .SUFFIXES:
@@ -181,23 +183,23 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
-nobase_includeHEADERS_INSTALL = $(install_sh_DATA)
-install-nobase_includeHEADERS: $(nobase_include_HEADERS)
+gdkglextglincludeHEADERS_INSTALL = $(INSTALL_HEADER)
+install-gdkglextglincludeHEADERS: $(gdkglextglinclude_HEADERS)
 	@$(NORMAL_INSTALL)
-	$(mkinstalldirs) $(DESTDIR)$(includedir)
-	@list='$(nobase_include_HEADERS)'; for p in $$list; do \
+	$(mkinstalldirs) $(DESTDIR)$(gdkglextglincludedir)
+	@list='$(gdkglextglinclude_HEADERS)'; for p in $$list; do \
 	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f="$$p"; \
-	  echo " $(nobase_includeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(includedir)/$$f"; \
-	  $(nobase_includeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(includedir)/$$f; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(gdkglextglincludeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(gdkglextglincludedir)/$$f"; \
+	  $(gdkglextglincludeHEADERS_INSTALL) $$d$$p $(DESTDIR)$(gdkglextglincludedir)/$$f; \
 	done
 
-uninstall-nobase_includeHEADERS:
+uninstall-gdkglextglincludeHEADERS:
 	@$(NORMAL_UNINSTALL)
-	@list='$(nobase_include_HEADERS)'; for p in $$list; do \
-	  f="$$p"; \
-	  echo " rm -f $(DESTDIR)$(includedir)/$$f"; \
-	  rm -f $(DESTDIR)$(includedir)/$$f; \
+	@list='$(gdkglextglinclude_HEADERS)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f $(DESTDIR)$(gdkglextglincludedir)/$$f"; \
+	  rm -f $(DESTDIR)$(gdkglextglincludedir)/$$f; \
 	done
 
 ETAGS = etags
@@ -266,7 +268,7 @@ check: check-am
 all-am: Makefile $(HEADERS)
 
 installdirs:
-	$(mkinstalldirs) $(DESTDIR)$(includedir)
+	$(mkinstalldirs) $(DESTDIR)$(gdkglextglincludedir)
 
 install: install-am
 install-exec: install-exec-am
@@ -309,7 +311,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-nobase_includeHEADERS
+install-data-am: install-gdkglextglincludeHEADERS
 
 install-exec-am:
 
@@ -327,18 +329,18 @@ mostlyclean: mostlyclean-am
 
 mostlyclean-am: mostlyclean-generic mostlyclean-libtool
 
-uninstall-am: uninstall-info-am uninstall-nobase_includeHEADERS
+uninstall-am: uninstall-gdkglextglincludeHEADERS uninstall-info-am
 
 .PHONY: GTAGS all all-am check check-am clean clean-generic \
 	clean-libtool distclean distclean-generic distclean-libtool \
 	distclean-tags distdir dvi dvi-am info info-am install \
 	install-am install-data install-data-am install-exec \
-	install-exec-am install-info install-info-am install-man \
-	install-nobase_includeHEADERS install-strip installcheck \
+	install-exec-am install-gdkglextglincludeHEADERS install-info \
+	install-info-am install-man install-strip installcheck \
 	installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-generic \
 	mostlyclean-libtool tags uninstall uninstall-am \
-	uninstall-info-am uninstall-nobase_includeHEADERS
+	uninstall-gdkglextglincludeHEADERS uninstall-info-am
 
 
 .PHONY: files
