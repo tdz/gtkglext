@@ -29,13 +29,13 @@ gboolean gdk_gl_query_extension             (void);
 gboolean gdk_gl_query_extension_for_display (GdkDisplay *display);
 #endif /* GDK_MULTIHEAD_SAFE */
 
-gboolean gdk_gl_query_version               (gint       *major,
-                                             gint       *minor);
+gboolean gdk_gl_query_version               (int        *major,
+                                             int        *minor);
 
 #ifdef GDK_MULTIHEAD_SAFE
 gboolean gdk_gl_query_version_for_display   (GdkDisplay *display,
-                                             gint       *major,
-                                             gint       *minor);
+                                             int        *major,
+                                             int        *minor);
 #endif /* GDK_MULTIHEAD_SAFE */
 
 gboolean gdk_gl_query_gl_extension          (const char *extension);

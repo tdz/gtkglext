@@ -106,16 +106,16 @@ static void         gdk_gl_window_get_size               (GdkDrawable *drawable,
                                                           gint        *height);
 static void         gdk_gl_window_set_colormap           (GdkDrawable *drawable,
                                                           GdkColormap *cmap);
-static GdkColormap* gdk_gl_window_get_colormap           (GdkDrawable *drawable);
-static GdkVisual*   gdk_gl_window_get_visual             (GdkDrawable *drawable);
-static GdkImage*    gdk_gl_window_get_image              (GdkDrawable *drawable,
+static GdkColormap *gdk_gl_window_get_colormap           (GdkDrawable *drawable);
+static GdkVisual   *gdk_gl_window_get_visual             (GdkDrawable *drawable);
+static GdkImage    *gdk_gl_window_get_image              (GdkDrawable *drawable,
                                                           gint         x,
                                                           gint         y,
                                                           gint         width,
                                                           gint         height);
-static GdkRegion*   gdk_gl_window_get_clip_region        (GdkDrawable *drawable);
-static GdkRegion*   gdk_gl_window_get_visible_region     (GdkDrawable *drawable);
-static GdkDrawable* gdk_gl_window_get_composite_drawable (GdkDrawable *drawable,
+static GdkRegion   *gdk_gl_window_get_clip_region        (GdkDrawable *drawable);
+static GdkRegion   *gdk_gl_window_get_visible_region     (GdkDrawable *drawable);
+static GdkDrawable *gdk_gl_window_get_composite_drawable (GdkDrawable *drawable,
                                                           gint         x,
                                                           gint         y,
                                                           gint         width,
@@ -134,7 +134,7 @@ static void         gdk_gl_window_draw_pixbuf   (GdkDrawable *drawable,
                                                  GdkRgbDither dither,
                                                  gint         x_dither,
                                                  gint         y_dither);
-static GdkImage*    gdk_gl_window_copy_to_image (GdkDrawable *drawable,
+static GdkImage    *gdk_gl_window_copy_to_image (GdkDrawable *drawable,
                                                  GdkImage    *image,
                                                  gint         src_x,
                                                  gint         src_y,
@@ -143,7 +143,6 @@ static GdkImage*    gdk_gl_window_copy_to_image (GdkDrawable *drawable,
                                                  gint         width,
                                                  gint         height);
 
-static void gdk_gl_window_init         (GdkGLWindow      *glwindow);
 static void gdk_gl_window_class_init   (GdkGLWindowClass *klass);
 static void gdk_gl_window_set_property (GObject          *object,
                                         guint             property_id,
@@ -173,7 +172,7 @@ gdk_gl_window_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLWindow),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) gdk_gl_window_init,
+        (GInstanceInitFunc) NULL,
       };
 
       type = g_type_register_static (GDK_TYPE_DRAWABLE,
@@ -182,14 +181,6 @@ gdk_gl_window_get_type (void)
     }
 
   return type;
-}
-
-static void
-gdk_gl_window_init (GdkGLWindow *glwindow)
-{
-  /* 0-initialization is good for all other fields. */
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_window_init ()"));
 }
 
 static void
@@ -765,14 +756,14 @@ gl_window_destroy (GdkGLWindow *glwindow)
  * Return value: the #GdkGLWindow used by the @window if it is successful, NULL otherwise.
  **/
 GdkGLWindow *
-gdk_window_set_gl_capability (GdkWindow    *window,
-                              GdkGLConfig  *glconfig,
-                              const gint   *attrib_list)
+gdk_window_set_gl_capability (GdkWindow   *window,
+                              GdkGLConfig *glconfig,
+                              const int   *attrib_list)
 {
   GdkGLWindow *glwindow;
 
-  g_return_val_if_fail (GDK_IS_WINDOW (window), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+  g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
   /*
    * Initialize quarks

@@ -60,8 +60,6 @@ gdk_gl_context_impl_win32_get_type (void)
 static void
 gdk_gl_context_impl_win32_init (GdkGLContextImplWin32 *impl)
 {
-  /* 0-initialization is good for all other fields. */
-
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_win32_init ()"));
 
   impl->is_constructed = FALSE;
@@ -210,9 +208,9 @@ _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
 }
 
 gboolean
-gdk_gl_context_copy (GdkGLContext *dst_glcontext,
-                     GdkGLContext *src_glcontext,
-                     gulong        mask)
+gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
+                     GdkGLContext  *src_glcontext,
+                     unsigned long  mask)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (dst_glcontext), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (src_glcontext), FALSE);

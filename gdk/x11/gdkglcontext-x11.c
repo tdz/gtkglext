@@ -24,13 +24,13 @@
 #include "gdkglconfig-x11.h"
 #include "gdkglcontext-x11.h"
 
-static void     gdk_gl_context_impl_x11_init         (GdkGLContextImplX11      *impl);
-static void     gdk_gl_context_impl_x11_class_init   (GdkGLContextImplX11Class *klass);
+static void     gdk_gl_context_impl_x11_init        (GdkGLContextImplX11      *impl);
+static void     gdk_gl_context_impl_x11_class_init  (GdkGLContextImplX11Class *klass);
 
-static GObject *gdk_gl_context_impl_x11_constructor  (GType                     type,
-                                                      guint                     n_construct_properties,
-                                                      GObjectConstructParam    *construct_properties);
-static void     gdk_gl_context_impl_x11_finalize     (GObject                  *object);
+static GObject *gdk_gl_context_impl_x11_constructor (GType                     type,
+                                                     guint                     n_construct_properties,
+                                                     GObjectConstructParam    *construct_properties);
+static void     gdk_gl_context_impl_x11_finalize    (GObject                  *object);
 
 static gpointer parent_class = NULL;
 
@@ -64,8 +64,6 @@ gdk_gl_context_impl_x11_get_type (void)
 static void
 gdk_gl_context_impl_x11_init (GdkGLContextImplX11 *impl)
 {
-  /* 0-initialization is good for all other fields. */
-
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_x11_init ()"));
 
   impl->is_constructed = FALSE;
@@ -220,9 +218,9 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
  * Return value: FALSE if it fails, TRUE otherwise.
  **/
 gboolean
-gdk_gl_context_copy (GdkGLContext *dst_glcontext,
-                     GdkGLContext *src_glcontext,
-                     gulong        mask)
+gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
+                     GdkGLContext  *src_glcontext,
+                     unsigned long  mask)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (dst_glcontext), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (src_glcontext), FALSE);

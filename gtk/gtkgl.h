@@ -29,8 +29,4 @@
 #include <gtk/gtkglversion.h>
 #include <gtk/gtkglwidget.h>
 
-G_BEGIN_DECLS
-
-G_END_DECLS
-
 #endif /* __GTK_GL_H__ */

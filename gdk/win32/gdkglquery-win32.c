@@ -79,14 +79,14 @@ gdk_gl_query_extension_for_display (GdkDisplay *display)
 #endif /* GDK_MULTIHEAD_SAFE */
 
 gboolean
-gdk_gl_query_version (gint *major,
-                      gint *minor)
+gdk_gl_query_version (int *major,
+                      int *minor)
 {
   DWORD version = GetVersion ();
 
   /* return Windows version. */
-  *major = (gint) (LOBYTE (LOWORD (version)));
-  *minor = (gint) (HIBYTE (LOWORD (version)));
+  *major = (int) (LOBYTE (LOWORD (version)));
+  *minor = (int) (HIBYTE (LOWORD (version)));
 
   return TRUE;
 }
@@ -95,8 +95,8 @@ gdk_gl_query_version (gint *major,
 
 gboolean
 gdk_gl_query_version_for_display (GdkDisplay *display,
-                                  gint       *major,
-                                  gint       *minor)
+                                  int        *major,
+                                  int        *minor)
 {
   DWORD version;
 
@@ -105,8 +105,8 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
   version = GetVersion ();
 
   /* return Windows version. */
-  *major = (gint) (LOBYTE (LOWORD (version)));
-  *minor = (gint) (HIBYTE (LOWORD (version)));
+  *major = (int) (LOBYTE (LOWORD (version)));
+  *minor = (int) (HIBYTE (LOWORD (version)));
 
   return TRUE;
 }

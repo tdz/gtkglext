@@ -71,8 +71,8 @@ gdk_gl_query_extension_for_display (GdkDisplay *display)
  * Return value: FALSE if it fails, TRUE otherwise.
  **/
 gboolean
-gdk_gl_query_version (gint *major,
-                      gint *minor)
+gdk_gl_query_version (int *major,
+                      int *minor)
 {
 #ifdef GDK_MULTIHEAD_SAFE
   return glXQueryVersion (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
@@ -87,8 +87,8 @@ gdk_gl_query_version (gint *major,
 
 gboolean
 gdk_gl_query_version_for_display (GdkDisplay *display,
-                                  gint       *major,
-                                  gint       *minor)
+                                  int        *major,
+                                  int        *minor)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
 

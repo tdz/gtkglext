@@ -30,21 +30,17 @@ enum {
   PROP_RENDER_TYPE
 };
 
-static void     gdk_gl_context_init         (GdkGLContext          *glcontext);
-static void     gdk_gl_context_class_init   (GdkGLContextClass     *klass);
+static void gdk_gl_context_class_init   (GdkGLContextClass *klass);
 
-static GObject *gdk_gl_context_constructor  (GType                  type,
-                                             guint                  n_construct_properties,
-                                             GObjectConstructParam *construct_properties);
-static void     gdk_gl_context_set_property (GObject               *object,
-                                             guint                  property_id,
-                                             const GValue          *value,
-                                             GParamSpec            *pspec);
-static void     gdk_gl_context_get_property (GObject               *object,
-                                             guint                  property_id,
-                                             GValue                *value,
-                                             GParamSpec            *pspec);
-static void     gdk_gl_context_finalize     (GObject               *object);
+static void gdk_gl_context_set_property (GObject           *object,
+                                         guint              property_id,
+                                         const GValue      *value,
+                                         GParamSpec        *pspec);
+static void gdk_gl_context_get_property (GObject           *object,
+                                         guint              property_id,
+                                         GValue            *value,
+                                         GParamSpec        *pspec);
+static void gdk_gl_context_finalize     (GObject           *object);
 
 static gpointer parent_class = NULL;
 
@@ -64,7 +60,7 @@ gdk_gl_context_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLContext),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) gdk_gl_context_init,
+        (GInstanceInitFunc) NULL,
       };
 
       type = g_type_register_static (G_TYPE_OBJECT,
@@ -76,14 +72,6 @@ gdk_gl_context_get_type (void)
 }
 
 static void
-gdk_gl_context_init (GdkGLContext *glcontext)
-{
-  /* 0-initialization is good for all other fields. */
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_init ()"));
-}
-
-static void
 gdk_gl_context_class_init (GdkGLContextClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -92,7 +80,6 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->constructor  = gdk_gl_context_constructor;
   object_class->set_property = gdk_gl_context_set_property;
   object_class->get_property = gdk_gl_context_get_property;
   object_class->finalize     = gdk_gl_context_finalize;
@@ -132,22 +119,6 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
                                                      GDK_GL_COLOR_INDEX_TYPE,
                                                      GDK_GL_RGBA_TYPE,
                                                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-}
-
-static GObject *
-gdk_gl_context_constructor (GType                  type,
-                            guint                  n_construct_properties,
-                            GObjectConstructParam *construct_properties)
-{
-  GObject *object;
-
-  object = G_OBJECT_CLASS (parent_class)->constructor (type,
-                                                       n_construct_properties,
-                                                       construct_properties);
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_constructor ()"));
-
-  return object;
 }
 
 static void
@@ -371,7 +342,7 @@ gdk_gl_context_is_direct (GdkGLContext *glcontext)
 gint
 gdk_gl_context_get_render_type (GdkGLContext *glcontext)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), 0);
 
   return glcontext->render_type;
 }

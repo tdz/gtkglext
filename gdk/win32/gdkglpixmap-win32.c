@@ -86,8 +86,6 @@ gdk_gl_pixmap_impl_win32_get_type (void)
 static void
 gdk_gl_pixmap_impl_win32_init (GdkGLPixmapImplWin32 *impl)
 {
-  /* 0-initialization is good for all other fields. */
-
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_init ()"));
 
   impl->is_constructed = FALSE;
@@ -249,11 +247,11 @@ gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_gl_drawable_interface_init ()"));
 
   iface->create_new_context   = _gdk_win32_gl_context_new;
-  iface->make_context_current = gdk_win32_gl_pixmap_make_context_current;
+  iface->make_context_current =  gdk_win32_gl_pixmap_make_context_current;
   iface->is_double_buffered   = _gdk_gl_pixmap_is_double_buffered;
-  iface->swap_buffers         = gdk_win32_gl_pixmap_swap_buffers;
-  iface->wait_gl              = gdk_win32_gl_pixmap_wait_gl;
-  iface->wait_gdk             = gdk_win32_gl_pixmap_wait_gdk;
+  iface->swap_buffers         =  gdk_win32_gl_pixmap_swap_buffers;
+  iface->wait_gl              =  gdk_win32_gl_pixmap_wait_gl;
+  iface->wait_gdk             =  gdk_win32_gl_pixmap_wait_gdk;
   iface->get_gl_config        = _gdk_gl_pixmap_get_gl_config;
   iface->get_size             = _gdk_gl_pixmap_get_size;
 }
@@ -493,7 +491,7 @@ gdk_win32_gl_pixmap_wait_gdk (GdkGLDrawable *gldrawable)
 GdkGLPixmap *
 gdk_gl_pixmap_new (GdkGLConfig *glconfig,
                    GdkPixmap   *pixmap,
-                   const gint  *attrib_list)
+                   const int   *attrib_list)
 {
   GdkGLPixmap *glpixmap;
   GdkGLPixmapImplWin32 *impl;

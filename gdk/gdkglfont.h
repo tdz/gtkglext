@@ -23,10 +23,10 @@
 
 G_BEGIN_DECLS
 
-PangoFont *gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
-                                       gint                        first,
-                                       gint                        count,
-                                       gint                        list_base);
+PangoFont *gdk_gl_font_use_pango_font             (const PangoFontDescription *font_desc,
+                                                   gint                        first,
+                                                   gint                        count,
+                                                   gint                        list_base);
 
 #ifdef GDK_MULTIHEAD_SAFE
 

@@ -53,17 +53,17 @@ struct _GdkGLContextClass
   GObjectClass parent_class;
 };
 
-GType         gdk_gl_context_get_type         (void);
+GType          gdk_gl_context_get_type        (void);
 
-GdkGLContext *gdk_gl_context_new              (GdkGLDrawable *gldrawable,
+GdkGLContext  *gdk_gl_context_new             (GdkGLDrawable *gldrawable,
                                                GdkGLConfig   *glconfig,
                                                GdkGLContext  *share_list,
                                                gboolean       direct,
                                                gint           render_type);
 
-gboolean      gdk_gl_context_copy             (GdkGLContext  *dst_glcontext,
+gboolean       gdk_gl_context_copy            (GdkGLContext  *dst_glcontext,
                                                GdkGLContext  *src_glcontext,
-                                               gulong         mask);
+                                               unsigned long  mask);
 
 GdkGLDrawable *gdk_gl_context_get_gl_drawable (GdkGLContext  *glcontext);
 

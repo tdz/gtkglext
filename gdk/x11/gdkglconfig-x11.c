@@ -93,8 +93,6 @@ gdk_gl_config_impl_x11_get_type (void)
 static void
 gdk_gl_config_impl_x11_init (GdkGLConfigImplX11 *impl)
 {
-  /* 0-initialization is good for all other fields. */
-
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_x11_init ()"));
 
   impl->is_constructed = FALSE;

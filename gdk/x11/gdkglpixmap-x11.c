@@ -80,8 +80,6 @@ gdk_gl_pixmap_impl_x11_get_type (void)
 static void
 gdk_gl_pixmap_impl_x11_init (GdkGLPixmapImplX11 *impl)
 {
-  /* 0-initialization is good for all other fields. */
-
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_init ()"));
 
   impl->is_constructed = FALSE;
@@ -232,9 +230,9 @@ gdk_gl_pixmap_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_x11_gl_drawable_interface_init ()"));
 
   iface->create_new_context   = _gdk_x11_gl_context_new;
-  iface->make_context_current = gdk_x11_gl_pixmap_make_context_current;
+  iface->make_context_current =  gdk_x11_gl_pixmap_make_context_current;
   iface->is_double_buffered   = _gdk_gl_pixmap_is_double_buffered;
-  iface->swap_buffers         = gdk_x11_gl_pixmap_swap_buffers;
+  iface->swap_buffers         =  gdk_x11_gl_pixmap_swap_buffers;
   iface->wait_gl              = _gdk_x11_gl_drawable_wait_gl;
   iface->wait_gdk             = _gdk_x11_gl_drawable_wait_gdk;
   iface->get_gl_config        = _gdk_gl_pixmap_get_gl_config;
@@ -322,7 +320,7 @@ gdk_x11_gl_pixmap_swap_buffers (GdkGLDrawable *gldrawable)
 GdkGLPixmap *
 gdk_gl_pixmap_new (GdkGLConfig *glconfig,
                    GdkPixmap   *pixmap,
-                   const gint  *attrib_list)
+                   const int   *attrib_list)
 {
   GdkGLPixmap *glpixmap;
   GdkGLPixmapImplX11 *impl;

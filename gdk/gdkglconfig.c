@@ -29,21 +29,17 @@ enum {
   PROP_SCREEN
 };
 
-static void     gdk_gl_config_init         (GdkGLConfig           *glconfig);
-static void     gdk_gl_config_class_init   (GdkGLConfigClass      *klass);
+static void gdk_gl_config_class_init   (GdkGLConfigClass *klass);
 
-static GObject *gdk_gl_config_constructor  (GType                  type,
-                                            guint                  n_construct_properties,
-                                            GObjectConstructParam *construct_properties);
-static void     gdk_gl_config_set_property (GObject               *object,
-                                            guint                  property_id,
-                                            const GValue          *value,
-                                            GParamSpec            *pspec);
-static void     gdk_gl_config_get_property (GObject               *object,
-                                            guint                  property_id,
-                                            GValue                *value,
-                                            GParamSpec            *pspec);
-static void     gdk_gl_config_finalize     (GObject               *object);
+static void gdk_gl_config_set_property (GObject          *object,
+                                        guint             property_id,
+                                        const GValue     *value,
+                                        GParamSpec       *pspec);
+static void gdk_gl_config_get_property (GObject          *object,
+                                        guint             property_id,
+                                        GValue           *value,
+                                        GParamSpec       *pspec);
+static void gdk_gl_config_finalize     (GObject          *object);
 
 static GdkGLConfig *gdk_gl_config_new_ci       (GdkGLConfigMode mode);
 static GdkGLConfig *gdk_gl_config_new_rgb      (GdkGLConfigMode mode);
@@ -67,7 +63,7 @@ gdk_gl_config_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLConfig),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) gdk_gl_config_init,
+        (GInstanceInitFunc) NULL,
       };
 
       type = g_type_register_static (G_TYPE_OBJECT,
@@ -79,17 +75,6 @@ gdk_gl_config_get_type (void)
 }
 
 static void
-gdk_gl_config_init (GdkGLConfig *glconfig)
-{
-  /* 0-initialization is good for all other fields. */
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_init ()"));
-
-  glconfig->is_double_buffered = FALSE;
-  glconfig->is_stereo = FALSE;
-}
-
-static void
 gdk_gl_config_class_init (GdkGLConfigClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -98,7 +83,6 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->constructor  = gdk_gl_config_constructor;
   object_class->set_property = gdk_gl_config_set_property;
   object_class->get_property = gdk_gl_config_get_property;
   object_class->finalize     = gdk_gl_config_finalize;
@@ -119,22 +103,6 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
                                                          _("Target screen for the OpenGL configuration."),
                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 #endif /* GDK_MULTIHEAD_SAFE */
-}
-
-static GObject *
-gdk_gl_config_constructor (GType                  type,
-                           guint                  n_construct_properties,
-                           GObjectConstructParam *construct_properties)
-{
-  GObject *object;
-
-  object = G_OBJECT_CLASS (parent_class)->constructor (type,
-                                                       n_construct_properties,
-                                                       construct_properties);
-
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_constructor ()"));
-
-  return object;
 }
 
 static void
@@ -433,7 +401,7 @@ gdk_gl_config_get_visual (GdkGLConfig *glconfig)
 gint
 gdk_gl_config_get_depth (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
 
   return glconfig->depth;
 }

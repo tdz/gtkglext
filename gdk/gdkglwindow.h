@@ -50,17 +50,17 @@ struct _GdkGLWindowClass
   GdkDrawableClass parent_class;
 };
 
-GType        gdk_gl_window_get_type (void);
+GType        gdk_gl_window_get_type         (void);
 
 /*
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None). See GLX 1.3 spec.
  */
-GdkGLWindow *gdk_gl_window_new      (GdkGLConfig *glconfig,
-                                     GdkWindow   *window,
-                                     const gint  *attrib_list);
+GdkGLWindow *gdk_gl_window_new              (GdkGLConfig *glconfig,
+                                             GdkWindow   *window,
+                                             const int   *attrib_list);
 
-GdkWindow   *gdk_gl_window_get_window (GdkGLWindow *glwindow);
+GdkWindow   *gdk_gl_window_get_window       (GdkGLWindow *glwindow);
 
 /*
  * OpenGL extension to GdkWindow
@@ -68,7 +68,7 @@ GdkWindow   *gdk_gl_window_get_window (GdkGLWindow *glwindow);
 
 GdkGLWindow *gdk_window_set_gl_capability   (GdkWindow   *window,
                                              GdkGLConfig *glconfig,
-                                             const gint  *attrib_list);
+                                             const int   *attrib_list);
 
 void         gdk_window_unset_gl_capability (GdkWindow   *window);
 

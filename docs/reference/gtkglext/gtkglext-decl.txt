@@ -159,77 +159,77 @@ void
 <FUNCTION>
 <NAME>gdk_gl_config_new</NAME>
 <RETURNS>GdkGLConfig  *</RETURNS>
-const int      *attrib_list
+const int       *attrib_list
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_new_for_screen</NAME>
 <RETURNS>GdkGLConfig  *</RETURNS>
-GdkScreen      *screen,const int      *attrib_list
+GdkScreen       *screen,const int       *attrib_list
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_new_by_mode</NAME>
 <RETURNS>GdkGLConfig  *</RETURNS>
-GdkGLConfigMode mode
+GdkGLConfigMode  mode
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_get_screen</NAME>
 <RETURNS>GdkScreen    *</RETURNS>
-GdkGLConfig    *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_get_attrib</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig    *glconfig,int             attribute,int            *value
+GdkGLConfig     *glconfig,int              attribute,int             *value
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_get_colormap</NAME>
 <RETURNS>GdkColormap  *</RETURNS>
-GdkGLConfig    *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_get_visual</NAME>
 <RETURNS>GdkVisual    *</RETURNS>
-GdkGLConfig    *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_get_depth</NAME>
 <RETURNS>gint  </RETURNS>
-GdkGLConfig    *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_is_rgba</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_is_double_buffered</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig    *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_is_stereo</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig    *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_has_alpha</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_has_depth_buffer</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_has_stencil_buffer</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_has_accum_buffer</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLConfig *glconfig
+GdkGLConfig     *glconfig
 </FUNCTION>
 <STRUCT>
 <NAME>GdkGLContextClass</NAME>
@@ -281,13 +281,13 @@ void
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_context_new</NAME>
-<RETURNS>GdkGLContext  *</RETURNS>
+<RETURNS>GdkGLContext   *</RETURNS>
 GdkGLDrawable *gldrawable,GdkGLConfig   *glconfig,GdkGLContext  *share_list,gboolean       direct,gint           render_type
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_context_copy</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLContext  *dst_glcontext,GdkGLContext  *src_glcontext,gulong         mask
+GdkGLContext  *dst_glcontext,GdkGLContext  *src_glcontext,unsigned long  mask
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_context_get_gl_drawable</NAME>
@@ -464,7 +464,7 @@ void
 <FUNCTION>
 <NAME>gdk_gl_pixmap_new</NAME>
 <RETURNS>GdkGLPixmap  *</RETURNS>
-GdkGLConfig *glconfig,GdkPixmap   *pixmap,const gint  *attrib_list
+GdkGLConfig *glconfig,GdkPixmap   *pixmap,const int   *attrib_list
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_pixmap_get_pixmap</NAME>
@@ -474,7 +474,7 @@ GdkGLPixmap *glpixmap
 <FUNCTION>
 <NAME>gdk_pixmap_set_gl_capability</NAME>
 <RETURNS>GdkGLPixmap  *</RETURNS>
-GdkPixmap   *pixmap,GdkGLConfig *glconfig,const gint  *attrib_list
+GdkPixmap   *pixmap,GdkGLConfig *glconfig,const int   *attrib_list
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_pixmap_unset_gl_capability</NAME>
@@ -509,12 +509,12 @@ GdkDisplay *display
 <FUNCTION>
 <NAME>gdk_gl_query_version</NAME>
 <RETURNS>gboolean  </RETURNS>
-gint       *major,gint       *minor
+int        *major,int        *minor
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_query_version_for_display</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkDisplay *display,gint       *major,gint       *minor
+GdkDisplay *display,int        *major,int        *minor
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_query_gl_extension</NAME>
@@ -790,7 +790,7 @@ void
 <FUNCTION>
 <NAME>gdk_gl_window_new</NAME>
 <RETURNS>GdkGLWindow  *</RETURNS>
-GdkGLConfig *glconfig,GdkWindow   *window,const gint  *attrib_list
+GdkGLConfig *glconfig,GdkWindow   *window,const int   *attrib_list
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_window_get_window</NAME>
@@ -800,7 +800,7 @@ GdkGLWindow *glwindow
 <FUNCTION>
 <NAME>gdk_window_set_gl_capability</NAME>
 <RETURNS>GdkGLWindow  *</RETURNS>
-GdkWindow   *window,GdkGLConfig *glconfig,const gint  *attrib_list
+GdkWindow   *window,GdkGLConfig *glconfig,const int   *attrib_list
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_window_unset_gl_capability</NAME>

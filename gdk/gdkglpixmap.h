@@ -50,17 +50,17 @@ struct _GdkGLPixmapClass
   GdkDrawableClass parent_class;
 };
 
-GType        gdk_gl_pixmap_get_type (void);
+GType        gdk_gl_pixmap_get_type         (void);
 
 /*
  * attrib_list is currently unused. This must be set to NULL or empty
  * (first attribute of None). See GLX 1.3 spec.
  */
-GdkGLPixmap *gdk_gl_pixmap_new      (GdkGLConfig *glconfig,
-                                     GdkPixmap   *pixmap,
-                                     const gint  *attrib_list);
+GdkGLPixmap *gdk_gl_pixmap_new              (GdkGLConfig *glconfig,
+                                             GdkPixmap   *pixmap,
+                                             const int   *attrib_list);
 
-GdkPixmap   *gdk_gl_pixmap_get_pixmap (GdkGLPixmap *glpixmap);
+GdkPixmap   *gdk_gl_pixmap_get_pixmap       (GdkGLPixmap *glpixmap);
 
 /*
  * OpenGL extension to GdkPixmap
@@ -68,7 +68,7 @@ GdkPixmap   *gdk_gl_pixmap_get_pixmap (GdkGLPixmap *glpixmap);
 
 GdkGLPixmap *gdk_pixmap_set_gl_capability   (GdkPixmap   *pixmap,
                                              GdkGLConfig *glconfig,
-                                             const gint  *attrib_list);
+                                             const int   *attrib_list);
 
 void         gdk_pixmap_unset_gl_capability (GdkPixmap   *pixmap);
 
