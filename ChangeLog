@@ -1,5 +1,7 @@
 2002-06-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* Version 0.3.0.
+
 	* gtk/gtkglwidget.h: Removed the following macros.
 	
 	    gtk_widget_gl_make_current(widget)

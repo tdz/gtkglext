@@ -86,6 +86,7 @@ init (GtkWidget *widget,
    * Generate font display lists.
    */
   font_list_base = glGenLists (128);
+
   font_desc = pango_font_description_from_string (font_string);
 
   font = gdk_gl_font_use_pango_font (font_desc, 0, 128, font_list_base);
@@ -95,9 +96,12 @@ init (GtkWidget *widget,
   }
 
   font_metrics = pango_font_get_metrics (font, NULL);
+
   font_height = pango_font_metrics_get_ascent (font_metrics) +
                 pango_font_metrics_get_descent (font_metrics);
   font_height = PANGO_PIXELS(font_height);
+
+  pango_font_description_free (font_desc);
   pango_font_metrics_unref (font_metrics);
 
   glClearColor (1.0, 1.0, 1.0, 1.0);
