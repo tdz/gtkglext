@@ -61,6 +61,7 @@ gdk_gl_drawable_gl_begin
 gdk_gl_drawable_gl_end
 gdk_gl_drawable_get_gl_config
 gdk_gl_drawable_get_size
+gdk_gl_drawable_get_current
 <SUBSECTION Standard>
 GDK_GL_DRAWABLE
 GDK_IS_GL_DRAWABLE

@@ -18,6 +18,7 @@
 
 #include <gdk/gdkdrawable.h>
 #include "gdkglprivate.h"
+#include "gdkglcontext.h"
 #include "gdkgldrawable.h"
 
 GType
@@ -194,4 +195,26 @@ gdk_gl_drawable_get_size (GdkGLDrawable *gldrawable,
   g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
 
   GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->get_size (gldrawable, width, height);
+}
+
+/**
+ * gdk_gl_drawable_get_current:
+ *
+ * Returns the current #GdkGLDrawable.
+ *
+ * Return value: the current #GdkGLDrawable or NULL if there is no current drawable.
+ **/
+GdkGLDrawable *
+gdk_gl_drawable_get_current (void)
+{
+  GdkGLContext *glcontext;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_drawable_get_current ()"));
+
+  glcontext = gdk_gl_context_get_current ();
+
+  if (!glcontext)
+    return NULL;
+
+  return glcontext->gldrawable;
 }

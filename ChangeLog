@@ -1,5 +1,8 @@
 2002-11-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkgldrawable.[ch] (gdk_gl_drawable_get_current): Added
+	gdk_gl_drawable_get_current () function.
+
 	* gdk/win32/gdkglcontext-win32.c (gdk_gl_context_get_current): 
 	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_get_current): 
 	* gdk/gdkglcontext.h: Added gdk_gl_context_get_current () function.

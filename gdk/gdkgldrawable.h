@@ -64,29 +64,31 @@ struct _GdkGLDrawableClass
                                          gint          *height);
 };
 
-GType        gdk_gl_drawable_get_type           (void);
+GType          gdk_gl_drawable_get_type           (void);
 
-gboolean     gdk_gl_drawable_make_current       (GdkGLDrawable *gldrawable,
-                                                 GdkGLContext  *glcontext);
+gboolean       gdk_gl_drawable_make_current       (GdkGLDrawable *gldrawable,
+                                                   GdkGLContext  *glcontext);
 
-gboolean     gdk_gl_drawable_is_double_buffered (GdkGLDrawable *gldrawable);
+gboolean       gdk_gl_drawable_is_double_buffered (GdkGLDrawable *gldrawable);
 
-void         gdk_gl_drawable_swap_buffers       (GdkGLDrawable *gldrawable);
+void           gdk_gl_drawable_swap_buffers       (GdkGLDrawable *gldrawable);
 
-void         gdk_gl_drawable_wait_gl            (GdkGLDrawable *gldrawable);
+void           gdk_gl_drawable_wait_gl            (GdkGLDrawable *gldrawable);
 
-void         gdk_gl_drawable_wait_gdk           (GdkGLDrawable *gldrawable);
+void           gdk_gl_drawable_wait_gdk           (GdkGLDrawable *gldrawable);
 
-gboolean     gdk_gl_drawable_gl_begin           (GdkGLDrawable *gldrawable,
-                                                 GdkGLContext  *glcontext);
+gboolean       gdk_gl_drawable_gl_begin           (GdkGLDrawable *gldrawable,
+                                                   GdkGLContext  *glcontext);
 
-void         gdk_gl_drawable_gl_end             (GdkGLDrawable *gldrawable);
+void           gdk_gl_drawable_gl_end             (GdkGLDrawable *gldrawable);
 
-GdkGLConfig *gdk_gl_drawable_get_gl_config      (GdkGLDrawable *gldrawable);
+GdkGLConfig   *gdk_gl_drawable_get_gl_config      (GdkGLDrawable *gldrawable);
 
-void         gdk_gl_drawable_get_size           (GdkGLDrawable *gldrawable,
-                                                 gint          *width,
-                                                 gint          *height);
+void           gdk_gl_drawable_get_size           (GdkGLDrawable *gldrawable,
+                                                   gint          *width,
+                                                   gint          *height);
+
+GdkGLDrawable *gdk_gl_drawable_get_current        (void);
 
 G_END_DECLS
 
