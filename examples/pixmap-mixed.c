@@ -181,7 +181,8 @@ configure (GtkWidget         *widget,
   /* Sync. */
   gdk_gl_drawable_wait_gl (gldrawable);
 
-  gdk_draw_rectangle (pixmap,
+  /* GDK rendering. */
+  gdk_draw_rectangle (GDK_DRAWABLE (gldrawable),
 		      widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
 		      TRUE,
 		      0.1*widget->allocation.width,

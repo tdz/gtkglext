@@ -189,7 +189,7 @@ configure (GtkWidget         *widget,
 
 #if 0
 
-  gdk_draw_arc (pixmap,
+  gdk_draw_arc (GDK_DRAWABLE (gldrawable),
                 widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
                 TRUE,
                 0.4*widget->allocation.width,

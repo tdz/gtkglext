@@ -20,6 +20,7 @@
 #define __GDK_GL_WINDOW_H__
 
 #include <gdk/gdktypes.h>
+#include <gdk/gdkdrawable.h>
 #include <gdk/gdkwindow.h>
 
 #include <gdk/gdkgltypes.h>
@@ -35,26 +36,9 @@ typedef struct _GdkGLWindowClass GdkGLWindowClass;
 #define GDK_IS_GL_WINDOW_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_GL_WINDOW))
 #define GDK_GL_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_WINDOW, GdkGLWindowClass))
 
-/*
- * For future implementation.
- * It needs GObject->constructor () support of GdkWindow replaces legacy
- * gdk_window_new ().
- */
-/*
 struct _GdkGLWindow
 {
-  GdkWindowObject parent_instance;
-};
-
-struct _GdkGLWindowClass
-{
-  GdkWindowObjectClass parent_class;
-};
-*/
-
-struct _GdkGLWindow
-{
-  GObject parent_instance;
+  GdkDrawable parent_instance;
 
   GdkGLConfig *glconfig;
 
@@ -63,7 +47,7 @@ struct _GdkGLWindow
 
 struct _GdkGLWindowClass
 {
-  GObjectClass parent_class;
+  GdkDrawableClass parent_class;
 };
 
 GType        gdk_gl_window_get_type (void);

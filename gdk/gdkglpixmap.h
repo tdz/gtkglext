@@ -20,6 +20,7 @@
 #define __GDK_GL_PIXMAP_H__
 
 #include <gdk/gdktypes.h>
+#include <gdk/gdkdrawable.h>
 #include <gdk/gdkpixmap.h>
 
 #include <gdk/gdkgltypes.h>
@@ -35,26 +36,9 @@ typedef struct _GdkGLPixmapClass GdkGLPixmapClass;
 #define GDK_IS_GL_PIXMAP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_GL_PIXMAP))
 #define GDK_GL_PIXMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_PIXMAP, GdkGLPixmapClass))
 
-/*
- * For future implementation.
- * It needs GObject->constructor () support of GdkPixmap replaces legacy
- * gdk_pixmap_new ().
- */
-/*
 struct _GdkGLPixmap
 {
-  GdkPixmapObject parent_instance;
-};
-
-struct _GdkGLPixmapClass
-{
-  GdkPixmapObjectClass parent_class;
-};
-*/
-
-struct _GdkGLPixmap
-{
-  GObject parent_instance;
+  GdkDrawable parent_instance;
 
   GdkGLConfig *glconfig;
 
@@ -63,7 +47,7 @@ struct _GdkGLPixmap
 
 struct _GdkGLPixmapClass
 {
-  GObjectClass parent_class;
+  GdkDrawableClass parent_class;
 };
 
 GType        gdk_gl_pixmap_get_type (void);

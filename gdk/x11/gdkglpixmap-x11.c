@@ -238,7 +238,6 @@ gdk_gl_pixmap_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->wait_gl              = _gdk_x11_gl_drawable_wait_gl;
   iface->wait_gdk             = _gdk_x11_gl_drawable_wait_gdk;
   iface->get_gl_config        = _gdk_gl_pixmap_get_gl_config;
-  iface->get_drawable         = _gdk_gl_pixmap_get_drawable;
 }
 
 static gboolean

@@ -1,3 +1,20 @@
+2002-08-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/gdkgldrawable.[ch]: Removed get_drawable(), get_size(),
+	get_colormap(), get_visual(), get_depth() functions.
+
+	* Now GdkGLPixmap and GdkGLWindow are GdkDrawable.
+
+	* gdk/gdkglpixmap.[ch]
+	(struct _GdkGLPixmap) 
+	(struct _GdkGLPixmapClass): Modified GdkGLPixmap to be derived
+	from GdkDrawable.
+
+	* gdk/gdkglwindow.[ch]
+	(struct _GdkGLWindow) 
+	(struct _GdkGLWindowClass): Modified GdkGLWindow to be derived
+	from GdkDrawable.
+
 2002-08-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/gdkglquery.c (gdk_gl_query_gl_extension): Added.
