@@ -22,6 +22,8 @@
 #include "gdkglcontext-x11.h"
 #include "gdkglwindow-x11.h"
 
+#include <string.h>
+
 /* Forward declarations */
 static gboolean gdk_x11_gl_window_make_context_current (GdkGLDrawable           *draw,
                                                         GdkGLDrawable           *read,
@@ -136,17 +138,27 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
 {
   GdkGLWindow *glwindow;
   GdkGLWindowImplX11 *impl;
+  Display *xdisplay;
+  int screen_num;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_finalize ()"));
 
   glwindow = GDK_GL_WINDOW (object);
   impl = GDK_GL_WINDOW_IMPL_X11 (object);
 
-#if defined(GLX_MESA_release_buffers) && defined(GTKGLEXT_ENABLE_MESA_EXT)
-  GDK_GL_NOTE (IMPL, g_message (" * glXReleaseBuffersMESA ()"));
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (glwindow->glconfig);
+  screen_num = GDK_GL_CONFIG_SCREEN_XNUMBER (glwindow->glconfig);
 
-  glXReleaseBuffersMESA (GDK_GL_CONFIG_XDISPLAY (glwindow->glconfig),
-                         GDK_GL_WINDOW_GLXWINDOW (glwindow));
+#if defined(GLX_MESA_release_buffers) && defined(GTKGLEXT_ENABLE_MESA_EXT)
+
+  if (strstr (glXQueryExtensionsString (xdisplay, screen_num), "GLX_MESA_release_buffers"))
+    {
+      GDK_GL_NOTE (IMPL, g_message (" * glXReleaseBuffersMESA ()"));
+
+      glXReleaseBuffersMESA (xdisplay,
+                             GDK_GL_WINDOW_GLXWINDOW (glwindow));
+    }
+
 #endif
 
   G_OBJECT_CLASS (parent_class)->finalize (object);

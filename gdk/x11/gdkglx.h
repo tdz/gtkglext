@@ -31,30 +31,33 @@
 
 G_BEGIN_DECLS
 
-Display     *gdk_x11_gl_config_get_xdisplay    (GdkGLConfig  *glconfig);
-XVisualInfo *gdk_x11_gl_config_get_xvinfo      (GdkGLConfig  *glconfig);
+Display     *gdk_x11_gl_config_get_xdisplay      (GdkGLConfig  *glconfig);
+int          gdk_x11_gl_config_get_screen_number (GdkGLConfig  *glconfig);
+XVisualInfo *gdk_x11_gl_config_get_xvinfo        (GdkGLConfig  *glconfig);
 
-GLXContext   gdk_x11_gl_context_get_glxcontext (GdkGLContext *glcontext);
+GLXContext   gdk_x11_gl_context_get_glxcontext   (GdkGLContext *glcontext);
 
-GLXPixmap    gdk_x11_gl_pixmap_get_glxpixmap   (GdkGLPixmap  *glpixmap);
+GLXPixmap    gdk_x11_gl_pixmap_get_glxpixmap     (GdkGLPixmap  *glpixmap);
 
-Window       gdk_x11_gl_window_get_glxwindow   (GdkGLWindow  *glwindow);
+Window       gdk_x11_gl_window_get_glxwindow     (GdkGLWindow  *glwindow);
 
 #ifdef INSIDE_GDK_GL_X11
 
-#define GDK_GL_CONFIG_XDISPLAY(glconfig)     (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xdisplay)
-#define GDK_GL_CONFIG_XVINFO(glconfig)       (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo)
-#define GDK_GL_CONTEXT_GLXCONTEXT(glcontext) (GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glxcontext)
-#define GDK_GL_PIXMAP_GLXPIXMAP(glpixmap)    (GDK_GL_PIXMAP_IMPL_X11 (glpixmap)->glxpixmap)
-#define GDK_GL_WINDOW_GLXWINDOW(glwindow)    (GDK_GL_WINDOW_IMPL_X11 (glwindow)->glxwindow)
+#define GDK_GL_CONFIG_XDISPLAY(glconfig)       (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xdisplay)
+#define GDK_GL_CONFIG_SCREEN_XNUMBER(glconfig) (GDK_GL_CONFIG_IMPL_X11 (glconfig)->screen_num)
+#define GDK_GL_CONFIG_XVINFO(glconfig)         (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo)
+#define GDK_GL_CONTEXT_GLXCONTEXT(glcontext)   (GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glxcontext)
+#define GDK_GL_PIXMAP_GLXPIXMAP(glpixmap)      (GDK_GL_PIXMAP_IMPL_X11 (glpixmap)->glxpixmap)
+#define GDK_GL_WINDOW_GLXWINDOW(glwindow)      (GDK_GL_WINDOW_IMPL_X11 (glwindow)->glxwindow)
 
 #else
 
-#define GDK_GL_CONFIG_XDISPLAY(glconfig)     (gdk_x11_gl_config_get_xdisplay (glconfig))
-#define GDK_GL_CONFIG_XVINFO(glconfig)       (gdk_x11_gl_config_get_xvinfo (glconfig))
-#define GDK_GL_CONTEXT_GLXCONTEXT(glcontext) (gdk_x11_gl_context_get_glxcontext (glcontext))
-#define GDK_GL_PIXMAP_GLXPIXMAP(glpixmap)    (gdk_x11_gl_pixmap_get_glxpixmap (glpixmap))
-#define GDK_GL_WINDOW_GLXWINDOW(glwindow)    (gdk_x11_gl_window_get_glxwindow (glwindow))
+#define GDK_GL_CONFIG_XDISPLAY(glconfig)       (gdk_x11_gl_config_get_xdisplay (glconfig))
+#define GDK_GL_CONFIG_SCREEN_XNUMBER(glconfig) (gdk_x11_gl_config_get_screen_number (glconfig))
+#define GDK_GL_CONFIG_XVINFO(glconfig)         (gdk_x11_gl_config_get_xvinfo (glconfig))
+#define GDK_GL_CONTEXT_GLXCONTEXT(glcontext)   (gdk_x11_gl_context_get_glxcontext (glcontext))
+#define GDK_GL_PIXMAP_GLXPIXMAP(glpixmap)      (gdk_x11_gl_pixmap_get_glxpixmap (glpixmap))
+#define GDK_GL_WINDOW_GLXWINDOW(glwindow)      (gdk_x11_gl_window_get_glxwindow (glwindow))
 
 #endif
 

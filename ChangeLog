@@ -1,5 +1,8 @@
 2002-08-03  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglconfig-x11.h (struct _GdkGLConfigImplX11): Added
+	screen number.
+
 	* gdk/x11/gdkglwindow-x11.c (gdk_gl_window_impl_x11_finalize): 
 	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_impl_x11_constructor): 
 	Added Mesa-specific GLX extensions.

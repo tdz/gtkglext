@@ -197,7 +197,6 @@ set_property (GdkGLConfigImplX11 *impl,
 {
   GdkGLConfig *glconfig = GDK_GL_CONFIG (impl);
 
-  int screen_num;
   GdkVisual *visual;
   int ret, value;
 
@@ -205,10 +204,10 @@ set_property (GdkGLConfigImplX11 *impl,
 
 #ifdef GDK_MULTIHEAD_SAFE
   impl->xdisplay = GDK_SCREEN_XDISPLAY (glconfig->screen);
-  screen_num = GDK_SCREEN_XNUMBER (glconfig->screen);
+  impl->screen_num = GDK_SCREEN_XNUMBER (glconfig->screen);
 #else  /* GDK_MULTIHEAD_SAFE */
   impl->xdisplay = gdk_x11_get_default_xdisplay ();
-  screen_num = gdk_x11_get_default_screen ();
+  impl->screen_num = gdk_x11_get_default_screen ();
 #endif /* GDK_MULTIHEAD_SAFE */
 
   GDK_GL_NOTE (MISC,
@@ -225,7 +224,7 @@ set_property (GdkGLConfigImplX11 *impl,
    * Find an OpenGL-capable visual.
    */
 
-  impl->xvinfo = glXChooseVisual (impl->xdisplay, screen_num, attrib_list);
+  impl->xvinfo = glXChooseVisual (impl->xdisplay, impl->screen_num, attrib_list);
   if (impl->xvinfo == NULL)
     return;
 
@@ -467,6 +466,14 @@ gdk_x11_gl_config_get_xdisplay (GdkGLConfig *glconfig)
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->xdisplay;
+}
+
+int
+gdk_x11_gl_config_get_screen_number (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
+
+  return GDK_GL_CONFIG_IMPL_X11 (glconfig)->screen_num;
 }
 
 XVisualInfo *

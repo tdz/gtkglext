@@ -39,6 +39,7 @@ struct _GdkGLConfigImplX11
   GdkGLConfig parent_instance;
 
   Display *xdisplay;
+  int screen_num;
   XVisualInfo *xvinfo;
 
   guint is_constructed : 1;

@@ -22,6 +22,8 @@
 #include "gdkglcontext-x11.h"
 #include "gdkglpixmap-x11.h"
 
+#include <string.h>
+
 /* Forward declarations */
 static gboolean gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable           *draw,
                                                         GdkGLDrawable           *read,
@@ -108,6 +110,7 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
   GdkGLPixmapImplX11 *impl;
 
   Display *xdisplay;
+  int screen_num;
   XVisualInfo *xvinfo;
   Pixmap xpixmap;
 
@@ -127,6 +130,7 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
   impl = GDK_GL_PIXMAP_IMPL_X11 (object);
 
   xdisplay = GDK_GL_CONFIG_XDISPLAY (glpixmap->glconfig);
+  screen_num = GDK_GL_CONFIG_SCREEN_XNUMBER (glpixmap->glconfig);
   xvinfo = GDK_GL_CONFIG_XVINFO (glpixmap->glconfig);
 
   /*
@@ -159,19 +163,34 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
    */
 
 #if defined(GLX_MESA_pixmap_colormap) && defined(GTKGLEXT_ENABLE_MESA_EXT)
-  GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmapMESA ()"));
 
-  impl->glxpixmap = glXCreateGLXPixmapMESA (xdisplay,
+  if (strstr (glXQueryExtensionsString (xdisplay, screen_num), "GLX_MESA_pixmap_colormap"))
+    {
+      GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmapMESA ()"));
+
+      impl->glxpixmap = glXCreateGLXPixmapMESA (xdisplay,
+                                                xvinfo,
+                                                xpixmap,
+                                                GDK_GL_CONFIG_XCOLORMAP (glpixmap->glconfig));
+    }
+  else
+    {
+      GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmap ()"));
+
+      impl->glxpixmap = glXCreateGLXPixmap (xdisplay,
                                             xvinfo,
-                                            xpixmap,
-                                            GDK_GL_CONFIG_XCOLORMAP (glpixmap->glconfig));
-#else
+                                            xpixmap);
+    }
+
+#else  /* defined(GLX_MESA_pixmap_colormap) && defined(GTKGLEXT_ENABLE_MESA_EXT) */
+
   GDK_GL_NOTE (IMPL, g_message (" * glXCreateGLXPixmap ()"));
 
   impl->glxpixmap = glXCreateGLXPixmap (xdisplay,
                                         xvinfo,
                                         xpixmap);
-#endif
+
+#endif /* defined(GLX_MESA_pixmap_colormap) && defined(GTKGLEXT_ENABLE_MESA_EXT) */
 
   if (impl->glxpixmap == None)
     goto FAIL;
