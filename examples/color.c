@@ -175,7 +175,7 @@ main (int argc,
 {
   GdkGLConfigMode mode;
   GdkGLConfig *glconfig;
-  gboolean is_rgba;
+  gboolean is_rgba, wm_colormap_windows;
   GdkColormap *colormap;
   GdkColor color;
   gboolean success[NUM_COLORS];
@@ -195,11 +195,14 @@ main (int argc,
    */
 
   mode = GDK_GL_MODE_INDEX;
+  wm_colormap_windows = FALSE;
 
   for (i = 0; i < argc; i++)
     {
-      if (strcmp (argv[i], "-rgb") == 0)
+      if (strcmp (argv[i], "--rgb") == 0)
         mode = GDK_GL_MODE_RGB;
+      if (strcmp (argv[i], "--wm-colormap-windows") == 0)
+        wm_colormap_windows = TRUE;
     }
 
   /*
@@ -256,7 +259,8 @@ main (int argc,
    * top-level window, especially in color index mode (color index mode
    * uses own private writable colormap).
    */
-  gtk_widget_set_colormap (window, gdk_gl_config_get_colormap (glconfig));
+  if (!wm_colormap_windows)
+    gtk_widget_set_colormap (window, gdk_gl_config_get_colormap (glconfig));
 
   g_signal_connect (G_OBJECT (window), "delete_event",
                     G_CALLBACK (quit), NULL);
