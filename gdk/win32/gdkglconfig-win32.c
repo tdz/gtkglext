@@ -781,10 +781,8 @@ _gdk_win32_gl_print_pfd (PIXELFORMATDESCRIPTOR *pfd)
              (pfd->dwFlags & PFD_DOUBLEBUFFER)        ? "TRUE" : "FALSE");
   g_message (" -- pfd->dwFlags & PFD_STEREO              = %s",
              (pfd->dwFlags & PFD_STEREO)              ? "TRUE" : "FALSE");
-  /*
   g_message (" -- pfd->dwFlags & PFD_SWAP_LAYER_BUFFERS  = %s",
              (pfd->dwFlags & PFD_SWAP_LAYER_BUFFERS)  ? "TRUE" : "FALSE");
-  */
 
   g_message (" -- pfd->dwFlags & PFD_DEPTH_DONTCARE        = %s",
              (pfd->dwFlags & PFD_DEPTH_DONTCARE)        ? "TRUE" : "FALSE");

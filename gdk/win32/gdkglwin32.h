@@ -33,6 +33,11 @@
 
 #include <gdk/win32/gdkglwglext.h>
 
+/* MinGW's wingdi.h bug. */
+#ifndef PFD_SWAP_LAYER_BUFFERS
+#define PFD_SWAP_LAYER_BUFFERS      0x00000800
+#endif
+
 G_BEGIN_DECLS
 
 gboolean               gdk_win32_gl_query_wgl_extension     (GdkGLConfig   *glconfig,

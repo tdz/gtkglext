@@ -1,5 +1,11 @@
 2003-02-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglconfig-win32.c (_gdk_win32_gl_print_pfd): Print
+	PFD_SWAP_LAYER_BUFFERS bit state.
+
+	* gdk/win32/gdkglwin32.h: Define PFD_SWAP_LAYER_BUFFERS (MinGW's
+	wingdi.h bug).
+
 	* examples/wglinfo.c: 
 	* examples/Makefile.am: 
 	* examples/Makefile.msc: 
