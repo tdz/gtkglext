@@ -331,6 +331,8 @@ gdk_gl_window_impl_win32_make_context_current (GdkGLDrawable *draw,
       glReadBuffer (GL_FRONT);
     }
 
+  GDK_GL_NOTE (MISC, _gdk_gl_print_gl_info ());
+
   /*
    * Do *NOT* release DC.
    *

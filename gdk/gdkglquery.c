@@ -95,3 +95,20 @@ gdk_gl_query_gl_extension (const char *extension)
 
   return FALSE;
 }
+
+/*< private >*/
+void
+_gdk_gl_print_gl_info (void)
+{
+  static gboolean done = FALSE;
+
+  if (!done)
+    {
+      g_message (" -- GL_VENDOR     : %s", glGetString (GL_VENDOR));
+      g_message (" -- GL_RENDERER   : %s", glGetString (GL_RENDERER));
+      g_message (" -- GL_VERSION    : %s", glGetString (GL_VERSION));
+      g_message (" -- GL_EXTENSIONS : %s", glGetString (GL_EXTENSIONS));
+
+      done = TRUE;
+    }
+}

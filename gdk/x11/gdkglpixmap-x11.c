@@ -314,6 +314,8 @@ gdk_gl_pixmap_impl_x11_make_context_current (GdkGLDrawable *draw,
       glReadBuffer (GL_FRONT);
     }
 
+  GDK_GL_NOTE (MISC, _gdk_gl_print_gl_info ());
+
   return TRUE;
 }
 

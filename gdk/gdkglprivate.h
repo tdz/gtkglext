@@ -43,6 +43,8 @@ void _gdk_gl_window_get_size (GdkGLDrawable *gldrawable,
                               gint          *width,
                               gint          *height);
 
+void _gdk_gl_print_gl_info (void);
+
 /* Internal globals */
 
 extern gboolean _gdk_gl_config_no_standard_colormap;
