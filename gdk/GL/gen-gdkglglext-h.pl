@@ -8,7 +8,7 @@
 # written by Naofumi Yasufuku <naofumi@users.sourceforge.net>
 #
 
-@input_headers = ("glext.h", "glext_extra.h");
+@input_headers = ("glext.h", "glext-extra.h");
 
 #---------------
 print <<EOF;

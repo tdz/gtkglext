@@ -1,5 +1,9 @@
 2003-07-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/GL/glext-extra.h: 
+	* gdk/GL/gen-gdkglglext-[ch].pl: 
+	* gdk/GL/Makefile.am: Renamed glext_extra.h to glext-extra.h.
+
 	* gdk/GL/Makefile.am (gdkglext_gl_public_h_sources): Install
 	glext_extra.h.
 	(EXTRA_DIST): Added gen-gdkgl*ext-[ch].pl scripts.
