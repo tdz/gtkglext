@@ -173,6 +173,7 @@ common_programs = \
 	font		\
 	logo		\
 	gears		\
+	multiarb	\
 	viewlw
 
 
@@ -220,6 +221,10 @@ gears_SOURCES = gears.c
 gears_DEPENDENCIES = $(DEPS)
 gears_LDADD = $(LDADDS)
 
+multiarb_SOURCES = readtex.h readtex.c multiarb.c
+multiarb_DEPENDENCIES = $(DEPS)
+multiarb_LDADD = $(LDADDS)
+
 viewlw_SOURCES = viewlw.c lw.h lw.c trackball.h trackball.c
 viewlw_DEPENDENCIES = $(DEPS)
 viewlw_LDADD = $(LDADDS)
@@ -240,13 +245,14 @@ CONFIG_CLEAN_FILES =
 @PLATFORM_WIN32_TRUE@	simple-mixed$(EXEEXT) pixmap$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	pixmap-mixed$(EXEEXT) color$(EXEEXT) \
 @PLATFORM_WIN32_TRUE@	font$(EXEEXT) logo$(EXEEXT) gears$(EXEEXT) \
-@PLATFORM_WIN32_TRUE@	viewlw$(EXEEXT)
+@PLATFORM_WIN32_TRUE@	multiarb$(EXEEXT) viewlw$(EXEEXT)
 @PLATFORM_WIN32_FALSE@EXTRA_PROGRAMS = low-level$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	simple$(EXEEXT) simple-mixed$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	pixmap$(EXEEXT) pixmap-mixed$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	color$(EXEEXT) font$(EXEEXT) \
 @PLATFORM_WIN32_FALSE@	logo$(EXEEXT) gears$(EXEEXT) \
-@PLATFORM_WIN32_FALSE@	viewlw$(EXEEXT) glxinfo$(EXEEXT)
+@PLATFORM_WIN32_FALSE@	multiarb$(EXEEXT) viewlw$(EXEEXT) \
+@PLATFORM_WIN32_FALSE@	glxinfo$(EXEEXT)
 am_color_OBJECTS = color.$(OBJEXT)
 color_OBJECTS = $(am_color_OBJECTS)
 color_LDFLAGS =
@@ -266,6 +272,9 @@ logo_LDFLAGS =
 am_low_level_OBJECTS = low-level.$(OBJEXT)
 low_level_OBJECTS = $(am_low_level_OBJECTS)
 low_level_LDFLAGS =
+am_multiarb_OBJECTS = readtex.$(OBJEXT) multiarb.$(OBJEXT)
+multiarb_OBJECTS = $(am_multiarb_OBJECTS)
+multiarb_LDFLAGS =
 am_pixmap_OBJECTS = pixmap.$(OBJEXT)
 pixmap_OBJECTS = $(am_pixmap_OBJECTS)
 pixmap_LDFLAGS =
@@ -294,8 +303,9 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/logo-g.Po ./$(DEPDIR)/logo-k.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/logo-model.Po ./$(DEPDIR)/logo-t.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/logo.Po ./$(DEPDIR)/low-level.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/lw.Po ./$(DEPDIR)/pixmap-mixed.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/pixmap.Po ./$(DEPDIR)/simple-mixed.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/lw.Po ./$(DEPDIR)/multiarb.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/pixmap-mixed.Po ./$(DEPDIR)/pixmap.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/readtex.Po ./$(DEPDIR)/simple-mixed.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/simple.Po ./$(DEPDIR)/trackball.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/viewlw.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -308,10 +318,11 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 CFLAGS = @CFLAGS@
 DIST_SOURCES = $(color_SOURCES) $(font_SOURCES) $(gears_SOURCES) \
 	$(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) \
-	$(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) \
-	$(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
+	$(low_level_SOURCES) $(multiarb_SOURCES) $(pixmap_SOURCES) \
+	$(pixmap_mixed_SOURCES) $(simple_SOURCES) \
+	$(simple_mixed_SOURCES) $(viewlw_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(color_SOURCES) $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
+SOURCES = $(color_SOURCES) $(font_SOURCES) $(gears_SOURCES) $(glxinfo_SOURCES) $(logo_SOURCES) $(EXTRA_logo_SOURCES) $(low_level_SOURCES) $(multiarb_SOURCES) $(pixmap_SOURCES) $(pixmap_mixed_SOURCES) $(simple_SOURCES) $(simple_mixed_SOURCES) $(viewlw_SOURCES)
 
 all: all-am
 
@@ -340,6 +351,9 @@ logo$(EXEEXT): $(logo_OBJECTS) $(logo_DEPENDENCIES)
 low-level$(EXEEXT): $(low_level_OBJECTS) $(low_level_DEPENDENCIES) 
 	@rm -f low-level$(EXEEXT)
 	$(LINK) $(low_level_LDFLAGS) $(low_level_OBJECTS) $(low_level_LDADD) $(LIBS)
+multiarb$(EXEEXT): $(multiarb_OBJECTS) $(multiarb_DEPENDENCIES) 
+	@rm -f multiarb$(EXEEXT)
+	$(LINK) $(multiarb_LDFLAGS) $(multiarb_OBJECTS) $(multiarb_LDADD) $(LIBS)
 pixmap$(EXEEXT): $(pixmap_OBJECTS) $(pixmap_DEPENDENCIES) 
 	@rm -f pixmap$(EXEEXT)
 	$(LINK) $(pixmap_LDFLAGS) $(pixmap_OBJECTS) $(pixmap_LDADD) $(LIBS)
@@ -373,8 +387,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/logo.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/low-level.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lw.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/multiarb.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pixmap-mixed.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pixmap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/readtex.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simple-mixed.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simple.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/trackball.Po@am__quote@

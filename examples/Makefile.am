@@ -34,6 +34,7 @@ common_programs = \
 	font		\
 	logo		\
 	gears		\
+	multiarb	\
 	viewlw
 
 x11_programs = \
@@ -82,6 +83,10 @@ gears_SOURCES = gears.c
 gears_DEPENDENCIES = $(DEPS)
 gears_LDADD = $(LDADDS)
 
+multiarb_SOURCES = readtex.h readtex.c multiarb.c
+multiarb_DEPENDENCIES = $(DEPS)
+multiarb_LDADD = $(LDADDS)
+
 viewlw_SOURCES = viewlw.c lw.h lw.c trackball.h trackball.c
 viewlw_DEPENDENCIES = $(DEPS)
 viewlw_LDADD = $(LDADDS)
@@ -105,4 +110,6 @@ files:
 
 EXTRA_DIST = \
 	alien.lwo	\
-	penguin.lwo
+	penguin.lwo	\
+	girl.rgb	\
+	reflect.rgb

@@ -1,3 +1,10 @@
+2002-12-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/readtex.[ch]: 
+	* examples/multiarb.c: GL_ARB_multitexture extension demo.
+	This program shows how to use gdk_gl_get_"extension_name"()
+	run-time OpenGL extension testing utilities.
+
 2002-12-03  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdkglext.pc.in: 
