@@ -70,18 +70,10 @@ void     gdk_gl_drawable_wait_gl            (GdkGLDrawable *gldrawable);
 
 void     gdk_gl_drawable_wait_gdk           (GdkGLDrawable *gldrawable);
 
-#define  gdk_gl_drawable_gl_begin(gldrawable, glcontext)        \
-  do                                                            \
-    {                                                           \
-      if (gdk_gl_drawable_make_current (gldrawable, glcontext)) \
-        {                                                       \
-          gdk_gl_drawable_wait_gdk (gldrawable)
+gboolean gdk_gl_drawable_gl_begin           (GdkGLDrawable *gldrawable,
+					     GdkGLContext  *glcontext);
 
-#define  gdk_gl_drawable_gl_end(gldrawable)     \
-          gdk_gl_drawable_wait_gl (gldrawable); \
-        }                                       \
-    }                                           \
-  while (0)
+void     gdk_gl_drawable_gl_end             (GdkGLDrawable *gldrawable);
 
 GdkGLConfig  *gdk_gl_drawable_get_gl_config (GdkGLDrawable *gldrawable);
 

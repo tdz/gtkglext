@@ -110,8 +110,9 @@ gint expose(GtkWidget *widget, GdkEventExpose *event)
     return TRUE;
   }
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin(gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
+    goto NO_GL;
 
   /* basic initialization */
   if (info->do_init == TRUE) {
@@ -143,7 +144,9 @@ gint expose(GtkWidget *widget, GdkEventExpose *event)
     glFlush();
 
   gdk_gl_drawable_gl_end(gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
+
+ NO_GL:
 
   return TRUE;
 }
@@ -158,13 +161,16 @@ gint configure(GtkWidget *widget, GdkEventConfigure *event, gpointer data)
   glcontext = gtk_widget_get_gl_context(widget);
   gldrawable = gtk_widget_get_gl_drawable(widget);
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin(gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
+    goto NO_GL;
 
   glViewport (0, 0, widget->allocation.width, widget->allocation.height);
 
   gdk_gl_drawable_gl_end(gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
+
+ NO_GL:
 
   return TRUE;
 }
@@ -444,7 +450,7 @@ int main (int argc, char **argv)
   /* Check if OpenGL extension is supported. */
   if (!gdk_gl_query_extension ())
     {
-      g_print ("\n*** OpenGL extension is not supported\n");
+      g_print ("\n*** OpenGL extension is not supported.\n");
       exit (1);
     }
 
@@ -464,7 +470,7 @@ int main (int argc, char **argv)
                                             GDK_GL_MODE_DEPTH);
       if (glconfig == NULL)
         {
-          g_print ("*** Cannot find an OpenGL-capable visual\n");
+          g_print ("*** No appropriate OpenGL-capable visual found.\n");
           exit (1);
         }
     }

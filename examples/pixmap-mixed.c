@@ -1,3 +1,10 @@
+/*
+ * pixmap-mixed.c:
+ * Simple off-screen rendering example for mixing OpenGL and GDK rendering.
+ *
+ * written by Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+ */
+
 #include <stdlib.h>
 
 #include <gtk/gtk.h>
@@ -139,8 +146,9 @@ configure (GtkWidget         *widget,
       g_print ("The OpenGL rendering context is created\n");
     }
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    goto NO_GL;
 
   if (!is_initialized)
     {
@@ -153,6 +161,7 @@ configure (GtkWidget         *widget,
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+  /* Sync. */
   gdk_gl_drawable_wait_gl (gldrawable);
 
   gdk_draw_rectangle (pixmap,
@@ -161,8 +170,9 @@ configure (GtkWidget         *widget,
 		      0.2*widget->allocation.width,
 		      0.2*widget->allocation.height,
 		      0.6*widget->allocation.width,
-		      0.3*widget->allocation.height);
+		      0.6*widget->allocation.height);
 
+  /* Sync. */
   gdk_gl_drawable_wait_gdk (gldrawable);
 
   glCallList (1);
@@ -170,7 +180,9 @@ configure (GtkWidget         *widget,
   glFlush ();
 
   gdk_gl_drawable_gl_end (gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
+
+ NO_GL:
 
   return TRUE;
 }
@@ -231,7 +243,7 @@ main (int argc,
 
   if (!gdk_gl_query_extension ())
     {
-      g_print ("\n*** OpenGL extension is not supported\n");
+      g_print ("\n*** OpenGL extension is not supported.\n");
       exit (1);
     }
 
@@ -249,7 +261,7 @@ main (int argc,
                                         GDK_GL_MODE_SINGLE);
   if (glconfig == NULL)
     {
-      g_print ("*** Cannot find an OpenGL-capable visual\n");
+      g_print ("*** No appropriate OpenGL-capable visual found.\n");
       exit (1);
     }
 

@@ -1,3 +1,10 @@
+/*
+ * pixmap.c:
+ * Simple off-screen OpenGL rendering example.
+ *
+ * written by Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+ */
+
 #include <stdlib.h>
 
 #include <gtk/gtk.h>
@@ -139,8 +146,9 @@ configure (GtkWidget         *widget,
       g_print ("The OpenGL rendering context is created\n");
     }
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    goto NO_GL;
 
   if (!is_initialized)
     {
@@ -158,7 +166,9 @@ configure (GtkWidget         *widget,
   glFlush ();
 
   gdk_gl_drawable_gl_end (gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
+
+ NO_GL:
 
 #if 0
 
@@ -232,7 +242,7 @@ main (int argc,
 
   if (!gdk_gl_query_extension ())
     {
-      g_print ("\n*** OpenGL extension is not supported\n");
+      g_print ("\n*** OpenGL extension is not supported.\n");
       exit (1);
     }
 
@@ -250,7 +260,7 @@ main (int argc,
                                         GDK_GL_MODE_SINGLE);
   if (glconfig == NULL)
     {
-      g_print ("*** Cannot find an OpenGL-capable visual\n");
+      g_print ("*** No appropriate OpenGL-capable visual found.\n");
       exit (1);
     }
 

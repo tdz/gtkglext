@@ -96,7 +96,7 @@ gdk_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable)
  * gdk_gl_drawable_wait_gl:
  * @gldrawable: a #GdkGLDrawable.
  *
- * Complete GL execution prior to subsequent GDK drawing calls.
+ * Complete OpenGL execution prior to subsequent GDK drawing calls.
  *
  **/
 void
@@ -111,7 +111,7 @@ gdk_gl_drawable_wait_gl (GdkGLDrawable *gldrawable)
  * gdk_gl_drawable_wait_gdk:
  * @gldrawable: a #GdkGLDrawable.
  *
- * Complete GDK drawing execution prior to subsequent GL calls.
+ * Complete GDK drawing execution prior to subsequent OpenGL calls.
  *
  **/
 void
@@ -120,6 +120,55 @@ gdk_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
   g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
 
   GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->wait_gdk (gldrawable);
+}
+
+/**
+ * gdk_gl_drawable_gl_begin:
+ * @gldrawable: a #GdkGLDrawable.
+ * @glcontext: a #GdkGLContext.
+ *
+ * Delimit the begining of the OpenGL execution.
+ * The call makes the #GdkGLContext current to the #GdkGLDrawable, and
+ * completes GDK drawing execution.
+ *
+ * Return value: TRUE if it is successful, FALSE otherwise.
+ **/
+gboolean
+gdk_gl_drawable_gl_begin (GdkGLDrawable *gldrawable,
+			  GdkGLContext  *glcontext)
+{
+  GdkGLDrawableClass *klass;
+  gboolean ret;
+
+  g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), FALSE);
+
+  klass = GDK_GL_DRAWABLE_GET_CLASS (gldrawable);
+
+  ret = klass->make_context_current (gldrawable,
+				     gldrawable,
+				     glcontext);
+  if (!ret)
+    return FALSE;
+
+  klass->wait_gdk (gldrawable);
+
+  return TRUE;
+}
+
+/**
+ * gdk_gl_drawable_gl_end:
+ * @gldrawable: a #GdkGLDrawable.
+ *
+ * Delimit the end of the OpenGL execution.
+ * The call completes GL execution.
+ *
+ **/
+void
+gdk_gl_drawable_gl_end (GdkGLDrawable *gldrawable)
+{
+  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+
+  GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->wait_gl (gldrawable);
 }
 
 /**

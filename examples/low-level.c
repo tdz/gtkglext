@@ -1,3 +1,10 @@
+/*
+ * low-level.c:
+ * Low-level GdkGLExt example. This program uses only gdkgl stuff.
+ *
+ * written by Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+ */
+
 #include <stdlib.h>
 
 #include <gtk/gtk.h>
@@ -71,6 +78,10 @@ static void
 init (GtkWidget *widget,
       gpointer   data)
 {
+  GLUquadricObj *qobj;
+  static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
+  static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
+
   /*
    * Set OpenGL-capability to widget->window
    */
@@ -99,47 +110,47 @@ init (GtkWidget *widget,
       g_print ("The OpenGL rendering context is created\n");
     }
 
-  /* OpenGL begin. */
-  if (gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
-    {
-      GLUquadricObj *qobj;
-      static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
-      static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
+  /*** OpenGL BEGIN ***/
 
-      gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
+  if (!gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
+    return;
 
-      qobj = gluNewQuadric ();
-      gluQuadricDrawStyle (qobj, GLU_FILL);
-      glNewList (1, GL_COMPILE);
-      gluSphere (qobj, 1.0, 20, 20);
-      glEndList ();
+  /* Sync. */
+  gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
 
-      glLightfv (GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-      glLightfv (GL_LIGHT0, GL_POSITION, light_position);
-      glEnable (GL_LIGHTING);
-      glEnable (GL_LIGHT0);
-      glEnable (GL_DEPTH_TEST);
+  qobj = gluNewQuadric ();
+  gluQuadricDrawStyle (qobj, GLU_FILL);
+  glNewList (1, GL_COMPILE);
+  gluSphere (qobj, 1.0, 20, 20);
+  glEndList ();
 
-      glClearColor (1.0, 1.0, 1.0, 1.0);
-      glClearDepth (1.0);
+  glLightfv (GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+  glLightfv (GL_LIGHT0, GL_POSITION, light_position);
+  glEnable (GL_LIGHTING);
+  glEnable (GL_LIGHT0);
+  glEnable (GL_DEPTH_TEST);
 
-      glViewport (0, 0,
-                  widget->allocation.width, widget->allocation.height);
+  glClearColor (1.0, 1.0, 1.0, 1.0);
+  glClearDepth (1.0);
 
-      glMatrixMode (GL_PROJECTION);
-      glLoadIdentity ();
-      gluPerspective (40.0, 1.0, 1.0, 10.0);
+  glViewport (0, 0,
+	      widget->allocation.width, widget->allocation.height);
 
-      glMatrixMode (GL_MODELVIEW);
-      glLoadIdentity ();
-      gluLookAt (0.0, 0.0, 3.0,
-                 0.0, 0.0, 0.0,
-                 0.0, 1.0, 0.0);
-      glTranslatef (0.0, 0.0, -3.0);
+  glMatrixMode (GL_PROJECTION);
+  glLoadIdentity ();
+  gluPerspective (40.0, 1.0, 1.0, 10.0);
 
-      gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
-    }
-  /* OpenGL end. */
+  glMatrixMode (GL_MODELVIEW);
+  glLoadIdentity ();
+  gluLookAt (0.0, 0.0, 3.0,
+	     0.0, 0.0, 0.0,
+	     0.0, 1.0, 0.0);
+  glTranslatef (0.0, 0.0, -3.0);
+
+  /* Sync. */
+  gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
+
+  /*** OpenGL END ***/
 }
 
 static void
@@ -165,17 +176,23 @@ reshape (GtkWidget         *widget,
   if (glwindow == NULL)
     return TRUE;
 
-  /* OpenGL begin. */
-  if (gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
-    {
-      gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
+  /*** OpenGL BEGIN ***/
 
-      glViewport (0, 0,
-                  widget->allocation.width, widget->allocation.height);
+  if (!gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
+    goto NO_GL;
 
-      gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
-    }
-  /* OpenGL end. */
+  /* Sync. */
+  gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
+
+  glViewport (0, 0,
+	      widget->allocation.width, widget->allocation.height);
+
+  /* Sync. */
+  gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
+
+  /*** OpenGL END ***/
+
+ NO_GL:
 
   return TRUE;
 }
@@ -185,23 +202,29 @@ display (GtkWidget      *widget,
          GdkEventExpose *event,
          gpointer        data)
 {
-  /* OpenGL begin. */
-  if (gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
-    {
-      gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
+  /*** OpenGL BEGIN ***/
 
-      glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  if (!gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
+    goto NO_GL;
 
-      glCallList (1);
+  /* Sync. */
+  gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
 
-      if (gdk_gl_drawable_is_double_buffered (GDK_GL_DRAWABLE (glwindow)))
-        gdk_gl_drawable_swap_buffers (GDK_GL_DRAWABLE (glwindow));
-      else
-        glFlush ();
+  glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-      gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
-    }
-  /* OpenGL end. */
+  glCallList (1);
+
+  if (gdk_gl_drawable_is_double_buffered (GDK_GL_DRAWABLE (glwindow)))
+    gdk_gl_drawable_swap_buffers (GDK_GL_DRAWABLE (glwindow));
+  else
+    glFlush ();
+
+  /* Sync. */
+  gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
+
+  /*** OpenGL END ***/
+
+ NO_GL:
 
 #if 0
 
@@ -263,7 +286,7 @@ main (int argc,
 
   if (!gdk_gl_query_extension ())
     {
-      g_print ("\n*** OpenGL extension is not supported\n");
+      g_print ("\n*** OpenGL extension is not supported.\n");
       exit (1);
     }
 
@@ -286,7 +309,7 @@ main (int argc,
       glconfig = gdk_gl_config_new (&config_attributes[1]);
       if (glconfig == NULL)
         {
-          g_print ("*** Cannot find an OpenGL-capable visual\n");
+          g_print ("*** No appropriate OpenGL-capable visual found.\n");
           exit (1);
         }
     }

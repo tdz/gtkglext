@@ -1,3 +1,10 @@
+/*
+ * font.c:
+ * Simple bitmap font rendering example.
+ *
+ * written by Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+ */
+
 #include <stdlib.h>
 #include <string.h>
 
@@ -69,8 +76,9 @@ init (GtkWidget *widget,
   PangoFont *font;
   PangoFontMetrics *font_metrics;
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    return;
 
   /*
    * Generate font display lists.
@@ -110,7 +118,7 @@ init (GtkWidget *widget,
   glLoadIdentity ();
 
   gdk_gl_drawable_gl_end (gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
 }
 
 static gboolean
@@ -121,8 +129,9 @@ reshape (GtkWidget         *widget,
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    goto NO_GL;
 
   glViewport (0, 0,
               widget->allocation.width, widget->allocation.height);
@@ -137,7 +146,9 @@ reshape (GtkWidget         *widget,
   glLoadIdentity ();
 
   gdk_gl_drawable_gl_end (gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
+
+ NO_GL:
 
   return TRUE;
 }
@@ -151,8 +162,9 @@ display (GtkWidget      *widget,
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
   int i, j;
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    goto NO_GL;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -181,20 +193,9 @@ display (GtkWidget      *widget,
     glFlush ();
 
   gdk_gl_drawable_gl_end (gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
 
-#if 0
-
-  gdk_draw_arc (widget->window,
-                widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
-                TRUE,
-                0.4*widget->allocation.width,
-                0.4*widget->allocation.height,
-                0.2*widget->allocation.width,
-                0.2*widget->allocation.height,
-                0, 64 * 360);
-
-#endif
+ NO_GL:
 
   return TRUE;
 }
@@ -229,7 +230,7 @@ main (int argc,
 
   if (!gdk_gl_query_extension ())
     {
-      g_print ("\n*** OpenGL extension is not supported\n");
+      g_print ("\n*** OpenGL extension is not supported.\n");
       exit (1);
     }
 
@@ -253,7 +254,7 @@ main (int argc,
       glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB);
       if (glconfig == NULL)
         {
-          g_print ("*** Cannot find an OpenGL-capable visual\n");
+          g_print ("*** No appropriate OpenGL-capable visual found.\n");
           exit (1);
         }
     }

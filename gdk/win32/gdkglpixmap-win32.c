@@ -223,7 +223,10 @@ gdk_gl_pixmap_impl_win32_finalize (GObject *object)
    */
 
   if (impl->hdc != NULL)
-    DeleteDC (impl->hdc);
+    {
+      DeleteDC (impl->hdc);
+      impl->hdc = NULL;
+    }
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -246,11 +249,7 @@ gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 HDC
 _gdk_win32_gl_pixmap_hdc_get (GdkGLDrawable *gldrawable)
 {
-  GdkGLPixmapImplWin32 *impl;
-
-  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
-
-  impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
+  GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
 
   g_assert (impl->hdc != NULL);
 
@@ -267,13 +266,7 @@ _gdk_win32_gl_pixmap_hdc_get (GdkGLDrawable *gldrawable)
 void
 _gdk_win32_gl_pixmap_hdc_release (GdkGLDrawable *gldrawable)
 {
-  GdkGLPixmapImplWin32 *impl;
-
-  g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
-
-  impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
-
-  g_assert (impl->hdc != NULL);
+  /* Do nothing. */
 }
 
 static void
@@ -287,10 +280,12 @@ gdk_gl_pixmap_sync_gl (GdkGLPixmap *glpixmap)
 
   g_return_if_fail (GDK_IS_GL_PIXMAP (glpixmap));
 
+  GDK_GL_NOTE (IMPL, g_message (" -- gdk_gl_pixmap_sync_gl ()"));
+
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
 
   /*
-   * Get source (OpenGL) DIB info.
+   * Get OpenGL DIB info.
    */
 
   /* Access directly to GdkPixmap's internal image data
@@ -309,7 +304,7 @@ gdk_gl_pixmap_sync_gl (GdkGLPixmap *glpixmap)
 	     (BITMAPINFO *) &bmi, usage);
 
   /*
-   * Set source (OpenGL) DIB bits to destination (GDK) DIB.
+   * Set OpenGL DIB bits to GDK DIB.
    */
 
   if (SetDIBits (impl->hdc, impl->gdk_hbitmap,
@@ -341,10 +336,12 @@ gdk_gl_pixmap_sync_gdk (GdkGLPixmap *glpixmap)
 
   g_return_if_fail (GDK_IS_GL_PIXMAP (glpixmap));
 
+  GDK_GL_NOTE (IMPL, g_message (" -- gdk_gl_pixmap_sync_gdk ()"));
+
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap);
 
   /*
-   * Get destination (GDK) DIB info.
+   * Get GDK DIB info.
    */
 
   /* Access directly to GdkPixmap's internal image data
@@ -363,7 +360,7 @@ gdk_gl_pixmap_sync_gdk (GdkGLPixmap *glpixmap)
 	     (BITMAPINFO *) &bmi, usage);
 
   /*
-   * Set destination (GDK) DIB bits to source (OpenGL) DIB.
+   * Set GDK DIB bits to OpenGL DIB.
    */
 
   if (SetDIBits (impl->hdc, impl->gl_hbitmap,
@@ -392,17 +389,15 @@ gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable *draw,
   GdkGLPixmap *glpixmap;
   HDC hdc;
   HGLRC hglrc;
+  gboolean ret = TRUE;
 
   g_return_val_if_fail (GDK_IS_GL_PIXMAP (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
   glpixmap = GDK_GL_PIXMAP (draw);
 
-  /* Sync. */
-  gdk_gl_pixmap_sync_gdk (glpixmap);
-
   /* Get DC. */
-  hdc = _gdk_win32_gl_pixmap_hdc_get (draw);
+  hdc = GDK_GL_PIXMAP_HDC_GET (draw);
 
   /* Get GLRC. */
   hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
@@ -416,8 +411,8 @@ gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable *draw,
   if (!wglMakeCurrent (hdc, hglrc))
     {
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
-      _gdk_win32_gl_pixmap_hdc_release (draw);
-      return FALSE;
+      ret = FALSE;
+      goto DONE;
     }
 
   _gdk_gl_context_set_gl_drawable (glcontext, draw);
@@ -435,9 +430,9 @@ gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable *draw,
  DONE:
 
   /* Release DC. */
-  _gdk_win32_gl_pixmap_hdc_release (draw);
+  GDK_GL_PIXMAP_HDC_RELEASE (draw);
 
-  return TRUE;
+  return ret;
 }
 
 static void
@@ -448,14 +443,14 @@ gdk_win32_gl_pixmap_swap_buffers (GdkGLDrawable *gldrawable)
   g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
 
   /* Get DC. */
-  hdc = _gdk_win32_gl_pixmap_hdc_get (gldrawable);
+  hdc = GDK_GL_PIXMAP_HDC_GET (gldrawable);
 
   GDK_GL_NOTE (IMPL, g_message (" * SwapBuffers ()"));
 
   SwapBuffers (hdc);
 
   /* Release DC. */
-  _gdk_win32_gl_pixmap_hdc_release (gldrawable);
+  GDK_GL_PIXMAP_HDC_RELEASE (gldrawable);
 }
 
 static void

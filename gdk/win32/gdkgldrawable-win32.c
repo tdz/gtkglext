@@ -26,9 +26,9 @@ HDC
 gdk_win32_gl_drawable_hdc_get (GdkGLDrawable *gldrawable)
 {
   if (GDK_IS_GL_PIXMAP (gldrawable))
-    return _gdk_win32_gl_pixmap_hdc_get (gldrawable);
+    return GDK_GL_PIXMAP_HDC_GET (gldrawable);
   else if (GDK_IS_GL_WINDOW (gldrawable))
-    return _gdk_win32_gl_window_hdc_get (gldrawable);
+    return GDK_GL_WINDOW_HDC_GET (gldrawable);
   else
     g_warning ("GLDrawable should be GLPixmap or GLWindow");
 
@@ -39,9 +39,9 @@ void
 gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable)
 {
   if (GDK_IS_GL_PIXMAP (gldrawable))
-    _gdk_win32_gl_pixmap_hdc_release (gldrawable);
+    GDK_GL_PIXMAP_HDC_RELEASE (gldrawable);
   else if (GDK_IS_GL_WINDOW (gldrawable))
-    _gdk_win32_gl_window_hdc_release (gldrawable);
+    GDK_GL_WINDOW_HDC_RELEASE (gldrawable);
   else
     g_warning ("GLDrawable should be GLPixmap or GLWindow");
 }

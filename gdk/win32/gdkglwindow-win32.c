@@ -116,29 +116,15 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_win32_constructor ()"));
 
   glwindow = GDK_GL_WINDOW (object);
-  impl = GDK_GL_WINDOW_IMPL_WIN32 (object);
+  impl = GDK_GL_WINDOW_IMPL_WIN32 (glwindow);
 
   impl->hwnd = (HWND) gdk_win32_drawable_get_handle (glwindow->wrapper);
 
-  /*
-   * Get DC.
-   */
-
+  /* Get DC. */
   impl->hdc = GetDC (impl->hwnd);
   if (impl->hdc == NULL)
     {
       g_warning ("cannot get DC");
-      goto FAIL;
-    }
-
-  /*
-   * Save current DC.
-   */
-      
-  impl->saved_dc = SaveDC (impl->hdc);
-  if (impl->saved_dc == 0)
-    {
-      g_warning ("cannot save DC");
       goto FAIL;
     }
 
@@ -176,22 +162,11 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
 
  FAIL:
 
-  /*
-   * Restore saved DC.
-   */
-
-  if (impl->saved_dc != 0)
-    RestoreDC (impl->hdc, impl->saved_dc);
-
-  /*
-   * Release DC.
-   */
-
+  /* Release DC. */
   if (impl->hdc != NULL)
     ReleaseDC (impl->hwnd, impl->hdc);
 
   impl->hdc = NULL;
-  impl->saved_dc = 0;
 
   return object;
 }
@@ -199,16 +174,18 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
 static void
 gdk_gl_window_impl_win32_finalize (GObject *object)
 {
-  GdkGLWindow *glwindow;
   GdkGLWindowImplWin32 *impl;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_win32_finalize ()"));
 
-  glwindow = GDK_GL_WINDOW (object);
   impl = GDK_GL_WINDOW_IMPL_WIN32 (object);
 
+  /* Release DC. */
   if (impl->hdc != NULL)
-    _gdk_win32_gl_window_hdc_release (GDK_GL_DRAWABLE (glwindow));
+    {
+      ReleaseDC (impl->hwnd, impl->hdc);
+      impl->hdc = NULL;
+    }
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -231,79 +208,30 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 HDC
 _gdk_win32_gl_window_hdc_get (GdkGLDrawable *gldrawable)
 {
-  GdkGLWindowImplWin32 *impl;
-
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), NULL);
-
-  impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
+  GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
 
   g_assert (impl->hdc == NULL);
 
-  /*
-   * Get DC.
-   */
-
+  /* Get DC. */
   impl->hdc = GetDC (impl->hwnd);
   if (impl->hdc == NULL)
-    {
-      g_warning ("cannot get DC");
-      goto FAIL;
-    }
-
-  /*
-   * Save current DC.
-   */
-      
-  impl->saved_dc = SaveDC (impl->hdc);
-  if (impl->saved_dc == 0)
-    {
-      g_warning ("cannot save DC");
-      goto FAIL;
-    }
+    g_warning ("cannot get DC");
 
   return impl->hdc;
-
- FAIL:
-
-  if (impl->saved_dc != 0)
-    RestoreDC (impl->hdc, impl->saved_dc);
-
-  if (impl->hdc != NULL)
-    ReleaseDC (impl->hwnd, impl->hdc);
-
-  impl->hdc = NULL;
-  impl->saved_dc = 0;
-
-  return NULL;
 }
 
 void
 _gdk_win32_gl_window_hdc_release (GdkGLDrawable *gldrawable)
 {
-  GdkGLWindowImplWin32 *impl;
-
-  g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
-
-  impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
+  GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
 
   g_assert (impl->hdc != NULL);
 
-  /*
-   * Restore saved DC.
-   */
-
-  if (!RestoreDC (impl->hdc, impl->saved_dc))
-    g_warning ("cannot restore DC");
-
-  /*
-   * Release DC.
-   */
-
+  /* Release DC. */
   if (!ReleaseDC (impl->hwnd, impl->hdc))
     g_warning ("cannot release DC");
 
   impl->hdc = NULL;
-  impl->saved_dc = 0;
 }
 
 static gboolean
@@ -314,6 +242,7 @@ gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
   GdkGLWindow *glwindow;
   HDC hdc;
   HGLRC hglrc;
+  gboolean ret = TRUE;
 
   g_return_val_if_fail (GDK_IS_GL_WINDOW (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
@@ -321,7 +250,7 @@ gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
   glwindow = GDK_GL_WINDOW (draw);
 
   /* Get DC. */
-  hdc = _gdk_win32_gl_window_hdc_get (draw);
+  hdc = GDK_GL_WINDOW_HDC_GET (draw);
 
   /* Get GLRC. */
   hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
@@ -335,8 +264,8 @@ gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
   if (!wglMakeCurrent (hdc, hglrc))
     {
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
-      _gdk_win32_gl_window_hdc_release (draw);
-      return FALSE;
+      ret = FALSE;
+      goto DONE;
     }
 
   _gdk_gl_context_set_gl_drawable (glcontext, draw);
@@ -354,9 +283,9 @@ gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
  DONE:
 
   /* Release DC. */
-  _gdk_win32_gl_window_hdc_release (draw);
+  GDK_GL_WINDOW_HDC_RELEASE (draw);
 
-  return TRUE;
+  return ret;
 }
 
 static void
@@ -367,14 +296,14 @@ gdk_win32_gl_window_swap_buffers (GdkGLDrawable *gldrawable)
   g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
 
   /* Get DC. */
-  hdc = _gdk_win32_gl_window_hdc_get (gldrawable);
+  hdc = GDK_GL_WINDOW_HDC_GET (gldrawable);
 
   GDK_GL_NOTE (IMPL, g_message (" * SwapBuffers ()"));
 
   SwapBuffers (hdc);
 
   /* Release DC. */
-  _gdk_win32_gl_window_hdc_release (gldrawable);
+  GDK_GL_WINDOW_HDC_RELEASE (gldrawable);
 }
 
 static void

@@ -47,7 +47,6 @@ struct _GdkGLWindowImplWin32
 
   /*< private >*/
   HDC hdc;
-  int saved_dc;
 };
 
 struct _GdkGLWindowImplWin32Class

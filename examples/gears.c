@@ -171,8 +171,9 @@ draw(GtkWidget      *widget,
   GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin(gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
+    goto NO_GL;
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -207,7 +208,9 @@ draw(GtkWidget      *widget,
     glFlush();
 
   gdk_gl_drawable_gl_end(gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
+
+ NO_GL:
 
   frames++;
 
@@ -235,8 +238,9 @@ reshape(GtkWidget         *widget,
 
   GLfloat h = (GLfloat) (widget->allocation.height) / (GLfloat) (widget->allocation.width);
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin(gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
+    goto NO_GL;
 
   glViewport(0, 0, widget->allocation.width, widget->allocation.height);
   glMatrixMode(GL_PROJECTION);
@@ -247,7 +251,9 @@ reshape(GtkWidget         *widget,
   glTranslatef(0.0, 0.0, -40.0);
 
   gdk_gl_drawable_gl_end(gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
+
+ NO_GL:
 
   return TRUE;
 }
@@ -264,8 +270,9 @@ init(GtkWidget *widget,
   static GLfloat green[4] = {0.0, 0.8, 0.2, 1.0};
   static GLfloat blue[4] = {0.2, 0.2, 1.0, 1.0};
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin(gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
+    goto NO_GL;
 
   glLightfv(GL_LIGHT0, GL_POSITION, pos);
   glEnable(GL_CULL_FACE);
@@ -302,7 +309,9 @@ init(GtkWidget *widget,
   g_print("\n");
 
   gdk_gl_drawable_gl_end(gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
+
+ NO_GL:
 
   /* create timer */
   if (timer == NULL)
@@ -440,7 +449,7 @@ main(int   argc,
    */
 
   if (!gdk_gl_query_extension()) {
-    g_print("\n*** OpenGL extension is not supported\n");
+    g_print("\n*** OpenGL extension is not supported.\n");
     exit(1);
   }
 
@@ -460,7 +469,7 @@ main(int   argc,
     glconfig = gdk_gl_config_new_by_mode(GDK_GL_MODE_RGB |
                                          GDK_GL_MODE_DEPTH);
     if (glconfig == NULL) {
-      g_print("*** Cannot find an OpenGL-capable visual\n");
+      g_print("*** No appropriate OpenGL-capable visual found.\n");
       exit(1);
     }
   }

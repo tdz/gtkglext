@@ -1,3 +1,10 @@
+/*
+ * simple-mixed.c:
+ * Simple GtkGLExt example for mixing OpenGL and GDK rendering.
+ *
+ * written by Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+ */
+
 #include <stdlib.h>
 
 #include <gtk/gtk.h>
@@ -64,8 +71,9 @@ init (GtkWidget *widget,
   static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
   static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    return;
 
   qobj = gluNewQuadric ();
   gluQuadricDrawStyle (qobj, GLU_FILL);
@@ -97,7 +105,7 @@ init (GtkWidget *widget,
   glTranslatef (0.0, 0.0, -3.0);
 
   gdk_gl_drawable_gl_end (gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
 }
 
 static gboolean
@@ -108,14 +116,17 @@ reshape (GtkWidget         *widget,
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    goto NO_GL;
 
   glViewport (0, 0,
               widget->allocation.width, widget->allocation.height);
 
   gdk_gl_drawable_gl_end (gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
+
+ NO_GL:
 
   return TRUE;
 }
@@ -128,11 +139,13 @@ display (GtkWidget      *widget,
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  /* OpenGL begin. */
-  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
+  /*** OpenGL BEGIN ***/
+  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+    goto NO_GL;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+  /* Sync. */
   gdk_gl_drawable_wait_gl (gldrawable);
 
   gdk_draw_rectangle (widget->window,
@@ -143,17 +156,17 @@ display (GtkWidget      *widget,
 		      0.6*widget->allocation.width,
 		      0.6*widget->allocation.height);
 
+  /* Sync. */
   gdk_gl_drawable_wait_gdk (gldrawable);
 
   glCallList (1);
 
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
+  glFlush ();
 
   gdk_gl_drawable_gl_end (gldrawable);
-  /* OpenGL end. */
+  /*** OpenGL END ***/
+
+ NO_GL:
 
   return TRUE;
 }
@@ -188,7 +201,7 @@ main (int argc,
 
   if (!gdk_gl_query_extension ())
     {
-      g_print ("\n*** OpenGL extension is not supported\n");
+      g_print ("\n*** OpenGL extension is not supported.\n");
       exit (1);
     }
 
@@ -206,7 +219,7 @@ main (int argc,
                                         GDK_GL_MODE_SINGLE);
   if (glconfig == NULL)
     {
-      g_print ("*** Cannot find an OpenGL-capable visual\n");
+      g_print ("*** No appropriate OpenGL-capable visual found.\n");
       exit (1);
     }
 
