@@ -351,10 +351,10 @@ main (int   argc,
 
   g_signal_connect_after (G_OBJECT (drawing_area), "realize",
                           G_CALLBACK (realize), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "size_allocate",
+                    G_CALLBACK (size_allocate), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (configure_event), NULL);
-  g_signal_connect_after (G_OBJECT (drawing_area), "size_allocate",
-                          G_CALLBACK (size_allocate), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
 		    G_CALLBACK (expose_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "unrealize",
