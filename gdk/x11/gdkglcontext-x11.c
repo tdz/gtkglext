@@ -24,6 +24,11 @@
 #include "gdkglconfig-x11.h"
 #include "gdkglcontext-x11.h"
 
+enum {
+  PROP_0,
+  PROP_GLXCONTEXT
+};
+
 static void          gdk_gl_context_insert (GdkGLContext *glcontext);
 static void          gdk_gl_context_remove (GdkGLContext *glcontext);
 static GdkGLContext *gdk_gl_context_lookup (GLXContext    glxcontext);
@@ -31,13 +36,28 @@ static guint         gdk_gl_context_hash   (GLXContext   *glxcontext);
 static gboolean      gdk_gl_context_equal  (GLXContext   *a,
                                             GLXContext   *b);
 
-static void     gdk_gl_context_impl_x11_init        (GdkGLContextImplX11      *impl);
-static void     gdk_gl_context_impl_x11_class_init  (GdkGLContextImplX11Class *klass);
+static GdkGLContext *gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
+                                                GdkGLConfig   *glconfig,
+                                                GdkGLContext  *share_list,
+                                                gboolean       direct,
+                                                int            render_type,
+                                                GLXContext    *glxcontext);
 
-static GObject *gdk_gl_context_impl_x11_constructor (GType                     type,
-                                                     guint                     n_construct_properties,
-                                                     GObjectConstructParam    *construct_properties);
-static void     gdk_gl_context_impl_x11_finalize    (GObject                  *object);
+static void     gdk_gl_context_impl_x11_init         (GdkGLContextImplX11      *impl);
+static void     gdk_gl_context_impl_x11_class_init   (GdkGLContextImplX11Class *klass);
+
+static GObject *gdk_gl_context_impl_x11_constructor  (GType                     type,
+                                                      guint                     n_construct_properties,
+                                                      GObjectConstructParam    *construct_properties);
+static void     gdk_gl_context_impl_x11_set_property (GObject                  *object,
+                                                      guint                     property_id,
+                                                      const GValue             *value,
+                                                      GParamSpec               *pspec);
+static void     gdk_gl_context_impl_x11_get_property (GObject                  *object,
+                                                      guint                     property_id,
+                                                      GValue                   *value,
+                                                      GParamSpec               *pspec);
+static void     gdk_gl_context_impl_x11_finalize     (GObject                  *object);
 
 static gpointer parent_class = NULL;
 
@@ -85,8 +105,17 @@ gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->constructor = gdk_gl_context_impl_x11_constructor;
-  object_class->finalize    = gdk_gl_context_impl_x11_finalize;
+  object_class->constructor  = gdk_gl_context_impl_x11_constructor;
+  object_class->set_property = gdk_gl_context_impl_x11_set_property;
+  object_class->get_property = gdk_gl_context_impl_x11_get_property;
+  object_class->finalize     = gdk_gl_context_impl_x11_finalize;
+
+  g_object_class_install_property (object_class,
+                                   PROP_GLXCONTEXT,
+                                   g_param_spec_pointer ("glxcontext",
+                                                         "GLXContext",
+                                                         "Pointer to the GLXContext.",
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
 static GObject *
@@ -98,11 +127,7 @@ gdk_gl_context_impl_x11_constructor (GType                  type,
   GdkGLContext *glcontext;
   GdkGLContextImplX11 *impl;
 
-  GdkGLContextImplX11 *share_impl = NULL;
-  GLXContext share_glxcontext = NULL;
-
   Display *xdisplay;
-  XVisualInfo *xvinfo;
 
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
                                                        n_construct_properties,
@@ -113,32 +138,7 @@ gdk_gl_context_impl_x11_constructor (GType                  type,
   glcontext = GDK_GL_CONTEXT (object);
   impl = GDK_GL_CONTEXT_IMPL_X11 (object);
 
-  /*
-   * Create an OpenGL rendering context.
-   */
-
-  if (glcontext->share_list != NULL)
-    {
-      share_impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext->share_list);
-      share_glxcontext = share_impl->glxcontext;
-    }
-
   xdisplay = GDK_GL_CONFIG_XDISPLAY (glcontext->glconfig);
-  xvinfo = GDK_GL_CONFIG_XVINFO (glcontext->glconfig);
-
-  GDK_GL_NOTE (IMPL, g_message (" * glXCreateContext ()"));
-
-  impl->glxcontext = glXCreateContext (xdisplay,
-                                       xvinfo,
-                                       share_glxcontext,
-                                       glcontext->is_direct == TRUE ? True : False );
-  if (impl->glxcontext == NULL)
-    goto FAIL;
-
-  GDK_GL_NOTE (MISC,
-    g_message (" -- Context: screen number = %d", xvinfo->screen));
-  GDK_GL_NOTE (MISC,
-    g_message (" -- Context: visual id = 0x%lx", xvinfo->visualid));
 
   glcontext->is_direct = glXIsDirect (xdisplay, impl->glxcontext) ? TRUE : FALSE;
 
@@ -148,8 +148,43 @@ gdk_gl_context_impl_x11_constructor (GType                  type,
 
   impl->is_constructed = TRUE;
 
- FAIL:
   return object;
+}
+
+static void
+gdk_gl_context_impl_x11_set_property (GObject      *object,
+                                      guint         property_id,
+                                      const GValue *value,
+                                      GParamSpec   *pspec)
+{
+  GdkGLContextImplX11 *impl = GDK_GL_CONTEXT_IMPL_X11 (object);
+
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_x11_set_property ()"));
+
+  switch (property_id)
+    {
+    case PROP_GLXCONTEXT:
+      impl->glxcontext = *((GLXContext *) g_value_get_pointer (value));
+      g_object_notify (object, "glxcontext");
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+    }
+}
+
+static void
+gdk_gl_context_impl_x11_get_property (GObject    *object,
+                                      guint       property_id,
+                                      GValue     *value,
+                                      GParamSpec *pspec)
+{
+  switch (property_id)
+    {
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+    }
 }
 
 static void
@@ -181,17 +216,18 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
-GdkGLContext *
-_gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
-                         GdkGLConfig   *glconfig,
-                         GdkGLContext  *share_list,
-                         gboolean       direct,
-                         int            render_type)
+static GdkGLContext *
+gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
+                           GdkGLConfig   *glconfig,
+                           GdkGLContext  *share_list,
+                           gboolean       direct,
+                           int            render_type,
+                           GLXContext    *glxcontext)
 {
   GdkGLContext *glcontext;
   GdkGLContextImplX11 *impl;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_new ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_new_common ()"));
 
   /*
    * Instanciate the GdkGLContextImplX11 object.
@@ -204,6 +240,7 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
                             "share_list",      share_list,
                             "is_direct",       direct,
                             "render_type",     render_type,
+                            "glxcontext",      glxcontext,
                             NULL);
   impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
 
@@ -216,6 +253,80 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
   gdk_gl_context_insert (glcontext);
 
   return glcontext;
+}
+
+GdkGLContext *
+_gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
+                         GdkGLConfig   *glconfig,
+                         GdkGLContext  *share_list,
+                         gboolean       direct,
+                         int            render_type)
+{
+  GdkGLContextImplX11 *share_impl = NULL;
+  GLXContext share_glxcontext = NULL;
+
+  Display *xdisplay;
+  XVisualInfo *xvinfo;
+  GLXContext glxcontext;
+
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_new ()"));
+
+  /*
+   * Create an OpenGL rendering context.
+   */
+
+  if (share_list != NULL)
+    {
+      share_impl = GDK_GL_CONTEXT_IMPL_X11 (share_list);
+      share_glxcontext = share_impl->glxcontext;
+    }
+
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (glconfig);
+  xvinfo = GDK_GL_CONFIG_XVINFO (glconfig);
+
+  GDK_GL_NOTE (IMPL, g_message (" * glXCreateContext ()"));
+
+  glxcontext = glXCreateContext (xdisplay,
+                                 xvinfo,
+                                 share_glxcontext,
+                                 (direct == TRUE) ? True : False);
+  if (glxcontext == NULL)
+    return NULL;
+
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Context: screen number = %d", xvinfo->screen));
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Context: visual id = 0x%lx", xvinfo->visualid));
+
+  /*
+   * Instanciate the GdkGLContextImplX11 object.
+   */
+
+  return gdk_gl_context_new_common (gldrawable,
+                                    glconfig,
+                                    share_list,
+                                    direct,
+                                    render_type,
+                                    &glxcontext);
+}
+
+GdkGLContext *
+gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
+                                GdkGLContext *share_list,
+                                GLXContext    glxcontext)
+{
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_context_foreign_new ()"));
+
+  /*
+   * Instanciate the GdkGLContextImplX11 object.
+   */
+
+  return gdk_gl_context_new_common (NULL,
+                                    glconfig,
+                                    share_list,
+                                    FALSE, /* is_direct is set by constructor() */
+                                    (glconfig->is_rgba) ? GDK_GL_RGBA_TYPE : GDK_GL_COLOR_INDEX_TYPE,
+                                    &glxcontext);
 }
 
 /**

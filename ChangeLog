@@ -1,5 +1,10 @@
 2002-12-21  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglcontext-x11.c (_gdk_x11_gl_context_new) 
+	(gdk_gl_context_impl_x11_constructor): glXCreateContext() call was
+	moved into _gdk_x11_gl_context_new().
+	(gdk_x11_gl_context_foreign_new): Added.
+
 	* gdk/x11/gdkglconfig-x11.c (gdk_x11_gl_config_new_from_visualid) 
 	(gdk_x11_gl_config_new_from_visualid_for_screen): Added.
 

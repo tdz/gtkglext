@@ -1,6 +1,6 @@
-64% symbol docs coverage.
+63% symbol docs coverage.
 86 symbols documented.
-49 not documented.
+50 not documented.
 
 
 GDKGLEXT_BINARY_AGE
@@ -42,6 +42,7 @@ gdk_gl_query_extension_for_display
 gdk_gl_query_version_for_display
 gdk_x11_gl_config_new_from_visualid
 gdk_x11_gl_config_new_from_visualid_for_screen
+gdk_x11_gl_context_foreign_new
 gdkglext_binary_age
 gdkglext_interface_age
 gdkglext_major_version

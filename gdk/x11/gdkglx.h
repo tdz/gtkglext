@@ -33,26 +33,30 @@
 
 G_BEGIN_DECLS
 
-gboolean     gdk_x11_gl_query_glx_extension      (GdkGLConfig  *glconfig,
-                                                  const char   *extension);
+gboolean      gdk_x11_gl_query_glx_extension      (GdkGLConfig  *glconfig,
+                                                   const char   *extension);
 
 #ifndef GDK_MULTIHEAD_SAFE
-GdkGLConfig *gdk_x11_gl_config_new_from_visualid            (VisualID   xvisualid);
+GdkGLConfig  *gdk_x11_gl_config_new_from_visualid            (VisualID   xvisualid);
 #endif /* GDK_MULTIHEAD_SAFE */
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-GdkGLConfig *gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
-                                                             VisualID   xvisualid);
+GdkGLConfig  *gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
+                                                              VisualID   xvisualid);
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
-Display     *gdk_x11_gl_config_get_xdisplay      (GdkGLConfig  *glconfig);
-int          gdk_x11_gl_config_get_screen_number (GdkGLConfig  *glconfig);
-XVisualInfo *gdk_x11_gl_config_get_xvinfo        (GdkGLConfig  *glconfig);
+Display      *gdk_x11_gl_config_get_xdisplay      (GdkGLConfig  *glconfig);
+int           gdk_x11_gl_config_get_screen_number (GdkGLConfig  *glconfig);
+XVisualInfo  *gdk_x11_gl_config_get_xvinfo        (GdkGLConfig  *glconfig);
 
-GLXContext   gdk_x11_gl_context_get_glxcontext   (GdkGLContext *glcontext);
+GdkGLContext *gdk_x11_gl_context_foreign_new      (GdkGLConfig  *glconfig,
+                                                   GdkGLContext *share_list,
+                                                   GLXContext    glxcontext);
 
-GLXPixmap    gdk_x11_gl_pixmap_get_glxpixmap     (GdkGLPixmap  *glpixmap);
+GLXContext    gdk_x11_gl_context_get_glxcontext   (GdkGLContext *glcontext);
 
-Window       gdk_x11_gl_window_get_glxwindow     (GdkGLWindow  *glwindow);
+GLXPixmap     gdk_x11_gl_pixmap_get_glxpixmap     (GdkGLPixmap  *glpixmap);
+
+Window        gdk_x11_gl_window_get_glxwindow     (GdkGLWindow  *glwindow);
 
 #ifdef INSIDE_GDK_GL_X11
 

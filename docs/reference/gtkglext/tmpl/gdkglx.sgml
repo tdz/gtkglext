@@ -70,6 +70,17 @@ Internal X-related functions
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_x11_gl_context_foreign_new ##### -->
+<para>
+
+</para>
+
+@glconfig: 
+@share_list: 
+@glxcontext: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gdk_x11_gl_context_get_glxcontext ##### -->
 <para>
 

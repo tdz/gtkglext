@@ -5,17 +5,17 @@ GdkGLConfig  *glconfig,const char   *extension
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_config_new_from_visualid</NAME>
-<RETURNS>GdkGLConfig  *</RETURNS>
+<RETURNS>GdkGLConfig   *</RETURNS>
 VisualID   xvisualid
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_config_new_from_visualid_for_screen</NAME>
-<RETURNS>GdkGLConfig  *</RETURNS>
+<RETURNS>GdkGLConfig   *</RETURNS>
 GdkScreen *screen,VisualID   xvisualid
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_config_get_xdisplay</NAME>
-<RETURNS>Display      *</RETURNS>
+<RETURNS>Display       *</RETURNS>
 GdkGLConfig  *glconfig
 </FUNCTION>
 <FUNCTION>
@@ -25,8 +25,13 @@ GdkGLConfig  *glconfig
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_config_get_xvinfo</NAME>
-<RETURNS>XVisualInfo  *</RETURNS>
+<RETURNS>XVisualInfo   *</RETURNS>
 GdkGLConfig  *glconfig
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_x11_gl_context_foreign_new</NAME>
+<RETURNS>GdkGLContext  *</RETURNS>
+GdkGLConfig  *glconfig,GdkGLContext *share_list,GLXContext    glxcontext
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_x11_gl_context_get_glxcontext</NAME>
