@@ -39,7 +39,7 @@ _GDK_GL_CONCAT (gdk_gl_get_, __proc_name) (void)                                
   if (!init)                                                                            \
     {                                                                                   \
       __procs.__proc_name =                                                             \
-        (_GDK_GL_PROC_TYPE (__proc_name)) gdk_gl_query_get_proc_address (#__proc_name); \
+        (_GDK_GL_PROC_TYPE (__proc_name)) gdk_gl_get_proc_address (#__proc_name);       \
                                                                                         \
       GDK_GL_NOTE (MISC,                                                                \
                    g_message (" - gdk_gl_get_%s () - %s",                               \

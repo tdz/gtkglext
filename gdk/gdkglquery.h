@@ -47,7 +47,7 @@ gboolean  gdk_gl_query_version_for_display   (GdkDisplay *display,
 
 gboolean  gdk_gl_query_gl_extension          (const char *extension);
 
-GdkGLProc gdk_gl_query_get_proc_address      (const char *proc_name);
+GdkGLProc gdk_gl_get_proc_address            (const char *proc_name);
 
 G_END_DECLS
 

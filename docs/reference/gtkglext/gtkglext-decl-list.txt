@@ -164,7 +164,7 @@ gdk_gl_query_extension_for_display
 gdk_gl_query_version
 gdk_gl_query_version_for_display
 gdk_gl_query_gl_extension
-gdk_gl_query_get_proc_address
+gdk_gl_get_proc_address
 </SECTION>
 
 <SECTION>

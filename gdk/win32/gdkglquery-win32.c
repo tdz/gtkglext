@@ -144,7 +144,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
       /* Try wglGetExtensionsStringARB. */
 
       wgl_get_extensions_string_arb =
-        (__wglGetExtensionsStringARBProc) gdk_gl_query_get_proc_address ("wglGetExtensionsStringARB");
+        (__wglGetExtensionsStringARBProc) gdk_gl_get_proc_address ("wglGetExtensionsStringARB");
 
       if (wgl_get_extensions_string_arb)
         {
@@ -165,7 +165,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
           /* Try wglGetExtensionsStringEXT. */
 
           wgl_get_extensions_string_ext =
-            (__wglGetExtensionsStringEXTProc) gdk_gl_query_get_proc_address ("wglGetExtensionsStringEXT");
+            (__wglGetExtensionsStringEXTProc) gdk_gl_get_proc_address ("wglGetExtensionsStringEXT");
 
           if (wgl_get_extensions_string_ext)
             extensions = wgl_get_extensions_string_ext ();
@@ -204,12 +204,12 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
 }
 
 GdkGLProc
-gdk_gl_query_get_proc_address (const char *proc_name)
+gdk_gl_get_proc_address (const char *proc_name)
 {
   static GModule *main_module = NULL;
   GdkGLProc proc_address;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_query_get_proc_address ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_proc_address ()"));
 
   /* Try wglGetProcAddress () */
 

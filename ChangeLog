@@ -1,3 +1,14 @@
+2003-01-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/coolwave.c (realize): 
+	* gdk/gdkglglext.c: 
+	* gdk/win32/gdkglwglext.c: 
+	* gdk/x11/gdkglglxext.c: 
+	* gdk/win32/gdkglquery-win32.c (gdk_gl_get_proc_address): 
+	* gdk/x11/gdkglquery-x11.c (gdk_gl_get_proc_address): 
+	* gdk/gdkglquery.h: Renamed gdk_gl_query_get_proc_address() to
+	gdk_gl_get_proc_address().
+
 2003-01-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglx.h: 

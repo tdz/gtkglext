@@ -232,7 +232,7 @@ realize (GtkWidget *widget,
   if (proc == NULL)
     {
       /* glPolygonOffset */
-      proc = gdk_gl_query_get_proc_address ("glPolygonOffset");
+      proc = gdk_gl_get_proc_address ("glPolygonOffset");
       if (proc == NULL)
 	{
 	  g_print ("Sorry, glPolygonOffset() is not supported by this renderer.\n");

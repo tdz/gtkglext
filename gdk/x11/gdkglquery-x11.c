@@ -177,7 +177,7 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
 }
 
 /**
- * gdk_gl_query_get_proc_address:
+ * gdk_gl_get_proc_address:
  * @proc_name: extension function name.
  *
  * Returns the address of the OpenGL extension functions.
@@ -185,7 +185,7 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
  * Return value: the address of the extension function named by @proc_name.
  **/
 GdkGLProc
-gdk_gl_query_get_proc_address (const char *proc_name)
+gdk_gl_get_proc_address (const char *proc_name)
 {
   typedef GdkGLProc (*__glXGetProcAddressProc) (const GLubyte *);
   static __glXGetProcAddressProc glx_get_proc_address = NULL;
@@ -193,7 +193,7 @@ gdk_gl_query_get_proc_address (const char *proc_name)
   static gboolean initialized = FALSE;
   GdkGLProc proc_address = NULL;
 
-  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_query_get_proc_address ()"));
+  GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_get_proc_address ()"));
 
   if (!initialized)
     {
