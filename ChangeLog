@@ -1,3 +1,13 @@
+2002-06-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/viewlw.c: 
+	* examples/lw.[hc]: 
+	* examples/trackball.[hc]: 
+	* examples/alien.lwo: 
+	* examples/penguin.lwo: Added new demo program viewlw,
+	the LightWave 3D object viewer, that comes with GtkGLArea.
+	Thank you, Alif ;-)
+
 2002-06-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* Version 0.1.1.

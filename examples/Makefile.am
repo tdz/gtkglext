@@ -20,7 +20,8 @@ EXTRA_PROGRAMS = \
 	low-level	\
 	simple		\
 	pixmap		\
-	font
+	font		\
+	viewlw
 
 low_level_SOURCES = low-level.c
 low_level_DEPENDENCIES = $(DEPS)
@@ -38,6 +39,10 @@ font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
 
+viewlw_SOURCES = viewlw.c lw.h lw.c trackball.h trackball.c
+viewlw_DEPENDENCIES = $(DEPS)
+viewlw_LDADD = $(LDADDS)
+
 
 .PHONY: examples clean distclean files
 
@@ -54,3 +59,6 @@ files:
 	  echo $$p; \
 	done
 
+EXTRA_DIST = \
+	alien.lwo	\
+	penguin.lwo

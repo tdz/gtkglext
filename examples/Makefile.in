@@ -150,7 +150,8 @@ EXTRA_PROGRAMS = \
 	low-level	\
 	simple		\
 	pixmap		\
-	font
+	font		\
+	viewlw
 
 
 low_level_SOURCES = low-level.c
@@ -168,12 +169,16 @@ pixmap_LDADD = $(LDADDS)
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
+
+viewlw_SOURCES = viewlw.c lw.c trackball.c
+viewlw_DEPENDENCIES = $(DEPS)
+viewlw_LDADD = $(LDADDS)
 subdir = examples
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 EXTRA_PROGRAMS = low-level$(EXEEXT) simple$(EXEEXT) pixmap$(EXEEXT) \
-	font$(EXEEXT)
+	font$(EXEEXT) viewlw$(EXEEXT)
 am_font_OBJECTS = font.$(OBJEXT)
 font_OBJECTS = $(am_font_OBJECTS)
 font_LDFLAGS =
@@ -186,6 +191,9 @@ pixmap_LDFLAGS =
 am_simple_OBJECTS = simple.$(OBJEXT)
 simple_OBJECTS = $(am_simple_OBJECTS)
 simple_LDFLAGS =
+am_viewlw_OBJECTS = viewlw.$(OBJEXT) lw.$(OBJEXT) trackball.$(OBJEXT)
+viewlw_OBJECTS = $(am_viewlw_OBJECTS)
+viewlw_LDFLAGS =
 
 DEFS = @DEFS@
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
@@ -195,7 +203,9 @@ LIBS = @LIBS@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/font.Po ./$(DEPDIR)/low-level.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/pixmap.Po ./$(DEPDIR)/simple.Po
+@AMDEP_TRUE@	./$(DEPDIR)/lw.Po ./$(DEPDIR)/pixmap.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/simple.Po ./$(DEPDIR)/trackball.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/viewlw.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -205,9 +215,9 @@ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 CFLAGS = @CFLAGS@
 DIST_SOURCES = $(font_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) \
-	$(simple_SOURCES)
+	$(simple_SOURCES) $(viewlw_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(font_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(simple_SOURCES)
+SOURCES = $(font_SOURCES) $(low_level_SOURCES) $(pixmap_SOURCES) $(simple_SOURCES) $(viewlw_SOURCES)
 
 all: all-am
 
@@ -230,6 +240,9 @@ pixmap$(EXEEXT): $(pixmap_OBJECTS) $(pixmap_DEPENDENCIES)
 simple$(EXEEXT): $(simple_OBJECTS) $(simple_DEPENDENCIES) 
 	@rm -f simple$(EXEEXT)
 	$(LINK) $(simple_LDFLAGS) $(simple_OBJECTS) $(simple_LDADD) $(LIBS)
+viewlw$(EXEEXT): $(viewlw_OBJECTS) $(viewlw_DEPENDENCIES) 
+	@rm -f viewlw$(EXEEXT)
+	$(LINK) $(viewlw_LDFLAGS) $(viewlw_OBJECTS) $(viewlw_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT) core *.core
@@ -239,8 +252,11 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/font.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/low-level.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lw.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pixmap.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simple.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/trackball.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/viewlw.Po@am__quote@
 
 distclean-depend:
 	-rm -rf ./$(DEPDIR)
