@@ -398,7 +398,7 @@ _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
  * gdk_gl_context_get_gl_drawable:
  * @glcontext: a #GdkGLContext.
  *
- * Get #GdkGLDrawable to which the @glcontext is binded.
+ * Get #GdkGLDrawable to which the @glcontext is bound.
  *
  * Return value: the #GdkGLDrawable.
  **/
@@ -430,7 +430,8 @@ gdk_gl_context_get_gl_config (GdkGLContext *glcontext)
  * gdk_gl_context_get_share_list:
  * @glcontext: a #GdkGLContext.
  *
- * Get #GdkGLContext with which the @glcontext shares the display lists.
+ * Get #GdkGLContext with which the @glcontext shares the display lists and
+ * texture objects.
  *
  * Return value: the #GdkGLContext.
  **/
