@@ -1,3 +1,10 @@
+2002-12-03  Naofumi Yasufuku  <naofumi@yasufuku.net>
+
+	* gdk/gdkgldefs.h: Include gdkglext-config.h.
+
+	* gdk/Makefile.am: 
+	* configure.in: Generates gdkglext-config.h configuration header.
+
 2002-11-30  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_setup_colormap):

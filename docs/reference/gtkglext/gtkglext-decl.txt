@@ -177,6 +177,11 @@ GdkScreen       *screen,const int       *attrib_list
 GdkGLConfigMode  mode
 </FUNCTION>
 <FUNCTION>
+<NAME>gdk_gl_config_new_by_mode_for_screen</NAME>
+<RETURNS>GdkGLConfig  *</RETURNS>
+GdkScreen       *screen,GdkGLConfigMode  mode
+</FUNCTION>
+<FUNCTION>
 <NAME>gdk_gl_config_get_screen</NAME>
 <RETURNS>GdkScreen    *</RETURNS>
 GdkGLConfig     *glconfig

@@ -91,6 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 
 %{_includedir}/*
+%{_libdir}/gtkglext-%{api_version}
 %{_libdir}/lib*.so
 #%{_libdir}/lib*.a
 %{_libdir}/lib*.la
@@ -98,6 +99,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gtk-doc/html/*
 
 %changelog
+* Tue Dec  3 2002 Naofumi Yasufuku <naofumi@users.sourceforge.net>
+- Added %{_libdir}/gtkglext-%{api_version} to the file list.
+
 * Fri Nov 15 2002 Naofumi Yasufuku <naofumi@users.sourceforge.net>
 - Removed --disable-mesa-ext configure option.
 - Disabled static libraries by default.

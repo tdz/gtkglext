@@ -23,20 +23,18 @@
 
 G_BEGIN_DECLS
 
+#ifndef GDK_MULTIHEAD_SAFE
 PangoFont *gdk_gl_font_use_pango_font             (const PangoFontDescription *font_desc,
                                                    int                         first,
                                                    int                         count,
                                                    int                         list_base);
-
-#ifdef GDK_MULTIHEAD_SAFE
+#endif /* GDK_MULTIHEAD_SAFE */
 
 PangoFont *gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
                                                    const PangoFontDescription *font_desc,
                                                    int                         first,
                                                    int                         count,
                                                    int                         list_base);
-
-#endif /* GDK_MULTIHEAD_SAFE */
 
 G_END_DECLS
 

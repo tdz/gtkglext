@@ -16,7 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include <gdk/gdk.h>
+#include <gdk/gdk.h>            /* for gdk_error_trap_(push|pop) () */
 
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"

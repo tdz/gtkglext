@@ -25,24 +25,24 @@ G_BEGIN_DECLS
 
 typedef void (*GdkGLProc)(void);
 
-gboolean gdk_gl_query_extension             (void);
-
-#ifdef GDK_MULTIHEAD_SAFE
-gboolean gdk_gl_query_extension_for_display (GdkDisplay *display);
+#ifndef GDK_MULTIHEAD_SAFE
+gboolean  gdk_gl_query_extension             (void);
 #endif /* GDK_MULTIHEAD_SAFE */
 
-gboolean gdk_gl_query_version               (int        *major,
-                                             int        *minor);
+gboolean  gdk_gl_query_extension_for_display (GdkDisplay *display);
 
-#ifdef GDK_MULTIHEAD_SAFE
-gboolean gdk_gl_query_version_for_display   (GdkDisplay *display,
-                                             int        *major,
-                                             int        *minor);
+#ifndef GDK_MULTIHEAD_SAFE
+gboolean  gdk_gl_query_version               (int        *major,
+                                              int        *minor);
 #endif /* GDK_MULTIHEAD_SAFE */
 
-gboolean gdk_gl_query_gl_extension          (const char *extension);
+gboolean  gdk_gl_query_version_for_display   (GdkDisplay *display,
+                                              int        *major,
+                                              int        *minor);
 
-GdkGLProc gdk_gl_query_get_proc_address (const char *proc_name);
+gboolean  gdk_gl_query_gl_extension          (const char *extension);
+
+GdkGLProc gdk_gl_query_get_proc_address      (const char *proc_name);
 
 G_END_DECLS
 

@@ -16,13 +16,13 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifdef GDK_MULTIHEAD_SAFE
-#include <gdk/gdkscreen.h>
-#endif /* GDK_MULTIHEAD_SAFE */
-
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
 #include "gdkgloverlay-x11.h"
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+#include <gdk/gdkscreen.h>
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 #ifdef __VMS
 #include <GL/vms_x_fix.h>
@@ -94,11 +94,11 @@ gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
   Visual *xvisual;
   int i, num_props;
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   xdisplay = GDK_SCREEN_XDISPLAY (screen);
-#else  /* GDK_MULTIHEAD_SAFE */
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   xdisplay = gdk_x11_get_default_xdisplay ();
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   if (xa_sov == -1)
     xa_sov = XSGIFastInternAtom (xdisplay,
@@ -173,11 +173,11 @@ gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
 
   /* look up SOV property for the visual. */
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   screen_num = GDK_SCREEN_XNUMBER (screen);
-#else  /* GDK_MULTIHEAD_SAFE */
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   screen_num = gdk_x11_get_default_screen ();
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   xvisual = GDK_VISUAL_XVISUAL (visual);
 
@@ -206,9 +206,9 @@ _gdk_x11_gl_overlay_get_info (GdkScreen        *screen,
 
   GDK_GL_NOTE (FUNC, g_message (" -- _gdk_x11_gl_overlay_get_info ()"));
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
   g_return_val_if_fail (GDK_IS_VISUAL (visual), FALSE);
   g_return_val_if_fail (overlay_info != NULL, FALSE);
 

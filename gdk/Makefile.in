@@ -254,9 +254,16 @@ libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES = \
 
 
 MAINTAINERCLEANFILES = gdkglenumtypes.h stamp-gdkglenumtypes.h
+DISTCLEANFILES = gdkglext-config.h stamp-gdkglext-config.h
+
 EXTRA_HEADERS = 
 
-BUILT_SOURCES = @REBUILD@ gdkglenumtypes.h
+BUILT_SOURCES = @REBUILD@ gdkglenumtypes.h stamp-gdkglext-config.h
+
+#
+# Rule to install gdkglext-config.h header file
+#
+configexecincludedir = $(libdir)/gtkglext-@GTKGLEXT_API_VERSION@/include
 
 EXTRA_DIST = \
 	gdkglversion.h.in	\
@@ -595,6 +602,7 @@ clean-generic:
 
 distclean-generic:
 	-rm -f Makefile $(CONFIG_CLEAN_FILES)
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -620,7 +628,7 @@ info-am:
 
 install-data-am: install-data-local install-gdkglextincludeHEADERS
 
-install-exec-am: install-libLTLIBRARIES
+install-exec-am: install-exec-local install-libLTLIBRARIES
 
 install-info: install-info-recursive
 
@@ -649,7 +657,7 @@ uninstall-info: uninstall-info-recursive
 	distclean-tags distdir dvi dvi-am dvi-recursive info info-am \
 	info-recursive install install-am install-data install-data-am \
 	install-data-local install-data-recursive install-exec \
-	install-exec-am install-exec-recursive \
+	install-exec-am install-exec-local install-exec-recursive \
 	install-gdkglextincludeHEADERS install-info install-info-am \
 	install-info-recursive install-libLTLIBRARIES install-man \
 	install-recursive install-strip installcheck installcheck-am \
@@ -706,6 +714,21 @@ $(srcdir)/gdkglenumtypes.c: @REBUILD@ $(gdkglext_public_h_sources) Makefile
 		$(gdkglext_public_h_sources) ) > xgen-getc \
 	&& cp xgen-getc $(srcdir)/gdkglenumtypes.c  \
 	&& rm -f xgen-getc
+#configexecinclude_DATA = gdkglext-config.h
+
+install-exec-local: gdkglext-config.h
+	$(mkinstalldirs) $(DESTDIR)$(configexecincludedir)
+	file=$(DESTDIR)$(configexecincludedir)/gdkglext-config.h; \
+	if test -r $$file && cmp -s gdkglext-config.h $$file; then :; \
+	else $(INSTALL_DATA) gdkglext-config.h $$file; fi
+
+gdkglext-config.h: stamp-gdkglext-config.h
+	@if test -f gdkglext-config.h; then :; \
+	else rm -f stamp-gdkglext-config.h; $(MAKE) stamp-gdkglext-config.h; fi
+
+stamp-gdkglext-config.h: ../config.status
+	cd .. && CONFIG_FILES= CONFIG_HEADERS= CONFIG_OTHER=gdk/gdkglext-config.h ./config.status
+	echo timestamp > stamp-gdkglext-config.h
 
 #
 # Extra rules

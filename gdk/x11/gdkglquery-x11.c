@@ -20,14 +20,14 @@
 
 #include <gmodule.h>
 
-#ifdef GDK_MULTIHEAD_SAFE
-#include <gdk/gdkdisplay.h>
-#endif /* GDK_MULTIHEAD_SAFE */
-
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
 #include "gdkglconfig-x11.h"
 #include "gdkglquery.h"
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+#include <gdk/gdkdisplay.h>
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /**
  * gdk_gl_query_extension:
@@ -40,16 +40,16 @@
 gboolean
 gdk_gl_query_extension (void)
 {
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   return glXQueryExtension (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                             NULL, NULL);
-#else  /* GDK_MULTIHEAD_SAFE */
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   return glXQueryExtension (gdk_x11_get_default_xdisplay (),
                             NULL, NULL);
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 }
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 gboolean
 gdk_gl_query_extension_for_display (GdkDisplay *display)
@@ -60,7 +60,7 @@ gdk_gl_query_extension_for_display (GdkDisplay *display)
                             NULL, NULL);
 }
 
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /**
  * gdk_gl_query_version:
@@ -79,16 +79,16 @@ gboolean
 gdk_gl_query_version (int *major,
                       int *minor)
 {
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   return glXQueryVersion (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                           major, minor);
-#else  /* GDK_MULTIHEAD_SAFE */
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   return glXQueryVersion (gdk_x11_get_default_xdisplay (),
                           major, minor);
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 }
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 gboolean
 gdk_gl_query_version_for_display (GdkDisplay *display,
@@ -101,7 +101,7 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
                           major, minor);
 }
 
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /*
  * This code is based on __glutIsSupportedByGLX().

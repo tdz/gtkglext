@@ -85,6 +85,16 @@ and is afterwards used in #gtk_widget_set_gl_capability.
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_gl_config_new_by_mode_for_screen ##### -->
+<para>
+
+</para>
+
+@screen: 
+@mode: 
+@Returns: 
+
+
 <!-- ##### FUNCTION gdk_gl_config_get_screen ##### -->
 <para>
 </para>

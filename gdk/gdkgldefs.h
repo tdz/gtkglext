@@ -21,6 +21,8 @@
 
 #include <glib.h>
 
+#include <gdkglext-config.h>
+
 G_BEGIN_DECLS
 
 #ifdef G_OS_WIN32

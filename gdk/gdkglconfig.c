@@ -16,13 +16,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifdef GDK_MULTIHEAD_SAFE
-#include <gdk/gdkscreen.h>
-#endif /* GDK_MULTIHEAD_SAFE */
-
 #include <gdk/gdkwindow.h>
+
 #include "gdkglprivate.h"
 #include "gdkglconfig.h"
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+#include <gdk/gdkscreen.h>
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 enum {
   PROP_0,
@@ -41,9 +42,12 @@ static void gdk_gl_config_get_property (GObject          *object,
                                         GParamSpec       *pspec);
 static void gdk_gl_config_finalize     (GObject          *object);
 
-static GdkGLConfig *gdk_gl_config_new_ci       (GdkGLConfigMode mode);
-static GdkGLConfig *gdk_gl_config_new_rgb      (GdkGLConfigMode mode);
-static GdkGLConfig *gdk_gl_config_new_internal (GdkGLConfigMode mode);
+static GdkGLConfig *gdk_gl_config_new_ci       (GdkScreen       *screen,
+                                                GdkGLConfigMode  mode);
+static GdkGLConfig *gdk_gl_config_new_rgb      (GdkScreen       *screen,
+                                                GdkGLConfigMode  mode);
+static GdkGLConfig *gdk_gl_config_new_internal (GdkScreen       *screen,
+                                                GdkGLConfigMode  mode);
 
 static gpointer parent_class = NULL;
 
@@ -87,7 +91,7 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
   object_class->get_property = gdk_gl_config_get_property;
   object_class->finalize     = gdk_gl_config_finalize;
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   g_object_class_install_property (object_class,
                                    PROP_SCREEN,
                                    g_param_spec_object ("screen",
@@ -95,14 +99,14 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
                                                         _("Target screen for the OpenGL configuration."),
                                                         GDK_TYPE_SCREEN,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-#else  /* GDK_MULTIHEAD_SAFE */
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   g_object_class_install_property (object_class,
                                    PROP_SCREEN,
                                    g_param_spec_pointer ("screen",
                                                          _("Screen"),
                                                          _("Target screen for the OpenGL configuration."),
                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 }
 
 static void
@@ -118,12 +122,12 @@ gdk_gl_config_set_property (GObject      *object,
   switch (property_id)
     {
     case PROP_SCREEN:
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
       glconfig->screen = g_value_get_object (value);
       g_object_ref (G_OBJECT (glconfig->screen));
-#else  /* GDK_MULTIHEAD_SAFE */
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
       glconfig->screen = g_value_get_pointer (value);
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
       g_object_notify (object, "screen");
       break;
     default:
@@ -161,19 +165,20 @@ gdk_gl_config_finalize (GObject *object)
       glconfig->colormap = NULL;
     }
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   if (glconfig->screen != NULL)
     {
       g_object_unref (G_OBJECT (glconfig->screen));
       glconfig->screen = NULL;
     }
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
 static GdkGLConfig *
-gdk_gl_config_new_ci (GdkGLConfigMode mode)
+gdk_gl_config_new_ci (GdkScreen       *screen,
+                      GdkGLConfigMode  mode)
 {
   GdkGLConfig *glconfig = NULL;
   static const int buf_size_list[] = { 16, 12, 8, 4, 2, 1, 0 };
@@ -216,7 +221,13 @@ gdk_gl_config_new_ci (GdkGLConfigMode mode)
     {
       /* XXX Assumes list[1] is where GDK_GL_BUFFER_SIZE parameter is. */
       list[1] = buf_size_list[i];
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+      glconfig = gdk_gl_config_new_for_screen (screen, list);
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
       glconfig = gdk_gl_config_new (list);
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
       if (glconfig != NULL)
         return glconfig;
     }
@@ -225,7 +236,8 @@ gdk_gl_config_new_ci (GdkGLConfigMode mode)
 }
 
 static GdkGLConfig *
-gdk_gl_config_new_rgb (GdkGLConfigMode mode)
+gdk_gl_config_new_rgb (GdkScreen       *screen,
+                       GdkGLConfigMode  mode)
 {
   int list[32];
   int n = 0;
@@ -276,16 +288,21 @@ gdk_gl_config_new_rgb (GdkGLConfigMode mode)
     }
   list[n] = GDK_GL_ATTRIB_LIST_NONE;
 
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+  return gdk_gl_config_new_for_screen (screen, list);
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   return gdk_gl_config_new (list);
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 }
 
 static GdkGLConfig *
-gdk_gl_config_new_internal (GdkGLConfigMode mode)
+gdk_gl_config_new_internal (GdkScreen       *screen,
+                            GdkGLConfigMode  mode)
 {
   if (mode & GDK_GL_MODE_RGB)
-    return gdk_gl_config_new_rgb (mode);
+    return gdk_gl_config_new_rgb (screen, mode);
   else
-    return gdk_gl_config_new_ci (mode);
+    return gdk_gl_config_new_ci (screen, mode);
 }
 
 /**
@@ -300,9 +317,17 @@ gdk_gl_config_new_internal (GdkGLConfigMode mode)
 GdkGLConfig *
 gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
 {
-  GdkGLConfig *glconfig = NULL;
+  GdkGLConfig *glconfig;
 
-  glconfig = gdk_gl_config_new_internal (mode);
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+#define _GDK_GL_CONFIG_NEW_INTERNAL(__mode) \
+   gdk_gl_config_new_internal (gdk_screen_get_default (), __mode)
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
+#define _GDK_GL_CONFIG_NEW_INTERNAL(__mode) \
+   gdk_gl_config_new_internal (NULL, __mode);
+#endif
+
+  glconfig = _GDK_GL_CONFIG_NEW_INTERNAL (mode);
 
   if (glconfig == NULL)
     {
@@ -315,7 +340,37 @@ gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
              the draw buffer to GL_FRONT and treating any swap
              buffers as no-ops. */
           mode |= GDK_GL_MODE_DOUBLE;
-          glconfig = gdk_gl_config_new_internal (mode);
+          glconfig = _GDK_GL_CONFIG_NEW_INTERNAL (mode);
+          if (glconfig != NULL)
+            glconfig->as_single_mode = TRUE;
+        }
+    }
+
+#undef _GDK_GL_CONFIG_NEW_INTERNAL
+
+  return glconfig;
+}
+
+GdkGLConfig *
+gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
+                                      GdkGLConfigMode  mode)
+{
+  GdkGLConfig *glconfig;
+
+  glconfig = gdk_gl_config_new_internal (screen, mode);
+
+  if (glconfig == NULL)
+    {
+      /* Fallback cases when can't get exactly what was asked for... */
+      if (mode & GDK_GL_MODE_SINGLE)
+        {
+          /* If we can't find a single buffered visual, try looking
+             for a double buffered visual.  We can treat a double
+             buffered visual as a single buffered visual by changing
+             the draw buffer to GL_FRONT and treating any swap
+             buffers as no-ops. */
+          mode |= GDK_GL_MODE_DOUBLE;
+          glconfig = gdk_gl_config_new_internal (screen, mode);
           if (glconfig != NULL)
             glconfig->as_single_mode = TRUE;
         }
@@ -324,8 +379,6 @@ gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
   return glconfig;
 }
 
-#ifdef GDK_MULTIHEAD_SAFE
-
 GdkScreen *
 gdk_gl_config_get_screen (GdkGLConfig *glconfig)
 {
@@ -333,8 +386,6 @@ gdk_gl_config_get_screen (GdkGLConfig *glconfig)
 
   return glconfig->screen;
 }
-
-#endif /* GDK_MULTIHEAD_SAFE */
 
 /**
  * gdk_gl_config_get_attrib:

@@ -18,12 +18,13 @@
 
 #include <pango/pangowin32.h>
 
-#ifdef GDK_MULTIHEAD_SAFE
-#include <gdk/gdkdisplay.h>
-#endif /* GDK_MULTIHEAD_SAFE */
-
 #include "gdkglwin32.h"
+#include "gdkglprivate-win32.h"
 #include "gdkglfont.h"
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+#include <gdk/gdkdisplay.h>
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 PangoFont *
 gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
@@ -92,7 +93,7 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
   return font;
 }
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 PangoFont *
 gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
@@ -163,4 +164,4 @@ gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
   return font;
 }
 
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */

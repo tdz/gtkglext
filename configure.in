@@ -328,17 +328,17 @@ if test "x$gdktarget" = "xx11"; then
   LIBS="$save_LIBS"
 
   if test "x$has_gdk_x11_colormap_foreign_new" = "xyes"; then
-    COLORMAP_FOREIGN_NEW_CFLAGS="-D_GDK_HAS_COLORMAP_FOREIGN_NEW"
+    COLORMAP_FOREIGN_NEW_CFLAGS="-D__GDK_HAS_COLORMAP_FOREIGN_NEW"
   fi
 
 fi
 
 
 ##################################################
-# Checks for GTK multihead support
+# Checks for GDK multihead support
 ##################################################
 
-gtk_multihead_support=yes
+gdk_multihead_support=yes
 
 save_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BASE_DEPENDENCIES_CFLAGS"
@@ -346,25 +346,23 @@ save_LIBS="$LIBS"
 LIBS="$LIBS $BASE_DEPENDENCIES_LIBS"
 
 AC_CHECK_HEADERS([ gdk/gdkdisplay.h gdk/gdkscreen.h ], ,
-                 [ gtk_multihead_support=no ])
+                 [ gdk_multihead_support=no ])
 
-if test "x$gtk_multihead_support" = "xyes"; then
+if test "x$gdk_multihead_support" = "xyes"; then
   AC_MSG_CHECKING([for gdk_display_get_default in GDK library])
   AC_TRY_LINK([ #include <gdk/gdk.h> ], 
               [ gdk_display_get_default(); ], ,
-              [ gtk_multihead_support=no ])
-  AC_MSG_RESULT([$gtk_multihead_support])
+              [ gdk_multihead_support=no ])
+  AC_MSG_RESULT([$gdk_multihead_support])
 fi
 
 CPPFLAGS="$save_CPPFLAGS"
 LIBS="$save_LIBS"
 
-MULTIHEAD_SAFE_CFLAGS=""
-if test "x$gtk_multihead_support" = "xyes"; then
-  AC_MSG_NOTICE([GTK has multihead support])
-  MULTIHEAD_SAFE_CFLAGS="-DGDK_MULTIHEAD_SAFE"
+if test "x$gdk_multihead_support" = "xyes"; then
+  AC_MSG_NOTICE([GDK has multihead support])
 else
-  AC_MSG_NOTICE([GTK doesn't have multihead support])
+  AC_MSG_NOTICE([GDK doesn't have multihead support])
 fi
 
 
@@ -620,7 +618,7 @@ GDKGLEXT_PACKAGES="$GDK_PKG $GDKPIXBUF_PKG $PANGO_PKG $GMODULE_PKG"
 GDKGLEXT_EXTRA_LIBS="$GL_LIBS"
 GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS"
 GDKGLEXT_DEP_LIBS="`$PKG_CONFIG --libs $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_LIBS $GDKGLEXT_WIN_LIBS $MATH_LIB"
-GDKGLEXT_DEP_CFLAGS="`$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_CFLAGS $GL_EXTRA_CFLAGS $GDKGLEXT_WIN_CFLAGS $COLORMAP_FOREIGN_NEW_CFLAGS $MULTIHEAD_SAFE_CFLAGS"
+GDKGLEXT_DEP_CFLAGS="`$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_CFLAGS $GL_EXTRA_CFLAGS $GDKGLEXT_WIN_CFLAGS $COLORMAP_FOREIGN_NEW_CFLAGS"
 
 AC_SUBST(GDKGLEXT_PACKAGES)
 AC_SUBST(GDKGLEXT_EXTRA_LIBS)
@@ -633,7 +631,7 @@ GTKGLEXT_PACKAGES="$GTK_PKG"
 GTKGLEXT_EXTRA_LIBS=""
 GTKGLEXT_EXTRA_CFLAGS=""
 GTKGLEXT_DEP_LIBS="`$PKG_CONFIG --libs $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES` $GTKGLEXT_EXTRA_LIBS $GDKGLEXT_EXTRA_LIBS $GDKGLEXT_WIN_LIBS $MATH_LIB"
-GTKGLEXT_DEP_CFLAGS="`$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_CFLAGS $GTKGLEXT_EXTRA_CFLAGS $GDKGLEXT_WIN_CFLAGS $MULTIHEAD_SAFE_CFLAGS"
+GTKGLEXT_DEP_CFLAGS="`$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES` $GDKGLEXT_EXTRA_CFLAGS $GTKGLEXT_EXTRA_CFLAGS $GDKGLEXT_WIN_CFLAGS"
 
 AC_SUBST(GTKGLEXT_PACKAGES)
 AC_SUBST(GTKGLEXT_EXTRA_LIBS)
@@ -699,6 +697,93 @@ AM_CONDITIONAL(ENABLE_GTK_DOC, test x$enable_gtk_doc = xyes)
 
 AC_PATH_PROG(SGML2HTML, sgml2html, no)
 AM_CONDITIONAL(HAVE_SGML2HTML, test x$SGML2HTML != xno)
+
+
+##################################################
+# Output commands
+##################################################
+
+AC_OUTPUT_COMMANDS([
+
+## Generate `gdk/gdkglext-config.h' in two cases
+## 1. `config.status' is run either explicitly, or via configure.
+##     Esp. not when it is run in `Makefile' to generate makefiles and
+##     config.h
+## 2. CONFIG_OTHER is set explicitly
+##
+## Case 1 is difficult.  We know that `automake' sets one of
+## CONFIG_FILES or CONFIG_HEADERS to empty.  This heuristic works
+## only when AM_CONFIG_HEADER is set, however.
+
+if test -n "${CONFIG_FILES}" && test -n "${CONFIG_HEADERS}"; then
+  # Both CONFIG_FILES and CONFIG_HEADERS are non-empty ==> Case 1
+  CONFIG_OTHER=${CONFIG_OTHER:-gdk/gdkglext-config.h}
+fi
+case "$CONFIG_OTHER" in
+*gdk/gdkglext-config.h*)
+	echo creating gdk/gdkglext-config.h
+	outfile=gdkglext-config.h-tmp
+	cat > $outfile <<\_______EOF
+/* gdkglext-config.h
+ *
+ * This is a generated file.  Please modify `configure.in'
+ */
+
+#ifndef GDKGLEXT_CONFIG_H
+#define GDKGLEXT_CONFIG_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+_______EOF
+
+	cat >>$outfile <<_______EOF
+$gdkglext_windowing
+$gdkglext_multihead_support
+_______EOF
+
+	cat >>$outfile <<_______EOF
+
+#if !defined(GDKGLEXT_MULTIHEAD_SUPPORT) && defined(GDK_MULTIHEAD_SAFE)
+#error "Installed GdkGLExt library doesn't have multihead support."
+#endif
+_______EOF
+
+	cat >>$outfile <<_______EOF
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+
+#endif /* GDKGLEXT_CONFIG_H */
+_______EOF
+
+
+	if cmp -s $outfile gdk/gdkglext-config.h; then
+	  echo gdk/gdkglext-config.h is unchanged
+	  rm -f $outfile
+	else
+	  mv $outfile gdk/gdkglext-config.h
+	fi ;;
+esac
+
+],[
+
+if test "x$gdktarget" = "xx11" ; then
+  gdkglext_windowing='
+#define GDKGLEXT_WINDOWING_X11'
+elif test "x$gdktarget" = "xwin32" ; then
+  gdkglext_windowing='
+#define GDKGLEXT_WINDOWING_WIN32'
+fi
+
+if test "x$gdk_multihead_support" = "xyes"; then
+  gdkglext_multihead_support='
+#define GDKGLEXT_MULTIHEAD_SUPPORT'
+fi
+
+])
 
 
 ##################################################

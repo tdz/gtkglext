@@ -131,9 +131,11 @@ libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES = \
 	$(gdkglext_def)
 
 MAINTAINERCLEANFILES = gdkglenumtypes.h stamp-gdkglenumtypes.h
+DISTCLEANFILES = gdkglext-config.h stamp-gdkglext-config.h
+
 EXTRA_HEADERS =
 
-BUILT_SOURCES = @REBUILD@ gdkglenumtypes.h
+BUILT_SOURCES = @REBUILD@ gdkglenumtypes.h stamp-gdkglext-config.h
 
 # Generate built header without using automake BUILT_SOURCES
 $(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS): gdkglenumtypes.h
@@ -160,6 +162,26 @@ $(srcdir)/gdkglenumtypes.c: @REBUILD@ $(gdkglext_public_h_sources) Makefile
 		$(gdkglext_public_h_sources) ) > xgen-getc \
 	&& cp xgen-getc $(srcdir)/gdkglenumtypes.c  \
 	&& rm -f xgen-getc
+
+#
+# Rule to install gdkglext-config.h header file
+#
+configexecincludedir = $(libdir)/gtkglext-@GTKGLEXT_API_VERSION@/include
+#configexecinclude_DATA = gdkglext-config.h
+
+install-exec-local: gdkglext-config.h
+	$(mkinstalldirs) $(DESTDIR)$(configexecincludedir)
+	file=$(DESTDIR)$(configexecincludedir)/gdkglext-config.h; \
+	if test -r $$file && cmp -s gdkglext-config.h $$file; then :; \
+	else $(INSTALL_DATA) gdkglext-config.h $$file; fi
+
+gdkglext-config.h: stamp-gdkglext-config.h
+	@if test -f gdkglext-config.h; then :; \
+	else rm -f stamp-gdkglext-config.h; $(MAKE) stamp-gdkglext-config.h; fi
+
+stamp-gdkglext-config.h: ../config.status
+	cd .. && CONFIG_FILES= CONFIG_HEADERS= CONFIG_OTHER=gdk/gdkglext-config.h ./config.status
+	echo timestamp > stamp-gdkglext-config.h
 
 #
 # Extra rules

@@ -36,6 +36,7 @@ IGNORE_HFILES = \
 	GL			\
 	x11			\
 	win32			\
+	gdkglext-config.h	\
 	gdkgltemplate.h		\
 	gdkglprivate.h		\
 	gdkgldebug.h		\

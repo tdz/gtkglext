@@ -18,14 +18,14 @@
 
 #include <string.h>
 
-#ifdef GDK_MULTIHEAD_SAFE
-#include <gdk/gdkscreen.h>
-#endif /* GDK_MULTIHEAD_SAFE */
-
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
 #include "gdkgloverlay-x11.h"
 #include "gdkglconfig-x11.h"
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+#include <gdk/gdkscreen.h>
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 #include <X11/Xatom.h>  /* for XA_RGB_DEFAULT_MAP atom */
 #if defined(__vms)
@@ -41,11 +41,11 @@ enum {
 
 /* Forward declarations */
 
-#ifdef _GDK_HAS_COLORMAP_FOREIGN_NEW
+#ifdef __GDK_HAS_COLORMAP_FOREIGN_NEW
 static GdkColormap *gdk_gl_config_get_std_rgb_colormap  (GdkScreen               *screen,
                                                          XVisualInfo             *xvinfo,
                                                          gboolean                 is_mesa_glx);
-#endif /* _GDK_HAS_COLORMAP_FOREIGN_NEW */
+#endif /* __GDK_HAS_COLORMAP_FOREIGN_NEW */
 static GdkColormap *gdk_gl_config_setup_colormap        (GdkScreen               *screen,
                                                          XVisualInfo             *xvinfo,
                                                          gboolean                 is_rgba,
@@ -167,7 +167,7 @@ gdk_gl_config_impl_x11_constructor (GType                  type,
  * Get standard RGB colormap
  */
 
-#ifdef _GDK_HAS_COLORMAP_FOREIGN_NEW
+#ifdef __GDK_HAS_COLORMAP_FOREIGN_NEW
 
 static GdkColormap *
 gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
@@ -285,13 +285,13 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
   return NULL;
 }
 
-#endif /* _GDK_HAS_COLORMAP_FOREIGN_NEW */
+#endif /* __GDK_HAS_COLORMAP_FOREIGN_NEW */
 
 /* 
  * Setup colormap.
  */
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 static GdkColormap *
 gdk_gl_config_setup_colormap (GdkScreen   *screen,
@@ -325,11 +325,11 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
       /* Try standard RGB colormap. */
 
-#ifdef _GDK_HAS_COLORMAP_FOREIGN_NEW
+#ifdef __GDK_HAS_COLORMAP_FOREIGN_NEW
       colormap = gdk_gl_config_get_std_rgb_colormap (screen, xvinfo, is_mesa_glx);
       if (colormap)
         return colormap;
-#endif /* _GDK_HAS_COLORMAP_FOREIGN_NEW */
+#endif /* __GDK_HAS_COLORMAP_FOREIGN_NEW */
 
       /* New colormap. */
 
@@ -389,7 +389,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
   return NULL;
 }
 
-#else  /* GDK_MULTIHEAD_SAFE */
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 static GdkColormap *
 gdk_gl_config_setup_colormap (GdkScreen   *screen,
@@ -481,7 +481,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
   return NULL;
 }
 
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /* 
  * Configure OpenGL frame buffer
@@ -499,13 +499,13 @@ gdk_gl_config_fb_configuration (GdkGLConfigImplX11 *impl,
 
   g_return_if_fail (attrib_list != NULL);
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   impl->xdisplay = GDK_SCREEN_XDISPLAY (glconfig->screen);
   impl->screen_num = GDK_SCREEN_XNUMBER (glconfig->screen);
-#else  /* GDK_MULTIHEAD_SAFE */
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   impl->xdisplay = gdk_x11_get_default_xdisplay ();
   impl->screen_num = gdk_x11_get_default_screen ();
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   GDK_GL_NOTE (MISC,
                g_message (" -- GLX_VENDOR     : %s",
@@ -695,17 +695,17 @@ gdk_gl_config_new (const int *attrib_list)
    * Instanciate the GdkGLConfigImplX11 object.
    */
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11,
                            "screen",      gdk_screen_get_default (),
                            "attrib_list", attrib_list,
                            NULL);
-#else  /* GDK_MULTIHEAD_SAFE */
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_X11,
                            "screen",      NULL,
                            "attrib_list", attrib_list,
                            NULL);
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
 
@@ -718,7 +718,7 @@ gdk_gl_config_new (const int *attrib_list)
   return glconfig;
 }
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
@@ -748,7 +748,7 @@ gdk_gl_config_new_for_screen (GdkScreen *screen,
   return glconfig;
 }
 
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /**
  * gdk_x11_gl_config_get_xdisplay:

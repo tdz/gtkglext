@@ -44,6 +44,7 @@ GdkGLConfig
 gdk_gl_config_new
 gdk_gl_config_new_for_screen
 gdk_gl_config_new_by_mode
+gdk_gl_config_new_by_mode_for_screen
 gdk_gl_config_get_screen
 gdk_gl_config_get_attrib
 gdk_gl_config_get_colormap

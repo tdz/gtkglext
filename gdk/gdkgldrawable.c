@@ -17,6 +17,7 @@
  */
 
 #include <gdk/gdkdrawable.h>
+
 #include "gdkglprivate.h"
 #include "gdkglcontext.h"
 #include "gdkgldrawable.h"

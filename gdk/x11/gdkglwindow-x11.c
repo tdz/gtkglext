@@ -16,6 +16,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#include <string.h>
+
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
 #include "gdkglconfig-x11.h"
@@ -23,8 +25,6 @@
 #include "gdkglwindow-x11.h"
 
 #include <gdk/gdkglquery.h>
-
-#include <string.h>
 
 /* Forward declarations */
 static gboolean gdk_x11_gl_window_make_context_current (GdkGLDrawable           *draw,
@@ -206,11 +206,11 @@ gdk_x11_gl_window_make_context_current (GdkGLDrawable *draw,
       glxcontext == glXGetCurrentContext ())
     return TRUE;
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   GDK_GL_NOTE (MISC,
     g_message (" -- Window: screen number = %d",
       GDK_SCREEN_XNUMBER (gdk_drawable_get_screen (GDK_DRAWABLE(draw)))));
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
   GDK_GL_NOTE (MISC,
     g_message (" -- Window: visual id = 0x%lx",
       GDK_VISUAL_XVISUAL (gdk_drawable_get_visual (GDK_DRAWABLE(draw)))->visualid));

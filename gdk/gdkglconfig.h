@@ -87,44 +87,47 @@ struct _GdkGLConfigClass
                           int         *value);
 };
 
-GType        gdk_gl_config_get_type           (void);
+GType        gdk_gl_config_get_type               (void);
 
-GdkGLConfig *gdk_gl_config_new                (const int       *attrib_list);
-
-#ifdef GDK_MULTIHEAD_SAFE
-GdkGLConfig *gdk_gl_config_new_for_screen     (GdkScreen       *screen,
-                                               const int       *attrib_list);
+#ifndef GDK_MULTIHEAD_SAFE
+GdkGLConfig *gdk_gl_config_new                    (const int       *attrib_list);
 #endif /* GDK_MULTIHEAD_SAFE */
 
-GdkGLConfig *gdk_gl_config_new_by_mode        (GdkGLConfigMode  mode);
+GdkGLConfig *gdk_gl_config_new_for_screen         (GdkScreen       *screen,
+                                                   const int       *attrib_list);
 
-#ifdef GDK_MULTIHEAD_SAFE
-GdkScreen   *gdk_gl_config_get_screen         (GdkGLConfig     *glconfig);
+#ifndef GDK_MULTIHEAD_SAFE
+GdkGLConfig *gdk_gl_config_new_by_mode            (GdkGLConfigMode  mode);
 #endif /* GDK_MULTIHEAD_SAFE */
 
-gboolean     gdk_gl_config_get_attrib         (GdkGLConfig     *glconfig,
-                                               int              attribute,
-                                               int             *value);
+GdkGLConfig *gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
+                                                   GdkGLConfigMode  mode);
 
-GdkColormap *gdk_gl_config_get_colormap       (GdkGLConfig     *glconfig);
+GdkScreen   *gdk_gl_config_get_screen             (GdkGLConfig     *glconfig);
 
-GdkVisual   *gdk_gl_config_get_visual         (GdkGLConfig     *glconfig);
+gboolean     gdk_gl_config_get_attrib             (GdkGLConfig     *glconfig,
+                                                   int              attribute,
+                                                   int             *value);
 
-gint         gdk_gl_config_get_depth          (GdkGLConfig     *glconfig);
+GdkColormap *gdk_gl_config_get_colormap           (GdkGLConfig     *glconfig);
 
-gboolean     gdk_gl_config_is_rgba            (GdkGLConfig     *glconfig);
+GdkVisual   *gdk_gl_config_get_visual             (GdkGLConfig     *glconfig);
 
-gboolean     gdk_gl_config_is_double_buffered (GdkGLConfig     *glconfig);
+gint         gdk_gl_config_get_depth              (GdkGLConfig     *glconfig);
 
-gboolean     gdk_gl_config_is_stereo          (GdkGLConfig     *glconfig);
+gboolean     gdk_gl_config_is_rgba                (GdkGLConfig     *glconfig);
 
-gboolean     gdk_gl_config_has_alpha          (GdkGLConfig     *glconfig);
+gboolean     gdk_gl_config_is_double_buffered     (GdkGLConfig     *glconfig);
 
-gboolean     gdk_gl_config_has_depth_buffer   (GdkGLConfig     *glconfig);
+gboolean     gdk_gl_config_is_stereo              (GdkGLConfig     *glconfig);
 
-gboolean     gdk_gl_config_has_stencil_buffer (GdkGLConfig     *glconfig);
+gboolean     gdk_gl_config_has_alpha              (GdkGLConfig     *glconfig);
 
-gboolean     gdk_gl_config_has_accum_buffer   (GdkGLConfig     *glconfig);
+gboolean     gdk_gl_config_has_depth_buffer       (GdkGLConfig     *glconfig);
+
+gboolean     gdk_gl_config_has_stencil_buffer     (GdkGLConfig     *glconfig);
+
+gboolean     gdk_gl_config_has_accum_buffer       (GdkGLConfig     *glconfig);
 
 G_END_DECLS
 

@@ -19,6 +19,7 @@
 #ifndef __GDK_GL_PRIVATE_H__
 #define __GDK_GL_PRIVATE_H__
 
+#include <gdk/gdkgldefs.h>
 #include <gdk/gdkgldebug.h>
 #include <gdk/gdkgltokens.h>
 #include <gdk/gdkgltypes.h>

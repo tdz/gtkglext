@@ -16,13 +16,13 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifdef GDK_MULTIHEAD_SAFE
-#include <gdk/gdkscreen.h>
-#endif /* GDK_MULTIHEAD_SAFE */
-
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglconfig-win32.h"
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+#include <gdk/gdkscreen.h>
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 enum {
   PROP_0,
@@ -488,17 +488,17 @@ gdk_gl_config_new (const int *attrib_list)
    * Instanciate the GdkGLConfigImplWin32 object.
    */
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
                            "screen",      gdk_screen_get_default (),
                            "attrib_list", attrib_list,
                            NULL);
-#else  /* GDK_MULTIHEAD_SAFE */
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
   glconfig = g_object_new (GDK_TYPE_GL_CONFIG_IMPL_WIN32,
                            "screen",      NULL,
                            "attrib_list", attrib_list,
                            NULL);
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   impl = GDK_GL_CONFIG_IMPL_WIN32 (glconfig);
 
@@ -511,7 +511,7 @@ gdk_gl_config_new (const int *attrib_list)
   return glconfig;
 }
 
-#ifdef GDK_MULTIHEAD_SAFE
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
@@ -543,7 +543,7 @@ gdk_gl_config_new_for_screen (GdkScreen *screen,
   return glconfig;
 }
 
-#endif /* GDK_MULTIHEAD_SAFE */
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 PIXELFORMATDESCRIPTOR *
 gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)

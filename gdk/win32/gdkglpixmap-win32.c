@@ -16,14 +16,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-/* For direct access to GDK objects' internal data. */
-#include "gdkinternal-win32.h"
-
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglconfig-win32.h"
 #include "gdkglcontext-win32.h"
 #include "gdkglpixmap-win32.h"
+
+/* For direct access to GDK objects' internal data. */
+#include "gdkinternal-win32.h"
 
 /* Forward declarations */
 static void     gdk_gl_pixmap_sync_gl  (GdkGLPixmap *glpixmap);

@@ -1,6 +1,6 @@
-61% symbol docs coverage.
+60% symbol docs coverage.
 71 symbols documented.
-46 not documented.
+47 not documented.
 
 
 GDKGLEXT_BINARY_AGE
@@ -35,6 +35,7 @@ GdkGLSuccess
 GdkGLVisualConfigAttribute
 GdkGLWindow
 gdk_gl_config_get_screen
+gdk_gl_config_new_by_mode_for_screen
 gdk_gl_config_new_for_screen
 gdk_gl_font_use_pango_font_for_display
 gdk_gl_query_extension_for_display
