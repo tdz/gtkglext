@@ -1,0 +1,188 @@
+# -*- Makefile -*-
+#
+# Sample makefile for GtkGLExt example programs
+#   Naofumi Yasufuku <naofumi@users.sourceforge.net>
+#
+
+# -------------------------------------------------------------------------
+# NMAKE Options
+#
+# Use the table below to determine the additional options for NMAKE to
+# generate various application debugging, profiling and performance tuning
+# information.
+#
+# Application Information Type         Invoke NMAKE
+# ----------------------------         ------------
+# For No Debugging Info                nmake nodebug=1
+# For Working Set Tuner Info           nmake tune=1
+# For Call Attributed Profiling Info   nmake profile=1
+#
+# Note: The three options above are mutually exclusive (you may use only
+#       one to compile/link the application).
+#
+# Note: creating the environment variables NODEBUG, TUNE, and PROFILE is an
+#       alternate method to setting these options via the nmake command line.
+#
+
+# Some nmake macros for Win32 apps development
+TARGETOS = BOTH
+#NODEBUG = 1
+
+!include <WIN32.MAK>
+
+# pkg-config --msvc-syntax --cflags gtkglext-1.0
+INCLUDES = -Ie:/gtk/v2.1/include/gtk-2.0 -Ie:/gtk/v2.1/lib/gtk-2.0/include -Ie:/gtk/v2.1/include/pango-1.0 -Ie:/gtk/v2.1/include/glib-2.0 -Ie:/gtk/v2.1/lib/glib-2.0/include -Ie:/gnuwin32/include -Ie:/gtk/v2.1/include/atk-1.0 -Ic:/gtkglext/include/gtkglext-1.0 -Ic:/gtkglext/lib/gtkglext-1.0/include  
+
+# pkg-config --msvc-syntax --libs gtkglext-1.0
+LIBS = /libpath:e:/gtk/v2.1/lib /libpath:e:/gnuwin32/lib /libpath:c:/gtkglext/lib gtkglext-win32-1.0.lib gdkglext-win32-1.0.lib glu32.lib opengl32.lib gtk-win32-2.0.lib gdk-win32-2.0.lib atk-1.0.lib gdk_pixbuf-2.0.lib pangowin32-1.0.lib gdi32.lib pango-1.0.lib gobject-2.0.lib gmodule-2.0.lib glib-2.0.lib intl.lib iconv.lib  
+
+DEFINES = 
+
+# debug flags (from win32.mak)
+!IFDEF NODEBUG
+CDEBUG = -Ox
+!ELSE
+!IFDEF PROFILE
+CDEBUG = -Gh -Zd -Ox
+!ELSE
+!IFDEF TUNE
+CDEBUG = -Gh -Zd -Ox
+!ELSE
+CDEBUG = -Zi -Od
+!ENDIF
+!ENDIF
+!ENDIF
+
+# warning control
+WARNING = -wd4244 -wd4305
+
+# options for cl.exe
+#CFLAGS = $(cflags) $(cvars) $(cdebug) $(WARNING) $(INCLUDES) $(DEFINES)
+CFLAGS = $(cflags) $(cvars) $(CDEBUG) $(WARNING) $(INCLUDES) $(DEFINES)
+
+EXEEXT = .exe
+
+HEADERS = \
+	trackball.h		\
+	logo-model.h		\
+	readtex.h		\
+	lw.h
+
+SOURCES = \
+	low-level.c		\
+	simple.c		\
+	simple-mixed.c		\
+	pixmap.c		\
+	pixmap-mixed.c		\
+	color.c			\
+	font.c			\
+	trackball.c		\
+	shapes.c		\
+	logo-model.c		\
+	logo.c			\
+	gears.c			\
+	readtex.c		\
+	multiarb.c		\
+	viewlw.c		\
+	lw.c			\
+	rotating-square.c	\
+	coolwave.c		\
+	template.c
+
+EXTRA_SOURCES = \
+	logo-g.c		\
+	logo-t.c		\
+	logo-k.c
+
+OBJECTS = $(SOURCES:.c=.obj)
+
+PROGRAMS = \
+	low-level$(EXEEXT)		\
+	simple$(EXEEXT)			\
+	simple-mixed$(EXEEXT)		\
+	pixmap$(EXEEXT)			\
+	pixmap-mixed$(EXEEXT)		\
+	color$(EXEEXT)			\
+	font$(EXEEXT)			\
+	shapes$(EXEEXT)			\
+	logo$(EXEEXT)			\
+	gears$(EXEEXT)			\
+	multiarb$(EXEEXT)		\
+	viewlw$(EXEEXT)			\
+	rotating-square$(EXEEXT)	\
+	coolwave$(EXEEXT)		\
+	template$(EXEEXT)
+
+.SUFFIXES:
+.SUFFIXES: .c .obj
+
+all: $(PROGRAMS)
+
+#
+# Compile command
+#
+
+.c.obj:
+	$(cc) $(CFLAGS) $<
+
+#
+# Building executables
+#
+
+low-level$(EXEEXT): low-level.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+simple$(EXEEXT): simple.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+simple-mixed$(EXEEXT): simple-mixed.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+pixmap$(EXEEXT): pixmap.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+pixmap-mixed$(EXEEXT): pixmap-mixed.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+color$(EXEEXT): color.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+font$(EXEEXT): font.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+shapes$(EXEEXT): trackball.obj shapes.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+logo$(EXEEXT): trackball.obj logo-model.obj logo.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+gears$(EXEEXT): gears.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+multiarb$(EXEEXT): readtex.obj multiarb.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+viewlw$(EXEEXT): trackball.obj lw.obj viewlw.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+rotating-square$(EXEEXT): rotating-square.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+coolwave$(EXEEXT): coolwave.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+template$(EXEEXT): template.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+#
+# Other targets
+#
+
+clean:
+	-del $(PROGRAMS)
+	-del *.obj
+	-del *.pdb
+	-del *.ilk
+
+distclean: clean
+	-del *~
