@@ -132,5 +132,5 @@ files:
 	  done; \
 	done
 
-EXTRA_DIST = 
-
+EXTRA_DIST = \
+	gdkglext.def
