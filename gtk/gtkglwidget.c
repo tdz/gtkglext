@@ -353,9 +353,9 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    * window resizing request streams.
    */
 
-  g_signal_connect_after (G_OBJECT (widget), "size_allocate",
-                          G_CALLBACK (gtk_gl_widget_size_allocate),
-                          private);
+  g_signal_connect (G_OBJECT (widget), "size_allocate",
+                    G_CALLBACK (gtk_gl_widget_size_allocate),
+                    private);
 
   return TRUE;
 }
