@@ -8,9 +8,9 @@ OpenGL frame buffer configurations.
 <para>
 Under #GdkGLConfig there is a set of functions which allows to
 configure the framebuffer, i.e, all those things we have to define
-before anything is drawn. In order to get this sorted, a GdkGLConfig
-struct is arranged. This GdkGLconfig is created with gdk_gl_config_new
-and is afterwards used in gtk_widget_set_gl_capability.
+before anything is drawn. In order to get this sorted, a #GdkGLConfig
+struct is arranged. This #GdkGLconfig is created with #gdk_gl_config_new
+and is afterwards used in #gtk_widget_set_gl_capability.
 </para>
 
 <!-- ##### SECTION See_Also ##### -->
@@ -34,7 +34,7 @@ and GDK_GL_ACCUM_ALPHA_SIZE.
 </para>
 
 @attrib_list: an array of gint containing values for frame buffer configuration.It must end with GDK_GL_ATTRIB_LIST_NONE.
-@Returns: 
+@Returns: A pointer to the newly allocated struct.
 
 
 <!-- ##### FUNCTION gdk_gl_config_new_for_screen ##### -->
@@ -49,57 +49,56 @@ and GDK_GL_ACCUM_ALPHA_SIZE.
 
 <!-- ##### FUNCTION gdk_gl_config_get_screen ##### -->
 <para>
-
 </para>
 
-@glconfig: 
-@Returns: 
+@glconfig: The #GdkGLConfig
+@Returns: The pointer to the #GdkScreen struct.
 
 
 <!-- ##### FUNCTION gdk_gl_config_get_attrib ##### -->
 <para>
-
+Returns the value one of the attributes which can be specified in #gdk_gl_config_new.
 </para>
 
-@glconfig: 
-@attribute: 
-@value: 
-@Returns: 
+@glconfig: The #GdkGLConfig
+@attribute: Attribute to check for. Possibilities are listed in #gdk_gl_config_new
+@value: in fact is a return value, here will be the value for the attribute
+@Returns: GDK_GL_SUCCESS on success, error code otherwise.
 
 
 <!-- ##### FUNCTION gdk_gl_config_get_colormap ##### -->
 <para>
-
+Useful to get the appropiate colormap (GdkColormap) for the OpenGL framebuffer.
 </para>
 
-@glconfig: 
-@Returns: 
+@glconfig: a #GdkGLConfig struct to check for its colormap
+@Returns: The appropiate GdkColormap
 
 
 <!-- ##### FUNCTION gdk_gl_config_get_depth ##### -->
 <para>
-
+Color depth is a somehow confusing term. It is defined as the amount of bits per pixel used to define a color. It is confusing because in some environments is expressed as the amount of bits used to define each of the components (RGBA) of the color. Here it will be named as the total amount of bits required to define the whole color. 
 </para>
 
-@glconfig: 
-@Returns: 
+@glconfig: The #GdkGLConfig to check for color depth.
+@Returns: The amounts of bits required to define RGBA components of a color.
 
 
 <!-- ##### FUNCTION gdk_gl_config_is_double_buffered ##### -->
 <para>
-
+Checks for double buffering use in the #GdkGLConfig struct. Double buffering is a technique use to avoid drawing directly in the viewable area. With double buffering, all entities drawn with OpenGL are stored in an invisible buffer. This buffer is then replaced by the frame buffer. Using Double-buffering, a big amount of memory is used to mantain this buffer, but quality is highly improved. Use #gdk_drawable_swap_buffers to swap buffers when drawing is complete.
 </para>
 
-@glconfig: 
-@Returns: 
+@glconfig: The #GdkGLConfig to check for Double-buffering
+@Returns: TRUE if Double_buffered, FALSE otherwise.
 
 
 <!-- ##### FUNCTION gdk_gl_config_is_stereo ##### -->
 <para>
-
+Stereo Viewing deals with all techniques used to give 3D capabilities to a view, as for example are all kind of 3D and VR glasses. Generating 3D vision is a matter only of generating two views of the same scene, one for each eye. OpenGL does not support any specific hardware, but has the underlying support for using it. This function check for stereo support in a #GdkGLConfig struct.
 </para>
 
-@glconfig: 
-@Returns: 
+@glconfig: The #GdkGLConfig struct to check for stereo capabilities.
+@Returns: TRUE if stereo is supported, FALSE otherwise.
 
 
