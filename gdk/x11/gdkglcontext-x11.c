@@ -306,8 +306,6 @@ gdk_gl_context_insert (GdkGLContext *glcontext)
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_insert ()"));
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
-
   if (!gl_context_ht)
     gl_context_ht = g_hash_table_new ((GHashFunc) gdk_gl_context_hash,
                                       (GEqualFunc) gdk_gl_context_equal);
@@ -323,8 +321,6 @@ gdk_gl_context_remove (GdkGLContext *glcontext)
   GdkGLContextImplX11 *impl;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_remove ()"));
-
-  g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
 
   if (!gl_context_ht)
     gl_context_ht = g_hash_table_new ((GHashFunc) gdk_gl_context_hash,

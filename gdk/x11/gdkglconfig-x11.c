@@ -329,7 +329,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
       /* New colormap. */
 
-      GDK_GL_NOTE (MISC, g_message (" -- colormap: new non-private"));
+      GDK_GL_NOTE (MISC, g_message (" -- colormap: new"));
 
       visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
       colormap = gdk_colormap_new (visual, FALSE);
@@ -340,7 +340,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
     {
       /* For color index mode. */
 
-      GDK_GL_NOTE (MISC, g_message (" -- colormap: new private"));
+      GDK_GL_NOTE (MISC, g_message (" -- colormap: new allocated writable"));
 
       visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
       colormap = gdk_colormap_new (visual, TRUE);
@@ -383,7 +383,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
       /* New colormap. */
 
-      GDK_GL_NOTE (MISC, g_message (" -- colormap: new non-private"));
+      GDK_GL_NOTE (MISC, g_message (" -- colormap: new"));
 
       visual = gdkx_visual_get (xvinfo->visualid);
       colormap = gdk_colormap_new (visual, FALSE);
@@ -394,7 +394,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
     {
       /* For color index mode. */
 
-      GDK_GL_NOTE (MISC, g_message (" -- colormap: new private"));
+      GDK_GL_NOTE (MISC, g_message (" -- colormap: new allocated writable"));
 
       visual = gdkx_visual_get (xvinfo->visualid);
       colormap = gdk_colormap_new (visual, TRUE);
