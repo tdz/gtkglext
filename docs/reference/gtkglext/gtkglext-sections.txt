@@ -45,7 +45,6 @@ gdk_gl_query_get_proc_address
 
 <SECTION>
 <FILE>gdkglconfig</FILE>
-<TITLE>GdkGLConfig</TITLE>
 GdkGLConfigMode
 GdkGLConfig
 gdk_gl_config_new
@@ -78,7 +77,6 @@ GDK_GL_CONFIG_GET_CLASS
 
 <SECTION>
 <FILE>gdkglcontext</FILE>
-<TITLE>GdkGLContext</TITLE>
 GdkGLContext
 gdk_gl_context_new
 gdk_gl_context_copy
@@ -101,7 +99,6 @@ GDK_GL_CONTEXT_GET_CLASS
 
 <SECTION>
 <FILE>gdkgldrawable</FILE>
-<TITLE>GdkGLDrawable</TITLE>
 GdkGLDrawable
 gdk_gl_drawable_make_current
 gdk_gl_drawable_is_double_buffered
@@ -125,7 +122,6 @@ GDK_GL_DRAWABLE_GET_CLASS
 
 <SECTION>
 <FILE>gdkglpixmap</FILE>
-<TITLE>GdkGLPixmap</TITLE>
 GdkGLPixmap
 gdk_gl_pixmap_new
 gdk_gl_pixmap_get_pixmap
@@ -146,7 +142,6 @@ GDK_GL_PIXMAP_GET_CLASS
 
 <SECTION>
 <FILE>gdkglwindow</FILE>
-<TITLE>GdkGLWindow</TITLE>
 GdkGLWindow
 gdk_gl_window_new
 gdk_gl_window_get_window

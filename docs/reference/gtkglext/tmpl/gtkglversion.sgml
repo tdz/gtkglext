@@ -1,8 +1,8 @@
 <!-- ##### SECTION Title ##### -->
-gtkglversion
+Version Information
 
 <!-- ##### SECTION Short_Description ##### -->
-
+Variables and macros to check the GtkGLExt version
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
