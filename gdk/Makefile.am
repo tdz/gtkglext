@@ -201,7 +201,7 @@ gdkglext-config.h: stamp-gdkglext-config-h
 	else rm -f stamp-gdkglext-config-h; $(MAKE) stamp-gdkglext-config-h; fi
 
 stamp-gdkglext-config-h: ../config.status
-	cd .. && CONFIG_FILES= CONFIG_HEADERS= CONFIG_OTHER=gdk/gdkglext-config.h ./config.status
+	cd .. && ./config.status gdk/gdkglext-config.h
 	echo timestamp > stamp-gdkglext-config-h
 
 DISTCLEANFILES = gdkglext-config.h stamp-gdkglext-config-h

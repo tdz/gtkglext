@@ -1,48 +1,104 @@
 # required autoconf version
 AC_PREREQ(2.54)
 
-# Process this file with autoconf to produce a configure script.
-AC_INIT(gdk/gdkgl.h)
-
-## Versions of dependencies
-
-GLIB_PKG=glib-2.0
-GLIB_REQUIRED_VERSION=2.0.0
-
-GOBJECT_PKG=gobject-2.0
-GOBJECT_REQUIRED_VERSION=2.0.0
-
-GMODULE_PKG=gmodule-2.0
-GMODULE_REQUIRED_VERSION=2.0.0
-
-PANGO_PKG=pango
-PANGO_REQUIRED_VERSION=1.0.0
-
-GDK_PKG=gdk-2.0
-GDK_REQUIRED_VERSION=2.0.0
-
-GTK_PKG=gtk+-2.0
-GTK_REQUIRED_VERSION=2.0.0
-
 #
 # Making releases:
-#   GTKGLEXT_MICRO_VERSION += 1;
-#   GTKGLEXT_INTERFACE_AGE += 1;
-#   GTKGLEXT_BINARY_AGE += 1;
-# if any functions have been added, set GTKGLEXT_INTERFACE_AGE to 0.
+#   gtkglext_micro_version += 1;
+#   gtkglext_interface_age += 1;
+#   gtkglext_binary_age += 1;
+# if any functions have been added, set gtkglext_interface_age to 0.
 # if backwards compatibility has been broken,
-# set GTKGLEXT_BINARY_AGE and GTKGLEXT_INTERFACE_AGE to 0.
+# set gtkglext_binary_age and gtkglext_interface_age to 0.
 #
-GTKGLEXT_MAJOR_VERSION=0
-GTKGLEXT_MINOR_VERSION=7
-GTKGLEXT_MICRO_VERSION=1
-GTKGLEXT_INTERFACE_AGE=1
-GTKGLEXT_BINARY_AGE=1
-GTKGLEXT_VERSION=$GTKGLEXT_MAJOR_VERSION.$GTKGLEXT_MINOR_VERSION.$GTKGLEXT_MICRO_VERSION
-dnl This is the X.Y used in -lgtkglext-FOO-X.Y
-GTKGLEXT_API_MAJOR_VERSION=1
-GTKGLEXT_API_MINOR_VERSION=0
-GTKGLEXT_API_VERSION=$GTKGLEXT_API_MAJOR_VERSION.$GTKGLEXT_API_MINOR_VERSION
+m4_define([gtkglext_major_version], [0])
+m4_define([gtkglext_minor_version], [7])
+m4_define([gtkglext_micro_version], [1])
+m4_define([gtkglext_interface_age], [1])
+m4_define([gtkglext_binary_age],    [1])
+m4_define([gtkglext_version],
+          [gtkglext_major_version.gtkglext_minor_version.gtkglext_micro_version])
+
+# This is the X.Y used in -lgtkglext-FOO-X.Y
+m4_define([gtkglext_api_major_version], [1])
+m4_define([gtkglext_api_minor_version], [0])
+m4_define([gtkglext_api_version],
+          [gtkglext_api_major_version.gtkglext_api_minor_version])
+
+# libtool version related macros
+m4_define([gtkglext_lt_release],
+          [gtkglext_major_version.gtkglext_minor_version])
+m4_define([gtkglext_lt_current],
+          [m4_eval(gtkglext_micro_version - gtkglext_interface_age)])
+m4_define([gtkglext_lt_revision],
+          [gtkglext_interface_age])
+m4_define([gtkglext_lt_age],
+          [m4_eval(gtkglext_binary_age - gtkglext_interface_age)])
+m4_define([gtkglext_lt_current_minus_age],
+          [m4_eval(gtkglext_lt_current - gtkglext_lt_age)])
+
+# if the minor version number is odd, then we want debugging.  Otherwise
+# we only want minimal debugging support.
+#m4_define([gtkglext_debug_default],
+#          [m4_if(m4_eval(gtkglext_minor_version % 2), [1], [yes], [minimum])])dnl
+
+# Versions of dependencies
+
+# Glib
+m4_define([glib_pkg], [glib-2.0])
+m4_define([glib_required_version], [2.0.0])
+
+# GObject
+m4_define([gobject_pkg], [gobject-2.0])
+m4_define([gobject_required_version], [2.0.0])
+
+# GModule
+m4_define([gmodule_pkg], [gmodule-2.0])
+m4_define([gmodule_required_version], [2.0.0])
+
+# Pango
+m4_define([pango_pkg], [pango])
+m4_define([pango_required_version], [1.0.0])
+
+# GDK
+m4_define([gdk_pkg], [gdk-2.0])
+m4_define([gdk_required_version], [2.0.0])
+
+# GTK+
+m4_define([gtk_pkg], [gtk+-2.0])
+m4_define([gtk_required_version], [2.0.0])
+
+
+# Process this file with autoconf to produce a configure script.
+AC_INIT([gtkglext], [gtkglext_version],
+        [gtkglext-develop@lists.sourceforge.net])
+
+AC_CONFIG_SRCDIR([gdk/gdkgl.h])
+
+# Save this value here, since automake will set cflags later
+cflags_set=${CFLAGS+set}
+
+# Initialize automake stuff
+AM_INIT_AUTOMAKE([no-define])
+
+# Specify a configuration file
+AM_CONFIG_HEADER([config.h])
+
+dnl Initialize maintainer mode
+AM_MAINTAINER_MODE
+
+AC_CANONICAL_HOST
+
+# GtkGLExt version
+GTKGLEXT_MAJOR_VERSION=gtkglext_major_version
+GTKGLEXT_MINOR_VERSION=gtkglext_minor_version
+GTKGLEXT_MICRO_VERSION=gtkglext_micro_version
+GTKGLEXT_INTERFACE_AGE=gtkglext_interface_age
+GTKGLEXT_BINARY_AGE=gtkglext_binary_age
+GTKGLEXT_VERSION=gtkglext_version
+# This is the X.Y used in -lgtkglext-FOO-X.Y
+GTKGLEXT_API_MAJOR_VERSION=gtkglext_api_major_version
+GTKGLEXT_API_MINOR_VERSION=gtkglext_api_minor_version
+GTKGLEXT_API_VERSION=gtkglext_api_version
 API_MJ=$GTKGLEXT_API_MAJOR_VERSION
 API_MI=$GTKGLEXT_API_MINOR_VERSION
 AC_SUBST(GTKGLEXT_MAJOR_VERSION)
@@ -58,34 +114,16 @@ AC_SUBST(API_MJ)
 AC_SUBST(API_MI)
 
 # libtool versioning
-LT_RELEASE=$GTKGLEXT_MAJOR_VERSION.$GTKGLEXT_MINOR_VERSION
-LT_CURRENT=`expr $GTKGLEXT_MICRO_VERSION - $GTKGLEXT_INTERFACE_AGE`
-LT_REVISION=$GTKGLEXT_INTERFACE_AGE
-LT_AGE=`expr $GTKGLEXT_BINARY_AGE - $GTKGLEXT_INTERFACE_AGE`
-LT_CURRENT_MINUS_AGE=`expr $LT_CURRENT - $LT_AGE`
+LT_RELEASE=gtkglext_lt_release
+LT_CURRENT=gtkglext_lt_current
+LT_REVISION=gtkglext_lt_revision
+LT_AGE=gtkglext_lt_age
+LT_CURRENT_MINUS_AGE=gtkglext_lt_current_minus_age
 AC_SUBST(LT_RELEASE)
 AC_SUBST(LT_CURRENT)
 AC_SUBST(LT_REVISION)
 AC_SUBST(LT_AGE)
 AC_SUBST(LT_CURRENT_MINUS_AGE)
-
-# For automake.
-VERSION=$GTKGLEXT_VERSION
-PACKAGE=gtkglext
-
-# Save this value here, since automake will set cflags later
-cflags_set=${CFLAGS+set}
-
-dnl Initialize automake stuff
-AM_INIT_AUTOMAKE($PACKAGE, $VERSION, no-define)
-
-# Specify a configuration file
-AM_CONFIG_HEADER(config.h)
-
-dnl Initialize maintainer mode
-AM_MAINTAINER_MODE
-
-AC_CANONICAL_HOST
 
 dnl Initialize libtool
 AC_PROG_CC
@@ -279,18 +317,18 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 ## the version requirements since those make the module lists 
 ## annoying to construct
 PKG_CHECK_MODULES(BASE_DEPENDENCIES,
-$GTK_PKG >= $GTK_REQUIRED_VERSION \
-$GDK_PKG >= $GDK_REQUIRED_VERSION \
-$PANGO_PKG >= $PANGO_REQUIRED_VERSION \
-$GMODULE_PKG >= $GMODULE_REQUIRED_VERSION \
+gtk_pkg >= gtk_required_version \
+gdk_pkg >= gdk_required_version \
+pango_pkg >= pango_required_version \
+gmodule_pkg >= gmodule_required_version \
 )
 
 # Check for GLib
-AM_PATH_GLIB_2_0([$GLIB_REQUIRED_VERSION], ,
+AM_PATH_GLIB_2_0([glib_required_version], ,
                  [AC_MSG_ERROR([GLib 2.0 not found])])
 
 # Check for GTK+
-AM_PATH_GTK_2_0([$GTK_REQUIRED_VERSION], ,
+AM_PATH_GTK_2_0([gtk_required_version], ,
                 [AC_MSG_ERROR([GTK+ 2.0 not found])])
 
 # Checks for libraries.
@@ -700,7 +738,7 @@ LIBS="$save_LIBS"
 # CFLAGS and LIBS
 ##################################################
 
-GDKGLEXT_PACKAGES="$GDK_PKG $PANGO_PKG $GMODULE_PKG"
+GDKGLEXT_PACKAGES="gdk_pkg pango_pkg gmodule_pkg"
 GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS $GDKGLEXT_WIN_CFLAGS"
 GDKGLEXT_EXTRA_LIBS="$GL_LIBS $GDKGLEXT_WIN_LIBS"
 GDKGLEXT_DEP_CFLAGS="$GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES`"
@@ -711,7 +749,7 @@ AC_SUBST(GDKGLEXT_EXTRA_LIBS)
 AC_SUBST(GDKGLEXT_DEP_CFLAGS)
 AC_SUBST(GDKGLEXT_DEP_LIBS)
 
-GTKGLEXT_PACKAGES="$GTK_PKG"
+GTKGLEXT_PACKAGES="gtk_pkg"
 GTKGLEXT_EXTRA_CFLAGS=""
 GTKGLEXT_EXTRA_LIBS=""
 GTKGLEXT_DEP_CFLAGS="$GTKGLEXT_EXTRA_CFLAGS $GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES`"
@@ -786,30 +824,15 @@ AM_CONDITIONAL(HAVE_SGML2HTML, test x$SGML2HTML != xno)
 
 
 ##################################################
-# Output commands
+# Output configuration header
 ##################################################
 
-AC_OUTPUT_COMMANDS([
-
-## Generate `gdk/gdkglext-config.h' in two cases
-## 1. `config.status' is run either explicitly, or via configure.
-##     Esp. not when it is run in `Makefile' to generate makefiles and
-##     config.h
-## 2. CONFIG_OTHER is set explicitly
-##
-## Case 1 is difficult.  We know that `automake' sets one of
-## CONFIG_FILES or CONFIG_HEADERS to empty.  This heuristic works
-## only when AM_CONFIG_HEADER is set, however.
-
-if test -n "${CONFIG_FILES}" && test -n "${CONFIG_HEADERS}"; then
-  # Both CONFIG_FILES and CONFIG_HEADERS are non-empty ==> Case 1
-  CONFIG_OTHER=${CONFIG_OTHER:-gdk/gdkglext-config.h}
-fi
-case "$CONFIG_OTHER" in
-*gdk/gdkglext-config.h*)
-	echo creating gdk/gdkglext-config.h
-	outfile=gdkglext-config.h-tmp
-	cat > $outfile <<\_______EOF
+dnl this section will only be run if config.status is invoked with no
+dnl arguments, or with "gdk/gdkglext-config.h" as an argument.
+AC_CONFIG_COMMANDS([gdk/gdkglext-config.h],
+[
+  outfile=gdkglext-config.h-tmp
+  cat > $outfile <<\_______EOF
 /* gdkglext-config.h
  *
  * This is a generated file.  Please modify `configure.in'
@@ -854,13 +877,12 @@ _______EOF
 _______EOF
 
 
-	if cmp -s $outfile gdk/gdkglext-config.h; then
-	  echo gdk/gdkglext-config.h is unchanged
-	  rm -f $outfile
-	else
-	  mv $outfile gdk/gdkglext-config.h
-	fi ;;
-esac
+  if cmp -s $outfile gdk/gdkglext-config.h; then
+    AC_MSG_NOTICE([gdk/gdkglext-config.h is unchanged])
+    rm -f $outfile
+  else
+    mv $outfile gdk/gdkglext-config.h
+  fi
 
 ],[
 
@@ -901,17 +923,17 @@ fi
 
 
 ##################################################
-# Output
+# Config files
 ##################################################
 
-AC_OUTPUT([
-Makefile
+AC_CONFIG_FILES([
 gdkglext.pc
 gtkglext.pc
 gdkglext-uninstalled.pc
 gtkglext-uninstalled.pc
 gtkglext.spec
 gtkglext.nsi
+Makefile
 gdk/Makefile
 gdk/gdkglversion.h
 gdk/GL/Makefile
@@ -926,6 +948,8 @@ docs/reference/gtkglext/Makefile
 docs/reference/gtkglext/version.xml
 m4macros/Makefile
 ])
+
+AC_OUTPUT
 
 
 ##################################################

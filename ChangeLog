@@ -1,5 +1,11 @@
 2003-04-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/Makefile.am: Use './config.status gdk/gdkglext-config.h' to
+	update gdkglext-config.h.
+	
+	* configure.in: Modified to follow the latest autoconf's
+	configure.in style.
+
 	Now use new versions of GNU autotools.
 	
 	  - autoconf 2.54 or above
