@@ -1,5 +1,8 @@
 2003-07-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/GL/glxext-extra.h: Added extra NVIDIA extensions.
+	* gdk/GL/wglext-extra.h: Added extra I3D extensions.
+
 	* gdk/GL/list-ext.pl: 
 	* gdk/GL/Makefile.am (EXTRA_DIST): Added list-ext.pl script.
 

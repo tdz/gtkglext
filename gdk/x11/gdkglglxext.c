@@ -1765,3 +1765,69 @@ gdk_gl_get_GLX_OML_sync_control (GdkGLConfig *glconfig)
   return &_procs_GLX_OML_sync_control;
 }
 
+/*
+ * GLX_NV_vertex_array_range
+ */
+
+static GdkGL_GLX_NV_vertex_array_range _procs_GLX_NV_vertex_array_range = {
+  (GdkGLProc_glXAllocateMemoryNV) -1,
+  (GdkGLProc_glXFreeMemoryNV) -1
+};
+
+/* glXAllocateMemoryNV */
+GdkGLProc
+gdk_gl_get_glXAllocateMemoryNV (void)
+{
+  if (_procs_GLX_NV_vertex_array_range.glXAllocateMemoryNV == (GdkGLProc_glXAllocateMemoryNV) -1)
+    _procs_GLX_NV_vertex_array_range.glXAllocateMemoryNV =
+      (GdkGLProc_glXAllocateMemoryNV) gdk_gl_get_proc_address ("glXAllocateMemoryNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glXAllocateMemoryNV () - %s",
+               (_procs_GLX_NV_vertex_array_range.glXAllocateMemoryNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GLX_NV_vertex_array_range.glXAllocateMemoryNV);
+}
+
+/* glXFreeMemoryNV */
+GdkGLProc
+gdk_gl_get_glXFreeMemoryNV (void)
+{
+  if (_procs_GLX_NV_vertex_array_range.glXFreeMemoryNV == (GdkGLProc_glXFreeMemoryNV) -1)
+    _procs_GLX_NV_vertex_array_range.glXFreeMemoryNV =
+      (GdkGLProc_glXFreeMemoryNV) gdk_gl_get_proc_address ("glXFreeMemoryNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glXFreeMemoryNV () - %s",
+               (_procs_GLX_NV_vertex_array_range.glXFreeMemoryNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GLX_NV_vertex_array_range.glXFreeMemoryNV);
+}
+
+/* Get GLX_NV_vertex_array_range functions */
+GdkGL_GLX_NV_vertex_array_range *
+gdk_gl_get_GLX_NV_vertex_array_range (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (supported == -1)
+    {
+      supported = gdk_x11_gl_query_glx_extension (glconfig, "GLX_NV_vertex_array_range");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glXAllocateMemoryNV () != NULL);
+          supported &= (gdk_gl_get_glXFreeMemoryNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GLX_NV_vertex_array_range () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GLX_NV_vertex_array_range;
+}
+

@@ -831,6 +831,34 @@ struct _GdkGL_GLX_OML_sync_control
 
 GdkGL_GLX_OML_sync_control *gdk_gl_get_GLX_OML_sync_control (GdkGLConfig *glconfig);
 
+/*
+ * GLX_NV_vertex_array_range
+ */
+
+/* glXAllocateMemoryNV */
+typedef void * ( * GdkGLProc_glXAllocateMemoryNV) (GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
+GdkGLProc    gdk_gl_get_glXAllocateMemoryNV (void);
+#define      gdk_gl_glXAllocateMemoryNV(proc, size, readfreq, writefreq, priority) \
+  ( ((GdkGLProc_glXAllocateMemoryNV) (proc)) (size, readfreq, writefreq, priority) )
+
+/* glXFreeMemoryNV */
+typedef void ( * GdkGLProc_glXFreeMemoryNV) (void *pointer);
+GdkGLProc    gdk_gl_get_glXFreeMemoryNV (void);
+#define      gdk_gl_glXFreeMemoryNV(proc, pointer) \
+  ( ((GdkGLProc_glXFreeMemoryNV) (proc)) (pointer) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GLX_NV_vertex_array_range GdkGL_GLX_NV_vertex_array_range;
+
+struct _GdkGL_GLX_NV_vertex_array_range
+{
+  GdkGLProc_glXAllocateMemoryNV glXAllocateMemoryNV;
+  GdkGLProc_glXFreeMemoryNV glXFreeMemoryNV;
+};
+
+GdkGL_GLX_NV_vertex_array_range *gdk_gl_get_GLX_NV_vertex_array_range (GdkGLConfig *glconfig);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_GLXEXT_H__ */

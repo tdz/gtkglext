@@ -67,6 +67,16 @@ extern "C" {
 #define GLX_NV_float_buffer 1
 #endif
 
+#ifndef GLX_NV_vertex_array_range
+#define GLX_NV_vertex_array_range 1
+#ifdef GLX_GLXEXT_PROTOTYPES
+extern void *glXAllocateMemoryNV (GLsizei, GLfloat, GLfloat, GLfloat);
+extern void glXFreeMemoryNV (void *);
+#endif /* GLX_GLXEXT_PROTOTYPES */
+typedef void * ( * PFNGLXALLOCATEMEMORYNVPROC) (GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
+typedef void ( * PFNGLXFREEMEMORYNVPROC) (void *pointer);
+#endif
+
 /*
  * OML
  */
