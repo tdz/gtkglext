@@ -33,11 +33,11 @@
 #define Y 1
 #define Z 2
 
+#define DEFAULT_ROT_COUNT 300
+
 #define INITIAL_ROT_X 70.0
 #define INITIAL_ROT_Y 0.0
 #define INITIAL_ROT_Z 0.0
-
-#define DEFAULT_ROT_COUNT 300
 
 #define LOGO_CUBE       1
 #define LOGO_G_FORWARD  2
@@ -222,11 +222,13 @@ configure_event(GtkWidget         *widget,
   return TRUE;
 }
 
+static gboolean enable_anim = TRUE;
+
+static int rot_count = DEFAULT_ROT_COUNT;
+
 static GLfloat rot[3] = {
   INITIAL_ROT_X, INITIAL_ROT_Y, INITIAL_ROT_Z
 };
-
-static int rot_count = DEFAULT_ROT_COUNT;
 
 typedef struct _RotMode
 {
@@ -246,6 +248,10 @@ static RotMode rot_mode[] = {
   { -1,  0.0 }  /* terminator */
 };
 
+static int mode = 0;
+
+static int counter = 0;
+
 static gboolean
 expose_event(GtkWidget      *widget,
              GdkEventExpose *event,
@@ -254,18 +260,19 @@ expose_event(GtkWidget      *widget,
   GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
-  static int mode = 0;
-  static int counter = 0;
+  if (enable_anim) {
 
-  if (counter == rot_count) {
-    if (rot_mode[++mode].index < 0)
-      mode = 0;
-    counter = 0;
+    if (counter == rot_count) {
+      if (rot_mode[++mode].index < 0)
+        mode = 0;
+      counter = 0;
+    }
+
+    rot[rot_mode[mode].index] += rot_mode[mode].sign * 90.0 / rot_count;
+
+    counter++;
+
   }
-
-  rot[rot_mode[mode].index] += rot_mode[mode].sign * 90.0 / rot_count;
-
-  counter++;
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
@@ -300,16 +307,21 @@ expose_event(GtkWidget      *widget,
 
  NO_GL:
 
-  frames++;
+  if (enable_anim) {
 
-  {
-    gdouble seconds = g_timer_elapsed(timer, NULL);
-    if (seconds >= 5.0) {
-      gdouble fps = frames / seconds;
-      g_print("%d frames in %6.3f seconds = %6.3f FPS\n", frames, seconds, fps);
-      g_timer_reset(timer);
-      frames = 0;
+    frames++;
+
+    {
+      gdouble seconds = g_timer_elapsed(timer, NULL);
+      if (seconds >= 5.0) {
+        gdouble fps = frames / seconds;
+        g_print("%d frames in %6.3f seconds = %6.3f FPS\n",
+                frames, seconds, fps);
+        g_timer_reset(timer);
+        frames = 0;
+      }
     }
+
   }
 
   return TRUE;
@@ -325,16 +337,31 @@ idle(GtkWidget *widget)
 
 static guint idle_id = 0;
 
-static gboolean
-map_event(GtkWidget   *widget,
-          GdkEventAny *event,
-          gpointer     data)
+static void
+idle_add(GtkWidget *widget)
 {
   if (idle_id == 0) {
     idle_id = gtk_idle_add_priority(GDK_PRIORITY_REDRAW,
                                     (GtkFunction) idle,
                                     widget);
   }
+}
+
+static void
+idle_remove(GtkWidget *widget)
+{
+  if (idle_id != 0) {
+    gtk_idle_remove(idle_id);
+    idle_id = 0;
+  }
+}
+
+static gboolean
+map_event(GtkWidget   *widget,
+          GdkEventAny *event,
+          gpointer     data)
+{
+  idle_add(widget);
 
   return TRUE;
 }
@@ -344,10 +371,7 @@ unmap_event(GtkWidget   *widget,
             GdkEventAny *event,
             gpointer     data)
 {
-  if (idle_id != 0) {
-    gtk_idle_remove(idle_id);
-    idle_id = 0;
-  }
+  idle_remove(widget);
 
   return TRUE;
 }
@@ -357,20 +381,49 @@ visibility_notify_event(GtkWidget          *widget,
                         GdkEventVisibility *event,
                         gpointer            data)
 {
-  if (event->state == GDK_VISIBILITY_FULLY_OBSCURED) {
-    if (idle_id != 0) {
-      gtk_idle_remove(idle_id);
-      idle_id = 0;
-    }
-  } else {
-    if (idle_id == 0) {
-      idle_id = gtk_idle_add_priority(GDK_PRIORITY_REDRAW,
-                                      (GtkFunction) idle,
-                                      widget);
-    }
-  }
+  if (event->state == GDK_VISIBILITY_FULLY_OBSCURED)
+    idle_remove(widget);
+  else
+    idle_add(widget);
 
   return TRUE;
+}
+
+static void
+toggle_anim(GtkWidget *widget)
+{
+  enable_anim = enable_anim ? FALSE : TRUE;
+
+  if (enable_anim)
+    idle_add(widget);
+  else
+    idle_remove(widget);
+}
+
+static void
+init_rot(GtkWidget *widget)
+{
+  rot[X] = INITIAL_ROT_X;
+  rot[Y] = INITIAL_ROT_Y;
+  rot[Z] = INITIAL_ROT_Z;
+  mode = 0;
+  counter = 0;
+
+  gtk_widget_queue_draw(widget);
+}
+
+static gboolean
+button_press_event(GtkWidget      *widget,
+                   GdkEventButton *event,
+                   gpointer        data)
+{
+  if (event->button == 3) {
+    gtk_menu_popup(GTK_MENU(widget), NULL, NULL, NULL, NULL,
+                   event->button, event->time);
+    return TRUE;
+  }
+
+  return FALSE;
 }
 
 static gboolean
@@ -379,6 +432,12 @@ key_press_event(GtkWidget   *widget,
                 gpointer     data)
 {
   switch (event->keyval) {
+  case GDK_a:
+    toggle_anim(widget);
+    break;
+  case GDK_i:
+    init_rot(widget);
+    break;
   case GDK_z:
     rot[Z] += 5.0;
     break;
@@ -407,16 +466,6 @@ key_press_event(GtkWidget   *widget,
   gtk_widget_queue_draw(widget);
 
   return TRUE;
-}
-
-static gint
-quit(GtkWidget *widget,
-     GdkEvent  *event,
-     gpointer   data)
-{
-  gtk_main_quit();
-
-  return FALSE;
 }
 
 static void
@@ -489,8 +538,8 @@ main(int argc,
 
   GtkWidget *window;
   GtkWidget *vbox;
+  GtkWidget *menu, *menu_item;
   GtkWidget *drawing_area;
-  GtkWidget *button;
 
   int i;
   gboolean arg_count = FALSE;
@@ -511,12 +560,15 @@ main(int argc,
 
     if (strcmp(argv[i], "--help") == 0 ||
         strcmp(argv[i], "-h") == 0) {
-      g_print("Usage: %s [-count num] [--help]\n", argv[0]);
+      g_print("Usage: %s [-count num] [-noanim] [--help]\n", argv[0]);
       exit(0);
     }
 
     if (strcmp(argv[i], "-count") == 0)
       arg_count = TRUE;
+
+    if (strcmp(argv[i], "-noanim") == 0)
+      enable_anim = FALSE;
   }
 
   /*
@@ -563,7 +615,7 @@ main(int argc,
   gtk_window_set_title(GTK_WINDOW(window), "logo");
 
   g_signal_connect(G_OBJECT(window), "delete_event",
-                   G_CALLBACK(quit), NULL);
+                   G_CALLBACK(gtk_main_quit), NULL);
   g_signal_connect(G_OBJECT(window), "key_press_event",
                    G_CALLBACK(key_press_event), NULL);  
 
@@ -608,16 +660,35 @@ main(int argc,
   gtk_widget_show(drawing_area);
 
   /*
-   * Simple quit button.
+   * Popup menu.
    */
 
-  button = gtk_button_new_with_label("Quit");
-  gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+  menu = gtk_menu_new();
 
-  g_signal_connect(G_OBJECT(button), "clicked",
-                   G_CALLBACK(quit), NULL);
+  /* Toggle animation */
+  menu_item = gtk_menu_item_new_with_label("Toggle Animation");
+  gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
+  g_signal_connect_swapped(G_OBJECT(menu_item), "activate",
+                           G_CALLBACK(toggle_anim), drawing_area);
+  gtk_widget_show(menu_item);
 
-  gtk_widget_show(button);
+  /* Init orientation */
+  menu_item = gtk_menu_item_new_with_label("Initialize");
+  gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
+  g_signal_connect_swapped(G_OBJECT(menu_item), "activate",
+                           G_CALLBACK(init_rot), drawing_area);
+  gtk_widget_show(menu_item);
+
+  /* Quit */
+  menu_item = gtk_menu_item_new_with_label("Quit");
+  gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
+  g_signal_connect(G_OBJECT(menu_item), "activate",
+                   G_CALLBACK(gtk_main_quit), NULL);
+  gtk_widget_show(menu_item);
+
+  /* Signal handler */
+  g_signal_connect_swapped(G_OBJECT(drawing_area), "button_press_event",
+                           G_CALLBACK(button_press_event), menu);
 
   /*
    * Show window.
