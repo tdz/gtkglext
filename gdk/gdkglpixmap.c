@@ -16,6 +16,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#include <gtk/gtkversion.h>
+
 #include "gdkglprivate.h"
 #include "gdkglconfig.h"
 #include "gdkglpixmap.h"
@@ -218,7 +220,11 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
   drawable_class->get_clip_region        = gdk_gl_pixmap_get_clip_region;
   drawable_class->get_visible_region     = gdk_gl_pixmap_get_visible_region;
   drawable_class->get_composite_drawable = gdk_gl_pixmap_get_composite_drawable;
+#if GTK_MAJOR_VERSION == 2 && GTK_MAJOR_VERSION == 0
   drawable_class->_draw_pixbuf           = gdk_gl_pixmap_draw_pixbuf;
+#else
+  drawable_class->draw_pixbuf            = gdk_gl_pixmap_draw_pixbuf;
+#endif
   drawable_class->_copy_to_image         = gdk_gl_pixmap_copy_to_image;
 
   g_object_class_install_property (object_class,
@@ -637,6 +643,7 @@ gdk_gl_pixmap_draw_pixbuf (GdkDrawable *drawable,
 {
   GdkDrawable *real_drawable = ((GdkGLPixmap *) drawable)->drawable;
 
+#if GTK_MAJOR_VERSION == 2 && GTK_MAJOR_VERSION == 0
   GDK_DRAWABLE_GET_CLASS (real_drawable)->_draw_pixbuf (real_drawable,
                                                         gc,
                                                         pixbuf,
@@ -649,6 +656,20 @@ gdk_gl_pixmap_draw_pixbuf (GdkDrawable *drawable,
                                                         dither,
                                                         x_dither,
                                                         y_dither);
+#else
+  GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_pixbuf (real_drawable,
+                                                       gc,
+                                                       pixbuf,
+                                                       src_x,
+                                                       src_y,
+                                                       dest_x,
+                                                       dest_y,
+                                                       width,
+                                                       height,
+                                                       dither,
+                                                       x_dither,
+                                                       y_dither);
+#endif
 }
 
 static GdkImage *

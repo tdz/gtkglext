@@ -1,3 +1,13 @@
+2002-11-16  wrobell  <wrobell@ite.pl>
+
+	* gdk/x11/gdkglconfig-x11.c (configure_gl): Fix for GTK+-2.1.
+
+	* gdk/gdkglwindow.c (gdk_gl_window_class_init) 
+	(gdk_gl_window_draw_pixbuf): 
+	* gdk/gdkglpixmap.c (gdk_gl_pixmap_class_init) 
+	(gdk_gl_pixmap_draw_pixbuf): GdkDrawableClass::draw_pixbuf() fix
+	for GTK+-2.1.
+
 2002-11-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglglxext.[ch]: Added GLX extension support.

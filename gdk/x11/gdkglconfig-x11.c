@@ -231,7 +231,7 @@ configure_gl (GdkGLConfigImplX11 *impl,
    */
 
 #ifdef GDK_MULTIHEAD_SAFE
-  visual = gdkx_visual_get_for_screen (glconfig->screen, impl->xvinfo->visualid);
+  visual = gdk_x11_screen_lookup_visual (glconfig->screen, impl->xvinfo->visualid);
 #else  /* GDK_MULTIHEAD_SAFE */
   visual = gdkx_visual_get (impl->xvinfo->visualid);
 #endif /* GDK_MULTIHEAD_SAFE */
