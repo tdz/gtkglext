@@ -1,5 +1,8 @@
 2003-05-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Use
+	g_signal_connect_after() to connect "style_set" signal handler.
+
 	* gdk/win32/gdkglquery-win32.c (gdk_gl_get_proc_address): Check
 	whether given proc_name has "glu" prefix.
 

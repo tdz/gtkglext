@@ -265,9 +265,9 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    * (relates AIX X server crash)
    */
 
-  g_signal_connect (G_OBJECT (widget), "style_set",
-                    G_CALLBACK (gtk_gl_widget_style_set),
-                    NULL);
+  g_signal_connect_after (G_OBJECT (widget), "style_set",
+                          G_CALLBACK (gtk_gl_widget_style_set),
+                          NULL);
 
   /*
    * Set GL widget's private data.
