@@ -93,6 +93,7 @@ SOURCES = \
 	simple-mixed.c		\
 	pixmap.c		\
 	pixmap-mixed.c		\
+	share-lists.c		\
 	color.c			\
 	font.c			\
 	trackball.c		\
@@ -122,6 +123,7 @@ PROGRAMS = \
 	simple-mixed$(EXEEXT)		\
 	pixmap$(EXEEXT)			\
 	pixmap-mixed$(EXEEXT)		\
+	share-lists$(EXEEXT)		\
 	color$(EXEEXT)			\
 	font$(EXEEXT)			\
 	shapes$(EXEEXT)			\
@@ -163,6 +165,9 @@ pixmap$(EXEEXT): pixmap.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
 
 pixmap-mixed$(EXEEXT): pixmap-mixed.obj
+	$(link) $(linkdebug) -out:$@ $** $(LIBS)
+
+share-lists$(EXEEXT): share-lists.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
 
 color$(EXEEXT): color.obj
