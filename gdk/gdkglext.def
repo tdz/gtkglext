@@ -69,3 +69,8 @@ EXPORTS
 	gdk_window_is_gl_capable
 	gdk_window_set_gl_capability
 	gdk_window_unset_gl_capability
+	gdkglext_binary_age
+	gdkglext_interface_age
+	gdkglext_major_version
+	gdkglext_micro_version
+	gdkglext_minor_version
