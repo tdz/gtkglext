@@ -305,6 +305,8 @@ struct _GdkGL_GL_VERSION_1_2
   GdkGLProc_glCopyTexSubImage3D         glCopyTexSubImage3D;
 };
 
+GdkGL_GL_VERSION_1_2 *gdk_gl_get_GL_VERSION_1_2 (void);
+
 /* 
  * GL_VERSION_1_3
  */
@@ -639,6 +641,8 @@ struct _GdkGL_GL_VERSION_1_3
   GdkGLProc_glGetCompressedTexImage   glGetCompressedTexImage;
 };
 
+GdkGL_GL_VERSION_1_3 *gdk_gl_get_GL_VERSION_1_3 (void);
+
 /* 
  * GL_VERSION_1_4
  */
@@ -966,6 +970,8 @@ struct _GdkGL_GL_VERSION_1_4
   GdkGLProc_glWindowPos3sv          glWindowPos3sv;
 };
 
+GdkGL_GL_VERSION_1_4 *gdk_gl_get_GL_VERSION_1_4 (void);
+
 /* 
  * GL_ARB_multitexture
  */
@@ -1216,6 +1222,8 @@ struct _GdkGL_GL_ARB_multitexture
   GdkGLProc_glMultiTexCoord4svARB    glMultiTexCoord4svARB;
 };
 
+GdkGL_GL_ARB_multitexture *gdk_gl_get_GL_ARB_multitexture (void);
+
 /* 
  * GL_ARB_transpose_matrix
  */
@@ -1256,6 +1264,8 @@ struct _GdkGL_GL_ARB_transpose_matrix
   GdkGLProc_glMultTransposeMatrixdARB glMultTransposeMatrixdARB;
 };
 
+GdkGL_GL_ARB_transpose_matrix *gdk_gl_get_GL_ARB_transpose_matrix (void);
+
 /* 
  * GL_ARB_multisample
  */
@@ -1274,6 +1284,8 @@ struct _GdkGL_GL_ARB_multisample
 {
   GdkGLProc_glSampleCoverageARB glSampleCoverageARB;
 };
+
+GdkGL_GL_ARB_multisample *gdk_gl_get_GL_ARB_multisample (void);
 
 /* 
  * GL_ARB_texture_compression
@@ -1336,6 +1348,8 @@ struct _GdkGL_GL_ARB_texture_compression
   GdkGLProc_glGetCompressedTexImageARB   glGetCompressedTexImageARB;
 };
 
+GdkGL_GL_ARB_texture_compression *gdk_gl_get_GL_ARB_texture_compression (void);
+
 /* 
  * GL_ARB_point_parameters
  */
@@ -1361,6 +1375,8 @@ struct _GdkGL_GL_ARB_point_parameters
   GdkGLProc_glPointParameterfARB  glPointParameterfARB;
   GdkGLProc_glPointParameterfvARB glPointParameterfvARB;
 };
+
+GdkGL_GL_ARB_point_parameters *gdk_gl_get_GL_ARB_point_parameters (void);
 
 /* 
  * GL_ARB_vertex_blend
@@ -1444,6 +1460,8 @@ struct _GdkGL_GL_ARB_vertex_blend
   GdkGLProc_glVertexBlendARB   glVertexBlendARB;
 };
 
+GdkGL_GL_ARB_vertex_blend *gdk_gl_get_GL_ARB_vertex_blend (void);
+
 /* 
  * GL_ARB_matrix_palette
  */
@@ -1490,6 +1508,8 @@ struct _GdkGL_GL_ARB_matrix_palette
   GdkGLProc_glMatrixIndexuivARB       glMatrixIndexuivARB;
   GdkGLProc_glMatrixIndexPointerARB   glMatrixIndexPointerARB;
 };
+
+GdkGL_GL_ARB_matrix_palette *gdk_gl_get_GL_ARB_matrix_palette (void);
 
 /* 
  * GL_ARB_window_pos
@@ -1614,6 +1634,8 @@ struct _GdkGL_GL_ARB_window_pos
   GdkGLProc_glWindowPos3sARB  glWindowPos3sARB;
   GdkGLProc_glWindowPos3svARB glWindowPos3svARB;
 };
+
+GdkGL_GL_ARB_window_pos *gdk_gl_get_GL_ARB_window_pos (void);
 
 /* 
  * GL_ARB_vertex_program
@@ -2061,6 +2083,8 @@ struct _GdkGL_GL_ARB_vertex_program
   GdkGLProc_glIsProgramARB                  glIsProgramARB;
 };
 
+GdkGL_GL_ARB_vertex_program *gdk_gl_get_GL_ARB_vertex_program (void);
+
 /* 
  * GL_EXT_blend_color
  */
@@ -2080,6 +2104,8 @@ struct _GdkGL_GL_EXT_blend_color
   GdkGLProc_glBlendColorEXT glBlendColorEXT;
 };
 
+GdkGL_GL_EXT_blend_color *gdk_gl_get_GL_EXT_blend_color (void);
+
 /* 
  * GL_EXT_polygon_offset
  */
@@ -2098,6 +2124,8 @@ struct _GdkGL_GL_EXT_polygon_offset
 {
   GdkGLProc_glPolygonOffsetEXT glPolygonOffsetEXT;
 };
+
+GdkGL_GL_EXT_polygon_offset *gdk_gl_get_GL_EXT_polygon_offset (void);
 
 /* 
  * GL_EXT_texture3D
@@ -2125,6 +2153,8 @@ struct _GdkGL_GL_EXT_texture3D
   GdkGLProc_glTexSubImage3DEXT glTexSubImage3DEXT;
 };
 
+GdkGL_GL_EXT_texture3D *gdk_gl_get_GL_EXT_texture3D (void);
+
 /* 
  * GL_SGIS_texture_filter4
  */
@@ -2151,6 +2181,8 @@ struct _GdkGL_GL_SGIS_texture_filter4
   GdkGLProc_glTexFilterFuncSGIS    glTexFilterFuncSGIS;
 };
 
+GdkGL_GL_SGIS_texture_filter4 *gdk_gl_get_GL_SGIS_texture_filter4 (void);
+
 /* 
  * GL_EXT_subtexture
  */
@@ -2176,6 +2208,8 @@ struct _GdkGL_GL_EXT_subtexture
   GdkGLProc_glTexSubImage1DEXT glTexSubImage1DEXT;
   GdkGLProc_glTexSubImage2DEXT glTexSubImage2DEXT;
 };
+
+GdkGL_GL_EXT_subtexture *gdk_gl_get_GL_EXT_subtexture (void);
 
 /* 
  * GL_EXT_copy_texture
@@ -2223,6 +2257,8 @@ struct _GdkGL_GL_EXT_copy_texture
   GdkGLProc_glCopyTexSubImage2DEXT glCopyTexSubImage2DEXT;
   GdkGLProc_glCopyTexSubImage3DEXT glCopyTexSubImage3DEXT;
 };
+
+GdkGL_GL_EXT_copy_texture *gdk_gl_get_GL_EXT_copy_texture (void);
 
 /* 
  * GL_EXT_histogram
@@ -2305,6 +2341,8 @@ struct _GdkGL_GL_EXT_histogram
   GdkGLProc_glResetHistogramEXT          glResetHistogramEXT;
   GdkGLProc_glResetMinmaxEXT             glResetMinmaxEXT;
 };
+
+GdkGL_GL_EXT_histogram *gdk_gl_get_GL_EXT_histogram (void);
 
 /* 
  * GL_EXT_convolution
@@ -2409,6 +2447,8 @@ struct _GdkGL_GL_EXT_convolution
   GdkGLProc_glSeparableFilter2DEXT         glSeparableFilter2DEXT;
 };
 
+GdkGL_GL_EXT_convolution *gdk_gl_get_GL_EXT_convolution (void);
+
 /* 
  * GL_SGI_color_table
  */
@@ -2470,6 +2510,8 @@ struct _GdkGL_GL_SGI_color_table
   GdkGLProc_glGetColorTableParameterivSGI glGetColorTableParameterivSGI;
 };
 
+GdkGL_GL_SGI_color_table *gdk_gl_get_GL_SGI_color_table (void);
+
 /* 
  * GL_SGIX_pixel_texture
  */
@@ -2488,6 +2530,8 @@ struct _GdkGL_GL_SGIX_pixel_texture
 {
   GdkGLProc_glPixelTexGenSGIX glPixelTexGenSGIX;
 };
+
+GdkGL_GL_SGIX_pixel_texture *gdk_gl_get_GL_SGIX_pixel_texture (void);
 
 /* 
  * GL_SGIS_pixel_texture
@@ -2543,6 +2587,8 @@ struct _GdkGL_GL_SGIS_pixel_texture
   GdkGLProc_glGetPixelTexGenParameterfvSGIS glGetPixelTexGenParameterfvSGIS;
 };
 
+GdkGL_GL_SGIS_pixel_texture *gdk_gl_get_GL_SGIS_pixel_texture (void);
+
 /* 
  * GL_SGIS_texture4D
  */
@@ -2568,6 +2614,8 @@ struct _GdkGL_GL_SGIS_texture4D
   GdkGLProc_glTexImage4DSGIS    glTexImage4DSGIS;
   GdkGLProc_glTexSubImage4DSGIS glTexSubImage4DSGIS;
 };
+
+GdkGL_GL_SGIS_texture4D *gdk_gl_get_GL_SGIS_texture4D (void);
 
 /* 
  * GL_EXT_texture_object
@@ -2623,6 +2671,8 @@ struct _GdkGL_GL_EXT_texture_object
   GdkGLProc_glPrioritizeTexturesEXT  glPrioritizeTexturesEXT;
 };
 
+GdkGL_GL_EXT_texture_object *gdk_gl_get_GL_EXT_texture_object (void);
+
 /* 
  * GL_SGIS_detail_texture
  */
@@ -2648,6 +2698,8 @@ struct _GdkGL_GL_SGIS_detail_texture
   GdkGLProc_glDetailTexFuncSGIS    glDetailTexFuncSGIS;
   GdkGLProc_glGetDetailTexFuncSGIS glGetDetailTexFuncSGIS;
 };
+
+GdkGL_GL_SGIS_detail_texture *gdk_gl_get_GL_SGIS_detail_texture (void);
 
 /* 
  * GL_SGIS_sharpen_texture
@@ -2675,6 +2727,8 @@ struct _GdkGL_GL_SGIS_sharpen_texture
   GdkGLProc_glGetSharpenTexFuncSGIS glGetSharpenTexFuncSGIS;
 };
 
+GdkGL_GL_SGIS_sharpen_texture *gdk_gl_get_GL_SGIS_sharpen_texture (void);
+
 /* 
  * GL_SGIS_multisample
  */
@@ -2700,6 +2754,8 @@ struct _GdkGL_GL_SGIS_multisample
   GdkGLProc_glSampleMaskSGIS    glSampleMaskSGIS;
   GdkGLProc_glSamplePatternSGIS glSamplePatternSGIS;
 };
+
+GdkGL_GL_SGIS_multisample *gdk_gl_get_GL_SGIS_multisample (void);
 
 /* 
  * GL_EXT_vertex_array
@@ -2776,6 +2832,8 @@ struct _GdkGL_GL_EXT_vertex_array
   GdkGLProc_glVertexPointerEXT   glVertexPointerEXT;
 };
 
+GdkGL_GL_EXT_vertex_array *gdk_gl_get_GL_EXT_vertex_array (void);
+
 /* 
  * GL_EXT_blend_minmax
  */
@@ -2794,6 +2852,8 @@ struct _GdkGL_GL_EXT_blend_minmax
 {
   GdkGLProc_glBlendEquationEXT glBlendEquationEXT;
 };
+
+GdkGL_GL_EXT_blend_minmax *gdk_gl_get_GL_EXT_blend_minmax (void);
 
 /* 
  * GL_SGIX_sprite
@@ -2835,6 +2895,8 @@ struct _GdkGL_GL_SGIX_sprite
   GdkGLProc_glSpriteParameterivSGIX glSpriteParameterivSGIX;
 };
 
+GdkGL_GL_SGIX_sprite *gdk_gl_get_GL_SGIX_sprite (void);
+
 /* 
  * GL_EXT_point_parameters
  */
@@ -2861,6 +2923,8 @@ struct _GdkGL_GL_EXT_point_parameters
   GdkGLProc_glPointParameterfvEXT glPointParameterfvEXT;
 };
 
+GdkGL_GL_EXT_point_parameters *gdk_gl_get_GL_EXT_point_parameters (void);
+
 /* 
  * GL_SGIS_point_parameters
  */
@@ -2886,6 +2950,8 @@ struct _GdkGL_GL_SGIS_point_parameters
   GdkGLProc_glPointParameterfSGIS  glPointParameterfSGIS;
   GdkGLProc_glPointParameterfvSGIS glPointParameterfvSGIS;
 };
+
+GdkGL_GL_SGIS_point_parameters *gdk_gl_get_GL_SGIS_point_parameters (void);
 
 /* 
  * GL_SGIX_instruments
@@ -2941,6 +3007,8 @@ struct _GdkGL_GL_SGIX_instruments
   GdkGLProc_glStopInstrumentsSGIX   glStopInstrumentsSGIX;
 };
 
+GdkGL_GL_SGIX_instruments *gdk_gl_get_GL_SGIX_instruments (void);
+
 /* 
  * GL_SGIX_framezoom
  */
@@ -2960,6 +3028,8 @@ struct _GdkGL_GL_SGIX_framezoom
   GdkGLProc_glFrameZoomSGIX glFrameZoomSGIX;
 };
 
+GdkGL_GL_SGIX_framezoom *gdk_gl_get_GL_SGIX_framezoom (void);
+
 /* 
  * GL_SGIX_tag_sample_buffer
  */
@@ -2978,6 +3048,8 @@ struct _GdkGL_GL_SGIX_tag_sample_buffer
 {
   GdkGLProc_glTagSampleBufferSGIX glTagSampleBufferSGIX;
 };
+
+GdkGL_GL_SGIX_tag_sample_buffer *gdk_gl_get_GL_SGIX_tag_sample_buffer (void);
 
 /* 
  * GL_SGIX_polynomial_ffd
@@ -3019,6 +3091,8 @@ struct _GdkGL_GL_SGIX_polynomial_ffd
   GdkGLProc_glLoadIdentityDeformationMapSGIX glLoadIdentityDeformationMapSGIX;
 };
 
+GdkGL_GL_SGIX_polynomial_ffd *gdk_gl_get_GL_SGIX_polynomial_ffd (void);
+
 /* 
  * GL_SGIX_reference_plane
  */
@@ -3038,6 +3112,8 @@ struct _GdkGL_GL_SGIX_reference_plane
   GdkGLProc_glReferencePlaneSGIX glReferencePlaneSGIX;
 };
 
+GdkGL_GL_SGIX_reference_plane *gdk_gl_get_GL_SGIX_reference_plane (void);
+
 /* 
  * GL_SGIX_flush_raster
  */
@@ -3056,6 +3132,8 @@ struct _GdkGL_GL_SGIX_flush_raster
 {
   GdkGLProc_glFlushRasterSGIX glFlushRasterSGIX;
 };
+
+GdkGL_GL_SGIX_flush_raster *gdk_gl_get_GL_SGIX_flush_raster (void);
 
 /* 
  * GL_SGIS_fog_function
@@ -3082,6 +3160,8 @@ struct _GdkGL_GL_SGIS_fog_function
   GdkGLProc_glFogFuncSGIS    glFogFuncSGIS;
   GdkGLProc_glGetFogFuncSGIS glGetFogFuncSGIS;
 };
+
+GdkGL_GL_SGIS_fog_function *gdk_gl_get_GL_SGIS_fog_function (void);
 
 /* 
  * GL_HP_image_transform
@@ -3137,6 +3217,8 @@ struct _GdkGL_GL_HP_image_transform
   GdkGLProc_glGetImageTransformParameterfvHP glGetImageTransformParameterfvHP;
 };
 
+GdkGL_GL_HP_image_transform *gdk_gl_get_GL_HP_image_transform (void);
+
 /* 
  * GL_EXT_color_subtable
  */
@@ -3163,6 +3245,8 @@ struct _GdkGL_GL_EXT_color_subtable
   GdkGLProc_glCopyColorSubTableEXT glCopyColorSubTableEXT;
 };
 
+GdkGL_GL_EXT_color_subtable *gdk_gl_get_GL_EXT_color_subtable (void);
+
 /* 
  * GL_PGI_misc_hints
  */
@@ -3181,6 +3265,8 @@ struct _GdkGL_GL_PGI_misc_hints
 {
   GdkGLProc_glHintPGI glHintPGI;
 };
+
+GdkGL_GL_PGI_misc_hints *gdk_gl_get_GL_PGI_misc_hints (void);
 
 /* 
  * GL_EXT_paletted_texture
@@ -3221,6 +3307,8 @@ struct _GdkGL_GL_EXT_paletted_texture
   GdkGLProc_glGetColorTableParameterivEXT glGetColorTableParameterivEXT;
   GdkGLProc_glGetColorTableParameterfvEXT glGetColorTableParameterfvEXT;
 };
+
+GdkGL_GL_EXT_paletted_texture *gdk_gl_get_GL_EXT_paletted_texture (void);
 
 /* 
  * GL_SGIX_list_priority
@@ -3276,6 +3364,8 @@ struct _GdkGL_GL_SGIX_list_priority
   GdkGLProc_glListParameterivSGIX    glListParameterivSGIX;
 };
 
+GdkGL_GL_SGIX_list_priority *gdk_gl_get_GL_SGIX_list_priority (void);
+
 /* 
  * GL_EXT_index_material
  */
@@ -3295,6 +3385,8 @@ struct _GdkGL_GL_EXT_index_material
   GdkGLProc_glIndexMaterialEXT glIndexMaterialEXT;
 };
 
+GdkGL_GL_EXT_index_material *gdk_gl_get_GL_EXT_index_material (void);
+
 /* 
  * GL_EXT_index_func
  */
@@ -3313,6 +3405,8 @@ struct _GdkGL_GL_EXT_index_func
 {
   GdkGLProc_glIndexFuncEXT glIndexFuncEXT;
 };
+
+GdkGL_GL_EXT_index_func *gdk_gl_get_GL_EXT_index_func (void);
 
 /* 
  * GL_EXT_compiled_vertex_array
@@ -3340,6 +3434,8 @@ struct _GdkGL_GL_EXT_compiled_vertex_array
   GdkGLProc_glUnlockArraysEXT glUnlockArraysEXT;
 };
 
+GdkGL_GL_EXT_compiled_vertex_array *gdk_gl_get_GL_EXT_compiled_vertex_array (void);
+
 /* 
  * GL_EXT_cull_vertex
  */
@@ -3365,6 +3461,8 @@ struct _GdkGL_GL_EXT_cull_vertex
   GdkGLProc_glCullParameterdvEXT glCullParameterdvEXT;
   GdkGLProc_glCullParameterfvEXT glCullParameterfvEXT;
 };
+
+GdkGL_GL_EXT_cull_vertex *gdk_gl_get_GL_EXT_cull_vertex (void);
 
 /* 
  * GL_SGIX_fragment_lighting
@@ -3504,6 +3602,8 @@ struct _GdkGL_GL_SGIX_fragment_lighting
   GdkGLProc_glLightEnviSGIX             glLightEnviSGIX;
 };
 
+GdkGL_GL_SGIX_fragment_lighting *gdk_gl_get_GL_SGIX_fragment_lighting (void);
+
 /* 
  * GL_EXT_draw_range_elements
  */
@@ -3522,6 +3622,8 @@ struct _GdkGL_GL_EXT_draw_range_elements
 {
   GdkGLProc_glDrawRangeElementsEXT glDrawRangeElementsEXT;
 };
+
+GdkGL_GL_EXT_draw_range_elements *gdk_gl_get_GL_EXT_draw_range_elements (void);
 
 /* 
  * GL_EXT_light_texture
@@ -3555,6 +3657,8 @@ struct _GdkGL_GL_EXT_light_texture
   GdkGLProc_glTextureLightEXT    glTextureLightEXT;
   GdkGLProc_glTextureMaterialEXT glTextureMaterialEXT;
 };
+
+GdkGL_GL_EXT_light_texture *gdk_gl_get_GL_EXT_light_texture (void);
 
 /* 
  * GL_SGIX_async
@@ -3610,6 +3714,8 @@ struct _GdkGL_GL_SGIX_async
   GdkGLProc_glIsAsyncMarkerSGIX      glIsAsyncMarkerSGIX;
 };
 
+GdkGL_GL_SGIX_async *gdk_gl_get_GL_SGIX_async (void);
+
 /* 
  * GL_INTEL_parallel_arrays
  */
@@ -3650,6 +3756,8 @@ struct _GdkGL_GL_INTEL_parallel_arrays
   GdkGLProc_glTexCoordPointervINTEL glTexCoordPointervINTEL;
 };
 
+GdkGL_GL_INTEL_parallel_arrays *gdk_gl_get_GL_INTEL_parallel_arrays (void);
+
 /* 
  * GL_EXT_pixel_transform
  */
@@ -3689,6 +3797,8 @@ struct _GdkGL_GL_EXT_pixel_transform
   GdkGLProc_glPixelTransformParameterivEXT glPixelTransformParameterivEXT;
   GdkGLProc_glPixelTransformParameterfvEXT glPixelTransformParameterfvEXT;
 };
+
+GdkGL_GL_EXT_pixel_transform *gdk_gl_get_GL_EXT_pixel_transform (void);
 
 /* 
  * GL_EXT_secondary_color
@@ -3821,6 +3931,8 @@ struct _GdkGL_GL_EXT_secondary_color
   GdkGLProc_glSecondaryColorPointerEXT glSecondaryColorPointerEXT;
 };
 
+GdkGL_GL_EXT_secondary_color *gdk_gl_get_GL_EXT_secondary_color (void);
+
 /* 
  * GL_EXT_texture_perturb_normal
  */
@@ -3839,6 +3951,8 @@ struct _GdkGL_GL_EXT_texture_perturb_normal
 {
   GdkGLProc_glTextureNormalEXT glTextureNormalEXT;
 };
+
+GdkGL_GL_EXT_texture_perturb_normal *gdk_gl_get_GL_EXT_texture_perturb_normal (void);
 
 /* 
  * GL_EXT_multi_draw_arrays
@@ -3865,6 +3979,8 @@ struct _GdkGL_GL_EXT_multi_draw_arrays
   GdkGLProc_glMultiDrawArraysEXT   glMultiDrawArraysEXT;
   GdkGLProc_glMultiDrawElementsEXT glMultiDrawElementsEXT;
 };
+
+GdkGL_GL_EXT_multi_draw_arrays *gdk_gl_get_GL_EXT_multi_draw_arrays (void);
 
 /* 
  * GL_EXT_fog_coord
@@ -3912,6 +4028,8 @@ struct _GdkGL_GL_EXT_fog_coord
   GdkGLProc_glFogCoorddvEXT      glFogCoorddvEXT;
   GdkGLProc_glFogCoordPointerEXT glFogCoordPointerEXT;
 };
+
+GdkGL_GL_EXT_fog_coord *gdk_gl_get_GL_EXT_fog_coord (void);
 
 /* 
  * GL_EXT_coordinate_frame
@@ -4079,6 +4197,8 @@ struct _GdkGL_GL_EXT_coordinate_frame
   GdkGLProc_glBinormalPointerEXT glBinormalPointerEXT;
 };
 
+GdkGL_GL_EXT_coordinate_frame *gdk_gl_get_GL_EXT_coordinate_frame (void);
+
 /* 
  * GL_SUNX_constant_data
  */
@@ -4097,6 +4217,8 @@ struct _GdkGL_GL_SUNX_constant_data
 {
   GdkGLProc_glFinishTextureSUNX glFinishTextureSUNX;
 };
+
+GdkGL_GL_SUNX_constant_data *gdk_gl_get_GL_SUNX_constant_data (void);
 
 /* 
  * GL_SUN_global_alpha
@@ -4166,6 +4288,8 @@ struct _GdkGL_GL_SUN_global_alpha
   GdkGLProc_glGlobalAlphaFactoruiSUN glGlobalAlphaFactoruiSUN;
 };
 
+GdkGL_GL_SUN_global_alpha *gdk_gl_get_GL_SUN_global_alpha (void);
+
 /* 
  * GL_SUN_triangle_list
  */
@@ -4226,6 +4350,8 @@ struct _GdkGL_GL_SUN_triangle_list
   GdkGLProc_glReplacementCodeubvSUN     glReplacementCodeubvSUN;
   GdkGLProc_glReplacementCodePointerSUN glReplacementCodePointerSUN;
 };
+
+GdkGL_GL_SUN_triangle_list *gdk_gl_get_GL_SUN_triangle_list (void);
 
 /* 
  * GL_SUN_vertex
@@ -4519,6 +4645,8 @@ struct _GdkGL_GL_SUN_vertex
   GdkGLProc_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN;
 };
 
+GdkGL_GL_SUN_vertex *gdk_gl_get_GL_SUN_vertex (void);
+
 /* 
  * GL_EXT_blend_func_separate
  */
@@ -4538,6 +4666,8 @@ struct _GdkGL_GL_EXT_blend_func_separate
   GdkGLProc_glBlendFuncSeparateEXT glBlendFuncSeparateEXT;
 };
 
+GdkGL_GL_EXT_blend_func_separate *gdk_gl_get_GL_EXT_blend_func_separate (void);
+
 /* 
  * GL_INGR_blend_func_separate
  */
@@ -4556,6 +4686,8 @@ struct _GdkGL_GL_INGR_blend_func_separate
 {
   GdkGLProc_glBlendFuncSeparateINGR glBlendFuncSeparateINGR;
 };
+
+GdkGL_GL_INGR_blend_func_separate *gdk_gl_get_GL_INGR_blend_func_separate (void);
 
 /* 
  * GL_EXT_vertex_weighting
@@ -4590,6 +4722,8 @@ struct _GdkGL_GL_EXT_vertex_weighting
   GdkGLProc_glVertexWeightPointerEXT glVertexWeightPointerEXT;
 };
 
+GdkGL_GL_EXT_vertex_weighting *gdk_gl_get_GL_EXT_vertex_weighting (void);
+
 /* 
  * GL_NV_vertex_array_range
  */
@@ -4615,6 +4749,8 @@ struct _GdkGL_GL_NV_vertex_array_range
   GdkGLProc_glFlushVertexArrayRangeNV glFlushVertexArrayRangeNV;
   GdkGLProc_glVertexArrayRangeNV      glVertexArrayRangeNV;
 };
+
+GdkGL_GL_NV_vertex_array_range *gdk_gl_get_GL_NV_vertex_array_range (void);
 
 /* 
  * GL_NV_register_combiners
@@ -4719,6 +4855,8 @@ struct _GdkGL_GL_NV_register_combiners
   GdkGLProc_glGetFinalCombinerInputParameterivNV glGetFinalCombinerInputParameterivNV;
 };
 
+GdkGL_GL_NV_register_combiners *gdk_gl_get_GL_NV_register_combiners (void);
+
 /* 
  * GL_MESA_resize_buffers
  */
@@ -4737,6 +4875,8 @@ struct _GdkGL_GL_MESA_resize_buffers
 {
   GdkGLProc_glResizeBuffersMESA glResizeBuffersMESA;
 };
+
+GdkGL_GL_MESA_resize_buffers *gdk_gl_get_GL_MESA_resize_buffers (void);
 
 /* 
  * GL_MESA_window_pos
@@ -4918,6 +5058,8 @@ struct _GdkGL_GL_MESA_window_pos
   GdkGLProc_glWindowPos4svMESA glWindowPos4svMESA;
 };
 
+GdkGL_GL_MESA_window_pos *gdk_gl_get_GL_MESA_window_pos (void);
+
 /* 
  * GL_IBM_multimode_draw_arrays
  */
@@ -4943,6 +5085,8 @@ struct _GdkGL_GL_IBM_multimode_draw_arrays
   GdkGLProc_glMultiModeDrawArraysIBM   glMultiModeDrawArraysIBM;
   GdkGLProc_glMultiModeDrawElementsIBM glMultiModeDrawElementsIBM;
 };
+
+GdkGL_GL_IBM_multimode_draw_arrays *gdk_gl_get_GL_IBM_multimode_draw_arrays (void);
 
 /* 
  * GL_IBM_vertex_array_lists
@@ -5012,6 +5156,8 @@ struct _GdkGL_GL_IBM_vertex_array_lists
   GdkGLProc_glVertexPointerListIBM         glVertexPointerListIBM;
 };
 
+GdkGL_GL_IBM_vertex_array_lists *gdk_gl_get_GL_IBM_vertex_array_lists (void);
+
 /* 
  * GL_3DFX_tbuffer
  */
@@ -5030,6 +5176,8 @@ struct _GdkGL_GL_3DFX_tbuffer
 {
   GdkGLProc_glTbufferMask3DFX glTbufferMask3DFX;
 };
+
+GdkGL_GL_3DFX_tbuffer *gdk_gl_get_GL_3DFX_tbuffer (void);
 
 /* 
  * GL_EXT_multisample
@@ -5057,6 +5205,8 @@ struct _GdkGL_GL_EXT_multisample
   GdkGLProc_glSamplePatternEXT glSamplePatternEXT;
 };
 
+GdkGL_GL_EXT_multisample *gdk_gl_get_GL_EXT_multisample (void);
+
 /* 
  * GL_SGIS_texture_color_mask
  */
@@ -5076,6 +5226,8 @@ struct _GdkGL_GL_SGIS_texture_color_mask
   GdkGLProc_glTextureColorMaskSGIS glTextureColorMaskSGIS;
 };
 
+GdkGL_GL_SGIS_texture_color_mask *gdk_gl_get_GL_SGIS_texture_color_mask (void);
+
 /* 
  * GL_SGIX_igloo_interface
  */
@@ -5094,6 +5246,8 @@ struct _GdkGL_GL_SGIX_igloo_interface
 {
   GdkGLProc_glIglooInterfaceSGIX glIglooInterfaceSGIX;
 };
+
+GdkGL_GL_SGIX_igloo_interface *gdk_gl_get_GL_SGIX_igloo_interface (void);
 
 /* 
  * GL_NV_fence
@@ -5155,6 +5309,8 @@ struct _GdkGL_GL_NV_fence
   GdkGLProc_glFinishFenceNV  glFinishFenceNV;
   GdkGLProc_glSetFenceNV     glSetFenceNV;
 };
+
+GdkGL_GL_NV_fence *gdk_gl_get_GL_NV_fence (void);
 
 /* 
  * GL_NV_evaluators
@@ -5231,6 +5387,8 @@ struct _GdkGL_GL_NV_evaluators
   GdkGLProc_glEvalMapsNV                glEvalMapsNV;
 };
 
+GdkGL_GL_NV_evaluators *gdk_gl_get_GL_NV_evaluators (void);
+
 /* 
  * GL_NV_register_combiners2
  */
@@ -5256,6 +5414,8 @@ struct _GdkGL_GL_NV_register_combiners2
   GdkGLProc_glCombinerStageParameterfvNV    glCombinerStageParameterfvNV;
   GdkGLProc_glGetCombinerStageParameterfvNV glGetCombinerStageParameterfvNV;
 };
+
+GdkGL_GL_NV_register_combiners2 *gdk_gl_get_GL_NV_register_combiners2 (void);
 
 /* 
  * GL_NV_vertex_program
@@ -5717,6 +5877,8 @@ struct _GdkGL_GL_NV_vertex_program
   GdkGLProc_glVertexAttribs4ubvNV       glVertexAttribs4ubvNV;
 };
 
+GdkGL_GL_NV_vertex_program *gdk_gl_get_GL_NV_vertex_program (void);
+
 /* 
  * GL_ATI_envmap_bumpmap
  */
@@ -5756,6 +5918,8 @@ struct _GdkGL_GL_ATI_envmap_bumpmap
   GdkGLProc_glGetTexBumpParameterivATI glGetTexBumpParameterivATI;
   GdkGLProc_glGetTexBumpParameterfvATI glGetTexBumpParameterfvATI;
 };
+
+GdkGL_GL_ATI_envmap_bumpmap *gdk_gl_get_GL_ATI_envmap_bumpmap (void);
 
 /* 
  * GL_ATI_fragment_shader
@@ -5867,6 +6031,8 @@ struct _GdkGL_GL_ATI_fragment_shader
   GdkGLProc_glSetFragmentShaderConstantATI glSetFragmentShaderConstantATI;
 };
 
+GdkGL_GL_ATI_fragment_shader *gdk_gl_get_GL_ATI_fragment_shader (void);
+
 /* 
  * GL_ATI_pn_triangles
  */
@@ -5892,6 +6058,8 @@ struct _GdkGL_GL_ATI_pn_triangles
   GdkGLProc_glPNTrianglesiATI glPNTrianglesiATI;
   GdkGLProc_glPNTrianglesfATI glPNTrianglesfATI;
 };
+
+GdkGL_GL_ATI_pn_triangles *gdk_gl_get_GL_ATI_pn_triangles (void);
 
 /* 
  * GL_ATI_vertex_array_object
@@ -5988,6 +6156,8 @@ struct _GdkGL_GL_ATI_vertex_array_object
   GdkGLProc_glGetVariantArrayObjectfvATI glGetVariantArrayObjectfvATI;
   GdkGLProc_glGetVariantArrayObjectivATI glGetVariantArrayObjectivATI;
 };
+
+GdkGL_GL_ATI_vertex_array_object *gdk_gl_get_GL_ATI_vertex_array_object (void);
 
 /* 
  * GL_EXT_vertex_shader
@@ -6294,6 +6464,8 @@ struct _GdkGL_GL_EXT_vertex_shader
   GdkGLProc_glGetLocalConstantIntegervEXT  glGetLocalConstantIntegervEXT;
   GdkGLProc_glGetLocalConstantFloatvEXT    glGetLocalConstantFloatvEXT;
 };
+
+GdkGL_GL_EXT_vertex_shader *gdk_gl_get_GL_EXT_vertex_shader (void);
 
 /* 
  * GL_ATI_vertex_streams
@@ -6622,6 +6794,8 @@ struct _GdkGL_GL_ATI_vertex_streams
   GdkGLProc_glVertexBlendEnvfATI          glVertexBlendEnvfATI;
 };
 
+GdkGL_GL_ATI_vertex_streams *gdk_gl_get_GL_ATI_vertex_streams (void);
+
 /* 
  * GL_ATI_element_array
  */
@@ -6655,6 +6829,8 @@ struct _GdkGL_GL_ATI_element_array
   GdkGLProc_glDrawRangeElementArrayATI glDrawRangeElementArrayATI;
 };
 
+GdkGL_GL_ATI_element_array *gdk_gl_get_GL_ATI_element_array (void);
+
 /* 
  * GL_SUN_mesh_array
  */
@@ -6673,6 +6849,8 @@ struct _GdkGL_GL_SUN_mesh_array
 {
   GdkGLProc_glDrawMeshArraysSUN glDrawMeshArraysSUN;
 };
+
+GdkGL_GL_SUN_mesh_array *gdk_gl_get_GL_SUN_mesh_array (void);
 
 /* 
  * GL_NV_occlusion_query
@@ -6735,6 +6913,8 @@ struct _GdkGL_GL_NV_occlusion_query
   GdkGLProc_glGetOcclusionQueryuivNV   glGetOcclusionQueryuivNV;
 };
 
+GdkGL_GL_NV_occlusion_query *gdk_gl_get_GL_NV_occlusion_query (void);
+
 /* 
  * GL_NV_point_sprite
  */
@@ -6761,6 +6941,8 @@ struct _GdkGL_GL_NV_point_sprite
   GdkGLProc_glPointParameterivNV glPointParameterivNV;
 };
 
+GdkGL_GL_NV_point_sprite *gdk_gl_get_GL_NV_point_sprite (void);
+
 /* 
  * GL_EXT_stencil_two_side
  */
@@ -6779,6 +6961,8 @@ struct _GdkGL_GL_EXT_stencil_two_side
 {
   GdkGLProc_glActiveStencilFaceEXT glActiveStencilFaceEXT;
 };
+
+GdkGL_GL_EXT_stencil_two_side *gdk_gl_get_GL_EXT_stencil_two_side (void);
 
 G_END_DECLS
 
