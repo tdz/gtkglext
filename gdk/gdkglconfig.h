@@ -32,18 +32,18 @@ G_BEGIN_DECLS
  */
 typedef enum
 {
-  GDK_GL_MODE_RGB         = 1 << 1,
-  GDK_GL_MODE_RGBA        = 1 << 1,   /* same as RGB */
-  GDK_GL_MODE_INDEX       = 1 << 2,
-  GDK_GL_MODE_SINGLE      = 1 << 3,
-  GDK_GL_MODE_DOUBLE      = 1 << 4,
-  GDK_GL_MODE_ACCUM       = 1 << 5,
-  GDK_GL_MODE_ALPHA       = 1 << 6,
-  GDK_GL_MODE_DEPTH       = 1 << 7,
-  GDK_GL_MODE_STENCIL     = 1 << 8,
-  GDK_GL_MODE_STEREO      = 1 << 9,
-  GDK_GL_MODE_MULTISAMPLE = 1 << 10,  /* not supported yet */
-  GDK_GL_MODE_LUMINANCE   = 1 << 11   /* not supported yet */
+  GDK_GL_MODE_RGB         = 0,
+  GDK_GL_MODE_RGBA        = 0,       /* same as RGB */
+  GDK_GL_MODE_INDEX       = 1 << 0,
+  GDK_GL_MODE_SINGLE      = 0,
+  GDK_GL_MODE_DOUBLE      = 1 << 1,
+  GDK_GL_MODE_ACCUM       = 1 << 2,
+  GDK_GL_MODE_ALPHA       = 1 << 3,
+  GDK_GL_MODE_DEPTH       = 1 << 4,
+  GDK_GL_MODE_STENCIL     = 1 << 5,
+  GDK_GL_MODE_STEREO      = 1 << 6,
+  GDK_GL_MODE_MULTISAMPLE = 1 << 7,  /* not supported yet */
+  GDK_GL_MODE_LUMINANCE   = 1 << 8   /* not supported yet */
 } GdkGLConfigMode;
 
 typedef struct _GdkGLConfigClass GdkGLConfigClass;

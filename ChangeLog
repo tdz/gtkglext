@@ -1,5 +1,11 @@
 2003-01-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglconfig.c (gdk_gl_config_new_internal) 
+	(gdk_gl_config_new_by_mode, gdk_gl_config_new_by_mode_for_screen): 
+	* gdk/gdkglconfig.h: Fixed display mode bit mask.
+
+2003-01-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* gdk/gdkgltokens.h: Cleanup.
 
 2003-01-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>

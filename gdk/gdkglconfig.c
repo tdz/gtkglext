@@ -299,10 +299,10 @@ static GdkGLConfig *
 gdk_gl_config_new_internal (GdkScreen       *screen,
                             GdkGLConfigMode  mode)
 {
-  if (mode & GDK_GL_MODE_RGB)
-    return gdk_gl_config_new_rgb (screen, mode);
-  else
+  if (mode & GDK_GL_MODE_INDEX)
     return gdk_gl_config_new_ci (screen, mode);
+  else
+    return gdk_gl_config_new_rgb (screen, mode);
 }
 
 /**
@@ -317,22 +317,21 @@ gdk_gl_config_new_internal (GdkScreen       *screen,
 GdkGLConfig *
 gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
 {
+  GdkScreen *screen;
   GdkGLConfig *glconfig;
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-#define _GDK_GL_CONFIG_NEW_INTERNAL(__mode) \
-   gdk_gl_config_new_internal (gdk_screen_get_default (), __mode)
+  screen = gdk_screen_get_default ();
 #else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-#define _GDK_GL_CONFIG_NEW_INTERNAL(__mode) \
-   gdk_gl_config_new_internal (NULL, __mode);
+  screen = NULL;
 #endif
 
-  glconfig = _GDK_GL_CONFIG_NEW_INTERNAL (mode);
+  glconfig = gdk_gl_config_new_internal (screen, mode);
 
   if (glconfig == NULL)
     {
       /* Fallback cases when can't get exactly what was asked for... */
-      if (mode & GDK_GL_MODE_SINGLE)
+      if (!(mode & GDK_GL_MODE_DOUBLE))
         {
           /* If we can't find a single buffered visual, try looking
              for a double buffered visual.  We can treat a double
@@ -340,13 +339,11 @@ gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
              the draw buffer to GL_FRONT and treating any swap
              buffers as no-ops. */
           mode |= GDK_GL_MODE_DOUBLE;
-          glconfig = _GDK_GL_CONFIG_NEW_INTERNAL (mode);
+          glconfig = gdk_gl_config_new_internal (screen, mode);
           if (glconfig != NULL)
             glconfig->as_single_mode = TRUE;
         }
     }
-
-#undef _GDK_GL_CONFIG_NEW_INTERNAL
 
   return glconfig;
 }
@@ -364,7 +361,7 @@ gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
   if (glconfig == NULL)
     {
       /* Fallback cases when can't get exactly what was asked for... */
-      if (mode & GDK_GL_MODE_SINGLE)
+      if (!(mode & GDK_GL_MODE_DOUBLE))
         {
           /* If we can't find a single buffered visual, try looking
              for a double buffered visual.  We can treat a double
