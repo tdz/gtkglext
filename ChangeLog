@@ -1,5 +1,16 @@
 2003-07-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/button.c: 
+	* examples/multiarb.c: 
+	* examples/coolwave.c: 
+	* examples/template.c: 
+	* examples/font-pangoft2-tex.c: Use gtk_timeout instead of
+	gtk_idle. (Dave Andruczyk's advice)
+
+	* examples/logo.c: Removed frame counter.
+
+2003-07-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* gdk/x11/gdkglglxext.[ch]: Updated.
 
 	* gdk/GL/glxext-extra.h: Added GLX_MESA_agp_offset extension.

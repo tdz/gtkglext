@@ -23,6 +23,8 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
+#define TIMEOUT_INTERVAL 10
+
 #define FOVY_2 20.0
 #define Z_NEAR 3.0
 
@@ -412,7 +414,7 @@ unrealize (GtkWidget *widget,
 }
 
 static gboolean
-idle (GtkWidget *widget)
+timeout (GtkWidget *widget)
 {
   text_z -= TEXT_Z_DIFF;
   if (text_z <= TEXT_Z_FAR)
@@ -423,26 +425,26 @@ idle (GtkWidget *widget)
   return TRUE;
 }
 
-static guint idle_id = 0;
+static guint timeout_id = 0;
 
 static void
-idle_add (GtkWidget *widget)
+timeout_add (GtkWidget *widget)
 {
-  if (idle_id == 0)
+  if (timeout_id == 0)
     {
-      idle_id = gtk_idle_add_priority (GDK_PRIORITY_REDRAW,
-				       (GtkFunction) idle,
-				       widget);
+      timeout_id = gtk_timeout_add (TIMEOUT_INTERVAL,
+                                    (GtkFunction) timeout,
+                                    widget);
     }
 }
 
 static void
-idle_remove (GtkWidget *widget)
+timeout_remove (GtkWidget *widget)
 {
-  if (idle_id != 0)
+  if (timeout_id != 0)
     {
-      gtk_idle_remove (idle_id);
-      idle_id = 0;
+      gtk_timeout_remove (timeout_id);
+      timeout_id = 0;
     }
 }
 
@@ -452,7 +454,7 @@ map_event (GtkWidget *widget,
 	   gpointer   data)
 {
   if (animate)
-    idle_add (widget);
+    timeout_add (widget);
 
   return TRUE;
 }
@@ -462,7 +464,7 @@ unmap_event (GtkWidget *widget,
 	     GdkEvent  *event,
 	     gpointer   data)
 {
-  idle_remove (widget);
+  timeout_remove (widget);
 
   return TRUE;
 }
@@ -475,9 +477,9 @@ visibility_notify_event (GtkWidget          *widget,
   if (animate)
     {
       if (event->state == GDK_VISIBILITY_FULLY_OBSCURED)
-	idle_remove (widget);
+	timeout_remove (widget);
       else
-	idle_add (widget);
+	timeout_add (widget);
     }
 
   return TRUE;

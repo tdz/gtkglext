@@ -49,6 +49,8 @@
 #define DEFAULT_HEIGHT 200
 #define DEFAULT_TITLE  "CoolWave"
 
+#define TIMEOUT_INTERVAL 10
+
 #define MAXGRID 63
 #define SQRTOFTWOINV (1.0 / 1.414213562)
 
@@ -81,8 +83,8 @@ static float lightPosition[4] = {0.0, 0.0, 1.0, 1.0};
  * The following section contains the function prototype declarations.
  **************************************************************************/
 
-static void         idle_add          (GtkWidget   *widget);
-static void         idle_remove       (GtkWidget   *widget);
+static void         timeout_add       (GtkWidget   *widget);
+static void         timeout_remove    (GtkWidget   *widget);
 
 static void         toggle_animation  (GtkWidget   *widget);
 static void         init_wireframe    (GtkWidget   *widget);
@@ -345,12 +347,12 @@ expose_event (GtkWidget      *widget,
 }
 
 /***
- *** The idle function. Often in animations,
- *** idle functions are suitable for continous
+ *** The timeout function. Often in animations,
+ *** timeout functions are suitable for continous
  *** frame updates.
  ***/
 static gboolean
-idle (GtkWidget *widget)
+timeout (GtkWidget *widget)
 {
   getforce ();
   getvelocity ();
@@ -461,7 +463,7 @@ key_press_event (GtkWidget   *widget,
 
     case GDK_w:
       if (!animate)
-	idle (widget);
+	timeout (widget);
       break;
 
     case GDK_plus:
@@ -500,33 +502,33 @@ unrealize (GtkWidget *widget,
 
 
 /**************************************************************************
- * The following section contains the idle function management routines.
+ * The following section contains the timeout function management routines.
  **************************************************************************/
 
 /***
- *** Helper functions to add or remove the idle function.
+ *** Helper functions to add or remove the timeout function.
  ***/
 
-static guint idle_id = 0;
+static guint timeout_id = 0;
 
 static void
-idle_add (GtkWidget *widget)
+timeout_add (GtkWidget *widget)
 {
-  if (idle_id == 0)
+  if (timeout_id == 0)
     {
-      idle_id = gtk_idle_add_priority (GDK_PRIORITY_REDRAW,
-				       (GtkFunction) idle,
-				       widget);
+      timeout_id = gtk_timeout_add (TIMEOUT_INTERVAL,
+                                    (GtkFunction) timeout,
+                                    widget);
     }
 }
 
 static void
-idle_remove (GtkWidget *widget)
+timeout_remove (GtkWidget *widget)
 {
-  if (idle_id != 0)
+  if (timeout_id != 0)
     {
-      gtk_idle_remove (idle_id);
-      idle_id = 0;
+      gtk_timeout_remove (timeout_id);
+      timeout_id = 0;
     }
 }
 
@@ -540,7 +542,7 @@ map_event (GtkWidget *widget,
 	   gpointer   data)
 {
   if (animate)
-    idle_add (widget);
+    timeout_add (widget);
 
   return TRUE;
 }
@@ -554,7 +556,7 @@ unmap_event (GtkWidget *widget,
 	     GdkEvent  *event,
 	     gpointer   data)
 {
-  idle_remove (widget);
+  timeout_remove (widget);
 
   return TRUE;
 }
@@ -572,9 +574,9 @@ visibility_notify_event (GtkWidget          *widget,
   if (animate)
     {
       if (event->state == GDK_VISIBILITY_FULLY_OBSCURED)
-	idle_remove (widget);
+	timeout_remove (widget);
       else
-	idle_add (widget);
+	timeout_add (widget);
     }
 
   return TRUE;
@@ -595,11 +597,11 @@ toggle_animation (GtkWidget *widget)
 
   if (animate)
     {
-      idle_add (widget);
+      timeout_add (widget);
     }
   else
     {
-      idle_remove (widget);
+      timeout_remove (widget);
       gtk_widget_queue_draw (widget);
     }
 }
@@ -732,7 +734,7 @@ create_window (GdkGLConfig *glconfig)
   g_signal_connect_swapped (G_OBJECT (window), "key_press_event",
 			    G_CALLBACK (key_press_event), drawing_area);
 
-  /* For idle function. */
+  /* For timeout function. */
   g_signal_connect (G_OBJECT (drawing_area), "map_event",
 		    G_CALLBACK (map_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "unmap_event",

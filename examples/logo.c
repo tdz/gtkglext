@@ -28,7 +28,9 @@
 #define DIG_2_RAD (G_PI / 180.0)
 #define RAD_2_DIG (180.0 / G_PI)
 
-#define DEFAULT_ROT_COUNT 300
+#define TIMEOUT_INTERVAL 10
+
+#define DEFAULT_ROT_COUNT 100
 
 #define VIEW_INIT_AXIS_X 1.0
 #define VIEW_INIT_AXIS_Y 0.0
@@ -45,9 +47,6 @@
 #define LOGO_T_BACKWARD 5
 #define LOGO_K_FORWARD  6
 #define LOGO_K_BACKWARD 7
-
-static GTimer *timer = NULL;
-static gint frames = 0;
 
 static float view_quat[4] = { 0.0, 0.0, 0.0, 1.0 };
 static float view_scale = 1.0;
@@ -215,12 +214,6 @@ realize (GtkWidget *widget,
 
   gdk_gl_drawable_gl_end (gldrawable);
   /*** OpenGL END ***/
-
-  /* create timer */
-  if (timer == NULL)
-    timer = g_timer_new ();
-
-  g_timer_start (timer);
 }
 
 static gboolean
@@ -357,23 +350,6 @@ expose_event (GtkWidget      *widget,
   gdk_gl_drawable_gl_end (gldrawable);
   /*** OpenGL END ***/
 
-  /* Frame counter. */
-
-  frames++;
-
-  if (animate)
-    {
-      gdouble seconds = g_timer_elapsed (timer, NULL);
-      if (seconds >= 5.0)
-	{
-	  gdouble fps = frames / seconds;
-	  g_print ("%d frames in %6.3f seconds = %6.3f FPS\n",
-		   frames, seconds, fps);
-	  g_timer_reset (timer);
-	  frames = 0;
-	}
-    }
-
   return TRUE;
 }
 
@@ -459,33 +435,33 @@ key_press_event (GtkWidget   *widget,
 }
 
 static gboolean
-idle (GtkWidget *widget)
+timeout (GtkWidget *widget)
 {
   gtk_widget_queue_draw (widget);
 
   return TRUE;
 }
 
-static guint idle_id = 0;
+static guint timeout_id = 0;
 
 static void
-idle_add (GtkWidget *widget)
+timeout_add (GtkWidget *widget)
 {
-  if (idle_id == 0)
+  if (timeout_id == 0)
     {
-      idle_id = gtk_idle_add_priority (GDK_PRIORITY_REDRAW,
-				       (GtkFunction) idle,
-				       widget);
+      timeout_id = gtk_timeout_add (TIMEOUT_INTERVAL,
+                                    (GtkFunction) timeout,
+                                    widget);
     }
 }
 
 static void
-idle_remove (GtkWidget *widget)
+timeout_remove (GtkWidget *widget)
 {
-  if (idle_id != 0)
+  if (timeout_id != 0)
     {
-      gtk_idle_remove (idle_id);
-      idle_id = 0;
+      gtk_timeout_remove (timeout_id);
+      timeout_id = 0;
     }
 }
 
@@ -495,7 +471,7 @@ map_event (GtkWidget   *widget,
 	   gpointer     data)
 {
   if (animate)
-    idle_add (widget);
+    timeout_add (widget);
 
   return TRUE;
 }
@@ -505,7 +481,7 @@ unmap_event (GtkWidget   *widget,
 	     GdkEventAny *event,
 	     gpointer     data)
 {
-  idle_remove (widget);
+  timeout_remove (widget);
 
   return TRUE;
 }
@@ -518,9 +494,9 @@ visibility_notify_event (GtkWidget          *widget,
   if (animate)
     {
       if (event->state == GDK_VISIBILITY_FULLY_OBSCURED)
-	idle_remove (widget);
+	timeout_remove (widget);
       else
-	idle_add (widget);
+	timeout_add (widget);
     }
 
   return TRUE;
@@ -533,11 +509,11 @@ toggle_animation (GtkWidget *widget)
 
   if (animate)
     {
-      idle_add (widget);
+      timeout_add (widget);
     }
   else
     {
-      idle_remove (widget);
+      timeout_remove (widget);
       gtk_widget_queue_draw (widget);
     }
 }
