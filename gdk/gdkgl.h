@@ -23,6 +23,7 @@
 
 #include <gdk/gdkgltokens.h>
 #include <gdk/gdkgltypes.h>
+#include <gdk/gdkglenumtypes.h>
 #include <gdk/gdkglquery.h>
 #include <gdk/gdkglconfig.h>
 #include <gdk/gdkglcontext.h>

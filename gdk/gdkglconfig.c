@@ -52,35 +52,6 @@ static GdkGLConfig *gdk_gl_config_new_internal (GdkGLConfigMode mode);
 static gpointer parent_class = NULL;
 
 GType
-gdk_gl_config_mode_get_type (void)
-{
-  static GType etype = 0;
-
-  if (!etype)
-    {
-      static const GFlagsValue values[] = {
-        { GDK_GL_MODE_RGB,         "GDK_GL_MODE_RGB",         "rgb" },
-        { GDK_GL_MODE_RGBA,        "GDK_GL_MODE_RGBA",        "rgba" },
-        { GDK_GL_MODE_INDEX,       "GDK_GL_MODE_INDEX",       "index" },
-        { GDK_GL_MODE_SINGLE,      "GDK_GL_MODE_SINGLE",      "single" },
-        { GDK_GL_MODE_DOUBLE,      "GDK_GL_MODE_DOUBLE",      "double" },
-        { GDK_GL_MODE_ACCUM,       "GDK_GL_MODE_ACCUM",       "accum" },
-        { GDK_GL_MODE_ALPHA,       "GDK_GL_MODE_ALPHA",       "alpha" },
-        { GDK_GL_MODE_DEPTH,       "GDK_GL_MODE_DEPTH",       "depth" },
-        { GDK_GL_MODE_STENCIL,     "GDK_GL_MODE_STENCIL",     "stencil" },
-        { GDK_GL_MODE_STEREO,      "GDK_GL_MODE_STEREO",      "stereo" },
-        { GDK_GL_MODE_MULTISAMPLE, "GDK_GL_MODE_MULTISAMPLE", "multisample" },
-        { GDK_GL_MODE_LUMINANCE,   "GDK_GL_MODE_LUMINANCE",   "luminance" },
-        { 0, NULL, NULL }
-      };
-
-      etype = g_flags_register_static ("GdkGLConfigMode", values);
-    }
-
-  return etype;
-}
-
-GType
 gdk_gl_config_get_type (void)
 {
   static GType type = 0;

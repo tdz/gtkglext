@@ -81,15 +81,6 @@ typedef enum
   GDK_GL_MODE_LUMINANCE   = 1 << 11   /* not supported yet */
 } GdkGLConfigMode;
 </ENUM>
-<MACRO>
-<NAME>GDK_TYPE_GL_CONFIG_MODE</NAME>
-#define GDK_TYPE_GL_CONFIG_MODE         (gdk_gl_config_mode_get_type ())
-</MACRO>
-<FUNCTION>
-<NAME>gdk_gl_config_mode_get_type</NAME>
-<RETURNS>GType  </RETURNS>
-void
-</FUNCTION>
 <STRUCT>
 <NAME>GdkGLConfigClass</NAME>
 </STRUCT>
@@ -461,7 +452,7 @@ typedef enum
 } GdkGLVisualConfigAttribute;
 </ENUM>
 <ENUM>
-<NAME>GdkGLFBConfigAttribute</NAME>
+<NAME>GdkGLFbConfigAttribute</NAME>
 typedef enum
 {
   GDK_GL_X_VISUAL_TYPE           = 0x22,
@@ -480,7 +471,7 @@ typedef enum
   GDK_GL_MAX_PBUFFER_HEIGHT      = 0x8017,
   GDK_GL_MAX_PBUFFER_PIXELS      = 0x8018,
   GDK_GL_VISUAL_ID               = 0x800B
-} GdkGLFBConfigAttribute;
+} GdkGLFbConfigAttribute;
 </ENUM>
 <ENUM>
 <NAME>GdkGLConfigError</NAME>
@@ -706,6 +697,96 @@ GdkWindow   *window
 <NAME>gdk_window_get_gl_drawable</NAME>
 #define      gdk_window_get_gl_drawable(window)         \
   GDK_GL_DRAWABLE (gdk_window_get_gl_window (window))
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_success_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_SUCCESS</NAME>
+#define GDK_TYPE_GL_SUCCESS (gdk_gl_success_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_attrib_list_none_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_ATTRIB_LIST_NONE</NAME>
+#define GDK_TYPE_GL_ATTRIB_LIST_NONE (gdk_gl_attrib_list_none_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_visual_config_attribute_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_VISUAL_CONFIG_ATTRIBUTE</NAME>
+#define GDK_TYPE_GL_VISUAL_CONFIG_ATTRIBUTE (gdk_gl_visual_config_attribute_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_fb_config_attribute_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_FB_CONFIG_ATTRIBUTE</NAME>
+#define GDK_TYPE_GL_FB_CONFIG_ATTRIBUTE (gdk_gl_fb_config_attribute_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_config_error_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_CONFIG_ERROR</NAME>
+#define GDK_TYPE_GL_CONFIG_ERROR (gdk_gl_config_error_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_generic_value_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_GENERIC_VALUE</NAME>
+#define GDK_TYPE_GL_GENERIC_VALUE (gdk_gl_generic_value_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_extension_value_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_EXTENSION_VALUE</NAME>
+#define GDK_TYPE_GL_EXTENSION_VALUE (gdk_gl_extension_value_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_client_string_attribute_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_CLIENT_STRING_ATTRIBUTE</NAME>
+#define GDK_TYPE_GL_CLIENT_STRING_ATTRIBUTE (gdk_gl_client_string_attribute_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_context_info_extension_attribute_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_CONTEXT_INFO_EXTENSION_ATTRIBUTE</NAME>
+#define GDK_TYPE_GL_CONTEXT_INFO_EXTENSION_ATTRIBUTE (gdk_gl_context_info_extension_attribute_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_config_mode_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_CONFIG_MODE</NAME>
+#define GDK_TYPE_GL_CONFIG_MODE (gdk_gl_config_mode_get_type())
 </MACRO>
 <FUNCTION>
 <NAME>gtk_widget_set_gl_capability</NAME>

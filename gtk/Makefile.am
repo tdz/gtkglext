@@ -64,9 +64,12 @@ common_libadd = \
 # setup source file variables
 #
 
+gtkglext_public_h_sources = \
+	gtkgl.h		\
+	gtkglwidget.h
+
 gtkglext_headers = \
-	gtkgl.h			\
-	gtkglwidget.h		\
+	$(gtkglext_public_h_sources)
 	gtkglwidgetparam.h	\
 	gtkgldebug.h		\
 	gtkglprivate.h
@@ -88,23 +91,23 @@ INCLUDES = $(common_includes)
 lib_LTLIBRARIES = $(gtkglext_targetlib)
 
 EXTRA_LTLIBRARIES = \
-	libgtkglext-x11-@GTKGLEXT_API_MAJOR_VERSION@.@GTKGLEXT_API_MINOR_VERSION@.la	\
-	libgtkglext-win32-@GTKGLEXT_API_MAJOR_VERSION@.@GTKGLEXT_API_MINOR_VERSION@.la
+	libgtkglext-x11-@API_MJ_LT@.@API_MI_LT@.la	\
+	libgtkglext-win32-@API_MJ_LT@.@API_MI_LT@.la
 
-libgtkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_SOURCES = \
+libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
 	$(gtkglext_c_sources)
-libgtkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LDFLAGS = \
+libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
 	$(common_ldflags)
-libgtkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LIBADD = \
+libgtkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
 	$(common_libadd)
 
-libgtkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_SOURCES = \
+libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
 	$(gtkglext_c_sources)
-libgtkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LDFLAGS = \
+libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
 	$(common_ldflags)
-libgtkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LIBADD = \
+libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
 	$(common_libadd)
-libgtkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_DEPENDENCIES = \
+libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES = \
 	$(gtkglext_def)
 
 MAINTAINERCLEANFILES =

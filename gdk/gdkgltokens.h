@@ -128,7 +128,7 @@ typedef enum
   GDK_GL_MAX_PBUFFER_HEIGHT      = 0x8017,
   GDK_GL_MAX_PBUFFER_PIXELS      = 0x8018,
   GDK_GL_VISUAL_ID               = 0x800B
-} GdkGLFBConfigAttribute;
+} GdkGLFbConfigAttribute;
 
 /*
  * Error return values from glXGetConfig.  Success is indicated by

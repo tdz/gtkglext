@@ -89,6 +89,10 @@ Debug options
 
   --enable-debug          turn on debugging [default=no]
 
+Auto-generation files options
+
+  --disable-rebuilds      disable all source autogeneration rules
+
 Documentation options
 
   --enable-gtk-doc        use gtk-doc to build documentation [default=no]

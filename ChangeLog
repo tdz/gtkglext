@@ -1,3 +1,7 @@
+2002-07-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/Makefile.am: Added enumtypes.[ch] auto-generation feature.
+
 2002-07-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglconfig-x11.c: 

@@ -25,7 +25,8 @@
 
 G_BEGIN_DECLS
 
-/* Display mode bit masks.
+/*
+ * Display mode bit masks.
  */
 typedef enum
 {
@@ -42,11 +43,6 @@ typedef enum
   GDK_GL_MODE_MULTISAMPLE = 1 << 10,  /* not supported yet */
   GDK_GL_MODE_LUMINANCE   = 1 << 11   /* not supported yet */
 } GdkGLConfigMode;
-
-#define GDK_TYPE_GL_CONFIG_MODE         (gdk_gl_config_mode_get_type ())
-
-GType gdk_gl_config_mode_get_type (void);
-
 
 typedef struct _GdkGLConfigClass GdkGLConfigClass;
 

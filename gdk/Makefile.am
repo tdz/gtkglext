@@ -63,7 +63,7 @@ common_libadd = \
 # setup source file variables
 #
 
-gdkglext_headers = \
+gdkglext_public_h_sources = \
 	gdkgl.h			\
 	gdkgltokens.h		\
 	gdkgltypes.h		\
@@ -73,8 +73,12 @@ gdkglext_headers = \
 	gdkgldrawable.h		\
 	gdkglpixmap.h		\
 	gdkglwindow.h		\
-	gdkglfont.h		\
-	gdkgldebug.h		\
+	gdkglfont.h
+
+gdkglext_headers = \
+	$(gdkglext_public_h_sources)	\
+	gdkglenumtypes.h		\
+	gdkgldebug.h			\
 	gdkglprivate.h
 
 gdkglext_c_sources = \
@@ -97,29 +101,59 @@ INCLUDES = $(common_includes)
 lib_LTLIBRARIES = $(gdkglext_targetlib)
 
 EXTRA_LTLIBRARIES = \
-	libgdkglext-x11-@GTKGLEXT_API_MAJOR_VERSION@.@GTKGLEXT_API_MINOR_VERSION@.la	\
-	libgdkglext-win32-@GTKGLEXT_API_MAJOR_VERSION@.@GTKGLEXT_API_MINOR_VERSION@.la
+	libgdkglext-x11-@API_MJ_LT@.@API_MI_LT@.la	\
+	libgdkglext-win32-@API_MJ_LT@.@API_MI_LT@.la
 
-libgdkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_SOURCES = \
-	$(gdkglext_c_sources)
-libgdkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LDFLAGS = \
+libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
+	$(gdkglext_c_sources)	\
+	gdkglenumtypes.c
+libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
 	$(common_ldflags)
-libgdkglext_x11_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LIBADD = \
+libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
 	x11/libgdkglext-x11.la	\
 	$(common_libadd)
 
-libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_SOURCES = \
-	$(gdkglext_c_sources)
-libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LDFLAGS = \
+libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_SOURCES = \
+	$(gdkglext_c_sources)	\
+	gdkglenumtypes.c
+libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LDFLAGS = \
 	$(common_ldflags)
-libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_LIBADD = \
+libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_LIBADD = \
 	win32/libgdkglext-win32.la	\
 	$(common_libadd)
-libgdkglext_win32_@GTKGLEXT_API_MAJOR_VERSION@_@GTKGLEXT_API_MINOR_VERSION@_la_DEPENDENCIES = \
+libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_DEPENDENCIES = \
 	$(gdkglext_def)
 
-MAINTAINERCLEANFILES =
+MAINTAINERCLEANFILES = gdkglenumtypes.h stamp-gdkglenumtypes.h
 EXTRA_HEADERS =
+
+BUILT_SOURCES = @REBUILD@ gdkglenumtypes.h
+
+# Generate built header without using automake BUILT_SOURCES
+$(libgdkglext_x11_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS) $(libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS): gdkglenumtypes.h
+
+$(srcdir)/gdkglenumtypes.h: stamp-gdkglenumtypes.h
+	@true
+stamp-gdkglenumtypes.h: @REBUILD@ $(gdkglext_public_h_sources) Makefile
+	( cd $(srcdir) && glib-mkenums \
+			--fhead "#ifndef __GDK_GL_ENUM_TYPES_H__\n#define __GDK_GL_ENUM_TYPES_H__\n\n#include <glib-object.h>\n\nG_BEGIN_DECLS\n" \
+			--fprod "/* enumerations from \"@filename@\" */\n" \
+			--vhead "GType @enum_name@_get_type (void);\n#define GDK_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
+			--ftail "G_END_DECLS\n\n#endif /* __GDK_GL_ENUM_TYPES_H__ */" \
+		$(gdkglext_public_h_sources) ) >> xgen-geth \
+	&& (cmp -s xgen-geth $(srcdir)/gdkglenumtypes.h || cp xgen-geth $(srcdir)/gdkglenumtypes.h ) \
+	&& rm -f xgen-geth \
+	&& echo timestamp > $(@F)
+$(srcdir)/gdkglenumtypes.c: @REBUILD@ $(gdkglext_public_h_sources) Makefile
+	( cd $(srcdir) && glib-mkenums \
+			--fhead "#define GDK_GL_ENABLE_BROKEN\n#include \"gdkgl.h\"" \
+			--fprod "\n/* enumerations from \"@filename@\" */" \
+			--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
+			--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
+			--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
+		$(gdkglext_public_h_sources) ) > xgen-getc \
+	&& cp xgen-getc $(srcdir)/gdkglenumtypes.c  \
+	&& rm -f xgen-getc
 
 #
 # Extra rules
