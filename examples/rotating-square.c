@@ -517,10 +517,6 @@ create_window (GdkGLConfig *glconfig)
   g_signal_connect (G_OBJECT (drawing_area), "visibility_notify_event",
 		    G_CALLBACK (visibility_notify_event), NULL);
 
-  /* Destroy drawing_area on quit explicitly (for unrealize() handler). */
-  gtk_quit_add_destroy (gtk_main_level () + 1,
-			GTK_OBJECT (drawing_area));
-
   gtk_widget_show (drawing_area);
 
   /*
