@@ -39,24 +39,48 @@ static void
 gtk_widget_gl_realize (GtkWidget        *widget,
                        GtkGLWidgetParam *param)
 {
+  GdkGLConfig *glconfig;
+
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_realize ()"));
 
+  if (quark_gl_capable == 0)
+    quark_gl_capable = g_quark_from_static_string (quark_gl_capable_string);
+
+  /* Already OpenGL-capable */
+  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_capable) != NULL)
+    return;
+
+  /*
+   * Configure OpenGL-capable visual.
+   */
+
+  glconfig = gdk_gl_config_new (widget->window,
+				param->attrib_list);
+  if (glconfig == NULL)
+    {
+      g_warning ("cannot configure OpenGL-capable visual");
+      return;
+    }
+
+  /*
+   * Set OpenGL-capability to widget->window.
+   */
+
   if (gdk_window_set_gl_capability (widget->window,
-                                    param->glconfig,
+				    glconfig,
                                     param->render_type,
                                     param->share_list,
                                     param->direct,
                                     (const gint *) (param->attrib_list)))
     {
-      if (quark_gl_capable == 0)
-        quark_gl_capable = g_quark_from_static_string (quark_gl_capable_string);
-
       g_object_set_qdata (G_OBJECT (widget), quark_gl_capable,
                           (gpointer) &gl_capable);
 
       /* Destroy OpenGL rendering context explicitly. */
       gtk_quit_add (0, (GtkFunction) gtk_widget_destroy_gl_context, widget);
     }
+
+  g_object_unref (G_OBJECT (glconfig));
 }
 
 static gboolean
@@ -64,24 +88,50 @@ gtk_widget_gl_configure_event (GtkWidget         *widget,
                                GdkEventConfigure *event,
                                GtkGLWidgetParam  *param)
 {
+  GdkGLConfig *glconfig;
+
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_configure_event ()"));
 
+  if (quark_gl_capable == 0)
+    quark_gl_capable = g_quark_from_static_string (quark_gl_capable_string);
+
+  /* Already OpenGL-capable */
+  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_capable) != NULL)
+    goto DONE;
+
+  /*
+   * Configure OpenGL-capable visual.
+   */
+
+  glconfig = gdk_gl_config_new (widget->window,
+				param->attrib_list);
+  if (glconfig == NULL)
+    {
+      g_warning ("cannot configure OpenGL-capable visual");
+      goto DONE;
+    }
+
+  /*
+   * Set OpenGL-capability to widget->window.
+   */
+
   if (gdk_window_set_gl_capability (widget->window,
-                                    param->glconfig,
+				    glconfig,
                                     param->render_type,
                                     param->share_list,
                                     param->direct,
                                     (const gint *) (param->attrib_list)))
     {
-      if (quark_gl_capable == 0)
-        quark_gl_capable = g_quark_from_static_string (quark_gl_capable_string);
-
       g_object_set_qdata (G_OBJECT (widget), quark_gl_capable,
                           (gpointer) &gl_capable);
 
       /* Destroy OpenGL rendering context explicitly. */
       gtk_quit_add (0, (GtkFunction) gtk_widget_destroy_gl_context, widget);
     }
+
+  g_object_unref (G_OBJECT (glconfig));
+
+ DONE:
 
 #if 1
   g_signal_handlers_disconnect_by_func (widget,
@@ -114,29 +164,20 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
  */
 gboolean
 gtk_widget_set_gl_capability (GtkWidget    *widget,
-                              GdkGLConfig  *glconfig,
+                              const gint   *attrib_list,
                               gint          render_type,
                               GdkGLContext *share_list,
-                              gboolean      direct,
-                              const gint   *attrib_list)
+                              gboolean      direct)
 {
-  const GtkGLWidgetParam param = { glconfig,
+  const GtkGLWidgetParam param = { (gint *) attrib_list,
                                    render_type,
                                    share_list,
-                                   direct,
-                                   (gint *) attrib_list };
+                                   direct};
 
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_set_gl_capability ()"));
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (!GTK_WIDGET_REALIZED (widget), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
-
-  /*
-   * Set OpenGL-capable colormap.
-   */
-
-  gtk_widget_set_colormap (widget, gdk_gl_config_get_colormap (glconfig));
 
   /*
    * Disable backing store feature of the widget.

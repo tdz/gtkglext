@@ -237,6 +237,13 @@ gdk_window_set_gl_capability (GdkWindow    *window,
   g_object_ref (G_OBJECT (glconfig));
 
   /*
+   * Set OpenGL-capable colormap.
+   */
+
+  gdk_drawable_set_colormap (GDK_DRAWABLE (window),
+			     gdk_gl_config_get_colormap (glconfig));
+
+  /*
    * Create GdkGLWindow
    */
 

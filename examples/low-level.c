@@ -44,13 +44,23 @@ examine_gl_config_attrib (GdkGLConfig *glconfig)
 {
   g_print ("\nOpenGL visual configurations :\n");
 
-  print_gl_config_attrib (glconfig, "GDK_GL_RGBA",         GDK_GL_RGBA,         TRUE);
-  print_gl_config_attrib (glconfig, "GDK_GL_DOUBLEBUFFER", GDK_GL_DOUBLEBUFFER, TRUE);
-  print_gl_config_attrib (glconfig, "GDK_GL_RED_SIZE",     GDK_GL_RED_SIZE,     FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_GREEN_SIZE",   GDK_GL_GREEN_SIZE,   FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_BLUE_SIZE",    GDK_GL_BLUE_SIZE,    FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_ALPHA_SIZE",   GDK_GL_ALPHA_SIZE,   FALSE);
-  print_gl_config_attrib (glconfig, "GDK_GL_DEPTH_SIZE",   GDK_GL_DEPTH_SIZE,   FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_USE_GL",           GDK_GL_USE_GL,           TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_BUFFER_SIZE",      GDK_GL_BUFFER_SIZE,      FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_LEVEL",            GDK_GL_LEVEL,            FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_RGBA",             GDK_GL_RGBA,             TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_DOUBLEBUFFER",     GDK_GL_DOUBLEBUFFER,     TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_STEREO",           GDK_GL_STEREO,           TRUE);
+  print_gl_config_attrib (glconfig, "GDK_GL_AUX_BUFFERS",      GDK_GL_AUX_BUFFERS,      FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_RED_SIZE",         GDK_GL_RED_SIZE,         FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_GREEN_SIZE",       GDK_GL_GREEN_SIZE,       FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_BLUE_SIZE",        GDK_GL_BLUE_SIZE,        FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ALPHA_SIZE",       GDK_GL_ALPHA_SIZE,       FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_DEPTH_SIZE",       GDK_GL_DEPTH_SIZE,       FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_STENCIL_SIZE",     GDK_GL_STENCIL_SIZE,     FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_RED_SIZE",   GDK_GL_ACCUM_RED_SIZE,   FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_GREEN_SIZE", GDK_GL_ACCUM_GREEN_SIZE, FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_BLUE_SIZE",  GDK_GL_ACCUM_BLUE_SIZE,  FALSE);
+  print_gl_config_attrib (glconfig, "GDK_GL_ACCUM_ALPHA_SIZE", GDK_GL_ACCUM_ALPHA_SIZE, FALSE);
 
   g_print ("\n");
 }
@@ -59,6 +69,27 @@ void
 init (GtkWidget *widget,
       gpointer   data)
 {
+  /*
+   * Configure OpenGL-capable visual.
+   */
+
+  /* Try double buffered visual */
+  glconfig = gdk_gl_config_new (widget->window, &config_attributes[0]);
+  if (glconfig == NULL)
+    {
+      g_print ("*** Cannot find the OpenGL-capable visual with double buffering support.\n");
+      g_print ("*** Trying single buffering visual.\n");
+
+      /* Try single buffered visual */
+      glconfig = gdk_gl_config_new (widget->window, &config_attributes[1]);
+      if (glconfig == NULL)
+	{
+	  g_print ("*** Cannot find an OpenGL-capable visual\n");
+	  gtk_exit (1);
+	}
+    }
+
+  examine_gl_config_attrib (glconfig);
 
   /*
    * Set OpenGL-capability to widget->window
@@ -81,14 +112,15 @@ init (GtkWidget *widget,
   glcontext = gdk_window_get_gl_context (widget->window);
 
   g_print ("The OpenGL rendering context is created\n");
-  g_print ("The OpenGL rendering context is direct? = %s\n",
-           gdk_gl_context_is_direct (glcontext) ? "TRUE" : "FALSE");
 
+  /* OpenGL begin. */
   if (gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
     {
       GLUquadricObj *qobj;
       static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
       static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
+
+      gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
 
       qobj = gluNewQuadric ();
       gluQuadricDrawStyle (qobj, GLU_FILL);
@@ -118,7 +150,10 @@ init (GtkWidget *widget,
                  0.0, 0.0, 0.0,
                  0.0, 1.0, 0.0);
       glTranslatef (0.0, 0.0, -3.0);
+
+      gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
     }
+  /* OpenGL end. */
 }
 
 void
@@ -138,13 +173,17 @@ reshape (GtkWidget         *widget,
   if (glwindow == NULL)
     return TRUE;
 
+  /* OpenGL begin. */
   if (gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
     {
-      gdk_gl_wait_gdk ();
+      gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
 
       glViewport (0, 0,
                   widget->allocation.width, widget->allocation.height);
+
+      gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
     }
+  /* OpenGL end. */
 
   return TRUE;
 }
@@ -154,9 +193,10 @@ display (GtkWidget      *widget,
          GdkEventExpose *event,
          gpointer        data)
 {
+  /* OpenGL begin. */
   if (gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
     {
-      gdk_gl_wait_gdk ();
+      gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
 
       glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -166,10 +206,12 @@ display (GtkWidget      *widget,
         gdk_gl_drawable_swap_buffers (GDK_GL_DRAWABLE (glwindow));
       else
         glFlush ();
+
+      gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
     }
+  /* OpenGL end. */
 
 #if 0
-  gdk_gl_wait_gl ();
 
   gdk_draw_arc (widget->window,
                 widget->style->fg_gc[GTK_WIDGET_STATE (widget)],
@@ -179,6 +221,7 @@ display (GtkWidget      *widget,
                 0.2*widget->allocation.width,
                 0.2*widget->allocation.height,
                 0, 64 * 360);
+
 #endif
 
   return TRUE;
@@ -187,9 +230,10 @@ display (GtkWidget      *widget,
 gboolean
 idle (GtkWidget *widget)
 {
+  /* OpenGL begin. */
   if (gdk_gl_drawable_make_current (GDK_GL_DRAWABLE (glwindow), glcontext))
     {
-      gdk_gl_wait_gdk ();
+      gdk_gl_drawable_wait_gdk (GDK_GL_DRAWABLE (glwindow));
 
       glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -199,7 +243,10 @@ idle (GtkWidget *widget)
         gdk_gl_drawable_swap_buffers (GDK_GL_DRAWABLE (glwindow));
       else
         glFlush ();
+
+      gdk_gl_drawable_wait_gl (GDK_GL_DRAWABLE (glwindow));
     }
+  /* OpenGL end. */
 
   return TRUE;
 }
@@ -249,28 +296,6 @@ main (int argc,
            major, minor);
 
   /*
-   * Configure OpenGL-capable visual.
-   */
-
-  /* Try double buffered visual */
-  glconfig = gdk_gl_config_new (&config_attributes[0]);
-  if (glconfig == NULL)
-    {
-      g_print ("*** Cannot find the OpenGL-capable visual with double buffering support.\n");
-      g_print ("*** Trying single buffering visual.\n");
-
-      /* Try single buffered visual */
-      glconfig = gdk_gl_config_new (&config_attributes[1]);
-      if (glconfig == NULL)
-        {
-          g_print ("*** Cannot find an OpenGL-capable visual\n");
-          gtk_exit (1);
-        }
-    }
-
-  examine_gl_config_attrib (glconfig);
-
-  /*
    * Top-level window.
    */
 
@@ -291,9 +316,7 @@ main (int argc,
   drawing_area = gtk_drawing_area_new ();
   gtk_widget_set_size_request (GTK_WIDGET (drawing_area), 200, 200);
 
-  /* Set the appropriate colormap for OpenGL. */
-  gtk_widget_set_colormap (drawing_area, gdk_gl_config_get_colormap (glconfig));
-  gtk_widget_set_double_buffered (drawing_area, FALSE);
+  gtk_widget_set_double_buffered (GTK_WIDGET (drawing_area), FALSE);
 
   gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
 

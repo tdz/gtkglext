@@ -280,11 +280,3 @@ _gdk_gl_context_set_gl_drawable (GdkGLContext  *glcontext,
 
   g_object_notify (G_OBJECT (glcontext), "gldrawable");
 }
-
-gboolean
-gdk_gl_context_is_direct (GdkGLContext *glcontext)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
-
-  return glcontext->is_direct;
-}

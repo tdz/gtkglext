@@ -45,8 +45,8 @@ Currently GtkGLExt supports
       Tested on Linux (RedHat 7.2) and IRIX (6.5).
 
   * Win32 platforms
-      Tested on Windows 2000 Professional using Cygwin and MinGW
-      environment.
+      Tested on Windows XP & 2000 Professional using Cygwin and
+      MinGW environment.
 
 
 Requirements

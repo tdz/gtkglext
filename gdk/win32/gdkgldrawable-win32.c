@@ -16,39 +16,48 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#include "gdkglcontext.h"
+#include "gdkglprivate-win32.h"
+#include "gdkgldrawable.h"
 #include "gdkglpixmap.h"
 #include "gdkglwindow.h"
-#include "gdkglwin32.h"
-#include "gdkglprivate-win32.h"
+
+HDC
+gdk_win32_gl_drawable_hdc_get (GdkGLDrawable *gldrawable)
+{
+  if (GDK_IS_GL_PIXMAP (gldrawable))
+    return _gdk_win32_gl_pixmap_hdc_get (gldrawable);
+  else if (GDK_IS_GL_WINDOW (gldrawable))
+    return _gdk_win32_gl_window_hdc_get (gldrawable);
+  else
+    g_warning ("GLDrawable should be GLPixmap or GLWindow");
+
+  return NULL;
+}
 
 void
-_gdk_win32_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable)
+gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable)
 {
-  HDC hdc;
-
-  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
-
-  /*
-   * Get DC.
-   */
   if (GDK_IS_GL_PIXMAP (gldrawable))
-    hdc = gdk_win32_gl_pixmap_get_hdc (GDK_GL_PIXMAP (gldrawable));
+    _gdk_win32_gl_pixmap_hdc_release (gldrawable);
   else if (GDK_IS_GL_WINDOW (gldrawable))
-    hdc = gdk_win32_gl_window_get_hdc (GDK_GL_WINDOW (gldrawable));
+    _gdk_win32_gl_window_hdc_release (gldrawable);
   else
-    {
-      g_warning (G_STRLOC " GLDrawable is not a GLPixmap or GLWindow");
-      return;
-    }
+    g_warning ("GLDrawable should be GLPixmap or GLWindow");
+}
 
-  if (hdc == NULL)
-    {
-      g_warning (G_STRLOC " cannot get DC");
-      return;
-    }
+void
+gdk_gl_drawable_wait_gl (GdkGLDrawable *gldrawable)
+{
+  if (GDK_IS_GL_PIXMAP (gldrawable))
+    _gdk_win32_gl_pixmap_wait_gl (gldrawable);
+  else if (GDK_IS_GL_WINDOW (gldrawable))
+    _gdk_win32_gl_window_wait_gl (gldrawable);
+  else
+    g_warning ("GLDrawable should be GLPixmap or GLWindow");
+}
 
-  GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
-
-  SwapBuffers (hdc);
+void
+gdk_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
+{
+  GdiFlush ();
 }

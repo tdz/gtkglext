@@ -37,11 +37,6 @@ gboolean gdk_gl_query_extension (void);
 gboolean gdk_gl_query_version   (gint *major,
                                  gint *minor);
 
-void gdk_gl_wait_gl (void);
-
-void gdk_gl_wait_gdk (void);
-
-
 G_END_DECLS
 
 #endif /* __GDK_GL_H__ */

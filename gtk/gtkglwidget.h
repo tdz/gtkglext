@@ -32,11 +32,10 @@ G_BEGIN_DECLS
  * (first attribute of None).
  */
 gboolean      gtk_widget_set_gl_capability (GtkWidget    *widget,
-                                            GdkGLConfig  *glconfig,
+                                            const gint   *attrib_list,
                                             gint          render_type,
                                             GdkGLContext *share_list,
-                                            gboolean      direct,
-                                            const gint   *attrib_list);
+                                            gboolean      direct);
 
 gboolean      gtk_widget_is_gl_capable     (GtkWidget    *widget);
 
@@ -62,17 +61,17 @@ GdkGLWindow  *gtk_widget_get_gl_window     (GtkWidget    *widget);
   gdk_gl_drawable_swap_buffers (gtk_widget_get_gl_drawable (widget))
 
 
-#define       gtk_widget_gl_begin(widget)       \
-  do                                            \
-    {                                           \
-      if (gtk_widget_gl_make_current (widget))  \
-        {                                       \
-          gdk_gl_wait_gdk ()
+#define       gtk_widget_gl_begin(widget)				\
+  do									\
+    {									\
+      if (gtk_widget_gl_make_current (widget))				\
+        {								\
+          gdk_gl_drawable_wait_gdk (gtk_widget_get_gl_drawable(widget))
 
-#define       gtk_widget_gl_end(widget)         \
-          gdk_gl_wait_gl ();                    \
-        }                                       \
-    }                                           \
+#define       gtk_widget_gl_end(widget)					\
+          gdk_gl_drawable_wait_gl (gtk_widget_get_gl_drawable(widget));	\
+        }								\
+    }									\
   while (0)
 
 

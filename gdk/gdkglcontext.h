@@ -59,8 +59,6 @@ GdkGLContext *gdk_gl_context_new       (GdkGLDrawable *gldrawable,
                                         GdkGLContext  *share_list,
                                         gboolean       direct);
 
-gboolean      gdk_gl_context_is_direct (GdkGLContext *glcontext);
-
 G_END_DECLS
 
 #endif /* __GDK_GL_CONTEXT_H__ */

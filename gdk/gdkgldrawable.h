@@ -58,7 +58,12 @@ GType gdk_gl_drawable_get_type (void);
 
 gboolean gdk_gl_drawable_make_current (GdkGLDrawable *gldrawable,
                                        GdkGLContext  *glcontext);
+
 void     gdk_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable);
+
+void     gdk_gl_drawable_wait_gl      (GdkGLDrawable *gldrawable);
+
+void     gdk_gl_drawable_wait_gdk     (GdkGLDrawable *gldrawable);
 
 G_END_DECLS
 

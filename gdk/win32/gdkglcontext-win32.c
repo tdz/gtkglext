@@ -95,8 +95,6 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
   GdkGLContextImplWin32 *share_impl = NULL;
 
   HDC hdc;
-  PIXELFORMATDESCRIPTOR *pfd;
-  int pf;
 
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
                                                        n_construct_properties,
@@ -108,32 +106,11 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
   impl = GDK_GL_CONTEXT_IMPL_WIN32 (object);
 
   /*
-   * Create an OpenGL rendering context.
-   */
-
-  /*
    * Get DC.
    */
-  if (GDK_IS_GL_PIXMAP (glcontext->gldrawable))
-    hdc = gdk_win32_gl_pixmap_get_hdc (GDK_GL_PIXMAP (glcontext->gldrawable));
-  else if (GDK_IS_GL_WINDOW (glcontext->gldrawable))
-    hdc = gdk_win32_gl_window_get_hdc (GDK_GL_WINDOW (glcontext->gldrawable));
-  else
-    {
-      g_warning (G_STRLOC " GLDrawable is not a GLPixmap or GLWindow");
-      goto FAIL;
-    }
 
+  hdc = gdk_win32_gl_drawable_hdc_get (glcontext->gldrawable);
   if (hdc == NULL)
-    goto FAIL;
-
-  pfd = gdk_win32_gl_config_get_pfd (glcontext->glconfig);
-
-  pf = ChoosePixelFormat(hdc, pfd);
-  if (pf == 0)
-    goto FAIL;
-
-  if (!SetPixelFormat (hdc, pf, pfd))
     goto FAIL;
 
   /*
@@ -152,6 +129,12 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
     }
 
   /*
+   * Release DC.
+   */
+
+  gdk_win32_gl_drawable_hdc_release (glcontext->gldrawable);
+
+  /*
    * Successfully constructed?
    */
 
@@ -163,6 +146,9 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
 
   if (impl->hglrc != NULL)
     wglDeleteContext (impl->hglrc);
+
+  if (hdc != NULL)
+    gdk_win32_gl_drawable_hdc_release (glcontext->gldrawable);
 
   impl->hglrc = NULL;
 

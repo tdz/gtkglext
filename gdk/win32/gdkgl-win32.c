@@ -55,15 +55,3 @@ gdk_gl_query_version (gint *major,
 
   return TRUE;
 }
-
-void
-gdk_gl_wait_gl (void)
-{
-  glFinish ();
-}
-
-void
-gdk_gl_wait_gdk (void)
-{
-  GdiFlush ();
-}

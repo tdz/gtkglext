@@ -105,8 +105,6 @@ gdk_gl_pixmap_impl_win32_constructor (GType                  type,
   GdkGLPixmap *glpixmap;
   GdkGLPixmapImplWin32 *impl;
 
-  HANDLE old_handle;
-
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
                                                        n_construct_properties,
                                                        construct_properties);
@@ -117,34 +115,10 @@ gdk_gl_pixmap_impl_win32_constructor (GType                  type,
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (object);
 
   /*
-   * Create a memory DC.
-   */
-
-  impl->hdc = CreateCompatibleDC (NULL);
-  if (impl->hdc == NULL)
-    goto FAIL;
-
-  /*
-   * XXX GdkGLPixmap is not GdkPixmap for the moment :-<
-   *     use glpixmap->wrapper.
-   */  
-  old_handle = SelectObject (impl->hdc,
-                             gdk_win32_drawable_get_handle (glpixmap->wrapper));
-  if (old_handle == NULL)
-    goto FAIL;
-
-  /*
    * Successfully constructed?
    */
 
   impl->is_constructed = TRUE;
-
- FAIL:
-
-  if (impl->hdc != NULL)
-    DeleteDC (impl->hdc);
-
-  impl->hdc = NULL;
 
   return object;
 }
@@ -152,15 +126,7 @@ gdk_gl_pixmap_impl_win32_constructor (GType                  type,
 static void
 gdk_gl_pixmap_impl_win32_finalize (GObject *object)
 {
-  GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (object);
-
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_pixmap_impl_win32_finalize ()"));
-
-  if (impl->hdc != NULL)
-    {
-      DeleteDC (impl->hdc);
-      impl->hdc = NULL;
-    }
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
@@ -179,30 +145,162 @@ gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->real_drawable = _gdk_gl_pixmap_real_drawable;
 }
 
+#include "gdkglconfig-win32.h"
+
+HDC
+_gdk_win32_gl_pixmap_hdc_get (GdkGLDrawable *gldrawable)
+{
+  GdkGLPixmap *glpixmap;
+  GdkGLPixmapImplWin32 *impl;
+  GdkDrawable *drawable;
+  HBITMAP old_hbitmap;
+  PIXELFORMATDESCRIPTOR *pfd;
+  int pf;
+
+  g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
+
+  glpixmap = GDK_GL_PIXMAP (gldrawable);
+  impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
+
+  g_assert (impl->hdc == NULL);
+
+  /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
+  drawable = GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->real_drawable (gldrawable);
+  impl->hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (drawable);
+
+  /*
+   * Create a memory DC.
+   */
+
+  impl->hdc = CreateCompatibleDC (NULL);
+  if (impl->hdc == NULL)
+    {
+      g_warning ("cannot create a memory DC");
+      goto FAIL;
+    }
+
+  /*
+   * Save current DC.
+   */
+  impl->saved_dc = SaveDC (impl->hdc);
+  if (impl->saved_dc == 0)
+    {
+      g_warning ("cannot save DC");
+      goto FAIL;
+    }
+
+  /*
+   * Select the bitmap.
+   */
+
+  old_hbitmap = SelectObject (impl->hdc, impl->hbitmap);
+  if (old_hbitmap == NULL)
+    {
+      g_warning ("cannot select GDI object");
+      goto FAIL;
+    }
+
+  /*
+   * Set pixel format.
+   */
+
+  pfd = gdk_win32_gl_config_get_pfd (glpixmap->glconfig);
+  /* Draw to bitmap */
+  pfd->dwFlags |= PFD_DRAW_TO_BITMAP;
+
+  pf = ChoosePixelFormat (impl->hdc, pfd);
+  if (pf == 0)
+    {
+      g_warning ("cannot choose pixel format");
+      goto FAIL;
+    }
+
+  if (!SetPixelFormat (impl->hdc, pf, pfd))
+    {
+      g_warning ("cannot set pixel format");
+      goto FAIL;
+    }
+
+  return impl->hdc;
+
+ FAIL:
+
+  if (impl->saved_dc != 0)
+    RestoreDC (impl->hdc, impl->saved_dc);
+
+  if (impl->hdc != NULL)
+    DeleteDC (impl->hdc);
+
+  impl->hbitmap = NULL;
+  impl->hdc = NULL;
+  impl->saved_dc = 0;
+
+  return NULL;
+}
+
+void
+_gdk_win32_gl_pixmap_hdc_release (GdkGLDrawable *gldrawable)
+{
+  GdkGLPixmapImplWin32 *impl;
+
+  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+
+  impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
+
+  g_assert (impl->hdc != NULL);
+
+  /*
+   * Restore saved DC.
+   */
+
+  if (!RestoreDC (impl->hdc, impl->saved_dc))
+    g_warning ("cannot restore DC");
+
+  /*
+   * Delete the memory DC.
+   */
+
+  if (!DeleteDC (impl->hdc))
+    g_warning ("cannot delete the memory DC");
+
+  impl->hbitmap = NULL;
+  impl->hdc = NULL;
+  impl->saved_dc = 0;
+}
+
 static gboolean
 gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable *draw,
                                           GdkGLDrawable *read,
                                           GdkGLContext  *glcontext)
 {
-  GdkGLPixmapImplWin32 *impl;
+  HDC hdc;
   HGLRC hglrc;
 
   g_return_val_if_fail (GDK_IS_GL_PIXMAP (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  impl = GDK_GL_PIXMAP_IMPL_WIN32 (draw);
+  /*
+   * Get DC.
+   */
+
+  hdc = _gdk_win32_gl_pixmap_hdc_get (draw);
+
+  /*
+   * Get GLRC.
+   */
 
   hglrc = gdk_win32_gl_context_get_hglrc (glcontext);
 
-  if (impl->hdc == wglGetCurrentDC () &&
+  if (hdc == wglGetCurrentDC () &&
       hglrc == wglGetCurrentContext ())
     return TRUE;
 
   GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
 
-  if (!wglMakeCurrent (impl->hdc, hglrc))
+  if (!wglMakeCurrent (hdc, hglrc))
     {
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
+      _gdk_win32_gl_pixmap_hdc_release (draw);
       return FALSE;
     }
 
@@ -220,9 +318,23 @@ gdk_win32_gl_pixmap_swap_buffers (GdkGLDrawable *gldrawable)
 
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
 
+  g_assert (impl->hdc != NULL);
+
   GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
 
   SwapBuffers (impl->hdc);
+}
+
+void
+_gdk_win32_gl_pixmap_wait_gl (GdkGLDrawable *gldrawable)
+{
+  glFinish ();
+
+  /*
+   * Release DC.
+   */
+
+  _gdk_win32_gl_pixmap_hdc_release (gldrawable);
 }
 
 /*

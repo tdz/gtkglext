@@ -22,16 +22,23 @@
 #include <gdk/gdkprivate.h>
 
 #include <gdk/gdkglprivate.h>
+#include <gdk/win32/gdkglwin32.h>
 
 G_BEGIN_DECLS
+
+HDC  _gdk_win32_gl_pixmap_hdc_get     (GdkGLDrawable *gldrawable);
+void _gdk_win32_gl_pixmap_hdc_release (GdkGLDrawable *gldrawable);
+void _gdk_win32_gl_pixmap_wait_gl     (GdkGLDrawable *gldrawable);
+
+HDC  _gdk_win32_gl_window_hdc_get     (GdkGLDrawable *gldrawable);
+void _gdk_win32_gl_window_hdc_release (GdkGLDrawable *gldrawable);
+void _gdk_win32_gl_window_wait_gl     (GdkGLDrawable *gldrawable);
 
 GdkGLContext *_gdk_win32_gl_context_new           (GdkGLDrawable *gldrawable,
                                                    GdkGLConfig   *glconfig,
                                                    gint           render_type,
                                                    GdkGLContext  *share_list,
                                                    gboolean       direct);
-
-void          _gdk_win32_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable);
 
 G_END_DECLS
 

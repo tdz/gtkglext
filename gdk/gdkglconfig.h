@@ -38,6 +38,7 @@ struct _GdkGLConfig
 {
   GObject parent_instance;
 
+  GdkWindow *window;
   GdkColormap *colormap;
   gint depth;
 
@@ -56,13 +57,16 @@ struct _GdkGLConfigClass
 
 GType        gdk_gl_config_get_type         (void);
 
-GdkGLConfig *gdk_gl_config_new              (const gint    *attrib_list);
+GdkGLConfig *gdk_gl_config_new              (GdkWindow   *window,
+					     const gint  *attrib_list);
 
 gboolean     gdk_gl_config_get_attrib       (GdkGLConfig *glconfig,
                                              gint         attribute,
                                              gint        *value);
 
-GdkColormap *gdk_gl_config_get_colormap     (GdkGLConfig *glconfig);
+GdkDrawable *gdk_gl_config_get_drawable   (GdkGLConfig *glconfig);
+
+GdkColormap *gdk_gl_config_get_colormap   (GdkGLConfig *glconfig);
 
 gint         gdk_gl_config_get_depth        (GdkGLConfig *glconfig);
 

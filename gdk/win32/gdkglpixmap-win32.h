@@ -38,9 +38,12 @@ struct _GdkGLPixmapImplWin32
 {
   GdkGLPixmap parent_instance;
 
-  HDC hdc;
-
   guint is_constructed : 1;
+
+  /*< private >*/
+  HBITMAP hbitmap;
+  HDC hdc;
+  int saved_dc;
 };
 
 struct _GdkGLPixmapImplWin32Class
