@@ -17,9 +17,6 @@ which has GLX like interface. GtkGLExt library includes high-level
 gtk_widget API add-on using GdkGLExt, which extends *ANY* GTK+ widget
 to an OpenGL-capable widget.
 
-The objects included in these libraries are implemented using C and
-fully compliant with GLib's GObject and it's latest features.
-
 The official web site is:
   http://gtkglext.sourceforge.net/
 
