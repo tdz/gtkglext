@@ -318,6 +318,7 @@ main (int argc,
     {
       g_print ("\nAllocate colors.\n");
 
+      /* Allocate writable color cells. */
       not_allocated = gdk_colormap_alloc_colors (colormap, colors, NUM_COLORS,
                                                  TRUE, FALSE, success);
       g_print ("Not allocated = %d\n", not_allocated);
