@@ -63,13 +63,13 @@ rm -rf $RPM_BUILD_ROOT
 
 pushd "$RPM_BUILD_ROOT%{_libdir}"
 
-%{__cp} -p libgdkglext-x11-%{api_version}.la libgdkglext-x11-%{api_version}.la.bak
-%{__cat} libgdkglext-x11-%{api_version}.la.bak | \
-    %{__sed} -e "s| -L$RPM_BUILD_ROOT%{_libdir}||g" > libgdkglext-x11-%{api_version}.la
+cp -p libgdkglext-x11-%{api_version}.la libgdkglext-x11-%{api_version}.la.bak
+cat libgdkglext-x11-%{api_version}.la.bak | \
+  sed -e "s| -L$RPM_BUILD_ROOT%{_libdir}||g" > libgdkglext-x11-%{api_version}.la
 
-%{__cp} -p libgtkglext-x11-%{api_version}.la libgtkglext-x11-%{api_version}.la.bak
-%{__cat} libgtkglext-x11-%{api_version}.la.bak | \
-    %{__sed} -e "s| -L$RPM_BUILD_ROOT%{_libdir}||g" > libgtkglext-x11-%{api_version}.la
+cp -p libgtkglext-x11-%{api_version}.la libgtkglext-x11-%{api_version}.la.bak
+cat libgtkglext-x11-%{api_version}.la.bak | \
+  sed -e "s| -L$RPM_BUILD_ROOT%{_libdir}||g" > libgtkglext-x11-%{api_version}.la
 
 popd
 
