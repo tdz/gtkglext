@@ -22,19 +22,6 @@
 #define M_PI 3.14159265
 #endif
 
-static const gint config_attributes[] = {
-  GDK_GL_DOUBLEBUFFER,
-  GDK_GL_RGBA,
-  GDK_GL_RED_SIZE,        1,
-  GDK_GL_GREEN_SIZE,      1,
-  GDK_GL_BLUE_SIZE,       1,
-  GDK_GL_DEPTH_SIZE,      12,
-  GDK_GL_ATTRIB_LIST_NONE
-};
-
-static GTimer *timer = NULL;
-static gint Frames = 0;
-
 /**
 
   Draw a gear wheel.  You'll probably want to call this function when
@@ -173,6 +160,9 @@ static GLfloat view_rotx = 20.0, view_roty = 30.0, view_rotz = 0.0;
 static GLint gear1, gear2, gear3;
 static GLfloat angle = 0.0;
 
+static GTimer *timer = NULL;
+static gint frames = 0;
+
 static gboolean
 draw(GtkWidget      *widget,
      GdkEventExpose *event,
@@ -216,16 +206,16 @@ draw(GtkWidget      *widget,
   gtk_widget_gl_end(widget);
   /* OpenGL end. */
 
-  Frames++;
+  frames++;
 
   {
-     gdouble seconds = g_timer_elapsed(timer, NULL);
-     if (seconds >= 5.0) {
-        gdouble fps = Frames / seconds;
-        g_print("%d frames in %6.3f seconds = %6.3f FPS\n", Frames, seconds, fps);
-        g_timer_reset(timer);
-        Frames = 0;
-     }
+    gdouble seconds = g_timer_elapsed(timer, NULL);
+    if (seconds >= 5.0) {
+      gdouble fps = frames / seconds;
+      g_print("%d frames in %6.3f seconds = %6.3f FPS\n", frames, seconds, fps);
+      g_timer_reset(timer);
+      frames = 0;
+    }
   }
 
   return TRUE;
@@ -304,6 +294,12 @@ init(GtkWidget *widget,
 
   gtk_widget_gl_end(widget);
   /* OpenGL end. */
+
+  /* create timer */
+  if (timer == NULL)
+    timer = g_timer_new();
+
+  g_timer_start(timer);
 }
 
 static gboolean
@@ -316,23 +312,51 @@ idle(GtkWidget *widget)
   return TRUE;
 }
 
+static guint idle_id = 0;
+
+static gboolean
+map(GtkWidget   *widget,
+    GdkEventAny *event,
+    gpointer     data)
+{
+  if (idle_id == 0) {
+    idle_id = gtk_idle_add_priority(GDK_PRIORITY_REDRAW,
+                                    (GtkFunction) idle,
+                                    widget);
+  }
+
+  return TRUE;
+}
+
+static gboolean
+unmap(GtkWidget   *widget,
+      GdkEventAny *event,
+      gpointer     data)
+{
+  if (idle_id != 0) {
+    gtk_idle_remove(idle_id);
+    idle_id = 0;
+  }
+
+  return TRUE;
+}
+
 static gboolean
 visible(GtkWidget          *widget,
         GdkEventVisibility *event,
         gpointer            data)
 {
-  static guint id = 0;
-
   if (event->state == GDK_VISIBILITY_FULLY_OBSCURED) {
-    if (id != 0) {
-      gtk_idle_remove(id);
-      id = 0;
+    if (idle_id != 0) {
+      gtk_idle_remove(idle_id);
+      idle_id = 0;
     }
   } else {
-    if (id == 0)
-      id = gtk_idle_add_priority(GDK_PRIORITY_REDRAW,
-				 (GtkFunction) idle,
-				 widget);
+    if (idle_id == 0) {
+      idle_id = gtk_idle_add_priority(GDK_PRIORITY_REDRAW,
+                                      (GtkFunction) idle,
+                                      widget);
+    }
   }
 
   return TRUE;
@@ -395,6 +419,16 @@ main(int   argc,
   GtkWidget *vbox;
   GtkWidget *drawing_area;
   GtkWidget *button;
+
+  const gint config_attributes[] = {
+    GDK_GL_DOUBLEBUFFER,
+    GDK_GL_RGBA,
+    GDK_GL_RED_SIZE,        1,
+    GDK_GL_GREEN_SIZE,      1,
+    GDK_GL_BLUE_SIZE,       1,
+    GDK_GL_DEPTH_SIZE,      12,
+    GDK_GL_ATTRIB_LIST_NONE
+  };
 
   /*
    * Init
@@ -472,6 +506,10 @@ main(int   argc,
                    G_CALLBACK(reshape), NULL);
   g_signal_connect(G_OBJECT(drawing_area), "expose_event",
                    G_CALLBACK(draw), NULL);
+  g_signal_connect(G_OBJECT(drawing_area), "map_event",
+                   G_CALLBACK(map), NULL);
+  g_signal_connect(G_OBJECT(drawing_area), "unmap_event",
+                   G_CALLBACK(unmap), NULL);
   g_signal_connect(G_OBJECT(drawing_area), "visibility_notify_event",
                    G_CALLBACK(visible), NULL);
 
@@ -498,9 +536,6 @@ main(int   argc,
   /*
    * Main loop.
    */
-
-  timer = g_timer_new();
-  g_timer_start(timer);
 
   gtk_main();
 
