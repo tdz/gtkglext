@@ -1,5 +1,9 @@
 2002-12-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* docs/reference/gtkglext/running.sgml: 
+	* gtk/gtkglinit.c (gtk_gl_parse_args): Support
+	GTK_GL_INSTALL_COLORMAP environment variable.
+
 	* configure.in: GTK style --enable-debug option.
 
 2002-12-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>

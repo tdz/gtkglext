@@ -95,6 +95,18 @@ This option is only available if GtkGLExt has been configured with
 GtkGLExt inspects the following environment variables.
 </para>
 
+<formalpara>
+  <title><envar>GTK_GL_INSTALL_COLORMAP</envar></title>
+
+  <para>
+    If this variable is set to 1, GtkGLExt will try to install
+    colormap to the top-level window.
+    If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
+    the top-level window, we have to set OpenGL window's colormap to the
+    top-level window.
+  </para>
+</formalpara>
+
 <formalpara id="GTK-GL-Debug-Options">
   <title><envar>GTK_GL_DEBUG</envar></title>
 
