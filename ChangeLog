@@ -1,5 +1,7 @@
 2003-04-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* Makefile.am: Removed AUTOMAKE_OPTIONS.
+
 	* gdk/Makefile.am: Use './config.status gdk/gdkglext-config.h' to
 	update gdkglext-config.h.
 	
