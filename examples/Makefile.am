@@ -16,12 +16,12 @@ INCLUDES = \
 	-DGTK_DISABLE_DEPRECATED
 
 DEPS = \
-	$(top_builddir)/gdk/$(gdkglext_targetlib)	\
-	$(top_builddir)/gtk/$(gtkglext_targetlib)
+	$(top_builddir)/gtk/$(gtkglext_targetlib)	\
+	$(top_builddir)/gdk/$(gdkglext_targetlib)
 
 LDADDS = \
-	$(top_builddir)/gdk/$(gdkglext_targetlib)	\
 	$(top_builddir)/gtk/$(gtkglext_targetlib)	\
+	$(top_builddir)/gdk/$(gdkglext_targetlib)	\
 	$(GTKGLEXT_DEP_LIBS)
 
 common_programs = \

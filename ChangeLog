@@ -1,5 +1,7 @@
 2003-01-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* configure.in: Modified X11 library dependencies.
+
 	(Bugs item #672485, Jussi Laako)
 
 	* gdk/x11/gdkglglxext.h: Suppress 'redefined' warnings on Solaris 8.

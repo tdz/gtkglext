@@ -85,7 +85,6 @@ GDKGLEXT_PACKAGES = @GDKGLEXT_PACKAGES@
 GDKGLEXT_WIN_CFLAGS = @GDKGLEXT_WIN_CFLAGS@
 GDKGLEXT_WIN_LIBS = @GDKGLEXT_WIN_LIBS@
 GL_CFLAGS = @GL_CFLAGS@
-GL_EXTRA_CFLAGS = @GL_EXTRA_CFLAGS@
 GL_LIBS = @GL_LIBS@
 GTKDOC = @GTKDOC@
 GTKGLEXT_API_MAJOR_VERSION = @GTKGLEXT_API_MAJOR_VERSION@
@@ -153,13 +152,13 @@ INCLUDES = \
 
 
 DEPS = \
-	$(top_builddir)/gdk/$(gdkglext_targetlib)	\
-	$(top_builddir)/gtk/$(gtkglext_targetlib)
+	$(top_builddir)/gtk/$(gtkglext_targetlib)	\
+	$(top_builddir)/gdk/$(gdkglext_targetlib)
 
 
 LDADDS = \
-	$(top_builddir)/gdk/$(gdkglext_targetlib)	\
 	$(top_builddir)/gtk/$(gtkglext_targetlib)	\
+	$(top_builddir)/gdk/$(gdkglext_targetlib)	\
 	$(GTKGLEXT_DEP_LIBS)
 
 
