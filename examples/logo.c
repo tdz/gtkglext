@@ -790,8 +790,6 @@ main(int   argc,
 				TRUE,
 				GDK_GL_RGBA_TYPE);
 
-  gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
-
   gtk_widget_set_events (drawing_area,
 			 GDK_EXPOSURE_MASK |
 			 GDK_BUTTON1_MOTION_MASK |
@@ -821,6 +819,8 @@ main(int   argc,
   g_signal_connect_swapped (G_OBJECT (window), "key_press_event",
 			    G_CALLBACK (key_press_event), drawing_area);
 
+  gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
+
   gtk_widget_show (drawing_area);
 
   /*
@@ -838,10 +838,11 @@ main(int   argc,
    */
 
   button = gtk_button_new_with_label ("Quit");
-  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect (G_OBJECT (button), "clicked",
                     G_CALLBACK (gtk_main_quit), NULL);
+
+  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   gtk_widget_show (button);
 

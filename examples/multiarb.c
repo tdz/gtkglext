@@ -504,8 +504,6 @@ main (int   argc,
 				TRUE,
 				GDK_GL_RGBA_TYPE);
 
-  gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
-
   gtk_widget_set_events (drawing_area,
 			 GDK_EXPOSURE_MASK |
 			 GDK_BUTTON_PRESS_MASK |
@@ -526,6 +524,8 @@ main (int   argc,
 
   g_signal_connect_swapped (G_OBJECT (window), "key_press_event",
 			    G_CALLBACK (key), drawing_area);
+
+  gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
 
   gtk_widget_show (drawing_area);
 

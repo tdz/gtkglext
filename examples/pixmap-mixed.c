@@ -130,8 +130,8 @@ configure_event (GtkWidget         *widget,
 		      TRUE,
 		      widget->allocation.width/10,
 		      widget->allocation.height/10,
-		      widget->allocation.width*4/5,
-		      widget->allocation.height*4/5);
+		      widget->allocation.width*8/10,
+		      widget->allocation.height*8/10);
 
   /* Sync. */
   gdk_gl_drawable_wait_gdk (gldrawable);
@@ -322,16 +322,12 @@ main (int   argc,
   gtk_widget_set_colormap (drawing_area,
                            gdk_gl_config_get_colormap (glconfig));
 
-  gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
-
-  gtk_widget_set_events (drawing_area,
-                         GDK_EXPOSURE_MASK |
-                         GDK_BUTTON_PRESS_MASK);
-
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (configure_event), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "expose_event",
 		    G_CALLBACK (expose_event), NULL);
+
+  gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
 
   gtk_widget_show (drawing_area);
 
@@ -340,10 +336,11 @@ main (int   argc,
    */
 
   button = gtk_button_new_with_label ("Quit");
-  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   g_signal_connect (G_OBJECT (button), "clicked",
                     G_CALLBACK (gtk_main_quit), NULL);
+
+  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   gtk_widget_show (button);
 
