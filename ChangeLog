@@ -1,5 +1,7 @@
 2003-01-30  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* Version 0.7.0
+
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability) 
 	(gl_param_destroy): Weak ref glparam->share_list.
 
