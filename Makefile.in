@@ -158,7 +158,8 @@ EXTRA_DIST = \
 	gtkglext.spec.in		\
 	gtkglext.spec			\
 	gtkglext.nsi.in			\
-	gtkglext.nsi
+	gtkglext.nsi			\
+	setup-gtkglext.sh
 
 
 GDK_TARGET = @gdktarget@
@@ -580,7 +581,6 @@ uninstall-info: uninstall-info-recursive
 	uninstall-info-recursive uninstall-pkgconfigDATA \
 	uninstall-recursive
 
-	setup-gtkglext.sh
 
 gdkglext-$(GDK_TARGET)-$(API_VER).pc: gdkglext.pc gdkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc
 	rm -f $@ && cp gdkglext.pc $@

@@ -14,7 +14,7 @@ EXTRA_DIST = \
 	gtkglext.spec.in		\
 	gtkglext.spec			\
 	gtkglext.nsi.in			\
-	gtkglext.nsi
+	gtkglext.nsi			\
 	setup-gtkglext.sh
 
 ## Copy .pc files to target-specific names

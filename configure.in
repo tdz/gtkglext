@@ -909,6 +909,7 @@ gtkglext.pc
 gdkglext-uninstalled.pc
 gtkglext-uninstalled.pc
 gtkglext.spec
+gtkglext.nsi
 gdk/Makefile
 gdk/gdkglversion.h
 gdk/GL/Makefile

@@ -1,0 +1,256 @@
+;
+; NSIS script for GtkGLExt Win32 binary installer.
+;
+; written by Naofumi Yasufuku <naofumi@users.sourceforge.net>
+;
+; about NSIS, see http://nsis.sourceforge.net/
+;
+
+!define GTKGLEXT_VERSION     @GTKGLEXT_VERSION@
+!define GTKGLEXT_API_VERSION @GTKGLEXT_API_VERSION@
+
+;--------------------------------
+;Configuration
+
+OutFile gtkglext-win32-${GTKGLEXT_VERSION}.exe
+SetCompressor bzip2
+
+InstType "Full (Runtime w/ Development and Examples)"
+InstType "Runtime (w/o Development and Examples)"
+
+ShowInstDetails show
+ShowUninstDetails show
+SetDateSave on
+
+InstallDir $PROGRAMFILES\GtkGLExt\${GTKGLEXT_API_VERSION}
+InstallDirRegKey HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION} "Path"
+
+;--------------------------------
+;Modern UI Configuration
+
+!include "MUI.nsh"
+
+!define MUI_PRODUCT "GtkGLExt"
+!define MUI_VERSION "${GTKGLEXT_VERSION}"
+
+!define MUI_NAME "GtkGLExt ${MUI_VERSION}" ;Installer name
+
+!define MUI_WELCOMEPAGE
+!define MUI_LICENSEPAGE
+!define MUI_COMPONENTSPAGE
+  !define MUI_COMPONENTSPAGE_SMALLDESC
+!define MUI_DIRECTORYPAGE
+!define MUI_FINISHPAGE
+  ;!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\Docs\index.html"
+  !define MUI_FINISHPAGE_NOREBOOTSUPPORT
+
+!define MUI_ABORTWARNING
+
+!define MUI_UNINSTALLER
+!define MUI_UNCONFIRMPAGE
+
+;--------------------------------
+;Languages
+
+!define MUI_TEXT_WELCOME_INFO_TEXT "This wizard will guide you through the installation of GtkGLExt, OpenGL Extension to GTK.\r\n\r\n\r\n"
+
+!insertmacro MUI_LANGUAGE "English"
+
+;--------------------------------
+;Data
+
+LicenseData COPYING.LIB
+
+;--------------------------------
+;Installer Sections
+
+!define SF_SELECTED 1
+
+Section "GtkGLExt Runtime" SecRuntime
+  SectionIn 1 2 RO
+
+  SetOutPath $INSTDIR\bin
+  File lib\*.dll
+
+SectionEnd
+
+Section "GtkGLExt Development" SecDevelopment
+  SectionIn 1
+
+  SetOutPath $INSTDIR\include\gtkglext-${GTKGLEXT_API_VERSION}\gdk
+  File include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\*.h
+
+  SetOutPath $INSTDIR\include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\GL
+  File include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\GL\*.h
+
+  SetOutPath $INSTDIR\include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\win32
+  File include\gtkglext-${GTKGLEXT_API_VERSION}\gdk\win32\*.h
+
+  SetOutPath $INSTDIR\include\gtkglext-${GTKGLEXT_API_VERSION}\gtk
+  File include\gtkglext-${GTKGLEXT_API_VERSION}\gtk\*.h
+
+  SetOutPath $INSTDIR\lib\gtkglext-${GTKGLEXT_API_VERSION}\include
+  File lib\gtkglext-${GTKGLEXT_API_VERSION}\include\gdkglext-config.h
+
+  SetOutPath $INSTDIR\lib
+  File lib\*.a
+  File lib\*.lib
+
+  SetOutPath $INSTDIR\lib\pkgconfig
+  File lib\pkgconfig\*.pc
+
+  SetOutPath $INSTDIR\share\aclocal
+  File share\aclocal\*.m4
+
+  SetOutPath $INSTDIR\share\gtk-doc\html\gtkglext
+  File share\gtk-doc\html\gtkglext\*.html
+  File share\gtk-doc\html\gtkglext\*.sgml
+  File share\gtk-doc\html\gtkglext\*.devhelp
+  File share\gtk-doc\html\gtkglext\*.png
+
+SectionEnd
+
+Section "GtkGLExt Examples" SecExamples
+  SectionIn 1
+
+  SetOutPath $INSTDIR\examples
+  File examples\Makefile.mingw
+  File examples\Makefile.msc
+  File examples\*.h
+  File examples\*.c
+  File examples\*.lwo
+  File examples\*.rgb
+  File examples\*.exe
+
+SectionEnd
+
+Section -post
+
+  ; Update .pc files
+  GetFullPathName /SHORT $0 $INSTDIR
+  Push $0
+  Call ChangeDirSeparator
+  Pop $0
+
+  Push $INSTDIR\lib\pkgconfig\gdkglext-${GTKGLEXT_API_VERSION}.pc
+  Push $0
+  Call UpdatePCFile
+
+  Push $INSTDIR\lib\pkgconfig\gdkglext-win32-${GTKGLEXT_API_VERSION}.pc
+  Push $0
+  Call UpdatePCFile
+
+  Push $INSTDIR\lib\pkgconfig\gtkglext-${GTKGLEXT_API_VERSION}.pc
+  Push $0
+  Call UpdatePCFile
+
+  Push $INSTDIR\lib\pkgconfig\gtkglext-win32-${GTKGLEXT_API_VERSION}.pc
+  Push $0
+  Call UpdatePCFile
+
+  ; Registry
+  WriteRegStr HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION} "Path" $INSTDIR
+  WriteRegStr HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION} "Version" ${GTKGLEXT_VERSION}
+
+  ;; Uninstaller
+  Delete $INSTDIR\uninst-gtkglext.exe
+  WriteUninstaller $INSTDIR\uninst-gtkglext.exe
+
+SectionEnd
+
+;--------------------------------
+;Descriptions
+
+!insertmacro MUI_FUNCTIONS_DESCRIPTION_BEGIN
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecRuntime} "GtkGLExt runtime libraries"
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecDevelopment} "GtkGLExt development headers, libraries, and documentations"
+  !insertmacro MUI_DESCRIPTION_TEXT ${SecExamples} "GtkGLExt example programs"
+!insertmacro MUI_FUNCTIONS_DESCRIPTION_END
+
+;--------------------------------
+;Installer Functions
+
+!macro secSelected SEC
+  SectionGetFlags ${SEC} $R7
+  IntOp $R7 $R7 & ${SF_SELECTED}
+  IntCmp $R7 ${SF_SELECTED} 0 +2 +2
+    IntOp $R0 $R0 + 1
+!macroend
+
+; ChangeDirSeparator
+; input, top of stack  (e.g. C:\Program Files\...)
+; output, top of stack (replaces, with e.g. C:/Program Files/...)
+; modifies no other variables.
+Function ChangeDirSeparator
+  Exch $R0
+  Push $R1
+  Push $R2
+  Push $R3
+    StrCpy $R1 $R0
+    StrCpy $R0 ""
+    StrCpy $R2 0
+    goto loop
+    replace:
+      StrCpy $R0 "$R0/"
+    loop:
+      StrCpy $R3 $R1 1 $R2
+      IntOp $R2 $R2 + 1
+      StrCmp $R3 "\" replace
+      StrCmp $R3 "" done
+      StrCpy $R0 "$R0$R3"
+      goto loop
+    done:
+  Pop $R3
+  Pop $R2
+  Pop $R1
+  Exch $R0
+FunctionEnd
+
+; update a pkg-config .pc file
+Function UpdatePCFile
+  pop $R0 ; prefix
+  pop $R1 ; target .pc file
+  Push $R7
+  Push $R8
+  Push $R9
+    Rename $R1 $R1.orig
+    FileOpen $R7 $R1.orig r
+    FileOpen $R8 $R1 w
+    FileRead $R7 $R9 ; skip original prefix
+    FileWrite $R8 "prefix=$R0$\n"
+    loop:
+      FileRead $R7 $R9
+      StrCmp $R9 "" done
+      FileWrite $R8 $R9
+      goto loop
+    done:
+    FileClose $R7
+    FileClose $R8
+    Delete $R1.orig
+  Pop $R9
+  Pop $R8
+  Pop $R7
+FunctionEnd
+
+;--------------------------------
+;Uninstaller Section
+
+Section Uninstall
+
+  DeleteRegKey HKLM SOFTWARE\GtkGLExt\${GTKGLEXT_API_VERSION}
+
+  Delete $INSTDIR\uninst-gtkglext.exe
+  RMDir /r $INSTDIR\bin
+  RMDir /r $INSTDIR\include
+  RMDir /r $INSTDIR\lib
+  RMDir /r $INSTDIR\share
+  RMDir /r $INSTDIR\examples
+  RMDir $INSTDIR
+  RMDir $PROGRAMFILES\GtkGLExt
+
+  !ifndef CLASSIC_UI
+    ;Modern UI Finish Header
+    !insertmacro MUI_UNFINISHHEADER
+  !endif
+
+SectionEnd
