@@ -20,11 +20,11 @@
 #include "gdkglglxext.h"
 
 #define _GDK_GL_GET_PROC(proc_name)                                     \
-GdkGLFunc                                                               \
+GdkGLProc                                                               \
 _GDK_GL_CONCAT(gdk_gl_get_, proc_name) (void)                           \
 {                                                                       \
   static gboolean init = FALSE;                                         \
-  static GdkGLFunc proc_address = NULL;                                 \
+  static GdkGLProc proc_address = NULL;                                 \
                                                                         \
   if (!init)                                                            \
     {                                                                   \

@@ -122,7 +122,7 @@ gdk_gl_pixmap_impl_x11_constructor (GType                  type,
   unsigned int border_width_return;
   unsigned int depth_return;
 
-  GdkGLFunc proc;
+  GdkGLProc proc;
 
   object = G_OBJECT_CLASS (parent_class)->constructor (type,
                                                        n_construct_properties,

@@ -148,7 +148,7 @@ gdk_gl_font_use_pango_font_for_display
 
 <SECTION>
 <FILE>gdkglquery</FILE>
-GdkGLFunc
+GdkGLProc
 gdk_gl_query_extension
 gdk_gl_query_extension_for_display
 gdk_gl_query_version

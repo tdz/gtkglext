@@ -143,7 +143,7 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
   GdkGLWindowImplX11 *impl;
   Display *xdisplay;
   int screen_num;
-  GdkGLFunc proc;
+  GdkGLProc proc;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_finalize ()"));
 

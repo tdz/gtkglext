@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-typedef void (*GdkGLFunc)(void);
+typedef void (*GdkGLProc)(void);
 
 gboolean gdk_gl_query_extension             (void);
 
@@ -42,7 +42,7 @@ gboolean gdk_gl_query_version_for_display   (GdkDisplay *display,
 
 gboolean gdk_gl_query_gl_extension          (const char *extension);
 
-GdkGLFunc gdk_gl_query_get_proc_address (const char *proc_name);
+GdkGLProc gdk_gl_query_get_proc_address (const char *proc_name);
 
 G_END_DECLS
 
