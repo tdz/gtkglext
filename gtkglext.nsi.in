@@ -310,57 +310,63 @@ FunctionEnd
 ; WriteEnvSh
 Function WriteEnvSh
   Pop $R0 ; Output file
-  GetFullPathName /SHORT $R1 $INSTDIR
-  Push $R1
-  Call ChangeDirSeparator
-  Pop $R1
-  FileOpen $R9 $R0 w
-  FileWrite $R9 "#!/bin/sh$\n"
-  FileWrite $R9 "$\n"
-  FileWrite $R9 "export GTKGLEXT_PREFIX=$R1$\n"
-  FileWrite $R9 "$\n"
-  FileWrite $R9 "echo $\"Setting environment variables for GtkGLExt.$\"$\n"
-  FileWrite $R9 "echo $\"$\"$\n"
-  FileWrite $R9 "$\n"
-  FileWrite $R9 "case $$TERM in$\n"
-  FileWrite $R9 "cygwin)$\n"
-  FileWrite $R9 "  GTKGLEXT_PATH=`cygpath -u $${GTKGLEXT_PREFIX}/bin`$\n"
-  FileWrite $R9 "  ;;$\n"
-  FileWrite $R9 "msys)$\n"
-  FileWrite $R9 "  GTKGLEXT_PATH=/$${GTKGLEXT_PREFIX%:*}$${GTKGLEXT_PREFIX#*:}/bin$\n"
-  FileWrite $R9 "  ;;$\n"
-  FileWrite $R9 "*)$\n"
-  FileWrite $R9 "  echo $\"Unknown TERM$\"$\n"
-  FileWrite $R9 "  ;;$\n"
-  FileWrite $R9 "esac$\n"
-  FileWrite $R9 "$\n"
-  FileWrite $R9 "echo $\"export PATH=\$\"$${GTKGLEXT_PATH}:\$${PATH}\$\"$\"$\n"
-  FileWrite $R9 "export PATH=$\"$${GTKGLEXT_PATH}:$${PATH}$\"$\n"
-  FileWrite $R9 "$\n"
-  FileWrite $R9 "echo $\"export PKG_CONFIG_PATH=\$\"$${GTKGLEXT_PREFIX}/lib/pkgconfig;\$${PKG_CONFIG_PATH}\$\"$\"$\n"
-  FileWrite $R9 "export PKG_CONFIG_PATH=$\"$${GTKGLEXT_PREFIX}/lib/pkgconfig;$${PKG_CONFIG_PATH}$\"$\n"
-  FileWrite $R9 "$\n"
-  FileWrite $R9 "echo $\"$\"$\n"
-  FileClose $R9
+  Push $R8
+  Push $R9
+    GetFullPathName /SHORT $R8 $INSTDIR
+    Push $R8
+    Call ChangeDirSeparator
+    Pop $R8
+    FileOpen $R9 $R0 w
+    FileWrite $R9 "#!/bin/sh$\n"
+    FileWrite $R9 "$\n"
+    FileWrite $R9 "export GTKGLEXT_PREFIX=$R8$\n"
+    FileWrite $R9 "$\n"
+    FileWrite $R9 "echo $\"Setting environment variables for GtkGLExt.$\"$\n"
+    FileWrite $R9 "echo $\"$\"$\n"
+    FileWrite $R9 "$\n"
+    FileWrite $R9 "case $$TERM in$\n"
+    FileWrite $R9 "cygwin)$\n"
+    FileWrite $R9 "  GTKGLEXT_PATH=`cygpath -u $${GTKGLEXT_PREFIX}/bin`$\n"
+    FileWrite $R9 "  ;;$\n"
+    FileWrite $R9 "msys)$\n"
+    FileWrite $R9 "  GTKGLEXT_PATH=/$${GTKGLEXT_PREFIX%:*}$${GTKGLEXT_PREFIX#*:}/bin$\n"
+    FileWrite $R9 "  ;;$\n"
+    FileWrite $R9 "*)$\n"
+    FileWrite $R9 "  echo $\"Unknown TERM$\"$\n"
+    FileWrite $R9 "  ;;$\n"
+    FileWrite $R9 "esac$\n"
+    FileWrite $R9 "$\n"
+    FileWrite $R9 "echo $\"export PATH=\$\"$${GTKGLEXT_PATH}:\$${PATH}\$\"$\"$\n"
+    FileWrite $R9 "export PATH=$\"$${GTKGLEXT_PATH}:$${PATH}$\"$\n"
+    FileWrite $R9 "$\n"
+    FileWrite $R9 "echo $\"export PKG_CONFIG_PATH=\$\"$${GTKGLEXT_PREFIX}/lib/pkgconfig;\$${PKG_CONFIG_PATH}\$\"$\"$\n"
+    FileWrite $R9 "export PKG_CONFIG_PATH=$\"$${GTKGLEXT_PREFIX}/lib/pkgconfig;$${PKG_CONFIG_PATH}$\"$\n"
+    FileWrite $R9 "$\n"
+    FileWrite $R9 "echo $\"$\"$\n"
+    FileClose $R9
+  Pop $R9
+  Pop $R8
 FunctionEnd
 
 ; WriteEnvBat
 Function WriteEnvBat
   pop $R0 ; Output file
-  FileOpen $R9 $R0 w
-  FileWrite $R9 "@set GTKGLEXT_PREFIX=$INSTDIR$\r$\n"
-  FileWrite $R9 "$\r$\n"
-  FileWrite $R9 "@echo Setting environment variables for GtkGLExt.$\r$\n"
-  FileWrite $R9 "@echo.$\r$\n"
-  FileWrite $R9 "$\r$\n"
-  FileWrite $R9 "@echo set PATH=%GTKGLEXT_PREFIX%\bin;%%PATH%%$\r$\n"
-  FileWrite $R9 "@set PATH=%GTKGLEXT_PREFIX%\bin;%PATH%$\r$\n"
-  FileWrite $R9 "$\r$\n"
-  FileWrite $R9 "@echo set PKG_CONFIG_PATH=%GTKGLEXT_PREFIX%\lib\pkgconfig;%%PKG_CONFIG_PATH%%$\r$\n"
-  FileWrite $R9 "@set PKG_CONFIG_PATH=%GTKGLEXT_PREFIX%\lib\pkgconfig;%PKG_CONFIG_PATH%$\r$\n"
-  FileWrite $R9 "$\r$\n"
-  FileWrite $R9 "@echo.$\r$\n"
-  FileClose $R9
+  Push $R9
+    FileOpen $R9 $R0 w
+    FileWrite $R9 "@set GTKGLEXT_PREFIX=$INSTDIR$\r$\n"
+    FileWrite $R9 "$\r$\n"
+    FileWrite $R9 "@echo Setting environment variables for GtkGLExt.$\r$\n"
+    FileWrite $R9 "@echo.$\r$\n"
+    FileWrite $R9 "$\r$\n"
+    FileWrite $R9 "@echo set PATH=%GTKGLEXT_PREFIX%\bin;%%PATH%%$\r$\n"
+    FileWrite $R9 "@set PATH=%GTKGLEXT_PREFIX%\bin;%PATH%$\r$\n"
+    FileWrite $R9 "$\r$\n"
+    FileWrite $R9 "@echo set PKG_CONFIG_PATH=%GTKGLEXT_PREFIX%\lib\pkgconfig;%%PKG_CONFIG_PATH%%$\r$\n"
+    FileWrite $R9 "@set PKG_CONFIG_PATH=%GTKGLEXT_PREFIX%\lib\pkgconfig;%PKG_CONFIG_PATH%$\r$\n"
+    FileWrite $R9 "$\r$\n"
+    FileWrite $R9 "@echo.$\r$\n"
+    FileClose $R9
+  Pop $R9
 FunctionEnd
 
 ;--------------------------------
