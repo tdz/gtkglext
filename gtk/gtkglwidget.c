@@ -86,7 +86,7 @@ gtk_gl_widget_configure_event (GtkWidget         *widget,
    */
   g_signal_handlers_disconnect_by_func (widget,
                                         G_CALLBACK (gtk_gl_widget_configure_event),
-                                        NULL);
+                                        user_data);
 
   return FALSE;
 }

@@ -810,7 +810,7 @@ typedef enum
   GDK_GL_AUX_BUFFERS_BIT            = 1 << 4, /* 0x00000010 */
   GDK_GL_DEPTH_BUFFER_BIT           = 1 << 5, /* 0x00000020 */
   GDK_GL_STENCIL_BUFFER_BIT         = 1 << 6, /* 0x00000040 */
-  GDK_GL_ACCUM_BUFFER_BIT           = 1 << 7, /* 0x00000080 */
+  GDK_GL_ACCUM_BUFFER_BIT           = 1 << 7  /* 0x00000080 */
 } GdkGLBufferMask;
 </ENUM>
 <ENUM>
