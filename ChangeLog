@@ -1,5 +1,9 @@
 2003-08-17  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/Makefile.am (x11_programs): 
+	* examples/simple-pbuffer-sgix.c: Added simple GLX_SGIX_pbuffer
+	example.
+
 	* README: 
 	* docs/reference/gtkglext/building.sgml: 
 	* configure.in: Removed --disable-sgi-fast-atoms configure

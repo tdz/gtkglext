@@ -57,6 +57,7 @@ common_programs = \
 	font-pangoft2-tex
 
 x11_programs = \
+	simple-pbuffer-sgix	\
 	glxinfo
 
 win32_programs = \
@@ -148,6 +149,10 @@ font_pangoft2_LDADD = $(LDADDS_WITH_PANGOFT2)
 font_pangoft2_tex_SOURCES = font-pangoft2-tex.c
 font_pangoft2_tex_DEPENDENCIES = $(DEPS)
 font_pangoft2_tex_LDADD = $(LDADDS_WITH_PANGOFT2)
+
+simple_pbuffer_sgix_SOURCES = simple-pbuffer-sgix.c
+simple_pbuffer_sgix_DEPENDENCIES = $(DEPS)
+simple_pbuffer_sgix_LDADD = $(LDADDS)
 
 glxinfo_SOURCES = glxinfo.c
 glxinfo_DEPENDENCIES = $(DEPS)
