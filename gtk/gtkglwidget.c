@@ -50,21 +50,20 @@ gtk_gl_widget_realize (GtkWidget       *widget,
 
   GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_realize ()"));
 
-  /* Already OpenGL-capable */
-  if (gdk_window_is_gl_capable (widget->window))
-    return;
-
-  /*
-   * Set OpenGL-capability to widget->window.
-   */
-
-  glwindow = gdk_window_set_gl_capability (widget->window,
-                                           private->glconfig,
-                                           NULL);
-  if (glwindow == NULL)
+  if (!gdk_window_is_gl_capable (widget->window))
     {
-      g_warning ("cannot set OpenGL-capability to widget->window\n");
-      return;
+      /*
+       * Set OpenGL-capability to widget->window.
+       */
+
+      glwindow = gdk_window_set_gl_capability (widget->window,
+                                               private->glconfig,
+                                               NULL);
+      if (glwindow == NULL)
+        {
+          g_warning ("cannot set OpenGL-capability to widget->window\n");
+          return;
+        }
     }
 
   private->is_realized = TRUE;
