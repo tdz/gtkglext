@@ -32,14 +32,32 @@ typedef enum {
 
 #ifdef G_ENABLE_DEBUG
 
-#define GTK_GL_NOTE(type, action)                G_STMT_START { \
-    if (gtk_gl_debug_flags & GTK_GL_DEBUG_##type)               \
-       { action; };                              } G_STMT_END
+#define GTK_GL_NOTE(type, action)               G_STMT_START {  \
+  if (gtk_gl_debug_flags & GTK_GL_DEBUG_##type)                 \
+    { action; };                                } G_STMT_END
+
+#if __STDC_VERSION__ < 199901L
+#  if __GNUC__ >= 2
+#    define __func__ __FUNCTION__
+#  else
+#    define __func__ "<unknown>"
+#  endif
+#endif
+
+#define GTK_GL_NOTE_FUNC                        G_STMT_START {  \
+  if (gtk_gl_debug_flags & GTK_GL_DEBUG_FUNC)                   \
+    { g_message (" - %s ()", __func__); };      } G_STMT_END
+
+#define GTK_GL_NOTE_FUNC_INTERNAL               G_STMT_START {  \
+  if (gtk_gl_debug_flags & GTK_GL_DEBUG_FUNC)                   \
+    { g_message (" -- %s ()", __func__); };     } G_STMT_END
 
 #else /* !G_ENABLE_DEBUG */
 
 #define GTK_GL_NOTE(type, action)
-      
+#define GTK_GL_NOTE_FUNC
+#define GTK_GL_NOTE_FUNC_INTERNAL
+
 #endif /* G_ENABLE_DEBUG */
 
 GTK_GL_VAR guint gtk_gl_debug_flags;

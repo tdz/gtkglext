@@ -1,8 +1,7 @@
 2003-08-26  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
-	* m4macros/ac_c_var_func.m4
-	* autogen.sh: 
-	* configure.in: Added AC_C_VAR_FUNC __func__ check.
+	* gdk/gdkgldebug.h: 
+	* gtk/gtkgldebug.h: Added G[DT]K_GL_NOTE_FUNC* debug macros.
 
 2003-08-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 

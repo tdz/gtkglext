@@ -33,14 +33,37 @@ typedef enum {
 
 #ifdef G_ENABLE_DEBUG
 
-#define GDK_GL_NOTE(type, action)                G_STMT_START { \
-    if (gdk_gl_debug_flags & GDK_GL_DEBUG_##type)               \
-       { action; };                              } G_STMT_END
+#define GDK_GL_NOTE(type, action)               G_STMT_START {  \
+  if (gdk_gl_debug_flags & GDK_GL_DEBUG_##type)                 \
+    { action; };                                } G_STMT_END
+
+#if __STDC_VERSION__ < 199901L
+#  if __GNUC__ >= 2
+#    define __func__ __FUNCTION__
+#  else
+#    define __func__ "<unknown>"
+#  endif
+#endif
+
+#define GDK_GL_NOTE_FUNC                        G_STMT_START {  \
+  if (gdk_gl_debug_flags & GDK_GL_DEBUG_FUNC)                   \
+    { g_message (" - %s ()", __func__); };      } G_STMT_END
+
+#define GDK_GL_NOTE_FUNC_INTERNAL               G_STMT_START {  \
+  if (gdk_gl_debug_flags & GDK_GL_DEBUG_FUNC)                   \
+    { g_message (" -- %s ()", __func__); };     } G_STMT_END
+
+#define GDK_GL_NOTE_FUNC_WINDOWING              G_STMT_START {  \
+  if (gdk_gl_debug_flags & GDK_GL_DEBUG_FUNC)                   \
+    { g_message (" ** %s ()", __func__); };     } G_STMT_END
 
 #else /* !G_ENABLE_DEBUG */
 
 #define GDK_GL_NOTE(type, action)
-      
+#define GDK_GL_NOTE_FUNC
+#define GDK_GL_NOTE_FUNC_INTERNAL
+#define GDK_GL_NOTE_FUNC_WINDOWING
+
 #endif /* G_ENABLE_DEBUG */
 
 GDK_GL_VAR guint gdk_gl_debug_flags;
