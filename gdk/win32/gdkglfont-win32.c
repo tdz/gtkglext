@@ -41,7 +41,7 @@ gdk_gl_font_use_gdk_font (GdkFont *font,
   SelectObject (hdc, (HGDIOBJ) gdk_font_id (font));
 
   if (!wglUseFontBitmaps (hdc, first, count, list_base))
-    g_warning ("cannot create a font display lists");
+    g_warning ("cannot create the font display lists");
 
   if (!DeleteDC (hdc))
     g_warning ("cannot delete the memory DC");
