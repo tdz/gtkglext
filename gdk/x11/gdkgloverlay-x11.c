@@ -151,7 +151,7 @@ gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
               {
                 int j;
                 g_message (" -- SERVER_OVERLAY_VISUALS: properties");
-                g_print ("\n<screen>\t<overlay_visual>\t<transparent_type>\t<value>\t<layer>\n");
+                g_print ("screen\tvisual\ttype\tvalue\tlayer\n");
                 num_props = sov_props_per_screen[i].num_props;
                 for (j = 0; j < num_props; j++)
                   {
@@ -162,7 +162,6 @@ gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
                              (CARD32)   (props[j].value),
                              (INT32)    (props[j].layer));
                   }
-                g_print ("\n");
               }
 #endif /* G_ENABLE_DEBUG */
 
