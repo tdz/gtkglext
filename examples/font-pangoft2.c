@@ -105,12 +105,17 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
 {
   PangoRectangle logical_rect;
   FT_Bitmap bitmap;
-  unsigned char *pixels, *p;
-  unsigned char *row;
+  GLubyte *pixels;
+  guint32 *p;
   GLfloat color[4];
-  int i, j;
+  guint32 rgb;
+  GLfloat a;
+  guint8 *row, *row_end;
+  int i;
 
   pango_layout_get_extents (layout, NULL, &logical_rect);
+  if (logical_rect.width == 0 || logical_rect.height == 0)
+    return;
 
   bitmap.rows = PANGO_PIXELS (logical_rect.height);
   bitmap.width = PANGO_PIXELS (logical_rect.width);
@@ -122,22 +127,37 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
   memset (bitmap.buffer, 0, bitmap.rows * bitmap.width);
   pango_ft2_render_layout (&bitmap, layout, 0, 0);
 
-  glGetFloatv (GL_CURRENT_COLOR, color);
+  pixels = g_malloc (bitmap.rows * bitmap.width * 4);
+  p = (guint32 *) pixels;
 
-  p = pixels = g_malloc (bitmap.rows * bitmap.width * 4);
+  glGetFloatv (GL_CURRENT_COLOR, color);
+  rgb = (((guint32) (color[0] * 255.0)) << 24) |
+        (((guint32) (color[1] * 255.0)) << 16) |
+        (((guint32) (color[2] * 255.0)) << 8);
+  a = color[3];
 
   row = bitmap.buffer + (bitmap.rows-1) * bitmap.width;
+  row_end = bitmap.buffer - bitmap.width;
 
-  for (i = 0; i < bitmap.rows; i++)
+  if (a == 1.0)
     {
-      for (j = 0; j < bitmap.width; j++)
+      do
         {
-          *p++ = (unsigned char) (color[0] * 255.0);
-          *p++ = (unsigned char) (color[1] * 255.0);
-          *p++ = (unsigned char) (color[2] * 255.0);
-          *p++ = row[j];
+          for (i = 0; i < bitmap.width; i++)
+            *p++ = rgb | ((guint32) row[i]);
+          row -= bitmap.width;
         }
-      row -= bitmap.width;
+      while (row != row_end);
+    }
+  else
+    {
+      do
+        {
+          for (i = 0; i < bitmap.width; i++)
+            *p++ = rgb | ((guint32) (a * row[i]));
+          row -= bitmap.width;
+        }
+      while (row != row_end);
     }
 
   glEnable (GL_BLEND);
@@ -145,7 +165,7 @@ gl_pango_ft2_render_layout (PangoLayout *layout)
 
   glPixelStorei (GL_UNPACK_ALIGNMENT, 4);
   glDrawPixels (bitmap.width, bitmap.rows,
-                GL_RGBA, GL_UNSIGNED_BYTE,
+                GL_RGBA, GL_UNSIGNED_INT_8_8_8_8,
                 pixels);
 
   glDisable (GL_BLEND);
@@ -260,7 +280,6 @@ main (int   argc,
 
   /* Try double-buffered visual */
   glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB    |
-                                        GDK_GL_MODE_ALPHA  |
                                         GDK_GL_MODE_DEPTH  |
                                         GDK_GL_MODE_DOUBLE);
   if (glconfig == NULL)
@@ -270,7 +289,6 @@ main (int   argc,
 
       /* Try single-buffered visual */
       glconfig = gdk_gl_config_new_by_mode (GDK_GL_MODE_RGB   |
-                                            GDK_GL_MODE_ALPHA |
                                             GDK_GL_MODE_DEPTH);
       if (glconfig == NULL)
         {
