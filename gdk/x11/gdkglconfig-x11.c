@@ -640,8 +640,6 @@ gdk_gl_config_new_common (GdkScreen *screen,
   int screen_num;
   XVisualInfo *xvinfo;
 
-  g_return_val_if_fail (attrib_list != NULL, NULL);
-
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_new_common ()"));
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
@@ -712,6 +710,8 @@ gdk_gl_config_new (const int *attrib_list)
 {
   GdkScreen *screen;
 
+  g_return_val_if_fail (attrib_list != NULL, NULL);
+
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
@@ -729,6 +729,9 @@ GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
                               const int *attrib_list)
 {
+  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (attrib_list != NULL, NULL);
+
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_for_screen ()"));
 
   return gdk_gl_config_new_common (screen, attrib_list);
@@ -839,6 +842,8 @@ GdkGLConfig *
 gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
                                                 VisualID   xvisualid)
 {
+  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+
   GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_config_new_from_visualid_for_screen ()"));
 
   return gdk_x11_gl_config_new_from_visualid_common (screen, xvisualid);

@@ -555,8 +555,6 @@ gdk_gl_config_new_common (GdkScreen *screen,
   PIXELFORMATDESCRIPTOR pfd;
   int pixel_format;
 
-  g_return_val_if_fail (attrib_list != NULL, NULL);
-
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_new_common ()"));
 
   /*
@@ -619,6 +617,8 @@ gdk_gl_config_new (const int *attrib_list)
 {
   GdkScreen *screen;
 
+  g_return_val_if_fail (attrib_list != NULL, NULL);
+
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new ()"));
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
@@ -636,6 +636,9 @@ GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
                               const int *attrib_list)
 {
+  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (attrib_list != NULL, NULL);
+
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_config_new_for_screen ()"));
 
   return gdk_gl_config_new_common (screen, attrib_list);

@@ -308,6 +308,8 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
                                 GdkGLContext *share_list,
                                 GLXContext    glxcontext)
 {
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+
   GDK_GL_NOTE (FUNC, g_message (" - gdk_x11_gl_context_foreign_new ()"));
 
   /*

@@ -254,8 +254,6 @@ _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_new ()"));
 
-  g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
-
   /*
    * Create an OpenGL rendering context.
    */
@@ -304,6 +302,8 @@ gdk_win32_gl_context_foreign_new (GdkGLConfig  *glconfig,
                                   GdkGLContext *share_list,
                                   HGLRC         hglrc)
 {
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
+
   GDK_GL_NOTE (FUNC, g_message (" - gdk_win32_gl_context_foreign_new ()"));
 
   /*

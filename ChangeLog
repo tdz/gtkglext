@@ -1,5 +1,17 @@
 2002-12-22  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglcontext-win32.c
+	(gdk_win32_gl_context_foreign_new): 
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_new) 
+	(gdk_gl_config_new_for_screen): 
+	* gdk/x11/gdkglcontext-x11.c (gdk_x11_gl_context_foreign_new): 
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new) 
+	(gdk_gl_config_new_for_screen) 
+	(gdk_x11_gl_config_new_from_visualid_for_screen): Added function
+	argument checks.
+
+2002-12-22  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new) 
 	(gdk_gl_config_new_for_screen) 
 	(gdk_x11_gl_config_new_from_visualid) 
