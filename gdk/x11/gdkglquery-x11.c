@@ -102,9 +102,11 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 
 /**
  * gdk_gl_query_get_proc_address:
- * @proc_name: 
+ * @proc_name: extension function name.
  *
- * Return value: 
+ * Returns the address of the OpenGL extension functions.
+ *
+ * Return value: the address of the extension function named by @proc_name.
  **/
 GdkGLProc
 gdk_gl_query_get_proc_address (const char *proc_name)
@@ -118,7 +120,7 @@ gdk_gl_query_get_proc_address (const char *proc_name)
   if (!init_glx_get_proc_address)
     {
       /*
-       * Look up glXGetProcAddress* () function.
+       * Look up glXGetProcAddress () function.
        */
 
       module = g_module_open (NULL, G_MODULE_BIND_LAZY);
