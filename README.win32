@@ -179,12 +179,15 @@ for generating configure script and Makefiles.
   $ make install
   $ make examples
 
-ACLOCAL_FLAGS is for pkg-config's PKG_CHECK_MODULES macro in configure.in.
-I use the following versions of the GNU auto-tools.
+ACLOCAL_FLAGS may be needed for PKG_CHECK_MODULES (pkg-config),
+AM_PATH_GLIB_2_0 (Glib), and AM_PATH_GTK_2_0 (GTK+) m4 macros in
+configure.in.
 
-  autoconf 2.52 (libtool's AC_LIBTOOL_WIN32_DLL macro has a problem with 2.53)
-  automake 1.6.3
-  libtool  1.4.3
+I use the following versions of the GNU autotools.
+
+  autoconf 2.57
+  automake 1.7.3
+  libtool  1.5
 
 
 Contact

@@ -1,3 +1,15 @@
+2003-04-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	Now use new versions of GNU autotools.
+	
+	  - autoconf 2.54 or above
+	  - automake 1.7 or above
+	  - libtool 1.5 or above
+	
+	* autogen.sh: Use libtool-1.5 and automake-1.7.
+	* configure.in: Use autoconf 2.54 or above.
+	* Makefile.am: Use automake-1.7.
+
 2003-04-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_impl_x11_finalize) 

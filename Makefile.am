@@ -1,7 +1,7 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext
 
-AUTOMAKE_OPTIONS = 1.6 dist-bzip2 dist-zip
+AUTOMAKE_OPTIONS = 1.7 dist-bzip2 dist-zip
 
 SUBDIRS = gdk gtk examples docs m4macros
 
