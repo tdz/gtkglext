@@ -1,3 +1,8 @@
+2002-10-09  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* configure.in: Added checks for win32 gcc3 "-mms-bitfields"
+	option.
+
 2002-10-03  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* configure.in: Added -lm to $LIBS for OpenGL library check.
