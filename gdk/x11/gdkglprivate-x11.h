@@ -25,6 +25,9 @@
 
 G_BEGIN_DECLS
 
+void _gdk_x11_gl_print_glx_info (Display *xdisplay,
+                                 int      screen_num);
+
 GdkGLContext *_gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
                                        GdkGLContext  *share_list,
                                        gboolean       direct,

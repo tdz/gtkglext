@@ -344,3 +344,30 @@ gdk_gl_get_proc_address (const char *proc_name)
 
   return proc_address;
 }
+
+/*< private >*/
+void
+_gdk_x11_gl_print_glx_info (Display *xdisplay,
+                            int      screen_num)
+{
+  static gboolean done = FALSE;
+
+  if (!done)
+    {
+      g_message (" -- Server GLX_VENDOR     : %s",
+                 glXQueryServerString (xdisplay, screen_num, GLX_VENDOR));
+      g_message (" -- Server GLX_VERSION    : %s",
+                 glXQueryServerString (xdisplay, screen_num, GLX_VERSION));
+      g_message (" -- Server GLX_EXTENSIONS : %s",
+                 glXQueryServerString (xdisplay, screen_num, GLX_EXTENSIONS));
+
+      g_message (" -- Client GLX_VENDOR     : %s",
+                 glXGetClientString (xdisplay, GLX_VENDOR));
+      g_message (" -- Client GLX_VERSION    : %s",
+                 glXGetClientString (xdisplay, GLX_VERSION));
+      g_message (" -- Client GLX_EXTENSIONS : %s",
+                 glXGetClientString (xdisplay, GLX_EXTENSIONS));
+
+      done = TRUE;
+    }
+}

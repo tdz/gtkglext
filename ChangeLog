@@ -1,3 +1,9 @@
+2003-05-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new_common): 
+	* gdk/x11/gdkglquery-x11.c (_gdk_x11_gl_print_glx_info): 
+	* gdk/x11/gdkglprivate-x11.h: Clean up debug routines.
+
 2003-05-14  Alif Wahid  <awah005@users.sourceforge.net>
 
 	* examples/viewlw.c: added a "key_press_event" handler for
