@@ -125,7 +125,7 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
 
   HWND hwnd;
   HDC hdc;
-  int saved_dc;
+  int saved_dc = 0;
   int pf;
 
   gboolean stereo_is_requested = FALSE;
