@@ -29,26 +29,26 @@ typedef struct
   int render_type;
 } GLWidgetParam;
 
-gboolean gtk_gl_widget_install_toplevel_cmap = FALSE;
-
 static const gchar quark_gl_param_string[] = "gtk-gl-widget-gl-param";
 static GQuark quark_gl_param = 0;
 
 static const gchar quark_gl_context_string[] = "gtk-gl-widget-gl-context";
 static GQuark quark_gl_context = 0;
 
+gboolean gtk_gl_widget_install_toplevel_cmap = FALSE;
+
 /* 
  * Signal handlers.
  */
 
 static void
-gtk_widget_gl_realize (GtkWidget *widget,
+gtk_gl_widget_realize (GtkWidget *widget,
                        gpointer   user_data)
 {
   GdkGLWindow *glwindow;
   GLWidgetParam *glparam;
 
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_realize ()"));
+  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_realize ()"));
 
   /* Already OpenGL-capable */
   if (gdk_window_is_gl_capable (widget->window))
@@ -71,31 +71,31 @@ gtk_widget_gl_realize (GtkWidget *widget,
 }
 
 static gboolean
-gtk_widget_gl_configure_event (GtkWidget         *widget,
+gtk_gl_widget_configure_event (GtkWidget         *widget,
                                GdkEventConfigure *event,
                                gpointer           user_data)
 {
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_configure_event ()"));
+  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_configure_event ()"));
 
   /* Realize. */
-  gtk_widget_gl_realize (widget, user_data);
+  gtk_gl_widget_realize (widget, user_data);
 
   /*
    * Once OpenGL-capable widget is realized,
    * this callback is no longer needed.
    */
   g_signal_handlers_disconnect_by_func (widget,
-                                        G_CALLBACK (gtk_widget_gl_configure_event),
+                                        G_CALLBACK (gtk_gl_widget_configure_event),
                                         NULL);
 
   return FALSE;
 }
 
 static void
-gtk_widget_gl_unrealize (GtkWidget *widget,
+gtk_gl_widget_unrealize (GtkWidget *widget,
                          gpointer   user_data)
 {
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_unrealize ()"));
+  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_unrealize ()"));
 
   /*
    * Remove OpenGL-capability from widget->window.
@@ -106,13 +106,13 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
 }
 
 static void
-gtk_widget_gl_parent_set (GtkWidget   *widget,
+gtk_gl_widget_parent_set (GtkWidget   *widget,
                           GtkObject   *old_parent,
                           GdkColormap *colormap)
 {
   GtkWidget *toplevel;
 
-  GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_parent_set ()"));
+  GTK_GL_NOTE (FUNC, g_message (" - gtk_gl_widget_parent_set ()"));
 
   toplevel = gtk_widget_get_toplevel (widget);
   if (GTK_WIDGET_TOPLEVEL (toplevel))
@@ -200,11 +200,11 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
 
       /* Signal handler to set colormap to the top-level window. */
       g_signal_connect (G_OBJECT (widget), "parent_set",
-                        G_CALLBACK (gtk_widget_gl_parent_set),
+                        G_CALLBACK (gtk_gl_widget_parent_set),
                         colormap);
 
       /* If given widget has the top-level window, colormap is set here. */
-      gtk_widget_gl_parent_set (widget, NULL, colormap);
+      gtk_gl_widget_parent_set (widget, NULL, colormap);
     }
 
   /*
@@ -233,16 +233,16 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    */
 
   g_signal_connect (G_OBJECT (widget), "realize",
-		    G_CALLBACK (gtk_widget_gl_realize),
+		    G_CALLBACK (gtk_gl_widget_realize),
                     NULL);
 
   /* gtk_drawing_area sends configure_event when it is realized. */
   g_signal_connect (G_OBJECT (widget), "configure_event",
-                    G_CALLBACK (gtk_widget_gl_configure_event),
+                    G_CALLBACK (gtk_gl_widget_configure_event),
                     NULL);
 
   g_signal_connect (G_OBJECT (widget), "unrealize",
-		    G_CALLBACK (gtk_widget_gl_unrealize),
+		    G_CALLBACK (gtk_gl_widget_unrealize),
                     NULL);
 
   /*
