@@ -118,8 +118,6 @@ gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
       screen_count = ScreenCount (xdisplay);
 
       sov_props_per_screen = g_new (__SOVPropsPerScreen, screen_count);
-      if (sov_props_per_screen == NULL)
-        return NULL;
 
       for (i = 0; i < screen_count; i++)
         {
@@ -216,6 +214,13 @@ _gdk_x11_gl_overlay_get_info (GdkScreen        *screen,
   if (sov_prop == NULL)
     {
       GDK_GL_NOTE (MISC, g_message (" -- this visual is not overlay visual"));
+
+      /* meaningless */
+      overlay_info->visual           = visual;
+      overlay_info->transparent_type = GDK_GL_OVERLAY_TRANSPARENT_NONE;
+      overlay_info->value            = 0;
+      overlay_info->layer            = 0;
+      
       return FALSE;
     }
 
