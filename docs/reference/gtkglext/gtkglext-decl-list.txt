@@ -149,6 +149,7 @@ gdk_gl_query_extension
 gdk_gl_query_extension_for_display
 gdk_gl_query_version
 gdk_gl_query_version_for_display
+gdk_gl_query_gl_extension
 </SECTION>
 
 <SECTION>

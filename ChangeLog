@@ -1,5 +1,7 @@
 2002-08-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/gdkglquery.c (gdk_gl_query_gl_extension): Added.
+
 	* gdk/gdkgltokens.h: Updated.
 
 	* gdk/gdkglconfig.[ch]

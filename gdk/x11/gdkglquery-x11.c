@@ -27,9 +27,10 @@
 /**
  * gdk_gl_query_extension:
  *
- * Indicate whether the OpenGL extension is supported.
+ * Indicates whether the window system supports the OpenGL extension
+ * (GLX, WGL, etc.).
  *
- * Return value: TRUE if the OpenGL extension is supported, FALSE otherwise.
+ * Return value: TRUE if OpenGL is supported, FALSE otherwise.
  **/
 gboolean
 gdk_gl_query_extension (void)
@@ -58,10 +59,14 @@ gdk_gl_query_extension_for_display (GdkDisplay *display)
 
 /**
  * gdk_gl_query_version:
- * @major: returns the major version number of the OpenGL extension.
- * @minor: returns the minor version number of the OpenGL extension.
+ * @major: returns the major version number of OpenGL.
+ * @minor: returns the minor version number of OpenGL.
  *
- * Return the version numbers of the OpenGL extension.
+ * Returns the version numbers of the OpenGL extension to the window system.
+ *
+ * In the X Window System, it returns the GLX version.
+ *
+ * In the Microsoft Windows, it returns the Windows version.
  *
  * Return value: FALSE if it fails, TRUE otherwise.
  **/

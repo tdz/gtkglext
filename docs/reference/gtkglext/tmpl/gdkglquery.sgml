@@ -52,3 +52,12 @@ functions to query OpenGL support information.
 @Returns: 
 
 
+<!-- ##### FUNCTION gdk_gl_query_gl_extension ##### -->
+<para>
+
+</para>
+
+@extension: 
+@Returns: 
+
+

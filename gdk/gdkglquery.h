@@ -38,6 +38,8 @@ gboolean gdk_gl_query_version_for_display   (GdkDisplay *display,
                                              gint       *minor);
 #endif /* GDK_MULTIHEAD_SAFE */
 
+gboolean gdk_gl_query_gl_extension          (const char *extension);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_QUERY_H__ */

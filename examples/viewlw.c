@@ -447,10 +447,10 @@ int main (int argc, char **argv)
   /* initialize gtk */
   gtk_init( &argc, &argv );
 
-  /* Check if OpenGL extension is supported. */
+  /* Check if OpenGL is supported. */
   if (!gdk_gl_query_extension ())
     {
-      g_print ("\n*** OpenGL extension is not supported.\n");
+      g_print ("\n*** OpenGL is not supported.\n");
       exit (1);
     }
 

@@ -83,6 +83,7 @@ gdkglext_headers = \
 	gdkglprivate.h
 
 gdkglext_c_sources = \
+	gdkglquery.c		\
 	gdkglconfig.c		\
 	gdkglcontext.c		\
 	gdkgldrawable.c		\

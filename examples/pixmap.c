@@ -254,17 +254,17 @@ main (int argc,
   gtk_init (&argc, &argv);
 
   /*
-   * OpenGL extension is supported?
+   * OpenGL is supported?
    */
 
   if (!gdk_gl_query_extension ())
     {
-      g_print ("\n*** OpenGL extension is not supported.\n");
+      g_print ("\n*** OpenGL is not supported.\n");
       exit (1);
     }
 
   gdk_gl_query_version (&major, &minor);
-  g_print ("\nOpenGL extension is supported - version %d.%d\n",
+  g_print ("\nOpenGL is supported - version %d.%d\n",
            major, minor);
 
   /*
