@@ -11,7 +11,7 @@ Release: %{rel}
 License: LGPL
 Group: System Environment/Libraries
 URL: http://gtkglext.sourceforge.net/
-Source0: ftp://ftp.sourceforge.net/pub/sourceforge/gtkglext/gtkglext-%{version}.tar.gz
+Source0: ftp://dl.sourceforge.net/pub/sourceforge/gtkglext/gtkglext-%{version}.tar.gz
 BuildRoot: %{_tmppath}/gtkglext-%{version}-root
 
 Requires: gtk2
@@ -90,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gtk-doc/html/*
 
 %changelog
+* Sun Aug 31 2003 Naofumi Yasufuku <naofumi@users.sourceforge.net>
+- Updated source URL.
+
 * Sun May 11 2003 Naofumi Yasufuku <naofumi@users.sourceforge.net>
 - Removed LDFLAGS setting.
 - Removed atk, pango, glib2 from Requires.
