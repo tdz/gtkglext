@@ -1,4 +1,4 @@
-2003-11-06  Naofumi Yasufuku  <naofumi@yasufuku.net>
+2003-11-06  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gtk/gtkglwidget.c (gtk_gl_widget_size_allocate) 
 	(gtk_gl_widget_realize): Added "size_allocate" signal handler. It
