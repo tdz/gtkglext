@@ -194,11 +194,12 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
    */
 
   glcontext = g_object_new (GDK_TYPE_GL_CONTEXT_IMPL_X11,
-                            "gldrawable",  gldrawable,
-                            "glconfig",    glconfig,
-                            "share_list",  share_list,
-                            "is_direct",   direct,
-                            "render_type", render_type,
+                            "gldrawable",      gldrawable,
+                            "gldrawable_read", NULL,
+                            "glconfig",        glconfig,
+                            "share_list",      share_list,
+                            "is_direct",       direct,
+                            "render_type",     render_type,
                             NULL);
   impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
 

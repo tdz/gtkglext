@@ -21,6 +21,7 @@ OpenGL rendering context object.
 
 @parent_instance: 
 @gldrawable: 
+@gldrawable_read: 
 @glconfig: 
 @share_list: 
 @is_direct: 

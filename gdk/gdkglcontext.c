@@ -24,6 +24,7 @@
 enum {
   PROP_0,
   PROP_GLDRAWABLE,
+  PROP_GLDRAWABLE_READ,
   PROP_GLCONFIG,
   PROP_SHARE_LIST,
   PROP_IS_DIRECT,
@@ -91,6 +92,12 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
                                                          _("The GdkGLDrawable object."),
                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
   g_object_class_install_property (object_class,
+                                   PROP_GLDRAWABLE_READ,
+                                   g_param_spec_pointer ("gldrawable_read",
+                                                         _("Read GL drawable"),
+                                                         _("The read GdkGLDrawable object."),
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
+  g_object_class_install_property (object_class,
                                    PROP_GLCONFIG,
                                    g_param_spec_object ("glconfig",
                                                         _("GL configuration"),
@@ -136,6 +143,9 @@ gdk_gl_context_set_property (GObject      *object,
     case PROP_GLDRAWABLE:
       _gdk_gl_context_set_gl_drawable (glcontext, g_value_get_pointer (value));
       break;
+    case PROP_GLDRAWABLE_READ:
+      _gdk_gl_context_set_gl_drawable_read (glcontext, g_value_get_pointer (value));
+      break;
     case PROP_GLCONFIG:
       glcontext->glconfig = g_value_get_object (value);
       g_object_ref (G_OBJECT (glcontext->glconfig));
@@ -179,6 +189,9 @@ gdk_gl_context_get_property (GObject    *object,
     case PROP_GLDRAWABLE:
       g_value_set_pointer (value, glcontext->gldrawable);
       break;
+    case PROP_GLDRAWABLE_READ:
+      g_value_set_pointer (value, glcontext->gldrawable_read);
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
       break;
@@ -196,6 +209,12 @@ gdk_gl_context_finalize (GObject *object)
     {
       g_object_unref (G_OBJECT (glcontext->gldrawable));
       glcontext->gldrawable = NULL;
+    }
+
+  if (glcontext->gldrawable_read != NULL)
+    {
+      g_object_unref (G_OBJECT (glcontext->gldrawable_read));
+      glcontext->gldrawable_read = NULL;
     }
 
   if (glcontext->glconfig != NULL)
@@ -266,6 +285,33 @@ _gdk_gl_context_set_gl_drawable (GdkGLContext  *glcontext,
     }
 
   g_object_notify (G_OBJECT (glcontext), "gldrawable");
+}
+
+/*< private >*/
+void
+_gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
+                                      GdkGLDrawable *gldrawable_read)
+{
+  GDK_GL_NOTE (FUNC, g_message (" - _gdk_gl_context_set_gl_drawable_read ()"));
+
+  g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
+
+  if (glcontext->gldrawable_read == gldrawable_read)
+    return;
+
+  if (glcontext->gldrawable_read != NULL)
+    {
+      g_object_unref (G_OBJECT (glcontext->gldrawable_read));
+      glcontext->gldrawable_read = NULL;
+    }
+
+  if (gldrawable_read != NULL && GDK_IS_GL_DRAWABLE (gldrawable_read))
+    {
+      glcontext->gldrawable_read = gldrawable_read;
+      g_object_ref (G_OBJECT (glcontext->gldrawable_read));
+    }
+
+  g_object_notify (G_OBJECT (glcontext), "gldrawable_read");
 }
 
 /**

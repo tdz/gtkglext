@@ -1,3 +1,14 @@
+2002-11-24  Naofumi Yasufuku  <naofumi@yasufuku.net>
+
+	* gdk/win32/gdkglpixmap-win32.c (gdk_win32_gl_pixmap_make_context_current): 
+	* gdk/win32/gdkglwindow-win32.c (gdk_win32_gl_window_make_context_current): 
+	* gdk/x11/gdkglpixmap-x11.c (gdk_x11_gl_pixmap_make_context_current): 
+	* gdk/x11/gdkglwindow-x11.c (gdk_x11_gl_window_make_context_current): 
+	* gdk/win32/gdkglcontext-win32.c (_gdk_win32_gl_context_new): 
+	* gdk/x11/gdkglcontext-x11.c (_gdk_x11_gl_context_new): 
+	* gdk/gdkglcontext.c (_gdk_gl_context_set_gl_drawable_read): 
+	* gdk/gdkglcontext.h (struct _GdkGLContext): Added gldrawable_read member.
+
 2002-11-24  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/gdkgldrawable.[ch] (gdk_gl_drawable_get_current): Added

@@ -430,11 +430,13 @@ gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable *draw,
   if (!wglMakeCurrent (hdc, hglrc))
     {
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
+      _gdk_gl_context_set_gl_drawable_read (glcontext, NULL);
       ret = FALSE;
       goto DONE;
     }
 
   _gdk_gl_context_set_gl_drawable (glcontext, draw);
+  _gdk_gl_context_set_gl_drawable_read (glcontext, read);
 
   if (GDK_GL_CONFIG_AS_SINGLE_MODE(glpixmap->glconfig))
     {

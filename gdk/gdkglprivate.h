@@ -33,8 +33,10 @@ G_BEGIN_DECLS
 
 #define GDK_GL_CONFIG_AS_SINGLE_MODE(glconfig) ((glconfig)->as_single_mode)
 
-void         _gdk_gl_context_set_gl_drawable   (GdkGLContext  *glcontext,
-                                                GdkGLDrawable *gldrawable);
+void         _gdk_gl_context_set_gl_drawable      (GdkGLContext  *glcontext,
+                                                   GdkGLDrawable *gldrawable);
+void         _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
+                                                   GdkGLDrawable *gldrawable_read);
 
 gboolean     _gdk_gl_pixmap_is_double_buffered (GdkGLDrawable *gldrawable);
 GdkGLConfig *_gdk_gl_pixmap_get_gl_config      (GdkGLDrawable *gldrawable);

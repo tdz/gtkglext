@@ -39,6 +39,7 @@ struct _GdkGLContext
   GObject parent_instance;
 
   GdkGLDrawable *gldrawable;
+  GdkGLDrawable *gldrawable_read;
 
   GdkGLConfig *glconfig;
 
