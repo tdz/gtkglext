@@ -6,17 +6,23 @@ AC_INIT(gdk/gdkgl.h)
 
 ## Versions of dependencies
 
-GTK_PKG=gtk+-2.0
-GTK_REQUIRED_VERSION=2.0.0
+GLIB_PKG=glib-2.0
+GLIB_REQUIRED_VERSION=2.0.0
 
-GDK_PKG=gdk-2.0
-GDK_REQUIRED_VERSION=2.0.0
+GOBJECT_PKG=gobject-2.0
+GOBJECT_REQUIRED_VERSION=2.0.0
+
+GMODULE_PKG=gmodule-2.0
+GMODULE_REQUIRED_VERSION=2.0.0
 
 PANGO_PKG=pango
 PANGO_REQUIRED_VERSION=1.0.0
 
-GMODULE_PKG=gmodule-2.0
-GMODULE_REQUIRED_VERSION=2.0.0
+GDK_PKG=gdk-2.0
+GDK_REQUIRED_VERSION=2.0.0
+
+GTK_PKG=gtk+-2.0
+GTK_REQUIRED_VERSION=2.0.0
 
 #
 # Making releases:
@@ -275,6 +281,15 @@ $PANGO_PKG >= $PANGO_REQUIRED_VERSION \
 $GMODULE_PKG >= $GMODULE_REQUIRED_VERSION \
 )
 
+# Check for GLib
+AM_PATH_GLIB_2_0([$GLIB_REQUIRED_VERSION], ,
+                 [AC_MSG_ERROR([GLib 2.0 not found])])
+
+# Check for GTK+
+AM_PATH_GTK_2_0([$GTK_REQUIRED_VERSION], ,
+                [AC_MSG_ERROR([GTK+ 2.0 not found])])
+
+
 if test "$os_win32" != yes; then
     # libtool option to control which symbols are exported
     # right now, symbols starting with _ are not exported
@@ -309,21 +324,23 @@ LIBS="$save_LIBS"
 # Checks for GDK multihead support
 ##################################################
 
-GDKGLEXT_MULTIHEAD_SUPPORT=yes
+GDKGLEXT_MULTIHEAD_SUPPORT=no
 
 save_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BASE_DEPENDENCIES_CFLAGS"
 save_LIBS="$LIBS"
 LIBS="$LIBS $BASE_DEPENDENCIES_LIBS"
 
-AC_CHECK_HEADERS([ gdk/gdkdisplay.h gdk/gdkscreen.h ], ,
-                 [ GDKGLEXT_MULTIHEAD_SUPPORT=no ])
+AC_CHECK_HEADERS([gdk/gdkdisplay.h gdk/gdkscreen.h],
+                 [GDKGLEXT_MULTIHEAD_SUPPORT=yes],
+                 [GDKGLEXT_MULTIHEAD_SUPPORT=no])
 
 if test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"; then
   AC_MSG_CHECKING([for gdk_display_get_default in GDK library])
-  AC_TRY_LINK([ #include <gdk/gdk.h> ], 
-              [ gdk_display_get_default(); ], ,
-              [ GDKGLEXT_MULTIHEAD_SUPPORT=no ])
+  AC_TRY_LINK([#include <gdk/gdk.h>],
+              [gdk_display_get_default();],
+              [GDKGLEXT_MULTIHEAD_SUPPORT=yes],
+              [GDKGLEXT_MULTIHEAD_SUPPORT=no])
   AC_MSG_RESULT([$GDKGLEXT_MULTIHEAD_SUPPORT])
 fi
 
@@ -380,7 +397,7 @@ if test "x$gdktarget" = "xx11"; then
 
   XMU_LIBS=""
   AC_CHECK_LIB(Xmu, XmuLookupStandardColormap, , ,
-               [ -lXt $X_PRE_LIBS ])
+               [-lXt $X_PRE_LIBS])
   if test "x$ac_cv_lib_Xmu_XmuLookupStandardColormap" = "xyes" ; then
     XMU_LIBS="-lXmu -lXt $X_PRE_LIBS"
   fi
@@ -453,11 +470,11 @@ LIBS="$LIBS $GL_LDFLAGS $WINDOWING_LIBS $MATH_LIB"
 
 if test "x$gdktarget" = "xx11"; then
   AC_CHECK_HEADERS([GL/glx.h], ,
-                   AC_MSG_ERROR(Cannot find GLX header))
+                   [AC_MSG_ERROR([Cannot find GLX header])])
 fi
 
 AC_CHECK_HEADERS([GL/gl.h GL/glu.h], ,
-                 AC_MSG_ERROR(Cannot find OpenGL headers))
+                 [AC_MSG_ERROR([Cannot find OpenGL headers])])
 
 if test "x$gdktarget" = "xx11"; then
 
@@ -471,38 +488,38 @@ if test "x$gdktarget" = "xx11"; then
 
   # GLcore and GL (SGI)
   AC_CHECK_LIB(GLcore, glVertex3d,
-               [ GL_LIBS="-lGLcore" ])
+               [GL_LIBS="-lGLcore"])
   if test "x$ac_cv_lib_GLcore_glVertex3d" = "xyes" ; then
     # if GLcore found, then also check for GL
     AC_CHECK_LIB(GL, glXCreateContext,
-                 [ GL_LIBS="-lGL $GL_LIBS"
-                   have_GL=yes ])
+                 [GL_LIBS="-lGL $GL_LIBS"
+                  have_GL=yes])
   fi
 
   # GL
   if test "x$have_GL" = "xno" ; then
     # if no GLcore and GL, check for GL
     AC_CHECK_LIB(GL, glVertex3d,
-                 [ GL_LIBS="-lGL"
-                   have_GL=yes ])
+                 [GL_LIBS="-lGL"
+                  have_GL=yes])
     if test "x$ac_cv_lib_GL_glVertex3d" = "xno" ; then
       # GL may need to be linked with the thread library explicitly
       AC_CHECK_LIB(GL, glVertex3f,
-                   [ GL_LIBS="-lGL $THREAD_LIB"
-                     have_GL=yes ], ,
-                   [ $THREAD_LIB ])
+                   [GL_LIBS="-lGL $THREAD_LIB"
+                    have_GL=yes], ,
+                   [$THREAD_LIB])
       if test "x$ac_cv_lib_GL_glVertex3f" = "xno" ; then
         # GL may need to be linked with std C++ library explicitly
         AC_CHECK_LIB(GL, glVertex3i,
-                     [ GL_LIBS="-lGL $STDCPP_LIB"
-                       have_GL=yes ], ,
-                     [ $STDCPP_LIB ])
+                     [GL_LIBS="-lGL $STDCPP_LIB"
+                      have_GL=yes], ,
+                     [$STDCPP_LIB])
         if test "x$ac_cv_lib_GL_glVertex3i" = "xno" ; then
           # GL may need to be linked with std C++ and thread libraries explicitly
           AC_CHECK_LIB(GL, glVertex3s,
-                       [ GL_LIBS="-lGL $STDCPP_LIB $THREAD_LIB"
-                         have_GL=yes ], ,
-                       [ $STDCPP_LIB $THREAD_LIB ])
+                       [GL_LIBS="-lGL $STDCPP_LIB $THREAD_LIB"
+                        have_GL=yes], ,
+                       [$STDCPP_LIB $THREAD_LIB])
         fi
       fi
     fi
@@ -512,14 +529,14 @@ if test "x$gdktarget" = "xx11"; then
   if test "x$have_GL" = "xno" ; then
     # if no GL, check for MesaGL
     AC_CHECK_LIB(MesaGL, glVertex3d,
-                 [ GL_LIBS="-lMesaGL"
-                   have_GL=yes
-                   GL_LIB_NAME=MesaGL ])
+                 [GL_LIBS="-lMesaGL"
+                  have_GL=yes
+                  GL_LIB_NAME=MesaGL])
   fi
 
   if test "x$have_GL" = "xno" ; then
     # no GL found
-    AC_MSG_ERROR(Cannot find GL library)
+    AC_MSG_ERROR([Cannot find GL library])
   fi
 
   # GLU
@@ -528,29 +545,29 @@ if test "x$gdktarget" = "xx11"; then
   have_SGI_GLU=no
 
   AC_CHECK_LIB(GLU, gluSphere,
-               [ GL_LIBS="-lGLU $GL_LIBS"
-                 have_GLU=yes ], ,
-               [ $GL_LIBS ])
+               [GL_LIBS="-lGLU $GL_LIBS"
+                have_GLU=yes], ,
+               [$GL_LIBS])
   if test "x$ac_cv_lib_GLU_gluSphere" = "xno" ; then
     # GLU may need to be linked with the thread library explicitly
     AC_CHECK_LIB(GLU, gluCylinder,
-                 [ GL_LIBS="-lGLU $GL_LIBS $THREAD_LIB"
-                   have_GLU=yes ], ,
-                 [ $GL_LIBS $THREAD_LIB ])
+                 [GL_LIBS="-lGLU $GL_LIBS $THREAD_LIB"
+                  have_GLU=yes], ,
+                 [$GL_LIBS $THREAD_LIB])
     if test "x$ac_cv_lib_GLU_gluCylinder" = "xno" ; then
       # GLU may need to be linked with std C++ library explicitly
       AC_CHECK_LIB(GLU, gluDisk,
-                   [ GL_LIBS="-lGLU $GL_LIBS $STDCPP_LIB"
-                     have_GLU=yes
-                     have_SGI_GLU=yes ], ,
-                   [ $GL_LIBS $STDCPP_LIB ])
+                   [GL_LIBS="-lGLU $GL_LIBS $STDCPP_LIB"
+                    have_GLU=yes
+                    have_SGI_GLU=yes], ,
+                   [$GL_LIBS $STDCPP_LIB])
       if test "x$ac_cv_lib_GLU_gluDisk" = "xno" ; then
         # GLU may need to be linked with std C++ and thread libraries explicitly
         AC_CHECK_LIB(GLU, gluPartialDisk,
-                     [ GL_LIBS="-lGLU $GL_LIBS $STDCPP_LIB $THREAD_LIB"
-                       have_GLU=yes
-                       have_SGI_GLU=yes ], ,
-                     [ $GL_LIBS $STDCPP_LIB $THREAD_LIB ])
+                     [GL_LIBS="-lGLU $GL_LIBS $STDCPP_LIB $THREAD_LIB"
+                      have_GLU=yes
+                      have_SGI_GLU=yes], ,
+                     [$GL_LIBS $STDCPP_LIB $THREAD_LIB])
       fi
     fi
   fi
@@ -558,14 +575,14 @@ if test "x$gdktarget" = "xx11"; then
   if test "x$have_GLU" = "xno" ; then
     # if no GLU, check for MesaGLU
     AC_CHECK_LIB(MesaGLU, gluSphere,
-                 [ GL_LIBS="-lMesaGLU $GL_LIBS"
-                   have_GLU=yes ], ,
-                 [ $GL_LIBS ])
+                 [GL_LIBS="-lMesaGLU $GL_LIBS"
+                  have_GLU=yes], ,
+                 [$GL_LIBS])
   fi
 
   if test "x$have_GLU" = "xno" ; then
     # no GLU found
-    AC_MSG_ERROR(Cannot find GLU library)
+    AC_MSG_ERROR([Cannot find GLU library])
   fi
 
   # Checks for SGI's GLU library
@@ -575,27 +592,27 @@ if test "x$gdktarget" = "xx11"; then
     LDFLAGS="$LDFLAGS $lt_cv_prog_cc_static"
 
     AC_CHECK_LIB(GLU, gluBeginCurve,
-                 [ have_SGI_GLU=no ], ,
-                 [ $GL_LIBS ])
+                 [have_SGI_GLU=no], ,
+                 [$GL_LIBS])
     if test "x$ac_cv_lib_GLU_gluBeginCurve" = "xno" ; then
       AC_CHECK_LIB(GLU, gluBeginPolygon,
-                   [ GL_LIBS="$GL_LIBS $STDCPP_LIB"
-                     have_SGI_GLU=yes ], ,
-                   [ $GL_LIBS $STDCPP_LIB ])
+                   [GL_LIBS="$GL_LIBS $STDCPP_LIB"
+                    have_SGI_GLU=yes], ,
+                   [$GL_LIBS $STDCPP_LIB])
     fi
 
     LDFLAGS="$save_LDFLAGS"
   fi
 
   AC_MSG_CHECKING([whether libGLU needs to be linked with the std C++ library])
-  AC_MSG_RESULT($have_SGI_GLU)
+  AC_MSG_RESULT([$have_SGI_GLU])
 
   # Checks for some types in gdk/GL/glxext.h
 
   # GLXFBConfigSGIX
   GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF=no
   AC_CHECK_TYPES(GLXFBConfigSGIX, , ,
-                 [ #include <GL/glx.h> ])
+                 [#include <GL/glx.h>])
   if test "x$ac_cv_type_GLXFBConfigSGIX" = "xno" ; then
     GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF=yes
   fi
@@ -603,7 +620,7 @@ if test "x$gdktarget" = "xx11"; then
   # GLXFBConfigIDSGIX
   GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF=no
   AC_CHECK_TYPES(GLXFBConfigIDSGIX, , ,
-                 [ #include <GL/glx.h> ])
+                 [#include <GL/glx.h>])
   if test "x$ac_cv_type_GLXFBConfigIDSGIX" = "xno" ; then
     GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF=yes
   fi
@@ -611,7 +628,7 @@ if test "x$gdktarget" = "xx11"; then
   # GLXPbufferSGIX
   GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF=no
   AC_CHECK_TYPES(GLXPbufferSGIX, , ,
-                 [ #include <GL/glx.h> ])
+                 [#include <GL/glx.h>])
   if test "x$ac_cv_type_GLXPbufferSGIX" = "xno" ; then
     GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF=yes
   fi
@@ -619,7 +636,7 @@ if test "x$gdktarget" = "xx11"; then
   # __GLXextFuncPtr
   GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF=no
   AC_CHECK_TYPES(__GLXextFuncPtr, , ,
-                 [ #include <GL/glx.h> ])
+                 [#include <GL/glx.h>])
   if test "x$ac_cv_type___GLXextFuncPtr" = "xno" ; then
     GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF=yes
   fi
@@ -631,28 +648,28 @@ else
   AC_MSG_CHECKING([for glNewList in -lopengl32])
   have_opengl32=no
   LIBS="-lopengl32 $LIBS"
-  AC_TRY_LINK([ #include <windows.h>
-                #include <GL/gl.h> ], 
-              [ glVertex3d(0.0, 0.0, 0.0); ], 
-              [ GL_LIBS="-lopengl32"
-                have_opengl32=yes ])
-  AC_MSG_RESULT($have_opengl32)
+  AC_TRY_LINK([#include <windows.h>
+               #include <GL/gl.h>], 
+              [glVertex3d(0.0, 0.0, 0.0);], 
+              [GL_LIBS="-lopengl32"
+               have_opengl32=yes])
+  AC_MSG_RESULT([$have_opengl32])
   if test "x$have_opengl32" = "xno" ; then
-    AC_MSG_ERROR(Cannot find GL library)
+    AC_MSG_ERROR([Cannot find GL library])
   fi
 
   AC_MSG_CHECKING([for gluNewQuadric in -lglu32])
   have_glu32=no
   LIBS="-lglu32 $LIBS"
-  AC_TRY_LINK([ #include <windows.h>
-                #include <GL/gl.h>
-                #include <GL/glu.h> ], 
-              [ gluNewQuadric(); ], 
-              [ GL_LIBS="-lglu32 $GL_LIBS"
-                have_glu32=yes ])
-  AC_MSG_RESULT($have_glu32)
+  AC_TRY_LINK([#include <windows.h>
+               #include <GL/gl.h>
+               #include <GL/glu.h>], 
+              [gluNewQuadric();], 
+              [GL_LIBS="-lglu32 $GL_LIBS"
+               have_glu32=yes])
+  AC_MSG_RESULT([$have_glu32])
   if test "x$have_glu32" = "xno" ; then
-    AC_MSG_ERROR(Cannot find GLU library)
+    AC_MSG_ERROR([Cannot find GLU library])
   fi
 
 dnl   AC_CHECK_LIB(opengl32, glNewList,

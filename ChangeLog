@@ -1,5 +1,8 @@
 2003-02-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* configure.in: Use AM_PATH_GLIB_2_0 and AM_PATH_GTK_2_0 macros
+	for testing GTK libraries.
+
 	* m4macros/gtkglext.m4: Added AC_GTKGLEXT_SUPPORTS_MULTIHEAD macro
 	for checking whether GtkGLExt supports multihead.
 
