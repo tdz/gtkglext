@@ -7,8 +7,8 @@
 	* gdk/win32/gdkglwindow-win32.h (struct _GdkGLWindowImplWin32):
 	Added need_release_dc flag. This flag is set FALSE if private DC
 	is used, TRUE otherwise.
-	(GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE): Call ReleaseDC() if
-	need_release_dc is TRUE.
+	(GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE): Call ReleaseDC() and set
+	impl->hdc NULL only if need_release_dc is TRUE.
 
 2003-05-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
