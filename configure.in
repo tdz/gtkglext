@@ -256,8 +256,8 @@ AC_SUBST([GTKGLEXT_DEBUG_FLAGS])
 # compiling for Win32 with gcc.
 # What flag to depends on gcc version: gcc3 uses "-mms-bitfields", while
 # gcc2 uses "-fnative-struct".
-if test x"$os_win32" = xyes; then
-  if test x"$GCC" = xyes; then
+if test "x$os_win32" = "xyes"; then
+  if test "x$GCC" = "xyes"; then
     msnative_struct=''
     AC_MSG_CHECKING([how to get MSVC-compatible struct packing])
     if test -z "$ac_cv_prog_CC"; then
@@ -287,7 +287,7 @@ if test x"$os_win32" = xyes; then
   fi
 fi
 
-if test "$os_win32" != yes; then
+if test "x$os_win32" != "xyes"; then
     # libtool option to control which symbols are exported
     # right now, symbols starting with _ are not exported
     LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^[[^_]].*"'
