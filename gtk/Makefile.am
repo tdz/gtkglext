@@ -113,5 +113,5 @@ files:
 	  echo $$p; \
 	done
 
-EXTRA_DIST = 
-
+EXTRA_DIST = \
+	gtkglext.def

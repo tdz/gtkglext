@@ -1,0 +1,7 @@
+EXPORTS
+	gtk_gl_widget_param_get_type
+	gtk_widget_get_gl_config
+	gtk_widget_get_gl_context
+	gtk_widget_get_gl_window
+	gtk_widget_is_gl_capable
+	gtk_widget_set_gl_capability
