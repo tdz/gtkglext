@@ -7,6 +7,8 @@
 	* configure.in: Check GLXPbufferSGIX typedef for some platforms
 	which have bad GLX headers (Solaris 8, etc.).
 
+	(Bugs item #672485, Jussi Laako)
+
 2003-01-23  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglconfig-x11.c: Use macros defined in config.h.
