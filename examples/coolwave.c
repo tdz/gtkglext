@@ -239,7 +239,7 @@ realize (GtkWidget *widget,
       if (proc == NULL)
 	{
 	  g_print ("Sorry, glPolygonOffset() is not supported by this renderer.\n");
-	  gtk_main_quit ();
+	  exit (1);
 	}
     }
 

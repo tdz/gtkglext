@@ -58,7 +58,7 @@ init (GtkWidget *widget,
       if (glcontext == NULL)
         {
           g_print ("Connot create the OpenGL rendering context\n");
-          gtk_main_quit ();
+          exit (1);
         }
 
       g_print ("The OpenGL rendering context is created\n");

@@ -60,7 +60,7 @@ init (GtkWidget *widget,
   if (gl_arb_mt == NULL)
     {
       g_print ("Sorry, GL_ARB_multitexture not supported by this renderer.\n");
-      gtk_main_quit ();
+      exit (1);
     }
 
   glGetIntegerv (GL_MAX_TEXTURE_UNITS_ARB, &num_units);
@@ -99,7 +99,7 @@ init (GtkWidget *widget,
 	  if (!LoadRGBMipmaps (TEXTURE_1_FILE, GL_RGB))
 	    {
 	      g_print ("Error: couldn't load texture image\n");
-	      gtk_main_quit ();
+	      exit (1);
 	    }
 	}
       else if (i == 1)
@@ -107,7 +107,7 @@ init (GtkWidget *widget,
 	  if (!LoadRGBMipmaps (TEXTURE_2_FILE, GL_RGB))
 	    {
 	      g_print ("Error: couldn't load texture image\n");
-	      gtk_main_quit ();
+	      exit (1);
 	    }
 	}
       else

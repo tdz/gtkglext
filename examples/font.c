@@ -45,7 +45,7 @@ init (GtkWidget *widget,
   if (font == NULL)
     {
       g_print ("*** Can't load font '%s'\n", font_string);
-      gtk_main_quit ();
+      exit (1);
     }
 
   font_metrics = pango_font_get_metrics (font, NULL);
