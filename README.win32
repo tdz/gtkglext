@@ -147,6 +147,15 @@ Personally I run configure like this:
 Notice that you should use not MinGW's ar but Cygwin's ar under Cygwin
 environment.
 
+To build the binary installer, Nullsoft's NSIS is required. About NSIS,
+see http://nsis.sourceforge.net/.
+
+  $ cp -rf examples c:/gtkglext/gtkglext-examples
+  $ cp COPYING.LIB c:/gtkglext/
+  $ cp gtkglext.nsi c:/gtkglext/
+  $ cd c:/gtkglext/
+  $ makensis gtkglext.nsi
+
 
 Building the CVS Version of GtkGLExt
 ====================================
