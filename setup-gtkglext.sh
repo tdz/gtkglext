@@ -24,7 +24,7 @@ esac
 #
 # Update .pc files
 #
-for file in $PKGCONFIG_FILES; do
+for file in ${PKGCONFIG_FILES}; do
 
     src="${PREFIX}/${file}.orig-$$"
     dst="${PREFIX}/${file}"
@@ -46,6 +46,6 @@ done
 echo "done."
 
 echo ""
-echo "Path:            ${PREFIX}/lib;${PREFIX}/bin"
+echo "Path:            ${PREFIX}/lib"
 echo "PKG_CONFIG_PATH: ${PREFIX}/lib/pkgconfig"
 echo ""
