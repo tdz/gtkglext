@@ -43,6 +43,10 @@ void _gdk_gl_window_get_size (GdkGLDrawable *gldrawable,
                               gint          *width,
                               gint          *height);
 
+/* Internal globals */
+
+extern gboolean _gdk_gl_context_force_indirect;
+
 G_END_DECLS
 
 #endif /* __GDK_GL_PRIVATE_H__ */

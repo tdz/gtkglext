@@ -21,6 +21,8 @@
 #include "gdkglconfig.h"
 #include "gdkglcontext.h"
 
+gboolean _gdk_gl_context_force_indirect = FALSE;
+
 static void gdk_gl_context_class_init (GdkGLContextClass *klass);
 static void gdk_gl_context_finalize   (GObject           *object);
 

@@ -233,10 +233,20 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
 
   GDK_GL_NOTE (IMPL, g_message (" * glXCreateContext ()"));
 
-  glxcontext = glXCreateContext (xdisplay,
-                                 xvinfo,
-                                 share_glxcontext,
-                                 (direct == TRUE) ? True : False);
+  if (_gdk_gl_context_force_indirect)
+    {
+      glxcontext = glXCreateContext (xdisplay,
+                                     xvinfo,
+                                     share_glxcontext,
+                                     False);
+    }
+  else
+    {
+      glxcontext = glXCreateContext (xdisplay,
+                                     xvinfo,
+                                     share_glxcontext,
+                                     (direct == TRUE) ? True : False);
+    }
   if (glxcontext == NULL)
     return NULL;
 

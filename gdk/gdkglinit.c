@@ -59,12 +59,17 @@ gboolean
 gdk_gl_parse_args (int    *argc,
                    char ***argv)
 {
-#ifdef G_ENABLE_DEBUG
   const gchar *env_string;
-#endif	/* G_ENABLE_DEBUG */
 
   if (gdk_gl_initialized)
     return TRUE;
+
+  env_string = g_getenv ("GDK_GL_FORCE_INDIRECT");
+  if (env_string != NULL)
+    {
+      _gdk_gl_context_force_indirect = (atoi (env_string) != 0);
+      env_string = NULL;
+    }
 
 #ifdef G_ENABLE_DEBUG
   env_string = g_getenv ("GDK_GL_DEBUG");
@@ -83,9 +88,14 @@ gdk_gl_parse_args (int    *argc,
       
       for (i = 1; i < *argc;)
 	{
+          if (strcmp ("--gdk-gl-force-indirect", (*argv)[i]) == 0)
+            {
+              _gdk_gl_context_force_indirect = TRUE;
+              (*argv)[i] = NULL;
+            }
 #ifdef G_ENABLE_DEBUG
-          if ((strcmp ("--gdk-gl-debug", (*argv)[i]) == 0) ||
-              (strncmp ("--gdk-gl-debug=", (*argv)[i], 15) == 0))
+          else if ((strcmp ("--gdk-gl-debug", (*argv)[i]) == 0) ||
+                   (strncmp ("--gdk-gl-debug=", (*argv)[i], 15) == 0))
 	    {
 	      gchar *equal_pos = strchr ((*argv)[i], '=');
 	      

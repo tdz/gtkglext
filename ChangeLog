@@ -1,3 +1,18 @@
+2003-05-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglcontext-x11.c (_gdk_x11_gl_context_new): 
+	If _gdk_gl_context_force_indirect flag is set TRUE, creates
+	indirect rendering context.
+
+	* gdk/gdkglprivate.h: 
+	* gdk/gdkglcontext.c: Added _gdk_gl_context_force_indirect global
+	variable.
+
+	* gdk/gdkglinit.c (gdk_gl_parse_args): Added GDK_GL_FORCE_INDIRECT
+	environment variable and --gdk-gl-force-indirect option. These
+	enable application users to force GdkGLExt library to use indirect
+	rendering context.
+
 2003-05-10  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/Makefile.am: 

@@ -64,6 +64,16 @@ The following options are really used by GdkGLExt library.
 </para>
 
 <formalpara>
+<title><systemitem>--gdk-gl-force-indirect</systemitem></title>
+
+<para>
+Users can force GdkGLExt library to use indirect rendering context.
+If your application has a problem with hardware acceleration, try 
+this option.
+</para>
+</formalpara>
+
+<formalpara>
 <title><systemitem>--gdk-gl-debug <replaceable>options</replaceable></systemitem></title>
 
 <para>
@@ -126,6 +136,16 @@ GtkGLExt inspects the following environment variables.
     </varlistentry>
   </variablelist>
   The special value <literal>all</literal> can be used to turn on all debug options.
+  </para>
+</formalpara>
+
+<formalpara>
+  <title><envar>GDK_GL_FORCE_INDIRECT</envar></title>
+
+  <para>
+    If this variable is set to 1, GdkGLExt library uses indirect
+    rendering context. If your application has a problem with
+    hardware acceleration, try to set this environment variable.
   </para>
 </formalpara>
 
