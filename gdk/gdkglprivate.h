@@ -27,9 +27,6 @@
 
 G_BEGIN_DECLS
 
-/* fake gettext */
-#define _(String) (String)
-
 #define _GDK_GL_CONCAT(x, y) x##y
 
 #define GDK_GL_CONFIG_AS_SINGLE_MODE(glconfig) ((glconfig)->as_single_mode)

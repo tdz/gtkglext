@@ -23,9 +23,6 @@
 #include <gtk/gtkgldebug.h>
 #include <gtk/gtkglwidgetparam.h>
 
-/* I may perhaps support gettext in future. */
-#define _(String) (String)
-
 G_BEGIN_DECLS
 
 /* Install colormap to top-level window. */

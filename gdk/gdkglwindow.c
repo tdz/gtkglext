@@ -236,15 +236,15 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
   g_object_class_install_property (object_class,
                                    PROP_GLCONFIG,
                                    g_param_spec_object ("glconfig",
-                                                        _("Frame buffer configuration"),
-                                                        _("OpenGL frame buffer configuration object."),
+                                                        "Frame buffer configuration",
+                                                        "OpenGL frame buffer configuration object.",
                                                         GDK_TYPE_GL_CONFIG,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
   g_object_class_install_property (object_class,
                                    PROP_DRAWABLE,
                                    g_param_spec_object ("drawable",
-                                                        _("Drawable"),
-                                                        _("Associated GdkDrawable object."),
+                                                        "Drawable",
+                                                        "Associated GdkDrawable object.",
                                                         GDK_TYPE_DRAWABLE,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
