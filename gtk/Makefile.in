@@ -189,7 +189,6 @@ gtkglext_public_h_sources = \
 
 gtkglext_headers = \
 	$(gtkglext_public_h_sources)	\
-	gtkglwidgetparam.h		\
 	gtkgldebug.h			\
 	gtkglprivate.h
 
@@ -197,8 +196,7 @@ gtkglext_headers = \
 gtkglext_c_sources = \
 	gtkglversion.c		\
 	gtkglinit.c		\
-	gtkglwidget.c		\
-	gtkglwidgetparam.c
+	gtkglwidget.c
 
 
 
@@ -253,8 +251,7 @@ CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES = gtkglversion.h
 LTLIBRARIES = $(lib_LTLIBRARIES)
 
-am__objects_1 = gtkglversion.lo gtkglinit.lo gtkglwidget.lo \
-	gtkglwidgetparam.lo
+am__objects_1 = gtkglversion.lo gtkglinit.lo gtkglwidget.lo
 am_libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
 	$(am__objects_1)
 libgtkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
@@ -274,8 +271,7 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/gtkglinit.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gtkglversion.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/gtkglwidget.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/gtkglwidgetparam.Plo
+@AMDEP_TRUE@	./$(DEPDIR)/gtkglwidget.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) \
@@ -347,7 +343,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkglinit.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkglversion.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkglwidget.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkglwidgetparam.Plo@am__quote@
 
 distclean-depend:
 	-rm -rf ./$(DEPDIR)

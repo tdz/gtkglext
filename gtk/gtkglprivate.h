@@ -21,7 +21,6 @@
 
 #include <gtk/gtkgldefs.h>
 #include <gtk/gtkgldebug.h>
-#include <gtk/gtkglwidgetparam.h>
 
 G_BEGIN_DECLS
 

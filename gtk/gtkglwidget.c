@@ -21,25 +21,21 @@
 #include "gtkglprivate.h"
 #include "gtkglwidget.h"
 
+typedef struct
+{
+  GdkGLConfig *glconfig;
+  GdkGLContext *share_list;
+  gboolean direct;
+  int render_type;
+} GLWidgetParam;
+
 gboolean gtk_gl_widget_install_toplevel_cmap = FALSE;
 
-static const gchar quark_param_string[] = "gtk-gl-widget-param";
-static GQuark quark_param = 0;
-
-static const gchar quark_gl_config_string[] = "gtk-gl-widget-gl-config";
-static GQuark quark_gl_config = 0;
+static const gchar quark_gl_param_string[] = "gtk-gl-widget-gl-param";
+static GQuark quark_gl_param = 0;
 
 static const gchar quark_gl_context_string[] = "gtk-gl-widget-gl-context";
 static GQuark quark_gl_context = 0;
-
-static void
-param_destroy (GtkGLWidgetParam *param)
-{
-  GTK_GL_NOTE (FUNC, g_message (" - param_destroy ()"));
-
-  if (param != NULL)
-    g_boxed_free (GTK_TYPE_GL_WIDGET_PARAM, (gpointer) param);
-}
 
 /* 
  * Signal handlers.
@@ -49,8 +45,8 @@ static void
 gtk_widget_gl_realize (GtkWidget *widget,
                        gpointer   user_data)
 {
-  GtkGLWidgetParam *param;
   GdkGLWindow *glwindow;
+  GLWidgetParam *glparam;
 
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_realize ()"));
 
@@ -59,8 +55,8 @@ gtk_widget_gl_realize (GtkWidget *widget,
     return;
 
   /* Get param */
-  param = g_object_get_qdata (G_OBJECT (widget), quark_param);
-  if (param == NULL)
+  glparam = g_object_get_qdata (G_OBJECT (widget), quark_gl_param);
+  if (glparam == NULL)
     return;
 
   /*
@@ -68,7 +64,7 @@ gtk_widget_gl_realize (GtkWidget *widget,
    */
 
   glwindow = gdk_window_set_gl_capability (widget->window,
-                                           param->glconfig,
+                                           glparam->glconfig,
                                            NULL);
   if (glwindow == NULL)
     g_warning ("cannot set OpenGL-capability to widget->window\n");
@@ -149,7 +145,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
                               int           render_type)
 {
   GdkColormap *colormap;
-  GtkGLWidgetParam param;
+  GLWidgetParam *glparam;
 
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_set_gl_capability ()"));
 
@@ -161,11 +157,8 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    * Init quarks.
    */
 
-  if (quark_param == 0)
-    quark_param = g_quark_from_static_string (quark_param_string);
-
-  if (quark_gl_config == 0)
-    quark_gl_config = g_quark_from_static_string (quark_gl_config_string);
+  if (quark_gl_param == 0)
+    quark_gl_param = g_quark_from_static_string (quark_gl_param_string);
 
   if (quark_gl_context == 0)
     quark_gl_context = g_quark_from_static_string (quark_gl_context_string);
@@ -174,16 +167,8 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    * Already OpenGL-capable?
    */
 
-  if (g_object_get_qdata (G_OBJECT (widget), quark_gl_config) != NULL)
+  if (gtk_widget_is_gl_capable (widget))
     return TRUE;
-
-  /*
-   * Set OpenGL-capable visual configuration.
-   */
-
-  g_object_set_qdata_full (G_OBJECT (widget), quark_gl_config, glconfig,
-                           (GDestroyNotify) g_object_unref);
-  g_object_ref (G_OBJECT (glconfig));
 
   /*
    * Set OpenGL-capable colormap.
@@ -222,14 +207,16 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    * Set given GL widget parameters.
    */
 
-  param.glconfig = glconfig;
-  param.share_list = share_list;
-  param.direct = direct;
-  param.render_type = render_type;
+  glparam = g_new0 (GLWidgetParam, 1);
 
-  g_object_set_qdata_full (G_OBJECT (widget), quark_param,
-                           g_boxed_copy (GTK_TYPE_GL_WIDGET_PARAM, (gconstpointer) &param),
-                           (GDestroyNotify) param_destroy);
+  glparam->glconfig = glconfig;
+  g_object_ref (G_OBJECT (glparam->glconfig));
+  glparam->share_list = share_list;
+  glparam->direct = direct;
+  glparam->render_type = render_type;
+
+  g_object_set_qdata_full (G_OBJECT (widget), quark_gl_param, glparam,
+                           (GDestroyNotify) g_free);
 
   /*
    * Signal handler for realizing a OpenGL-capable GdkWindow.
@@ -272,7 +259,9 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
 gboolean
 gtk_widget_is_gl_capable (GtkWidget *widget)
 {
-  return (gtk_widget_get_gl_config (widget) != NULL) ? TRUE : FALSE;
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+
+  return (g_object_get_qdata (G_OBJECT (widget), quark_gl_param) != NULL);
 }
 
 /**
@@ -288,9 +277,15 @@ gtk_widget_is_gl_capable (GtkWidget *widget)
 GdkGLConfig *
 gtk_widget_get_gl_config (GtkWidget *widget)
 {
+  GLWidgetParam *glparam;
+
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
 
-  return g_object_get_qdata (G_OBJECT (widget), quark_gl_config);
+  glparam = g_object_get_qdata (G_OBJECT (widget), quark_gl_param);
+  if (glparam == NULL)
+    return NULL;
+
+  return glparam->glconfig;
 }
 
 /**
@@ -357,7 +352,7 @@ GdkGLContext *
 gtk_widget_get_gl_context (GtkWidget *widget)
 {
   GdkGLContext *glcontext;
-  GtkGLWidgetParam *param;
+  GLWidgetParam *glparam;
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), NULL);
@@ -366,14 +361,14 @@ gtk_widget_get_gl_context (GtkWidget *widget)
   if (glcontext == NULL)
     {
       /* Get param */
-      param = g_object_get_qdata (G_OBJECT (widget), quark_param);
-      if (param == NULL)
+      glparam = g_object_get_qdata (G_OBJECT (widget), quark_gl_param);
+      if (glparam == NULL)
         return NULL;
 
       glcontext = gtk_widget_create_gl_context (widget,
-                                                param->share_list,
-                                                param->direct,
-                                                param->render_type);
+                                                glparam->share_list,
+                                                glparam->direct,
+                                                glparam->render_type);
 
       g_object_set_qdata_full (G_OBJECT (widget), quark_gl_context, glcontext,
                                (GDestroyNotify) g_object_unref);

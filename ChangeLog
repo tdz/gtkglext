@@ -1,5 +1,16 @@
 2003-01-29  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability) 
+	(gtk_widget_get_gl_config): Removed quark_gl_config and use
+	quark_gl_param qdata.
+
+	* gtk/Makefile.am (gtkglext_c_sources): 
+	* gtk/gtkglwidgetparam.[ch]: Removed.
+
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Don't use
+	GBoxed GLWidgetParam.
+	(param_destroy): Removed.
+
 	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_new): 
 	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_new): 
 	* gdk/gdkglpixmap.c (gdk_gl_pixmap_finalize): Weak ref

@@ -4,7 +4,6 @@ EXPORTS
 	gtk_gl_init_check
 	gtk_gl_parse_args
 	gtk_gl_widget_install_toplevel_cmap
-	gtk_gl_widget_param_get_type
 	gtk_widget_create_gl_context
 	gtk_widget_get_gl_config
 	gtk_widget_get_gl_context
