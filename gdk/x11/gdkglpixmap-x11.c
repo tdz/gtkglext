@@ -260,6 +260,15 @@ gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable *draw,
       glxcontext == glXGetCurrentContext ())
     return TRUE;
 
+#ifdef GDK_MULTIHEAD_SAFE
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Pixmap: screen number = %d",
+      GDK_SCREEN_XNUMBER (gdk_drawable_get_screen (GDK_DRAWABLE(draw)))));
+#endif /* GDK_MULTIHEAD_SAFE */
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Pixmap: visual id = 0x%lx",
+      GDK_VISUAL_XVISUAL (gdk_drawable_get_visual (GDK_DRAWABLE(draw)))->visualid));
+
   GDK_GL_NOTE (IMPL, g_message (" * glXMakeCurrent ()"));
 
   if (!glXMakeCurrent (xdisplay, glxpixmap, glxcontext))

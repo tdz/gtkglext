@@ -146,7 +146,18 @@ gdk_gl_font_use_pango_font_for_display
 </SECTION>
 
 <SECTION>
-<FILE>gdkglpixbuf</FILE>
+<FILE>gdkglversion</FILE>
+GDKGLEXT_MAJOR_VERSION
+GDKGLEXT_MINOR_VERSION
+GDKGLEXT_MICRO_VERSION
+GDKGLEXT_INTERFACE_AGE
+GDKGLEXT_BINARY_AGE
+GDKGLEXT_CHECK_VERSION
+gdkglext_major_version
+gdkglext_minor_version
+gdkglext_micro_version
+gdkglext_interface_age
+gdkglext_binary_age
 </SECTION>
 
 <SECTION>
@@ -181,21 +192,6 @@ GdkGLContext
 GdkGLDrawable
 GdkGLPixmap
 GdkGLWindow
-</SECTION>
-
-<SECTION>
-<FILE>gdkglversion</FILE>
-GDKGLEXT_MAJOR_VERSION
-GDKGLEXT_MINOR_VERSION
-GDKGLEXT_MICRO_VERSION
-GDKGLEXT_INTERFACE_AGE
-GDKGLEXT_BINARY_AGE
-GDKGLEXT_CHECK_VERSION
-gdkglext_major_version
-gdkglext_minor_version
-gdkglext_micro_version
-gdkglext_interface_age
-gdkglext_binary_age
 </SECTION>
 
 <SECTION>

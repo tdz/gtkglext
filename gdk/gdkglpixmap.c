@@ -110,6 +110,9 @@ static void         gdk_gl_pixmap_set_colormap           (GdkDrawable *drawable,
                                                           GdkColormap *cmap);
 static GdkColormap *gdk_gl_pixmap_get_colormap           (GdkDrawable *drawable);
 static GdkVisual   *gdk_gl_pixmap_get_visual             (GdkDrawable *drawable);
+#if !(GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION == 0)
+static GdkScreen   *gdk_gl_pixmap_get_screen             (GdkDrawable *drawable);
+#endif
 static GdkImage    *gdk_gl_pixmap_get_image              (GdkDrawable *drawable,
                                                           gint         x,
                                                           gint         y,
@@ -216,6 +219,9 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
   drawable_class->set_colormap           = gdk_gl_pixmap_set_colormap;
   drawable_class->get_colormap           = gdk_gl_pixmap_get_colormap;
   drawable_class->get_visual             = gdk_gl_pixmap_get_visual;
+#if !(GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION == 0)
+  drawable_class->get_screen             = gdk_gl_pixmap_get_screen;
+#endif
   drawable_class->get_image              = gdk_gl_pixmap_get_image;
   drawable_class->get_clip_region        = gdk_gl_pixmap_get_clip_region;
   drawable_class->get_visible_region     = gdk_gl_pixmap_get_visible_region;
@@ -574,6 +580,18 @@ gdk_gl_pixmap_get_visual (GdkDrawable *drawable)
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_visual (real_drawable);
 }
+
+#if !(GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION == 0)
+
+static GdkScreen *
+gdk_gl_pixmap_get_screen (GdkDrawable *drawable)
+{
+  GdkDrawable *real_drawable = ((GdkGLPixmap *) drawable)->drawable;
+
+  return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_screen (real_drawable);
+}
+
+#endif
 
 static GdkImage *
 gdk_gl_pixmap_get_image (GdkDrawable *drawable,

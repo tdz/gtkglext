@@ -137,6 +137,11 @@ gdk_gl_context_impl_x11_constructor (GType                  type,
   if (impl->glxcontext == NULL)
     goto FAIL;
 
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Context: screen number = %d", xvinfo->screen));
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Context: visual id = 0x%lx", xvinfo->visualid));
+
   glcontext->is_direct = glXIsDirect (xdisplay, impl->glxcontext) ? TRUE : FALSE;
 
   /*

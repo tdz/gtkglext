@@ -318,7 +318,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
       visual = gdk_colormap_get_visual (colormap);
       if (GDK_VISUAL_XVISUAL (visual)->visualid == xvinfo->visualid)
         {
-          GDK_GL_NOTE (MISC, g_message (" -- colormap: screen default"));
+          GDK_GL_NOTE (MISC, g_message (" -- Colormap: screen default"));
           g_object_ref (G_OBJECT (colormap));
           return colormap;
         }
@@ -333,7 +333,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
       /* New colormap. */
 
-      GDK_GL_NOTE (MISC, g_message (" -- colormap: new"));
+      GDK_GL_NOTE (MISC, g_message (" -- Colormap: new"));
       visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
       colormap = gdk_colormap_new (visual, FALSE);
       return colormap;
@@ -360,10 +360,10 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
            * transparent pixel precludes all the cells in the colormap
            * being allocated (the transparent pixel is pre-allocated).
            * So in this case, use XAllocColorCells to allocate
-           * map_entries-1 pixels (that is, all but the transparent pixel.
+           * map_entries-1 pixels (that is, all but the transparent pixel).
            */
 
-          GDK_GL_NOTE (MISC, g_message (" -- colormap: new"));
+          GDK_GL_NOTE (MISC, g_message (" -- Colormap: new"));
           colormap = gdk_colormap_new (visual, FALSE);
         }
       else
@@ -377,7 +377,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
            * See note above.
            */
 
-          GDK_GL_NOTE (MISC, g_message (" -- colormap: new allocated writable"));
+          GDK_GL_NOTE (MISC, g_message (" -- Colormap: new allocated writable"));
           colormap = gdk_colormap_new (visual, TRUE);
         }
 
@@ -416,7 +416,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
       visual = gdk_colormap_get_visual (colormap);
       if (GDK_VISUAL_XVISUAL (visual)->visualid == xvinfo->visualid)
         {
-          GDK_GL_NOTE (MISC, g_message (" -- colormap: system default"));
+          GDK_GL_NOTE (MISC, g_message (" -- Colormap: system default"));
 
           g_object_ref (G_OBJECT (colormap));
           return colormap;
@@ -424,7 +424,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
 
       /* New colormap. */
 
-      GDK_GL_NOTE (MISC, g_message (" -- colormap: new"));
+      GDK_GL_NOTE (MISC, g_message (" -- Colormap: new"));
 
       visual = gdkx_visual_get (xvinfo->visualid);
       colormap = gdk_colormap_new (visual, FALSE);
@@ -452,10 +452,10 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
            * transparent pixel precludes all the cells in the colormap
            * being allocated (the transparent pixel is pre-allocated).
            * So in this case, use XAllocColorCells to allocate
-           * map_entries-1 pixels (that is, all but the transparent pixel.
+           * map_entries-1 pixels (that is, all but the transparent pixel).
            */
 
-          GDK_GL_NOTE (MISC, g_message (" -- colormap: new"));
+          GDK_GL_NOTE (MISC, g_message (" -- Colormap: new"));
           colormap = gdk_colormap_new (visual, FALSE);
         }
       else
@@ -469,7 +469,7 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
            * See note above.
            */
 
-          GDK_GL_NOTE (MISC, g_message (" -- colormap: new allocated writable"));
+          GDK_GL_NOTE (MISC, g_message (" -- Colormap: new allocated writable"));
           colormap = gdk_colormap_new (visual, TRUE);
         }
 
@@ -521,11 +521,16 @@ gdk_gl_config_fb_configuration (GdkGLConfigImplX11 *impl,
    * Find an OpenGL-capable visual.
    */
 
+  GDK_GL_NOTE (IMPL, g_message (" * glXChooseVisual ()"));
+
   impl->xvinfo = glXChooseVisual (impl->xdisplay, impl->screen_num, attrib_list);
   if (impl->xvinfo == NULL)
     return;
 
-  GDK_GL_NOTE (MISC, g_message (" -- visual id : 0x%lx", impl->xvinfo->visualid));
+  GDK_GL_NOTE (MISC,
+    g_message (" -- glXChooseVisual: screen number = %d", impl->xvinfo->screen));
+  GDK_GL_NOTE (MISC,
+    g_message (" -- glXChooseVisual: visual id = 0x%lx", impl->xvinfo->visualid));
 
 #define GET_CONFIG(attrib) \
   glXGetConfig (impl->xdisplay, impl->xvinfo, (attrib), &value)
@@ -553,6 +558,10 @@ gdk_gl_config_fb_configuration (GdkGLConfigImplX11 *impl,
                                                      impl->xvinfo,
                                                      glconfig->is_rgba,
                                                      impl->is_mesa_glx);
+
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Colormap: visual id = 0x%lx",
+               GDK_VISUAL_XVISUAL (glconfig->colormap->visual)->visualid));
 
   /*
    * Depth (number of bits per pixel) of the visual.
