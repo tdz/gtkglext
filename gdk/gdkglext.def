@@ -32,6 +32,15 @@ EXPORTS
 	gdk_gl_context_is_direct
 	gdk_gl_context_new
 	gdk_gl_debug_flags
+	gdk_gl_draw_cone
+	gdk_gl_draw_cube
+	gdk_gl_draw_dodecahedron
+	gdk_gl_draw_icosahedron
+	gdk_gl_draw_octahedron
+	gdk_gl_draw_sphere
+	gdk_gl_draw_teapot
+	gdk_gl_draw_tetrahedron
+	gdk_gl_draw_torus
 	gdk_gl_drawable_get_current
 	gdk_gl_drawable_get_gl_config
 	gdk_gl_drawable_get_size
@@ -1055,29 +1064,11 @@ EXPORTS
 	gdk_gl_query_gl_extension
 	gdk_gl_query_version
 	gdk_gl_query_version_for_display
-	gdk_gl_solid_cone
-	gdk_gl_solid_cube
-	gdk_gl_solid_dodecahedron
-	gdk_gl_solid_icosahedron
-	gdk_gl_solid_octahedron
-	gdk_gl_solid_sphere
-	gdk_gl_solid_teapot
-	gdk_gl_solid_tetrahedron
-	gdk_gl_solid_torus
 	gdk_gl_success_get_type
 	gdk_gl_visual_config_attribute_get_type
 	gdk_gl_window_get_type
 	gdk_gl_window_get_window
 	gdk_gl_window_new
-	gdk_gl_wire_cone
-	gdk_gl_wire_cube
-	gdk_gl_wire_dodecahedron
-	gdk_gl_wire_icosahedron
-	gdk_gl_wire_octahedron
-	gdk_gl_wire_sphere
-	gdk_gl_wire_teapot
-	gdk_gl_wire_tetrahedron
-	gdk_gl_wire_torus
 	gdk_pixmap_get_gl_pixmap
 	gdk_pixmap_is_gl_capable
 	gdk_pixmap_set_gl_capability

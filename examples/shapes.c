@@ -197,32 +197,32 @@ realize (GtkWidget *widget,
 
   /* Cube */
   glNewList (shape_list_base + shape_cube, GL_COMPILE);
-    gdk_gl_solid_cube (1.5);
+    gdk_gl_draw_cube (TRUE, 1.5);
   glEndList ();
 
   /* Sphere */
   glNewList (shape_list_base + shape_sphere, GL_COMPILE);
-    gdk_gl_solid_sphere (1.0, 30, 30);
+    gdk_gl_draw_sphere (TRUE, 1.0, 30, 30);
   glEndList ();
 
   /* Cone */
   glNewList (shape_list_base + shape_cone, GL_COMPILE);
     glPushMatrix ();
       glTranslatef (0.0, 0.0, -1.0);
-      gdk_gl_solid_cone (1.0, 2.0, 30, 30);
+      gdk_gl_draw_cone (TRUE, 1.0, 2.0, 30, 30);
     glPopMatrix ();
   glEndList ();
 
   /* Torus */
   glNewList (shape_list_base + shape_torus, GL_COMPILE);
-    gdk_gl_solid_torus (0.4, 0.8, 30, 30);
+    gdk_gl_draw_torus (TRUE, 0.4, 0.8, 30, 30);
   glEndList ();
 
   /* Tetrahedron */
   glNewList (shape_list_base + shape_tetrahedron, GL_COMPILE);
     glPushMatrix ();
       glScalef (1.2, 1.2, 1.2);
-      gdk_gl_solid_tetrahedron ();
+      gdk_gl_draw_tetrahedron (TRUE);
     glPopMatrix ();
   glEndList ();
 
@@ -230,7 +230,7 @@ realize (GtkWidget *widget,
   glNewList (shape_list_base + shape_octahedron, GL_COMPILE);
     glPushMatrix ();
       glScalef (1.2, 1.2, 1.2);
-      gdk_gl_solid_octahedron ();
+      gdk_gl_draw_octahedron (TRUE);
     glPopMatrix ();
   glEndList ();
 
@@ -238,7 +238,7 @@ realize (GtkWidget *widget,
   glNewList (shape_list_base + shape_dodecahedron, GL_COMPILE);
     glPushMatrix ();
       glScalef (0.7, 0.7, 0.7);
-      gdk_gl_solid_dodecahedron ();
+      gdk_gl_draw_dodecahedron (TRUE);
     glPopMatrix ();
   glEndList ();
 
@@ -246,13 +246,13 @@ realize (GtkWidget *widget,
   glNewList (shape_list_base + shape_icosahedron, GL_COMPILE);
     glPushMatrix ();
       glScalef (1.2, 1.2, 1.2);
-      gdk_gl_solid_icosahedron ();
+      gdk_gl_draw_icosahedron (TRUE);
     glPopMatrix ();
   glEndList ();
 
   /* Teapot */
   glNewList (shape_list_base + shape_teapot, GL_COMPILE);
-    gdk_gl_solid_teapot (1.0);
+    gdk_gl_draw_teapot (TRUE, 1.0);
   glEndList ();
 
   gdk_gl_drawable_gl_end (gldrawable);

@@ -188,24 +188,15 @@ gdk_gl_font_use_pango_font_for_display
 
 <SECTION>
 <FILE>gdkglshapes</FILE>
-gdk_gl_solid_cube
-gdk_gl_wire_cube
-gdk_gl_solid_sphere
-gdk_gl_wire_sphere
-gdk_gl_solid_cone
-gdk_gl_wire_cone
-gdk_gl_solid_torus
-gdk_gl_wire_torus
-gdk_gl_solid_tetrahedron
-gdk_gl_wire_tetrahedron
-gdk_gl_solid_octahedron
-gdk_gl_wire_octahedron
-gdk_gl_solid_dodecahedron
-gdk_gl_wire_dodecahedron
-gdk_gl_solid_icosahedron
-gdk_gl_wire_icosahedron
-gdk_gl_solid_teapot
-gdk_gl_wire_teapot
+gdk_gl_draw_cube
+gdk_gl_draw_sphere
+gdk_gl_draw_cone
+gdk_gl_draw_torus
+gdk_gl_draw_tetrahedron
+gdk_gl_draw_octahedron
+gdk_gl_draw_dodecahedron
+gdk_gl_draw_icosahedron
+gdk_gl_draw_teapot
 </SECTION>
 
 <SECTION>

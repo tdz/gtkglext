@@ -122,33 +122,23 @@ drawBox(GLfloat size, GLenum type)
 }
 
 /**
- * gdk_gl_solid_cube:
+ * gdk_gl_draw_cube:
+ * @solid: TRUE if the cube should be solid.
  * @size: length of cube sides.
  *
- * Renders a solid cube.
+ * Renders a cube.
  * The cube is centered at the modeling coordinates origin with sides of
  * length @size.
  *
  **/
 void
-gdk_gl_solid_cube (GLdouble size)
+gdk_gl_draw_cube (gboolean solid,
+                  GLdouble size)
 {
-  drawBox(size, GL_QUADS);
-}
-
-/**
- * gdk_gl_wire_cube:
- * @size: length of cube sides.
- *
- * Renders a wireframe cube.
- * The cube is centered at the modeling coordinates origin with sides of
- * length @size.
- *
- **/
-void
-gdk_gl_wire_cube (GLdouble size)
-{
-  drawBox(size, GL_LINE_LOOP);
+  if (solid)
+    drawBox (size, GL_QUADS);
+  else
+    drawBox (size, GL_LINE_LOOP);
 }
 
 /*
@@ -168,109 +158,72 @@ initQuadObj(void)
 }
 
 /**
- * gdk_gl_solid_sphere:
+ * gdk_gl_draw_sphere:
+ * @solid: TRUE if the sphere should be solid.
  * @radius: the radius of the sphere.
  * @slices: the number of subdivisions around the Z axis (similar to lines of longitude).
  * @stacks: the number of subdivisions along the Z axis (similar to lines of latitude).
  *
- * Renders a solid sphere centered at the modeling coordinates origin of
+ * Renders a sphere centered at the modeling coordinates origin of
  * the specified @radius. The sphere is subdivided around the Z axis into
  * @slices and along the Z axis into @stacks. 
  *
  **/
 void
-gdk_gl_solid_sphere (GLdouble radius,
-                     GLint    slices,
-                     GLint    stacks)
-{
-  QUAD_OBJ_INIT();
-  gluQuadricDrawStyle(quadObj, GLU_FILL);
-  gluQuadricNormals(quadObj, GLU_SMOOTH);
-  /* If we ever changed/used the texture or orientation state
-     of quadObj, we'd need to change it to the defaults here
-     with gluQuadricTexture and/or gluQuadricOrientation. */
-  gluSphere(quadObj, radius, slices, stacks);
-}
-
-/**
- * gdk_gl_wire_sphere:
- * @radius: the radius of the sphere.
- * @slices: the number of subdivisions around the Z axis (similar to lines of longitude).
- * @stacks: the number of subdivisions along the Z axis (similar to lines of latitude).
- *
- * Renders a wireframe sphere centered at the modeling coordinates origin of
- * the specified @radius. The sphere is subdivided around the Z axis into
- * @slices and along the Z axis into @stacks. 
- *
- **/
-void
-gdk_gl_wire_sphere (GLdouble radius,
+gdk_gl_draw_sphere (gboolean solid,
+                    GLdouble radius,
                     GLint    slices,
                     GLint    stacks)
 {
   QUAD_OBJ_INIT();
-  gluQuadricDrawStyle(quadObj, GLU_LINE);
-  gluQuadricNormals(quadObj, GLU_SMOOTH);
+
+  if (solid)
+    gluQuadricDrawStyle (quadObj, GLU_FILL);
+  else
+    gluQuadricDrawStyle (quadObj, GLU_LINE);
+
+  gluQuadricNormals (quadObj, GLU_SMOOTH);
+
   /* If we ever changed/used the texture or orientation state
      of quadObj, we'd need to change it to the defaults here
      with gluQuadricTexture and/or gluQuadricOrientation. */
-  gluSphere(quadObj, radius, slices, stacks);
+  gluSphere (quadObj, radius, slices, stacks);
 }
 
 /**
- * gdk_gl_solid_cone:
+ * gdk_gl_draw_cone:
+ * @solid: TRUE if the cone should be solid.
  * @base: the radius of the base of the cone.
  * @height: the height of the cone.
  * @slices: the number of subdivisions around the Z axis.
  * @stacks: the number of subdivisions along the Z axis.
  *
- * Renders a solid cone oriented along the Z axis.
+ * Renders a cone oriented along the Z axis.
  * The @base of the cone is placed at Z = 0, and the top at Z = @height.
  * The cone is subdivided around the Z axis into @slices, and along
  * the Z axis into @stacks. 
  *
  **/
 void
-gdk_gl_solid_cone (GLdouble base,
-                   GLdouble height,
-                   GLint    slices,
-                   GLint    stacks)
-{
-  QUAD_OBJ_INIT();
-  gluQuadricDrawStyle(quadObj, GLU_FILL);
-  gluQuadricNormals(quadObj, GLU_SMOOTH);
-  /* If we ever changed/used the texture or orientation state
-     of quadObj, we'd need to change it to the defaults here
-     with gluQuadricTexture and/or gluQuadricOrientation. */
-  gluCylinder(quadObj, base, 0.0, height, slices, stacks);
-}
-
-/**
- * gdk_gl_wire_cone:
- * @base: the radius of the base of the cone.
- * @height: the height of the cone.
- * @slices: the number of subdivisions around the Z axis.
- * @stacks: the number of subdivisions along the Z axis.
- *
- * Renders a wireframe cone oriented along the Z axis.
- * The @base of the cone is placed at Z = 0, and the top at Z = @height.
- * The cone is subdivided around the Z axis into @slices, and along
- * the Z axis into @stacks. 
- *
- **/
-void
-gdk_gl_wire_cone (GLdouble base,
+gdk_gl_draw_cone (gboolean solid,
+                  GLdouble base,
                   GLdouble height,
                   GLint    slices,
                   GLint    stacks)
 {
   QUAD_OBJ_INIT();
-  gluQuadricDrawStyle(quadObj, GLU_LINE);
-  gluQuadricNormals(quadObj, GLU_SMOOTH);
+
+  if (solid)
+    gluQuadricDrawStyle (quadObj, GLU_FILL);
+  else
+    gluQuadricDrawStyle (quadObj, GLU_LINE);
+
+  gluQuadricNormals (quadObj, GLU_SMOOTH);
+
   /* If we ever changed/used the texture or orientation state
      of quadObj, we'd need to change it to the defaults here
      with gluQuadricTexture and/or gluQuadricOrientation. */
-  gluCylinder(quadObj, base, 0.0, height, slices, stacks);
+  gluCylinder (quadObj, base, 0.0, height, slices, stacks);
 }
 
 /* 
@@ -319,46 +272,35 @@ doughnut(GLfloat r, GLfloat R, GLint nsides, GLint rings)
 }
 
 /**
- * gdk_gl_solid_torus:
+ * gdk_gl_draw_torus:
+ * @solid: TRUE if the torus should be solid.
  * @inner_radius: inner radius of the torus.
  * @outer_radius: outer radius of the torus.
  * @nsides: number of sides for each radial section.
  * @rings: number of radial divisions for the torus.
  *
- * Renders a solid torus (doughnut) centered at the modeling coordinates
+ * Renders a torus (doughnut) centered at the modeling coordinates
  * origin whose axis is aligned with the Z axis.
  *
  **/
 void
-gdk_gl_solid_torus (GLdouble inner_radius,
-                    GLdouble outer_radius,
-                    GLint    nsides,
-                    GLint    rings)
-{
-  doughnut(inner_radius, outer_radius, nsides, rings);
-}
-
-/**
- * gdk_gl_wire_torus:
- * @inner_radius: inner radius of the torus.
- * @outer_radius: outer radius of the torus.
- * @nsides: number of sides for each radial section.
- * @rings: number of radial divisions for the torus.
- *
- * Renders a wireframe torus (doughnut) centered at the modeling coordinates
- * origin whose axis is aligned with the Z axis.
- *
- **/
-void
-gdk_gl_wire_torus (GLdouble inner_radius,
+gdk_gl_draw_torus (gboolean solid,
+                   GLdouble inner_radius,
                    GLdouble outer_radius,
                    GLint    nsides,
                    GLint    rings)
 {
-  glPushAttrib(GL_POLYGON_BIT);
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  doughnut(inner_radius, outer_radius, nsides, rings);
-  glPopAttrib();
+  if (solid)
+    {
+      doughnut (inner_radius, outer_radius, nsides, rings);
+    }
+  else
+    {
+      glPushAttrib (GL_POLYGON_BIT);
+      glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
+      doughnut (inner_radius, outer_radius, nsides, rings);
+      glPopAttrib ();
+    }
 }
 
 #define DIFF3(_a,_b,_c) { \
@@ -498,29 +440,20 @@ tetrahedron(GLenum shadeType)
 }
 
 /**
- * gdk_gl_solid_tetrahedron:
+ * gdk_gl_draw_tetrahedron:
+ * @solid: TRUE if the tetrahedron should be solid.
  *
- * Renders a solid tetrahedron centered at the modeling coordinates
+ * Renders a tetrahedron centered at the modeling coordinates
  * origin with a radius of the square root of 3.
  *
  **/
 void
-gdk_gl_solid_tetrahedron (void)
+gdk_gl_draw_tetrahedron (gboolean solid)
 {
-  tetrahedron(GL_TRIANGLES);
-}
-
-/**
- * gdk_gl_wire_tetrahedron:
- *
- * Renders a wireframe tetrahedron centered at the modeling coordinates
- * origin with a radius of the square root of 3.
- *
- **/
-void
-gdk_gl_wire_tetrahedron (void)
-{
-  tetrahedron(GL_LINE_LOOP);
+  if (solid)
+    tetrahedron (GL_TRIANGLES);
+  else
+    tetrahedron (GL_LINE_LOOP);
 }
 
 /* 
@@ -562,29 +495,20 @@ octahedron(GLenum shadeType)
 }
 
 /**
- * gdk_gl_solid_octahedron:
+ * gdk_gl_draw_octahedron:
+ * @solid: TRUE if the octahedron should be solid.
  *
- * Renders a solid octahedron centered at the modeling coordinates
+ * Renders a octahedron centered at the modeling coordinates
  * origin with a radius of 1.0.
  *
  **/
 void
-gdk_gl_solid_octahedron (void)
+gdk_gl_draw_octahedron (gboolean solid)
 {
-  octahedron(GL_TRIANGLES);
-}
-
-/**
- * gdk_gl_wire_octahedron:
- *
- * Renders a wireframe octahedron centered at the modeling coordinates
- * origin with a radius of 1.0.
- *
- **/
-void
-gdk_gl_wire_octahedron (void)
-{
-  octahedron(GL_LINE_LOOP);
+  if (solid)
+    octahedron (GL_TRIANGLES);
+  else
+    octahedron (GL_LINE_LOOP);
 }
 
 /* 
@@ -648,31 +572,21 @@ icosahedron(GLenum shadeType)
 }
 
 /**
- * gdk_gl_solid_icosahedron:
+ * gdk_gl_draw_icosahedron:
+ * @solid: TRUE if the icosahedron should be solid.
  *
- * Renders a solid icosahedron.
+ * Renders a icosahedron.
  * The icosahedron is centered at the modeling coordinates origin
  * and has a radius of 1.0. 
  *
  **/
 void
-gdk_gl_solid_icosahedron (void)
+gdk_gl_draw_icosahedron (gboolean solid)
 {
-  icosahedron(GL_TRIANGLES);
-}
-
-/**
- * gdk_gl_wire_icosahedron:
- *
- * Renders a wireframe icosahedron.
- * The icosahedron is centered at the modeling coordinates origin
- * and has a radius of 1.0. 
- *
- **/
-void
-gdk_gl_wire_icosahedron (void)
-{
-  icosahedron(GL_LINE_LOOP);
+  if (solid)
+    icosahedron (GL_TRIANGLES);
+  else
+    icosahedron (GL_LINE_LOOP);
 }
 
 /* 
@@ -758,29 +672,20 @@ dodecahedron(GLenum type)
 }
 
 /**
- * gdk_gl_solid_dodecahedron:
+ * gdk_gl_draw_dodecahedron:
+ * @solid: TRUE if the dodecahedron should be solid.
  *
- * Renders a solid dodecahedron centered at the modeling coordinates
+ * Renders a dodecahedron centered at the modeling coordinates
  * origin with a radius of the square root of 3.
  *
  **/
 void
-gdk_gl_solid_dodecahedron (void)
+gdk_gl_draw_dodecahedron (gboolean solid)
 {
-  dodecahedron(GL_TRIANGLE_FAN);
-}
-
-/**
- * gdk_gl_wire_dodecahedron:
- *
- * Renders a wireframe dodecahedron centered at the modeling coordinates
- * origin with a radius of the square root of 3.
- *
- **/
-void
-gdk_gl_wire_dodecahedron (void)
-{
-  dodecahedron(GL_LINE_LOOP);
+  if (solid)
+    dodecahedron (GL_TRIANGLE_FAN);
+  else
+    dodecahedron (GL_LINE_LOOP);
 }
 
 /* 
@@ -936,31 +841,21 @@ teapot(GLint grid, GLdouble scale, GLenum type)
 }
 
 /**
- * gdk_gl_solid_teapot:
+ * gdk_gl_draw_teapot:
+ * @solid: TRUE if the teapot should be solid.
  * @scale: relative size of the teapot.
  *
- * Renders a solid teapot.
+ * Renders a teapot.
  * Both surface normals and texture coordinates for the teapot are generated.
  * The teapot is generated with OpenGL evaluators. 
  *
  **/
 void
-gdk_gl_solid_teapot (GLdouble scale)
+gdk_gl_draw_teapot (gboolean solid,
+                    GLdouble scale)
 {
-  teapot(7, scale, GL_FILL);
-}
-
-/**
- * gdk_gl_wire_teapot:
- * @scale: relative size of the teapot.
- *
- * Renders a wireframe teapot.
- * Both surface normals and texture coordinates for the teapot are generated.
- * The teapot is generated with OpenGL evaluators. 
- *
- **/
-void
-gdk_gl_wire_teapot (GLdouble scale)
-{
-  teapot(10, scale, GL_LINE);
+  if (solid)
+    teapot (7, scale, GL_FILL);
+  else
+    teapot (10, scale, GL_LINE);
 }

@@ -14,155 +14,88 @@ Functions for generating easily recognizable 3D geometric objects
 
 </para>
 
-<!-- ##### FUNCTION gdk_gl_solid_cube ##### -->
+<!-- ##### FUNCTION gdk_gl_draw_cube ##### -->
 <para>
 
 </para>
 
+@solid: 
 @size: 
 
 
-<!-- ##### FUNCTION gdk_gl_wire_cube ##### -->
+<!-- ##### FUNCTION gdk_gl_draw_sphere ##### -->
 <para>
 
 </para>
 
-@size: 
-
-
-<!-- ##### FUNCTION gdk_gl_solid_sphere ##### -->
-<para>
-
-</para>
-
+@solid: 
 @radius: 
 @slices: 
 @stacks: 
 
 
-<!-- ##### FUNCTION gdk_gl_wire_sphere ##### -->
+<!-- ##### FUNCTION gdk_gl_draw_cone ##### -->
 <para>
 
 </para>
 
-@radius: 
-@slices: 
-@stacks: 
-
-
-<!-- ##### FUNCTION gdk_gl_solid_cone ##### -->
-<para>
-
-</para>
-
+@solid: 
 @base: 
 @height: 
 @slices: 
 @stacks: 
 
 
-<!-- ##### FUNCTION gdk_gl_wire_cone ##### -->
+<!-- ##### FUNCTION gdk_gl_draw_torus ##### -->
 <para>
 
 </para>
 
-@base: 
-@height: 
-@slices: 
-@stacks: 
-
-
-<!-- ##### FUNCTION gdk_gl_solid_torus ##### -->
-<para>
-
-</para>
-
+@solid: 
 @inner_radius: 
 @outer_radius: 
 @nsides: 
 @rings: 
 
 
-<!-- ##### FUNCTION gdk_gl_wire_torus ##### -->
+<!-- ##### FUNCTION gdk_gl_draw_tetrahedron ##### -->
 <para>
 
 </para>
 
-@inner_radius: 
-@outer_radius: 
-@nsides: 
-@rings: 
+@solid: 
 
 
-<!-- ##### FUNCTION gdk_gl_solid_tetrahedron ##### -->
+<!-- ##### FUNCTION gdk_gl_draw_octahedron ##### -->
 <para>
 
 </para>
 
+@solid: 
 
 
-<!-- ##### FUNCTION gdk_gl_wire_tetrahedron ##### -->
+<!-- ##### FUNCTION gdk_gl_draw_dodecahedron ##### -->
 <para>
 
 </para>
 
+@solid: 
 
 
-<!-- ##### FUNCTION gdk_gl_solid_octahedron ##### -->
+<!-- ##### FUNCTION gdk_gl_draw_icosahedron ##### -->
 <para>
 
 </para>
 
+@solid: 
 
 
-<!-- ##### FUNCTION gdk_gl_wire_octahedron ##### -->
+<!-- ##### FUNCTION gdk_gl_draw_teapot ##### -->
 <para>
 
 </para>
 
-
-
-<!-- ##### FUNCTION gdk_gl_solid_dodecahedron ##### -->
-<para>
-
-</para>
-
-
-
-<!-- ##### FUNCTION gdk_gl_wire_dodecahedron ##### -->
-<para>
-
-</para>
-
-
-
-<!-- ##### FUNCTION gdk_gl_solid_icosahedron ##### -->
-<para>
-
-</para>
-
-
-
-<!-- ##### FUNCTION gdk_gl_wire_icosahedron ##### -->
-<para>
-
-</para>
-
-
-
-<!-- ##### FUNCTION gdk_gl_solid_teapot ##### -->
-<para>
-
-</para>
-
-@scale: 
-
-
-<!-- ##### FUNCTION gdk_gl_wire_teapot ##### -->
-<para>
-
-</para>
-
+@solid: 
 @scale: 
 
 

@@ -568,94 +568,49 @@ const char *extension
 const char *proc_name
 </FUNCTION>
 <FUNCTION>
-<NAME>gdk_gl_solid_cube</NAME>
+<NAME>gdk_gl_draw_cube</NAME>
 <RETURNS>void  </RETURNS>
-GLdouble size
+gboolean solid,GLdouble size
 </FUNCTION>
 <FUNCTION>
-<NAME>gdk_gl_wire_cube</NAME>
+<NAME>gdk_gl_draw_sphere</NAME>
 <RETURNS>void  </RETURNS>
-GLdouble size
+gboolean solid,GLdouble radius,GLint    slices,GLint    stacks
 </FUNCTION>
 <FUNCTION>
-<NAME>gdk_gl_solid_sphere</NAME>
+<NAME>gdk_gl_draw_cone</NAME>
 <RETURNS>void  </RETURNS>
-GLdouble radius,GLint    slices,GLint    stacks
+gboolean solid,GLdouble base,GLdouble height,GLint    slices,GLint    stacks
 </FUNCTION>
 <FUNCTION>
-<NAME>gdk_gl_wire_sphere</NAME>
+<NAME>gdk_gl_draw_torus</NAME>
 <RETURNS>void  </RETURNS>
-GLdouble radius,GLint    slices,GLint    stacks
+gboolean solid,GLdouble inner_radius,GLdouble outer_radius,GLint    nsides,GLint    rings
 </FUNCTION>
 <FUNCTION>
-<NAME>gdk_gl_solid_cone</NAME>
+<NAME>gdk_gl_draw_tetrahedron</NAME>
 <RETURNS>void  </RETURNS>
-GLdouble base,GLdouble height,GLint    slices,GLint    stacks
+gboolean solid
 </FUNCTION>
 <FUNCTION>
-<NAME>gdk_gl_wire_cone</NAME>
+<NAME>gdk_gl_draw_octahedron</NAME>
 <RETURNS>void  </RETURNS>
-GLdouble base,GLdouble height,GLint    slices,GLint    stacks
+gboolean solid
 </FUNCTION>
 <FUNCTION>
-<NAME>gdk_gl_solid_torus</NAME>
+<NAME>gdk_gl_draw_dodecahedron</NAME>
 <RETURNS>void  </RETURNS>
-GLdouble inner_radius,GLdouble outer_radius,GLint    nsides,GLint    rings
+gboolean solid
 </FUNCTION>
 <FUNCTION>
-<NAME>gdk_gl_wire_torus</NAME>
+<NAME>gdk_gl_draw_icosahedron</NAME>
 <RETURNS>void  </RETURNS>
-GLdouble inner_radius,GLdouble outer_radius,GLint    nsides,GLint    rings
+gboolean solid
 </FUNCTION>
 <FUNCTION>
-<NAME>gdk_gl_solid_tetrahedron</NAME>
+<NAME>gdk_gl_draw_teapot</NAME>
 <RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_tetrahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_octahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_octahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_dodecahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_dodecahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_icosahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_icosahedron</NAME>
-<RETURNS>void  </RETURNS>
-void
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_solid_teapot</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble scale
-</FUNCTION>
-<FUNCTION>
-<NAME>gdk_gl_wire_teapot</NAME>
-<RETURNS>void  </RETURNS>
-GLdouble scale
+gboolean solid,GLdouble scale
 </FUNCTION>
 <ENUM>
 <NAME>GdkGLSuccess</NAME>

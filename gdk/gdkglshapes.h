@@ -33,48 +33,36 @@
 
 G_BEGIN_DECLS
 
-void gdk_gl_solid_cube         (GLdouble size);
-void gdk_gl_wire_cube          (GLdouble size);
+void gdk_gl_draw_cube         (gboolean solid,
+                               GLdouble size);
 
-void gdk_gl_solid_sphere       (GLdouble radius,
-                                GLint    slices,
-                                GLint    stacks);
-void gdk_gl_wire_sphere        (GLdouble radius,
-                                GLint    slices,
-                                GLint    stacks);
+void gdk_gl_draw_sphere       (gboolean solid,
+                               GLdouble radius,
+                               GLint    slices,
+                               GLint    stacks);
 
-void gdk_gl_solid_cone         (GLdouble base,
-                                GLdouble height,
-                                GLint    slices,
-                                GLint    stacks);
-void gdk_gl_wire_cone          (GLdouble base,
-                                GLdouble height,
-                                GLint    slices,
-                                GLint    stacks);
+void gdk_gl_draw_cone         (gboolean solid,
+                               GLdouble base,
+                               GLdouble height,
+                               GLint    slices,
+                               GLint    stacks);
 
-void gdk_gl_solid_torus        (GLdouble inner_radius,
-                                GLdouble outer_radius,
-                                GLint    nsides,
-                                GLint    rings);
-void gdk_gl_wire_torus         (GLdouble inner_radius,
-                                GLdouble outer_radius,
-                                GLint    nsides,
-                                GLint    rings);
+void gdk_gl_draw_torus        (gboolean solid,
+                               GLdouble inner_radius,
+                               GLdouble outer_radius,
+                               GLint    nsides,
+                               GLint    rings);
 
-void gdk_gl_solid_tetrahedron  (void);
-void gdk_gl_wire_tetrahedron   (void);
+void gdk_gl_draw_tetrahedron  (gboolean solid);
 
-void gdk_gl_solid_octahedron   (void);
-void gdk_gl_wire_octahedron    (void);
+void gdk_gl_draw_octahedron   (gboolean solid);
 
-void gdk_gl_solid_dodecahedron (void);
-void gdk_gl_wire_dodecahedron  (void);
+void gdk_gl_draw_dodecahedron (gboolean solid);
 
-void gdk_gl_solid_icosahedron  (void);
-void gdk_gl_wire_icosahedron   (void);
+void gdk_gl_draw_icosahedron  (gboolean solid);
 
-void gdk_gl_solid_teapot       (GLdouble scale);
-void gdk_gl_wire_teapot        (GLdouble scale);
+void gdk_gl_draw_teapot       (gboolean solid,
+                               GLdouble scale);
 
 G_END_DECLS
 
