@@ -187,7 +187,7 @@ How to compile GtkGLExt
 	    <arg>--with-gl-libraries=DIR</arg>
 	  </group>
 	  <group>
-	    <arg>--enable-debug=[no|yes]</arg>
+	    <arg>--enable-debug=[no|minimum|yes]</arg>
 	  </group>
 	  <group>
 	    <arg>--disable-gtk-doc</arg>
@@ -233,9 +233,17 @@ How to compile GtkGLExt
         <title><systemitem>--enable-debug</systemitem></title>
           
         <para>
-         Turns on debugging support. Setting it to 'yes' enables 
+         Turns on various amounts of debugging support. Setting this to 'no' 
+	 disables g_assert(), g_return_if_fail(), g_return_val_if_fail() and
+         all cast checks between different object types. Setting it to 'minimum'
+         disables only cast checks. Setting it to 'yes' enables 
          <link linkend="GTK-GL-Debug-Options">runtime debugging</link>. 
-         The default is 'no'.
+         The default is 'minimum'.
+         Note that 'no' is fast, but dangerous as it tends to destabilize 
+         even mostly bug-free software by changing the effect of many bugs 
+         from simple warnings into fatal crashes. Thus 
+         <option>--enable-debug=no</option> should <emphasis>not</emphasis> 
+         be used for stable releases of GtkGLExt.
         </para>
       </formalpara>
 

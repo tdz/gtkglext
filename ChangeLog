@@ -1,3 +1,7 @@
+2002-12-12  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* configure.in: GTK style --enable-debug option.
+
 2002-12-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* docs/reference/gtkglext/Makefile.am: 

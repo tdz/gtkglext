@@ -164,8 +164,8 @@ AC_PROG_AWK
 
 # debug flag
 AC_ARG_ENABLE(debug,
-[  --enable-debug          turn on debugging [[default=no]]],
-, enable_debug=no)
+[  --enable-debug=[[no/minimum/yes]] turn on debugging [[default=minimum]]],
+, enable_debug=minimum)
 
 changequote(,)dnl
 if test "x$GCC" = "xyes"; then
@@ -194,11 +194,12 @@ if test "x$enable_debug" = "xyes"; then
       *) CFLAGS="$CFLAGS -g" ;;
       esac
   fi
-	
   GTKGLEXT_DEBUG_FLAGS="-DG_ENABLE_DEBUG"
 else
   if test "x$enable_debug" = "xno"; then
-    GTKGLEXT_DEBUG_FLAGS="-DG_DISABLE_ASSERT -DG_DISABLE_CHECKS"
+    GTKGLEXT_DEBUG_FLAGS="-DG_DISABLE_ASSERT -DG_DISABLE_CHECKS -DG_DISABLE_CAST_CHECKS"
+  else
+    GTKGLEXT_DEBUG_FLAGS="-DG_DISABLE_CAST_CHECKS"
   fi
 fi
 changequote([,])dnl
@@ -646,7 +647,8 @@ AC_SUBST(GTKGLEXT_DEP_CFLAGS)
 # Checks for gtk-doc and docbook-tools
 ##################################################
 
-AC_ARG_WITH(html-dir, [  --with-html-dir=PATH    path to installed docs ])
+AC_ARG_WITH(html-dir,
+[  --with-html-dir=PATH    path to installed docs ])
 
 if test "x$with_html_dir" = "x" ; then
   HTML_DIR='${datadir}/gtk-doc/html'
@@ -685,7 +687,9 @@ AC_CHECK_PROG(DB2HTML, db2html, true, false)
 AM_CONDITIONAL(HAVE_DOCBOOK, $DB2HTML)
 
 dnl Make people enable the gtk-doc stuff explicitely.
-AC_ARG_ENABLE(gtk-doc, [  --enable-gtk-doc        use gtk-doc to build documentation [default=no]], enable_gtk_doc="$enableval", enable_gtk_doc=auto)
+AC_ARG_ENABLE(gtk-doc,
+[  --enable-gtk-doc        use gtk-doc to build documentation [[default=no]]],
+enable_gtk_doc="$enableval", enable_gtk_doc=auto)
 
 if test x$enable_gtk_doc = xyes ; then
   if test x$GTKDOC != xtrue ; then
