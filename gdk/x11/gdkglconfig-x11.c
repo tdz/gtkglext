@@ -94,8 +94,7 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_x11_finalize ()"));
 
-  if (impl->xvinfo != NULL)
-    XFree (impl->xvinfo);
+  XFree (impl->xvinfo);
 
   g_object_unref (G_OBJECT (impl->colormap));
 
