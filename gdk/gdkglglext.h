@@ -33,6 +33,7 @@
 #include <GL/gl.h>
 
 #include <gdk/GL/glext.h>
+#include <gdk/GL/glext-extra.h>
 
 #include <gdk/gdkglquery.h>
 
