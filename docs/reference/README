@@ -1,13 +1,57 @@
+This directory contains the reference documentation
+for GtkGLExt. For more information about GtkGLExt
+see:
 
-These are example build files which you can copy and modify for your app or
-library. They were pinched from the GTK+ build files (thanks Owen!)
+ http://gtkglext.sourceforge.net/
 
-configure.in	- a check for gtk-doc which you can add to your configure.in
 
-Makefile.am	- a basic Makefile.am. Copy to your project and modify the
-		  variables at the top of the file.
+REQUIREMENTS
+============
 
-		  Note that if your project is targeted at GTK+ 2.0 rather
-		  than GTK+ 1.2.x, then you will have to change it so it
-		  runs gtkdoc-scangobj rather than gtkdoc-scanobj.
+To build the documentation, you must have the gtk-doc
+package installed. To rebuild the template files,
+you must have the current version of the GTK+
+header files installed.
+
+
+BUILD
+=====
+
+First, run configure to generate the makefiles for this
+module. There is one option specific to this package
+
+  --with-html-dir=DIR   top of installed HTML documentation tree
+
+
+The Makefiles in the gdkglext/ and gtkglext/ subdirs each define
+three targets:
+
+ templates:
+  
+  Scan the headers and merge the results with the current 
+  template files
+
+ sgml:
+
+  Generate SGML files using the DocBook DTD from
+  the template files
+
+ html:
+
+  Generate HTML from the SGML files.
+
+To build the documentation, do:
+
+ make sgml
+ make html
+
+You should only run the 'make templates' step if you
+need to regenerate the templates for a more recent
+version of the GtkGLExt sources.
+
+INSTALLATION
+============
+
+ make install
+
 
