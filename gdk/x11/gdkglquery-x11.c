@@ -111,8 +111,8 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 GdkGLProc
 gdk_gl_query_get_proc_address (const char *proc_name)
 {
-  typedef GdkGLProc (*__GLXGetProcAddressFunc) (const GLubyte *);
-  static __GLXGetProcAddressFunc glx_get_proc_address = NULL;
+  typedef GdkGLProc (*__glXGetProcAddressFunc) (const GLubyte *);
+  static __glXGetProcAddressFunc glx_get_proc_address = NULL;
   static gboolean init_glx_get_proc_address = FALSE;
   GModule *module;
   GdkGLProc proc_address = NULL;

@@ -40,6 +40,10 @@ _GDK_GL_CONCAT(gdk_gl_get_, proc_name) (void)                                   
   return proc_address;                                                                          \
 }
 
+/* 
+ * GLX_VERSION_1_3
+ */
+
 _GDK_GL_GET_PROC(glXGetFBConfigs)
 
 _GDK_GL_GET_PROC(glXChooseFBConfig)
@@ -76,23 +80,51 @@ _GDK_GL_GET_PROC(glXSelectEvent)
 
 _GDK_GL_GET_PROC(glXGetSelectedEvent)
 
+/* 
+ * GLX_VERSION_1_4
+ */
+
 _GDK_GL_GET_PROC(glXGetProcAddress)
+
+/* 
+ * GLX_ARB_get_proc_address
+ */
 
 _GDK_GL_GET_PROC(glXGetProcAddressARB)
 
+/* 
+ * GLX_SGI_swap_control
+ */
+
 _GDK_GL_GET_PROC(glXSwapIntervalSGI)
+
+/* 
+ * GLX_SGI_video_sync
+ */
 
 _GDK_GL_GET_PROC(glXGetVideoSyncSGI)
 
 _GDK_GL_GET_PROC(glXWaitVideoSyncSGI)
 
+/* 
+ * GLX_SGI_make_current_read
+ */
+
 _GDK_GL_GET_PROC(glXMakeCurrentReadSGI)
 
 _GDK_GL_GET_PROC(glXGetCurrentReadDrawableSGI)
 
+/* 
+ * GLX_SGIX_video_source
+ */
+
 _GDK_GL_GET_PROC(glXCreateGLXVideoSourceSGIX)
 
 _GDK_GL_GET_PROC(glXDestroyGLXVideoSourceSGIX)
+
+/* 
+ * GLX_EXT_import_context
+ */
 
 _GDK_GL_GET_PROC(glXGetCurrentDisplayEXT)
 
@@ -103,6 +135,10 @@ _GDK_GL_GET_PROC(glXGetContextIDEXT)
 _GDK_GL_GET_PROC(glXImportContextEXT)
 
 _GDK_GL_GET_PROC(glXFreeContextEXT)
+
+/* 
+ * GLX_SGIX_fbconfig
+ */
 
 _GDK_GL_GET_PROC(glXGetFBConfigAttribSGIX)
 
@@ -116,6 +152,10 @@ _GDK_GL_GET_PROC(glXGetVisualFromFBConfigSGIX)
 
 _GDK_GL_GET_PROC(glXGetFBConfigFromVisualSGIX)
 
+/* 
+ * GLX_SGIX_pbuffer
+ */
+
 _GDK_GL_GET_PROC(glXCreateGLXPbufferSGIX)
 
 _GDK_GL_GET_PROC(glXDestroyGLXPbufferSGIX)
@@ -126,7 +166,15 @@ _GDK_GL_GET_PROC(glXSelectEventSGIX)
 
 _GDK_GL_GET_PROC(glXGetSelectedEventSGIX)
 
+/* 
+ * GLX_SGI_cushion
+ */
+
 _GDK_GL_GET_PROC(glXCushionSGI)
+
+/* 
+ * GLX_SGIX_video_resize
+ */
 
 _GDK_GL_GET_PROC(glXBindChannelToWindowSGIX)
 
@@ -138,23 +186,59 @@ _GDK_GL_GET_PROC(glXQueryChannelDeltasSGIX)
 
 _GDK_GL_GET_PROC(glXChannelRectSyncSGIX)
 
+/* 
+ * GLX_SGIX_dmbuffer
+ */
+
 _GDK_GL_GET_PROC(glXAssociateDMPbufferSGIX)
 
+/* 
+ * GLX_SGIX_swap_group
+ */
+
 _GDK_GL_GET_PROC(glXJoinSwapGroupSGIX)
+
+/* 
+ * GLX_SGIX_swap_barrier
+ */
 
 _GDK_GL_GET_PROC(glXBindSwapBarrierSGIX)
 
 _GDK_GL_GET_PROC(glXQueryMaxSwapBarriersSGIX)
 
+/* 
+ * GLX_SUN_get_transparent_index
+ */
+
 _GDK_GL_GET_PROC(glXGetTransparentIndexSUN)
+
+/*
+ * GLX_MESA_copy_sub_buffer
+ */
 
 _GDK_GL_GET_PROC(glXCopySubBufferMESA)
 
+/*
+ * GLX_MESA_pixmap_colormap
+ */
+
 _GDK_GL_GET_PROC(glXCreateGLXPixmapMESA)
+
+/*
+ * GLX_MESA_release_buffers
+ */
 
 _GDK_GL_GET_PROC(glXReleaseBuffersMESA)
 
+/*
+ * GLX_MESA_set_3dfx_mode
+ */
+
 _GDK_GL_GET_PROC(glXSet3DfxModeMESA)
+
+/* 
+ * GLX_OML_sync_control
+ */
 
 _GDK_GL_GET_PROC(glXGetSyncValuesOML)
 

@@ -187,7 +187,8 @@ gdkglext_public_h_sources = \
 	gdkgldrawable.h		\
 	gdkglpixmap.h		\
 	gdkglwindow.h		\
-	gdkglfont.h
+	gdkglfont.h		\
+	gdkglglext.h
 
 
 gdkglext_headers = \
@@ -205,6 +206,7 @@ gdkglext_c_sources = \
 	gdkgldrawable.c		\
 	gdkglpixmap.c		\
 	gdkglwindow.c		\
+	gdkglglext.c		\
 	gdkgldebug.c
 
 
@@ -268,7 +270,7 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 
 am__objects_1 = gdkglversion.lo gdkglquery.lo gdkglconfig.lo \
 	gdkglcontext.lo gdkgldrawable.lo gdkglpixmap.lo gdkglwindow.lo \
-	gdkgldebug.lo
+	gdkglglext.lo gdkgldebug.lo
 am_libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
 	$(am__objects_1) gdkglenumtypes.lo
 libgdkglext_win32_@API_MJ_LT@_@API_MI_LT@_la_OBJECTS = \
@@ -292,6 +294,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/gdkgldebug.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkgldrawable.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglenumtypes.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/gdkglglext.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglpixmap.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglquery.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/gdkglversion.Plo \
@@ -375,6 +378,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkgldebug.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkgldrawable.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglenumtypes.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglglext.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglpixmap.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglquery.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gdkglversion.Plo@am__quote@

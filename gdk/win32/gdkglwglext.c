@@ -40,6 +40,10 @@ _GDK_GL_CONCAT(gdk_gl_get_, proc_name) (void)                                   
   return proc_address;                                                                          \
 }
 
+/* 
+ * WGL_ARB_buffer_region
+ */
+
 _GDK_GL_GET_PROC(wglCreateBufferRegionARB)
 
 _GDK_GL_GET_PROC(wglDeleteBufferRegionARB)
@@ -48,7 +52,15 @@ _GDK_GL_GET_PROC(wglSaveBufferRegionARB)
 
 _GDK_GL_GET_PROC(wglRestoreBufferRegionARB)
 
+/* 
+ * WGL_ARB_extensions_string
+ */
+
 _GDK_GL_GET_PROC(wglGetExtensionsStringARB)
+
+/* 
+ * WGL_ARB_pixel_format
+ */
 
 _GDK_GL_GET_PROC(wglGetPixelFormatAttribivARB)
 
@@ -56,9 +68,17 @@ _GDK_GL_GET_PROC(wglGetPixelFormatAttribfvARB)
 
 _GDK_GL_GET_PROC(wglChoosePixelFormatARB)
 
+/* 
+ * WGL_ARB_make_current_read
+ */
+
 _GDK_GL_GET_PROC(wglMakeContextCurrentARB)
 
 _GDK_GL_GET_PROC(wglGetCurrentReadDCARB)
+
+/* 
+ * WGL_ARB_pbuffer
+ */
 
 _GDK_GL_GET_PROC(wglCreatePbufferARB)
 
@@ -70,11 +90,19 @@ _GDK_GL_GET_PROC(wglDestroyPbufferARB)
 
 _GDK_GL_GET_PROC(wglQueryPbufferARB)
 
+/* 
+ * WGL_ARB_render_texture
+ */
+
 _GDK_GL_GET_PROC(wglBindTexImageARB)
 
 _GDK_GL_GET_PROC(wglReleaseTexImageARB)
 
 _GDK_GL_GET_PROC(wglSetPbufferAttribARB)
+
+/* 
+ * WGL_EXT_display_color_table
+ */
 
 _GDK_GL_GET_PROC(wglCreateDisplayColorTableEXT)
 
@@ -84,11 +112,23 @@ _GDK_GL_GET_PROC(wglBindDisplayColorTableEXT)
 
 _GDK_GL_GET_PROC(wglDestroyDisplayColorTableEXT)
 
+/* 
+ * WGL_EXT_extensions_string
+ */
+
 _GDK_GL_GET_PROC(wglGetExtensionsStringEXT)
+
+/* 
+ * WGL_EXT_make_current_read
+ */
 
 _GDK_GL_GET_PROC(wglMakeContextCurrentEXT)
 
 _GDK_GL_GET_PROC(wglGetCurrentReadDCEXT)
+
+/* 
+ * WGL_EXT_pbuffer
+ */
 
 _GDK_GL_GET_PROC(wglCreatePbufferEXT)
 
@@ -100,19 +140,35 @@ _GDK_GL_GET_PROC(wglDestroyPbufferEXT)
 
 _GDK_GL_GET_PROC(wglQueryPbufferEXT)
 
+/* 
+ * WGL_EXT_pixel_format
+ */
+
 _GDK_GL_GET_PROC(wglGetPixelFormatAttribivEXT)
 
 _GDK_GL_GET_PROC(wglGetPixelFormatAttribfvEXT)
 
 _GDK_GL_GET_PROC(wglChoosePixelFormatEXT)
 
+/* 
+ * WGL_EXT_swap_control
+ */
+
 _GDK_GL_GET_PROC(wglSwapIntervalEXT)
 
 _GDK_GL_GET_PROC(wglGetSwapIntervalEXT)
 
+/* 
+ * WGL_NV_vertex_array_range
+ */
+
 _GDK_GL_GET_PROC(wglAllocateMemoryNV)
 
 _GDK_GL_GET_PROC(wglFreeMemoryNV)
+
+/* 
+ * WGL_OML_sync_control
+ */
 
 _GDK_GL_GET_PROC(wglGetSyncValuesOML)
 
@@ -126,9 +182,17 @@ _GDK_GL_GET_PROC(wglWaitForMscOML)
 
 _GDK_GL_GET_PROC(wglWaitForSbcOML)
 
+/* 
+ * WGL_I3D_digital_video_control
+ */
+
 _GDK_GL_GET_PROC(wglGetDigitalVideoParametersI3D)
 
 _GDK_GL_GET_PROC(wglSetDigitalVideoParametersI3D)
+
+/* 
+ * WGL_I3D_gamma
+ */
 
 _GDK_GL_GET_PROC(wglGetGammaTableParametersI3D)
 
@@ -137,6 +201,10 @@ _GDK_GL_GET_PROC(wglSetGammaTableParametersI3D)
 _GDK_GL_GET_PROC(wglGetGammaTableI3D)
 
 _GDK_GL_GET_PROC(wglSetGammaTableI3D)
+
+/* 
+ * WGL_I3D_genlock
+ */
 
 _GDK_GL_GET_PROC(wglEnableGenlockI3D)
 
@@ -162,6 +230,10 @@ _GDK_GL_GET_PROC(wglGetGenlockSourceDelayI3D)
 
 _GDK_GL_GET_PROC(wglQueryGenlockMaxSourceDelayI3D)
 
+/* 
+ * WGL_I3D_image_buffer
+ */
+
 _GDK_GL_GET_PROC(wglCreateImageBufferI3D)
 
 _GDK_GL_GET_PROC(wglDestroyImageBufferI3D)
@@ -170,6 +242,10 @@ _GDK_GL_GET_PROC(wglAssociateImageBufferEventsI3D)
 
 _GDK_GL_GET_PROC(wglReleaseImageBufferEventsI3D)
 
+/* 
+ * WGL_I3D_swap_frame_lock
+ */
+
 _GDK_GL_GET_PROC(wglEnableFrameLockI3D)
 
 _GDK_GL_GET_PROC(wglDisableFrameLockI3D)
@@ -177,6 +253,10 @@ _GDK_GL_GET_PROC(wglDisableFrameLockI3D)
 _GDK_GL_GET_PROC(wglIsEnabledFrameLockI3D)
 
 _GDK_GL_GET_PROC(wglQueryFrameLockMasterI3D)
+
+/* 
+ * WGL_I3D_swap_frame_usage
+ */
 
 _GDK_GL_GET_PROC(wglGetFrameUsageI3D)
 
