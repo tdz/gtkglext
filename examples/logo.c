@@ -205,7 +205,7 @@ realize (GtkWidget *widget,
     glPopMatrix ();
   glEndList ();
 
-  glEnable(GL_NORMALIZE);
+  glEnable (GL_NORMALIZE);
 
   /* Init logo orientation. */
   init_logo_quat ();

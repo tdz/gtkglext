@@ -456,6 +456,11 @@ key_press_event (GtkWidget   *widget,
       toggle_animation (widget);
       break;
 
+    case GDK_w:
+      if (!animate)
+	idle (widget);
+      break;
+
     case GDK_plus:
       sdepth -= 2.0;
       break;
