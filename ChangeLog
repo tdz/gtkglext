@@ -1,3 +1,10 @@
+2003-05-07  C.J. Collier  <listmail@colliertech.org>
+
+	* gdk/gdkglwindow.c (gdk_window_unset_gl_capability) 
+	(gdk_window_get_gl_window): 
+	* gdk/gdkglpixmap.c (gdk_pixmap_unset_gl_capability) 
+	(gdk_pixmap_get_gl_pixmap): Fixed typo in the documentation.
+
 2003-05-07  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* configure.in: Suppress linker warnings on IRIX.

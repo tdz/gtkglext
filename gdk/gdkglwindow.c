@@ -761,7 +761,7 @@ gdk_window_set_gl_capability (GdkWindow   *window,
  * @window: a #GdkWindow.
  *
  * Unset the OpenGL-capability of the @window.
- * The call destroys the #GdkGLWindow holded by the @window.
+ * The call destroys the #GdkGLWindow held by the @window.
  *
  **/
 void
@@ -807,7 +807,7 @@ gdk_window_is_gl_capable (GdkWindow *window)
  * gdk_window_get_gl_window:
  * @window: a #GdkWindow.
  *
- * Returns the #GdkGLWindow holded by the @window.
+ * Returns the #GdkGLWindow held by the @window.
  *
  * Return value: the #GdkGLWindow.
  **/

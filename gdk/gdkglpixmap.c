@@ -747,7 +747,7 @@ gdk_pixmap_set_gl_capability (GdkPixmap   *pixmap,
  * @pixmap: a #GdkPixmap.
  *
  * Unset the OpenGL-capability of the @pixmap.
- * The call destroys the #GdkGLPixmap holded by the @pixmap.
+ * The call destroys the #GdkGLPixmap held by the @pixmap.
  *
  **/
 void
@@ -793,7 +793,7 @@ gdk_pixmap_is_gl_capable (GdkPixmap *pixmap)
  * gdk_pixmap_get_gl_pixmap:
  * @pixmap: a #GdkPixmap.
  *
- * Returns the #GdkGLPixmap holded by the @pixmap.
+ * Returns the #GdkGLPixmap held by the @pixmap.
  *
  * Return value: the #GdkGLPixmap.
  **/

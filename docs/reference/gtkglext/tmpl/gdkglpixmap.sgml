@@ -87,7 +87,7 @@ OpenGL pixmap which is maintained offscreen
 
 <!-- ##### MACRO gdk_pixmap_get_gl_drawable ##### -->
 <para>
-Return the #GdkGLDrawable holded by the @pixmap.
+Return the #GdkGLDrawable held by the @pixmap.
 </para>
 
 @pixmap: a #GdkPixmap.
