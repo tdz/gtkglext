@@ -1,8 +1,11 @@
 <SECTION>
 <FILE>gdkglconfig</FILE>
 <TITLE>GdkGLConfig</TITLE>
+GdkGLConfigMode
+GdkGLConfig
 gdk_gl_config_new
 gdk_gl_config_new_for_screen
+gdk_gl_config_new_by_mode
 gdk_gl_config_get_screen
 gdk_gl_config_get_attrib
 gdk_gl_config_get_colormap
@@ -10,6 +13,8 @@ gdk_gl_config_get_depth
 gdk_gl_config_is_double_buffered
 gdk_gl_config_is_stereo
 <SUBSECTION Standard>
+GDK_TYPE_GL_CONFIG_MODE
+gdk_gl_config_mode_get_type
 GDK_GL_CONFIG
 GDK_IS_GL_CONFIG
 GDK_TYPE_GL_CONFIG
@@ -22,6 +27,7 @@ GDK_GL_CONFIG_GET_CLASS
 <SECTION>
 <FILE>gdkglcontext</FILE>
 <TITLE>GdkGLContext</TITLE>
+GdkGLContext
 gdk_gl_context_new
 gdk_gl_context_copy
 <SUBSECTION Standard>
@@ -37,6 +43,7 @@ GDK_GL_CONTEXT_GET_CLASS
 <SECTION>
 <FILE>gdkgldrawable</FILE>
 <TITLE>GdkGLDrawable</TITLE>
+GdkGLDrawable
 gdk_gl_drawable_make_current
 gdk_gl_drawable_is_double_buffered
 gdk_gl_drawable_swap_buffers
@@ -57,6 +64,7 @@ GDK_GL_DRAWABLE_GET_CLASS
 <SECTION>
 <FILE>gdkglpixmap</FILE>
 <TITLE>GdkGLPixmap</TITLE>
+GdkGLPixmap
 gdk_gl_pixmap_new
 gdk_pixmap_set_gl_capability
 gdk_pixmap_unset_gl_capability
@@ -76,6 +84,7 @@ GDK_GL_PIXMAP_GET_CLASS
 <SECTION>
 <FILE>gdkglwindow</FILE>
 <TITLE>GdkGLWindow</TITLE>
+GdkGLWindow
 gdk_gl_window_new
 gdk_window_set_gl_capability
 gdk_window_unset_gl_capability
@@ -127,15 +136,6 @@ GdkGLGenericValue
 GdkGLExtensionValue
 GdkGLClientStringAttribute
 GdkGLContextInfoExtensionAttribute
-</SECTION>
-
-<SECTION>
-<FILE>gdkgltypes</FILE>
-GdkGLConfig
-GdkGLContext
-GdkGLDrawable
-GdkGLPixmap
-GdkGLWindow
 </SECTION>
 
 <SECTION>

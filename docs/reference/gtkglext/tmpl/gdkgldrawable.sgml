@@ -14,6 +14,12 @@ OpenGL rendering surface.
 
 </para>
 
+<!-- ##### STRUCT GdkGLDrawable ##### -->
+<para>
+
+</para>
+
+
 <!-- ##### FUNCTION gdk_gl_drawable_make_current ##### -->
 <para>
 

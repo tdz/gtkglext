@@ -63,6 +63,33 @@ GdkGLWindow  *glwindow
 <NAME>GDK_GL_WINDOW_GLXWINDOW</NAME>
 #define GDK_GL_WINDOW_GLXWINDOW(glwindow)    (gdk_x11_gl_window_get_glxwindow (glwindow))
 </MACRO>
+<ENUM>
+<NAME>GdkGLConfigMode</NAME>
+typedef enum
+{
+  GDK_GL_MODE_RGB         = 1 << 1,
+  GDK_GL_MODE_RGBA        = 1 << 1,   /* same as RGB */
+  GDK_GL_MODE_INDEX       = 1 << 2,
+  GDK_GL_MODE_SINGLE      = 1 << 3,
+  GDK_GL_MODE_DOUBLE      = 1 << 4,
+  GDK_GL_MODE_ACCUM       = 1 << 5,
+  GDK_GL_MODE_ALPHA       = 1 << 6,
+  GDK_GL_MODE_DEPTH       = 1 << 7,
+  GDK_GL_MODE_STENCIL     = 1 << 8,
+  GDK_GL_MODE_STEREO      = 1 << 9,
+  GDK_GL_MODE_MULTISAMPLE = 1 << 10,  /* not supported yet */
+  GDK_GL_MODE_LUMINANCE   = 1 << 11   /* not supported yet */
+} GdkGLConfigMode;
+</ENUM>
+<MACRO>
+<NAME>GDK_TYPE_GL_CONFIG_MODE</NAME>
+#define GDK_TYPE_GL_CONFIG_MODE         (gdk_gl_config_mode_get_type ())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_config_mode_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
 <STRUCT>
 <NAME>GdkGLConfigClass</NAME>
 </STRUCT>
@@ -124,6 +151,11 @@ const gint  *attrib_list
 <NAME>gdk_gl_config_new_for_screen</NAME>
 <RETURNS>GdkGLConfig  *</RETURNS>
 GdkScreen   *screen,const gint  *attrib_list
+</FUNCTION>
+<FUNCTION>
+<NAME>gdk_gl_config_new_by_mode</NAME>
+<RETURNS>GdkGLConfig  *</RETURNS>
+GdkGLConfigMode mode
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_config_get_screen</NAME>

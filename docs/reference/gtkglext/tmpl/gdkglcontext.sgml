@@ -14,6 +14,18 @@ OpenGL rendering context.
 
 </para>
 
+<!-- ##### STRUCT GdkGLContext ##### -->
+<para>
+
+</para>
+
+@parent_instance: 
+@gldrawable: 
+@glconfig: 
+@share_list: 
+@is_direct: 
+@render_type: 
+
 <!-- ##### FUNCTION gdk_gl_context_new ##### -->
 <para>
 

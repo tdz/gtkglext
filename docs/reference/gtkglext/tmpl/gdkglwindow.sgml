@@ -14,6 +14,15 @@ OpenGL window which is located onscreen.
 
 </para>
 
+<!-- ##### STRUCT GdkGLWindow ##### -->
+<para>
+
+</para>
+
+@parent_instance: 
+@glconfig: 
+@wrapper: 
+
 <!-- ##### FUNCTION gdk_gl_window_new ##### -->
 <para>
 

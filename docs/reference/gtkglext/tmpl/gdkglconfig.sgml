@@ -18,6 +18,35 @@ and is afterwards used in #gtk_widget_set_gl_capability.
 
 </para>
 
+<!-- ##### ENUM GdkGLConfigMode ##### -->
+<para>
+
+</para>
+
+@GDK_GL_MODE_RGB: 
+@GDK_GL_MODE_RGBA: 
+@GDK_GL_MODE_INDEX: 
+@GDK_GL_MODE_SINGLE: 
+@GDK_GL_MODE_DOUBLE: 
+@GDK_GL_MODE_ACCUM: 
+@GDK_GL_MODE_ALPHA: 
+@GDK_GL_MODE_DEPTH: 
+@GDK_GL_MODE_STENCIL: 
+@GDK_GL_MODE_STEREO: 
+@GDK_GL_MODE_MULTISAMPLE: 
+@GDK_GL_MODE_LUMINANCE: 
+
+<!-- ##### STRUCT GdkGLConfig ##### -->
+<para>
+
+</para>
+
+@parent_instance: 
+@colormap: 
+@depth: 
+@is_double_buffered: 
+@is_stereo: 
+
 <!-- ##### FUNCTION gdk_gl_config_new ##### -->
 <para>
 Reserves an space in memory for containing OpenGL FrameBuffer
@@ -44,6 +73,15 @@ and GDK_GL_ACCUM_ALPHA_SIZE.
 
 @screen: 
 @attrib_list: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gdk_gl_config_new_by_mode ##### -->
+<para>
+
+</para>
+
+@mode: 
 @Returns: 
 
 

@@ -1,8 +1,12 @@
 <SECTION>
 <FILE>gdkglconfig</FILE>
+GdkGLConfigMode
+GDK_TYPE_GL_CONFIG_MODE
 <TITLE>GdkGLConfig</TITLE>
+gdk_gl_config_get_type
 gdk_gl_config_new
 gdk_gl_config_new_for_screen
+gdk_gl_config_new_by_mode
 gdk_gl_config_get_screen
 gdk_gl_config_get_attrib
 gdk_gl_config_get_colormap
@@ -13,7 +17,7 @@ gdk_gl_config_is_stereo
 GDK_GL_CONFIG
 GDK_IS_GL_CONFIG
 GDK_TYPE_GL_CONFIG
-gdk_gl_config_get_type
+gdk_gl_config_mode_get_type
 GDK_GL_CONFIG_CLASS
 GDK_IS_GL_CONFIG_CLASS
 GDK_GL_CONFIG_GET_CLASS

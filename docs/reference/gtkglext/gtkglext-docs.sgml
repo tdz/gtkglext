@@ -1,14 +1,13 @@
 <!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN" [
+<!ENTITY gtkglext-gdkglquery SYSTEM "sgml/gdkglquery.sgml">
 <!ENTITY gtkglext-GdkGLConfig SYSTEM "sgml/gdkglconfig.sgml">
 <!ENTITY gtkglext-GdkGLContext SYSTEM "sgml/gdkglcontext.sgml">
 <!ENTITY gtkglext-GdkGLDrawable SYSTEM "sgml/gdkgldrawable.sgml">
 <!ENTITY gtkglext-GdkGLPixmap SYSTEM "sgml/gdkglpixmap.sgml">
 <!ENTITY gtkglext-GdkGLWindow SYSTEM "sgml/gdkglwindow.sgml">
-<!ENTITY gtkglext-gdkglx SYSTEM "sgml/gdkglx.sgml">
 <!ENTITY gtkglext-gdkglfont SYSTEM "sgml/gdkglfont.sgml">
 <!ENTITY gtkglext-gdkgltokens SYSTEM "sgml/gdkgltokens.sgml">
-<!ENTITY gtkglext-gdkgltypes SYSTEM "sgml/gdkgltypes.sgml">
-<!ENTITY gtkglext-gdkglquery SYSTEM "sgml/gdkglquery.sgml">
+<!ENTITY gtkglext-gdkglx SYSTEM "sgml/gdkglx.sgml">
 <!ENTITY gtkglext-gtkglwidget SYSTEM "sgml/gtkglwidget.sgml">
 ]>
 <book id="index">
@@ -18,16 +17,15 @@
 
   <chapter>
     <title>API Reference</title>
+    &gtkglext-gdkglquery;
     &gtkglext-GdkGLConfig;
     &gtkglext-GdkGLContext;
     &gtkglext-GdkGLDrawable;
     &gtkglext-GdkGLPixmap;
     &gtkglext-GdkGLWindow;
-    &gtkglext-gdkglx;
     &gtkglext-gdkglfont;
     &gtkglext-gdkgltokens;
-    &gtkglext-gdkgltypes;
-    &gtkglext-gdkglquery;
+    &gtkglext-gdkglx;
     &gtkglext-gtkglwidget;
   </chapter>
 </book>
