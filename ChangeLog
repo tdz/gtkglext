@@ -1,3 +1,11 @@
+2002-06-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* examples/simple.c: 
+	* examples/font.c: 
+	* examples/gears.c: 
+	* examples/viewlw.c: Modified to use gdk_gl_drawable_* functions
+	instead of gtk_widget_gl_* macros.
+
 2002-06-19  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_impl_x11_gl_drawable_interface_init): 

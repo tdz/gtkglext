@@ -65,12 +65,15 @@ static void
 init (GtkWidget *widget,
       gpointer   data)
 {
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
   GLUquadricObj *qobj;
   static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
   static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
 
   /* OpenGL begin. */
-  gtk_widget_gl_begin (widget);
+  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
 
   qobj = gluNewQuadric ();
   gluQuadricDrawStyle (qobj, GLU_FILL);
@@ -101,7 +104,7 @@ init (GtkWidget *widget,
              0.0, 1.0, 0.0);
   glTranslatef (0.0, 0.0, -3.0);
 
-  gtk_widget_gl_end (widget);
+  gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */
 }
 
@@ -110,13 +113,16 @@ reshape (GtkWidget         *widget,
          GdkEventConfigure *event,
          gpointer           data)
 {
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
   /* OpenGL begin. */
-  gtk_widget_gl_begin (widget);
+  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
 
   glViewport (0, 0,
               widget->allocation.width, widget->allocation.height);
 
-  gtk_widget_gl_end (widget);
+  gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */
 
   return TRUE;
@@ -127,19 +133,22 @@ display (GtkWidget      *widget,
          GdkEventExpose *event,
          gpointer        data)
 {
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
   /* OpenGL begin. */
-  gtk_widget_gl_begin (widget);
+  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glCallList (1);
 
-  if (gtk_widget_gl_is_double_buffered (widget))
-    gtk_widget_gl_swap_buffers (widget);
+  if (gdk_gl_drawable_is_double_buffered (gldrawable))
+    gdk_gl_drawable_swap_buffers (gldrawable);
   else
     glFlush ();
 
-  gtk_widget_gl_end (widget);
+  gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */
 
 #if 0

@@ -71,10 +71,12 @@ static void
 init (GtkWidget *widget,
       gpointer   data)
 {
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
   GdkFont *font;
 
   /* OpenGL begin. */
-  gtk_widget_gl_begin (widget);
+  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
 
   /*
    * Generate font display lists.
@@ -103,7 +105,7 @@ init (GtkWidget *widget,
   glMatrixMode (GL_MODELVIEW);
   glLoadIdentity ();
 
-  gtk_widget_gl_end (widget);
+  gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */
 }
 
@@ -112,8 +114,11 @@ reshape (GtkWidget         *widget,
          GdkEventConfigure *event,
          gpointer           data)
 {
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
   /* OpenGL begin. */
-  gtk_widget_gl_begin (widget);
+  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
 
   glViewport (0, 0,
               widget->allocation.width, widget->allocation.height);
@@ -127,7 +132,7 @@ reshape (GtkWidget         *widget,
   glMatrixMode (GL_MODELVIEW);
   glLoadIdentity ();
 
-  gtk_widget_gl_end (widget);
+  gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */
 
   return TRUE;
@@ -138,10 +143,12 @@ display (GtkWidget      *widget,
          GdkEventExpose *event,
          gpointer        data)
 {
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
   int i, j;
 
   /* OpenGL begin. */
-  gtk_widget_gl_begin (widget);
+  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -164,12 +171,12 @@ display (GtkWidget      *widget,
   glListBase (font_list_base);
   glCallLists (strlen(font_name), GL_UNSIGNED_BYTE, font_name);
 
-  if (gtk_widget_gl_is_double_buffered (widget))
-    gtk_widget_gl_swap_buffers (widget);
+  if (gdk_gl_drawable_is_double_buffered (gldrawable))
+    gdk_gl_drawable_swap_buffers (gldrawable);
   else
     glFlush ();
 
-  gtk_widget_gl_end (widget);
+  gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */
 
 #if 0

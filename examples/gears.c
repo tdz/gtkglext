@@ -168,8 +168,11 @@ draw(GtkWidget      *widget,
      GdkEventExpose *event,
      gpointer        data)
 {
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
   /* OpenGL begin. */
-  gtk_widget_gl_begin(widget);
+  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -198,12 +201,12 @@ draw(GtkWidget      *widget,
 
   glPopMatrix();
 
-  if (gtk_widget_gl_is_double_buffered(widget))
-    gtk_widget_gl_swap_buffers(widget);
+  if (gdk_gl_drawable_is_double_buffered(gldrawable))
+    gdk_gl_drawable_swap_buffers(gldrawable);
   else
     glFlush();
 
-  gtk_widget_gl_end(widget);
+  gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */
 
   frames++;
@@ -227,10 +230,13 @@ reshape(GtkWidget         *widget,
         GdkEventConfigure *event,
         gpointer           data)
 {
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
   GLfloat h = (GLfloat) (widget->allocation.height) / (GLfloat) (widget->allocation.width);
 
   /* OpenGL begin. */
-  gtk_widget_gl_begin(widget);
+  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
 
   glViewport(0, 0, widget->allocation.width, widget->allocation.height);
   glMatrixMode(GL_PROJECTION);
@@ -240,7 +246,7 @@ reshape(GtkWidget         *widget,
   glLoadIdentity();
   glTranslatef(0.0, 0.0, -40.0);
 
-  gtk_widget_gl_end(widget);
+  gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */
 
   return TRUE;
@@ -250,13 +256,16 @@ static void
 init(GtkWidget *widget,
      gpointer   data)
 {
+  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
+  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
   static GLfloat pos[4] = {5.0, 5.0, 10.0, 0.0};
   static GLfloat red[4] = {0.8, 0.1, 0.0, 1.0};
   static GLfloat green[4] = {0.0, 0.8, 0.2, 1.0};
   static GLfloat blue[4] = {0.2, 0.2, 1.0, 1.0};
 
   /* OpenGL begin. */
-  gtk_widget_gl_begin(widget);
+  gdk_gl_drawable_gl_begin (gldrawable, glcontext);
 
   glLightfv(GL_LIGHT0, GL_POSITION, pos);
   glEnable(GL_CULL_FACE);
@@ -292,7 +301,7 @@ init(GtkWidget *widget,
   g_print("GL_EXTENSIONS = %s\n", (char *) glGetString(GL_EXTENSIONS));
   g_print("\n");
 
-  gtk_widget_gl_end(widget);
+  gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */
 
   /* create timer */
