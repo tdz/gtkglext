@@ -538,6 +538,9 @@ init_logo_view (GtkWidget *widget)
   init_view ();
   mode = 0;
   counter = 0;
+
+  if (!animate)
+    gtk_widget_queue_draw (widget);
 }
 
 /* For popup menu. */
