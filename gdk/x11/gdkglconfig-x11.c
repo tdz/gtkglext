@@ -64,7 +64,6 @@ static gboolean     gdk_x11_gl_config_get_attrib        (GdkGLConfig            
                                                          gint                     attribute,
                                                          gint                    *value);
 
-static void         gdk_gl_config_impl_x11_init         (GdkGLConfigImplX11      *impl);
 static void         gdk_gl_config_impl_x11_class_init   (GdkGLConfigImplX11Class *klass);
 
 static GObject     *gdk_gl_config_impl_x11_constructor  (GType                    type,
@@ -98,7 +97,7 @@ gdk_gl_config_impl_x11_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLConfigImplX11),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) gdk_gl_config_impl_x11_init,
+        (GInstanceInitFunc) NULL,
       };
 
       type = g_type_register_static (GDK_TYPE_GL_CONFIG,
@@ -107,14 +106,6 @@ gdk_gl_config_impl_x11_get_type (void)
     }
 
   return type;
-}
-
-static void
-gdk_gl_config_impl_x11_init (GdkGLConfigImplX11 *impl)
-{
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_impl_x11_init ()"));
-
-  impl->is_constructed = FALSE;
 }
 
 static void
@@ -577,13 +568,6 @@ gdk_gl_config_impl_x11_constructor (GType                  type,
 
 #undef GET_CONFIG
 
-  /*
-   * Successfully constructed?
-   */
-
-  if (glconfig->colormap != NULL)
-    impl->is_constructed = TRUE;
-
   return object;
 }
 
@@ -644,7 +628,6 @@ gdk_gl_config_new_common (GdkScreen *screen,
                           const int *attrib_list)
 {
   GdkGLConfig *glconfig;
-  GdkGLConfigImplX11 *impl;
 
   Display *xdisplay;
   int screen_num;
@@ -683,13 +666,6 @@ gdk_gl_config_new_common (GdkScreen *screen,
                            "screen", screen,
                            "xvinfo", xvinfo,
                            NULL);
-  impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
-
-  if (!impl->is_constructed)
-    {
-      g_object_unref (G_OBJECT (glconfig));
-      return NULL;
-    }
 
   return glconfig;
 }
@@ -782,7 +758,6 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
                                             VisualID   xvisualid)
 {
   GdkGLConfig *glconfig;
-  GdkGLConfigImplX11 *impl;
 
   Display *xdisplay;
   int screen_num;
@@ -819,13 +794,6 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
                            "screen", screen,
                            "xvinfo", xvinfo,
                            NULL);
-  impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
-
-  if (!impl->is_constructed)
-    {
-      g_object_unref (G_OBJECT (glconfig));
-      return NULL;
-    }
 
   return glconfig;
 }

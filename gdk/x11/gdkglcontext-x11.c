@@ -37,7 +37,6 @@ static guint         gdk_gl_context_hash   (GLXContext   *glxcontext);
 static gboolean      gdk_gl_context_equal  (GLXContext   *a,
                                             GLXContext   *b);
 
-static void     gdk_gl_context_impl_x11_init         (GdkGLContextImplX11      *impl);
 static void     gdk_gl_context_impl_x11_class_init   (GdkGLContextImplX11Class *klass);
 
 static GObject *gdk_gl_context_impl_x11_constructor  (GType                     type,
@@ -71,7 +70,7 @@ gdk_gl_context_impl_x11_get_type (void)
         NULL,                   /* class_data */
         sizeof (GdkGLContextImplX11),
         0,                      /* n_preallocs */
-        (GInstanceInitFunc) gdk_gl_context_impl_x11_init,
+        (GInstanceInitFunc) NULL,
       };
 
       type = g_type_register_static (GDK_TYPE_GL_CONTEXT,
@@ -80,14 +79,6 @@ gdk_gl_context_impl_x11_get_type (void)
     }
 
   return type;
-}
-
-static void
-gdk_gl_context_impl_x11_init (GdkGLContextImplX11 *impl)
-{
-  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_impl_x11_init ()"));
-
-  impl->is_constructed = FALSE;
 }
 
 static void
@@ -142,12 +133,6 @@ gdk_gl_context_impl_x11_constructor (GType                  type,
   xdisplay = GDK_GL_CONFIG_XDISPLAY (glcontext->glconfig);
 
   glcontext->is_direct = glXIsDirect (xdisplay, impl->glxcontext) ? TRUE : FALSE;
-
-  /*
-   * Successfully constructed?
-   */
-
-  impl->is_constructed = TRUE;
 
   return object;
 }
@@ -231,7 +216,6 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
                            gboolean       is_foreign)
 {
   GdkGLContext *glcontext;
-  GdkGLContextImplX11 *impl;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_context_new_common ()"));
 
@@ -249,13 +233,6 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
                             "glxcontext",      glxcontext,
                             "is_foreign",      is_foreign,
                             NULL);
-  impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
-
-  if (!impl->is_constructed)
-    {
-      g_object_unref (G_OBJECT (glcontext));
-      return NULL;
-    }
 
   gdk_gl_context_insert (glcontext);
 

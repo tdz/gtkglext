@@ -1,5 +1,16 @@
 2003-01-25  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglconfig-x11.h (struct _GdkGLConfigImplX11): 
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_new_common) 
+	(gdk_x11_gl_config_new_from_visualid_common): Removed unnecessary
+	g_object_new() object instantiation check.
+	(gdk_gl_config_impl_x11_init): Removed.
+
+	* gdk/x11/gdkglcontext-x11.h (struct _GdkGLContextImplX11): 
+	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_new_common): Removed
+	unnecessary g_object_new() object instantiation check.
+	(gdk_gl_context_impl_x11_init): Removed.
+
 	* gdk/x11/gdkglglxext.h: Added GLX_SGIX_fbconfig specific typedef.
 
 	* configure.in: Added checks for GLX_SGIX_fbconfig specific type

@@ -42,7 +42,6 @@ struct _GdkGLConfigImplX11
   int screen_num;
   XVisualInfo *xvinfo;
 
-  guint is_constructed : 1;
   guint is_mesa_glx : 1;
 };
 

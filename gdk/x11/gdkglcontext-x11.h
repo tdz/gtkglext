@@ -41,8 +41,6 @@ struct _GdkGLContextImplX11
   GLXContext glxcontext;
 
   guint is_foreign : 1;
-
-  guint is_constructed : 1;
 };
 
 struct _GdkGLContextImplX11Class
