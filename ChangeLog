@@ -1,5 +1,22 @@
 2003-03-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglwindow-win32.c
+	(gdk_gl_window_impl_win32_gl_drawable_interface_init): Set
+	iface->gl_begin to gdk_gl_window_impl_win32_make_context_current.
+
+	* gdk/x11/gdkglwindow-x11.c
+	(gdk_gl_window_impl_x11_gl_drawable_interface_init): Set
+	iface->gl_begin to gdk_gl_window_impl_x11_make_context_current.
+
+	* gdk/x11/gdkglpixmap-x11.c
+	(gdk_gl_pixmap_impl_x11_gl_drawable_interface_init): Set
+	iface->gl_begin to gdk_gl_pixmap_impl_x11_make_context_current.
+
+	* gdk/x11/gdkglwindow-x11.c (gdk_gl_window_impl_x11_gl_begin):
+	_gdk_gl_drawable_impl_x11_wait_gdk() is unnecessary.
+
+2003-03-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
 	* gdk/gdkglwindow.c (gdk_window_set_gl_capability): Unset
 	window's background pixmap explicitly to avoid AIX X server crash.
 	(reported and solved by B. Souliotis)

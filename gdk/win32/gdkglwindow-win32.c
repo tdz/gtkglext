@@ -29,9 +29,11 @@ static gboolean     gdk_gl_window_impl_win32_is_double_buffered   (GdkGLDrawable
 static void         gdk_gl_window_impl_win32_swap_buffers         (GdkGLDrawable *gldrawable);
 static void         gdk_gl_window_impl_win32_wait_gl              (GdkGLDrawable *gldrawable);
 static void         gdk_gl_window_impl_win32_wait_gdk             (GdkGLDrawable *gldrawable);
+/*
 static gboolean     gdk_gl_window_impl_win32_gl_begin             (GdkGLDrawable *draw,
                                                                    GdkGLDrawable *read,
                                                                    GdkGLContext  *glcontext);
+*/
 static void         gdk_gl_window_impl_win32_gl_end               (GdkGLDrawable *gldrawable);
 static GdkGLConfig *gdk_gl_window_impl_win32_get_gl_config        (GdkGLDrawable *gldrawable);
 
@@ -115,7 +117,7 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->swap_buffers         =  gdk_gl_window_impl_win32_swap_buffers;
   iface->wait_gl              =  gdk_gl_window_impl_win32_wait_gl;
   iface->wait_gdk             =  gdk_gl_window_impl_win32_wait_gdk;
-  iface->gl_begin             =  gdk_gl_window_impl_win32_gl_begin;
+  iface->gl_begin             =  gdk_gl_window_impl_win32_make_context_current;
   iface->gl_end               =  gdk_gl_window_impl_win32_gl_end;
   iface->get_gl_config        =  gdk_gl_window_impl_win32_get_gl_config;
   iface->get_size             = _gdk_gl_window_get_size;
@@ -354,6 +356,7 @@ gdk_gl_window_impl_win32_wait_gdk (GdkGLDrawable *gldrawable)
   GdiFlush ();
 }
 
+/*
 static gboolean
 gdk_gl_window_impl_win32_gl_begin (GdkGLDrawable *draw,
                                    GdkGLDrawable *read,
@@ -361,6 +364,7 @@ gdk_gl_window_impl_win32_gl_begin (GdkGLDrawable *draw,
 {
   return gdk_gl_window_impl_win32_make_context_current (draw, read, glcontext);
 }
+*/
 
 static void
 gdk_gl_window_impl_win32_gl_end (GdkGLDrawable *gldrawable)
