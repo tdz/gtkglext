@@ -1,5 +1,22 @@
 2003-01-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_new_common):
+	Rewritten.
+
+	* gdk/x11/gdkglcontext-x11.c (gdk_gl_context_impl_x11_constructor) 
+	(gdk_gl_context_impl_x11_set_property) 
+	(gdk_gl_context_impl_x11_get_property): Removed.
+
+	* gdk/gdkglcontext.c (gdk_gl_context_get_gl_config)
+	(gdk_gl_context_get_share_list, gdk_gl_context_is_direct)
+	(gdk_gl_context_get_render_type, gdk_gl_context_get_colormap):
+	Moved into gdkglcontext-x11.c
+
+	* gdk/gdkglcontext.c (gdk_gl_context_class_init) 
+	(gdk_gl_context_set_property, gdk_gl_context_finalize): 
+	* gdk/gdkglcontext.h (struct _GdkGLContext): Removed private
+	members (glconfig, share_list, is_direct, and render_type).
+
 	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_impl_win32_constructor) 
 	(gdk_gl_config_impl_win32_set_property) 
 	(gdk_gl_config_impl_win32_get_property): Removed.

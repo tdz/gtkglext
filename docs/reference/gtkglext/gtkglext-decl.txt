@@ -170,6 +170,13 @@ struct GdkGLConfig
 
 };
 </STRUCT>
+<STRUCT>
+<NAME>GdkGLConfigClass</NAME>
+struct GdkGLConfigClass
+{
+  GObjectClass parent_class;
+};
+</STRUCT>
 <FUNCTION>
 <NAME>gdk_gl_config_get_type</NAME>
 <RETURNS>GType  </RETURNS>
@@ -290,13 +297,13 @@ struct GdkGLContext
 
   GdkGLDrawable *gldrawable;
   GdkGLDrawable *gldrawable_read;
-
-  GdkGLConfig *glconfig;
-
-  GdkGLContext *share_list;
-
-  gboolean is_direct;
-  int render_type;
+};
+</STRUCT>
+<STRUCT>
+<NAME>GdkGLContextClass</NAME>
+struct GdkGLContextClass
+{
+  GObjectClass parent_class;
 };
 </STRUCT>
 <FUNCTION>
@@ -388,6 +395,37 @@ void
 <NAME>GDK_GL_DRAWABLE_GET_CLASS</NAME>
 #define GDK_GL_DRAWABLE_GET_CLASS(inst)	  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GDK_TYPE_GL_DRAWABLE, GdkGLDrawableClass))
 </MACRO>
+<STRUCT>
+<NAME>GdkGLDrawableClass</NAME>
+struct GdkGLDrawableClass
+{
+  GTypeInterface base_iface;
+
+  GdkGLContext* (*create_new_context)   (GdkGLDrawable *gldrawable,
+                                         GdkGLContext  *share_list,
+                                         gboolean       direct,
+                                         int            render_type);
+
+  gboolean      (*make_context_current) (GdkGLDrawable *draw,
+                                         GdkGLDrawable *read,
+                                         GdkGLContext  *glcontext);
+  gboolean      (*is_double_buffered)   (GdkGLDrawable *gldrawable);
+  void          (*swap_buffers)         (GdkGLDrawable *gldrawable);
+  void          (*wait_gl)              (GdkGLDrawable *gldrawable);
+  void          (*wait_gdk)             (GdkGLDrawable *gldrawable);
+
+  gboolean      (*gl_begin)             (GdkGLDrawable *draw,
+                                         GdkGLDrawable *read,
+                                         GdkGLContext  *glcontext);
+  void          (*gl_end)               (GdkGLDrawable *gldrawable);
+
+  GdkGLConfig*  (*get_gl_config)        (GdkGLDrawable *gldrawable);
+
+  void          (*get_size)             (GdkGLDrawable *gldrawable,
+                                         gint          *width,
+                                         gint          *height);
+};
+</STRUCT>
 <FUNCTION>
 <NAME>gdk_gl_drawable_get_type</NAME>
 <RETURNS>GType  </RETURNS>
@@ -504,6 +542,13 @@ struct GdkGLPixmap
   GdkGLConfig *glconfig;
 
   GdkDrawable *drawable;        /* Associated GdkPixmap */
+};
+</STRUCT>
+<STRUCT>
+<NAME>GdkGLPixmapClass</NAME>
+struct GdkGLPixmapClass
+{
+  GdkDrawableClass parent_class;
 };
 </STRUCT>
 <FUNCTION>
@@ -874,6 +919,13 @@ struct GdkGLWindow
   GdkGLConfig *glconfig;
 
   GdkDrawable *drawable;        /* Associated GdkWindow */
+};
+</STRUCT>
+<STRUCT>
+<NAME>GdkGLWindowClass</NAME>
+struct GdkGLWindowClass
+{
+  GdkDrawableClass parent_class;
 };
 </STRUCT>
 <FUNCTION>

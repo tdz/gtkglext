@@ -41,13 +41,6 @@ struct _GdkGLContext
 
   GdkGLDrawable *gldrawable;
   GdkGLDrawable *gldrawable_read;
-
-  GdkGLConfig *glconfig;
-
-  GdkGLContext *share_list;
-
-  gboolean is_direct;
-  int render_type;
 };
 
 struct _GdkGLContextClass

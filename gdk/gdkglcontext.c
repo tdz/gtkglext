@@ -24,11 +24,7 @@
 enum {
   PROP_0,
   PROP_GLDRAWABLE,
-  PROP_GLDRAWABLE_READ,
-  PROP_GLCONFIG,
-  PROP_SHARE_LIST,
-  PROP_IS_DIRECT,
-  PROP_RENDER_TYPE
+  PROP_GLDRAWABLE_READ
 };
 
 static void gdk_gl_context_class_init   (GdkGLContextClass *klass);
@@ -97,35 +93,6 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
                                                          "Read GL drawable",
                                                          "Read GdkGLDrawable object.",
                                                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT));
-  g_object_class_install_property (object_class,
-                                   PROP_GLCONFIG,
-                                   g_param_spec_object ("glconfig",
-                                                        "Frame buffer configuration",
-                                                        "OpenGL frame buffer configuration object.",
-                                                        GDK_TYPE_GL_CONFIG,
-                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-  g_object_class_install_property (object_class,
-                                   PROP_SHARE_LIST,
-                                   g_param_spec_pointer ("share_list",
-                                                         "Share list",
-                                                         "Rendering context with which to share display lists.",
-                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-  g_object_class_install_property (object_class,
-                                   PROP_IS_DIRECT,
-                                   g_param_spec_boolean ("is_direct",
-                                                         "Is direct",
-                                                         "Whether rendering is to be done with a direct connection to the graphics system.",
-                                                         FALSE,
-                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-  g_object_class_install_property (object_class,
-                                   PROP_RENDER_TYPE,
-                                   g_param_spec_int ("render_type",
-                                                     "Render type",
-                                                     "Type of the rendering context to be created.",
-                                                     GDK_GL_RGBA_TYPE,
-                                                     GDK_GL_COLOR_INDEX_TYPE,
-                                                     GDK_GL_RGBA_TYPE,
-                                                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
 static void
@@ -145,28 +112,6 @@ gdk_gl_context_set_property (GObject      *object,
       break;
     case PROP_GLDRAWABLE_READ:
       _gdk_gl_context_set_gl_drawable_read (glcontext, g_value_get_pointer (value));
-      break;
-    case PROP_GLCONFIG:
-      glcontext->glconfig = g_value_get_object (value);
-      g_object_ref (G_OBJECT (glcontext->glconfig));
-      g_object_notify (object, "glconfig");
-      break;
-    case PROP_SHARE_LIST:
-      glcontext->share_list = g_value_get_pointer (value);
-      if (glcontext->share_list != NULL &&
-          GDK_IS_GL_CONTEXT (glcontext->share_list))
-        g_object_ref (G_OBJECT (glcontext->share_list));
-      else
-        glcontext->share_list = NULL;
-      g_object_notify (object, "share_list");
-      break;
-    case PROP_IS_DIRECT:
-      glcontext->is_direct = g_value_get_boolean (value);
-      g_object_notify (object, "is_direct");
-      break;
-    case PROP_RENDER_TYPE:
-      glcontext->render_type = g_value_get_int (value);
-      g_object_notify (object, "render_type");
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -215,18 +160,6 @@ gdk_gl_context_finalize (GObject *object)
     {
       g_object_unref (G_OBJECT (glcontext->gldrawable_read));
       glcontext->gldrawable_read = NULL;
-    }
-
-  if (glcontext->glconfig != NULL)
-    {
-      g_object_unref (G_OBJECT (glcontext->glconfig));
-      glcontext->glconfig = NULL;
-    }
-
-  if (glcontext->share_list != NULL)
-    {
-      g_object_unref (G_OBJECT (glcontext->share_list));
-      glcontext->share_list = NULL;
     }
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
@@ -325,84 +258,4 @@ gdk_gl_context_get_gl_drawable (GdkGLContext *glcontext)
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
 
   return glcontext->gldrawable;
-}
-
-/**
- * gdk_gl_context_get_gl_config:
- * @glcontext: a #GdkGLContext.
- *
- * Get #GdkGLConfig with which the @glcontext is configured.
- *
- * Return value: the #GdkGLConfig.
- **/
-GdkGLConfig *
-gdk_gl_context_get_gl_config (GdkGLContext *glcontext)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
-
-  return glcontext->glconfig;
-}
-
-/**
- * gdk_gl_context_get_share_list:
- * @glcontext: a #GdkGLContext.
- *
- * Get #GdkGLContext with which the @glcontext shares the display lists.
- *
- * Return value: the #GdkGLContext.
- **/
-GdkGLContext *
-gdk_gl_context_get_share_list (GdkGLContext *glcontext)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
-
-  return glcontext->share_list;
-}
-
-/**
- * gdk_gl_context_is_direct:
- * @glcontext: a #GdkGLContext.
- *
- * Returns whether the @glcontext is a direct rendering context.
- *
- * Return value: TRUE if the @glcontext is a direct rendering contest.
- **/
-gboolean
-gdk_gl_context_is_direct (GdkGLContext *glcontext)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
-
-  return glcontext->is_direct;
-}
-
-/**
- * gdk_gl_context_get_render_type:
- * @glcontext: a #GdkGLContext.
- *
- * Get render_type of the @glcontext.
- *
- * Return value: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE.
- **/
-int
-gdk_gl_context_get_render_type (GdkGLContext *glcontext)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), 0);
-
-  return glcontext->render_type;
-}
-
-/**
- * gdk_gl_context_get_colormap:
- * @glcontext: a #GdkGLContext.
- *
- * Get #GdkColormap with which the @glcontext is configured.
- *
- * Return value: the #GdkColormap.
- **/
-GdkColormap *
-gdk_gl_context_get_colormap (GdkGLContext *glcontext)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
-
-  return gdk_gl_config_get_colormap (glcontext->glconfig);
 }

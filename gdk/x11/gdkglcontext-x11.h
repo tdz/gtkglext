@@ -40,6 +40,13 @@ struct _GdkGLContextImplX11
 
   GLXContext glxcontext;
 
+  GdkGLConfig *glconfig;
+
+  GdkGLContext *share_list;
+
+  gboolean is_direct;
+  int render_type;
+
   guint is_foreign : 1;
 };
 
