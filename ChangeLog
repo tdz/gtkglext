@@ -1,5 +1,33 @@
 2003-01-27  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglwindow-win32.c (gdk_win32_gl_window_make_context_current): 
+	* gdk/x11/gdkglwindow-x11.c (gdk_x11_gl_window_make_context_current): 
+	* gdk/win32/gdkglpixmap-win32.c (gdk_win32_gl_pixmap_make_context_current): 
+	* gdk/x11/gdkglpixmap-x11.c (gdk_x11_gl_pixmap_make_context_current): 
+	* gdk/win32/gdkglcontext-win32.c
+	(_gdk_gl_context_set_gl_drawable_read): 
+	* gdk/x11/gdkglcontext-x11.c
+	(_gdk_gl_context_set_gl_drawable_read): Comment out. Currently unused.
+
+	* gdk/gdkgldrawable.c (gdk_gl_drawable_get_current): Use
+	gdk_gl_context_get_gl_drawable().
+
+	* gdk/x11/gdkglcontext-win32.c
+	* gdk/x11/gdkglcontext-x11.c
+	* gdk/gdkglcontext.c (gdk_gl_context_get_gl_drawable): Moved into
+	gdkglcontext-(x11|win32).c.
+
+	* gdk/x11/gdkglcontext-win32.c
+	* gdk/x11/gdkglcontext-x11.c
+	* gdk/gdkglcontext.c (gdk_gl_context_class_init): Removed
+	gldrawable* properties.
+	(gdk_gl_context_set_property, gdk_gl_context_get_property): Removed.
+
+	* gdk/x11/gdkglcontext-win32.h (struct _GdkGLContextImplWin32): 
+	* gdk/x11/gdkglcontext-x11.h (struct _GdkGLContextImplX11): 
+	* gdk/gdkglcontext.h (struct _GdkGLContext): Moved gldrawable*
+	members into struct _GdkGLContextImpl(X11|Win32).
+
 	* gdk/win32/gdkglwindow-win32.c (gdk_gl_window_impl_win32_constructor) 
 	(gdk_gl_window_impl_win32_init): Removed.
 	(gdk_gl_window_new): Rewritten.

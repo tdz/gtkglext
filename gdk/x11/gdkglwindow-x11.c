@@ -173,12 +173,14 @@ gdk_x11_gl_window_make_context_current (GdkGLDrawable *draw,
   if (!glXMakeCurrent (xdisplay, impl->glxwindow, glxcontext))
     {
       _gdk_gl_context_set_gl_drawable (glcontext, NULL);
-      _gdk_gl_context_set_gl_drawable_read (glcontext, NULL);
+      /* currently unused. */
+      /* _gdk_gl_context_set_gl_drawable_read (glcontext, NULL); */
       return FALSE;
     }
 
   _gdk_gl_context_set_gl_drawable (glcontext, draw);
-  _gdk_gl_context_set_gl_drawable_read (glcontext, read);
+  /* currently unused. */
+  /* _gdk_gl_context_set_gl_drawable_read (glcontext, read); */
 
   if (GDK_GL_CONFIG_AS_SINGLE_MODE (impl->glconfig))
     {

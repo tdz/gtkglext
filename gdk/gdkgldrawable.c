@@ -217,5 +217,5 @@ gdk_gl_drawable_get_current (void)
   if (!glcontext)
     return NULL;
 
-  return glcontext->gldrawable;
+  return gdk_gl_context_get_gl_drawable (glcontext);
 }

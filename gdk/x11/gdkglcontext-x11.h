@@ -38,12 +38,13 @@ struct _GdkGLContextImplX11
 {
   GdkGLContext parent_instance;
 
-  GLXContext glxcontext;
+  GdkGLDrawable *gldrawable;
+  GdkGLDrawable *gldrawable_read; /* currently unused. */
 
   GdkGLConfig *glconfig;
 
+  GLXContext glxcontext;
   GdkGLContext *share_list;
-
   gboolean is_direct;
   int render_type;
 

@@ -31,11 +31,6 @@ G_BEGIN_DECLS
 
 #define GDK_GL_CONFIG_AS_SINGLE_MODE(glconfig) ((glconfig)->as_single_mode)
 
-void _gdk_gl_context_set_gl_drawable      (GdkGLContext  *glcontext,
-                                           GdkGLDrawable *gldrawable);
-void _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
-                                           GdkGLDrawable *gldrawable_read);
-
 void _gdk_gl_pixmap_get_size (GdkGLDrawable *gldrawable,
                               gint          *width,
                               gint          *height);

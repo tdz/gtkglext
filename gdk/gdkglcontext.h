@@ -38,9 +38,6 @@ typedef struct _GdkGLContextClass GdkGLContextClass;
 struct _GdkGLContext
 {
   GObject parent_instance;
-
-  GdkGLDrawable *gldrawable;
-  GdkGLDrawable *gldrawable_read;
 };
 
 struct _GdkGLContextClass

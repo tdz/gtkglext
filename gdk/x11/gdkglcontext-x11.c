@@ -102,6 +102,21 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
       impl->glxcontext = NULL;
     }
 
+  if (impl->gldrawable != NULL)
+    {
+      g_object_unref (G_OBJECT (impl->gldrawable));
+      impl->gldrawable = NULL;
+    }
+
+  /* currently unused. */
+  /*
+  if (impl->gldrawable_read != NULL)
+    {
+      g_object_unref (G_OBJECT (impl->gldrawable_read));
+      impl->gldrawable_read = NULL;
+    }
+  */
+
   if (impl->glconfig != NULL)
     {
       g_object_unref (G_OBJECT (impl->glconfig));
@@ -136,16 +151,18 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
    * Instantiate the GdkGLContextImplX11 object.
    */
 
-  glcontext = g_object_new (GDK_TYPE_GL_CONTEXT_IMPL_X11,
-                            "gldrawable",      gldrawable,
-                            "gldrawable_read", NULL,
-                            NULL);
+  glcontext = g_object_new (GDK_TYPE_GL_CONTEXT_IMPL_X11, NULL);
   impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
 
-  impl->glxcontext = glxcontext;
+  impl->gldrawable = gldrawable;
+  g_object_ref (G_OBJECT (impl->gldrawable));
+
+  impl->gldrawable_read = NULL;
 
   impl->glconfig = glconfig;
   g_object_ref (G_OBJECT (impl->glconfig));
+
+  impl->glxcontext = glxcontext;
 
   if (share_list != NULL && GDK_IS_GL_CONTEXT (share_list))
     {
@@ -290,6 +307,83 @@ gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
                   mask);
 
   return gdk_error_trap_pop () == Success;
+}
+
+/*< private >*/
+void
+_gdk_gl_context_set_gl_drawable (GdkGLContext  *glcontext,
+                                 GdkGLDrawable *gldrawable)
+{
+  GdkGLContextImplX11 *impl;
+
+  GDK_GL_NOTE (FUNC, g_message (" - _gdk_gl_context_set_gl_drawable ()"));
+
+  g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
+
+  impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
+
+  if (impl->gldrawable == gldrawable)
+    return;
+
+  if (impl->gldrawable != NULL)
+    {
+      g_object_unref (G_OBJECT (impl->gldrawable));
+      impl->gldrawable = NULL;
+    }
+
+  if (gldrawable != NULL && GDK_IS_GL_DRAWABLE (gldrawable))
+    {
+      impl->gldrawable = gldrawable;
+      g_object_ref (G_OBJECT (impl->gldrawable));
+    }
+}
+
+/*< private >*/
+/* currently unused. */
+/*
+void
+_gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
+                                      GdkGLDrawable *gldrawable_read)
+{
+  GdkGLContextImplX11 *impl;
+
+  GDK_GL_NOTE (FUNC, g_message (" - _gdk_gl_context_set_gl_drawable_read ()"));
+
+  g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
+
+  impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
+
+  if (impl->gldrawable_read == gldrawable_read)
+    return;
+
+  if (impl->gldrawable_read != NULL)
+    {
+      g_object_unref (G_OBJECT (impl->gldrawable_read));
+      impl->gldrawable_read = NULL;
+    }
+
+  if (gldrawable_read != NULL && GDK_IS_GL_DRAWABLE (gldrawable_read))
+    {
+      impl->gldrawable_read = gldrawable_read;
+      g_object_ref (G_OBJECT (impl->gldrawable_read));
+    }
+}
+*/
+
+/**
+ * gdk_gl_context_get_gl_drawable:
+ * @glcontext: a #GdkGLContext.
+ *
+ * Get #GdkGLDrawable to which the @glcontext is binded.
+ *
+ * Return value: the #GdkGLDrawable.
+ **/
+GdkGLDrawable *
+gdk_gl_context_get_gl_drawable (GdkGLContext *glcontext)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), NULL);
+
+  return GDK_GL_CONTEXT_IMPL_X11 (glcontext)->gldrawable;
 }
 
 /**
