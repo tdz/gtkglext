@@ -288,19 +288,16 @@ gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable *draw,
 static void
 gdk_x11_gl_pixmap_swap_buffers (GdkGLDrawable *gldrawable)
 {
-  GdkDrawable *drawable;
+  GdkGLPixmap *glpixmap;
 
   g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
 
-  /*
-   * Associated GdkPixmap.
-   */
-  drawable = GDK_GL_PIXMAP (gldrawable)->drawable;
+  glpixmap = GDK_GL_PIXMAP (gldrawable);
 
   GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
 
-  glXSwapBuffers (GDK_DRAWABLE_XDISPLAY (drawable),
-                  GDK_DRAWABLE_XID (drawable));
+  glXSwapBuffers (GDK_GL_CONFIG_XDISPLAY (glpixmap->glconfig),
+                  GDK_GL_PIXMAP_GLXPIXMAP (glpixmap));
 }
 
 /**

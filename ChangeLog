@@ -1,5 +1,9 @@
 2002-08-31  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglpixmap-x11.c (gdk_x11_gl_pixmap_swap_buffers): 
+	* gdk/x11/gdkglwindow-x11.c (gdk_x11_gl_window_swap_buffers):
+	Fixed to use GLXDrawable.
+
 	* gtk/gtkglwidget.[ch]: 
 	* gtk/gtkglwidgetparam.h (struct _GtkGLWidgetParam): 
 	* gdk/gdkglcontext.[ch]: render_type changed gint -> int.

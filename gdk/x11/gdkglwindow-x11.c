@@ -226,19 +226,16 @@ gdk_x11_gl_window_make_context_current (GdkGLDrawable *draw,
 static void
 gdk_x11_gl_window_swap_buffers (GdkGLDrawable *gldrawable)
 {
-  GdkDrawable *drawable;
+  GdkGLWindow *glwindow;
 
   g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
 
-  /*
-   * Associated GdkWindow.
-   */
-  drawable = GDK_GL_WINDOW (gldrawable)->drawable;
+  glwindow = GDK_GL_WINDOW (gldrawable);
 
   GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
 
-  glXSwapBuffers (GDK_DRAWABLE_XDISPLAY (drawable),
-                  GDK_DRAWABLE_XID (drawable));
+  glXSwapBuffers (GDK_GL_CONFIG_XDISPLAY (glwindow->glconfig),
+                  GDK_GL_WINDOW_GLXWINDOW (glwindow));
 }
 
 /*
