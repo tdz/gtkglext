@@ -111,8 +111,8 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 GdkGLProc
 gdk_gl_query_get_proc_address (const char *proc_name)
 {
-  typedef GdkGLProc (*__glXGetProcAddressFunc) (const GLubyte *);
-  static __glXGetProcAddressFunc glx_get_proc_address = NULL;
+  typedef GdkGLProc (*__glXGetProcAddressProc) (const GLubyte *);
+  static __glXGetProcAddressProc glx_get_proc_address = NULL;
   static gboolean init_glx_get_proc_address = FALSE;
   static GModule *main_module = NULL;
   GdkGLProc proc_address = NULL;
@@ -130,13 +130,13 @@ gdk_gl_query_get_proc_address (const char *proc_name)
       main_module = g_module_open (NULL, G_MODULE_BIND_LAZY);
       g_return_val_if_fail (main_module != NULL, NULL);
 
-      g_module_symbol (main_module, "glXGetProcAddressARB",
+      g_module_symbol (main_module, "glXGetProcAddress",
                        (gpointer) &glx_get_proc_address);
-      if (glx_get_proc_address == NULL)
-        g_module_symbol (main_module, "glXGetProcAddressEXT",
+      if (!glx_get_proc_address)
+        g_module_symbol (main_module, "glXGetProcAddressARB",
                          (gpointer) &glx_get_proc_address);
-      if (glx_get_proc_address == NULL)
-        g_module_symbol (main_module, "glXGetProcAddress",
+      if (!glx_get_proc_address)
+        g_module_symbol (main_module, "glXGetProcAddressEXT",
                          (gpointer) &glx_get_proc_address);
 
       /* main_module is resident */
@@ -153,10 +153,18 @@ gdk_gl_query_get_proc_address (const char *proc_name)
   if (glx_get_proc_address)
     proc_address = glx_get_proc_address (proc_name);
 
+  GDK_GL_NOTE (IMPL, g_message (" * glXGetProcAddress () - %s",
+                                proc_address ? "succeed" : "fail"));
+
   /* Try g_module_symbol () */
 
   if (!proc_address)
-    g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
+    {
+      g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
+
+      GDK_GL_NOTE (IMPL, g_message (" * g_module_symbol () - %s",
+                                    proc_address ? "succeed" : "fail"));
+    }
 
   return proc_address;
 }

@@ -19,26 +19,56 @@
 #include "gdkglprivate.h"
 #include "gdkglglext.h"
 
-#define _GDK_GL_GET_PROC(proc_name)                                                             \
-GdkGLProc                                                                                       \
-_GDK_GL_CONCAT(gdk_gl_get_, proc_name) (void)                                                   \
-{                                                                                               \
-  static gboolean init = FALSE;                                                                 \
-  static GdkGLProc proc_address = NULL;                                                         \
-                                                                                                \
-  if (!init)                                                                                    \
-    {                                                                                           \
-      proc_address = gdk_gl_query_get_proc_address (#proc_name);                                \
-                                                                                                \
-      GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_%s () - %s",                                 \
-                                    #proc_name,                                                 \
-                                    (proc_address == NULL) ? "not supported" : "supported"));   \
-                                                                                                \
-      init = TRUE;                                                                              \
-    }                                                                                           \
-                                                                                                \
-  return proc_address;                                                                          \
+#ifdef G_OS_WIN32
+
+#include "win32/gdkglwin32.h"
+
+#define _GDK_GL_GET_PROC(proc_name)                                                     \
+GdkGLProc                                                                               \
+_GDK_GL_CONCAT(gdk_gl_get_, proc_name) (void)                                           \
+{                                                                                       \
+  static gboolean init = FALSE;                                                         \
+  static GdkGLProc proc_address = NULL;                                                 \
+                                                                                        \
+  if (!init)                                                                            \
+    {                                                                                   \
+      proc_address = gdk_gl_query_get_proc_address (#proc_name);                        \
+                                                                                        \
+      GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_%s () - %s",                         \
+                                    #proc_name,                                         \
+                                    proc_address ? "supported" : "not supported"));     \
+                                                                                        \
+      if (proc_address || wglGetCurrentContext())                                       \
+        init = TRUE;                                                                    \
+    }                                                                                   \
+                                                                                        \
+  return proc_address;                                                                  \
 }
+
+#else  /* G_OS_WIN32 */
+
+#define _GDK_GL_GET_PROC(proc_name)                                                     \
+GdkGLProc                                                                               \
+_GDK_GL_CONCAT(gdk_gl_get_, proc_name) (void)                                           \
+{                                                                                       \
+  static gboolean init = FALSE;                                                         \
+  static GdkGLProc proc_address = NULL;                                                 \
+                                                                                        \
+  if (!init)                                                                            \
+    {                                                                                   \
+      proc_address = gdk_gl_query_get_proc_address (#proc_name);                        \
+                                                                                        \
+      GDK_GL_NOTE (IMPL, g_message (" * gdk_gl_get_%s () - %s",                         \
+                                    #proc_name,                                         \
+                                    proc_address ? "supported" : "not supported"));     \
+                                                                                        \
+      init = TRUE;                                                                      \
+    }                                                                                   \
+                                                                                        \
+  return proc_address;                                                                  \
+}
+
+#endif /* G_OS_WIN32 */
 
 /* 
  * GL_VERSION_1_2

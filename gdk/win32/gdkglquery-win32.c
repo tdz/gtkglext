@@ -127,10 +127,11 @@ gdk_gl_query_get_proc_address (const char *proc_name)
 
   proc_address = (GdkGLProc) wglGetProcAddress (proc_name);
 
-  if (proc_address != NULL)
-    return proc_address;
+  GDK_GL_NOTE (IMPL, g_message (" * wglGetProcAddress () - %s",
+                                proc_address ? "succeeded" : "failed"));
 
-  GDK_GL_NOTE (IMPL, g_message (" * wglGetProcAddress () - failed"));
+  if (proc_address)
+    return proc_address;
 
   /* Try g_module_symbol () */
 
@@ -142,7 +143,12 @@ gdk_gl_query_get_proc_address (const char *proc_name)
     }
 
   if (main_module)
-    g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
+    {
+      g_module_symbol (main_module, proc_name, (gpointer) &proc_address);
+
+      GDK_GL_NOTE (IMPL, g_message (" * g_module_symbol () - %s",
+                                    proc_address ? "succeeded" : "failed"));
+    }
 
   return proc_address;
 }
