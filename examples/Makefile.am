@@ -113,7 +113,7 @@ template_LDADD = $(LDADDS)
 
 glxinfo_SOURCES = glxinfo.c
 glxinfo_DEPENDENCIES = $(DEPS)
-glxinfo_LDADD = $(GL_LIBS) $(GDKGLEXT_WIN_LIBS)
+glxinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS) $(MATH_LIB)
 
 
 .PHONY: examples files
