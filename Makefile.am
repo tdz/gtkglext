@@ -1,7 +1,7 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext
 
-AUTOMAKE_OPTIONS = 
+AUTOMAKE_OPTIONS = dist-bzip2 dist-zip
 
 SUBDIRS = gdk gtk examples docs
 
