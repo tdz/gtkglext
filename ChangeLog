@@ -1,5 +1,8 @@
 2003-05-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtkglext.spec.in: Remove lib*.la.bak files.
+	Removed LDFLAGS setting.
+
 	* README: 
 	* configure.in: Removed --disable-standard-rgb-cmap configure
 	option.
