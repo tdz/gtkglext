@@ -140,19 +140,19 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
   impl->pfd.dwFlags |= PFD_DRAW_TO_WINDOW;
 
   /* Request pfd.cColorBits should exclude alpha bitplanes. */
-  /*
   impl->pfd.cColorBits = impl->pfd.cRedBits +
                          impl->pfd.cGreenBits +
                          impl->pfd.cBlueBits;
-  */
+
+  GDK_GL_NOTE (IMPL, g_message (" * ChoosePixelFormat ()"));
+
+  impl->pixel_format = ChoosePixelFormat (impl->hdc, &(impl->pfd));
 
   /*
-  impl->pixel_format = ChoosePixelFormat (impl->hdc, &(impl->pfd));
-  */
-
   impl->pixel_format = _gdk_win32_gl_config_find_pixel_format (impl->hdc,
 							       &(impl->pfd),
 							       &(impl->pfd));
+  */
 
   if (impl->pixel_format == 0)
     {
@@ -160,9 +160,16 @@ gdk_gl_window_impl_win32_constructor (GType                  type,
       goto FAIL;
     }
 
+  GDK_GL_NOTE (MISC, g_message (" -- impl->pixel_format = 0x%x", impl->pixel_format));
+#ifdef G_ENABLE_DEBUG
+  _gdk_win32_gl_print_pfd (&(impl->pfd));
+#endif
+
   /*
    * Set pixel format.
    */
+
+  GDK_GL_NOTE (IMPL, g_message (" * SetPixelFormat ()"));
 
   if (!SetPixelFormat (impl->hdc, impl->pixel_format, &(impl->pfd)))
     {

@@ -119,12 +119,16 @@ gdk_gl_context_impl_win32_constructor (GType                  type,
    * Create an OpenGL rendering context.
    */
 
+  GDK_GL_NOTE (IMPL, g_message (" * wglCreateContext ()"));
+
   impl->hglrc = wglCreateContext (hdc);
   if (impl->hglrc == NULL)
     goto FAIL;
 
   if (glcontext->share_list != NULL)
     {
+      GDK_GL_NOTE (IMPL, g_message (" * wglShareLists ()"));
+
       share_impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->share_list);
       if (!wglShareLists (share_impl->hglrc, impl->hglrc))
         goto FAIL;
@@ -174,7 +178,13 @@ gdk_gl_context_impl_win32_finalize (GObject *object)
   if (impl->hglrc != NULL)
     {
       if (impl->hglrc == wglGetCurrentContext ())
-        wglMakeCurrent (NULL, NULL);
+        {
+          GDK_GL_NOTE (IMPL, g_message (" * wglMakeCurrent ()"));
+
+          wglMakeCurrent (NULL, NULL);
+        }
+
+      GDK_GL_NOTE (IMPL, g_message (" * wglDeleteContext ()"));
 
       wglDeleteContext (impl->hglrc);
       impl->hglrc = NULL;
@@ -227,6 +237,8 @@ gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (dst_glcontext), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (src_glcontext), FALSE);
+
+  GDK_GL_NOTE (IMPL, g_message (" * wglCopyContext ()"));
 
   return wglCopyContext (GDK_GL_CONTEXT_HGLRC (src_glcontext),
                          GDK_GL_CONTEXT_HGLRC (dst_glcontext),

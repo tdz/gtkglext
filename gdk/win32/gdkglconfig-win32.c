@@ -30,6 +30,11 @@ enum {
 };
 
 /* Forward declarations */
+
+static GdkColormap *gdk_gl_config_setup_colormap (GdkScreen             *screen,
+                                                  PIXELFORMATDESCRIPTOR *pfd,
+                                                  gboolean               is_rgba);
+
 static gboolean gdk_win32_gl_config_get_attrib        (GdkGLConfig               *glconfig,
                                                        gint                       attribute,
                                                        gint                      *value);
@@ -162,6 +167,92 @@ _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
   return pixel_format;
 }
 
+/* 
+ * Setup colormap.
+ */
+
+/* 
+ * !!! RGB palette management should be implemented...
+ */
+
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
+
+static GdkColormap *
+gdk_gl_config_setup_colormap (GdkScreen             *screen,
+                              PIXELFORMATDESCRIPTOR *pfd,
+                              gboolean               is_rgba)
+{
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_setup_colormap ()"));
+
+  if (is_rgba)
+    {
+      /*
+       * For RGBA mode.
+       */
+
+      /* System default colormap. */
+
+      GDK_GL_NOTE (MISC, g_message (" -- Colormap: system default"));
+
+      return g_object_ref (G_OBJECT (gdk_screen_get_system_colormap (screen)));
+    }
+  else
+    {
+      /*
+       * For color index mode.
+       */
+
+      /* New private colormap. */
+
+      GDK_GL_NOTE (MISC, g_message (" -- Colormap: new allocated writable"));
+
+      return gdk_colormap_new (gdk_screen_get_system_visual (screen), TRUE);
+    }
+
+  /* not reached */
+  return NULL;
+}
+
+#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
+static GdkColormap *
+gdk_gl_config_setup_colormap (GdkScreen             *screen,
+                              PIXELFORMATDESCRIPTOR *pfd,
+                              gboolean               is_rgba)
+{
+  GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_setup_colormap ()"));
+
+  if (is_rgba)
+    {
+      /*
+       * For RGBA mode.
+       */
+
+      /* Default colormap. */
+
+      GDK_GL_NOTE (MISC, g_message (" -- Colormap: system default"));
+
+      return g_object_ref (G_OBJECT (gdk_colormap_get_system ()));
+    }
+  else
+    {
+      /*
+       * For color index mode.
+       */
+
+      /* New private colormap. */
+
+      GDK_GL_NOTE (MISC, g_message (" -- Colormap: new allocated writable"));
+
+      return gdk_colormap_new (gdk_visual_get_system (), TRUE);
+    }
+
+  /* not reached */
+  return NULL;
+}
+
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
+
 static GObject *
 gdk_gl_config_impl_win32_constructor (GType                  type,
                                       guint                  n_construct_properties,
@@ -205,11 +296,17 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
   if (pixel_format == 0)
     goto FAIL;
 
+  GDK_GL_NOTE (MISC, g_message (" -- pixel_format = 0x%x", pixel_format));
+
   /*
    * Setup PFD from the found description.
    */
 
   impl->pfd = found_pfd;
+
+#ifdef G_ENABLE_DEBUG
+  _gdk_win32_gl_print_pfd (&(impl->pfd));
+#endif
 
   /*
    * Set depth (number of bits per pixel).
@@ -223,14 +320,17 @@ gdk_gl_config_impl_win32_constructor (GType                  type,
    * Get colormap.
    */
 
-  glconfig->colormap = g_object_ref (G_OBJECT (gdk_colormap_get_system ()));
+  /* RGBA mode? */
+  glconfig->is_rgba = (impl->pfd.iPixelType == PFD_TYPE_RGBA) ? TRUE : FALSE;
+
+  /* get an appropriate colormap. */
+  glconfig->colormap = gdk_gl_config_setup_colormap (glconfig->screen,
+                                                     &(impl->pfd),
+                                                     glconfig->is_rgba);
 
   /*
    * Get configuration results.
    */
-
-  /* RGBA mode? */
-  glconfig->is_rgba = (impl->pfd.iPixelType == PFD_TYPE_RGBA) ? TRUE : FALSE;
 
   /* Double buffering is supported? */
   glconfig->is_double_buffered = (impl->pfd.dwFlags & PFD_DOUBLEBUFFER) ? TRUE : FALSE;
@@ -657,4 +757,80 @@ gdk_win32_gl_config_get_attrib (GdkGLConfig *glconfig,
     }
 
   return TRUE;
+}
+
+void
+_gdk_win32_gl_print_pfd (PIXELFORMATDESCRIPTOR *pfd)
+{
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_DRAW_TO_WINDOW      = %s",
+                                (pfd->dwFlags & PFD_DRAW_TO_WINDOW)      ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_DRAW_TO_BITMAP      = %s",
+                                (pfd->dwFlags & PFD_DRAW_TO_BITMAP)      ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_SUPPORT_GDI         = %s",
+                                (pfd->dwFlags & PFD_SUPPORT_GDI)         ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_SUPPORT_OPENGL      = %s",
+                                (pfd->dwFlags & PFD_SUPPORT_OPENGL)      ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_GENERIC_ACCELERATED = %s",
+                                (pfd->dwFlags & PFD_GENERIC_ACCELERATED) ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_GENERIC_FORMAT      = %s",
+                                (pfd->dwFlags & PFD_GENERIC_FORMAT)      ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_NEED_PALETTE        = %s",
+                                (pfd->dwFlags & PFD_NEED_PALETTE)        ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_NEED_SYSTEM_PALETTE = %s",
+                                (pfd->dwFlags & PFD_NEED_SYSTEM_PALETTE) ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_DOUBLEBUFFER        = %s",
+                                (pfd->dwFlags & PFD_DOUBLEBUFFER)        ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_STEREO              = %s",
+                                (pfd->dwFlags & PFD_STEREO)              ? "TRUE" : "FALSE"));
+  /*
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_SWAP_LAYER_BUFFERS  = %s",
+                                (pfd->dwFlags & PFD_SWAP_LAYER_BUFFERS)  ? "TRUE" : "FALSE"));
+  */
+
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_DEPTH_DONTCARE        = %s",
+                                (pfd->dwFlags & PFD_DEPTH_DONTCARE)        ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_DOUBLEBUFFER_DONTCARE = %s",
+                                (pfd->dwFlags & PFD_DOUBLEBUFFER_DONTCARE) ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_STEREO_DONTCARE       = %s",
+                                (pfd->dwFlags & PFD_STEREO_DONTCARE)       ? "TRUE" : "FALSE"));
+
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_SWAP_COPY     = %s",
+                                (pfd->dwFlags & PFD_SWAP_COPY)     ? "TRUE" : "FALSE"));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwFlags & PFD_SWAP_EXCHANGE = %s",
+                                (pfd->dwFlags & PFD_SWAP_EXCHANGE) ? "TRUE" : "FALSE"));
+
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->iPixelType = %d (%s)",
+                                pfd->iPixelType,
+                                (pfd->iPixelType == PFD_TYPE_RGBA) ? "PFD_TYPE_RGBA" : "PFD_TYPE_COLORINDEX"));
+
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cColorBits      = %d", pfd->cColorBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cRedBits        = %d", pfd->cRedBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cRedShift       = %d", pfd->cRedShift));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cGreenBits      = %d", pfd->cGreenBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cGreenShift     = %d", pfd->cGreenShift));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cBlueBits       = %d", pfd->cBlueBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cBlueShift      = %d", pfd->cBlueShift));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cAlphaBits      = %d", pfd->cAlphaBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cAlphaShift     = %d", pfd->cAlphaShift));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cAccumBits      = %d", pfd->cAccumBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cAccumRedBits   = %d", pfd->cAccumRedBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cAccumGreenBits = %d", pfd->cAccumGreenBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cAccumBlueBits  = %d", pfd->cAccumBlueBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cAccumAlphaBits = %d", pfd->cAccumAlphaBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cDepthBits      = %d", pfd->cDepthBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cStencilBits    = %d", pfd->cStencilBits));
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->cAuxBuffers     = %d", pfd->cAuxBuffers));
+
+  /* Ignored */
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->iLayerType = %d", pfd->iLayerType));
+
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->bReserved & 0x0f        = %d", pfd->bReserved & 0x0f));
+  GDK_GL_NOTE (MISC, g_message (" -- (pfd->bReserved & 0xf0) >> 4 = %d", (pfd->bReserved & 0xf0) >> 4));
+
+  /* Ignored */
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwLayerMask = 0x%lx", pfd->dwLayerMask));
+
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwVisibleMask = 0x%lx", pfd->dwVisibleMask));
+
+  GDK_GL_NOTE (MISC, g_message (" -- pfd->dwDamageMask = 0x%lx", pfd->dwDamageMask));
 }

@@ -1,3 +1,19 @@
+2002-12-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_impl_win32_constructor): 
+	* gdk/win32/gdkglwindow-win32.c (gdk_gl_window_impl_win32_constructor): 
+	* gdk/win32/gdkglprivate-win32.h: 
+	* gdk/win32/gdkglconfig-win32.c (_gdk_win32_gl_print_pfd) 
+	(gdk_gl_config_impl_win32_constructor): Print PFD debug message.
+
+	* gdk/win32/gdkglwindow-win32.c
+	(gdk_gl_window_impl_win32_constructor): Use ChoosePixelFormat()
+	instead of _gdk_win32_gl_config_find_pixel_format().
+
+	* gdk/win32/gdkglconfig-win32.c (gdk_gl_config_setup_colormap):
+	Added new colormap setup routine (RGB palette management is not
+	implemented yet).
+
 2002-12-13  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* examples/shapes.c: Added new shapes demo.
