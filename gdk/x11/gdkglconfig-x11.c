@@ -354,14 +354,25 @@ gdk_gl_config_new (const gint *attrib_list)
 static XVisualInfo *
 gdk_x11_visual_get_xvinfo (GdkVisual *visual)
 {
+#ifdef GDK_MULTIHEAD_SAFE
+  GdkScreen *screen = gdk_screen_get_default ();
+#endif
+  Display *xdisplay;
   XVisualInfo xvinfo_template;
   XVisualInfo *xvinfo_list;
   int nitems_return;
 
+#ifdef GDK_MULTIHEAD_SAFE
+  xdisplay = GDK_SCREEN_XDISPLAY (screen);
+  xvinfo_template.visualid = XVisualIDFromVisual (GDK_VISUAL_XVISUAL (visual));
+  xvinfo_template.screen = GDK_SCREEN_XNUMBER (screen);
+#else
+  xdisplay = gdk_x11_get_default_xdisplay ();
   xvinfo_template.visualid = XVisualIDFromVisual (GDK_VISUAL_XVISUAL (visual));
   xvinfo_template.screen = gdk_x11_get_default_screen ();
+#endif
 
-  xvinfo_list = XGetVisualInfo (gdk_x11_get_default_xdisplay (),
+  xvinfo_list = XGetVisualInfo (xdisplay,
                                 VisualIDMask | VisualScreenMask,
                                 &xvinfo_template,
                                 &nitems_return);

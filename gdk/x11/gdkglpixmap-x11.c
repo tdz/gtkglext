@@ -225,7 +225,7 @@ gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable *draw,
   glpixmap = GDK_GL_PIXMAP (draw);
 
   xdisplay = GDK_GL_CONFIG_XDISPLAY (glpixmap->glconfig);
-  glxpixmap = GDK_GL_PIXMAP_GLXPIXMAP(glpixmap);
+  glxpixmap = GDK_GL_PIXMAP_GLXPIXMAP (glpixmap);
   glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
 
   if (xdisplay == glXGetCurrentDisplay () &&
