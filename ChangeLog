@@ -1,5 +1,15 @@
 2002-12-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglinit.c (gtk_gl_parse_args): 
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability) 
+	(gtk_widget_gl_parent_set): If --install-gl-colormap command line
+	option is given, gtk_widget_set_gl_capability() tries to set
+	OpenGL window's colormap to the top-level window. If window
+	manager doesn't watch the WM_COLORMAP_WINDOWS property on the
+	top-level window, we have to set OpenGL window's colormap to the
+	top-level window, especially in color index mode (color index mode
+	uses own private colormap).
+
 	* configure.in: Bump API version to 1.0.
 
 	* examples/low-level.c: 

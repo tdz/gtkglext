@@ -19,6 +19,7 @@
 #ifndef __GTK_GL_PRIVATE_H__
 #define __GTK_GL_PRIVATE_H__
 
+#include <gtk/gtkgldefs.h>
 #include <gtk/gtkgldebug.h>
 #include <gtk/gtkglwidgetparam.h>
 
@@ -26,6 +27,9 @@
 #define _(String) (String)
 
 G_BEGIN_DECLS
+
+/* Install colormap to top-level window. */
+GTK_GL_VAR gboolean gtk_gl_widget_install_toplevel_cmap;
 
 G_END_DECLS
 

@@ -79,9 +79,22 @@ gtk_gl_parse_args (gint    *argc,
       
       for (i = 1; i < *argc;)
 	{
+          if (strcmp ("--install-gl-colormap", (*argv)[i]) == 0)
+            {
+              /*
+               * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
+               * the top-level window, we have to set OpenGL window's colormap to the
+               * top-level window, especially in color index mode (color index mode
+               * uses own private colormap).
+               */
+
+              gtk_gl_widget_install_toplevel_cmap = TRUE;
+
+              (*argv)[i] = NULL;
+            }
 #ifdef G_ENABLE_DEBUG
-          if ((strcmp ("--gtk-gl-debug", (*argv)[i]) == 0) ||
-              (strncmp ("--gtk-gl-debug=", (*argv)[i], 15) == 0))
+          else if ((strcmp ("--gtk-gl-debug", (*argv)[i]) == 0) ||
+                   (strncmp ("--gtk-gl-debug=", (*argv)[i], 15) == 0))
 	    {
 	      gchar *equal_pos = strchr ((*argv)[i], '=');
 	      

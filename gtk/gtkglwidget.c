@@ -21,6 +21,8 @@
 #include "gtkglprivate.h"
 #include "gtkglwidget.h"
 
+gboolean gtk_gl_widget_install_toplevel_cmap = FALSE;
+
 static const gchar quark_param_string[] = "gtk-gl-widget-param";
 static GQuark quark_param = 0;
 
@@ -57,9 +59,13 @@ gl_context_destroy (GdkGLContext *glcontext)
     g_object_unref (G_OBJECT (glcontext));
 }
 
+/* 
+ * Signal handlers.
+ */
+
 static void
 gtk_widget_gl_realize (GtkWidget *widget,
-                       gpointer   data)
+                       gpointer   user_data)
 {
   GtkGLWidgetParam *param;
   GdkGLWindow *glwindow;
@@ -109,12 +115,12 @@ gtk_widget_gl_realize (GtkWidget *widget,
 static gboolean
 gtk_widget_gl_configure_event (GtkWidget         *widget,
                                GdkEventConfigure *event,
-                               gpointer           data)
+                               gpointer           user_data)
 {
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_configure_event ()"));
 
   /* Realize. */
-  gtk_widget_gl_realize (widget, data);
+  gtk_widget_gl_realize (widget, user_data);
 
   /*
    * Once OpenGL-capable widget is realized,
@@ -129,7 +135,7 @@ gtk_widget_gl_configure_event (GtkWidget         *widget,
 
 static void
 gtk_widget_gl_unrealize (GtkWidget *widget,
-                         gpointer   data)
+                         gpointer   user_data)
 {
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_unrealize ()"));
 
@@ -146,6 +152,25 @@ gtk_widget_gl_unrealize (GtkWidget *widget,
 
   if (widget->window != NULL)
     gdk_window_unset_gl_capability (widget->window);
+}
+
+static void
+gtk_widget_gl_parent_set (GtkWidget   *widget,
+                          GtkObject   *old_parent,
+                          GdkColormap *colormap)
+{
+  GtkWidget *toplevel;
+
+  GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_gl_parent_set ()"));
+
+  toplevel = gtk_widget_get_toplevel (widget);
+  if (GTK_WIDGET_TOPLEVEL (toplevel))
+    {
+      GTK_GL_NOTE (MISC,
+        g_message (" - Install colormap to the top-level window."));
+
+      gtk_widget_set_colormap (toplevel, colormap);
+    }
 }
 
 /**
@@ -172,6 +197,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
                               gboolean      direct,
                               int           render_type)
 {
+  GdkColormap *colormap;
   GtkGLWidgetParam param;
 
   GTK_GL_NOTE (FUNC, g_message (" - gtk_widget_set_gl_capability ()"));
@@ -208,7 +234,28 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    * Set OpenGL-capable colormap.
    */
 
-  gtk_widget_set_colormap (widget, gdk_gl_config_get_colormap (glconfig));
+  colormap = gdk_gl_config_get_colormap (glconfig);
+
+  gtk_widget_set_colormap (widget, colormap);
+
+  /* Install colormap to the top-level window. */
+  if (gtk_gl_widget_install_toplevel_cmap)
+    {
+      /*
+       * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
+       * the top-level window, we have to set OpenGL window's colormap to the
+       * top-level window, especially in color index mode (color index mode
+       * uses own private colormap).
+       */
+
+      /* Signal handler to set colormap to the top-level window. */
+      g_signal_connect (G_OBJECT (widget), "parent_set",
+                        G_CALLBACK (gtk_widget_gl_parent_set),
+                        colormap);
+
+      /* If given widget has the top-level window, colormap is set here. */
+      gtk_widget_gl_parent_set (widget, NULL, colormap);
+    }
 
   /*
    * Disable backing store feature of the widget.

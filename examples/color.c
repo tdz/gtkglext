@@ -165,7 +165,7 @@ main (int argc,
 {
   GdkGLConfigMode mode;
   GdkGLConfig *glconfig;
-  gboolean is_rgba, wm_colormap_windows;
+  gboolean is_rgba;
   GdkColormap *colormap;
   GdkColor color;
   gboolean success[NUM_COLORS];
@@ -195,14 +195,11 @@ main (int argc,
    */
 
   mode = GDK_GL_MODE_INDEX;
-  wm_colormap_windows = FALSE;
 
   for (i = 0; i < argc; i++)
     {
       if (strcmp (argv[i], "--rgb") == 0)
         mode = GDK_GL_MODE_RGB;
-      if (strcmp (argv[i], "--wm-colormap-windows") == 0)
-        wm_colormap_windows = TRUE;
     }
 
   /*
@@ -245,16 +242,6 @@ main (int argc,
 
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window), "color");
-
-  /*
-   * NOTICE!
-   * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
-   * a top-level window, we have to set OpenGL window's colormap to the
-   * top-level window, especially in color index mode (color index mode
-   * uses own private writable colormap).
-   */
-  if (!wm_colormap_windows)
-    gtk_widget_set_colormap (window, gdk_gl_config_get_colormap (glconfig));
 
   g_signal_connect (G_OBJECT (window), "delete_event",
                     G_CALLBACK (gtk_main_quit), NULL);

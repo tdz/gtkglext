@@ -288,10 +288,11 @@ main (int   argc,
 
   /*
    * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
-   * a top-level window, we have to set OpenGL window's colormap to the
+   * the top-level window, we have to set OpenGL window's colormap to the
    * top-level window.
    */
-  gtk_widget_set_colormap (window, gdk_gl_config_get_colormap (glconfig));
+  gtk_widget_set_colormap (window,
+                           gdk_gl_config_get_colormap (glconfig));
 
   g_signal_connect (G_OBJECT (window), "delete_event",
                     G_CALLBACK (gtk_main_quit), NULL);
