@@ -792,10 +792,19 @@ fi
 
 AC_SUBST([HTML_DIR])
 
-AC_CHECK_PROG([GTKDOC], [gtkdoc-mkdb], [true], [false])
+dnl Make people enable the gtk-doc stuff explicitely.
+AC_ARG_ENABLE(gtk-doc,
+              [AC_HELP_STRING([--enable-gtk-doc],
+                              [use gtk-doc to build documentation [default=no]])], ,
+              [enable_gtk_doc=no])
 
-gtk_doc_min_version=0.10
-if $GTKDOC ; then
+if test "x$enable_gtk_doc" = "xyes" ; then
+
+  gtk_doc_min_version=0.10
+
+  AC_CHECK_PROG([GTKDOC], [gtkdoc-mkdb], [true], [false])
+
+  if $GTKDOC ; then
     gtk_doc_version=`gtkdoc-mkdb --version`
     AC_MSG_CHECKING([gtk-doc version ($gtk_doc_version) >= $gtk_doc_min_version])
 
@@ -815,30 +824,15 @@ if $GTKDOC ; then
     else
       AC_MSG_RESULT([no])
     fi
-fi
+  fi
 
-AC_CHECK_PROG([DB2HTML], [db2html], [true], [false])
-AM_CONDITIONAL([HAVE_DOCBOOK], [$DB2HTML])
-
-dnl Make people enable the gtk-doc stuff explicitely.
-AC_ARG_ENABLE(gtk-doc,
-              [AC_HELP_STRING([--enable-gtk-doc],
-                              [use gtk-doc to build documentation [default=no]])],
-              [enable_gtk_doc="$enableval"],
-              [enable_gtk_doc=auto])
-
-if test "x$enable_gtk_doc" = "xyes" ; then
   if test x$GTKDOC != xtrue ; then
     enable_gtk_doc=no 
   fi
+
 fi
 
-dnl NOTE: We need to use a separate automake conditional for this
-dnl       to make this work with the tarballs.
 AM_CONDITIONAL([ENABLE_GTK_DOC], [test "x$enable_gtk_doc" = "xyes"])
-
-AC_PATH_PROG([SGML2HTML], [sgml2html], [no])
-AM_CONDITIONAL([HAVE_SGML2HTML], [test "x$SGML2HTML" != "xno"])
 
 
 ##################################################

@@ -1,5 +1,9 @@
 2003-04-30  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* configure.in: Don't check gtk-doc version if --enable-gtk-doc
+	option is not specified. Removed unused HAVE_DOCBOOK and
+	HAVE_SGML2HTML conditionals.
+
 	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Use
 	g_signal_connect_after() instead of g_signal_connect() to connect
 	"realize" signal handler.
