@@ -1,3 +1,9 @@
+2003-08-16  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdk/x11/gdkglconfig-x11.c (gdk_gl_config_get_std_rgb_colormap):
+	Use gdk_x11_get_xatom_by_name_for_display() instead of
+	XInternAtom().
+
 2003-08-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* README: 

@@ -112,6 +112,7 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
                                     XVisualInfo *xvinfo,
                                     gboolean     is_mesa_glx)
 {
+  GdkDisplay *display;
   Display *xdisplay;
   int screen_num;
   Window xroot_window;
@@ -120,11 +121,11 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
   XStandardColormap *standard_cmaps;
   int i, num_cmaps;
   GdkVisual *visual;
-  static Atom xa_hp_cr_maps = (Atom) -1;
 
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_config_get_std_rgb_colormap ()"));
 
-  xdisplay = GDK_SCREEN_XDISPLAY (screen);
+  display = gdk_screen_get_display (screen);
+  xdisplay = GDK_DISPLAY_XDISPLAY (display);
   screen_num = xvinfo->screen;
   xroot_window = RootWindow (xdisplay, screen_num);
 
@@ -137,33 +138,33 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
    * the window.  If that colormap is not set, the output will look stripy.
    */
 
-  if (is_mesa_glx)
+  if (is_mesa_glx &&
+      xvinfo->visual->class == TrueColor &&
+      xvinfo->depth == 8)
     {
-      if (xa_hp_cr_maps == (Atom) -1)
-        xa_hp_cr_maps = XInternAtom (xdisplay, "_HP_RGB_SMOOTH_MAP_LIST", True);
+      Atom xa_hp_cr_maps;
 
-      if (xa_hp_cr_maps &&
-          xvinfo->visual->class == TrueColor &&
-          xvinfo->depth == 8)
+      GDK_GL_NOTE (MISC,
+        g_message (" -- Try to find a standard RGB colormap with HP Color Recovery"));
+
+      xa_hp_cr_maps = gdk_x11_get_xatom_by_name_for_display (display,
+                                                             "_HP_RGB_SMOOTH_MAP_LIST");
+
+      status = XGetRGBColormaps (xdisplay, xroot_window,
+                                 &standard_cmaps, &num_cmaps,
+                                 xa_hp_cr_maps);
+      if (status)
         {
-          GDK_GL_NOTE (MISC,
-            g_message (" -- Try to find a standard RGB colormap with HP Color Recovery"));
-
-          status = XGetRGBColormaps (xdisplay, xroot_window,
-                                     &standard_cmaps, &num_cmaps,
-                                     xa_hp_cr_maps);
-          if (status)
+          for (i = 0; i < num_cmaps; i++)
             {
-              for (i = 0; i < num_cmaps; i++)
+              if (standard_cmaps[i].visualid == xvinfo->visualid)
                 {
-                  if (standard_cmaps[i].visualid == xvinfo->visualid)
-                    {
-                      xcolormap = standard_cmaps[i].colormap;
-                      break;
-                    }
+                  xcolormap = standard_cmaps[i].colormap;
+                  break;
                 }
-              XFree (standard_cmaps);
             }
+
+          XFree (standard_cmaps);
 
           if (xcolormap != None)
             {
@@ -215,15 +216,16 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
                       break;
                     }
                 }
+
               XFree (standard_cmaps);
-            }
 
-          if (xcolormap != None)
-            {
-              GDK_GL_NOTE (MISC, g_message (" -- Colormap: standard RGB"));
+              if (xcolormap != None)
+                {
+                  GDK_GL_NOTE (MISC, g_message (" -- Colormap: standard RGB"));
 
-              visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
-              return gdk_x11_colormap_foreign_new (visual, xcolormap);
+                  visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
+                  return gdk_x11_colormap_foreign_new (visual, xcolormap);
+                }
             }
         }
     }
