@@ -91,7 +91,7 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
 
   object_class->set_property = gdk_gl_pixmap_set_property;
   object_class->get_property = gdk_gl_pixmap_get_property;
-  object_class->finalize = gdk_gl_pixmap_finalize;
+  object_class->finalize     = gdk_gl_pixmap_finalize;
 
   g_object_class_install_property (object_class,
                                    PROP_GLCONFIG,

@@ -76,8 +76,8 @@ gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->constructor  = gdk_gl_context_impl_win32_constructor;
-  object_class->finalize     = gdk_gl_context_impl_win32_finalize;
+  object_class->constructor = gdk_gl_context_impl_win32_constructor;
+  object_class->finalize    = gdk_gl_context_impl_win32_finalize;
 }
 
 static GObject *

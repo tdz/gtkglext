@@ -142,13 +142,13 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 {
   GDK_GL_NOTE (FUNC, g_message (" -- gdk_gl_window_impl_x11_gl_drawable_interface_init ()"));
 
-  iface->create_new_context = _gdk_x11_gl_context_new;
+  iface->create_new_context   = _gdk_x11_gl_context_new;
   iface->make_context_current = gdk_x11_gl_window_make_context_current;
-  iface->swap_buffers = _gdk_x11_gl_drawable_swap_buffers;
+  iface->swap_buffers         = _gdk_x11_gl_drawable_swap_buffers;
 
   /*< private >*/
   /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  iface->real_drawable = _gdk_gl_window_real_drawable;
+  iface->real_drawable        = _gdk_gl_window_real_drawable;
 }
 
 static gboolean

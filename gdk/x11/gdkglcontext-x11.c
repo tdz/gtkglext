@@ -77,8 +77,8 @@ gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->constructor  = gdk_gl_context_impl_x11_constructor;
-  object_class->finalize     = gdk_gl_context_impl_x11_finalize;
+  object_class->constructor = gdk_gl_context_impl_x11_constructor;
+  object_class->finalize    = gdk_gl_context_impl_x11_finalize;
 }
 
 static GObject *

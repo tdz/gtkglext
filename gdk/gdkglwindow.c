@@ -92,7 +92,7 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
 
   object_class->set_property = gdk_gl_window_set_property;
   object_class->get_property = gdk_gl_window_get_property;
-  object_class->finalize = gdk_gl_window_finalize;
+  object_class->finalize     = gdk_gl_window_finalize;
 
   g_object_class_install_property (object_class,
                                    PROP_GLCONFIG,

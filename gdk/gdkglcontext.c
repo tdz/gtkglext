@@ -92,10 +92,10 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
 
   parent_class = g_type_class_peek_parent (klass);
 
-  object_class->constructor = gdk_gl_context_constructor;
+  object_class->constructor  = gdk_gl_context_constructor;
   object_class->set_property = gdk_gl_context_set_property;
   object_class->get_property = gdk_gl_context_get_property;
-  object_class->finalize = gdk_gl_context_finalize;
+  object_class->finalize     = gdk_gl_context_finalize;
 
   g_object_class_install_property (object_class,
                                    PROP_GLDRAWABLE,
