@@ -26,8 +26,6 @@
 
 #include <gdk/gdkglquery.h>
 
-/* Forward declarations */
-
 static gboolean     gdk_x11_gl_window_make_context_current (GdkGLDrawable *draw,
                                                             GdkGLDrawable *read,
                                                             GdkGLContext  *glcontext);

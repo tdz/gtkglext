@@ -43,29 +43,8 @@
 
 #endif /* HAVE_LIBXMU */
 
-/* Forward declarations */
-
-static gboolean     gdk_x11_gl_config_is_mesa_glx       (Display     *xdisplay,
-                                                         int          screen_num);
-
-#ifdef HAVE_GDK_X11_COLORMAP_FOREIGN_NEW
-static GdkColormap *gdk_gl_config_get_std_rgb_colormap  (GdkScreen   *screen,
-                                                         XVisualInfo *xvinfo,
-                                                         gboolean     is_mesa_glx);
-#endif /* HAVE_GDK_X11_COLORMAP_FOREIGN_NEW */
-static GdkColormap *gdk_gl_config_setup_colormap        (GdkScreen   *screen,
-                                                         XVisualInfo *xvinfo,
-                                                         gboolean     is_rgba,
-                                                         gboolean     is_mesa_glx);
-
-static void         gdk_gl_config_init_attrib           (GdkGLConfig *glconfig);
-
-static XVisualInfo *gdk_x11_gl_get_xvinfo               (Display     *xdisplay,
-                                                         int          screen_num,
-                                                         VisualID     xvisualid);
-
-static void         gdk_gl_config_impl_x11_class_init   (GdkGLConfigImplX11Class *klass);
-static void         gdk_gl_config_impl_x11_finalize     (GObject                 *object);
+static void gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass);
+static void gdk_gl_config_impl_x11_finalize   (GObject                 *object);
 
 static gpointer parent_class = NULL;
 

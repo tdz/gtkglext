@@ -175,6 +175,7 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
   return glcontext;
 }
 
+/*< private >*/
 GdkGLContext *
 _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
                          GdkGLContext  *share_list,

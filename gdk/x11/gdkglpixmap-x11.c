@@ -24,8 +24,6 @@
 #include "gdkglcontext-x11.h"
 #include "gdkglpixmap-x11.h"
 
-/* Forward declarations */
-
 static gboolean     gdk_x11_gl_pixmap_make_context_current (GdkGLDrawable *draw,
                                                             GdkGLDrawable *read,
                                                             GdkGLContext  *glcontext);

@@ -19,12 +19,14 @@
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
 
+/*< private >*/
 void
 _gdk_x11_gl_drawable_wait_gl (GdkGLDrawable *gldrawable)
 {
   glXWaitGL ();
 }
 
+/*< private >*/
 void
 _gdk_x11_gl_drawable_wait_gdk (GdkGLDrawable *gldrawable)
 {
