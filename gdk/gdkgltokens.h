@@ -26,18 +26,12 @@ extern "C" {
 /*
  * Success return value
  */
-typedef enum
-{
-  GDK_GL_SUCCESS = 0  /* same as 'Success' of X11 */
-} GdkGLSuccess;
+#define GDK_GL_SUCCESS          0  /* same as 'Success' of X11 */
 
 /*
  * Attribute list terminator
  */
-typedef enum
-{
-  GDK_GL_ATTRIB_LIST_NONE = 0  /* same as 'None' of X11 */
-} GdkGLAttribListNone;
+#define GDK_GL_ATTRIB_LIST_NONE 0  /* same as 'None' of X11 */
 
 /*
  * This source is based on the OpenGL(R) Sample Implementation by SGI.
@@ -104,7 +98,7 @@ typedef enum
    * FBConfig-specific attributes.
    * [ GLX 1.3 and later ]
    */
-  GDK_GL_CONFIG_CAVEAT              = 0x20, /* Like visual_info VISUAL_CAVEAT_EXT */
+  GDK_GL_CONFIG_CAVEAT              = 0x20,
   GDK_GL_X_VISUAL_TYPE              = 0x22,
   GDK_GL_TRANSPARENT_TYPE           = 0x23,
   GDK_GL_TRANSPARENT_INDEX_VALUE    = 0x24,
@@ -132,37 +126,16 @@ typedef enum
 } GdkGLConfigAttrib;
 
 /*
- * Error return values from glXGetConfig.  Success is indicated by
- * a value of 0.
- */
-typedef enum
-{
-  GDK_GL_BAD_SCREEN                 = 1, /* screen # is bad */
-  GDK_GL_BAD_ATTRIBUTE              = 2, /* attribute to get is bad */
-  GDK_GL_NO_EXTENSION               = 3, /* no glx extension on server */
-  GDK_GL_BAD_VISUAL                 = 4, /* visual # not known by GLX */
-  GDK_GL_BAD_CONTEXT                = 5, /* returned only by import_context EXT? */
-  GDK_GL_BAD_VALUE                  = 6, /* returned only by glXSwapIntervalSGI? */
-  GDK_GL_BAD_ENUM                   = 7  /* unused? */
-} GdkGLConfigError;
-
-/*
  * Generic "don't care" value.
  * [ GLX 1.3 and later ]
  */
-typedef enum
-{
-  GDK_GL_DONT_CARE                  = 0xFFFFFFFF
-} GdkGLDontCare;
+#define GDK_GL_DONT_CARE              0xFFFFFFFF
 
 /*
  * "none" value.
  * [ GLX 1.3 and later ]
  */
-typedef enum
-{
-  GDK_GL_NONE                       = 0x8000
-} GdkGLNone;
+#define GDK_GL_NONE                   0x8000
 
 /*
  * GLX_CONFIG_CAVEAT attribute values.
@@ -170,6 +143,7 @@ typedef enum
  */
 typedef enum
 {
+  GDK_GL_CONFIG_CAVEAT_DONT_CARE    = GDK_GL_DONT_CARE,
   GDK_GL_CONFIG_CAVEAT_NONE         = GDK_GL_NONE,
   GDK_GL_SLOW_CONFIG                = 0x8001,
   GDK_GL_NON_CONFORMANT_CONFIG      = 0x800D
@@ -181,6 +155,7 @@ typedef enum
  */
 typedef enum
 {
+  GDK_GL_VISUAL_TYPE_DONT_CARE      = GDK_GL_DONT_CARE,
   GDK_GL_TRUE_COLOR                 = 0x8002,
   GDK_GL_DIRECT_COLOR               = 0x8003,
   GDK_GL_PSEUDO_COLOR               = 0x8004,
@@ -236,6 +211,21 @@ typedef enum
   GDK_GL_STENCIL_BUFFER_BIT         = 1 << 6, /* 0x00000040 */
   GDK_GL_ACCUM_BUFFER_BIT           = 1 << 7, /* 0x00000080 */
 } GdkGLBufferMask;
+
+/*
+ * Error return values from glXGetConfig.  Success is indicated by
+ * a value of 0.
+ */
+typedef enum
+{
+  GDK_GL_BAD_SCREEN                 = 1, /* screen # is bad */
+  GDK_GL_BAD_ATTRIBUTE              = 2, /* attribute to get is bad */
+  GDK_GL_NO_EXTENSION               = 3, /* no glx extension on server */
+  GDK_GL_BAD_VISUAL                 = 4, /* visual # not known by GLX */
+  GDK_GL_BAD_CONTEXT                = 5, /* returned only by import_context EXT? */
+  GDK_GL_BAD_VALUE                  = 6, /* returned only by glXSwapIntervalSGI? */
+  GDK_GL_BAD_ENUM                   = 7  /* unused? */
+} GdkGLConfigError;
 
 /*
  * glXCreateNewContext render_type attribute values.

@@ -627,20 +627,14 @@ gboolean solid
 <RETURNS>void  </RETURNS>
 gboolean solid,GLdouble scale
 </FUNCTION>
-<ENUM>
-<NAME>GdkGLSuccess</NAME>
-typedef enum
-{
-  GDK_GL_SUCCESS = 0  /* same as 'Success' of X11 */
-} GdkGLSuccess;
-</ENUM>
-<ENUM>
-<NAME>GdkGLAttribListNone</NAME>
-typedef enum
-{
-  GDK_GL_ATTRIB_LIST_NONE = 0  /* same as 'None' of X11 */
-} GdkGLAttribListNone;
-</ENUM>
+<MACRO>
+<NAME>GDK_GL_SUCCESS</NAME>
+#define GDK_GL_SUCCESS          0  /* same as 'Success' of X11 */
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_ATTRIB_LIST_NONE</NAME>
+#define GDK_GL_ATTRIB_LIST_NONE 0  /* same as 'None' of X11 */
+</MACRO>
 <ENUM>
 <NAME>GdkGLConfigAttrib</NAME>
 typedef enum
@@ -667,7 +661,7 @@ typedef enum
    * FBConfig-specific attributes.
    * [ GLX 1.3 and later ]
    */
-  GDK_GL_CONFIG_CAVEAT              = 0x20, /* Like visual_info VISUAL_CAVEAT_EXT */
+  GDK_GL_CONFIG_CAVEAT              = 0x20,
   GDK_GL_X_VISUAL_TYPE              = 0x22,
   GDK_GL_TRANSPARENT_TYPE           = 0x23,
   GDK_GL_TRANSPARENT_INDEX_VALUE    = 0x24,
@@ -694,37 +688,19 @@ typedef enum
 
 } GdkGLConfigAttrib;
 </ENUM>
-<ENUM>
-<NAME>GdkGLConfigError</NAME>
-typedef enum
-{
-  GDK_GL_BAD_SCREEN                 = 1, /* screen # is bad */
-  GDK_GL_BAD_ATTRIBUTE              = 2, /* attribute to get is bad */
-  GDK_GL_NO_EXTENSION               = 3, /* no glx extension on server */
-  GDK_GL_BAD_VISUAL                 = 4, /* visual # not known by GLX */
-  GDK_GL_BAD_CONTEXT                = 5, /* returned only by import_context EXT? */
-  GDK_GL_BAD_VALUE                  = 6, /* returned only by glXSwapIntervalSGI? */
-  GDK_GL_BAD_ENUM                   = 7  /* unused? */
-} GdkGLConfigError;
-</ENUM>
-<ENUM>
-<NAME>GdkGLDontCare</NAME>
-typedef enum
-{
-  GDK_GL_DONT_CARE                  = 0xFFFFFFFF
-} GdkGLDontCare;
-</ENUM>
-<ENUM>
-<NAME>GdkGLNone</NAME>
-typedef enum
-{
-  GDK_GL_NONE                       = 0x8000
-} GdkGLNone;
-</ENUM>
+<MACRO>
+<NAME>GDK_GL_DONT_CARE</NAME>
+#define GDK_GL_DONT_CARE              0xFFFFFFFF
+</MACRO>
+<MACRO>
+<NAME>GDK_GL_NONE</NAME>
+#define GDK_GL_NONE                   0x8000
+</MACRO>
 <ENUM>
 <NAME>GdkGLConfigCaveat</NAME>
 typedef enum
 {
+  GDK_GL_CONFIG_CAVEAT_DONT_CARE    = GDK_GL_DONT_CARE,
   GDK_GL_CONFIG_CAVEAT_NONE         = GDK_GL_NONE,
   GDK_GL_SLOW_CONFIG                = 0x8001,
   GDK_GL_NON_CONFORMANT_CONFIG      = 0x800D
@@ -734,6 +710,7 @@ typedef enum
 <NAME>GdkGLVisualType</NAME>
 typedef enum
 {
+  GDK_GL_VISUAL_TYPE_DONT_CARE      = GDK_GL_DONT_CARE,
   GDK_GL_TRUE_COLOR                 = 0x8002,
   GDK_GL_DIRECT_COLOR               = 0x8003,
   GDK_GL_PSEUDO_COLOR               = 0x8004,
@@ -781,6 +758,19 @@ typedef enum
   GDK_GL_STENCIL_BUFFER_BIT         = 1 << 6, /* 0x00000040 */
   GDK_GL_ACCUM_BUFFER_BIT           = 1 << 7, /* 0x00000080 */
 } GdkGLBufferMask;
+</ENUM>
+<ENUM>
+<NAME>GdkGLConfigError</NAME>
+typedef enum
+{
+  GDK_GL_BAD_SCREEN                 = 1, /* screen # is bad */
+  GDK_GL_BAD_ATTRIBUTE              = 2, /* attribute to get is bad */
+  GDK_GL_NO_EXTENSION               = 3, /* no glx extension on server */
+  GDK_GL_BAD_VISUAL                 = 4, /* visual # not known by GLX */
+  GDK_GL_BAD_CONTEXT                = 5, /* returned only by import_context EXT? */
+  GDK_GL_BAD_VALUE                  = 6, /* returned only by glXSwapIntervalSGI? */
+  GDK_GL_BAD_ENUM                   = 7  /* unused? */
+} GdkGLConfigError;
 </ENUM>
 <ENUM>
 <NAME>GdkGLRenderType</NAME>
@@ -976,24 +966,6 @@ extern const guint gdkglext_interface_age;
 extern const guint gdkglext_binary_age;
 </VARIABLE>
 <FUNCTION>
-<NAME>gdk_gl_success_get_type</NAME>
-<RETURNS>GType  </RETURNS>
-void
-</FUNCTION>
-<MACRO>
-<NAME>GDK_TYPE_GL_SUCCESS</NAME>
-#define GDK_TYPE_GL_SUCCESS (gdk_gl_success_get_type())
-</MACRO>
-<FUNCTION>
-<NAME>gdk_gl_attrib_list_none_get_type</NAME>
-<RETURNS>GType  </RETURNS>
-void
-</FUNCTION>
-<MACRO>
-<NAME>GDK_TYPE_GL_ATTRIB_LIST_NONE</NAME>
-#define GDK_TYPE_GL_ATTRIB_LIST_NONE (gdk_gl_attrib_list_none_get_type())
-</MACRO>
-<FUNCTION>
 <NAME>gdk_gl_config_attrib_get_type</NAME>
 <RETURNS>GType  </RETURNS>
 void
@@ -1001,33 +973,6 @@ void
 <MACRO>
 <NAME>GDK_TYPE_GL_CONFIG_ATTRIB</NAME>
 #define GDK_TYPE_GL_CONFIG_ATTRIB (gdk_gl_config_attrib_get_type())
-</MACRO>
-<FUNCTION>
-<NAME>gdk_gl_config_error_get_type</NAME>
-<RETURNS>GType  </RETURNS>
-void
-</FUNCTION>
-<MACRO>
-<NAME>GDK_TYPE_GL_CONFIG_ERROR</NAME>
-#define GDK_TYPE_GL_CONFIG_ERROR (gdk_gl_config_error_get_type())
-</MACRO>
-<FUNCTION>
-<NAME>gdk_gl_dont_care_get_type</NAME>
-<RETURNS>GType  </RETURNS>
-void
-</FUNCTION>
-<MACRO>
-<NAME>GDK_TYPE_GL_DONT_CARE</NAME>
-#define GDK_TYPE_GL_DONT_CARE (gdk_gl_dont_care_get_type())
-</MACRO>
-<FUNCTION>
-<NAME>gdk_gl_none_get_type</NAME>
-<RETURNS>GType  </RETURNS>
-void
-</FUNCTION>
-<MACRO>
-<NAME>GDK_TYPE_GL_NONE</NAME>
-#define GDK_TYPE_GL_NONE (gdk_gl_none_get_type())
 </MACRO>
 <FUNCTION>
 <NAME>gdk_gl_config_caveat_get_type</NAME>
@@ -1082,6 +1027,15 @@ void
 <MACRO>
 <NAME>GDK_TYPE_GL_BUFFER_MASK</NAME>
 #define GDK_TYPE_GL_BUFFER_MASK (gdk_gl_buffer_mask_get_type())
+</MACRO>
+<FUNCTION>
+<NAME>gdk_gl_config_error_get_type</NAME>
+<RETURNS>GType  </RETURNS>
+void
+</FUNCTION>
+<MACRO>
+<NAME>GDK_TYPE_GL_CONFIG_ERROR</NAME>
+#define GDK_TYPE_GL_CONFIG_ERROR (gdk_gl_config_error_get_type())
 </MACRO>
 <FUNCTION>
 <NAME>gdk_gl_render_type_get_type</NAME>

@@ -14,19 +14,19 @@ OpenGL-related tokens
 
 </para>
 
-<!-- ##### ENUM GdkGLSuccess ##### -->
+<!-- ##### MACRO GDK_GL_SUCCESS ##### -->
 <para>
 
 </para>
 
-@GDK_GL_SUCCESS: 
 
-<!-- ##### ENUM GdkGLAttribListNone ##### -->
+
+<!-- ##### MACRO GDK_GL_ATTRIB_LIST_NONE ##### -->
 <para>
 
 </para>
 
-@GDK_GL_ATTRIB_LIST_NONE: 
+
 
 <!-- ##### ENUM GdkGLConfigAttrib ##### -->
 <para>
@@ -70,38 +70,26 @@ OpenGL-related tokens
 @GDK_GL_SAMPLE_BUFFERS: 
 @GDK_GL_SAMPLES: 
 
-<!-- ##### ENUM GdkGLConfigError ##### -->
+<!-- ##### MACRO GDK_GL_DONT_CARE ##### -->
 <para>
 
 </para>
 
-@GDK_GL_BAD_SCREEN: 
-@GDK_GL_BAD_ATTRIBUTE: 
-@GDK_GL_NO_EXTENSION: 
-@GDK_GL_BAD_VISUAL: 
-@GDK_GL_BAD_CONTEXT: 
-@GDK_GL_BAD_VALUE: 
-@GDK_GL_BAD_ENUM: 
 
-<!-- ##### ENUM GdkGLDontCare ##### -->
+
+<!-- ##### MACRO GDK_GL_NONE ##### -->
 <para>
 
 </para>
 
-@GDK_GL_DONT_CARE: 
 
-<!-- ##### ENUM GdkGLNone ##### -->
-<para>
-
-</para>
-
-@GDK_GL_NONE: 
 
 <!-- ##### ENUM GdkGLConfigCaveat ##### -->
 <para>
 
 </para>
 
+@GDK_GL_CONFIG_CAVEAT_DONT_CARE: 
 @GDK_GL_CONFIG_CAVEAT_NONE: 
 @GDK_GL_SLOW_CONFIG: 
 @GDK_GL_NON_CONFORMANT_CONFIG: 
@@ -111,6 +99,7 @@ OpenGL-related tokens
 
 </para>
 
+@GDK_GL_VISUAL_TYPE_DONT_CARE: 
 @GDK_GL_TRUE_COLOR: 
 @GDK_GL_DIRECT_COLOR: 
 @GDK_GL_PSEUDO_COLOR: 
@@ -157,6 +146,19 @@ OpenGL-related tokens
 @GDK_GL_DEPTH_BUFFER_BIT: 
 @GDK_GL_STENCIL_BUFFER_BIT: 
 @GDK_GL_ACCUM_BUFFER_BIT: 
+
+<!-- ##### ENUM GdkGLConfigError ##### -->
+<para>
+
+</para>
+
+@GDK_GL_BAD_SCREEN: 
+@GDK_GL_BAD_ATTRIBUTE: 
+@GDK_GL_NO_EXTENSION: 
+@GDK_GL_BAD_VISUAL: 
+@GDK_GL_BAD_CONTEXT: 
+@GDK_GL_BAD_VALUE: 
+@GDK_GL_BAD_ENUM: 
 
 <!-- ##### ENUM GdkGLRenderType ##### -->
 <para>
