@@ -1,66 +1,71 @@
 EXPORTS
-	gdk_gl_attrib_list_none_get_type @ 192 ; 
-	gdk_gl_client_string_attribute_get_type @ 193 ; 
-	gdk_gl_config_error_get_type @ 194 ; 
-	gdk_gl_config_get_attrib @ 195 ; 
-	gdk_gl_config_get_colormap @ 196 ; 
-	gdk_gl_config_get_depth @ 197 ; 
-	gdk_gl_config_get_type @ 198 ; 
-	gdk_gl_config_is_double_buffered @ 200 ; 
-	gdk_gl_config_is_stereo @ 201 ; 
-	gdk_gl_config_mode_get_type @ 202 ; 
-	gdk_gl_config_new @ 203 ; 
-	gdk_gl_config_new_by_mode @ 204 ; 
-	gdk_gl_context_copy @ 205 ; 
-	gdk_gl_context_get_colormap @ 206 ; 
-	gdk_gl_context_get_gl_config @ 207 ; 
-	gdk_gl_context_get_gl_drawable @ 208 ; 
-	gdk_gl_context_get_render_type @ 209 ; 
-	gdk_gl_context_get_share_list @ 210 ; 
-	gdk_gl_context_get_type @ 211 ; 
-	gdk_gl_context_info_extension_attribute_get_type @ 213 ; 
-	gdk_gl_context_is_direct @ 214 ; 
-	gdk_gl_context_new @ 215 ; 
-	gdk_gl_debug_flags @ 216 DATA ; 
-	gdk_gl_drawable_get_colormap @ 217 ; 
-	gdk_gl_drawable_get_depth @ 218 ; 
-	gdk_gl_drawable_get_drawable @ 219 ; 
-	gdk_gl_drawable_get_gl_config @ 220 ; 
-	gdk_gl_drawable_get_size @ 221 ; 
-	gdk_gl_drawable_get_type @ 222 ; 
-	gdk_gl_drawable_get_visual @ 223 ; 
-	gdk_gl_drawable_gl_begin @ 224 ; 
-	gdk_gl_drawable_gl_end @ 225 ; 
-	gdk_gl_drawable_is_double_buffered @ 226 ; 
-	gdk_gl_drawable_make_current @ 227 ; 
-	gdk_gl_drawable_swap_buffers @ 228 ; 
-	gdk_gl_drawable_wait_gdk @ 229 ; 
-	gdk_gl_drawable_wait_gl @ 230 ; 
-	gdk_gl_extension_value_get_type @ 231 ; 
-	gdk_gl_fb_config_attribute_get_type @ 232 ; 
-	gdk_gl_font_use_pango_font @ 233 ; 
-	gdk_gl_generic_value_get_type @ 234 ; 
-	gdk_gl_pixmap_get_type @ 235 ; 
-	gdk_gl_pixmap_new @ 237 ; 
-	gdk_gl_query_extension @ 238 ; 
-	gdk_gl_query_version @ 239 ; 
-	gdk_gl_success_get_type @ 240 ; 
-	gdk_gl_visual_config_attribute_get_type @ 241 ; 
-	gdk_gl_window_get_type @ 242 ; 
-	gdk_gl_window_new @ 244 ; 
-	gdk_pixmap_get_gl_pixmap @ 245 ; 
-	gdk_pixmap_is_gl_capable @ 247 ; 
-	gdk_pixmap_set_gl_capability @ 249 ; 
-	gdk_pixmap_unset_gl_capability @ 250 ; 
-	gdk_win32_gl_config_get_pfd @ 254 ; 
-	gdk_win32_gl_context_get_hglrc @ 255 ; 
-	gdk_win32_gl_drawable_hdc_get @ 256 ; 
-	gdk_win32_gl_drawable_hdc_release @ 257 ; 
-	gdk_win32_gl_pixmap_get_pfd @ 258 ; 
-	gdk_win32_gl_pixmap_get_pixel_format @ 259 ; 
-	gdk_win32_gl_window_get_pfd @ 260 ; 
-	gdk_win32_gl_window_get_pixel_format @ 261 ; 
-	gdk_window_get_gl_window @ 262 ; 
-	gdk_window_is_gl_capable @ 263 ; 
-	gdk_window_set_gl_capability @ 265 ; 
-	gdk_window_unset_gl_capability @ 266 ; 
+	gdk_gl_attrib_list_none_get_type
+	gdk_gl_client_string_attribute_get_type
+	gdk_gl_config_error_get_type
+	gdk_gl_config_get_attrib
+	gdk_gl_config_get_colormap
+	gdk_gl_config_get_depth
+	gdk_gl_config_get_type
+	gdk_gl_config_get_visual
+	gdk_gl_config_has_accum_buffer
+	gdk_gl_config_has_alpha
+	gdk_gl_config_has_depth_buffer
+	gdk_gl_config_has_stencil_buffer
+	gdk_gl_config_is_double_buffered
+	gdk_gl_config_is_rgba
+	gdk_gl_config_is_stereo
+	gdk_gl_config_mode_get_type
+	gdk_gl_config_new
+	gdk_gl_config_new_by_mode
+	gdk_gl_context_copy
+	gdk_gl_context_get_colormap
+	gdk_gl_context_get_gl_config
+	gdk_gl_context_get_gl_drawable
+	gdk_gl_context_get_render_type
+	gdk_gl_context_get_share_list
+	gdk_gl_context_get_type
+	gdk_gl_context_info_extension_attribute_get_type
+	gdk_gl_context_is_direct
+	gdk_gl_context_new
+	gdk_gl_debug_flags
+	gdk_gl_drawable_get_gl_config
+	gdk_gl_drawable_get_type
+	gdk_gl_drawable_gl_begin
+	gdk_gl_drawable_gl_end
+	gdk_gl_drawable_is_double_buffered
+	gdk_gl_drawable_make_current
+	gdk_gl_drawable_swap_buffers
+	gdk_gl_drawable_wait_gdk
+	gdk_gl_drawable_wait_gl
+	gdk_gl_extension_value_get_type
+	gdk_gl_fb_config_attribute_get_type
+	gdk_gl_font_use_pango_font
+	gdk_gl_generic_value_get_type
+	gdk_gl_multisample_config_attribute_get_type
+	gdk_gl_pixmap_get_pixmap
+	gdk_gl_pixmap_get_type
+	gdk_gl_pixmap_new
+	gdk_gl_query_extension
+	gdk_gl_query_gl_extension
+	gdk_gl_query_version
+	gdk_gl_success_get_type
+	gdk_gl_visual_config_attribute_get_type
+	gdk_gl_window_get_type
+	gdk_gl_window_get_window
+	gdk_gl_window_new
+	gdk_pixmap_get_gl_pixmap
+	gdk_pixmap_is_gl_capable
+	gdk_pixmap_set_gl_capability
+	gdk_pixmap_unset_gl_capability
+	gdk_win32_gl_config_get_pfd
+	gdk_win32_gl_context_get_hglrc
+	gdk_win32_gl_drawable_hdc_get
+	gdk_win32_gl_drawable_hdc_release
+	gdk_win32_gl_pixmap_get_pfd
+	gdk_win32_gl_pixmap_get_pixel_format
+	gdk_win32_gl_window_get_pfd
+	gdk_win32_gl_window_get_pixel_format
+	gdk_window_get_gl_window
+	gdk_window_is_gl_capable
+	gdk_window_set_gl_capability
+	gdk_window_unset_gl_capability
