@@ -313,7 +313,6 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
                               int           render_type)
 {
   GdkGLDrawable *gldrawable;
-  GdkGLConfig *glconfig;
   GdkGLContext *glcontext;
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
@@ -323,14 +322,11 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
   if (gldrawable == NULL)
     return NULL;
 
-  glconfig = gdk_gl_drawable_get_gl_config (gldrawable);
-
   /*
    * Create OpenGL rendering context.
    */
 
   glcontext = gdk_gl_context_new (gldrawable,
-                                  glconfig,
                                   share_list,
                                   direct,
                                   render_type);

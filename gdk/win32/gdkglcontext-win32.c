@@ -257,11 +257,11 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
 
 GdkGLContext *
 _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
-                           GdkGLConfig   *glconfig,
                            GdkGLContext  *share_list,
                            gboolean       direct,
                            int            render_type)
 {
+  GdkGLConfig *glconfig;
   HDC hdc;
   HGLRC hglrc;
   GdkGLContextImplWin32 *share_impl = NULL;
@@ -271,6 +271,8 @@ _gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
   /*
    * Create an OpenGL rendering context.
    */
+
+  glconfig = gdk_gl_drawable_get_gl_config (gldrawable);
 
   /* Get DC. */
   hdc = gdk_win32_gl_drawable_hdc_get (gldrawable);

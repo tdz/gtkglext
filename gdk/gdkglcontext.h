@@ -58,7 +58,6 @@ struct _GdkGLContextClass
 GType          gdk_gl_context_get_type        (void);
 
 GdkGLContext  *gdk_gl_context_new             (GdkGLDrawable *gldrawable,
-                                               GdkGLConfig   *glconfig,
                                                GdkGLContext  *share_list,
                                                gboolean       direct,
                                                int            render_type);

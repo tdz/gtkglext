@@ -235,7 +235,6 @@ gdk_gl_context_finalize (GObject *object)
 /**
  * gdk_gl_context_new:
  * @gldrawable: a #GdkGLDrawable.
- * @glconfig: a #GdkGLConfig.
  * @share_list: the #GdkGLContext which to share display lists. NULL indicates that no sharing is to take place.
  * @direct: whether rendering is to be done with a direct connection to the graphics system.
  * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not used).
@@ -246,7 +245,6 @@ gdk_gl_context_finalize (GObject *object)
  **/
 GdkGLContext *
 gdk_gl_context_new (GdkGLDrawable *gldrawable,
-                    GdkGLConfig   *glconfig,
                     GdkGLContext  *share_list,
                     gboolean       direct,
                     int            render_type)
@@ -254,7 +252,6 @@ gdk_gl_context_new (GdkGLDrawable *gldrawable,
   g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
 
   return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->create_new_context (gldrawable,
-                                                                     glconfig,
                                                                      share_list,
                                                                      direct,
                                                                      render_type);

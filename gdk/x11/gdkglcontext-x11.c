@@ -264,11 +264,11 @@ gdk_gl_context_new_common (GdkGLDrawable *gldrawable,
 
 GdkGLContext *
 _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
-                         GdkGLConfig   *glconfig,
                          GdkGLContext  *share_list,
                          gboolean       direct,
                          int            render_type)
 {
+  GdkGLConfig *glconfig;
   GdkGLContextImplX11 *share_impl = NULL;
   GLXContext share_glxcontext = NULL;
 
@@ -282,14 +282,16 @@ _gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
    * Create an OpenGL rendering context.
    */
 
+  glconfig = gdk_gl_drawable_get_gl_config (gldrawable);
+
+  xdisplay = GDK_GL_CONFIG_XDISPLAY (glconfig);
+  xvinfo = GDK_GL_CONFIG_XVINFO (glconfig);
+
   if (share_list != NULL)
     {
       share_impl = GDK_GL_CONTEXT_IMPL_X11 (share_list);
       share_glxcontext = share_impl->glxcontext;
     }
-
-  xdisplay = GDK_GL_CONFIG_XDISPLAY (glconfig);
-  xvinfo = GDK_GL_CONFIG_XVINFO (glconfig);
 
   GDK_GL_NOTE (IMPL, g_message (" * glXCreateContext ()"));
 

@@ -26,11 +26,12 @@ OpenGL rendering context object
 </para>
 
 @gldrawable: 
-@glconfig: 
 @share_list: 
 @direct: 
 @render_type: 
 @Returns: 
+<!-- # Unused Parameters # -->
+@glconfig: 
 
 
 <!-- ##### FUNCTION gdk_gl_context_copy ##### -->

@@ -87,7 +87,6 @@ configure_event (GtkWidget         *widget,
   if (glcontext == NULL)
     {
       glcontext = gdk_gl_context_new (gldrawable,
-                                      glconfig,
                                       NULL,
                                       FALSE,
                                       GDK_GL_RGBA_TYPE);

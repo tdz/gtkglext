@@ -26,7 +26,6 @@
 G_BEGIN_DECLS
 
 GdkGLContext *_gdk_x11_gl_context_new       (GdkGLDrawable *gldrawable,
-                                             GdkGLConfig   *glconfig,
                                              GdkGLContext  *share_list,
                                              gboolean       direct,
                                              int            render_type);

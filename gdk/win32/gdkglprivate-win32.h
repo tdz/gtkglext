@@ -33,7 +33,6 @@ int _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
 void _gdk_win32_gl_print_pfd (PIXELFORMATDESCRIPTOR *pfd);
 
 GdkGLContext *_gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
-					 GdkGLConfig   *glconfig,
 					 GdkGLContext  *share_list,
 					 gboolean       direct,
 					 int            render_type);

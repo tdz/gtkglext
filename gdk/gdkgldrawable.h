@@ -40,7 +40,6 @@ struct _GdkGLDrawableClass
   GTypeInterface base_iface;
 
   GdkGLContext* (*create_new_context)   (GdkGLDrawable *gldrawable,
-                                         GdkGLConfig   *glconfig,
                                          GdkGLContext  *share_list,
                                          gboolean       direct,
                                          int            render_type);
