@@ -1,4 +1,7 @@
-2002-12-03  Naofumi Yasufuku  <naofumi@yasufuku.net>
+2002-12-03  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
+
+	* gdkglext.pc.in: 
+	* gtkglext.pc.in: Added "multihead" variable.
 
 	* gdk/gdkgldefs.h: Include gdkglext-config.h.
 

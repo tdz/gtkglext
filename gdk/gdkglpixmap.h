@@ -23,6 +23,7 @@
 #include <gdk/gdkdrawable.h>
 #include <gdk/gdkpixmap.h>
 
+#include <gdk/gdkgldefs.h>
 #include <gdk/gdkgltypes.h>
 
 G_BEGIN_DECLS

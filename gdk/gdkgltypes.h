@@ -21,8 +21,6 @@
 
 #include <gdk/gdktypes.h>
 
-#include <gdk/gdkgldefs.h>
-
 G_BEGIN_DECLS
  
 /*

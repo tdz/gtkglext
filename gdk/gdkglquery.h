@@ -19,6 +19,7 @@
 #ifndef __GDK_GL_QUERY_H__
 #define __GDK_GL_QUERY_H__
 
+#include <gdk/gdkgldefs.h>
 #include <gdk/gdktypes.h>
 
 G_BEGIN_DECLS
@@ -29,16 +30,20 @@ typedef void (*GdkGLProc)(void);
 gboolean  gdk_gl_query_extension             (void);
 #endif /* GDK_MULTIHEAD_SAFE */
 
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 gboolean  gdk_gl_query_extension_for_display (GdkDisplay *display);
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 #ifndef GDK_MULTIHEAD_SAFE
 gboolean  gdk_gl_query_version               (int        *major,
                                               int        *minor);
 #endif /* GDK_MULTIHEAD_SAFE */
 
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 gboolean  gdk_gl_query_version_for_display   (GdkDisplay *display,
                                               int        *major,
                                               int        *minor);
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 gboolean  gdk_gl_query_gl_extension          (const char *extension);
 

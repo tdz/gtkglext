@@ -19,6 +19,7 @@
 #ifndef __GDK_GL_FONT_H__
 #define __GDK_GL_FONT_H__
 
+#include <gdk/gdkgldefs.h>
 #include <gdk/gdktypes.h>
 
 G_BEGIN_DECLS
@@ -30,11 +31,13 @@ PangoFont *gdk_gl_font_use_pango_font             (const PangoFontDescription *f
                                                    int                         list_base);
 #endif /* GDK_MULTIHEAD_SAFE */
 
+#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 PangoFont *gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
                                                    const PangoFontDescription *font_desc,
                                                    int                         first,
                                                    int                         count,
                                                    int                         list_base);
+#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 G_END_DECLS
 

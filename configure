@@ -8362,7 +8362,7 @@ fi
 # Checks for GDK multihead support
 ##################################################
 
-gdk_multihead_support=yes
+GDKGLEXT_MULTIHEAD_SUPPORT=yes
 
 save_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BASE_DEPENDENCIES_CFLAGS"
@@ -8415,11 +8415,11 @@ if test `eval echo '${'$as_ac_Header'}'` = yes; then
 EOF
 
 else
-   gdk_multihead_support=no
+   GDKGLEXT_MULTIHEAD_SUPPORT=no
 fi
 done
 
-if test "x$gdk_multihead_support" = "xyes"; then
+if test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"; then
   echo "$as_me:8423: checking for gdk_display_get_default in GDK library" >&5
 echo $ECHO_N "checking for gdk_display_get_default in GDK library... $ECHO_C" >&6
   cat >conftest.$ac_ext <<_ACEOF
@@ -8450,17 +8450,17 @@ if { (eval echo "$as_me:8438: \"$ac_link\"") >&5
 else
   echo "$as_me: failed program was:" >&5
 cat conftest.$ac_ext >&5
- gdk_multihead_support=no
+ GDKGLEXT_MULTIHEAD_SUPPORT=no
 fi
 rm -f conftest.$ac_objext conftest$ac_exeext conftest.$ac_ext
-  echo "$as_me:8456: result: $gdk_multihead_support" >&5
-echo "${ECHO_T}$gdk_multihead_support" >&6
+  echo "$as_me:8456: result: $GDKGLEXT_MULTIHEAD_SUPPORT" >&5
+echo "${ECHO_T}$GDKGLEXT_MULTIHEAD_SUPPORT" >&6
 fi
 
 CPPFLAGS="$save_CPPFLAGS"
 LIBS="$save_LIBS"
 
-if test "x$gdk_multihead_support" = "xyes"; then
+if test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"; then
   { echo "$as_me:8464: GDK has multihead support" >&5
 echo "$as_me: GDK has multihead support" >&6;}
 else
@@ -11238,7 +11238,7 @@ elif test "x$gdktarget" = "xwin32" ; then
 #define GDKGLEXT_WINDOWING_WIN32'
 fi
 
-if test "x$gdk_multihead_support" = "xyes"; then
+if test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"; then
   gdkglext_multihead_support='
 #define GDKGLEXT_MULTIHEAD_SUPPORT'
 fi
@@ -11442,6 +11442,7 @@ s,@PKG_CONFIG@,$PKG_CONFIG,;t t
 s,@BASE_DEPENDENCIES_CFLAGS@,$BASE_DEPENDENCIES_CFLAGS,;t t
 s,@BASE_DEPENDENCIES_LIBS@,$BASE_DEPENDENCIES_LIBS,;t t
 s,@LIBTOOL_EXPORT_OPTIONS@,$LIBTOOL_EXPORT_OPTIONS,;t t
+s,@GDKGLEXT_MULTIHEAD_SUPPORT@,$GDKGLEXT_MULTIHEAD_SUPPORT,;t t
 s,@X_CFLAGS@,$X_CFLAGS,;t t
 s,@X_PRE_LIBS@,$X_PRE_LIBS,;t t
 s,@X_LIBS@,$X_LIBS,;t t
@@ -11589,7 +11590,7 @@ done; }
   esac
 
   if test x"$ac_file" != x-; then
-    { echo "$as_me:11592: creating $ac_file" >&5
+    { echo "$as_me:11593: creating $ac_file" >&5
 echo "$as_me: creating $ac_file" >&6;}
     rm -f "$ac_file"
   fi
@@ -11607,7 +11608,7 @@ echo "$as_me: creating $ac_file" >&6;}
       -) echo $tmp/stdin ;;
       [\\/$]*)
          # Absolute (can't be DOS-style, as IFS=:)
-         test -f "$f" || { { echo "$as_me:11610: error: cannot find input file: $f" >&5
+         test -f "$f" || { { echo "$as_me:11611: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          echo $f;;
@@ -11620,7 +11621,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
            echo $srcdir/$f
          else
            # /dev/null tree
-           { { echo "$as_me:11623: error: cannot find input file: $f" >&5
+           { { echo "$as_me:11624: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          fi;;
@@ -11681,7 +11682,7 @@ for ac_file in : $CONFIG_HEADERS; do test "x$ac_file" = x: && continue
   * )   ac_file_in=$ac_file.in ;;
   esac
 
-  test x"$ac_file" != x- && { echo "$as_me:11684: creating $ac_file" >&5
+  test x"$ac_file" != x- && { echo "$as_me:11685: creating $ac_file" >&5
 echo "$as_me: creating $ac_file" >&6;}
 
   # First look for the input files in the build tree, otherwise in the
@@ -11692,7 +11693,7 @@ echo "$as_me: creating $ac_file" >&6;}
       -) echo $tmp/stdin ;;
       [\\/$]*)
          # Absolute (can't be DOS-style, as IFS=:)
-         test -f "$f" || { { echo "$as_me:11695: error: cannot find input file: $f" >&5
+         test -f "$f" || { { echo "$as_me:11696: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          echo $f;;
@@ -11705,7 +11706,7 @@ echo "$as_me: error: cannot find input file: $f" >&2;}
            echo $srcdir/$f
          else
            # /dev/null tree
-           { { echo "$as_me:11708: error: cannot find input file: $f" >&5
+           { { echo "$as_me:11709: error: cannot find input file: $f" >&5
 echo "$as_me: error: cannot find input file: $f" >&2;}
    { (exit 1); exit 1; }; }
          fi;;
@@ -11822,7 +11823,7 @@ cat >>$CONFIG_STATUS <<\EOF
   rm -f $tmp/in
   if test x"$ac_file" != x-; then
     if cmp -s $ac_file $tmp/config.h 2>/dev/null; then
-      { echo "$as_me:11825: $ac_file is unchanged" >&5
+      { echo "$as_me:11826: $ac_file is unchanged" >&5
 echo "$as_me: $ac_file is unchanged" >&6;}
     else
       ac_dir=`$as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
@@ -12053,3 +12054,13 @@ if test "$no_create" != yes; then
   $ac_cs_success || { (exit 1); exit 1; }
 fi
 
+##################################################
+# Print configuration
+##################################################
+
+echo "
+configuration:
+	OpenGL CFLAGS:		$GL_CFLAGS
+	OpenGL LIBS:		$GL_LIBS
+	multihead support:	$GDKGLEXT_MULTIHEAD_SUPPORT
+"

@@ -338,7 +338,7 @@ fi
 # Checks for GDK multihead support
 ##################################################
 
-gdk_multihead_support=yes
+GDKGLEXT_MULTIHEAD_SUPPORT=yes
 
 save_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BASE_DEPENDENCIES_CFLAGS"
@@ -346,24 +346,26 @@ save_LIBS="$LIBS"
 LIBS="$LIBS $BASE_DEPENDENCIES_LIBS"
 
 AC_CHECK_HEADERS([ gdk/gdkdisplay.h gdk/gdkscreen.h ], ,
-                 [ gdk_multihead_support=no ])
+                 [ GDKGLEXT_MULTIHEAD_SUPPORT=no ])
 
-if test "x$gdk_multihead_support" = "xyes"; then
+if test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"; then
   AC_MSG_CHECKING([for gdk_display_get_default in GDK library])
   AC_TRY_LINK([ #include <gdk/gdk.h> ], 
               [ gdk_display_get_default(); ], ,
-              [ gdk_multihead_support=no ])
-  AC_MSG_RESULT([$gdk_multihead_support])
+              [ GDKGLEXT_MULTIHEAD_SUPPORT=no ])
+  AC_MSG_RESULT([$GDKGLEXT_MULTIHEAD_SUPPORT])
 fi
 
 CPPFLAGS="$save_CPPFLAGS"
 LIBS="$save_LIBS"
 
-if test "x$gdk_multihead_support" = "xyes"; then
+if test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"; then
   AC_MSG_NOTICE([GDK has multihead support])
 else
   AC_MSG_NOTICE([GDK doesn't have multihead support])
 fi
+
+AC_SUBST(GDKGLEXT_MULTIHEAD_SUPPORT)
 
 
 ##################################################
@@ -778,7 +780,7 @@ elif test "x$gdktarget" = "xwin32" ; then
 #define GDKGLEXT_WINDOWING_WIN32'
 fi
 
-if test "x$gdk_multihead_support" = "xyes"; then
+if test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"; then
   gdkglext_multihead_support='
 #define GDKGLEXT_MULTIHEAD_SUPPORT'
 fi
@@ -810,3 +812,15 @@ docs/reference/Makefile
 docs/reference/gtkglext/Makefile
 docs/reference/gtkglext/version.xml
 ])
+
+
+##################################################
+# Print configuration
+##################################################
+
+echo "
+configuration:
+	OpenGL CFLAGS:		$GL_CFLAGS
+	OpenGL LIBS:		$GL_LIBS
+	multihead support:	$GDKGLEXT_MULTIHEAD_SUPPORT
+"
