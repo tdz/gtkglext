@@ -186,8 +186,7 @@ gl_widget_private_destroy (GLWidgetPrivate *private)
   g_object_unref (G_OBJECT (private->glconfig));
 
   if (private->share_list != NULL)
-    g_object_remove_weak_pointer (G_OBJECT (private->share_list),
-                                  (gpointer *) &(private->share_list));
+    g_object_unref (G_OBJECT (private->share_list));
 
   g_free (private);
 }
@@ -293,8 +292,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   if (share_list != NULL && GDK_IS_GL_CONTEXT (share_list))
     {
       private->share_list = share_list;
-      g_object_add_weak_pointer (G_OBJECT (private->share_list),
-                                 (gpointer *) &(private->share_list));
+      g_object_ref (G_OBJECT (private->share_list));
     }
   else
     {
