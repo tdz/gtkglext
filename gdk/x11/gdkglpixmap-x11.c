@@ -26,7 +26,7 @@
 
 enum {
   PROP_0,
-  PROP_GLXPIXMAP,
+  PROP_GLXPIXMAP
 };
 
 /* Forward declarations */

@@ -40,8 +40,6 @@ struct _GdkGLWindowImplX11
 
   /* GLXWindow glxwindow; */
   Window glxwindow;
-
-  guint is_constructed : 1;
 };
 
 struct _GdkGLWindowImplX11Class

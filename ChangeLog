@@ -1,5 +1,11 @@
 2003-01-25  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglwindow-x11.h (struct _GdkGLWindowImplX11): 
+	* gdk/x11/gdkglwindow-x11.c (gdk_gl_window_impl_x11_constructor): 
+	(gdk_gl_window_impl_x11_init): Removed.
+	(gdk_gl_window_impl_x11_class_init): Added glxwindow property.
+	(gdk_gl_window_new): Construct by using glxwindow property.
+
 	* gdk/x11/gdkglpixmap-x11.h (struct _GdkGLPixmapImplX11): 
 	* gdk/x11/gdkglpixmap-x11.c (gdk_gl_pixmap_impl_x11_constructor) 
 	(gdk_gl_pixmap_impl_x11_init): Removed.
