@@ -146,21 +146,22 @@ gdk_gl_overlay_get_sov_prop (GdkScreen *screen,
               sov_props_per_screen[i].num_props = nitems / 4;
 
 #ifdef G_ENABLE_DEBUG
-              if (gdk_gl_debug_flags & GDK_GL_DEBUG_MISC) {
-                int j;
-                g_message (" -- SERVER_OVERLAY_VISUALS: properties");
-                g_print ("screen\tvisual\ttype\tvalue\tlayer\n");
-                num_props = sov_props_per_screen[i].num_props;
-                for (j = 0; j < num_props; j++)
-                  {
-                    g_print ("%d\t0x%lx\t%lu\t%lu\t%ld\n",
-                             i,
-                             (VisualID) (props[j].overlay_visual),
-                             (CARD32)   (props[j].transparent_type),
-                             (CARD32)   (props[j].value),
-                             (INT32)    (props[j].layer));
-                  }
-              }
+              if (gdk_gl_debug_flags & GDK_GL_DEBUG_MISC)
+                {
+                  int j;
+                  g_message (" -- SERVER_OVERLAY_VISUALS: properties");
+                  g_print ("screen\tvisual\ttype\tvalue\tlayer\n");
+                  num_props = sov_props_per_screen[i].num_props;
+                  for (j = 0; j < num_props; j++)
+                    {
+                      g_print ("%d\t0x%lx\t%lu\t%lu\t%ld\n",
+                               i,
+                               (VisualID) (props[j].overlay_visual),
+                               (CARD32)   (props[j].transparent_type),
+                               (CARD32)   (props[j].value),
+                               (INT32)    (props[j].layer));
+                    }
+                }
 #endif /* G_ENABLE_DEBUG */
 
             }
