@@ -309,16 +309,9 @@ init(GtkWidget *widget,
 static gboolean
 idle(GtkWidget *widget)
 {
-  GdkRectangle area;
-
   angle += 2.0;
 
-  area.x = 0;
-  area.y = 0;
-  area.width  = widget->allocation.width;
-  area.height = widget->allocation.height;
-
-  gtk_widget_draw(widget, &area);
+  gtk_widget_queue_draw(widget);
 
   return TRUE;
 }
@@ -352,8 +345,6 @@ key(GtkWidget   *widget,
     GdkEventKey *event,
     gpointer     data)
 {
-  GdkRectangle area;
-
   switch (event->keyval) {
   case GDK_z:
     view_rotz += 5.0;
@@ -380,12 +371,7 @@ key(GtkWidget   *widget,
     return TRUE;
   }
 
-  area.x = 0;
-  area.y = 0;
-  area.width  = widget->allocation.width;
-  area.height = widget->allocation.height;
-
-  gtk_widget_draw(widget, &area);
+  gtk_widget_queue_draw(widget);
 
   return TRUE;
 }
