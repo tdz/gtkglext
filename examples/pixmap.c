@@ -155,10 +155,7 @@ configure (GtkWidget         *widget,
 
   glCallList (1);
 
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
+  glFlush ();
 
   gdk_gl_drawable_gl_end (gldrawable);
   /* OpenGL end. */

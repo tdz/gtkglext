@@ -29,12 +29,14 @@
 
 G_BEGIN_DECLS
 
-void         _gdk_gl_context_set_gl_drawable   (GdkGLContext  *glcontext,
-                                                GdkGLDrawable *gldrawable);
+#define  GDK_GL_CONFIG_AS_SINGLE_MODE(glconfig) ((glconfig)->as_single_mode)
 
-gboolean     _gdk_gl_pixmap_is_double_buffered (GdkGLDrawable *gldrawable);
+void     _gdk_gl_context_set_gl_drawable   (GdkGLContext  *glcontext,
+                                            GdkGLDrawable *gldrawable);
 
-gboolean     _gdk_gl_window_is_double_buffered (GdkGLDrawable *gldrawable);
+gboolean _gdk_gl_pixmap_is_double_buffered (GdkGLDrawable *gldrawable);
+
+gboolean _gdk_gl_window_is_double_buffered (GdkGLDrawable *gldrawable);
 
 G_END_DECLS
 

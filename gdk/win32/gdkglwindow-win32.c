@@ -273,11 +273,14 @@ gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
                                           GdkGLDrawable *read,
                                           GdkGLContext  *glcontext)
 {
+  GdkGLWindow *glwindow;
   HDC hdc;
   HGLRC hglrc;
 
   g_return_val_if_fail (GDK_IS_GL_WINDOW (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+
+  glwindow = GDK_GL_WINDOW (draw);
 
   /*
    * Get DC.
@@ -305,6 +308,16 @@ gdk_win32_gl_window_make_context_current (GdkGLDrawable *draw,
     }
 
   _gdk_gl_context_set_gl_drawable (glcontext, draw);
+
+  if (GDK_GL_CONFIG_AS_SINGLE_MODE(glwindow->glconfig))
+    {
+      /* We do this because we are treating a double-buffered frame
+         buffer as a single-buffered frame buffer because the system
+         does not appear to export any suitable single-buffered
+         visuals (in which the following are necessary). */
+      glDrawBuffer(GL_FRONT);
+      glReadBuffer(GL_FRONT);
+    }
 
   return TRUE;
 }

@@ -24,6 +24,7 @@
 #include <gdk/gdkglprivate.h>
 
 #include <GL/glx.h>
+#include <GL/gl.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>

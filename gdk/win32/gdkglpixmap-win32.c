@@ -326,11 +326,14 @@ gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable *draw,
                                           GdkGLDrawable *read,
                                           GdkGLContext  *glcontext)
 {
+  GdkGLPixmap *glpixmap;
   HDC hdc;
   HGLRC hglrc;
 
   g_return_val_if_fail (GDK_IS_GL_PIXMAP (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+
+  glpixmap = GDK_GL_PIXMAP (draw);
 
   /*
    * Get DC.
@@ -358,6 +361,16 @@ gdk_win32_gl_pixmap_make_context_current (GdkGLDrawable *draw,
     }
 
   _gdk_gl_context_set_gl_drawable (glcontext, draw);
+
+  if (GDK_GL_CONFIG_AS_SINGLE_MODE(glpixmap->glconfig))
+    {
+      /* We do this because we are treating a double-buffered frame
+         buffer as a single-buffered frame buffer because the system
+         does not appear to export any suitable single-buffered
+         visuals (in which the following are necessary). */
+      glDrawBuffer(GL_FRONT);
+      glReadBuffer(GL_FRONT);
+    }
 
   return TRUE;
 }
