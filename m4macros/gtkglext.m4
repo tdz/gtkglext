@@ -17,7 +17,7 @@ AC_DEFUN(AM_PATH_GTKGLEXT_1_0,
   gtkglext_module=gtkglext-1.0
 
   # minimum GtkGLExt version
-  gtkglext_min_version=ifelse([$1], ,0.7.0,$1)
+  gtkglext_min_version=ifelse([$1], ,1.0.0,$1)
 
   # minimum pkg-config version
   pkgconfig_min_version=0.7
