@@ -268,20 +268,20 @@ gdk_win32_gl_context_foreign_new (GdkGLConfig  *glconfig,
 }
 
 gboolean
-gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
-                     GdkGLContext  *src_glcontext,
+gdk_gl_context_copy (GdkGLContext  *glcontext,
+                     GdkGLContext  *src,
                      unsigned long  mask)
 {
   HGLRC dst_hglrc, src_hglrc;
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (dst_glcontext), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (src_glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (src), FALSE);
 
-  dst_hglrc = GDK_GL_CONTEXT_HGLRC (dst_glcontext);
+  dst_hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
   if (dst_hglrc == NULL)
     return FALSE;
 
-  src_hglrc = GDK_GL_CONTEXT_HGLRC (src_glcontext);
+  src_hglrc = GDK_GL_CONTEXT_HGLRC (src);
   if (src_hglrc == NULL)
     return FALSE;
 

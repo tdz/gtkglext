@@ -30,8 +30,6 @@ OpenGL rendering context object
 @direct: 
 @render_type: 
 @Returns: 
-<!-- # Unused Parameters # -->
-@glconfig: 
 
 
 <!-- ##### FUNCTION gdk_gl_context_destroy ##### -->
@@ -47,12 +45,10 @@ OpenGL rendering context object
 
 </para>
 
-@dst_glcontext: 
-@src_glcontext: 
-@Param3: 
-@Returns: 
-<!-- # Unused Parameters # -->
+@glcontext: 
+@src: 
 @mask: 
+@Returns: 
 
 
 <!-- ##### FUNCTION gdk_gl_context_get_gl_drawable ##### -->

@@ -341,7 +341,7 @@ GdkGLContext  *glcontext
 <FUNCTION>
 <NAME>gdk_gl_context_copy</NAME>
 <RETURNS>gboolean  </RETURNS>
-GdkGLContext  *dst_glcontext,GdkGLContext  *src_glcontext,unsigned long  mask
+GdkGLContext  *glcontext,GdkGLContext  *src,unsigned long  mask
 </FUNCTION>
 <FUNCTION>
 <NAME>gdk_gl_context_get_gl_drawable</NAME>

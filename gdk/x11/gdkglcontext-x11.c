@@ -302,14 +302,11 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
 
 /**
  * gdk_gl_context_copy:
- * @dst_glcontext: the destination context.
- * @src_glcontext: the source context.
- * @mask: which portions of @src_glcontext state are to be copied to
- *        @dst_glcontext.
+ * @glcontext: a #GdkGLContext.
+ * @src: the source context.
+ * @mask: which portions of @src state are to be copied to @glcontext.
  *
- * Copy state from one rendering context to another.
- *
- * Notice that dst and src arguments' order is different from glXCopyContext().
+ * Copy state from @src rendering context to @glcontext.
  *
  * @mask contains the bitwise-OR of the same symbolic names that are passed to
  * the glPushAttrib() function. You can use GL_ALL_ATTRIB_BITS to copy all the
@@ -318,8 +315,8 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
  * Return value: FALSE if it fails, TRUE otherwise.
  **/
 gboolean
-gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
-                     GdkGLContext  *src_glcontext,
+gdk_gl_context_copy (GdkGLContext  *glcontext,
+                     GdkGLContext  *src,
                      unsigned long  mask)
 {
   GLXContext dst_glxcontext, src_glxcontext;
@@ -327,18 +324,18 @@ gdk_gl_context_copy (GdkGLContext  *dst_glcontext,
 
   GDK_GL_NOTE (FUNC, g_message (" - gdk_gl_context_copy ()"));
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (dst_glcontext), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (src_glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (src), FALSE);
 
-  dst_glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (dst_glcontext);
+  dst_glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
   if (dst_glxcontext == NULL)
     return FALSE;
 
-  src_glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (src_glcontext);
+  src_glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (src);
   if (src_glxcontext == NULL)
     return FALSE;
 
-  glconfig = GDK_GL_CONTEXT_IMPL_X11 (dst_glcontext)->glconfig;
+  glconfig = GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glconfig;
 
   gdk_error_trap_push ();
 
