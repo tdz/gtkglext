@@ -128,7 +128,7 @@ gtkglext_targetlib = @gtkglext_targetlib@
 install_sh = @install_sh@
 ms_librarian = @ms_librarian@
 
-AUTOMAKE_OPTIONS = dist-bzip2 dist-zip
+AUTOMAKE_OPTIONS = 1.6 dist-bzip2 dist-zip
 
 SUBDIRS = gdk gtk examples docs
 

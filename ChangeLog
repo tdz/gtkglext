@@ -1,5 +1,7 @@
 2002-07-02  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* Version 0.3.1.
+
 	* gdk/gdkglwindow.c (gdk_window_set_gl_capability): 
 	* gdk/gdkglpixmap.c (gdk_pixmap_set_gl_capability): Changed to
 	return the GLDrawable used by the GdkDrawable.
