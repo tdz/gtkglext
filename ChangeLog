@@ -1,5 +1,9 @@
 2003-08-15  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/win32/gdkglpixmap-win32.c (gdk_gl_pixmap_new): 
+	* gdk/win32/gdkglwindow-win32.c (gdk_gl_window_new): Do
+	DescribePixelFormat().
+
 	* gdk/win32/Makefile.am (gdkglext_win32_private_h_sources): 
 	* gdk/win32/gdkinternal-win32.h: Removed.
 
