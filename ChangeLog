@@ -1,5 +1,8 @@
 2002-12-14  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/Makefile.mingw: Sample makefile for compiling example
+	programs under MinGW/Cygwin environment.
+
 	* gdk/gdkglext-gtk20.def: 
 	* gdk/Makefile.am: 
 	* configure.in: Added MULTIHEAD_SUPPORT AM_CONDITIONAL. On win32

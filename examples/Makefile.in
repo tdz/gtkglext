@@ -254,6 +254,7 @@ glxinfo_DEPENDENCIES = $(DEPS)
 glxinfo_LDADD = $(GL_LIBS) $(GDKGLEXT_WIN_LIBS)
 
 EXTRA_DIST = \
+	Makefile.mingw	\
 	alien.lwo	\
 	penguin.lwo	\
 	girl.rgb	\

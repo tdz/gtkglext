@@ -1,0 +1,164 @@
+# -*- Makefile -*-
+#
+# Sample makefile for GtkGLExt example programs
+#   Naofumi Yasufuku <naofumi@users.sourceforge.net>
+#
+
+SHELL = /bin/sh
+
+INCLUDES = $(shell pkg-config --cflags gtkglext-1.0)
+DEFINES = 
+LIBS = $(shell pkg-config --libs gtkglext-1.0)
+
+CC = gcc
+OPTIMIZE = -march=pentium -O2
+DEBUG = -g -Wall
+MS_BITFIELDS = -mms-bitfields
+#MS_BITFIELDS = -fnative-struct
+CFLAGS = $(OPTIMIZE) $(DEBUG) $(MS_BITFIELDS)
+CPPFLAGS = $(INCLUDES) $(DEFINES)
+LDFLAGS = 
+COMPILE = $(CC) -c $(CFLAGS) $(CPPFLAGS)
+LINK = $(CC) $(LDFLAGS)
+EXEEXT = .exe
+
+HEADERS = \
+	trackball.h		\
+	logo-model.h		\
+	readtex.h		\
+	lw.h
+
+SOURCES = \
+	low-level.c		\
+	simple.c		\
+	simple-mixed.c		\
+	pixmap.c		\
+	pixmap-mixed.c		\
+	color.c			\
+	font.c			\
+	trackball.c		\
+	shapes.c		\
+	logo-model.c		\
+	logo.c			\
+	gears.c			\
+	readtex.c		\
+	multiarb.c		\
+	viewlw.c		\
+	lw.c			\
+	rotating-square.c	\
+	coolwave.c		\
+	template.c
+
+EXTRA_SOURCES = \
+	logo-g.c		\
+	logo-t.c		\
+	logo-k.c
+
+OBJECTS = $(SOURCES:.c=.o)
+
+PROGRAMS = \
+	low-level$(EXEEXT)		\
+	simple$(EXEEXT)			\
+	simple-mixed$(EXEEXT)		\
+	pixmap$(EXEEXT)			\
+	pixmap-mixed$(EXEEXT)		\
+	color$(EXEEXT)			\
+	font$(EXEEXT)			\
+	shapes$(EXEEXT)			\
+	logo$(EXEEXT)			\
+	gears$(EXEEXT)			\
+	multiarb$(EXEEXT)		\
+	viewlw$(EXEEXT)			\
+	rotating-square$(EXEEXT)	\
+	coolwave$(EXEEXT)		\
+	template$(EXEEXT)
+
+.PHONY: all clean clean-deps distclean
+
+.SUFFIXES:
+.SUFFIXES: .c .o
+
+all: $(PROGRAMS)
+
+#
+# Include dependencies
+#
+
+DEPS_MAGIC := $(shell if test ! -d .deps; then mkdir .deps; fi)
+DEPS = $(addprefix .deps/, $(SOURCES:.c=.Po))
+-include $(DEPS)
+
+#
+# Compile command
+#
+
+.c.o:
+	$(COMPILE) -Wp,-MD,.deps/$(*F).TPo -c $<
+	@-cp .deps/$(*F).TPo .deps/$(*F).Po; \
+	tr ' ' '\012' < .deps/$(*F).TPo \
+		| sed -e 's/^\\$$//' -e '/^$$/ d' -e '/:$$/ d' -e 's/$$/ :/' \
+		>> .deps/$(*F).Po; \
+	rm .deps/$(*F).TPo
+
+#
+# Building executables
+#
+
+low-level$(EXEEXT): low-level.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+simple$(EXEEXT): simple.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+simple-mixed$(EXEEXT): simple-mixed.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+pixmap$(EXEEXT): pixmap.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+pixmap-mixed$(EXEEXT): pixmap-mixed.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+color$(EXEEXT): color.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+font$(EXEEXT): font.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+shapes$(EXEEXT): trackball.o shapes.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+logo$(EXEEXT): trackball.o logo-model.o logo.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+gears$(EXEEXT): gears.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+multiarb$(EXEEXT): readtex.o multiarb.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+viewlw$(EXEEXT): trackball.o lw.o viewlw.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+rotating-square$(EXEEXT): rotating-square.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+coolwave$(EXEEXT): coolwave.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+template$(EXEEXT): template.o
+	$(LINK) -o $@ $^ $(LIBS)
+
+#
+# Other targets
+#
+
+clean:
+	-rm -f $(PROGRAMS)
+	-rm -f *.o
+
+clean-deps:
+	-rm -rf .deps
+
+distclean: clean clean-deps
+	-rm -f *~
