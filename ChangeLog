@@ -1,5 +1,12 @@
 2002-12-11  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gtk/gtkglwidget.c (gtk_widget_set_gl_capability): Check whether
+	given widget is already OpenGL-capable.
+	(gtk_widget_gl_realize): gtk_quit_add_destroy() call has been
+	moved into gtk_widget_set_gl_capability().
+	(gtk_widget_get_gl_config): Modified for non-realized widget.
+	(gtk_widget_is_gl_capable): Use gtk_widget_get_gl_config().
+
 	* gtk/gtkglwidget.c (gtk_widget_destroy_gl_context)
 	(gtk_widget_gl_unrealize): gtk_widget_destroy_gl_context() has
 	been removed, and its destruction code has been moved into
