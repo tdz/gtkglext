@@ -171,7 +171,13 @@ static void
 unrealize (GtkWidget *widget,
            gpointer   data)
 {
-  if (widget->window != NULL)
+  if (glcontext != NULL)
+    {
+      g_object_unref (G_OBJECT (glcontext));
+      glcontext = NULL;
+    }
+
+  if (glwindow != NULL)
     {
       g_object_unref (G_OBJECT (glwindow));
       glwindow = NULL;
@@ -181,12 +187,6 @@ unrealize (GtkWidget *widget,
     {
       g_object_unref (G_OBJECT (glconfig));
       glconfig = NULL;
-    }
-
-  if (glcontext != NULL)
-    {
-      g_object_unref (G_OBJECT (glcontext));
-      glcontext = NULL;
     }
 }
 
