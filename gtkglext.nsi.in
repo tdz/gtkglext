@@ -306,11 +306,54 @@ Section Uninstall
   DeleteRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt"
 
   Delete $INSTDIR\uninst-gtkglext.exe
-  RMDir /r $INSTDIR\bin
-  RMDir /r $INSTDIR\include
-  RMDir /r $INSTDIR\lib
-  RMDir /r $INSTDIR\share
+
+  ; bin
+
+  Delete $INSTDIR\bin\libgdkglext-win32-${GTKGLEXT_API_VERSION}-*.dll
+  Delete $INSTDIR\bin\libgtkglext-win32-${GTKGLEXT_API_VERSION}-*.dll
+
+  RMDir $INSTDIR\bin
+
+  ; include
+
+  RMDir /r $INSTDIR\include\gtkglext-1.0
+
+  RMDir $INSTDIR\include
+
+  ; lib
+
+  RMDir /r $INSTDIR\lib\gtkglext-1.0
+
+  Delete $INSTDIR\lib\libgdkglext-win32-${GTKGLEXT_API_VERSION}.dll.a
+  Delete $INSTDIR\lib\libgtkglext-win32-${GTKGLEXT_API_VERSION}.dll.a
+  Delete $INSTDIR\lib\gdkglext-win32-${GTKGLEXT_API_VERSION}.lib
+  Delete $INSTDIR\lib\gtkglext-win32-${GTKGLEXT_API_VERSION}.lib
+
+  Delete $INSTDIR\lib\pkgconfig\gdkglext-${GTKGLEXT_API_VERSION}.pc
+  Delete $INSTDIR\lib\pkgconfig\gdkglext-win32-${GTKGLEXT_API_VERSION}.pc
+  Delete $INSTDIR\lib\pkgconfig\gtkglext-${GTKGLEXT_API_VERSION}.pc
+  Delete $INSTDIR\lib\pkgconfig\gtkglext-win32-${GTKGLEXT_API_VERSION}.pc
+  RMDir $INSTDIR\lib\pkgconfig
+
+  RMDir $INSTDIR\lib
+
+  ; share
+
+  Delete $INSTDIR\share\aclocal\gtkglext-${GTKGLEXT_API_VERSION}.m4
+  RMDir $INSTDIR\share\aclocal
+
+  RMDir /r $INSTDIR\share\gtk-doc\html\gtkglext
+  RMDir $INSTDIR\share\gtk-doc\html
+  RMDir $INSTDIR\share\gtk-doc
+
+  RMDir $INSTDIR\share
+
+  ; gtkglext-examples
+
   RMDir /r $INSTDIR\gtkglext-examples
+
+  ; $INSTDIR
+
   RMDir $INSTDIR
 
   ;Modern UI Finish Header
