@@ -177,16 +177,6 @@ gdk_gl_window_finalize (GObject *object)
 }
 
 /*< private >*/
-/* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-GdkDrawable *
-_gdk_gl_window_real_drawable (GdkGLDrawable *gldrawable)
-{
-  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), NULL);
-
-  return GDK_GL_WINDOW (gldrawable)->wrapper;
-}
-
-/*< private >*/
 gboolean
 _gdk_gl_window_is_double_buffered (GdkGLDrawable *gldrawable)
 {

@@ -26,6 +26,7 @@
 static gboolean gdk_x11_gl_window_make_context_current (GdkGLDrawable           *draw,
                                                         GdkGLDrawable           *read,
                                                         GdkGLContext            *glcontext);
+static void     gdk_x11_gl_window_swap_buffers         (GdkGLDrawable *gldrawable);
 
 static void     gdk_gl_window_impl_x11_init            (GdkGLWindowImplX11      *impl);
 static void     gdk_gl_window_impl_x11_class_init      (GdkGLWindowImplX11Class *klass);
@@ -146,13 +147,9 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->create_new_context   = _gdk_x11_gl_context_new;
   iface->make_context_current = gdk_x11_gl_window_make_context_current;
   iface->is_double_buffered   = _gdk_gl_window_is_double_buffered;
-  iface->swap_buffers         = _gdk_x11_gl_drawable_swap_buffers;
+  iface->swap_buffers         = gdk_x11_gl_window_swap_buffers;
   iface->wait_gl              = _gdk_x11_gl_drawable_wait_gl;
   iface->wait_gdk             = _gdk_x11_gl_drawable_wait_gdk;
-
-  /*< private >*/
-  /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  iface->real_drawable        = _gdk_gl_window_real_drawable;
 }
 
 static gboolean
@@ -190,6 +187,25 @@ gdk_x11_gl_window_make_context_current (GdkGLDrawable *draw,
   _gdk_gl_context_set_gl_drawable (glcontext, draw);
 
   return TRUE;
+}
+
+static void
+gdk_x11_gl_window_swap_buffers (GdkGLDrawable *gldrawable)
+{
+  GdkDrawable *drawable;
+
+  g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
+
+  /*
+   * XXX GdkGLWindow is not GdkDrawable for the moment :-<
+   *     use glwindow->wrapper.
+   */
+  drawable = GDK_GL_WINDOW (gldrawable)->wrapper;
+
+  GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
+
+  glXSwapBuffers (GDK_DRAWABLE_XDISPLAY (drawable),
+                  GDK_DRAWABLE_XID (drawable));
 }
 
 /*

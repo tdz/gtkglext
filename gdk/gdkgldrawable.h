@@ -51,10 +51,6 @@ struct _GdkGLDrawableClass
   void          (*swap_buffers)         (GdkGLDrawable *gldrawable);
   void          (*wait_gl)              (GdkGLDrawable *gldrawable);
   void          (*wait_gdk)             (GdkGLDrawable *gldrawable);
-
-  /*< private >*/
-  /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  GdkDrawable  *(*real_drawable)        (GdkGLDrawable *gldrawable);
 };
 
 GType    gdk_gl_drawable_get_type           (void);

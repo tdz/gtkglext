@@ -154,10 +154,6 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->swap_buffers         = gdk_win32_gl_window_swap_buffers;
   iface->wait_gl              = gdk_win32_gl_window_wait_gl;
   iface->wait_gdk             = _gdk_win32_gl_drawable_wait_gdk;
-
-  /*< private >*/
-  /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  iface->real_drawable        = _gdk_gl_window_real_drawable;
 }
 
 HDC
@@ -165,20 +161,21 @@ _gdk_win32_gl_window_hdc_get (GdkGLDrawable *gldrawable)
 {
   GdkGLWindow *glwindow;
   GdkGLWindowImplWin32 *impl;
-  GdkDrawable *drawable;
   PIXELFORMATDESCRIPTOR *pfd;
   int pf;
 
-  g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW (gldrawable), NULL);
 
   glwindow = GDK_GL_WINDOW (gldrawable);
   impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
 
   g_assert (impl->hdc == NULL);
 
-  /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  drawable = GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->real_drawable (gldrawable);
-  impl->hwnd = (HWND) gdk_win32_drawable_get_handle (drawable);
+  /*
+   * XXX GdkGLWindow is not GdkDrawable for the moment :-<
+   *     use glwindow->wrapper.
+   */
+  impl->hwnd = (HWND) gdk_win32_drawable_get_handle (glwindow->wrapper);
 
   /*
    * Get DC.
@@ -246,7 +243,7 @@ _gdk_win32_gl_window_hdc_release (GdkGLDrawable *gldrawable)
 {
   GdkGLWindowImplWin32 *impl;
 
-  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+  g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
 
   impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
 
@@ -317,7 +314,7 @@ gdk_win32_gl_window_swap_buffers (GdkGLDrawable *gldrawable)
 {
   GdkGLWindowImplWin32 *impl;
 
-  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+  g_return_if_fail (GDK_IS_GL_WINDOW (gldrawable));
 
   impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
 

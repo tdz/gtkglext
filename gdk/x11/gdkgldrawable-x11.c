@@ -18,23 +18,6 @@
 
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
-#include "gdkglcontext-x11.h"
-
-void
-_gdk_x11_gl_drawable_swap_buffers (GdkGLDrawable *gldrawable)
-{
-  GdkDrawable *drawable;
-
-  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
-
-  /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  drawable = GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->real_drawable (gldrawable);
-
-  GDK_GL_NOTE (IMPL, g_message (" * glXSwapBuffers ()"));
-
-  glXSwapBuffers (GDK_DRAWABLE_XDISPLAY (drawable),
-                  GDK_DRAWABLE_XID (drawable));
-}
 
 void
 _gdk_x11_gl_drawable_wait_gl (GdkGLDrawable *gldrawable)

@@ -1,3 +1,20 @@
+2002-07-05  Naofumi Yasufuku  <naofumi@yasufuku.net>
+
+	* gdk/win32/gdkglpixmap-win32.c: 
+	* gdk/win32/gdkglwindow-win32.c: 
+	* gdk/gdkglprivate.h: 
+	* gdk/gdkglpixmap.c (_gdk_gl_pixmap_real_drawable): 
+	* gdk/gdkglwindow.c (_gdk_gl_window_real_drawable): 
+	* gdk/gdkgldrawable.h (struct _GdkGLDrawableClass): Removed
+	real_drawable interface.
+
+	* gdk/x11/gdkgldrawable-x11.c (_gdk_x11_gl_drawable_swap_buffers):
+	Removed.
+
+	* gdk/x11/gdkglpixmap-x11.c (gdk_x11_gl_pixmap_swap_buffers): 
+	* gdk/x11/gdkglwindow-x11.c (gdk_x11_gl_window_swap_buffers): Use
+	them instead of _gdk_gl_drawable_swap_buffers().
+
 2002-07-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
 	* Version 0.3.2.

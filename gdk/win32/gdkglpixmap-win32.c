@@ -182,10 +182,6 @@ gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->swap_buffers         = gdk_win32_gl_pixmap_swap_buffers;
   iface->wait_gl              = gdk_win32_gl_pixmap_wait_gl;
   iface->wait_gdk             = _gdk_win32_gl_drawable_wait_gdk;
-
-  /*< private >*/
-  /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  iface->real_drawable        = _gdk_gl_pixmap_real_drawable;
 }
 
 HDC
@@ -196,7 +192,7 @@ _gdk_win32_gl_pixmap_hdc_get (GdkGLDrawable *gldrawable)
   PIXELFORMATDESCRIPTOR *pfd;
   int pf;
 
-  g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
+  g_return_val_if_fail (GDK_IS_GL_PIXMAP (gldrawable), NULL);
 
   glpixmap = GDK_GL_PIXMAP (gldrawable);
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
@@ -266,12 +262,11 @@ _gdk_win32_gl_pixmap_hdc_release (GdkGLDrawable *gldrawable)
 {
   GdkGLPixmapImplWin32 *impl;
   GdkImage *src_image;
-  GdkDrawable *dest_drawable;
   BITMAPINFO bmi;
   UINT usage;
   HBITMAP dest_hbitmap;
 
-  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+  g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
 
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
 
@@ -300,9 +295,11 @@ _gdk_win32_gl_pixmap_hdc_release (GdkGLDrawable *gldrawable)
    * Set source (OpenGL) DIB bits to destination DIB.
    */
 
-  /* XXX GdkGLDrawable is not GdkDrawable for the moment :-< */
-  dest_drawable = GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->real_drawable (gldrawable);
-  dest_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (dest_drawable);
+  /*
+   * XXX GdkGLPixmap is not GdkDrawable for the moment :-<
+   *     use glpixmap->wrapper.
+   */
+  dest_hbitmap = (HBITMAP) gdk_win32_drawable_get_handle (GDK_GL_PIXMAP (gldrawable)->wrapper);
 
   if (SetDIBits (impl->hdc, dest_hbitmap,
 		 0, src_image->height,
@@ -370,7 +367,7 @@ gdk_win32_gl_pixmap_swap_buffers (GdkGLDrawable *gldrawable)
 {
   GdkGLPixmapImplWin32 *impl;
 
-  g_return_if_fail (GDK_IS_GL_DRAWABLE (gldrawable));
+  g_return_if_fail (GDK_IS_GL_PIXMAP (gldrawable));
 
   impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
 

@@ -32,12 +32,9 @@ G_BEGIN_DECLS
 void         _gdk_gl_context_set_gl_drawable   (GdkGLContext  *glcontext,
                                                 GdkGLDrawable *gldrawable);
 
-GdkDrawable *_gdk_gl_pixmap_real_drawable      (GdkGLDrawable *gldrawable);
 gboolean     _gdk_gl_pixmap_is_double_buffered (GdkGLDrawable *gldrawable);
 
-GdkDrawable *_gdk_gl_window_real_drawable      (GdkGLDrawable *gldrawable);
 gboolean     _gdk_gl_window_is_double_buffered (GdkGLDrawable *gldrawable);
-
 
 G_END_DECLS
 
