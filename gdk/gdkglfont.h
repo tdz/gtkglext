@@ -28,6 +28,11 @@ void gdk_gl_font_use_gdk_font (GdkFont *font,
                                gint     count,
                                gint     list_base);
 
+PangoFont *gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
+                                       gint                        first,
+                                       gint                        count,
+                                       gint                        list_base);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_FONT_H__ */

@@ -1,5 +1,14 @@
 2002-06-20  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/font.c: Modified to use Pango-based font operation.
+
+	* examples/font-old.c: Old GdkFont-based example.
+
+	* gdk/x11/gdkglfont-x11.c (gdk_gl_font_use_pango_font): 
+	* gdk/win32/gdkglfont-win32.c (gdk_gl_font_use_pango_font): 
+	* gdk/gdkglfont.h: Added new bitmap font generator function which
+	is implemented using Pango.
+
 	* examples/simple.c: 
 	* examples/font.c: 
 	* examples/gears.c: 

@@ -7,7 +7,7 @@
 
 #include <string.h>
 
-static gchar font_string[] = "Helvetica 12";
+static gchar font_name[] = "-adobe-helvetica-medium-r-normal--*-120-*-*-*-*-*-*";
 static GLuint font_list_base;
 static gint font_height;
 
@@ -73,10 +73,7 @@ init (GtkWidget *widget,
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
-  PangoFontDescription *font_desc;
-  PangoFont *font;
-  PangoFontMetrics *font_metrics;
+  GdkFont *font;
 
   /* OpenGL begin. */
   gdk_gl_drawable_gl_begin (gldrawable, glcontext);
@@ -85,19 +82,13 @@ init (GtkWidget *widget,
    * Generate font display lists.
    */
   font_list_base = glGenLists (128);
-  font_desc = pango_font_description_from_string (font_string);
-
-  font = gdk_gl_font_use_pango_font (font_desc, 0, 128, font_list_base);
-  if (font == NULL) {
-    g_print("*** Can't load font '%s'\n", font_string);
+  font = gdk_font_load(font_name);
+  if (!font) {
+    g_print("*** Can't load font '%s'\n", font_name);
     gtk_exit (1);
   }
-
-  font_metrics = pango_font_get_metrics (font, NULL);
-  font_height = pango_font_metrics_get_ascent (font_metrics) +
-                pango_font_metrics_get_descent (font_metrics);
-  font_height = PANGO_PIXELS(font_height);
-  pango_font_metrics_unref (font_metrics);
+  gdk_gl_font_use_gdk_font (font, 0, 128, font_list_base);
+  font_height = font->ascent + font->descent;
 
   glClearColor (1.0, 1.0, 1.0, 1.0);
   glClearDepth (1.0);
@@ -173,12 +164,12 @@ display (GtkWidget      *widget,
     }
 
   /*
-   * Show font description string.
+   * Show font name.
    */
   glColor3f (1.0, 0.0, 0.0);
   glRasterPos2f (10.0, 10.0);
   glListBase (font_list_base);
-  glCallLists (strlen(font_string), GL_UNSIGNED_BYTE, font_string);
+  glCallLists (strlen(font_name), GL_UNSIGNED_BYTE, font_name);
 
   if (gdk_gl_drawable_is_double_buffered (gldrawable))
     gdk_gl_drawable_swap_buffers (gldrawable);

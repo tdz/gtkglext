@@ -21,6 +21,7 @@ EXTRA_PROGRAMS = \
 	simple		\
 	pixmap		\
 	font		\
+	font-old	\
 	gears		\
 	viewlw
 
@@ -39,6 +40,10 @@ pixmap_LDADD = $(LDADDS)
 font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
+
+font_old_SOURCES = font-old.c
+font_old_DEPENDENCIES = $(DEPS)
+font_old_LDADD = $(LDADDS)
 
 gears_SOURCES = gears.c
 gears_DEPENDENCIES = $(DEPS)
