@@ -131,7 +131,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
   char *where, *terminator;
   HDC hdc;
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+  /* g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE); */
 
   /* Extension names should not have spaces. */
   where = strchr (extension, ' ');
