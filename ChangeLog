@@ -1,5 +1,8 @@
 2003-03-04  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* gdk/x11/gdkglglxext.h: Added #ifndef directive to disable
+	GLX*SGIX typedef.
+
 	* gdk/gdkglconfig.c (gdk_gl_config_is_double_buffered): Returns
 	FALSE if as_single_mode is TRUE.
 

@@ -38,21 +38,29 @@ typedef XID GLXWindow;
 typedef XID GLXPbuffer;
 #endif
 
+#ifndef HAVE_GLXFBCONFIGSGIX
 #if defined(GLX_SGIX_fbconfig) && defined(GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF)
 typedef struct __GLXFBConfigRec *GLXFBConfigSGIX;
 #endif
+#endif
 
+#ifndef HAVE_GLXFBCONFIGIDSGIX
 #if defined(GLX_SGIX_fbconfig) && defined(GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF)
 typedef XID GLXFBConfigIDSGIX;
 #endif
+#endif
 
+#ifndef HAVE_GLXPBUFFERSGIX
 #if defined(GLX_SGIX_pbuffer) && defined(GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF)
 typedef XID GLXPbufferSGIX;
 #endif
+#endif
 
 /* for __GLXextFuncPtr typedef in SGI's glxext.h */
+#ifndef HAVE___GLXEXTFUNCPTR
 #if defined(GLX_ARB_get_proc_address) && defined(GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF)
 #undef GLX_ARB_get_proc_address
+#endif
 #endif
 
 /* Suppress 'redefined' warnings (Solaris 8, etc.) */
