@@ -107,7 +107,7 @@ gdk_gl_config_parse_attrib_list (const int             *attrib_list,
      PFD_SUPPORT_GDI and PFD_DOUBLEBUFFER are mutually exclusive in
      the current generic implementation. */
   /* PFD_DRAW_TO_WINDOW or PFD_DRAW_TO_BITMAP is not specified at this stage.
-     The Flag is specified by _gdk_win32_gl_(window|pixmap)_hdc_get (). */
+     The flag is set by gdk_gl_(window|pixmap)_new(). */
   pfd->dwFlags = PFD_SUPPORT_OPENGL |
                  PFD_SUPPORT_GDI;
 
