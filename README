@@ -57,7 +57,7 @@ Requirements
 
   * OpenGL or Mesa (http://www.mesa3d.org/)
 
-  * gtk-doc (http://www.gtk.org/rdp/)  [optional]
+  * GTK-Doc (http://www.gtk.org/rdp/)  [optional]
 
 
 Installation
