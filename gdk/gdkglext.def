@@ -10,11 +10,13 @@ EXPORTS
 	gdk_gl_context_new
 	gdk_gl_debug_flags
 	gdk_gl_drawable_get_type
+	gdk_gl_drawable_is_double_buffered
 	gdk_gl_drawable_make_current
 	gdk_gl_drawable_swap_buffers
 	gdk_gl_drawable_wait_gdk
 	gdk_gl_drawable_wait_gl
 	gdk_gl_font_use_gdk_font
+	gdk_gl_font_use_pango_font
 	gdk_gl_pixmap_get_type
 	gdk_gl_pixmap_new
 	gdk_gl_query_extension

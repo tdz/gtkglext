@@ -7,7 +7,7 @@
 
 #include <string.h>
 
-static gchar font_string[] = "Helvetica 12";
+static gchar font_string[] = "courier 12";
 static GLuint font_list_base;
 static gint font_height;
 
@@ -283,7 +283,7 @@ main (int argc,
    */
 
   drawing_area = gtk_drawing_area_new ();
-  gtk_widget_set_size_request (drawing_area, 600, 200);
+  gtk_widget_set_size_request (drawing_area, 640, 240);
 
   /* Set OpenGL-capability to the widget. */
   gtk_widget_set_gl_capability (drawing_area,

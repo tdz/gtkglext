@@ -30,7 +30,7 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
   PangoFontMap *font_map;
   PangoWin32FontCache *font_cache;
   PangoFont *font = NULL;
-  LOGFONT *logfont;
+  LOGFONT *logfont = NULL;
   HFONT hfont;
   HDC hdc;
 
@@ -66,7 +66,7 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
       goto FAIL;
     }
 
-  SelectObject (hdc, (HGDIOBJ) gdk_font_id (font));
+  SelectObject (hdc, hfont);
 
   if (!wglUseFontBitmaps (hdc, first, count, list_base))
     {
