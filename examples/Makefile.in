@@ -201,7 +201,7 @@ font_SOURCES = font.c
 font_DEPENDENCIES = $(DEPS)
 font_LDADD = $(LDADDS)
 
-logo_SOURCES = logo-model.h logo-model.c logo.c
+logo_SOURCES = trackball.h trackball.c logo-model.h logo-model.c logo.c
 EXTRA_logo_SOURCES = logo-g.c logo-t.c logo-k.c
 logo_DEPENDENCIES = $(DEPS)
 logo_LDADD = $(LDADDS)
@@ -246,7 +246,8 @@ gears_LDFLAGS =
 am_glxinfo_OBJECTS = glxinfo.$(OBJEXT)
 glxinfo_OBJECTS = $(am_glxinfo_OBJECTS)
 glxinfo_LDFLAGS =
-am_logo_OBJECTS = logo-model.$(OBJEXT) logo.$(OBJEXT)
+am_logo_OBJECTS = trackball.$(OBJEXT) logo-model.$(OBJEXT) \
+	logo.$(OBJEXT)
 logo_OBJECTS = $(am_logo_OBJECTS)
 logo_LDFLAGS =
 am_low_level_OBJECTS = low-level.$(OBJEXT)

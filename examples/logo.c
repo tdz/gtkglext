@@ -18,26 +18,28 @@
 #include <GL/glu.h>
 
 #include "logo-model.h"
+#include "trackball.h"
 
-#ifdef X
-#undef X
-#endif
-#ifdef Y
-#undef Y
-#endif
-#ifdef Z
-#undef Z
+#ifndef M_PI
+#define M_PI   3.14159265358979323846
 #endif
 
-#define X 0
-#define Y 1
-#define Z 2
+#ifndef M_PI_2
+#define M_PI_2 1.57079632679489661923
+#endif
+
+#define DIG_2_RAD (M_PI / 180.0)
+#define RAD_2_DIG (180.0 / M_PI)
 
 #define DEFAULT_ROT_COUNT 300
 
-#define INITIAL_ROT_X 70.0
-#define INITIAL_ROT_Y 0.0
-#define INITIAL_ROT_Z 0.0
+#define VIEW_INIT_AXIS_X 1.0
+#define VIEW_INIT_AXIS_Y 0.0
+#define VIEW_INIT_AXIS_Z 0.0
+#define VIEW_INIT_ANGLE  20.0
+
+#define VIEW_SCALE_MAX 2.0
+#define VIEW_SCALE_MIN 0.5
 
 #define LOGO_CUBE       1
 #define LOGO_G_FORWARD  2
@@ -50,6 +52,33 @@
 static GTimer *timer = NULL;
 static gint frames = 0;
 
+static gboolean enable_logo_anim = TRUE;
+
+static float logo_quat[4] = { 0.0, 0.0, 0.0, 1.0 };
+
+static float view_quat[4] = { 0.0, 0.0, 0.0, 1.0 };
+static float view_scale = 1.0;
+
+static void
+init_logo_quat(void)
+{
+  logo_quat[0] = 0.0;
+  logo_quat[1] = 0.0;
+  logo_quat[2] = 0.0;
+  logo_quat[3] = 1.0;
+}
+
+static void
+init_view(void)
+{
+  float sine = sin(0.5 * VIEW_INIT_ANGLE * DIG_2_RAD);
+  view_quat[0] = VIEW_INIT_AXIS_X * sine;
+  view_quat[1] = VIEW_INIT_AXIS_Y * sine;
+  view_quat[2] = VIEW_INIT_AXIS_Z * sine;
+  view_quat[3] = cos(0.5 * VIEW_INIT_ANGLE * DIG_2_RAD);
+  view_scale = 1.0;
+}
+
 static void
 realize(GtkWidget *widget,
         gpointer   data)
@@ -57,9 +86,9 @@ realize(GtkWidget *widget,
   GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
-  static GLfloat light_position[] = { 0.0, 0.0, 30.0, 0.0 };
-  static GLfloat light_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
-  static GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+  static GLfloat light0_position[] = { 0.0, 0.0, 30.0, 0.0 };
+  static GLfloat light0_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
+  static GLfloat light0_specular[] = { 1.0, 1.0, 1.0, 1.0 };
 
   static GLfloat mat_specular[]  = { 0.5, 0.5, 0.5, 1.0 };
   static GLfloat mat_shininess[] = { 10.0 };
@@ -75,9 +104,9 @@ realize(GtkWidget *widget,
   glClearColor(0.5, 0.5, 0.8, 1.0);
   glClearDepth(1.0);
 
-  glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-  glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-  glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+  glLightfv(GL_LIGHT0, GL_POSITION, light0_position);
+  glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diffuse);
+  glLightfv(GL_LIGHT0, GL_SPECULAR, light0_specular);
 
   glEnable(GL_LIGHTING);
   glEnable(GL_LIGHT0);
@@ -110,15 +139,15 @@ realize(GtkWidget *widget,
   /* Backward "G". */
   glNewList(LOGO_G_BACKWARD, GL_COMPILE);
     glPushMatrix();
-    glRotatef(180.0, 1.0, 0.0, 0.0);
+      glRotatef(180.0, 1.0, 0.0, 0.0);
 
-    glDisable(GL_CULL_FACE);
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_blue);
-    logo_draw_g_plane();
-    glEnable(GL_CULL_FACE);
+      glDisable(GL_CULL_FACE);
+      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_blue);
+      logo_draw_g_plane();
+      glEnable(GL_CULL_FACE);
 
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
-    logo_draw_g();
+      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
+      logo_draw_g();
 
     glPopMatrix();
   glEndList();
@@ -137,15 +166,15 @@ realize(GtkWidget *widget,
   /* Backward "T". */
   glNewList(LOGO_T_BACKWARD, GL_COMPILE);
     glPushMatrix();
-    glRotatef(180.0, 1.0, 0.0, 0.0);
+      glRotatef(180.0, 1.0, 0.0, 0.0);
 
-    glDisable(GL_CULL_FACE);
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_red);
-    logo_draw_t_plane();
-    glEnable(GL_CULL_FACE);
+      glDisable(GL_CULL_FACE);
+      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_red);
+      logo_draw_t_plane();
+      glEnable(GL_CULL_FACE);
 
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
-    logo_draw_t();
+      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
+      logo_draw_t();
 
     glPopMatrix();
   glEndList();
@@ -164,19 +193,25 @@ realize(GtkWidget *widget,
   /* Backward "K". */
   glNewList(LOGO_K_BACKWARD, GL_COMPILE);
     glPushMatrix();
-    glRotatef(180.0, 0.0, 0.0, 1.0);
+      glRotatef(180.0, 0.0, 0.0, 1.0);
 
-    glDisable(GL_CULL_FACE);
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_green);
-    logo_draw_k_plane();
-    glEnable(GL_CULL_FACE);
+      glDisable(GL_CULL_FACE);
+      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_green);
+      logo_draw_k_plane();
+      glEnable(GL_CULL_FACE);
 
-    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
-    logo_draw_k();
+      glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_black);
+      logo_draw_k();
     glPopMatrix();
   glEndList();
 
   glEnable(GL_NORMALIZE);
+
+  /* Init logo orientation. */
+  init_logo_quat();
+
+  /* Init view. */
+  init_view();
 
   gdk_gl_drawable_gl_end(gldrawable);
   /*** OpenGL END ***/
@@ -211,8 +246,6 @@ configure_event(GtkWidget         *widget,
   glFrustum(-1.0, 1.0, -aspect, aspect, 2.0, 60.0);
 
   glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-  glTranslatef(0.0, 0.0, -30.0);
 
   gdk_gl_drawable_gl_end(gldrawable);
   /*** OpenGL END ***/
@@ -222,34 +255,31 @@ configure_event(GtkWidget         *widget,
   return TRUE;
 }
 
-static gboolean enable_anim = TRUE;
+static float axis_x[3] = { 1.0, 0.0, 0.0 };
+static float axis_y[3] = { 0.0, 1.0, 0.0 };
+static float axis_z[3] = { 0.0, 0.0, 1.0 };
 
-static int rot_count = DEFAULT_ROT_COUNT;
-
-static GLfloat rot[3] = {
-  INITIAL_ROT_X, INITIAL_ROT_Y, INITIAL_ROT_Z
-};
-
+/* Logo rotation mode. */
 typedef struct _RotMode
 {
-  int index;
+  float *axis;
   float sign;
 } RotMode;
 
 static RotMode rot_mode[] = {
-  {  X, -1.0 },
-  {  Y, -1.0 },
-  {  X, -1.0 },
-  {  Y,  1.0 },
-  {  X, -1.0 },
-  {  Y, -1.0 },
-  {  X, -1.0 },
-  {  Y,  1.0 },
-  { -1,  0.0 }  /* terminator */
+  { axis_x,  1.0 },
+  { axis_y,  1.0 },
+  { axis_x,  1.0 },
+  { axis_z,  1.0 },
+  { axis_x,  1.0 },
+  { axis_y, -1.0 },
+  { axis_x,  1.0 },
+  { axis_z, -1.0 },
+  { NULL,    0.0 }  /* terminator */
 };
 
+static int rot_count = DEFAULT_ROT_COUNT;
 static int mode = 0;
-
 static int counter = 0;
 
 static gboolean
@@ -260,15 +290,21 @@ expose_event(GtkWidget      *widget,
   GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
-  if (enable_anim) {
+  float d_quat[4];
+  float m[4][4];
+
+  if (enable_logo_anim) {
 
     if (counter == rot_count) {
-      if (rot_mode[++mode].index < 0)
+      if (rot_mode[++mode].axis == NULL)
         mode = 0;
       counter = 0;
     }
 
-    rot[rot_mode[mode].index] += rot_mode[mode].sign * 90.0 / rot_count;
+    axis_to_quat(rot_mode[mode].axis,
+                 rot_mode[mode].sign * M_PI_2 / rot_count,
+                 d_quat);
+    add_quats(d_quat, logo_quat, logo_quat);
 
     counter++;
 
@@ -280,23 +316,30 @@ expose_event(GtkWidget      *widget,
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+  glLoadIdentity();
+
+  /* View transformation. */
+  glTranslatef(0.0, 0.0, -30.0);
+  glScalef(view_scale, view_scale, view_scale);
+  build_rotmatrix(m, view_quat);
+  glMultMatrixf(&m[0][0]);
+
+  /* Logo model. */
   glPushMatrix();
-    glRotatef(rot[X], 1.0, 0.0, 0.0);
-    glRotatef(rot[Y], 0.0, 1.0, 0.0);
-    glRotatef(rot[Z], 0.0, 0.0, 1.0);
+    build_rotmatrix(m, logo_quat);
+    glMultMatrixf(&m[0][0]);
 
-    glPushMatrix();
-      glCallList(LOGO_CUBE);
-      glCallList(LOGO_G_FORWARD);
-      glCallList(LOGO_G_BACKWARD);
-      glCallList(LOGO_T_FORWARD);
-      glCallList(LOGO_T_BACKWARD);
-      glCallList(LOGO_K_FORWARD);
-      glCallList(LOGO_K_BACKWARD);
-    glPopMatrix();
-
+    glRotatef(90.0, 1.0, 0.0, 0.0);
+    glCallList(LOGO_CUBE);
+    glCallList(LOGO_G_FORWARD);
+    glCallList(LOGO_G_BACKWARD);
+    glCallList(LOGO_T_FORWARD);
+    glCallList(LOGO_T_BACKWARD);
+    glCallList(LOGO_K_FORWARD);
+    glCallList(LOGO_K_BACKWARD);
   glPopMatrix();
 
+  /* Swap buffers. */
   if (gdk_gl_drawable_is_double_buffered(gldrawable))
     gdk_gl_drawable_swap_buffers(gldrawable);
   else
@@ -307,21 +350,19 @@ expose_event(GtkWidget      *widget,
 
  NO_GL:
 
-  if (enable_anim) {
+  /* Frame counter. */
 
-    frames++;
+  frames++;
 
-    {
-      gdouble seconds = g_timer_elapsed(timer, NULL);
-      if (seconds >= 5.0) {
-        gdouble fps = frames / seconds;
-        g_print("%d frames in %6.3f seconds = %6.3f FPS\n",
-                frames, seconds, fps);
-        g_timer_reset(timer);
-        frames = 0;
-      }
+  if (enable_logo_anim) {
+    gdouble seconds = g_timer_elapsed(timer, NULL);
+    if (seconds >= 5.0) {
+      gdouble fps = frames / seconds;
+      g_print("%d frames in %6.3f seconds = %6.3f FPS\n",
+              frames, seconds, fps);
+      g_timer_reset(timer);
+      frames = 0;
     }
-
   }
 
   return TRUE;
@@ -342,7 +383,7 @@ idle_add(GtkWidget *widget)
 {
   if (idle_id == 0) {
     idle_id = gtk_idle_add_priority(GDK_PRIORITY_REDRAW,
-                                    (GtkFunction) idle,
+                                    (GtkFunction)idle,
                                     widget);
   }
 }
@@ -389,41 +430,81 @@ visibility_notify_event(GtkWidget          *widget,
   return TRUE;
 }
 
-static void
-toggle_anim(GtkWidget *widget)
-{
-  enable_anim = enable_anim ? FALSE : TRUE;
-
-  if (enable_anim)
-    idle_add(widget);
-  else
-    idle_remove(widget);
-}
-
-static void
-init_rot(GtkWidget *widget)
-{
-  rot[X] = INITIAL_ROT_X;
-  rot[Y] = INITIAL_ROT_Y;
-  rot[Z] = INITIAL_ROT_Z;
-  mode = 0;
-  counter = 0;
-
-  gtk_widget_queue_draw(widget);
-}
+static float begin_x = 0.0;
+static float begin_y = 0.0;
 
 static gboolean
 button_press_event(GtkWidget      *widget,
                    GdkEventButton *event,
                    gpointer        data)
 {
-  if (event->button == 3) {
+  /* Popup menu. */
+  if (event->button == 3)
     gtk_menu_popup(GTK_MENU(widget), NULL, NULL, NULL, NULL,
                    event->button, event->time);
-    return TRUE;
+
+  begin_x = event->x;
+  begin_y = event->y;
+
+  return TRUE;
+}
+
+static gboolean
+motion_notify_event(GtkWidget      *widget,
+                    GdkEventMotion *event,
+                    gpointer        data)
+{
+  float w = widget->allocation.width;
+  float h = widget->allocation.height;
+  float x = event->x;
+  float y = event->y;
+  float d_quat[4];
+
+  /* Rotation. */
+  if (event->state & GDK_BUTTON1_MASK) {
+    trackball(d_quat,
+              (2.0 * begin_x - w) / w,
+              (h - 2.0 * begin_y) / h,
+              (2.0 * x - w) / w,
+              (h - 2.0 * y) / h);
+    add_quats(d_quat, view_quat, view_quat);
   }
 
-  return FALSE;
+  /* Scaling. */
+  if (event->state & GDK_BUTTON2_MASK) {
+    view_scale = view_scale * (1.0 + (y - begin_y) / h);
+    if (view_scale > VIEW_SCALE_MAX)
+      view_scale = VIEW_SCALE_MAX;
+    else if (view_scale < VIEW_SCALE_MIN)
+      view_scale = VIEW_SCALE_MIN;
+  }
+
+  begin_x = x;
+  begin_y = y;
+
+  return TRUE;
+}
+
+static void
+toggle_logo_anim(GtkWidget *widget)
+{
+  enable_logo_anim = enable_logo_anim ? FALSE : TRUE;
+
+  if (enable_logo_anim)
+    idle_add(widget);
+  else
+    idle_remove(widget);
+}
+
+static void
+init_logo_anim(GtkWidget *widget)
+{
+  init_logo_quat();
+  init_view();
+  mode = 0;
+  counter = 0;
+
+  gtk_widget_queue_draw(widget);
 }
 
 static gboolean
@@ -433,30 +514,12 @@ key_press_event(GtkWidget   *widget,
 {
   switch (event->keyval) {
   case GDK_a:
-    toggle_anim(widget);
+    toggle_logo_anim(widget);
     break;
   case GDK_i:
-    init_rot(widget);
+    init_logo_anim(widget);
     break;
-  case GDK_z:
-    rot[Z] += 5.0;
-    break;
-  case GDK_Z:
-    rot[Z] -= 5.0;
-    break;
-  case GDK_Up:
-    rot[X] += 5.0;
-    break;
-  case GDK_Down:
-    rot[X] -= 5.0;
-    break;
-  case GDK_Left:
-    rot[Y] += 5.0;
-    break;
-  case GDK_Right:
-    rot[Y] -= 5.0;
-    break;
-  case GDK_Escape:
+  case GDK_q:
     gtk_main_quit();
     break;
   default:
@@ -568,7 +631,7 @@ main(int argc,
       arg_count = TRUE;
 
     if (strcmp(argv[i], "-noanim") == 0)
-      enable_anim = FALSE;
+      enable_logo_anim = FALSE;
   }
 
   /*
@@ -641,6 +704,8 @@ main(int argc,
 
   gtk_widget_set_events(drawing_area,
                         GDK_EXPOSURE_MASK |
+                        GDK_BUTTON1_MOTION_MASK |
+                        GDK_BUTTON2_MOTION_MASK |
                         GDK_BUTTON_PRESS_MASK |
                         GDK_VISIBILITY_NOTIFY_MASK);
 
@@ -656,6 +721,8 @@ main(int argc,
                    G_CALLBACK(unmap_event), NULL);
   g_signal_connect(G_OBJECT(drawing_area), "visibility_notify_event",
                    G_CALLBACK(visibility_notify_event), NULL);
+  g_signal_connect(G_OBJECT(drawing_area), "motion_notify_event",
+                   G_CALLBACK(motion_notify_event), NULL);
 
   gtk_widget_show(drawing_area);
 
@@ -669,14 +736,14 @@ main(int argc,
   menu_item = gtk_menu_item_new_with_label("Toggle Animation");
   gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
   g_signal_connect_swapped(G_OBJECT(menu_item), "activate",
-                           G_CALLBACK(toggle_anim), drawing_area);
+                           G_CALLBACK(toggle_logo_anim), drawing_area);
   gtk_widget_show(menu_item);
 
   /* Init orientation */
   menu_item = gtk_menu_item_new_with_label("Initialize");
   gtk_menu_shell_append(GTK_MENU_SHELL(menu), menu_item);
   g_signal_connect_swapped(G_OBJECT(menu_item), "activate",
-                           G_CALLBACK(init_rot), drawing_area);
+                           G_CALLBACK(init_logo_anim), drawing_area);
   gtk_widget_show(menu_item);
 
   /* Quit */
