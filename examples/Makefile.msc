@@ -253,4 +253,5 @@ clean: clean-obj
 distclean: clean
 	-del $(PKGCONFIG_CFLAGS_MAK)
 	-del $(PKGCONFIG_LIBS_MAK)
+	-del $(PKGCONFIG_LIBS_WITH_PANGOFT2_MAK)
 	-del *~
