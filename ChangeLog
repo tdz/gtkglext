@@ -1,5 +1,9 @@
 2003-04-28  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* Version 0.99.0
+
+	* configure.in: Bumped version.
+
 	* gtkglext.nsi.in: Changed default installation directory.
 	Fixed Uninstaller section. Output gtkglext-env.sh file.
 	Output gtkglext-env.bat batch file.
