@@ -391,9 +391,14 @@ toggle_animation (GtkWidget *widget)
   animate = !animate;
 
   if (animate)
-    idle_add (widget);
+    {
+      idle_add (widget);
+    }
   else
-    idle_remove (widget);
+    {
+      idle_remove (widget);
+      gtk_widget_queue_draw (widget);
+    }
 }
 
 

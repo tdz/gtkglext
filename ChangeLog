@@ -1,5 +1,8 @@
 2003-03-08  Naofumi Yasufuku  <naofumi@users.sourceforge.net>
 
+	* examples/*.c (toggle_animation): Call gtk_widget_queue_draw() if
+	animation is turned off.
+
 	* autogen.sh: Added libtoolize --force.
 
 	* examples/*.c: Set top-level window's resize_mode to

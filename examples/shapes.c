@@ -522,6 +522,7 @@ toggle_animation (GtkWidget *widget)
       view_quat_diff[1] = 0.0;
       view_quat_diff[2] = 0.0;
       view_quat_diff[3] = 1.0;
+      gtk_widget_queue_draw (widget);
     }
 }
 
