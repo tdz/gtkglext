@@ -16,6 +16,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#include <string.h>
+
 #include <gmodule.h>
 
 #ifdef GDK_MULTIHEAD_SAFE
@@ -114,6 +116,100 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 }
 
 #endif /* GDK_MULTIHEAD_SAFE */
+
+gboolean
+gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
+                                  const char  *extension)
+{
+  typedef const char * (WINAPI * __wglGetExtensionsStringARBProc) (HDC);
+  typedef const char * (WINAPI * __wglGetExtensionsStringEXTProc) (void);
+  __wglGetExtensionsStringARBProc wgl_get_extensions_string_arb;
+  __wglGetExtensionsStringEXTProc wgl_get_extensions_string_ext;
+
+  static const char *extensions = NULL;
+  const char *start;
+  char *where, *terminator;
+  int major, minor;
+
+  GdkWindow *root_window;
+  HWND hwnd;
+  HDC hdc;
+
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  /* Extension names should not have spaces. */
+  where = strchr (extension, ' ');
+  if (where || *extension == '\0')
+    return FALSE;
+
+  if (!extensions)
+    {
+
+      /* Try wglGetExtensionsStringARB. */
+
+      wgl_get_extensions_string_arb =
+        (__wglGetExtensionsStringARBProc) gdk_gl_query_get_proc_address ("wglGetExtensionsStringARB");
+
+      if (wgl_get_extensions_string_arb)
+        {
+          /* root_window = gdk_screen_get_root_window (glconfig->screen); */
+          root_window = gdk_get_default_root_window ();
+          hwnd = (HWND) gdk_win32_drawable_get_handle (GDK_DRAWABLE (root_window));
+
+          hdc = GetDC (hwnd);
+          if (!hdc)
+            {
+              g_warning ("cannot get DC");
+            }
+          else
+            {
+              extensions = wgl_get_extensions_string_arb (hdc);
+              ReleaseDC (hwnd, hdc);
+            }
+        }
+
+      if (!extensions)
+        {
+          /* Try wglGetExtensionsStringEXT. */
+
+          wgl_get_extensions_string_ext =
+            (__wglGetExtensionsStringEXTProc) gdk_gl_query_get_proc_address ("wglGetExtensionsStringEXT");
+
+          if (wgl_get_extensions_string_ext)
+            extensions = wgl_get_extensions_string_ext ();
+        }
+
+      if (!extensions)
+        extensions = "";
+
+    }
+
+  /* It takes a bit of care to be fool-proof about parsing
+     the WGL extensions string.  Don't be fooled by
+     sub-strings,  etc. */
+  start = extensions;
+  for (;;)
+    {
+      where = strstr (start, extension);
+      if (!where)
+        break;
+
+      terminator = where + strlen(extension);
+
+      if (where == start || *(where - 1) == ' ')
+        if (*terminator == ' ' || *terminator == '\0')
+          {
+            GDK_GL_NOTE (MISC, g_message (" - %s - supported", extension));
+            return TRUE;
+          }
+
+      start = terminator;
+    }
+
+  GDK_GL_NOTE (MISC, g_message (" - %s - not supported", extension));
+
+  return FALSE;
+}
 
 GdkGLProc
 gdk_gl_query_get_proc_address (const char *proc_name)

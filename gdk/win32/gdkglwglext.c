@@ -16,6 +16,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglwglext.h"
 
@@ -64,7 +65,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_buffer_region), wglSaveBufferRegi
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_buffer_region), wglRestoreBufferRegionARB)
 
 GdkGL_WGL_ARB_buffer_region *
-gdk_gl_get_WGL_ARB_buffer_region (void);
+gdk_gl_get_WGL_ARB_buffer_region (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -76,10 +77,15 @@ gdk_gl_get_WGL_ARB_buffer_region (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglCreateBufferRegionARB ()  != NULL);
-      supported &= (gdk_gl_get_wglDeleteBufferRegionARB ()  != NULL);
-      supported &= (gdk_gl_get_wglSaveBufferRegionARB ()    != NULL);
-      supported &= (gdk_gl_get_wglRestoreBufferRegionARB () != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_ARB_buffer_region");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglCreateBufferRegionARB ()  != NULL);
+          supported &= (gdk_gl_get_wglDeleteBufferRegionARB ()  != NULL);
+          supported &= (gdk_gl_get_wglSaveBufferRegionARB ()    != NULL);
+          supported &= (gdk_gl_get_wglRestoreBufferRegionARB () != NULL);
+        }
 
       init = TRUE;
     }
@@ -101,7 +107,7 @@ static GdkGL_WGL_ARB_extensions_string _GDK_GL_PROCS (GdkGL_WGL_ARB_extensions_s
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_extensions_string), wglGetExtensionsStringARB)
 
 GdkGL_WGL_ARB_extensions_string *
-gdk_gl_get_WGL_ARB_extensions_string (void);
+gdk_gl_get_WGL_ARB_extensions_string (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -113,7 +119,12 @@ gdk_gl_get_WGL_ARB_extensions_string (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglGetExtensionsStringARB () != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_ARB_extensions_string");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglGetExtensionsStringARB () != NULL);
+        }
 
       init = TRUE;
     }
@@ -137,7 +148,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_pixel_format), wglGetPixelFormatA
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_pixel_format), wglChoosePixelFormatARB)
 
 GdkGL_WGL_ARB_pixel_format *
-gdk_gl_get_WGL_ARB_pixel_format (void);
+gdk_gl_get_WGL_ARB_pixel_format (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -149,9 +160,14 @@ gdk_gl_get_WGL_ARB_pixel_format (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglGetPixelFormatAttribivARB () != NULL);
-      supported &= (gdk_gl_get_wglGetPixelFormatAttribfvARB () != NULL);
-      supported &= (gdk_gl_get_wglChoosePixelFormatARB ()      != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_ARB_pixel_format");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglGetPixelFormatAttribivARB () != NULL);
+          supported &= (gdk_gl_get_wglGetPixelFormatAttribfvARB () != NULL);
+          supported &= (gdk_gl_get_wglChoosePixelFormatARB ()      != NULL);
+        }
 
       init = TRUE;
     }
@@ -174,7 +190,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_make_current_read), wglMakeContex
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_make_current_read), wglGetCurrentReadDCARB)
 
 GdkGL_WGL_ARB_make_current_read *
-gdk_gl_get_WGL_ARB_make_current_read (void);
+gdk_gl_get_WGL_ARB_make_current_read (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -186,8 +202,13 @@ gdk_gl_get_WGL_ARB_make_current_read (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglMakeContextCurrentARB () != NULL);
-      supported &= (gdk_gl_get_wglGetCurrentReadDCARB ()   != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_ARB_make_current_read");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglMakeContextCurrentARB () != NULL);
+          supported &= (gdk_gl_get_wglGetCurrentReadDCARB ()   != NULL);
+        }
 
       init = TRUE;
     }
@@ -213,7 +234,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_pbuffer), wglDestroyPbufferARB)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_pbuffer), wglQueryPbufferARB)
 
 GdkGL_WGL_ARB_pbuffer *
-gdk_gl_get_WGL_ARB_pbuffer (void);
+gdk_gl_get_WGL_ARB_pbuffer (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -225,11 +246,16 @@ gdk_gl_get_WGL_ARB_pbuffer (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglCreatePbufferARB ()    != NULL);
-      supported &= (gdk_gl_get_wglGetPbufferDCARB ()     != NULL);
-      supported &= (gdk_gl_get_wglReleasePbufferDCARB () != NULL);
-      supported &= (gdk_gl_get_wglDestroyPbufferARB ()   != NULL);
-      supported &= (gdk_gl_get_wglQueryPbufferARB ()     != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_ARB_pbuffer");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglCreatePbufferARB ()    != NULL);
+          supported &= (gdk_gl_get_wglGetPbufferDCARB ()     != NULL);
+          supported &= (gdk_gl_get_wglReleasePbufferDCARB () != NULL);
+          supported &= (gdk_gl_get_wglDestroyPbufferARB ()   != NULL);
+          supported &= (gdk_gl_get_wglQueryPbufferARB ()     != NULL);
+        }
 
       init = TRUE;
     }
@@ -253,7 +279,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_render_texture), wglReleaseTexIma
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_ARB_render_texture), wglSetPbufferAttribARB)
 
 GdkGL_WGL_ARB_render_texture *
-gdk_gl_get_WGL_ARB_render_texture (void);
+gdk_gl_get_WGL_ARB_render_texture (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -265,9 +291,14 @@ gdk_gl_get_WGL_ARB_render_texture (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglBindTexImageARB ()     != NULL);
-      supported &= (gdk_gl_get_wglReleaseTexImageARB ()  != NULL);
-      supported &= (gdk_gl_get_wglSetPbufferAttribARB () != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_ARB_render_texture");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglBindTexImageARB ()     != NULL);
+          supported &= (gdk_gl_get_wglReleaseTexImageARB ()  != NULL);
+          supported &= (gdk_gl_get_wglSetPbufferAttribARB () != NULL);
+        }
 
       init = TRUE;
     }
@@ -292,7 +323,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_display_color_table), wglBindDisp
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_display_color_table), wglDestroyDisplayColorTableEXT)
 
 GdkGL_WGL_EXT_display_color_table *
-gdk_gl_get_WGL_EXT_display_color_table (void);
+gdk_gl_get_WGL_EXT_display_color_table (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -304,10 +335,15 @@ gdk_gl_get_WGL_EXT_display_color_table (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglCreateDisplayColorTableEXT ()  != NULL);
-      supported &= (gdk_gl_get_wglLoadDisplayColorTableEXT ()    != NULL);
-      supported &= (gdk_gl_get_wglBindDisplayColorTableEXT ()    != NULL);
-      supported &= (gdk_gl_get_wglDestroyDisplayColorTableEXT () != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_EXT_display_color_table");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglCreateDisplayColorTableEXT ()  != NULL);
+          supported &= (gdk_gl_get_wglLoadDisplayColorTableEXT ()    != NULL);
+          supported &= (gdk_gl_get_wglBindDisplayColorTableEXT ()    != NULL);
+          supported &= (gdk_gl_get_wglDestroyDisplayColorTableEXT () != NULL);
+        }
 
       init = TRUE;
     }
@@ -329,7 +365,7 @@ static GdkGL_WGL_EXT_extensions_string _GDK_GL_PROCS (GdkGL_WGL_EXT_extensions_s
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_extensions_string), wglGetExtensionsStringEXT)
 
 GdkGL_WGL_EXT_extensions_string *
-gdk_gl_get_WGL_EXT_extensions_string (void);
+gdk_gl_get_WGL_EXT_extensions_string (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -341,7 +377,12 @@ gdk_gl_get_WGL_EXT_extensions_string (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglGetExtensionsStringEXT () != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_EXT_extensions_string");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglGetExtensionsStringEXT () != NULL);
+        }
 
       init = TRUE;
     }
@@ -364,7 +405,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_make_current_read), wglMakeContex
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_make_current_read), wglGetCurrentReadDCEXT)
 
 GdkGL_WGL_EXT_make_current_read *
-gdk_gl_get_WGL_EXT_make_current_read (void);
+gdk_gl_get_WGL_EXT_make_current_read (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -376,8 +417,13 @@ gdk_gl_get_WGL_EXT_make_current_read (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglMakeContextCurrentEXT () != NULL);
-      supported &= (gdk_gl_get_wglGetCurrentReadDCEXT ()   != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_EXT_make_current_read");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglMakeContextCurrentEXT () != NULL);
+          supported &= (gdk_gl_get_wglGetCurrentReadDCEXT ()   != NULL);
+        }
 
       init = TRUE;
     }
@@ -403,7 +449,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_pbuffer), wglDestroyPbufferEXT)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_pbuffer), wglQueryPbufferEXT)
 
 GdkGL_WGL_EXT_pbuffer *
-gdk_gl_get_WGL_EXT_pbuffer (void);
+gdk_gl_get_WGL_EXT_pbuffer (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -415,11 +461,16 @@ gdk_gl_get_WGL_EXT_pbuffer (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglCreatePbufferEXT ()    != NULL);
-      supported &= (gdk_gl_get_wglGetPbufferDCEXT ()     != NULL);
-      supported &= (gdk_gl_get_wglReleasePbufferDCEXT () != NULL);
-      supported &= (gdk_gl_get_wglDestroyPbufferEXT ()   != NULL);
-      supported &= (gdk_gl_get_wglQueryPbufferEXT ()     != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_EXT_pbuffer");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglCreatePbufferEXT ()    != NULL);
+          supported &= (gdk_gl_get_wglGetPbufferDCEXT ()     != NULL);
+          supported &= (gdk_gl_get_wglReleasePbufferDCEXT () != NULL);
+          supported &= (gdk_gl_get_wglDestroyPbufferEXT ()   != NULL);
+          supported &= (gdk_gl_get_wglQueryPbufferEXT ()     != NULL);
+        }
 
       init = TRUE;
     }
@@ -443,7 +494,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_pixel_format), wglGetPixelFormatA
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_pixel_format), wglChoosePixelFormatEXT)
 
 GdkGL_WGL_EXT_pixel_format *
-gdk_gl_get_WGL_EXT_pixel_format (void);
+gdk_gl_get_WGL_EXT_pixel_format (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -455,9 +506,14 @@ gdk_gl_get_WGL_EXT_pixel_format (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglGetPixelFormatAttribivEXT () != NULL);
-      supported &= (gdk_gl_get_wglGetPixelFormatAttribfvEXT () != NULL);
-      supported &= (gdk_gl_get_wglChoosePixelFormatEXT ()      != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_EXT_pixel_format");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglGetPixelFormatAttribivEXT () != NULL);
+          supported &= (gdk_gl_get_wglGetPixelFormatAttribfvEXT () != NULL);
+          supported &= (gdk_gl_get_wglChoosePixelFormatEXT ()      != NULL);
+        }
 
       init = TRUE;
     }
@@ -480,7 +536,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_swap_control), wglSwapIntervalEXT
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_EXT_swap_control), wglGetSwapIntervalEXT)
 
 GdkGL_WGL_EXT_swap_control *
-gdk_gl_get_WGL_EXT_swap_control (void);
+gdk_gl_get_WGL_EXT_swap_control (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -492,8 +548,13 @@ gdk_gl_get_WGL_EXT_swap_control (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglSwapIntervalEXT ()    != NULL);
-      supported &= (gdk_gl_get_wglGetSwapIntervalEXT () != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_EXT_swap_control");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglSwapIntervalEXT ()    != NULL);
+          supported &= (gdk_gl_get_wglGetSwapIntervalEXT () != NULL);
+        }
 
       init = TRUE;
     }
@@ -516,7 +577,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_NV_vertex_array_range), wglAllocateMe
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_NV_vertex_array_range), wglFreeMemoryNV)
 
 GdkGL_WGL_NV_vertex_array_range *
-gdk_gl_get_WGL_NV_vertex_array_range (void);
+gdk_gl_get_WGL_NV_vertex_array_range (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -528,8 +589,13 @@ gdk_gl_get_WGL_NV_vertex_array_range (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglAllocateMemoryNV () != NULL);
-      supported &= (gdk_gl_get_wglFreeMemoryNV ()     != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_NV_vertex_array_range");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglAllocateMemoryNV () != NULL);
+          supported &= (gdk_gl_get_wglFreeMemoryNV ()     != NULL);
+        }
 
       init = TRUE;
     }
@@ -556,7 +622,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_OML_sync_control), wglWaitForMscOML)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_OML_sync_control), wglWaitForSbcOML)
 
 GdkGL_WGL_OML_sync_control *
-gdk_gl_get_WGL_OML_sync_control (void);
+gdk_gl_get_WGL_OML_sync_control (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -568,12 +634,17 @@ gdk_gl_get_WGL_OML_sync_control (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglGetSyncValuesOML ()       != NULL);
-      supported &= (gdk_gl_get_wglGetMscRateOML ()          != NULL);
-      supported &= (gdk_gl_get_wglSwapBuffersMscOML ()      != NULL);
-      supported &= (gdk_gl_get_wglSwapLayerBuffersMscOML () != NULL);
-      supported &= (gdk_gl_get_wglWaitForMscOML ()          != NULL);
-      supported &= (gdk_gl_get_wglWaitForSbcOML ()          != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_OML_sync_control");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglGetSyncValuesOML ()       != NULL);
+          supported &= (gdk_gl_get_wglGetMscRateOML ()          != NULL);
+          supported &= (gdk_gl_get_wglSwapBuffersMscOML ()      != NULL);
+          supported &= (gdk_gl_get_wglSwapLayerBuffersMscOML () != NULL);
+          supported &= (gdk_gl_get_wglWaitForMscOML ()          != NULL);
+          supported &= (gdk_gl_get_wglWaitForSbcOML ()          != NULL);
+        }
 
       init = TRUE;
     }
@@ -596,7 +667,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_digital_video_control), wglGetDig
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_digital_video_control), wglSetDigitalVideoParametersI3D)
 
 GdkGL_WGL_I3D_digital_video_control *
-gdk_gl_get_WGL_I3D_digital_video_control (void);
+gdk_gl_get_WGL_I3D_digital_video_control (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -608,8 +679,13 @@ gdk_gl_get_WGL_I3D_digital_video_control (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglGetDigitalVideoParametersI3D () != NULL);
-      supported &= (gdk_gl_get_wglSetDigitalVideoParametersI3D () != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_I3D_digital_video_control");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglGetDigitalVideoParametersI3D () != NULL);
+          supported &= (gdk_gl_get_wglSetDigitalVideoParametersI3D () != NULL);
+        }
 
       init = TRUE;
     }
@@ -634,7 +710,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_gamma), wglGetGammaTableI3D)
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_gamma), wglSetGammaTableI3D)
 
 GdkGL_WGL_I3D_gamma *
-gdk_gl_get_WGL_I3D_gamma (void);
+gdk_gl_get_WGL_I3D_gamma (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -646,10 +722,15 @@ gdk_gl_get_WGL_I3D_gamma (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglGetGammaTableParametersI3D () != NULL);
-      supported &= (gdk_gl_get_wglSetGammaTableParametersI3D () != NULL);
-      supported &= (gdk_gl_get_wglGetGammaTableI3D ()           != NULL);
-      supported &= (gdk_gl_get_wglSetGammaTableI3D ()           != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_I3D_gamma");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglGetGammaTableParametersI3D () != NULL);
+          supported &= (gdk_gl_get_wglSetGammaTableParametersI3D () != NULL);
+          supported &= (gdk_gl_get_wglGetGammaTableI3D ()           != NULL);
+          supported &= (gdk_gl_get_wglSetGammaTableI3D ()           != NULL);
+        }
 
       init = TRUE;
     }
@@ -683,7 +764,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_genlock), wglGetGenlockSourceDela
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_genlock), wglQueryGenlockMaxSourceDelayI3D)
 
 GdkGL_WGL_I3D_genlock *
-gdk_gl_get_WGL_I3D_genlock (void);
+gdk_gl_get_WGL_I3D_genlock (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -695,18 +776,23 @@ gdk_gl_get_WGL_I3D_genlock (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglEnableGenlockI3D ()              != NULL);
-      supported &= (gdk_gl_get_wglDisableGenlockI3D ()             != NULL);
-      supported &= (gdk_gl_get_wglIsEnabledGenlockI3D ()           != NULL);
-      supported &= (gdk_gl_get_wglGenlockSourceI3D ()              != NULL);
-      supported &= (gdk_gl_get_wglGetGenlockSourceI3D ()           != NULL);
-      supported &= (gdk_gl_get_wglGenlockSourceEdgeI3D ()          != NULL);
-      supported &= (gdk_gl_get_wglGetGenlockSourceEdgeI3D ()       != NULL);
-      supported &= (gdk_gl_get_wglGenlockSampleRateI3D ()          != NULL);
-      supported &= (gdk_gl_get_wglGetGenlockSampleRateI3D ()       != NULL);
-      supported &= (gdk_gl_get_wglGenlockSourceDelayI3D ()         != NULL);
-      supported &= (gdk_gl_get_wglGetGenlockSourceDelayI3D ()      != NULL);
-      supported &= (gdk_gl_get_wglQueryGenlockMaxSourceDelayI3D () != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_I3D_genlock");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglEnableGenlockI3D ()              != NULL);
+          supported &= (gdk_gl_get_wglDisableGenlockI3D ()             != NULL);
+          supported &= (gdk_gl_get_wglIsEnabledGenlockI3D ()           != NULL);
+          supported &= (gdk_gl_get_wglGenlockSourceI3D ()              != NULL);
+          supported &= (gdk_gl_get_wglGetGenlockSourceI3D ()           != NULL);
+          supported &= (gdk_gl_get_wglGenlockSourceEdgeI3D ()          != NULL);
+          supported &= (gdk_gl_get_wglGetGenlockSourceEdgeI3D ()       != NULL);
+          supported &= (gdk_gl_get_wglGenlockSampleRateI3D ()          != NULL);
+          supported &= (gdk_gl_get_wglGetGenlockSampleRateI3D ()       != NULL);
+          supported &= (gdk_gl_get_wglGenlockSourceDelayI3D ()         != NULL);
+          supported &= (gdk_gl_get_wglGetGenlockSourceDelayI3D ()      != NULL);
+          supported &= (gdk_gl_get_wglQueryGenlockMaxSourceDelayI3D () != NULL);
+        }
 
       init = TRUE;
     }
@@ -731,7 +817,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_image_buffer), wglAssociateImageB
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_image_buffer), wglReleaseImageBufferEventsI3D)
 
 GdkGL_WGL_I3D_image_buffer *
-gdk_gl_get_WGL_I3D_image_buffer (void);
+gdk_gl_get_WGL_I3D_image_buffer (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -743,10 +829,15 @@ gdk_gl_get_WGL_I3D_image_buffer (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglCreateImageBufferI3D ()          != NULL);
-      supported &= (gdk_gl_get_wglDestroyImageBufferI3D ()         != NULL);
-      supported &= (gdk_gl_get_wglAssociateImageBufferEventsI3D () != NULL);
-      supported &= (gdk_gl_get_wglReleaseImageBufferEventsI3D ()   != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_I3D_image_buffer");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglCreateImageBufferI3D ()          != NULL);
+          supported &= (gdk_gl_get_wglDestroyImageBufferI3D ()         != NULL);
+          supported &= (gdk_gl_get_wglAssociateImageBufferEventsI3D () != NULL);
+          supported &= (gdk_gl_get_wglReleaseImageBufferEventsI3D ()   != NULL);
+        }
 
       init = TRUE;
     }
@@ -771,7 +862,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_swap_frame_lock), wglIsEnabledFra
 _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_swap_frame_lock), wglQueryFrameLockMasterI3D)
 
 GdkGL_WGL_I3D_swap_frame_lock *
-gdk_gl_get_WGL_I3D_swap_frame_lock (void);
+gdk_gl_get_WGL_I3D_swap_frame_lock (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -783,10 +874,15 @@ gdk_gl_get_WGL_I3D_swap_frame_lock (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglEnableFrameLockI3D ()      != NULL);
-      supported &= (gdk_gl_get_wglDisableFrameLockI3D ()     != NULL);
-      supported &= (gdk_gl_get_wglIsEnabledFrameLockI3D ()   != NULL);
-      supported &= (gdk_gl_get_wglQueryFrameLockMasterI3D () != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_I3D_swap_frame_lock");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglEnableFrameLockI3D ()      != NULL);
+          supported &= (gdk_gl_get_wglDisableFrameLockI3D ()     != NULL);
+          supported &= (gdk_gl_get_wglIsEnabledFrameLockI3D ()   != NULL);
+          supported &= (gdk_gl_get_wglQueryFrameLockMasterI3D () != NULL);
+        }
 
       init = TRUE;
     }
@@ -812,7 +908,7 @@ _GDK_GL_GET_PROC (_GDK_GL_PROCS (GdkGL_WGL_I3D_swap_frame_usage), wglQueryFrameT
 
 
 GdkGL_WGL_I3D_swap_frame_usage *
-gdk_gl_get_WGL_I3D_swap_frame_usage (void);
+gdk_gl_get_WGL_I3D_swap_frame_usage (GdkGLConfig *glconfig);
 {
   static gboolean init = FALSE;
   static gboolean supported = TRUE;
@@ -824,10 +920,15 @@ gdk_gl_get_WGL_I3D_swap_frame_usage (void);
 
   if (!init)
     {
-      supported &= (gdk_gl_get_wglGetFrameUsageI3D ()      != NULL);
-      supported &= (gdk_gl_get_wglBeginFrameTrackingI3D () != NULL);
-      supported &= (gdk_gl_get_wglEndFrameTrackingI3D ()   != NULL);
-      supported &= (gdk_gl_get_wglQueryFrameTrackingI3D () != NULL);
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_I3D_swap_frame_usage");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglGetFrameUsageI3D ()      != NULL);
+          supported &= (gdk_gl_get_wglBeginFrameTrackingI3D () != NULL);
+          supported &= (gdk_gl_get_wglEndFrameTrackingI3D ()   != NULL);
+          supported &= (gdk_gl_get_wglQueryFrameTrackingI3D () != NULL);
+        }
 
       init = TRUE;
     }
