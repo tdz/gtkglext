@@ -356,10 +356,17 @@ button_press_event (GtkWidget      *widget,
 		    GdkEventButton *event,
 		    gpointer        data)
 {
-  if (event->button == 1)
+  if (animate)
     {
-      if (animate)
+      if (event->button == 1)
         toggle_animation (widget);
+    }
+  else
+    {
+      view_quat_diff[0] = 0.0;
+      view_quat_diff[1] = 0.0;
+      view_quat_diff[2] = 0.0;
+      view_quat_diff[3] = 1.0;
     }
 
   begin_x = event->x;
@@ -373,9 +380,9 @@ button_release_event (GtkWidget      *widget,
                       GdkEventButton *event,
                       gpointer        data)
 {
-  if (event->button == 1)
+  if (!animate)
     {
-      if (!animate &&
+      if (event->button == 1 &&
           ((dx*dx + dy*dy) > ANIMATE_THRESHOLD))
         toggle_animation (widget);
     }
