@@ -349,7 +349,7 @@ PKG_CHECK_MODULES([BASE_DEPENDENCIES], [\
 gtk_pkg >= gtk_required_version \
 gdk_pkg >= gdk_required_version \
 pango_pkg >= pango_required_version \
-pangox_pkg >= pango_required_version \
+pangox_pkg >= pangox_required_version \
 gmodule_pkg >= gmodule_required_version \
 ])
 
