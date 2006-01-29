@@ -1,6 +1,7 @@
-68% symbol docs coverage.
-102 symbols documented.
-49 not documented.
+62% symbol docs coverage.
+118 symbols documented.
+1 symbols incomplete.
+71 not documented.
 
 
 GDKGLEXT_BINARY_AGE
@@ -42,6 +43,7 @@ GdkGLRenderTypeMask
 GdkGLTransparentType
 GdkGLVisualType
 GdkGLWindow
+gdk_gl_context_copy (Param3)
 gdkglext_binary_age
 gdkglext_interface_age
 gdkglext_major_version
@@ -53,3 +55,26 @@ gtkglext_major_version
 gtkglext_micro_version
 gtkglext_minor_version
 
+
+gdkgl:Long_Description
+gdkgl:Short_Description
+gdkglconfig:Long_Description
+gdkglcontext:Long_Description
+gdkgldefs:Long_Description
+gdkgldefs:Short_Description
+gdkgldrawable:Long_Description
+gdkglfont:Long_Description
+gdkglinit:Long_Description
+gdkglpixmap:Long_Description
+gdkglquery:Long_Description
+gdkglshapes:Long_Description
+gdkgltokens:Long_Description
+gdkglversion:Long_Description
+gdkglwindow:Long_Description
+gdkglx:Long_Description
+gtkgl:Long_Description
+gtkgl:Short_Description
+gtkgldefs:Long_Description
+gtkgldefs:Short_Description
+gtkglinit:Long_Description
+gtkglversion:Long_Description
