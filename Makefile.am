@@ -71,3 +71,7 @@ examples: all
 clean-examples:
 	( cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) clean )
 
+.PHONY: changelog
+changelog:
+	cvs2cl -b -t --hide-filenames
+

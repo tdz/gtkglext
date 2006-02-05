@@ -11,7 +11,7 @@ AC_PREREQ([2.54])
 # set gtkglext_binary_age and gtkglext_interface_age to 0.
 #
 m4_define([gtkglext_major_version], [1])
-m4_define([gtkglext_minor_version], [1])
+m4_define([gtkglext_minor_version], [2])
 m4_define([gtkglext_micro_version], [0])
 m4_define([gtkglext_interface_age], [0])
 m4_define([gtkglext_binary_age],    [0])
