@@ -336,9 +336,6 @@ if test "x$enable_rebuilds" = "xyes" && \
 fi
 AC_SUBST([REBUILD])
 
-# Honor aclocal flags
-ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS -I $srcdir/m4macros"
-
 ## Initial sanity check, done here so that users get told they 
 ## have the wrong dependencies as early in the process as possible.
 ## Later on we actually use the cflags/libs from separate pkg-config

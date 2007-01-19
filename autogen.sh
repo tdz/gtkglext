@@ -73,16 +73,9 @@ if test -z "$AUTOGEN_SUBDIR_MODE"; then
         fi
 fi
 
-$ACLOCAL $ACLOCAL_FLAGS -I $srcdir/m4macros || exit 1
-
-libtoolize --force || exit 1
-
 # gtkdocize || exit 1
 
-autoheader || exit 1
-
-$AUTOMAKE --add-missing || exit 1
-autoconf || exit 1
+autoreconf --install --symlink || exit 1;
 cd $ORIGDIR
 
 if test -z "$AUTOGEN_SUBDIR_MODE"; then
