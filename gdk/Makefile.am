@@ -125,7 +125,7 @@ stamp_files = \
 gdkglextincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk
 gdkglextinclude_HEADERS = $(gdkglext_headers)
 
-INCLUDES = $(common_includes)
+AM_CPPFLAGS = $(common_includes)
 
 lib_LTLIBRARIES = $(gdkglext_targetlib)
 

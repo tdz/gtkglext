@@ -88,7 +88,7 @@ gtkglext_sources = \
 gtkglextincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gtk
 gtkglextinclude_HEADERS = $(gtkglext_headers)
 
-INCLUDES = $(common_includes)
+AM_CPPFLAGS = $(common_includes)
 
 lib_LTLIBRARIES = $(gtkglext_targetlib)
 

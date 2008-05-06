@@ -1,7 +1,7 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/gdk/win32
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-DG_LOG_DOMAIN=\"GdkGLExt\"	\
 	-DGDK_GL_COMPILATION		\
 	-DINSIDE_GDK_GL_WIN32		\
