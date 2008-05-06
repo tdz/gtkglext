@@ -1,3 +1,7 @@
+2008-05-06  Ralf Corsépius <corsepiu@users.sourceforge.net>
+
+	* configure.in: Remove check for indent.
+
 2006-01-29 15:26  tshead
 
 	* GtkGLExt 1.1.0
