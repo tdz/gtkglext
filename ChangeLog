@@ -1,5 +1,7 @@
 2008-05-06  Ralf Corsépius <corsepiu@users.sourceforge.net>
 
+	* gdk/Makefile.am, gdk/win32/Makefile.am, gdk/x11/Makefile.am
+	gtk/Makefile.am: s/INCLUDES/AM_CPPFLAGS/.
 	* configure.in: Remove check for indent.
 
 2006-01-29 15:26  tshead
