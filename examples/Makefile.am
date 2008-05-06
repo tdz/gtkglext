@@ -12,7 +12,7 @@ EXTRA_DIST = \
 	girl.rgb	\
 	reflect.rgb
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-I$(top_srcdir) 		\
 	-I$(top_builddir)/gdk		\
 	-I$(top_builddir)/gtk		\
