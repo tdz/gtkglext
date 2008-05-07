@@ -181,13 +181,7 @@ $(srcdir)/gdkglenumtypes.c: @REBUILD@ $(gdkglext_public_h_sources) Makefile
 # Rule to install gdkglext-config.h header file
 #
 configexecincludedir = $(libdir)/gtkglext-@GTKGLEXT_API_VERSION@/include
-#configexecinclude_DATA = gdkglext-config.h
-
-install-exec-local: gdkglext-config.h
-	$(mkinstalldirs) $(DESTDIR)$(configexecincludedir)
-	file=$(DESTDIR)$(configexecincludedir)/gdkglext-config.h; \
-	if test -r $$file && cmp -s gdkglext-config.h $$file; then :; \
-	else $(INSTALL_DATA) gdkglext-config.h $$file; fi
+configexecinclude_DATA = gdkglext-config.h
 
 gdkglext-config.h: stamp-gdkglext-config-h
 	@if test -f gdkglext-config.h; then :; \
