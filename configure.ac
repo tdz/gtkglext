@@ -206,32 +206,7 @@ AC_ARG_ENABLE([debug],
                              [turn on debugging @<:@default=gtkglext_debug_default@:>@]), ,
               [enable_debug=gtkglext_debug_default])
 
-# Strict ansi
-AC_ARG_ENABLE([ansi],
-              [AS_HELP_STRING([--enable-ansi],
-                              [turn on strict ansi [default=no]])], ,
-	      [enable_ansi=no])
-
 changequote(,)dnl
-if test "x$GCC" = "xyes"; then
-  case " $CFLAGS " in
-  *[\ \	]-Wall[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wall" ;;
-  esac
-
-  if test "x$enable_ansi" = "xyes"; then
-    case " $CFLAGS " in
-    *[\ \	]-ansi[\ \	]*) ;;
-    *) CFLAGS="$CFLAGS -ansi" ;;
-    esac
-
-    case " $CFLAGS " in
-    *[\ \	]-pedantic[\ \	]*) ;;
-    *) CFLAGS="$CFLAGS -pedantic" ;;
-    esac
-  fi
-fi
-
 if test "x$enable_debug" = "xyes"; then
   if test x$cflags_set != xset ; then
       case " $CFLAGS " in
