@@ -196,10 +196,6 @@ gtkglext_targetlib=libgtkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
 AC_SUBST([gdkglext_targetlib])
 AC_SUBST([gtkglext_targetlib])
 
-
-# Build time sanity check...
-AM_SANITY_CHECK
-
 # Checks for programs.
 AM_PROG_CC_STDC
 AC_PROG_INSTALL
