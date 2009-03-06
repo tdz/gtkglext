@@ -1,3 +1,8 @@
+2009-03-06  Braden McDaniel <braden@endoframe.com>
+
+	* configure.ac: Removed redundant usage of AM_PATH_GLIB_2_0 and
+	AM_PATH_GTK_2_0.
+
 2008-05-06  Ralf Corsépius <corsepiu@users.sourceforge.net>
 
 	* gdk/Makefile.am, gdk/win32/Makefile.am, gdk/x11/Makefile.am

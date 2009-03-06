@@ -314,14 +314,6 @@ pangox_pkg >= pangox_required_version \
 gmodule_pkg >= gmodule_required_version \
 ])
 
-# Check for GLib
-AM_PATH_GLIB_2_0([glib_required_version], ,
-                 [AC_MSG_ERROR([GLib 2.0 not found])])
-
-# Check for GTK+
-AM_PATH_GTK_2_0([gtk_required_version], ,
-                [AC_MSG_ERROR([GTK+ 2.0 not found])])
-
 # Checks for libraries.
 
 # Checks for header files.
