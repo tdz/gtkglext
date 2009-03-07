@@ -31,8 +31,6 @@ G_BEGIN_DECLS
 #define GTKGLEXT_MAJOR_VERSION (@GTKGLEXT_MAJOR_VERSION@)
 #define GTKGLEXT_MINOR_VERSION (@GTKGLEXT_MINOR_VERSION@)
 #define GTKGLEXT_MICRO_VERSION (@GTKGLEXT_MICRO_VERSION@)
-#define GTKGLEXT_INTERFACE_AGE (@GTKGLEXT_INTERFACE_AGE@)
-#define GTKGLEXT_BINARY_AGE    (@GTKGLEXT_BINARY_AGE@)
 
 /*
  * Check whether a GtkGLExt version equal to or greater than
@@ -50,8 +48,6 @@ G_BEGIN_DECLS
 GTK_GL_VAR const guint gtkglext_major_version;
 GTK_GL_VAR const guint gtkglext_minor_version;
 GTK_GL_VAR const guint gtkglext_micro_version;
-GTK_GL_VAR const guint gtkglext_interface_age;
-GTK_GL_VAR const guint gtkglext_binary_age;
 
 G_END_DECLS
 

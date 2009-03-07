@@ -21,5 +21,3 @@
 const guint gtkglext_major_version = GTKGLEXT_MAJOR_VERSION;
 const guint gtkglext_minor_version = GTKGLEXT_MINOR_VERSION;
 const guint gtkglext_micro_version = GTKGLEXT_MICRO_VERSION;
-const guint gtkglext_interface_age = GTKGLEXT_INTERFACE_AGE;
-const guint gtkglext_binary_age    = GTKGLEXT_BINARY_AGE;

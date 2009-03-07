@@ -1,3 +1,33 @@
+2009-03-07  Braden McDaniel <braden@endoframe.com>
+
+	Removed the broken logic that translated notions of an "interface
+	age" and a "binary age" to Libtool library versions.  The Libtool
+	library versions for libgdkglext and libgtkglext are now set
+	directly in configure.ac.  Note also that the Libtool library
+	versions for these libraries can (and generally should) be updated
+	independently of eachother.
+
+	For now, the Libtool library versions for both libgdkglext and
+	libgtkglext have been reverted to their values as of the 1.0.6
+	release of GtkGLExt.
+
+	* configure.ac: Removed GTKGLEXT_INTERFACE_AGE,
+	GTKGLEXT_BINARY_AGE, and LT_RELEASE.  LT_CURRENT, LT_REVISION,
+	LT_AGE, and LT_CURRENT_MINUS_AGE have been split into separate
+	variables applying to libgdkglext and libgtkglext.
+	* gdk/Makefile.am: Use libgdkglext-specific variables.
+	* gdk/gdkglversion.c: Removed gdkglext_interface_age and
+	gdkglext_binary_age.
+	* gdk/gdkglversion.h.in: Removed preprocessor definitions
+	GDKGLEXT_INTERFACE_AGE and GDKGLEXT_BINARY_AGE along with variable
+	declarations gdkglext_interface_age and gdkglext_binary_age.
+	* gtk/Makefile.am: Use libgtkglext-specific variables.
+	* gtk/gtkglversion.c: Removed gtkglext_interface_age and
+	gtkglext_binary_age.
+	* gtk/gtkglversion.h.in: Removed preprocessor definitions
+	GTKGLEXT_INTERFACE_AGE and GTKGLEXT_BINARY_AGE along with variable
+	declarations gtkglext_interface_age and gtkglext_binary_age.
+
 2009-03-06  Braden McDaniel <braden@endoframe.com>
 
 	* configure.ac: Removed redundant usage of AM_PATH_GLIB_2_0 and
