@@ -1,5 +1,9 @@
 2009-03-09  Braden McDaniel <braden@endoframe.com>
 
+	* AUTHORS: Note new maintainers.
+
+2009-03-09  Braden McDaniel <braden@endoframe.com>
+
 	Updated viewlw example to use GtkFileChooserDialog instead of the
 	deprecated GtkFileSelection.  The examples now compile with GTK+
 	2.14 using GTK_DISABLE_DEPRECATED.
