@@ -631,33 +631,26 @@ show_lwobject(const char *lwobject_name)
   return TRUE;
 }
 
-static gint
-filew_ok(GtkWidget *widget,
-         GtkWidget *filew)
-{
-  if (show_lwobject(gtk_file_selection_get_filename(GTK_FILE_SELECTION(filew))) == TRUE)
-    gtk_widget_destroy(filew);
-  return TRUE;
-}
-
 static void
 select_lwobject(void)
 {
-  GtkWidget *filew = gtk_file_selection_new("Select LightWave 3D object");
+  GtkWidget *filew =
+    gtk_file_chooser_dialog_new("Select LightWave 3D object",
+                                NULL,
+                                GTK_FILE_CHOOSER_ACTION_OPEN,
+                                GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+                                NULL);
 
-  g_signal_connect(G_OBJECT(GTK_FILE_SELECTION (filew)->ok_button), "clicked",
-                   G_CALLBACK(filew_ok), filew);
+  if (gtk_dialog_run(GTK_DIALOG(filew)) == GTK_RESPONSE_ACCEPT)
+    {
+      char * filename;
+      filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(filew));
+      show_lwobject(filename);
+      g_free(filename);
+    }
 
-  g_signal_connect_swapped(G_OBJECT(GTK_FILE_SELECTION(filew)->cancel_button),
-                           "clicked", G_CALLBACK(gtk_widget_destroy),
-                           filew);
-
-  g_signal_connect(G_OBJECT(filew), "destroy",
-                   G_CALLBACK(window_destroy), NULL);
-
-  window_count++;
-
-  gtk_widget_show(filew);
+  gtk_widget_destroy(filew);
 }
 
 int

@@ -75,7 +75,7 @@ m4_define([gdk_required_version], [2.0.0])
 
 # GTK+
 m4_define([gtk_pkg], [gtk+-2.0])
-m4_define([gtk_required_version], [2.0.0])
+m4_define([gtk_required_version], [2.4.0])
 
 
 # Process this file with autoconf to produce a configure script.

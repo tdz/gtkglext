@@ -1,3 +1,20 @@
+2009-03-09  Braden McDaniel <braden@endoframe.com>
+
+	Updated viewlw example to use GtkFileChooserDialog instead of the
+	deprecated GtkFileSelection.  The examples now compile with GTK+
+	2.14 using GTK_DISABLE_DEPRECATED.
+
+	Require at least GTK+ 2.4.  While strictly this isn't necessary
+	since we only need this 2.4-dependent feature in an example, GTK+
+	2.4 is an old enough release at this point that there seems little
+	potential harm in requiring it.
+
+	* configure.ac: Bump minimum required GTK+ version to 2.4.0.
+	* examples/viewlw.c
+	(filew_ok): Removed.
+	(select_lwobject): Create, run, and destroy the
+	GtkFileChooserDialog.
+
 2009-03-07  Braden McDaniel <braden@endoframe.com>
 
 	Removed the broken logic that translated notions of an "interface
