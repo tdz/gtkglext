@@ -972,7 +972,6 @@ gdk/x11/Makefile
 gdk/win32/Makefile
 gtk/Makefile
 gtk/gtkglversion.h
-m4macros/Makefile
 docs/Makefile
 docs/reference/Makefile
 docs/reference/gtkglext/Makefile

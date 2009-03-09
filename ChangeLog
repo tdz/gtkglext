@@ -1,5 +1,15 @@
 2009-03-09  Braden McDaniel <braden@endoframe.com>
 
+	Removed installed M4 macros for detecting the library.  pkg-config
+	should be used for this purpose.
+
+	* Makefile.am: Removed references to the m4macros subdirectory.
+	* configure.ac: Removed references to the m4macros subdirectory.
+	* m4macros/Makefile.am: Removed.
+	* m4macros/gtkglext.m4: Removed.
+
+2009-03-09  Braden McDaniel <braden@endoframe.com>
+
 	* AUTHORS: Note new maintainers.
 
 2009-03-09  Braden McDaniel <braden@endoframe.com>
