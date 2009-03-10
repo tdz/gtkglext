@@ -1,3 +1,20 @@
+2009-03-10  Braden McDaniel <braden@endoframe.com>
+
+	Revert the 2009-03-07 change that removed the notions of
+	"interface age" and "binary age" and instead fix this logic to
+	bring it to parity with what modern GTK+ does.
+
+	* configure.ac: Reinstated GTKGLEXT_INTERFACE_AGE,
+	GTKGLEXT_BINARY_AGE, LT_RELEASE, LT_CURRENT, LT_REVISION, LT_AGE,
+	and LT_CURRENT_MINUS_AGE.  Note that GTKGLEXT_BINARY_AGE is now
+	computed from GTKGLEXT_MINOR_VERSION and GTKGLEXT_MICRO_VERSION.
+	* gdk/Makefile.am
+	* gdk/gdkglversion.c
+	* gdk/gdkglversion.h.in
+	* gtk/Makefile.am
+	* gtk/gtkglversion.c
+	* gtk/gtkglversion.h.in
+
 2009-03-09  Braden McDaniel <braden@endoframe.com>
 
 	Removed installed M4 macros for detecting the library.  pkg-config

@@ -26,7 +26,7 @@ if MS_LIB_AVAILABLE
 noinst_DATA = gdkglext-win32-@GTKGLEXT_API_VERSION@.lib
 
 gdkglext-win32-@GTKGLEXT_API_VERSION@.lib: libgdkglext-win32-@GTKGLEXT_API_VERSION@.la $(gdkglext_def)
-	lib -name:libgdkglext-win32-@GTKGLEXT_API_VERSION@-@LIBGDKGLEXT_LT_CURRENT_MINUS_AGE@.dll -def:$(gdkglext_def) -out:$@
+	lib -name:libgdkglext-win32-@GTKGLEXT_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll -def:$(gdkglext_def) -out:$@
 
 install-ms-lib:
 	$(INSTALL) gdkglext-win32-@GTKGLEXT_API_VERSION@.lib $(DESTDIR)$(libdir)
@@ -49,7 +49,7 @@ common_includes = \
 	-DGDK_PIXBUF_DISABLE_DEPRECATED
 
 common_ldflags = \
-        -version-info $(LIBGDKGLEXT_LT_CURRENT):$(LIBGDKGLEXT_LT_REVISION):$(LIBGDKGLEXT_LT_AGE) \
+	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) 	\
 	-export-dynamic 					\
 	-rpath $(libdir) 					\
 	$(no_undefined)						\

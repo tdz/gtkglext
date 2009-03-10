@@ -1,42 +1,41 @@
 # required autoconf version
 AC_PREREQ([2.54])
 
+#
+# Making releases:
+#   gtkglext_micro_version += 1;
+#   gtkglext_interface_age += 1;
+#   gtkglext_binary_age += 1;
+# if any functions have been added, set gtkglext_interface_age to 0.
+# if backwards compatibility has been broken,
+# set gtkglext_binary_age and gtkglext_interface_age to 0.
+#
 m4_define([gtkglext_major_version], [1])
 m4_define([gtkglext_minor_version], [2])
 m4_define([gtkglext_micro_version], [0])
+m4_define([gtkglext_interface_age], [0])
+m4_define([gtkglext_binary_age],
+          [m4_eval(100 * gtkglext_minor_version + gtkglext_micro_version)])
 m4_define([gtkglext_version],
           [gtkglext_major_version.gtkglext_minor_version.gtkglext_micro_version])
-
-#
-# Libtool library versioning:
-#
-# current:revision:age
-#    |        |     |
-#    |        |     +- Increment if interfaces have been
-#    |        |        added.  Set to zero if interfaces
-#    |        |        have been removed or changed.
-#    |        +- Increment if source code has changed
-#    |           Set to zero if current is incremented
-#    +- Increment if interfaces have been added, removed
-#       or changed
-#
-m4_define([libgdkglext_lt_current],  [2])
-m4_define([libgdkglext_lt_revision], [4])
-m4_define([libgdkglext_lt_age],      [2])
-m4_define([libgdkglext_lt_current_minus_age],
-          [m4_eval(libgdkglext_lt_current - libgdkglext_lt_age)])
-
-m4_define([libgtkglext_lt_current],  [2])
-m4_define([libgtkglext_lt_revision], [4])
-m4_define([libgtkglext_lt_age],      [2])
-m4_define([libgtkglext_lt_current_minus_age],
-          [m4_eval(libgtkglext_lt_current - libgtkglext_lt_age)])
 
 # This is the X.Y used in -lgtkglext-FOO-X.Y
 m4_define([gtkglext_api_major_version], [1])
 m4_define([gtkglext_api_minor_version], [0])
 m4_define([gtkglext_api_version],
           [gtkglext_api_major_version.gtkglext_api_minor_version])
+
+# libtool version related macros
+m4_define([gtkglext_lt_release],
+          [gtkglext_major_version.gtkglext_minor_version])
+m4_define([gtkglext_lt_current],
+          [m4_eval(100 * gtkglext_minor_version + gtkglext_micro_version - gtkglext_interface_age)])
+m4_define([gtkglext_lt_revision],
+          [gtkglext_interface_age])
+m4_define([gtkglext_lt_age],
+          [m4_eval(gtkglext_binary_age - gtkglext_interface_age)])
+m4_define([gtkglext_lt_current_minus_age],
+          [m4_eval(gtkglext_lt_current - gtkglext_lt_age)])
 
 # if the minor version number is odd, then we want debugging.  Otherwise
 # we only want minimal debugging support.
@@ -102,6 +101,8 @@ AC_CANONICAL_HOST
 GTKGLEXT_MAJOR_VERSION=gtkglext_major_version
 GTKGLEXT_MINOR_VERSION=gtkglext_minor_version
 GTKGLEXT_MICRO_VERSION=gtkglext_micro_version
+GTKGLEXT_INTERFACE_AGE=gtkglext_interface_age
+GTKGLEXT_BINARY_AGE=gtkglext_binary_age
 GTKGLEXT_VERSION=gtkglext_version
 # This is the X.Y used in -lgtkglext-FOO-X.Y
 GTKGLEXT_API_MAJOR_VERSION=gtkglext_api_major_version
@@ -112,6 +113,8 @@ API_MI=$GTKGLEXT_API_MINOR_VERSION
 AC_SUBST([GTKGLEXT_MAJOR_VERSION])
 AC_SUBST([GTKGLEXT_MINOR_VERSION])
 AC_SUBST([GTKGLEXT_MICRO_VERSION])
+AC_SUBST([GTKGLEXT_INTERFACE_AGE])
+AC_SUBST([GTKGLEXT_BINARY_AGE])
 AC_SUBST([GTKGLEXT_VERSION])
 AC_SUBST([GTKGLEXT_API_MAJOR_VERSION])
 AC_SUBST([GTKGLEXT_API_MINOR_VERSION])
@@ -120,23 +123,16 @@ AC_SUBST([API_MJ])
 AC_SUBST([API_MI])
 
 # libtool versioning
-LIBGDKGLEXT_LT_CURRENT=libgdkglext_lt_current
-LIBGDKGLEXT_LT_REVISION=libgdkglext_lt_revision
-LIBGDKGLEXT_LT_AGE=libgdkglext_lt_age
-LIBGDKGLEXT_LT_CURRENT_MINUS_AGE=libgdkglext_lt_current_minus_age
-AC_SUBST([LIBGDKGLEXT_LT_CURRENT])
-AC_SUBST([LIBGDKGLEXT_LT_REVISION])
-AC_SUBST([LIBGDKGLEXT_LT_AGE])
-AC_SUBST([LIBGDKGLEXT_LT_CURRENT_MINUS_AGE])
-
-LIBGTKGLEXT_LT_CURRENT=libgtkglext_lt_current
-LIBGTKGLEXT_LT_REVISION=libgtkglext_lt_revision
-LIBGTKGLEXT_LT_AGE=libgtkglext_lt_age
-LIBGTKGLEXT_LT_CURRENT_MINUS_AGE=libgtkglext_lt_current_minus_age
-AC_SUBST([LIBGTKGLEXT_LT_CURRENT])
-AC_SUBST([LIBGTKGLEXT_LT_REVISION])
-AC_SUBST([LIBGTKGLEXT_LT_AGE])
-AC_SUBST([LIBGTKGLEXT_LT_CURRENT_MINUS_AGE])
+LT_RELEASE=gtkglext_lt_release
+LT_CURRENT=gtkglext_lt_current
+LT_REVISION=gtkglext_lt_revision
+LT_AGE=gtkglext_lt_age
+LT_CURRENT_MINUS_AGE=gtkglext_lt_current_minus_age
+AC_SUBST([LT_RELEASE])
+AC_SUBST([LT_CURRENT])
+AC_SUBST([LT_REVISION])
+AC_SUBST([LT_AGE])
+AC_SUBST([LT_CURRENT_MINUS_AGE])
 
 dnl Initialize libtool
 AC_PROG_CC

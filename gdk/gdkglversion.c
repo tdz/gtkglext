@@ -21,3 +21,5 @@
 const guint gdkglext_major_version = GDKGLEXT_MAJOR_VERSION;
 const guint gdkglext_minor_version = GDKGLEXT_MINOR_VERSION;
 const guint gdkglext_micro_version = GDKGLEXT_MICRO_VERSION;
+const guint gdkglext_interface_age = GDKGLEXT_INTERFACE_AGE;
+const guint gdkglext_binary_age    = GDKGLEXT_BINARY_AGE;

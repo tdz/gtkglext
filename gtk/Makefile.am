@@ -18,7 +18,7 @@ if MS_LIB_AVAILABLE
 noinst_DATA = gtkglext-win32-@GTKGLEXT_API_VERSION@.lib
 
 gtkglext-win32-@GTKGLEXT_API_VERSION@.lib: libgtkglext-win32-@GTKGLEXT_API_VERSION@.la $(gtkglext_def)
-	lib -name:libgtkglext-win32-@GTKGLEXT_API_VERSION@-@LIBGTKGLEXT_LT_CURRENT_MINUS_AGE@.dll -def:$(gtkglext_def) -out:$@
+	lib -name:libgtkglext-win32-@GTKGLEXT_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll -def:$(gtkglext_def) -out:$@
 
 install-ms-lib:
 	$(INSTALL) gtkglext-win32-@GTKGLEXT_API_VERSION@.lib $(DESTDIR)$(libdir)
@@ -43,7 +43,7 @@ common_includes = \
 	-DGTK_DISABLE_DEPRECATED
 
 common_ldflags = \
-	-version-info $(LIBGTKGLEXT_LT_CURRENT):$(LIBGTKGLEXT_LT_REVISION):$(LIBGTKGLEXT_LT_AGE) \
+	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) 	\
 	-export-dynamic 					\
 	-rpath $(libdir) 					\
 	$(no_undefined)						\
