@@ -1,3 +1,10 @@
+2009-03-11  Braden McDaniel <braden@endoframe.com>
+
+	* gdk/x11/gdkglfont-x11.c
+	(gdk_gl_font_use_pango_font_common): Check for null return values
+	from pango_x_font_map_get_font_cache and pango_x_font_cache_load.
+	From A C G Mennucc <mennucc@users.sourceforge.net>
+
 2009-03-10  Braden McDaniel <braden@endoframe.com>
 
 	Revert the 2009-03-07 change that removed the notions of

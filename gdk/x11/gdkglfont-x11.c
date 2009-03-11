@@ -108,8 +108,20 @@ gdk_gl_font_use_pango_font_common (PangoFontMap               *font_map,
     }
 
   font_cache = pango_x_font_map_get_font_cache (font_map);
+  if (font_cache == NULL)
+    {
+      g_warning ("cannot get font_cache");
+      font = NULL;
+      goto FAIL;
+    }
 
   fs = pango_x_font_cache_load (font_cache, xlfd);
+  if (fs == NULL)
+    {
+      g_warning ("cannot load font_cache");
+      font = NULL;
+      goto FAIL;
+    }
 
   glXUseXFont (fs->fid, first, count, list_base);
 
