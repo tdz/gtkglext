@@ -34,7 +34,7 @@
 static char *
 gdk_gl_font_charset_for_locale (void)
 {
-  static char *charset_map[][2] = {
+  static const char *charset_map[][2] = {
     { "ANSI_X3.4-1968", "iso8859-1" },
     { "US-ASCII",   "iso8859-1" },
     { "ISO-8859-1", "iso8859-1" },
@@ -50,7 +50,7 @@ gdk_gl_font_charset_for_locale (void)
   };
 
   const char *codeset;
-  char *result = NULL;
+  const char *result = NULL;
   gsize i;
 
   g_get_charset (&codeset);
