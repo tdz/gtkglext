@@ -151,7 +151,7 @@ gdk_gl_overlay_get_sov_props (GdkScreen *screen)
 #else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
       int screen_num = gdk_x11_get_default_screen ();
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-      int i;
+      unsigned int i;
 
       g_message (" -- SERVER_OVERLAY_VISUALS: properties");
       g_print ("screen\tvisual\ttype\tvalue\tlayer\n");
@@ -177,7 +177,7 @@ _gdk_x11_gl_overlay_get_info (GdkVisual        *visual,
 {
   __SOVPropArray *sov_props;
   VisualID xvisualid;
-  int i;
+  unsigned int i;
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
