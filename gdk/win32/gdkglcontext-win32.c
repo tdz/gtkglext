@@ -24,9 +24,6 @@
 static void          gdk_gl_context_insert (GdkGLContext *glcontext);
 static void          gdk_gl_context_remove (GdkGLContext *glcontext);
 static GdkGLContext *gdk_gl_context_lookup (HGLRC         hglrc);
-static guint         gdk_gl_context_hash   (HGLRC        *hglrc);
-static gboolean      gdk_gl_context_equal  (HGLRC        *a,
-                                            HGLRC        *b);
 
 static void gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass);
 static void gdk_gl_context_impl_win32_finalize   (GObject                    *object);
@@ -432,13 +429,16 @@ gdk_gl_context_insert (GdkGLContext *glcontext)
   if (gl_context_ht == NULL)
     {
       GDK_GL_NOTE (MISC, g_message (" -- Create GL context hash table."));
-      gl_context_ht = g_hash_table_new ((GHashFunc) gdk_gl_context_hash,
-                                        (GEqualFunc) gdk_gl_context_equal);
+
+      /* We do not know the storage type of HGLRC. We assume that it is
+         a pointer as NULL values are specified for this type. */
+      gl_context_ht = g_hash_table_new (g_direct_hash,
+                                        g_direct_equal);
     }
 
   impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 
-  g_hash_table_insert (gl_context_ht, &(impl->hglrc), glcontext);
+  g_hash_table_insert (gl_context_ht, impl->hglrc, glcontext);
 }
 
 static void
@@ -455,7 +455,7 @@ gdk_gl_context_remove (GdkGLContext *glcontext)
 
   impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
 
-  g_hash_table_remove (gl_context_ht, &(impl->hglrc));
+  g_hash_table_remove (gl_context_ht, impl->hglrc);
 
   if (g_hash_table_size (gl_context_ht) == 0)
     {
@@ -473,18 +473,5 @@ gdk_gl_context_lookup (HGLRC hglrc)
   if (gl_context_ht == NULL)
     return NULL;
 
-  return g_hash_table_lookup (gl_context_ht, &hglrc);
-}
-
-static guint
-gdk_gl_context_hash (HGLRC *hglrc)
-{
-  return (guint) *hglrc;
-}
-
-static gboolean
-gdk_gl_context_equal (HGLRC *a,
-                      HGLRC *b)
-{
-  return (*a == *b);
+  return g_hash_table_lookup (gl_context_ht, hglrc);
 }

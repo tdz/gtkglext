@@ -27,9 +27,6 @@
 static void          gdk_gl_context_insert (GdkGLContext *glcontext);
 static void          gdk_gl_context_remove (GdkGLContext *glcontext);
 static GdkGLContext *gdk_gl_context_lookup (GLXContext    glxcontext);
-static guint         gdk_gl_context_hash   (GLXContext   *glxcontext);
-static gboolean      gdk_gl_context_equal  (GLXContext   *a,
-                                            GLXContext   *b);
 
 static void gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass);
 static void gdk_gl_context_impl_x11_finalize   (GObject                  *object);
@@ -545,13 +542,18 @@ gdk_gl_context_insert (GdkGLContext *glcontext)
   if (gl_context_ht == NULL)
     {
       GDK_GL_NOTE (MISC, g_message (" -- Create GL context hash table."));
-      gl_context_ht = g_hash_table_new ((GHashFunc) gdk_gl_context_hash,
-                                        (GEqualFunc) gdk_gl_context_equal);
+
+      /* We do not know the storage type of GLXContext from the GLX
+         specification. We assume that it is a pointer as NULL values
+         are specified for this type---this is consistent with the SGI
+         and Mesa GLX implementations. */
+      gl_context_ht = g_hash_table_new (g_direct_hash,
+                                        g_direct_equal);
     }
 
   impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
 
-  g_hash_table_insert (gl_context_ht, &(impl->glxcontext), glcontext);
+  g_hash_table_insert (gl_context_ht, impl->glxcontext, glcontext);
 }
 
 static void
@@ -566,7 +568,7 @@ gdk_gl_context_remove (GdkGLContext *glcontext)
 
   impl = GDK_GL_CONTEXT_IMPL_X11 (glcontext);
 
-  g_hash_table_remove (gl_context_ht, &(impl->glxcontext));
+  g_hash_table_remove (gl_context_ht, impl->glxcontext);
 
   if (g_hash_table_size (gl_context_ht) == 0)
     {
@@ -584,18 +586,5 @@ gdk_gl_context_lookup (GLXContext glxcontext)
   if (gl_context_ht == NULL)
     return NULL;
 
-  return g_hash_table_lookup (gl_context_ht, &glxcontext);
-}
-
-static guint
-gdk_gl_context_hash (GLXContext *glxcontext)
-{
-  return (guint) *glxcontext;
-}
-
-static gboolean
-gdk_gl_context_equal (GLXContext *a,
-                      GLXContext *b)
-{
-  return (*a == *b);
+  return g_hash_table_lookup (gl_context_ht, glxcontext);
 }
