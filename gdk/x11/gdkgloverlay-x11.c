@@ -157,7 +157,7 @@ gdk_gl_overlay_get_sov_props (GdkScreen *screen)
       g_print ("screen\tvisual\ttype\tvalue\tlayer\n");
       for (i = 0; i < sov_props->num; i++)
         {
-          g_print ("%d\t0x%lx\t%lu\t%lu\t%ld\n",
+          g_print ("%d\t0x%lx\t%u\t%u\t%d\n",
                    screen_num,
                    (VisualID) (sov_props->prop[i].overlay_visual),
                    (CARD32)   (sov_props->prop[i].transparent_type),
