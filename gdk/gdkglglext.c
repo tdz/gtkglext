@@ -33,38 +33,6 @@ static GdkGL_GL_VERSION_1_2 _procs_GL_VERSION_1_2 = {
   (GdkGLProc_glBlendColor) -1,
   (GdkGLProc_glBlendEquation) -1,
   (GdkGLProc_glDrawRangeElements) -1,
-  (GdkGLProc_glColorTable) -1,
-  (GdkGLProc_glColorTableParameterfv) -1,
-  (GdkGLProc_glColorTableParameteriv) -1,
-  (GdkGLProc_glCopyColorTable) -1,
-  (GdkGLProc_glGetColorTable) -1,
-  (GdkGLProc_glGetColorTableParameterfv) -1,
-  (GdkGLProc_glGetColorTableParameteriv) -1,
-  (GdkGLProc_glColorSubTable) -1,
-  (GdkGLProc_glCopyColorSubTable) -1,
-  (GdkGLProc_glConvolutionFilter1D) -1,
-  (GdkGLProc_glConvolutionFilter2D) -1,
-  (GdkGLProc_glConvolutionParameterf) -1,
-  (GdkGLProc_glConvolutionParameterfv) -1,
-  (GdkGLProc_glConvolutionParameteri) -1,
-  (GdkGLProc_glConvolutionParameteriv) -1,
-  (GdkGLProc_glCopyConvolutionFilter1D) -1,
-  (GdkGLProc_glCopyConvolutionFilter2D) -1,
-  (GdkGLProc_glGetConvolutionFilter) -1,
-  (GdkGLProc_glGetConvolutionParameterfv) -1,
-  (GdkGLProc_glGetConvolutionParameteriv) -1,
-  (GdkGLProc_glGetSeparableFilter) -1,
-  (GdkGLProc_glSeparableFilter2D) -1,
-  (GdkGLProc_glGetHistogram) -1,
-  (GdkGLProc_glGetHistogramParameterfv) -1,
-  (GdkGLProc_glGetHistogramParameteriv) -1,
-  (GdkGLProc_glGetMinmax) -1,
-  (GdkGLProc_glGetMinmaxParameterfv) -1,
-  (GdkGLProc_glGetMinmaxParameteriv) -1,
-  (GdkGLProc_glHistogram) -1,
-  (GdkGLProc_glMinmax) -1,
-  (GdkGLProc_glResetHistogram) -1,
-  (GdkGLProc_glResetMinmax) -1,
   (GdkGLProc_glTexImage3D) -1,
   (GdkGLProc_glTexSubImage3D) -1,
   (GdkGLProc_glCopyTexSubImage3D) -1
@@ -122,582 +90,6 @@ gdk_gl_get_glDrawRangeElements (void)
                (_procs_GL_VERSION_1_2.glDrawRangeElements) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_2.glDrawRangeElements);
-}
-
-/* glColorTable */
-GdkGLProc
-gdk_gl_get_glColorTable (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glColorTable == (GdkGLProc_glColorTable) -1)
-    _procs_GL_VERSION_1_2.glColorTable =
-      (GdkGLProc_glColorTable) gdk_gl_get_proc_address ("glColorTable");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glColorTable () - %s",
-               (_procs_GL_VERSION_1_2.glColorTable) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glColorTable);
-}
-
-/* glColorTableParameterfv */
-GdkGLProc
-gdk_gl_get_glColorTableParameterfv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glColorTableParameterfv == (GdkGLProc_glColorTableParameterfv) -1)
-    _procs_GL_VERSION_1_2.glColorTableParameterfv =
-      (GdkGLProc_glColorTableParameterfv) gdk_gl_get_proc_address ("glColorTableParameterfv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glColorTableParameterfv () - %s",
-               (_procs_GL_VERSION_1_2.glColorTableParameterfv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glColorTableParameterfv);
-}
-
-/* glColorTableParameteriv */
-GdkGLProc
-gdk_gl_get_glColorTableParameteriv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glColorTableParameteriv == (GdkGLProc_glColorTableParameteriv) -1)
-    _procs_GL_VERSION_1_2.glColorTableParameteriv =
-      (GdkGLProc_glColorTableParameteriv) gdk_gl_get_proc_address ("glColorTableParameteriv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glColorTableParameteriv () - %s",
-               (_procs_GL_VERSION_1_2.glColorTableParameteriv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glColorTableParameteriv);
-}
-
-/* glCopyColorTable */
-GdkGLProc
-gdk_gl_get_glCopyColorTable (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glCopyColorTable == (GdkGLProc_glCopyColorTable) -1)
-    _procs_GL_VERSION_1_2.glCopyColorTable =
-      (GdkGLProc_glCopyColorTable) gdk_gl_get_proc_address ("glCopyColorTable");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glCopyColorTable () - %s",
-               (_procs_GL_VERSION_1_2.glCopyColorTable) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glCopyColorTable);
-}
-
-/* glGetColorTable */
-GdkGLProc
-gdk_gl_get_glGetColorTable (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetColorTable == (GdkGLProc_glGetColorTable) -1)
-    _procs_GL_VERSION_1_2.glGetColorTable =
-      (GdkGLProc_glGetColorTable) gdk_gl_get_proc_address ("glGetColorTable");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetColorTable () - %s",
-               (_procs_GL_VERSION_1_2.glGetColorTable) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetColorTable);
-}
-
-/* glGetColorTableParameterfv */
-GdkGLProc
-gdk_gl_get_glGetColorTableParameterfv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetColorTableParameterfv == (GdkGLProc_glGetColorTableParameterfv) -1)
-    _procs_GL_VERSION_1_2.glGetColorTableParameterfv =
-      (GdkGLProc_glGetColorTableParameterfv) gdk_gl_get_proc_address ("glGetColorTableParameterfv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetColorTableParameterfv () - %s",
-               (_procs_GL_VERSION_1_2.glGetColorTableParameterfv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetColorTableParameterfv);
-}
-
-/* glGetColorTableParameteriv */
-GdkGLProc
-gdk_gl_get_glGetColorTableParameteriv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetColorTableParameteriv == (GdkGLProc_glGetColorTableParameteriv) -1)
-    _procs_GL_VERSION_1_2.glGetColorTableParameteriv =
-      (GdkGLProc_glGetColorTableParameteriv) gdk_gl_get_proc_address ("glGetColorTableParameteriv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetColorTableParameteriv () - %s",
-               (_procs_GL_VERSION_1_2.glGetColorTableParameteriv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetColorTableParameteriv);
-}
-
-/* glColorSubTable */
-GdkGLProc
-gdk_gl_get_glColorSubTable (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glColorSubTable == (GdkGLProc_glColorSubTable) -1)
-    _procs_GL_VERSION_1_2.glColorSubTable =
-      (GdkGLProc_glColorSubTable) gdk_gl_get_proc_address ("glColorSubTable");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glColorSubTable () - %s",
-               (_procs_GL_VERSION_1_2.glColorSubTable) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glColorSubTable);
-}
-
-/* glCopyColorSubTable */
-GdkGLProc
-gdk_gl_get_glCopyColorSubTable (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glCopyColorSubTable == (GdkGLProc_glCopyColorSubTable) -1)
-    _procs_GL_VERSION_1_2.glCopyColorSubTable =
-      (GdkGLProc_glCopyColorSubTable) gdk_gl_get_proc_address ("glCopyColorSubTable");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glCopyColorSubTable () - %s",
-               (_procs_GL_VERSION_1_2.glCopyColorSubTable) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glCopyColorSubTable);
-}
-
-/* glConvolutionFilter1D */
-GdkGLProc
-gdk_gl_get_glConvolutionFilter1D (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glConvolutionFilter1D == (GdkGLProc_glConvolutionFilter1D) -1)
-    _procs_GL_VERSION_1_2.glConvolutionFilter1D =
-      (GdkGLProc_glConvolutionFilter1D) gdk_gl_get_proc_address ("glConvolutionFilter1D");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glConvolutionFilter1D () - %s",
-               (_procs_GL_VERSION_1_2.glConvolutionFilter1D) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionFilter1D);
-}
-
-/* glConvolutionFilter2D */
-GdkGLProc
-gdk_gl_get_glConvolutionFilter2D (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glConvolutionFilter2D == (GdkGLProc_glConvolutionFilter2D) -1)
-    _procs_GL_VERSION_1_2.glConvolutionFilter2D =
-      (GdkGLProc_glConvolutionFilter2D) gdk_gl_get_proc_address ("glConvolutionFilter2D");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glConvolutionFilter2D () - %s",
-               (_procs_GL_VERSION_1_2.glConvolutionFilter2D) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionFilter2D);
-}
-
-/* glConvolutionParameterf */
-GdkGLProc
-gdk_gl_get_glConvolutionParameterf (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glConvolutionParameterf == (GdkGLProc_glConvolutionParameterf) -1)
-    _procs_GL_VERSION_1_2.glConvolutionParameterf =
-      (GdkGLProc_glConvolutionParameterf) gdk_gl_get_proc_address ("glConvolutionParameterf");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glConvolutionParameterf () - %s",
-               (_procs_GL_VERSION_1_2.glConvolutionParameterf) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionParameterf);
-}
-
-/* glConvolutionParameterfv */
-GdkGLProc
-gdk_gl_get_glConvolutionParameterfv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glConvolutionParameterfv == (GdkGLProc_glConvolutionParameterfv) -1)
-    _procs_GL_VERSION_1_2.glConvolutionParameterfv =
-      (GdkGLProc_glConvolutionParameterfv) gdk_gl_get_proc_address ("glConvolutionParameterfv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glConvolutionParameterfv () - %s",
-               (_procs_GL_VERSION_1_2.glConvolutionParameterfv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionParameterfv);
-}
-
-/* glConvolutionParameteri */
-GdkGLProc
-gdk_gl_get_glConvolutionParameteri (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glConvolutionParameteri == (GdkGLProc_glConvolutionParameteri) -1)
-    _procs_GL_VERSION_1_2.glConvolutionParameteri =
-      (GdkGLProc_glConvolutionParameteri) gdk_gl_get_proc_address ("glConvolutionParameteri");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glConvolutionParameteri () - %s",
-               (_procs_GL_VERSION_1_2.glConvolutionParameteri) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionParameteri);
-}
-
-/* glConvolutionParameteriv */
-GdkGLProc
-gdk_gl_get_glConvolutionParameteriv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glConvolutionParameteriv == (GdkGLProc_glConvolutionParameteriv) -1)
-    _procs_GL_VERSION_1_2.glConvolutionParameteriv =
-      (GdkGLProc_glConvolutionParameteriv) gdk_gl_get_proc_address ("glConvolutionParameteriv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glConvolutionParameteriv () - %s",
-               (_procs_GL_VERSION_1_2.glConvolutionParameteriv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glConvolutionParameteriv);
-}
-
-/* glCopyConvolutionFilter1D */
-GdkGLProc
-gdk_gl_get_glCopyConvolutionFilter1D (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glCopyConvolutionFilter1D == (GdkGLProc_glCopyConvolutionFilter1D) -1)
-    _procs_GL_VERSION_1_2.glCopyConvolutionFilter1D =
-      (GdkGLProc_glCopyConvolutionFilter1D) gdk_gl_get_proc_address ("glCopyConvolutionFilter1D");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glCopyConvolutionFilter1D () - %s",
-               (_procs_GL_VERSION_1_2.glCopyConvolutionFilter1D) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glCopyConvolutionFilter1D);
-}
-
-/* glCopyConvolutionFilter2D */
-GdkGLProc
-gdk_gl_get_glCopyConvolutionFilter2D (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glCopyConvolutionFilter2D == (GdkGLProc_glCopyConvolutionFilter2D) -1)
-    _procs_GL_VERSION_1_2.glCopyConvolutionFilter2D =
-      (GdkGLProc_glCopyConvolutionFilter2D) gdk_gl_get_proc_address ("glCopyConvolutionFilter2D");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glCopyConvolutionFilter2D () - %s",
-               (_procs_GL_VERSION_1_2.glCopyConvolutionFilter2D) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glCopyConvolutionFilter2D);
-}
-
-/* glGetConvolutionFilter */
-GdkGLProc
-gdk_gl_get_glGetConvolutionFilter (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetConvolutionFilter == (GdkGLProc_glGetConvolutionFilter) -1)
-    _procs_GL_VERSION_1_2.glGetConvolutionFilter =
-      (GdkGLProc_glGetConvolutionFilter) gdk_gl_get_proc_address ("glGetConvolutionFilter");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetConvolutionFilter () - %s",
-               (_procs_GL_VERSION_1_2.glGetConvolutionFilter) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetConvolutionFilter);
-}
-
-/* glGetConvolutionParameterfv */
-GdkGLProc
-gdk_gl_get_glGetConvolutionParameterfv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetConvolutionParameterfv == (GdkGLProc_glGetConvolutionParameterfv) -1)
-    _procs_GL_VERSION_1_2.glGetConvolutionParameterfv =
-      (GdkGLProc_glGetConvolutionParameterfv) gdk_gl_get_proc_address ("glGetConvolutionParameterfv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetConvolutionParameterfv () - %s",
-               (_procs_GL_VERSION_1_2.glGetConvolutionParameterfv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetConvolutionParameterfv);
-}
-
-/* glGetConvolutionParameteriv */
-GdkGLProc
-gdk_gl_get_glGetConvolutionParameteriv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetConvolutionParameteriv == (GdkGLProc_glGetConvolutionParameteriv) -1)
-    _procs_GL_VERSION_1_2.glGetConvolutionParameteriv =
-      (GdkGLProc_glGetConvolutionParameteriv) gdk_gl_get_proc_address ("glGetConvolutionParameteriv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetConvolutionParameteriv () - %s",
-               (_procs_GL_VERSION_1_2.glGetConvolutionParameteriv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetConvolutionParameteriv);
-}
-
-/* glGetSeparableFilter */
-GdkGLProc
-gdk_gl_get_glGetSeparableFilter (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetSeparableFilter == (GdkGLProc_glGetSeparableFilter) -1)
-    _procs_GL_VERSION_1_2.glGetSeparableFilter =
-      (GdkGLProc_glGetSeparableFilter) gdk_gl_get_proc_address ("glGetSeparableFilter");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetSeparableFilter () - %s",
-               (_procs_GL_VERSION_1_2.glGetSeparableFilter) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetSeparableFilter);
-}
-
-/* glSeparableFilter2D */
-GdkGLProc
-gdk_gl_get_glSeparableFilter2D (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glSeparableFilter2D == (GdkGLProc_glSeparableFilter2D) -1)
-    _procs_GL_VERSION_1_2.glSeparableFilter2D =
-      (GdkGLProc_glSeparableFilter2D) gdk_gl_get_proc_address ("glSeparableFilter2D");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSeparableFilter2D () - %s",
-               (_procs_GL_VERSION_1_2.glSeparableFilter2D) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glSeparableFilter2D);
-}
-
-/* glGetHistogram */
-GdkGLProc
-gdk_gl_get_glGetHistogram (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetHistogram == (GdkGLProc_glGetHistogram) -1)
-    _procs_GL_VERSION_1_2.glGetHistogram =
-      (GdkGLProc_glGetHistogram) gdk_gl_get_proc_address ("glGetHistogram");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetHistogram () - %s",
-               (_procs_GL_VERSION_1_2.glGetHistogram) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetHistogram);
-}
-
-/* glGetHistogramParameterfv */
-GdkGLProc
-gdk_gl_get_glGetHistogramParameterfv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetHistogramParameterfv == (GdkGLProc_glGetHistogramParameterfv) -1)
-    _procs_GL_VERSION_1_2.glGetHistogramParameterfv =
-      (GdkGLProc_glGetHistogramParameterfv) gdk_gl_get_proc_address ("glGetHistogramParameterfv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetHistogramParameterfv () - %s",
-               (_procs_GL_VERSION_1_2.glGetHistogramParameterfv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetHistogramParameterfv);
-}
-
-/* glGetHistogramParameteriv */
-GdkGLProc
-gdk_gl_get_glGetHistogramParameteriv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetHistogramParameteriv == (GdkGLProc_glGetHistogramParameteriv) -1)
-    _procs_GL_VERSION_1_2.glGetHistogramParameteriv =
-      (GdkGLProc_glGetHistogramParameteriv) gdk_gl_get_proc_address ("glGetHistogramParameteriv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetHistogramParameteriv () - %s",
-               (_procs_GL_VERSION_1_2.glGetHistogramParameteriv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetHistogramParameteriv);
-}
-
-/* glGetMinmax */
-GdkGLProc
-gdk_gl_get_glGetMinmax (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetMinmax == (GdkGLProc_glGetMinmax) -1)
-    _procs_GL_VERSION_1_2.glGetMinmax =
-      (GdkGLProc_glGetMinmax) gdk_gl_get_proc_address ("glGetMinmax");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetMinmax () - %s",
-               (_procs_GL_VERSION_1_2.glGetMinmax) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetMinmax);
-}
-
-/* glGetMinmaxParameterfv */
-GdkGLProc
-gdk_gl_get_glGetMinmaxParameterfv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetMinmaxParameterfv == (GdkGLProc_glGetMinmaxParameterfv) -1)
-    _procs_GL_VERSION_1_2.glGetMinmaxParameterfv =
-      (GdkGLProc_glGetMinmaxParameterfv) gdk_gl_get_proc_address ("glGetMinmaxParameterfv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetMinmaxParameterfv () - %s",
-               (_procs_GL_VERSION_1_2.glGetMinmaxParameterfv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetMinmaxParameterfv);
-}
-
-/* glGetMinmaxParameteriv */
-GdkGLProc
-gdk_gl_get_glGetMinmaxParameteriv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glGetMinmaxParameteriv == (GdkGLProc_glGetMinmaxParameteriv) -1)
-    _procs_GL_VERSION_1_2.glGetMinmaxParameteriv =
-      (GdkGLProc_glGetMinmaxParameteriv) gdk_gl_get_proc_address ("glGetMinmaxParameteriv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glGetMinmaxParameteriv () - %s",
-               (_procs_GL_VERSION_1_2.glGetMinmaxParameteriv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glGetMinmaxParameteriv);
-}
-
-/* glHistogram */
-GdkGLProc
-gdk_gl_get_glHistogram (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glHistogram == (GdkGLProc_glHistogram) -1)
-    _procs_GL_VERSION_1_2.glHistogram =
-      (GdkGLProc_glHistogram) gdk_gl_get_proc_address ("glHistogram");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glHistogram () - %s",
-               (_procs_GL_VERSION_1_2.glHistogram) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glHistogram);
-}
-
-/* glMinmax */
-GdkGLProc
-gdk_gl_get_glMinmax (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glMinmax == (GdkGLProc_glMinmax) -1)
-    _procs_GL_VERSION_1_2.glMinmax =
-      (GdkGLProc_glMinmax) gdk_gl_get_proc_address ("glMinmax");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMinmax () - %s",
-               (_procs_GL_VERSION_1_2.glMinmax) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glMinmax);
-}
-
-/* glResetHistogram */
-GdkGLProc
-gdk_gl_get_glResetHistogram (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glResetHistogram == (GdkGLProc_glResetHistogram) -1)
-    _procs_GL_VERSION_1_2.glResetHistogram =
-      (GdkGLProc_glResetHistogram) gdk_gl_get_proc_address ("glResetHistogram");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glResetHistogram () - %s",
-               (_procs_GL_VERSION_1_2.glResetHistogram) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glResetHistogram);
-}
-
-/* glResetMinmax */
-GdkGLProc
-gdk_gl_get_glResetMinmax (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_2.glResetMinmax == (GdkGLProc_glResetMinmax) -1)
-    _procs_GL_VERSION_1_2.glResetMinmax =
-      (GdkGLProc_glResetMinmax) gdk_gl_get_proc_address ("glResetMinmax");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glResetMinmax () - %s",
-               (_procs_GL_VERSION_1_2.glResetMinmax) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_2.glResetMinmax);
 }
 
 /* glTexImage3D */
@@ -768,7 +160,648 @@ gdk_gl_get_GL_VERSION_1_2 (void)
       supported =  (gdk_gl_get_glBlendColor () != NULL);
       supported &= (gdk_gl_get_glBlendEquation () != NULL);
       supported &= (gdk_gl_get_glDrawRangeElements () != NULL);
-      supported &= (gdk_gl_get_glColorTable () != NULL);
+      supported &= (gdk_gl_get_glTexImage3D () != NULL);
+      supported &= (gdk_gl_get_glTexSubImage3D () != NULL);
+      supported &= (gdk_gl_get_glCopyTexSubImage3D () != NULL);
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_1_2 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_VERSION_1_2;
+}
+
+/*
+ * GL_VERSION_1_2_DEPRECATED
+ */
+
+static GdkGL_GL_VERSION_1_2_DEPRECATED _procs_GL_VERSION_1_2_DEPRECATED = {
+  (GdkGLProc_glColorTable) -1,
+  (GdkGLProc_glColorTableParameterfv) -1,
+  (GdkGLProc_glColorTableParameteriv) -1,
+  (GdkGLProc_glCopyColorTable) -1,
+  (GdkGLProc_glGetColorTable) -1,
+  (GdkGLProc_glGetColorTableParameterfv) -1,
+  (GdkGLProc_glGetColorTableParameteriv) -1,
+  (GdkGLProc_glColorSubTable) -1,
+  (GdkGLProc_glCopyColorSubTable) -1,
+  (GdkGLProc_glConvolutionFilter1D) -1,
+  (GdkGLProc_glConvolutionFilter2D) -1,
+  (GdkGLProc_glConvolutionParameterf) -1,
+  (GdkGLProc_glConvolutionParameterfv) -1,
+  (GdkGLProc_glConvolutionParameteri) -1,
+  (GdkGLProc_glConvolutionParameteriv) -1,
+  (GdkGLProc_glCopyConvolutionFilter1D) -1,
+  (GdkGLProc_glCopyConvolutionFilter2D) -1,
+  (GdkGLProc_glGetConvolutionFilter) -1,
+  (GdkGLProc_glGetConvolutionParameterfv) -1,
+  (GdkGLProc_glGetConvolutionParameteriv) -1,
+  (GdkGLProc_glGetSeparableFilter) -1,
+  (GdkGLProc_glSeparableFilter2D) -1,
+  (GdkGLProc_glGetHistogram) -1,
+  (GdkGLProc_glGetHistogramParameterfv) -1,
+  (GdkGLProc_glGetHistogramParameteriv) -1,
+  (GdkGLProc_glGetMinmax) -1,
+  (GdkGLProc_glGetMinmaxParameterfv) -1,
+  (GdkGLProc_glGetMinmaxParameteriv) -1,
+  (GdkGLProc_glHistogram) -1,
+  (GdkGLProc_glMinmax) -1,
+  (GdkGLProc_glResetHistogram) -1,
+  (GdkGLProc_glResetMinmax) -1
+};
+
+/* glColorTable */
+GdkGLProc
+gdk_gl_get_glColorTable (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glColorTable == (GdkGLProc_glColorTable) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glColorTable =
+      (GdkGLProc_glColorTable) gdk_gl_get_proc_address ("glColorTable");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorTable () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glColorTable) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glColorTable);
+}
+
+/* glColorTableParameterfv */
+GdkGLProc
+gdk_gl_get_glColorTableParameterfv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glColorTableParameterfv == (GdkGLProc_glColorTableParameterfv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glColorTableParameterfv =
+      (GdkGLProc_glColorTableParameterfv) gdk_gl_get_proc_address ("glColorTableParameterfv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorTableParameterfv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glColorTableParameterfv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glColorTableParameterfv);
+}
+
+/* glColorTableParameteriv */
+GdkGLProc
+gdk_gl_get_glColorTableParameteriv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glColorTableParameteriv == (GdkGLProc_glColorTableParameteriv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glColorTableParameteriv =
+      (GdkGLProc_glColorTableParameteriv) gdk_gl_get_proc_address ("glColorTableParameteriv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorTableParameteriv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glColorTableParameteriv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glColorTableParameteriv);
+}
+
+/* glCopyColorTable */
+GdkGLProc
+gdk_gl_get_glCopyColorTable (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glCopyColorTable == (GdkGLProc_glCopyColorTable) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glCopyColorTable =
+      (GdkGLProc_glCopyColorTable) gdk_gl_get_proc_address ("glCopyColorTable");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyColorTable () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glCopyColorTable) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glCopyColorTable);
+}
+
+/* glGetColorTable */
+GdkGLProc
+gdk_gl_get_glGetColorTable (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetColorTable == (GdkGLProc_glGetColorTable) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetColorTable =
+      (GdkGLProc_glGetColorTable) gdk_gl_get_proc_address ("glGetColorTable");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTable () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetColorTable) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetColorTable);
+}
+
+/* glGetColorTableParameterfv */
+GdkGLProc
+gdk_gl_get_glGetColorTableParameterfv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetColorTableParameterfv == (GdkGLProc_glGetColorTableParameterfv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetColorTableParameterfv =
+      (GdkGLProc_glGetColorTableParameterfv) gdk_gl_get_proc_address ("glGetColorTableParameterfv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTableParameterfv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetColorTableParameterfv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetColorTableParameterfv);
+}
+
+/* glGetColorTableParameteriv */
+GdkGLProc
+gdk_gl_get_glGetColorTableParameteriv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetColorTableParameteriv == (GdkGLProc_glGetColorTableParameteriv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetColorTableParameteriv =
+      (GdkGLProc_glGetColorTableParameteriv) gdk_gl_get_proc_address ("glGetColorTableParameteriv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetColorTableParameteriv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetColorTableParameteriv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetColorTableParameteriv);
+}
+
+/* glColorSubTable */
+GdkGLProc
+gdk_gl_get_glColorSubTable (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glColorSubTable == (GdkGLProc_glColorSubTable) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glColorSubTable =
+      (GdkGLProc_glColorSubTable) gdk_gl_get_proc_address ("glColorSubTable");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorSubTable () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glColorSubTable) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glColorSubTable);
+}
+
+/* glCopyColorSubTable */
+GdkGLProc
+gdk_gl_get_glCopyColorSubTable (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glCopyColorSubTable == (GdkGLProc_glCopyColorSubTable) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glCopyColorSubTable =
+      (GdkGLProc_glCopyColorSubTable) gdk_gl_get_proc_address ("glCopyColorSubTable");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyColorSubTable () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glCopyColorSubTable) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glCopyColorSubTable);
+}
+
+/* glConvolutionFilter1D */
+GdkGLProc
+gdk_gl_get_glConvolutionFilter1D (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionFilter1D == (GdkGLProc_glConvolutionFilter1D) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glConvolutionFilter1D =
+      (GdkGLProc_glConvolutionFilter1D) gdk_gl_get_proc_address ("glConvolutionFilter1D");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionFilter1D () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionFilter1D) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionFilter1D);
+}
+
+/* glConvolutionFilter2D */
+GdkGLProc
+gdk_gl_get_glConvolutionFilter2D (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionFilter2D == (GdkGLProc_glConvolutionFilter2D) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glConvolutionFilter2D =
+      (GdkGLProc_glConvolutionFilter2D) gdk_gl_get_proc_address ("glConvolutionFilter2D");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionFilter2D () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionFilter2D) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionFilter2D);
+}
+
+/* glConvolutionParameterf */
+GdkGLProc
+gdk_gl_get_glConvolutionParameterf (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameterf == (GdkGLProc_glConvolutionParameterf) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameterf =
+      (GdkGLProc_glConvolutionParameterf) gdk_gl_get_proc_address ("glConvolutionParameterf");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameterf () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameterf) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameterf);
+}
+
+/* glConvolutionParameterfv */
+GdkGLProc
+gdk_gl_get_glConvolutionParameterfv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameterfv == (GdkGLProc_glConvolutionParameterfv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameterfv =
+      (GdkGLProc_glConvolutionParameterfv) gdk_gl_get_proc_address ("glConvolutionParameterfv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameterfv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameterfv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameterfv);
+}
+
+/* glConvolutionParameteri */
+GdkGLProc
+gdk_gl_get_glConvolutionParameteri (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameteri == (GdkGLProc_glConvolutionParameteri) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameteri =
+      (GdkGLProc_glConvolutionParameteri) gdk_gl_get_proc_address ("glConvolutionParameteri");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameteri () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameteri) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameteri);
+}
+
+/* glConvolutionParameteriv */
+GdkGLProc
+gdk_gl_get_glConvolutionParameteriv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameteriv == (GdkGLProc_glConvolutionParameteriv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameteriv =
+      (GdkGLProc_glConvolutionParameteriv) gdk_gl_get_proc_address ("glConvolutionParameteriv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glConvolutionParameteriv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameteriv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glConvolutionParameteriv);
+}
+
+/* glCopyConvolutionFilter1D */
+GdkGLProc
+gdk_gl_get_glCopyConvolutionFilter1D (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glCopyConvolutionFilter1D == (GdkGLProc_glCopyConvolutionFilter1D) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glCopyConvolutionFilter1D =
+      (GdkGLProc_glCopyConvolutionFilter1D) gdk_gl_get_proc_address ("glCopyConvolutionFilter1D");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyConvolutionFilter1D () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glCopyConvolutionFilter1D) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glCopyConvolutionFilter1D);
+}
+
+/* glCopyConvolutionFilter2D */
+GdkGLProc
+gdk_gl_get_glCopyConvolutionFilter2D (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glCopyConvolutionFilter2D == (GdkGLProc_glCopyConvolutionFilter2D) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glCopyConvolutionFilter2D =
+      (GdkGLProc_glCopyConvolutionFilter2D) gdk_gl_get_proc_address ("glCopyConvolutionFilter2D");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyConvolutionFilter2D () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glCopyConvolutionFilter2D) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glCopyConvolutionFilter2D);
+}
+
+/* glGetConvolutionFilter */
+GdkGLProc
+gdk_gl_get_glGetConvolutionFilter (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionFilter == (GdkGLProc_glGetConvolutionFilter) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionFilter =
+      (GdkGLProc_glGetConvolutionFilter) gdk_gl_get_proc_address ("glGetConvolutionFilter");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetConvolutionFilter () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionFilter) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionFilter);
+}
+
+/* glGetConvolutionParameterfv */
+GdkGLProc
+gdk_gl_get_glGetConvolutionParameterfv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionParameterfv == (GdkGLProc_glGetConvolutionParameterfv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionParameterfv =
+      (GdkGLProc_glGetConvolutionParameterfv) gdk_gl_get_proc_address ("glGetConvolutionParameterfv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetConvolutionParameterfv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionParameterfv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionParameterfv);
+}
+
+/* glGetConvolutionParameteriv */
+GdkGLProc
+gdk_gl_get_glGetConvolutionParameteriv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionParameteriv == (GdkGLProc_glGetConvolutionParameteriv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionParameteriv =
+      (GdkGLProc_glGetConvolutionParameteriv) gdk_gl_get_proc_address ("glGetConvolutionParameteriv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetConvolutionParameteriv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionParameteriv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetConvolutionParameteriv);
+}
+
+/* glGetSeparableFilter */
+GdkGLProc
+gdk_gl_get_glGetSeparableFilter (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetSeparableFilter == (GdkGLProc_glGetSeparableFilter) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetSeparableFilter =
+      (GdkGLProc_glGetSeparableFilter) gdk_gl_get_proc_address ("glGetSeparableFilter");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetSeparableFilter () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetSeparableFilter) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetSeparableFilter);
+}
+
+/* glSeparableFilter2D */
+GdkGLProc
+gdk_gl_get_glSeparableFilter2D (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glSeparableFilter2D == (GdkGLProc_glSeparableFilter2D) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glSeparableFilter2D =
+      (GdkGLProc_glSeparableFilter2D) gdk_gl_get_proc_address ("glSeparableFilter2D");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSeparableFilter2D () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glSeparableFilter2D) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glSeparableFilter2D);
+}
+
+/* glGetHistogram */
+GdkGLProc
+gdk_gl_get_glGetHistogram (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetHistogram == (GdkGLProc_glGetHistogram) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetHistogram =
+      (GdkGLProc_glGetHistogram) gdk_gl_get_proc_address ("glGetHistogram");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetHistogram () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetHistogram) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetHistogram);
+}
+
+/* glGetHistogramParameterfv */
+GdkGLProc
+gdk_gl_get_glGetHistogramParameterfv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetHistogramParameterfv == (GdkGLProc_glGetHistogramParameterfv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetHistogramParameterfv =
+      (GdkGLProc_glGetHistogramParameterfv) gdk_gl_get_proc_address ("glGetHistogramParameterfv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetHistogramParameterfv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetHistogramParameterfv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetHistogramParameterfv);
+}
+
+/* glGetHistogramParameteriv */
+GdkGLProc
+gdk_gl_get_glGetHistogramParameteriv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetHistogramParameteriv == (GdkGLProc_glGetHistogramParameteriv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetHistogramParameteriv =
+      (GdkGLProc_glGetHistogramParameteriv) gdk_gl_get_proc_address ("glGetHistogramParameteriv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetHistogramParameteriv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetHistogramParameteriv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetHistogramParameteriv);
+}
+
+/* glGetMinmax */
+GdkGLProc
+gdk_gl_get_glGetMinmax (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetMinmax == (GdkGLProc_glGetMinmax) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetMinmax =
+      (GdkGLProc_glGetMinmax) gdk_gl_get_proc_address ("glGetMinmax");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMinmax () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetMinmax) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetMinmax);
+}
+
+/* glGetMinmaxParameterfv */
+GdkGLProc
+gdk_gl_get_glGetMinmaxParameterfv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetMinmaxParameterfv == (GdkGLProc_glGetMinmaxParameterfv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetMinmaxParameterfv =
+      (GdkGLProc_glGetMinmaxParameterfv) gdk_gl_get_proc_address ("glGetMinmaxParameterfv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMinmaxParameterfv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetMinmaxParameterfv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetMinmaxParameterfv);
+}
+
+/* glGetMinmaxParameteriv */
+GdkGLProc
+gdk_gl_get_glGetMinmaxParameteriv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glGetMinmaxParameteriv == (GdkGLProc_glGetMinmaxParameteriv) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glGetMinmaxParameteriv =
+      (GdkGLProc_glGetMinmaxParameteriv) gdk_gl_get_proc_address ("glGetMinmaxParameteriv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMinmaxParameteriv () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glGetMinmaxParameteriv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glGetMinmaxParameteriv);
+}
+
+/* glHistogram */
+GdkGLProc
+gdk_gl_get_glHistogram (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glHistogram == (GdkGLProc_glHistogram) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glHistogram =
+      (GdkGLProc_glHistogram) gdk_gl_get_proc_address ("glHistogram");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glHistogram () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glHistogram) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glHistogram);
+}
+
+/* glMinmax */
+GdkGLProc
+gdk_gl_get_glMinmax (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glMinmax == (GdkGLProc_glMinmax) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glMinmax =
+      (GdkGLProc_glMinmax) gdk_gl_get_proc_address ("glMinmax");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMinmax () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glMinmax) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glMinmax);
+}
+
+/* glResetHistogram */
+GdkGLProc
+gdk_gl_get_glResetHistogram (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glResetHistogram == (GdkGLProc_glResetHistogram) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glResetHistogram =
+      (GdkGLProc_glResetHistogram) gdk_gl_get_proc_address ("glResetHistogram");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glResetHistogram () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glResetHistogram) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glResetHistogram);
+}
+
+/* glResetMinmax */
+GdkGLProc
+gdk_gl_get_glResetMinmax (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_2_DEPRECATED.glResetMinmax == (GdkGLProc_glResetMinmax) -1)
+    _procs_GL_VERSION_1_2_DEPRECATED.glResetMinmax =
+      (GdkGLProc_glResetMinmax) gdk_gl_get_proc_address ("glResetMinmax");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glResetMinmax () - %s",
+               (_procs_GL_VERSION_1_2_DEPRECATED.glResetMinmax) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_2_DEPRECATED.glResetMinmax);
+}
+
+/* Get GL_VERSION_1_2_DEPRECATED functions */
+GdkGL_GL_VERSION_1_2_DEPRECATED *
+gdk_gl_get_GL_VERSION_1_2_DEPRECATED (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported =  (gdk_gl_get_glColorTable () != NULL);
       supported &= (gdk_gl_get_glColorTableParameterfv () != NULL);
       supported &= (gdk_gl_get_glColorTableParameteriv () != NULL);
       supported &= (gdk_gl_get_glCopyColorTable () != NULL);
@@ -800,19 +833,16 @@ gdk_gl_get_GL_VERSION_1_2 (void)
       supported &= (gdk_gl_get_glMinmax () != NULL);
       supported &= (gdk_gl_get_glResetHistogram () != NULL);
       supported &= (gdk_gl_get_glResetMinmax () != NULL);
-      supported &= (gdk_gl_get_glTexImage3D () != NULL);
-      supported &= (gdk_gl_get_glTexSubImage3D () != NULL);
-      supported &= (gdk_gl_get_glCopyTexSubImage3D () != NULL);
     }
 
   GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_GL_VERSION_1_2 () - %s",
+    g_message (" - gdk_gl_get_GL_VERSION_1_2_DEPRECATED () - %s",
                (supported) ? "supported" : "not supported"));
 
   if (!supported)
     return NULL;
 
-  return &_procs_GL_VERSION_1_2;
+  return &_procs_GL_VERSION_1_2_DEPRECATED;
 }
 
 /*
@@ -821,43 +851,6 @@ gdk_gl_get_GL_VERSION_1_2 (void)
 
 static GdkGL_GL_VERSION_1_3 _procs_GL_VERSION_1_3 = {
   (GdkGLProc_glActiveTexture) -1,
-  (GdkGLProc_glClientActiveTexture) -1,
-  (GdkGLProc_glMultiTexCoord1d) -1,
-  (GdkGLProc_glMultiTexCoord1dv) -1,
-  (GdkGLProc_glMultiTexCoord1f) -1,
-  (GdkGLProc_glMultiTexCoord1fv) -1,
-  (GdkGLProc_glMultiTexCoord1i) -1,
-  (GdkGLProc_glMultiTexCoord1iv) -1,
-  (GdkGLProc_glMultiTexCoord1s) -1,
-  (GdkGLProc_glMultiTexCoord1sv) -1,
-  (GdkGLProc_glMultiTexCoord2d) -1,
-  (GdkGLProc_glMultiTexCoord2dv) -1,
-  (GdkGLProc_glMultiTexCoord2f) -1,
-  (GdkGLProc_glMultiTexCoord2fv) -1,
-  (GdkGLProc_glMultiTexCoord2i) -1,
-  (GdkGLProc_glMultiTexCoord2iv) -1,
-  (GdkGLProc_glMultiTexCoord2s) -1,
-  (GdkGLProc_glMultiTexCoord2sv) -1,
-  (GdkGLProc_glMultiTexCoord3d) -1,
-  (GdkGLProc_glMultiTexCoord3dv) -1,
-  (GdkGLProc_glMultiTexCoord3f) -1,
-  (GdkGLProc_glMultiTexCoord3fv) -1,
-  (GdkGLProc_glMultiTexCoord3i) -1,
-  (GdkGLProc_glMultiTexCoord3iv) -1,
-  (GdkGLProc_glMultiTexCoord3s) -1,
-  (GdkGLProc_glMultiTexCoord3sv) -1,
-  (GdkGLProc_glMultiTexCoord4d) -1,
-  (GdkGLProc_glMultiTexCoord4dv) -1,
-  (GdkGLProc_glMultiTexCoord4f) -1,
-  (GdkGLProc_glMultiTexCoord4fv) -1,
-  (GdkGLProc_glMultiTexCoord4i) -1,
-  (GdkGLProc_glMultiTexCoord4iv) -1,
-  (GdkGLProc_glMultiTexCoord4s) -1,
-  (GdkGLProc_glMultiTexCoord4sv) -1,
-  (GdkGLProc_glLoadTransposeMatrixf) -1,
-  (GdkGLProc_glLoadTransposeMatrixd) -1,
-  (GdkGLProc_glMultTransposeMatrixf) -1,
-  (GdkGLProc_glMultTransposeMatrixd) -1,
   (GdkGLProc_glSampleCoverage) -1,
   (GdkGLProc_glCompressedTexImage3D) -1,
   (GdkGLProc_glCompressedTexImage2D) -1,
@@ -884,672 +877,6 @@ gdk_gl_get_glActiveTexture (void)
                (_procs_GL_VERSION_1_3.glActiveTexture) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_3.glActiveTexture);
-}
-
-/* glClientActiveTexture */
-GdkGLProc
-gdk_gl_get_glClientActiveTexture (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glClientActiveTexture == (GdkGLProc_glClientActiveTexture) -1)
-    _procs_GL_VERSION_1_3.glClientActiveTexture =
-      (GdkGLProc_glClientActiveTexture) gdk_gl_get_proc_address ("glClientActiveTexture");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glClientActiveTexture () - %s",
-               (_procs_GL_VERSION_1_3.glClientActiveTexture) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glClientActiveTexture);
-}
-
-/* glMultiTexCoord1d */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord1d (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord1d == (GdkGLProc_glMultiTexCoord1d) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord1d =
-      (GdkGLProc_glMultiTexCoord1d) gdk_gl_get_proc_address ("glMultiTexCoord1d");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord1d () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord1d) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1d);
-}
-
-/* glMultiTexCoord1dv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord1dv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord1dv == (GdkGLProc_glMultiTexCoord1dv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord1dv =
-      (GdkGLProc_glMultiTexCoord1dv) gdk_gl_get_proc_address ("glMultiTexCoord1dv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord1dv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord1dv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1dv);
-}
-
-/* glMultiTexCoord1f */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord1f (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord1f == (GdkGLProc_glMultiTexCoord1f) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord1f =
-      (GdkGLProc_glMultiTexCoord1f) gdk_gl_get_proc_address ("glMultiTexCoord1f");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord1f () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord1f) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1f);
-}
-
-/* glMultiTexCoord1fv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord1fv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord1fv == (GdkGLProc_glMultiTexCoord1fv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord1fv =
-      (GdkGLProc_glMultiTexCoord1fv) gdk_gl_get_proc_address ("glMultiTexCoord1fv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord1fv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord1fv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1fv);
-}
-
-/* glMultiTexCoord1i */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord1i (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord1i == (GdkGLProc_glMultiTexCoord1i) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord1i =
-      (GdkGLProc_glMultiTexCoord1i) gdk_gl_get_proc_address ("glMultiTexCoord1i");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord1i () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord1i) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1i);
-}
-
-/* glMultiTexCoord1iv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord1iv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord1iv == (GdkGLProc_glMultiTexCoord1iv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord1iv =
-      (GdkGLProc_glMultiTexCoord1iv) gdk_gl_get_proc_address ("glMultiTexCoord1iv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord1iv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord1iv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1iv);
-}
-
-/* glMultiTexCoord1s */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord1s (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord1s == (GdkGLProc_glMultiTexCoord1s) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord1s =
-      (GdkGLProc_glMultiTexCoord1s) gdk_gl_get_proc_address ("glMultiTexCoord1s");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord1s () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord1s) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1s);
-}
-
-/* glMultiTexCoord1sv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord1sv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord1sv == (GdkGLProc_glMultiTexCoord1sv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord1sv =
-      (GdkGLProc_glMultiTexCoord1sv) gdk_gl_get_proc_address ("glMultiTexCoord1sv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord1sv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord1sv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord1sv);
-}
-
-/* glMultiTexCoord2d */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord2d (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord2d == (GdkGLProc_glMultiTexCoord2d) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord2d =
-      (GdkGLProc_glMultiTexCoord2d) gdk_gl_get_proc_address ("glMultiTexCoord2d");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord2d () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord2d) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2d);
-}
-
-/* glMultiTexCoord2dv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord2dv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord2dv == (GdkGLProc_glMultiTexCoord2dv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord2dv =
-      (GdkGLProc_glMultiTexCoord2dv) gdk_gl_get_proc_address ("glMultiTexCoord2dv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord2dv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord2dv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2dv);
-}
-
-/* glMultiTexCoord2f */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord2f (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord2f == (GdkGLProc_glMultiTexCoord2f) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord2f =
-      (GdkGLProc_glMultiTexCoord2f) gdk_gl_get_proc_address ("glMultiTexCoord2f");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord2f () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord2f) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2f);
-}
-
-/* glMultiTexCoord2fv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord2fv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord2fv == (GdkGLProc_glMultiTexCoord2fv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord2fv =
-      (GdkGLProc_glMultiTexCoord2fv) gdk_gl_get_proc_address ("glMultiTexCoord2fv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord2fv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord2fv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2fv);
-}
-
-/* glMultiTexCoord2i */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord2i (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord2i == (GdkGLProc_glMultiTexCoord2i) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord2i =
-      (GdkGLProc_glMultiTexCoord2i) gdk_gl_get_proc_address ("glMultiTexCoord2i");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord2i () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord2i) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2i);
-}
-
-/* glMultiTexCoord2iv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord2iv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord2iv == (GdkGLProc_glMultiTexCoord2iv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord2iv =
-      (GdkGLProc_glMultiTexCoord2iv) gdk_gl_get_proc_address ("glMultiTexCoord2iv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord2iv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord2iv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2iv);
-}
-
-/* glMultiTexCoord2s */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord2s (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord2s == (GdkGLProc_glMultiTexCoord2s) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord2s =
-      (GdkGLProc_glMultiTexCoord2s) gdk_gl_get_proc_address ("glMultiTexCoord2s");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord2s () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord2s) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2s);
-}
-
-/* glMultiTexCoord2sv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord2sv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord2sv == (GdkGLProc_glMultiTexCoord2sv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord2sv =
-      (GdkGLProc_glMultiTexCoord2sv) gdk_gl_get_proc_address ("glMultiTexCoord2sv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord2sv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord2sv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord2sv);
-}
-
-/* glMultiTexCoord3d */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord3d (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord3d == (GdkGLProc_glMultiTexCoord3d) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord3d =
-      (GdkGLProc_glMultiTexCoord3d) gdk_gl_get_proc_address ("glMultiTexCoord3d");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord3d () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord3d) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3d);
-}
-
-/* glMultiTexCoord3dv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord3dv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord3dv == (GdkGLProc_glMultiTexCoord3dv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord3dv =
-      (GdkGLProc_glMultiTexCoord3dv) gdk_gl_get_proc_address ("glMultiTexCoord3dv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord3dv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord3dv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3dv);
-}
-
-/* glMultiTexCoord3f */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord3f (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord3f == (GdkGLProc_glMultiTexCoord3f) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord3f =
-      (GdkGLProc_glMultiTexCoord3f) gdk_gl_get_proc_address ("glMultiTexCoord3f");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord3f () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord3f) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3f);
-}
-
-/* glMultiTexCoord3fv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord3fv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord3fv == (GdkGLProc_glMultiTexCoord3fv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord3fv =
-      (GdkGLProc_glMultiTexCoord3fv) gdk_gl_get_proc_address ("glMultiTexCoord3fv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord3fv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord3fv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3fv);
-}
-
-/* glMultiTexCoord3i */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord3i (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord3i == (GdkGLProc_glMultiTexCoord3i) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord3i =
-      (GdkGLProc_glMultiTexCoord3i) gdk_gl_get_proc_address ("glMultiTexCoord3i");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord3i () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord3i) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3i);
-}
-
-/* glMultiTexCoord3iv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord3iv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord3iv == (GdkGLProc_glMultiTexCoord3iv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord3iv =
-      (GdkGLProc_glMultiTexCoord3iv) gdk_gl_get_proc_address ("glMultiTexCoord3iv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord3iv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord3iv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3iv);
-}
-
-/* glMultiTexCoord3s */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord3s (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord3s == (GdkGLProc_glMultiTexCoord3s) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord3s =
-      (GdkGLProc_glMultiTexCoord3s) gdk_gl_get_proc_address ("glMultiTexCoord3s");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord3s () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord3s) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3s);
-}
-
-/* glMultiTexCoord3sv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord3sv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord3sv == (GdkGLProc_glMultiTexCoord3sv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord3sv =
-      (GdkGLProc_glMultiTexCoord3sv) gdk_gl_get_proc_address ("glMultiTexCoord3sv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord3sv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord3sv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord3sv);
-}
-
-/* glMultiTexCoord4d */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord4d (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord4d == (GdkGLProc_glMultiTexCoord4d) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord4d =
-      (GdkGLProc_glMultiTexCoord4d) gdk_gl_get_proc_address ("glMultiTexCoord4d");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord4d () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord4d) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4d);
-}
-
-/* glMultiTexCoord4dv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord4dv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord4dv == (GdkGLProc_glMultiTexCoord4dv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord4dv =
-      (GdkGLProc_glMultiTexCoord4dv) gdk_gl_get_proc_address ("glMultiTexCoord4dv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord4dv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord4dv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4dv);
-}
-
-/* glMultiTexCoord4f */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord4f (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord4f == (GdkGLProc_glMultiTexCoord4f) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord4f =
-      (GdkGLProc_glMultiTexCoord4f) gdk_gl_get_proc_address ("glMultiTexCoord4f");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord4f () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord4f) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4f);
-}
-
-/* glMultiTexCoord4fv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord4fv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord4fv == (GdkGLProc_glMultiTexCoord4fv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord4fv =
-      (GdkGLProc_glMultiTexCoord4fv) gdk_gl_get_proc_address ("glMultiTexCoord4fv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord4fv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord4fv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4fv);
-}
-
-/* glMultiTexCoord4i */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord4i (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord4i == (GdkGLProc_glMultiTexCoord4i) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord4i =
-      (GdkGLProc_glMultiTexCoord4i) gdk_gl_get_proc_address ("glMultiTexCoord4i");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord4i () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord4i) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4i);
-}
-
-/* glMultiTexCoord4iv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord4iv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord4iv == (GdkGLProc_glMultiTexCoord4iv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord4iv =
-      (GdkGLProc_glMultiTexCoord4iv) gdk_gl_get_proc_address ("glMultiTexCoord4iv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord4iv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord4iv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4iv);
-}
-
-/* glMultiTexCoord4s */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord4s (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord4s == (GdkGLProc_glMultiTexCoord4s) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord4s =
-      (GdkGLProc_glMultiTexCoord4s) gdk_gl_get_proc_address ("glMultiTexCoord4s");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord4s () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord4s) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4s);
-}
-
-/* glMultiTexCoord4sv */
-GdkGLProc
-gdk_gl_get_glMultiTexCoord4sv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultiTexCoord4sv == (GdkGLProc_glMultiTexCoord4sv) -1)
-    _procs_GL_VERSION_1_3.glMultiTexCoord4sv =
-      (GdkGLProc_glMultiTexCoord4sv) gdk_gl_get_proc_address ("glMultiTexCoord4sv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultiTexCoord4sv () - %s",
-               (_procs_GL_VERSION_1_3.glMultiTexCoord4sv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultiTexCoord4sv);
-}
-
-/* glLoadTransposeMatrixf */
-GdkGLProc
-gdk_gl_get_glLoadTransposeMatrixf (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glLoadTransposeMatrixf == (GdkGLProc_glLoadTransposeMatrixf) -1)
-    _procs_GL_VERSION_1_3.glLoadTransposeMatrixf =
-      (GdkGLProc_glLoadTransposeMatrixf) gdk_gl_get_proc_address ("glLoadTransposeMatrixf");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glLoadTransposeMatrixf () - %s",
-               (_procs_GL_VERSION_1_3.glLoadTransposeMatrixf) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glLoadTransposeMatrixf);
-}
-
-/* glLoadTransposeMatrixd */
-GdkGLProc
-gdk_gl_get_glLoadTransposeMatrixd (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glLoadTransposeMatrixd == (GdkGLProc_glLoadTransposeMatrixd) -1)
-    _procs_GL_VERSION_1_3.glLoadTransposeMatrixd =
-      (GdkGLProc_glLoadTransposeMatrixd) gdk_gl_get_proc_address ("glLoadTransposeMatrixd");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glLoadTransposeMatrixd () - %s",
-               (_procs_GL_VERSION_1_3.glLoadTransposeMatrixd) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glLoadTransposeMatrixd);
-}
-
-/* glMultTransposeMatrixf */
-GdkGLProc
-gdk_gl_get_glMultTransposeMatrixf (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultTransposeMatrixf == (GdkGLProc_glMultTransposeMatrixf) -1)
-    _procs_GL_VERSION_1_3.glMultTransposeMatrixf =
-      (GdkGLProc_glMultTransposeMatrixf) gdk_gl_get_proc_address ("glMultTransposeMatrixf");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultTransposeMatrixf () - %s",
-               (_procs_GL_VERSION_1_3.glMultTransposeMatrixf) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultTransposeMatrixf);
-}
-
-/* glMultTransposeMatrixd */
-GdkGLProc
-gdk_gl_get_glMultTransposeMatrixd (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_3.glMultTransposeMatrixd == (GdkGLProc_glMultTransposeMatrixd) -1)
-    _procs_GL_VERSION_1_3.glMultTransposeMatrixd =
-      (GdkGLProc_glMultTransposeMatrixd) gdk_gl_get_proc_address ("glMultTransposeMatrixd");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glMultTransposeMatrixd () - %s",
-               (_procs_GL_VERSION_1_3.glMultTransposeMatrixd) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_3.glMultTransposeMatrixd);
 }
 
 /* glSampleCoverage */
@@ -1708,7 +1035,748 @@ gdk_gl_get_GL_VERSION_1_3 (void)
   if (supported == -1)
     {
       supported =  (gdk_gl_get_glActiveTexture () != NULL);
-      supported &= (gdk_gl_get_glClientActiveTexture () != NULL);
+      supported &= (gdk_gl_get_glSampleCoverage () != NULL);
+      supported &= (gdk_gl_get_glCompressedTexImage3D () != NULL);
+      supported &= (gdk_gl_get_glCompressedTexImage2D () != NULL);
+      supported &= (gdk_gl_get_glCompressedTexImage1D () != NULL);
+      supported &= (gdk_gl_get_glCompressedTexSubImage3D () != NULL);
+      supported &= (gdk_gl_get_glCompressedTexSubImage2D () != NULL);
+      supported &= (gdk_gl_get_glCompressedTexSubImage1D () != NULL);
+      supported &= (gdk_gl_get_glGetCompressedTexImage () != NULL);
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_1_3 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_VERSION_1_3;
+}
+
+/*
+ * GL_VERSION_1_3_DEPRECATED
+ */
+
+static GdkGL_GL_VERSION_1_3_DEPRECATED _procs_GL_VERSION_1_3_DEPRECATED = {
+  (GdkGLProc_glClientActiveTexture) -1,
+  (GdkGLProc_glMultiTexCoord1d) -1,
+  (GdkGLProc_glMultiTexCoord1dv) -1,
+  (GdkGLProc_glMultiTexCoord1f) -1,
+  (GdkGLProc_glMultiTexCoord1fv) -1,
+  (GdkGLProc_glMultiTexCoord1i) -1,
+  (GdkGLProc_glMultiTexCoord1iv) -1,
+  (GdkGLProc_glMultiTexCoord1s) -1,
+  (GdkGLProc_glMultiTexCoord1sv) -1,
+  (GdkGLProc_glMultiTexCoord2d) -1,
+  (GdkGLProc_glMultiTexCoord2dv) -1,
+  (GdkGLProc_glMultiTexCoord2f) -1,
+  (GdkGLProc_glMultiTexCoord2fv) -1,
+  (GdkGLProc_glMultiTexCoord2i) -1,
+  (GdkGLProc_glMultiTexCoord2iv) -1,
+  (GdkGLProc_glMultiTexCoord2s) -1,
+  (GdkGLProc_glMultiTexCoord2sv) -1,
+  (GdkGLProc_glMultiTexCoord3d) -1,
+  (GdkGLProc_glMultiTexCoord3dv) -1,
+  (GdkGLProc_glMultiTexCoord3f) -1,
+  (GdkGLProc_glMultiTexCoord3fv) -1,
+  (GdkGLProc_glMultiTexCoord3i) -1,
+  (GdkGLProc_glMultiTexCoord3iv) -1,
+  (GdkGLProc_glMultiTexCoord3s) -1,
+  (GdkGLProc_glMultiTexCoord3sv) -1,
+  (GdkGLProc_glMultiTexCoord4d) -1,
+  (GdkGLProc_glMultiTexCoord4dv) -1,
+  (GdkGLProc_glMultiTexCoord4f) -1,
+  (GdkGLProc_glMultiTexCoord4fv) -1,
+  (GdkGLProc_glMultiTexCoord4i) -1,
+  (GdkGLProc_glMultiTexCoord4iv) -1,
+  (GdkGLProc_glMultiTexCoord4s) -1,
+  (GdkGLProc_glMultiTexCoord4sv) -1,
+  (GdkGLProc_glLoadTransposeMatrixf) -1,
+  (GdkGLProc_glLoadTransposeMatrixd) -1,
+  (GdkGLProc_glMultTransposeMatrixf) -1,
+  (GdkGLProc_glMultTransposeMatrixd) -1
+};
+
+/* glClientActiveTexture */
+GdkGLProc
+gdk_gl_get_glClientActiveTexture (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glClientActiveTexture == (GdkGLProc_glClientActiveTexture) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glClientActiveTexture =
+      (GdkGLProc_glClientActiveTexture) gdk_gl_get_proc_address ("glClientActiveTexture");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClientActiveTexture () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glClientActiveTexture) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glClientActiveTexture);
+}
+
+/* glMultiTexCoord1d */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1d == (GdkGLProc_glMultiTexCoord1d) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1d =
+      (GdkGLProc_glMultiTexCoord1d) gdk_gl_get_proc_address ("glMultiTexCoord1d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1d () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1d);
+}
+
+/* glMultiTexCoord1dv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1dv == (GdkGLProc_glMultiTexCoord1dv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1dv =
+      (GdkGLProc_glMultiTexCoord1dv) gdk_gl_get_proc_address ("glMultiTexCoord1dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1dv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1dv);
+}
+
+/* glMultiTexCoord1f */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1f == (GdkGLProc_glMultiTexCoord1f) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1f =
+      (GdkGLProc_glMultiTexCoord1f) gdk_gl_get_proc_address ("glMultiTexCoord1f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1f () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1f);
+}
+
+/* glMultiTexCoord1fv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1fv == (GdkGLProc_glMultiTexCoord1fv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1fv =
+      (GdkGLProc_glMultiTexCoord1fv) gdk_gl_get_proc_address ("glMultiTexCoord1fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1fv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1fv);
+}
+
+/* glMultiTexCoord1i */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1i == (GdkGLProc_glMultiTexCoord1i) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1i =
+      (GdkGLProc_glMultiTexCoord1i) gdk_gl_get_proc_address ("glMultiTexCoord1i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1i () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1i);
+}
+
+/* glMultiTexCoord1iv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1iv == (GdkGLProc_glMultiTexCoord1iv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1iv =
+      (GdkGLProc_glMultiTexCoord1iv) gdk_gl_get_proc_address ("glMultiTexCoord1iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1iv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1iv);
+}
+
+/* glMultiTexCoord1s */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1s == (GdkGLProc_glMultiTexCoord1s) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1s =
+      (GdkGLProc_glMultiTexCoord1s) gdk_gl_get_proc_address ("glMultiTexCoord1s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1s () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1s);
+}
+
+/* glMultiTexCoord1sv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord1sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1sv == (GdkGLProc_glMultiTexCoord1sv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1sv =
+      (GdkGLProc_glMultiTexCoord1sv) gdk_gl_get_proc_address ("glMultiTexCoord1sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord1sv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord1sv);
+}
+
+/* glMultiTexCoord2d */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2d == (GdkGLProc_glMultiTexCoord2d) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2d =
+      (GdkGLProc_glMultiTexCoord2d) gdk_gl_get_proc_address ("glMultiTexCoord2d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2d () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2d);
+}
+
+/* glMultiTexCoord2dv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2dv == (GdkGLProc_glMultiTexCoord2dv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2dv =
+      (GdkGLProc_glMultiTexCoord2dv) gdk_gl_get_proc_address ("glMultiTexCoord2dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2dv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2dv);
+}
+
+/* glMultiTexCoord2f */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2f == (GdkGLProc_glMultiTexCoord2f) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2f =
+      (GdkGLProc_glMultiTexCoord2f) gdk_gl_get_proc_address ("glMultiTexCoord2f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2f () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2f);
+}
+
+/* glMultiTexCoord2fv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2fv == (GdkGLProc_glMultiTexCoord2fv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2fv =
+      (GdkGLProc_glMultiTexCoord2fv) gdk_gl_get_proc_address ("glMultiTexCoord2fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2fv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2fv);
+}
+
+/* glMultiTexCoord2i */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2i == (GdkGLProc_glMultiTexCoord2i) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2i =
+      (GdkGLProc_glMultiTexCoord2i) gdk_gl_get_proc_address ("glMultiTexCoord2i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2i () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2i);
+}
+
+/* glMultiTexCoord2iv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2iv == (GdkGLProc_glMultiTexCoord2iv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2iv =
+      (GdkGLProc_glMultiTexCoord2iv) gdk_gl_get_proc_address ("glMultiTexCoord2iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2iv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2iv);
+}
+
+/* glMultiTexCoord2s */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2s == (GdkGLProc_glMultiTexCoord2s) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2s =
+      (GdkGLProc_glMultiTexCoord2s) gdk_gl_get_proc_address ("glMultiTexCoord2s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2s () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2s);
+}
+
+/* glMultiTexCoord2sv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord2sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2sv == (GdkGLProc_glMultiTexCoord2sv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2sv =
+      (GdkGLProc_glMultiTexCoord2sv) gdk_gl_get_proc_address ("glMultiTexCoord2sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord2sv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord2sv);
+}
+
+/* glMultiTexCoord3d */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3d == (GdkGLProc_glMultiTexCoord3d) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3d =
+      (GdkGLProc_glMultiTexCoord3d) gdk_gl_get_proc_address ("glMultiTexCoord3d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3d () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3d);
+}
+
+/* glMultiTexCoord3dv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3dv == (GdkGLProc_glMultiTexCoord3dv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3dv =
+      (GdkGLProc_glMultiTexCoord3dv) gdk_gl_get_proc_address ("glMultiTexCoord3dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3dv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3dv);
+}
+
+/* glMultiTexCoord3f */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3f == (GdkGLProc_glMultiTexCoord3f) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3f =
+      (GdkGLProc_glMultiTexCoord3f) gdk_gl_get_proc_address ("glMultiTexCoord3f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3f () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3f);
+}
+
+/* glMultiTexCoord3fv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3fv == (GdkGLProc_glMultiTexCoord3fv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3fv =
+      (GdkGLProc_glMultiTexCoord3fv) gdk_gl_get_proc_address ("glMultiTexCoord3fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3fv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3fv);
+}
+
+/* glMultiTexCoord3i */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3i == (GdkGLProc_glMultiTexCoord3i) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3i =
+      (GdkGLProc_glMultiTexCoord3i) gdk_gl_get_proc_address ("glMultiTexCoord3i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3i () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3i);
+}
+
+/* glMultiTexCoord3iv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3iv == (GdkGLProc_glMultiTexCoord3iv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3iv =
+      (GdkGLProc_glMultiTexCoord3iv) gdk_gl_get_proc_address ("glMultiTexCoord3iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3iv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3iv);
+}
+
+/* glMultiTexCoord3s */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3s == (GdkGLProc_glMultiTexCoord3s) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3s =
+      (GdkGLProc_glMultiTexCoord3s) gdk_gl_get_proc_address ("glMultiTexCoord3s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3s () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3s);
+}
+
+/* glMultiTexCoord3sv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord3sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3sv == (GdkGLProc_glMultiTexCoord3sv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3sv =
+      (GdkGLProc_glMultiTexCoord3sv) gdk_gl_get_proc_address ("glMultiTexCoord3sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord3sv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord3sv);
+}
+
+/* glMultiTexCoord4d */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4d == (GdkGLProc_glMultiTexCoord4d) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4d =
+      (GdkGLProc_glMultiTexCoord4d) gdk_gl_get_proc_address ("glMultiTexCoord4d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4d () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4d);
+}
+
+/* glMultiTexCoord4dv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4dv == (GdkGLProc_glMultiTexCoord4dv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4dv =
+      (GdkGLProc_glMultiTexCoord4dv) gdk_gl_get_proc_address ("glMultiTexCoord4dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4dv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4dv);
+}
+
+/* glMultiTexCoord4f */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4f == (GdkGLProc_glMultiTexCoord4f) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4f =
+      (GdkGLProc_glMultiTexCoord4f) gdk_gl_get_proc_address ("glMultiTexCoord4f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4f () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4f);
+}
+
+/* glMultiTexCoord4fv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4fv == (GdkGLProc_glMultiTexCoord4fv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4fv =
+      (GdkGLProc_glMultiTexCoord4fv) gdk_gl_get_proc_address ("glMultiTexCoord4fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4fv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4fv);
+}
+
+/* glMultiTexCoord4i */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4i == (GdkGLProc_glMultiTexCoord4i) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4i =
+      (GdkGLProc_glMultiTexCoord4i) gdk_gl_get_proc_address ("glMultiTexCoord4i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4i () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4i);
+}
+
+/* glMultiTexCoord4iv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4iv == (GdkGLProc_glMultiTexCoord4iv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4iv =
+      (GdkGLProc_glMultiTexCoord4iv) gdk_gl_get_proc_address ("glMultiTexCoord4iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4iv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4iv);
+}
+
+/* glMultiTexCoord4s */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4s == (GdkGLProc_glMultiTexCoord4s) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4s =
+      (GdkGLProc_glMultiTexCoord4s) gdk_gl_get_proc_address ("glMultiTexCoord4s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4s () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4s);
+}
+
+/* glMultiTexCoord4sv */
+GdkGLProc
+gdk_gl_get_glMultiTexCoord4sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4sv == (GdkGLProc_glMultiTexCoord4sv) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4sv =
+      (GdkGLProc_glMultiTexCoord4sv) gdk_gl_get_proc_address ("glMultiTexCoord4sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoord4sv () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultiTexCoord4sv);
+}
+
+/* glLoadTransposeMatrixf */
+GdkGLProc
+gdk_gl_get_glLoadTransposeMatrixf (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glLoadTransposeMatrixf == (GdkGLProc_glLoadTransposeMatrixf) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glLoadTransposeMatrixf =
+      (GdkGLProc_glLoadTransposeMatrixf) gdk_gl_get_proc_address ("glLoadTransposeMatrixf");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLoadTransposeMatrixf () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glLoadTransposeMatrixf) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glLoadTransposeMatrixf);
+}
+
+/* glLoadTransposeMatrixd */
+GdkGLProc
+gdk_gl_get_glLoadTransposeMatrixd (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glLoadTransposeMatrixd == (GdkGLProc_glLoadTransposeMatrixd) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glLoadTransposeMatrixd =
+      (GdkGLProc_glLoadTransposeMatrixd) gdk_gl_get_proc_address ("glLoadTransposeMatrixd");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLoadTransposeMatrixd () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glLoadTransposeMatrixd) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glLoadTransposeMatrixd);
+}
+
+/* glMultTransposeMatrixf */
+GdkGLProc
+gdk_gl_get_glMultTransposeMatrixf (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultTransposeMatrixf == (GdkGLProc_glMultTransposeMatrixf) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultTransposeMatrixf =
+      (GdkGLProc_glMultTransposeMatrixf) gdk_gl_get_proc_address ("glMultTransposeMatrixf");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultTransposeMatrixf () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultTransposeMatrixf) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultTransposeMatrixf);
+}
+
+/* glMultTransposeMatrixd */
+GdkGLProc
+gdk_gl_get_glMultTransposeMatrixd (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_3_DEPRECATED.glMultTransposeMatrixd == (GdkGLProc_glMultTransposeMatrixd) -1)
+    _procs_GL_VERSION_1_3_DEPRECATED.glMultTransposeMatrixd =
+      (GdkGLProc_glMultTransposeMatrixd) gdk_gl_get_proc_address ("glMultTransposeMatrixd");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultTransposeMatrixd () - %s",
+               (_procs_GL_VERSION_1_3_DEPRECATED.glMultTransposeMatrixd) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_3_DEPRECATED.glMultTransposeMatrixd);
+}
+
+/* Get GL_VERSION_1_3_DEPRECATED functions */
+GdkGL_GL_VERSION_1_3_DEPRECATED *
+gdk_gl_get_GL_VERSION_1_3_DEPRECATED (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported =  (gdk_gl_get_glClientActiveTexture () != NULL);
       supported &= (gdk_gl_get_glMultiTexCoord1d () != NULL);
       supported &= (gdk_gl_get_glMultiTexCoord1dv () != NULL);
       supported &= (gdk_gl_get_glMultiTexCoord1f () != NULL);
@@ -1745,24 +1813,16 @@ gdk_gl_get_GL_VERSION_1_3 (void)
       supported &= (gdk_gl_get_glLoadTransposeMatrixd () != NULL);
       supported &= (gdk_gl_get_glMultTransposeMatrixf () != NULL);
       supported &= (gdk_gl_get_glMultTransposeMatrixd () != NULL);
-      supported &= (gdk_gl_get_glSampleCoverage () != NULL);
-      supported &= (gdk_gl_get_glCompressedTexImage3D () != NULL);
-      supported &= (gdk_gl_get_glCompressedTexImage2D () != NULL);
-      supported &= (gdk_gl_get_glCompressedTexImage1D () != NULL);
-      supported &= (gdk_gl_get_glCompressedTexSubImage3D () != NULL);
-      supported &= (gdk_gl_get_glCompressedTexSubImage2D () != NULL);
-      supported &= (gdk_gl_get_glCompressedTexSubImage1D () != NULL);
-      supported &= (gdk_gl_get_glGetCompressedTexImage () != NULL);
     }
 
   GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_GL_VERSION_1_3 () - %s",
+    g_message (" - gdk_gl_get_GL_VERSION_1_3_DEPRECATED () - %s",
                (supported) ? "supported" : "not supported"));
 
   if (!supported)
     return NULL;
 
-  return &_procs_GL_VERSION_1_3;
+  return &_procs_GL_VERSION_1_3_DEPRECATED;
 }
 
 /*
@@ -1771,50 +1831,12 @@ gdk_gl_get_GL_VERSION_1_3 (void)
 
 static GdkGL_GL_VERSION_1_4 _procs_GL_VERSION_1_4 = {
   (GdkGLProc_glBlendFuncSeparate) -1,
-  (GdkGLProc_glFogCoordf) -1,
-  (GdkGLProc_glFogCoordfv) -1,
-  (GdkGLProc_glFogCoordd) -1,
-  (GdkGLProc_glFogCoorddv) -1,
-  (GdkGLProc_glFogCoordPointer) -1,
   (GdkGLProc_glMultiDrawArrays) -1,
   (GdkGLProc_glMultiDrawElements) -1,
   (GdkGLProc_glPointParameterf) -1,
   (GdkGLProc_glPointParameterfv) -1,
   (GdkGLProc_glPointParameteri) -1,
-  (GdkGLProc_glPointParameteriv) -1,
-  (GdkGLProc_glSecondaryColor3b) -1,
-  (GdkGLProc_glSecondaryColor3bv) -1,
-  (GdkGLProc_glSecondaryColor3d) -1,
-  (GdkGLProc_glSecondaryColor3dv) -1,
-  (GdkGLProc_glSecondaryColor3f) -1,
-  (GdkGLProc_glSecondaryColor3fv) -1,
-  (GdkGLProc_glSecondaryColor3i) -1,
-  (GdkGLProc_glSecondaryColor3iv) -1,
-  (GdkGLProc_glSecondaryColor3s) -1,
-  (GdkGLProc_glSecondaryColor3sv) -1,
-  (GdkGLProc_glSecondaryColor3ub) -1,
-  (GdkGLProc_glSecondaryColor3ubv) -1,
-  (GdkGLProc_glSecondaryColor3ui) -1,
-  (GdkGLProc_glSecondaryColor3uiv) -1,
-  (GdkGLProc_glSecondaryColor3us) -1,
-  (GdkGLProc_glSecondaryColor3usv) -1,
-  (GdkGLProc_glSecondaryColorPointer) -1,
-  (GdkGLProc_glWindowPos2d) -1,
-  (GdkGLProc_glWindowPos2dv) -1,
-  (GdkGLProc_glWindowPos2f) -1,
-  (GdkGLProc_glWindowPos2fv) -1,
-  (GdkGLProc_glWindowPos2i) -1,
-  (GdkGLProc_glWindowPos2iv) -1,
-  (GdkGLProc_glWindowPos2s) -1,
-  (GdkGLProc_glWindowPos2sv) -1,
-  (GdkGLProc_glWindowPos3d) -1,
-  (GdkGLProc_glWindowPos3dv) -1,
-  (GdkGLProc_glWindowPos3f) -1,
-  (GdkGLProc_glWindowPos3fv) -1,
-  (GdkGLProc_glWindowPos3i) -1,
-  (GdkGLProc_glWindowPos3iv) -1,
-  (GdkGLProc_glWindowPos3s) -1,
-  (GdkGLProc_glWindowPos3sv) -1
+  (GdkGLProc_glPointParameteriv) -1
 };
 
 /* glBlendFuncSeparate */
@@ -1833,96 +1855,6 @@ gdk_gl_get_glBlendFuncSeparate (void)
                (_procs_GL_VERSION_1_4.glBlendFuncSeparate) ? "supported" : "not supported"));
 
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glBlendFuncSeparate);
-}
-
-/* glFogCoordf */
-GdkGLProc
-gdk_gl_get_glFogCoordf (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glFogCoordf == (GdkGLProc_glFogCoordf) -1)
-    _procs_GL_VERSION_1_4.glFogCoordf =
-      (GdkGLProc_glFogCoordf) gdk_gl_get_proc_address ("glFogCoordf");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glFogCoordf () - %s",
-               (_procs_GL_VERSION_1_4.glFogCoordf) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glFogCoordf);
-}
-
-/* glFogCoordfv */
-GdkGLProc
-gdk_gl_get_glFogCoordfv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glFogCoordfv == (GdkGLProc_glFogCoordfv) -1)
-    _procs_GL_VERSION_1_4.glFogCoordfv =
-      (GdkGLProc_glFogCoordfv) gdk_gl_get_proc_address ("glFogCoordfv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glFogCoordfv () - %s",
-               (_procs_GL_VERSION_1_4.glFogCoordfv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glFogCoordfv);
-}
-
-/* glFogCoordd */
-GdkGLProc
-gdk_gl_get_glFogCoordd (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glFogCoordd == (GdkGLProc_glFogCoordd) -1)
-    _procs_GL_VERSION_1_4.glFogCoordd =
-      (GdkGLProc_glFogCoordd) gdk_gl_get_proc_address ("glFogCoordd");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glFogCoordd () - %s",
-               (_procs_GL_VERSION_1_4.glFogCoordd) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glFogCoordd);
-}
-
-/* glFogCoorddv */
-GdkGLProc
-gdk_gl_get_glFogCoorddv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glFogCoorddv == (GdkGLProc_glFogCoorddv) -1)
-    _procs_GL_VERSION_1_4.glFogCoorddv =
-      (GdkGLProc_glFogCoorddv) gdk_gl_get_proc_address ("glFogCoorddv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glFogCoorddv () - %s",
-               (_procs_GL_VERSION_1_4.glFogCoorddv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glFogCoorddv);
-}
-
-/* glFogCoordPointer */
-GdkGLProc
-gdk_gl_get_glFogCoordPointer (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glFogCoordPointer == (GdkGLProc_glFogCoordPointer) -1)
-    _procs_GL_VERSION_1_4.glFogCoordPointer =
-      (GdkGLProc_glFogCoordPointer) gdk_gl_get_proc_address ("glFogCoordPointer");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glFogCoordPointer () - %s",
-               (_procs_GL_VERSION_1_4.glFogCoordPointer) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glFogCoordPointer);
 }
 
 /* glMultiDrawArrays */
@@ -2033,600 +1965,6 @@ gdk_gl_get_glPointParameteriv (void)
   return (GdkGLProc) (_procs_GL_VERSION_1_4.glPointParameteriv);
 }
 
-/* glSecondaryColor3b */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3b (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3b == (GdkGLProc_glSecondaryColor3b) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3b =
-      (GdkGLProc_glSecondaryColor3b) gdk_gl_get_proc_address ("glSecondaryColor3b");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3b () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3b) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3b);
-}
-
-/* glSecondaryColor3bv */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3bv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3bv == (GdkGLProc_glSecondaryColor3bv) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3bv =
-      (GdkGLProc_glSecondaryColor3bv) gdk_gl_get_proc_address ("glSecondaryColor3bv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3bv () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3bv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3bv);
-}
-
-/* glSecondaryColor3d */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3d (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3d == (GdkGLProc_glSecondaryColor3d) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3d =
-      (GdkGLProc_glSecondaryColor3d) gdk_gl_get_proc_address ("glSecondaryColor3d");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3d () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3d) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3d);
-}
-
-/* glSecondaryColor3dv */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3dv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3dv == (GdkGLProc_glSecondaryColor3dv) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3dv =
-      (GdkGLProc_glSecondaryColor3dv) gdk_gl_get_proc_address ("glSecondaryColor3dv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3dv () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3dv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3dv);
-}
-
-/* glSecondaryColor3f */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3f (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3f == (GdkGLProc_glSecondaryColor3f) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3f =
-      (GdkGLProc_glSecondaryColor3f) gdk_gl_get_proc_address ("glSecondaryColor3f");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3f () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3f) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3f);
-}
-
-/* glSecondaryColor3fv */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3fv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3fv == (GdkGLProc_glSecondaryColor3fv) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3fv =
-      (GdkGLProc_glSecondaryColor3fv) gdk_gl_get_proc_address ("glSecondaryColor3fv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3fv () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3fv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3fv);
-}
-
-/* glSecondaryColor3i */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3i (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3i == (GdkGLProc_glSecondaryColor3i) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3i =
-      (GdkGLProc_glSecondaryColor3i) gdk_gl_get_proc_address ("glSecondaryColor3i");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3i () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3i) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3i);
-}
-
-/* glSecondaryColor3iv */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3iv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3iv == (GdkGLProc_glSecondaryColor3iv) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3iv =
-      (GdkGLProc_glSecondaryColor3iv) gdk_gl_get_proc_address ("glSecondaryColor3iv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3iv () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3iv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3iv);
-}
-
-/* glSecondaryColor3s */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3s (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3s == (GdkGLProc_glSecondaryColor3s) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3s =
-      (GdkGLProc_glSecondaryColor3s) gdk_gl_get_proc_address ("glSecondaryColor3s");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3s () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3s) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3s);
-}
-
-/* glSecondaryColor3sv */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3sv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3sv == (GdkGLProc_glSecondaryColor3sv) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3sv =
-      (GdkGLProc_glSecondaryColor3sv) gdk_gl_get_proc_address ("glSecondaryColor3sv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3sv () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3sv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3sv);
-}
-
-/* glSecondaryColor3ub */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3ub (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3ub == (GdkGLProc_glSecondaryColor3ub) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3ub =
-      (GdkGLProc_glSecondaryColor3ub) gdk_gl_get_proc_address ("glSecondaryColor3ub");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3ub () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3ub) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3ub);
-}
-
-/* glSecondaryColor3ubv */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3ubv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3ubv == (GdkGLProc_glSecondaryColor3ubv) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3ubv =
-      (GdkGLProc_glSecondaryColor3ubv) gdk_gl_get_proc_address ("glSecondaryColor3ubv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3ubv () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3ubv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3ubv);
-}
-
-/* glSecondaryColor3ui */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3ui (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3ui == (GdkGLProc_glSecondaryColor3ui) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3ui =
-      (GdkGLProc_glSecondaryColor3ui) gdk_gl_get_proc_address ("glSecondaryColor3ui");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3ui () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3ui) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3ui);
-}
-
-/* glSecondaryColor3uiv */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3uiv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3uiv == (GdkGLProc_glSecondaryColor3uiv) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3uiv =
-      (GdkGLProc_glSecondaryColor3uiv) gdk_gl_get_proc_address ("glSecondaryColor3uiv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3uiv () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3uiv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3uiv);
-}
-
-/* glSecondaryColor3us */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3us (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3us == (GdkGLProc_glSecondaryColor3us) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3us =
-      (GdkGLProc_glSecondaryColor3us) gdk_gl_get_proc_address ("glSecondaryColor3us");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3us () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3us) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3us);
-}
-
-/* glSecondaryColor3usv */
-GdkGLProc
-gdk_gl_get_glSecondaryColor3usv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColor3usv == (GdkGLProc_glSecondaryColor3usv) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColor3usv =
-      (GdkGLProc_glSecondaryColor3usv) gdk_gl_get_proc_address ("glSecondaryColor3usv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColor3usv () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColor3usv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColor3usv);
-}
-
-/* glSecondaryColorPointer */
-GdkGLProc
-gdk_gl_get_glSecondaryColorPointer (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glSecondaryColorPointer == (GdkGLProc_glSecondaryColorPointer) -1)
-    _procs_GL_VERSION_1_4.glSecondaryColorPointer =
-      (GdkGLProc_glSecondaryColorPointer) gdk_gl_get_proc_address ("glSecondaryColorPointer");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glSecondaryColorPointer () - %s",
-               (_procs_GL_VERSION_1_4.glSecondaryColorPointer) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glSecondaryColorPointer);
-}
-
-/* glWindowPos2d */
-GdkGLProc
-gdk_gl_get_glWindowPos2d (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos2d == (GdkGLProc_glWindowPos2d) -1)
-    _procs_GL_VERSION_1_4.glWindowPos2d =
-      (GdkGLProc_glWindowPos2d) gdk_gl_get_proc_address ("glWindowPos2d");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos2d () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos2d) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2d);
-}
-
-/* glWindowPos2dv */
-GdkGLProc
-gdk_gl_get_glWindowPos2dv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos2dv == (GdkGLProc_glWindowPos2dv) -1)
-    _procs_GL_VERSION_1_4.glWindowPos2dv =
-      (GdkGLProc_glWindowPos2dv) gdk_gl_get_proc_address ("glWindowPos2dv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos2dv () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos2dv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2dv);
-}
-
-/* glWindowPos2f */
-GdkGLProc
-gdk_gl_get_glWindowPos2f (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos2f == (GdkGLProc_glWindowPos2f) -1)
-    _procs_GL_VERSION_1_4.glWindowPos2f =
-      (GdkGLProc_glWindowPos2f) gdk_gl_get_proc_address ("glWindowPos2f");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos2f () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos2f) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2f);
-}
-
-/* glWindowPos2fv */
-GdkGLProc
-gdk_gl_get_glWindowPos2fv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos2fv == (GdkGLProc_glWindowPos2fv) -1)
-    _procs_GL_VERSION_1_4.glWindowPos2fv =
-      (GdkGLProc_glWindowPos2fv) gdk_gl_get_proc_address ("glWindowPos2fv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos2fv () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos2fv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2fv);
-}
-
-/* glWindowPos2i */
-GdkGLProc
-gdk_gl_get_glWindowPos2i (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos2i == (GdkGLProc_glWindowPos2i) -1)
-    _procs_GL_VERSION_1_4.glWindowPos2i =
-      (GdkGLProc_glWindowPos2i) gdk_gl_get_proc_address ("glWindowPos2i");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos2i () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos2i) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2i);
-}
-
-/* glWindowPos2iv */
-GdkGLProc
-gdk_gl_get_glWindowPos2iv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos2iv == (GdkGLProc_glWindowPos2iv) -1)
-    _procs_GL_VERSION_1_4.glWindowPos2iv =
-      (GdkGLProc_glWindowPos2iv) gdk_gl_get_proc_address ("glWindowPos2iv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos2iv () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos2iv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2iv);
-}
-
-/* glWindowPos2s */
-GdkGLProc
-gdk_gl_get_glWindowPos2s (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos2s == (GdkGLProc_glWindowPos2s) -1)
-    _procs_GL_VERSION_1_4.glWindowPos2s =
-      (GdkGLProc_glWindowPos2s) gdk_gl_get_proc_address ("glWindowPos2s");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos2s () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos2s) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2s);
-}
-
-/* glWindowPos2sv */
-GdkGLProc
-gdk_gl_get_glWindowPos2sv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos2sv == (GdkGLProc_glWindowPos2sv) -1)
-    _procs_GL_VERSION_1_4.glWindowPos2sv =
-      (GdkGLProc_glWindowPos2sv) gdk_gl_get_proc_address ("glWindowPos2sv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos2sv () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos2sv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos2sv);
-}
-
-/* glWindowPos3d */
-GdkGLProc
-gdk_gl_get_glWindowPos3d (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos3d == (GdkGLProc_glWindowPos3d) -1)
-    _procs_GL_VERSION_1_4.glWindowPos3d =
-      (GdkGLProc_glWindowPos3d) gdk_gl_get_proc_address ("glWindowPos3d");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos3d () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos3d) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3d);
-}
-
-/* glWindowPos3dv */
-GdkGLProc
-gdk_gl_get_glWindowPos3dv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos3dv == (GdkGLProc_glWindowPos3dv) -1)
-    _procs_GL_VERSION_1_4.glWindowPos3dv =
-      (GdkGLProc_glWindowPos3dv) gdk_gl_get_proc_address ("glWindowPos3dv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos3dv () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos3dv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3dv);
-}
-
-/* glWindowPos3f */
-GdkGLProc
-gdk_gl_get_glWindowPos3f (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos3f == (GdkGLProc_glWindowPos3f) -1)
-    _procs_GL_VERSION_1_4.glWindowPos3f =
-      (GdkGLProc_glWindowPos3f) gdk_gl_get_proc_address ("glWindowPos3f");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos3f () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos3f) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3f);
-}
-
-/* glWindowPos3fv */
-GdkGLProc
-gdk_gl_get_glWindowPos3fv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos3fv == (GdkGLProc_glWindowPos3fv) -1)
-    _procs_GL_VERSION_1_4.glWindowPos3fv =
-      (GdkGLProc_glWindowPos3fv) gdk_gl_get_proc_address ("glWindowPos3fv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos3fv () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos3fv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3fv);
-}
-
-/* glWindowPos3i */
-GdkGLProc
-gdk_gl_get_glWindowPos3i (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos3i == (GdkGLProc_glWindowPos3i) -1)
-    _procs_GL_VERSION_1_4.glWindowPos3i =
-      (GdkGLProc_glWindowPos3i) gdk_gl_get_proc_address ("glWindowPos3i");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos3i () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos3i) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3i);
-}
-
-/* glWindowPos3iv */
-GdkGLProc
-gdk_gl_get_glWindowPos3iv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos3iv == (GdkGLProc_glWindowPos3iv) -1)
-    _procs_GL_VERSION_1_4.glWindowPos3iv =
-      (GdkGLProc_glWindowPos3iv) gdk_gl_get_proc_address ("glWindowPos3iv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos3iv () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos3iv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3iv);
-}
-
-/* glWindowPos3s */
-GdkGLProc
-gdk_gl_get_glWindowPos3s (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos3s == (GdkGLProc_glWindowPos3s) -1)
-    _procs_GL_VERSION_1_4.glWindowPos3s =
-      (GdkGLProc_glWindowPos3s) gdk_gl_get_proc_address ("glWindowPos3s");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos3s () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos3s) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3s);
-}
-
-/* glWindowPos3sv */
-GdkGLProc
-gdk_gl_get_glWindowPos3sv (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_VERSION_1_4.glWindowPos3sv == (GdkGLProc_glWindowPos3sv) -1)
-    _procs_GL_VERSION_1_4.glWindowPos3sv =
-      (GdkGLProc_glWindowPos3sv) gdk_gl_get_proc_address ("glWindowPos3sv");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glWindowPos3sv () - %s",
-               (_procs_GL_VERSION_1_4.glWindowPos3sv) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_VERSION_1_4.glWindowPos3sv);
-}
-
 /* Get GL_VERSION_1_4 functions */
 GdkGL_GL_VERSION_1_4 *
 gdk_gl_get_GL_VERSION_1_4 (void)
@@ -2639,17 +1977,769 @@ gdk_gl_get_GL_VERSION_1_4 (void)
   if (supported == -1)
     {
       supported =  (gdk_gl_get_glBlendFuncSeparate () != NULL);
-      supported &= (gdk_gl_get_glFogCoordf () != NULL);
-      supported &= (gdk_gl_get_glFogCoordfv () != NULL);
-      supported &= (gdk_gl_get_glFogCoordd () != NULL);
-      supported &= (gdk_gl_get_glFogCoorddv () != NULL);
-      supported &= (gdk_gl_get_glFogCoordPointer () != NULL);
       supported &= (gdk_gl_get_glMultiDrawArrays () != NULL);
       supported &= (gdk_gl_get_glMultiDrawElements () != NULL);
       supported &= (gdk_gl_get_glPointParameterf () != NULL);
       supported &= (gdk_gl_get_glPointParameterfv () != NULL);
       supported &= (gdk_gl_get_glPointParameteri () != NULL);
       supported &= (gdk_gl_get_glPointParameteriv () != NULL);
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_1_4 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_VERSION_1_4;
+}
+
+/*
+ * GL_VERSION_1_4_DEPRECATED
+ */
+
+static GdkGL_GL_VERSION_1_4_DEPRECATED _procs_GL_VERSION_1_4_DEPRECATED = {
+  (GdkGLProc_glFogCoordf) -1,
+  (GdkGLProc_glFogCoordfv) -1,
+  (GdkGLProc_glFogCoordd) -1,
+  (GdkGLProc_glFogCoorddv) -1,
+  (GdkGLProc_glFogCoordPointer) -1,
+  (GdkGLProc_glSecondaryColor3b) -1,
+  (GdkGLProc_glSecondaryColor3bv) -1,
+  (GdkGLProc_glSecondaryColor3d) -1,
+  (GdkGLProc_glSecondaryColor3dv) -1,
+  (GdkGLProc_glSecondaryColor3f) -1,
+  (GdkGLProc_glSecondaryColor3fv) -1,
+  (GdkGLProc_glSecondaryColor3i) -1,
+  (GdkGLProc_glSecondaryColor3iv) -1,
+  (GdkGLProc_glSecondaryColor3s) -1,
+  (GdkGLProc_glSecondaryColor3sv) -1,
+  (GdkGLProc_glSecondaryColor3ub) -1,
+  (GdkGLProc_glSecondaryColor3ubv) -1,
+  (GdkGLProc_glSecondaryColor3ui) -1,
+  (GdkGLProc_glSecondaryColor3uiv) -1,
+  (GdkGLProc_glSecondaryColor3us) -1,
+  (GdkGLProc_glSecondaryColor3usv) -1,
+  (GdkGLProc_glSecondaryColorPointer) -1,
+  (GdkGLProc_glWindowPos2d) -1,
+  (GdkGLProc_glWindowPos2dv) -1,
+  (GdkGLProc_glWindowPos2f) -1,
+  (GdkGLProc_glWindowPos2fv) -1,
+  (GdkGLProc_glWindowPos2i) -1,
+  (GdkGLProc_glWindowPos2iv) -1,
+  (GdkGLProc_glWindowPos2s) -1,
+  (GdkGLProc_glWindowPos2sv) -1,
+  (GdkGLProc_glWindowPos3d) -1,
+  (GdkGLProc_glWindowPos3dv) -1,
+  (GdkGLProc_glWindowPos3f) -1,
+  (GdkGLProc_glWindowPos3fv) -1,
+  (GdkGLProc_glWindowPos3i) -1,
+  (GdkGLProc_glWindowPos3iv) -1,
+  (GdkGLProc_glWindowPos3s) -1,
+  (GdkGLProc_glWindowPos3sv) -1
+};
+
+/* glFogCoordf */
+GdkGLProc
+gdk_gl_get_glFogCoordf (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordf == (GdkGLProc_glFogCoordf) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glFogCoordf =
+      (GdkGLProc_glFogCoordf) gdk_gl_get_proc_address ("glFogCoordf");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordf () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordf) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordf);
+}
+
+/* glFogCoordfv */
+GdkGLProc
+gdk_gl_get_glFogCoordfv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordfv == (GdkGLProc_glFogCoordfv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glFogCoordfv =
+      (GdkGLProc_glFogCoordfv) gdk_gl_get_proc_address ("glFogCoordfv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordfv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordfv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordfv);
+}
+
+/* glFogCoordd */
+GdkGLProc
+gdk_gl_get_glFogCoordd (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordd == (GdkGLProc_glFogCoordd) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glFogCoordd =
+      (GdkGLProc_glFogCoordd) gdk_gl_get_proc_address ("glFogCoordd");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordd () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordd) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordd);
+}
+
+/* glFogCoorddv */
+GdkGLProc
+gdk_gl_get_glFogCoorddv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoorddv == (GdkGLProc_glFogCoorddv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glFogCoorddv =
+      (GdkGLProc_glFogCoorddv) gdk_gl_get_proc_address ("glFogCoorddv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoorddv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoorddv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoorddv);
+}
+
+/* glFogCoordPointer */
+GdkGLProc
+gdk_gl_get_glFogCoordPointer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordPointer == (GdkGLProc_glFogCoordPointer) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glFogCoordPointer =
+      (GdkGLProc_glFogCoordPointer) gdk_gl_get_proc_address ("glFogCoordPointer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordPointer () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordPointer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glFogCoordPointer);
+}
+
+/* glSecondaryColor3b */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3b (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3b == (GdkGLProc_glSecondaryColor3b) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3b =
+      (GdkGLProc_glSecondaryColor3b) gdk_gl_get_proc_address ("glSecondaryColor3b");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3b () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3b) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3b);
+}
+
+/* glSecondaryColor3bv */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3bv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3bv == (GdkGLProc_glSecondaryColor3bv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3bv =
+      (GdkGLProc_glSecondaryColor3bv) gdk_gl_get_proc_address ("glSecondaryColor3bv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3bv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3bv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3bv);
+}
+
+/* glSecondaryColor3d */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3d == (GdkGLProc_glSecondaryColor3d) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3d =
+      (GdkGLProc_glSecondaryColor3d) gdk_gl_get_proc_address ("glSecondaryColor3d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3d () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3d);
+}
+
+/* glSecondaryColor3dv */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3dv == (GdkGLProc_glSecondaryColor3dv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3dv =
+      (GdkGLProc_glSecondaryColor3dv) gdk_gl_get_proc_address ("glSecondaryColor3dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3dv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3dv);
+}
+
+/* glSecondaryColor3f */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3f == (GdkGLProc_glSecondaryColor3f) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3f =
+      (GdkGLProc_glSecondaryColor3f) gdk_gl_get_proc_address ("glSecondaryColor3f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3f () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3f);
+}
+
+/* glSecondaryColor3fv */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3fv == (GdkGLProc_glSecondaryColor3fv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3fv =
+      (GdkGLProc_glSecondaryColor3fv) gdk_gl_get_proc_address ("glSecondaryColor3fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3fv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3fv);
+}
+
+/* glSecondaryColor3i */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3i == (GdkGLProc_glSecondaryColor3i) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3i =
+      (GdkGLProc_glSecondaryColor3i) gdk_gl_get_proc_address ("glSecondaryColor3i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3i () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3i);
+}
+
+/* glSecondaryColor3iv */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3iv == (GdkGLProc_glSecondaryColor3iv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3iv =
+      (GdkGLProc_glSecondaryColor3iv) gdk_gl_get_proc_address ("glSecondaryColor3iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3iv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3iv);
+}
+
+/* glSecondaryColor3s */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3s == (GdkGLProc_glSecondaryColor3s) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3s =
+      (GdkGLProc_glSecondaryColor3s) gdk_gl_get_proc_address ("glSecondaryColor3s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3s () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3s);
+}
+
+/* glSecondaryColor3sv */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3sv == (GdkGLProc_glSecondaryColor3sv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3sv =
+      (GdkGLProc_glSecondaryColor3sv) gdk_gl_get_proc_address ("glSecondaryColor3sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3sv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3sv);
+}
+
+/* glSecondaryColor3ub */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3ub (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ub == (GdkGLProc_glSecondaryColor3ub) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ub =
+      (GdkGLProc_glSecondaryColor3ub) gdk_gl_get_proc_address ("glSecondaryColor3ub");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3ub () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ub) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ub);
+}
+
+/* glSecondaryColor3ubv */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3ubv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ubv == (GdkGLProc_glSecondaryColor3ubv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ubv =
+      (GdkGLProc_glSecondaryColor3ubv) gdk_gl_get_proc_address ("glSecondaryColor3ubv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3ubv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ubv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ubv);
+}
+
+/* glSecondaryColor3ui */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3ui (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ui == (GdkGLProc_glSecondaryColor3ui) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ui =
+      (GdkGLProc_glSecondaryColor3ui) gdk_gl_get_proc_address ("glSecondaryColor3ui");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3ui () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ui) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3ui);
+}
+
+/* glSecondaryColor3uiv */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3uiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3uiv == (GdkGLProc_glSecondaryColor3uiv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3uiv =
+      (GdkGLProc_glSecondaryColor3uiv) gdk_gl_get_proc_address ("glSecondaryColor3uiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3uiv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3uiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3uiv);
+}
+
+/* glSecondaryColor3us */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3us (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3us == (GdkGLProc_glSecondaryColor3us) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3us =
+      (GdkGLProc_glSecondaryColor3us) gdk_gl_get_proc_address ("glSecondaryColor3us");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3us () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3us) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3us);
+}
+
+/* glSecondaryColor3usv */
+GdkGLProc
+gdk_gl_get_glSecondaryColor3usv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3usv == (GdkGLProc_glSecondaryColor3usv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3usv =
+      (GdkGLProc_glSecondaryColor3usv) gdk_gl_get_proc_address ("glSecondaryColor3usv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColor3usv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3usv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColor3usv);
+}
+
+/* glSecondaryColorPointer */
+GdkGLProc
+gdk_gl_get_glSecondaryColorPointer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColorPointer == (GdkGLProc_glSecondaryColorPointer) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColorPointer =
+      (GdkGLProc_glSecondaryColorPointer) gdk_gl_get_proc_address ("glSecondaryColorPointer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColorPointer () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColorPointer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glSecondaryColorPointer);
+}
+
+/* glWindowPos2d */
+GdkGLProc
+gdk_gl_get_glWindowPos2d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2d == (GdkGLProc_glWindowPos2d) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2d =
+      (GdkGLProc_glWindowPos2d) gdk_gl_get_proc_address ("glWindowPos2d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2d () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2d);
+}
+
+/* glWindowPos2dv */
+GdkGLProc
+gdk_gl_get_glWindowPos2dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2dv == (GdkGLProc_glWindowPos2dv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2dv =
+      (GdkGLProc_glWindowPos2dv) gdk_gl_get_proc_address ("glWindowPos2dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2dv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2dv);
+}
+
+/* glWindowPos2f */
+GdkGLProc
+gdk_gl_get_glWindowPos2f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2f == (GdkGLProc_glWindowPos2f) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2f =
+      (GdkGLProc_glWindowPos2f) gdk_gl_get_proc_address ("glWindowPos2f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2f () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2f);
+}
+
+/* glWindowPos2fv */
+GdkGLProc
+gdk_gl_get_glWindowPos2fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2fv == (GdkGLProc_glWindowPos2fv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2fv =
+      (GdkGLProc_glWindowPos2fv) gdk_gl_get_proc_address ("glWindowPos2fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2fv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2fv);
+}
+
+/* glWindowPos2i */
+GdkGLProc
+gdk_gl_get_glWindowPos2i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2i == (GdkGLProc_glWindowPos2i) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2i =
+      (GdkGLProc_glWindowPos2i) gdk_gl_get_proc_address ("glWindowPos2i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2i () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2i);
+}
+
+/* glWindowPos2iv */
+GdkGLProc
+gdk_gl_get_glWindowPos2iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2iv == (GdkGLProc_glWindowPos2iv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2iv =
+      (GdkGLProc_glWindowPos2iv) gdk_gl_get_proc_address ("glWindowPos2iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2iv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2iv);
+}
+
+/* glWindowPos2s */
+GdkGLProc
+gdk_gl_get_glWindowPos2s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2s == (GdkGLProc_glWindowPos2s) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2s =
+      (GdkGLProc_glWindowPos2s) gdk_gl_get_proc_address ("glWindowPos2s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2s () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2s);
+}
+
+/* glWindowPos2sv */
+GdkGLProc
+gdk_gl_get_glWindowPos2sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2sv == (GdkGLProc_glWindowPos2sv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2sv =
+      (GdkGLProc_glWindowPos2sv) gdk_gl_get_proc_address ("glWindowPos2sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos2sv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos2sv);
+}
+
+/* glWindowPos3d */
+GdkGLProc
+gdk_gl_get_glWindowPos3d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3d == (GdkGLProc_glWindowPos3d) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3d =
+      (GdkGLProc_glWindowPos3d) gdk_gl_get_proc_address ("glWindowPos3d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3d () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3d);
+}
+
+/* glWindowPos3dv */
+GdkGLProc
+gdk_gl_get_glWindowPos3dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3dv == (GdkGLProc_glWindowPos3dv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3dv =
+      (GdkGLProc_glWindowPos3dv) gdk_gl_get_proc_address ("glWindowPos3dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3dv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3dv);
+}
+
+/* glWindowPos3f */
+GdkGLProc
+gdk_gl_get_glWindowPos3f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3f == (GdkGLProc_glWindowPos3f) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3f =
+      (GdkGLProc_glWindowPos3f) gdk_gl_get_proc_address ("glWindowPos3f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3f () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3f);
+}
+
+/* glWindowPos3fv */
+GdkGLProc
+gdk_gl_get_glWindowPos3fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3fv == (GdkGLProc_glWindowPos3fv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3fv =
+      (GdkGLProc_glWindowPos3fv) gdk_gl_get_proc_address ("glWindowPos3fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3fv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3fv);
+}
+
+/* glWindowPos3i */
+GdkGLProc
+gdk_gl_get_glWindowPos3i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3i == (GdkGLProc_glWindowPos3i) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3i =
+      (GdkGLProc_glWindowPos3i) gdk_gl_get_proc_address ("glWindowPos3i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3i () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3i);
+}
+
+/* glWindowPos3iv */
+GdkGLProc
+gdk_gl_get_glWindowPos3iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3iv == (GdkGLProc_glWindowPos3iv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3iv =
+      (GdkGLProc_glWindowPos3iv) gdk_gl_get_proc_address ("glWindowPos3iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3iv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3iv);
+}
+
+/* glWindowPos3s */
+GdkGLProc
+gdk_gl_get_glWindowPos3s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3s == (GdkGLProc_glWindowPos3s) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3s =
+      (GdkGLProc_glWindowPos3s) gdk_gl_get_proc_address ("glWindowPos3s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3s () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3s);
+}
+
+/* glWindowPos3sv */
+GdkGLProc
+gdk_gl_get_glWindowPos3sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3sv == (GdkGLProc_glWindowPos3sv) -1)
+    _procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3sv =
+      (GdkGLProc_glWindowPos3sv) gdk_gl_get_proc_address ("glWindowPos3sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWindowPos3sv () - %s",
+               (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_4_DEPRECATED.glWindowPos3sv);
+}
+
+/* Get GL_VERSION_1_4_DEPRECATED functions */
+GdkGL_GL_VERSION_1_4_DEPRECATED *
+gdk_gl_get_GL_VERSION_1_4_DEPRECATED (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported =  (gdk_gl_get_glFogCoordf () != NULL);
+      supported &= (gdk_gl_get_glFogCoordfv () != NULL);
+      supported &= (gdk_gl_get_glFogCoordd () != NULL);
+      supported &= (gdk_gl_get_glFogCoorddv () != NULL);
+      supported &= (gdk_gl_get_glFogCoordPointer () != NULL);
       supported &= (gdk_gl_get_glSecondaryColor3b () != NULL);
       supported &= (gdk_gl_get_glSecondaryColor3bv () != NULL);
       supported &= (gdk_gl_get_glSecondaryColor3d () != NULL);
@@ -2686,13 +2776,3893 @@ gdk_gl_get_GL_VERSION_1_4 (void)
     }
 
   GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_GL_VERSION_1_4 () - %s",
+    g_message (" - gdk_gl_get_GL_VERSION_1_4_DEPRECATED () - %s",
                (supported) ? "supported" : "not supported"));
 
   if (!supported)
     return NULL;
 
-  return &_procs_GL_VERSION_1_4;
+  return &_procs_GL_VERSION_1_4_DEPRECATED;
+}
+
+/*
+ * GL_VERSION_1_5
+ */
+
+static GdkGL_GL_VERSION_1_5 _procs_GL_VERSION_1_5 = {
+  (GdkGLProc_glGenQueries) -1,
+  (GdkGLProc_glDeleteQueries) -1,
+  (GdkGLProc_glIsQuery) -1,
+  (GdkGLProc_glBeginQuery) -1,
+  (GdkGLProc_glEndQuery) -1,
+  (GdkGLProc_glGetQueryiv) -1,
+  (GdkGLProc_glGetQueryObjectiv) -1,
+  (GdkGLProc_glGetQueryObjectuiv) -1,
+  (GdkGLProc_glBindBuffer) -1,
+  (GdkGLProc_glDeleteBuffers) -1,
+  (GdkGLProc_glGenBuffers) -1,
+  (GdkGLProc_glIsBuffer) -1,
+  (GdkGLProc_glBufferData) -1,
+  (GdkGLProc_glBufferSubData) -1,
+  (GdkGLProc_glGetBufferSubData) -1,
+  (GdkGLProc_glMapBuffer) -1,
+  (GdkGLProc_glUnmapBuffer) -1,
+  (GdkGLProc_glGetBufferParameteriv) -1,
+  (GdkGLProc_glGetBufferPointerv) -1
+};
+
+/* glGenQueries */
+GdkGLProc
+gdk_gl_get_glGenQueries (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glGenQueries == (GdkGLProc_glGenQueries) -1)
+    _procs_GL_VERSION_1_5.glGenQueries =
+      (GdkGLProc_glGenQueries) gdk_gl_get_proc_address ("glGenQueries");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenQueries () - %s",
+               (_procs_GL_VERSION_1_5.glGenQueries) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glGenQueries);
+}
+
+/* glDeleteQueries */
+GdkGLProc
+gdk_gl_get_glDeleteQueries (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glDeleteQueries == (GdkGLProc_glDeleteQueries) -1)
+    _procs_GL_VERSION_1_5.glDeleteQueries =
+      (GdkGLProc_glDeleteQueries) gdk_gl_get_proc_address ("glDeleteQueries");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteQueries () - %s",
+               (_procs_GL_VERSION_1_5.glDeleteQueries) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glDeleteQueries);
+}
+
+/* glIsQuery */
+GdkGLProc
+gdk_gl_get_glIsQuery (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glIsQuery == (GdkGLProc_glIsQuery) -1)
+    _procs_GL_VERSION_1_5.glIsQuery =
+      (GdkGLProc_glIsQuery) gdk_gl_get_proc_address ("glIsQuery");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsQuery () - %s",
+               (_procs_GL_VERSION_1_5.glIsQuery) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glIsQuery);
+}
+
+/* glBeginQuery */
+GdkGLProc
+gdk_gl_get_glBeginQuery (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glBeginQuery == (GdkGLProc_glBeginQuery) -1)
+    _procs_GL_VERSION_1_5.glBeginQuery =
+      (GdkGLProc_glBeginQuery) gdk_gl_get_proc_address ("glBeginQuery");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginQuery () - %s",
+               (_procs_GL_VERSION_1_5.glBeginQuery) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glBeginQuery);
+}
+
+/* glEndQuery */
+GdkGLProc
+gdk_gl_get_glEndQuery (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glEndQuery == (GdkGLProc_glEndQuery) -1)
+    _procs_GL_VERSION_1_5.glEndQuery =
+      (GdkGLProc_glEndQuery) gdk_gl_get_proc_address ("glEndQuery");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndQuery () - %s",
+               (_procs_GL_VERSION_1_5.glEndQuery) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glEndQuery);
+}
+
+/* glGetQueryiv */
+GdkGLProc
+gdk_gl_get_glGetQueryiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glGetQueryiv == (GdkGLProc_glGetQueryiv) -1)
+    _procs_GL_VERSION_1_5.glGetQueryiv =
+      (GdkGLProc_glGetQueryiv) gdk_gl_get_proc_address ("glGetQueryiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetQueryiv () - %s",
+               (_procs_GL_VERSION_1_5.glGetQueryiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glGetQueryiv);
+}
+
+/* glGetQueryObjectiv */
+GdkGLProc
+gdk_gl_get_glGetQueryObjectiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glGetQueryObjectiv == (GdkGLProc_glGetQueryObjectiv) -1)
+    _procs_GL_VERSION_1_5.glGetQueryObjectiv =
+      (GdkGLProc_glGetQueryObjectiv) gdk_gl_get_proc_address ("glGetQueryObjectiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetQueryObjectiv () - %s",
+               (_procs_GL_VERSION_1_5.glGetQueryObjectiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glGetQueryObjectiv);
+}
+
+/* glGetQueryObjectuiv */
+GdkGLProc
+gdk_gl_get_glGetQueryObjectuiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glGetQueryObjectuiv == (GdkGLProc_glGetQueryObjectuiv) -1)
+    _procs_GL_VERSION_1_5.glGetQueryObjectuiv =
+      (GdkGLProc_glGetQueryObjectuiv) gdk_gl_get_proc_address ("glGetQueryObjectuiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetQueryObjectuiv () - %s",
+               (_procs_GL_VERSION_1_5.glGetQueryObjectuiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glGetQueryObjectuiv);
+}
+
+/* glBindBuffer */
+GdkGLProc
+gdk_gl_get_glBindBuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glBindBuffer == (GdkGLProc_glBindBuffer) -1)
+    _procs_GL_VERSION_1_5.glBindBuffer =
+      (GdkGLProc_glBindBuffer) gdk_gl_get_proc_address ("glBindBuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindBuffer () - %s",
+               (_procs_GL_VERSION_1_5.glBindBuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glBindBuffer);
+}
+
+/* glDeleteBuffers */
+GdkGLProc
+gdk_gl_get_glDeleteBuffers (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glDeleteBuffers == (GdkGLProc_glDeleteBuffers) -1)
+    _procs_GL_VERSION_1_5.glDeleteBuffers =
+      (GdkGLProc_glDeleteBuffers) gdk_gl_get_proc_address ("glDeleteBuffers");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteBuffers () - %s",
+               (_procs_GL_VERSION_1_5.glDeleteBuffers) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glDeleteBuffers);
+}
+
+/* glGenBuffers */
+GdkGLProc
+gdk_gl_get_glGenBuffers (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glGenBuffers == (GdkGLProc_glGenBuffers) -1)
+    _procs_GL_VERSION_1_5.glGenBuffers =
+      (GdkGLProc_glGenBuffers) gdk_gl_get_proc_address ("glGenBuffers");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenBuffers () - %s",
+               (_procs_GL_VERSION_1_5.glGenBuffers) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glGenBuffers);
+}
+
+/* glIsBuffer */
+GdkGLProc
+gdk_gl_get_glIsBuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glIsBuffer == (GdkGLProc_glIsBuffer) -1)
+    _procs_GL_VERSION_1_5.glIsBuffer =
+      (GdkGLProc_glIsBuffer) gdk_gl_get_proc_address ("glIsBuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsBuffer () - %s",
+               (_procs_GL_VERSION_1_5.glIsBuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glIsBuffer);
+}
+
+/* glBufferData */
+GdkGLProc
+gdk_gl_get_glBufferData (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glBufferData == (GdkGLProc_glBufferData) -1)
+    _procs_GL_VERSION_1_5.glBufferData =
+      (GdkGLProc_glBufferData) gdk_gl_get_proc_address ("glBufferData");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBufferData () - %s",
+               (_procs_GL_VERSION_1_5.glBufferData) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glBufferData);
+}
+
+/* glBufferSubData */
+GdkGLProc
+gdk_gl_get_glBufferSubData (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glBufferSubData == (GdkGLProc_glBufferSubData) -1)
+    _procs_GL_VERSION_1_5.glBufferSubData =
+      (GdkGLProc_glBufferSubData) gdk_gl_get_proc_address ("glBufferSubData");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBufferSubData () - %s",
+               (_procs_GL_VERSION_1_5.glBufferSubData) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glBufferSubData);
+}
+
+/* glGetBufferSubData */
+GdkGLProc
+gdk_gl_get_glGetBufferSubData (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glGetBufferSubData == (GdkGLProc_glGetBufferSubData) -1)
+    _procs_GL_VERSION_1_5.glGetBufferSubData =
+      (GdkGLProc_glGetBufferSubData) gdk_gl_get_proc_address ("glGetBufferSubData");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetBufferSubData () - %s",
+               (_procs_GL_VERSION_1_5.glGetBufferSubData) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glGetBufferSubData);
+}
+
+/* glMapBuffer */
+GdkGLProc
+gdk_gl_get_glMapBuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glMapBuffer == (GdkGLProc_glMapBuffer) -1)
+    _procs_GL_VERSION_1_5.glMapBuffer =
+      (GdkGLProc_glMapBuffer) gdk_gl_get_proc_address ("glMapBuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapBuffer () - %s",
+               (_procs_GL_VERSION_1_5.glMapBuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glMapBuffer);
+}
+
+/* glUnmapBuffer */
+GdkGLProc
+gdk_gl_get_glUnmapBuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glUnmapBuffer == (GdkGLProc_glUnmapBuffer) -1)
+    _procs_GL_VERSION_1_5.glUnmapBuffer =
+      (GdkGLProc_glUnmapBuffer) gdk_gl_get_proc_address ("glUnmapBuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUnmapBuffer () - %s",
+               (_procs_GL_VERSION_1_5.glUnmapBuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glUnmapBuffer);
+}
+
+/* glGetBufferParameteriv */
+GdkGLProc
+gdk_gl_get_glGetBufferParameteriv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glGetBufferParameteriv == (GdkGLProc_glGetBufferParameteriv) -1)
+    _procs_GL_VERSION_1_5.glGetBufferParameteriv =
+      (GdkGLProc_glGetBufferParameteriv) gdk_gl_get_proc_address ("glGetBufferParameteriv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetBufferParameteriv () - %s",
+               (_procs_GL_VERSION_1_5.glGetBufferParameteriv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glGetBufferParameteriv);
+}
+
+/* glGetBufferPointerv */
+GdkGLProc
+gdk_gl_get_glGetBufferPointerv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_1_5.glGetBufferPointerv == (GdkGLProc_glGetBufferPointerv) -1)
+    _procs_GL_VERSION_1_5.glGetBufferPointerv =
+      (GdkGLProc_glGetBufferPointerv) gdk_gl_get_proc_address ("glGetBufferPointerv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetBufferPointerv () - %s",
+               (_procs_GL_VERSION_1_5.glGetBufferPointerv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_1_5.glGetBufferPointerv);
+}
+
+/* Get GL_VERSION_1_5 functions */
+GdkGL_GL_VERSION_1_5 *
+gdk_gl_get_GL_VERSION_1_5 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported =  (gdk_gl_get_glGenQueries () != NULL);
+      supported &= (gdk_gl_get_glDeleteQueries () != NULL);
+      supported &= (gdk_gl_get_glIsQuery () != NULL);
+      supported &= (gdk_gl_get_glBeginQuery () != NULL);
+      supported &= (gdk_gl_get_glEndQuery () != NULL);
+      supported &= (gdk_gl_get_glGetQueryiv () != NULL);
+      supported &= (gdk_gl_get_glGetQueryObjectiv () != NULL);
+      supported &= (gdk_gl_get_glGetQueryObjectuiv () != NULL);
+      supported &= (gdk_gl_get_glBindBuffer () != NULL);
+      supported &= (gdk_gl_get_glDeleteBuffers () != NULL);
+      supported &= (gdk_gl_get_glGenBuffers () != NULL);
+      supported &= (gdk_gl_get_glIsBuffer () != NULL);
+      supported &= (gdk_gl_get_glBufferData () != NULL);
+      supported &= (gdk_gl_get_glBufferSubData () != NULL);
+      supported &= (gdk_gl_get_glGetBufferSubData () != NULL);
+      supported &= (gdk_gl_get_glMapBuffer () != NULL);
+      supported &= (gdk_gl_get_glUnmapBuffer () != NULL);
+      supported &= (gdk_gl_get_glGetBufferParameteriv () != NULL);
+      supported &= (gdk_gl_get_glGetBufferPointerv () != NULL);
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_1_5 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_VERSION_1_5;
+}
+
+/*
+ * GL_VERSION_2_0
+ */
+
+static GdkGL_GL_VERSION_2_0 _procs_GL_VERSION_2_0 = {
+  (GdkGLProc_glBlendEquationSeparate) -1,
+  (GdkGLProc_glDrawBuffers) -1,
+  (GdkGLProc_glStencilOpSeparate) -1,
+  (GdkGLProc_glStencilFuncSeparate) -1,
+  (GdkGLProc_glStencilMaskSeparate) -1,
+  (GdkGLProc_glAttachShader) -1,
+  (GdkGLProc_glBindAttribLocation) -1,
+  (GdkGLProc_glCompileShader) -1,
+  (GdkGLProc_glCreateProgram) -1,
+  (GdkGLProc_glCreateShader) -1,
+  (GdkGLProc_glDeleteProgram) -1,
+  (GdkGLProc_glDeleteShader) -1,
+  (GdkGLProc_glDetachShader) -1,
+  (GdkGLProc_glDisableVertexAttribArray) -1,
+  (GdkGLProc_glEnableVertexAttribArray) -1,
+  (GdkGLProc_glGetActiveAttrib) -1,
+  (GdkGLProc_glGetActiveUniform) -1,
+  (GdkGLProc_glGetAttachedShaders) -1,
+  (GdkGLProc_glGetAttribLocation) -1,
+  (GdkGLProc_glGetProgramiv) -1,
+  (GdkGLProc_glGetProgramInfoLog) -1,
+  (GdkGLProc_glGetShaderiv) -1,
+  (GdkGLProc_glGetShaderInfoLog) -1,
+  (GdkGLProc_glGetShaderSource) -1,
+  (GdkGLProc_glGetUniformLocation) -1,
+  (GdkGLProc_glGetUniformfv) -1,
+  (GdkGLProc_glGetUniformiv) -1,
+  (GdkGLProc_glGetVertexAttribdv) -1,
+  (GdkGLProc_glGetVertexAttribfv) -1,
+  (GdkGLProc_glGetVertexAttribiv) -1,
+  (GdkGLProc_glGetVertexAttribPointerv) -1,
+  (GdkGLProc_glIsProgram) -1,
+  (GdkGLProc_glIsShader) -1,
+  (GdkGLProc_glLinkProgram) -1,
+  (GdkGLProc_glShaderSource) -1,
+  (GdkGLProc_glUseProgram) -1,
+  (GdkGLProc_glUniform1f) -1,
+  (GdkGLProc_glUniform2f) -1,
+  (GdkGLProc_glUniform3f) -1,
+  (GdkGLProc_glUniform4f) -1,
+  (GdkGLProc_glUniform1i) -1,
+  (GdkGLProc_glUniform2i) -1,
+  (GdkGLProc_glUniform3i) -1,
+  (GdkGLProc_glUniform4i) -1,
+  (GdkGLProc_glUniform1fv) -1,
+  (GdkGLProc_glUniform2fv) -1,
+  (GdkGLProc_glUniform3fv) -1,
+  (GdkGLProc_glUniform4fv) -1,
+  (GdkGLProc_glUniform1iv) -1,
+  (GdkGLProc_glUniform2iv) -1,
+  (GdkGLProc_glUniform3iv) -1,
+  (GdkGLProc_glUniform4iv) -1,
+  (GdkGLProc_glUniformMatrix2fv) -1,
+  (GdkGLProc_glUniformMatrix3fv) -1,
+  (GdkGLProc_glUniformMatrix4fv) -1,
+  (GdkGLProc_glValidateProgram) -1,
+  (GdkGLProc_glVertexAttrib1d) -1,
+  (GdkGLProc_glVertexAttrib1dv) -1,
+  (GdkGLProc_glVertexAttrib1f) -1,
+  (GdkGLProc_glVertexAttrib1fv) -1,
+  (GdkGLProc_glVertexAttrib1s) -1,
+  (GdkGLProc_glVertexAttrib1sv) -1,
+  (GdkGLProc_glVertexAttrib2d) -1,
+  (GdkGLProc_glVertexAttrib2dv) -1,
+  (GdkGLProc_glVertexAttrib2f) -1,
+  (GdkGLProc_glVertexAttrib2fv) -1,
+  (GdkGLProc_glVertexAttrib2s) -1,
+  (GdkGLProc_glVertexAttrib2sv) -1,
+  (GdkGLProc_glVertexAttrib3d) -1,
+  (GdkGLProc_glVertexAttrib3dv) -1,
+  (GdkGLProc_glVertexAttrib3f) -1,
+  (GdkGLProc_glVertexAttrib3fv) -1,
+  (GdkGLProc_glVertexAttrib3s) -1,
+  (GdkGLProc_glVertexAttrib3sv) -1,
+  (GdkGLProc_glVertexAttrib4Nbv) -1,
+  (GdkGLProc_glVertexAttrib4Niv) -1,
+  (GdkGLProc_glVertexAttrib4Nsv) -1,
+  (GdkGLProc_glVertexAttrib4Nub) -1,
+  (GdkGLProc_glVertexAttrib4Nubv) -1,
+  (GdkGLProc_glVertexAttrib4Nuiv) -1,
+  (GdkGLProc_glVertexAttrib4Nusv) -1,
+  (GdkGLProc_glVertexAttrib4bv) -1,
+  (GdkGLProc_glVertexAttrib4d) -1,
+  (GdkGLProc_glVertexAttrib4dv) -1,
+  (GdkGLProc_glVertexAttrib4f) -1,
+  (GdkGLProc_glVertexAttrib4fv) -1,
+  (GdkGLProc_glVertexAttrib4iv) -1,
+  (GdkGLProc_glVertexAttrib4s) -1,
+  (GdkGLProc_glVertexAttrib4sv) -1,
+  (GdkGLProc_glVertexAttrib4ubv) -1,
+  (GdkGLProc_glVertexAttrib4uiv) -1,
+  (GdkGLProc_glVertexAttrib4usv) -1,
+  (GdkGLProc_glVertexAttribPointer) -1
+};
+
+/* glBlendEquationSeparate */
+GdkGLProc
+gdk_gl_get_glBlendEquationSeparate (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glBlendEquationSeparate == (GdkGLProc_glBlendEquationSeparate) -1)
+    _procs_GL_VERSION_2_0.glBlendEquationSeparate =
+      (GdkGLProc_glBlendEquationSeparate) gdk_gl_get_proc_address ("glBlendEquationSeparate");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendEquationSeparate () - %s",
+               (_procs_GL_VERSION_2_0.glBlendEquationSeparate) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glBlendEquationSeparate);
+}
+
+/* glDrawBuffers */
+GdkGLProc
+gdk_gl_get_glDrawBuffers (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glDrawBuffers == (GdkGLProc_glDrawBuffers) -1)
+    _procs_GL_VERSION_2_0.glDrawBuffers =
+      (GdkGLProc_glDrawBuffers) gdk_gl_get_proc_address ("glDrawBuffers");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawBuffers () - %s",
+               (_procs_GL_VERSION_2_0.glDrawBuffers) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glDrawBuffers);
+}
+
+/* glStencilOpSeparate */
+GdkGLProc
+gdk_gl_get_glStencilOpSeparate (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glStencilOpSeparate == (GdkGLProc_glStencilOpSeparate) -1)
+    _procs_GL_VERSION_2_0.glStencilOpSeparate =
+      (GdkGLProc_glStencilOpSeparate) gdk_gl_get_proc_address ("glStencilOpSeparate");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glStencilOpSeparate () - %s",
+               (_procs_GL_VERSION_2_0.glStencilOpSeparate) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glStencilOpSeparate);
+}
+
+/* glStencilFuncSeparate */
+GdkGLProc
+gdk_gl_get_glStencilFuncSeparate (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glStencilFuncSeparate == (GdkGLProc_glStencilFuncSeparate) -1)
+    _procs_GL_VERSION_2_0.glStencilFuncSeparate =
+      (GdkGLProc_glStencilFuncSeparate) gdk_gl_get_proc_address ("glStencilFuncSeparate");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glStencilFuncSeparate () - %s",
+               (_procs_GL_VERSION_2_0.glStencilFuncSeparate) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glStencilFuncSeparate);
+}
+
+/* glStencilMaskSeparate */
+GdkGLProc
+gdk_gl_get_glStencilMaskSeparate (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glStencilMaskSeparate == (GdkGLProc_glStencilMaskSeparate) -1)
+    _procs_GL_VERSION_2_0.glStencilMaskSeparate =
+      (GdkGLProc_glStencilMaskSeparate) gdk_gl_get_proc_address ("glStencilMaskSeparate");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glStencilMaskSeparate () - %s",
+               (_procs_GL_VERSION_2_0.glStencilMaskSeparate) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glStencilMaskSeparate);
+}
+
+/* glAttachShader */
+GdkGLProc
+gdk_gl_get_glAttachShader (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glAttachShader == (GdkGLProc_glAttachShader) -1)
+    _procs_GL_VERSION_2_0.glAttachShader =
+      (GdkGLProc_glAttachShader) gdk_gl_get_proc_address ("glAttachShader");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glAttachShader () - %s",
+               (_procs_GL_VERSION_2_0.glAttachShader) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glAttachShader);
+}
+
+/* glBindAttribLocation */
+GdkGLProc
+gdk_gl_get_glBindAttribLocation (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glBindAttribLocation == (GdkGLProc_glBindAttribLocation) -1)
+    _procs_GL_VERSION_2_0.glBindAttribLocation =
+      (GdkGLProc_glBindAttribLocation) gdk_gl_get_proc_address ("glBindAttribLocation");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindAttribLocation () - %s",
+               (_procs_GL_VERSION_2_0.glBindAttribLocation) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glBindAttribLocation);
+}
+
+/* glCompileShader */
+GdkGLProc
+gdk_gl_get_glCompileShader (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glCompileShader == (GdkGLProc_glCompileShader) -1)
+    _procs_GL_VERSION_2_0.glCompileShader =
+      (GdkGLProc_glCompileShader) gdk_gl_get_proc_address ("glCompileShader");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompileShader () - %s",
+               (_procs_GL_VERSION_2_0.glCompileShader) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glCompileShader);
+}
+
+/* glCreateProgram */
+GdkGLProc
+gdk_gl_get_glCreateProgram (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glCreateProgram == (GdkGLProc_glCreateProgram) -1)
+    _procs_GL_VERSION_2_0.glCreateProgram =
+      (GdkGLProc_glCreateProgram) gdk_gl_get_proc_address ("glCreateProgram");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCreateProgram () - %s",
+               (_procs_GL_VERSION_2_0.glCreateProgram) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glCreateProgram);
+}
+
+/* glCreateShader */
+GdkGLProc
+gdk_gl_get_glCreateShader (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glCreateShader == (GdkGLProc_glCreateShader) -1)
+    _procs_GL_VERSION_2_0.glCreateShader =
+      (GdkGLProc_glCreateShader) gdk_gl_get_proc_address ("glCreateShader");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCreateShader () - %s",
+               (_procs_GL_VERSION_2_0.glCreateShader) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glCreateShader);
+}
+
+/* glDeleteProgram */
+GdkGLProc
+gdk_gl_get_glDeleteProgram (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glDeleteProgram == (GdkGLProc_glDeleteProgram) -1)
+    _procs_GL_VERSION_2_0.glDeleteProgram =
+      (GdkGLProc_glDeleteProgram) gdk_gl_get_proc_address ("glDeleteProgram");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteProgram () - %s",
+               (_procs_GL_VERSION_2_0.glDeleteProgram) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glDeleteProgram);
+}
+
+/* glDeleteShader */
+GdkGLProc
+gdk_gl_get_glDeleteShader (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glDeleteShader == (GdkGLProc_glDeleteShader) -1)
+    _procs_GL_VERSION_2_0.glDeleteShader =
+      (GdkGLProc_glDeleteShader) gdk_gl_get_proc_address ("glDeleteShader");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteShader () - %s",
+               (_procs_GL_VERSION_2_0.glDeleteShader) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glDeleteShader);
+}
+
+/* glDetachShader */
+GdkGLProc
+gdk_gl_get_glDetachShader (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glDetachShader == (GdkGLProc_glDetachShader) -1)
+    _procs_GL_VERSION_2_0.glDetachShader =
+      (GdkGLProc_glDetachShader) gdk_gl_get_proc_address ("glDetachShader");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDetachShader () - %s",
+               (_procs_GL_VERSION_2_0.glDetachShader) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glDetachShader);
+}
+
+/* glDisableVertexAttribArray */
+GdkGLProc
+gdk_gl_get_glDisableVertexAttribArray (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glDisableVertexAttribArray == (GdkGLProc_glDisableVertexAttribArray) -1)
+    _procs_GL_VERSION_2_0.glDisableVertexAttribArray =
+      (GdkGLProc_glDisableVertexAttribArray) gdk_gl_get_proc_address ("glDisableVertexAttribArray");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDisableVertexAttribArray () - %s",
+               (_procs_GL_VERSION_2_0.glDisableVertexAttribArray) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glDisableVertexAttribArray);
+}
+
+/* glEnableVertexAttribArray */
+GdkGLProc
+gdk_gl_get_glEnableVertexAttribArray (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glEnableVertexAttribArray == (GdkGLProc_glEnableVertexAttribArray) -1)
+    _procs_GL_VERSION_2_0.glEnableVertexAttribArray =
+      (GdkGLProc_glEnableVertexAttribArray) gdk_gl_get_proc_address ("glEnableVertexAttribArray");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEnableVertexAttribArray () - %s",
+               (_procs_GL_VERSION_2_0.glEnableVertexAttribArray) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glEnableVertexAttribArray);
+}
+
+/* glGetActiveAttrib */
+GdkGLProc
+gdk_gl_get_glGetActiveAttrib (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetActiveAttrib == (GdkGLProc_glGetActiveAttrib) -1)
+    _procs_GL_VERSION_2_0.glGetActiveAttrib =
+      (GdkGLProc_glGetActiveAttrib) gdk_gl_get_proc_address ("glGetActiveAttrib");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetActiveAttrib () - %s",
+               (_procs_GL_VERSION_2_0.glGetActiveAttrib) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetActiveAttrib);
+}
+
+/* glGetActiveUniform */
+GdkGLProc
+gdk_gl_get_glGetActiveUniform (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetActiveUniform == (GdkGLProc_glGetActiveUniform) -1)
+    _procs_GL_VERSION_2_0.glGetActiveUniform =
+      (GdkGLProc_glGetActiveUniform) gdk_gl_get_proc_address ("glGetActiveUniform");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetActiveUniform () - %s",
+               (_procs_GL_VERSION_2_0.glGetActiveUniform) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetActiveUniform);
+}
+
+/* glGetAttachedShaders */
+GdkGLProc
+gdk_gl_get_glGetAttachedShaders (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetAttachedShaders == (GdkGLProc_glGetAttachedShaders) -1)
+    _procs_GL_VERSION_2_0.glGetAttachedShaders =
+      (GdkGLProc_glGetAttachedShaders) gdk_gl_get_proc_address ("glGetAttachedShaders");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetAttachedShaders () - %s",
+               (_procs_GL_VERSION_2_0.glGetAttachedShaders) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetAttachedShaders);
+}
+
+/* glGetAttribLocation */
+GdkGLProc
+gdk_gl_get_glGetAttribLocation (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetAttribLocation == (GdkGLProc_glGetAttribLocation) -1)
+    _procs_GL_VERSION_2_0.glGetAttribLocation =
+      (GdkGLProc_glGetAttribLocation) gdk_gl_get_proc_address ("glGetAttribLocation");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetAttribLocation () - %s",
+               (_procs_GL_VERSION_2_0.glGetAttribLocation) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetAttribLocation);
+}
+
+/* glGetProgramiv */
+GdkGLProc
+gdk_gl_get_glGetProgramiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetProgramiv == (GdkGLProc_glGetProgramiv) -1)
+    _procs_GL_VERSION_2_0.glGetProgramiv =
+      (GdkGLProc_glGetProgramiv) gdk_gl_get_proc_address ("glGetProgramiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramiv () - %s",
+               (_procs_GL_VERSION_2_0.glGetProgramiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetProgramiv);
+}
+
+/* glGetProgramInfoLog */
+GdkGLProc
+gdk_gl_get_glGetProgramInfoLog (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetProgramInfoLog == (GdkGLProc_glGetProgramInfoLog) -1)
+    _procs_GL_VERSION_2_0.glGetProgramInfoLog =
+      (GdkGLProc_glGetProgramInfoLog) gdk_gl_get_proc_address ("glGetProgramInfoLog");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramInfoLog () - %s",
+               (_procs_GL_VERSION_2_0.glGetProgramInfoLog) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetProgramInfoLog);
+}
+
+/* glGetShaderiv */
+GdkGLProc
+gdk_gl_get_glGetShaderiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetShaderiv == (GdkGLProc_glGetShaderiv) -1)
+    _procs_GL_VERSION_2_0.glGetShaderiv =
+      (GdkGLProc_glGetShaderiv) gdk_gl_get_proc_address ("glGetShaderiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetShaderiv () - %s",
+               (_procs_GL_VERSION_2_0.glGetShaderiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetShaderiv);
+}
+
+/* glGetShaderInfoLog */
+GdkGLProc
+gdk_gl_get_glGetShaderInfoLog (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetShaderInfoLog == (GdkGLProc_glGetShaderInfoLog) -1)
+    _procs_GL_VERSION_2_0.glGetShaderInfoLog =
+      (GdkGLProc_glGetShaderInfoLog) gdk_gl_get_proc_address ("glGetShaderInfoLog");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetShaderInfoLog () - %s",
+               (_procs_GL_VERSION_2_0.glGetShaderInfoLog) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetShaderInfoLog);
+}
+
+/* glGetShaderSource */
+GdkGLProc
+gdk_gl_get_glGetShaderSource (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetShaderSource == (GdkGLProc_glGetShaderSource) -1)
+    _procs_GL_VERSION_2_0.glGetShaderSource =
+      (GdkGLProc_glGetShaderSource) gdk_gl_get_proc_address ("glGetShaderSource");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetShaderSource () - %s",
+               (_procs_GL_VERSION_2_0.glGetShaderSource) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetShaderSource);
+}
+
+/* glGetUniformLocation */
+GdkGLProc
+gdk_gl_get_glGetUniformLocation (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetUniformLocation == (GdkGLProc_glGetUniformLocation) -1)
+    _procs_GL_VERSION_2_0.glGetUniformLocation =
+      (GdkGLProc_glGetUniformLocation) gdk_gl_get_proc_address ("glGetUniformLocation");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformLocation () - %s",
+               (_procs_GL_VERSION_2_0.glGetUniformLocation) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetUniformLocation);
+}
+
+/* glGetUniformfv */
+GdkGLProc
+gdk_gl_get_glGetUniformfv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetUniformfv == (GdkGLProc_glGetUniformfv) -1)
+    _procs_GL_VERSION_2_0.glGetUniformfv =
+      (GdkGLProc_glGetUniformfv) gdk_gl_get_proc_address ("glGetUniformfv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformfv () - %s",
+               (_procs_GL_VERSION_2_0.glGetUniformfv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetUniformfv);
+}
+
+/* glGetUniformiv */
+GdkGLProc
+gdk_gl_get_glGetUniformiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetUniformiv == (GdkGLProc_glGetUniformiv) -1)
+    _procs_GL_VERSION_2_0.glGetUniformiv =
+      (GdkGLProc_glGetUniformiv) gdk_gl_get_proc_address ("glGetUniformiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformiv () - %s",
+               (_procs_GL_VERSION_2_0.glGetUniformiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetUniformiv);
+}
+
+/* glGetVertexAttribdv */
+GdkGLProc
+gdk_gl_get_glGetVertexAttribdv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetVertexAttribdv == (GdkGLProc_glGetVertexAttribdv) -1)
+    _procs_GL_VERSION_2_0.glGetVertexAttribdv =
+      (GdkGLProc_glGetVertexAttribdv) gdk_gl_get_proc_address ("glGetVertexAttribdv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribdv () - %s",
+               (_procs_GL_VERSION_2_0.glGetVertexAttribdv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetVertexAttribdv);
+}
+
+/* glGetVertexAttribfv */
+GdkGLProc
+gdk_gl_get_glGetVertexAttribfv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetVertexAttribfv == (GdkGLProc_glGetVertexAttribfv) -1)
+    _procs_GL_VERSION_2_0.glGetVertexAttribfv =
+      (GdkGLProc_glGetVertexAttribfv) gdk_gl_get_proc_address ("glGetVertexAttribfv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribfv () - %s",
+               (_procs_GL_VERSION_2_0.glGetVertexAttribfv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetVertexAttribfv);
+}
+
+/* glGetVertexAttribiv */
+GdkGLProc
+gdk_gl_get_glGetVertexAttribiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetVertexAttribiv == (GdkGLProc_glGetVertexAttribiv) -1)
+    _procs_GL_VERSION_2_0.glGetVertexAttribiv =
+      (GdkGLProc_glGetVertexAttribiv) gdk_gl_get_proc_address ("glGetVertexAttribiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribiv () - %s",
+               (_procs_GL_VERSION_2_0.glGetVertexAttribiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetVertexAttribiv);
+}
+
+/* glGetVertexAttribPointerv */
+GdkGLProc
+gdk_gl_get_glGetVertexAttribPointerv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glGetVertexAttribPointerv == (GdkGLProc_glGetVertexAttribPointerv) -1)
+    _procs_GL_VERSION_2_0.glGetVertexAttribPointerv =
+      (GdkGLProc_glGetVertexAttribPointerv) gdk_gl_get_proc_address ("glGetVertexAttribPointerv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribPointerv () - %s",
+               (_procs_GL_VERSION_2_0.glGetVertexAttribPointerv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glGetVertexAttribPointerv);
+}
+
+/* glIsProgram */
+GdkGLProc
+gdk_gl_get_glIsProgram (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glIsProgram == (GdkGLProc_glIsProgram) -1)
+    _procs_GL_VERSION_2_0.glIsProgram =
+      (GdkGLProc_glIsProgram) gdk_gl_get_proc_address ("glIsProgram");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsProgram () - %s",
+               (_procs_GL_VERSION_2_0.glIsProgram) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glIsProgram);
+}
+
+/* glIsShader */
+GdkGLProc
+gdk_gl_get_glIsShader (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glIsShader == (GdkGLProc_glIsShader) -1)
+    _procs_GL_VERSION_2_0.glIsShader =
+      (GdkGLProc_glIsShader) gdk_gl_get_proc_address ("glIsShader");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsShader () - %s",
+               (_procs_GL_VERSION_2_0.glIsShader) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glIsShader);
+}
+
+/* glLinkProgram */
+GdkGLProc
+gdk_gl_get_glLinkProgram (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glLinkProgram == (GdkGLProc_glLinkProgram) -1)
+    _procs_GL_VERSION_2_0.glLinkProgram =
+      (GdkGLProc_glLinkProgram) gdk_gl_get_proc_address ("glLinkProgram");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLinkProgram () - %s",
+               (_procs_GL_VERSION_2_0.glLinkProgram) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glLinkProgram);
+}
+
+/* glShaderSource */
+GdkGLProc
+gdk_gl_get_glShaderSource (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glShaderSource == (GdkGLProc_glShaderSource) -1)
+    _procs_GL_VERSION_2_0.glShaderSource =
+      (GdkGLProc_glShaderSource) gdk_gl_get_proc_address ("glShaderSource");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glShaderSource () - %s",
+               (_procs_GL_VERSION_2_0.glShaderSource) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glShaderSource);
+}
+
+/* glUseProgram */
+GdkGLProc
+gdk_gl_get_glUseProgram (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUseProgram == (GdkGLProc_glUseProgram) -1)
+    _procs_GL_VERSION_2_0.glUseProgram =
+      (GdkGLProc_glUseProgram) gdk_gl_get_proc_address ("glUseProgram");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUseProgram () - %s",
+               (_procs_GL_VERSION_2_0.glUseProgram) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUseProgram);
+}
+
+/* glUniform1f */
+GdkGLProc
+gdk_gl_get_glUniform1f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform1f == (GdkGLProc_glUniform1f) -1)
+    _procs_GL_VERSION_2_0.glUniform1f =
+      (GdkGLProc_glUniform1f) gdk_gl_get_proc_address ("glUniform1f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1f () - %s",
+               (_procs_GL_VERSION_2_0.glUniform1f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform1f);
+}
+
+/* glUniform2f */
+GdkGLProc
+gdk_gl_get_glUniform2f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform2f == (GdkGLProc_glUniform2f) -1)
+    _procs_GL_VERSION_2_0.glUniform2f =
+      (GdkGLProc_glUniform2f) gdk_gl_get_proc_address ("glUniform2f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2f () - %s",
+               (_procs_GL_VERSION_2_0.glUniform2f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform2f);
+}
+
+/* glUniform3f */
+GdkGLProc
+gdk_gl_get_glUniform3f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform3f == (GdkGLProc_glUniform3f) -1)
+    _procs_GL_VERSION_2_0.glUniform3f =
+      (GdkGLProc_glUniform3f) gdk_gl_get_proc_address ("glUniform3f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3f () - %s",
+               (_procs_GL_VERSION_2_0.glUniform3f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform3f);
+}
+
+/* glUniform4f */
+GdkGLProc
+gdk_gl_get_glUniform4f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform4f == (GdkGLProc_glUniform4f) -1)
+    _procs_GL_VERSION_2_0.glUniform4f =
+      (GdkGLProc_glUniform4f) gdk_gl_get_proc_address ("glUniform4f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4f () - %s",
+               (_procs_GL_VERSION_2_0.glUniform4f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform4f);
+}
+
+/* glUniform1i */
+GdkGLProc
+gdk_gl_get_glUniform1i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform1i == (GdkGLProc_glUniform1i) -1)
+    _procs_GL_VERSION_2_0.glUniform1i =
+      (GdkGLProc_glUniform1i) gdk_gl_get_proc_address ("glUniform1i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1i () - %s",
+               (_procs_GL_VERSION_2_0.glUniform1i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform1i);
+}
+
+/* glUniform2i */
+GdkGLProc
+gdk_gl_get_glUniform2i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform2i == (GdkGLProc_glUniform2i) -1)
+    _procs_GL_VERSION_2_0.glUniform2i =
+      (GdkGLProc_glUniform2i) gdk_gl_get_proc_address ("glUniform2i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2i () - %s",
+               (_procs_GL_VERSION_2_0.glUniform2i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform2i);
+}
+
+/* glUniform3i */
+GdkGLProc
+gdk_gl_get_glUniform3i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform3i == (GdkGLProc_glUniform3i) -1)
+    _procs_GL_VERSION_2_0.glUniform3i =
+      (GdkGLProc_glUniform3i) gdk_gl_get_proc_address ("glUniform3i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3i () - %s",
+               (_procs_GL_VERSION_2_0.glUniform3i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform3i);
+}
+
+/* glUniform4i */
+GdkGLProc
+gdk_gl_get_glUniform4i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform4i == (GdkGLProc_glUniform4i) -1)
+    _procs_GL_VERSION_2_0.glUniform4i =
+      (GdkGLProc_glUniform4i) gdk_gl_get_proc_address ("glUniform4i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4i () - %s",
+               (_procs_GL_VERSION_2_0.glUniform4i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform4i);
+}
+
+/* glUniform1fv */
+GdkGLProc
+gdk_gl_get_glUniform1fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform1fv == (GdkGLProc_glUniform1fv) -1)
+    _procs_GL_VERSION_2_0.glUniform1fv =
+      (GdkGLProc_glUniform1fv) gdk_gl_get_proc_address ("glUniform1fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1fv () - %s",
+               (_procs_GL_VERSION_2_0.glUniform1fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform1fv);
+}
+
+/* glUniform2fv */
+GdkGLProc
+gdk_gl_get_glUniform2fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform2fv == (GdkGLProc_glUniform2fv) -1)
+    _procs_GL_VERSION_2_0.glUniform2fv =
+      (GdkGLProc_glUniform2fv) gdk_gl_get_proc_address ("glUniform2fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2fv () - %s",
+               (_procs_GL_VERSION_2_0.glUniform2fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform2fv);
+}
+
+/* glUniform3fv */
+GdkGLProc
+gdk_gl_get_glUniform3fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform3fv == (GdkGLProc_glUniform3fv) -1)
+    _procs_GL_VERSION_2_0.glUniform3fv =
+      (GdkGLProc_glUniform3fv) gdk_gl_get_proc_address ("glUniform3fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3fv () - %s",
+               (_procs_GL_VERSION_2_0.glUniform3fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform3fv);
+}
+
+/* glUniform4fv */
+GdkGLProc
+gdk_gl_get_glUniform4fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform4fv == (GdkGLProc_glUniform4fv) -1)
+    _procs_GL_VERSION_2_0.glUniform4fv =
+      (GdkGLProc_glUniform4fv) gdk_gl_get_proc_address ("glUniform4fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4fv () - %s",
+               (_procs_GL_VERSION_2_0.glUniform4fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform4fv);
+}
+
+/* glUniform1iv */
+GdkGLProc
+gdk_gl_get_glUniform1iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform1iv == (GdkGLProc_glUniform1iv) -1)
+    _procs_GL_VERSION_2_0.glUniform1iv =
+      (GdkGLProc_glUniform1iv) gdk_gl_get_proc_address ("glUniform1iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1iv () - %s",
+               (_procs_GL_VERSION_2_0.glUniform1iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform1iv);
+}
+
+/* glUniform2iv */
+GdkGLProc
+gdk_gl_get_glUniform2iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform2iv == (GdkGLProc_glUniform2iv) -1)
+    _procs_GL_VERSION_2_0.glUniform2iv =
+      (GdkGLProc_glUniform2iv) gdk_gl_get_proc_address ("glUniform2iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2iv () - %s",
+               (_procs_GL_VERSION_2_0.glUniform2iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform2iv);
+}
+
+/* glUniform3iv */
+GdkGLProc
+gdk_gl_get_glUniform3iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform3iv == (GdkGLProc_glUniform3iv) -1)
+    _procs_GL_VERSION_2_0.glUniform3iv =
+      (GdkGLProc_glUniform3iv) gdk_gl_get_proc_address ("glUniform3iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3iv () - %s",
+               (_procs_GL_VERSION_2_0.glUniform3iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform3iv);
+}
+
+/* glUniform4iv */
+GdkGLProc
+gdk_gl_get_glUniform4iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniform4iv == (GdkGLProc_glUniform4iv) -1)
+    _procs_GL_VERSION_2_0.glUniform4iv =
+      (GdkGLProc_glUniform4iv) gdk_gl_get_proc_address ("glUniform4iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4iv () - %s",
+               (_procs_GL_VERSION_2_0.glUniform4iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniform4iv);
+}
+
+/* glUniformMatrix2fv */
+GdkGLProc
+gdk_gl_get_glUniformMatrix2fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniformMatrix2fv == (GdkGLProc_glUniformMatrix2fv) -1)
+    _procs_GL_VERSION_2_0.glUniformMatrix2fv =
+      (GdkGLProc_glUniformMatrix2fv) gdk_gl_get_proc_address ("glUniformMatrix2fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix2fv () - %s",
+               (_procs_GL_VERSION_2_0.glUniformMatrix2fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniformMatrix2fv);
+}
+
+/* glUniformMatrix3fv */
+GdkGLProc
+gdk_gl_get_glUniformMatrix3fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniformMatrix3fv == (GdkGLProc_glUniformMatrix3fv) -1)
+    _procs_GL_VERSION_2_0.glUniformMatrix3fv =
+      (GdkGLProc_glUniformMatrix3fv) gdk_gl_get_proc_address ("glUniformMatrix3fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix3fv () - %s",
+               (_procs_GL_VERSION_2_0.glUniformMatrix3fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniformMatrix3fv);
+}
+
+/* glUniformMatrix4fv */
+GdkGLProc
+gdk_gl_get_glUniformMatrix4fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glUniformMatrix4fv == (GdkGLProc_glUniformMatrix4fv) -1)
+    _procs_GL_VERSION_2_0.glUniformMatrix4fv =
+      (GdkGLProc_glUniformMatrix4fv) gdk_gl_get_proc_address ("glUniformMatrix4fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix4fv () - %s",
+               (_procs_GL_VERSION_2_0.glUniformMatrix4fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glUniformMatrix4fv);
+}
+
+/* glValidateProgram */
+GdkGLProc
+gdk_gl_get_glValidateProgram (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glValidateProgram == (GdkGLProc_glValidateProgram) -1)
+    _procs_GL_VERSION_2_0.glValidateProgram =
+      (GdkGLProc_glValidateProgram) gdk_gl_get_proc_address ("glValidateProgram");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glValidateProgram () - %s",
+               (_procs_GL_VERSION_2_0.glValidateProgram) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glValidateProgram);
+}
+
+/* glVertexAttrib1d */
+GdkGLProc
+gdk_gl_get_glVertexAttrib1d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib1d == (GdkGLProc_glVertexAttrib1d) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib1d =
+      (GdkGLProc_glVertexAttrib1d) gdk_gl_get_proc_address ("glVertexAttrib1d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1d () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib1d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib1d);
+}
+
+/* glVertexAttrib1dv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib1dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib1dv == (GdkGLProc_glVertexAttrib1dv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib1dv =
+      (GdkGLProc_glVertexAttrib1dv) gdk_gl_get_proc_address ("glVertexAttrib1dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1dv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib1dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib1dv);
+}
+
+/* glVertexAttrib1f */
+GdkGLProc
+gdk_gl_get_glVertexAttrib1f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib1f == (GdkGLProc_glVertexAttrib1f) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib1f =
+      (GdkGLProc_glVertexAttrib1f) gdk_gl_get_proc_address ("glVertexAttrib1f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1f () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib1f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib1f);
+}
+
+/* glVertexAttrib1fv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib1fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib1fv == (GdkGLProc_glVertexAttrib1fv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib1fv =
+      (GdkGLProc_glVertexAttrib1fv) gdk_gl_get_proc_address ("glVertexAttrib1fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1fv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib1fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib1fv);
+}
+
+/* glVertexAttrib1s */
+GdkGLProc
+gdk_gl_get_glVertexAttrib1s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib1s == (GdkGLProc_glVertexAttrib1s) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib1s =
+      (GdkGLProc_glVertexAttrib1s) gdk_gl_get_proc_address ("glVertexAttrib1s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1s () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib1s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib1s);
+}
+
+/* glVertexAttrib1sv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib1sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib1sv == (GdkGLProc_glVertexAttrib1sv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib1sv =
+      (GdkGLProc_glVertexAttrib1sv) gdk_gl_get_proc_address ("glVertexAttrib1sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib1sv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib1sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib1sv);
+}
+
+/* glVertexAttrib2d */
+GdkGLProc
+gdk_gl_get_glVertexAttrib2d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib2d == (GdkGLProc_glVertexAttrib2d) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib2d =
+      (GdkGLProc_glVertexAttrib2d) gdk_gl_get_proc_address ("glVertexAttrib2d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2d () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib2d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib2d);
+}
+
+/* glVertexAttrib2dv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib2dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib2dv == (GdkGLProc_glVertexAttrib2dv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib2dv =
+      (GdkGLProc_glVertexAttrib2dv) gdk_gl_get_proc_address ("glVertexAttrib2dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2dv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib2dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib2dv);
+}
+
+/* glVertexAttrib2f */
+GdkGLProc
+gdk_gl_get_glVertexAttrib2f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib2f == (GdkGLProc_glVertexAttrib2f) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib2f =
+      (GdkGLProc_glVertexAttrib2f) gdk_gl_get_proc_address ("glVertexAttrib2f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2f () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib2f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib2f);
+}
+
+/* glVertexAttrib2fv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib2fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib2fv == (GdkGLProc_glVertexAttrib2fv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib2fv =
+      (GdkGLProc_glVertexAttrib2fv) gdk_gl_get_proc_address ("glVertexAttrib2fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2fv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib2fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib2fv);
+}
+
+/* glVertexAttrib2s */
+GdkGLProc
+gdk_gl_get_glVertexAttrib2s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib2s == (GdkGLProc_glVertexAttrib2s) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib2s =
+      (GdkGLProc_glVertexAttrib2s) gdk_gl_get_proc_address ("glVertexAttrib2s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2s () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib2s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib2s);
+}
+
+/* glVertexAttrib2sv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib2sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib2sv == (GdkGLProc_glVertexAttrib2sv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib2sv =
+      (GdkGLProc_glVertexAttrib2sv) gdk_gl_get_proc_address ("glVertexAttrib2sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib2sv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib2sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib2sv);
+}
+
+/* glVertexAttrib3d */
+GdkGLProc
+gdk_gl_get_glVertexAttrib3d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib3d == (GdkGLProc_glVertexAttrib3d) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib3d =
+      (GdkGLProc_glVertexAttrib3d) gdk_gl_get_proc_address ("glVertexAttrib3d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3d () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib3d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib3d);
+}
+
+/* glVertexAttrib3dv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib3dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib3dv == (GdkGLProc_glVertexAttrib3dv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib3dv =
+      (GdkGLProc_glVertexAttrib3dv) gdk_gl_get_proc_address ("glVertexAttrib3dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3dv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib3dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib3dv);
+}
+
+/* glVertexAttrib3f */
+GdkGLProc
+gdk_gl_get_glVertexAttrib3f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib3f == (GdkGLProc_glVertexAttrib3f) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib3f =
+      (GdkGLProc_glVertexAttrib3f) gdk_gl_get_proc_address ("glVertexAttrib3f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3f () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib3f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib3f);
+}
+
+/* glVertexAttrib3fv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib3fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib3fv == (GdkGLProc_glVertexAttrib3fv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib3fv =
+      (GdkGLProc_glVertexAttrib3fv) gdk_gl_get_proc_address ("glVertexAttrib3fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3fv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib3fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib3fv);
+}
+
+/* glVertexAttrib3s */
+GdkGLProc
+gdk_gl_get_glVertexAttrib3s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib3s == (GdkGLProc_glVertexAttrib3s) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib3s =
+      (GdkGLProc_glVertexAttrib3s) gdk_gl_get_proc_address ("glVertexAttrib3s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3s () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib3s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib3s);
+}
+
+/* glVertexAttrib3sv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib3sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib3sv == (GdkGLProc_glVertexAttrib3sv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib3sv =
+      (GdkGLProc_glVertexAttrib3sv) gdk_gl_get_proc_address ("glVertexAttrib3sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib3sv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib3sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib3sv);
+}
+
+/* glVertexAttrib4Nbv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4Nbv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4Nbv == (GdkGLProc_glVertexAttrib4Nbv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4Nbv =
+      (GdkGLProc_glVertexAttrib4Nbv) gdk_gl_get_proc_address ("glVertexAttrib4Nbv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4Nbv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4Nbv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4Nbv);
+}
+
+/* glVertexAttrib4Niv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4Niv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4Niv == (GdkGLProc_glVertexAttrib4Niv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4Niv =
+      (GdkGLProc_glVertexAttrib4Niv) gdk_gl_get_proc_address ("glVertexAttrib4Niv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4Niv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4Niv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4Niv);
+}
+
+/* glVertexAttrib4Nsv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4Nsv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4Nsv == (GdkGLProc_glVertexAttrib4Nsv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4Nsv =
+      (GdkGLProc_glVertexAttrib4Nsv) gdk_gl_get_proc_address ("glVertexAttrib4Nsv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4Nsv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4Nsv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4Nsv);
+}
+
+/* glVertexAttrib4Nub */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4Nub (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4Nub == (GdkGLProc_glVertexAttrib4Nub) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4Nub =
+      (GdkGLProc_glVertexAttrib4Nub) gdk_gl_get_proc_address ("glVertexAttrib4Nub");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4Nub () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4Nub) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4Nub);
+}
+
+/* glVertexAttrib4Nubv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4Nubv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4Nubv == (GdkGLProc_glVertexAttrib4Nubv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4Nubv =
+      (GdkGLProc_glVertexAttrib4Nubv) gdk_gl_get_proc_address ("glVertexAttrib4Nubv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4Nubv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4Nubv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4Nubv);
+}
+
+/* glVertexAttrib4Nuiv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4Nuiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4Nuiv == (GdkGLProc_glVertexAttrib4Nuiv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4Nuiv =
+      (GdkGLProc_glVertexAttrib4Nuiv) gdk_gl_get_proc_address ("glVertexAttrib4Nuiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4Nuiv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4Nuiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4Nuiv);
+}
+
+/* glVertexAttrib4Nusv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4Nusv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4Nusv == (GdkGLProc_glVertexAttrib4Nusv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4Nusv =
+      (GdkGLProc_glVertexAttrib4Nusv) gdk_gl_get_proc_address ("glVertexAttrib4Nusv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4Nusv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4Nusv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4Nusv);
+}
+
+/* glVertexAttrib4bv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4bv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4bv == (GdkGLProc_glVertexAttrib4bv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4bv =
+      (GdkGLProc_glVertexAttrib4bv) gdk_gl_get_proc_address ("glVertexAttrib4bv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4bv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4bv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4bv);
+}
+
+/* glVertexAttrib4d */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4d (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4d == (GdkGLProc_glVertexAttrib4d) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4d =
+      (GdkGLProc_glVertexAttrib4d) gdk_gl_get_proc_address ("glVertexAttrib4d");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4d () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4d) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4d);
+}
+
+/* glVertexAttrib4dv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4dv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4dv == (GdkGLProc_glVertexAttrib4dv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4dv =
+      (GdkGLProc_glVertexAttrib4dv) gdk_gl_get_proc_address ("glVertexAttrib4dv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4dv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4dv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4dv);
+}
+
+/* glVertexAttrib4f */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4f (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4f == (GdkGLProc_glVertexAttrib4f) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4f =
+      (GdkGLProc_glVertexAttrib4f) gdk_gl_get_proc_address ("glVertexAttrib4f");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4f () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4f) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4f);
+}
+
+/* glVertexAttrib4fv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4fv == (GdkGLProc_glVertexAttrib4fv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4fv =
+      (GdkGLProc_glVertexAttrib4fv) gdk_gl_get_proc_address ("glVertexAttrib4fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4fv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4fv);
+}
+
+/* glVertexAttrib4iv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4iv == (GdkGLProc_glVertexAttrib4iv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4iv =
+      (GdkGLProc_glVertexAttrib4iv) gdk_gl_get_proc_address ("glVertexAttrib4iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4iv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4iv);
+}
+
+/* glVertexAttrib4s */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4s (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4s == (GdkGLProc_glVertexAttrib4s) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4s =
+      (GdkGLProc_glVertexAttrib4s) gdk_gl_get_proc_address ("glVertexAttrib4s");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4s () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4s) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4s);
+}
+
+/* glVertexAttrib4sv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4sv == (GdkGLProc_glVertexAttrib4sv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4sv =
+      (GdkGLProc_glVertexAttrib4sv) gdk_gl_get_proc_address ("glVertexAttrib4sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4sv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4sv);
+}
+
+/* glVertexAttrib4ubv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4ubv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4ubv == (GdkGLProc_glVertexAttrib4ubv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4ubv =
+      (GdkGLProc_glVertexAttrib4ubv) gdk_gl_get_proc_address ("glVertexAttrib4ubv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4ubv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4ubv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4ubv);
+}
+
+/* glVertexAttrib4uiv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4uiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4uiv == (GdkGLProc_glVertexAttrib4uiv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4uiv =
+      (GdkGLProc_glVertexAttrib4uiv) gdk_gl_get_proc_address ("glVertexAttrib4uiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4uiv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4uiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4uiv);
+}
+
+/* glVertexAttrib4usv */
+GdkGLProc
+gdk_gl_get_glVertexAttrib4usv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttrib4usv == (GdkGLProc_glVertexAttrib4usv) -1)
+    _procs_GL_VERSION_2_0.glVertexAttrib4usv =
+      (GdkGLProc_glVertexAttrib4usv) gdk_gl_get_proc_address ("glVertexAttrib4usv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttrib4usv () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttrib4usv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttrib4usv);
+}
+
+/* glVertexAttribPointer */
+GdkGLProc
+gdk_gl_get_glVertexAttribPointer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_0.glVertexAttribPointer == (GdkGLProc_glVertexAttribPointer) -1)
+    _procs_GL_VERSION_2_0.glVertexAttribPointer =
+      (GdkGLProc_glVertexAttribPointer) gdk_gl_get_proc_address ("glVertexAttribPointer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribPointer () - %s",
+               (_procs_GL_VERSION_2_0.glVertexAttribPointer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_0.glVertexAttribPointer);
+}
+
+/* Get GL_VERSION_2_0 functions */
+GdkGL_GL_VERSION_2_0 *
+gdk_gl_get_GL_VERSION_2_0 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported =  (gdk_gl_get_glBlendEquationSeparate () != NULL);
+      supported &= (gdk_gl_get_glDrawBuffers () != NULL);
+      supported &= (gdk_gl_get_glStencilOpSeparate () != NULL);
+      supported &= (gdk_gl_get_glStencilFuncSeparate () != NULL);
+      supported &= (gdk_gl_get_glStencilMaskSeparate () != NULL);
+      supported &= (gdk_gl_get_glAttachShader () != NULL);
+      supported &= (gdk_gl_get_glBindAttribLocation () != NULL);
+      supported &= (gdk_gl_get_glCompileShader () != NULL);
+      supported &= (gdk_gl_get_glCreateProgram () != NULL);
+      supported &= (gdk_gl_get_glCreateShader () != NULL);
+      supported &= (gdk_gl_get_glDeleteProgram () != NULL);
+      supported &= (gdk_gl_get_glDeleteShader () != NULL);
+      supported &= (gdk_gl_get_glDetachShader () != NULL);
+      supported &= (gdk_gl_get_glDisableVertexAttribArray () != NULL);
+      supported &= (gdk_gl_get_glEnableVertexAttribArray () != NULL);
+      supported &= (gdk_gl_get_glGetActiveAttrib () != NULL);
+      supported &= (gdk_gl_get_glGetActiveUniform () != NULL);
+      supported &= (gdk_gl_get_glGetAttachedShaders () != NULL);
+      supported &= (gdk_gl_get_glGetAttribLocation () != NULL);
+      supported &= (gdk_gl_get_glGetProgramiv () != NULL);
+      supported &= (gdk_gl_get_glGetProgramInfoLog () != NULL);
+      supported &= (gdk_gl_get_glGetShaderiv () != NULL);
+      supported &= (gdk_gl_get_glGetShaderInfoLog () != NULL);
+      supported &= (gdk_gl_get_glGetShaderSource () != NULL);
+      supported &= (gdk_gl_get_glGetUniformLocation () != NULL);
+      supported &= (gdk_gl_get_glGetUniformfv () != NULL);
+      supported &= (gdk_gl_get_glGetUniformiv () != NULL);
+      supported &= (gdk_gl_get_glGetVertexAttribdv () != NULL);
+      supported &= (gdk_gl_get_glGetVertexAttribfv () != NULL);
+      supported &= (gdk_gl_get_glGetVertexAttribiv () != NULL);
+      supported &= (gdk_gl_get_glGetVertexAttribPointerv () != NULL);
+      supported &= (gdk_gl_get_glIsProgram () != NULL);
+      supported &= (gdk_gl_get_glIsShader () != NULL);
+      supported &= (gdk_gl_get_glLinkProgram () != NULL);
+      supported &= (gdk_gl_get_glShaderSource () != NULL);
+      supported &= (gdk_gl_get_glUseProgram () != NULL);
+      supported &= (gdk_gl_get_glUniform1f () != NULL);
+      supported &= (gdk_gl_get_glUniform2f () != NULL);
+      supported &= (gdk_gl_get_glUniform3f () != NULL);
+      supported &= (gdk_gl_get_glUniform4f () != NULL);
+      supported &= (gdk_gl_get_glUniform1i () != NULL);
+      supported &= (gdk_gl_get_glUniform2i () != NULL);
+      supported &= (gdk_gl_get_glUniform3i () != NULL);
+      supported &= (gdk_gl_get_glUniform4i () != NULL);
+      supported &= (gdk_gl_get_glUniform1fv () != NULL);
+      supported &= (gdk_gl_get_glUniform2fv () != NULL);
+      supported &= (gdk_gl_get_glUniform3fv () != NULL);
+      supported &= (gdk_gl_get_glUniform4fv () != NULL);
+      supported &= (gdk_gl_get_glUniform1iv () != NULL);
+      supported &= (gdk_gl_get_glUniform2iv () != NULL);
+      supported &= (gdk_gl_get_glUniform3iv () != NULL);
+      supported &= (gdk_gl_get_glUniform4iv () != NULL);
+      supported &= (gdk_gl_get_glUniformMatrix2fv () != NULL);
+      supported &= (gdk_gl_get_glUniformMatrix3fv () != NULL);
+      supported &= (gdk_gl_get_glUniformMatrix4fv () != NULL);
+      supported &= (gdk_gl_get_glValidateProgram () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib1d () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib1dv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib1f () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib1fv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib1s () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib1sv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib2d () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib2dv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib2f () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib2fv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib2s () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib2sv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib3d () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib3dv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib3f () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib3fv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib3s () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib3sv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4Nbv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4Niv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4Nsv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4Nub () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4Nubv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4Nuiv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4Nusv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4bv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4d () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4dv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4f () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4fv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4iv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4s () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4sv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4ubv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4uiv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttrib4usv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribPointer () != NULL);
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_2_0 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_VERSION_2_0;
+}
+
+/*
+ * GL_VERSION_2_1
+ */
+
+static GdkGL_GL_VERSION_2_1 _procs_GL_VERSION_2_1 = {
+  (GdkGLProc_glUniformMatrix2x3fv) -1,
+  (GdkGLProc_glUniformMatrix3x2fv) -1,
+  (GdkGLProc_glUniformMatrix2x4fv) -1,
+  (GdkGLProc_glUniformMatrix4x2fv) -1,
+  (GdkGLProc_glUniformMatrix3x4fv) -1,
+  (GdkGLProc_glUniformMatrix4x3fv) -1
+};
+
+/* glUniformMatrix2x3fv */
+GdkGLProc
+gdk_gl_get_glUniformMatrix2x3fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_1.glUniformMatrix2x3fv == (GdkGLProc_glUniformMatrix2x3fv) -1)
+    _procs_GL_VERSION_2_1.glUniformMatrix2x3fv =
+      (GdkGLProc_glUniformMatrix2x3fv) gdk_gl_get_proc_address ("glUniformMatrix2x3fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix2x3fv () - %s",
+               (_procs_GL_VERSION_2_1.glUniformMatrix2x3fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_1.glUniformMatrix2x3fv);
+}
+
+/* glUniformMatrix3x2fv */
+GdkGLProc
+gdk_gl_get_glUniformMatrix3x2fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_1.glUniformMatrix3x2fv == (GdkGLProc_glUniformMatrix3x2fv) -1)
+    _procs_GL_VERSION_2_1.glUniformMatrix3x2fv =
+      (GdkGLProc_glUniformMatrix3x2fv) gdk_gl_get_proc_address ("glUniformMatrix3x2fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix3x2fv () - %s",
+               (_procs_GL_VERSION_2_1.glUniformMatrix3x2fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_1.glUniformMatrix3x2fv);
+}
+
+/* glUniformMatrix2x4fv */
+GdkGLProc
+gdk_gl_get_glUniformMatrix2x4fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_1.glUniformMatrix2x4fv == (GdkGLProc_glUniformMatrix2x4fv) -1)
+    _procs_GL_VERSION_2_1.glUniformMatrix2x4fv =
+      (GdkGLProc_glUniformMatrix2x4fv) gdk_gl_get_proc_address ("glUniformMatrix2x4fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix2x4fv () - %s",
+               (_procs_GL_VERSION_2_1.glUniformMatrix2x4fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_1.glUniformMatrix2x4fv);
+}
+
+/* glUniformMatrix4x2fv */
+GdkGLProc
+gdk_gl_get_glUniformMatrix4x2fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_1.glUniformMatrix4x2fv == (GdkGLProc_glUniformMatrix4x2fv) -1)
+    _procs_GL_VERSION_2_1.glUniformMatrix4x2fv =
+      (GdkGLProc_glUniformMatrix4x2fv) gdk_gl_get_proc_address ("glUniformMatrix4x2fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix4x2fv () - %s",
+               (_procs_GL_VERSION_2_1.glUniformMatrix4x2fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_1.glUniformMatrix4x2fv);
+}
+
+/* glUniformMatrix3x4fv */
+GdkGLProc
+gdk_gl_get_glUniformMatrix3x4fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_1.glUniformMatrix3x4fv == (GdkGLProc_glUniformMatrix3x4fv) -1)
+    _procs_GL_VERSION_2_1.glUniformMatrix3x4fv =
+      (GdkGLProc_glUniformMatrix3x4fv) gdk_gl_get_proc_address ("glUniformMatrix3x4fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix3x4fv () - %s",
+               (_procs_GL_VERSION_2_1.glUniformMatrix3x4fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_1.glUniformMatrix3x4fv);
+}
+
+/* glUniformMatrix4x3fv */
+GdkGLProc
+gdk_gl_get_glUniformMatrix4x3fv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_2_1.glUniformMatrix4x3fv == (GdkGLProc_glUniformMatrix4x3fv) -1)
+    _procs_GL_VERSION_2_1.glUniformMatrix4x3fv =
+      (GdkGLProc_glUniformMatrix4x3fv) gdk_gl_get_proc_address ("glUniformMatrix4x3fv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix4x3fv () - %s",
+               (_procs_GL_VERSION_2_1.glUniformMatrix4x3fv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_2_1.glUniformMatrix4x3fv);
+}
+
+/* Get GL_VERSION_2_1 functions */
+GdkGL_GL_VERSION_2_1 *
+gdk_gl_get_GL_VERSION_2_1 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported =  (gdk_gl_get_glUniformMatrix2x3fv () != NULL);
+      supported &= (gdk_gl_get_glUniformMatrix3x2fv () != NULL);
+      supported &= (gdk_gl_get_glUniformMatrix2x4fv () != NULL);
+      supported &= (gdk_gl_get_glUniformMatrix4x2fv () != NULL);
+      supported &= (gdk_gl_get_glUniformMatrix3x4fv () != NULL);
+      supported &= (gdk_gl_get_glUniformMatrix4x3fv () != NULL);
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_2_1 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_VERSION_2_1;
+}
+
+/*
+ * GL_VERSION_3_0
+ */
+
+static GdkGL_GL_VERSION_3_0 _procs_GL_VERSION_3_0 = {
+  (GdkGLProc_glColorMaski) -1,
+  (GdkGLProc_glGetBooleani_v) -1,
+  (GdkGLProc_glGetIntegeri_v) -1,
+  (GdkGLProc_glEnablei) -1,
+  (GdkGLProc_glDisablei) -1,
+  (GdkGLProc_glIsEnabledi) -1,
+  (GdkGLProc_glBeginTransformFeedback) -1,
+  (GdkGLProc_glEndTransformFeedback) -1,
+  (GdkGLProc_glBindBufferRange) -1,
+  (GdkGLProc_glBindBufferBase) -1,
+  (GdkGLProc_glTransformFeedbackVaryings) -1,
+  (GdkGLProc_glGetTransformFeedbackVarying) -1,
+  (GdkGLProc_glClampColor) -1,
+  (GdkGLProc_glBeginConditionalRender) -1,
+  (GdkGLProc_glEndConditionalRender) -1,
+  (GdkGLProc_glVertexAttribIPointer) -1,
+  (GdkGLProc_glGetVertexAttribIiv) -1,
+  (GdkGLProc_glGetVertexAttribIuiv) -1,
+  (GdkGLProc_glVertexAttribI1i) -1,
+  (GdkGLProc_glVertexAttribI2i) -1,
+  (GdkGLProc_glVertexAttribI3i) -1,
+  (GdkGLProc_glVertexAttribI4i) -1,
+  (GdkGLProc_glVertexAttribI1ui) -1,
+  (GdkGLProc_glVertexAttribI2ui) -1,
+  (GdkGLProc_glVertexAttribI3ui) -1,
+  (GdkGLProc_glVertexAttribI4ui) -1,
+  (GdkGLProc_glVertexAttribI1iv) -1,
+  (GdkGLProc_glVertexAttribI2iv) -1,
+  (GdkGLProc_glVertexAttribI3iv) -1,
+  (GdkGLProc_glVertexAttribI4iv) -1,
+  (GdkGLProc_glVertexAttribI1uiv) -1,
+  (GdkGLProc_glVertexAttribI2uiv) -1,
+  (GdkGLProc_glVertexAttribI3uiv) -1,
+  (GdkGLProc_glVertexAttribI4uiv) -1,
+  (GdkGLProc_glVertexAttribI4bv) -1,
+  (GdkGLProc_glVertexAttribI4sv) -1,
+  (GdkGLProc_glVertexAttribI4ubv) -1,
+  (GdkGLProc_glVertexAttribI4usv) -1,
+  (GdkGLProc_glGetUniformuiv) -1,
+  (GdkGLProc_glBindFragDataLocation) -1,
+  (GdkGLProc_glGetFragDataLocation) -1,
+  (GdkGLProc_glUniform1ui) -1,
+  (GdkGLProc_glUniform2ui) -1,
+  (GdkGLProc_glUniform3ui) -1,
+  (GdkGLProc_glUniform4ui) -1,
+  (GdkGLProc_glUniform1uiv) -1,
+  (GdkGLProc_glUniform2uiv) -1,
+  (GdkGLProc_glUniform3uiv) -1,
+  (GdkGLProc_glUniform4uiv) -1,
+  (GdkGLProc_glTexParameterIiv) -1,
+  (GdkGLProc_glTexParameterIuiv) -1,
+  (GdkGLProc_glGetTexParameterIiv) -1,
+  (GdkGLProc_glGetTexParameterIuiv) -1,
+  (GdkGLProc_glClearBufferiv) -1,
+  (GdkGLProc_glClearBufferuiv) -1,
+  (GdkGLProc_glClearBufferfv) -1,
+  (GdkGLProc_glClearBufferfi) -1,
+  (GdkGLProc_glGetStringi) -1
+};
+
+/* glColorMaski */
+GdkGLProc
+gdk_gl_get_glColorMaski (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glColorMaski == (GdkGLProc_glColorMaski) -1)
+    _procs_GL_VERSION_3_0.glColorMaski =
+      (GdkGLProc_glColorMaski) gdk_gl_get_proc_address ("glColorMaski");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorMaski () - %s",
+               (_procs_GL_VERSION_3_0.glColorMaski) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glColorMaski);
+}
+
+/* glGetBooleani_v */
+GdkGLProc
+gdk_gl_get_glGetBooleani_v (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glGetBooleani_v == (GdkGLProc_glGetBooleani_v) -1)
+    _procs_GL_VERSION_3_0.glGetBooleani_v =
+      (GdkGLProc_glGetBooleani_v) gdk_gl_get_proc_address ("glGetBooleani_v");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetBooleani_v () - %s",
+               (_procs_GL_VERSION_3_0.glGetBooleani_v) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glGetBooleani_v);
+}
+
+/* glGetIntegeri_v */
+GdkGLProc
+gdk_gl_get_glGetIntegeri_v (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glGetIntegeri_v == (GdkGLProc_glGetIntegeri_v) -1)
+    _procs_GL_VERSION_3_0.glGetIntegeri_v =
+      (GdkGLProc_glGetIntegeri_v) gdk_gl_get_proc_address ("glGetIntegeri_v");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetIntegeri_v () - %s",
+               (_procs_GL_VERSION_3_0.glGetIntegeri_v) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glGetIntegeri_v);
+}
+
+/* glEnablei */
+GdkGLProc
+gdk_gl_get_glEnablei (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glEnablei == (GdkGLProc_glEnablei) -1)
+    _procs_GL_VERSION_3_0.glEnablei =
+      (GdkGLProc_glEnablei) gdk_gl_get_proc_address ("glEnablei");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEnablei () - %s",
+               (_procs_GL_VERSION_3_0.glEnablei) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glEnablei);
+}
+
+/* glDisablei */
+GdkGLProc
+gdk_gl_get_glDisablei (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glDisablei == (GdkGLProc_glDisablei) -1)
+    _procs_GL_VERSION_3_0.glDisablei =
+      (GdkGLProc_glDisablei) gdk_gl_get_proc_address ("glDisablei");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDisablei () - %s",
+               (_procs_GL_VERSION_3_0.glDisablei) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glDisablei);
+}
+
+/* glIsEnabledi */
+GdkGLProc
+gdk_gl_get_glIsEnabledi (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glIsEnabledi == (GdkGLProc_glIsEnabledi) -1)
+    _procs_GL_VERSION_3_0.glIsEnabledi =
+      (GdkGLProc_glIsEnabledi) gdk_gl_get_proc_address ("glIsEnabledi");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsEnabledi () - %s",
+               (_procs_GL_VERSION_3_0.glIsEnabledi) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glIsEnabledi);
+}
+
+/* glBeginTransformFeedback */
+GdkGLProc
+gdk_gl_get_glBeginTransformFeedback (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glBeginTransformFeedback == (GdkGLProc_glBeginTransformFeedback) -1)
+    _procs_GL_VERSION_3_0.glBeginTransformFeedback =
+      (GdkGLProc_glBeginTransformFeedback) gdk_gl_get_proc_address ("glBeginTransformFeedback");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginTransformFeedback () - %s",
+               (_procs_GL_VERSION_3_0.glBeginTransformFeedback) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glBeginTransformFeedback);
+}
+
+/* glEndTransformFeedback */
+GdkGLProc
+gdk_gl_get_glEndTransformFeedback (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glEndTransformFeedback == (GdkGLProc_glEndTransformFeedback) -1)
+    _procs_GL_VERSION_3_0.glEndTransformFeedback =
+      (GdkGLProc_glEndTransformFeedback) gdk_gl_get_proc_address ("glEndTransformFeedback");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndTransformFeedback () - %s",
+               (_procs_GL_VERSION_3_0.glEndTransformFeedback) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glEndTransformFeedback);
+}
+
+/* glBindBufferRange */
+GdkGLProc
+gdk_gl_get_glBindBufferRange (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glBindBufferRange == (GdkGLProc_glBindBufferRange) -1)
+    _procs_GL_VERSION_3_0.glBindBufferRange =
+      (GdkGLProc_glBindBufferRange) gdk_gl_get_proc_address ("glBindBufferRange");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindBufferRange () - %s",
+               (_procs_GL_VERSION_3_0.glBindBufferRange) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glBindBufferRange);
+}
+
+/* glBindBufferBase */
+GdkGLProc
+gdk_gl_get_glBindBufferBase (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glBindBufferBase == (GdkGLProc_glBindBufferBase) -1)
+    _procs_GL_VERSION_3_0.glBindBufferBase =
+      (GdkGLProc_glBindBufferBase) gdk_gl_get_proc_address ("glBindBufferBase");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindBufferBase () - %s",
+               (_procs_GL_VERSION_3_0.glBindBufferBase) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glBindBufferBase);
+}
+
+/* glTransformFeedbackVaryings */
+GdkGLProc
+gdk_gl_get_glTransformFeedbackVaryings (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glTransformFeedbackVaryings == (GdkGLProc_glTransformFeedbackVaryings) -1)
+    _procs_GL_VERSION_3_0.glTransformFeedbackVaryings =
+      (GdkGLProc_glTransformFeedbackVaryings) gdk_gl_get_proc_address ("glTransformFeedbackVaryings");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTransformFeedbackVaryings () - %s",
+               (_procs_GL_VERSION_3_0.glTransformFeedbackVaryings) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glTransformFeedbackVaryings);
+}
+
+/* glGetTransformFeedbackVarying */
+GdkGLProc
+gdk_gl_get_glGetTransformFeedbackVarying (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glGetTransformFeedbackVarying == (GdkGLProc_glGetTransformFeedbackVarying) -1)
+    _procs_GL_VERSION_3_0.glGetTransformFeedbackVarying =
+      (GdkGLProc_glGetTransformFeedbackVarying) gdk_gl_get_proc_address ("glGetTransformFeedbackVarying");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTransformFeedbackVarying () - %s",
+               (_procs_GL_VERSION_3_0.glGetTransformFeedbackVarying) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glGetTransformFeedbackVarying);
+}
+
+/* glClampColor */
+GdkGLProc
+gdk_gl_get_glClampColor (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glClampColor == (GdkGLProc_glClampColor) -1)
+    _procs_GL_VERSION_3_0.glClampColor =
+      (GdkGLProc_glClampColor) gdk_gl_get_proc_address ("glClampColor");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClampColor () - %s",
+               (_procs_GL_VERSION_3_0.glClampColor) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glClampColor);
+}
+
+/* glBeginConditionalRender */
+GdkGLProc
+gdk_gl_get_glBeginConditionalRender (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glBeginConditionalRender == (GdkGLProc_glBeginConditionalRender) -1)
+    _procs_GL_VERSION_3_0.glBeginConditionalRender =
+      (GdkGLProc_glBeginConditionalRender) gdk_gl_get_proc_address ("glBeginConditionalRender");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginConditionalRender () - %s",
+               (_procs_GL_VERSION_3_0.glBeginConditionalRender) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glBeginConditionalRender);
+}
+
+/* glEndConditionalRender */
+GdkGLProc
+gdk_gl_get_glEndConditionalRender (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glEndConditionalRender == (GdkGLProc_glEndConditionalRender) -1)
+    _procs_GL_VERSION_3_0.glEndConditionalRender =
+      (GdkGLProc_glEndConditionalRender) gdk_gl_get_proc_address ("glEndConditionalRender");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndConditionalRender () - %s",
+               (_procs_GL_VERSION_3_0.glEndConditionalRender) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glEndConditionalRender);
+}
+
+/* glVertexAttribIPointer */
+GdkGLProc
+gdk_gl_get_glVertexAttribIPointer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribIPointer == (GdkGLProc_glVertexAttribIPointer) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribIPointer =
+      (GdkGLProc_glVertexAttribIPointer) gdk_gl_get_proc_address ("glVertexAttribIPointer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribIPointer () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribIPointer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribIPointer);
+}
+
+/* glGetVertexAttribIiv */
+GdkGLProc
+gdk_gl_get_glGetVertexAttribIiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glGetVertexAttribIiv == (GdkGLProc_glGetVertexAttribIiv) -1)
+    _procs_GL_VERSION_3_0.glGetVertexAttribIiv =
+      (GdkGLProc_glGetVertexAttribIiv) gdk_gl_get_proc_address ("glGetVertexAttribIiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribIiv () - %s",
+               (_procs_GL_VERSION_3_0.glGetVertexAttribIiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glGetVertexAttribIiv);
+}
+
+/* glGetVertexAttribIuiv */
+GdkGLProc
+gdk_gl_get_glGetVertexAttribIuiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glGetVertexAttribIuiv == (GdkGLProc_glGetVertexAttribIuiv) -1)
+    _procs_GL_VERSION_3_0.glGetVertexAttribIuiv =
+      (GdkGLProc_glGetVertexAttribIuiv) gdk_gl_get_proc_address ("glGetVertexAttribIuiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribIuiv () - %s",
+               (_procs_GL_VERSION_3_0.glGetVertexAttribIuiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glGetVertexAttribIuiv);
+}
+
+/* glVertexAttribI1i */
+GdkGLProc
+gdk_gl_get_glVertexAttribI1i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI1i == (GdkGLProc_glVertexAttribI1i) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI1i =
+      (GdkGLProc_glVertexAttribI1i) gdk_gl_get_proc_address ("glVertexAttribI1i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI1i () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI1i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI1i);
+}
+
+/* glVertexAttribI2i */
+GdkGLProc
+gdk_gl_get_glVertexAttribI2i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI2i == (GdkGLProc_glVertexAttribI2i) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI2i =
+      (GdkGLProc_glVertexAttribI2i) gdk_gl_get_proc_address ("glVertexAttribI2i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI2i () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI2i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI2i);
+}
+
+/* glVertexAttribI3i */
+GdkGLProc
+gdk_gl_get_glVertexAttribI3i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI3i == (GdkGLProc_glVertexAttribI3i) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI3i =
+      (GdkGLProc_glVertexAttribI3i) gdk_gl_get_proc_address ("glVertexAttribI3i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI3i () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI3i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI3i);
+}
+
+/* glVertexAttribI4i */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4i (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI4i == (GdkGLProc_glVertexAttribI4i) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI4i =
+      (GdkGLProc_glVertexAttribI4i) gdk_gl_get_proc_address ("glVertexAttribI4i");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4i () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI4i) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI4i);
+}
+
+/* glVertexAttribI1ui */
+GdkGLProc
+gdk_gl_get_glVertexAttribI1ui (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI1ui == (GdkGLProc_glVertexAttribI1ui) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI1ui =
+      (GdkGLProc_glVertexAttribI1ui) gdk_gl_get_proc_address ("glVertexAttribI1ui");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI1ui () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI1ui) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI1ui);
+}
+
+/* glVertexAttribI2ui */
+GdkGLProc
+gdk_gl_get_glVertexAttribI2ui (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI2ui == (GdkGLProc_glVertexAttribI2ui) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI2ui =
+      (GdkGLProc_glVertexAttribI2ui) gdk_gl_get_proc_address ("glVertexAttribI2ui");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI2ui () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI2ui) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI2ui);
+}
+
+/* glVertexAttribI3ui */
+GdkGLProc
+gdk_gl_get_glVertexAttribI3ui (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI3ui == (GdkGLProc_glVertexAttribI3ui) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI3ui =
+      (GdkGLProc_glVertexAttribI3ui) gdk_gl_get_proc_address ("glVertexAttribI3ui");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI3ui () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI3ui) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI3ui);
+}
+
+/* glVertexAttribI4ui */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4ui (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI4ui == (GdkGLProc_glVertexAttribI4ui) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI4ui =
+      (GdkGLProc_glVertexAttribI4ui) gdk_gl_get_proc_address ("glVertexAttribI4ui");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4ui () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI4ui) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI4ui);
+}
+
+/* glVertexAttribI1iv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI1iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI1iv == (GdkGLProc_glVertexAttribI1iv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI1iv =
+      (GdkGLProc_glVertexAttribI1iv) gdk_gl_get_proc_address ("glVertexAttribI1iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI1iv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI1iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI1iv);
+}
+
+/* glVertexAttribI2iv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI2iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI2iv == (GdkGLProc_glVertexAttribI2iv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI2iv =
+      (GdkGLProc_glVertexAttribI2iv) gdk_gl_get_proc_address ("glVertexAttribI2iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI2iv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI2iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI2iv);
+}
+
+/* glVertexAttribI3iv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI3iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI3iv == (GdkGLProc_glVertexAttribI3iv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI3iv =
+      (GdkGLProc_glVertexAttribI3iv) gdk_gl_get_proc_address ("glVertexAttribI3iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI3iv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI3iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI3iv);
+}
+
+/* glVertexAttribI4iv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4iv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI4iv == (GdkGLProc_glVertexAttribI4iv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI4iv =
+      (GdkGLProc_glVertexAttribI4iv) gdk_gl_get_proc_address ("glVertexAttribI4iv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4iv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI4iv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI4iv);
+}
+
+/* glVertexAttribI1uiv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI1uiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI1uiv == (GdkGLProc_glVertexAttribI1uiv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI1uiv =
+      (GdkGLProc_glVertexAttribI1uiv) gdk_gl_get_proc_address ("glVertexAttribI1uiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI1uiv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI1uiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI1uiv);
+}
+
+/* glVertexAttribI2uiv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI2uiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI2uiv == (GdkGLProc_glVertexAttribI2uiv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI2uiv =
+      (GdkGLProc_glVertexAttribI2uiv) gdk_gl_get_proc_address ("glVertexAttribI2uiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI2uiv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI2uiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI2uiv);
+}
+
+/* glVertexAttribI3uiv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI3uiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI3uiv == (GdkGLProc_glVertexAttribI3uiv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI3uiv =
+      (GdkGLProc_glVertexAttribI3uiv) gdk_gl_get_proc_address ("glVertexAttribI3uiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI3uiv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI3uiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI3uiv);
+}
+
+/* glVertexAttribI4uiv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4uiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI4uiv == (GdkGLProc_glVertexAttribI4uiv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI4uiv =
+      (GdkGLProc_glVertexAttribI4uiv) gdk_gl_get_proc_address ("glVertexAttribI4uiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4uiv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI4uiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI4uiv);
+}
+
+/* glVertexAttribI4bv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4bv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI4bv == (GdkGLProc_glVertexAttribI4bv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI4bv =
+      (GdkGLProc_glVertexAttribI4bv) gdk_gl_get_proc_address ("glVertexAttribI4bv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4bv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI4bv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI4bv);
+}
+
+/* glVertexAttribI4sv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4sv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI4sv == (GdkGLProc_glVertexAttribI4sv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI4sv =
+      (GdkGLProc_glVertexAttribI4sv) gdk_gl_get_proc_address ("glVertexAttribI4sv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4sv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI4sv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI4sv);
+}
+
+/* glVertexAttribI4ubv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4ubv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI4ubv == (GdkGLProc_glVertexAttribI4ubv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI4ubv =
+      (GdkGLProc_glVertexAttribI4ubv) gdk_gl_get_proc_address ("glVertexAttribI4ubv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4ubv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI4ubv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI4ubv);
+}
+
+/* glVertexAttribI4usv */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4usv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glVertexAttribI4usv == (GdkGLProc_glVertexAttribI4usv) -1)
+    _procs_GL_VERSION_3_0.glVertexAttribI4usv =
+      (GdkGLProc_glVertexAttribI4usv) gdk_gl_get_proc_address ("glVertexAttribI4usv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4usv () - %s",
+               (_procs_GL_VERSION_3_0.glVertexAttribI4usv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glVertexAttribI4usv);
+}
+
+/* glGetUniformuiv */
+GdkGLProc
+gdk_gl_get_glGetUniformuiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glGetUniformuiv == (GdkGLProc_glGetUniformuiv) -1)
+    _procs_GL_VERSION_3_0.glGetUniformuiv =
+      (GdkGLProc_glGetUniformuiv) gdk_gl_get_proc_address ("glGetUniformuiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformuiv () - %s",
+               (_procs_GL_VERSION_3_0.glGetUniformuiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glGetUniformuiv);
+}
+
+/* glBindFragDataLocation */
+GdkGLProc
+gdk_gl_get_glBindFragDataLocation (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glBindFragDataLocation == (GdkGLProc_glBindFragDataLocation) -1)
+    _procs_GL_VERSION_3_0.glBindFragDataLocation =
+      (GdkGLProc_glBindFragDataLocation) gdk_gl_get_proc_address ("glBindFragDataLocation");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindFragDataLocation () - %s",
+               (_procs_GL_VERSION_3_0.glBindFragDataLocation) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glBindFragDataLocation);
+}
+
+/* glGetFragDataLocation */
+GdkGLProc
+gdk_gl_get_glGetFragDataLocation (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glGetFragDataLocation == (GdkGLProc_glGetFragDataLocation) -1)
+    _procs_GL_VERSION_3_0.glGetFragDataLocation =
+      (GdkGLProc_glGetFragDataLocation) gdk_gl_get_proc_address ("glGetFragDataLocation");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFragDataLocation () - %s",
+               (_procs_GL_VERSION_3_0.glGetFragDataLocation) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glGetFragDataLocation);
+}
+
+/* glUniform1ui */
+GdkGLProc
+gdk_gl_get_glUniform1ui (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glUniform1ui == (GdkGLProc_glUniform1ui) -1)
+    _procs_GL_VERSION_3_0.glUniform1ui =
+      (GdkGLProc_glUniform1ui) gdk_gl_get_proc_address ("glUniform1ui");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1ui () - %s",
+               (_procs_GL_VERSION_3_0.glUniform1ui) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glUniform1ui);
+}
+
+/* glUniform2ui */
+GdkGLProc
+gdk_gl_get_glUniform2ui (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glUniform2ui == (GdkGLProc_glUniform2ui) -1)
+    _procs_GL_VERSION_3_0.glUniform2ui =
+      (GdkGLProc_glUniform2ui) gdk_gl_get_proc_address ("glUniform2ui");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2ui () - %s",
+               (_procs_GL_VERSION_3_0.glUniform2ui) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glUniform2ui);
+}
+
+/* glUniform3ui */
+GdkGLProc
+gdk_gl_get_glUniform3ui (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glUniform3ui == (GdkGLProc_glUniform3ui) -1)
+    _procs_GL_VERSION_3_0.glUniform3ui =
+      (GdkGLProc_glUniform3ui) gdk_gl_get_proc_address ("glUniform3ui");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3ui () - %s",
+               (_procs_GL_VERSION_3_0.glUniform3ui) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glUniform3ui);
+}
+
+/* glUniform4ui */
+GdkGLProc
+gdk_gl_get_glUniform4ui (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glUniform4ui == (GdkGLProc_glUniform4ui) -1)
+    _procs_GL_VERSION_3_0.glUniform4ui =
+      (GdkGLProc_glUniform4ui) gdk_gl_get_proc_address ("glUniform4ui");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4ui () - %s",
+               (_procs_GL_VERSION_3_0.glUniform4ui) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glUniform4ui);
+}
+
+/* glUniform1uiv */
+GdkGLProc
+gdk_gl_get_glUniform1uiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glUniform1uiv == (GdkGLProc_glUniform1uiv) -1)
+    _procs_GL_VERSION_3_0.glUniform1uiv =
+      (GdkGLProc_glUniform1uiv) gdk_gl_get_proc_address ("glUniform1uiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1uiv () - %s",
+               (_procs_GL_VERSION_3_0.glUniform1uiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glUniform1uiv);
+}
+
+/* glUniform2uiv */
+GdkGLProc
+gdk_gl_get_glUniform2uiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glUniform2uiv == (GdkGLProc_glUniform2uiv) -1)
+    _procs_GL_VERSION_3_0.glUniform2uiv =
+      (GdkGLProc_glUniform2uiv) gdk_gl_get_proc_address ("glUniform2uiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2uiv () - %s",
+               (_procs_GL_VERSION_3_0.glUniform2uiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glUniform2uiv);
+}
+
+/* glUniform3uiv */
+GdkGLProc
+gdk_gl_get_glUniform3uiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glUniform3uiv == (GdkGLProc_glUniform3uiv) -1)
+    _procs_GL_VERSION_3_0.glUniform3uiv =
+      (GdkGLProc_glUniform3uiv) gdk_gl_get_proc_address ("glUniform3uiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3uiv () - %s",
+               (_procs_GL_VERSION_3_0.glUniform3uiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glUniform3uiv);
+}
+
+/* glUniform4uiv */
+GdkGLProc
+gdk_gl_get_glUniform4uiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glUniform4uiv == (GdkGLProc_glUniform4uiv) -1)
+    _procs_GL_VERSION_3_0.glUniform4uiv =
+      (GdkGLProc_glUniform4uiv) gdk_gl_get_proc_address ("glUniform4uiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4uiv () - %s",
+               (_procs_GL_VERSION_3_0.glUniform4uiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glUniform4uiv);
+}
+
+/* glTexParameterIiv */
+GdkGLProc
+gdk_gl_get_glTexParameterIiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glTexParameterIiv == (GdkGLProc_glTexParameterIiv) -1)
+    _procs_GL_VERSION_3_0.glTexParameterIiv =
+      (GdkGLProc_glTexParameterIiv) gdk_gl_get_proc_address ("glTexParameterIiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexParameterIiv () - %s",
+               (_procs_GL_VERSION_3_0.glTexParameterIiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glTexParameterIiv);
+}
+
+/* glTexParameterIuiv */
+GdkGLProc
+gdk_gl_get_glTexParameterIuiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glTexParameterIuiv == (GdkGLProc_glTexParameterIuiv) -1)
+    _procs_GL_VERSION_3_0.glTexParameterIuiv =
+      (GdkGLProc_glTexParameterIuiv) gdk_gl_get_proc_address ("glTexParameterIuiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexParameterIuiv () - %s",
+               (_procs_GL_VERSION_3_0.glTexParameterIuiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glTexParameterIuiv);
+}
+
+/* glGetTexParameterIiv */
+GdkGLProc
+gdk_gl_get_glGetTexParameterIiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glGetTexParameterIiv == (GdkGLProc_glGetTexParameterIiv) -1)
+    _procs_GL_VERSION_3_0.glGetTexParameterIiv =
+      (GdkGLProc_glGetTexParameterIiv) gdk_gl_get_proc_address ("glGetTexParameterIiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTexParameterIiv () - %s",
+               (_procs_GL_VERSION_3_0.glGetTexParameterIiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glGetTexParameterIiv);
+}
+
+/* glGetTexParameterIuiv */
+GdkGLProc
+gdk_gl_get_glGetTexParameterIuiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glGetTexParameterIuiv == (GdkGLProc_glGetTexParameterIuiv) -1)
+    _procs_GL_VERSION_3_0.glGetTexParameterIuiv =
+      (GdkGLProc_glGetTexParameterIuiv) gdk_gl_get_proc_address ("glGetTexParameterIuiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTexParameterIuiv () - %s",
+               (_procs_GL_VERSION_3_0.glGetTexParameterIuiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glGetTexParameterIuiv);
+}
+
+/* glClearBufferiv */
+GdkGLProc
+gdk_gl_get_glClearBufferiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glClearBufferiv == (GdkGLProc_glClearBufferiv) -1)
+    _procs_GL_VERSION_3_0.glClearBufferiv =
+      (GdkGLProc_glClearBufferiv) gdk_gl_get_proc_address ("glClearBufferiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClearBufferiv () - %s",
+               (_procs_GL_VERSION_3_0.glClearBufferiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glClearBufferiv);
+}
+
+/* glClearBufferuiv */
+GdkGLProc
+gdk_gl_get_glClearBufferuiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glClearBufferuiv == (GdkGLProc_glClearBufferuiv) -1)
+    _procs_GL_VERSION_3_0.glClearBufferuiv =
+      (GdkGLProc_glClearBufferuiv) gdk_gl_get_proc_address ("glClearBufferuiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClearBufferuiv () - %s",
+               (_procs_GL_VERSION_3_0.glClearBufferuiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glClearBufferuiv);
+}
+
+/* glClearBufferfv */
+GdkGLProc
+gdk_gl_get_glClearBufferfv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glClearBufferfv == (GdkGLProc_glClearBufferfv) -1)
+    _procs_GL_VERSION_3_0.glClearBufferfv =
+      (GdkGLProc_glClearBufferfv) gdk_gl_get_proc_address ("glClearBufferfv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClearBufferfv () - %s",
+               (_procs_GL_VERSION_3_0.glClearBufferfv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glClearBufferfv);
+}
+
+/* glClearBufferfi */
+GdkGLProc
+gdk_gl_get_glClearBufferfi (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glClearBufferfi == (GdkGLProc_glClearBufferfi) -1)
+    _procs_GL_VERSION_3_0.glClearBufferfi =
+      (GdkGLProc_glClearBufferfi) gdk_gl_get_proc_address ("glClearBufferfi");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClearBufferfi () - %s",
+               (_procs_GL_VERSION_3_0.glClearBufferfi) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glClearBufferfi);
+}
+
+/* glGetStringi */
+GdkGLProc
+gdk_gl_get_glGetStringi (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_0.glGetStringi == (GdkGLProc_glGetStringi) -1)
+    _procs_GL_VERSION_3_0.glGetStringi =
+      (GdkGLProc_glGetStringi) gdk_gl_get_proc_address ("glGetStringi");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetStringi () - %s",
+               (_procs_GL_VERSION_3_0.glGetStringi) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_0.glGetStringi);
+}
+
+/* Get GL_VERSION_3_0 functions */
+GdkGL_GL_VERSION_3_0 *
+gdk_gl_get_GL_VERSION_3_0 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported =  (gdk_gl_get_glColorMaski () != NULL);
+      supported &= (gdk_gl_get_glGetBooleani_v () != NULL);
+      supported &= (gdk_gl_get_glGetIntegeri_v () != NULL);
+      supported &= (gdk_gl_get_glEnablei () != NULL);
+      supported &= (gdk_gl_get_glDisablei () != NULL);
+      supported &= (gdk_gl_get_glIsEnabledi () != NULL);
+      supported &= (gdk_gl_get_glBeginTransformFeedback () != NULL);
+      supported &= (gdk_gl_get_glEndTransformFeedback () != NULL);
+      supported &= (gdk_gl_get_glBindBufferRange () != NULL);
+      supported &= (gdk_gl_get_glBindBufferBase () != NULL);
+      supported &= (gdk_gl_get_glTransformFeedbackVaryings () != NULL);
+      supported &= (gdk_gl_get_glGetTransformFeedbackVarying () != NULL);
+      supported &= (gdk_gl_get_glClampColor () != NULL);
+      supported &= (gdk_gl_get_glBeginConditionalRender () != NULL);
+      supported &= (gdk_gl_get_glEndConditionalRender () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribIPointer () != NULL);
+      supported &= (gdk_gl_get_glGetVertexAttribIiv () != NULL);
+      supported &= (gdk_gl_get_glGetVertexAttribIuiv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI1i () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI2i () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI3i () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI4i () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI1ui () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI2ui () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI3ui () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI4ui () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI1iv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI2iv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI3iv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI4iv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI1uiv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI2uiv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI3uiv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI4uiv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI4bv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI4sv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI4ubv () != NULL);
+      supported &= (gdk_gl_get_glVertexAttribI4usv () != NULL);
+      supported &= (gdk_gl_get_glGetUniformuiv () != NULL);
+      supported &= (gdk_gl_get_glBindFragDataLocation () != NULL);
+      supported &= (gdk_gl_get_glGetFragDataLocation () != NULL);
+      supported &= (gdk_gl_get_glUniform1ui () != NULL);
+      supported &= (gdk_gl_get_glUniform2ui () != NULL);
+      supported &= (gdk_gl_get_glUniform3ui () != NULL);
+      supported &= (gdk_gl_get_glUniform4ui () != NULL);
+      supported &= (gdk_gl_get_glUniform1uiv () != NULL);
+      supported &= (gdk_gl_get_glUniform2uiv () != NULL);
+      supported &= (gdk_gl_get_glUniform3uiv () != NULL);
+      supported &= (gdk_gl_get_glUniform4uiv () != NULL);
+      supported &= (gdk_gl_get_glTexParameterIiv () != NULL);
+      supported &= (gdk_gl_get_glTexParameterIuiv () != NULL);
+      supported &= (gdk_gl_get_glGetTexParameterIiv () != NULL);
+      supported &= (gdk_gl_get_glGetTexParameterIuiv () != NULL);
+      supported &= (gdk_gl_get_glClearBufferiv () != NULL);
+      supported &= (gdk_gl_get_glClearBufferuiv () != NULL);
+      supported &= (gdk_gl_get_glClearBufferfv () != NULL);
+      supported &= (gdk_gl_get_glClearBufferfi () != NULL);
+      supported &= (gdk_gl_get_glGetStringi () != NULL);
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_3_0 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_VERSION_3_0;
+}
+
+/*
+ * GL_VERSION_3_1
+ */
+
+static GdkGL_GL_VERSION_3_1 _procs_GL_VERSION_3_1 = {
+  (GdkGLProc_glDrawArraysInstanced) -1,
+  (GdkGLProc_glDrawElementsInstanced) -1,
+  (GdkGLProc_glTexBuffer) -1,
+  (GdkGLProc_glPrimitiveRestartIndex) -1
+};
+
+/* glDrawArraysInstanced */
+GdkGLProc
+gdk_gl_get_glDrawArraysInstanced (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_1.glDrawArraysInstanced == (GdkGLProc_glDrawArraysInstanced) -1)
+    _procs_GL_VERSION_3_1.glDrawArraysInstanced =
+      (GdkGLProc_glDrawArraysInstanced) gdk_gl_get_proc_address ("glDrawArraysInstanced");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawArraysInstanced () - %s",
+               (_procs_GL_VERSION_3_1.glDrawArraysInstanced) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_1.glDrawArraysInstanced);
+}
+
+/* glDrawElementsInstanced */
+GdkGLProc
+gdk_gl_get_glDrawElementsInstanced (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_1.glDrawElementsInstanced == (GdkGLProc_glDrawElementsInstanced) -1)
+    _procs_GL_VERSION_3_1.glDrawElementsInstanced =
+      (GdkGLProc_glDrawElementsInstanced) gdk_gl_get_proc_address ("glDrawElementsInstanced");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawElementsInstanced () - %s",
+               (_procs_GL_VERSION_3_1.glDrawElementsInstanced) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_1.glDrawElementsInstanced);
+}
+
+/* glTexBuffer */
+GdkGLProc
+gdk_gl_get_glTexBuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_1.glTexBuffer == (GdkGLProc_glTexBuffer) -1)
+    _procs_GL_VERSION_3_1.glTexBuffer =
+      (GdkGLProc_glTexBuffer) gdk_gl_get_proc_address ("glTexBuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexBuffer () - %s",
+               (_procs_GL_VERSION_3_1.glTexBuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_1.glTexBuffer);
+}
+
+/* glPrimitiveRestartIndex */
+GdkGLProc
+gdk_gl_get_glPrimitiveRestartIndex (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_1.glPrimitiveRestartIndex == (GdkGLProc_glPrimitiveRestartIndex) -1)
+    _procs_GL_VERSION_3_1.glPrimitiveRestartIndex =
+      (GdkGLProc_glPrimitiveRestartIndex) gdk_gl_get_proc_address ("glPrimitiveRestartIndex");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPrimitiveRestartIndex () - %s",
+               (_procs_GL_VERSION_3_1.glPrimitiveRestartIndex) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_1.glPrimitiveRestartIndex);
+}
+
+/* Get GL_VERSION_3_1 functions */
+GdkGL_GL_VERSION_3_1 *
+gdk_gl_get_GL_VERSION_3_1 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported =  (gdk_gl_get_glDrawArraysInstanced () != NULL);
+      supported &= (gdk_gl_get_glDrawElementsInstanced () != NULL);
+      supported &= (gdk_gl_get_glTexBuffer () != NULL);
+      supported &= (gdk_gl_get_glPrimitiveRestartIndex () != NULL);
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_3_1 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_VERSION_3_1;
+}
+
+/*
+ * GL_VERSION_3_2
+ */
+
+static GdkGL_GL_VERSION_3_2 _procs_GL_VERSION_3_2 = {
+  (GdkGLProc_glGetInteger64i_v) -1,
+  (GdkGLProc_glGetBufferParameteri64v) -1,
+  (GdkGLProc_glProgramParameteri) -1,
+  (GdkGLProc_glFramebufferTexture) -1,
+  (GdkGLProc_glFramebufferTextureFace) -1
+};
+
+/* glGetInteger64i_v */
+GdkGLProc
+gdk_gl_get_glGetInteger64i_v (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_2.glGetInteger64i_v == (GdkGLProc_glGetInteger64i_v) -1)
+    _procs_GL_VERSION_3_2.glGetInteger64i_v =
+      (GdkGLProc_glGetInteger64i_v) gdk_gl_get_proc_address ("glGetInteger64i_v");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetInteger64i_v () - %s",
+               (_procs_GL_VERSION_3_2.glGetInteger64i_v) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_2.glGetInteger64i_v);
+}
+
+/* glGetBufferParameteri64v */
+GdkGLProc
+gdk_gl_get_glGetBufferParameteri64v (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_2.glGetBufferParameteri64v == (GdkGLProc_glGetBufferParameteri64v) -1)
+    _procs_GL_VERSION_3_2.glGetBufferParameteri64v =
+      (GdkGLProc_glGetBufferParameteri64v) gdk_gl_get_proc_address ("glGetBufferParameteri64v");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetBufferParameteri64v () - %s",
+               (_procs_GL_VERSION_3_2.glGetBufferParameteri64v) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_2.glGetBufferParameteri64v);
+}
+
+/* glProgramParameteri */
+GdkGLProc
+gdk_gl_get_glProgramParameteri (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_2.glProgramParameteri == (GdkGLProc_glProgramParameteri) -1)
+    _procs_GL_VERSION_3_2.glProgramParameteri =
+      (GdkGLProc_glProgramParameteri) gdk_gl_get_proc_address ("glProgramParameteri");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramParameteri () - %s",
+               (_procs_GL_VERSION_3_2.glProgramParameteri) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_2.glProgramParameteri);
+}
+
+/* glFramebufferTexture */
+GdkGLProc
+gdk_gl_get_glFramebufferTexture (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_2.glFramebufferTexture == (GdkGLProc_glFramebufferTexture) -1)
+    _procs_GL_VERSION_3_2.glFramebufferTexture =
+      (GdkGLProc_glFramebufferTexture) gdk_gl_get_proc_address ("glFramebufferTexture");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTexture () - %s",
+               (_procs_GL_VERSION_3_2.glFramebufferTexture) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_2.glFramebufferTexture);
+}
+
+/* glFramebufferTextureFace */
+GdkGLProc
+gdk_gl_get_glFramebufferTextureFace (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_VERSION_3_2.glFramebufferTextureFace == (GdkGLProc_glFramebufferTextureFace) -1)
+    _procs_GL_VERSION_3_2.glFramebufferTextureFace =
+      (GdkGLProc_glFramebufferTextureFace) gdk_gl_get_proc_address ("glFramebufferTextureFace");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTextureFace () - %s",
+               (_procs_GL_VERSION_3_2.glFramebufferTextureFace) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_VERSION_3_2.glFramebufferTextureFace);
+}
+
+/* Get GL_VERSION_3_2 functions */
+GdkGL_GL_VERSION_3_2 *
+gdk_gl_get_GL_VERSION_3_2 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported =  (gdk_gl_get_glGetInteger64i_v () != NULL);
+      supported &= (gdk_gl_get_glGetBufferParameteri64v () != NULL);
+      supported &= (gdk_gl_get_glProgramParameteri () != NULL);
+      supported &= (gdk_gl_get_glFramebufferTexture () != NULL);
+      supported &= (gdk_gl_get_glFramebufferTextureFace () != NULL);
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_VERSION_3_2 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_VERSION_3_2;
 }
 
 /*
@@ -6083,6 +10053,3006 @@ gdk_gl_get_GL_ARB_vertex_buffer_object (void)
     return NULL;
 
   return &_procs_GL_ARB_vertex_buffer_object;
+}
+
+/*
+ * GL_ARB_occlusion_query
+ */
+
+static GdkGL_GL_ARB_occlusion_query _procs_GL_ARB_occlusion_query = {
+  (GdkGLProc_glGenQueriesARB) -1,
+  (GdkGLProc_glDeleteQueriesARB) -1,
+  (GdkGLProc_glIsQueryARB) -1,
+  (GdkGLProc_glBeginQueryARB) -1,
+  (GdkGLProc_glEndQueryARB) -1,
+  (GdkGLProc_glGetQueryivARB) -1,
+  (GdkGLProc_glGetQueryObjectivARB) -1,
+  (GdkGLProc_glGetQueryObjectuivARB) -1
+};
+
+/* glGenQueriesARB */
+GdkGLProc
+gdk_gl_get_glGenQueriesARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_occlusion_query.glGenQueriesARB == (GdkGLProc_glGenQueriesARB) -1)
+    _procs_GL_ARB_occlusion_query.glGenQueriesARB =
+      (GdkGLProc_glGenQueriesARB) gdk_gl_get_proc_address ("glGenQueriesARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenQueriesARB () - %s",
+               (_procs_GL_ARB_occlusion_query.glGenQueriesARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_occlusion_query.glGenQueriesARB);
+}
+
+/* glDeleteQueriesARB */
+GdkGLProc
+gdk_gl_get_glDeleteQueriesARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_occlusion_query.glDeleteQueriesARB == (GdkGLProc_glDeleteQueriesARB) -1)
+    _procs_GL_ARB_occlusion_query.glDeleteQueriesARB =
+      (GdkGLProc_glDeleteQueriesARB) gdk_gl_get_proc_address ("glDeleteQueriesARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteQueriesARB () - %s",
+               (_procs_GL_ARB_occlusion_query.glDeleteQueriesARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_occlusion_query.glDeleteQueriesARB);
+}
+
+/* glIsQueryARB */
+GdkGLProc
+gdk_gl_get_glIsQueryARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_occlusion_query.glIsQueryARB == (GdkGLProc_glIsQueryARB) -1)
+    _procs_GL_ARB_occlusion_query.glIsQueryARB =
+      (GdkGLProc_glIsQueryARB) gdk_gl_get_proc_address ("glIsQueryARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsQueryARB () - %s",
+               (_procs_GL_ARB_occlusion_query.glIsQueryARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_occlusion_query.glIsQueryARB);
+}
+
+/* glBeginQueryARB */
+GdkGLProc
+gdk_gl_get_glBeginQueryARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_occlusion_query.glBeginQueryARB == (GdkGLProc_glBeginQueryARB) -1)
+    _procs_GL_ARB_occlusion_query.glBeginQueryARB =
+      (GdkGLProc_glBeginQueryARB) gdk_gl_get_proc_address ("glBeginQueryARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginQueryARB () - %s",
+               (_procs_GL_ARB_occlusion_query.glBeginQueryARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_occlusion_query.glBeginQueryARB);
+}
+
+/* glEndQueryARB */
+GdkGLProc
+gdk_gl_get_glEndQueryARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_occlusion_query.glEndQueryARB == (GdkGLProc_glEndQueryARB) -1)
+    _procs_GL_ARB_occlusion_query.glEndQueryARB =
+      (GdkGLProc_glEndQueryARB) gdk_gl_get_proc_address ("glEndQueryARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndQueryARB () - %s",
+               (_procs_GL_ARB_occlusion_query.glEndQueryARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_occlusion_query.glEndQueryARB);
+}
+
+/* glGetQueryivARB */
+GdkGLProc
+gdk_gl_get_glGetQueryivARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_occlusion_query.glGetQueryivARB == (GdkGLProc_glGetQueryivARB) -1)
+    _procs_GL_ARB_occlusion_query.glGetQueryivARB =
+      (GdkGLProc_glGetQueryivARB) gdk_gl_get_proc_address ("glGetQueryivARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetQueryivARB () - %s",
+               (_procs_GL_ARB_occlusion_query.glGetQueryivARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_occlusion_query.glGetQueryivARB);
+}
+
+/* glGetQueryObjectivARB */
+GdkGLProc
+gdk_gl_get_glGetQueryObjectivARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_occlusion_query.glGetQueryObjectivARB == (GdkGLProc_glGetQueryObjectivARB) -1)
+    _procs_GL_ARB_occlusion_query.glGetQueryObjectivARB =
+      (GdkGLProc_glGetQueryObjectivARB) gdk_gl_get_proc_address ("glGetQueryObjectivARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetQueryObjectivARB () - %s",
+               (_procs_GL_ARB_occlusion_query.glGetQueryObjectivARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_occlusion_query.glGetQueryObjectivARB);
+}
+
+/* glGetQueryObjectuivARB */
+GdkGLProc
+gdk_gl_get_glGetQueryObjectuivARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_occlusion_query.glGetQueryObjectuivARB == (GdkGLProc_glGetQueryObjectuivARB) -1)
+    _procs_GL_ARB_occlusion_query.glGetQueryObjectuivARB =
+      (GdkGLProc_glGetQueryObjectuivARB) gdk_gl_get_proc_address ("glGetQueryObjectuivARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetQueryObjectuivARB () - %s",
+               (_procs_GL_ARB_occlusion_query.glGetQueryObjectuivARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_occlusion_query.glGetQueryObjectuivARB);
+}
+
+/* Get GL_ARB_occlusion_query functions */
+GdkGL_GL_ARB_occlusion_query *
+gdk_gl_get_GL_ARB_occlusion_query (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_occlusion_query");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glGenQueriesARB () != NULL);
+          supported &= (gdk_gl_get_glDeleteQueriesARB () != NULL);
+          supported &= (gdk_gl_get_glIsQueryARB () != NULL);
+          supported &= (gdk_gl_get_glBeginQueryARB () != NULL);
+          supported &= (gdk_gl_get_glEndQueryARB () != NULL);
+          supported &= (gdk_gl_get_glGetQueryivARB () != NULL);
+          supported &= (gdk_gl_get_glGetQueryObjectivARB () != NULL);
+          supported &= (gdk_gl_get_glGetQueryObjectuivARB () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_occlusion_query () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_occlusion_query;
+}
+
+/*
+ * GL_ARB_shader_objects
+ */
+
+static GdkGL_GL_ARB_shader_objects _procs_GL_ARB_shader_objects = {
+  (GdkGLProc_glDeleteObjectARB) -1,
+  (GdkGLProc_glGetHandleARB) -1,
+  (GdkGLProc_glDetachObjectARB) -1,
+  (GdkGLProc_glCreateShaderObjectARB) -1,
+  (GdkGLProc_glShaderSourceARB) -1,
+  (GdkGLProc_glCompileShaderARB) -1,
+  (GdkGLProc_glCreateProgramObjectARB) -1,
+  (GdkGLProc_glAttachObjectARB) -1,
+  (GdkGLProc_glLinkProgramARB) -1,
+  (GdkGLProc_glUseProgramObjectARB) -1,
+  (GdkGLProc_glValidateProgramARB) -1,
+  (GdkGLProc_glUniform1fARB) -1,
+  (GdkGLProc_glUniform2fARB) -1,
+  (GdkGLProc_glUniform3fARB) -1,
+  (GdkGLProc_glUniform4fARB) -1,
+  (GdkGLProc_glUniform1iARB) -1,
+  (GdkGLProc_glUniform2iARB) -1,
+  (GdkGLProc_glUniform3iARB) -1,
+  (GdkGLProc_glUniform4iARB) -1,
+  (GdkGLProc_glUniform1fvARB) -1,
+  (GdkGLProc_glUniform2fvARB) -1,
+  (GdkGLProc_glUniform3fvARB) -1,
+  (GdkGLProc_glUniform4fvARB) -1,
+  (GdkGLProc_glUniform1ivARB) -1,
+  (GdkGLProc_glUniform2ivARB) -1,
+  (GdkGLProc_glUniform3ivARB) -1,
+  (GdkGLProc_glUniform4ivARB) -1,
+  (GdkGLProc_glUniformMatrix2fvARB) -1,
+  (GdkGLProc_glUniformMatrix3fvARB) -1,
+  (GdkGLProc_glUniformMatrix4fvARB) -1,
+  (GdkGLProc_glGetObjectParameterfvARB) -1,
+  (GdkGLProc_glGetObjectParameterivARB) -1,
+  (GdkGLProc_glGetInfoLogARB) -1,
+  (GdkGLProc_glGetAttachedObjectsARB) -1,
+  (GdkGLProc_glGetUniformLocationARB) -1,
+  (GdkGLProc_glGetActiveUniformARB) -1,
+  (GdkGLProc_glGetUniformfvARB) -1,
+  (GdkGLProc_glGetUniformivARB) -1,
+  (GdkGLProc_glGetShaderSourceARB) -1
+};
+
+/* glDeleteObjectARB */
+GdkGLProc
+gdk_gl_get_glDeleteObjectARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glDeleteObjectARB == (GdkGLProc_glDeleteObjectARB) -1)
+    _procs_GL_ARB_shader_objects.glDeleteObjectARB =
+      (GdkGLProc_glDeleteObjectARB) gdk_gl_get_proc_address ("glDeleteObjectARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteObjectARB () - %s",
+               (_procs_GL_ARB_shader_objects.glDeleteObjectARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glDeleteObjectARB);
+}
+
+/* glGetHandleARB */
+GdkGLProc
+gdk_gl_get_glGetHandleARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glGetHandleARB == (GdkGLProc_glGetHandleARB) -1)
+    _procs_GL_ARB_shader_objects.glGetHandleARB =
+      (GdkGLProc_glGetHandleARB) gdk_gl_get_proc_address ("glGetHandleARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetHandleARB () - %s",
+               (_procs_GL_ARB_shader_objects.glGetHandleARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glGetHandleARB);
+}
+
+/* glDetachObjectARB */
+GdkGLProc
+gdk_gl_get_glDetachObjectARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glDetachObjectARB == (GdkGLProc_glDetachObjectARB) -1)
+    _procs_GL_ARB_shader_objects.glDetachObjectARB =
+      (GdkGLProc_glDetachObjectARB) gdk_gl_get_proc_address ("glDetachObjectARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDetachObjectARB () - %s",
+               (_procs_GL_ARB_shader_objects.glDetachObjectARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glDetachObjectARB);
+}
+
+/* glCreateShaderObjectARB */
+GdkGLProc
+gdk_gl_get_glCreateShaderObjectARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glCreateShaderObjectARB == (GdkGLProc_glCreateShaderObjectARB) -1)
+    _procs_GL_ARB_shader_objects.glCreateShaderObjectARB =
+      (GdkGLProc_glCreateShaderObjectARB) gdk_gl_get_proc_address ("glCreateShaderObjectARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCreateShaderObjectARB () - %s",
+               (_procs_GL_ARB_shader_objects.glCreateShaderObjectARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glCreateShaderObjectARB);
+}
+
+/* glShaderSourceARB */
+GdkGLProc
+gdk_gl_get_glShaderSourceARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glShaderSourceARB == (GdkGLProc_glShaderSourceARB) -1)
+    _procs_GL_ARB_shader_objects.glShaderSourceARB =
+      (GdkGLProc_glShaderSourceARB) gdk_gl_get_proc_address ("glShaderSourceARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glShaderSourceARB () - %s",
+               (_procs_GL_ARB_shader_objects.glShaderSourceARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glShaderSourceARB);
+}
+
+/* glCompileShaderARB */
+GdkGLProc
+gdk_gl_get_glCompileShaderARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glCompileShaderARB == (GdkGLProc_glCompileShaderARB) -1)
+    _procs_GL_ARB_shader_objects.glCompileShaderARB =
+      (GdkGLProc_glCompileShaderARB) gdk_gl_get_proc_address ("glCompileShaderARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompileShaderARB () - %s",
+               (_procs_GL_ARB_shader_objects.glCompileShaderARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glCompileShaderARB);
+}
+
+/* glCreateProgramObjectARB */
+GdkGLProc
+gdk_gl_get_glCreateProgramObjectARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glCreateProgramObjectARB == (GdkGLProc_glCreateProgramObjectARB) -1)
+    _procs_GL_ARB_shader_objects.glCreateProgramObjectARB =
+      (GdkGLProc_glCreateProgramObjectARB) gdk_gl_get_proc_address ("glCreateProgramObjectARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCreateProgramObjectARB () - %s",
+               (_procs_GL_ARB_shader_objects.glCreateProgramObjectARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glCreateProgramObjectARB);
+}
+
+/* glAttachObjectARB */
+GdkGLProc
+gdk_gl_get_glAttachObjectARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glAttachObjectARB == (GdkGLProc_glAttachObjectARB) -1)
+    _procs_GL_ARB_shader_objects.glAttachObjectARB =
+      (GdkGLProc_glAttachObjectARB) gdk_gl_get_proc_address ("glAttachObjectARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glAttachObjectARB () - %s",
+               (_procs_GL_ARB_shader_objects.glAttachObjectARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glAttachObjectARB);
+}
+
+/* glLinkProgramARB */
+GdkGLProc
+gdk_gl_get_glLinkProgramARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glLinkProgramARB == (GdkGLProc_glLinkProgramARB) -1)
+    _procs_GL_ARB_shader_objects.glLinkProgramARB =
+      (GdkGLProc_glLinkProgramARB) gdk_gl_get_proc_address ("glLinkProgramARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glLinkProgramARB () - %s",
+               (_procs_GL_ARB_shader_objects.glLinkProgramARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glLinkProgramARB);
+}
+
+/* glUseProgramObjectARB */
+GdkGLProc
+gdk_gl_get_glUseProgramObjectARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUseProgramObjectARB == (GdkGLProc_glUseProgramObjectARB) -1)
+    _procs_GL_ARB_shader_objects.glUseProgramObjectARB =
+      (GdkGLProc_glUseProgramObjectARB) gdk_gl_get_proc_address ("glUseProgramObjectARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUseProgramObjectARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUseProgramObjectARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUseProgramObjectARB);
+}
+
+/* glValidateProgramARB */
+GdkGLProc
+gdk_gl_get_glValidateProgramARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glValidateProgramARB == (GdkGLProc_glValidateProgramARB) -1)
+    _procs_GL_ARB_shader_objects.glValidateProgramARB =
+      (GdkGLProc_glValidateProgramARB) gdk_gl_get_proc_address ("glValidateProgramARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glValidateProgramARB () - %s",
+               (_procs_GL_ARB_shader_objects.glValidateProgramARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glValidateProgramARB);
+}
+
+/* glUniform1fARB */
+GdkGLProc
+gdk_gl_get_glUniform1fARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform1fARB == (GdkGLProc_glUniform1fARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform1fARB =
+      (GdkGLProc_glUniform1fARB) gdk_gl_get_proc_address ("glUniform1fARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1fARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform1fARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform1fARB);
+}
+
+/* glUniform2fARB */
+GdkGLProc
+gdk_gl_get_glUniform2fARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform2fARB == (GdkGLProc_glUniform2fARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform2fARB =
+      (GdkGLProc_glUniform2fARB) gdk_gl_get_proc_address ("glUniform2fARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2fARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform2fARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform2fARB);
+}
+
+/* glUniform3fARB */
+GdkGLProc
+gdk_gl_get_glUniform3fARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform3fARB == (GdkGLProc_glUniform3fARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform3fARB =
+      (GdkGLProc_glUniform3fARB) gdk_gl_get_proc_address ("glUniform3fARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3fARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform3fARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform3fARB);
+}
+
+/* glUniform4fARB */
+GdkGLProc
+gdk_gl_get_glUniform4fARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform4fARB == (GdkGLProc_glUniform4fARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform4fARB =
+      (GdkGLProc_glUniform4fARB) gdk_gl_get_proc_address ("glUniform4fARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4fARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform4fARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform4fARB);
+}
+
+/* glUniform1iARB */
+GdkGLProc
+gdk_gl_get_glUniform1iARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform1iARB == (GdkGLProc_glUniform1iARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform1iARB =
+      (GdkGLProc_glUniform1iARB) gdk_gl_get_proc_address ("glUniform1iARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1iARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform1iARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform1iARB);
+}
+
+/* glUniform2iARB */
+GdkGLProc
+gdk_gl_get_glUniform2iARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform2iARB == (GdkGLProc_glUniform2iARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform2iARB =
+      (GdkGLProc_glUniform2iARB) gdk_gl_get_proc_address ("glUniform2iARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2iARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform2iARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform2iARB);
+}
+
+/* glUniform3iARB */
+GdkGLProc
+gdk_gl_get_glUniform3iARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform3iARB == (GdkGLProc_glUniform3iARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform3iARB =
+      (GdkGLProc_glUniform3iARB) gdk_gl_get_proc_address ("glUniform3iARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3iARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform3iARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform3iARB);
+}
+
+/* glUniform4iARB */
+GdkGLProc
+gdk_gl_get_glUniform4iARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform4iARB == (GdkGLProc_glUniform4iARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform4iARB =
+      (GdkGLProc_glUniform4iARB) gdk_gl_get_proc_address ("glUniform4iARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4iARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform4iARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform4iARB);
+}
+
+/* glUniform1fvARB */
+GdkGLProc
+gdk_gl_get_glUniform1fvARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform1fvARB == (GdkGLProc_glUniform1fvARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform1fvARB =
+      (GdkGLProc_glUniform1fvARB) gdk_gl_get_proc_address ("glUniform1fvARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1fvARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform1fvARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform1fvARB);
+}
+
+/* glUniform2fvARB */
+GdkGLProc
+gdk_gl_get_glUniform2fvARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform2fvARB == (GdkGLProc_glUniform2fvARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform2fvARB =
+      (GdkGLProc_glUniform2fvARB) gdk_gl_get_proc_address ("glUniform2fvARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2fvARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform2fvARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform2fvARB);
+}
+
+/* glUniform3fvARB */
+GdkGLProc
+gdk_gl_get_glUniform3fvARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform3fvARB == (GdkGLProc_glUniform3fvARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform3fvARB =
+      (GdkGLProc_glUniform3fvARB) gdk_gl_get_proc_address ("glUniform3fvARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3fvARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform3fvARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform3fvARB);
+}
+
+/* glUniform4fvARB */
+GdkGLProc
+gdk_gl_get_glUniform4fvARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform4fvARB == (GdkGLProc_glUniform4fvARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform4fvARB =
+      (GdkGLProc_glUniform4fvARB) gdk_gl_get_proc_address ("glUniform4fvARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4fvARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform4fvARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform4fvARB);
+}
+
+/* glUniform1ivARB */
+GdkGLProc
+gdk_gl_get_glUniform1ivARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform1ivARB == (GdkGLProc_glUniform1ivARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform1ivARB =
+      (GdkGLProc_glUniform1ivARB) gdk_gl_get_proc_address ("glUniform1ivARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1ivARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform1ivARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform1ivARB);
+}
+
+/* glUniform2ivARB */
+GdkGLProc
+gdk_gl_get_glUniform2ivARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform2ivARB == (GdkGLProc_glUniform2ivARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform2ivARB =
+      (GdkGLProc_glUniform2ivARB) gdk_gl_get_proc_address ("glUniform2ivARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2ivARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform2ivARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform2ivARB);
+}
+
+/* glUniform3ivARB */
+GdkGLProc
+gdk_gl_get_glUniform3ivARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform3ivARB == (GdkGLProc_glUniform3ivARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform3ivARB =
+      (GdkGLProc_glUniform3ivARB) gdk_gl_get_proc_address ("glUniform3ivARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3ivARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform3ivARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform3ivARB);
+}
+
+/* glUniform4ivARB */
+GdkGLProc
+gdk_gl_get_glUniform4ivARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniform4ivARB == (GdkGLProc_glUniform4ivARB) -1)
+    _procs_GL_ARB_shader_objects.glUniform4ivARB =
+      (GdkGLProc_glUniform4ivARB) gdk_gl_get_proc_address ("glUniform4ivARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4ivARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniform4ivARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniform4ivARB);
+}
+
+/* glUniformMatrix2fvARB */
+GdkGLProc
+gdk_gl_get_glUniformMatrix2fvARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniformMatrix2fvARB == (GdkGLProc_glUniformMatrix2fvARB) -1)
+    _procs_GL_ARB_shader_objects.glUniformMatrix2fvARB =
+      (GdkGLProc_glUniformMatrix2fvARB) gdk_gl_get_proc_address ("glUniformMatrix2fvARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix2fvARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniformMatrix2fvARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniformMatrix2fvARB);
+}
+
+/* glUniformMatrix3fvARB */
+GdkGLProc
+gdk_gl_get_glUniformMatrix3fvARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniformMatrix3fvARB == (GdkGLProc_glUniformMatrix3fvARB) -1)
+    _procs_GL_ARB_shader_objects.glUniformMatrix3fvARB =
+      (GdkGLProc_glUniformMatrix3fvARB) gdk_gl_get_proc_address ("glUniformMatrix3fvARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix3fvARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniformMatrix3fvARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniformMatrix3fvARB);
+}
+
+/* glUniformMatrix4fvARB */
+GdkGLProc
+gdk_gl_get_glUniformMatrix4fvARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glUniformMatrix4fvARB == (GdkGLProc_glUniformMatrix4fvARB) -1)
+    _procs_GL_ARB_shader_objects.glUniformMatrix4fvARB =
+      (GdkGLProc_glUniformMatrix4fvARB) gdk_gl_get_proc_address ("glUniformMatrix4fvARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformMatrix4fvARB () - %s",
+               (_procs_GL_ARB_shader_objects.glUniformMatrix4fvARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glUniformMatrix4fvARB);
+}
+
+/* glGetObjectParameterfvARB */
+GdkGLProc
+gdk_gl_get_glGetObjectParameterfvARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glGetObjectParameterfvARB == (GdkGLProc_glGetObjectParameterfvARB) -1)
+    _procs_GL_ARB_shader_objects.glGetObjectParameterfvARB =
+      (GdkGLProc_glGetObjectParameterfvARB) gdk_gl_get_proc_address ("glGetObjectParameterfvARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetObjectParameterfvARB () - %s",
+               (_procs_GL_ARB_shader_objects.glGetObjectParameterfvARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glGetObjectParameterfvARB);
+}
+
+/* glGetObjectParameterivARB */
+GdkGLProc
+gdk_gl_get_glGetObjectParameterivARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glGetObjectParameterivARB == (GdkGLProc_glGetObjectParameterivARB) -1)
+    _procs_GL_ARB_shader_objects.glGetObjectParameterivARB =
+      (GdkGLProc_glGetObjectParameterivARB) gdk_gl_get_proc_address ("glGetObjectParameterivARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetObjectParameterivARB () - %s",
+               (_procs_GL_ARB_shader_objects.glGetObjectParameterivARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glGetObjectParameterivARB);
+}
+
+/* glGetInfoLogARB */
+GdkGLProc
+gdk_gl_get_glGetInfoLogARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glGetInfoLogARB == (GdkGLProc_glGetInfoLogARB) -1)
+    _procs_GL_ARB_shader_objects.glGetInfoLogARB =
+      (GdkGLProc_glGetInfoLogARB) gdk_gl_get_proc_address ("glGetInfoLogARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetInfoLogARB () - %s",
+               (_procs_GL_ARB_shader_objects.glGetInfoLogARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glGetInfoLogARB);
+}
+
+/* glGetAttachedObjectsARB */
+GdkGLProc
+gdk_gl_get_glGetAttachedObjectsARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glGetAttachedObjectsARB == (GdkGLProc_glGetAttachedObjectsARB) -1)
+    _procs_GL_ARB_shader_objects.glGetAttachedObjectsARB =
+      (GdkGLProc_glGetAttachedObjectsARB) gdk_gl_get_proc_address ("glGetAttachedObjectsARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetAttachedObjectsARB () - %s",
+               (_procs_GL_ARB_shader_objects.glGetAttachedObjectsARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glGetAttachedObjectsARB);
+}
+
+/* glGetUniformLocationARB */
+GdkGLProc
+gdk_gl_get_glGetUniformLocationARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glGetUniformLocationARB == (GdkGLProc_glGetUniformLocationARB) -1)
+    _procs_GL_ARB_shader_objects.glGetUniformLocationARB =
+      (GdkGLProc_glGetUniformLocationARB) gdk_gl_get_proc_address ("glGetUniformLocationARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformLocationARB () - %s",
+               (_procs_GL_ARB_shader_objects.glGetUniformLocationARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glGetUniformLocationARB);
+}
+
+/* glGetActiveUniformARB */
+GdkGLProc
+gdk_gl_get_glGetActiveUniformARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glGetActiveUniformARB == (GdkGLProc_glGetActiveUniformARB) -1)
+    _procs_GL_ARB_shader_objects.glGetActiveUniformARB =
+      (GdkGLProc_glGetActiveUniformARB) gdk_gl_get_proc_address ("glGetActiveUniformARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetActiveUniformARB () - %s",
+               (_procs_GL_ARB_shader_objects.glGetActiveUniformARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glGetActiveUniformARB);
+}
+
+/* glGetUniformfvARB */
+GdkGLProc
+gdk_gl_get_glGetUniformfvARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glGetUniformfvARB == (GdkGLProc_glGetUniformfvARB) -1)
+    _procs_GL_ARB_shader_objects.glGetUniformfvARB =
+      (GdkGLProc_glGetUniformfvARB) gdk_gl_get_proc_address ("glGetUniformfvARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformfvARB () - %s",
+               (_procs_GL_ARB_shader_objects.glGetUniformfvARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glGetUniformfvARB);
+}
+
+/* glGetUniformivARB */
+GdkGLProc
+gdk_gl_get_glGetUniformivARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glGetUniformivARB == (GdkGLProc_glGetUniformivARB) -1)
+    _procs_GL_ARB_shader_objects.glGetUniformivARB =
+      (GdkGLProc_glGetUniformivARB) gdk_gl_get_proc_address ("glGetUniformivARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformivARB () - %s",
+               (_procs_GL_ARB_shader_objects.glGetUniformivARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glGetUniformivARB);
+}
+
+/* glGetShaderSourceARB */
+GdkGLProc
+gdk_gl_get_glGetShaderSourceARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_shader_objects.glGetShaderSourceARB == (GdkGLProc_glGetShaderSourceARB) -1)
+    _procs_GL_ARB_shader_objects.glGetShaderSourceARB =
+      (GdkGLProc_glGetShaderSourceARB) gdk_gl_get_proc_address ("glGetShaderSourceARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetShaderSourceARB () - %s",
+               (_procs_GL_ARB_shader_objects.glGetShaderSourceARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_shader_objects.glGetShaderSourceARB);
+}
+
+/* Get GL_ARB_shader_objects functions */
+GdkGL_GL_ARB_shader_objects *
+gdk_gl_get_GL_ARB_shader_objects (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_shader_objects");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glDeleteObjectARB () != NULL);
+          supported &= (gdk_gl_get_glGetHandleARB () != NULL);
+          supported &= (gdk_gl_get_glDetachObjectARB () != NULL);
+          supported &= (gdk_gl_get_glCreateShaderObjectARB () != NULL);
+          supported &= (gdk_gl_get_glShaderSourceARB () != NULL);
+          supported &= (gdk_gl_get_glCompileShaderARB () != NULL);
+          supported &= (gdk_gl_get_glCreateProgramObjectARB () != NULL);
+          supported &= (gdk_gl_get_glAttachObjectARB () != NULL);
+          supported &= (gdk_gl_get_glLinkProgramARB () != NULL);
+          supported &= (gdk_gl_get_glUseProgramObjectARB () != NULL);
+          supported &= (gdk_gl_get_glValidateProgramARB () != NULL);
+          supported &= (gdk_gl_get_glUniform1fARB () != NULL);
+          supported &= (gdk_gl_get_glUniform2fARB () != NULL);
+          supported &= (gdk_gl_get_glUniform3fARB () != NULL);
+          supported &= (gdk_gl_get_glUniform4fARB () != NULL);
+          supported &= (gdk_gl_get_glUniform1iARB () != NULL);
+          supported &= (gdk_gl_get_glUniform2iARB () != NULL);
+          supported &= (gdk_gl_get_glUniform3iARB () != NULL);
+          supported &= (gdk_gl_get_glUniform4iARB () != NULL);
+          supported &= (gdk_gl_get_glUniform1fvARB () != NULL);
+          supported &= (gdk_gl_get_glUniform2fvARB () != NULL);
+          supported &= (gdk_gl_get_glUniform3fvARB () != NULL);
+          supported &= (gdk_gl_get_glUniform4fvARB () != NULL);
+          supported &= (gdk_gl_get_glUniform1ivARB () != NULL);
+          supported &= (gdk_gl_get_glUniform2ivARB () != NULL);
+          supported &= (gdk_gl_get_glUniform3ivARB () != NULL);
+          supported &= (gdk_gl_get_glUniform4ivARB () != NULL);
+          supported &= (gdk_gl_get_glUniformMatrix2fvARB () != NULL);
+          supported &= (gdk_gl_get_glUniformMatrix3fvARB () != NULL);
+          supported &= (gdk_gl_get_glUniformMatrix4fvARB () != NULL);
+          supported &= (gdk_gl_get_glGetObjectParameterfvARB () != NULL);
+          supported &= (gdk_gl_get_glGetObjectParameterivARB () != NULL);
+          supported &= (gdk_gl_get_glGetInfoLogARB () != NULL);
+          supported &= (gdk_gl_get_glGetAttachedObjectsARB () != NULL);
+          supported &= (gdk_gl_get_glGetUniformLocationARB () != NULL);
+          supported &= (gdk_gl_get_glGetActiveUniformARB () != NULL);
+          supported &= (gdk_gl_get_glGetUniformfvARB () != NULL);
+          supported &= (gdk_gl_get_glGetUniformivARB () != NULL);
+          supported &= (gdk_gl_get_glGetShaderSourceARB () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_shader_objects () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_shader_objects;
+}
+
+/*
+ * GL_ARB_vertex_shader
+ */
+
+static GdkGL_GL_ARB_vertex_shader _procs_GL_ARB_vertex_shader = {
+  (GdkGLProc_glBindAttribLocationARB) -1,
+  (GdkGLProc_glGetActiveAttribARB) -1,
+  (GdkGLProc_glGetAttribLocationARB) -1
+};
+
+/* glBindAttribLocationARB */
+GdkGLProc
+gdk_gl_get_glBindAttribLocationARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_vertex_shader.glBindAttribLocationARB == (GdkGLProc_glBindAttribLocationARB) -1)
+    _procs_GL_ARB_vertex_shader.glBindAttribLocationARB =
+      (GdkGLProc_glBindAttribLocationARB) gdk_gl_get_proc_address ("glBindAttribLocationARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindAttribLocationARB () - %s",
+               (_procs_GL_ARB_vertex_shader.glBindAttribLocationARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_vertex_shader.glBindAttribLocationARB);
+}
+
+/* glGetActiveAttribARB */
+GdkGLProc
+gdk_gl_get_glGetActiveAttribARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_vertex_shader.glGetActiveAttribARB == (GdkGLProc_glGetActiveAttribARB) -1)
+    _procs_GL_ARB_vertex_shader.glGetActiveAttribARB =
+      (GdkGLProc_glGetActiveAttribARB) gdk_gl_get_proc_address ("glGetActiveAttribARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetActiveAttribARB () - %s",
+               (_procs_GL_ARB_vertex_shader.glGetActiveAttribARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_vertex_shader.glGetActiveAttribARB);
+}
+
+/* glGetAttribLocationARB */
+GdkGLProc
+gdk_gl_get_glGetAttribLocationARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_vertex_shader.glGetAttribLocationARB == (GdkGLProc_glGetAttribLocationARB) -1)
+    _procs_GL_ARB_vertex_shader.glGetAttribLocationARB =
+      (GdkGLProc_glGetAttribLocationARB) gdk_gl_get_proc_address ("glGetAttribLocationARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetAttribLocationARB () - %s",
+               (_procs_GL_ARB_vertex_shader.glGetAttribLocationARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_vertex_shader.glGetAttribLocationARB);
+}
+
+/* Get GL_ARB_vertex_shader functions */
+GdkGL_GL_ARB_vertex_shader *
+gdk_gl_get_GL_ARB_vertex_shader (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_vertex_shader");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBindAttribLocationARB () != NULL);
+          supported &= (gdk_gl_get_glGetActiveAttribARB () != NULL);
+          supported &= (gdk_gl_get_glGetAttribLocationARB () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_vertex_shader () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_vertex_shader;
+}
+
+/*
+ * GL_ARB_draw_buffers
+ */
+
+static GdkGL_GL_ARB_draw_buffers _procs_GL_ARB_draw_buffers = {
+  (GdkGLProc_glDrawBuffersARB) -1
+};
+
+/* glDrawBuffersARB */
+GdkGLProc
+gdk_gl_get_glDrawBuffersARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_buffers.glDrawBuffersARB == (GdkGLProc_glDrawBuffersARB) -1)
+    _procs_GL_ARB_draw_buffers.glDrawBuffersARB =
+      (GdkGLProc_glDrawBuffersARB) gdk_gl_get_proc_address ("glDrawBuffersARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawBuffersARB () - %s",
+               (_procs_GL_ARB_draw_buffers.glDrawBuffersARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_buffers.glDrawBuffersARB);
+}
+
+/* Get GL_ARB_draw_buffers functions */
+GdkGL_GL_ARB_draw_buffers *
+gdk_gl_get_GL_ARB_draw_buffers (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_draw_buffers");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glDrawBuffersARB () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_draw_buffers () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_draw_buffers;
+}
+
+/*
+ * GL_ARB_color_buffer_float
+ */
+
+static GdkGL_GL_ARB_color_buffer_float _procs_GL_ARB_color_buffer_float = {
+  (GdkGLProc_glClampColorARB) -1
+};
+
+/* glClampColorARB */
+GdkGLProc
+gdk_gl_get_glClampColorARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_color_buffer_float.glClampColorARB == (GdkGLProc_glClampColorARB) -1)
+    _procs_GL_ARB_color_buffer_float.glClampColorARB =
+      (GdkGLProc_glClampColorARB) gdk_gl_get_proc_address ("glClampColorARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClampColorARB () - %s",
+               (_procs_GL_ARB_color_buffer_float.glClampColorARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_color_buffer_float.glClampColorARB);
+}
+
+/* Get GL_ARB_color_buffer_float functions */
+GdkGL_GL_ARB_color_buffer_float *
+gdk_gl_get_GL_ARB_color_buffer_float (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_color_buffer_float");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glClampColorARB () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_color_buffer_float () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_color_buffer_float;
+}
+
+/*
+ * GL_ARB_draw_instanced
+ */
+
+static GdkGL_GL_ARB_draw_instanced _procs_GL_ARB_draw_instanced = {
+  (GdkGLProc_glDrawArraysInstancedARB) -1,
+  (GdkGLProc_glDrawElementsInstancedARB) -1
+};
+
+/* glDrawArraysInstancedARB */
+GdkGLProc
+gdk_gl_get_glDrawArraysInstancedARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_instanced.glDrawArraysInstancedARB == (GdkGLProc_glDrawArraysInstancedARB) -1)
+    _procs_GL_ARB_draw_instanced.glDrawArraysInstancedARB =
+      (GdkGLProc_glDrawArraysInstancedARB) gdk_gl_get_proc_address ("glDrawArraysInstancedARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawArraysInstancedARB () - %s",
+               (_procs_GL_ARB_draw_instanced.glDrawArraysInstancedARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_instanced.glDrawArraysInstancedARB);
+}
+
+/* glDrawElementsInstancedARB */
+GdkGLProc
+gdk_gl_get_glDrawElementsInstancedARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_instanced.glDrawElementsInstancedARB == (GdkGLProc_glDrawElementsInstancedARB) -1)
+    _procs_GL_ARB_draw_instanced.glDrawElementsInstancedARB =
+      (GdkGLProc_glDrawElementsInstancedARB) gdk_gl_get_proc_address ("glDrawElementsInstancedARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawElementsInstancedARB () - %s",
+               (_procs_GL_ARB_draw_instanced.glDrawElementsInstancedARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_instanced.glDrawElementsInstancedARB);
+}
+
+/* Get GL_ARB_draw_instanced functions */
+GdkGL_GL_ARB_draw_instanced *
+gdk_gl_get_GL_ARB_draw_instanced (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_draw_instanced");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glDrawArraysInstancedARB () != NULL);
+          supported &= (gdk_gl_get_glDrawElementsInstancedARB () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_draw_instanced () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_draw_instanced;
+}
+
+/*
+ * GL_ARB_framebuffer_object
+ */
+
+static GdkGL_GL_ARB_framebuffer_object _procs_GL_ARB_framebuffer_object = {
+  (GdkGLProc_glIsRenderbuffer) -1,
+  (GdkGLProc_glBindRenderbuffer) -1,
+  (GdkGLProc_glDeleteRenderbuffers) -1,
+  (GdkGLProc_glGenRenderbuffers) -1,
+  (GdkGLProc_glRenderbufferStorage) -1,
+  (GdkGLProc_glGetRenderbufferParameteriv) -1,
+  (GdkGLProc_glIsFramebuffer) -1,
+  (GdkGLProc_glBindFramebuffer) -1,
+  (GdkGLProc_glDeleteFramebuffers) -1,
+  (GdkGLProc_glGenFramebuffers) -1,
+  (GdkGLProc_glCheckFramebufferStatus) -1,
+  (GdkGLProc_glFramebufferTexture1D) -1,
+  (GdkGLProc_glFramebufferTexture2D) -1,
+  (GdkGLProc_glFramebufferTexture3D) -1,
+  (GdkGLProc_glFramebufferRenderbuffer) -1,
+  (GdkGLProc_glGetFramebufferAttachmentParameteriv) -1,
+  (GdkGLProc_glGenerateMipmap) -1,
+  (GdkGLProc_glBlitFramebuffer) -1,
+  (GdkGLProc_glRenderbufferStorageMultisample) -1,
+  (GdkGLProc_glFramebufferTextureLayer) -1
+};
+
+/* glIsRenderbuffer */
+GdkGLProc
+gdk_gl_get_glIsRenderbuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glIsRenderbuffer == (GdkGLProc_glIsRenderbuffer) -1)
+    _procs_GL_ARB_framebuffer_object.glIsRenderbuffer =
+      (GdkGLProc_glIsRenderbuffer) gdk_gl_get_proc_address ("glIsRenderbuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsRenderbuffer () - %s",
+               (_procs_GL_ARB_framebuffer_object.glIsRenderbuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glIsRenderbuffer);
+}
+
+/* glBindRenderbuffer */
+GdkGLProc
+gdk_gl_get_glBindRenderbuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glBindRenderbuffer == (GdkGLProc_glBindRenderbuffer) -1)
+    _procs_GL_ARB_framebuffer_object.glBindRenderbuffer =
+      (GdkGLProc_glBindRenderbuffer) gdk_gl_get_proc_address ("glBindRenderbuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindRenderbuffer () - %s",
+               (_procs_GL_ARB_framebuffer_object.glBindRenderbuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glBindRenderbuffer);
+}
+
+/* glDeleteRenderbuffers */
+GdkGLProc
+gdk_gl_get_glDeleteRenderbuffers (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glDeleteRenderbuffers == (GdkGLProc_glDeleteRenderbuffers) -1)
+    _procs_GL_ARB_framebuffer_object.glDeleteRenderbuffers =
+      (GdkGLProc_glDeleteRenderbuffers) gdk_gl_get_proc_address ("glDeleteRenderbuffers");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteRenderbuffers () - %s",
+               (_procs_GL_ARB_framebuffer_object.glDeleteRenderbuffers) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glDeleteRenderbuffers);
+}
+
+/* glGenRenderbuffers */
+GdkGLProc
+gdk_gl_get_glGenRenderbuffers (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glGenRenderbuffers == (GdkGLProc_glGenRenderbuffers) -1)
+    _procs_GL_ARB_framebuffer_object.glGenRenderbuffers =
+      (GdkGLProc_glGenRenderbuffers) gdk_gl_get_proc_address ("glGenRenderbuffers");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenRenderbuffers () - %s",
+               (_procs_GL_ARB_framebuffer_object.glGenRenderbuffers) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glGenRenderbuffers);
+}
+
+/* glRenderbufferStorage */
+GdkGLProc
+gdk_gl_get_glRenderbufferStorage (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glRenderbufferStorage == (GdkGLProc_glRenderbufferStorage) -1)
+    _procs_GL_ARB_framebuffer_object.glRenderbufferStorage =
+      (GdkGLProc_glRenderbufferStorage) gdk_gl_get_proc_address ("glRenderbufferStorage");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glRenderbufferStorage () - %s",
+               (_procs_GL_ARB_framebuffer_object.glRenderbufferStorage) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glRenderbufferStorage);
+}
+
+/* glGetRenderbufferParameteriv */
+GdkGLProc
+gdk_gl_get_glGetRenderbufferParameteriv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glGetRenderbufferParameteriv == (GdkGLProc_glGetRenderbufferParameteriv) -1)
+    _procs_GL_ARB_framebuffer_object.glGetRenderbufferParameteriv =
+      (GdkGLProc_glGetRenderbufferParameteriv) gdk_gl_get_proc_address ("glGetRenderbufferParameteriv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetRenderbufferParameteriv () - %s",
+               (_procs_GL_ARB_framebuffer_object.glGetRenderbufferParameteriv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glGetRenderbufferParameteriv);
+}
+
+/* glIsFramebuffer */
+GdkGLProc
+gdk_gl_get_glIsFramebuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glIsFramebuffer == (GdkGLProc_glIsFramebuffer) -1)
+    _procs_GL_ARB_framebuffer_object.glIsFramebuffer =
+      (GdkGLProc_glIsFramebuffer) gdk_gl_get_proc_address ("glIsFramebuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsFramebuffer () - %s",
+               (_procs_GL_ARB_framebuffer_object.glIsFramebuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glIsFramebuffer);
+}
+
+/* glBindFramebuffer */
+GdkGLProc
+gdk_gl_get_glBindFramebuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glBindFramebuffer == (GdkGLProc_glBindFramebuffer) -1)
+    _procs_GL_ARB_framebuffer_object.glBindFramebuffer =
+      (GdkGLProc_glBindFramebuffer) gdk_gl_get_proc_address ("glBindFramebuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindFramebuffer () - %s",
+               (_procs_GL_ARB_framebuffer_object.glBindFramebuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glBindFramebuffer);
+}
+
+/* glDeleteFramebuffers */
+GdkGLProc
+gdk_gl_get_glDeleteFramebuffers (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glDeleteFramebuffers == (GdkGLProc_glDeleteFramebuffers) -1)
+    _procs_GL_ARB_framebuffer_object.glDeleteFramebuffers =
+      (GdkGLProc_glDeleteFramebuffers) gdk_gl_get_proc_address ("glDeleteFramebuffers");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteFramebuffers () - %s",
+               (_procs_GL_ARB_framebuffer_object.glDeleteFramebuffers) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glDeleteFramebuffers);
+}
+
+/* glGenFramebuffers */
+GdkGLProc
+gdk_gl_get_glGenFramebuffers (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glGenFramebuffers == (GdkGLProc_glGenFramebuffers) -1)
+    _procs_GL_ARB_framebuffer_object.glGenFramebuffers =
+      (GdkGLProc_glGenFramebuffers) gdk_gl_get_proc_address ("glGenFramebuffers");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenFramebuffers () - %s",
+               (_procs_GL_ARB_framebuffer_object.glGenFramebuffers) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glGenFramebuffers);
+}
+
+/* glCheckFramebufferStatus */
+GdkGLProc
+gdk_gl_get_glCheckFramebufferStatus (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glCheckFramebufferStatus == (GdkGLProc_glCheckFramebufferStatus) -1)
+    _procs_GL_ARB_framebuffer_object.glCheckFramebufferStatus =
+      (GdkGLProc_glCheckFramebufferStatus) gdk_gl_get_proc_address ("glCheckFramebufferStatus");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCheckFramebufferStatus () - %s",
+               (_procs_GL_ARB_framebuffer_object.glCheckFramebufferStatus) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glCheckFramebufferStatus);
+}
+
+/* glFramebufferTexture1D */
+GdkGLProc
+gdk_gl_get_glFramebufferTexture1D (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glFramebufferTexture1D == (GdkGLProc_glFramebufferTexture1D) -1)
+    _procs_GL_ARB_framebuffer_object.glFramebufferTexture1D =
+      (GdkGLProc_glFramebufferTexture1D) gdk_gl_get_proc_address ("glFramebufferTexture1D");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTexture1D () - %s",
+               (_procs_GL_ARB_framebuffer_object.glFramebufferTexture1D) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glFramebufferTexture1D);
+}
+
+/* glFramebufferTexture2D */
+GdkGLProc
+gdk_gl_get_glFramebufferTexture2D (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glFramebufferTexture2D == (GdkGLProc_glFramebufferTexture2D) -1)
+    _procs_GL_ARB_framebuffer_object.glFramebufferTexture2D =
+      (GdkGLProc_glFramebufferTexture2D) gdk_gl_get_proc_address ("glFramebufferTexture2D");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTexture2D () - %s",
+               (_procs_GL_ARB_framebuffer_object.glFramebufferTexture2D) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glFramebufferTexture2D);
+}
+
+/* glFramebufferTexture3D */
+GdkGLProc
+gdk_gl_get_glFramebufferTexture3D (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glFramebufferTexture3D == (GdkGLProc_glFramebufferTexture3D) -1)
+    _procs_GL_ARB_framebuffer_object.glFramebufferTexture3D =
+      (GdkGLProc_glFramebufferTexture3D) gdk_gl_get_proc_address ("glFramebufferTexture3D");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTexture3D () - %s",
+               (_procs_GL_ARB_framebuffer_object.glFramebufferTexture3D) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glFramebufferTexture3D);
+}
+
+/* glFramebufferRenderbuffer */
+GdkGLProc
+gdk_gl_get_glFramebufferRenderbuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glFramebufferRenderbuffer == (GdkGLProc_glFramebufferRenderbuffer) -1)
+    _procs_GL_ARB_framebuffer_object.glFramebufferRenderbuffer =
+      (GdkGLProc_glFramebufferRenderbuffer) gdk_gl_get_proc_address ("glFramebufferRenderbuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferRenderbuffer () - %s",
+               (_procs_GL_ARB_framebuffer_object.glFramebufferRenderbuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glFramebufferRenderbuffer);
+}
+
+/* glGetFramebufferAttachmentParameteriv */
+GdkGLProc
+gdk_gl_get_glGetFramebufferAttachmentParameteriv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glGetFramebufferAttachmentParameteriv == (GdkGLProc_glGetFramebufferAttachmentParameteriv) -1)
+    _procs_GL_ARB_framebuffer_object.glGetFramebufferAttachmentParameteriv =
+      (GdkGLProc_glGetFramebufferAttachmentParameteriv) gdk_gl_get_proc_address ("glGetFramebufferAttachmentParameteriv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFramebufferAttachmentParameteriv () - %s",
+               (_procs_GL_ARB_framebuffer_object.glGetFramebufferAttachmentParameteriv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glGetFramebufferAttachmentParameteriv);
+}
+
+/* glGenerateMipmap */
+GdkGLProc
+gdk_gl_get_glGenerateMipmap (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glGenerateMipmap == (GdkGLProc_glGenerateMipmap) -1)
+    _procs_GL_ARB_framebuffer_object.glGenerateMipmap =
+      (GdkGLProc_glGenerateMipmap) gdk_gl_get_proc_address ("glGenerateMipmap");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenerateMipmap () - %s",
+               (_procs_GL_ARB_framebuffer_object.glGenerateMipmap) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glGenerateMipmap);
+}
+
+/* glBlitFramebuffer */
+GdkGLProc
+gdk_gl_get_glBlitFramebuffer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glBlitFramebuffer == (GdkGLProc_glBlitFramebuffer) -1)
+    _procs_GL_ARB_framebuffer_object.glBlitFramebuffer =
+      (GdkGLProc_glBlitFramebuffer) gdk_gl_get_proc_address ("glBlitFramebuffer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlitFramebuffer () - %s",
+               (_procs_GL_ARB_framebuffer_object.glBlitFramebuffer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glBlitFramebuffer);
+}
+
+/* glRenderbufferStorageMultisample */
+GdkGLProc
+gdk_gl_get_glRenderbufferStorageMultisample (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glRenderbufferStorageMultisample == (GdkGLProc_glRenderbufferStorageMultisample) -1)
+    _procs_GL_ARB_framebuffer_object.glRenderbufferStorageMultisample =
+      (GdkGLProc_glRenderbufferStorageMultisample) gdk_gl_get_proc_address ("glRenderbufferStorageMultisample");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glRenderbufferStorageMultisample () - %s",
+               (_procs_GL_ARB_framebuffer_object.glRenderbufferStorageMultisample) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glRenderbufferStorageMultisample);
+}
+
+/* glFramebufferTextureLayer */
+GdkGLProc
+gdk_gl_get_glFramebufferTextureLayer (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_framebuffer_object.glFramebufferTextureLayer == (GdkGLProc_glFramebufferTextureLayer) -1)
+    _procs_GL_ARB_framebuffer_object.glFramebufferTextureLayer =
+      (GdkGLProc_glFramebufferTextureLayer) gdk_gl_get_proc_address ("glFramebufferTextureLayer");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTextureLayer () - %s",
+               (_procs_GL_ARB_framebuffer_object.glFramebufferTextureLayer) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_framebuffer_object.glFramebufferTextureLayer);
+}
+
+/* Get GL_ARB_framebuffer_object functions */
+GdkGL_GL_ARB_framebuffer_object *
+gdk_gl_get_GL_ARB_framebuffer_object (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_framebuffer_object");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glIsRenderbuffer () != NULL);
+          supported &= (gdk_gl_get_glBindRenderbuffer () != NULL);
+          supported &= (gdk_gl_get_glDeleteRenderbuffers () != NULL);
+          supported &= (gdk_gl_get_glGenRenderbuffers () != NULL);
+          supported &= (gdk_gl_get_glRenderbufferStorage () != NULL);
+          supported &= (gdk_gl_get_glGetRenderbufferParameteriv () != NULL);
+          supported &= (gdk_gl_get_glIsFramebuffer () != NULL);
+          supported &= (gdk_gl_get_glBindFramebuffer () != NULL);
+          supported &= (gdk_gl_get_glDeleteFramebuffers () != NULL);
+          supported &= (gdk_gl_get_glGenFramebuffers () != NULL);
+          supported &= (gdk_gl_get_glCheckFramebufferStatus () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTexture1D () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTexture2D () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTexture3D () != NULL);
+          supported &= (gdk_gl_get_glFramebufferRenderbuffer () != NULL);
+          supported &= (gdk_gl_get_glGetFramebufferAttachmentParameteriv () != NULL);
+          supported &= (gdk_gl_get_glGenerateMipmap () != NULL);
+          supported &= (gdk_gl_get_glBlitFramebuffer () != NULL);
+          supported &= (gdk_gl_get_glRenderbufferStorageMultisample () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTextureLayer () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_framebuffer_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_framebuffer_object;
+}
+
+/*
+ * GL_ARB_geometry_shader4
+ */
+
+static GdkGL_GL_ARB_geometry_shader4 _procs_GL_ARB_geometry_shader4 = {
+  (GdkGLProc_glProgramParameteriARB) -1,
+  (GdkGLProc_glFramebufferTextureARB) -1,
+  (GdkGLProc_glFramebufferTextureLayerARB) -1,
+  (GdkGLProc_glFramebufferTextureFaceARB) -1
+};
+
+/* glProgramParameteriARB */
+GdkGLProc
+gdk_gl_get_glProgramParameteriARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_geometry_shader4.glProgramParameteriARB == (GdkGLProc_glProgramParameteriARB) -1)
+    _procs_GL_ARB_geometry_shader4.glProgramParameteriARB =
+      (GdkGLProc_glProgramParameteriARB) gdk_gl_get_proc_address ("glProgramParameteriARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramParameteriARB () - %s",
+               (_procs_GL_ARB_geometry_shader4.glProgramParameteriARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_geometry_shader4.glProgramParameteriARB);
+}
+
+/* glFramebufferTextureARB */
+GdkGLProc
+gdk_gl_get_glFramebufferTextureARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_geometry_shader4.glFramebufferTextureARB == (GdkGLProc_glFramebufferTextureARB) -1)
+    _procs_GL_ARB_geometry_shader4.glFramebufferTextureARB =
+      (GdkGLProc_glFramebufferTextureARB) gdk_gl_get_proc_address ("glFramebufferTextureARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTextureARB () - %s",
+               (_procs_GL_ARB_geometry_shader4.glFramebufferTextureARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_geometry_shader4.glFramebufferTextureARB);
+}
+
+/* glFramebufferTextureLayerARB */
+GdkGLProc
+gdk_gl_get_glFramebufferTextureLayerARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_geometry_shader4.glFramebufferTextureLayerARB == (GdkGLProc_glFramebufferTextureLayerARB) -1)
+    _procs_GL_ARB_geometry_shader4.glFramebufferTextureLayerARB =
+      (GdkGLProc_glFramebufferTextureLayerARB) gdk_gl_get_proc_address ("glFramebufferTextureLayerARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTextureLayerARB () - %s",
+               (_procs_GL_ARB_geometry_shader4.glFramebufferTextureLayerARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_geometry_shader4.glFramebufferTextureLayerARB);
+}
+
+/* glFramebufferTextureFaceARB */
+GdkGLProc
+gdk_gl_get_glFramebufferTextureFaceARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_geometry_shader4.glFramebufferTextureFaceARB == (GdkGLProc_glFramebufferTextureFaceARB) -1)
+    _procs_GL_ARB_geometry_shader4.glFramebufferTextureFaceARB =
+      (GdkGLProc_glFramebufferTextureFaceARB) gdk_gl_get_proc_address ("glFramebufferTextureFaceARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTextureFaceARB () - %s",
+               (_procs_GL_ARB_geometry_shader4.glFramebufferTextureFaceARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_geometry_shader4.glFramebufferTextureFaceARB);
+}
+
+/* Get GL_ARB_geometry_shader4 functions */
+GdkGL_GL_ARB_geometry_shader4 *
+gdk_gl_get_GL_ARB_geometry_shader4 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_geometry_shader4");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glProgramParameteriARB () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTextureARB () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTextureLayerARB () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTextureFaceARB () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_geometry_shader4 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_geometry_shader4;
+}
+
+/*
+ * GL_ARB_instanced_arrays
+ */
+
+static GdkGL_GL_ARB_instanced_arrays _procs_GL_ARB_instanced_arrays = {
+  (GdkGLProc_glVertexAttribDivisorARB) -1
+};
+
+/* glVertexAttribDivisorARB */
+GdkGLProc
+gdk_gl_get_glVertexAttribDivisorARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_instanced_arrays.glVertexAttribDivisorARB == (GdkGLProc_glVertexAttribDivisorARB) -1)
+    _procs_GL_ARB_instanced_arrays.glVertexAttribDivisorARB =
+      (GdkGLProc_glVertexAttribDivisorARB) gdk_gl_get_proc_address ("glVertexAttribDivisorARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribDivisorARB () - %s",
+               (_procs_GL_ARB_instanced_arrays.glVertexAttribDivisorARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_instanced_arrays.glVertexAttribDivisorARB);
+}
+
+/* Get GL_ARB_instanced_arrays functions */
+GdkGL_GL_ARB_instanced_arrays *
+gdk_gl_get_GL_ARB_instanced_arrays (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_instanced_arrays");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glVertexAttribDivisorARB () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_instanced_arrays () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_instanced_arrays;
+}
+
+/*
+ * GL_ARB_map_buffer_range
+ */
+
+static GdkGL_GL_ARB_map_buffer_range _procs_GL_ARB_map_buffer_range = {
+  (GdkGLProc_glMapBufferRange) -1,
+  (GdkGLProc_glFlushMappedBufferRange) -1
+};
+
+/* glMapBufferRange */
+GdkGLProc
+gdk_gl_get_glMapBufferRange (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_map_buffer_range.glMapBufferRange == (GdkGLProc_glMapBufferRange) -1)
+    _procs_GL_ARB_map_buffer_range.glMapBufferRange =
+      (GdkGLProc_glMapBufferRange) gdk_gl_get_proc_address ("glMapBufferRange");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapBufferRange () - %s",
+               (_procs_GL_ARB_map_buffer_range.glMapBufferRange) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_map_buffer_range.glMapBufferRange);
+}
+
+/* glFlushMappedBufferRange */
+GdkGLProc
+gdk_gl_get_glFlushMappedBufferRange (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_map_buffer_range.glFlushMappedBufferRange == (GdkGLProc_glFlushMappedBufferRange) -1)
+    _procs_GL_ARB_map_buffer_range.glFlushMappedBufferRange =
+      (GdkGLProc_glFlushMappedBufferRange) gdk_gl_get_proc_address ("glFlushMappedBufferRange");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFlushMappedBufferRange () - %s",
+               (_procs_GL_ARB_map_buffer_range.glFlushMappedBufferRange) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_map_buffer_range.glFlushMappedBufferRange);
+}
+
+/* Get GL_ARB_map_buffer_range functions */
+GdkGL_GL_ARB_map_buffer_range *
+gdk_gl_get_GL_ARB_map_buffer_range (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_map_buffer_range");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glMapBufferRange () != NULL);
+          supported &= (gdk_gl_get_glFlushMappedBufferRange () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_map_buffer_range () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_map_buffer_range;
+}
+
+/*
+ * GL_ARB_texture_buffer_object
+ */
+
+static GdkGL_GL_ARB_texture_buffer_object _procs_GL_ARB_texture_buffer_object = {
+  (GdkGLProc_glTexBufferARB) -1
+};
+
+/* glTexBufferARB */
+GdkGLProc
+gdk_gl_get_glTexBufferARB (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_texture_buffer_object.glTexBufferARB == (GdkGLProc_glTexBufferARB) -1)
+    _procs_GL_ARB_texture_buffer_object.glTexBufferARB =
+      (GdkGLProc_glTexBufferARB) gdk_gl_get_proc_address ("glTexBufferARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexBufferARB () - %s",
+               (_procs_GL_ARB_texture_buffer_object.glTexBufferARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_texture_buffer_object.glTexBufferARB);
+}
+
+/* Get GL_ARB_texture_buffer_object functions */
+GdkGL_GL_ARB_texture_buffer_object *
+gdk_gl_get_GL_ARB_texture_buffer_object (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_texture_buffer_object");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glTexBufferARB () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_texture_buffer_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_texture_buffer_object;
+}
+
+/*
+ * GL_ARB_vertex_array_object
+ */
+
+static GdkGL_GL_ARB_vertex_array_object _procs_GL_ARB_vertex_array_object = {
+  (GdkGLProc_glBindVertexArray) -1,
+  (GdkGLProc_glDeleteVertexArrays) -1,
+  (GdkGLProc_glGenVertexArrays) -1,
+  (GdkGLProc_glIsVertexArray) -1
+};
+
+/* glBindVertexArray */
+GdkGLProc
+gdk_gl_get_glBindVertexArray (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_vertex_array_object.glBindVertexArray == (GdkGLProc_glBindVertexArray) -1)
+    _procs_GL_ARB_vertex_array_object.glBindVertexArray =
+      (GdkGLProc_glBindVertexArray) gdk_gl_get_proc_address ("glBindVertexArray");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindVertexArray () - %s",
+               (_procs_GL_ARB_vertex_array_object.glBindVertexArray) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_vertex_array_object.glBindVertexArray);
+}
+
+/* glDeleteVertexArrays */
+GdkGLProc
+gdk_gl_get_glDeleteVertexArrays (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_vertex_array_object.glDeleteVertexArrays == (GdkGLProc_glDeleteVertexArrays) -1)
+    _procs_GL_ARB_vertex_array_object.glDeleteVertexArrays =
+      (GdkGLProc_glDeleteVertexArrays) gdk_gl_get_proc_address ("glDeleteVertexArrays");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteVertexArrays () - %s",
+               (_procs_GL_ARB_vertex_array_object.glDeleteVertexArrays) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_vertex_array_object.glDeleteVertexArrays);
+}
+
+/* glGenVertexArrays */
+GdkGLProc
+gdk_gl_get_glGenVertexArrays (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_vertex_array_object.glGenVertexArrays == (GdkGLProc_glGenVertexArrays) -1)
+    _procs_GL_ARB_vertex_array_object.glGenVertexArrays =
+      (GdkGLProc_glGenVertexArrays) gdk_gl_get_proc_address ("glGenVertexArrays");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenVertexArrays () - %s",
+               (_procs_GL_ARB_vertex_array_object.glGenVertexArrays) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_vertex_array_object.glGenVertexArrays);
+}
+
+/* glIsVertexArray */
+GdkGLProc
+gdk_gl_get_glIsVertexArray (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_vertex_array_object.glIsVertexArray == (GdkGLProc_glIsVertexArray) -1)
+    _procs_GL_ARB_vertex_array_object.glIsVertexArray =
+      (GdkGLProc_glIsVertexArray) gdk_gl_get_proc_address ("glIsVertexArray");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsVertexArray () - %s",
+               (_procs_GL_ARB_vertex_array_object.glIsVertexArray) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_vertex_array_object.glIsVertexArray);
+}
+
+/* Get GL_ARB_vertex_array_object functions */
+GdkGL_GL_ARB_vertex_array_object *
+gdk_gl_get_GL_ARB_vertex_array_object (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_vertex_array_object");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBindVertexArray () != NULL);
+          supported &= (gdk_gl_get_glDeleteVertexArrays () != NULL);
+          supported &= (gdk_gl_get_glGenVertexArrays () != NULL);
+          supported &= (gdk_gl_get_glIsVertexArray () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_vertex_array_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_vertex_array_object;
+}
+
+/*
+ * GL_ARB_uniform_buffer_object
+ */
+
+static GdkGL_GL_ARB_uniform_buffer_object _procs_GL_ARB_uniform_buffer_object = {
+  (GdkGLProc_glGetUniformIndices) -1,
+  (GdkGLProc_glGetActiveUniformsiv) -1,
+  (GdkGLProc_glGetActiveUniformName) -1,
+  (GdkGLProc_glGetUniformBlockIndex) -1,
+  (GdkGLProc_glGetActiveUniformBlockiv) -1,
+  (GdkGLProc_glGetActiveUniformBlockName) -1,
+  (GdkGLProc_glUniformBlockBinding) -1
+};
+
+/* glGetUniformIndices */
+GdkGLProc
+gdk_gl_get_glGetUniformIndices (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_uniform_buffer_object.glGetUniformIndices == (GdkGLProc_glGetUniformIndices) -1)
+    _procs_GL_ARB_uniform_buffer_object.glGetUniformIndices =
+      (GdkGLProc_glGetUniformIndices) gdk_gl_get_proc_address ("glGetUniformIndices");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformIndices () - %s",
+               (_procs_GL_ARB_uniform_buffer_object.glGetUniformIndices) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_uniform_buffer_object.glGetUniformIndices);
+}
+
+/* glGetActiveUniformsiv */
+GdkGLProc
+gdk_gl_get_glGetActiveUniformsiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformsiv == (GdkGLProc_glGetActiveUniformsiv) -1)
+    _procs_GL_ARB_uniform_buffer_object.glGetActiveUniformsiv =
+      (GdkGLProc_glGetActiveUniformsiv) gdk_gl_get_proc_address ("glGetActiveUniformsiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetActiveUniformsiv () - %s",
+               (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformsiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformsiv);
+}
+
+/* glGetActiveUniformName */
+GdkGLProc
+gdk_gl_get_glGetActiveUniformName (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformName == (GdkGLProc_glGetActiveUniformName) -1)
+    _procs_GL_ARB_uniform_buffer_object.glGetActiveUniformName =
+      (GdkGLProc_glGetActiveUniformName) gdk_gl_get_proc_address ("glGetActiveUniformName");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetActiveUniformName () - %s",
+               (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformName) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformName);
+}
+
+/* glGetUniformBlockIndex */
+GdkGLProc
+gdk_gl_get_glGetUniformBlockIndex (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_uniform_buffer_object.glGetUniformBlockIndex == (GdkGLProc_glGetUniformBlockIndex) -1)
+    _procs_GL_ARB_uniform_buffer_object.glGetUniformBlockIndex =
+      (GdkGLProc_glGetUniformBlockIndex) gdk_gl_get_proc_address ("glGetUniformBlockIndex");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformBlockIndex () - %s",
+               (_procs_GL_ARB_uniform_buffer_object.glGetUniformBlockIndex) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_uniform_buffer_object.glGetUniformBlockIndex);
+}
+
+/* glGetActiveUniformBlockiv */
+GdkGLProc
+gdk_gl_get_glGetActiveUniformBlockiv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformBlockiv == (GdkGLProc_glGetActiveUniformBlockiv) -1)
+    _procs_GL_ARB_uniform_buffer_object.glGetActiveUniformBlockiv =
+      (GdkGLProc_glGetActiveUniformBlockiv) gdk_gl_get_proc_address ("glGetActiveUniformBlockiv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetActiveUniformBlockiv () - %s",
+               (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformBlockiv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformBlockiv);
+}
+
+/* glGetActiveUniformBlockName */
+GdkGLProc
+gdk_gl_get_glGetActiveUniformBlockName (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformBlockName == (GdkGLProc_glGetActiveUniformBlockName) -1)
+    _procs_GL_ARB_uniform_buffer_object.glGetActiveUniformBlockName =
+      (GdkGLProc_glGetActiveUniformBlockName) gdk_gl_get_proc_address ("glGetActiveUniformBlockName");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetActiveUniformBlockName () - %s",
+               (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformBlockName) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_uniform_buffer_object.glGetActiveUniformBlockName);
+}
+
+/* glUniformBlockBinding */
+GdkGLProc
+gdk_gl_get_glUniformBlockBinding (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_uniform_buffer_object.glUniformBlockBinding == (GdkGLProc_glUniformBlockBinding) -1)
+    _procs_GL_ARB_uniform_buffer_object.glUniformBlockBinding =
+      (GdkGLProc_glUniformBlockBinding) gdk_gl_get_proc_address ("glUniformBlockBinding");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformBlockBinding () - %s",
+               (_procs_GL_ARB_uniform_buffer_object.glUniformBlockBinding) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_uniform_buffer_object.glUniformBlockBinding);
+}
+
+/* Get GL_ARB_uniform_buffer_object functions */
+GdkGL_GL_ARB_uniform_buffer_object *
+gdk_gl_get_GL_ARB_uniform_buffer_object (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_uniform_buffer_object");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glGetUniformIndices () != NULL);
+          supported &= (gdk_gl_get_glGetActiveUniformsiv () != NULL);
+          supported &= (gdk_gl_get_glGetActiveUniformName () != NULL);
+          supported &= (gdk_gl_get_glGetUniformBlockIndex () != NULL);
+          supported &= (gdk_gl_get_glGetActiveUniformBlockiv () != NULL);
+          supported &= (gdk_gl_get_glGetActiveUniformBlockName () != NULL);
+          supported &= (gdk_gl_get_glUniformBlockBinding () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_uniform_buffer_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_uniform_buffer_object;
+}
+
+/*
+ * GL_ARB_copy_buffer
+ */
+
+static GdkGL_GL_ARB_copy_buffer _procs_GL_ARB_copy_buffer = {
+  (GdkGLProc_glCopyBufferSubData) -1
+};
+
+/* glCopyBufferSubData */
+GdkGLProc
+gdk_gl_get_glCopyBufferSubData (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_copy_buffer.glCopyBufferSubData == (GdkGLProc_glCopyBufferSubData) -1)
+    _procs_GL_ARB_copy_buffer.glCopyBufferSubData =
+      (GdkGLProc_glCopyBufferSubData) gdk_gl_get_proc_address ("glCopyBufferSubData");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyBufferSubData () - %s",
+               (_procs_GL_ARB_copy_buffer.glCopyBufferSubData) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_copy_buffer.glCopyBufferSubData);
+}
+
+/* Get GL_ARB_copy_buffer functions */
+GdkGL_GL_ARB_copy_buffer *
+gdk_gl_get_GL_ARB_copy_buffer (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_copy_buffer");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glCopyBufferSubData () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_copy_buffer () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_copy_buffer;
+}
+
+/*
+ * GL_ARB_draw_elements_base_vertex
+ */
+
+static GdkGL_GL_ARB_draw_elements_base_vertex _procs_GL_ARB_draw_elements_base_vertex = {
+  (GdkGLProc_glDrawElementsBaseVertex) -1,
+  (GdkGLProc_glDrawRangeElementsBaseVertex) -1,
+  (GdkGLProc_glDrawElementsInstancedBaseVertex) -1,
+  (GdkGLProc_glMultiDrawElementsBaseVertex) -1
+};
+
+/* glDrawElementsBaseVertex */
+GdkGLProc
+gdk_gl_get_glDrawElementsBaseVertex (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_elements_base_vertex.glDrawElementsBaseVertex == (GdkGLProc_glDrawElementsBaseVertex) -1)
+    _procs_GL_ARB_draw_elements_base_vertex.glDrawElementsBaseVertex =
+      (GdkGLProc_glDrawElementsBaseVertex) gdk_gl_get_proc_address ("glDrawElementsBaseVertex");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawElementsBaseVertex () - %s",
+               (_procs_GL_ARB_draw_elements_base_vertex.glDrawElementsBaseVertex) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_elements_base_vertex.glDrawElementsBaseVertex);
+}
+
+/* glDrawRangeElementsBaseVertex */
+GdkGLProc
+gdk_gl_get_glDrawRangeElementsBaseVertex (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_elements_base_vertex.glDrawRangeElementsBaseVertex == (GdkGLProc_glDrawRangeElementsBaseVertex) -1)
+    _procs_GL_ARB_draw_elements_base_vertex.glDrawRangeElementsBaseVertex =
+      (GdkGLProc_glDrawRangeElementsBaseVertex) gdk_gl_get_proc_address ("glDrawRangeElementsBaseVertex");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawRangeElementsBaseVertex () - %s",
+               (_procs_GL_ARB_draw_elements_base_vertex.glDrawRangeElementsBaseVertex) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_elements_base_vertex.glDrawRangeElementsBaseVertex);
+}
+
+/* glDrawElementsInstancedBaseVertex */
+GdkGLProc
+gdk_gl_get_glDrawElementsInstancedBaseVertex (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_elements_base_vertex.glDrawElementsInstancedBaseVertex == (GdkGLProc_glDrawElementsInstancedBaseVertex) -1)
+    _procs_GL_ARB_draw_elements_base_vertex.glDrawElementsInstancedBaseVertex =
+      (GdkGLProc_glDrawElementsInstancedBaseVertex) gdk_gl_get_proc_address ("glDrawElementsInstancedBaseVertex");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawElementsInstancedBaseVertex () - %s",
+               (_procs_GL_ARB_draw_elements_base_vertex.glDrawElementsInstancedBaseVertex) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_elements_base_vertex.glDrawElementsInstancedBaseVertex);
+}
+
+/* glMultiDrawElementsBaseVertex */
+GdkGLProc
+gdk_gl_get_glMultiDrawElementsBaseVertex (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_elements_base_vertex.glMultiDrawElementsBaseVertex == (GdkGLProc_glMultiDrawElementsBaseVertex) -1)
+    _procs_GL_ARB_draw_elements_base_vertex.glMultiDrawElementsBaseVertex =
+      (GdkGLProc_glMultiDrawElementsBaseVertex) gdk_gl_get_proc_address ("glMultiDrawElementsBaseVertex");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiDrawElementsBaseVertex () - %s",
+               (_procs_GL_ARB_draw_elements_base_vertex.glMultiDrawElementsBaseVertex) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_elements_base_vertex.glMultiDrawElementsBaseVertex);
+}
+
+/* Get GL_ARB_draw_elements_base_vertex functions */
+GdkGL_GL_ARB_draw_elements_base_vertex *
+gdk_gl_get_GL_ARB_draw_elements_base_vertex (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_draw_elements_base_vertex");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glDrawElementsBaseVertex () != NULL);
+          supported &= (gdk_gl_get_glDrawRangeElementsBaseVertex () != NULL);
+          supported &= (gdk_gl_get_glDrawElementsInstancedBaseVertex () != NULL);
+          supported &= (gdk_gl_get_glMultiDrawElementsBaseVertex () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_draw_elements_base_vertex () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_draw_elements_base_vertex;
+}
+
+/*
+ * GL_ARB_provoking_vertex
+ */
+
+static GdkGL_GL_ARB_provoking_vertex _procs_GL_ARB_provoking_vertex = {
+  (GdkGLProc_glProvokingVertex) -1
+};
+
+/* glProvokingVertex */
+GdkGLProc
+gdk_gl_get_glProvokingVertex (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_provoking_vertex.glProvokingVertex == (GdkGLProc_glProvokingVertex) -1)
+    _procs_GL_ARB_provoking_vertex.glProvokingVertex =
+      (GdkGLProc_glProvokingVertex) gdk_gl_get_proc_address ("glProvokingVertex");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProvokingVertex () - %s",
+               (_procs_GL_ARB_provoking_vertex.glProvokingVertex) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_provoking_vertex.glProvokingVertex);
+}
+
+/* Get GL_ARB_provoking_vertex functions */
+GdkGL_GL_ARB_provoking_vertex *
+gdk_gl_get_GL_ARB_provoking_vertex (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_provoking_vertex");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glProvokingVertex () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_provoking_vertex () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_provoking_vertex;
+}
+
+/*
+ * GL_ARB_sync
+ */
+
+static GdkGL_GL_ARB_sync _procs_GL_ARB_sync = {
+  (GdkGLProc_glFenceSync) -1,
+  (GdkGLProc_glIsSync) -1,
+  (GdkGLProc_glDeleteSync) -1,
+  (GdkGLProc_glClientWaitSync) -1,
+  (GdkGLProc_glWaitSync) -1,
+  (GdkGLProc_glGetInteger64v) -1,
+  (GdkGLProc_glGetSynciv) -1
+};
+
+/* glFenceSync */
+GdkGLProc
+gdk_gl_get_glFenceSync (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_sync.glFenceSync == (GdkGLProc_glFenceSync) -1)
+    _procs_GL_ARB_sync.glFenceSync =
+      (GdkGLProc_glFenceSync) gdk_gl_get_proc_address ("glFenceSync");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFenceSync () - %s",
+               (_procs_GL_ARB_sync.glFenceSync) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_sync.glFenceSync);
+}
+
+/* glIsSync */
+GdkGLProc
+gdk_gl_get_glIsSync (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_sync.glIsSync == (GdkGLProc_glIsSync) -1)
+    _procs_GL_ARB_sync.glIsSync =
+      (GdkGLProc_glIsSync) gdk_gl_get_proc_address ("glIsSync");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsSync () - %s",
+               (_procs_GL_ARB_sync.glIsSync) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_sync.glIsSync);
+}
+
+/* glDeleteSync */
+GdkGLProc
+gdk_gl_get_glDeleteSync (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_sync.glDeleteSync == (GdkGLProc_glDeleteSync) -1)
+    _procs_GL_ARB_sync.glDeleteSync =
+      (GdkGLProc_glDeleteSync) gdk_gl_get_proc_address ("glDeleteSync");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteSync () - %s",
+               (_procs_GL_ARB_sync.glDeleteSync) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_sync.glDeleteSync);
+}
+
+/* glClientWaitSync */
+GdkGLProc
+gdk_gl_get_glClientWaitSync (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_sync.glClientWaitSync == (GdkGLProc_glClientWaitSync) -1)
+    _procs_GL_ARB_sync.glClientWaitSync =
+      (GdkGLProc_glClientWaitSync) gdk_gl_get_proc_address ("glClientWaitSync");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClientWaitSync () - %s",
+               (_procs_GL_ARB_sync.glClientWaitSync) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_sync.glClientWaitSync);
+}
+
+/* glWaitSync */
+GdkGLProc
+gdk_gl_get_glWaitSync (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_sync.glWaitSync == (GdkGLProc_glWaitSync) -1)
+    _procs_GL_ARB_sync.glWaitSync =
+      (GdkGLProc_glWaitSync) gdk_gl_get_proc_address ("glWaitSync");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glWaitSync () - %s",
+               (_procs_GL_ARB_sync.glWaitSync) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_sync.glWaitSync);
+}
+
+/* glGetInteger64v */
+GdkGLProc
+gdk_gl_get_glGetInteger64v (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_sync.glGetInteger64v == (GdkGLProc_glGetInteger64v) -1)
+    _procs_GL_ARB_sync.glGetInteger64v =
+      (GdkGLProc_glGetInteger64v) gdk_gl_get_proc_address ("glGetInteger64v");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetInteger64v () - %s",
+               (_procs_GL_ARB_sync.glGetInteger64v) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_sync.glGetInteger64v);
+}
+
+/* glGetSynciv */
+GdkGLProc
+gdk_gl_get_glGetSynciv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_sync.glGetSynciv == (GdkGLProc_glGetSynciv) -1)
+    _procs_GL_ARB_sync.glGetSynciv =
+      (GdkGLProc_glGetSynciv) gdk_gl_get_proc_address ("glGetSynciv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetSynciv () - %s",
+               (_procs_GL_ARB_sync.glGetSynciv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_sync.glGetSynciv);
+}
+
+/* Get GL_ARB_sync functions */
+GdkGL_GL_ARB_sync *
+gdk_gl_get_GL_ARB_sync (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_sync");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glFenceSync () != NULL);
+          supported &= (gdk_gl_get_glIsSync () != NULL);
+          supported &= (gdk_gl_get_glDeleteSync () != NULL);
+          supported &= (gdk_gl_get_glClientWaitSync () != NULL);
+          supported &= (gdk_gl_get_glWaitSync () != NULL);
+          supported &= (gdk_gl_get_glGetInteger64v () != NULL);
+          supported &= (gdk_gl_get_glGetSynciv () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_sync () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_sync;
+}
+
+/*
+ * GL_ARB_texture_multisample
+ */
+
+static GdkGL_GL_ARB_texture_multisample _procs_GL_ARB_texture_multisample = {
+  (GdkGLProc_glTexImage2DMultisample) -1,
+  (GdkGLProc_glTexImage3DMultisample) -1,
+  (GdkGLProc_glGetMultisamplefv) -1,
+  (GdkGLProc_glSampleMaski) -1
+};
+
+/* glTexImage2DMultisample */
+GdkGLProc
+gdk_gl_get_glTexImage2DMultisample (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_texture_multisample.glTexImage2DMultisample == (GdkGLProc_glTexImage2DMultisample) -1)
+    _procs_GL_ARB_texture_multisample.glTexImage2DMultisample =
+      (GdkGLProc_glTexImage2DMultisample) gdk_gl_get_proc_address ("glTexImage2DMultisample");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexImage2DMultisample () - %s",
+               (_procs_GL_ARB_texture_multisample.glTexImage2DMultisample) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_texture_multisample.glTexImage2DMultisample);
+}
+
+/* glTexImage3DMultisample */
+GdkGLProc
+gdk_gl_get_glTexImage3DMultisample (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_texture_multisample.glTexImage3DMultisample == (GdkGLProc_glTexImage3DMultisample) -1)
+    _procs_GL_ARB_texture_multisample.glTexImage3DMultisample =
+      (GdkGLProc_glTexImage3DMultisample) gdk_gl_get_proc_address ("glTexImage3DMultisample");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexImage3DMultisample () - %s",
+               (_procs_GL_ARB_texture_multisample.glTexImage3DMultisample) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_texture_multisample.glTexImage3DMultisample);
+}
+
+/* glGetMultisamplefv */
+GdkGLProc
+gdk_gl_get_glGetMultisamplefv (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_texture_multisample.glGetMultisamplefv == (GdkGLProc_glGetMultisamplefv) -1)
+    _procs_GL_ARB_texture_multisample.glGetMultisamplefv =
+      (GdkGLProc_glGetMultisamplefv) gdk_gl_get_proc_address ("glGetMultisamplefv");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultisamplefv () - %s",
+               (_procs_GL_ARB_texture_multisample.glGetMultisamplefv) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_texture_multisample.glGetMultisamplefv);
+}
+
+/* glSampleMaski */
+GdkGLProc
+gdk_gl_get_glSampleMaski (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_texture_multisample.glSampleMaski == (GdkGLProc_glSampleMaski) -1)
+    _procs_GL_ARB_texture_multisample.glSampleMaski =
+      (GdkGLProc_glSampleMaski) gdk_gl_get_proc_address ("glSampleMaski");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSampleMaski () - %s",
+               (_procs_GL_ARB_texture_multisample.glSampleMaski) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_texture_multisample.glSampleMaski);
+}
+
+/* Get GL_ARB_texture_multisample functions */
+GdkGL_GL_ARB_texture_multisample *
+gdk_gl_get_GL_ARB_texture_multisample (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_texture_multisample");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glTexImage2DMultisample () != NULL);
+          supported &= (gdk_gl_get_glTexImage3DMultisample () != NULL);
+          supported &= (gdk_gl_get_glGetMultisamplefv () != NULL);
+          supported &= (gdk_gl_get_glSampleMaski () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_texture_multisample () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_texture_multisample;
+}
+
+/*
+ * GL_ARB_draw_buffers_blend
+ */
+
+static GdkGL_GL_ARB_draw_buffers_blend _procs_GL_ARB_draw_buffers_blend = {
+  (GdkGLProc_glBlendEquationi) -1,
+  (GdkGLProc_glBlendEquationSeparatei) -1,
+  (GdkGLProc_glBlendFunci) -1,
+  (GdkGLProc_glBlendFuncSeparatei) -1
+};
+
+/* glBlendEquationi */
+GdkGLProc
+gdk_gl_get_glBlendEquationi (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_buffers_blend.glBlendEquationi == (GdkGLProc_glBlendEquationi) -1)
+    _procs_GL_ARB_draw_buffers_blend.glBlendEquationi =
+      (GdkGLProc_glBlendEquationi) gdk_gl_get_proc_address ("glBlendEquationi");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendEquationi () - %s",
+               (_procs_GL_ARB_draw_buffers_blend.glBlendEquationi) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_buffers_blend.glBlendEquationi);
+}
+
+/* glBlendEquationSeparatei */
+GdkGLProc
+gdk_gl_get_glBlendEquationSeparatei (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_buffers_blend.glBlendEquationSeparatei == (GdkGLProc_glBlendEquationSeparatei) -1)
+    _procs_GL_ARB_draw_buffers_blend.glBlendEquationSeparatei =
+      (GdkGLProc_glBlendEquationSeparatei) gdk_gl_get_proc_address ("glBlendEquationSeparatei");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendEquationSeparatei () - %s",
+               (_procs_GL_ARB_draw_buffers_blend.glBlendEquationSeparatei) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_buffers_blend.glBlendEquationSeparatei);
+}
+
+/* glBlendFunci */
+GdkGLProc
+gdk_gl_get_glBlendFunci (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_buffers_blend.glBlendFunci == (GdkGLProc_glBlendFunci) -1)
+    _procs_GL_ARB_draw_buffers_blend.glBlendFunci =
+      (GdkGLProc_glBlendFunci) gdk_gl_get_proc_address ("glBlendFunci");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendFunci () - %s",
+               (_procs_GL_ARB_draw_buffers_blend.glBlendFunci) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_buffers_blend.glBlendFunci);
+}
+
+/* glBlendFuncSeparatei */
+GdkGLProc
+gdk_gl_get_glBlendFuncSeparatei (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_draw_buffers_blend.glBlendFuncSeparatei == (GdkGLProc_glBlendFuncSeparatei) -1)
+    _procs_GL_ARB_draw_buffers_blend.glBlendFuncSeparatei =
+      (GdkGLProc_glBlendFuncSeparatei) gdk_gl_get_proc_address ("glBlendFuncSeparatei");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendFuncSeparatei () - %s",
+               (_procs_GL_ARB_draw_buffers_blend.glBlendFuncSeparatei) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_draw_buffers_blend.glBlendFuncSeparatei);
+}
+
+/* Get GL_ARB_draw_buffers_blend functions */
+GdkGL_GL_ARB_draw_buffers_blend *
+gdk_gl_get_GL_ARB_draw_buffers_blend (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_draw_buffers_blend");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBlendEquationi () != NULL);
+          supported &= (gdk_gl_get_glBlendEquationSeparatei () != NULL);
+          supported &= (gdk_gl_get_glBlendFunci () != NULL);
+          supported &= (gdk_gl_get_glBlendFuncSeparatei () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_draw_buffers_blend () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_draw_buffers_blend;
+}
+
+/*
+ * GL_ARB_sample_shading
+ */
+
+static GdkGL_GL_ARB_sample_shading _procs_GL_ARB_sample_shading = {
+  (GdkGLProc_glMinSampleShading) -1
+};
+
+/* glMinSampleShading */
+GdkGLProc
+gdk_gl_get_glMinSampleShading (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_ARB_sample_shading.glMinSampleShading == (GdkGLProc_glMinSampleShading) -1)
+    _procs_GL_ARB_sample_shading.glMinSampleShading =
+      (GdkGLProc_glMinSampleShading) gdk_gl_get_proc_address ("glMinSampleShading");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMinSampleShading () - %s",
+               (_procs_GL_ARB_sample_shading.glMinSampleShading) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_ARB_sample_shading.glMinSampleShading);
+}
+
+/* Get GL_ARB_sample_shading functions */
+GdkGL_GL_ARB_sample_shading *
+gdk_gl_get_GL_ARB_sample_shading (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_ARB_sample_shading");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glMinSampleShading () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_ARB_sample_shading () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_ARB_sample_shading;
 }
 
 /*
@@ -21726,6 +28696,8231 @@ gdk_gl_get_GL_ATI_vertex_attrib_array_object (void)
 }
 
 /*
+ * GL_EXT_depth_bounds_test
+ */
+
+static GdkGL_GL_EXT_depth_bounds_test _procs_GL_EXT_depth_bounds_test = {
+  (GdkGLProc_glDepthBoundsEXT) -1
+};
+
+/* glDepthBoundsEXT */
+GdkGLProc
+gdk_gl_get_glDepthBoundsEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT == (GdkGLProc_glDepthBoundsEXT) -1)
+    _procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT =
+      (GdkGLProc_glDepthBoundsEXT) gdk_gl_get_proc_address ("glDepthBoundsEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDepthBoundsEXT () - %s",
+               (_procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT);
+}
+
+/* Get GL_EXT_depth_bounds_test functions */
+GdkGL_GL_EXT_depth_bounds_test *
+gdk_gl_get_GL_EXT_depth_bounds_test (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_depth_bounds_test");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glDepthBoundsEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_depth_bounds_test () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_depth_bounds_test;
+}
+
+/*
+ * GL_EXT_blend_equation_separate
+ */
+
+static GdkGL_GL_EXT_blend_equation_separate _procs_GL_EXT_blend_equation_separate = {
+  (GdkGLProc_glBlendEquationSeparateEXT) -1
+};
+
+/* glBlendEquationSeparateEXT */
+GdkGLProc
+gdk_gl_get_glBlendEquationSeparateEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_blend_equation_separate.glBlendEquationSeparateEXT == (GdkGLProc_glBlendEquationSeparateEXT) -1)
+    _procs_GL_EXT_blend_equation_separate.glBlendEquationSeparateEXT =
+      (GdkGLProc_glBlendEquationSeparateEXT) gdk_gl_get_proc_address ("glBlendEquationSeparateEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendEquationSeparateEXT () - %s",
+               (_procs_GL_EXT_blend_equation_separate.glBlendEquationSeparateEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_blend_equation_separate.glBlendEquationSeparateEXT);
+}
+
+/* Get GL_EXT_blend_equation_separate functions */
+GdkGL_GL_EXT_blend_equation_separate *
+gdk_gl_get_GL_EXT_blend_equation_separate (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_blend_equation_separate");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBlendEquationSeparateEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_blend_equation_separate () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_blend_equation_separate;
+}
+
+/*
+ * GL_EXT_framebuffer_object
+ */
+
+static GdkGL_GL_EXT_framebuffer_object _procs_GL_EXT_framebuffer_object = {
+  (GdkGLProc_glIsRenderbufferEXT) -1,
+  (GdkGLProc_glBindRenderbufferEXT) -1,
+  (GdkGLProc_glDeleteRenderbuffersEXT) -1,
+  (GdkGLProc_glGenRenderbuffersEXT) -1,
+  (GdkGLProc_glRenderbufferStorageEXT) -1,
+  (GdkGLProc_glGetRenderbufferParameterivEXT) -1,
+  (GdkGLProc_glIsFramebufferEXT) -1,
+  (GdkGLProc_glBindFramebufferEXT) -1,
+  (GdkGLProc_glDeleteFramebuffersEXT) -1,
+  (GdkGLProc_glGenFramebuffersEXT) -1,
+  (GdkGLProc_glCheckFramebufferStatusEXT) -1,
+  (GdkGLProc_glFramebufferTexture1DEXT) -1,
+  (GdkGLProc_glFramebufferTexture2DEXT) -1,
+  (GdkGLProc_glFramebufferTexture3DEXT) -1,
+  (GdkGLProc_glFramebufferRenderbufferEXT) -1,
+  (GdkGLProc_glGetFramebufferAttachmentParameterivEXT) -1,
+  (GdkGLProc_glGenerateMipmapEXT) -1
+};
+
+/* glIsRenderbufferEXT */
+GdkGLProc
+gdk_gl_get_glIsRenderbufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glIsRenderbufferEXT == (GdkGLProc_glIsRenderbufferEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glIsRenderbufferEXT =
+      (GdkGLProc_glIsRenderbufferEXT) gdk_gl_get_proc_address ("glIsRenderbufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsRenderbufferEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glIsRenderbufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glIsRenderbufferEXT);
+}
+
+/* glBindRenderbufferEXT */
+GdkGLProc
+gdk_gl_get_glBindRenderbufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glBindRenderbufferEXT == (GdkGLProc_glBindRenderbufferEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glBindRenderbufferEXT =
+      (GdkGLProc_glBindRenderbufferEXT) gdk_gl_get_proc_address ("glBindRenderbufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindRenderbufferEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glBindRenderbufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glBindRenderbufferEXT);
+}
+
+/* glDeleteRenderbuffersEXT */
+GdkGLProc
+gdk_gl_get_glDeleteRenderbuffersEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glDeleteRenderbuffersEXT == (GdkGLProc_glDeleteRenderbuffersEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glDeleteRenderbuffersEXT =
+      (GdkGLProc_glDeleteRenderbuffersEXT) gdk_gl_get_proc_address ("glDeleteRenderbuffersEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteRenderbuffersEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glDeleteRenderbuffersEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glDeleteRenderbuffersEXT);
+}
+
+/* glGenRenderbuffersEXT */
+GdkGLProc
+gdk_gl_get_glGenRenderbuffersEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glGenRenderbuffersEXT == (GdkGLProc_glGenRenderbuffersEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glGenRenderbuffersEXT =
+      (GdkGLProc_glGenRenderbuffersEXT) gdk_gl_get_proc_address ("glGenRenderbuffersEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenRenderbuffersEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glGenRenderbuffersEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glGenRenderbuffersEXT);
+}
+
+/* glRenderbufferStorageEXT */
+GdkGLProc
+gdk_gl_get_glRenderbufferStorageEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glRenderbufferStorageEXT == (GdkGLProc_glRenderbufferStorageEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glRenderbufferStorageEXT =
+      (GdkGLProc_glRenderbufferStorageEXT) gdk_gl_get_proc_address ("glRenderbufferStorageEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glRenderbufferStorageEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glRenderbufferStorageEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glRenderbufferStorageEXT);
+}
+
+/* glGetRenderbufferParameterivEXT */
+GdkGLProc
+gdk_gl_get_glGetRenderbufferParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glGetRenderbufferParameterivEXT == (GdkGLProc_glGetRenderbufferParameterivEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glGetRenderbufferParameterivEXT =
+      (GdkGLProc_glGetRenderbufferParameterivEXT) gdk_gl_get_proc_address ("glGetRenderbufferParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetRenderbufferParameterivEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glGetRenderbufferParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glGetRenderbufferParameterivEXT);
+}
+
+/* glIsFramebufferEXT */
+GdkGLProc
+gdk_gl_get_glIsFramebufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glIsFramebufferEXT == (GdkGLProc_glIsFramebufferEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glIsFramebufferEXT =
+      (GdkGLProc_glIsFramebufferEXT) gdk_gl_get_proc_address ("glIsFramebufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsFramebufferEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glIsFramebufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glIsFramebufferEXT);
+}
+
+/* glBindFramebufferEXT */
+GdkGLProc
+gdk_gl_get_glBindFramebufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glBindFramebufferEXT == (GdkGLProc_glBindFramebufferEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glBindFramebufferEXT =
+      (GdkGLProc_glBindFramebufferEXT) gdk_gl_get_proc_address ("glBindFramebufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindFramebufferEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glBindFramebufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glBindFramebufferEXT);
+}
+
+/* glDeleteFramebuffersEXT */
+GdkGLProc
+gdk_gl_get_glDeleteFramebuffersEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glDeleteFramebuffersEXT == (GdkGLProc_glDeleteFramebuffersEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glDeleteFramebuffersEXT =
+      (GdkGLProc_glDeleteFramebuffersEXT) gdk_gl_get_proc_address ("glDeleteFramebuffersEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteFramebuffersEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glDeleteFramebuffersEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glDeleteFramebuffersEXT);
+}
+
+/* glGenFramebuffersEXT */
+GdkGLProc
+gdk_gl_get_glGenFramebuffersEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glGenFramebuffersEXT == (GdkGLProc_glGenFramebuffersEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glGenFramebuffersEXT =
+      (GdkGLProc_glGenFramebuffersEXT) gdk_gl_get_proc_address ("glGenFramebuffersEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenFramebuffersEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glGenFramebuffersEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glGenFramebuffersEXT);
+}
+
+/* glCheckFramebufferStatusEXT */
+GdkGLProc
+gdk_gl_get_glCheckFramebufferStatusEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glCheckFramebufferStatusEXT == (GdkGLProc_glCheckFramebufferStatusEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glCheckFramebufferStatusEXT =
+      (GdkGLProc_glCheckFramebufferStatusEXT) gdk_gl_get_proc_address ("glCheckFramebufferStatusEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCheckFramebufferStatusEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glCheckFramebufferStatusEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glCheckFramebufferStatusEXT);
+}
+
+/* glFramebufferTexture1DEXT */
+GdkGLProc
+gdk_gl_get_glFramebufferTexture1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glFramebufferTexture1DEXT == (GdkGLProc_glFramebufferTexture1DEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glFramebufferTexture1DEXT =
+      (GdkGLProc_glFramebufferTexture1DEXT) gdk_gl_get_proc_address ("glFramebufferTexture1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTexture1DEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glFramebufferTexture1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glFramebufferTexture1DEXT);
+}
+
+/* glFramebufferTexture2DEXT */
+GdkGLProc
+gdk_gl_get_glFramebufferTexture2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glFramebufferTexture2DEXT == (GdkGLProc_glFramebufferTexture2DEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glFramebufferTexture2DEXT =
+      (GdkGLProc_glFramebufferTexture2DEXT) gdk_gl_get_proc_address ("glFramebufferTexture2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTexture2DEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glFramebufferTexture2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glFramebufferTexture2DEXT);
+}
+
+/* glFramebufferTexture3DEXT */
+GdkGLProc
+gdk_gl_get_glFramebufferTexture3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glFramebufferTexture3DEXT == (GdkGLProc_glFramebufferTexture3DEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glFramebufferTexture3DEXT =
+      (GdkGLProc_glFramebufferTexture3DEXT) gdk_gl_get_proc_address ("glFramebufferTexture3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTexture3DEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glFramebufferTexture3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glFramebufferTexture3DEXT);
+}
+
+/* glFramebufferRenderbufferEXT */
+GdkGLProc
+gdk_gl_get_glFramebufferRenderbufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glFramebufferRenderbufferEXT == (GdkGLProc_glFramebufferRenderbufferEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glFramebufferRenderbufferEXT =
+      (GdkGLProc_glFramebufferRenderbufferEXT) gdk_gl_get_proc_address ("glFramebufferRenderbufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferRenderbufferEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glFramebufferRenderbufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glFramebufferRenderbufferEXT);
+}
+
+/* glGetFramebufferAttachmentParameterivEXT */
+GdkGLProc
+gdk_gl_get_glGetFramebufferAttachmentParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glGetFramebufferAttachmentParameterivEXT == (GdkGLProc_glGetFramebufferAttachmentParameterivEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glGetFramebufferAttachmentParameterivEXT =
+      (GdkGLProc_glGetFramebufferAttachmentParameterivEXT) gdk_gl_get_proc_address ("glGetFramebufferAttachmentParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFramebufferAttachmentParameterivEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glGetFramebufferAttachmentParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glGetFramebufferAttachmentParameterivEXT);
+}
+
+/* glGenerateMipmapEXT */
+GdkGLProc
+gdk_gl_get_glGenerateMipmapEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_object.glGenerateMipmapEXT == (GdkGLProc_glGenerateMipmapEXT) -1)
+    _procs_GL_EXT_framebuffer_object.glGenerateMipmapEXT =
+      (GdkGLProc_glGenerateMipmapEXT) gdk_gl_get_proc_address ("glGenerateMipmapEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenerateMipmapEXT () - %s",
+               (_procs_GL_EXT_framebuffer_object.glGenerateMipmapEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_object.glGenerateMipmapEXT);
+}
+
+/* Get GL_EXT_framebuffer_object functions */
+GdkGL_GL_EXT_framebuffer_object *
+gdk_gl_get_GL_EXT_framebuffer_object (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_framebuffer_object");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glIsRenderbufferEXT () != NULL);
+          supported &= (gdk_gl_get_glBindRenderbufferEXT () != NULL);
+          supported &= (gdk_gl_get_glDeleteRenderbuffersEXT () != NULL);
+          supported &= (gdk_gl_get_glGenRenderbuffersEXT () != NULL);
+          supported &= (gdk_gl_get_glRenderbufferStorageEXT () != NULL);
+          supported &= (gdk_gl_get_glGetRenderbufferParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glIsFramebufferEXT () != NULL);
+          supported &= (gdk_gl_get_glBindFramebufferEXT () != NULL);
+          supported &= (gdk_gl_get_glDeleteFramebuffersEXT () != NULL);
+          supported &= (gdk_gl_get_glGenFramebuffersEXT () != NULL);
+          supported &= (gdk_gl_get_glCheckFramebufferStatusEXT () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTexture1DEXT () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTexture2DEXT () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTexture3DEXT () != NULL);
+          supported &= (gdk_gl_get_glFramebufferRenderbufferEXT () != NULL);
+          supported &= (gdk_gl_get_glGetFramebufferAttachmentParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glGenerateMipmapEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_framebuffer_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_framebuffer_object;
+}
+
+/*
+ * GL_GREMEDY_string_marker
+ */
+
+static GdkGL_GL_GREMEDY_string_marker _procs_GL_GREMEDY_string_marker = {
+  (GdkGLProc_glStringMarkerGREMEDY) -1
+};
+
+/* glStringMarkerGREMEDY */
+GdkGLProc
+gdk_gl_get_glStringMarkerGREMEDY (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_GREMEDY_string_marker.glStringMarkerGREMEDY == (GdkGLProc_glStringMarkerGREMEDY) -1)
+    _procs_GL_GREMEDY_string_marker.glStringMarkerGREMEDY =
+      (GdkGLProc_glStringMarkerGREMEDY) gdk_gl_get_proc_address ("glStringMarkerGREMEDY");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glStringMarkerGREMEDY () - %s",
+               (_procs_GL_GREMEDY_string_marker.glStringMarkerGREMEDY) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_GREMEDY_string_marker.glStringMarkerGREMEDY);
+}
+
+/* Get GL_GREMEDY_string_marker functions */
+GdkGL_GL_GREMEDY_string_marker *
+gdk_gl_get_GL_GREMEDY_string_marker (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_GREMEDY_string_marker");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glStringMarkerGREMEDY () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_GREMEDY_string_marker () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_GREMEDY_string_marker;
+}
+
+/*
+ * GL_EXT_stencil_clear_tag
+ */
+
+static GdkGL_GL_EXT_stencil_clear_tag _procs_GL_EXT_stencil_clear_tag = {
+  (GdkGLProc_glStencilClearTagEXT) -1
+};
+
+/* glStencilClearTagEXT */
+GdkGLProc
+gdk_gl_get_glStencilClearTagEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_stencil_clear_tag.glStencilClearTagEXT == (GdkGLProc_glStencilClearTagEXT) -1)
+    _procs_GL_EXT_stencil_clear_tag.glStencilClearTagEXT =
+      (GdkGLProc_glStencilClearTagEXT) gdk_gl_get_proc_address ("glStencilClearTagEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glStencilClearTagEXT () - %s",
+               (_procs_GL_EXT_stencil_clear_tag.glStencilClearTagEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_stencil_clear_tag.glStencilClearTagEXT);
+}
+
+/* Get GL_EXT_stencil_clear_tag functions */
+GdkGL_GL_EXT_stencil_clear_tag *
+gdk_gl_get_GL_EXT_stencil_clear_tag (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_stencil_clear_tag");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glStencilClearTagEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_stencil_clear_tag () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_stencil_clear_tag;
+}
+
+/*
+ * GL_EXT_framebuffer_blit
+ */
+
+static GdkGL_GL_EXT_framebuffer_blit _procs_GL_EXT_framebuffer_blit = {
+  (GdkGLProc_glBlitFramebufferEXT) -1
+};
+
+/* glBlitFramebufferEXT */
+GdkGLProc
+gdk_gl_get_glBlitFramebufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_blit.glBlitFramebufferEXT == (GdkGLProc_glBlitFramebufferEXT) -1)
+    _procs_GL_EXT_framebuffer_blit.glBlitFramebufferEXT =
+      (GdkGLProc_glBlitFramebufferEXT) gdk_gl_get_proc_address ("glBlitFramebufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlitFramebufferEXT () - %s",
+               (_procs_GL_EXT_framebuffer_blit.glBlitFramebufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_blit.glBlitFramebufferEXT);
+}
+
+/* Get GL_EXT_framebuffer_blit functions */
+GdkGL_GL_EXT_framebuffer_blit *
+gdk_gl_get_GL_EXT_framebuffer_blit (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_framebuffer_blit");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBlitFramebufferEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_framebuffer_blit () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_framebuffer_blit;
+}
+
+/*
+ * GL_EXT_framebuffer_multisample
+ */
+
+static GdkGL_GL_EXT_framebuffer_multisample _procs_GL_EXT_framebuffer_multisample = {
+  (GdkGLProc_glRenderbufferStorageMultisampleEXT) -1
+};
+
+/* glRenderbufferStorageMultisampleEXT */
+GdkGLProc
+gdk_gl_get_glRenderbufferStorageMultisampleEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_framebuffer_multisample.glRenderbufferStorageMultisampleEXT == (GdkGLProc_glRenderbufferStorageMultisampleEXT) -1)
+    _procs_GL_EXT_framebuffer_multisample.glRenderbufferStorageMultisampleEXT =
+      (GdkGLProc_glRenderbufferStorageMultisampleEXT) gdk_gl_get_proc_address ("glRenderbufferStorageMultisampleEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glRenderbufferStorageMultisampleEXT () - %s",
+               (_procs_GL_EXT_framebuffer_multisample.glRenderbufferStorageMultisampleEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_framebuffer_multisample.glRenderbufferStorageMultisampleEXT);
+}
+
+/* Get GL_EXT_framebuffer_multisample functions */
+GdkGL_GL_EXT_framebuffer_multisample *
+gdk_gl_get_GL_EXT_framebuffer_multisample (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_framebuffer_multisample");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glRenderbufferStorageMultisampleEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_framebuffer_multisample () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_framebuffer_multisample;
+}
+
+/*
+ * GL_EXT_timer_query
+ */
+
+static GdkGL_GL_EXT_timer_query _procs_GL_EXT_timer_query = {
+  (GdkGLProc_glGetQueryObjecti64vEXT) -1,
+  (GdkGLProc_glGetQueryObjectui64vEXT) -1
+};
+
+/* glGetQueryObjecti64vEXT */
+GdkGLProc
+gdk_gl_get_glGetQueryObjecti64vEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_timer_query.glGetQueryObjecti64vEXT == (GdkGLProc_glGetQueryObjecti64vEXT) -1)
+    _procs_GL_EXT_timer_query.glGetQueryObjecti64vEXT =
+      (GdkGLProc_glGetQueryObjecti64vEXT) gdk_gl_get_proc_address ("glGetQueryObjecti64vEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetQueryObjecti64vEXT () - %s",
+               (_procs_GL_EXT_timer_query.glGetQueryObjecti64vEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_timer_query.glGetQueryObjecti64vEXT);
+}
+
+/* glGetQueryObjectui64vEXT */
+GdkGLProc
+gdk_gl_get_glGetQueryObjectui64vEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_timer_query.glGetQueryObjectui64vEXT == (GdkGLProc_glGetQueryObjectui64vEXT) -1)
+    _procs_GL_EXT_timer_query.glGetQueryObjectui64vEXT =
+      (GdkGLProc_glGetQueryObjectui64vEXT) gdk_gl_get_proc_address ("glGetQueryObjectui64vEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetQueryObjectui64vEXT () - %s",
+               (_procs_GL_EXT_timer_query.glGetQueryObjectui64vEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_timer_query.glGetQueryObjectui64vEXT);
+}
+
+/* Get GL_EXT_timer_query functions */
+GdkGL_GL_EXT_timer_query *
+gdk_gl_get_GL_EXT_timer_query (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_timer_query");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glGetQueryObjecti64vEXT () != NULL);
+          supported &= (gdk_gl_get_glGetQueryObjectui64vEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_timer_query () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_timer_query;
+}
+
+/*
+ * GL_EXT_gpu_program_parameters
+ */
+
+static GdkGL_GL_EXT_gpu_program_parameters _procs_GL_EXT_gpu_program_parameters = {
+  (GdkGLProc_glProgramEnvParameters4fvEXT) -1,
+  (GdkGLProc_glProgramLocalParameters4fvEXT) -1
+};
+
+/* glProgramEnvParameters4fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramEnvParameters4fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_program_parameters.glProgramEnvParameters4fvEXT == (GdkGLProc_glProgramEnvParameters4fvEXT) -1)
+    _procs_GL_EXT_gpu_program_parameters.glProgramEnvParameters4fvEXT =
+      (GdkGLProc_glProgramEnvParameters4fvEXT) gdk_gl_get_proc_address ("glProgramEnvParameters4fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParameters4fvEXT () - %s",
+               (_procs_GL_EXT_gpu_program_parameters.glProgramEnvParameters4fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_program_parameters.glProgramEnvParameters4fvEXT);
+}
+
+/* glProgramLocalParameters4fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramLocalParameters4fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_program_parameters.glProgramLocalParameters4fvEXT == (GdkGLProc_glProgramLocalParameters4fvEXT) -1)
+    _procs_GL_EXT_gpu_program_parameters.glProgramLocalParameters4fvEXT =
+      (GdkGLProc_glProgramLocalParameters4fvEXT) gdk_gl_get_proc_address ("glProgramLocalParameters4fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParameters4fvEXT () - %s",
+               (_procs_GL_EXT_gpu_program_parameters.glProgramLocalParameters4fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_program_parameters.glProgramLocalParameters4fvEXT);
+}
+
+/* Get GL_EXT_gpu_program_parameters functions */
+GdkGL_GL_EXT_gpu_program_parameters *
+gdk_gl_get_GL_EXT_gpu_program_parameters (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_gpu_program_parameters");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glProgramEnvParameters4fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramLocalParameters4fvEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_gpu_program_parameters () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_gpu_program_parameters;
+}
+
+/*
+ * GL_APPLE_flush_buffer_range
+ */
+
+static GdkGL_GL_APPLE_flush_buffer_range _procs_GL_APPLE_flush_buffer_range = {
+  (GdkGLProc_glBufferParameteriAPPLE) -1,
+  (GdkGLProc_glFlushMappedBufferRangeAPPLE) -1
+};
+
+/* glBufferParameteriAPPLE */
+GdkGLProc
+gdk_gl_get_glBufferParameteriAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_flush_buffer_range.glBufferParameteriAPPLE == (GdkGLProc_glBufferParameteriAPPLE) -1)
+    _procs_GL_APPLE_flush_buffer_range.glBufferParameteriAPPLE =
+      (GdkGLProc_glBufferParameteriAPPLE) gdk_gl_get_proc_address ("glBufferParameteriAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBufferParameteriAPPLE () - %s",
+               (_procs_GL_APPLE_flush_buffer_range.glBufferParameteriAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_flush_buffer_range.glBufferParameteriAPPLE);
+}
+
+/* glFlushMappedBufferRangeAPPLE */
+GdkGLProc
+gdk_gl_get_glFlushMappedBufferRangeAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_flush_buffer_range.glFlushMappedBufferRangeAPPLE == (GdkGLProc_glFlushMappedBufferRangeAPPLE) -1)
+    _procs_GL_APPLE_flush_buffer_range.glFlushMappedBufferRangeAPPLE =
+      (GdkGLProc_glFlushMappedBufferRangeAPPLE) gdk_gl_get_proc_address ("glFlushMappedBufferRangeAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFlushMappedBufferRangeAPPLE () - %s",
+               (_procs_GL_APPLE_flush_buffer_range.glFlushMappedBufferRangeAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_flush_buffer_range.glFlushMappedBufferRangeAPPLE);
+}
+
+/* Get GL_APPLE_flush_buffer_range functions */
+GdkGL_GL_APPLE_flush_buffer_range *
+gdk_gl_get_GL_APPLE_flush_buffer_range (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_APPLE_flush_buffer_range");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBufferParameteriAPPLE () != NULL);
+          supported &= (gdk_gl_get_glFlushMappedBufferRangeAPPLE () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_APPLE_flush_buffer_range () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_APPLE_flush_buffer_range;
+}
+
+/*
+ * GL_NV_gpu_program4
+ */
+
+static GdkGL_GL_NV_gpu_program4 _procs_GL_NV_gpu_program4 = {
+  (GdkGLProc_glProgramLocalParameterI4iNV) -1,
+  (GdkGLProc_glProgramLocalParameterI4ivNV) -1,
+  (GdkGLProc_glProgramLocalParametersI4ivNV) -1,
+  (GdkGLProc_glProgramLocalParameterI4uiNV) -1,
+  (GdkGLProc_glProgramLocalParameterI4uivNV) -1,
+  (GdkGLProc_glProgramLocalParametersI4uivNV) -1,
+  (GdkGLProc_glProgramEnvParameterI4iNV) -1,
+  (GdkGLProc_glProgramEnvParameterI4ivNV) -1,
+  (GdkGLProc_glProgramEnvParametersI4ivNV) -1,
+  (GdkGLProc_glProgramEnvParameterI4uiNV) -1,
+  (GdkGLProc_glProgramEnvParameterI4uivNV) -1,
+  (GdkGLProc_glProgramEnvParametersI4uivNV) -1,
+  (GdkGLProc_glGetProgramLocalParameterIivNV) -1,
+  (GdkGLProc_glGetProgramLocalParameterIuivNV) -1,
+  (GdkGLProc_glGetProgramEnvParameterIivNV) -1,
+  (GdkGLProc_glGetProgramEnvParameterIuivNV) -1
+};
+
+/* glProgramLocalParameterI4iNV */
+GdkGLProc
+gdk_gl_get_glProgramLocalParameterI4iNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4iNV == (GdkGLProc_glProgramLocalParameterI4iNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramLocalParameterI4iNV =
+      (GdkGLProc_glProgramLocalParameterI4iNV) gdk_gl_get_proc_address ("glProgramLocalParameterI4iNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParameterI4iNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4iNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4iNV);
+}
+
+/* glProgramLocalParameterI4ivNV */
+GdkGLProc
+gdk_gl_get_glProgramLocalParameterI4ivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4ivNV == (GdkGLProc_glProgramLocalParameterI4ivNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramLocalParameterI4ivNV =
+      (GdkGLProc_glProgramLocalParameterI4ivNV) gdk_gl_get_proc_address ("glProgramLocalParameterI4ivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParameterI4ivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4ivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4ivNV);
+}
+
+/* glProgramLocalParametersI4ivNV */
+GdkGLProc
+gdk_gl_get_glProgramLocalParametersI4ivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramLocalParametersI4ivNV == (GdkGLProc_glProgramLocalParametersI4ivNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramLocalParametersI4ivNV =
+      (GdkGLProc_glProgramLocalParametersI4ivNV) gdk_gl_get_proc_address ("glProgramLocalParametersI4ivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParametersI4ivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramLocalParametersI4ivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramLocalParametersI4ivNV);
+}
+
+/* glProgramLocalParameterI4uiNV */
+GdkGLProc
+gdk_gl_get_glProgramLocalParameterI4uiNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4uiNV == (GdkGLProc_glProgramLocalParameterI4uiNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramLocalParameterI4uiNV =
+      (GdkGLProc_glProgramLocalParameterI4uiNV) gdk_gl_get_proc_address ("glProgramLocalParameterI4uiNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParameterI4uiNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4uiNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4uiNV);
+}
+
+/* glProgramLocalParameterI4uivNV */
+GdkGLProc
+gdk_gl_get_glProgramLocalParameterI4uivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4uivNV == (GdkGLProc_glProgramLocalParameterI4uivNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramLocalParameterI4uivNV =
+      (GdkGLProc_glProgramLocalParameterI4uivNV) gdk_gl_get_proc_address ("glProgramLocalParameterI4uivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParameterI4uivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4uivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramLocalParameterI4uivNV);
+}
+
+/* glProgramLocalParametersI4uivNV */
+GdkGLProc
+gdk_gl_get_glProgramLocalParametersI4uivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramLocalParametersI4uivNV == (GdkGLProc_glProgramLocalParametersI4uivNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramLocalParametersI4uivNV =
+      (GdkGLProc_glProgramLocalParametersI4uivNV) gdk_gl_get_proc_address ("glProgramLocalParametersI4uivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramLocalParametersI4uivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramLocalParametersI4uivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramLocalParametersI4uivNV);
+}
+
+/* glProgramEnvParameterI4iNV */
+GdkGLProc
+gdk_gl_get_glProgramEnvParameterI4iNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4iNV == (GdkGLProc_glProgramEnvParameterI4iNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramEnvParameterI4iNV =
+      (GdkGLProc_glProgramEnvParameterI4iNV) gdk_gl_get_proc_address ("glProgramEnvParameterI4iNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParameterI4iNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4iNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4iNV);
+}
+
+/* glProgramEnvParameterI4ivNV */
+GdkGLProc
+gdk_gl_get_glProgramEnvParameterI4ivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4ivNV == (GdkGLProc_glProgramEnvParameterI4ivNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramEnvParameterI4ivNV =
+      (GdkGLProc_glProgramEnvParameterI4ivNV) gdk_gl_get_proc_address ("glProgramEnvParameterI4ivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParameterI4ivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4ivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4ivNV);
+}
+
+/* glProgramEnvParametersI4ivNV */
+GdkGLProc
+gdk_gl_get_glProgramEnvParametersI4ivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramEnvParametersI4ivNV == (GdkGLProc_glProgramEnvParametersI4ivNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramEnvParametersI4ivNV =
+      (GdkGLProc_glProgramEnvParametersI4ivNV) gdk_gl_get_proc_address ("glProgramEnvParametersI4ivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParametersI4ivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramEnvParametersI4ivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramEnvParametersI4ivNV);
+}
+
+/* glProgramEnvParameterI4uiNV */
+GdkGLProc
+gdk_gl_get_glProgramEnvParameterI4uiNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4uiNV == (GdkGLProc_glProgramEnvParameterI4uiNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramEnvParameterI4uiNV =
+      (GdkGLProc_glProgramEnvParameterI4uiNV) gdk_gl_get_proc_address ("glProgramEnvParameterI4uiNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParameterI4uiNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4uiNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4uiNV);
+}
+
+/* glProgramEnvParameterI4uivNV */
+GdkGLProc
+gdk_gl_get_glProgramEnvParameterI4uivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4uivNV == (GdkGLProc_glProgramEnvParameterI4uivNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramEnvParameterI4uivNV =
+      (GdkGLProc_glProgramEnvParameterI4uivNV) gdk_gl_get_proc_address ("glProgramEnvParameterI4uivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParameterI4uivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4uivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramEnvParameterI4uivNV);
+}
+
+/* glProgramEnvParametersI4uivNV */
+GdkGLProc
+gdk_gl_get_glProgramEnvParametersI4uivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glProgramEnvParametersI4uivNV == (GdkGLProc_glProgramEnvParametersI4uivNV) -1)
+    _procs_GL_NV_gpu_program4.glProgramEnvParametersI4uivNV =
+      (GdkGLProc_glProgramEnvParametersI4uivNV) gdk_gl_get_proc_address ("glProgramEnvParametersI4uivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramEnvParametersI4uivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glProgramEnvParametersI4uivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glProgramEnvParametersI4uivNV);
+}
+
+/* glGetProgramLocalParameterIivNV */
+GdkGLProc
+gdk_gl_get_glGetProgramLocalParameterIivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glGetProgramLocalParameterIivNV == (GdkGLProc_glGetProgramLocalParameterIivNV) -1)
+    _procs_GL_NV_gpu_program4.glGetProgramLocalParameterIivNV =
+      (GdkGLProc_glGetProgramLocalParameterIivNV) gdk_gl_get_proc_address ("glGetProgramLocalParameterIivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramLocalParameterIivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glGetProgramLocalParameterIivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glGetProgramLocalParameterIivNV);
+}
+
+/* glGetProgramLocalParameterIuivNV */
+GdkGLProc
+gdk_gl_get_glGetProgramLocalParameterIuivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glGetProgramLocalParameterIuivNV == (GdkGLProc_glGetProgramLocalParameterIuivNV) -1)
+    _procs_GL_NV_gpu_program4.glGetProgramLocalParameterIuivNV =
+      (GdkGLProc_glGetProgramLocalParameterIuivNV) gdk_gl_get_proc_address ("glGetProgramLocalParameterIuivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramLocalParameterIuivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glGetProgramLocalParameterIuivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glGetProgramLocalParameterIuivNV);
+}
+
+/* glGetProgramEnvParameterIivNV */
+GdkGLProc
+gdk_gl_get_glGetProgramEnvParameterIivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glGetProgramEnvParameterIivNV == (GdkGLProc_glGetProgramEnvParameterIivNV) -1)
+    _procs_GL_NV_gpu_program4.glGetProgramEnvParameterIivNV =
+      (GdkGLProc_glGetProgramEnvParameterIivNV) gdk_gl_get_proc_address ("glGetProgramEnvParameterIivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramEnvParameterIivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glGetProgramEnvParameterIivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glGetProgramEnvParameterIivNV);
+}
+
+/* glGetProgramEnvParameterIuivNV */
+GdkGLProc
+gdk_gl_get_glGetProgramEnvParameterIuivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_gpu_program4.glGetProgramEnvParameterIuivNV == (GdkGLProc_glGetProgramEnvParameterIuivNV) -1)
+    _procs_GL_NV_gpu_program4.glGetProgramEnvParameterIuivNV =
+      (GdkGLProc_glGetProgramEnvParameterIuivNV) gdk_gl_get_proc_address ("glGetProgramEnvParameterIuivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetProgramEnvParameterIuivNV () - %s",
+               (_procs_GL_NV_gpu_program4.glGetProgramEnvParameterIuivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_gpu_program4.glGetProgramEnvParameterIuivNV);
+}
+
+/* Get GL_NV_gpu_program4 functions */
+GdkGL_GL_NV_gpu_program4 *
+gdk_gl_get_GL_NV_gpu_program4 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_gpu_program4");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glProgramLocalParameterI4iNV () != NULL);
+          supported &= (gdk_gl_get_glProgramLocalParameterI4ivNV () != NULL);
+          supported &= (gdk_gl_get_glProgramLocalParametersI4ivNV () != NULL);
+          supported &= (gdk_gl_get_glProgramLocalParameterI4uiNV () != NULL);
+          supported &= (gdk_gl_get_glProgramLocalParameterI4uivNV () != NULL);
+          supported &= (gdk_gl_get_glProgramLocalParametersI4uivNV () != NULL);
+          supported &= (gdk_gl_get_glProgramEnvParameterI4iNV () != NULL);
+          supported &= (gdk_gl_get_glProgramEnvParameterI4ivNV () != NULL);
+          supported &= (gdk_gl_get_glProgramEnvParametersI4ivNV () != NULL);
+          supported &= (gdk_gl_get_glProgramEnvParameterI4uiNV () != NULL);
+          supported &= (gdk_gl_get_glProgramEnvParameterI4uivNV () != NULL);
+          supported &= (gdk_gl_get_glProgramEnvParametersI4uivNV () != NULL);
+          supported &= (gdk_gl_get_glGetProgramLocalParameterIivNV () != NULL);
+          supported &= (gdk_gl_get_glGetProgramLocalParameterIuivNV () != NULL);
+          supported &= (gdk_gl_get_glGetProgramEnvParameterIivNV () != NULL);
+          supported &= (gdk_gl_get_glGetProgramEnvParameterIuivNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_gpu_program4 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_gpu_program4;
+}
+
+/*
+ * GL_NV_geometry_program4
+ */
+
+static GdkGL_GL_NV_geometry_program4 _procs_GL_NV_geometry_program4 = {
+  (GdkGLProc_glProgramVertexLimitNV) -1,
+  (GdkGLProc_glFramebufferTextureEXT) -1,
+  (GdkGLProc_glFramebufferTextureLayerEXT) -1,
+  (GdkGLProc_glFramebufferTextureFaceEXT) -1
+};
+
+/* glProgramVertexLimitNV */
+GdkGLProc
+gdk_gl_get_glProgramVertexLimitNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_geometry_program4.glProgramVertexLimitNV == (GdkGLProc_glProgramVertexLimitNV) -1)
+    _procs_GL_NV_geometry_program4.glProgramVertexLimitNV =
+      (GdkGLProc_glProgramVertexLimitNV) gdk_gl_get_proc_address ("glProgramVertexLimitNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramVertexLimitNV () - %s",
+               (_procs_GL_NV_geometry_program4.glProgramVertexLimitNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_geometry_program4.glProgramVertexLimitNV);
+}
+
+/* glFramebufferTextureEXT */
+GdkGLProc
+gdk_gl_get_glFramebufferTextureEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_geometry_program4.glFramebufferTextureEXT == (GdkGLProc_glFramebufferTextureEXT) -1)
+    _procs_GL_NV_geometry_program4.glFramebufferTextureEXT =
+      (GdkGLProc_glFramebufferTextureEXT) gdk_gl_get_proc_address ("glFramebufferTextureEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTextureEXT () - %s",
+               (_procs_GL_NV_geometry_program4.glFramebufferTextureEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_geometry_program4.glFramebufferTextureEXT);
+}
+
+/* glFramebufferTextureLayerEXT */
+GdkGLProc
+gdk_gl_get_glFramebufferTextureLayerEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_geometry_program4.glFramebufferTextureLayerEXT == (GdkGLProc_glFramebufferTextureLayerEXT) -1)
+    _procs_GL_NV_geometry_program4.glFramebufferTextureLayerEXT =
+      (GdkGLProc_glFramebufferTextureLayerEXT) gdk_gl_get_proc_address ("glFramebufferTextureLayerEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTextureLayerEXT () - %s",
+               (_procs_GL_NV_geometry_program4.glFramebufferTextureLayerEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_geometry_program4.glFramebufferTextureLayerEXT);
+}
+
+/* glFramebufferTextureFaceEXT */
+GdkGLProc
+gdk_gl_get_glFramebufferTextureFaceEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_geometry_program4.glFramebufferTextureFaceEXT == (GdkGLProc_glFramebufferTextureFaceEXT) -1)
+    _procs_GL_NV_geometry_program4.glFramebufferTextureFaceEXT =
+      (GdkGLProc_glFramebufferTextureFaceEXT) gdk_gl_get_proc_address ("glFramebufferTextureFaceEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferTextureFaceEXT () - %s",
+               (_procs_GL_NV_geometry_program4.glFramebufferTextureFaceEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_geometry_program4.glFramebufferTextureFaceEXT);
+}
+
+/* Get GL_NV_geometry_program4 functions */
+GdkGL_GL_NV_geometry_program4 *
+gdk_gl_get_GL_NV_geometry_program4 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_geometry_program4");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glProgramVertexLimitNV () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTextureEXT () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTextureLayerEXT () != NULL);
+          supported &= (gdk_gl_get_glFramebufferTextureFaceEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_geometry_program4 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_geometry_program4;
+}
+
+/*
+ * GL_EXT_geometry_shader4
+ */
+
+static GdkGL_GL_EXT_geometry_shader4 _procs_GL_EXT_geometry_shader4 = {
+  (GdkGLProc_glProgramParameteriEXT) -1
+};
+
+/* glProgramParameteriEXT */
+GdkGLProc
+gdk_gl_get_glProgramParameteriEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_geometry_shader4.glProgramParameteriEXT == (GdkGLProc_glProgramParameteriEXT) -1)
+    _procs_GL_EXT_geometry_shader4.glProgramParameteriEXT =
+      (GdkGLProc_glProgramParameteriEXT) gdk_gl_get_proc_address ("glProgramParameteriEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramParameteriEXT () - %s",
+               (_procs_GL_EXT_geometry_shader4.glProgramParameteriEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_geometry_shader4.glProgramParameteriEXT);
+}
+
+/* Get GL_EXT_geometry_shader4 functions */
+GdkGL_GL_EXT_geometry_shader4 *
+gdk_gl_get_GL_EXT_geometry_shader4 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_geometry_shader4");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glProgramParameteriEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_geometry_shader4 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_geometry_shader4;
+}
+
+/*
+ * GL_NV_vertex_program4
+ */
+
+static GdkGL_GL_NV_vertex_program4 _procs_GL_NV_vertex_program4 = {
+  (GdkGLProc_glVertexAttribI1iEXT) -1,
+  (GdkGLProc_glVertexAttribI2iEXT) -1,
+  (GdkGLProc_glVertexAttribI3iEXT) -1,
+  (GdkGLProc_glVertexAttribI4iEXT) -1,
+  (GdkGLProc_glVertexAttribI1uiEXT) -1,
+  (GdkGLProc_glVertexAttribI2uiEXT) -1,
+  (GdkGLProc_glVertexAttribI3uiEXT) -1,
+  (GdkGLProc_glVertexAttribI4uiEXT) -1,
+  (GdkGLProc_glVertexAttribI1ivEXT) -1,
+  (GdkGLProc_glVertexAttribI2ivEXT) -1,
+  (GdkGLProc_glVertexAttribI3ivEXT) -1,
+  (GdkGLProc_glVertexAttribI4ivEXT) -1,
+  (GdkGLProc_glVertexAttribI1uivEXT) -1,
+  (GdkGLProc_glVertexAttribI2uivEXT) -1,
+  (GdkGLProc_glVertexAttribI3uivEXT) -1,
+  (GdkGLProc_glVertexAttribI4uivEXT) -1,
+  (GdkGLProc_glVertexAttribI4bvEXT) -1,
+  (GdkGLProc_glVertexAttribI4svEXT) -1,
+  (GdkGLProc_glVertexAttribI4ubvEXT) -1,
+  (GdkGLProc_glVertexAttribI4usvEXT) -1,
+  (GdkGLProc_glVertexAttribIPointerEXT) -1,
+  (GdkGLProc_glGetVertexAttribIivEXT) -1,
+  (GdkGLProc_glGetVertexAttribIuivEXT) -1
+};
+
+/* glVertexAttribI1iEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI1iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI1iEXT == (GdkGLProc_glVertexAttribI1iEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI1iEXT =
+      (GdkGLProc_glVertexAttribI1iEXT) gdk_gl_get_proc_address ("glVertexAttribI1iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI1iEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI1iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI1iEXT);
+}
+
+/* glVertexAttribI2iEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI2iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI2iEXT == (GdkGLProc_glVertexAttribI2iEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI2iEXT =
+      (GdkGLProc_glVertexAttribI2iEXT) gdk_gl_get_proc_address ("glVertexAttribI2iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI2iEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI2iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI2iEXT);
+}
+
+/* glVertexAttribI3iEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI3iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI3iEXT == (GdkGLProc_glVertexAttribI3iEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI3iEXT =
+      (GdkGLProc_glVertexAttribI3iEXT) gdk_gl_get_proc_address ("glVertexAttribI3iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI3iEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI3iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI3iEXT);
+}
+
+/* glVertexAttribI4iEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI4iEXT == (GdkGLProc_glVertexAttribI4iEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI4iEXT =
+      (GdkGLProc_glVertexAttribI4iEXT) gdk_gl_get_proc_address ("glVertexAttribI4iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4iEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI4iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI4iEXT);
+}
+
+/* glVertexAttribI1uiEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI1uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI1uiEXT == (GdkGLProc_glVertexAttribI1uiEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI1uiEXT =
+      (GdkGLProc_glVertexAttribI1uiEXT) gdk_gl_get_proc_address ("glVertexAttribI1uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI1uiEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI1uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI1uiEXT);
+}
+
+/* glVertexAttribI2uiEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI2uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI2uiEXT == (GdkGLProc_glVertexAttribI2uiEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI2uiEXT =
+      (GdkGLProc_glVertexAttribI2uiEXT) gdk_gl_get_proc_address ("glVertexAttribI2uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI2uiEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI2uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI2uiEXT);
+}
+
+/* glVertexAttribI3uiEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI3uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI3uiEXT == (GdkGLProc_glVertexAttribI3uiEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI3uiEXT =
+      (GdkGLProc_glVertexAttribI3uiEXT) gdk_gl_get_proc_address ("glVertexAttribI3uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI3uiEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI3uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI3uiEXT);
+}
+
+/* glVertexAttribI4uiEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI4uiEXT == (GdkGLProc_glVertexAttribI4uiEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI4uiEXT =
+      (GdkGLProc_glVertexAttribI4uiEXT) gdk_gl_get_proc_address ("glVertexAttribI4uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4uiEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI4uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI4uiEXT);
+}
+
+/* glVertexAttribI1ivEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI1ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI1ivEXT == (GdkGLProc_glVertexAttribI1ivEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI1ivEXT =
+      (GdkGLProc_glVertexAttribI1ivEXT) gdk_gl_get_proc_address ("glVertexAttribI1ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI1ivEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI1ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI1ivEXT);
+}
+
+/* glVertexAttribI2ivEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI2ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI2ivEXT == (GdkGLProc_glVertexAttribI2ivEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI2ivEXT =
+      (GdkGLProc_glVertexAttribI2ivEXT) gdk_gl_get_proc_address ("glVertexAttribI2ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI2ivEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI2ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI2ivEXT);
+}
+
+/* glVertexAttribI3ivEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI3ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI3ivEXT == (GdkGLProc_glVertexAttribI3ivEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI3ivEXT =
+      (GdkGLProc_glVertexAttribI3ivEXT) gdk_gl_get_proc_address ("glVertexAttribI3ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI3ivEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI3ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI3ivEXT);
+}
+
+/* glVertexAttribI4ivEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI4ivEXT == (GdkGLProc_glVertexAttribI4ivEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI4ivEXT =
+      (GdkGLProc_glVertexAttribI4ivEXT) gdk_gl_get_proc_address ("glVertexAttribI4ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4ivEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI4ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI4ivEXT);
+}
+
+/* glVertexAttribI1uivEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI1uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI1uivEXT == (GdkGLProc_glVertexAttribI1uivEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI1uivEXT =
+      (GdkGLProc_glVertexAttribI1uivEXT) gdk_gl_get_proc_address ("glVertexAttribI1uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI1uivEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI1uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI1uivEXT);
+}
+
+/* glVertexAttribI2uivEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI2uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI2uivEXT == (GdkGLProc_glVertexAttribI2uivEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI2uivEXT =
+      (GdkGLProc_glVertexAttribI2uivEXT) gdk_gl_get_proc_address ("glVertexAttribI2uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI2uivEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI2uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI2uivEXT);
+}
+
+/* glVertexAttribI3uivEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI3uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI3uivEXT == (GdkGLProc_glVertexAttribI3uivEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI3uivEXT =
+      (GdkGLProc_glVertexAttribI3uivEXT) gdk_gl_get_proc_address ("glVertexAttribI3uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI3uivEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI3uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI3uivEXT);
+}
+
+/* glVertexAttribI4uivEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI4uivEXT == (GdkGLProc_glVertexAttribI4uivEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI4uivEXT =
+      (GdkGLProc_glVertexAttribI4uivEXT) gdk_gl_get_proc_address ("glVertexAttribI4uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4uivEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI4uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI4uivEXT);
+}
+
+/* glVertexAttribI4bvEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4bvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI4bvEXT == (GdkGLProc_glVertexAttribI4bvEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI4bvEXT =
+      (GdkGLProc_glVertexAttribI4bvEXT) gdk_gl_get_proc_address ("glVertexAttribI4bvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4bvEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI4bvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI4bvEXT);
+}
+
+/* glVertexAttribI4svEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4svEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI4svEXT == (GdkGLProc_glVertexAttribI4svEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI4svEXT =
+      (GdkGLProc_glVertexAttribI4svEXT) gdk_gl_get_proc_address ("glVertexAttribI4svEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4svEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI4svEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI4svEXT);
+}
+
+/* glVertexAttribI4ubvEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4ubvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI4ubvEXT == (GdkGLProc_glVertexAttribI4ubvEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI4ubvEXT =
+      (GdkGLProc_glVertexAttribI4ubvEXT) gdk_gl_get_proc_address ("glVertexAttribI4ubvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4ubvEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI4ubvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI4ubvEXT);
+}
+
+/* glVertexAttribI4usvEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribI4usvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribI4usvEXT == (GdkGLProc_glVertexAttribI4usvEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribI4usvEXT =
+      (GdkGLProc_glVertexAttribI4usvEXT) gdk_gl_get_proc_address ("glVertexAttribI4usvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribI4usvEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribI4usvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribI4usvEXT);
+}
+
+/* glVertexAttribIPointerEXT */
+GdkGLProc
+gdk_gl_get_glVertexAttribIPointerEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glVertexAttribIPointerEXT == (GdkGLProc_glVertexAttribIPointerEXT) -1)
+    _procs_GL_NV_vertex_program4.glVertexAttribIPointerEXT =
+      (GdkGLProc_glVertexAttribIPointerEXT) gdk_gl_get_proc_address ("glVertexAttribIPointerEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribIPointerEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glVertexAttribIPointerEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glVertexAttribIPointerEXT);
+}
+
+/* glGetVertexAttribIivEXT */
+GdkGLProc
+gdk_gl_get_glGetVertexAttribIivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glGetVertexAttribIivEXT == (GdkGLProc_glGetVertexAttribIivEXT) -1)
+    _procs_GL_NV_vertex_program4.glGetVertexAttribIivEXT =
+      (GdkGLProc_glGetVertexAttribIivEXT) gdk_gl_get_proc_address ("glGetVertexAttribIivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribIivEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glGetVertexAttribIivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glGetVertexAttribIivEXT);
+}
+
+/* glGetVertexAttribIuivEXT */
+GdkGLProc
+gdk_gl_get_glGetVertexAttribIuivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_program4.glGetVertexAttribIuivEXT == (GdkGLProc_glGetVertexAttribIuivEXT) -1)
+    _procs_GL_NV_vertex_program4.glGetVertexAttribIuivEXT =
+      (GdkGLProc_glGetVertexAttribIuivEXT) gdk_gl_get_proc_address ("glGetVertexAttribIuivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVertexAttribIuivEXT () - %s",
+               (_procs_GL_NV_vertex_program4.glGetVertexAttribIuivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_program4.glGetVertexAttribIuivEXT);
+}
+
+/* Get GL_NV_vertex_program4 functions */
+GdkGL_GL_NV_vertex_program4 *
+gdk_gl_get_GL_NV_vertex_program4 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_vertex_program4");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glVertexAttribI1iEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI2iEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI3iEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI4iEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI1uiEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI2uiEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI3uiEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI4uiEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI1ivEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI2ivEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI3ivEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI4ivEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI1uivEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI2uivEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI3uivEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI4uivEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI4bvEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI4svEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI4ubvEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribI4usvEXT () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribIPointerEXT () != NULL);
+          supported &= (gdk_gl_get_glGetVertexAttribIivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetVertexAttribIuivEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_vertex_program4 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_vertex_program4;
+}
+
+/*
+ * GL_EXT_gpu_shader4
+ */
+
+static GdkGL_GL_EXT_gpu_shader4 _procs_GL_EXT_gpu_shader4 = {
+  (GdkGLProc_glGetUniformuivEXT) -1,
+  (GdkGLProc_glBindFragDataLocationEXT) -1,
+  (GdkGLProc_glGetFragDataLocationEXT) -1,
+  (GdkGLProc_glUniform1uiEXT) -1,
+  (GdkGLProc_glUniform2uiEXT) -1,
+  (GdkGLProc_glUniform3uiEXT) -1,
+  (GdkGLProc_glUniform4uiEXT) -1,
+  (GdkGLProc_glUniform1uivEXT) -1,
+  (GdkGLProc_glUniform2uivEXT) -1,
+  (GdkGLProc_glUniform3uivEXT) -1,
+  (GdkGLProc_glUniform4uivEXT) -1
+};
+
+/* glGetUniformuivEXT */
+GdkGLProc
+gdk_gl_get_glGetUniformuivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glGetUniformuivEXT == (GdkGLProc_glGetUniformuivEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glGetUniformuivEXT =
+      (GdkGLProc_glGetUniformuivEXT) gdk_gl_get_proc_address ("glGetUniformuivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformuivEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glGetUniformuivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glGetUniformuivEXT);
+}
+
+/* glBindFragDataLocationEXT */
+GdkGLProc
+gdk_gl_get_glBindFragDataLocationEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glBindFragDataLocationEXT == (GdkGLProc_glBindFragDataLocationEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glBindFragDataLocationEXT =
+      (GdkGLProc_glBindFragDataLocationEXT) gdk_gl_get_proc_address ("glBindFragDataLocationEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindFragDataLocationEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glBindFragDataLocationEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glBindFragDataLocationEXT);
+}
+
+/* glGetFragDataLocationEXT */
+GdkGLProc
+gdk_gl_get_glGetFragDataLocationEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glGetFragDataLocationEXT == (GdkGLProc_glGetFragDataLocationEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glGetFragDataLocationEXT =
+      (GdkGLProc_glGetFragDataLocationEXT) gdk_gl_get_proc_address ("glGetFragDataLocationEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFragDataLocationEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glGetFragDataLocationEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glGetFragDataLocationEXT);
+}
+
+/* glUniform1uiEXT */
+GdkGLProc
+gdk_gl_get_glUniform1uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glUniform1uiEXT == (GdkGLProc_glUniform1uiEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glUniform1uiEXT =
+      (GdkGLProc_glUniform1uiEXT) gdk_gl_get_proc_address ("glUniform1uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1uiEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glUniform1uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glUniform1uiEXT);
+}
+
+/* glUniform2uiEXT */
+GdkGLProc
+gdk_gl_get_glUniform2uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glUniform2uiEXT == (GdkGLProc_glUniform2uiEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glUniform2uiEXT =
+      (GdkGLProc_glUniform2uiEXT) gdk_gl_get_proc_address ("glUniform2uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2uiEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glUniform2uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glUniform2uiEXT);
+}
+
+/* glUniform3uiEXT */
+GdkGLProc
+gdk_gl_get_glUniform3uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glUniform3uiEXT == (GdkGLProc_glUniform3uiEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glUniform3uiEXT =
+      (GdkGLProc_glUniform3uiEXT) gdk_gl_get_proc_address ("glUniform3uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3uiEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glUniform3uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glUniform3uiEXT);
+}
+
+/* glUniform4uiEXT */
+GdkGLProc
+gdk_gl_get_glUniform4uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glUniform4uiEXT == (GdkGLProc_glUniform4uiEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glUniform4uiEXT =
+      (GdkGLProc_glUniform4uiEXT) gdk_gl_get_proc_address ("glUniform4uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4uiEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glUniform4uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glUniform4uiEXT);
+}
+
+/* glUniform1uivEXT */
+GdkGLProc
+gdk_gl_get_glUniform1uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glUniform1uivEXT == (GdkGLProc_glUniform1uivEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glUniform1uivEXT =
+      (GdkGLProc_glUniform1uivEXT) gdk_gl_get_proc_address ("glUniform1uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform1uivEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glUniform1uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glUniform1uivEXT);
+}
+
+/* glUniform2uivEXT */
+GdkGLProc
+gdk_gl_get_glUniform2uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glUniform2uivEXT == (GdkGLProc_glUniform2uivEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glUniform2uivEXT =
+      (GdkGLProc_glUniform2uivEXT) gdk_gl_get_proc_address ("glUniform2uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform2uivEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glUniform2uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glUniform2uivEXT);
+}
+
+/* glUniform3uivEXT */
+GdkGLProc
+gdk_gl_get_glUniform3uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glUniform3uivEXT == (GdkGLProc_glUniform3uivEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glUniform3uivEXT =
+      (GdkGLProc_glUniform3uivEXT) gdk_gl_get_proc_address ("glUniform3uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform3uivEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glUniform3uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glUniform3uivEXT);
+}
+
+/* glUniform4uivEXT */
+GdkGLProc
+gdk_gl_get_glUniform4uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_gpu_shader4.glUniform4uivEXT == (GdkGLProc_glUniform4uivEXT) -1)
+    _procs_GL_EXT_gpu_shader4.glUniform4uivEXT =
+      (GdkGLProc_glUniform4uivEXT) gdk_gl_get_proc_address ("glUniform4uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniform4uivEXT () - %s",
+               (_procs_GL_EXT_gpu_shader4.glUniform4uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_gpu_shader4.glUniform4uivEXT);
+}
+
+/* Get GL_EXT_gpu_shader4 functions */
+GdkGL_GL_EXT_gpu_shader4 *
+gdk_gl_get_GL_EXT_gpu_shader4 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_gpu_shader4");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glGetUniformuivEXT () != NULL);
+          supported &= (gdk_gl_get_glBindFragDataLocationEXT () != NULL);
+          supported &= (gdk_gl_get_glGetFragDataLocationEXT () != NULL);
+          supported &= (gdk_gl_get_glUniform1uiEXT () != NULL);
+          supported &= (gdk_gl_get_glUniform2uiEXT () != NULL);
+          supported &= (gdk_gl_get_glUniform3uiEXT () != NULL);
+          supported &= (gdk_gl_get_glUniform4uiEXT () != NULL);
+          supported &= (gdk_gl_get_glUniform1uivEXT () != NULL);
+          supported &= (gdk_gl_get_glUniform2uivEXT () != NULL);
+          supported &= (gdk_gl_get_glUniform3uivEXT () != NULL);
+          supported &= (gdk_gl_get_glUniform4uivEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_gpu_shader4 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_gpu_shader4;
+}
+
+/*
+ * GL_EXT_draw_instanced
+ */
+
+static GdkGL_GL_EXT_draw_instanced _procs_GL_EXT_draw_instanced = {
+  (GdkGLProc_glDrawArraysInstancedEXT) -1,
+  (GdkGLProc_glDrawElementsInstancedEXT) -1
+};
+
+/* glDrawArraysInstancedEXT */
+GdkGLProc
+gdk_gl_get_glDrawArraysInstancedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_draw_instanced.glDrawArraysInstancedEXT == (GdkGLProc_glDrawArraysInstancedEXT) -1)
+    _procs_GL_EXT_draw_instanced.glDrawArraysInstancedEXT =
+      (GdkGLProc_glDrawArraysInstancedEXT) gdk_gl_get_proc_address ("glDrawArraysInstancedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawArraysInstancedEXT () - %s",
+               (_procs_GL_EXT_draw_instanced.glDrawArraysInstancedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_draw_instanced.glDrawArraysInstancedEXT);
+}
+
+/* glDrawElementsInstancedEXT */
+GdkGLProc
+gdk_gl_get_glDrawElementsInstancedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_draw_instanced.glDrawElementsInstancedEXT == (GdkGLProc_glDrawElementsInstancedEXT) -1)
+    _procs_GL_EXT_draw_instanced.glDrawElementsInstancedEXT =
+      (GdkGLProc_glDrawElementsInstancedEXT) gdk_gl_get_proc_address ("glDrawElementsInstancedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawElementsInstancedEXT () - %s",
+               (_procs_GL_EXT_draw_instanced.glDrawElementsInstancedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_draw_instanced.glDrawElementsInstancedEXT);
+}
+
+/* Get GL_EXT_draw_instanced functions */
+GdkGL_GL_EXT_draw_instanced *
+gdk_gl_get_GL_EXT_draw_instanced (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_draw_instanced");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glDrawArraysInstancedEXT () != NULL);
+          supported &= (gdk_gl_get_glDrawElementsInstancedEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_draw_instanced () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_draw_instanced;
+}
+
+/*
+ * GL_EXT_texture_buffer_object
+ */
+
+static GdkGL_GL_EXT_texture_buffer_object _procs_GL_EXT_texture_buffer_object = {
+  (GdkGLProc_glTexBufferEXT) -1
+};
+
+/* glTexBufferEXT */
+GdkGLProc
+gdk_gl_get_glTexBufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_texture_buffer_object.glTexBufferEXT == (GdkGLProc_glTexBufferEXT) -1)
+    _procs_GL_EXT_texture_buffer_object.glTexBufferEXT =
+      (GdkGLProc_glTexBufferEXT) gdk_gl_get_proc_address ("glTexBufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexBufferEXT () - %s",
+               (_procs_GL_EXT_texture_buffer_object.glTexBufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_texture_buffer_object.glTexBufferEXT);
+}
+
+/* Get GL_EXT_texture_buffer_object functions */
+GdkGL_GL_EXT_texture_buffer_object *
+gdk_gl_get_GL_EXT_texture_buffer_object (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_texture_buffer_object");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glTexBufferEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_texture_buffer_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_texture_buffer_object;
+}
+
+/*
+ * GL_NV_depth_buffer_float
+ */
+
+static GdkGL_GL_NV_depth_buffer_float _procs_GL_NV_depth_buffer_float = {
+  (GdkGLProc_glDepthRangedNV) -1,
+  (GdkGLProc_glClearDepthdNV) -1,
+  (GdkGLProc_glDepthBoundsdNV) -1
+};
+
+/* glDepthRangedNV */
+GdkGLProc
+gdk_gl_get_glDepthRangedNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_depth_buffer_float.glDepthRangedNV == (GdkGLProc_glDepthRangedNV) -1)
+    _procs_GL_NV_depth_buffer_float.glDepthRangedNV =
+      (GdkGLProc_glDepthRangedNV) gdk_gl_get_proc_address ("glDepthRangedNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDepthRangedNV () - %s",
+               (_procs_GL_NV_depth_buffer_float.glDepthRangedNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_depth_buffer_float.glDepthRangedNV);
+}
+
+/* glClearDepthdNV */
+GdkGLProc
+gdk_gl_get_glClearDepthdNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_depth_buffer_float.glClearDepthdNV == (GdkGLProc_glClearDepthdNV) -1)
+    _procs_GL_NV_depth_buffer_float.glClearDepthdNV =
+      (GdkGLProc_glClearDepthdNV) gdk_gl_get_proc_address ("glClearDepthdNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClearDepthdNV () - %s",
+               (_procs_GL_NV_depth_buffer_float.glClearDepthdNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_depth_buffer_float.glClearDepthdNV);
+}
+
+/* glDepthBoundsdNV */
+GdkGLProc
+gdk_gl_get_glDepthBoundsdNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_depth_buffer_float.glDepthBoundsdNV == (GdkGLProc_glDepthBoundsdNV) -1)
+    _procs_GL_NV_depth_buffer_float.glDepthBoundsdNV =
+      (GdkGLProc_glDepthBoundsdNV) gdk_gl_get_proc_address ("glDepthBoundsdNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDepthBoundsdNV () - %s",
+               (_procs_GL_NV_depth_buffer_float.glDepthBoundsdNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_depth_buffer_float.glDepthBoundsdNV);
+}
+
+/* Get GL_NV_depth_buffer_float functions */
+GdkGL_GL_NV_depth_buffer_float *
+gdk_gl_get_GL_NV_depth_buffer_float (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_depth_buffer_float");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glDepthRangedNV () != NULL);
+          supported &= (gdk_gl_get_glClearDepthdNV () != NULL);
+          supported &= (gdk_gl_get_glDepthBoundsdNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_depth_buffer_float () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_depth_buffer_float;
+}
+
+/*
+ * GL_NV_framebuffer_multisample_coverage
+ */
+
+static GdkGL_GL_NV_framebuffer_multisample_coverage _procs_GL_NV_framebuffer_multisample_coverage = {
+  (GdkGLProc_glRenderbufferStorageMultisampleCoverageNV) -1
+};
+
+/* glRenderbufferStorageMultisampleCoverageNV */
+GdkGLProc
+gdk_gl_get_glRenderbufferStorageMultisampleCoverageNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_framebuffer_multisample_coverage.glRenderbufferStorageMultisampleCoverageNV == (GdkGLProc_glRenderbufferStorageMultisampleCoverageNV) -1)
+    _procs_GL_NV_framebuffer_multisample_coverage.glRenderbufferStorageMultisampleCoverageNV =
+      (GdkGLProc_glRenderbufferStorageMultisampleCoverageNV) gdk_gl_get_proc_address ("glRenderbufferStorageMultisampleCoverageNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glRenderbufferStorageMultisampleCoverageNV () - %s",
+               (_procs_GL_NV_framebuffer_multisample_coverage.glRenderbufferStorageMultisampleCoverageNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_framebuffer_multisample_coverage.glRenderbufferStorageMultisampleCoverageNV);
+}
+
+/* Get GL_NV_framebuffer_multisample_coverage functions */
+GdkGL_GL_NV_framebuffer_multisample_coverage *
+gdk_gl_get_GL_NV_framebuffer_multisample_coverage (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_framebuffer_multisample_coverage");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glRenderbufferStorageMultisampleCoverageNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_framebuffer_multisample_coverage () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_framebuffer_multisample_coverage;
+}
+
+/*
+ * GL_NV_parameter_buffer_object
+ */
+
+static GdkGL_GL_NV_parameter_buffer_object _procs_GL_NV_parameter_buffer_object = {
+  (GdkGLProc_glProgramBufferParametersfvNV) -1,
+  (GdkGLProc_glProgramBufferParametersIivNV) -1,
+  (GdkGLProc_glProgramBufferParametersIuivNV) -1
+};
+
+/* glProgramBufferParametersfvNV */
+GdkGLProc
+gdk_gl_get_glProgramBufferParametersfvNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_parameter_buffer_object.glProgramBufferParametersfvNV == (GdkGLProc_glProgramBufferParametersfvNV) -1)
+    _procs_GL_NV_parameter_buffer_object.glProgramBufferParametersfvNV =
+      (GdkGLProc_glProgramBufferParametersfvNV) gdk_gl_get_proc_address ("glProgramBufferParametersfvNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramBufferParametersfvNV () - %s",
+               (_procs_GL_NV_parameter_buffer_object.glProgramBufferParametersfvNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_parameter_buffer_object.glProgramBufferParametersfvNV);
+}
+
+/* glProgramBufferParametersIivNV */
+GdkGLProc
+gdk_gl_get_glProgramBufferParametersIivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_parameter_buffer_object.glProgramBufferParametersIivNV == (GdkGLProc_glProgramBufferParametersIivNV) -1)
+    _procs_GL_NV_parameter_buffer_object.glProgramBufferParametersIivNV =
+      (GdkGLProc_glProgramBufferParametersIivNV) gdk_gl_get_proc_address ("glProgramBufferParametersIivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramBufferParametersIivNV () - %s",
+               (_procs_GL_NV_parameter_buffer_object.glProgramBufferParametersIivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_parameter_buffer_object.glProgramBufferParametersIivNV);
+}
+
+/* glProgramBufferParametersIuivNV */
+GdkGLProc
+gdk_gl_get_glProgramBufferParametersIuivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_parameter_buffer_object.glProgramBufferParametersIuivNV == (GdkGLProc_glProgramBufferParametersIuivNV) -1)
+    _procs_GL_NV_parameter_buffer_object.glProgramBufferParametersIuivNV =
+      (GdkGLProc_glProgramBufferParametersIuivNV) gdk_gl_get_proc_address ("glProgramBufferParametersIuivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramBufferParametersIuivNV () - %s",
+               (_procs_GL_NV_parameter_buffer_object.glProgramBufferParametersIuivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_parameter_buffer_object.glProgramBufferParametersIuivNV);
+}
+
+/* Get GL_NV_parameter_buffer_object functions */
+GdkGL_GL_NV_parameter_buffer_object *
+gdk_gl_get_GL_NV_parameter_buffer_object (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_parameter_buffer_object");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glProgramBufferParametersfvNV () != NULL);
+          supported &= (gdk_gl_get_glProgramBufferParametersIivNV () != NULL);
+          supported &= (gdk_gl_get_glProgramBufferParametersIuivNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_parameter_buffer_object () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_parameter_buffer_object;
+}
+
+/*
+ * GL_EXT_draw_buffers2
+ */
+
+static GdkGL_GL_EXT_draw_buffers2 _procs_GL_EXT_draw_buffers2 = {
+  (GdkGLProc_glColorMaskIndexedEXT) -1,
+  (GdkGLProc_glGetBooleanIndexedvEXT) -1,
+  (GdkGLProc_glGetIntegerIndexedvEXT) -1,
+  (GdkGLProc_glEnableIndexedEXT) -1,
+  (GdkGLProc_glDisableIndexedEXT) -1,
+  (GdkGLProc_glIsEnabledIndexedEXT) -1
+};
+
+/* glColorMaskIndexedEXT */
+GdkGLProc
+gdk_gl_get_glColorMaskIndexedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_draw_buffers2.glColorMaskIndexedEXT == (GdkGLProc_glColorMaskIndexedEXT) -1)
+    _procs_GL_EXT_draw_buffers2.glColorMaskIndexedEXT =
+      (GdkGLProc_glColorMaskIndexedEXT) gdk_gl_get_proc_address ("glColorMaskIndexedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorMaskIndexedEXT () - %s",
+               (_procs_GL_EXT_draw_buffers2.glColorMaskIndexedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_draw_buffers2.glColorMaskIndexedEXT);
+}
+
+/* glGetBooleanIndexedvEXT */
+GdkGLProc
+gdk_gl_get_glGetBooleanIndexedvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_draw_buffers2.glGetBooleanIndexedvEXT == (GdkGLProc_glGetBooleanIndexedvEXT) -1)
+    _procs_GL_EXT_draw_buffers2.glGetBooleanIndexedvEXT =
+      (GdkGLProc_glGetBooleanIndexedvEXT) gdk_gl_get_proc_address ("glGetBooleanIndexedvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetBooleanIndexedvEXT () - %s",
+               (_procs_GL_EXT_draw_buffers2.glGetBooleanIndexedvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_draw_buffers2.glGetBooleanIndexedvEXT);
+}
+
+/* glGetIntegerIndexedvEXT */
+GdkGLProc
+gdk_gl_get_glGetIntegerIndexedvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_draw_buffers2.glGetIntegerIndexedvEXT == (GdkGLProc_glGetIntegerIndexedvEXT) -1)
+    _procs_GL_EXT_draw_buffers2.glGetIntegerIndexedvEXT =
+      (GdkGLProc_glGetIntegerIndexedvEXT) gdk_gl_get_proc_address ("glGetIntegerIndexedvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetIntegerIndexedvEXT () - %s",
+               (_procs_GL_EXT_draw_buffers2.glGetIntegerIndexedvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_draw_buffers2.glGetIntegerIndexedvEXT);
+}
+
+/* glEnableIndexedEXT */
+GdkGLProc
+gdk_gl_get_glEnableIndexedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_draw_buffers2.glEnableIndexedEXT == (GdkGLProc_glEnableIndexedEXT) -1)
+    _procs_GL_EXT_draw_buffers2.glEnableIndexedEXT =
+      (GdkGLProc_glEnableIndexedEXT) gdk_gl_get_proc_address ("glEnableIndexedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEnableIndexedEXT () - %s",
+               (_procs_GL_EXT_draw_buffers2.glEnableIndexedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_draw_buffers2.glEnableIndexedEXT);
+}
+
+/* glDisableIndexedEXT */
+GdkGLProc
+gdk_gl_get_glDisableIndexedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_draw_buffers2.glDisableIndexedEXT == (GdkGLProc_glDisableIndexedEXT) -1)
+    _procs_GL_EXT_draw_buffers2.glDisableIndexedEXT =
+      (GdkGLProc_glDisableIndexedEXT) gdk_gl_get_proc_address ("glDisableIndexedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDisableIndexedEXT () - %s",
+               (_procs_GL_EXT_draw_buffers2.glDisableIndexedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_draw_buffers2.glDisableIndexedEXT);
+}
+
+/* glIsEnabledIndexedEXT */
+GdkGLProc
+gdk_gl_get_glIsEnabledIndexedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_draw_buffers2.glIsEnabledIndexedEXT == (GdkGLProc_glIsEnabledIndexedEXT) -1)
+    _procs_GL_EXT_draw_buffers2.glIsEnabledIndexedEXT =
+      (GdkGLProc_glIsEnabledIndexedEXT) gdk_gl_get_proc_address ("glIsEnabledIndexedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsEnabledIndexedEXT () - %s",
+               (_procs_GL_EXT_draw_buffers2.glIsEnabledIndexedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_draw_buffers2.glIsEnabledIndexedEXT);
+}
+
+/* Get GL_EXT_draw_buffers2 functions */
+GdkGL_GL_EXT_draw_buffers2 *
+gdk_gl_get_GL_EXT_draw_buffers2 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_draw_buffers2");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glColorMaskIndexedEXT () != NULL);
+          supported &= (gdk_gl_get_glGetBooleanIndexedvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetIntegerIndexedvEXT () != NULL);
+          supported &= (gdk_gl_get_glEnableIndexedEXT () != NULL);
+          supported &= (gdk_gl_get_glDisableIndexedEXT () != NULL);
+          supported &= (gdk_gl_get_glIsEnabledIndexedEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_draw_buffers2 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_draw_buffers2;
+}
+
+/*
+ * GL_NV_transform_feedback
+ */
+
+static GdkGL_GL_NV_transform_feedback _procs_GL_NV_transform_feedback = {
+  (GdkGLProc_glBeginTransformFeedbackNV) -1,
+  (GdkGLProc_glEndTransformFeedbackNV) -1,
+  (GdkGLProc_glTransformFeedbackAttribsNV) -1,
+  (GdkGLProc_glBindBufferRangeNV) -1,
+  (GdkGLProc_glBindBufferOffsetNV) -1,
+  (GdkGLProc_glBindBufferBaseNV) -1,
+  (GdkGLProc_glTransformFeedbackVaryingsNV) -1,
+  (GdkGLProc_glActiveVaryingNV) -1,
+  (GdkGLProc_glGetVaryingLocationNV) -1,
+  (GdkGLProc_glGetActiveVaryingNV) -1,
+  (GdkGLProc_glGetTransformFeedbackVaryingNV) -1
+};
+
+/* glBeginTransformFeedbackNV */
+GdkGLProc
+gdk_gl_get_glBeginTransformFeedbackNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glBeginTransformFeedbackNV == (GdkGLProc_glBeginTransformFeedbackNV) -1)
+    _procs_GL_NV_transform_feedback.glBeginTransformFeedbackNV =
+      (GdkGLProc_glBeginTransformFeedbackNV) gdk_gl_get_proc_address ("glBeginTransformFeedbackNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginTransformFeedbackNV () - %s",
+               (_procs_GL_NV_transform_feedback.glBeginTransformFeedbackNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glBeginTransformFeedbackNV);
+}
+
+/* glEndTransformFeedbackNV */
+GdkGLProc
+gdk_gl_get_glEndTransformFeedbackNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glEndTransformFeedbackNV == (GdkGLProc_glEndTransformFeedbackNV) -1)
+    _procs_GL_NV_transform_feedback.glEndTransformFeedbackNV =
+      (GdkGLProc_glEndTransformFeedbackNV) gdk_gl_get_proc_address ("glEndTransformFeedbackNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndTransformFeedbackNV () - %s",
+               (_procs_GL_NV_transform_feedback.glEndTransformFeedbackNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glEndTransformFeedbackNV);
+}
+
+/* glTransformFeedbackAttribsNV */
+GdkGLProc
+gdk_gl_get_glTransformFeedbackAttribsNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glTransformFeedbackAttribsNV == (GdkGLProc_glTransformFeedbackAttribsNV) -1)
+    _procs_GL_NV_transform_feedback.glTransformFeedbackAttribsNV =
+      (GdkGLProc_glTransformFeedbackAttribsNV) gdk_gl_get_proc_address ("glTransformFeedbackAttribsNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTransformFeedbackAttribsNV () - %s",
+               (_procs_GL_NV_transform_feedback.glTransformFeedbackAttribsNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glTransformFeedbackAttribsNV);
+}
+
+/* glBindBufferRangeNV */
+GdkGLProc
+gdk_gl_get_glBindBufferRangeNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glBindBufferRangeNV == (GdkGLProc_glBindBufferRangeNV) -1)
+    _procs_GL_NV_transform_feedback.glBindBufferRangeNV =
+      (GdkGLProc_glBindBufferRangeNV) gdk_gl_get_proc_address ("glBindBufferRangeNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindBufferRangeNV () - %s",
+               (_procs_GL_NV_transform_feedback.glBindBufferRangeNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glBindBufferRangeNV);
+}
+
+/* glBindBufferOffsetNV */
+GdkGLProc
+gdk_gl_get_glBindBufferOffsetNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glBindBufferOffsetNV == (GdkGLProc_glBindBufferOffsetNV) -1)
+    _procs_GL_NV_transform_feedback.glBindBufferOffsetNV =
+      (GdkGLProc_glBindBufferOffsetNV) gdk_gl_get_proc_address ("glBindBufferOffsetNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindBufferOffsetNV () - %s",
+               (_procs_GL_NV_transform_feedback.glBindBufferOffsetNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glBindBufferOffsetNV);
+}
+
+/* glBindBufferBaseNV */
+GdkGLProc
+gdk_gl_get_glBindBufferBaseNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glBindBufferBaseNV == (GdkGLProc_glBindBufferBaseNV) -1)
+    _procs_GL_NV_transform_feedback.glBindBufferBaseNV =
+      (GdkGLProc_glBindBufferBaseNV) gdk_gl_get_proc_address ("glBindBufferBaseNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindBufferBaseNV () - %s",
+               (_procs_GL_NV_transform_feedback.glBindBufferBaseNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glBindBufferBaseNV);
+}
+
+/* glTransformFeedbackVaryingsNV */
+GdkGLProc
+gdk_gl_get_glTransformFeedbackVaryingsNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glTransformFeedbackVaryingsNV == (GdkGLProc_glTransformFeedbackVaryingsNV) -1)
+    _procs_GL_NV_transform_feedback.glTransformFeedbackVaryingsNV =
+      (GdkGLProc_glTransformFeedbackVaryingsNV) gdk_gl_get_proc_address ("glTransformFeedbackVaryingsNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTransformFeedbackVaryingsNV () - %s",
+               (_procs_GL_NV_transform_feedback.glTransformFeedbackVaryingsNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glTransformFeedbackVaryingsNV);
+}
+
+/* glActiveVaryingNV */
+GdkGLProc
+gdk_gl_get_glActiveVaryingNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glActiveVaryingNV == (GdkGLProc_glActiveVaryingNV) -1)
+    _procs_GL_NV_transform_feedback.glActiveVaryingNV =
+      (GdkGLProc_glActiveVaryingNV) gdk_gl_get_proc_address ("glActiveVaryingNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glActiveVaryingNV () - %s",
+               (_procs_GL_NV_transform_feedback.glActiveVaryingNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glActiveVaryingNV);
+}
+
+/* glGetVaryingLocationNV */
+GdkGLProc
+gdk_gl_get_glGetVaryingLocationNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glGetVaryingLocationNV == (GdkGLProc_glGetVaryingLocationNV) -1)
+    _procs_GL_NV_transform_feedback.glGetVaryingLocationNV =
+      (GdkGLProc_glGetVaryingLocationNV) gdk_gl_get_proc_address ("glGetVaryingLocationNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVaryingLocationNV () - %s",
+               (_procs_GL_NV_transform_feedback.glGetVaryingLocationNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glGetVaryingLocationNV);
+}
+
+/* glGetActiveVaryingNV */
+GdkGLProc
+gdk_gl_get_glGetActiveVaryingNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glGetActiveVaryingNV == (GdkGLProc_glGetActiveVaryingNV) -1)
+    _procs_GL_NV_transform_feedback.glGetActiveVaryingNV =
+      (GdkGLProc_glGetActiveVaryingNV) gdk_gl_get_proc_address ("glGetActiveVaryingNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetActiveVaryingNV () - %s",
+               (_procs_GL_NV_transform_feedback.glGetActiveVaryingNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glGetActiveVaryingNV);
+}
+
+/* glGetTransformFeedbackVaryingNV */
+GdkGLProc
+gdk_gl_get_glGetTransformFeedbackVaryingNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback.glGetTransformFeedbackVaryingNV == (GdkGLProc_glGetTransformFeedbackVaryingNV) -1)
+    _procs_GL_NV_transform_feedback.glGetTransformFeedbackVaryingNV =
+      (GdkGLProc_glGetTransformFeedbackVaryingNV) gdk_gl_get_proc_address ("glGetTransformFeedbackVaryingNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTransformFeedbackVaryingNV () - %s",
+               (_procs_GL_NV_transform_feedback.glGetTransformFeedbackVaryingNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback.glGetTransformFeedbackVaryingNV);
+}
+
+/* Get GL_NV_transform_feedback functions */
+GdkGL_GL_NV_transform_feedback *
+gdk_gl_get_GL_NV_transform_feedback (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_transform_feedback");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBeginTransformFeedbackNV () != NULL);
+          supported &= (gdk_gl_get_glEndTransformFeedbackNV () != NULL);
+          supported &= (gdk_gl_get_glTransformFeedbackAttribsNV () != NULL);
+          supported &= (gdk_gl_get_glBindBufferRangeNV () != NULL);
+          supported &= (gdk_gl_get_glBindBufferOffsetNV () != NULL);
+          supported &= (gdk_gl_get_glBindBufferBaseNV () != NULL);
+          supported &= (gdk_gl_get_glTransformFeedbackVaryingsNV () != NULL);
+          supported &= (gdk_gl_get_glActiveVaryingNV () != NULL);
+          supported &= (gdk_gl_get_glGetVaryingLocationNV () != NULL);
+          supported &= (gdk_gl_get_glGetActiveVaryingNV () != NULL);
+          supported &= (gdk_gl_get_glGetTransformFeedbackVaryingNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_transform_feedback () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_transform_feedback;
+}
+
+/*
+ * GL_EXT_bindable_uniform
+ */
+
+static GdkGL_GL_EXT_bindable_uniform _procs_GL_EXT_bindable_uniform = {
+  (GdkGLProc_glUniformBufferEXT) -1,
+  (GdkGLProc_glGetUniformBufferSizeEXT) -1,
+  (GdkGLProc_glGetUniformOffsetEXT) -1
+};
+
+/* glUniformBufferEXT */
+GdkGLProc
+gdk_gl_get_glUniformBufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_bindable_uniform.glUniformBufferEXT == (GdkGLProc_glUniformBufferEXT) -1)
+    _procs_GL_EXT_bindable_uniform.glUniformBufferEXT =
+      (GdkGLProc_glUniformBufferEXT) gdk_gl_get_proc_address ("glUniformBufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformBufferEXT () - %s",
+               (_procs_GL_EXT_bindable_uniform.glUniformBufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_bindable_uniform.glUniformBufferEXT);
+}
+
+/* glGetUniformBufferSizeEXT */
+GdkGLProc
+gdk_gl_get_glGetUniformBufferSizeEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_bindable_uniform.glGetUniformBufferSizeEXT == (GdkGLProc_glGetUniformBufferSizeEXT) -1)
+    _procs_GL_EXT_bindable_uniform.glGetUniformBufferSizeEXT =
+      (GdkGLProc_glGetUniformBufferSizeEXT) gdk_gl_get_proc_address ("glGetUniformBufferSizeEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformBufferSizeEXT () - %s",
+               (_procs_GL_EXT_bindable_uniform.glGetUniformBufferSizeEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_bindable_uniform.glGetUniformBufferSizeEXT);
+}
+
+/* glGetUniformOffsetEXT */
+GdkGLProc
+gdk_gl_get_glGetUniformOffsetEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_bindable_uniform.glGetUniformOffsetEXT == (GdkGLProc_glGetUniformOffsetEXT) -1)
+    _procs_GL_EXT_bindable_uniform.glGetUniformOffsetEXT =
+      (GdkGLProc_glGetUniformOffsetEXT) gdk_gl_get_proc_address ("glGetUniformOffsetEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformOffsetEXT () - %s",
+               (_procs_GL_EXT_bindable_uniform.glGetUniformOffsetEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_bindable_uniform.glGetUniformOffsetEXT);
+}
+
+/* Get GL_EXT_bindable_uniform functions */
+GdkGL_GL_EXT_bindable_uniform *
+gdk_gl_get_GL_EXT_bindable_uniform (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_bindable_uniform");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glUniformBufferEXT () != NULL);
+          supported &= (gdk_gl_get_glGetUniformBufferSizeEXT () != NULL);
+          supported &= (gdk_gl_get_glGetUniformOffsetEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_bindable_uniform () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_bindable_uniform;
+}
+
+/*
+ * GL_EXT_texture_integer
+ */
+
+static GdkGL_GL_EXT_texture_integer _procs_GL_EXT_texture_integer = {
+  (GdkGLProc_glTexParameterIivEXT) -1,
+  (GdkGLProc_glTexParameterIuivEXT) -1,
+  (GdkGLProc_glGetTexParameterIivEXT) -1,
+  (GdkGLProc_glGetTexParameterIuivEXT) -1,
+  (GdkGLProc_glClearColorIiEXT) -1,
+  (GdkGLProc_glClearColorIuiEXT) -1
+};
+
+/* glTexParameterIivEXT */
+GdkGLProc
+gdk_gl_get_glTexParameterIivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_texture_integer.glTexParameterIivEXT == (GdkGLProc_glTexParameterIivEXT) -1)
+    _procs_GL_EXT_texture_integer.glTexParameterIivEXT =
+      (GdkGLProc_glTexParameterIivEXT) gdk_gl_get_proc_address ("glTexParameterIivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexParameterIivEXT () - %s",
+               (_procs_GL_EXT_texture_integer.glTexParameterIivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_texture_integer.glTexParameterIivEXT);
+}
+
+/* glTexParameterIuivEXT */
+GdkGLProc
+gdk_gl_get_glTexParameterIuivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_texture_integer.glTexParameterIuivEXT == (GdkGLProc_glTexParameterIuivEXT) -1)
+    _procs_GL_EXT_texture_integer.glTexParameterIuivEXT =
+      (GdkGLProc_glTexParameterIuivEXT) gdk_gl_get_proc_address ("glTexParameterIuivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexParameterIuivEXT () - %s",
+               (_procs_GL_EXT_texture_integer.glTexParameterIuivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_texture_integer.glTexParameterIuivEXT);
+}
+
+/* glGetTexParameterIivEXT */
+GdkGLProc
+gdk_gl_get_glGetTexParameterIivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_texture_integer.glGetTexParameterIivEXT == (GdkGLProc_glGetTexParameterIivEXT) -1)
+    _procs_GL_EXT_texture_integer.glGetTexParameterIivEXT =
+      (GdkGLProc_glGetTexParameterIivEXT) gdk_gl_get_proc_address ("glGetTexParameterIivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTexParameterIivEXT () - %s",
+               (_procs_GL_EXT_texture_integer.glGetTexParameterIivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_texture_integer.glGetTexParameterIivEXT);
+}
+
+/* glGetTexParameterIuivEXT */
+GdkGLProc
+gdk_gl_get_glGetTexParameterIuivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_texture_integer.glGetTexParameterIuivEXT == (GdkGLProc_glGetTexParameterIuivEXT) -1)
+    _procs_GL_EXT_texture_integer.glGetTexParameterIuivEXT =
+      (GdkGLProc_glGetTexParameterIuivEXT) gdk_gl_get_proc_address ("glGetTexParameterIuivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTexParameterIuivEXT () - %s",
+               (_procs_GL_EXT_texture_integer.glGetTexParameterIuivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_texture_integer.glGetTexParameterIuivEXT);
+}
+
+/* glClearColorIiEXT */
+GdkGLProc
+gdk_gl_get_glClearColorIiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_texture_integer.glClearColorIiEXT == (GdkGLProc_glClearColorIiEXT) -1)
+    _procs_GL_EXT_texture_integer.glClearColorIiEXT =
+      (GdkGLProc_glClearColorIiEXT) gdk_gl_get_proc_address ("glClearColorIiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClearColorIiEXT () - %s",
+               (_procs_GL_EXT_texture_integer.glClearColorIiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_texture_integer.glClearColorIiEXT);
+}
+
+/* glClearColorIuiEXT */
+GdkGLProc
+gdk_gl_get_glClearColorIuiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_texture_integer.glClearColorIuiEXT == (GdkGLProc_glClearColorIuiEXT) -1)
+    _procs_GL_EXT_texture_integer.glClearColorIuiEXT =
+      (GdkGLProc_glClearColorIuiEXT) gdk_gl_get_proc_address ("glClearColorIuiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClearColorIuiEXT () - %s",
+               (_procs_GL_EXT_texture_integer.glClearColorIuiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_texture_integer.glClearColorIuiEXT);
+}
+
+/* Get GL_EXT_texture_integer functions */
+GdkGL_GL_EXT_texture_integer *
+gdk_gl_get_GL_EXT_texture_integer (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_texture_integer");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glTexParameterIivEXT () != NULL);
+          supported &= (gdk_gl_get_glTexParameterIuivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetTexParameterIivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetTexParameterIuivEXT () != NULL);
+          supported &= (gdk_gl_get_glClearColorIiEXT () != NULL);
+          supported &= (gdk_gl_get_glClearColorIuiEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_texture_integer () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_texture_integer;
+}
+
+/*
+ * GL_GREMEDY_frame_terminator
+ */
+
+static GdkGL_GL_GREMEDY_frame_terminator _procs_GL_GREMEDY_frame_terminator = {
+  (GdkGLProc_glFrameTerminatorGREMEDY) -1
+};
+
+/* glFrameTerminatorGREMEDY */
+GdkGLProc
+gdk_gl_get_glFrameTerminatorGREMEDY (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_GREMEDY_frame_terminator.glFrameTerminatorGREMEDY == (GdkGLProc_glFrameTerminatorGREMEDY) -1)
+    _procs_GL_GREMEDY_frame_terminator.glFrameTerminatorGREMEDY =
+      (GdkGLProc_glFrameTerminatorGREMEDY) gdk_gl_get_proc_address ("glFrameTerminatorGREMEDY");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFrameTerminatorGREMEDY () - %s",
+               (_procs_GL_GREMEDY_frame_terminator.glFrameTerminatorGREMEDY) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_GREMEDY_frame_terminator.glFrameTerminatorGREMEDY);
+}
+
+/* Get GL_GREMEDY_frame_terminator functions */
+GdkGL_GL_GREMEDY_frame_terminator *
+gdk_gl_get_GL_GREMEDY_frame_terminator (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_GREMEDY_frame_terminator");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glFrameTerminatorGREMEDY () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_GREMEDY_frame_terminator () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_GREMEDY_frame_terminator;
+}
+
+/*
+ * GL_NV_conditional_render
+ */
+
+static GdkGL_GL_NV_conditional_render _procs_GL_NV_conditional_render = {
+  (GdkGLProc_glBeginConditionalRenderNV) -1,
+  (GdkGLProc_glEndConditionalRenderNV) -1
+};
+
+/* glBeginConditionalRenderNV */
+GdkGLProc
+gdk_gl_get_glBeginConditionalRenderNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_conditional_render.glBeginConditionalRenderNV == (GdkGLProc_glBeginConditionalRenderNV) -1)
+    _procs_GL_NV_conditional_render.glBeginConditionalRenderNV =
+      (GdkGLProc_glBeginConditionalRenderNV) gdk_gl_get_proc_address ("glBeginConditionalRenderNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginConditionalRenderNV () - %s",
+               (_procs_GL_NV_conditional_render.glBeginConditionalRenderNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_conditional_render.glBeginConditionalRenderNV);
+}
+
+/* glEndConditionalRenderNV */
+GdkGLProc
+gdk_gl_get_glEndConditionalRenderNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_conditional_render.glEndConditionalRenderNV == (GdkGLProc_glEndConditionalRenderNV) -1)
+    _procs_GL_NV_conditional_render.glEndConditionalRenderNV =
+      (GdkGLProc_glEndConditionalRenderNV) gdk_gl_get_proc_address ("glEndConditionalRenderNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndConditionalRenderNV () - %s",
+               (_procs_GL_NV_conditional_render.glEndConditionalRenderNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_conditional_render.glEndConditionalRenderNV);
+}
+
+/* Get GL_NV_conditional_render functions */
+GdkGL_GL_NV_conditional_render *
+gdk_gl_get_GL_NV_conditional_render (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_conditional_render");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBeginConditionalRenderNV () != NULL);
+          supported &= (gdk_gl_get_glEndConditionalRenderNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_conditional_render () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_conditional_render;
+}
+
+/*
+ * GL_NV_present_video
+ */
+
+static GdkGL_GL_NV_present_video _procs_GL_NV_present_video = {
+  (GdkGLProc_glPresentFrameKeyedNV) -1,
+  (GdkGLProc_glPresentFrameDualFillNV) -1,
+  (GdkGLProc_glGetVideoivNV) -1,
+  (GdkGLProc_glGetVideouivNV) -1,
+  (GdkGLProc_glGetVideoi64vNV) -1,
+  (GdkGLProc_glGetVideoui64vNV) -1
+};
+
+/* glPresentFrameKeyedNV */
+GdkGLProc
+gdk_gl_get_glPresentFrameKeyedNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_present_video.glPresentFrameKeyedNV == (GdkGLProc_glPresentFrameKeyedNV) -1)
+    _procs_GL_NV_present_video.glPresentFrameKeyedNV =
+      (GdkGLProc_glPresentFrameKeyedNV) gdk_gl_get_proc_address ("glPresentFrameKeyedNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPresentFrameKeyedNV () - %s",
+               (_procs_GL_NV_present_video.glPresentFrameKeyedNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_present_video.glPresentFrameKeyedNV);
+}
+
+/* glPresentFrameDualFillNV */
+GdkGLProc
+gdk_gl_get_glPresentFrameDualFillNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_present_video.glPresentFrameDualFillNV == (GdkGLProc_glPresentFrameDualFillNV) -1)
+    _procs_GL_NV_present_video.glPresentFrameDualFillNV =
+      (GdkGLProc_glPresentFrameDualFillNV) gdk_gl_get_proc_address ("glPresentFrameDualFillNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPresentFrameDualFillNV () - %s",
+               (_procs_GL_NV_present_video.glPresentFrameDualFillNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_present_video.glPresentFrameDualFillNV);
+}
+
+/* glGetVideoivNV */
+GdkGLProc
+gdk_gl_get_glGetVideoivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_present_video.glGetVideoivNV == (GdkGLProc_glGetVideoivNV) -1)
+    _procs_GL_NV_present_video.glGetVideoivNV =
+      (GdkGLProc_glGetVideoivNV) gdk_gl_get_proc_address ("glGetVideoivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVideoivNV () - %s",
+               (_procs_GL_NV_present_video.glGetVideoivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_present_video.glGetVideoivNV);
+}
+
+/* glGetVideouivNV */
+GdkGLProc
+gdk_gl_get_glGetVideouivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_present_video.glGetVideouivNV == (GdkGLProc_glGetVideouivNV) -1)
+    _procs_GL_NV_present_video.glGetVideouivNV =
+      (GdkGLProc_glGetVideouivNV) gdk_gl_get_proc_address ("glGetVideouivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVideouivNV () - %s",
+               (_procs_GL_NV_present_video.glGetVideouivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_present_video.glGetVideouivNV);
+}
+
+/* glGetVideoi64vNV */
+GdkGLProc
+gdk_gl_get_glGetVideoi64vNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_present_video.glGetVideoi64vNV == (GdkGLProc_glGetVideoi64vNV) -1)
+    _procs_GL_NV_present_video.glGetVideoi64vNV =
+      (GdkGLProc_glGetVideoi64vNV) gdk_gl_get_proc_address ("glGetVideoi64vNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVideoi64vNV () - %s",
+               (_procs_GL_NV_present_video.glGetVideoi64vNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_present_video.glGetVideoi64vNV);
+}
+
+/* glGetVideoui64vNV */
+GdkGLProc
+gdk_gl_get_glGetVideoui64vNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_present_video.glGetVideoui64vNV == (GdkGLProc_glGetVideoui64vNV) -1)
+    _procs_GL_NV_present_video.glGetVideoui64vNV =
+      (GdkGLProc_glGetVideoui64vNV) gdk_gl_get_proc_address ("glGetVideoui64vNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVideoui64vNV () - %s",
+               (_procs_GL_NV_present_video.glGetVideoui64vNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_present_video.glGetVideoui64vNV);
+}
+
+/* Get GL_NV_present_video functions */
+GdkGL_GL_NV_present_video *
+gdk_gl_get_GL_NV_present_video (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_present_video");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glPresentFrameKeyedNV () != NULL);
+          supported &= (gdk_gl_get_glPresentFrameDualFillNV () != NULL);
+          supported &= (gdk_gl_get_glGetVideoivNV () != NULL);
+          supported &= (gdk_gl_get_glGetVideouivNV () != NULL);
+          supported &= (gdk_gl_get_glGetVideoi64vNV () != NULL);
+          supported &= (gdk_gl_get_glGetVideoui64vNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_present_video () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_present_video;
+}
+
+/*
+ * GL_EXT_transform_feedback
+ */
+
+static GdkGL_GL_EXT_transform_feedback _procs_GL_EXT_transform_feedback = {
+  (GdkGLProc_glBeginTransformFeedbackEXT) -1,
+  (GdkGLProc_glEndTransformFeedbackEXT) -1,
+  (GdkGLProc_glBindBufferRangeEXT) -1,
+  (GdkGLProc_glBindBufferOffsetEXT) -1,
+  (GdkGLProc_glBindBufferBaseEXT) -1,
+  (GdkGLProc_glTransformFeedbackVaryingsEXT) -1,
+  (GdkGLProc_glGetTransformFeedbackVaryingEXT) -1
+};
+
+/* glBeginTransformFeedbackEXT */
+GdkGLProc
+gdk_gl_get_glBeginTransformFeedbackEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_transform_feedback.glBeginTransformFeedbackEXT == (GdkGLProc_glBeginTransformFeedbackEXT) -1)
+    _procs_GL_EXT_transform_feedback.glBeginTransformFeedbackEXT =
+      (GdkGLProc_glBeginTransformFeedbackEXT) gdk_gl_get_proc_address ("glBeginTransformFeedbackEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginTransformFeedbackEXT () - %s",
+               (_procs_GL_EXT_transform_feedback.glBeginTransformFeedbackEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_transform_feedback.glBeginTransformFeedbackEXT);
+}
+
+/* glEndTransformFeedbackEXT */
+GdkGLProc
+gdk_gl_get_glEndTransformFeedbackEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_transform_feedback.glEndTransformFeedbackEXT == (GdkGLProc_glEndTransformFeedbackEXT) -1)
+    _procs_GL_EXT_transform_feedback.glEndTransformFeedbackEXT =
+      (GdkGLProc_glEndTransformFeedbackEXT) gdk_gl_get_proc_address ("glEndTransformFeedbackEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndTransformFeedbackEXT () - %s",
+               (_procs_GL_EXT_transform_feedback.glEndTransformFeedbackEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_transform_feedback.glEndTransformFeedbackEXT);
+}
+
+/* glBindBufferRangeEXT */
+GdkGLProc
+gdk_gl_get_glBindBufferRangeEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_transform_feedback.glBindBufferRangeEXT == (GdkGLProc_glBindBufferRangeEXT) -1)
+    _procs_GL_EXT_transform_feedback.glBindBufferRangeEXT =
+      (GdkGLProc_glBindBufferRangeEXT) gdk_gl_get_proc_address ("glBindBufferRangeEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindBufferRangeEXT () - %s",
+               (_procs_GL_EXT_transform_feedback.glBindBufferRangeEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_transform_feedback.glBindBufferRangeEXT);
+}
+
+/* glBindBufferOffsetEXT */
+GdkGLProc
+gdk_gl_get_glBindBufferOffsetEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_transform_feedback.glBindBufferOffsetEXT == (GdkGLProc_glBindBufferOffsetEXT) -1)
+    _procs_GL_EXT_transform_feedback.glBindBufferOffsetEXT =
+      (GdkGLProc_glBindBufferOffsetEXT) gdk_gl_get_proc_address ("glBindBufferOffsetEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindBufferOffsetEXT () - %s",
+               (_procs_GL_EXT_transform_feedback.glBindBufferOffsetEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_transform_feedback.glBindBufferOffsetEXT);
+}
+
+/* glBindBufferBaseEXT */
+GdkGLProc
+gdk_gl_get_glBindBufferBaseEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_transform_feedback.glBindBufferBaseEXT == (GdkGLProc_glBindBufferBaseEXT) -1)
+    _procs_GL_EXT_transform_feedback.glBindBufferBaseEXT =
+      (GdkGLProc_glBindBufferBaseEXT) gdk_gl_get_proc_address ("glBindBufferBaseEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindBufferBaseEXT () - %s",
+               (_procs_GL_EXT_transform_feedback.glBindBufferBaseEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_transform_feedback.glBindBufferBaseEXT);
+}
+
+/* glTransformFeedbackVaryingsEXT */
+GdkGLProc
+gdk_gl_get_glTransformFeedbackVaryingsEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_transform_feedback.glTransformFeedbackVaryingsEXT == (GdkGLProc_glTransformFeedbackVaryingsEXT) -1)
+    _procs_GL_EXT_transform_feedback.glTransformFeedbackVaryingsEXT =
+      (GdkGLProc_glTransformFeedbackVaryingsEXT) gdk_gl_get_proc_address ("glTransformFeedbackVaryingsEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTransformFeedbackVaryingsEXT () - %s",
+               (_procs_GL_EXT_transform_feedback.glTransformFeedbackVaryingsEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_transform_feedback.glTransformFeedbackVaryingsEXT);
+}
+
+/* glGetTransformFeedbackVaryingEXT */
+GdkGLProc
+gdk_gl_get_glGetTransformFeedbackVaryingEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_transform_feedback.glGetTransformFeedbackVaryingEXT == (GdkGLProc_glGetTransformFeedbackVaryingEXT) -1)
+    _procs_GL_EXT_transform_feedback.glGetTransformFeedbackVaryingEXT =
+      (GdkGLProc_glGetTransformFeedbackVaryingEXT) gdk_gl_get_proc_address ("glGetTransformFeedbackVaryingEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTransformFeedbackVaryingEXT () - %s",
+               (_procs_GL_EXT_transform_feedback.glGetTransformFeedbackVaryingEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_transform_feedback.glGetTransformFeedbackVaryingEXT);
+}
+
+/* Get GL_EXT_transform_feedback functions */
+GdkGL_GL_EXT_transform_feedback *
+gdk_gl_get_GL_EXT_transform_feedback (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_transform_feedback");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBeginTransformFeedbackEXT () != NULL);
+          supported &= (gdk_gl_get_glEndTransformFeedbackEXT () != NULL);
+          supported &= (gdk_gl_get_glBindBufferRangeEXT () != NULL);
+          supported &= (gdk_gl_get_glBindBufferOffsetEXT () != NULL);
+          supported &= (gdk_gl_get_glBindBufferBaseEXT () != NULL);
+          supported &= (gdk_gl_get_glTransformFeedbackVaryingsEXT () != NULL);
+          supported &= (gdk_gl_get_glGetTransformFeedbackVaryingEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_transform_feedback () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_transform_feedback;
+}
+
+/*
+ * GL_EXT_direct_state_access
+ */
+
+static GdkGL_GL_EXT_direct_state_access _procs_GL_EXT_direct_state_access = {
+  (GdkGLProc_glClientAttribDefaultEXT) -1,
+  (GdkGLProc_glPushClientAttribDefaultEXT) -1,
+  (GdkGLProc_glMatrixLoadfEXT) -1,
+  (GdkGLProc_glMatrixLoaddEXT) -1,
+  (GdkGLProc_glMatrixMultfEXT) -1,
+  (GdkGLProc_glMatrixMultdEXT) -1,
+  (GdkGLProc_glMatrixLoadIdentityEXT) -1,
+  (GdkGLProc_glMatrixRotatefEXT) -1,
+  (GdkGLProc_glMatrixRotatedEXT) -1,
+  (GdkGLProc_glMatrixScalefEXT) -1,
+  (GdkGLProc_glMatrixScaledEXT) -1,
+  (GdkGLProc_glMatrixTranslatefEXT) -1,
+  (GdkGLProc_glMatrixTranslatedEXT) -1,
+  (GdkGLProc_glMatrixFrustumEXT) -1,
+  (GdkGLProc_glMatrixOrthoEXT) -1,
+  (GdkGLProc_glMatrixPopEXT) -1,
+  (GdkGLProc_glMatrixPushEXT) -1,
+  (GdkGLProc_glMatrixLoadTransposefEXT) -1,
+  (GdkGLProc_glMatrixLoadTransposedEXT) -1,
+  (GdkGLProc_glMatrixMultTransposefEXT) -1,
+  (GdkGLProc_glMatrixMultTransposedEXT) -1,
+  (GdkGLProc_glTextureParameterfEXT) -1,
+  (GdkGLProc_glTextureParameterfvEXT) -1,
+  (GdkGLProc_glTextureParameteriEXT) -1,
+  (GdkGLProc_glTextureParameterivEXT) -1,
+  (GdkGLProc_glTextureImage1DEXT) -1,
+  (GdkGLProc_glTextureImage2DEXT) -1,
+  (GdkGLProc_glTextureSubImage1DEXT) -1,
+  (GdkGLProc_glTextureSubImage2DEXT) -1,
+  (GdkGLProc_glCopyTextureImage1DEXT) -1,
+  (GdkGLProc_glCopyTextureImage2DEXT) -1,
+  (GdkGLProc_glCopyTextureSubImage1DEXT) -1,
+  (GdkGLProc_glCopyTextureSubImage2DEXT) -1,
+  (GdkGLProc_glGetTextureImageEXT) -1,
+  (GdkGLProc_glGetTextureParameterfvEXT) -1,
+  (GdkGLProc_glGetTextureParameterivEXT) -1,
+  (GdkGLProc_glGetTextureLevelParameterfvEXT) -1,
+  (GdkGLProc_glGetTextureLevelParameterivEXT) -1,
+  (GdkGLProc_glTextureImage3DEXT) -1,
+  (GdkGLProc_glTextureSubImage3DEXT) -1,
+  (GdkGLProc_glCopyTextureSubImage3DEXT) -1,
+  (GdkGLProc_glMultiTexParameterfEXT) -1,
+  (GdkGLProc_glMultiTexParameterfvEXT) -1,
+  (GdkGLProc_glMultiTexParameteriEXT) -1,
+  (GdkGLProc_glMultiTexParameterivEXT) -1,
+  (GdkGLProc_glMultiTexImage1DEXT) -1,
+  (GdkGLProc_glMultiTexImage2DEXT) -1,
+  (GdkGLProc_glMultiTexSubImage1DEXT) -1,
+  (GdkGLProc_glMultiTexSubImage2DEXT) -1,
+  (GdkGLProc_glCopyMultiTexImage1DEXT) -1,
+  (GdkGLProc_glCopyMultiTexImage2DEXT) -1,
+  (GdkGLProc_glCopyMultiTexSubImage1DEXT) -1,
+  (GdkGLProc_glCopyMultiTexSubImage2DEXT) -1,
+  (GdkGLProc_glGetMultiTexImageEXT) -1,
+  (GdkGLProc_glGetMultiTexParameterfvEXT) -1,
+  (GdkGLProc_glGetMultiTexParameterivEXT) -1,
+  (GdkGLProc_glGetMultiTexLevelParameterfvEXT) -1,
+  (GdkGLProc_glGetMultiTexLevelParameterivEXT) -1,
+  (GdkGLProc_glMultiTexImage3DEXT) -1,
+  (GdkGLProc_glMultiTexSubImage3DEXT) -1,
+  (GdkGLProc_glCopyMultiTexSubImage3DEXT) -1,
+  (GdkGLProc_glBindMultiTextureEXT) -1,
+  (GdkGLProc_glEnableClientStateIndexedEXT) -1,
+  (GdkGLProc_glDisableClientStateIndexedEXT) -1,
+  (GdkGLProc_glMultiTexCoordPointerEXT) -1,
+  (GdkGLProc_glMultiTexEnvfEXT) -1,
+  (GdkGLProc_glMultiTexEnvfvEXT) -1,
+  (GdkGLProc_glMultiTexEnviEXT) -1,
+  (GdkGLProc_glMultiTexEnvivEXT) -1,
+  (GdkGLProc_glMultiTexGendEXT) -1,
+  (GdkGLProc_glMultiTexGendvEXT) -1,
+  (GdkGLProc_glMultiTexGenfEXT) -1,
+  (GdkGLProc_glMultiTexGenfvEXT) -1,
+  (GdkGLProc_glMultiTexGeniEXT) -1,
+  (GdkGLProc_glMultiTexGenivEXT) -1,
+  (GdkGLProc_glGetMultiTexEnvfvEXT) -1,
+  (GdkGLProc_glGetMultiTexEnvivEXT) -1,
+  (GdkGLProc_glGetMultiTexGendvEXT) -1,
+  (GdkGLProc_glGetMultiTexGenfvEXT) -1,
+  (GdkGLProc_glGetMultiTexGenivEXT) -1,
+  (GdkGLProc_glGetFloatIndexedvEXT) -1,
+  (GdkGLProc_glGetDoubleIndexedvEXT) -1,
+  (GdkGLProc_glGetPointerIndexedvEXT) -1,
+  (GdkGLProc_glCompressedTextureImage3DEXT) -1,
+  (GdkGLProc_glCompressedTextureImage2DEXT) -1,
+  (GdkGLProc_glCompressedTextureImage1DEXT) -1,
+  (GdkGLProc_glCompressedTextureSubImage3DEXT) -1,
+  (GdkGLProc_glCompressedTextureSubImage2DEXT) -1,
+  (GdkGLProc_glCompressedTextureSubImage1DEXT) -1,
+  (GdkGLProc_glGetCompressedTextureImageEXT) -1,
+  (GdkGLProc_glCompressedMultiTexImage3DEXT) -1,
+  (GdkGLProc_glCompressedMultiTexImage2DEXT) -1,
+  (GdkGLProc_glCompressedMultiTexImage1DEXT) -1,
+  (GdkGLProc_glCompressedMultiTexSubImage3DEXT) -1,
+  (GdkGLProc_glCompressedMultiTexSubImage2DEXT) -1,
+  (GdkGLProc_glCompressedMultiTexSubImage1DEXT) -1,
+  (GdkGLProc_glGetCompressedMultiTexImageEXT) -1,
+  (GdkGLProc_glNamedProgramStringEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParameter4dEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParameter4dvEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParameter4fEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParameter4fvEXT) -1,
+  (GdkGLProc_glGetNamedProgramLocalParameterdvEXT) -1,
+  (GdkGLProc_glGetNamedProgramLocalParameterfvEXT) -1,
+  (GdkGLProc_glGetNamedProgramivEXT) -1,
+  (GdkGLProc_glGetNamedProgramStringEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParameters4fvEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParameterI4iEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParameterI4ivEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParametersI4ivEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParameterI4uiEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParameterI4uivEXT) -1,
+  (GdkGLProc_glNamedProgramLocalParametersI4uivEXT) -1,
+  (GdkGLProc_glGetNamedProgramLocalParameterIivEXT) -1,
+  (GdkGLProc_glGetNamedProgramLocalParameterIuivEXT) -1,
+  (GdkGLProc_glTextureParameterIivEXT) -1,
+  (GdkGLProc_glTextureParameterIuivEXT) -1,
+  (GdkGLProc_glGetTextureParameterIivEXT) -1,
+  (GdkGLProc_glGetTextureParameterIuivEXT) -1,
+  (GdkGLProc_glMultiTexParameterIivEXT) -1,
+  (GdkGLProc_glMultiTexParameterIuivEXT) -1,
+  (GdkGLProc_glGetMultiTexParameterIivEXT) -1,
+  (GdkGLProc_glGetMultiTexParameterIuivEXT) -1,
+  (GdkGLProc_glProgramUniform1fEXT) -1,
+  (GdkGLProc_glProgramUniform2fEXT) -1,
+  (GdkGLProc_glProgramUniform3fEXT) -1,
+  (GdkGLProc_glProgramUniform4fEXT) -1,
+  (GdkGLProc_glProgramUniform1iEXT) -1,
+  (GdkGLProc_glProgramUniform2iEXT) -1,
+  (GdkGLProc_glProgramUniform3iEXT) -1,
+  (GdkGLProc_glProgramUniform4iEXT) -1,
+  (GdkGLProc_glProgramUniform1fvEXT) -1,
+  (GdkGLProc_glProgramUniform2fvEXT) -1,
+  (GdkGLProc_glProgramUniform3fvEXT) -1,
+  (GdkGLProc_glProgramUniform4fvEXT) -1,
+  (GdkGLProc_glProgramUniform1ivEXT) -1,
+  (GdkGLProc_glProgramUniform2ivEXT) -1,
+  (GdkGLProc_glProgramUniform3ivEXT) -1,
+  (GdkGLProc_glProgramUniform4ivEXT) -1,
+  (GdkGLProc_glProgramUniformMatrix2fvEXT) -1,
+  (GdkGLProc_glProgramUniformMatrix3fvEXT) -1,
+  (GdkGLProc_glProgramUniformMatrix4fvEXT) -1,
+  (GdkGLProc_glProgramUniformMatrix2x3fvEXT) -1,
+  (GdkGLProc_glProgramUniformMatrix3x2fvEXT) -1,
+  (GdkGLProc_glProgramUniformMatrix2x4fvEXT) -1,
+  (GdkGLProc_glProgramUniformMatrix4x2fvEXT) -1,
+  (GdkGLProc_glProgramUniformMatrix3x4fvEXT) -1,
+  (GdkGLProc_glProgramUniformMatrix4x3fvEXT) -1,
+  (GdkGLProc_glProgramUniform1uiEXT) -1,
+  (GdkGLProc_glProgramUniform2uiEXT) -1,
+  (GdkGLProc_glProgramUniform3uiEXT) -1,
+  (GdkGLProc_glProgramUniform4uiEXT) -1,
+  (GdkGLProc_glProgramUniform1uivEXT) -1,
+  (GdkGLProc_glProgramUniform2uivEXT) -1,
+  (GdkGLProc_glProgramUniform3uivEXT) -1,
+  (GdkGLProc_glProgramUniform4uivEXT) -1,
+  (GdkGLProc_glNamedBufferDataEXT) -1,
+  (GdkGLProc_glNamedBufferSubDataEXT) -1,
+  (GdkGLProc_glMapNamedBufferEXT) -1,
+  (GdkGLProc_glUnmapNamedBufferEXT) -1,
+  (GdkGLProc_glGetNamedBufferParameterivEXT) -1,
+  (GdkGLProc_glGetNamedBufferPointervEXT) -1,
+  (GdkGLProc_glGetNamedBufferSubDataEXT) -1,
+  (GdkGLProc_glTextureBufferEXT) -1,
+  (GdkGLProc_glMultiTexBufferEXT) -1,
+  (GdkGLProc_glNamedRenderbufferStorageEXT) -1,
+  (GdkGLProc_glGetNamedRenderbufferParameterivEXT) -1,
+  (GdkGLProc_glCheckNamedFramebufferStatusEXT) -1,
+  (GdkGLProc_glNamedFramebufferTexture1DEXT) -1,
+  (GdkGLProc_glNamedFramebufferTexture2DEXT) -1,
+  (GdkGLProc_glNamedFramebufferTexture3DEXT) -1,
+  (GdkGLProc_glNamedFramebufferRenderbufferEXT) -1,
+  (GdkGLProc_glGetNamedFramebufferAttachmentParameterivEXT) -1,
+  (GdkGLProc_glGenerateTextureMipmapEXT) -1,
+  (GdkGLProc_glGenerateMultiTexMipmapEXT) -1,
+  (GdkGLProc_glFramebufferDrawBufferEXT) -1,
+  (GdkGLProc_glFramebufferDrawBuffersEXT) -1,
+  (GdkGLProc_glFramebufferReadBufferEXT) -1,
+  (GdkGLProc_glGetFramebufferParameterivEXT) -1,
+  (GdkGLProc_glNamedRenderbufferStorageMultisampleEXT) -1,
+  (GdkGLProc_glNamedRenderbufferStorageMultisampleCoverageEXT) -1,
+  (GdkGLProc_glNamedFramebufferTextureEXT) -1,
+  (GdkGLProc_glNamedFramebufferTextureLayerEXT) -1,
+  (GdkGLProc_glNamedFramebufferTextureFaceEXT) -1,
+  (GdkGLProc_glTextureRenderbufferEXT) -1,
+  (GdkGLProc_glMultiTexRenderbufferEXT) -1
+};
+
+/* glClientAttribDefaultEXT */
+GdkGLProc
+gdk_gl_get_glClientAttribDefaultEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glClientAttribDefaultEXT == (GdkGLProc_glClientAttribDefaultEXT) -1)
+    _procs_GL_EXT_direct_state_access.glClientAttribDefaultEXT =
+      (GdkGLProc_glClientAttribDefaultEXT) gdk_gl_get_proc_address ("glClientAttribDefaultEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glClientAttribDefaultEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glClientAttribDefaultEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glClientAttribDefaultEXT);
+}
+
+/* glPushClientAttribDefaultEXT */
+GdkGLProc
+gdk_gl_get_glPushClientAttribDefaultEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glPushClientAttribDefaultEXT == (GdkGLProc_glPushClientAttribDefaultEXT) -1)
+    _procs_GL_EXT_direct_state_access.glPushClientAttribDefaultEXT =
+      (GdkGLProc_glPushClientAttribDefaultEXT) gdk_gl_get_proc_address ("glPushClientAttribDefaultEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPushClientAttribDefaultEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glPushClientAttribDefaultEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glPushClientAttribDefaultEXT);
+}
+
+/* glMatrixLoadfEXT */
+GdkGLProc
+gdk_gl_get_glMatrixLoadfEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixLoadfEXT == (GdkGLProc_glMatrixLoadfEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixLoadfEXT =
+      (GdkGLProc_glMatrixLoadfEXT) gdk_gl_get_proc_address ("glMatrixLoadfEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixLoadfEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixLoadfEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixLoadfEXT);
+}
+
+/* glMatrixLoaddEXT */
+GdkGLProc
+gdk_gl_get_glMatrixLoaddEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixLoaddEXT == (GdkGLProc_glMatrixLoaddEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixLoaddEXT =
+      (GdkGLProc_glMatrixLoaddEXT) gdk_gl_get_proc_address ("glMatrixLoaddEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixLoaddEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixLoaddEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixLoaddEXT);
+}
+
+/* glMatrixMultfEXT */
+GdkGLProc
+gdk_gl_get_glMatrixMultfEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixMultfEXT == (GdkGLProc_glMatrixMultfEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixMultfEXT =
+      (GdkGLProc_glMatrixMultfEXT) gdk_gl_get_proc_address ("glMatrixMultfEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixMultfEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixMultfEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixMultfEXT);
+}
+
+/* glMatrixMultdEXT */
+GdkGLProc
+gdk_gl_get_glMatrixMultdEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixMultdEXT == (GdkGLProc_glMatrixMultdEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixMultdEXT =
+      (GdkGLProc_glMatrixMultdEXT) gdk_gl_get_proc_address ("glMatrixMultdEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixMultdEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixMultdEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixMultdEXT);
+}
+
+/* glMatrixLoadIdentityEXT */
+GdkGLProc
+gdk_gl_get_glMatrixLoadIdentityEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixLoadIdentityEXT == (GdkGLProc_glMatrixLoadIdentityEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixLoadIdentityEXT =
+      (GdkGLProc_glMatrixLoadIdentityEXT) gdk_gl_get_proc_address ("glMatrixLoadIdentityEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixLoadIdentityEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixLoadIdentityEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixLoadIdentityEXT);
+}
+
+/* glMatrixRotatefEXT */
+GdkGLProc
+gdk_gl_get_glMatrixRotatefEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixRotatefEXT == (GdkGLProc_glMatrixRotatefEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixRotatefEXT =
+      (GdkGLProc_glMatrixRotatefEXT) gdk_gl_get_proc_address ("glMatrixRotatefEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixRotatefEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixRotatefEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixRotatefEXT);
+}
+
+/* glMatrixRotatedEXT */
+GdkGLProc
+gdk_gl_get_glMatrixRotatedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixRotatedEXT == (GdkGLProc_glMatrixRotatedEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixRotatedEXT =
+      (GdkGLProc_glMatrixRotatedEXT) gdk_gl_get_proc_address ("glMatrixRotatedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixRotatedEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixRotatedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixRotatedEXT);
+}
+
+/* glMatrixScalefEXT */
+GdkGLProc
+gdk_gl_get_glMatrixScalefEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixScalefEXT == (GdkGLProc_glMatrixScalefEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixScalefEXT =
+      (GdkGLProc_glMatrixScalefEXT) gdk_gl_get_proc_address ("glMatrixScalefEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixScalefEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixScalefEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixScalefEXT);
+}
+
+/* glMatrixScaledEXT */
+GdkGLProc
+gdk_gl_get_glMatrixScaledEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixScaledEXT == (GdkGLProc_glMatrixScaledEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixScaledEXT =
+      (GdkGLProc_glMatrixScaledEXT) gdk_gl_get_proc_address ("glMatrixScaledEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixScaledEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixScaledEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixScaledEXT);
+}
+
+/* glMatrixTranslatefEXT */
+GdkGLProc
+gdk_gl_get_glMatrixTranslatefEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixTranslatefEXT == (GdkGLProc_glMatrixTranslatefEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixTranslatefEXT =
+      (GdkGLProc_glMatrixTranslatefEXT) gdk_gl_get_proc_address ("glMatrixTranslatefEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixTranslatefEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixTranslatefEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixTranslatefEXT);
+}
+
+/* glMatrixTranslatedEXT */
+GdkGLProc
+gdk_gl_get_glMatrixTranslatedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixTranslatedEXT == (GdkGLProc_glMatrixTranslatedEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixTranslatedEXT =
+      (GdkGLProc_glMatrixTranslatedEXT) gdk_gl_get_proc_address ("glMatrixTranslatedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixTranslatedEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixTranslatedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixTranslatedEXT);
+}
+
+/* glMatrixFrustumEXT */
+GdkGLProc
+gdk_gl_get_glMatrixFrustumEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixFrustumEXT == (GdkGLProc_glMatrixFrustumEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixFrustumEXT =
+      (GdkGLProc_glMatrixFrustumEXT) gdk_gl_get_proc_address ("glMatrixFrustumEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixFrustumEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixFrustumEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixFrustumEXT);
+}
+
+/* glMatrixOrthoEXT */
+GdkGLProc
+gdk_gl_get_glMatrixOrthoEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixOrthoEXT == (GdkGLProc_glMatrixOrthoEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixOrthoEXT =
+      (GdkGLProc_glMatrixOrthoEXT) gdk_gl_get_proc_address ("glMatrixOrthoEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixOrthoEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixOrthoEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixOrthoEXT);
+}
+
+/* glMatrixPopEXT */
+GdkGLProc
+gdk_gl_get_glMatrixPopEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixPopEXT == (GdkGLProc_glMatrixPopEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixPopEXT =
+      (GdkGLProc_glMatrixPopEXT) gdk_gl_get_proc_address ("glMatrixPopEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixPopEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixPopEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixPopEXT);
+}
+
+/* glMatrixPushEXT */
+GdkGLProc
+gdk_gl_get_glMatrixPushEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixPushEXT == (GdkGLProc_glMatrixPushEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixPushEXT =
+      (GdkGLProc_glMatrixPushEXT) gdk_gl_get_proc_address ("glMatrixPushEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixPushEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixPushEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixPushEXT);
+}
+
+/* glMatrixLoadTransposefEXT */
+GdkGLProc
+gdk_gl_get_glMatrixLoadTransposefEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixLoadTransposefEXT == (GdkGLProc_glMatrixLoadTransposefEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixLoadTransposefEXT =
+      (GdkGLProc_glMatrixLoadTransposefEXT) gdk_gl_get_proc_address ("glMatrixLoadTransposefEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixLoadTransposefEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixLoadTransposefEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixLoadTransposefEXT);
+}
+
+/* glMatrixLoadTransposedEXT */
+GdkGLProc
+gdk_gl_get_glMatrixLoadTransposedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixLoadTransposedEXT == (GdkGLProc_glMatrixLoadTransposedEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixLoadTransposedEXT =
+      (GdkGLProc_glMatrixLoadTransposedEXT) gdk_gl_get_proc_address ("glMatrixLoadTransposedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixLoadTransposedEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixLoadTransposedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixLoadTransposedEXT);
+}
+
+/* glMatrixMultTransposefEXT */
+GdkGLProc
+gdk_gl_get_glMatrixMultTransposefEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixMultTransposefEXT == (GdkGLProc_glMatrixMultTransposefEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixMultTransposefEXT =
+      (GdkGLProc_glMatrixMultTransposefEXT) gdk_gl_get_proc_address ("glMatrixMultTransposefEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixMultTransposefEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixMultTransposefEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixMultTransposefEXT);
+}
+
+/* glMatrixMultTransposedEXT */
+GdkGLProc
+gdk_gl_get_glMatrixMultTransposedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMatrixMultTransposedEXT == (GdkGLProc_glMatrixMultTransposedEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMatrixMultTransposedEXT =
+      (GdkGLProc_glMatrixMultTransposedEXT) gdk_gl_get_proc_address ("glMatrixMultTransposedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMatrixMultTransposedEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMatrixMultTransposedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMatrixMultTransposedEXT);
+}
+
+/* glTextureParameterfEXT */
+GdkGLProc
+gdk_gl_get_glTextureParameterfEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureParameterfEXT == (GdkGLProc_glTextureParameterfEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureParameterfEXT =
+      (GdkGLProc_glTextureParameterfEXT) gdk_gl_get_proc_address ("glTextureParameterfEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureParameterfEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureParameterfEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureParameterfEXT);
+}
+
+/* glTextureParameterfvEXT */
+GdkGLProc
+gdk_gl_get_glTextureParameterfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureParameterfvEXT == (GdkGLProc_glTextureParameterfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureParameterfvEXT =
+      (GdkGLProc_glTextureParameterfvEXT) gdk_gl_get_proc_address ("glTextureParameterfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureParameterfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureParameterfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureParameterfvEXT);
+}
+
+/* glTextureParameteriEXT */
+GdkGLProc
+gdk_gl_get_glTextureParameteriEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureParameteriEXT == (GdkGLProc_glTextureParameteriEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureParameteriEXT =
+      (GdkGLProc_glTextureParameteriEXT) gdk_gl_get_proc_address ("glTextureParameteriEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureParameteriEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureParameteriEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureParameteriEXT);
+}
+
+/* glTextureParameterivEXT */
+GdkGLProc
+gdk_gl_get_glTextureParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureParameterivEXT == (GdkGLProc_glTextureParameterivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureParameterivEXT =
+      (GdkGLProc_glTextureParameterivEXT) gdk_gl_get_proc_address ("glTextureParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureParameterivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureParameterivEXT);
+}
+
+/* glTextureImage1DEXT */
+GdkGLProc
+gdk_gl_get_glTextureImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureImage1DEXT == (GdkGLProc_glTextureImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureImage1DEXT =
+      (GdkGLProc_glTextureImage1DEXT) gdk_gl_get_proc_address ("glTextureImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureImage1DEXT);
+}
+
+/* glTextureImage2DEXT */
+GdkGLProc
+gdk_gl_get_glTextureImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureImage2DEXT == (GdkGLProc_glTextureImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureImage2DEXT =
+      (GdkGLProc_glTextureImage2DEXT) gdk_gl_get_proc_address ("glTextureImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureImage2DEXT);
+}
+
+/* glTextureSubImage1DEXT */
+GdkGLProc
+gdk_gl_get_glTextureSubImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureSubImage1DEXT == (GdkGLProc_glTextureSubImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureSubImage1DEXT =
+      (GdkGLProc_glTextureSubImage1DEXT) gdk_gl_get_proc_address ("glTextureSubImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureSubImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureSubImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureSubImage1DEXT);
+}
+
+/* glTextureSubImage2DEXT */
+GdkGLProc
+gdk_gl_get_glTextureSubImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureSubImage2DEXT == (GdkGLProc_glTextureSubImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureSubImage2DEXT =
+      (GdkGLProc_glTextureSubImage2DEXT) gdk_gl_get_proc_address ("glTextureSubImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureSubImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureSubImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureSubImage2DEXT);
+}
+
+/* glCopyTextureImage1DEXT */
+GdkGLProc
+gdk_gl_get_glCopyTextureImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCopyTextureImage1DEXT == (GdkGLProc_glCopyTextureImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCopyTextureImage1DEXT =
+      (GdkGLProc_glCopyTextureImage1DEXT) gdk_gl_get_proc_address ("glCopyTextureImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTextureImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCopyTextureImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCopyTextureImage1DEXT);
+}
+
+/* glCopyTextureImage2DEXT */
+GdkGLProc
+gdk_gl_get_glCopyTextureImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCopyTextureImage2DEXT == (GdkGLProc_glCopyTextureImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCopyTextureImage2DEXT =
+      (GdkGLProc_glCopyTextureImage2DEXT) gdk_gl_get_proc_address ("glCopyTextureImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTextureImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCopyTextureImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCopyTextureImage2DEXT);
+}
+
+/* glCopyTextureSubImage1DEXT */
+GdkGLProc
+gdk_gl_get_glCopyTextureSubImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCopyTextureSubImage1DEXT == (GdkGLProc_glCopyTextureSubImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCopyTextureSubImage1DEXT =
+      (GdkGLProc_glCopyTextureSubImage1DEXT) gdk_gl_get_proc_address ("glCopyTextureSubImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTextureSubImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCopyTextureSubImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCopyTextureSubImage1DEXT);
+}
+
+/* glCopyTextureSubImage2DEXT */
+GdkGLProc
+gdk_gl_get_glCopyTextureSubImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCopyTextureSubImage2DEXT == (GdkGLProc_glCopyTextureSubImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCopyTextureSubImage2DEXT =
+      (GdkGLProc_glCopyTextureSubImage2DEXT) gdk_gl_get_proc_address ("glCopyTextureSubImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTextureSubImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCopyTextureSubImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCopyTextureSubImage2DEXT);
+}
+
+/* glGetTextureImageEXT */
+GdkGLProc
+gdk_gl_get_glGetTextureImageEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetTextureImageEXT == (GdkGLProc_glGetTextureImageEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetTextureImageEXT =
+      (GdkGLProc_glGetTextureImageEXT) gdk_gl_get_proc_address ("glGetTextureImageEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTextureImageEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetTextureImageEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetTextureImageEXT);
+}
+
+/* glGetTextureParameterfvEXT */
+GdkGLProc
+gdk_gl_get_glGetTextureParameterfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetTextureParameterfvEXT == (GdkGLProc_glGetTextureParameterfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetTextureParameterfvEXT =
+      (GdkGLProc_glGetTextureParameterfvEXT) gdk_gl_get_proc_address ("glGetTextureParameterfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTextureParameterfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetTextureParameterfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetTextureParameterfvEXT);
+}
+
+/* glGetTextureParameterivEXT */
+GdkGLProc
+gdk_gl_get_glGetTextureParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetTextureParameterivEXT == (GdkGLProc_glGetTextureParameterivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetTextureParameterivEXT =
+      (GdkGLProc_glGetTextureParameterivEXT) gdk_gl_get_proc_address ("glGetTextureParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTextureParameterivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetTextureParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetTextureParameterivEXT);
+}
+
+/* glGetTextureLevelParameterfvEXT */
+GdkGLProc
+gdk_gl_get_glGetTextureLevelParameterfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetTextureLevelParameterfvEXT == (GdkGLProc_glGetTextureLevelParameterfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetTextureLevelParameterfvEXT =
+      (GdkGLProc_glGetTextureLevelParameterfvEXT) gdk_gl_get_proc_address ("glGetTextureLevelParameterfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTextureLevelParameterfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetTextureLevelParameterfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetTextureLevelParameterfvEXT);
+}
+
+/* glGetTextureLevelParameterivEXT */
+GdkGLProc
+gdk_gl_get_glGetTextureLevelParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetTextureLevelParameterivEXT == (GdkGLProc_glGetTextureLevelParameterivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetTextureLevelParameterivEXT =
+      (GdkGLProc_glGetTextureLevelParameterivEXT) gdk_gl_get_proc_address ("glGetTextureLevelParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTextureLevelParameterivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetTextureLevelParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetTextureLevelParameterivEXT);
+}
+
+/* glTextureImage3DEXT */
+GdkGLProc
+gdk_gl_get_glTextureImage3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureImage3DEXT == (GdkGLProc_glTextureImage3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureImage3DEXT =
+      (GdkGLProc_glTextureImage3DEXT) gdk_gl_get_proc_address ("glTextureImage3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureImage3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureImage3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureImage3DEXT);
+}
+
+/* glTextureSubImage3DEXT */
+GdkGLProc
+gdk_gl_get_glTextureSubImage3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureSubImage3DEXT == (GdkGLProc_glTextureSubImage3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureSubImage3DEXT =
+      (GdkGLProc_glTextureSubImage3DEXT) gdk_gl_get_proc_address ("glTextureSubImage3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureSubImage3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureSubImage3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureSubImage3DEXT);
+}
+
+/* glCopyTextureSubImage3DEXT */
+GdkGLProc
+gdk_gl_get_glCopyTextureSubImage3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCopyTextureSubImage3DEXT == (GdkGLProc_glCopyTextureSubImage3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCopyTextureSubImage3DEXT =
+      (GdkGLProc_glCopyTextureSubImage3DEXT) gdk_gl_get_proc_address ("glCopyTextureSubImage3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyTextureSubImage3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCopyTextureSubImage3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCopyTextureSubImage3DEXT);
+}
+
+/* glMultiTexParameterfEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexParameterfEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexParameterfEXT == (GdkGLProc_glMultiTexParameterfEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexParameterfEXT =
+      (GdkGLProc_glMultiTexParameterfEXT) gdk_gl_get_proc_address ("glMultiTexParameterfEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexParameterfEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexParameterfEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexParameterfEXT);
+}
+
+/* glMultiTexParameterfvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexParameterfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexParameterfvEXT == (GdkGLProc_glMultiTexParameterfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexParameterfvEXT =
+      (GdkGLProc_glMultiTexParameterfvEXT) gdk_gl_get_proc_address ("glMultiTexParameterfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexParameterfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexParameterfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexParameterfvEXT);
+}
+
+/* glMultiTexParameteriEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexParameteriEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexParameteriEXT == (GdkGLProc_glMultiTexParameteriEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexParameteriEXT =
+      (GdkGLProc_glMultiTexParameteriEXT) gdk_gl_get_proc_address ("glMultiTexParameteriEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexParameteriEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexParameteriEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexParameteriEXT);
+}
+
+/* glMultiTexParameterivEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexParameterivEXT == (GdkGLProc_glMultiTexParameterivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexParameterivEXT =
+      (GdkGLProc_glMultiTexParameterivEXT) gdk_gl_get_proc_address ("glMultiTexParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexParameterivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexParameterivEXT);
+}
+
+/* glMultiTexImage1DEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexImage1DEXT == (GdkGLProc_glMultiTexImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexImage1DEXT =
+      (GdkGLProc_glMultiTexImage1DEXT) gdk_gl_get_proc_address ("glMultiTexImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexImage1DEXT);
+}
+
+/* glMultiTexImage2DEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexImage2DEXT == (GdkGLProc_glMultiTexImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexImage2DEXT =
+      (GdkGLProc_glMultiTexImage2DEXT) gdk_gl_get_proc_address ("glMultiTexImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexImage2DEXT);
+}
+
+/* glMultiTexSubImage1DEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexSubImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexSubImage1DEXT == (GdkGLProc_glMultiTexSubImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexSubImage1DEXT =
+      (GdkGLProc_glMultiTexSubImage1DEXT) gdk_gl_get_proc_address ("glMultiTexSubImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexSubImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexSubImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexSubImage1DEXT);
+}
+
+/* glMultiTexSubImage2DEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexSubImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexSubImage2DEXT == (GdkGLProc_glMultiTexSubImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexSubImage2DEXT =
+      (GdkGLProc_glMultiTexSubImage2DEXT) gdk_gl_get_proc_address ("glMultiTexSubImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexSubImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexSubImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexSubImage2DEXT);
+}
+
+/* glCopyMultiTexImage1DEXT */
+GdkGLProc
+gdk_gl_get_glCopyMultiTexImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCopyMultiTexImage1DEXT == (GdkGLProc_glCopyMultiTexImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCopyMultiTexImage1DEXT =
+      (GdkGLProc_glCopyMultiTexImage1DEXT) gdk_gl_get_proc_address ("glCopyMultiTexImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyMultiTexImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCopyMultiTexImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCopyMultiTexImage1DEXT);
+}
+
+/* glCopyMultiTexImage2DEXT */
+GdkGLProc
+gdk_gl_get_glCopyMultiTexImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCopyMultiTexImage2DEXT == (GdkGLProc_glCopyMultiTexImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCopyMultiTexImage2DEXT =
+      (GdkGLProc_glCopyMultiTexImage2DEXT) gdk_gl_get_proc_address ("glCopyMultiTexImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyMultiTexImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCopyMultiTexImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCopyMultiTexImage2DEXT);
+}
+
+/* glCopyMultiTexSubImage1DEXT */
+GdkGLProc
+gdk_gl_get_glCopyMultiTexSubImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage1DEXT == (GdkGLProc_glCopyMultiTexSubImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage1DEXT =
+      (GdkGLProc_glCopyMultiTexSubImage1DEXT) gdk_gl_get_proc_address ("glCopyMultiTexSubImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyMultiTexSubImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage1DEXT);
+}
+
+/* glCopyMultiTexSubImage2DEXT */
+GdkGLProc
+gdk_gl_get_glCopyMultiTexSubImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage2DEXT == (GdkGLProc_glCopyMultiTexSubImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage2DEXT =
+      (GdkGLProc_glCopyMultiTexSubImage2DEXT) gdk_gl_get_proc_address ("glCopyMultiTexSubImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyMultiTexSubImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage2DEXT);
+}
+
+/* glGetMultiTexImageEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexImageEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexImageEXT == (GdkGLProc_glGetMultiTexImageEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexImageEXT =
+      (GdkGLProc_glGetMultiTexImageEXT) gdk_gl_get_proc_address ("glGetMultiTexImageEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexImageEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexImageEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexImageEXT);
+}
+
+/* glGetMultiTexParameterfvEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexParameterfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterfvEXT == (GdkGLProc_glGetMultiTexParameterfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexParameterfvEXT =
+      (GdkGLProc_glGetMultiTexParameterfvEXT) gdk_gl_get_proc_address ("glGetMultiTexParameterfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexParameterfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterfvEXT);
+}
+
+/* glGetMultiTexParameterivEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterivEXT == (GdkGLProc_glGetMultiTexParameterivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexParameterivEXT =
+      (GdkGLProc_glGetMultiTexParameterivEXT) gdk_gl_get_proc_address ("glGetMultiTexParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexParameterivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterivEXT);
+}
+
+/* glGetMultiTexLevelParameterfvEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexLevelParameterfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexLevelParameterfvEXT == (GdkGLProc_glGetMultiTexLevelParameterfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexLevelParameterfvEXT =
+      (GdkGLProc_glGetMultiTexLevelParameterfvEXT) gdk_gl_get_proc_address ("glGetMultiTexLevelParameterfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexLevelParameterfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexLevelParameterfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexLevelParameterfvEXT);
+}
+
+/* glGetMultiTexLevelParameterivEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexLevelParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexLevelParameterivEXT == (GdkGLProc_glGetMultiTexLevelParameterivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexLevelParameterivEXT =
+      (GdkGLProc_glGetMultiTexLevelParameterivEXT) gdk_gl_get_proc_address ("glGetMultiTexLevelParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexLevelParameterivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexLevelParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexLevelParameterivEXT);
+}
+
+/* glMultiTexImage3DEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexImage3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexImage3DEXT == (GdkGLProc_glMultiTexImage3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexImage3DEXT =
+      (GdkGLProc_glMultiTexImage3DEXT) gdk_gl_get_proc_address ("glMultiTexImage3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexImage3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexImage3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexImage3DEXT);
+}
+
+/* glMultiTexSubImage3DEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexSubImage3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexSubImage3DEXT == (GdkGLProc_glMultiTexSubImage3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexSubImage3DEXT =
+      (GdkGLProc_glMultiTexSubImage3DEXT) gdk_gl_get_proc_address ("glMultiTexSubImage3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexSubImage3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexSubImage3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexSubImage3DEXT);
+}
+
+/* glCopyMultiTexSubImage3DEXT */
+GdkGLProc
+gdk_gl_get_glCopyMultiTexSubImage3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage3DEXT == (GdkGLProc_glCopyMultiTexSubImage3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage3DEXT =
+      (GdkGLProc_glCopyMultiTexSubImage3DEXT) gdk_gl_get_proc_address ("glCopyMultiTexSubImage3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyMultiTexSubImage3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCopyMultiTexSubImage3DEXT);
+}
+
+/* glBindMultiTextureEXT */
+GdkGLProc
+gdk_gl_get_glBindMultiTextureEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glBindMultiTextureEXT == (GdkGLProc_glBindMultiTextureEXT) -1)
+    _procs_GL_EXT_direct_state_access.glBindMultiTextureEXT =
+      (GdkGLProc_glBindMultiTextureEXT) gdk_gl_get_proc_address ("glBindMultiTextureEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindMultiTextureEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glBindMultiTextureEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glBindMultiTextureEXT);
+}
+
+/* glEnableClientStateIndexedEXT */
+GdkGLProc
+gdk_gl_get_glEnableClientStateIndexedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glEnableClientStateIndexedEXT == (GdkGLProc_glEnableClientStateIndexedEXT) -1)
+    _procs_GL_EXT_direct_state_access.glEnableClientStateIndexedEXT =
+      (GdkGLProc_glEnableClientStateIndexedEXT) gdk_gl_get_proc_address ("glEnableClientStateIndexedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEnableClientStateIndexedEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glEnableClientStateIndexedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glEnableClientStateIndexedEXT);
+}
+
+/* glDisableClientStateIndexedEXT */
+GdkGLProc
+gdk_gl_get_glDisableClientStateIndexedEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glDisableClientStateIndexedEXT == (GdkGLProc_glDisableClientStateIndexedEXT) -1)
+    _procs_GL_EXT_direct_state_access.glDisableClientStateIndexedEXT =
+      (GdkGLProc_glDisableClientStateIndexedEXT) gdk_gl_get_proc_address ("glDisableClientStateIndexedEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDisableClientStateIndexedEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glDisableClientStateIndexedEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glDisableClientStateIndexedEXT);
+}
+
+/* glMultiTexCoordPointerEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexCoordPointerEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexCoordPointerEXT == (GdkGLProc_glMultiTexCoordPointerEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexCoordPointerEXT =
+      (GdkGLProc_glMultiTexCoordPointerEXT) gdk_gl_get_proc_address ("glMultiTexCoordPointerEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexCoordPointerEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexCoordPointerEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexCoordPointerEXT);
+}
+
+/* glMultiTexEnvfEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexEnvfEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexEnvfEXT == (GdkGLProc_glMultiTexEnvfEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexEnvfEXT =
+      (GdkGLProc_glMultiTexEnvfEXT) gdk_gl_get_proc_address ("glMultiTexEnvfEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexEnvfEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexEnvfEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexEnvfEXT);
+}
+
+/* glMultiTexEnvfvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexEnvfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexEnvfvEXT == (GdkGLProc_glMultiTexEnvfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexEnvfvEXT =
+      (GdkGLProc_glMultiTexEnvfvEXT) gdk_gl_get_proc_address ("glMultiTexEnvfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexEnvfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexEnvfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexEnvfvEXT);
+}
+
+/* glMultiTexEnviEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexEnviEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexEnviEXT == (GdkGLProc_glMultiTexEnviEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexEnviEXT =
+      (GdkGLProc_glMultiTexEnviEXT) gdk_gl_get_proc_address ("glMultiTexEnviEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexEnviEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexEnviEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexEnviEXT);
+}
+
+/* glMultiTexEnvivEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexEnvivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexEnvivEXT == (GdkGLProc_glMultiTexEnvivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexEnvivEXT =
+      (GdkGLProc_glMultiTexEnvivEXT) gdk_gl_get_proc_address ("glMultiTexEnvivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexEnvivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexEnvivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexEnvivEXT);
+}
+
+/* glMultiTexGendEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexGendEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexGendEXT == (GdkGLProc_glMultiTexGendEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexGendEXT =
+      (GdkGLProc_glMultiTexGendEXT) gdk_gl_get_proc_address ("glMultiTexGendEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexGendEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexGendEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexGendEXT);
+}
+
+/* glMultiTexGendvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexGendvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexGendvEXT == (GdkGLProc_glMultiTexGendvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexGendvEXT =
+      (GdkGLProc_glMultiTexGendvEXT) gdk_gl_get_proc_address ("glMultiTexGendvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexGendvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexGendvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexGendvEXT);
+}
+
+/* glMultiTexGenfEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexGenfEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexGenfEXT == (GdkGLProc_glMultiTexGenfEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexGenfEXT =
+      (GdkGLProc_glMultiTexGenfEXT) gdk_gl_get_proc_address ("glMultiTexGenfEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexGenfEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexGenfEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexGenfEXT);
+}
+
+/* glMultiTexGenfvEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexGenfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexGenfvEXT == (GdkGLProc_glMultiTexGenfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexGenfvEXT =
+      (GdkGLProc_glMultiTexGenfvEXT) gdk_gl_get_proc_address ("glMultiTexGenfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexGenfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexGenfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexGenfvEXT);
+}
+
+/* glMultiTexGeniEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexGeniEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexGeniEXT == (GdkGLProc_glMultiTexGeniEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexGeniEXT =
+      (GdkGLProc_glMultiTexGeniEXT) gdk_gl_get_proc_address ("glMultiTexGeniEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexGeniEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexGeniEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexGeniEXT);
+}
+
+/* glMultiTexGenivEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexGenivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexGenivEXT == (GdkGLProc_glMultiTexGenivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexGenivEXT =
+      (GdkGLProc_glMultiTexGenivEXT) gdk_gl_get_proc_address ("glMultiTexGenivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexGenivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexGenivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexGenivEXT);
+}
+
+/* glGetMultiTexEnvfvEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexEnvfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexEnvfvEXT == (GdkGLProc_glGetMultiTexEnvfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexEnvfvEXT =
+      (GdkGLProc_glGetMultiTexEnvfvEXT) gdk_gl_get_proc_address ("glGetMultiTexEnvfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexEnvfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexEnvfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexEnvfvEXT);
+}
+
+/* glGetMultiTexEnvivEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexEnvivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexEnvivEXT == (GdkGLProc_glGetMultiTexEnvivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexEnvivEXT =
+      (GdkGLProc_glGetMultiTexEnvivEXT) gdk_gl_get_proc_address ("glGetMultiTexEnvivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexEnvivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexEnvivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexEnvivEXT);
+}
+
+/* glGetMultiTexGendvEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexGendvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexGendvEXT == (GdkGLProc_glGetMultiTexGendvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexGendvEXT =
+      (GdkGLProc_glGetMultiTexGendvEXT) gdk_gl_get_proc_address ("glGetMultiTexGendvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexGendvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexGendvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexGendvEXT);
+}
+
+/* glGetMultiTexGenfvEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexGenfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexGenfvEXT == (GdkGLProc_glGetMultiTexGenfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexGenfvEXT =
+      (GdkGLProc_glGetMultiTexGenfvEXT) gdk_gl_get_proc_address ("glGetMultiTexGenfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexGenfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexGenfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexGenfvEXT);
+}
+
+/* glGetMultiTexGenivEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexGenivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexGenivEXT == (GdkGLProc_glGetMultiTexGenivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexGenivEXT =
+      (GdkGLProc_glGetMultiTexGenivEXT) gdk_gl_get_proc_address ("glGetMultiTexGenivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexGenivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexGenivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexGenivEXT);
+}
+
+/* glGetFloatIndexedvEXT */
+GdkGLProc
+gdk_gl_get_glGetFloatIndexedvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetFloatIndexedvEXT == (GdkGLProc_glGetFloatIndexedvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetFloatIndexedvEXT =
+      (GdkGLProc_glGetFloatIndexedvEXT) gdk_gl_get_proc_address ("glGetFloatIndexedvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFloatIndexedvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetFloatIndexedvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetFloatIndexedvEXT);
+}
+
+/* glGetDoubleIndexedvEXT */
+GdkGLProc
+gdk_gl_get_glGetDoubleIndexedvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetDoubleIndexedvEXT == (GdkGLProc_glGetDoubleIndexedvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetDoubleIndexedvEXT =
+      (GdkGLProc_glGetDoubleIndexedvEXT) gdk_gl_get_proc_address ("glGetDoubleIndexedvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetDoubleIndexedvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetDoubleIndexedvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetDoubleIndexedvEXT);
+}
+
+/* glGetPointerIndexedvEXT */
+GdkGLProc
+gdk_gl_get_glGetPointerIndexedvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetPointerIndexedvEXT == (GdkGLProc_glGetPointerIndexedvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetPointerIndexedvEXT =
+      (GdkGLProc_glGetPointerIndexedvEXT) gdk_gl_get_proc_address ("glGetPointerIndexedvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetPointerIndexedvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetPointerIndexedvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetPointerIndexedvEXT);
+}
+
+/* glCompressedTextureImage3DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedTextureImage3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedTextureImage3DEXT == (GdkGLProc_glCompressedTextureImage3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedTextureImage3DEXT =
+      (GdkGLProc_glCompressedTextureImage3DEXT) gdk_gl_get_proc_address ("glCompressedTextureImage3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTextureImage3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedTextureImage3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedTextureImage3DEXT);
+}
+
+/* glCompressedTextureImage2DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedTextureImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedTextureImage2DEXT == (GdkGLProc_glCompressedTextureImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedTextureImage2DEXT =
+      (GdkGLProc_glCompressedTextureImage2DEXT) gdk_gl_get_proc_address ("glCompressedTextureImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTextureImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedTextureImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedTextureImage2DEXT);
+}
+
+/* glCompressedTextureImage1DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedTextureImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedTextureImage1DEXT == (GdkGLProc_glCompressedTextureImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedTextureImage1DEXT =
+      (GdkGLProc_glCompressedTextureImage1DEXT) gdk_gl_get_proc_address ("glCompressedTextureImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTextureImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedTextureImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedTextureImage1DEXT);
+}
+
+/* glCompressedTextureSubImage3DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedTextureSubImage3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedTextureSubImage3DEXT == (GdkGLProc_glCompressedTextureSubImage3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedTextureSubImage3DEXT =
+      (GdkGLProc_glCompressedTextureSubImage3DEXT) gdk_gl_get_proc_address ("glCompressedTextureSubImage3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTextureSubImage3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedTextureSubImage3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedTextureSubImage3DEXT);
+}
+
+/* glCompressedTextureSubImage2DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedTextureSubImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedTextureSubImage2DEXT == (GdkGLProc_glCompressedTextureSubImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedTextureSubImage2DEXT =
+      (GdkGLProc_glCompressedTextureSubImage2DEXT) gdk_gl_get_proc_address ("glCompressedTextureSubImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTextureSubImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedTextureSubImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedTextureSubImage2DEXT);
+}
+
+/* glCompressedTextureSubImage1DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedTextureSubImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedTextureSubImage1DEXT == (GdkGLProc_glCompressedTextureSubImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedTextureSubImage1DEXT =
+      (GdkGLProc_glCompressedTextureSubImage1DEXT) gdk_gl_get_proc_address ("glCompressedTextureSubImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedTextureSubImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedTextureSubImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedTextureSubImage1DEXT);
+}
+
+/* glGetCompressedTextureImageEXT */
+GdkGLProc
+gdk_gl_get_glGetCompressedTextureImageEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetCompressedTextureImageEXT == (GdkGLProc_glGetCompressedTextureImageEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetCompressedTextureImageEXT =
+      (GdkGLProc_glGetCompressedTextureImageEXT) gdk_gl_get_proc_address ("glGetCompressedTextureImageEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetCompressedTextureImageEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetCompressedTextureImageEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetCompressedTextureImageEXT);
+}
+
+/* glCompressedMultiTexImage3DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedMultiTexImage3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedMultiTexImage3DEXT == (GdkGLProc_glCompressedMultiTexImage3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedMultiTexImage3DEXT =
+      (GdkGLProc_glCompressedMultiTexImage3DEXT) gdk_gl_get_proc_address ("glCompressedMultiTexImage3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedMultiTexImage3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedMultiTexImage3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedMultiTexImage3DEXT);
+}
+
+/* glCompressedMultiTexImage2DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedMultiTexImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedMultiTexImage2DEXT == (GdkGLProc_glCompressedMultiTexImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedMultiTexImage2DEXT =
+      (GdkGLProc_glCompressedMultiTexImage2DEXT) gdk_gl_get_proc_address ("glCompressedMultiTexImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedMultiTexImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedMultiTexImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedMultiTexImage2DEXT);
+}
+
+/* glCompressedMultiTexImage1DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedMultiTexImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedMultiTexImage1DEXT == (GdkGLProc_glCompressedMultiTexImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedMultiTexImage1DEXT =
+      (GdkGLProc_glCompressedMultiTexImage1DEXT) gdk_gl_get_proc_address ("glCompressedMultiTexImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedMultiTexImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedMultiTexImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedMultiTexImage1DEXT);
+}
+
+/* glCompressedMultiTexSubImage3DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedMultiTexSubImage3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage3DEXT == (GdkGLProc_glCompressedMultiTexSubImage3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage3DEXT =
+      (GdkGLProc_glCompressedMultiTexSubImage3DEXT) gdk_gl_get_proc_address ("glCompressedMultiTexSubImage3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedMultiTexSubImage3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage3DEXT);
+}
+
+/* glCompressedMultiTexSubImage2DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedMultiTexSubImage2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage2DEXT == (GdkGLProc_glCompressedMultiTexSubImage2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage2DEXT =
+      (GdkGLProc_glCompressedMultiTexSubImage2DEXT) gdk_gl_get_proc_address ("glCompressedMultiTexSubImage2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedMultiTexSubImage2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage2DEXT);
+}
+
+/* glCompressedMultiTexSubImage1DEXT */
+GdkGLProc
+gdk_gl_get_glCompressedMultiTexSubImage1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage1DEXT == (GdkGLProc_glCompressedMultiTexSubImage1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage1DEXT =
+      (GdkGLProc_glCompressedMultiTexSubImage1DEXT) gdk_gl_get_proc_address ("glCompressedMultiTexSubImage1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCompressedMultiTexSubImage1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCompressedMultiTexSubImage1DEXT);
+}
+
+/* glGetCompressedMultiTexImageEXT */
+GdkGLProc
+gdk_gl_get_glGetCompressedMultiTexImageEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetCompressedMultiTexImageEXT == (GdkGLProc_glGetCompressedMultiTexImageEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetCompressedMultiTexImageEXT =
+      (GdkGLProc_glGetCompressedMultiTexImageEXT) gdk_gl_get_proc_address ("glGetCompressedMultiTexImageEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetCompressedMultiTexImageEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetCompressedMultiTexImageEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetCompressedMultiTexImageEXT);
+}
+
+/* glNamedProgramStringEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramStringEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramStringEXT == (GdkGLProc_glNamedProgramStringEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramStringEXT =
+      (GdkGLProc_glNamedProgramStringEXT) gdk_gl_get_proc_address ("glNamedProgramStringEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramStringEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramStringEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramStringEXT);
+}
+
+/* glNamedProgramLocalParameter4dEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParameter4dEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4dEXT == (GdkGLProc_glNamedProgramLocalParameter4dEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4dEXT =
+      (GdkGLProc_glNamedProgramLocalParameter4dEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParameter4dEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParameter4dEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4dEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4dEXT);
+}
+
+/* glNamedProgramLocalParameter4dvEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParameter4dvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4dvEXT == (GdkGLProc_glNamedProgramLocalParameter4dvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4dvEXT =
+      (GdkGLProc_glNamedProgramLocalParameter4dvEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParameter4dvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParameter4dvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4dvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4dvEXT);
+}
+
+/* glNamedProgramLocalParameter4fEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParameter4fEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4fEXT == (GdkGLProc_glNamedProgramLocalParameter4fEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4fEXT =
+      (GdkGLProc_glNamedProgramLocalParameter4fEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParameter4fEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParameter4fEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4fEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4fEXT);
+}
+
+/* glNamedProgramLocalParameter4fvEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParameter4fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4fvEXT == (GdkGLProc_glNamedProgramLocalParameter4fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4fvEXT =
+      (GdkGLProc_glNamedProgramLocalParameter4fvEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParameter4fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParameter4fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameter4fvEXT);
+}
+
+/* glGetNamedProgramLocalParameterdvEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedProgramLocalParameterdvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterdvEXT == (GdkGLProc_glGetNamedProgramLocalParameterdvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterdvEXT =
+      (GdkGLProc_glGetNamedProgramLocalParameterdvEXT) gdk_gl_get_proc_address ("glGetNamedProgramLocalParameterdvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedProgramLocalParameterdvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterdvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterdvEXT);
+}
+
+/* glGetNamedProgramLocalParameterfvEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedProgramLocalParameterfvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterfvEXT == (GdkGLProc_glGetNamedProgramLocalParameterfvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterfvEXT =
+      (GdkGLProc_glGetNamedProgramLocalParameterfvEXT) gdk_gl_get_proc_address ("glGetNamedProgramLocalParameterfvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedProgramLocalParameterfvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterfvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterfvEXT);
+}
+
+/* glGetNamedProgramivEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedProgramivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedProgramivEXT == (GdkGLProc_glGetNamedProgramivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedProgramivEXT =
+      (GdkGLProc_glGetNamedProgramivEXT) gdk_gl_get_proc_address ("glGetNamedProgramivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedProgramivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedProgramivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedProgramivEXT);
+}
+
+/* glGetNamedProgramStringEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedProgramStringEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedProgramStringEXT == (GdkGLProc_glGetNamedProgramStringEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedProgramStringEXT =
+      (GdkGLProc_glGetNamedProgramStringEXT) gdk_gl_get_proc_address ("glGetNamedProgramStringEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedProgramStringEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedProgramStringEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedProgramStringEXT);
+}
+
+/* glNamedProgramLocalParameters4fvEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParameters4fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameters4fvEXT == (GdkGLProc_glNamedProgramLocalParameters4fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParameters4fvEXT =
+      (GdkGLProc_glNamedProgramLocalParameters4fvEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParameters4fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParameters4fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameters4fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameters4fvEXT);
+}
+
+/* glNamedProgramLocalParameterI4iEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParameterI4iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4iEXT == (GdkGLProc_glNamedProgramLocalParameterI4iEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4iEXT =
+      (GdkGLProc_glNamedProgramLocalParameterI4iEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParameterI4iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParameterI4iEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4iEXT);
+}
+
+/* glNamedProgramLocalParameterI4ivEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParameterI4ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4ivEXT == (GdkGLProc_glNamedProgramLocalParameterI4ivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4ivEXT =
+      (GdkGLProc_glNamedProgramLocalParameterI4ivEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParameterI4ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParameterI4ivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4ivEXT);
+}
+
+/* glNamedProgramLocalParametersI4ivEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParametersI4ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParametersI4ivEXT == (GdkGLProc_glNamedProgramLocalParametersI4ivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParametersI4ivEXT =
+      (GdkGLProc_glNamedProgramLocalParametersI4ivEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParametersI4ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParametersI4ivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParametersI4ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParametersI4ivEXT);
+}
+
+/* glNamedProgramLocalParameterI4uiEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParameterI4uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4uiEXT == (GdkGLProc_glNamedProgramLocalParameterI4uiEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4uiEXT =
+      (GdkGLProc_glNamedProgramLocalParameterI4uiEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParameterI4uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParameterI4uiEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4uiEXT);
+}
+
+/* glNamedProgramLocalParameterI4uivEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParameterI4uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4uivEXT == (GdkGLProc_glNamedProgramLocalParameterI4uivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4uivEXT =
+      (GdkGLProc_glNamedProgramLocalParameterI4uivEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParameterI4uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParameterI4uivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParameterI4uivEXT);
+}
+
+/* glNamedProgramLocalParametersI4uivEXT */
+GdkGLProc
+gdk_gl_get_glNamedProgramLocalParametersI4uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParametersI4uivEXT == (GdkGLProc_glNamedProgramLocalParametersI4uivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedProgramLocalParametersI4uivEXT =
+      (GdkGLProc_glNamedProgramLocalParametersI4uivEXT) gdk_gl_get_proc_address ("glNamedProgramLocalParametersI4uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedProgramLocalParametersI4uivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParametersI4uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedProgramLocalParametersI4uivEXT);
+}
+
+/* glGetNamedProgramLocalParameterIivEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedProgramLocalParameterIivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterIivEXT == (GdkGLProc_glGetNamedProgramLocalParameterIivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterIivEXT =
+      (GdkGLProc_glGetNamedProgramLocalParameterIivEXT) gdk_gl_get_proc_address ("glGetNamedProgramLocalParameterIivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedProgramLocalParameterIivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterIivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterIivEXT);
+}
+
+/* glGetNamedProgramLocalParameterIuivEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedProgramLocalParameterIuivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterIuivEXT == (GdkGLProc_glGetNamedProgramLocalParameterIuivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterIuivEXT =
+      (GdkGLProc_glGetNamedProgramLocalParameterIuivEXT) gdk_gl_get_proc_address ("glGetNamedProgramLocalParameterIuivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedProgramLocalParameterIuivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterIuivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedProgramLocalParameterIuivEXT);
+}
+
+/* glTextureParameterIivEXT */
+GdkGLProc
+gdk_gl_get_glTextureParameterIivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureParameterIivEXT == (GdkGLProc_glTextureParameterIivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureParameterIivEXT =
+      (GdkGLProc_glTextureParameterIivEXT) gdk_gl_get_proc_address ("glTextureParameterIivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureParameterIivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureParameterIivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureParameterIivEXT);
+}
+
+/* glTextureParameterIuivEXT */
+GdkGLProc
+gdk_gl_get_glTextureParameterIuivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureParameterIuivEXT == (GdkGLProc_glTextureParameterIuivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureParameterIuivEXT =
+      (GdkGLProc_glTextureParameterIuivEXT) gdk_gl_get_proc_address ("glTextureParameterIuivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureParameterIuivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureParameterIuivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureParameterIuivEXT);
+}
+
+/* glGetTextureParameterIivEXT */
+GdkGLProc
+gdk_gl_get_glGetTextureParameterIivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetTextureParameterIivEXT == (GdkGLProc_glGetTextureParameterIivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetTextureParameterIivEXT =
+      (GdkGLProc_glGetTextureParameterIivEXT) gdk_gl_get_proc_address ("glGetTextureParameterIivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTextureParameterIivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetTextureParameterIivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetTextureParameterIivEXT);
+}
+
+/* glGetTextureParameterIuivEXT */
+GdkGLProc
+gdk_gl_get_glGetTextureParameterIuivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetTextureParameterIuivEXT == (GdkGLProc_glGetTextureParameterIuivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetTextureParameterIuivEXT =
+      (GdkGLProc_glGetTextureParameterIuivEXT) gdk_gl_get_proc_address ("glGetTextureParameterIuivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetTextureParameterIuivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetTextureParameterIuivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetTextureParameterIuivEXT);
+}
+
+/* glMultiTexParameterIivEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexParameterIivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexParameterIivEXT == (GdkGLProc_glMultiTexParameterIivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexParameterIivEXT =
+      (GdkGLProc_glMultiTexParameterIivEXT) gdk_gl_get_proc_address ("glMultiTexParameterIivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexParameterIivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexParameterIivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexParameterIivEXT);
+}
+
+/* glMultiTexParameterIuivEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexParameterIuivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexParameterIuivEXT == (GdkGLProc_glMultiTexParameterIuivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexParameterIuivEXT =
+      (GdkGLProc_glMultiTexParameterIuivEXT) gdk_gl_get_proc_address ("glMultiTexParameterIuivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexParameterIuivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexParameterIuivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexParameterIuivEXT);
+}
+
+/* glGetMultiTexParameterIivEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexParameterIivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterIivEXT == (GdkGLProc_glGetMultiTexParameterIivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexParameterIivEXT =
+      (GdkGLProc_glGetMultiTexParameterIivEXT) gdk_gl_get_proc_address ("glGetMultiTexParameterIivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexParameterIivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterIivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterIivEXT);
+}
+
+/* glGetMultiTexParameterIuivEXT */
+GdkGLProc
+gdk_gl_get_glGetMultiTexParameterIuivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterIuivEXT == (GdkGLProc_glGetMultiTexParameterIuivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetMultiTexParameterIuivEXT =
+      (GdkGLProc_glGetMultiTexParameterIuivEXT) gdk_gl_get_proc_address ("glGetMultiTexParameterIuivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultiTexParameterIuivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterIuivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetMultiTexParameterIuivEXT);
+}
+
+/* glProgramUniform1fEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform1fEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform1fEXT == (GdkGLProc_glProgramUniform1fEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform1fEXT =
+      (GdkGLProc_glProgramUniform1fEXT) gdk_gl_get_proc_address ("glProgramUniform1fEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform1fEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform1fEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform1fEXT);
+}
+
+/* glProgramUniform2fEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform2fEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform2fEXT == (GdkGLProc_glProgramUniform2fEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform2fEXT =
+      (GdkGLProc_glProgramUniform2fEXT) gdk_gl_get_proc_address ("glProgramUniform2fEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform2fEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform2fEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform2fEXT);
+}
+
+/* glProgramUniform3fEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform3fEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform3fEXT == (GdkGLProc_glProgramUniform3fEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform3fEXT =
+      (GdkGLProc_glProgramUniform3fEXT) gdk_gl_get_proc_address ("glProgramUniform3fEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform3fEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform3fEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform3fEXT);
+}
+
+/* glProgramUniform4fEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform4fEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform4fEXT == (GdkGLProc_glProgramUniform4fEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform4fEXT =
+      (GdkGLProc_glProgramUniform4fEXT) gdk_gl_get_proc_address ("glProgramUniform4fEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform4fEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform4fEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform4fEXT);
+}
+
+/* glProgramUniform1iEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform1iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform1iEXT == (GdkGLProc_glProgramUniform1iEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform1iEXT =
+      (GdkGLProc_glProgramUniform1iEXT) gdk_gl_get_proc_address ("glProgramUniform1iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform1iEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform1iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform1iEXT);
+}
+
+/* glProgramUniform2iEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform2iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform2iEXT == (GdkGLProc_glProgramUniform2iEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform2iEXT =
+      (GdkGLProc_glProgramUniform2iEXT) gdk_gl_get_proc_address ("glProgramUniform2iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform2iEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform2iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform2iEXT);
+}
+
+/* glProgramUniform3iEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform3iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform3iEXT == (GdkGLProc_glProgramUniform3iEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform3iEXT =
+      (GdkGLProc_glProgramUniform3iEXT) gdk_gl_get_proc_address ("glProgramUniform3iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform3iEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform3iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform3iEXT);
+}
+
+/* glProgramUniform4iEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform4iEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform4iEXT == (GdkGLProc_glProgramUniform4iEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform4iEXT =
+      (GdkGLProc_glProgramUniform4iEXT) gdk_gl_get_proc_address ("glProgramUniform4iEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform4iEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform4iEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform4iEXT);
+}
+
+/* glProgramUniform1fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform1fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform1fvEXT == (GdkGLProc_glProgramUniform1fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform1fvEXT =
+      (GdkGLProc_glProgramUniform1fvEXT) gdk_gl_get_proc_address ("glProgramUniform1fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform1fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform1fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform1fvEXT);
+}
+
+/* glProgramUniform2fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform2fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform2fvEXT == (GdkGLProc_glProgramUniform2fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform2fvEXT =
+      (GdkGLProc_glProgramUniform2fvEXT) gdk_gl_get_proc_address ("glProgramUniform2fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform2fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform2fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform2fvEXT);
+}
+
+/* glProgramUniform3fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform3fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform3fvEXT == (GdkGLProc_glProgramUniform3fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform3fvEXT =
+      (GdkGLProc_glProgramUniform3fvEXT) gdk_gl_get_proc_address ("glProgramUniform3fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform3fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform3fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform3fvEXT);
+}
+
+/* glProgramUniform4fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform4fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform4fvEXT == (GdkGLProc_glProgramUniform4fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform4fvEXT =
+      (GdkGLProc_glProgramUniform4fvEXT) gdk_gl_get_proc_address ("glProgramUniform4fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform4fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform4fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform4fvEXT);
+}
+
+/* glProgramUniform1ivEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform1ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform1ivEXT == (GdkGLProc_glProgramUniform1ivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform1ivEXT =
+      (GdkGLProc_glProgramUniform1ivEXT) gdk_gl_get_proc_address ("glProgramUniform1ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform1ivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform1ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform1ivEXT);
+}
+
+/* glProgramUniform2ivEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform2ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform2ivEXT == (GdkGLProc_glProgramUniform2ivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform2ivEXT =
+      (GdkGLProc_glProgramUniform2ivEXT) gdk_gl_get_proc_address ("glProgramUniform2ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform2ivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform2ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform2ivEXT);
+}
+
+/* glProgramUniform3ivEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform3ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform3ivEXT == (GdkGLProc_glProgramUniform3ivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform3ivEXT =
+      (GdkGLProc_glProgramUniform3ivEXT) gdk_gl_get_proc_address ("glProgramUniform3ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform3ivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform3ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform3ivEXT);
+}
+
+/* glProgramUniform4ivEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform4ivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform4ivEXT == (GdkGLProc_glProgramUniform4ivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform4ivEXT =
+      (GdkGLProc_glProgramUniform4ivEXT) gdk_gl_get_proc_address ("glProgramUniform4ivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform4ivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform4ivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform4ivEXT);
+}
+
+/* glProgramUniformMatrix2fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniformMatrix2fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix2fvEXT == (GdkGLProc_glProgramUniformMatrix2fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniformMatrix2fvEXT =
+      (GdkGLProc_glProgramUniformMatrix2fvEXT) gdk_gl_get_proc_address ("glProgramUniformMatrix2fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformMatrix2fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix2fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix2fvEXT);
+}
+
+/* glProgramUniformMatrix3fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniformMatrix3fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix3fvEXT == (GdkGLProc_glProgramUniformMatrix3fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniformMatrix3fvEXT =
+      (GdkGLProc_glProgramUniformMatrix3fvEXT) gdk_gl_get_proc_address ("glProgramUniformMatrix3fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformMatrix3fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix3fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix3fvEXT);
+}
+
+/* glProgramUniformMatrix4fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniformMatrix4fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix4fvEXT == (GdkGLProc_glProgramUniformMatrix4fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniformMatrix4fvEXT =
+      (GdkGLProc_glProgramUniformMatrix4fvEXT) gdk_gl_get_proc_address ("glProgramUniformMatrix4fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformMatrix4fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix4fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix4fvEXT);
+}
+
+/* glProgramUniformMatrix2x3fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniformMatrix2x3fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix2x3fvEXT == (GdkGLProc_glProgramUniformMatrix2x3fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniformMatrix2x3fvEXT =
+      (GdkGLProc_glProgramUniformMatrix2x3fvEXT) gdk_gl_get_proc_address ("glProgramUniformMatrix2x3fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformMatrix2x3fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix2x3fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix2x3fvEXT);
+}
+
+/* glProgramUniformMatrix3x2fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniformMatrix3x2fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix3x2fvEXT == (GdkGLProc_glProgramUniformMatrix3x2fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniformMatrix3x2fvEXT =
+      (GdkGLProc_glProgramUniformMatrix3x2fvEXT) gdk_gl_get_proc_address ("glProgramUniformMatrix3x2fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformMatrix3x2fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix3x2fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix3x2fvEXT);
+}
+
+/* glProgramUniformMatrix2x4fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniformMatrix2x4fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix2x4fvEXT == (GdkGLProc_glProgramUniformMatrix2x4fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniformMatrix2x4fvEXT =
+      (GdkGLProc_glProgramUniformMatrix2x4fvEXT) gdk_gl_get_proc_address ("glProgramUniformMatrix2x4fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformMatrix2x4fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix2x4fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix2x4fvEXT);
+}
+
+/* glProgramUniformMatrix4x2fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniformMatrix4x2fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix4x2fvEXT == (GdkGLProc_glProgramUniformMatrix4x2fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniformMatrix4x2fvEXT =
+      (GdkGLProc_glProgramUniformMatrix4x2fvEXT) gdk_gl_get_proc_address ("glProgramUniformMatrix4x2fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformMatrix4x2fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix4x2fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix4x2fvEXT);
+}
+
+/* glProgramUniformMatrix3x4fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniformMatrix3x4fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix3x4fvEXT == (GdkGLProc_glProgramUniformMatrix3x4fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniformMatrix3x4fvEXT =
+      (GdkGLProc_glProgramUniformMatrix3x4fvEXT) gdk_gl_get_proc_address ("glProgramUniformMatrix3x4fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformMatrix3x4fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix3x4fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix3x4fvEXT);
+}
+
+/* glProgramUniformMatrix4x3fvEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniformMatrix4x3fvEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix4x3fvEXT == (GdkGLProc_glProgramUniformMatrix4x3fvEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniformMatrix4x3fvEXT =
+      (GdkGLProc_glProgramUniformMatrix4x3fvEXT) gdk_gl_get_proc_address ("glProgramUniformMatrix4x3fvEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformMatrix4x3fvEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix4x3fvEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniformMatrix4x3fvEXT);
+}
+
+/* glProgramUniform1uiEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform1uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform1uiEXT == (GdkGLProc_glProgramUniform1uiEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform1uiEXT =
+      (GdkGLProc_glProgramUniform1uiEXT) gdk_gl_get_proc_address ("glProgramUniform1uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform1uiEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform1uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform1uiEXT);
+}
+
+/* glProgramUniform2uiEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform2uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform2uiEXT == (GdkGLProc_glProgramUniform2uiEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform2uiEXT =
+      (GdkGLProc_glProgramUniform2uiEXT) gdk_gl_get_proc_address ("glProgramUniform2uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform2uiEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform2uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform2uiEXT);
+}
+
+/* glProgramUniform3uiEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform3uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform3uiEXT == (GdkGLProc_glProgramUniform3uiEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform3uiEXT =
+      (GdkGLProc_glProgramUniform3uiEXT) gdk_gl_get_proc_address ("glProgramUniform3uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform3uiEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform3uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform3uiEXT);
+}
+
+/* glProgramUniform4uiEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform4uiEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform4uiEXT == (GdkGLProc_glProgramUniform4uiEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform4uiEXT =
+      (GdkGLProc_glProgramUniform4uiEXT) gdk_gl_get_proc_address ("glProgramUniform4uiEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform4uiEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform4uiEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform4uiEXT);
+}
+
+/* glProgramUniform1uivEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform1uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform1uivEXT == (GdkGLProc_glProgramUniform1uivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform1uivEXT =
+      (GdkGLProc_glProgramUniform1uivEXT) gdk_gl_get_proc_address ("glProgramUniform1uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform1uivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform1uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform1uivEXT);
+}
+
+/* glProgramUniform2uivEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform2uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform2uivEXT == (GdkGLProc_glProgramUniform2uivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform2uivEXT =
+      (GdkGLProc_glProgramUniform2uivEXT) gdk_gl_get_proc_address ("glProgramUniform2uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform2uivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform2uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform2uivEXT);
+}
+
+/* glProgramUniform3uivEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform3uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform3uivEXT == (GdkGLProc_glProgramUniform3uivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform3uivEXT =
+      (GdkGLProc_glProgramUniform3uivEXT) gdk_gl_get_proc_address ("glProgramUniform3uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform3uivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform3uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform3uivEXT);
+}
+
+/* glProgramUniform4uivEXT */
+GdkGLProc
+gdk_gl_get_glProgramUniform4uivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glProgramUniform4uivEXT == (GdkGLProc_glProgramUniform4uivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glProgramUniform4uivEXT =
+      (GdkGLProc_glProgramUniform4uivEXT) gdk_gl_get_proc_address ("glProgramUniform4uivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniform4uivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glProgramUniform4uivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glProgramUniform4uivEXT);
+}
+
+/* glNamedBufferDataEXT */
+GdkGLProc
+gdk_gl_get_glNamedBufferDataEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedBufferDataEXT == (GdkGLProc_glNamedBufferDataEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedBufferDataEXT =
+      (GdkGLProc_glNamedBufferDataEXT) gdk_gl_get_proc_address ("glNamedBufferDataEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedBufferDataEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedBufferDataEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedBufferDataEXT);
+}
+
+/* glNamedBufferSubDataEXT */
+GdkGLProc
+gdk_gl_get_glNamedBufferSubDataEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedBufferSubDataEXT == (GdkGLProc_glNamedBufferSubDataEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedBufferSubDataEXT =
+      (GdkGLProc_glNamedBufferSubDataEXT) gdk_gl_get_proc_address ("glNamedBufferSubDataEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedBufferSubDataEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedBufferSubDataEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedBufferSubDataEXT);
+}
+
+/* glMapNamedBufferEXT */
+GdkGLProc
+gdk_gl_get_glMapNamedBufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMapNamedBufferEXT == (GdkGLProc_glMapNamedBufferEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMapNamedBufferEXT =
+      (GdkGLProc_glMapNamedBufferEXT) gdk_gl_get_proc_address ("glMapNamedBufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMapNamedBufferEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMapNamedBufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMapNamedBufferEXT);
+}
+
+/* glUnmapNamedBufferEXT */
+GdkGLProc
+gdk_gl_get_glUnmapNamedBufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glUnmapNamedBufferEXT == (GdkGLProc_glUnmapNamedBufferEXT) -1)
+    _procs_GL_EXT_direct_state_access.glUnmapNamedBufferEXT =
+      (GdkGLProc_glUnmapNamedBufferEXT) gdk_gl_get_proc_address ("glUnmapNamedBufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUnmapNamedBufferEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glUnmapNamedBufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glUnmapNamedBufferEXT);
+}
+
+/* glGetNamedBufferParameterivEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedBufferParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedBufferParameterivEXT == (GdkGLProc_glGetNamedBufferParameterivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedBufferParameterivEXT =
+      (GdkGLProc_glGetNamedBufferParameterivEXT) gdk_gl_get_proc_address ("glGetNamedBufferParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedBufferParameterivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedBufferParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedBufferParameterivEXT);
+}
+
+/* glGetNamedBufferPointervEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedBufferPointervEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedBufferPointervEXT == (GdkGLProc_glGetNamedBufferPointervEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedBufferPointervEXT =
+      (GdkGLProc_glGetNamedBufferPointervEXT) gdk_gl_get_proc_address ("glGetNamedBufferPointervEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedBufferPointervEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedBufferPointervEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedBufferPointervEXT);
+}
+
+/* glGetNamedBufferSubDataEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedBufferSubDataEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedBufferSubDataEXT == (GdkGLProc_glGetNamedBufferSubDataEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedBufferSubDataEXT =
+      (GdkGLProc_glGetNamedBufferSubDataEXT) gdk_gl_get_proc_address ("glGetNamedBufferSubDataEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedBufferSubDataEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedBufferSubDataEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedBufferSubDataEXT);
+}
+
+/* glTextureBufferEXT */
+GdkGLProc
+gdk_gl_get_glTextureBufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureBufferEXT == (GdkGLProc_glTextureBufferEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureBufferEXT =
+      (GdkGLProc_glTextureBufferEXT) gdk_gl_get_proc_address ("glTextureBufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureBufferEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureBufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureBufferEXT);
+}
+
+/* glMultiTexBufferEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexBufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexBufferEXT == (GdkGLProc_glMultiTexBufferEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexBufferEXT =
+      (GdkGLProc_glMultiTexBufferEXT) gdk_gl_get_proc_address ("glMultiTexBufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexBufferEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexBufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexBufferEXT);
+}
+
+/* glNamedRenderbufferStorageEXT */
+GdkGLProc
+gdk_gl_get_glNamedRenderbufferStorageEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageEXT == (GdkGLProc_glNamedRenderbufferStorageEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageEXT =
+      (GdkGLProc_glNamedRenderbufferStorageEXT) gdk_gl_get_proc_address ("glNamedRenderbufferStorageEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedRenderbufferStorageEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageEXT);
+}
+
+/* glGetNamedRenderbufferParameterivEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedRenderbufferParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedRenderbufferParameterivEXT == (GdkGLProc_glGetNamedRenderbufferParameterivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedRenderbufferParameterivEXT =
+      (GdkGLProc_glGetNamedRenderbufferParameterivEXT) gdk_gl_get_proc_address ("glGetNamedRenderbufferParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedRenderbufferParameterivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedRenderbufferParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedRenderbufferParameterivEXT);
+}
+
+/* glCheckNamedFramebufferStatusEXT */
+GdkGLProc
+gdk_gl_get_glCheckNamedFramebufferStatusEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glCheckNamedFramebufferStatusEXT == (GdkGLProc_glCheckNamedFramebufferStatusEXT) -1)
+    _procs_GL_EXT_direct_state_access.glCheckNamedFramebufferStatusEXT =
+      (GdkGLProc_glCheckNamedFramebufferStatusEXT) gdk_gl_get_proc_address ("glCheckNamedFramebufferStatusEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCheckNamedFramebufferStatusEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glCheckNamedFramebufferStatusEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glCheckNamedFramebufferStatusEXT);
+}
+
+/* glNamedFramebufferTexture1DEXT */
+GdkGLProc
+gdk_gl_get_glNamedFramebufferTexture1DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedFramebufferTexture1DEXT == (GdkGLProc_glNamedFramebufferTexture1DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedFramebufferTexture1DEXT =
+      (GdkGLProc_glNamedFramebufferTexture1DEXT) gdk_gl_get_proc_address ("glNamedFramebufferTexture1DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedFramebufferTexture1DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedFramebufferTexture1DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedFramebufferTexture1DEXT);
+}
+
+/* glNamedFramebufferTexture2DEXT */
+GdkGLProc
+gdk_gl_get_glNamedFramebufferTexture2DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedFramebufferTexture2DEXT == (GdkGLProc_glNamedFramebufferTexture2DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedFramebufferTexture2DEXT =
+      (GdkGLProc_glNamedFramebufferTexture2DEXT) gdk_gl_get_proc_address ("glNamedFramebufferTexture2DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedFramebufferTexture2DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedFramebufferTexture2DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedFramebufferTexture2DEXT);
+}
+
+/* glNamedFramebufferTexture3DEXT */
+GdkGLProc
+gdk_gl_get_glNamedFramebufferTexture3DEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedFramebufferTexture3DEXT == (GdkGLProc_glNamedFramebufferTexture3DEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedFramebufferTexture3DEXT =
+      (GdkGLProc_glNamedFramebufferTexture3DEXT) gdk_gl_get_proc_address ("glNamedFramebufferTexture3DEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedFramebufferTexture3DEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedFramebufferTexture3DEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedFramebufferTexture3DEXT);
+}
+
+/* glNamedFramebufferRenderbufferEXT */
+GdkGLProc
+gdk_gl_get_glNamedFramebufferRenderbufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedFramebufferRenderbufferEXT == (GdkGLProc_glNamedFramebufferRenderbufferEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedFramebufferRenderbufferEXT =
+      (GdkGLProc_glNamedFramebufferRenderbufferEXT) gdk_gl_get_proc_address ("glNamedFramebufferRenderbufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedFramebufferRenderbufferEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedFramebufferRenderbufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedFramebufferRenderbufferEXT);
+}
+
+/* glGetNamedFramebufferAttachmentParameterivEXT */
+GdkGLProc
+gdk_gl_get_glGetNamedFramebufferAttachmentParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetNamedFramebufferAttachmentParameterivEXT == (GdkGLProc_glGetNamedFramebufferAttachmentParameterivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetNamedFramebufferAttachmentParameterivEXT =
+      (GdkGLProc_glGetNamedFramebufferAttachmentParameterivEXT) gdk_gl_get_proc_address ("glGetNamedFramebufferAttachmentParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedFramebufferAttachmentParameterivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetNamedFramebufferAttachmentParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetNamedFramebufferAttachmentParameterivEXT);
+}
+
+/* glGenerateTextureMipmapEXT */
+GdkGLProc
+gdk_gl_get_glGenerateTextureMipmapEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGenerateTextureMipmapEXT == (GdkGLProc_glGenerateTextureMipmapEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGenerateTextureMipmapEXT =
+      (GdkGLProc_glGenerateTextureMipmapEXT) gdk_gl_get_proc_address ("glGenerateTextureMipmapEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenerateTextureMipmapEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGenerateTextureMipmapEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGenerateTextureMipmapEXT);
+}
+
+/* glGenerateMultiTexMipmapEXT */
+GdkGLProc
+gdk_gl_get_glGenerateMultiTexMipmapEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGenerateMultiTexMipmapEXT == (GdkGLProc_glGenerateMultiTexMipmapEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGenerateMultiTexMipmapEXT =
+      (GdkGLProc_glGenerateMultiTexMipmapEXT) gdk_gl_get_proc_address ("glGenerateMultiTexMipmapEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenerateMultiTexMipmapEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGenerateMultiTexMipmapEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGenerateMultiTexMipmapEXT);
+}
+
+/* glFramebufferDrawBufferEXT */
+GdkGLProc
+gdk_gl_get_glFramebufferDrawBufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glFramebufferDrawBufferEXT == (GdkGLProc_glFramebufferDrawBufferEXT) -1)
+    _procs_GL_EXT_direct_state_access.glFramebufferDrawBufferEXT =
+      (GdkGLProc_glFramebufferDrawBufferEXT) gdk_gl_get_proc_address ("glFramebufferDrawBufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferDrawBufferEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glFramebufferDrawBufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glFramebufferDrawBufferEXT);
+}
+
+/* glFramebufferDrawBuffersEXT */
+GdkGLProc
+gdk_gl_get_glFramebufferDrawBuffersEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glFramebufferDrawBuffersEXT == (GdkGLProc_glFramebufferDrawBuffersEXT) -1)
+    _procs_GL_EXT_direct_state_access.glFramebufferDrawBuffersEXT =
+      (GdkGLProc_glFramebufferDrawBuffersEXT) gdk_gl_get_proc_address ("glFramebufferDrawBuffersEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferDrawBuffersEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glFramebufferDrawBuffersEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glFramebufferDrawBuffersEXT);
+}
+
+/* glFramebufferReadBufferEXT */
+GdkGLProc
+gdk_gl_get_glFramebufferReadBufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glFramebufferReadBufferEXT == (GdkGLProc_glFramebufferReadBufferEXT) -1)
+    _procs_GL_EXT_direct_state_access.glFramebufferReadBufferEXT =
+      (GdkGLProc_glFramebufferReadBufferEXT) gdk_gl_get_proc_address ("glFramebufferReadBufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFramebufferReadBufferEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glFramebufferReadBufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glFramebufferReadBufferEXT);
+}
+
+/* glGetFramebufferParameterivEXT */
+GdkGLProc
+gdk_gl_get_glGetFramebufferParameterivEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glGetFramebufferParameterivEXT == (GdkGLProc_glGetFramebufferParameterivEXT) -1)
+    _procs_GL_EXT_direct_state_access.glGetFramebufferParameterivEXT =
+      (GdkGLProc_glGetFramebufferParameterivEXT) gdk_gl_get_proc_address ("glGetFramebufferParameterivEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetFramebufferParameterivEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glGetFramebufferParameterivEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glGetFramebufferParameterivEXT);
+}
+
+/* glNamedRenderbufferStorageMultisampleEXT */
+GdkGLProc
+gdk_gl_get_glNamedRenderbufferStorageMultisampleEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageMultisampleEXT == (GdkGLProc_glNamedRenderbufferStorageMultisampleEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageMultisampleEXT =
+      (GdkGLProc_glNamedRenderbufferStorageMultisampleEXT) gdk_gl_get_proc_address ("glNamedRenderbufferStorageMultisampleEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedRenderbufferStorageMultisampleEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageMultisampleEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageMultisampleEXT);
+}
+
+/* glNamedRenderbufferStorageMultisampleCoverageEXT */
+GdkGLProc
+gdk_gl_get_glNamedRenderbufferStorageMultisampleCoverageEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageMultisampleCoverageEXT == (GdkGLProc_glNamedRenderbufferStorageMultisampleCoverageEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageMultisampleCoverageEXT =
+      (GdkGLProc_glNamedRenderbufferStorageMultisampleCoverageEXT) gdk_gl_get_proc_address ("glNamedRenderbufferStorageMultisampleCoverageEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedRenderbufferStorageMultisampleCoverageEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageMultisampleCoverageEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedRenderbufferStorageMultisampleCoverageEXT);
+}
+
+/* glNamedFramebufferTextureEXT */
+GdkGLProc
+gdk_gl_get_glNamedFramebufferTextureEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedFramebufferTextureEXT == (GdkGLProc_glNamedFramebufferTextureEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedFramebufferTextureEXT =
+      (GdkGLProc_glNamedFramebufferTextureEXT) gdk_gl_get_proc_address ("glNamedFramebufferTextureEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedFramebufferTextureEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedFramebufferTextureEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedFramebufferTextureEXT);
+}
+
+/* glNamedFramebufferTextureLayerEXT */
+GdkGLProc
+gdk_gl_get_glNamedFramebufferTextureLayerEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedFramebufferTextureLayerEXT == (GdkGLProc_glNamedFramebufferTextureLayerEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedFramebufferTextureLayerEXT =
+      (GdkGLProc_glNamedFramebufferTextureLayerEXT) gdk_gl_get_proc_address ("glNamedFramebufferTextureLayerEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedFramebufferTextureLayerEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedFramebufferTextureLayerEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedFramebufferTextureLayerEXT);
+}
+
+/* glNamedFramebufferTextureFaceEXT */
+GdkGLProc
+gdk_gl_get_glNamedFramebufferTextureFaceEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glNamedFramebufferTextureFaceEXT == (GdkGLProc_glNamedFramebufferTextureFaceEXT) -1)
+    _procs_GL_EXT_direct_state_access.glNamedFramebufferTextureFaceEXT =
+      (GdkGLProc_glNamedFramebufferTextureFaceEXT) gdk_gl_get_proc_address ("glNamedFramebufferTextureFaceEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedFramebufferTextureFaceEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glNamedFramebufferTextureFaceEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glNamedFramebufferTextureFaceEXT);
+}
+
+/* glTextureRenderbufferEXT */
+GdkGLProc
+gdk_gl_get_glTextureRenderbufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glTextureRenderbufferEXT == (GdkGLProc_glTextureRenderbufferEXT) -1)
+    _procs_GL_EXT_direct_state_access.glTextureRenderbufferEXT =
+      (GdkGLProc_glTextureRenderbufferEXT) gdk_gl_get_proc_address ("glTextureRenderbufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureRenderbufferEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glTextureRenderbufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glTextureRenderbufferEXT);
+}
+
+/* glMultiTexRenderbufferEXT */
+GdkGLProc
+gdk_gl_get_glMultiTexRenderbufferEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_direct_state_access.glMultiTexRenderbufferEXT == (GdkGLProc_glMultiTexRenderbufferEXT) -1)
+    _procs_GL_EXT_direct_state_access.glMultiTexRenderbufferEXT =
+      (GdkGLProc_glMultiTexRenderbufferEXT) gdk_gl_get_proc_address ("glMultiTexRenderbufferEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMultiTexRenderbufferEXT () - %s",
+               (_procs_GL_EXT_direct_state_access.glMultiTexRenderbufferEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_direct_state_access.glMultiTexRenderbufferEXT);
+}
+
+/* Get GL_EXT_direct_state_access functions */
+GdkGL_GL_EXT_direct_state_access *
+gdk_gl_get_GL_EXT_direct_state_access (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_direct_state_access");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glClientAttribDefaultEXT () != NULL);
+          supported &= (gdk_gl_get_glPushClientAttribDefaultEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixLoadfEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixLoaddEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixMultfEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixMultdEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixLoadIdentityEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixRotatefEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixRotatedEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixScalefEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixScaledEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixTranslatefEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixTranslatedEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixFrustumEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixOrthoEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixPopEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixPushEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixLoadTransposefEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixLoadTransposedEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixMultTransposefEXT () != NULL);
+          supported &= (gdk_gl_get_glMatrixMultTransposedEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureParameterfEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureParameterfvEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureParameteriEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureSubImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureSubImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glCopyTextureImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glCopyTextureImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glCopyTextureSubImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glCopyTextureSubImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glGetTextureImageEXT () != NULL);
+          supported &= (gdk_gl_get_glGetTextureParameterfvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetTextureParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetTextureLevelParameterfvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetTextureLevelParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureImage3DEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureSubImage3DEXT () != NULL);
+          supported &= (gdk_gl_get_glCopyTextureSubImage3DEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexParameterfEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexParameterfvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexParameteriEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexSubImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexSubImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glCopyMultiTexImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glCopyMultiTexImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glCopyMultiTexSubImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glCopyMultiTexSubImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexImageEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexParameterfvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexLevelParameterfvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexLevelParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexImage3DEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexSubImage3DEXT () != NULL);
+          supported &= (gdk_gl_get_glCopyMultiTexSubImage3DEXT () != NULL);
+          supported &= (gdk_gl_get_glBindMultiTextureEXT () != NULL);
+          supported &= (gdk_gl_get_glEnableClientStateIndexedEXT () != NULL);
+          supported &= (gdk_gl_get_glDisableClientStateIndexedEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexCoordPointerEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexEnvfEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexEnvfvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexEnviEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexEnvivEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexGendEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexGendvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexGenfEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexGenfvEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexGeniEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexGenivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexEnvfvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexEnvivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexGendvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexGenfvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexGenivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetFloatIndexedvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetDoubleIndexedvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetPointerIndexedvEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedTextureImage3DEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedTextureImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedTextureImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedTextureSubImage3DEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedTextureSubImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedTextureSubImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glGetCompressedTextureImageEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedMultiTexImage3DEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedMultiTexImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedMultiTexImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedMultiTexSubImage3DEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedMultiTexSubImage2DEXT () != NULL);
+          supported &= (gdk_gl_get_glCompressedMultiTexSubImage1DEXT () != NULL);
+          supported &= (gdk_gl_get_glGetCompressedMultiTexImageEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramStringEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParameter4dEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParameter4dvEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParameter4fEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParameter4fvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedProgramLocalParameterdvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedProgramLocalParameterfvEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedProgramivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedProgramStringEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParameters4fvEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParameterI4iEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParameterI4ivEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParametersI4ivEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParameterI4uiEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParameterI4uivEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedProgramLocalParametersI4uivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedProgramLocalParameterIivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedProgramLocalParameterIuivEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureParameterIivEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureParameterIuivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetTextureParameterIivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetTextureParameterIuivEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexParameterIivEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexParameterIuivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexParameterIivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetMultiTexParameterIuivEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform1fEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform2fEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform3fEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform4fEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform1iEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform2iEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform3iEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform4iEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform1fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform2fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform3fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform4fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform1ivEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform2ivEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform3ivEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform4ivEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformMatrix2fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformMatrix3fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformMatrix4fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformMatrix2x3fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformMatrix3x2fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformMatrix2x4fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformMatrix4x2fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformMatrix3x4fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformMatrix4x3fvEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform1uiEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform2uiEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform3uiEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform4uiEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform1uivEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform2uivEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform3uivEXT () != NULL);
+          supported &= (gdk_gl_get_glProgramUniform4uivEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedBufferDataEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedBufferSubDataEXT () != NULL);
+          supported &= (gdk_gl_get_glMapNamedBufferEXT () != NULL);
+          supported &= (gdk_gl_get_glUnmapNamedBufferEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedBufferParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedBufferPointervEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedBufferSubDataEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureBufferEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexBufferEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedRenderbufferStorageEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedRenderbufferParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glCheckNamedFramebufferStatusEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedFramebufferTexture1DEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedFramebufferTexture2DEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedFramebufferTexture3DEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedFramebufferRenderbufferEXT () != NULL);
+          supported &= (gdk_gl_get_glGetNamedFramebufferAttachmentParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glGenerateTextureMipmapEXT () != NULL);
+          supported &= (gdk_gl_get_glGenerateMultiTexMipmapEXT () != NULL);
+          supported &= (gdk_gl_get_glFramebufferDrawBufferEXT () != NULL);
+          supported &= (gdk_gl_get_glFramebufferDrawBuffersEXT () != NULL);
+          supported &= (gdk_gl_get_glFramebufferReadBufferEXT () != NULL);
+          supported &= (gdk_gl_get_glGetFramebufferParameterivEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedRenderbufferStorageMultisampleEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedRenderbufferStorageMultisampleCoverageEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedFramebufferTextureEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedFramebufferTextureLayerEXT () != NULL);
+          supported &= (gdk_gl_get_glNamedFramebufferTextureFaceEXT () != NULL);
+          supported &= (gdk_gl_get_glTextureRenderbufferEXT () != NULL);
+          supported &= (gdk_gl_get_glMultiTexRenderbufferEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_direct_state_access () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_direct_state_access;
+}
+
+/*
+ * GL_NV_explicit_multisample
+ */
+
+static GdkGL_GL_NV_explicit_multisample _procs_GL_NV_explicit_multisample = {
+  (GdkGLProc_glGetMultisamplefvNV) -1,
+  (GdkGLProc_glSampleMaskIndexedNV) -1,
+  (GdkGLProc_glTexRenderbufferNV) -1
+};
+
+/* glGetMultisamplefvNV */
+GdkGLProc
+gdk_gl_get_glGetMultisamplefvNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_explicit_multisample.glGetMultisamplefvNV == (GdkGLProc_glGetMultisamplefvNV) -1)
+    _procs_GL_NV_explicit_multisample.glGetMultisamplefvNV =
+      (GdkGLProc_glGetMultisamplefvNV) gdk_gl_get_proc_address ("glGetMultisamplefvNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetMultisamplefvNV () - %s",
+               (_procs_GL_NV_explicit_multisample.glGetMultisamplefvNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_explicit_multisample.glGetMultisamplefvNV);
+}
+
+/* glSampleMaskIndexedNV */
+GdkGLProc
+gdk_gl_get_glSampleMaskIndexedNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_explicit_multisample.glSampleMaskIndexedNV == (GdkGLProc_glSampleMaskIndexedNV) -1)
+    _procs_GL_NV_explicit_multisample.glSampleMaskIndexedNV =
+      (GdkGLProc_glSampleMaskIndexedNV) gdk_gl_get_proc_address ("glSampleMaskIndexedNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSampleMaskIndexedNV () - %s",
+               (_procs_GL_NV_explicit_multisample.glSampleMaskIndexedNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_explicit_multisample.glSampleMaskIndexedNV);
+}
+
+/* glTexRenderbufferNV */
+GdkGLProc
+gdk_gl_get_glTexRenderbufferNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_explicit_multisample.glTexRenderbufferNV == (GdkGLProc_glTexRenderbufferNV) -1)
+    _procs_GL_NV_explicit_multisample.glTexRenderbufferNV =
+      (GdkGLProc_glTexRenderbufferNV) gdk_gl_get_proc_address ("glTexRenderbufferNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexRenderbufferNV () - %s",
+               (_procs_GL_NV_explicit_multisample.glTexRenderbufferNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_explicit_multisample.glTexRenderbufferNV);
+}
+
+/* Get GL_NV_explicit_multisample functions */
+GdkGL_GL_NV_explicit_multisample *
+gdk_gl_get_GL_NV_explicit_multisample (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_explicit_multisample");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glGetMultisamplefvNV () != NULL);
+          supported &= (gdk_gl_get_glSampleMaskIndexedNV () != NULL);
+          supported &= (gdk_gl_get_glTexRenderbufferNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_explicit_multisample () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_explicit_multisample;
+}
+
+/*
+ * GL_NV_transform_feedback2
+ */
+
+static GdkGL_GL_NV_transform_feedback2 _procs_GL_NV_transform_feedback2 = {
+  (GdkGLProc_glBindTransformFeedbackNV) -1,
+  (GdkGLProc_glDeleteTransformFeedbacksNV) -1,
+  (GdkGLProc_glGenTransformFeedbacksNV) -1,
+  (GdkGLProc_glIsTransformFeedbackNV) -1,
+  (GdkGLProc_glPauseTransformFeedbackNV) -1,
+  (GdkGLProc_glResumeTransformFeedbackNV) -1,
+  (GdkGLProc_glDrawTransformFeedbackNV) -1
+};
+
+/* glBindTransformFeedbackNV */
+GdkGLProc
+gdk_gl_get_glBindTransformFeedbackNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback2.glBindTransformFeedbackNV == (GdkGLProc_glBindTransformFeedbackNV) -1)
+    _procs_GL_NV_transform_feedback2.glBindTransformFeedbackNV =
+      (GdkGLProc_glBindTransformFeedbackNV) gdk_gl_get_proc_address ("glBindTransformFeedbackNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindTransformFeedbackNV () - %s",
+               (_procs_GL_NV_transform_feedback2.glBindTransformFeedbackNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback2.glBindTransformFeedbackNV);
+}
+
+/* glDeleteTransformFeedbacksNV */
+GdkGLProc
+gdk_gl_get_glDeleteTransformFeedbacksNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback2.glDeleteTransformFeedbacksNV == (GdkGLProc_glDeleteTransformFeedbacksNV) -1)
+    _procs_GL_NV_transform_feedback2.glDeleteTransformFeedbacksNV =
+      (GdkGLProc_glDeleteTransformFeedbacksNV) gdk_gl_get_proc_address ("glDeleteTransformFeedbacksNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeleteTransformFeedbacksNV () - %s",
+               (_procs_GL_NV_transform_feedback2.glDeleteTransformFeedbacksNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback2.glDeleteTransformFeedbacksNV);
+}
+
+/* glGenTransformFeedbacksNV */
+GdkGLProc
+gdk_gl_get_glGenTransformFeedbacksNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback2.glGenTransformFeedbacksNV == (GdkGLProc_glGenTransformFeedbacksNV) -1)
+    _procs_GL_NV_transform_feedback2.glGenTransformFeedbacksNV =
+      (GdkGLProc_glGenTransformFeedbacksNV) gdk_gl_get_proc_address ("glGenTransformFeedbacksNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenTransformFeedbacksNV () - %s",
+               (_procs_GL_NV_transform_feedback2.glGenTransformFeedbacksNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback2.glGenTransformFeedbacksNV);
+}
+
+/* glIsTransformFeedbackNV */
+GdkGLProc
+gdk_gl_get_glIsTransformFeedbackNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback2.glIsTransformFeedbackNV == (GdkGLProc_glIsTransformFeedbackNV) -1)
+    _procs_GL_NV_transform_feedback2.glIsTransformFeedbackNV =
+      (GdkGLProc_glIsTransformFeedbackNV) gdk_gl_get_proc_address ("glIsTransformFeedbackNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsTransformFeedbackNV () - %s",
+               (_procs_GL_NV_transform_feedback2.glIsTransformFeedbackNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback2.glIsTransformFeedbackNV);
+}
+
+/* glPauseTransformFeedbackNV */
+GdkGLProc
+gdk_gl_get_glPauseTransformFeedbackNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback2.glPauseTransformFeedbackNV == (GdkGLProc_glPauseTransformFeedbackNV) -1)
+    _procs_GL_NV_transform_feedback2.glPauseTransformFeedbackNV =
+      (GdkGLProc_glPauseTransformFeedbackNV) gdk_gl_get_proc_address ("glPauseTransformFeedbackNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glPauseTransformFeedbackNV () - %s",
+               (_procs_GL_NV_transform_feedback2.glPauseTransformFeedbackNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback2.glPauseTransformFeedbackNV);
+}
+
+/* glResumeTransformFeedbackNV */
+GdkGLProc
+gdk_gl_get_glResumeTransformFeedbackNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback2.glResumeTransformFeedbackNV == (GdkGLProc_glResumeTransformFeedbackNV) -1)
+    _procs_GL_NV_transform_feedback2.glResumeTransformFeedbackNV =
+      (GdkGLProc_glResumeTransformFeedbackNV) gdk_gl_get_proc_address ("glResumeTransformFeedbackNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glResumeTransformFeedbackNV () - %s",
+               (_procs_GL_NV_transform_feedback2.glResumeTransformFeedbackNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback2.glResumeTransformFeedbackNV);
+}
+
+/* glDrawTransformFeedbackNV */
+GdkGLProc
+gdk_gl_get_glDrawTransformFeedbackNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_transform_feedback2.glDrawTransformFeedbackNV == (GdkGLProc_glDrawTransformFeedbackNV) -1)
+    _procs_GL_NV_transform_feedback2.glDrawTransformFeedbackNV =
+      (GdkGLProc_glDrawTransformFeedbackNV) gdk_gl_get_proc_address ("glDrawTransformFeedbackNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDrawTransformFeedbackNV () - %s",
+               (_procs_GL_NV_transform_feedback2.glDrawTransformFeedbackNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_transform_feedback2.glDrawTransformFeedbackNV);
+}
+
+/* Get GL_NV_transform_feedback2 functions */
+GdkGL_GL_NV_transform_feedback2 *
+gdk_gl_get_GL_NV_transform_feedback2 (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_transform_feedback2");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBindTransformFeedbackNV () != NULL);
+          supported &= (gdk_gl_get_glDeleteTransformFeedbacksNV () != NULL);
+          supported &= (gdk_gl_get_glGenTransformFeedbacksNV () != NULL);
+          supported &= (gdk_gl_get_glIsTransformFeedbackNV () != NULL);
+          supported &= (gdk_gl_get_glPauseTransformFeedbackNV () != NULL);
+          supported &= (gdk_gl_get_glResumeTransformFeedbackNV () != NULL);
+          supported &= (gdk_gl_get_glDrawTransformFeedbackNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_transform_feedback2 () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_transform_feedback2;
+}
+
+/*
+ * GL_AMD_performance_monitor
+ */
+
+static GdkGL_GL_AMD_performance_monitor _procs_GL_AMD_performance_monitor = {
+  (GdkGLProc_glGetPerfMonitorGroupsAMD) -1,
+  (GdkGLProc_glGetPerfMonitorCountersAMD) -1,
+  (GdkGLProc_glGetPerfMonitorGroupStringAMD) -1,
+  (GdkGLProc_glGetPerfMonitorCounterStringAMD) -1,
+  (GdkGLProc_glGetPerfMonitorCounterInfoAMD) -1,
+  (GdkGLProc_glGenPerfMonitorsAMD) -1,
+  (GdkGLProc_glDeletePerfMonitorsAMD) -1,
+  (GdkGLProc_glSelectPerfMonitorCountersAMD) -1,
+  (GdkGLProc_glBeginPerfMonitorAMD) -1,
+  (GdkGLProc_glEndPerfMonitorAMD) -1,
+  (GdkGLProc_glGetPerfMonitorCounterDataAMD) -1
+};
+
+/* glGetPerfMonitorGroupsAMD */
+GdkGLProc
+gdk_gl_get_glGetPerfMonitorGroupsAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glGetPerfMonitorGroupsAMD == (GdkGLProc_glGetPerfMonitorGroupsAMD) -1)
+    _procs_GL_AMD_performance_monitor.glGetPerfMonitorGroupsAMD =
+      (GdkGLProc_glGetPerfMonitorGroupsAMD) gdk_gl_get_proc_address ("glGetPerfMonitorGroupsAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetPerfMonitorGroupsAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glGetPerfMonitorGroupsAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glGetPerfMonitorGroupsAMD);
+}
+
+/* glGetPerfMonitorCountersAMD */
+GdkGLProc
+gdk_gl_get_glGetPerfMonitorCountersAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCountersAMD == (GdkGLProc_glGetPerfMonitorCountersAMD) -1)
+    _procs_GL_AMD_performance_monitor.glGetPerfMonitorCountersAMD =
+      (GdkGLProc_glGetPerfMonitorCountersAMD) gdk_gl_get_proc_address ("glGetPerfMonitorCountersAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetPerfMonitorCountersAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCountersAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCountersAMD);
+}
+
+/* glGetPerfMonitorGroupStringAMD */
+GdkGLProc
+gdk_gl_get_glGetPerfMonitorGroupStringAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glGetPerfMonitorGroupStringAMD == (GdkGLProc_glGetPerfMonitorGroupStringAMD) -1)
+    _procs_GL_AMD_performance_monitor.glGetPerfMonitorGroupStringAMD =
+      (GdkGLProc_glGetPerfMonitorGroupStringAMD) gdk_gl_get_proc_address ("glGetPerfMonitorGroupStringAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetPerfMonitorGroupStringAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glGetPerfMonitorGroupStringAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glGetPerfMonitorGroupStringAMD);
+}
+
+/* glGetPerfMonitorCounterStringAMD */
+GdkGLProc
+gdk_gl_get_glGetPerfMonitorCounterStringAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterStringAMD == (GdkGLProc_glGetPerfMonitorCounterStringAMD) -1)
+    _procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterStringAMD =
+      (GdkGLProc_glGetPerfMonitorCounterStringAMD) gdk_gl_get_proc_address ("glGetPerfMonitorCounterStringAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetPerfMonitorCounterStringAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterStringAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterStringAMD);
+}
+
+/* glGetPerfMonitorCounterInfoAMD */
+GdkGLProc
+gdk_gl_get_glGetPerfMonitorCounterInfoAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterInfoAMD == (GdkGLProc_glGetPerfMonitorCounterInfoAMD) -1)
+    _procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterInfoAMD =
+      (GdkGLProc_glGetPerfMonitorCounterInfoAMD) gdk_gl_get_proc_address ("glGetPerfMonitorCounterInfoAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetPerfMonitorCounterInfoAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterInfoAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterInfoAMD);
+}
+
+/* glGenPerfMonitorsAMD */
+GdkGLProc
+gdk_gl_get_glGenPerfMonitorsAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glGenPerfMonitorsAMD == (GdkGLProc_glGenPerfMonitorsAMD) -1)
+    _procs_GL_AMD_performance_monitor.glGenPerfMonitorsAMD =
+      (GdkGLProc_glGenPerfMonitorsAMD) gdk_gl_get_proc_address ("glGenPerfMonitorsAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGenPerfMonitorsAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glGenPerfMonitorsAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glGenPerfMonitorsAMD);
+}
+
+/* glDeletePerfMonitorsAMD */
+GdkGLProc
+gdk_gl_get_glDeletePerfMonitorsAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glDeletePerfMonitorsAMD == (GdkGLProc_glDeletePerfMonitorsAMD) -1)
+    _procs_GL_AMD_performance_monitor.glDeletePerfMonitorsAMD =
+      (GdkGLProc_glDeletePerfMonitorsAMD) gdk_gl_get_proc_address ("glDeletePerfMonitorsAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glDeletePerfMonitorsAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glDeletePerfMonitorsAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glDeletePerfMonitorsAMD);
+}
+
+/* glSelectPerfMonitorCountersAMD */
+GdkGLProc
+gdk_gl_get_glSelectPerfMonitorCountersAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glSelectPerfMonitorCountersAMD == (GdkGLProc_glSelectPerfMonitorCountersAMD) -1)
+    _procs_GL_AMD_performance_monitor.glSelectPerfMonitorCountersAMD =
+      (GdkGLProc_glSelectPerfMonitorCountersAMD) gdk_gl_get_proc_address ("glSelectPerfMonitorCountersAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSelectPerfMonitorCountersAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glSelectPerfMonitorCountersAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glSelectPerfMonitorCountersAMD);
+}
+
+/* glBeginPerfMonitorAMD */
+GdkGLProc
+gdk_gl_get_glBeginPerfMonitorAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glBeginPerfMonitorAMD == (GdkGLProc_glBeginPerfMonitorAMD) -1)
+    _procs_GL_AMD_performance_monitor.glBeginPerfMonitorAMD =
+      (GdkGLProc_glBeginPerfMonitorAMD) gdk_gl_get_proc_address ("glBeginPerfMonitorAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginPerfMonitorAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glBeginPerfMonitorAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glBeginPerfMonitorAMD);
+}
+
+/* glEndPerfMonitorAMD */
+GdkGLProc
+gdk_gl_get_glEndPerfMonitorAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glEndPerfMonitorAMD == (GdkGLProc_glEndPerfMonitorAMD) -1)
+    _procs_GL_AMD_performance_monitor.glEndPerfMonitorAMD =
+      (GdkGLProc_glEndPerfMonitorAMD) gdk_gl_get_proc_address ("glEndPerfMonitorAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndPerfMonitorAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glEndPerfMonitorAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glEndPerfMonitorAMD);
+}
+
+/* glGetPerfMonitorCounterDataAMD */
+GdkGLProc
+gdk_gl_get_glGetPerfMonitorCounterDataAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterDataAMD == (GdkGLProc_glGetPerfMonitorCounterDataAMD) -1)
+    _procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterDataAMD =
+      (GdkGLProc_glGetPerfMonitorCounterDataAMD) gdk_gl_get_proc_address ("glGetPerfMonitorCounterDataAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetPerfMonitorCounterDataAMD () - %s",
+               (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterDataAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_performance_monitor.glGetPerfMonitorCounterDataAMD);
+}
+
+/* Get GL_AMD_performance_monitor functions */
+GdkGL_GL_AMD_performance_monitor *
+gdk_gl_get_GL_AMD_performance_monitor (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_AMD_performance_monitor");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glGetPerfMonitorGroupsAMD () != NULL);
+          supported &= (gdk_gl_get_glGetPerfMonitorCountersAMD () != NULL);
+          supported &= (gdk_gl_get_glGetPerfMonitorGroupStringAMD () != NULL);
+          supported &= (gdk_gl_get_glGetPerfMonitorCounterStringAMD () != NULL);
+          supported &= (gdk_gl_get_glGetPerfMonitorCounterInfoAMD () != NULL);
+          supported &= (gdk_gl_get_glGenPerfMonitorsAMD () != NULL);
+          supported &= (gdk_gl_get_glDeletePerfMonitorsAMD () != NULL);
+          supported &= (gdk_gl_get_glSelectPerfMonitorCountersAMD () != NULL);
+          supported &= (gdk_gl_get_glBeginPerfMonitorAMD () != NULL);
+          supported &= (gdk_gl_get_glEndPerfMonitorAMD () != NULL);
+          supported &= (gdk_gl_get_glGetPerfMonitorCounterDataAMD () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_AMD_performance_monitor () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_AMD_performance_monitor;
+}
+
+/*
+ * GL_AMD_vertex_shader_tesselator
+ */
+
+static GdkGL_GL_AMD_vertex_shader_tesselator _procs_GL_AMD_vertex_shader_tesselator = {
+  (GdkGLProc_glTessellationFactorAMD) -1,
+  (GdkGLProc_glTessellationModeAMD) -1
+};
+
+/* glTessellationFactorAMD */
+GdkGLProc
+gdk_gl_get_glTessellationFactorAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_vertex_shader_tesselator.glTessellationFactorAMD == (GdkGLProc_glTessellationFactorAMD) -1)
+    _procs_GL_AMD_vertex_shader_tesselator.glTessellationFactorAMD =
+      (GdkGLProc_glTessellationFactorAMD) gdk_gl_get_proc_address ("glTessellationFactorAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTessellationFactorAMD () - %s",
+               (_procs_GL_AMD_vertex_shader_tesselator.glTessellationFactorAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_vertex_shader_tesselator.glTessellationFactorAMD);
+}
+
+/* glTessellationModeAMD */
+GdkGLProc
+gdk_gl_get_glTessellationModeAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_vertex_shader_tesselator.glTessellationModeAMD == (GdkGLProc_glTessellationModeAMD) -1)
+    _procs_GL_AMD_vertex_shader_tesselator.glTessellationModeAMD =
+      (GdkGLProc_glTessellationModeAMD) gdk_gl_get_proc_address ("glTessellationModeAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTessellationModeAMD () - %s",
+               (_procs_GL_AMD_vertex_shader_tesselator.glTessellationModeAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_vertex_shader_tesselator.glTessellationModeAMD);
+}
+
+/* Get GL_AMD_vertex_shader_tesselator functions */
+GdkGL_GL_AMD_vertex_shader_tesselator *
+gdk_gl_get_GL_AMD_vertex_shader_tesselator (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_AMD_vertex_shader_tesselator");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glTessellationFactorAMD () != NULL);
+          supported &= (gdk_gl_get_glTessellationModeAMD () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_AMD_vertex_shader_tesselator () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_AMD_vertex_shader_tesselator;
+}
+
+/*
+ * GL_EXT_provoking_vertex
+ */
+
+static GdkGL_GL_EXT_provoking_vertex _procs_GL_EXT_provoking_vertex = {
+  (GdkGLProc_glProvokingVertexEXT) -1
+};
+
+/* glProvokingVertexEXT */
+GdkGLProc
+gdk_gl_get_glProvokingVertexEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_provoking_vertex.glProvokingVertexEXT == (GdkGLProc_glProvokingVertexEXT) -1)
+    _procs_GL_EXT_provoking_vertex.glProvokingVertexEXT =
+      (GdkGLProc_glProvokingVertexEXT) gdk_gl_get_proc_address ("glProvokingVertexEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProvokingVertexEXT () - %s",
+               (_procs_GL_EXT_provoking_vertex.glProvokingVertexEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_provoking_vertex.glProvokingVertexEXT);
+}
+
+/* Get GL_EXT_provoking_vertex functions */
+GdkGL_GL_EXT_provoking_vertex *
+gdk_gl_get_GL_EXT_provoking_vertex (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_provoking_vertex");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glProvokingVertexEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_provoking_vertex () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_provoking_vertex;
+}
+
+/*
+ * GL_AMD_draw_buffers_blend
+ */
+
+static GdkGL_GL_AMD_draw_buffers_blend _procs_GL_AMD_draw_buffers_blend = {
+  (GdkGLProc_glBlendFuncIndexedAMD) -1,
+  (GdkGLProc_glBlendFuncSeparateIndexedAMD) -1,
+  (GdkGLProc_glBlendEquationIndexedAMD) -1,
+  (GdkGLProc_glBlendEquationSeparateIndexedAMD) -1
+};
+
+/* glBlendFuncIndexedAMD */
+GdkGLProc
+gdk_gl_get_glBlendFuncIndexedAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_draw_buffers_blend.glBlendFuncIndexedAMD == (GdkGLProc_glBlendFuncIndexedAMD) -1)
+    _procs_GL_AMD_draw_buffers_blend.glBlendFuncIndexedAMD =
+      (GdkGLProc_glBlendFuncIndexedAMD) gdk_gl_get_proc_address ("glBlendFuncIndexedAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendFuncIndexedAMD () - %s",
+               (_procs_GL_AMD_draw_buffers_blend.glBlendFuncIndexedAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_draw_buffers_blend.glBlendFuncIndexedAMD);
+}
+
+/* glBlendFuncSeparateIndexedAMD */
+GdkGLProc
+gdk_gl_get_glBlendFuncSeparateIndexedAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_draw_buffers_blend.glBlendFuncSeparateIndexedAMD == (GdkGLProc_glBlendFuncSeparateIndexedAMD) -1)
+    _procs_GL_AMD_draw_buffers_blend.glBlendFuncSeparateIndexedAMD =
+      (GdkGLProc_glBlendFuncSeparateIndexedAMD) gdk_gl_get_proc_address ("glBlendFuncSeparateIndexedAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendFuncSeparateIndexedAMD () - %s",
+               (_procs_GL_AMD_draw_buffers_blend.glBlendFuncSeparateIndexedAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_draw_buffers_blend.glBlendFuncSeparateIndexedAMD);
+}
+
+/* glBlendEquationIndexedAMD */
+GdkGLProc
+gdk_gl_get_glBlendEquationIndexedAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_draw_buffers_blend.glBlendEquationIndexedAMD == (GdkGLProc_glBlendEquationIndexedAMD) -1)
+    _procs_GL_AMD_draw_buffers_blend.glBlendEquationIndexedAMD =
+      (GdkGLProc_glBlendEquationIndexedAMD) gdk_gl_get_proc_address ("glBlendEquationIndexedAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendEquationIndexedAMD () - %s",
+               (_procs_GL_AMD_draw_buffers_blend.glBlendEquationIndexedAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_draw_buffers_blend.glBlendEquationIndexedAMD);
+}
+
+/* glBlendEquationSeparateIndexedAMD */
+GdkGLProc
+gdk_gl_get_glBlendEquationSeparateIndexedAMD (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_AMD_draw_buffers_blend.glBlendEquationSeparateIndexedAMD == (GdkGLProc_glBlendEquationSeparateIndexedAMD) -1)
+    _procs_GL_AMD_draw_buffers_blend.glBlendEquationSeparateIndexedAMD =
+      (GdkGLProc_glBlendEquationSeparateIndexedAMD) gdk_gl_get_proc_address ("glBlendEquationSeparateIndexedAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBlendEquationSeparateIndexedAMD () - %s",
+               (_procs_GL_AMD_draw_buffers_blend.glBlendEquationSeparateIndexedAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_AMD_draw_buffers_blend.glBlendEquationSeparateIndexedAMD);
+}
+
+/* Get GL_AMD_draw_buffers_blend functions */
+GdkGL_GL_AMD_draw_buffers_blend *
+gdk_gl_get_GL_AMD_draw_buffers_blend (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_AMD_draw_buffers_blend");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBlendFuncIndexedAMD () != NULL);
+          supported &= (gdk_gl_get_glBlendFuncSeparateIndexedAMD () != NULL);
+          supported &= (gdk_gl_get_glBlendEquationIndexedAMD () != NULL);
+          supported &= (gdk_gl_get_glBlendEquationSeparateIndexedAMD () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_AMD_draw_buffers_blend () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_AMD_draw_buffers_blend;
+}
+
+/*
  * GL_APPLE_texture_range
  */
 
@@ -21973,6 +37168,1171 @@ gdk_gl_get_GL_APPLE_vertex_program_evaluators (void)
     return NULL;
 
   return &_procs_GL_APPLE_vertex_program_evaluators;
+}
+
+/*
+ * GL_APPLE_object_purgeable
+ */
+
+static GdkGL_GL_APPLE_object_purgeable _procs_GL_APPLE_object_purgeable = {
+  (GdkGLProc_glObjectPurgeableAPPLE) -1,
+  (GdkGLProc_glObjectUnpurgeableAPPLE) -1,
+  (GdkGLProc_glGetObjectParameterivAPPLE) -1
+};
+
+/* glObjectPurgeableAPPLE */
+GdkGLProc
+gdk_gl_get_glObjectPurgeableAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_object_purgeable.glObjectPurgeableAPPLE == (GdkGLProc_glObjectPurgeableAPPLE) -1)
+    _procs_GL_APPLE_object_purgeable.glObjectPurgeableAPPLE =
+      (GdkGLProc_glObjectPurgeableAPPLE) gdk_gl_get_proc_address ("glObjectPurgeableAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glObjectPurgeableAPPLE () - %s",
+               (_procs_GL_APPLE_object_purgeable.glObjectPurgeableAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_object_purgeable.glObjectPurgeableAPPLE);
+}
+
+/* glObjectUnpurgeableAPPLE */
+GdkGLProc
+gdk_gl_get_glObjectUnpurgeableAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_object_purgeable.glObjectUnpurgeableAPPLE == (GdkGLProc_glObjectUnpurgeableAPPLE) -1)
+    _procs_GL_APPLE_object_purgeable.glObjectUnpurgeableAPPLE =
+      (GdkGLProc_glObjectUnpurgeableAPPLE) gdk_gl_get_proc_address ("glObjectUnpurgeableAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glObjectUnpurgeableAPPLE () - %s",
+               (_procs_GL_APPLE_object_purgeable.glObjectUnpurgeableAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_object_purgeable.glObjectUnpurgeableAPPLE);
+}
+
+/* glGetObjectParameterivAPPLE */
+GdkGLProc
+gdk_gl_get_glGetObjectParameterivAPPLE (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_APPLE_object_purgeable.glGetObjectParameterivAPPLE == (GdkGLProc_glGetObjectParameterivAPPLE) -1)
+    _procs_GL_APPLE_object_purgeable.glGetObjectParameterivAPPLE =
+      (GdkGLProc_glGetObjectParameterivAPPLE) gdk_gl_get_proc_address ("glGetObjectParameterivAPPLE");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetObjectParameterivAPPLE () - %s",
+               (_procs_GL_APPLE_object_purgeable.glGetObjectParameterivAPPLE) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_APPLE_object_purgeable.glGetObjectParameterivAPPLE);
+}
+
+/* Get GL_APPLE_object_purgeable functions */
+GdkGL_GL_APPLE_object_purgeable *
+gdk_gl_get_GL_APPLE_object_purgeable (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_APPLE_object_purgeable");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glObjectPurgeableAPPLE () != NULL);
+          supported &= (gdk_gl_get_glObjectUnpurgeableAPPLE () != NULL);
+          supported &= (gdk_gl_get_glGetObjectParameterivAPPLE () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_APPLE_object_purgeable () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_APPLE_object_purgeable;
+}
+
+/*
+ * GL_NV_video_capture
+ */
+
+static GdkGL_GL_NV_video_capture _procs_GL_NV_video_capture = {
+  (GdkGLProc_glBeginVideoCaptureNV) -1,
+  (GdkGLProc_glBindVideoCaptureStreamBufferNV) -1,
+  (GdkGLProc_glBindVideoCaptureStreamTextureNV) -1,
+  (GdkGLProc_glEndVideoCaptureNV) -1,
+  (GdkGLProc_glGetVideoCaptureivNV) -1,
+  (GdkGLProc_glGetVideoCaptureStreamivNV) -1,
+  (GdkGLProc_glGetVideoCaptureStreamfvNV) -1,
+  (GdkGLProc_glGetVideoCaptureStreamdvNV) -1,
+  (GdkGLProc_glVideoCaptureNV) -1,
+  (GdkGLProc_glVideoCaptureStreamParameterivNV) -1,
+  (GdkGLProc_glVideoCaptureStreamParameterfvNV) -1,
+  (GdkGLProc_glVideoCaptureStreamParameterdvNV) -1
+};
+
+/* glBeginVideoCaptureNV */
+GdkGLProc
+gdk_gl_get_glBeginVideoCaptureNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glBeginVideoCaptureNV == (GdkGLProc_glBeginVideoCaptureNV) -1)
+    _procs_GL_NV_video_capture.glBeginVideoCaptureNV =
+      (GdkGLProc_glBeginVideoCaptureNV) gdk_gl_get_proc_address ("glBeginVideoCaptureNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBeginVideoCaptureNV () - %s",
+               (_procs_GL_NV_video_capture.glBeginVideoCaptureNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glBeginVideoCaptureNV);
+}
+
+/* glBindVideoCaptureStreamBufferNV */
+GdkGLProc
+gdk_gl_get_glBindVideoCaptureStreamBufferNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glBindVideoCaptureStreamBufferNV == (GdkGLProc_glBindVideoCaptureStreamBufferNV) -1)
+    _procs_GL_NV_video_capture.glBindVideoCaptureStreamBufferNV =
+      (GdkGLProc_glBindVideoCaptureStreamBufferNV) gdk_gl_get_proc_address ("glBindVideoCaptureStreamBufferNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindVideoCaptureStreamBufferNV () - %s",
+               (_procs_GL_NV_video_capture.glBindVideoCaptureStreamBufferNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glBindVideoCaptureStreamBufferNV);
+}
+
+/* glBindVideoCaptureStreamTextureNV */
+GdkGLProc
+gdk_gl_get_glBindVideoCaptureStreamTextureNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glBindVideoCaptureStreamTextureNV == (GdkGLProc_glBindVideoCaptureStreamTextureNV) -1)
+    _procs_GL_NV_video_capture.glBindVideoCaptureStreamTextureNV =
+      (GdkGLProc_glBindVideoCaptureStreamTextureNV) gdk_gl_get_proc_address ("glBindVideoCaptureStreamTextureNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBindVideoCaptureStreamTextureNV () - %s",
+               (_procs_GL_NV_video_capture.glBindVideoCaptureStreamTextureNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glBindVideoCaptureStreamTextureNV);
+}
+
+/* glEndVideoCaptureNV */
+GdkGLProc
+gdk_gl_get_glEndVideoCaptureNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glEndVideoCaptureNV == (GdkGLProc_glEndVideoCaptureNV) -1)
+    _procs_GL_NV_video_capture.glEndVideoCaptureNV =
+      (GdkGLProc_glEndVideoCaptureNV) gdk_gl_get_proc_address ("glEndVideoCaptureNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEndVideoCaptureNV () - %s",
+               (_procs_GL_NV_video_capture.glEndVideoCaptureNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glEndVideoCaptureNV);
+}
+
+/* glGetVideoCaptureivNV */
+GdkGLProc
+gdk_gl_get_glGetVideoCaptureivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glGetVideoCaptureivNV == (GdkGLProc_glGetVideoCaptureivNV) -1)
+    _procs_GL_NV_video_capture.glGetVideoCaptureivNV =
+      (GdkGLProc_glGetVideoCaptureivNV) gdk_gl_get_proc_address ("glGetVideoCaptureivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVideoCaptureivNV () - %s",
+               (_procs_GL_NV_video_capture.glGetVideoCaptureivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glGetVideoCaptureivNV);
+}
+
+/* glGetVideoCaptureStreamivNV */
+GdkGLProc
+gdk_gl_get_glGetVideoCaptureStreamivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glGetVideoCaptureStreamivNV == (GdkGLProc_glGetVideoCaptureStreamivNV) -1)
+    _procs_GL_NV_video_capture.glGetVideoCaptureStreamivNV =
+      (GdkGLProc_glGetVideoCaptureStreamivNV) gdk_gl_get_proc_address ("glGetVideoCaptureStreamivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVideoCaptureStreamivNV () - %s",
+               (_procs_GL_NV_video_capture.glGetVideoCaptureStreamivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glGetVideoCaptureStreamivNV);
+}
+
+/* glGetVideoCaptureStreamfvNV */
+GdkGLProc
+gdk_gl_get_glGetVideoCaptureStreamfvNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glGetVideoCaptureStreamfvNV == (GdkGLProc_glGetVideoCaptureStreamfvNV) -1)
+    _procs_GL_NV_video_capture.glGetVideoCaptureStreamfvNV =
+      (GdkGLProc_glGetVideoCaptureStreamfvNV) gdk_gl_get_proc_address ("glGetVideoCaptureStreamfvNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVideoCaptureStreamfvNV () - %s",
+               (_procs_GL_NV_video_capture.glGetVideoCaptureStreamfvNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glGetVideoCaptureStreamfvNV);
+}
+
+/* glGetVideoCaptureStreamdvNV */
+GdkGLProc
+gdk_gl_get_glGetVideoCaptureStreamdvNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glGetVideoCaptureStreamdvNV == (GdkGLProc_glGetVideoCaptureStreamdvNV) -1)
+    _procs_GL_NV_video_capture.glGetVideoCaptureStreamdvNV =
+      (GdkGLProc_glGetVideoCaptureStreamdvNV) gdk_gl_get_proc_address ("glGetVideoCaptureStreamdvNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetVideoCaptureStreamdvNV () - %s",
+               (_procs_GL_NV_video_capture.glGetVideoCaptureStreamdvNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glGetVideoCaptureStreamdvNV);
+}
+
+/* glVideoCaptureNV */
+GdkGLProc
+gdk_gl_get_glVideoCaptureNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glVideoCaptureNV == (GdkGLProc_glVideoCaptureNV) -1)
+    _procs_GL_NV_video_capture.glVideoCaptureNV =
+      (GdkGLProc_glVideoCaptureNV) gdk_gl_get_proc_address ("glVideoCaptureNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVideoCaptureNV () - %s",
+               (_procs_GL_NV_video_capture.glVideoCaptureNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glVideoCaptureNV);
+}
+
+/* glVideoCaptureStreamParameterivNV */
+GdkGLProc
+gdk_gl_get_glVideoCaptureStreamParameterivNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glVideoCaptureStreamParameterivNV == (GdkGLProc_glVideoCaptureStreamParameterivNV) -1)
+    _procs_GL_NV_video_capture.glVideoCaptureStreamParameterivNV =
+      (GdkGLProc_glVideoCaptureStreamParameterivNV) gdk_gl_get_proc_address ("glVideoCaptureStreamParameterivNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVideoCaptureStreamParameterivNV () - %s",
+               (_procs_GL_NV_video_capture.glVideoCaptureStreamParameterivNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glVideoCaptureStreamParameterivNV);
+}
+
+/* glVideoCaptureStreamParameterfvNV */
+GdkGLProc
+gdk_gl_get_glVideoCaptureStreamParameterfvNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glVideoCaptureStreamParameterfvNV == (GdkGLProc_glVideoCaptureStreamParameterfvNV) -1)
+    _procs_GL_NV_video_capture.glVideoCaptureStreamParameterfvNV =
+      (GdkGLProc_glVideoCaptureStreamParameterfvNV) gdk_gl_get_proc_address ("glVideoCaptureStreamParameterfvNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVideoCaptureStreamParameterfvNV () - %s",
+               (_procs_GL_NV_video_capture.glVideoCaptureStreamParameterfvNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glVideoCaptureStreamParameterfvNV);
+}
+
+/* glVideoCaptureStreamParameterdvNV */
+GdkGLProc
+gdk_gl_get_glVideoCaptureStreamParameterdvNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_video_capture.glVideoCaptureStreamParameterdvNV == (GdkGLProc_glVideoCaptureStreamParameterdvNV) -1)
+    _procs_GL_NV_video_capture.glVideoCaptureStreamParameterdvNV =
+      (GdkGLProc_glVideoCaptureStreamParameterdvNV) gdk_gl_get_proc_address ("glVideoCaptureStreamParameterdvNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVideoCaptureStreamParameterdvNV () - %s",
+               (_procs_GL_NV_video_capture.glVideoCaptureStreamParameterdvNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_video_capture.glVideoCaptureStreamParameterdvNV);
+}
+
+/* Get GL_NV_video_capture functions */
+GdkGL_GL_NV_video_capture *
+gdk_gl_get_GL_NV_video_capture (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_video_capture");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBeginVideoCaptureNV () != NULL);
+          supported &= (gdk_gl_get_glBindVideoCaptureStreamBufferNV () != NULL);
+          supported &= (gdk_gl_get_glBindVideoCaptureStreamTextureNV () != NULL);
+          supported &= (gdk_gl_get_glEndVideoCaptureNV () != NULL);
+          supported &= (gdk_gl_get_glGetVideoCaptureivNV () != NULL);
+          supported &= (gdk_gl_get_glGetVideoCaptureStreamivNV () != NULL);
+          supported &= (gdk_gl_get_glGetVideoCaptureStreamfvNV () != NULL);
+          supported &= (gdk_gl_get_glGetVideoCaptureStreamdvNV () != NULL);
+          supported &= (gdk_gl_get_glVideoCaptureNV () != NULL);
+          supported &= (gdk_gl_get_glVideoCaptureStreamParameterivNV () != NULL);
+          supported &= (gdk_gl_get_glVideoCaptureStreamParameterfvNV () != NULL);
+          supported &= (gdk_gl_get_glVideoCaptureStreamParameterdvNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_video_capture () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_video_capture;
+}
+
+/*
+ * GL_NV_copy_image
+ */
+
+static GdkGL_GL_NV_copy_image _procs_GL_NV_copy_image = {
+  (GdkGLProc_glCopyImageSubDataNV) -1
+};
+
+/* glCopyImageSubDataNV */
+GdkGLProc
+gdk_gl_get_glCopyImageSubDataNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_copy_image.glCopyImageSubDataNV == (GdkGLProc_glCopyImageSubDataNV) -1)
+    _procs_GL_NV_copy_image.glCopyImageSubDataNV =
+      (GdkGLProc_glCopyImageSubDataNV) gdk_gl_get_proc_address ("glCopyImageSubDataNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCopyImageSubDataNV () - %s",
+               (_procs_GL_NV_copy_image.glCopyImageSubDataNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_copy_image.glCopyImageSubDataNV);
+}
+
+/* Get GL_NV_copy_image functions */
+GdkGL_GL_NV_copy_image *
+gdk_gl_get_GL_NV_copy_image (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_copy_image");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glCopyImageSubDataNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_copy_image () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_copy_image;
+}
+
+/*
+ * GL_EXT_separate_shader_objects
+ */
+
+static GdkGL_GL_EXT_separate_shader_objects _procs_GL_EXT_separate_shader_objects = {
+  (GdkGLProc_glUseShaderProgramEXT) -1,
+  (GdkGLProc_glActiveProgramEXT) -1,
+  (GdkGLProc_glCreateShaderProgramEXT) -1
+};
+
+/* glUseShaderProgramEXT */
+GdkGLProc
+gdk_gl_get_glUseShaderProgramEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_separate_shader_objects.glUseShaderProgramEXT == (GdkGLProc_glUseShaderProgramEXT) -1)
+    _procs_GL_EXT_separate_shader_objects.glUseShaderProgramEXT =
+      (GdkGLProc_glUseShaderProgramEXT) gdk_gl_get_proc_address ("glUseShaderProgramEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUseShaderProgramEXT () - %s",
+               (_procs_GL_EXT_separate_shader_objects.glUseShaderProgramEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_separate_shader_objects.glUseShaderProgramEXT);
+}
+
+/* glActiveProgramEXT */
+GdkGLProc
+gdk_gl_get_glActiveProgramEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_separate_shader_objects.glActiveProgramEXT == (GdkGLProc_glActiveProgramEXT) -1)
+    _procs_GL_EXT_separate_shader_objects.glActiveProgramEXT =
+      (GdkGLProc_glActiveProgramEXT) gdk_gl_get_proc_address ("glActiveProgramEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glActiveProgramEXT () - %s",
+               (_procs_GL_EXT_separate_shader_objects.glActiveProgramEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_separate_shader_objects.glActiveProgramEXT);
+}
+
+/* glCreateShaderProgramEXT */
+GdkGLProc
+gdk_gl_get_glCreateShaderProgramEXT (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_EXT_separate_shader_objects.glCreateShaderProgramEXT == (GdkGLProc_glCreateShaderProgramEXT) -1)
+    _procs_GL_EXT_separate_shader_objects.glCreateShaderProgramEXT =
+      (GdkGLProc_glCreateShaderProgramEXT) gdk_gl_get_proc_address ("glCreateShaderProgramEXT");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glCreateShaderProgramEXT () - %s",
+               (_procs_GL_EXT_separate_shader_objects.glCreateShaderProgramEXT) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_EXT_separate_shader_objects.glCreateShaderProgramEXT);
+}
+
+/* Get GL_EXT_separate_shader_objects functions */
+GdkGL_GL_EXT_separate_shader_objects *
+gdk_gl_get_GL_EXT_separate_shader_objects (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_EXT_separate_shader_objects");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glUseShaderProgramEXT () != NULL);
+          supported &= (gdk_gl_get_glActiveProgramEXT () != NULL);
+          supported &= (gdk_gl_get_glCreateShaderProgramEXT () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_EXT_separate_shader_objects () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_EXT_separate_shader_objects;
+}
+
+/*
+ * GL_NV_shader_buffer_load
+ */
+
+static GdkGL_GL_NV_shader_buffer_load _procs_GL_NV_shader_buffer_load = {
+  (GdkGLProc_glMakeBufferResidentNV) -1,
+  (GdkGLProc_glMakeBufferNonResidentNV) -1,
+  (GdkGLProc_glIsBufferResidentNV) -1,
+  (GdkGLProc_glNamedMakeBufferResidentNV) -1,
+  (GdkGLProc_glNamedMakeBufferNonResidentNV) -1,
+  (GdkGLProc_glIsNamedBufferResidentNV) -1,
+  (GdkGLProc_glGetBufferParameterui64vNV) -1,
+  (GdkGLProc_glGetNamedBufferParameterui64vNV) -1,
+  (GdkGLProc_glGetIntegerui64vNV) -1,
+  (GdkGLProc_glUniformui64NV) -1,
+  (GdkGLProc_glUniformui64vNV) -1,
+  (GdkGLProc_glGetUniformui64vNV) -1,
+  (GdkGLProc_glProgramUniformui64NV) -1,
+  (GdkGLProc_glProgramUniformui64vNV) -1
+};
+
+/* glMakeBufferResidentNV */
+GdkGLProc
+gdk_gl_get_glMakeBufferResidentNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glMakeBufferResidentNV == (GdkGLProc_glMakeBufferResidentNV) -1)
+    _procs_GL_NV_shader_buffer_load.glMakeBufferResidentNV =
+      (GdkGLProc_glMakeBufferResidentNV) gdk_gl_get_proc_address ("glMakeBufferResidentNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMakeBufferResidentNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glMakeBufferResidentNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glMakeBufferResidentNV);
+}
+
+/* glMakeBufferNonResidentNV */
+GdkGLProc
+gdk_gl_get_glMakeBufferNonResidentNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glMakeBufferNonResidentNV == (GdkGLProc_glMakeBufferNonResidentNV) -1)
+    _procs_GL_NV_shader_buffer_load.glMakeBufferNonResidentNV =
+      (GdkGLProc_glMakeBufferNonResidentNV) gdk_gl_get_proc_address ("glMakeBufferNonResidentNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glMakeBufferNonResidentNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glMakeBufferNonResidentNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glMakeBufferNonResidentNV);
+}
+
+/* glIsBufferResidentNV */
+GdkGLProc
+gdk_gl_get_glIsBufferResidentNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glIsBufferResidentNV == (GdkGLProc_glIsBufferResidentNV) -1)
+    _procs_GL_NV_shader_buffer_load.glIsBufferResidentNV =
+      (GdkGLProc_glIsBufferResidentNV) gdk_gl_get_proc_address ("glIsBufferResidentNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsBufferResidentNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glIsBufferResidentNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glIsBufferResidentNV);
+}
+
+/* glNamedMakeBufferResidentNV */
+GdkGLProc
+gdk_gl_get_glNamedMakeBufferResidentNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glNamedMakeBufferResidentNV == (GdkGLProc_glNamedMakeBufferResidentNV) -1)
+    _procs_GL_NV_shader_buffer_load.glNamedMakeBufferResidentNV =
+      (GdkGLProc_glNamedMakeBufferResidentNV) gdk_gl_get_proc_address ("glNamedMakeBufferResidentNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedMakeBufferResidentNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glNamedMakeBufferResidentNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glNamedMakeBufferResidentNV);
+}
+
+/* glNamedMakeBufferNonResidentNV */
+GdkGLProc
+gdk_gl_get_glNamedMakeBufferNonResidentNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glNamedMakeBufferNonResidentNV == (GdkGLProc_glNamedMakeBufferNonResidentNV) -1)
+    _procs_GL_NV_shader_buffer_load.glNamedMakeBufferNonResidentNV =
+      (GdkGLProc_glNamedMakeBufferNonResidentNV) gdk_gl_get_proc_address ("glNamedMakeBufferNonResidentNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNamedMakeBufferNonResidentNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glNamedMakeBufferNonResidentNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glNamedMakeBufferNonResidentNV);
+}
+
+/* glIsNamedBufferResidentNV */
+GdkGLProc
+gdk_gl_get_glIsNamedBufferResidentNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glIsNamedBufferResidentNV == (GdkGLProc_glIsNamedBufferResidentNV) -1)
+    _procs_GL_NV_shader_buffer_load.glIsNamedBufferResidentNV =
+      (GdkGLProc_glIsNamedBufferResidentNV) gdk_gl_get_proc_address ("glIsNamedBufferResidentNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIsNamedBufferResidentNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glIsNamedBufferResidentNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glIsNamedBufferResidentNV);
+}
+
+/* glGetBufferParameterui64vNV */
+GdkGLProc
+gdk_gl_get_glGetBufferParameterui64vNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glGetBufferParameterui64vNV == (GdkGLProc_glGetBufferParameterui64vNV) -1)
+    _procs_GL_NV_shader_buffer_load.glGetBufferParameterui64vNV =
+      (GdkGLProc_glGetBufferParameterui64vNV) gdk_gl_get_proc_address ("glGetBufferParameterui64vNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetBufferParameterui64vNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glGetBufferParameterui64vNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glGetBufferParameterui64vNV);
+}
+
+/* glGetNamedBufferParameterui64vNV */
+GdkGLProc
+gdk_gl_get_glGetNamedBufferParameterui64vNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glGetNamedBufferParameterui64vNV == (GdkGLProc_glGetNamedBufferParameterui64vNV) -1)
+    _procs_GL_NV_shader_buffer_load.glGetNamedBufferParameterui64vNV =
+      (GdkGLProc_glGetNamedBufferParameterui64vNV) gdk_gl_get_proc_address ("glGetNamedBufferParameterui64vNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetNamedBufferParameterui64vNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glGetNamedBufferParameterui64vNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glGetNamedBufferParameterui64vNV);
+}
+
+/* glGetIntegerui64vNV */
+GdkGLProc
+gdk_gl_get_glGetIntegerui64vNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glGetIntegerui64vNV == (GdkGLProc_glGetIntegerui64vNV) -1)
+    _procs_GL_NV_shader_buffer_load.glGetIntegerui64vNV =
+      (GdkGLProc_glGetIntegerui64vNV) gdk_gl_get_proc_address ("glGetIntegerui64vNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetIntegerui64vNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glGetIntegerui64vNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glGetIntegerui64vNV);
+}
+
+/* glUniformui64NV */
+GdkGLProc
+gdk_gl_get_glUniformui64NV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glUniformui64NV == (GdkGLProc_glUniformui64NV) -1)
+    _procs_GL_NV_shader_buffer_load.glUniformui64NV =
+      (GdkGLProc_glUniformui64NV) gdk_gl_get_proc_address ("glUniformui64NV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformui64NV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glUniformui64NV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glUniformui64NV);
+}
+
+/* glUniformui64vNV */
+GdkGLProc
+gdk_gl_get_glUniformui64vNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glUniformui64vNV == (GdkGLProc_glUniformui64vNV) -1)
+    _procs_GL_NV_shader_buffer_load.glUniformui64vNV =
+      (GdkGLProc_glUniformui64vNV) gdk_gl_get_proc_address ("glUniformui64vNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glUniformui64vNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glUniformui64vNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glUniformui64vNV);
+}
+
+/* glGetUniformui64vNV */
+GdkGLProc
+gdk_gl_get_glGetUniformui64vNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glGetUniformui64vNV == (GdkGLProc_glGetUniformui64vNV) -1)
+    _procs_GL_NV_shader_buffer_load.glGetUniformui64vNV =
+      (GdkGLProc_glGetUniformui64vNV) gdk_gl_get_proc_address ("glGetUniformui64vNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetUniformui64vNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glGetUniformui64vNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glGetUniformui64vNV);
+}
+
+/* glProgramUniformui64NV */
+GdkGLProc
+gdk_gl_get_glProgramUniformui64NV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glProgramUniformui64NV == (GdkGLProc_glProgramUniformui64NV) -1)
+    _procs_GL_NV_shader_buffer_load.glProgramUniformui64NV =
+      (GdkGLProc_glProgramUniformui64NV) gdk_gl_get_proc_address ("glProgramUniformui64NV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformui64NV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glProgramUniformui64NV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glProgramUniformui64NV);
+}
+
+/* glProgramUniformui64vNV */
+GdkGLProc
+gdk_gl_get_glProgramUniformui64vNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_shader_buffer_load.glProgramUniformui64vNV == (GdkGLProc_glProgramUniformui64vNV) -1)
+    _procs_GL_NV_shader_buffer_load.glProgramUniformui64vNV =
+      (GdkGLProc_glProgramUniformui64vNV) gdk_gl_get_proc_address ("glProgramUniformui64vNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glProgramUniformui64vNV () - %s",
+               (_procs_GL_NV_shader_buffer_load.glProgramUniformui64vNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_shader_buffer_load.glProgramUniformui64vNV);
+}
+
+/* Get GL_NV_shader_buffer_load functions */
+GdkGL_GL_NV_shader_buffer_load *
+gdk_gl_get_GL_NV_shader_buffer_load (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_shader_buffer_load");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glMakeBufferResidentNV () != NULL);
+          supported &= (gdk_gl_get_glMakeBufferNonResidentNV () != NULL);
+          supported &= (gdk_gl_get_glIsBufferResidentNV () != NULL);
+          supported &= (gdk_gl_get_glNamedMakeBufferResidentNV () != NULL);
+          supported &= (gdk_gl_get_glNamedMakeBufferNonResidentNV () != NULL);
+          supported &= (gdk_gl_get_glIsNamedBufferResidentNV () != NULL);
+          supported &= (gdk_gl_get_glGetBufferParameterui64vNV () != NULL);
+          supported &= (gdk_gl_get_glGetNamedBufferParameterui64vNV () != NULL);
+          supported &= (gdk_gl_get_glGetIntegerui64vNV () != NULL);
+          supported &= (gdk_gl_get_glUniformui64NV () != NULL);
+          supported &= (gdk_gl_get_glUniformui64vNV () != NULL);
+          supported &= (gdk_gl_get_glGetUniformui64vNV () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformui64NV () != NULL);
+          supported &= (gdk_gl_get_glProgramUniformui64vNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_shader_buffer_load () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_shader_buffer_load;
+}
+
+/*
+ * GL_NV_vertex_buffer_unified_memory
+ */
+
+static GdkGL_GL_NV_vertex_buffer_unified_memory _procs_GL_NV_vertex_buffer_unified_memory = {
+  (GdkGLProc_glBufferAddressRangeNV) -1,
+  (GdkGLProc_glVertexFormatNV) -1,
+  (GdkGLProc_glNormalFormatNV) -1,
+  (GdkGLProc_glColorFormatNV) -1,
+  (GdkGLProc_glIndexFormatNV) -1,
+  (GdkGLProc_glTexCoordFormatNV) -1,
+  (GdkGLProc_glEdgeFlagFormatNV) -1,
+  (GdkGLProc_glSecondaryColorFormatNV) -1,
+  (GdkGLProc_glFogCoordFormatNV) -1,
+  (GdkGLProc_glVertexAttribFormatNV) -1,
+  (GdkGLProc_glVertexAttribIFormatNV) -1,
+  (GdkGLProc_glGetIntegerui64i_vNV) -1
+};
+
+/* glBufferAddressRangeNV */
+GdkGLProc
+gdk_gl_get_glBufferAddressRangeNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glBufferAddressRangeNV == (GdkGLProc_glBufferAddressRangeNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glBufferAddressRangeNV =
+      (GdkGLProc_glBufferAddressRangeNV) gdk_gl_get_proc_address ("glBufferAddressRangeNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glBufferAddressRangeNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glBufferAddressRangeNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glBufferAddressRangeNV);
+}
+
+/* glVertexFormatNV */
+GdkGLProc
+gdk_gl_get_glVertexFormatNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glVertexFormatNV == (GdkGLProc_glVertexFormatNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glVertexFormatNV =
+      (GdkGLProc_glVertexFormatNV) gdk_gl_get_proc_address ("glVertexFormatNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexFormatNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glVertexFormatNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glVertexFormatNV);
+}
+
+/* glNormalFormatNV */
+GdkGLProc
+gdk_gl_get_glNormalFormatNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glNormalFormatNV == (GdkGLProc_glNormalFormatNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glNormalFormatNV =
+      (GdkGLProc_glNormalFormatNV) gdk_gl_get_proc_address ("glNormalFormatNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glNormalFormatNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glNormalFormatNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glNormalFormatNV);
+}
+
+/* glColorFormatNV */
+GdkGLProc
+gdk_gl_get_glColorFormatNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glColorFormatNV == (GdkGLProc_glColorFormatNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glColorFormatNV =
+      (GdkGLProc_glColorFormatNV) gdk_gl_get_proc_address ("glColorFormatNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glColorFormatNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glColorFormatNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glColorFormatNV);
+}
+
+/* glIndexFormatNV */
+GdkGLProc
+gdk_gl_get_glIndexFormatNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glIndexFormatNV == (GdkGLProc_glIndexFormatNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glIndexFormatNV =
+      (GdkGLProc_glIndexFormatNV) gdk_gl_get_proc_address ("glIndexFormatNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glIndexFormatNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glIndexFormatNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glIndexFormatNV);
+}
+
+/* glTexCoordFormatNV */
+GdkGLProc
+gdk_gl_get_glTexCoordFormatNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glTexCoordFormatNV == (GdkGLProc_glTexCoordFormatNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glTexCoordFormatNV =
+      (GdkGLProc_glTexCoordFormatNV) gdk_gl_get_proc_address ("glTexCoordFormatNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTexCoordFormatNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glTexCoordFormatNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glTexCoordFormatNV);
+}
+
+/* glEdgeFlagFormatNV */
+GdkGLProc
+gdk_gl_get_glEdgeFlagFormatNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glEdgeFlagFormatNV == (GdkGLProc_glEdgeFlagFormatNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glEdgeFlagFormatNV =
+      (GdkGLProc_glEdgeFlagFormatNV) gdk_gl_get_proc_address ("glEdgeFlagFormatNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glEdgeFlagFormatNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glEdgeFlagFormatNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glEdgeFlagFormatNV);
+}
+
+/* glSecondaryColorFormatNV */
+GdkGLProc
+gdk_gl_get_glSecondaryColorFormatNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glSecondaryColorFormatNV == (GdkGLProc_glSecondaryColorFormatNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glSecondaryColorFormatNV =
+      (GdkGLProc_glSecondaryColorFormatNV) gdk_gl_get_proc_address ("glSecondaryColorFormatNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glSecondaryColorFormatNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glSecondaryColorFormatNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glSecondaryColorFormatNV);
+}
+
+/* glFogCoordFormatNV */
+GdkGLProc
+gdk_gl_get_glFogCoordFormatNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glFogCoordFormatNV == (GdkGLProc_glFogCoordFormatNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glFogCoordFormatNV =
+      (GdkGLProc_glFogCoordFormatNV) gdk_gl_get_proc_address ("glFogCoordFormatNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glFogCoordFormatNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glFogCoordFormatNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glFogCoordFormatNV);
+}
+
+/* glVertexAttribFormatNV */
+GdkGLProc
+gdk_gl_get_glVertexAttribFormatNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glVertexAttribFormatNV == (GdkGLProc_glVertexAttribFormatNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glVertexAttribFormatNV =
+      (GdkGLProc_glVertexAttribFormatNV) gdk_gl_get_proc_address ("glVertexAttribFormatNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribFormatNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glVertexAttribFormatNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glVertexAttribFormatNV);
+}
+
+/* glVertexAttribIFormatNV */
+GdkGLProc
+gdk_gl_get_glVertexAttribIFormatNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glVertexAttribIFormatNV == (GdkGLProc_glVertexAttribIFormatNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glVertexAttribIFormatNV =
+      (GdkGLProc_glVertexAttribIFormatNV) gdk_gl_get_proc_address ("glVertexAttribIFormatNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glVertexAttribIFormatNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glVertexAttribIFormatNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glVertexAttribIFormatNV);
+}
+
+/* glGetIntegerui64i_vNV */
+GdkGLProc
+gdk_gl_get_glGetIntegerui64i_vNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_vertex_buffer_unified_memory.glGetIntegerui64i_vNV == (GdkGLProc_glGetIntegerui64i_vNV) -1)
+    _procs_GL_NV_vertex_buffer_unified_memory.glGetIntegerui64i_vNV =
+      (GdkGLProc_glGetIntegerui64i_vNV) gdk_gl_get_proc_address ("glGetIntegerui64i_vNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glGetIntegerui64i_vNV () - %s",
+               (_procs_GL_NV_vertex_buffer_unified_memory.glGetIntegerui64i_vNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_vertex_buffer_unified_memory.glGetIntegerui64i_vNV);
+}
+
+/* Get GL_NV_vertex_buffer_unified_memory functions */
+GdkGL_GL_NV_vertex_buffer_unified_memory *
+gdk_gl_get_GL_NV_vertex_buffer_unified_memory (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_vertex_buffer_unified_memory");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glBufferAddressRangeNV () != NULL);
+          supported &= (gdk_gl_get_glVertexFormatNV () != NULL);
+          supported &= (gdk_gl_get_glNormalFormatNV () != NULL);
+          supported &= (gdk_gl_get_glColorFormatNV () != NULL);
+          supported &= (gdk_gl_get_glIndexFormatNV () != NULL);
+          supported &= (gdk_gl_get_glTexCoordFormatNV () != NULL);
+          supported &= (gdk_gl_get_glEdgeFlagFormatNV () != NULL);
+          supported &= (gdk_gl_get_glSecondaryColorFormatNV () != NULL);
+          supported &= (gdk_gl_get_glFogCoordFormatNV () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribFormatNV () != NULL);
+          supported &= (gdk_gl_get_glVertexAttribIFormatNV () != NULL);
+          supported &= (gdk_gl_get_glGetIntegerui64i_vNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_vertex_buffer_unified_memory () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_vertex_buffer_unified_memory;
+}
+
+/*
+ * GL_NV_texture_barrier
+ */
+
+static GdkGL_GL_NV_texture_barrier _procs_GL_NV_texture_barrier = {
+  (GdkGLProc_glTextureBarrierNV) -1
+};
+
+/* glTextureBarrierNV */
+GdkGLProc
+gdk_gl_get_glTextureBarrierNV (void)
+{
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (_procs_GL_NV_texture_barrier.glTextureBarrierNV == (GdkGLProc_glTextureBarrierNV) -1)
+    _procs_GL_NV_texture_barrier.glTextureBarrierNV =
+      (GdkGLProc_glTextureBarrierNV) gdk_gl_get_proc_address ("glTextureBarrierNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_glTextureBarrierNV () - %s",
+               (_procs_GL_NV_texture_barrier.glTextureBarrierNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_GL_NV_texture_barrier.glTextureBarrierNV);
+}
+
+/* Get GL_NV_texture_barrier functions */
+GdkGL_GL_NV_texture_barrier *
+gdk_gl_get_GL_NV_texture_barrier (void)
+{
+  static gint supported = -1;
+
+  if (gdk_gl_context_get_current () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_gl_query_gl_extension ("GL_NV_texture_barrier");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_glTextureBarrierNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_GL_NV_texture_barrier () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_GL_NV_texture_barrier;
 }
 
 /*
@@ -22413,61 +38773,6 @@ gdk_gl_get_GL_Autodesk_valid_back_buffer_hint (void)
     return NULL;
 
   return &_procs_GL_Autodesk_valid_back_buffer_hint;
-}
-
-/*
- * GL_EXT_depth_bounds_test
- */
-
-static GdkGL_GL_EXT_depth_bounds_test _procs_GL_EXT_depth_bounds_test = {
-  (GdkGLProc_glDepthBoundsEXT) -1
-};
-
-/* glDepthBoundsEXT */
-GdkGLProc
-gdk_gl_get_glDepthBoundsEXT (void)
-{
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (_procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT == (GdkGLProc_glDepthBoundsEXT) -1)
-    _procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT =
-      (GdkGLProc_glDepthBoundsEXT) gdk_gl_get_proc_address ("glDepthBoundsEXT");
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_glDepthBoundsEXT () - %s",
-               (_procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT) ? "supported" : "not supported"));
-
-  return (GdkGLProc) (_procs_GL_EXT_depth_bounds_test.glDepthBoundsEXT);
-}
-
-/* Get GL_EXT_depth_bounds_test functions */
-GdkGL_GL_EXT_depth_bounds_test *
-gdk_gl_get_GL_EXT_depth_bounds_test (void)
-{
-  static gint supported = -1;
-
-  if (gdk_gl_context_get_current () == NULL)
-    return NULL;
-
-  if (supported == -1)
-    {
-      supported = gdk_gl_query_gl_extension ("GL_EXT_depth_bounds_test");
-
-      if (supported)
-        {
-          supported &= (gdk_gl_get_glDepthBoundsEXT () != NULL);
-        }
-    }
-
-  GDK_GL_NOTE (MISC,
-    g_message (" - gdk_gl_get_GL_EXT_depth_bounds_test () - %s",
-               (supported) ? "supported" : "not supported"));
-
-  if (!supported)
-    return NULL;
-
-  return &_procs_GL_EXT_depth_bounds_test;
 }
 
 /*

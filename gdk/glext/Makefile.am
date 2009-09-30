@@ -3,6 +3,7 @@
 
 EXTRA_DIST = \
 	README			\
+	glxext.h.patch		\
 	list-ext.pl		\
 	gen-gdkglglext-c.pl	\
 	gen-gdkglglext-h.pl	\

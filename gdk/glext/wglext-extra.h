@@ -51,16 +51,6 @@ extern "C" {
  * ATI
  */
 
-#ifndef WGL_ATI_pixel_format_float
-#define WGL_TYPE_RGBA_FLOAT_ATI            0x21A0
-#define GL_TYPE_RGBA_FLOAT_ATI             0x8820
-#define GL_COLOR_CLEAR_UNCLAMPED_VALUE_ATI 0x8835
-#endif
-
-#ifndef WGL_ATI_pixel_format_float
-#define WGL_ATI_pixel_format_float  1
-#endif
-
 /*
  * 3DFX
  */
@@ -76,30 +66,6 @@ extern "C" {
 /*
  * I3D
  */
-
-#ifndef WGL_I3D_unknown_genlock_extension_name
-#define WGL_GENLOCK_SOURCE_MULTIVIEW_I3D     0x2044
-#define WGL_GENLOCK_SOURCE_EXTENAL_SYNC_I3D  0x2045
-#define WGL_GENLOCK_SOURCE_EXTENAL_FIELD_I3D 0x2046
-#define WGL_GENLOCK_SOURCE_EXTENAL_TTL_I3D   0x2047
-#define WGL_GENLOCK_SOURCE_DIGITAL_SYNC_I3D  0x2048
-#define WGL_GENLOCK_SOURCE_DIGITAL_FIELD_I3D 0x2049
-#define WGL_GENLOCK_SOURCE_EDGE_FALLING_I3D  0x204A
-#define WGL_GENLOCK_SOURCE_EDGE_RISING_I3D   0x204B
-#define WGL_GENLOCK_SOURCE_EDGE_BOTH_I3D     0x204C
-#endif
-
-#ifndef WGL_I3D_unknown_gamma_extension_name
-#define WGL_GAMMA_TABLE_SIZE_I3D       0x204E
-#define WGL_GAMMA_EXCLUDE_DESKTOP_I3D  0x204F
-#endif
-
-#ifndef WGL_I3D_unknown_digital_video_cursor_extension_name
-#define WGL_DIGITAL_VIDEO_CURSOR_ALPHA_FRAMEBUFFER_I3D 0x2050
-#define WGL_DIGITAL_VIDEO_CURSOR_ALPHA_VALUE_I3D       0x2051
-#define WGL_DIGITAL_VIDEO_CURSOR_INCLUDED_I3D          0x2052
-#define WGL_DIGITAL_VIDEO_GAMMA_CORRECTED_I3D          0x2053
-#endif
 
 /*
  * NV

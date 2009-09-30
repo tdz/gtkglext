@@ -2,8 +2,8 @@
 #
 # gen-gdkglwglext-h.pl
 #
-# Script for generating gdk/win32/gdkglwglext.h from SGI's OpenGL extension
-# header.
+# Script for generating gdk/win32/gdkglwglext.h from The Khronos Group's
+# OpenGL extension header.
 #
 # written by Naofumi Yasufuku <naofumi@users.sourceforge.net>
 #

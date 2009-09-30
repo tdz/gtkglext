@@ -279,6 +279,27 @@ struct _GdkGL_GLX_ARB_get_proc_address
 GdkGL_GLX_ARB_get_proc_address *gdk_gl_get_GLX_ARB_get_proc_address (GdkGLConfig *glconfig);
 
 /*
+ * GLX_ARB_create_context
+ */
+
+/* glXCreateContextAttribsARB */
+typedef GLXContext ( * GdkGLProc_glXCreateContextAttribsARB) (Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list);
+GdkGLProc    gdk_gl_get_glXCreateContextAttribsARB (void);
+#define      gdk_gl_glXCreateContextAttribsARB(proc, dpy, config, share_context, direct, attrib_list) \
+  ( ((GdkGLProc_glXCreateContextAttribsARB) (proc)) (dpy, config, share_context, direct, attrib_list) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GLX_ARB_create_context GdkGL_GLX_ARB_create_context;
+
+struct _GdkGL_GLX_ARB_create_context
+{
+  GdkGLProc_glXCreateContextAttribsARB glXCreateContextAttribsARB;
+};
+
+GdkGL_GLX_ARB_create_context *gdk_gl_get_GLX_ARB_create_context (GdkGLConfig *glconfig);
+
+/*
  * GLX_SGI_swap_control
  */
 
@@ -840,11 +861,81 @@ struct _GdkGL_GLX_OML_sync_control
 GdkGL_GLX_OML_sync_control *gdk_gl_get_GLX_OML_sync_control (GdkGLConfig *glconfig);
 
 /*
+ * GLX_SGIX_hyperpipe
+ */
+
+/* glXQueryHyperpipeNetworkSGIX */
+typedef GLXHyperpipeNetworkSGIX * ( * GdkGLProc_glXQueryHyperpipeNetworkSGIX) (Display *dpy, int *npipes);
+GdkGLProc    gdk_gl_get_glXQueryHyperpipeNetworkSGIX (void);
+#define      gdk_gl_glXQueryHyperpipeNetworkSGIX(proc, dpy, npipes) \
+  ( ((GdkGLProc_glXQueryHyperpipeNetworkSGIX) (proc)) (dpy, npipes) )
+
+/* glXHyperpipeConfigSGIX */
+typedef int ( * GdkGLProc_glXHyperpipeConfigSGIX) (Display *dpy, int networkId, int npipes, GLXHyperpipeConfigSGIX *cfg, int *hpId);
+GdkGLProc    gdk_gl_get_glXHyperpipeConfigSGIX (void);
+#define      gdk_gl_glXHyperpipeConfigSGIX(proc, dpy, networkId, npipes, cfg, hpId) \
+  ( ((GdkGLProc_glXHyperpipeConfigSGIX) (proc)) (dpy, networkId, npipes, cfg, hpId) )
+
+/* glXQueryHyperpipeConfigSGIX */
+typedef GLXHyperpipeConfigSGIX * ( * GdkGLProc_glXQueryHyperpipeConfigSGIX) (Display *dpy, int hpId, int *npipes);
+GdkGLProc    gdk_gl_get_glXQueryHyperpipeConfigSGIX (void);
+#define      gdk_gl_glXQueryHyperpipeConfigSGIX(proc, dpy, hpId, npipes) \
+  ( ((GdkGLProc_glXQueryHyperpipeConfigSGIX) (proc)) (dpy, hpId, npipes) )
+
+/* glXDestroyHyperpipeConfigSGIX */
+typedef int ( * GdkGLProc_glXDestroyHyperpipeConfigSGIX) (Display *dpy, int hpId);
+GdkGLProc    gdk_gl_get_glXDestroyHyperpipeConfigSGIX (void);
+#define      gdk_gl_glXDestroyHyperpipeConfigSGIX(proc, dpy, hpId) \
+  ( ((GdkGLProc_glXDestroyHyperpipeConfigSGIX) (proc)) (dpy, hpId) )
+
+/* glXBindHyperpipeSGIX */
+typedef int ( * GdkGLProc_glXBindHyperpipeSGIX) (Display *dpy, int hpId);
+GdkGLProc    gdk_gl_get_glXBindHyperpipeSGIX (void);
+#define      gdk_gl_glXBindHyperpipeSGIX(proc, dpy, hpId) \
+  ( ((GdkGLProc_glXBindHyperpipeSGIX) (proc)) (dpy, hpId) )
+
+/* glXQueryHyperpipeBestAttribSGIX */
+typedef int ( * GdkGLProc_glXQueryHyperpipeBestAttribSGIX) (Display *dpy, int timeSlice, int attrib, int size, void *attribList, void *returnAttribList);
+GdkGLProc    gdk_gl_get_glXQueryHyperpipeBestAttribSGIX (void);
+#define      gdk_gl_glXQueryHyperpipeBestAttribSGIX(proc, dpy, timeSlice, attrib, size, attribList, returnAttribList) \
+  ( ((GdkGLProc_glXQueryHyperpipeBestAttribSGIX) (proc)) (dpy, timeSlice, attrib, size, attribList, returnAttribList) )
+
+/* glXHyperpipeAttribSGIX */
+typedef int ( * GdkGLProc_glXHyperpipeAttribSGIX) (Display *dpy, int timeSlice, int attrib, int size, void *attribList);
+GdkGLProc    gdk_gl_get_glXHyperpipeAttribSGIX (void);
+#define      gdk_gl_glXHyperpipeAttribSGIX(proc, dpy, timeSlice, attrib, size, attribList) \
+  ( ((GdkGLProc_glXHyperpipeAttribSGIX) (proc)) (dpy, timeSlice, attrib, size, attribList) )
+
+/* glXQueryHyperpipeAttribSGIX */
+typedef int ( * GdkGLProc_glXQueryHyperpipeAttribSGIX) (Display *dpy, int timeSlice, int attrib, int size, void *returnAttribList);
+GdkGLProc    gdk_gl_get_glXQueryHyperpipeAttribSGIX (void);
+#define      gdk_gl_glXQueryHyperpipeAttribSGIX(proc, dpy, timeSlice, attrib, size, returnAttribList) \
+  ( ((GdkGLProc_glXQueryHyperpipeAttribSGIX) (proc)) (dpy, timeSlice, attrib, size, returnAttribList) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GLX_SGIX_hyperpipe GdkGL_GLX_SGIX_hyperpipe;
+
+struct _GdkGL_GLX_SGIX_hyperpipe
+{
+  GdkGLProc_glXQueryHyperpipeNetworkSGIX glXQueryHyperpipeNetworkSGIX;
+  GdkGLProc_glXHyperpipeConfigSGIX glXHyperpipeConfigSGIX;
+  GdkGLProc_glXQueryHyperpipeConfigSGIX glXQueryHyperpipeConfigSGIX;
+  GdkGLProc_glXDestroyHyperpipeConfigSGIX glXDestroyHyperpipeConfigSGIX;
+  GdkGLProc_glXBindHyperpipeSGIX glXBindHyperpipeSGIX;
+  GdkGLProc_glXQueryHyperpipeBestAttribSGIX glXQueryHyperpipeBestAttribSGIX;
+  GdkGLProc_glXHyperpipeAttribSGIX glXHyperpipeAttribSGIX;
+  GdkGLProc_glXQueryHyperpipeAttribSGIX glXQueryHyperpipeAttribSGIX;
+};
+
+GdkGL_GLX_SGIX_hyperpipe *gdk_gl_get_GLX_SGIX_hyperpipe (GdkGLConfig *glconfig);
+
+/*
  * GLX_MESA_agp_offset
  */
 
 /* glXGetAGPOffsetMESA */
-typedef GLuint ( * GdkGLProc_glXGetAGPOffsetMESA) (const GLvoid *pointer);
+typedef unsigned int ( * GdkGLProc_glXGetAGPOffsetMESA) (const void *pointer);
 GdkGLProc    gdk_gl_get_glXGetAGPOffsetMESA (void);
 #define      gdk_gl_glXGetAGPOffsetMESA(proc, pointer) \
   ( ((GdkGLProc_glXGetAGPOffsetMESA) (proc)) (pointer) )
@@ -859,6 +950,244 @@ struct _GdkGL_GLX_MESA_agp_offset
 };
 
 GdkGL_GLX_MESA_agp_offset *gdk_gl_get_GLX_MESA_agp_offset (GdkGLConfig *glconfig);
+
+/*
+ * GLX_EXT_texture_from_pixmap
+ */
+
+/* glXBindTexImageEXT */
+typedef void ( * GdkGLProc_glXBindTexImageEXT) (Display *dpy, GLXDrawable drawable, int buffer, const int *attrib_list);
+GdkGLProc    gdk_gl_get_glXBindTexImageEXT (void);
+#define      gdk_gl_glXBindTexImageEXT(proc, dpy, drawable, buffer, attrib_list) \
+  ( ((GdkGLProc_glXBindTexImageEXT) (proc)) (dpy, drawable, buffer, attrib_list) )
+
+/* glXReleaseTexImageEXT */
+typedef void ( * GdkGLProc_glXReleaseTexImageEXT) (Display *dpy, GLXDrawable drawable, int buffer);
+GdkGLProc    gdk_gl_get_glXReleaseTexImageEXT (void);
+#define      gdk_gl_glXReleaseTexImageEXT(proc, dpy, drawable, buffer) \
+  ( ((GdkGLProc_glXReleaseTexImageEXT) (proc)) (dpy, drawable, buffer) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GLX_EXT_texture_from_pixmap GdkGL_GLX_EXT_texture_from_pixmap;
+
+struct _GdkGL_GLX_EXT_texture_from_pixmap
+{
+  GdkGLProc_glXBindTexImageEXT glXBindTexImageEXT;
+  GdkGLProc_glXReleaseTexImageEXT glXReleaseTexImageEXT;
+};
+
+GdkGL_GLX_EXT_texture_from_pixmap *gdk_gl_get_GLX_EXT_texture_from_pixmap (GdkGLConfig *glconfig);
+
+/*
+ * GLX_NV_present_video
+ */
+
+/* glXEnumerateVideoDevicesNV */
+typedef unsigned int * ( * GdkGLProc_glXEnumerateVideoDevicesNV) (Display *dpy, int screen, int *nelements);
+GdkGLProc    gdk_gl_get_glXEnumerateVideoDevicesNV (void);
+#define      gdk_gl_glXEnumerateVideoDevicesNV(proc, dpy, screen, nelements) \
+  ( ((GdkGLProc_glXEnumerateVideoDevicesNV) (proc)) (dpy, screen, nelements) )
+
+/* glXBindVideoDeviceNV */
+typedef int ( * GdkGLProc_glXBindVideoDeviceNV) (Display *dpy, unsigned int video_slot, unsigned int video_device, const int *attrib_list);
+GdkGLProc    gdk_gl_get_glXBindVideoDeviceNV (void);
+#define      gdk_gl_glXBindVideoDeviceNV(proc, dpy, video_slot, video_device, attrib_list) \
+  ( ((GdkGLProc_glXBindVideoDeviceNV) (proc)) (dpy, video_slot, video_device, attrib_list) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GLX_NV_present_video GdkGL_GLX_NV_present_video;
+
+struct _GdkGL_GLX_NV_present_video
+{
+  GdkGLProc_glXEnumerateVideoDevicesNV glXEnumerateVideoDevicesNV;
+  GdkGLProc_glXBindVideoDeviceNV glXBindVideoDeviceNV;
+};
+
+GdkGL_GLX_NV_present_video *gdk_gl_get_GLX_NV_present_video (GdkGLConfig *glconfig);
+
+/*
+ * GLX_NV_video_output
+ */
+
+/* glXGetVideoDeviceNV */
+typedef int ( * GdkGLProc_glXGetVideoDeviceNV) (Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice);
+GdkGLProc    gdk_gl_get_glXGetVideoDeviceNV (void);
+#define      gdk_gl_glXGetVideoDeviceNV(proc, dpy, screen, numVideoDevices, pVideoDevice) \
+  ( ((GdkGLProc_glXGetVideoDeviceNV) (proc)) (dpy, screen, numVideoDevices, pVideoDevice) )
+
+/* glXReleaseVideoDeviceNV */
+typedef int ( * GdkGLProc_glXReleaseVideoDeviceNV) (Display *dpy, int screen, GLXVideoDeviceNV VideoDevice);
+GdkGLProc    gdk_gl_get_glXReleaseVideoDeviceNV (void);
+#define      gdk_gl_glXReleaseVideoDeviceNV(proc, dpy, screen, VideoDevice) \
+  ( ((GdkGLProc_glXReleaseVideoDeviceNV) (proc)) (dpy, screen, VideoDevice) )
+
+/* glXBindVideoImageNV */
+typedef int ( * GdkGLProc_glXBindVideoImageNV) (Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
+GdkGLProc    gdk_gl_get_glXBindVideoImageNV (void);
+#define      gdk_gl_glXBindVideoImageNV(proc, dpy, VideoDevice, pbuf, iVideoBuffer) \
+  ( ((GdkGLProc_glXBindVideoImageNV) (proc)) (dpy, VideoDevice, pbuf, iVideoBuffer) )
+
+/* glXReleaseVideoImageNV */
+typedef int ( * GdkGLProc_glXReleaseVideoImageNV) (Display *dpy, GLXPbuffer pbuf);
+GdkGLProc    gdk_gl_get_glXReleaseVideoImageNV (void);
+#define      gdk_gl_glXReleaseVideoImageNV(proc, dpy, pbuf) \
+  ( ((GdkGLProc_glXReleaseVideoImageNV) (proc)) (dpy, pbuf) )
+
+/* glXSendPbufferToVideoNV */
+typedef int ( * GdkGLProc_glXSendPbufferToVideoNV) (Display *dpy, GLXPbuffer pbuf, int iBufferType, unsigned long *pulCounterPbuffer, GLboolean bBlock);
+GdkGLProc    gdk_gl_get_glXSendPbufferToVideoNV (void);
+#define      gdk_gl_glXSendPbufferToVideoNV(proc, dpy, pbuf, iBufferType, pulCounterPbuffer, bBlock) \
+  ( ((GdkGLProc_glXSendPbufferToVideoNV) (proc)) (dpy, pbuf, iBufferType, pulCounterPbuffer, bBlock) )
+
+/* glXGetVideoInfoNV */
+typedef int ( * GdkGLProc_glXGetVideoInfoNV) (Display *dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
+GdkGLProc    gdk_gl_get_glXGetVideoInfoNV (void);
+#define      gdk_gl_glXGetVideoInfoNV(proc, dpy, screen, VideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo) \
+  ( ((GdkGLProc_glXGetVideoInfoNV) (proc)) (dpy, screen, VideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GLX_NV_video_output GdkGL_GLX_NV_video_output;
+
+struct _GdkGL_GLX_NV_video_output
+{
+  GdkGLProc_glXGetVideoDeviceNV glXGetVideoDeviceNV;
+  GdkGLProc_glXReleaseVideoDeviceNV glXReleaseVideoDeviceNV;
+  GdkGLProc_glXBindVideoImageNV glXBindVideoImageNV;
+  GdkGLProc_glXReleaseVideoImageNV glXReleaseVideoImageNV;
+  GdkGLProc_glXSendPbufferToVideoNV glXSendPbufferToVideoNV;
+  GdkGLProc_glXGetVideoInfoNV glXGetVideoInfoNV;
+};
+
+GdkGL_GLX_NV_video_output *gdk_gl_get_GLX_NV_video_output (GdkGLConfig *glconfig);
+
+/*
+ * GLX_NV_swap_group
+ */
+
+/* glXJoinSwapGroupNV */
+typedef Bool ( * GdkGLProc_glXJoinSwapGroupNV) (Display *dpy, GLXDrawable drawable, GLuint group);
+GdkGLProc    gdk_gl_get_glXJoinSwapGroupNV (void);
+#define      gdk_gl_glXJoinSwapGroupNV(proc, dpy, drawable, group) \
+  ( ((GdkGLProc_glXJoinSwapGroupNV) (proc)) (dpy, drawable, group) )
+
+/* glXBindSwapBarrierNV */
+typedef Bool ( * GdkGLProc_glXBindSwapBarrierNV) (Display *dpy, GLuint group, GLuint barrier);
+GdkGLProc    gdk_gl_get_glXBindSwapBarrierNV (void);
+#define      gdk_gl_glXBindSwapBarrierNV(proc, dpy, group, barrier) \
+  ( ((GdkGLProc_glXBindSwapBarrierNV) (proc)) (dpy, group, barrier) )
+
+/* glXQuerySwapGroupNV */
+typedef Bool ( * GdkGLProc_glXQuerySwapGroupNV) (Display *dpy, GLXDrawable drawable, GLuint *group, GLuint *barrier);
+GdkGLProc    gdk_gl_get_glXQuerySwapGroupNV (void);
+#define      gdk_gl_glXQuerySwapGroupNV(proc, dpy, drawable, group, barrier) \
+  ( ((GdkGLProc_glXQuerySwapGroupNV) (proc)) (dpy, drawable, group, barrier) )
+
+/* glXQueryMaxSwapGroupsNV */
+typedef Bool ( * GdkGLProc_glXQueryMaxSwapGroupsNV) (Display *dpy, int screen, GLuint *maxGroups, GLuint *maxBarriers);
+GdkGLProc    gdk_gl_get_glXQueryMaxSwapGroupsNV (void);
+#define      gdk_gl_glXQueryMaxSwapGroupsNV(proc, dpy, screen, maxGroups, maxBarriers) \
+  ( ((GdkGLProc_glXQueryMaxSwapGroupsNV) (proc)) (dpy, screen, maxGroups, maxBarriers) )
+
+/* glXQueryFrameCountNV */
+typedef Bool ( * GdkGLProc_glXQueryFrameCountNV) (Display *dpy, int screen, GLuint *count);
+GdkGLProc    gdk_gl_get_glXQueryFrameCountNV (void);
+#define      gdk_gl_glXQueryFrameCountNV(proc, dpy, screen, count) \
+  ( ((GdkGLProc_glXQueryFrameCountNV) (proc)) (dpy, screen, count) )
+
+/* glXResetFrameCountNV */
+typedef Bool ( * GdkGLProc_glXResetFrameCountNV) (Display *dpy, int screen);
+GdkGLProc    gdk_gl_get_glXResetFrameCountNV (void);
+#define      gdk_gl_glXResetFrameCountNV(proc, dpy, screen) \
+  ( ((GdkGLProc_glXResetFrameCountNV) (proc)) (dpy, screen) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GLX_NV_swap_group GdkGL_GLX_NV_swap_group;
+
+struct _GdkGL_GLX_NV_swap_group
+{
+  GdkGLProc_glXJoinSwapGroupNV glXJoinSwapGroupNV;
+  GdkGLProc_glXBindSwapBarrierNV glXBindSwapBarrierNV;
+  GdkGLProc_glXQuerySwapGroupNV glXQuerySwapGroupNV;
+  GdkGLProc_glXQueryMaxSwapGroupsNV glXQueryMaxSwapGroupsNV;
+  GdkGLProc_glXQueryFrameCountNV glXQueryFrameCountNV;
+  GdkGLProc_glXResetFrameCountNV glXResetFrameCountNV;
+};
+
+GdkGL_GLX_NV_swap_group *gdk_gl_get_GLX_NV_swap_group (GdkGLConfig *glconfig);
+
+/*
+ * GLX_NV_video_capture
+ */
+
+/* glXBindVideoCaptureDeviceNV */
+typedef int ( * GdkGLProc_glXBindVideoCaptureDeviceNV) (Display *dpy, unsigned int video_capture_slot, GLXVideoCaptureDeviceNV device);
+GdkGLProc    gdk_gl_get_glXBindVideoCaptureDeviceNV (void);
+#define      gdk_gl_glXBindVideoCaptureDeviceNV(proc, dpy, video_capture_slot, device) \
+  ( ((GdkGLProc_glXBindVideoCaptureDeviceNV) (proc)) (dpy, video_capture_slot, device) )
+
+/* glXEnumerateVideoCaptureDevicesNV */
+typedef GLXVideoCaptureDeviceNV * ( * GdkGLProc_glXEnumerateVideoCaptureDevicesNV) (Display *dpy, int screen, int *nelements);
+GdkGLProc    gdk_gl_get_glXEnumerateVideoCaptureDevicesNV (void);
+#define      gdk_gl_glXEnumerateVideoCaptureDevicesNV(proc, dpy, screen, nelements) \
+  ( ((GdkGLProc_glXEnumerateVideoCaptureDevicesNV) (proc)) (dpy, screen, nelements) )
+
+/* glXLockVideoCaptureDeviceNV */
+typedef void ( * GdkGLProc_glXLockVideoCaptureDeviceNV) (Display *dpy, GLXVideoCaptureDeviceNV device);
+GdkGLProc    gdk_gl_get_glXLockVideoCaptureDeviceNV (void);
+#define      gdk_gl_glXLockVideoCaptureDeviceNV(proc, dpy, device) \
+  ( ((GdkGLProc_glXLockVideoCaptureDeviceNV) (proc)) (dpy, device) )
+
+/* glXQueryVideoCaptureDeviceNV */
+typedef int ( * GdkGLProc_glXQueryVideoCaptureDeviceNV) (Display *dpy, GLXVideoCaptureDeviceNV device, int attribute, int *value);
+GdkGLProc    gdk_gl_get_glXQueryVideoCaptureDeviceNV (void);
+#define      gdk_gl_glXQueryVideoCaptureDeviceNV(proc, dpy, device, attribute, value) \
+  ( ((GdkGLProc_glXQueryVideoCaptureDeviceNV) (proc)) (dpy, device, attribute, value) )
+
+/* glXReleaseVideoCaptureDeviceNV */
+typedef void ( * GdkGLProc_glXReleaseVideoCaptureDeviceNV) (Display *dpy, GLXVideoCaptureDeviceNV device);
+GdkGLProc    gdk_gl_get_glXReleaseVideoCaptureDeviceNV (void);
+#define      gdk_gl_glXReleaseVideoCaptureDeviceNV(proc, dpy, device) \
+  ( ((GdkGLProc_glXReleaseVideoCaptureDeviceNV) (proc)) (dpy, device) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GLX_NV_video_capture GdkGL_GLX_NV_video_capture;
+
+struct _GdkGL_GLX_NV_video_capture
+{
+  GdkGLProc_glXBindVideoCaptureDeviceNV glXBindVideoCaptureDeviceNV;
+  GdkGLProc_glXEnumerateVideoCaptureDevicesNV glXEnumerateVideoCaptureDevicesNV;
+  GdkGLProc_glXLockVideoCaptureDeviceNV glXLockVideoCaptureDeviceNV;
+  GdkGLProc_glXQueryVideoCaptureDeviceNV glXQueryVideoCaptureDeviceNV;
+  GdkGLProc_glXReleaseVideoCaptureDeviceNV glXReleaseVideoCaptureDeviceNV;
+};
+
+GdkGL_GLX_NV_video_capture *gdk_gl_get_GLX_NV_video_capture (GdkGLConfig *glconfig);
+
+/*
+ * GLX_NV_copy_image
+ */
+
+/* glXCopyImageSubDataNV */
+typedef void ( * GdkGLProc_glXCopyImageSubDataNV) (Display *dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
+GdkGLProc    gdk_gl_get_glXCopyImageSubDataNV (void);
+#define      gdk_gl_glXCopyImageSubDataNV(proc, dpy, srcCtx, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstCtx, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth) \
+  ( ((GdkGLProc_glXCopyImageSubDataNV) (proc)) (dpy, srcCtx, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstCtx, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth) )
+
+/* proc struct */
+
+typedef struct _GdkGL_GLX_NV_copy_image GdkGL_GLX_NV_copy_image;
+
+struct _GdkGL_GLX_NV_copy_image
+{
+  GdkGLProc_glXCopyImageSubDataNV glXCopyImageSubDataNV;
+};
+
+GdkGL_GLX_NV_copy_image *gdk_gl_get_GLX_NV_copy_image (GdkGLConfig *glconfig);
 
 /*
  * GLX_NV_vertex_array_range

@@ -2,8 +2,8 @@
 #
 # gen-gdkglglxext-c.pl
 #
-# Script for generating gdk/x11/gdkglglxext.c from SGI's OpenGL extension
-# header.
+# Script for generating gdk/x11/gdkglglxext.c from The Khronos Group's
+# OpenGL extension header.
 #
 # written by Naofumi Yasufuku <naofumi@users.sourceforge.net>
 #

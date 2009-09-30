@@ -67,25 +67,9 @@ extern "C" {
  * MESA
  */
 
-#ifndef GLX_MESA_agp_offset
-#define GLX_MESA_agp_offset 1
-#ifdef GLX_GLXEXT_PROTOTYPES
-extern GLuint glXGetAGPOffsetMESA (const GLvoid *);
-#endif /* GLX_GLXEXT_PROTOTYPES */
-typedef GLuint ( * PFNGLXGETAGPOFFSETMESAPROC) (const GLvoid *pointer);
-#endif
-
 /*
  * NV
  */
-
-#ifndef GLX_NV_float_buffer
-#define GLX_FLOAT_COMPONENTS_NV         0x20B0
-#endif
-
-#ifndef GLX_NV_float_buffer
-#define GLX_NV_float_buffer 1
-#endif
 
 #ifndef GLX_NV_vertex_array_range
 #define GLX_NV_vertex_array_range 1

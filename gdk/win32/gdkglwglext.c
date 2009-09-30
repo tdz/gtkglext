@@ -595,6 +595,61 @@ gdk_gl_get_WGL_ARB_render_texture (GdkGLConfig *glconfig)
 }
 
 /*
+ * WGL_ARB_create_context
+ */
+
+static GdkGL_WGL_ARB_create_context _procs_WGL_ARB_create_context = {
+  (GdkGLProc_wglCreateContextAttribsARB) -1
+};
+
+/* wglCreateContextAttribsARB */
+GdkGLProc
+gdk_gl_get_wglCreateContextAttribsARB (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_ARB_create_context.wglCreateContextAttribsARB == (GdkGLProc_wglCreateContextAttribsARB) -1)
+    _procs_WGL_ARB_create_context.wglCreateContextAttribsARB =
+      (GdkGLProc_wglCreateContextAttribsARB) gdk_gl_get_proc_address ("wglCreateContextAttribsARB");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglCreateContextAttribsARB () - %s",
+               (_procs_WGL_ARB_create_context.wglCreateContextAttribsARB) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_ARB_create_context.wglCreateContextAttribsARB);
+}
+
+/* Get WGL_ARB_create_context functions */
+GdkGL_WGL_ARB_create_context *
+gdk_gl_get_WGL_ARB_create_context (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_ARB_create_context");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglCreateContextAttribsARB () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_WGL_ARB_create_context () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_WGL_ARB_create_context;
+}
+
+/*
  * WGL_EXT_display_color_table
  */
 
@@ -2182,5 +2237,1005 @@ gdk_gl_get_WGL_I3D_swap_frame_usage (GdkGLConfig *glconfig)
     return NULL;
 
   return &_procs_WGL_I3D_swap_frame_usage;
+}
+
+/*
+ * WGL_3DL_stereo_control
+ */
+
+static GdkGL_WGL_3DL_stereo_control _procs_WGL_3DL_stereo_control = {
+  (GdkGLProc_wglSetStereoEmitterState3DL) -1
+};
+
+/* wglSetStereoEmitterState3DL */
+GdkGLProc
+gdk_gl_get_wglSetStereoEmitterState3DL (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_3DL_stereo_control.wglSetStereoEmitterState3DL == (GdkGLProc_wglSetStereoEmitterState3DL) -1)
+    _procs_WGL_3DL_stereo_control.wglSetStereoEmitterState3DL =
+      (GdkGLProc_wglSetStereoEmitterState3DL) gdk_gl_get_proc_address ("wglSetStereoEmitterState3DL");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglSetStereoEmitterState3DL () - %s",
+               (_procs_WGL_3DL_stereo_control.wglSetStereoEmitterState3DL) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_3DL_stereo_control.wglSetStereoEmitterState3DL);
+}
+
+/* Get WGL_3DL_stereo_control functions */
+GdkGL_WGL_3DL_stereo_control *
+gdk_gl_get_WGL_3DL_stereo_control (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_3DL_stereo_control");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglSetStereoEmitterState3DL () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_WGL_3DL_stereo_control () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_WGL_3DL_stereo_control;
+}
+
+/*
+ * WGL_NV_present_video
+ */
+
+static GdkGL_WGL_NV_present_video _procs_WGL_NV_present_video = {
+  (GdkGLProc_wglEnumerateVideoDevicesNV) -1,
+  (GdkGLProc_wglBindVideoDeviceNV) -1,
+  (GdkGLProc_wglQueryCurrentContextNV) -1
+};
+
+/* wglEnumerateVideoDevicesNV */
+GdkGLProc
+gdk_gl_get_wglEnumerateVideoDevicesNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_present_video.wglEnumerateVideoDevicesNV == (GdkGLProc_wglEnumerateVideoDevicesNV) -1)
+    _procs_WGL_NV_present_video.wglEnumerateVideoDevicesNV =
+      (GdkGLProc_wglEnumerateVideoDevicesNV) gdk_gl_get_proc_address ("wglEnumerateVideoDevicesNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglEnumerateVideoDevicesNV () - %s",
+               (_procs_WGL_NV_present_video.wglEnumerateVideoDevicesNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_present_video.wglEnumerateVideoDevicesNV);
+}
+
+/* wglBindVideoDeviceNV */
+GdkGLProc
+gdk_gl_get_wglBindVideoDeviceNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_present_video.wglBindVideoDeviceNV == (GdkGLProc_wglBindVideoDeviceNV) -1)
+    _procs_WGL_NV_present_video.wglBindVideoDeviceNV =
+      (GdkGLProc_wglBindVideoDeviceNV) gdk_gl_get_proc_address ("wglBindVideoDeviceNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglBindVideoDeviceNV () - %s",
+               (_procs_WGL_NV_present_video.wglBindVideoDeviceNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_present_video.wglBindVideoDeviceNV);
+}
+
+/* wglQueryCurrentContextNV */
+GdkGLProc
+gdk_gl_get_wglQueryCurrentContextNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_present_video.wglQueryCurrentContextNV == (GdkGLProc_wglQueryCurrentContextNV) -1)
+    _procs_WGL_NV_present_video.wglQueryCurrentContextNV =
+      (GdkGLProc_wglQueryCurrentContextNV) gdk_gl_get_proc_address ("wglQueryCurrentContextNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglQueryCurrentContextNV () - %s",
+               (_procs_WGL_NV_present_video.wglQueryCurrentContextNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_present_video.wglQueryCurrentContextNV);
+}
+
+/* Get WGL_NV_present_video functions */
+GdkGL_WGL_NV_present_video *
+gdk_gl_get_WGL_NV_present_video (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_NV_present_video");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglEnumerateVideoDevicesNV () != NULL);
+          supported &= (gdk_gl_get_wglBindVideoDeviceNV () != NULL);
+          supported &= (gdk_gl_get_wglQueryCurrentContextNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_WGL_NV_present_video () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_WGL_NV_present_video;
+}
+
+/*
+ * WGL_NV_video_output
+ */
+
+static GdkGL_WGL_NV_video_output _procs_WGL_NV_video_output = {
+  (GdkGLProc_wglGetVideoDeviceNV) -1,
+  (GdkGLProc_wglReleaseVideoDeviceNV) -1,
+  (GdkGLProc_wglBindVideoImageNV) -1,
+  (GdkGLProc_wglReleaseVideoImageNV) -1,
+  (GdkGLProc_wglSendPbufferToVideoNV) -1,
+  (GdkGLProc_wglGetVideoInfoNV) -1
+};
+
+/* wglGetVideoDeviceNV */
+GdkGLProc
+gdk_gl_get_wglGetVideoDeviceNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_output.wglGetVideoDeviceNV == (GdkGLProc_wglGetVideoDeviceNV) -1)
+    _procs_WGL_NV_video_output.wglGetVideoDeviceNV =
+      (GdkGLProc_wglGetVideoDeviceNV) gdk_gl_get_proc_address ("wglGetVideoDeviceNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglGetVideoDeviceNV () - %s",
+               (_procs_WGL_NV_video_output.wglGetVideoDeviceNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_output.wglGetVideoDeviceNV);
+}
+
+/* wglReleaseVideoDeviceNV */
+GdkGLProc
+gdk_gl_get_wglReleaseVideoDeviceNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_output.wglReleaseVideoDeviceNV == (GdkGLProc_wglReleaseVideoDeviceNV) -1)
+    _procs_WGL_NV_video_output.wglReleaseVideoDeviceNV =
+      (GdkGLProc_wglReleaseVideoDeviceNV) gdk_gl_get_proc_address ("wglReleaseVideoDeviceNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglReleaseVideoDeviceNV () - %s",
+               (_procs_WGL_NV_video_output.wglReleaseVideoDeviceNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_output.wglReleaseVideoDeviceNV);
+}
+
+/* wglBindVideoImageNV */
+GdkGLProc
+gdk_gl_get_wglBindVideoImageNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_output.wglBindVideoImageNV == (GdkGLProc_wglBindVideoImageNV) -1)
+    _procs_WGL_NV_video_output.wglBindVideoImageNV =
+      (GdkGLProc_wglBindVideoImageNV) gdk_gl_get_proc_address ("wglBindVideoImageNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglBindVideoImageNV () - %s",
+               (_procs_WGL_NV_video_output.wglBindVideoImageNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_output.wglBindVideoImageNV);
+}
+
+/* wglReleaseVideoImageNV */
+GdkGLProc
+gdk_gl_get_wglReleaseVideoImageNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_output.wglReleaseVideoImageNV == (GdkGLProc_wglReleaseVideoImageNV) -1)
+    _procs_WGL_NV_video_output.wglReleaseVideoImageNV =
+      (GdkGLProc_wglReleaseVideoImageNV) gdk_gl_get_proc_address ("wglReleaseVideoImageNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglReleaseVideoImageNV () - %s",
+               (_procs_WGL_NV_video_output.wglReleaseVideoImageNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_output.wglReleaseVideoImageNV);
+}
+
+/* wglSendPbufferToVideoNV */
+GdkGLProc
+gdk_gl_get_wglSendPbufferToVideoNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_output.wglSendPbufferToVideoNV == (GdkGLProc_wglSendPbufferToVideoNV) -1)
+    _procs_WGL_NV_video_output.wglSendPbufferToVideoNV =
+      (GdkGLProc_wglSendPbufferToVideoNV) gdk_gl_get_proc_address ("wglSendPbufferToVideoNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglSendPbufferToVideoNV () - %s",
+               (_procs_WGL_NV_video_output.wglSendPbufferToVideoNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_output.wglSendPbufferToVideoNV);
+}
+
+/* wglGetVideoInfoNV */
+GdkGLProc
+gdk_gl_get_wglGetVideoInfoNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_output.wglGetVideoInfoNV == (GdkGLProc_wglGetVideoInfoNV) -1)
+    _procs_WGL_NV_video_output.wglGetVideoInfoNV =
+      (GdkGLProc_wglGetVideoInfoNV) gdk_gl_get_proc_address ("wglGetVideoInfoNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglGetVideoInfoNV () - %s",
+               (_procs_WGL_NV_video_output.wglGetVideoInfoNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_output.wglGetVideoInfoNV);
+}
+
+/* Get WGL_NV_video_output functions */
+GdkGL_WGL_NV_video_output *
+gdk_gl_get_WGL_NV_video_output (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_NV_video_output");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglGetVideoDeviceNV () != NULL);
+          supported &= (gdk_gl_get_wglReleaseVideoDeviceNV () != NULL);
+          supported &= (gdk_gl_get_wglBindVideoImageNV () != NULL);
+          supported &= (gdk_gl_get_wglReleaseVideoImageNV () != NULL);
+          supported &= (gdk_gl_get_wglSendPbufferToVideoNV () != NULL);
+          supported &= (gdk_gl_get_wglGetVideoInfoNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_WGL_NV_video_output () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_WGL_NV_video_output;
+}
+
+/*
+ * WGL_NV_swap_group
+ */
+
+static GdkGL_WGL_NV_swap_group _procs_WGL_NV_swap_group = {
+  (GdkGLProc_wglJoinSwapGroupNV) -1,
+  (GdkGLProc_wglBindSwapBarrierNV) -1,
+  (GdkGLProc_wglQuerySwapGroupNV) -1,
+  (GdkGLProc_wglQueryMaxSwapGroupsNV) -1,
+  (GdkGLProc_wglQueryFrameCountNV) -1,
+  (GdkGLProc_wglResetFrameCountNV) -1
+};
+
+/* wglJoinSwapGroupNV */
+GdkGLProc
+gdk_gl_get_wglJoinSwapGroupNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_swap_group.wglJoinSwapGroupNV == (GdkGLProc_wglJoinSwapGroupNV) -1)
+    _procs_WGL_NV_swap_group.wglJoinSwapGroupNV =
+      (GdkGLProc_wglJoinSwapGroupNV) gdk_gl_get_proc_address ("wglJoinSwapGroupNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglJoinSwapGroupNV () - %s",
+               (_procs_WGL_NV_swap_group.wglJoinSwapGroupNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_swap_group.wglJoinSwapGroupNV);
+}
+
+/* wglBindSwapBarrierNV */
+GdkGLProc
+gdk_gl_get_wglBindSwapBarrierNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_swap_group.wglBindSwapBarrierNV == (GdkGLProc_wglBindSwapBarrierNV) -1)
+    _procs_WGL_NV_swap_group.wglBindSwapBarrierNV =
+      (GdkGLProc_wglBindSwapBarrierNV) gdk_gl_get_proc_address ("wglBindSwapBarrierNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglBindSwapBarrierNV () - %s",
+               (_procs_WGL_NV_swap_group.wglBindSwapBarrierNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_swap_group.wglBindSwapBarrierNV);
+}
+
+/* wglQuerySwapGroupNV */
+GdkGLProc
+gdk_gl_get_wglQuerySwapGroupNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_swap_group.wglQuerySwapGroupNV == (GdkGLProc_wglQuerySwapGroupNV) -1)
+    _procs_WGL_NV_swap_group.wglQuerySwapGroupNV =
+      (GdkGLProc_wglQuerySwapGroupNV) gdk_gl_get_proc_address ("wglQuerySwapGroupNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglQuerySwapGroupNV () - %s",
+               (_procs_WGL_NV_swap_group.wglQuerySwapGroupNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_swap_group.wglQuerySwapGroupNV);
+}
+
+/* wglQueryMaxSwapGroupsNV */
+GdkGLProc
+gdk_gl_get_wglQueryMaxSwapGroupsNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_swap_group.wglQueryMaxSwapGroupsNV == (GdkGLProc_wglQueryMaxSwapGroupsNV) -1)
+    _procs_WGL_NV_swap_group.wglQueryMaxSwapGroupsNV =
+      (GdkGLProc_wglQueryMaxSwapGroupsNV) gdk_gl_get_proc_address ("wglQueryMaxSwapGroupsNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglQueryMaxSwapGroupsNV () - %s",
+               (_procs_WGL_NV_swap_group.wglQueryMaxSwapGroupsNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_swap_group.wglQueryMaxSwapGroupsNV);
+}
+
+/* wglQueryFrameCountNV */
+GdkGLProc
+gdk_gl_get_wglQueryFrameCountNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_swap_group.wglQueryFrameCountNV == (GdkGLProc_wglQueryFrameCountNV) -1)
+    _procs_WGL_NV_swap_group.wglQueryFrameCountNV =
+      (GdkGLProc_wglQueryFrameCountNV) gdk_gl_get_proc_address ("wglQueryFrameCountNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglQueryFrameCountNV () - %s",
+               (_procs_WGL_NV_swap_group.wglQueryFrameCountNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_swap_group.wglQueryFrameCountNV);
+}
+
+/* wglResetFrameCountNV */
+GdkGLProc
+gdk_gl_get_wglResetFrameCountNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_swap_group.wglResetFrameCountNV == (GdkGLProc_wglResetFrameCountNV) -1)
+    _procs_WGL_NV_swap_group.wglResetFrameCountNV =
+      (GdkGLProc_wglResetFrameCountNV) gdk_gl_get_proc_address ("wglResetFrameCountNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglResetFrameCountNV () - %s",
+               (_procs_WGL_NV_swap_group.wglResetFrameCountNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_swap_group.wglResetFrameCountNV);
+}
+
+/* Get WGL_NV_swap_group functions */
+GdkGL_WGL_NV_swap_group *
+gdk_gl_get_WGL_NV_swap_group (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_NV_swap_group");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglJoinSwapGroupNV () != NULL);
+          supported &= (gdk_gl_get_wglBindSwapBarrierNV () != NULL);
+          supported &= (gdk_gl_get_wglQuerySwapGroupNV () != NULL);
+          supported &= (gdk_gl_get_wglQueryMaxSwapGroupsNV () != NULL);
+          supported &= (gdk_gl_get_wglQueryFrameCountNV () != NULL);
+          supported &= (gdk_gl_get_wglResetFrameCountNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_WGL_NV_swap_group () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_WGL_NV_swap_group;
+}
+
+/*
+ * WGL_NV_gpu_affinity
+ */
+
+static GdkGL_WGL_NV_gpu_affinity _procs_WGL_NV_gpu_affinity = {
+  (GdkGLProc_wglEnumGpusNV) -1,
+  (GdkGLProc_wglEnumGpuDevicesNV) -1,
+  (GdkGLProc_wglCreateAffinityDCNV) -1,
+  (GdkGLProc_wglEnumGpusFromAffinityDCNV) -1,
+  (GdkGLProc_wglDeleteDCNV) -1
+};
+
+/* wglEnumGpusNV */
+GdkGLProc
+gdk_gl_get_wglEnumGpusNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_gpu_affinity.wglEnumGpusNV == (GdkGLProc_wglEnumGpusNV) -1)
+    _procs_WGL_NV_gpu_affinity.wglEnumGpusNV =
+      (GdkGLProc_wglEnumGpusNV) gdk_gl_get_proc_address ("wglEnumGpusNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglEnumGpusNV () - %s",
+               (_procs_WGL_NV_gpu_affinity.wglEnumGpusNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_gpu_affinity.wglEnumGpusNV);
+}
+
+/* wglEnumGpuDevicesNV */
+GdkGLProc
+gdk_gl_get_wglEnumGpuDevicesNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_gpu_affinity.wglEnumGpuDevicesNV == (GdkGLProc_wglEnumGpuDevicesNV) -1)
+    _procs_WGL_NV_gpu_affinity.wglEnumGpuDevicesNV =
+      (GdkGLProc_wglEnumGpuDevicesNV) gdk_gl_get_proc_address ("wglEnumGpuDevicesNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglEnumGpuDevicesNV () - %s",
+               (_procs_WGL_NV_gpu_affinity.wglEnumGpuDevicesNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_gpu_affinity.wglEnumGpuDevicesNV);
+}
+
+/* wglCreateAffinityDCNV */
+GdkGLProc
+gdk_gl_get_wglCreateAffinityDCNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_gpu_affinity.wglCreateAffinityDCNV == (GdkGLProc_wglCreateAffinityDCNV) -1)
+    _procs_WGL_NV_gpu_affinity.wglCreateAffinityDCNV =
+      (GdkGLProc_wglCreateAffinityDCNV) gdk_gl_get_proc_address ("wglCreateAffinityDCNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglCreateAffinityDCNV () - %s",
+               (_procs_WGL_NV_gpu_affinity.wglCreateAffinityDCNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_gpu_affinity.wglCreateAffinityDCNV);
+}
+
+/* wglEnumGpusFromAffinityDCNV */
+GdkGLProc
+gdk_gl_get_wglEnumGpusFromAffinityDCNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_gpu_affinity.wglEnumGpusFromAffinityDCNV == (GdkGLProc_wglEnumGpusFromAffinityDCNV) -1)
+    _procs_WGL_NV_gpu_affinity.wglEnumGpusFromAffinityDCNV =
+      (GdkGLProc_wglEnumGpusFromAffinityDCNV) gdk_gl_get_proc_address ("wglEnumGpusFromAffinityDCNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglEnumGpusFromAffinityDCNV () - %s",
+               (_procs_WGL_NV_gpu_affinity.wglEnumGpusFromAffinityDCNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_gpu_affinity.wglEnumGpusFromAffinityDCNV);
+}
+
+/* wglDeleteDCNV */
+GdkGLProc
+gdk_gl_get_wglDeleteDCNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_gpu_affinity.wglDeleteDCNV == (GdkGLProc_wglDeleteDCNV) -1)
+    _procs_WGL_NV_gpu_affinity.wglDeleteDCNV =
+      (GdkGLProc_wglDeleteDCNV) gdk_gl_get_proc_address ("wglDeleteDCNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglDeleteDCNV () - %s",
+               (_procs_WGL_NV_gpu_affinity.wglDeleteDCNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_gpu_affinity.wglDeleteDCNV);
+}
+
+/* Get WGL_NV_gpu_affinity functions */
+GdkGL_WGL_NV_gpu_affinity *
+gdk_gl_get_WGL_NV_gpu_affinity (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_NV_gpu_affinity");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglEnumGpusNV () != NULL);
+          supported &= (gdk_gl_get_wglEnumGpuDevicesNV () != NULL);
+          supported &= (gdk_gl_get_wglCreateAffinityDCNV () != NULL);
+          supported &= (gdk_gl_get_wglEnumGpusFromAffinityDCNV () != NULL);
+          supported &= (gdk_gl_get_wglDeleteDCNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_WGL_NV_gpu_affinity () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_WGL_NV_gpu_affinity;
+}
+
+/*
+ * WGL_AMD_gpu_association
+ */
+
+static GdkGL_WGL_AMD_gpu_association _procs_WGL_AMD_gpu_association = {
+  (GdkGLProc_wglGetGPUIDsAMD) -1,
+  (GdkGLProc_wglGetGPUInfoAMD) -1,
+  (GdkGLProc_wglGetContextGPUIDAMD) -1,
+  (GdkGLProc_wglCreateAssociatedContextAMD) -1,
+  (GdkGLProc_wglCreateAssociatedContextAttribsAMD) -1,
+  (GdkGLProc_wglDeleteAssociatedContextAMD) -1,
+  (GdkGLProc_wglMakeAssociatedContextCurrentAMD) -1,
+  (GdkGLProc_wglGetCurrentAssociatedContextAMD) -1,
+  (GdkGLProc_wglBlitContextFramebufferAMD) -1
+};
+
+/* wglGetGPUIDsAMD */
+GdkGLProc
+gdk_gl_get_wglGetGPUIDsAMD (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_AMD_gpu_association.wglGetGPUIDsAMD == (GdkGLProc_wglGetGPUIDsAMD) -1)
+    _procs_WGL_AMD_gpu_association.wglGetGPUIDsAMD =
+      (GdkGLProc_wglGetGPUIDsAMD) gdk_gl_get_proc_address ("wglGetGPUIDsAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglGetGPUIDsAMD () - %s",
+               (_procs_WGL_AMD_gpu_association.wglGetGPUIDsAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_AMD_gpu_association.wglGetGPUIDsAMD);
+}
+
+/* wglGetGPUInfoAMD */
+GdkGLProc
+gdk_gl_get_wglGetGPUInfoAMD (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_AMD_gpu_association.wglGetGPUInfoAMD == (GdkGLProc_wglGetGPUInfoAMD) -1)
+    _procs_WGL_AMD_gpu_association.wglGetGPUInfoAMD =
+      (GdkGLProc_wglGetGPUInfoAMD) gdk_gl_get_proc_address ("wglGetGPUInfoAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglGetGPUInfoAMD () - %s",
+               (_procs_WGL_AMD_gpu_association.wglGetGPUInfoAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_AMD_gpu_association.wglGetGPUInfoAMD);
+}
+
+/* wglGetContextGPUIDAMD */
+GdkGLProc
+gdk_gl_get_wglGetContextGPUIDAMD (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_AMD_gpu_association.wglGetContextGPUIDAMD == (GdkGLProc_wglGetContextGPUIDAMD) -1)
+    _procs_WGL_AMD_gpu_association.wglGetContextGPUIDAMD =
+      (GdkGLProc_wglGetContextGPUIDAMD) gdk_gl_get_proc_address ("wglGetContextGPUIDAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglGetContextGPUIDAMD () - %s",
+               (_procs_WGL_AMD_gpu_association.wglGetContextGPUIDAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_AMD_gpu_association.wglGetContextGPUIDAMD);
+}
+
+/* wglCreateAssociatedContextAMD */
+GdkGLProc
+gdk_gl_get_wglCreateAssociatedContextAMD (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_AMD_gpu_association.wglCreateAssociatedContextAMD == (GdkGLProc_wglCreateAssociatedContextAMD) -1)
+    _procs_WGL_AMD_gpu_association.wglCreateAssociatedContextAMD =
+      (GdkGLProc_wglCreateAssociatedContextAMD) gdk_gl_get_proc_address ("wglCreateAssociatedContextAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglCreateAssociatedContextAMD () - %s",
+               (_procs_WGL_AMD_gpu_association.wglCreateAssociatedContextAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_AMD_gpu_association.wglCreateAssociatedContextAMD);
+}
+
+/* wglCreateAssociatedContextAttribsAMD */
+GdkGLProc
+gdk_gl_get_wglCreateAssociatedContextAttribsAMD (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_AMD_gpu_association.wglCreateAssociatedContextAttribsAMD == (GdkGLProc_wglCreateAssociatedContextAttribsAMD) -1)
+    _procs_WGL_AMD_gpu_association.wglCreateAssociatedContextAttribsAMD =
+      (GdkGLProc_wglCreateAssociatedContextAttribsAMD) gdk_gl_get_proc_address ("wglCreateAssociatedContextAttribsAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglCreateAssociatedContextAttribsAMD () - %s",
+               (_procs_WGL_AMD_gpu_association.wglCreateAssociatedContextAttribsAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_AMD_gpu_association.wglCreateAssociatedContextAttribsAMD);
+}
+
+/* wglDeleteAssociatedContextAMD */
+GdkGLProc
+gdk_gl_get_wglDeleteAssociatedContextAMD (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_AMD_gpu_association.wglDeleteAssociatedContextAMD == (GdkGLProc_wglDeleteAssociatedContextAMD) -1)
+    _procs_WGL_AMD_gpu_association.wglDeleteAssociatedContextAMD =
+      (GdkGLProc_wglDeleteAssociatedContextAMD) gdk_gl_get_proc_address ("wglDeleteAssociatedContextAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglDeleteAssociatedContextAMD () - %s",
+               (_procs_WGL_AMD_gpu_association.wglDeleteAssociatedContextAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_AMD_gpu_association.wglDeleteAssociatedContextAMD);
+}
+
+/* wglMakeAssociatedContextCurrentAMD */
+GdkGLProc
+gdk_gl_get_wglMakeAssociatedContextCurrentAMD (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_AMD_gpu_association.wglMakeAssociatedContextCurrentAMD == (GdkGLProc_wglMakeAssociatedContextCurrentAMD) -1)
+    _procs_WGL_AMD_gpu_association.wglMakeAssociatedContextCurrentAMD =
+      (GdkGLProc_wglMakeAssociatedContextCurrentAMD) gdk_gl_get_proc_address ("wglMakeAssociatedContextCurrentAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglMakeAssociatedContextCurrentAMD () - %s",
+               (_procs_WGL_AMD_gpu_association.wglMakeAssociatedContextCurrentAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_AMD_gpu_association.wglMakeAssociatedContextCurrentAMD);
+}
+
+/* wglGetCurrentAssociatedContextAMD */
+GdkGLProc
+gdk_gl_get_wglGetCurrentAssociatedContextAMD (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_AMD_gpu_association.wglGetCurrentAssociatedContextAMD == (GdkGLProc_wglGetCurrentAssociatedContextAMD) -1)
+    _procs_WGL_AMD_gpu_association.wglGetCurrentAssociatedContextAMD =
+      (GdkGLProc_wglGetCurrentAssociatedContextAMD) gdk_gl_get_proc_address ("wglGetCurrentAssociatedContextAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglGetCurrentAssociatedContextAMD () - %s",
+               (_procs_WGL_AMD_gpu_association.wglGetCurrentAssociatedContextAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_AMD_gpu_association.wglGetCurrentAssociatedContextAMD);
+}
+
+/* wglBlitContextFramebufferAMD */
+GdkGLProc
+gdk_gl_get_wglBlitContextFramebufferAMD (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_AMD_gpu_association.wglBlitContextFramebufferAMD == (GdkGLProc_wglBlitContextFramebufferAMD) -1)
+    _procs_WGL_AMD_gpu_association.wglBlitContextFramebufferAMD =
+      (GdkGLProc_wglBlitContextFramebufferAMD) gdk_gl_get_proc_address ("wglBlitContextFramebufferAMD");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglBlitContextFramebufferAMD () - %s",
+               (_procs_WGL_AMD_gpu_association.wglBlitContextFramebufferAMD) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_AMD_gpu_association.wglBlitContextFramebufferAMD);
+}
+
+/* Get WGL_AMD_gpu_association functions */
+GdkGL_WGL_AMD_gpu_association *
+gdk_gl_get_WGL_AMD_gpu_association (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_AMD_gpu_association");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglGetGPUIDsAMD () != NULL);
+          supported &= (gdk_gl_get_wglGetGPUInfoAMD () != NULL);
+          supported &= (gdk_gl_get_wglGetContextGPUIDAMD () != NULL);
+          supported &= (gdk_gl_get_wglCreateAssociatedContextAMD () != NULL);
+          supported &= (gdk_gl_get_wglCreateAssociatedContextAttribsAMD () != NULL);
+          supported &= (gdk_gl_get_wglDeleteAssociatedContextAMD () != NULL);
+          supported &= (gdk_gl_get_wglMakeAssociatedContextCurrentAMD () != NULL);
+          supported &= (gdk_gl_get_wglGetCurrentAssociatedContextAMD () != NULL);
+          supported &= (gdk_gl_get_wglBlitContextFramebufferAMD () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_WGL_AMD_gpu_association () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_WGL_AMD_gpu_association;
+}
+
+/*
+ * WGL_NV_video_capture
+ */
+
+static GdkGL_WGL_NV_video_capture _procs_WGL_NV_video_capture = {
+  (GdkGLProc_wglBindVideoCaptureDeviceNV) -1,
+  (GdkGLProc_wglEnumerateVideoCaptureDevicesNV) -1,
+  (GdkGLProc_wglLockVideoCaptureDeviceNV) -1,
+  (GdkGLProc_wglQueryVideoCaptureDeviceNV) -1,
+  (GdkGLProc_wglReleaseVideoCaptureDeviceNV) -1
+};
+
+/* wglBindVideoCaptureDeviceNV */
+GdkGLProc
+gdk_gl_get_wglBindVideoCaptureDeviceNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_capture.wglBindVideoCaptureDeviceNV == (GdkGLProc_wglBindVideoCaptureDeviceNV) -1)
+    _procs_WGL_NV_video_capture.wglBindVideoCaptureDeviceNV =
+      (GdkGLProc_wglBindVideoCaptureDeviceNV) gdk_gl_get_proc_address ("wglBindVideoCaptureDeviceNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglBindVideoCaptureDeviceNV () - %s",
+               (_procs_WGL_NV_video_capture.wglBindVideoCaptureDeviceNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_capture.wglBindVideoCaptureDeviceNV);
+}
+
+/* wglEnumerateVideoCaptureDevicesNV */
+GdkGLProc
+gdk_gl_get_wglEnumerateVideoCaptureDevicesNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_capture.wglEnumerateVideoCaptureDevicesNV == (GdkGLProc_wglEnumerateVideoCaptureDevicesNV) -1)
+    _procs_WGL_NV_video_capture.wglEnumerateVideoCaptureDevicesNV =
+      (GdkGLProc_wglEnumerateVideoCaptureDevicesNV) gdk_gl_get_proc_address ("wglEnumerateVideoCaptureDevicesNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglEnumerateVideoCaptureDevicesNV () - %s",
+               (_procs_WGL_NV_video_capture.wglEnumerateVideoCaptureDevicesNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_capture.wglEnumerateVideoCaptureDevicesNV);
+}
+
+/* wglLockVideoCaptureDeviceNV */
+GdkGLProc
+gdk_gl_get_wglLockVideoCaptureDeviceNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_capture.wglLockVideoCaptureDeviceNV == (GdkGLProc_wglLockVideoCaptureDeviceNV) -1)
+    _procs_WGL_NV_video_capture.wglLockVideoCaptureDeviceNV =
+      (GdkGLProc_wglLockVideoCaptureDeviceNV) gdk_gl_get_proc_address ("wglLockVideoCaptureDeviceNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglLockVideoCaptureDeviceNV () - %s",
+               (_procs_WGL_NV_video_capture.wglLockVideoCaptureDeviceNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_capture.wglLockVideoCaptureDeviceNV);
+}
+
+/* wglQueryVideoCaptureDeviceNV */
+GdkGLProc
+gdk_gl_get_wglQueryVideoCaptureDeviceNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_capture.wglQueryVideoCaptureDeviceNV == (GdkGLProc_wglQueryVideoCaptureDeviceNV) -1)
+    _procs_WGL_NV_video_capture.wglQueryVideoCaptureDeviceNV =
+      (GdkGLProc_wglQueryVideoCaptureDeviceNV) gdk_gl_get_proc_address ("wglQueryVideoCaptureDeviceNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglQueryVideoCaptureDeviceNV () - %s",
+               (_procs_WGL_NV_video_capture.wglQueryVideoCaptureDeviceNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_capture.wglQueryVideoCaptureDeviceNV);
+}
+
+/* wglReleaseVideoCaptureDeviceNV */
+GdkGLProc
+gdk_gl_get_wglReleaseVideoCaptureDeviceNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_video_capture.wglReleaseVideoCaptureDeviceNV == (GdkGLProc_wglReleaseVideoCaptureDeviceNV) -1)
+    _procs_WGL_NV_video_capture.wglReleaseVideoCaptureDeviceNV =
+      (GdkGLProc_wglReleaseVideoCaptureDeviceNV) gdk_gl_get_proc_address ("wglReleaseVideoCaptureDeviceNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglReleaseVideoCaptureDeviceNV () - %s",
+               (_procs_WGL_NV_video_capture.wglReleaseVideoCaptureDeviceNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_video_capture.wglReleaseVideoCaptureDeviceNV);
+}
+
+/* Get WGL_NV_video_capture functions */
+GdkGL_WGL_NV_video_capture *
+gdk_gl_get_WGL_NV_video_capture (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_NV_video_capture");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglBindVideoCaptureDeviceNV () != NULL);
+          supported &= (gdk_gl_get_wglEnumerateVideoCaptureDevicesNV () != NULL);
+          supported &= (gdk_gl_get_wglLockVideoCaptureDeviceNV () != NULL);
+          supported &= (gdk_gl_get_wglQueryVideoCaptureDeviceNV () != NULL);
+          supported &= (gdk_gl_get_wglReleaseVideoCaptureDeviceNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_WGL_NV_video_capture () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_WGL_NV_video_capture;
+}
+
+/*
+ * WGL_NV_copy_image
+ */
+
+static GdkGL_WGL_NV_copy_image _procs_WGL_NV_copy_image = {
+  (GdkGLProc_wglCopyImageSubDataNV) -1
+};
+
+/* wglCopyImageSubDataNV */
+GdkGLProc
+gdk_gl_get_wglCopyImageSubDataNV (void)
+{
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (_procs_WGL_NV_copy_image.wglCopyImageSubDataNV == (GdkGLProc_wglCopyImageSubDataNV) -1)
+    _procs_WGL_NV_copy_image.wglCopyImageSubDataNV =
+      (GdkGLProc_wglCopyImageSubDataNV) gdk_gl_get_proc_address ("wglCopyImageSubDataNV");
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_wglCopyImageSubDataNV () - %s",
+               (_procs_WGL_NV_copy_image.wglCopyImageSubDataNV) ? "supported" : "not supported"));
+
+  return (GdkGLProc) (_procs_WGL_NV_copy_image.wglCopyImageSubDataNV);
+}
+
+/* Get WGL_NV_copy_image functions */
+GdkGL_WGL_NV_copy_image *
+gdk_gl_get_WGL_NV_copy_image (GdkGLConfig *glconfig)
+{
+  static gint supported = -1;
+
+  if (wglGetCurrentContext () == NULL)
+    return NULL;
+
+  if (supported == -1)
+    {
+      supported = gdk_win32_gl_query_wgl_extension (glconfig, "WGL_NV_copy_image");
+
+      if (supported)
+        {
+          supported &= (gdk_gl_get_wglCopyImageSubDataNV () != NULL);
+        }
+    }
+
+  GDK_GL_NOTE (MISC,
+    g_message (" - gdk_gl_get_WGL_NV_copy_image () - %s",
+               (supported) ? "supported" : "not supported"));
+
+  if (!supported)
+    return NULL;
+
+  return &_procs_WGL_NV_copy_image;
 }
 
