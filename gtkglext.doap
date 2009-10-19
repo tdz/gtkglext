@@ -1,0 +1,40 @@
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+
+  <name xml:lang="en">GtkGLExt</name>
+  <shortdesc xml:lang="en">OpenGL extension to GTK+</shortdesc>
+  <homepage rdf:resource="http://gtkglext.sourceforge.net/" />
+  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/gtkglext-list" />
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Braden McDaniel</foaf:name>
+      <foaf:mbox rdf:resource="mailto:braden@endoframe.com" />
+    </foaf:Person>
+  </maintainer>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Ralf Corsépius</foaf:name>
+      <foaf:mbox rdf:resource="mailto:rc040203@freenet.de" />
+    </foaf:Person>
+  </maintainer>
+
+  <!--
+    git.gnome.org asks for at least one GNOME committer's username in
+    the DOAP file before any commits are allowed. I don't know of any
+    others', just mine.
+  -->
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Mukund Sivaraman</foaf:name>
+      <foaf:mbox rdf:resource="mailto:muks@banu.com" />
+      <gnome:userid>muks</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+
+</Project>
