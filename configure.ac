@@ -82,6 +82,7 @@ AC_INIT([gtkglext], [gtkglext_version],
         [gtkglext-list@gnome.org])
 
 AC_CONFIG_SRCDIR([gdk/gdkgl.h])
+AC_CONFIG_MACRO_DIR([m4macros])
 
 # Save this value here, since automake will set cflags later
 cflags_set=${CFLAGS+set}
@@ -783,60 +784,7 @@ AC_SUBST([GTKGLEXT_DEP_LIBS_WITH_PANGOFT2])
 # Checks for gtk-doc and docbook-tools
 ##################################################
 
-AC_ARG_WITH([html-dir],
-            [AS_HELP_STRING([--with-html-dir=PATH],
-                            [path to installed docs])])
-
-if test "x$with_html_dir" = "x" ; then
-  HTML_DIR='${datadir}/gtk-doc/html'
-else
-  HTML_DIR=$with_html_dir
-fi
-
-AC_SUBST([HTML_DIR])
-
-dnl Make people enable the gtk-doc stuff explicitely.
-AC_ARG_ENABLE([gtk-doc],
-              [AS_HELP_STRING([--enable-gtk-doc],
-                              [use gtk-doc to build documentation [default=no]])], ,
-              [enable_gtk_doc=no])
-
-if test "x$enable_gtk_doc" = "xyes" ; then
-
-  gtk_doc_min_version=0.10
-
-  AC_CHECK_PROG([GTKDOC], [gtkdoc-mkdb], [true], [false])
-
-  if $GTKDOC ; then
-    gtk_doc_version=`gtkdoc-mkdb --version`
-    AC_MSG_CHECKING([gtk-doc version ($gtk_doc_version) >= $gtk_doc_min_version])
-
-    IFS="${IFS= 	}"; gtk_save_IFS="$IFS"; IFS="."
-    set $gtk_doc_version
-    for min in $gtk_doc_min_version ; do
-        cur=$1; shift
-        if test -z $min ; then break; fi
-        if test -z $cur ; then GTKDOC=false; break; fi
-        if test $cur -gt $min ; then break ; fi
-        if test $cur -lt $min ; then GTKDOC=false; break ; fi
-    done
-    IFS="$gtk_save_IFS"
-
-    if $GTKDOC ; then
-      AC_MSG_RESULT([yes])
-    else
-      AC_MSG_RESULT([no])
-    fi
-  fi
-
-  if test x$GTKDOC != xtrue ; then
-    enable_gtk_doc=no 
-  fi
-
-fi
-
-AM_CONDITIONAL([ENABLE_GTK_DOC], [test "x$enable_gtk_doc" = "xyes"])
-
+GTK_DOC_CHECK
 
 ##################################################
 # Output configuration header

@@ -4,6 +4,9 @@
 SUBDIRS = gdk gtk docs
 DIST_SUBDIRS = $(SUBDIRS) examples
 
+# tools want this on a single line
+ACLOCAL_AMFLAGS = -I m4macros
+
 EXTRA_DIST = \
 	README.win32			\
 	ChangeLog.pre-1-0		\
