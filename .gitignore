@@ -1,7 +1,10 @@
 *.a
 *.la
 *.lo
+*.nsi
 *.o
+*.pc
+*.spec
 .deps
 .libs
 ABOUT-NLS
