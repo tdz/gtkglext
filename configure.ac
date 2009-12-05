@@ -73,6 +73,10 @@ m4_define([gdk_required_version], [2.0.0])
 m4_define([gtk_pkg], [gtk+-2.0])
 m4_define([gtk_required_version], [2.4.0])
 
+# ATK
+m4_define([atk_pkg], [atk])
+m4_define([atk_required_version], [1.28.0])
+
 
 # Process this file with autoconf to produce a configure script.
 AC_INIT([gtkglext], [gtkglext_version],
@@ -312,6 +316,7 @@ gtk_pkg >= gtk_required_version \
 gdk_pkg >= gdk_required_version \
 pango_pkg >= pango_required_version \
 pangox_pkg >= pangox_required_version \
+atk_pkg >= atk_required_version \
 gmodule_pkg >= gmodule_required_version \
 ])
 
@@ -748,7 +753,7 @@ LIBS="$save_LIBS"
 # CFLAGS and LIBS
 ##################################################
 
-GDKGLEXT_PACKAGES="gdk_pkg pango_pkg pangox_pkg gmodule_pkg"
+GDKGLEXT_PACKAGES="gdk_pkg pango_pkg pangox_pkg atk_pkg gmodule_pkg"
 GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS $GDKGLEXT_WIN_CFLAGS"
 GDKGLEXT_EXTRA_LIBS="$GL_LIBS $GDKGLEXT_WIN_LIBS"
 GDKGLEXT_DEP_CFLAGS="$GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES`"

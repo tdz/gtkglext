@@ -20,10 +20,8 @@
 #define __GTK_GL_WIDGET_H__
 
 #include <gdk/gdk.h>
-
 #include <gdk/gdkgl.h>
-
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
