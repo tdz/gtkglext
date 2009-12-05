@@ -1,6 +1,3 @@
-# required autoconf version
-AC_PREREQ([2.54])
-
 #
 # Making releases:
 #   gtkglext_micro_version += 1;
@@ -80,6 +77,8 @@ m4_define([gtk_required_version], [2.4.0])
 # Process this file with autoconf to produce a configure script.
 AC_INIT([gtkglext], [gtkglext_version],
         [gtkglext-list@gnome.org])
+
+AC_PREREQ([2.63])
 
 AC_CONFIG_SRCDIR([gdk/gdkgl.h])
 AC_CONFIG_MACRO_DIR([m4macros])
