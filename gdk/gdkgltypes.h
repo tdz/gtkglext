@@ -19,7 +19,7 @@
 #ifndef __GDK_GL_TYPES_H__
 #define __GDK_GL_TYPES_H__
 
-#include <gdk/gdktypes.h>
+#include <gdk/gdk.h>
 
 G_BEGIN_DECLS
  

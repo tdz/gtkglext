@@ -28,7 +28,7 @@
 #include "gdkglconfig-x11.h"
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-#include <gdk/gdkscreen.h>
+#include <gdk/gdk.h>
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 #ifdef HAVE_LIBXMU

@@ -20,7 +20,7 @@
 #include "gdkglconfig.h"
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-#include <gdk/gdkscreen.h>
+#include <gdk/gdk.h>
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 gboolean _gdk_gl_config_no_standard_colormap = FALSE;

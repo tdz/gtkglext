@@ -22,7 +22,7 @@
 #include <gdk/gdkgldefs.h>
 #include <gdk/gdkgltypes.h>
 
-#include <gdk/gdkwindow.h>
+#include <gdk/gdk.h>
 
 G_BEGIN_DECLS
 

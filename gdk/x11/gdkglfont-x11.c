@@ -25,7 +25,7 @@
 #include "gdkglfont.h"
 
 #ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-#include <gdk/gdkdisplay.h>
+#include <gdk/gdk.h>
 #endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /*
