@@ -82,7 +82,7 @@ m4_define([atk_required_version], [1.28.0])
 AC_INIT([gtkglext], [gtkglext_version],
         [gtkglext-list@gnome.org])
 
-AC_PREREQ([2.63])
+AC_PREREQ([2.58])
 
 AC_CONFIG_SRCDIR([gdk/gdkgl.h])
 AC_CONFIG_MACRO_DIR([m4macros])
