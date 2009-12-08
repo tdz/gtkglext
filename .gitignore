@@ -29,9 +29,6 @@ depcomp
 gtk-doc.make
 install-sh
 intl
-intltool-extract.in
-intltool-merge.in
-intltool-update.in
 libtool
 ltmain.sh
 missing
