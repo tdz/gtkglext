@@ -96,9 +96,6 @@ AM_INIT_AUTOMAKE([1.7 no-define dist-bzip2 dist-zip])
 # Specify a configuration file
 AM_CONFIG_HEADER([config.h])
 
-dnl Initialize maintainer mode
-AM_MAINTAINER_MODE
-
 AC_CANONICAL_HOST
 
 # GtkGLExt version
