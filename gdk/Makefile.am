@@ -62,11 +62,11 @@ common_libadd = \
 #
 # setup source file variables
 #
+gdkglext_configure_generated_public_h_source = gdkglversion.h
 
 gdkglext_public_h_sources = \
 	gdkgl.h			\
 	gdkgldefs.h		\
-	gdkglversion.h		\
 	gdkgltokens.h		\
 	gdkgltypes.h		\
 	gdkglinit.h		\
@@ -102,8 +102,9 @@ gdkglext_built_c_sources = \
 	gdkglenumtypes.c
 
 gdkglext_headers = \
-	$(gdkglext_public_h_sources)		\
-	$(gdkglext_built_public_h_sources)	\
+	$(gdkglext_public_h_sources)			\
+	$(gdkglext_built_public_h_sources)		\
+	$(gdkglext_configure_generated_public_h_source) \
 	gdkgldebug.h
 
 gdkglext_sources = \
@@ -146,7 +147,7 @@ BUILT_SOURCES = \
 	@REBUILD@			\
 	$(gdkglext_built_sources)
 
-DISTCLEANFILES = $(stamp_files)
+DISTCLEANFILES = $(stamp_files) $(gdkglext_configure_generated_public_h_source)
 
 MAINTAINERCLEANFILES = \
 	$(gdkglext_built_sources)
@@ -162,7 +163,7 @@ stamp-gdkglenumtypes-h: @REBUILD@ $(gdkglext_public_h_sources) Makefile
 			--fprod "/* enumerations from \"@filename@\" */\n" \
 			--vhead "GType @enum_name@_get_type (void);\n#define GDK_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
 			--ftail "G_END_DECLS\n\n#endif /* __GDK_GL_ENUM_TYPES_H__ */" \
-		$(gdkglext_public_h_sources) ) >> xgen-geth \
+		$(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source) ) >> xgen-geth \
 	&& (cmp -s xgen-geth $(srcdir)/gdkglenumtypes.h || cp xgen-geth $(srcdir)/gdkglenumtypes.h ) \
 	&& rm -f xgen-geth \
 	&& echo timestamp > $(@F)
@@ -173,7 +174,7 @@ $(srcdir)/gdkglenumtypes.c: @REBUILD@ $(gdkglext_public_h_sources) Makefile
 			--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 			--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
 			--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
-		$(gdkglext_public_h_sources) ) > xgen-getc \
+		$(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source) ) > xgen-getc \
 	&& cp xgen-getc $(srcdir)/gdkglenumtypes.c  \
 	&& rm -f xgen-getc
 
