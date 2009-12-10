@@ -39,45 +39,6 @@ m4_define([gtkglext_lt_current_minus_age],
 m4_define([gtkglext_debug_default],
           [m4_if(m4_eval(gtkglext_minor_version % 2), [1], [yes], [minimum])])dnl
 
-# Versions of dependencies
-
-# Glib
-m4_define([glib_pkg], [glib-2.0])
-m4_define([glib_required_version], [2.0.0])
-
-# GObject
-m4_define([gobject_pkg], [gobject-2.0])
-m4_define([gobject_required_version], [2.0.0])
-
-# GModule
-m4_define([gmodule_pkg], [gmodule-2.0])
-m4_define([gmodule_required_version], [2.0.0])
-
-# Pango
-m4_define([pango_pkg], [pango])
-m4_define([pango_required_version], [1.0.0])
-
-# Pangox
-m4_define([pangox_pkg], [pangox])
-m4_define([pangox_required_version], [1.0.0])
-
-# PangoFT2
-m4_define([pangoft2_pkg], [pangoft2])
-m4_define([pangoft2_required_version], [1.0.0])
-
-# GDK
-m4_define([gdk_pkg], [gdk-2.0])
-m4_define([gdk_required_version], [2.0.0])
-
-# GTK+
-m4_define([gtk_pkg], [gtk+-2.0])
-m4_define([gtk_required_version], [2.4.0])
-
-# ATK
-m4_define([atk_pkg], [atk])
-m4_define([atk_required_version], [1.28.0])
-
-
 # Process this file with autoconf to produce a configure script.
 AC_INIT([gtkglext], [gtkglext_version],
         [gtkglext-list@gnome.org])
@@ -136,7 +97,7 @@ AC_SUBST([LT_AGE])
 AC_SUBST([LT_CURRENT_MINUS_AGE])
 
 dnl Initialize libtool
-AC_PROG_CC
+AM_PROG_CC_C_O
 AC_PROG_CPP
 #AM_DISABLE_STATIC
 AC_LIBTOOL_WIN32_DLL
@@ -198,7 +159,6 @@ AC_SUBST([gdkglext_targetlib])
 AC_SUBST([gtkglext_targetlib])
 
 # Checks for programs.
-AM_PROG_CC_STDC
 AC_PROG_LN_S
 
 # Debug option
@@ -302,20 +262,18 @@ if test "x$enable_rebuilds" = "xyes" && \
 fi
 AC_SUBST([REBUILD])
 
-## Initial sanity check, done here so that users get told they 
-## have the wrong dependencies as early in the process as possible.
-## Later on we actually use the cflags/libs from separate pkg-config
-## calls. Oh, also the later pkg-config calls don't include 
-## the version requirements since those make the module lists 
-## annoying to construct
-PKG_CHECK_MODULES([BASE_DEPENDENCIES], [\
-gtk_pkg >= gtk_required_version \
-gdk_pkg >= gdk_required_version \
-pango_pkg >= pango_required_version \
-pangox_pkg >= pangox_required_version \
-atk_pkg >= atk_required_version \
-gmodule_pkg >= gmodule_required_version \
-])
+PKG_CHECK_MODULES([GDK], [gdk-2.0 >= 2.4], ,
+                  [AS_IF([test -z "${GDK_LIBS+x}"],
+                         [AC_MSG_FAILURE([GDK 2.4 or newer is required.])])])
+PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.4], ,
+                  [AS_IF([test -z "${GTK_LIBS+x}"],
+                         [AC_MSG_FAILURE([GTK+ 2.4 or newer is required.])])])
+PKG_CHECK_MODULES([PANGOX], [pangox], ,
+                  [AS_IF([test -z "${PANGOX_LIBS+x}"],
+                         [AC_MSG_FAILURE([Pango X font support is required.])])])
+PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
+                  [AS_IF([test -z "${PANGOFT2_LIBS+x}"],
+                         [AC_MSG_WARN([Pango Freetype support is required to build some of the examples.])])])
 
 # Checks for libraries.
 
@@ -398,8 +356,6 @@ WINDOWING_LIBS=""
 GDKGLEXT_WIN_CFLAGS=""
 GDKGLEXT_WIN_LIBS=""
 
-GDKGLEXT_WIN_EXTRA_DEFS=""
-
 if test "x$gdktarget" = "xx11"; then
   AC_PATH_XTRA
 
@@ -450,8 +406,6 @@ AC_SUBST([WINDOWING_LIBS])
 
 AC_SUBST([GDKGLEXT_WIN_CFLAGS])
 AC_SUBST([GDKGLEXT_WIN_LIBS])
-
-AC_SUBST([GDKGLEXT_WIN_EXTRA_DEFS])
 
 
 ##################################################
@@ -747,41 +701,6 @@ LIBS="$save_LIBS"
 
 
 ##################################################
-# CFLAGS and LIBS
-##################################################
-
-GDKGLEXT_PACKAGES="gdk_pkg pango_pkg pangox_pkg atk_pkg gmodule_pkg"
-GDKGLEXT_EXTRA_CFLAGS="$GL_CFLAGS $GDKGLEXT_WIN_CFLAGS"
-GDKGLEXT_EXTRA_LIBS="$GL_LIBS $GDKGLEXT_WIN_LIBS"
-GDKGLEXT_DEP_CFLAGS="$GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES`"
-GDKGLEXT_DEP_LIBS="$GDKGLEXT_EXTRA_LIBS `$PKG_CONFIG --libs $GDKGLEXT_PACKAGES` $MATH_LIB"
-AC_SUBST([GDKGLEXT_PACKAGES])
-AC_SUBST([GDKGLEXT_EXTRA_CFLAGS])
-AC_SUBST([GDKGLEXT_EXTRA_LIBS])
-AC_SUBST([GDKGLEXT_DEP_CFLAGS])
-AC_SUBST([GDKGLEXT_DEP_LIBS])
-
-GTKGLEXT_PACKAGES="gtk_pkg"
-GTKGLEXT_EXTRA_CFLAGS=""
-GTKGLEXT_EXTRA_LIBS=""
-GTKGLEXT_DEP_CFLAGS="$GTKGLEXT_EXTRA_CFLAGS $GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES`"
-GTKGLEXT_DEP_LIBS="$GTKGLEXT_EXTRA_LIBS $GDKGLEXT_EXTRA_LIBS `$PKG_CONFIG --libs $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES` $MATH_LIB"
-AC_SUBST([GTKGLEXT_PACKAGES])
-AC_SUBST([GTKGLEXT_EXTRA_CFLAGS])
-AC_SUBST([GTKGLEXT_EXTRA_LIBS])
-AC_SUBST([GTKGLEXT_DEP_CFLAGS])
-AC_SUBST([GTKGLEXT_DEP_LIBS])
-
-# CFLAGS for examples
-EXAMPLES_DEP_CFLAGS="$GTKGLEXT_EXTRA_CFLAGS $GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES pangoft2_pkg`"
-AC_SUBST([EXAMPLES_DEP_CFLAGS])
-
-# GtkGLExt dep libs + PangoFT2
-GTKGLEXT_DEP_LIBS_WITH_PANGOFT2="$GTKGLEXT_EXTRA_LIBS $GDKGLEXT_EXTRA_LIBS `$PKG_CONFIG --libs $GDKGLEXT_PACKAGES $GTKGLEXT_PACKAGES pangoft2_pkg` $MATH_LIB"
-AC_SUBST([GTKGLEXT_DEP_LIBS_WITH_PANGOFT2])
-
-
-##################################################
 # Checks for gtk-doc and docbook-tools
 ##################################################
 
@@ -938,5 +857,4 @@ configuration:
 	OpenGL LIBS:		$GL_LIBS
 	multihead support:	$GDKGLEXT_MULTIHEAD_SUPPORT
 	debug:			$enable_debug
-	extra defs:		$GDKGLEXT_WIN_EXTRA_DEFS
 "

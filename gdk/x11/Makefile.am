@@ -9,14 +9,13 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir)/gdk		\
 	-I$(top_builddir)/gdk		\
 	$(GTKGLEXT_DEBUG_FLAGS)		\
-	$(GDKGLEXT_DEP_CFLAGS)		\
-        $(GDKGLEXT_WIN_EXTRA_DEFS)	\
+	$(GDK_CFLAGS)			\
+	$(GL_CFLAGS)			\
+	$(GDKGLEXT_WIN_CFLAGS)		\
+	$(PANGOX_CFLAGS)		\
 	-DG_DISABLE_DEPRECATED		\
 	-DGDK_DISABLE_DEPRECATED	\
 	-DGDK_PIXBUF_DISABLE_DEPRECATED
-
-LDADDS = \
-	$(GDKGLEXT_DEP_LIBS)
 
 gdkglext_x11_public_h_sources = \
 	gdkglx.h		\
@@ -54,4 +53,5 @@ gdkglextx11include_HEADERS = $(gdkglext_x11_headers)
 noinst_LTLIBRARIES = libgdkglext-x11.la
 
 libgdkglext_x11_la_SOURCES = $(gdkglext_x11_sources)
+libgdkglext_x11_la_LDFLAGS = $(GDK_LIBS) $(GL_LIBS) $(GDKGLEXT_WIN_LIBS) $(PANGOX_LIBS)
 

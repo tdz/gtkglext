@@ -43,7 +43,10 @@ common_includes = \
 	-DGDK_GL_COMPILATION		\
 	-I$(top_srcdir)			\
 	$(GTKGLEXT_DEBUG_FLAGS)		\
-	$(GDKGLEXT_DEP_CFLAGS)		\
+	$(GDK_CFLAGS)			\
+	$(GTK_CFLAGS)			\
+	$(GL_CFLAGS)			\
+	$(GDKGLEXT_WIN_CFLAGS)		\
 	-DG_DISABLE_DEPRECATED		\
 	-DGDK_DISABLE_DEPRECATED	\
 	-DGDK_PIXBUF_DISABLE_DEPRECATED
@@ -57,7 +60,7 @@ common_ldflags = \
 	$(gdkglext_win32_symbols)
 
 common_libadd = \
-	$(GDKGLEXT_DEP_LIBS)
+	$(GDK_LIBS) $(GL_LIBS) $(GDKGLEXT_WIN_LIBS)
 
 #
 # setup source file variables

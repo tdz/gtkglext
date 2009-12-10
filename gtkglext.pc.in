@@ -11,6 +11,7 @@ multihead=@GDKGLEXT_MULTIHEAD_SUPPORT@
 Name: GtkGLExt
 Description: OpenGL Extension to GTK+ (${target} target)
 Version: @VERSION@
-Requires: gdkglext-${target}-${api_version} @GTKGLEXT_PACKAGES@
-Libs: -L${libdir} -lgtkglext-${target}-${api_version} @GTKGLEXT_EXTRA_LIBS@
-Cflags: -I${includedir}/gtkglext-${api_version} @GTKGLEXT_EXTRA_CFLAGS@
+Requires: gtk-2.0 gdkglext-${target}-${api_version}
+Libs: -L${libdir} -lgtkglext-${target}-${api_version}
+Libs.private: @MATH_LIB@
+Cflags: -I${includedir}/gtkglext-${api_version}

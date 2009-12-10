@@ -11,6 +11,6 @@ multihead=@GDKGLEXT_MULTIHEAD_SUPPORT@
 Name: GdkGLExt
 Description: OpenGL Extension to GDK (${target} target)
 Version: @VERSION@
-Requires: @GDKGLEXT_PACKAGES@
-Libs: -L${libdir} -lgdkglext-${target}-${api_version} @GDKGLEXT_EXTRA_LIBS@
-Cflags: -I${includedir}/gtkglext-${api_version} -I${libdir}/gtkglext-${api_version}/include @GDKGLEXT_EXTRA_CFLAGS@
+Requires: gdk-2.0 pangox
+Libs: -L${libdir} -lgdkglext-${target}-${api_version} @GL_LIBS@ @GDKGLEXT_WIN_LIBS@
+Cflags: -I${includedir}/gtkglext-${api_version} -I${libdir}/gtkglext-${api_version}/include @GL_CFLAGS@ @GDKGLEXT_WIN_CFLAGS@
