@@ -9,6 +9,7 @@
 .libs
 ABOUT-NLS
 AUTHORS
+INSTALL
 Makefile
 Makefile.in
 aclocal.m4
