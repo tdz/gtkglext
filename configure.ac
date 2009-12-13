@@ -718,7 +718,7 @@ AC_CONFIG_COMMANDS([gdk/gdkglext-config.h],
   cat > $outfile <<\_______EOF
 /* gdkglext-config.h
  *
- * This is a generated file.  Please modify `configure.in'
+ * This is a generated file.  Please modify `configure.ac'
  */
 
 #ifndef GDKGLEXT_CONFIG_H
