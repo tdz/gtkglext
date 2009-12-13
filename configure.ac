@@ -262,12 +262,12 @@ if test "x$enable_rebuilds" = "xyes" && \
 fi
 AC_SUBST([REBUILD])
 
-PKG_CHECK_MODULES([GDK], [gdk-2.0 >= 2.4], ,
-                  [AS_IF([test -z "${GDK_LIBS+x}"],
-                         [AC_MSG_FAILURE([GDK 2.4 or newer is required.])])])
 PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.4], ,
                   [AS_IF([test -z "${GTK_LIBS+x}"],
                          [AC_MSG_FAILURE([GTK+ 2.4 or newer is required.])])])
+PKG_CHECK_MODULES([GDK], [gdk-2.0], ,
+                  [AS_IF([test -z "${GDK_LIBS+x}"],
+                         [AC_MSG_FAILURE([GDK is required.])])])
 PKG_CHECK_MODULES([PANGOX], [pangox], ,
                   [AS_IF([test -z "${PANGOX_LIBS+x}"],
                          [AC_MSG_FAILURE([Pango X font support is required.])])])
