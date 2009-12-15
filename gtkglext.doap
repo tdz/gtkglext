@@ -13,7 +13,7 @@
     <foaf:Person>
       <foaf:name>Braden McDaniel</foaf:name>
       <foaf:mbox rdf:resource="mailto:braden@endoframe.com" />
-      <gnome:userid>braden</gnome:userid>
+      <gnome:userid>bradenmcd</gnome:userid>
     </foaf:Person>
   </maintainer>
 
