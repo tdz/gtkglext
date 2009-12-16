@@ -301,9 +301,9 @@ LIBS="$save_LIBS"
 GDKGLEXT_MULTIHEAD_SUPPORT=no
 
 save_CPPFLAGS="$CPPFLAGS"
-CPPFLAGS="$CPPFLAGS $BASE_DEPENDENCIES_CFLAGS"
+CPPFLAGS="$CPPFLAGS $GDK_CFLAGS"
 save_LIBS="$LIBS"
-LIBS="$LIBS $BASE_DEPENDENCIES_LIBS"
+LIBS="$LIBS $GDK_LIBS"
 
 AC_CHECK_HEADERS([gdk/gdkdisplay.h gdk/gdkscreen.h],
                  [GDKGLEXT_MULTIHEAD_SUPPORT=yes],
@@ -337,7 +337,7 @@ AM_CONDITIONAL([MULTIHEAD_SUPPORT],
 ##################################################
 
 save_LIBS="$LIBS"
-LIBS="$LIBS $BASE_DEPENDENCIES_LIBS"
+LIBS="$LIBS $GDK_LIBS"
 
 if test "x$gdktarget" = "xx11"; then
   AC_CHECK_FUNCS([gdk_x11_colormap_foreign_new])
