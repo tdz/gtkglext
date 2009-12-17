@@ -262,6 +262,23 @@ if test "x$enable_rebuilds" = "xyes" && \
 fi
 AC_SUBST([REBUILD])
 
+# Checks for headers and libraries.
+
+AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
+
+AC_PATH_XTRA
+save_CPPFLAGS="$CPPFLAGS"
+CPPFLAGS="$CPPFLAGS $X_CFLAGS"
+save_LIBS="$LIBS"
+LIBS="$LIBS $X_LIBS -lXext -lX11 $X_EXTRA_LIBS"
+AC_CHECK_HEADERS([X11/Xmu/StdCmap.h Xmu/StdCmap.h], , ,
+                 [#include <X11/Xlib.h>
+                  #include <X11/Xutil.h>])
+AC_CHECK_LIB([Xmu], [XmuLookupStandardColormap], , ,
+             [-lXt $X_PRE_LIBS])
+CPPFLAGS="$save_CPPFLAGS"
+LIBS="$save_LIBS"
+
 PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.4], ,
                   [AS_IF([test -z "${GTK_LIBS+x}"],
                          [AC_MSG_FAILURE([GTK+ 2.4 or newer is required.])])])
@@ -274,11 +291,6 @@ PKG_CHECK_MODULES([PANGOX], [pangox], ,
 PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
                   [AS_IF([test -z "${PANGOFT2_LIBS+x}"],
                          [AC_MSG_WARN([Pango Freetype support is required to build some of the examples.])])])
-
-# Checks for libraries.
-
-# Checks for header files.
-AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
 
 # Checks for library functions.
 save_LIBS="$LIBS"
@@ -339,24 +351,11 @@ GDKGLEXT_WIN_CFLAGS=""
 GDKGLEXT_WIN_LIBS=""
 
 if test "x$gdktarget" = "xx11"; then
-  AC_PATH_XTRA
-
   if test "x$no_x" = "xyes" ; then
     AC_MSG_ERROR([X development libraries not found])
   fi
 
-  save_CPPFLAGS="$CPPFLAGS"
-  CPPFLAGS="$CPPFLAGS $X_CFLAGS"
-  save_LIBS="$LIBS"
-  LIBS="$LIBS $X_LIBS -lXext -lX11 $X_EXTRA_LIBS"
-
-  AC_CHECK_HEADERS([X11/Xmu/StdCmap.h Xmu/StdCmap.h], , ,
-                   [#include <X11/Xlib.h>
-                    #include <X11/Xutil.h>])
-
   XMU_LIBS=""
-  AC_CHECK_LIB([Xmu], [XmuLookupStandardColormap], , ,
-               [-lXt $X_PRE_LIBS])
   if test "x$ac_cv_lib_Xmu_XmuLookupStandardColormap" = "xyes" ; then
     XMU_LIBS="-lXmu -lXt $X_PRE_LIBS"
   fi
@@ -366,14 +365,8 @@ if test "x$gdktarget" = "xx11"; then
 
   GDKGLEXT_WIN_CFLAGS="$X_CFLAGS"
   GDKGLEXT_WIN_LIBS="$X_LIBS $XMU_LIBS"
-
-  CPPFLAGS="$save_CPPFLAGS"
-  LIBS="$save_LIBS"
-
-  AM_CONDITIONAL([USE_X11], [true])
-else
-  AM_CONDITIONAL([USE_X11], [false])
 fi
+AM_CONDITIONAL([USE_X11], [test x$gdktarget = xx11])
 
 if test "x$gdktarget" = "xwin32"; then
   WINDOWING_LIBS="-lgdi32 -luser32 -lkernel32"
