@@ -289,41 +289,10 @@ AM_CONDITIONAL([MULTIHEAD_SUPPORT],
 # Checks for OpenGL
 ##################################################
 
-GL_CFLAGS=""
-GL_LDFLAGS=""
-GL_LIBS=""
-
-AC_ARG_WITH([gl-prefix],
-            [AS_HELP_STRING([--with-gl-prefix=DIR],
-                            [OpenGL (Mesa) is installed in DIR [default=auto]])], ,
-            [with_gl_prefix=auto])
-
-AC_ARG_WITH([gl-includedir],
-            [AS_HELP_STRING([--with-gl-includedir=DIR],
-                            [OpenGL (Mesa) headers are in DIR [default=auto]])], ,
-            [with_gl_includedir=auto])
-
-AC_ARG_WITH([gl-libdir],
-            [AS_HELP_STRING([--with-gl-libdir=DIR],
-                            [OpenGL (Mesa) libraries are in DIR [default=auto]])], ,
-            [with_gl_libdir=auto])
-
-if test "x$with_gl_includedir" != "xauto"; then
-  GL_CFLAGS="-I$with_gl_includedir"
-elif test "x$with_gl_prefix" != "xauto"; then
-  GL_CFLAGS="-I$with_gl_prefix/include"
-fi
-
-if test "x$with_gl_libdir" != "xauto"; then
-  GL_LDFLAGS="-L$with_gl_libdir"
-elif test "x$with_gl_prefix" != "xauto"; then
-  GL_LDFLAGS="-L$with_gl_prefix/lib"
-fi
-
 save_CPPFLAGS="$CPPFLAGS"
-CPPFLAGS="$CPPFLAGS $GL_CFLAGS $WINDOWING_CFLAGS"
+CPPFLAGS="$CPPFLAGS $WINDOWING_CFLAGS"
 save_LIBS="$LIBS"
-LIBS="$LIBS $GL_LDFLAGS $WINDOWING_LIBS $MATH_LIB"
+LIBS="$LIBS $WINDOWING_LIBS $MATH_LIB"
 
 if test "x$gdktarget" = "xx11"; then
 
