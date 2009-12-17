@@ -103,6 +103,8 @@ AC_PROG_CPP
 AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 
+AC_CHECK_PROG([ms_librarian], [lib.exe], [yes], [no])
+
 platform_win32=no
 AC_MSG_CHECKING([for some Win32 platform])
 case "$host_os" in
@@ -130,9 +132,6 @@ AC_MSG_RESULT([$os_win32])
 AM_CONDITIONAL([OS_WIN32], [test "x$os_win32" = "xyes"])
 AC_SUBST([MATH_LIB])
 
-if test "x$os_win32" = "xyes"; then
-  AC_CHECK_PROG([ms_librarian], [lib.exe], [yes], [no])
-fi
 AM_CONDITIONAL([MS_LIB_AVAILABLE], [test "x$ms_librarian" = "xyes"])
 
 if test "x$platform_win32" = "xyes"; then
