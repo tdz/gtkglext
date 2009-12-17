@@ -281,9 +281,6 @@ PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
 AC_HEADER_STDC
 AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
 
-# Checks for typedefs, structures, and compiler characteristics.
-AC_C_CONST
-
 # Checks for library functions.
 save_LIBS="$LIBS"
 LIBS="$LIBS $MATH_LIB"
