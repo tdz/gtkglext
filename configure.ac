@@ -282,48 +282,6 @@ AM_CONDITIONAL([MULTIHEAD_SUPPORT],
                [test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"])
 
 
-##################################################
-# Checks for Window System
-##################################################
-
-WINDOWING_CFLAGS=""
-WINDOWING_LIBS=""
-
-GDKGLEXT_WIN_CFLAGS=""
-GDKGLEXT_WIN_LIBS=""
-
-if test "x$gdktarget" = "xx11"; then
-  if test "x$no_x" = "xyes" ; then
-    AC_MSG_ERROR([X development libraries not found])
-  fi
-
-  XMU_LIBS=""
-  if test "x$ac_cv_lib_Xmu_XmuLookupStandardColormap" = "xyes" ; then
-    XMU_LIBS="-lXmu -lXt $X_PRE_LIBS"
-  fi
-
-  WINDOWING_CFLAGS="$X_CFLAGS"
-  WINDOWING_LIBS="$X_LIBS $XMU_LIBS -lXext -lX11 $X_EXTRA_LIBS"
-
-  GDKGLEXT_WIN_CFLAGS="$X_CFLAGS"
-  GDKGLEXT_WIN_LIBS="$X_LIBS $XMU_LIBS"
-fi
-AM_CONDITIONAL([USE_X11], [test x$gdktarget = xx11])
-
-if test "x$gdktarget" = "xwin32"; then
-  WINDOWING_LIBS="-lgdi32 -luser32 -lkernel32"
-  GDKGLEXT_WIN_LIBS="-lgdi32 -luser32 -lkernel32"
-  AM_CONDITIONAL([USE_WIN32], [true])
-else
-  AM_CONDITIONAL([USE_WIN32], [false])
-fi
-
-AC_SUBST([WINDOWING_CFLAGS])
-AC_SUBST([WINDOWING_LIBS])
-
-AC_SUBST([GDKGLEXT_WIN_CFLAGS])
-AC_SUBST([GDKGLEXT_WIN_LIBS])
-
 
 ##################################################
 # Checks for OpenGL
@@ -655,6 +613,44 @@ gtkglext_targetlib=libgtkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
 
 AC_SUBST([gdkglext_targetlib])
 AC_SUBST([gtkglext_targetlib])
+
+WINDOWING_CFLAGS=""
+WINDOWING_LIBS=""
+
+GDKGLEXT_WIN_CFLAGS=""
+GDKGLEXT_WIN_LIBS=""
+
+if test "x$gdktarget" = "xx11"; then
+  if test "x$no_x" = "xyes" ; then
+    AC_MSG_ERROR([X development libraries not found])
+  fi
+
+  XMU_LIBS=""
+  if test "x$ac_cv_lib_Xmu_XmuLookupStandardColormap" = "xyes" ; then
+    XMU_LIBS="-lXmu -lXt $X_PRE_LIBS"
+  fi
+
+  WINDOWING_CFLAGS="$X_CFLAGS"
+  WINDOWING_LIBS="$X_LIBS $XMU_LIBS -lXext -lX11 $X_EXTRA_LIBS"
+
+  GDKGLEXT_WIN_CFLAGS="$X_CFLAGS"
+  GDKGLEXT_WIN_LIBS="$X_LIBS $XMU_LIBS"
+fi
+AM_CONDITIONAL([USE_X11], [test x$gdktarget = xx11])
+
+if test "x$gdktarget" = "xwin32"; then
+  WINDOWING_LIBS="-lgdi32 -luser32 -lkernel32"
+  GDKGLEXT_WIN_LIBS="-lgdi32 -luser32 -lkernel32"
+  AM_CONDITIONAL([USE_WIN32], [true])
+else
+  AM_CONDITIONAL([USE_WIN32], [false])
+fi
+
+AC_SUBST([WINDOWING_CFLAGS])
+AC_SUBST([WINDOWING_LIBS])
+
+AC_SUBST([GDKGLEXT_WIN_CFLAGS])
+AC_SUBST([GDKGLEXT_WIN_LIBS])
 
 # Debug option
 AC_ARG_ENABLE([debug],
