@@ -96,6 +96,8 @@ AC_SUBST([LT_REVISION])
 AC_SUBST([LT_AGE])
 AC_SUBST([LT_CURRENT_MINUS_AGE])
 
+# Checks for programs.
+
 dnl Initialize libtool
 AM_PROG_CC_C_O
 AC_PROG_CPP
@@ -104,6 +106,8 @@ AC_LIBTOOL_WIN32_DLL
 AC_PROG_LIBTOOL
 
 AC_CHECK_PROG([ms_librarian], [lib.exe], [yes], [no])
+
+AC_PROG_LN_S
 
 platform_win32=no
 AC_MSG_CHECKING([for some Win32 platform])
@@ -156,9 +160,6 @@ gtkglext_targetlib=libgtkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
 
 AC_SUBST([gdkglext_targetlib])
 AC_SUBST([gtkglext_targetlib])
-
-# Checks for programs.
-AC_PROG_LN_S
 
 # Debug option
 AC_ARG_ENABLE([debug],
