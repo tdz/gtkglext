@@ -218,6 +218,8 @@ AC_CHECK_HEADERS([X11/Xmu/StdCmap.h Xmu/StdCmap.h], , ,
                   #include <X11/Xutil.h>])
 AC_CHECK_LIB([Xmu], [XmuLookupStandardColormap], , ,
              [-lXt $X_PRE_LIBS])
+AC_CHECK_HEADERS([GL/glx.h])
+AC_CHECK_HEADERS([GL/gl.h GL/glu.h])
 CPPFLAGS="$save_CPPFLAGS"
 LIBS="$save_LIBS"
 
@@ -322,14 +324,6 @@ save_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $GL_CFLAGS $WINDOWING_CFLAGS"
 save_LIBS="$LIBS"
 LIBS="$LIBS $GL_LDFLAGS $WINDOWING_LIBS $MATH_LIB"
-
-if test "x$gdktarget" = "xx11"; then
-  AC_CHECK_HEADERS([GL/glx.h], ,
-                   [AC_MSG_ERROR([Cannot find GLX header])])
-fi
-
-AC_CHECK_HEADERS([GL/gl.h GL/glu.h], ,
-                 [AC_MSG_ERROR([Cannot find OpenGL headers])])
 
 if test "x$gdktarget" = "xx11"; then
 
