@@ -278,7 +278,6 @@ PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
 # Checks for libraries.
 
 # Checks for header files.
-AC_HEADER_STDC
 AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
 
 # Checks for library functions.
