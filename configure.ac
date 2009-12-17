@@ -329,20 +329,6 @@ AM_CONDITIONAL([MULTIHEAD_SUPPORT],
 
 
 ##################################################
-# Checks for GDK functions
-##################################################
-
-save_LIBS="$LIBS"
-LIBS="$LIBS $GDK_LIBS"
-
-if test "x$gdktarget" = "xx11"; then
-  AC_CHECK_FUNCS([gdk_x11_colormap_foreign_new])
-fi
-
-LIBS="$save_LIBS"
-
-
-##################################################
 # Checks for Window System
 ##################################################
 

@@ -105,8 +105,6 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
  * Get standard RGB colormap
  */
 
-#ifdef HAVE_GDK_X11_COLORMAP_FOREIGN_NEW
-
 static GdkColormap *
 gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
                                     XVisualInfo *xvinfo,
@@ -234,8 +232,6 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
 
   return NULL;
 }
-
-#endif /* HAVE_GDK_X11_COLORMAP_FOREIGN_NEW */
 
 /* 
  * Setup colormap.
