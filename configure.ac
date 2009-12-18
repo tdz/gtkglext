@@ -457,11 +457,6 @@ elif test "x$gdktarget" = "xwin32" ; then
 #define GDKGLEXT_WINDOWING_WIN32'
 fi
 
-if test "x$GDKGLEXT_MULTIHEAD_SUPPORT" = "xyes"; then
-  gdkglext_multihead_support='
-#define GDKGLEXT_MULTIHEAD_SUPPORT'
-fi
-
 if test "x$GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF" = "xyes"; then
   gdkglext_need_glxfbconfigsgix_typedef='
 #define GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF'
@@ -533,6 +528,5 @@ echo "
 configuration:
 	OpenGL CFLAGS:		$GL_CFLAGS
 	OpenGL LIBS:		$GL_LIBS
-	multihead support:	$GDKGLEXT_MULTIHEAD_SUPPORT
 	debug:			$enable_debug
 "
