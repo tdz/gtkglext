@@ -6,8 +6,6 @@ includedir=@includedir@
 target=@gdktarget@
 api_version=@GTKGLEXT_API_VERSION@
 
-multihead=@GDKGLEXT_MULTIHEAD_SUPPORT@
-
 Name: GdkGLExt
 Description: OpenGL Extension to GDK (${target} target)
 Version: @VERSION@

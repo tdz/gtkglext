@@ -236,11 +236,9 @@ gdk_gl_window_impl_x11_make_context_current (GdkGLDrawable *draw,
   if (glxwindow == None || glxcontext == NULL)
     return FALSE;
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   GDK_GL_NOTE (MISC,
     g_message (" -- Window: screen number = %d",
       GDK_SCREEN_XNUMBER (gdk_drawable_get_screen (GDK_DRAWABLE (draw)))));
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
   GDK_GL_NOTE (MISC,
     g_message (" -- Window: visual id = 0x%lx",
       GDK_VISUAL_XVISUAL (gdk_drawable_get_visual (GDK_DRAWABLE (draw)))->visualid));

@@ -19,9 +19,7 @@
 #include "gdkglprivate.h"
 #include "gdkglconfig.h"
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 #include <gdk/gdk.h>
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 gboolean _gdk_gl_config_no_standard_colormap = FALSE;
 
@@ -123,11 +121,7 @@ gdk_gl_config_new_ci (GdkScreen       *screen,
       /* XXX Assumes list[1] is where GDK_GL_BUFFER_SIZE parameter is. */
       list[1] = buf_size_list[i];
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
       glconfig = gdk_gl_config_new_for_screen (screen, list);
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-      glconfig = gdk_gl_config_new (list);
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
       if (glconfig != NULL)
         return glconfig;
@@ -189,11 +183,7 @@ gdk_gl_config_new_rgb (GdkScreen       *screen,
     }
   list[n] = GDK_GL_ATTRIB_LIST_NONE;
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   return gdk_gl_config_new_for_screen (screen, list);
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  return gdk_gl_config_new (list);
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 }
 
 static GdkGLConfig *
@@ -244,16 +234,10 @@ gdk_gl_config_new_by_mode (GdkGLConfigMode mode)
 {
   GdkScreen *screen;
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   screen = gdk_screen_get_default ();
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  screen = NULL;
-#endif
 
   return gdk_gl_config_new_by_mode_common (screen, mode);
 }
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 /**
  * gdk_gl_config_new_by_mode_for_screen:
@@ -271,8 +255,6 @@ gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
 {
   return gdk_gl_config_new_by_mode_common (screen, mode);
 }
-
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /**
  * gdk_gl_config_get_layer_plane:

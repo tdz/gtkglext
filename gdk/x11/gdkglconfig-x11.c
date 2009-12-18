@@ -27,9 +27,7 @@
 #include "gdkgloverlay-x11.h"
 #include "gdkglconfig-x11.h"
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 #include <gdk/gdk.h>
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 #ifdef HAVE_LIBXMU
 
@@ -237,8 +235,6 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
  * Setup colormap.
  */
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-
 static GdkColormap *
 gdk_gl_config_setup_colormap (GdkScreen   *screen,
                               XVisualInfo *xvinfo,
@@ -335,100 +331,6 @@ gdk_gl_config_setup_colormap (GdkScreen   *screen,
   return NULL;
 }
 
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-
-static GdkColormap *
-gdk_gl_config_setup_colormap (GdkScreen   *screen,
-                              XVisualInfo *xvinfo,
-                              gboolean     is_rgba,
-                              gboolean     is_mesa_glx)
-{
-  GdkColormap *colormap;
-  GdkVisual *visual;
-  GdkGLOverlayInfo overlay_info;
-  gboolean overlay_supported;
-
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  if (is_rgba)
-    {
-      /*
-       * For RGBA mode.
-       */
-
-      /* Try default colormap. */
-
-      colormap = gdk_colormap_get_system ();
-      visual = gdk_colormap_get_visual (colormap);
-      if (GDK_VISUAL_XVISUAL (visual)->visualid == xvinfo->visualid)
-        {
-          GDK_GL_NOTE (MISC, g_message (" -- Colormap: system default"));
-
-          g_object_ref (G_OBJECT (colormap));
-          return colormap;
-        }
-
-      /* New colormap. */
-
-      GDK_GL_NOTE (MISC, g_message (" -- Colormap: new"));
-
-      visual = gdkx_visual_get (xvinfo->visualid);
-      colormap = gdk_colormap_new (visual, FALSE);
-      return colormap;
-
-    }
-  else
-    {
-      /*
-       * For color index mode.
-       */
-
-      visual = gdkx_visual_get (xvinfo->visualid);
-
-      overlay_supported = _gdk_x11_gl_overlay_get_info (visual, &overlay_info);
-      if (overlay_supported &&
-          overlay_info.transparent_type == GDK_GL_OVERLAY_TRANSPARENT_PIXEL &&
-          overlay_info.value < xvinfo->visual->map_entries)
-        {
-
-          /*
-           * On machines where zero (or some other value in the range
-           * of 0 through map_entries-1), BadAlloc may be generated
-           * when an AllocAll overlay colormap is allocated since the
-           * transparent pixel precludes all the cells in the colormap
-           * being allocated (the transparent pixel is pre-allocated).
-           * So in this case, use XAllocColorCells to allocate
-           * map_entries-1 pixels (that is, all but the transparent pixel).
-           */
-
-          GDK_GL_NOTE (MISC, g_message (" -- Colormap: new"));
-          colormap = gdk_colormap_new (visual, FALSE);
-        }
-      else
-        {
-
-          /*
-           * If there is no transparent pixel or if the transparent
-           * pixel is outside the range of valid colormap cells (HP
-           * can implement their overlays this smart way since their
-           * transparent pixel is 255), we can AllocAll the colormap.
-           * See note above.
-           */
-
-          GDK_GL_NOTE (MISC, g_message (" -- Colormap: new allocated writable"));
-          colormap = gdk_colormap_new (visual, TRUE);
-        }
-
-      return colormap;
-
-    }
-
-  /* not reached */
-  return NULL;
-}
-
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-
 static void
 gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
 {
@@ -496,13 +398,8 @@ gdk_gl_config_new_common (GdkScreen *screen,
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   xdisplay = GDK_SCREEN_XDISPLAY (screen);
   screen_num = GDK_SCREEN_XNUMBER (screen);
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  xdisplay = gdk_x11_get_default_xdisplay ();
-  screen_num = gdk_x11_get_default_screen ();
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   GDK_GL_NOTE (MISC, _gdk_x11_gl_print_glx_info (xdisplay, screen_num));
 
@@ -592,16 +489,10 @@ gdk_gl_config_new (const int *attrib_list)
 
   g_return_val_if_fail (attrib_list != NULL, NULL);
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   screen = gdk_screen_get_default ();
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  screen = NULL;
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   return gdk_gl_config_new_common (screen, attrib_list);
 }
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 /**
  * gdk_gl_config_new_for_screen:
@@ -625,8 +516,6 @@ gdk_gl_config_new_for_screen (GdkScreen *screen,
 
   return gdk_gl_config_new_common (screen, attrib_list);
 }
-
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /*
  * XVisualInfo returned by this function should be freed by XFree ().
@@ -670,13 +559,8 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   xdisplay = GDK_SCREEN_XDISPLAY (screen);
   screen_num = GDK_SCREEN_XNUMBER (screen);
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  xdisplay = gdk_x11_get_default_xdisplay ();
-  screen_num = gdk_x11_get_default_screen ();
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   GDK_GL_NOTE (MISC,
                g_message (" -- GLX_VENDOR     : %s",
@@ -761,16 +645,10 @@ gdk_x11_gl_config_new_from_visualid (VisualID xvisualid)
 
   GDK_GL_NOTE_FUNC ();
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   screen = gdk_screen_get_default ();
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  screen = NULL;
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   return gdk_x11_gl_config_new_from_visualid_common (screen, xvisualid);
 }
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 /**
  * gdk_x11_gl_config_new_from_visualid_for_screen:
@@ -792,8 +670,6 @@ gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
 
   return gdk_x11_gl_config_new_from_visualid_common (screen, xvisualid);
 }
-
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /**
  * gdk_gl_config_get_screen:

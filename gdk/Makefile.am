@@ -6,19 +6,14 @@ DIST_SUBDIRS = glext x11 win32
 
 EXTRA_DIST = \
 	gdkglversion.h.in	\
-	gdkglext.def		\
-	gdkglext-gtk20.def
+	gdkglext.def
 
 if PLATFORM_WIN32
 no_undefined = -no-undefined
 endif
 
 if OS_WIN32
-if MULTIHEAD_SUPPORT
 gdkglext_def = gdkglext.def
-else
-gdkglext_def = gdkglext-gtk20.def
-endif
 gdkglext_win32_symbols = -export-symbols $(gdkglext_def)
 endif
 

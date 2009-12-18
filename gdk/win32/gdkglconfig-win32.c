@@ -20,9 +20,7 @@
 #include "gdkglprivate-win32.h"
 #include "gdkglconfig-win32.h"
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 #include <gdk/gdkscreen.h>
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 static void gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass);
 static void gdk_gl_config_impl_win32_finalize   (GObject                   *object);
@@ -391,8 +389,6 @@ gdk_gl_config_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
  * !!! RGB palette management should be implemented...
  */
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
-
 static GdkColormap *
 gdk_gl_config_setup_colormap (GdkScreen             *screen,
                               PIXELFORMATDESCRIPTOR *pfd,
@@ -428,46 +424,6 @@ gdk_gl_config_setup_colormap (GdkScreen             *screen,
   /* not reached */
   return NULL;
 }
-
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-
-static GdkColormap *
-gdk_gl_config_setup_colormap (GdkScreen             *screen,
-                              PIXELFORMATDESCRIPTOR *pfd,
-                              gboolean               is_rgba)
-{
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  if (is_rgba)
-    {
-      /*
-       * For RGBA mode.
-       */
-
-      /* Default colormap. */
-
-      GDK_GL_NOTE (MISC, g_message (" -- Colormap: system default"));
-
-      return g_object_ref (G_OBJECT (gdk_colormap_get_system ()));
-    }
-  else
-    {
-      /*
-       * For color index mode.
-       */
-
-      /* New private colormap. */
-
-      GDK_GL_NOTE (MISC, g_message (" -- Colormap: new allocated writable"));
-
-      return gdk_colormap_new (gdk_visual_get_system (), TRUE);
-    }
-
-  /* not reached */
-  return NULL;
-}
-
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 static void
 gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
@@ -587,16 +543,10 @@ gdk_gl_config_new (const int *attrib_list)
 
   g_return_val_if_fail (attrib_list != NULL, NULL);
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   screen = gdk_screen_get_default ();
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  screen = NULL;
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   return gdk_gl_config_new_common (screen, attrib_list);
 }
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
@@ -609,8 +559,6 @@ gdk_gl_config_new_for_screen (GdkScreen *screen,
 
   return gdk_gl_config_new_common (screen, attrib_list);
 }
-
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 GdkGLConfig *
 gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
@@ -657,11 +605,7 @@ gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
 
   impl->pfd = pfd;
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   impl->screen = gdk_screen_get_default ();
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  impl->screen = NULL;
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   /*
    * Get an appropriate colormap.

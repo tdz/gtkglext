@@ -22,9 +22,7 @@
 #include "gdkglprivate-win32.h"
 #include "gdkglquery.h"
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 #include <gdk/gdkdisplay.h>
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 gboolean
 gdk_gl_query_extension (void)
@@ -49,8 +47,6 @@ gdk_gl_query_extension (void)
   return FALSE;
 #endif
 }
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 gboolean
 gdk_gl_query_extension_for_display (GdkDisplay *display)
@@ -78,8 +74,6 @@ gdk_gl_query_extension_for_display (GdkDisplay *display)
 #endif
 }
 
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-
 gboolean
 gdk_gl_query_version (int *major,
                       int *minor)
@@ -92,8 +86,6 @@ gdk_gl_query_version (int *major,
 
   return TRUE;
 }
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 gboolean
 gdk_gl_query_version_for_display (GdkDisplay *display,
@@ -112,8 +104,6 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
 
   return TRUE;
 }
-
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 gboolean
 gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,

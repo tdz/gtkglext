@@ -24,9 +24,7 @@
 #include "gdkglprivate-x11.h"
 #include "gdkglfont.h"
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 #include <gdk/gdk.h>
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /*
  * This code is ripped from gdk/x11/gdkfont-x11.c in GTK+.
@@ -161,17 +159,11 @@ gdk_gl_font_use_pango_font (const PangoFontDescription *font_desc,
 
   GDK_GL_NOTE_FUNC ();
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   font_map = pango_x_font_map_for_display (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  font_map = pango_x_font_map_for_display (gdk_x11_get_default_xdisplay ());
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   return gdk_gl_font_use_pango_font_common (font_map, font_desc,
                                             first, count, list_base);
 }
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 /**
  * gdk_gl_font_use_pango_font_for_display:
@@ -204,5 +196,3 @@ gdk_gl_font_use_pango_font_for_display (GdkDisplay                 *display,
   return gdk_gl_font_use_pango_font_common (font_map, font_desc,
                                             first, count, list_base);
 }
-
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */

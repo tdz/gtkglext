@@ -29,9 +29,7 @@
 #include "gdkglconfig-x11.h"
 #include "gdkglquery.h"
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 #include <gdk/gdk.h>
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /**
  * gdk_gl_query_extension:
@@ -44,16 +42,9 @@
 gboolean
 gdk_gl_query_extension (void)
 {
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   return glXQueryExtension (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                             NULL, NULL);
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  return glXQueryExtension (gdk_x11_get_default_xdisplay (),
-                            NULL, NULL);
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 }
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 /**
  * gdk_gl_query_extension_for_display:
@@ -73,8 +64,6 @@ gdk_gl_query_extension_for_display (GdkDisplay *display)
                             NULL, NULL);
 }
 
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
-
 /**
  * gdk_gl_query_version:
  * @major: returns the major version number of the OpenGL extension.
@@ -92,16 +81,9 @@ gboolean
 gdk_gl_query_version (int *major,
                       int *minor)
 {
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   return glXQueryVersion (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
                           major, minor);
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  return glXQueryVersion (gdk_x11_get_default_xdisplay (),
-                          major, minor);
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 }
-
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 
 /**
  * gdk_gl_query_version_for_display:
@@ -127,8 +109,6 @@ gdk_gl_query_version_for_display (GdkDisplay *display,
   return glXQueryVersion (GDK_DISPLAY_XDISPLAY (display),
                           major, minor);
 }
-
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 /*
  * This code is based on __glutIsSupportedByGLX().

@@ -84,19 +84,15 @@ GType        gdk_gl_config_get_type               (void);
 GdkGLConfig *gdk_gl_config_new                    (const int       *attrib_list);
 #endif /* GDK_MULTIHEAD_SAFE */
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 GdkGLConfig *gdk_gl_config_new_for_screen         (GdkScreen       *screen,
                                                    const int       *attrib_list);
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 #ifndef GDK_MULTIHEAD_SAFE
 GdkGLConfig *gdk_gl_config_new_by_mode            (GdkGLConfigMode  mode);
 #endif /* GDK_MULTIHEAD_SAFE */
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 GdkGLConfig *gdk_gl_config_new_by_mode_for_screen (GdkScreen       *screen,
                                                    GdkGLConfigMode  mode);
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 GdkScreen   *gdk_gl_config_get_screen             (GdkGLConfig     *glconfig);
 

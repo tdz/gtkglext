@@ -20,9 +20,7 @@
 #include "gdkglprivate-x11.h"
 #include "gdkgloverlay-x11.h"
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
 #include <gdk/gdk.h>
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
 #include <X11/Xmd.h>
 
@@ -78,9 +76,7 @@ gdk_gl_overlay_get_sov_props (GdkScreen *screen)
 {
   __SOVPropArray *sov_props;
   GdkWindow *root_window;
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   GdkDisplay *display;
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
   Display *xdisplay;
   Atom xa_sov;
   Status status;
@@ -91,11 +87,7 @@ gdk_gl_overlay_get_sov_props (GdkScreen *screen)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   root_window = gdk_screen_get_root_window (screen);
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  root_window = gdk_get_default_root_window ();
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   if (quark_sov_props == 0)
     quark_sov_props = g_quark_from_static_string (quark_sov_props_string);
@@ -106,14 +98,9 @@ gdk_gl_overlay_get_sov_props (GdkScreen *screen)
 
   sov_props = g_malloc (sizeof (__SOVPropArray));
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   display = gdk_screen_get_display (screen);
   xdisplay = GDK_DISPLAY_XDISPLAY (display);
   xa_sov = gdk_x11_get_xatom_by_name_for_display (display, "SERVER_OVERLAY_VISUALS");
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  xdisplay = gdk_x11_get_default_xdisplay ();
-  xa_sov = gdk_x11_get_xatom_by_name ("SERVER_OVERLAY_VISUALS");
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   status = XGetWindowProperty (xdisplay, GDK_WINDOW_XWINDOW (root_window),
                                xa_sov, 0L, 1000000L, False, AnyPropertyType,
@@ -146,11 +133,7 @@ gdk_gl_overlay_get_sov_props (GdkScreen *screen)
 #ifdef G_ENABLE_DEBUG
   if (gdk_gl_debug_flags & GDK_GL_DEBUG_MISC)
     {
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
       int screen_num = GDK_SCREEN_XNUMBER (screen);
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-      int screen_num = gdk_x11_get_default_screen ();
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
       unsigned int i;
 
       g_message (" -- SERVER_OVERLAY_VISUALS: properties");
@@ -186,11 +169,7 @@ _gdk_x11_gl_overlay_get_info (GdkVisual        *visual,
 
   /* Get SOV properties. */
 
-#ifdef GDKGLEXT_MULTIHEAD_SUPPORT
   sov_props = gdk_gl_overlay_get_sov_props (gdk_visual_get_screen (visual));
-#else  /* GDKGLEXT_MULTIHEAD_SUPPORT */
-  sov_props = gdk_gl_overlay_get_sov_props (NULL);
-#endif /* GDKGLEXT_MULTIHEAD_SUPPORT */
 
   /* Look up SOV property for the visual. */
 
