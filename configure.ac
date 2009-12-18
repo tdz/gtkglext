@@ -209,7 +209,32 @@ AC_SUBST([LIBTOOL_EXPORT_OPTIONS])
 
 AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
 
+PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.4], ,
+                  [AS_IF([test -z "${GTK_LIBS+x}"],
+                         [AC_MSG_FAILURE([GTK+ 2.4 or newer is required.])])])
+PKG_CHECK_MODULES([GDK], [gdk-2.0], ,
+                  [AS_IF([test -z "${GDK_LIBS+x}"],
+                         [AC_MSG_FAILURE([GDK is required.])])])
+PKG_CHECK_MODULES([PANGOX], [pangox], ,
+                  [AS_IF([test -z "${PANGOX_LIBS+x}"],
+                         [AC_MSG_FAILURE([Pango X font support is required.])])])
+PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
+                  [AS_IF([test -z "${PANGOFT2_LIBS+x}"],
+                         [AC_MSG_WARN([Pango Freetype support is required to build some of the examples.])])])
+
+#
+# We need to get the value of gdktarget before we run AX_CHECK_GLU so
+# that we can set with_x appropriately.
+#
+AC_ARG_WITH([gdktarget],
+            [AS_HELP_STRING([--with-gdktarget=@<:@x11/win32@:>@],
+                            [select GDK target])],
+            [gdktarget=$with_gdktarget],
+            [gdktarget=`$PKG_CONFIG --variable=target gdk-2.0`])
+AS_IF([test x$gdktarget = xwin32],
+      [with_x=no])
 AX_CHECK_GLU
+
 # Checks for some types in gdk/GL/glxext.h
 
 # GLXFBConfigSGIX
@@ -261,19 +286,6 @@ AC_CHECK_TYPES([GLhalfNV], , ,
 if test "x$ac_cv_type_GLhalfNV" = "xno" ; then
   GDKGLEXT_NEED_GLHALFNV_TYPEDEF=yes
 fi
-
-PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.4], ,
-                  [AS_IF([test -z "${GTK_LIBS+x}"],
-                         [AC_MSG_FAILURE([GTK+ 2.4 or newer is required.])])])
-PKG_CHECK_MODULES([GDK], [gdk-2.0], ,
-                  [AS_IF([test -z "${GDK_LIBS+x}"],
-                         [AC_MSG_FAILURE([GDK is required.])])])
-PKG_CHECK_MODULES([PANGOX], [pangox], ,
-                  [AS_IF([test -z "${PANGOX_LIBS+x}"],
-                         [AC_MSG_FAILURE([Pango X font support is required.])])])
-PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
-                  [AS_IF([test -z "${PANGOFT2_LIBS+x}"],
-                         [AC_MSG_WARN([Pango Freetype support is required to build some of the examples.])])])
 
 # Checks for library functions.
 save_LIBS="$LIBS"
@@ -339,22 +351,11 @@ if test "x$enable_rebuilds" = "xyes" && \
 fi
 AC_SUBST([REBUILD])
 
-if test "x$platform_win32" = "xyes"; then
-  gdktarget=win32
-else
-  gdktarget=x11
-fi
-
-AC_ARG_WITH([gdktarget],
-            [AS_HELP_STRING([--with-gdktarget=@<:@x11/win32@:>@],
-                            [select GDK target])],
-            [gdktarget=$with_gdktarget])
-
-AC_SUBST([gdktarget])
 case $gdktarget in
   x11|win32) ;;
   *) AC_MSG_ERROR([Invalid target for GDK: use x11 or win32.]);;
 esac
+AC_SUBST([gdktarget])
 
 gdkglext_targetlib=libgdkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
 gtkglext_targetlib=libgtkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
