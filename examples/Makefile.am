@@ -32,7 +32,7 @@ LDADD = \
 
 AM_LDFLAGS = \
 	$(GTK_LIBS)		\
-	$(GL_LIBS)		\
+	$(GLU_LIBS)		\
 	$(GDKGLEXT_WIN_LIBS)
 
 common_programs = \
