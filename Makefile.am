@@ -14,8 +14,6 @@ EXTRA_DIST = \
 	gtkglext.pc.in			\
 	gdkglext-uninstalled.pc.in	\
 	gtkglext-uninstalled.pc.in	\
-	gtkglext.spec.in		\
-	gtkglext.spec			\
 	gtkglext.nsi.in			\
 	gtkglext.nsi			\
 	setup-gtkglext.sh

@@ -499,7 +499,6 @@ gdkglext.pc
 gtkglext.pc
 gdkglext-uninstalled.pc
 gtkglext-uninstalled.pc
-gtkglext.spec
 gtkglext.nsi
 Makefile
 gdk/Makefile
