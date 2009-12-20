@@ -10,6 +10,7 @@ ACLOCAL_AMFLAGS = -I m4macros
 EXTRA_DIST = \
 	README.win32			\
 	ChangeLog.pre-1-0		\
+	ChangeLog.pre-1-2		\
 	gdkglext.pc.in			\
 	gtkglext.pc.in			\
 	gdkglext-uninstalled.pc.in	\
@@ -64,7 +65,7 @@ DISTCLEANFILES = \
 	gtkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc	\
 	gtkglext-$(API_VER)-uninstalled.pc
 
-.PHONY: examples clean-examples
+.PHONY: examples clean-examples ChangeLog
 
 examples: all
 	( cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) )
@@ -72,7 +73,16 @@ examples: all
 clean-examples:
 	( cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) clean )
 
-.PHONY: changelog
-changelog:
-	cvs2cl -b -t --hide-filenames
-
+ChangeLog:
+	@echo Creating $@
+	@if test -d "$(srcdir)/.git"; then \
+	  (GIT_DIR=$(top_srcdir)/.git $(top_srcdir)/missing --run git log --stat) | fmt --split-only > $@.tmp \
+	  && mv -f $@.tmp $@ \
+	  || ($(RM) $@.tmp; \
+	      echo Failed to generate ChangeLog, your ChangeLog may be outdated >&2; \
+	      (test -f $@ || echo git-log is required to generate this file >> $@)); \
+	else \
+	  test -f $@ || \
+	  (echo A git checkout and git-log is required to generate ChangeLog >&2 && \
+	  echo A git checkout and git-log is required to generate this file >> $@); \
+	fi

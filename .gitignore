@@ -9,6 +9,7 @@
 .libs
 ABOUT-NLS
 AUTHORS
+ChangeLog
 INSTALL
 Makefile
 Makefile.in
