@@ -99,12 +99,11 @@ AC_SUBST([GTKGLEXT_CURRENT_MINUS_AGE])
 # Checks for programs.
 
 dnl Initialize libtool
+AC_PROG_CC
 AM_PROG_CC_C_O
-AC_PROG_CXX
-AC_PROG_CPP
-#AM_DISABLE_STATIC
-AC_LIBTOOL_WIN32_DLL
-AC_PROG_LIBTOOL
+AM_DISABLE_STATIC
+LT_PREREQ([2.2.6])
+LT_INIT([win32-dll])
 
 AC_CHECK_PROG([ms_librarian], [lib.exe], [yes], [no])
 
