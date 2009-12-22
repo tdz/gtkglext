@@ -63,6 +63,7 @@ extra_files = \
 # CFLAGS and LDFLAGS for compiling scan program. Only needed if your app/lib
 # contains GtkObjects/GObjects and you want to document signals and properties.
 GTKDOC_CFLAGS = \
+	@GDK_CFLAGS@ \
 	@CFLAGS@			\
 	-I$(top_srcdir)			\
 	-I$(top_srcdir)/gdk		\
