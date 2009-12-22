@@ -85,16 +85,16 @@ AC_SUBST([API_MJ])
 AC_SUBST([API_MI])
 
 # libtool versioning
-LT_RELEASE=gtkglext_lt_release
-LT_CURRENT=gtkglext_lt_current
-LT_REVISION=gtkglext_lt_revision
-LT_AGE=gtkglext_lt_age
-LT_CURRENT_MINUS_AGE=gtkglext_lt_current_minus_age
-AC_SUBST([LT_RELEASE])
-AC_SUBST([LT_CURRENT])
-AC_SUBST([LT_REVISION])
-AC_SUBST([LT_AGE])
-AC_SUBST([LT_CURRENT_MINUS_AGE])
+GTKGLEXT_RELEASE=gtkglext_lt_release
+GTKGLEXT_CURRENT=gtkglext_lt_current
+GTKGLEXT_REVISION=gtkglext_lt_revision
+GTKGLEXT_AGE=gtkglext_lt_age
+GTKGLEXT_CURRENT_MINUS_AGE=gtkglext_lt_current_minus_age
+AC_SUBST([GTKGLEXT_RELEASE])
+AC_SUBST([GTKGLEXT_CURRENT])
+AC_SUBST([GTKGLEXT_REVISION])
+AC_SUBST([GTKGLEXT_AGE])
+AC_SUBST([GTKGLEXT_CURRENT_MINUS_AGE])
 
 # Checks for programs.
 
