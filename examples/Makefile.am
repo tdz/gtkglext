@@ -35,7 +35,7 @@ AM_LDFLAGS = \
 	$(GLU_LIBS)		\
 	$(GDKGLEXT_WIN_LIBS)
 
-common_programs = \
+noinst_PROGRAMS = \
 	low-level		\
 	simple			\
 	simple-mixed		\
@@ -58,17 +58,11 @@ common_programs = \
 	font-pangoft2		\
 	font-pangoft2-tex
 
-x11_programs = \
-	simple-pbuffer-sgix	\
-	glxinfo
-
-win32_programs = \
-	wglinfo
-
 if PLATFORM_WIN32
-EXTRA_PROGRAMS = $(common_programs) $(win32_programs)
+noinst_PROGRAMS += wglinfo
 else
-EXTRA_PROGRAMS = $(common_programs) $(x11_programs)
+noinst_PROGRAMS += simple-pbuffer-sgix
+noinst_PROGRAMS += glxinfo
 endif
 
 low_level_SOURCES = low-level.c
@@ -125,9 +119,3 @@ glxinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS) $(MATH_LIB)
 
 wglinfo_SOURCES = wglinfo.c
 wglinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS)
-
-
-all-local: $(EXTRA_PROGRAMS)
-
-clean-local:
-	-rm -f $(EXTRA_PROGRAMS)
