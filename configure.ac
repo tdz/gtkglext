@@ -43,7 +43,7 @@ m4_define([gtkglext_debug_default],
 AC_INIT([gtkglext], [gtkglext_version],
         [gtkglext-list@gnome.org])
 
-AC_PREREQ([2.58])
+AC_PREREQ([2.63])
 
 AC_CONFIG_SRCDIR([gdk/gdkgl.h])
 AC_CONFIG_MACRO_DIR([m4macros])
@@ -52,7 +52,7 @@ AC_CONFIG_MACRO_DIR([m4macros])
 cflags_set=${CFLAGS+set}
 
 # Initialize automake stuff
-AM_INIT_AUTOMAKE([1.7 no-define dist-bzip2 dist-zip])
+AM_INIT_AUTOMAKE([1.11 no-define dist-bzip2 dist-zip dist-xz])
 
 # Specify a configuration file
 AM_CONFIG_HEADER([config.h])
