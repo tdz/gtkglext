@@ -20,6 +20,8 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
+#include "drawshapes.h"
+
 #define TIMEOUT_INTERVAL 10
 
 static gboolean animate = TRUE;
@@ -129,7 +131,7 @@ expose_event (GtkWidget      *widget,
     glMaterialfv (GL_FRONT, GL_DIFFUSE, diffuse);
     glMaterialfv (GL_FRONT, GL_SPECULAR, specular);
     glMaterialf (GL_FRONT, GL_SHININESS, shininess);
-    gdk_gl_draw_torus (TRUE, 0.3, 0.6, 30, 30);
+    draw_torus (TRUE, 0.3, 0.6, 30, 30);
   glPopMatrix ();
 
   if (gdk_gl_drawable_is_double_buffered (gldrawable))

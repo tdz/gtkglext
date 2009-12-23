@@ -62,6 +62,10 @@ noinst_PROGRAMS += simple-pbuffer-sgix
 noinst_PROGRAMS += glxinfo
 endif
 
+noinst_LTLIBRARIES = libdrawshapes.la
+libdrawshapes_la_SOURCES = drawshapes.c drawshapes.h
+libdrawshapes_la_LIBADD = $(MATH_LIB)
+
 low_level_SOURCES = low-level.c
 
 simple_SOURCES = simple.c
@@ -79,8 +83,10 @@ color_SOURCES = color.c
 font_SOURCES = font.c
 
 button_SOURCES = button.c
+button_LDADD = $(LDADD) libdrawshapes.la
 
 shapes_SOURCES = trackball.h trackball.c shapes.c
+shapes_LDADD = $(LDADD) libdrawshapes.la
 
 logo_SOURCES = trackball.h trackball.c logo-model.h logo-model.c logo.c
 EXTRA_logo_SOURCES = logo-g.c logo-t.c logo-k.c

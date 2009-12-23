@@ -18,10 +18,7 @@
 
 #include <math.h>
 
-#include <glib.h>
-
-#include "gdkglprivate.h"
-#include "gdkglshapes.h"
+#include "drawshapes.h"
 
 #ifdef G_OS_WIN32
 #define WIN32_LEAN_AND_MEAN 1
@@ -127,7 +124,7 @@ drawBox(GLfloat size, GLenum type)
 }
 
 /**
- * gdk_gl_draw_cube:
+ * draw_cube:
  * @solid: TRUE if the cube should be solid.
  * @size: length of cube sides.
  *
@@ -137,8 +134,8 @@ drawBox(GLfloat size, GLenum type)
  *
  **/
 void
-gdk_gl_draw_cube (gboolean solid,
-                  double   size)
+draw_cube (gboolean solid,
+           double   size)
 {
   if (solid)
     drawBox (size, GL_QUADS);
@@ -163,7 +160,7 @@ initQuadObj(void)
 }
 
 /**
- * gdk_gl_draw_sphere:
+ * draw_sphere:
  * @solid: TRUE if the sphere should be solid.
  * @radius: the radius of the sphere.
  * @slices: the number of subdivisions around the Z axis (similar to lines of
@@ -177,10 +174,10 @@ initQuadObj(void)
  *
  **/
 void
-gdk_gl_draw_sphere (gboolean solid,
-                    double   radius,
-                    int      slices,
-                    int      stacks)
+draw_sphere (gboolean solid,
+             double   radius,
+             int      slices,
+             int      stacks)
 {
   QUAD_OBJ_INIT();
 
@@ -198,7 +195,7 @@ gdk_gl_draw_sphere (gboolean solid,
 }
 
 /**
- * gdk_gl_draw_cone:
+ * draw_cone:
  * @solid: TRUE if the cone should be solid.
  * @base: the radius of the base of the cone.
  * @height: the height of the cone.
@@ -212,11 +209,11 @@ gdk_gl_draw_sphere (gboolean solid,
  *
  **/
 void
-gdk_gl_draw_cone (gboolean solid,
-                  double   base,
-                  double   height,
-                  int      slices,
-                  int      stacks)
+draw_cone (gboolean solid,
+           double   base,
+           double   height,
+           int      slices,
+           int      stacks)
 {
   QUAD_OBJ_INIT();
 
@@ -279,7 +276,7 @@ doughnut(GLfloat r, GLfloat R, GLint nsides, GLint rings)
 }
 
 /**
- * gdk_gl_draw_torus:
+ * draw_torus:
  * @solid: TRUE if the torus should be solid.
  * @inner_radius: inner radius of the torus.
  * @outer_radius: outer radius of the torus.
@@ -291,11 +288,11 @@ doughnut(GLfloat r, GLfloat R, GLint nsides, GLint rings)
  *
  **/
 void
-gdk_gl_draw_torus (gboolean solid,
-                   double   inner_radius,
-                   double   outer_radius,
-                   int      nsides,
-                   int      rings)
+draw_torus (gboolean solid,
+            double   inner_radius,
+            double   outer_radius,
+            int      nsides,
+            int      rings)
 {
   if (solid)
     {
@@ -447,7 +444,7 @@ tetrahedron(GLenum shadeType)
 }
 
 /**
- * gdk_gl_draw_tetrahedron:
+ * draw_tetrahedron:
  * @solid: TRUE if the tetrahedron should be solid.
  *
  * Renders a tetrahedron centered at the modeling coordinates
@@ -455,7 +452,7 @@ tetrahedron(GLenum shadeType)
  *
  **/
 void
-gdk_gl_draw_tetrahedron (gboolean solid)
+draw_tetrahedron (gboolean solid)
 {
   if (solid)
     tetrahedron (GL_TRIANGLES);
@@ -502,7 +499,7 @@ octahedron(GLenum shadeType)
 }
 
 /**
- * gdk_gl_draw_octahedron:
+ * draw_octahedron:
  * @solid: TRUE if the octahedron should be solid.
  *
  * Renders a octahedron centered at the modeling coordinates
@@ -510,7 +507,7 @@ octahedron(GLenum shadeType)
  *
  **/
 void
-gdk_gl_draw_octahedron (gboolean solid)
+draw_octahedron (gboolean solid)
 {
   if (solid)
     octahedron (GL_TRIANGLES);
@@ -579,7 +576,7 @@ icosahedron(GLenum shadeType)
 }
 
 /**
- * gdk_gl_draw_icosahedron:
+ * draw_icosahedron:
  * @solid: TRUE if the icosahedron should be solid.
  *
  * Renders a icosahedron.
@@ -588,7 +585,7 @@ icosahedron(GLenum shadeType)
  *
  **/
 void
-gdk_gl_draw_icosahedron (gboolean solid)
+draw_icosahedron (gboolean solid)
 {
   if (solid)
     icosahedron (GL_TRIANGLES);
@@ -679,7 +676,7 @@ dodecahedron(GLenum type)
 }
 
 /**
- * gdk_gl_draw_dodecahedron:
+ * draw_dodecahedron:
  * @solid: TRUE if the dodecahedron should be solid.
  *
  * Renders a dodecahedron centered at the modeling coordinates
@@ -687,7 +684,7 @@ dodecahedron(GLenum type)
  *
  **/
 void
-gdk_gl_draw_dodecahedron (gboolean solid)
+draw_dodecahedron (gboolean solid)
 {
   if (solid)
     dodecahedron (GL_TRIANGLE_FAN);
@@ -848,7 +845,7 @@ teapot(GLint grid, GLdouble scale, GLenum type)
 }
 
 /**
- * gdk_gl_draw_teapot:
+ * draw_teapot:
  * @solid: TRUE if the teapot should be solid.
  * @scale: relative size of the teapot.
  *
@@ -858,8 +855,8 @@ teapot(GLint grid, GLdouble scale, GLenum type)
  *
  **/
 void
-gdk_gl_draw_teapot (gboolean solid,
-                    double   scale)
+draw_teapot (gboolean solid,
+             double   scale)
 {
   if (solid)
     teapot (7, scale, GL_FILL);
