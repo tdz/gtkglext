@@ -68,6 +68,7 @@ GTKDOC_CFLAGS = \
 	-I$(top_srcdir)			\
 	-I$(top_srcdir)/gdk		\
 	-I$(top_srcdir)/gtk		\
+	-I$(top_builddir)		\
 	-I$(top_builddir)/gdk		\
 	-I$(top_builddir)/gtk		\
 	$(GTKGLEXT_DEBUG_FLAGS)		\
@@ -160,7 +161,7 @@ sgml.stamp: sgml-build.stamp
 html-build.stamp: sgml.stamp $(DOC_MAIN_SGML_FILE) $(content_files)
 	@echo '*** Building HTML ***'
 	test -d $(srcdir)/html || mkdir $(srcdir)/html
-	cd $(srcdir)/html && gtkdoc-mkhtml $(DOC_MODULE) ../$(DOC_MAIN_SGML_FILE)
+	cd $(srcdir)/html && gtkdoc-mkhtml --path=$(abs_builddir) $(DOC_MODULE) ../$(DOC_MAIN_SGML_FILE)
 	test "x$(HTML_IMAGES)" = "x" || ( cd $(srcdir) && cp $(HTML_IMAGES) html )
 	@echo '-- Fixing Crossreferences' 
 	cd $(srcdir) && gtkdoc-fixxref --module-dir=html --html-dir=$(HTML_DIR) $(FIXXREF_OPTIONS)
