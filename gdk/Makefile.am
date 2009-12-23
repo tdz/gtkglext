@@ -55,7 +55,7 @@ common_ldflags = \
 	$(gdkglext_win32_symbols)
 
 common_libadd = \
-	$(GDK_LIBS) $(GL_LIBS) $(GDKGLEXT_WIN_LIBS)
+	$(GDK_LIBS) $(GLU_LIBS) $(GDKGLEXT_WIN_LIBS)
 
 #
 # setup source file variables
