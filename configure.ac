@@ -512,7 +512,6 @@ docs/reference/Makefile
 docs/reference/gtkglext/Makefile
 docs/reference/gtkglext/version.xml
 examples/Makefile
-examples/glade/Makefile
 ])
 
 AC_OUTPUT
