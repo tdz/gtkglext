@@ -1,9 +1,6 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/examples
 
-SUBDIRS = 
-DIST_SUBDIRS = glade
-
 EXTRA_DIST = \
 	Makefile.mingw	\
 	Makefile.msc	\
@@ -119,3 +116,10 @@ glxinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS) $(MATH_LIB)
 
 wglinfo_SOURCES = wglinfo.c
 wglinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS)
+
+
+EXTRA_DIST += glade/README \
+glade/simple.glade \
+glade/simple.c \
+glade/share-lists.glade	\
+glade/share-lists.c
