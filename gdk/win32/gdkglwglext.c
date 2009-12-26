@@ -20,6 +20,10 @@
  * This is a generated file.  Please modify "gen-gdkglwglext-c.pl".
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif /* HAVE_CONFIG_H */
+
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglwglext.h"
