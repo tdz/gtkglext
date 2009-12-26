@@ -15,19 +15,11 @@ gtkglext_win32_symbols = -export-symbols $(gtkglext_def)
 endif
 
 if MS_LIB_AVAILABLE
+mslibdir = $(libdir)
 noinst_DATA = gtkglext-win32-@GTKGLEXT_API_VERSION@.lib
 
 gtkglext-win32-@GTKGLEXT_API_VERSION@.lib: libgtkglext-win32-@GTKGLEXT_API_VERSION@.la $(gtkglext_def)
 	lib -name:libgtkglext-win32-@GTKGLEXT_API_VERSION@-@GTKGLEXT_CURRENT_MINUS_AGE@.dll -def:$(gtkglext_def) -out:$@
-
-install-ms-lib:
-	$(INSTALL) gtkglext-win32-@GTKGLEXT_API_VERSION@.lib $(DESTDIR)$(libdir)
-
-uninstall-ms-lib:
-	-rm $(DESTDIR)$(libdir)/gtkglext-win32-@GTKGLEXT_API_VERSION@.lib
-else
-install-ms-lib:
-uninstall-ms-lib:
 endif
 
 common_includes = \
@@ -109,12 +101,3 @@ libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
 libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
 libgtkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
 libgtkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = $(gtkglext_def)
-
-#
-# Extra rules
-#
-
-install-data-local: install-ms-lib
-
-uninstall-local: uninstall-ms-lib
-
