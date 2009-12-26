@@ -35,15 +35,6 @@ EXPORTS
 	gdk_gl_context_is_direct
 	gdk_gl_context_new
 	gdk_gl_debug_flags
-	gdk_gl_draw_cone
-	gdk_gl_draw_cube
-	gdk_gl_draw_dodecahedron
-	gdk_gl_draw_icosahedron
-	gdk_gl_draw_octahedron
-	gdk_gl_draw_sphere
-	gdk_gl_draw_teapot
-	gdk_gl_draw_tetrahedron
-	gdk_gl_draw_torus
 	gdk_gl_drawable_attrib_get_type
 	gdk_gl_drawable_get_current
 	gdk_gl_drawable_get_gl_config
