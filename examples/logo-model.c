@@ -163,7 +163,7 @@ logo_draw_triangle (GLfloat *v0,
 }
 
 /* AC3D triangle data */
-#include "logo-g.c"
+#include "logo-g.h"
 
 void
 logo_draw_g (void)
@@ -177,7 +177,7 @@ logo_draw_g (void)
 }
 
 /* AC3D triangle data */
-#include "logo-t.c"
+#include "logo-t.h"
 
 void
 logo_draw_t (void)
@@ -191,7 +191,7 @@ logo_draw_t (void)
 }
 
 /* AC3D triangle data */
-#include "logo-k.c"
+#include "logo-k.h"
 
 void
 logo_draw_k (void)
