@@ -502,7 +502,6 @@ gtkglext.nsi
 Makefile
 gdk/Makefile
 gdk/gdkglversion.h
-gdk/glext/Makefile
 gdk/x11/Makefile
 gdk/win32/Makefile
 gtk/Makefile
