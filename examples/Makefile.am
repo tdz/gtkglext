@@ -2,7 +2,6 @@
 ## Makefile.am for gtkglext/examples
 
 EXTRA_DIST = \
-	Makefile.mingw	\
 	Makefile.msc	\
 	alien.lwo	\
 	penguin.lwo	\
