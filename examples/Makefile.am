@@ -131,3 +131,11 @@ glade/simple.glade \
 glade/simple.c \
 glade/share-lists.glade	\
 glade/share-lists.c
+
+EXTRA_DIST += \
+glsl/gears.c \
+glsl/shiny.fsh \
+glsl/shiny.vsh \
+glsl/velvet.fsh \
+glsl/velvet.vsh
+
