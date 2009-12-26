@@ -72,7 +72,7 @@ shapes_LDADD = $(LDADD) libdrawshapes.la
 
 noinst_PROGRAMS += logo
 logo_SOURCES = trackball.h trackball.c logo-model.h logo-model.c logo.c
-EXTRA_logo_SOURCES = logo-g.c logo-t.c logo-k.c
+logo_SOURCES += logo-g.h logo-t.h logo-k.h
 
 noinst_PROGRAMS += gears
 gears_SOURCES = gears.c
