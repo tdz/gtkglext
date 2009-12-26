@@ -50,10 +50,8 @@ OpenGL rendering context object
 
 @glcontext: 
 @src: 
-@Param3: 
-@Returns: 
-<!-- # Unused Parameters # -->
 @mask: 
+@Returns: 
 
 
 <!-- ##### FUNCTION gdk_gl_context_get_gl_drawable ##### -->
