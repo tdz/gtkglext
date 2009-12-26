@@ -20,6 +20,10 @@ print <<EOF;
  * This is a generated file.  Please modify "gen-gdkglglxext-c.pl".
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif /* HAVE_CONFIG_H */
+
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
 #include "gdkglglxext.h"
