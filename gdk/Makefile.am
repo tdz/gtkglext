@@ -2,7 +2,7 @@
 ## Makefile.am for gtkglext/gdk
 
 SUBDIRS = glext $(gdktarget)
-DIST_SUBDIRS = glext x11 win32
+DIST_SUBDIRS = x11 win32
 
 EXTRA_DIST = \
 	gdkglversion.h.in	\
@@ -181,6 +181,29 @@ stamp-gdkglext-config-h: $(top_builddir)/config.status
 	echo timestamp > stamp-gdkglext-config-h
 
 DISTCLEANFILES += gdkglext-config.h stamp-gdkglext-config-h
+
+EXTRA_DIST += \
+glext/README			\
+glext/glxext.h.patch		\
+glext/list-ext.pl		\
+glext/gen-gdkglglext-c.pl	\
+glext/gen-gdkglglext-h.pl	\
+glext/gen-gdkglglxext-c.pl	\
+glext/gen-gdkglglxext-h.pl	\
+glext/gen-gdkglwglext-c.pl	\
+glext/gen-gdkglwglext-h.pl	\
+glext/common-header.h
+
+gdkglext_glext_public_h_sources = \
+glext/glext.h		\
+glext/glxext.h	\
+glext/wglext.h	\
+glext/glext-extra.h	\
+glext/glxext-extra.h	\
+glext/wglext-extra.h
+
+gdkglextglextincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk/glext
+gdkglextglextinclude_HEADERS = $(gdkglext_glext_public_h_sources)
 
 #
 # Extra rules
