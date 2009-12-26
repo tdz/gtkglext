@@ -1,8 +1,7 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext
 
-SUBDIRS = gdk gtk docs
-DIST_SUBDIRS = $(SUBDIRS) examples
+SUBDIRS = gdk gtk docs examples
 
 # tools want this on a single line
 ACLOCAL_AMFLAGS = -I m4macros
@@ -65,13 +64,7 @@ DISTCLEANFILES = \
 	gtkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc	\
 	gtkglext-$(API_VER)-uninstalled.pc
 
-.PHONY: examples clean-examples ChangeLog
-
-examples: all
-	( cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) )
-
-clean-examples:
-	( cd $(top_builddir)/examples && $(MAKE) $(MFLAGS) clean )
+.PHONY: ChangeLog
 
 ChangeLog:
 	@echo Creating $@
