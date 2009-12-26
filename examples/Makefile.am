@@ -33,7 +33,7 @@ AM_LDFLAGS = \
 
 noinst_LTLIBRARIES = libdrawshapes.la
 libdrawshapes_la_SOURCES = drawshapes.c drawshapes.h
-libdrawshapes_la_LIBADD = $(MATH_LIB)
+libdrawshapes_la_LIBADD = $(MATH_LIB) $(GL_LIBS) $(GLU_LIBS)
 
 noinst_PROGRAMS =
 
@@ -101,12 +101,12 @@ scribble_gl_SOURCES = scribble-gl.c
 noinst_PROGRAMS += font-pangoft2
 font_pangoft2_SOURCES = font-pangoft2.c
 font_pangoft2_CPPFLAGS = $(AM_CPPFLAGS) $(PANGOFT2_CFLAGS)
-font_pangoft2_LDFLAGS = $(AM_LDFLAGS) $(GTKGLEXT_DEP_LIBS_WITH_PANGOFT2)
+font_pangoft2_LDFLAGS = $(AM_LDFLAGS) $(PANGOFT2_LIBS) $(GTKGLEXT_DEP_LIBS_WITH_PANGOFT2)
 
 noinst_PROGRAMS += font-pangoft2-tex
 font_pangoft2_tex_SOURCES = font-pangoft2-tex.c
 font_pangoft2_tex_CPPFLAGS = $(AM_CPPFLAGS) $(PANGOFT2_CFLAGS)
-font_pangoft2_tex_LDFLAGS = $(AM_LDFLAGS) $(GTKGLEXT_DEP_LIBS_WITH_PANGOFT2)
+font_pangoft2_tex_LDFLAGS = $(AM_LDFLAGS) $(PANGOFT2_LIBS) $(GTKGLEXT_DEP_LIBS_WITH_PANGOFT2)
 
 if !PLATFORM_WIN32
 noinst_PROGRAMS += simple-pbuffer-sgix
