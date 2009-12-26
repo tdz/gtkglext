@@ -18,19 +18,11 @@ gdkglext_win32_symbols = -export-symbols $(gdkglext_def)
 endif
 
 if MS_LIB_AVAILABLE
-noinst_DATA = gdkglext-win32-@GTKGLEXT_API_VERSION@.lib
+mslibdir = $(libdir)
+mslib_DATA = gdkglext-win32-@GTKGLEXT_API_VERSION@.lib
 
 gdkglext-win32-@GTKGLEXT_API_VERSION@.lib: libgdkglext-win32-@GTKGLEXT_API_VERSION@.la $(gdkglext_def)
 	lib -name:libgdkglext-win32-@GTKGLEXT_API_VERSION@-@GTKGLEXT_CURRENT_MINUS_AGE@.dll -def:$(gdkglext_def) -out:$@
-
-install-ms-lib:
-	$(INSTALL) gdkglext-win32-@GTKGLEXT_API_VERSION@.lib $(DESTDIR)$(libdir)
-
-uninstall-ms-lib:
-	-rm $(DESTDIR)$(libdir)/gdkglext-win32-@GTKGLEXT_API_VERSION@.lib
-else
-install-ms-lib:
-uninstall-ms-lib:
 endif
 
 common_includes = \
@@ -193,8 +185,3 @@ DISTCLEANFILES += gdkglext-config.h stamp-gdkglext-config-h
 #
 # Extra rules
 #
-
-install-data-local: install-ms-lib
-
-uninstall-local: uninstall-ms-lib
-
