@@ -10,7 +10,7 @@ no_undefined = -no-undefined
 endif
 
 if OS_WIN32
-gtkglext_def = gtkglext.def
+gtkglext_def = $(srcdir)/gtkglext.def
 gtkglext_win32_symbols = -export-symbols $(gtkglext_def)
 endif
 
