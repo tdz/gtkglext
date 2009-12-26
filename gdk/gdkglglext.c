@@ -20,6 +20,10 @@
  * This is a generated file.  Please modify "gen-gdkglglext-c.pl".
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif /* HAVE_CONFIG_H */
+
 #include "gdkglprivate.h"
 #include "gdkglquery.h"
 #include "gdkglcontext.h"
