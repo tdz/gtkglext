@@ -1,7 +1,7 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/gdk
 
-SUBDIRS = glext $(gdktarget)
+SUBDIRS = $(gdktarget)
 DIST_SUBDIRS = x11 win32
 
 EXTRA_DIST = \
