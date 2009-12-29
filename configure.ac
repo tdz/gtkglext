@@ -229,12 +229,12 @@ PKG_CHECK_MODULES([GDK], [gdk-2.0], ,
 
 case $gdktarget in
 x11)
-  PKG_CHECK_MODULES([PANGOX],[pango$gdktarget], ,
-                  [AC_MSG_FAILURE([pango$gdtarget font support is required.])])
+  PKG_CHECK_MODULES([PANGOX],[pangox], ,
+                  [AC_MSG_FAILURE([pangox font support is required.])])
   ;;
 win32)
-  PKG_CHECK_MODULES([PANGOWIN32],[pango$gdktarget], ,
-                      [AC_MSG_FAILURE([pango$gdtarget font support is required.])])
+  PKG_CHECK_MODULES([PANGOWIN32],[pangowin32], ,
+                      [AC_MSG_FAILURE([pangowin32 font support is required.])])
   ;;
 esac
 
