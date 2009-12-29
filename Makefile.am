@@ -3,8 +3,8 @@
 
 SUBDIRS = gdk gtk docs examples
 
-# tools want this on a single line
 ACLOCAL_AMFLAGS = -I m4macros
+DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
 EXTRA_DIST = \
 	README.win32			\
@@ -63,8 +63,6 @@ DISTCLEANFILES = \
 	gdkglext-$(API_VER)-uninstalled.pc			\
 	gtkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc	\
 	gtkglext-$(API_VER)-uninstalled.pc
-
-.PHONY: ChangeLog
 
 ChangeLog:
 	@echo Creating $@
