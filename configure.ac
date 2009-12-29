@@ -226,9 +226,18 @@ PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.4], ,
 PKG_CHECK_MODULES([GDK], [gdk-2.0], ,
                   [AS_IF([test -z "${GDK_LIBS+x}"],
                          [AC_MSG_FAILURE([GDK is required.])])])
-PKG_CHECK_MODULES([PANGOX], [pangox], ,
-                  [AS_IF([test -z "${PANGOX_LIBS+x}"],
-                         [AC_MSG_FAILURE([Pango X font support is required.])])])
+
+case $gdktarget in
+x11)
+  PKG_CHECK_MODULES([PANGOX],[pango$gdktarget], ,
+                  [AC_MSG_FAILURE([pango$gdtarget font support is required.])])
+  ;;
+win32)
+  PKG_CHECK_MODULES([PANGOWIN32],[pango$gdktarget], ,
+                      [AC_MSG_FAILURE([pango$gdtarget font support is required.])])
+  ;;
+esac
+
 PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
                   [AS_IF([test -z "${PANGOFT2_LIBS+x}"],
                          [AC_MSG_WARN([Pango Freetype support is required to build some of the examples.])])])
