@@ -12,6 +12,7 @@ AM_CPPFLAGS = \
 	$(GDK_CFLAGS)			\
 	$(GL_CFLAGS)			\
 	$(GDKGLEXT_WIN_CFLAGS)		\
+	$(PANGOWIN32_CFLAGS)		\
 	-DG_DISABLE_DEPRECATED		\
 	-DGDK_DISABLE_DEPRECATED	\
 	-DGDK_PIXBUF_DISABLE_DEPRECATED
@@ -50,4 +51,4 @@ gdkglextwin32include_HEADERS = $(gdkglext_win32_headers)
 noinst_LTLIBRARIES = libgdkglext-win32.la
 
 libgdkglext_win32_la_SOURCES = $(gdkglext_win32_sources)
-libgdkglext_win32_la_LDFLAGS = $(GDK_LIBS) $(GL_LIBS) $(GDKGLEXT_WIN_LIBS)
+libgdkglext_win32_la_LDFLAGS = $(GDK_LIBS) $(GL_LIBS) $(GDKGLEXT_WIN_LIBS) $(PANGOWIN32_LIBS)
