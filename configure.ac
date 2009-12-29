@@ -204,6 +204,18 @@ else
 fi
 AC_SUBST([LIBTOOL_EXPORT_OPTIONS])
 
+#
+# We need to get the value of gdktarget before we run AX_CHECK_GLU so
+# that we can set with_x appropriately.
+#
+AC_ARG_WITH([gdktarget],
+            [AS_HELP_STRING([--with-gdktarget=@<:@x11/win32@:>@],
+                            [select GDK target])],
+            [gdktarget=$with_gdktarget],
+            [gdktarget=`$PKG_CONFIG --variable=target gdk-2.0`])
+AS_IF([test x$gdktarget = xwin32],
+      [with_x=no])
+
 # Checks for headers and libraries.
 
 AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
@@ -221,17 +233,6 @@ PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
                   [AS_IF([test -z "${PANGOFT2_LIBS+x}"],
                          [AC_MSG_WARN([Pango Freetype support is required to build some of the examples.])])])
 
-#
-# We need to get the value of gdktarget before we run AX_CHECK_GLU so
-# that we can set with_x appropriately.
-#
-AC_ARG_WITH([gdktarget],
-            [AS_HELP_STRING([--with-gdktarget=@<:@x11/win32@:>@],
-                            [select GDK target])],
-            [gdktarget=$with_gdktarget],
-            [gdktarget=`$PKG_CONFIG --variable=target gdk-2.0`])
-AS_IF([test x$gdktarget = xwin32],
-      [with_x=no])
 AX_CHECK_GLU
 
 # Checks for some types in gdk/GL/glxext.h
