@@ -243,6 +243,8 @@ PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
                          [AC_MSG_WARN([Pango Freetype support is required to build some of the examples.])])])
 
 AX_CHECK_GLU
+# FIXME: AX_CHECK_GLU's behavior diverges from common autoconf conventions
+AM_CONDITIONAL([GLU],[test "$no_glu" != yes])
 
 # Checks for some types in gdk/GL/glxext.h
 
