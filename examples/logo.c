@@ -20,7 +20,6 @@
 #endif
 
 #include <GL/gl.h>
-#include <GL/glu.h>
 
 #include "logo-model.h"
 #include "trackball.h"

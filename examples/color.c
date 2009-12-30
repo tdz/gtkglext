@@ -18,7 +18,6 @@
 #endif
 
 #include <GL/gl.h>
-#include <GL/glu.h>
 
 /*
  * Colors.

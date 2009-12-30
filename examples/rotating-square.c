@@ -35,8 +35,6 @@
 #endif
 
 #include <GL/gl.h>
-#include <GL/glu.h>
-
 
 /**************************************************************************
  * The following section contains all the macro definitions.

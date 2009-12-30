@@ -18,7 +18,6 @@
 #endif
 
 #include <GL/gl.h>
-#include <GL/glu.h>
 
 static gchar font_string[] = "courier 12";
 static GLuint font_list_base;

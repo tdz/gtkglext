@@ -23,7 +23,6 @@
 #endif
 
 #include <GL/gl.h>
-#include <GL/glu.h>
 
 /*
  * Draw a gear wheel.  You'll probably want to call this function when
