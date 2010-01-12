@@ -100,64 +100,64 @@ static void   gdk_gl_window_draw_image     (GdkDrawable      *drawable,
                                             gint              ydest,
                                             gint              width,
                                             gint              height);
-static gint         gdk_gl_window_get_depth              (GdkDrawable *drawable);
-static void         gdk_gl_window_get_size               (GdkDrawable *drawable,
-                                                          gint        *width,
-                                                          gint        *height);
-static void         gdk_gl_window_set_colormap           (GdkDrawable *drawable,
-                                                          GdkColormap *cmap);
-static GdkColormap *gdk_gl_window_get_colormap           (GdkDrawable *drawable);
-static GdkVisual   *gdk_gl_window_get_visual             (GdkDrawable *drawable);
-static GdkScreen   *gdk_gl_window_get_screen             (GdkDrawable *drawable);
-static GdkImage    *gdk_gl_window_get_image              (GdkDrawable *drawable,
-                                                          gint         x,
-                                                          gint         y,
-                                                          gint         width,
-                                                          gint         height);
-static GdkRegion   *gdk_gl_window_get_clip_region        (GdkDrawable *drawable);
-static GdkRegion   *gdk_gl_window_get_visible_region     (GdkDrawable *drawable);
-static GdkDrawable *gdk_gl_window_get_composite_drawable (GdkDrawable *drawable,
-                                                          gint         x,
-                                                          gint         y,
-                                                          gint         width,
-                                                          gint         height,
-                                                          gint        *composite_x_offset,
-                                                          gint        *composite_y_offset);
-static void         gdk_gl_window_draw_pixbuf   (GdkDrawable *drawable,
-                                                 GdkGC       *gc,
-                                                 GdkPixbuf   *pixbuf,
-                                                 gint         src_x,
-                                                 gint         src_y,
-                                                 gint         dest_x,
-                                                 gint         dest_y,
-                                                 gint         width,
-                                                 gint         height,
-                                                 GdkRgbDither dither,
-                                                 gint         x_dither,
-                                                 gint         y_dither);
-static GdkImage    *gdk_gl_window_copy_to_image (GdkDrawable *drawable,
-                                                 GdkImage    *image,
-                                                 gint         src_x,
-                                                 gint         src_y,
-                                                 gint         dest_x,
-                                                 gint         dest_y,
-                                                 gint         width,
-                                                 gint         height);
-static void gdk_gl_window_draw_glyphs_transformed (GdkDrawable      *drawable,
-                                                   GdkGC            *gc,
-                                                   PangoMatrix      *matrix,
-                                                   PangoFont        *font,
-                                                   gint              x,
-                                                   gint              y,
-                                                   PangoGlyphString *glyphs);
-static void gdk_gl_window_draw_trapezoids (GdkDrawable     *drawable,
-                                           GdkGC	          *gc,
-                                           GdkTrapezoid    *trapezoids,
-                                           gint             n_trapezoids);
-static cairo_surface_t *gdk_gl_window_ref_cairo_surface (GdkDrawable *drawable);
 
-static void gdk_gl_window_class_init (GdkGLWindowClass *klass);
-static void gdk_gl_window_finalize   (GObject          *object);
+static gint             gdk_gl_window_get_depth               (GdkDrawable      *drawable);
+static void             gdk_gl_window_get_size                (GdkDrawable      *drawable,
+                                                               gint             *width,
+                                                               gint             *height);
+static void             gdk_gl_window_set_colormap            (GdkDrawable      *drawable,
+                                                               GdkColormap      *cmap);
+static GdkColormap *    gdk_gl_window_get_colormap            (GdkDrawable      *drawable);
+static GdkVisual   *    gdk_gl_window_get_visual              (GdkDrawable      *drawable);
+static GdkScreen   *    gdk_gl_window_get_screen              (GdkDrawable      *drawable);
+static GdkImage    *    gdk_gl_window_get_image               (GdkDrawable      *drawable,
+                                                               gint              x,
+                                                               gint              y,
+                                                               gint              width,
+                                                               gint              height);
+static GdkRegion   *    gdk_gl_window_get_clip_region         (GdkDrawable      *drawable);
+static GdkRegion   *    gdk_gl_window_get_visible_region      (GdkDrawable      *drawable);
+static GdkDrawable *    gdk_gl_window_get_composite_drawable  (GdkDrawable      *drawable,
+                                                               gint              x,
+                                                               gint              y,
+                                                               gint              width,
+                                                               gint              height,
+                                                               gint             *composite_x_offset,
+                                                               gint             *composite_y_offset);
+static void             gdk_gl_window_draw_pixbuf             (GdkDrawable      *drawable,
+                                                               GdkGC            *gc,
+                                                               GdkPixbuf        *pixbuf,
+                                                               gint              src_x,
+                                                               gint              src_y,
+                                                               gint              dest_x,
+                                                               gint              dest_y,
+                                                               gint              width,
+                                                               gint              height,
+                                                               GdkRgbDither      dither,
+                                                               gint              x_dither,
+                                                               gint              y_dither);
+static GdkImage    *    gdk_gl_window_copy_to_image           (GdkDrawable      *drawable,
+                                                               GdkImage         *image,
+                                                               gint              src_x,
+                                                               gint              src_y,
+                                                               gint              dest_x,
+                                                               gint              dest_y,
+                                                               gint              width,
+                                                               gint              height);
+static void             gdk_gl_window_draw_glyphs_transformed (GdkDrawable      *drawable,
+                                                               GdkGC            *gc,
+                                                               PangoMatrix      *matrix,
+                                                               PangoFont        *font,
+                                                               gint              x,
+                                                               gint              y,
+                                                               PangoGlyphString *glyphs);
+static void             gdk_gl_window_draw_trapezoids         (GdkDrawable      *drawable,
+                                                               GdkGC            *gc,
+                                                               GdkTrapezoid     *trapezoids,
+                                                               gint              n_trapezoids);
+static cairo_surface_t *gdk_gl_window_ref_cairo_surface       (GdkDrawable      *drawable);
+static void             gdk_gl_window_class_init              (GdkGLWindowClass *klass);
+static void             gdk_gl_window_finalize                (GObject          *object);
 
 static gpointer parent_class = NULL;
 
