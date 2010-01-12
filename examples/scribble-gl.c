@@ -316,7 +316,6 @@ create_window (GdkGLConfig *glconfig)
 
   gtk_widget_add_events (drawing_area,
 			 GDK_BUTTON1_MOTION_MASK    |
-                         GDK_POINTER_MOTION_MASK    |
 			 GDK_BUTTON_PRESS_MASK);
 
   /* Connect signal handlers to the drawing area */

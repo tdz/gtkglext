@@ -538,7 +538,6 @@ create_window (GdkGLConfig *glconfig)
 			 GDK_BUTTON1_MOTION_MASK    |
 			 GDK_BUTTON2_MOTION_MASK    |
 			 GDK_BUTTON_PRESS_MASK      |
-                         GDK_POINTER_MOTION_MASK    |
 			 GDK_VISIBILITY_NOTIFY_MASK);
 
   /* Connect signal handlers to the drawing area */

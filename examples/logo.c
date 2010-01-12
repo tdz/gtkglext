@@ -769,7 +769,6 @@ main(int   argc,
 			 GDK_BUTTON1_MOTION_MASK    |
 			 GDK_BUTTON2_MOTION_MASK    |
 			 GDK_BUTTON_PRESS_MASK      |
-                         GDK_POINTER_MOTION_MASK    |
 			 GDK_VISIBILITY_NOTIFY_MASK);
 
   g_signal_connect_after (G_OBJECT (drawing_area), "realize",
