@@ -108,9 +108,7 @@ static void         gdk_gl_window_set_colormap           (GdkDrawable *drawable,
                                                           GdkColormap *cmap);
 static GdkColormap *gdk_gl_window_get_colormap           (GdkDrawable *drawable);
 static GdkVisual   *gdk_gl_window_get_visual             (GdkDrawable *drawable);
-#if !(GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION == 0)
 static GdkScreen   *gdk_gl_window_get_screen             (GdkDrawable *drawable);
-#endif
 static GdkImage    *gdk_gl_window_get_image              (GdkDrawable *drawable,
                                                           gint         x,
                                                           gint         y,
@@ -145,6 +143,18 @@ static GdkImage    *gdk_gl_window_copy_to_image (GdkDrawable *drawable,
                                                  gint         dest_y,
                                                  gint         width,
                                                  gint         height);
+static void gdk_gl_window_draw_glyphs_transformed (GdkDrawable      *drawable,
+                                                   GdkGC            *gc,
+                                                   PangoMatrix      *matrix,
+                                                   PangoFont        *font,
+                                                   gint              x,
+                                                   gint              y,
+                                                   PangoGlyphString *glyphs);
+static void gdk_gl_window_draw_trapezoids (GdkDrawable     *drawable,
+                                           GdkGC	          *gc,
+                                           GdkTrapezoid    *trapezoids,
+                                           gint             n_trapezoids);
+static cairo_surface_t *gdk_gl_window_ref_cairo_surface (GdkDrawable *drawable);
 
 static void gdk_gl_window_class_init (GdkGLWindowClass *klass);
 static void gdk_gl_window_finalize   (GObject          *object);
@@ -207,19 +217,16 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
   drawable_class->set_colormap           = gdk_gl_window_set_colormap;
   drawable_class->get_colormap           = gdk_gl_window_get_colormap;
   drawable_class->get_visual             = gdk_gl_window_get_visual;
-#if !(GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION == 0)
   drawable_class->get_screen             = gdk_gl_window_get_screen;
-#endif
   drawable_class->get_image              = gdk_gl_window_get_image;
   drawable_class->get_clip_region        = gdk_gl_window_get_clip_region;
   drawable_class->get_visible_region     = gdk_gl_window_get_visible_region;
   drawable_class->get_composite_drawable = gdk_gl_window_get_composite_drawable;
-#if GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION == 0
-  drawable_class->_draw_pixbuf           = gdk_gl_window_draw_pixbuf;
-#else
   drawable_class->draw_pixbuf            = gdk_gl_window_draw_pixbuf;
-#endif
   drawable_class->_copy_to_image         = gdk_gl_window_copy_to_image;
+  drawable_class->draw_glyphs_transformed = gdk_gl_window_draw_glyphs_transformed;
+  drawable_class->draw_trapezoids        = gdk_gl_window_draw_trapezoids;
+  drawable_class->ref_cairo_surface      = gdk_gl_window_ref_cairo_surface;
 }
 
 static void
@@ -502,8 +509,6 @@ gdk_gl_window_get_visual (GdkDrawable *drawable)
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_visual (real_drawable);
 }
 
-#if !(GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION == 0)
-
 static GdkScreen *
 gdk_gl_window_get_screen (GdkDrawable *drawable)
 {
@@ -511,8 +516,6 @@ gdk_gl_window_get_screen (GdkDrawable *drawable)
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_screen (real_drawable);
 }
-
-#endif
 
 static GdkImage *
 gdk_gl_window_get_image (GdkDrawable *drawable,
@@ -582,20 +585,6 @@ gdk_gl_window_draw_pixbuf (GdkDrawable *drawable,
 {
   GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
 
-#if GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION == 0
-  GDK_DRAWABLE_GET_CLASS (real_drawable)->_draw_pixbuf (real_drawable,
-                                                        gc,
-                                                        pixbuf,
-                                                        src_x,
-                                                        src_y,
-                                                        dest_x,
-                                                        dest_y,
-                                                        width,
-                                                        height,
-                                                        dither,
-                                                        x_dither,
-                                                        y_dither);
-#else
   GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_pixbuf (real_drawable,
                                                        gc,
                                                        pixbuf,
@@ -608,7 +597,6 @@ gdk_gl_window_draw_pixbuf (GdkDrawable *drawable,
                                                        dither,
                                                        x_dither,
                                                        y_dither);
-#endif
 }
 
 static GdkImage *
@@ -632,6 +620,49 @@ gdk_gl_window_copy_to_image (GdkDrawable *drawable,
                                                                  width,
                                                                  height);
 }
+
+static void
+gdk_gl_window_draw_glyphs_transformed (GdkDrawable      *drawable,
+                                       GdkGC            *gc,
+                                       PangoMatrix      *matrix,
+                                       PangoFont        *font,
+                                       gint              x,
+                                       gint              y,
+                                       PangoGlyphString *glyphs)
+{
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
+
+  GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_glyphs_transformed (real_drawable,
+                                                                   gc,
+                                                                   matrix,
+                                                                   font,
+                                                                   x,
+                                                                   y,
+                                                                   glyphs);
+}
+
+static void
+gdk_gl_window_draw_trapezoids (GdkDrawable     *drawable,
+                               GdkGC	       *gc,
+                               GdkTrapezoid    *trapezoids,
+                               gint             n_trapezoids)
+{
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
+
+  GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_trapezoids (real_drawable,
+                                                           gc,
+                                                           trapezoids,
+                                                           n_trapezoids);
+}
+
+static cairo_surface_t *
+gdk_gl_window_ref_cairo_surface (GdkDrawable *drawable)
+{
+  GdkDrawable *real_drawable = ((GdkGLWindow *) drawable)->drawable;
+
+  return GDK_DRAWABLE_GET_CLASS (real_drawable)->ref_cairo_surface (real_drawable);
+}
+
 
 /*< private >*/
 void
