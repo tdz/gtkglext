@@ -129,7 +129,7 @@ gtk_gl_widget_size_allocate (GtkWidget       *widget,
    * Synchronize OpenGL and window resizing request streams.
    */
 
-  if (GTK_WIDGET_REALIZED (widget) && private->is_realized)
+  if (gtk_widget_get_realized (widget) && private->is_realized)
     {
       gldrawable = gdk_window_get_gl_drawable (widget->window);
       gdk_gl_drawable_wait_gdk (gldrawable);
@@ -156,7 +156,7 @@ gtk_gl_widget_unrealize (GtkWidget       *widget,
    * Remove OpenGL-capability from widget->window.
    */
 
-  if (GTK_WIDGET_REALIZED (widget))
+  if (gtk_widget_get_realized (widget))
     gdk_window_unset_gl_capability (widget->window);
 
   private->is_realized = FALSE;
@@ -176,7 +176,7 @@ gtk_gl_widget_parent_set (GtkWidget   *widget,
    */
 
   toplevel = gtk_widget_get_toplevel (widget);
-  if (GTK_WIDGET_TOPLEVEL (toplevel) && !GTK_WIDGET_REALIZED (toplevel))
+  if (gtk_widget_is_toplevel (toplevel) && !gtk_widget_get_realized (toplevel))
     {
       GTK_GL_NOTE (MISC,
         g_message (" - Install colormap to the top-level window."));
@@ -196,7 +196,7 @@ gtk_gl_widget_style_set (GtkWidget *widget,
    * Set a background of "None" on window to avoid AIX X server crash.
    */
 
-  if (GTK_WIDGET_REALIZED (widget))
+  if (gtk_widget_get_realized (widget))
     {
       GTK_GL_NOTE (MISC,
         g_message (" - window->bg_pixmap = %p",
@@ -252,8 +252,8 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   GTK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
-  g_return_val_if_fail (!GTK_WIDGET_NO_WINDOW (widget), FALSE);
-  g_return_val_if_fail (!GTK_WIDGET_REALIZED (widget), FALSE);
+  g_return_val_if_fail (gtk_widget_get_has_window (widget), FALSE);
+  g_return_val_if_fail (!gtk_widget_get_realized (widget), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
   /* 
@@ -434,7 +434,7 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
   GTK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
-  g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), NULL);
+  g_return_val_if_fail (gtk_widget_get_realized (widget), NULL);
 
   gldrawable = gdk_window_get_gl_drawable (widget->window);
   if (gldrawable == NULL)
@@ -476,7 +476,7 @@ gtk_widget_get_gl_context (GtkWidget *widget)
   GLWidgetPrivate *private;
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
-  g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), NULL);
+  g_return_val_if_fail (gtk_widget_get_realized (widget), NULL);
 
   private = g_object_get_qdata (G_OBJECT (widget), quark_gl_private);
   if (private == NULL)
@@ -503,7 +503,7 @@ GdkGLWindow *
 gtk_widget_get_gl_window (GtkWidget *widget)
 {
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
-  g_return_val_if_fail (GTK_WIDGET_REALIZED (widget), NULL);
+  g_return_val_if_fail (gtk_widget_get_realized (widget), NULL);
 
   return gdk_window_get_gl_window (widget->window);
 }
