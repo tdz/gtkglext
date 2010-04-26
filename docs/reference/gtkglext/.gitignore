@@ -9,6 +9,7 @@ gtkglext.hierarchy
 gtkglext.interfaces
 gtkglext.prerequisites
 gtkglext.signals
+tmpl
 tmpl.stamp
 html
 html.stamp
