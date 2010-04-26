@@ -24,6 +24,7 @@ static void
 realize (GtkWidget *widget,
          gpointer   data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
@@ -50,8 +51,9 @@ realize (GtkWidget *widget,
   glClearColor (1.0, 1.0, 1.0, 1.0);
   glClearDepth (1.0);
 
+  gtk_widget_get_allocation (widget, &allocation);
   glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
+              allocation.width, allocation.height);
 
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
@@ -73,15 +75,18 @@ configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
                  gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
+  gtk_widget_get_allocation (widget, &allocation);
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
     return FALSE;
 
   glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
+              allocation.width, allocation.height);
 
   gdk_gl_drawable_gl_end (gldrawable);
   /*** OpenGL END ***/
@@ -168,6 +173,7 @@ static void
 render_to_file (GtkButton *button,
                 GtkWidget *widget)
 {
+  GtkAllocation allocation;
   GdkGLConfig *glconfig;
   Display *xdisplay;
   XVisualInfo *xvinfo;
@@ -206,8 +212,9 @@ render_to_file (GtkButton *button,
    * Create GLXPbuffer.
    */
 
-  width = widget->allocation.width;
-  height = widget->allocation.height;
+  gtk_widget_get_allocation (widget, &allocation);
+  width = allocation.width;
+  height = allocation.height;
 
   g_print ("- create GLXPbuffer\n");
   pbuffer = pb->glXCreateGLXPbufferSGIX (xdisplay, fbconfig,

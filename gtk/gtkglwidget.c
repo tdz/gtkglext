@@ -70,6 +70,7 @@ static void
 gtk_gl_widget_realize (GtkWidget       *widget,
                        GLWidgetPrivate *private)
 {
+  GdkWindow *window;
   GdkGLWindow *glwindow;
 
   GTK_GL_NOTE_FUNC_PRIVATE ();
@@ -79,9 +80,10 @@ gtk_gl_widget_realize (GtkWidget       *widget,
    * handlers.
    */
 
-  if (!gdk_window_is_gl_capable (widget->window))
+  window = gtk_widget_get_window (widget);
+  if (!gdk_window_is_gl_capable (window))
     {
-      glwindow = gdk_window_set_gl_capability (widget->window,
+      glwindow = gdk_window_set_gl_capability (window,
                                                private->glconfig,
                                                NULL);
       if (glwindow == NULL)
@@ -131,7 +133,7 @@ gtk_gl_widget_size_allocate (GtkWidget       *widget,
 
   if (gtk_widget_get_realized (widget) && private->is_realized)
     {
-      gldrawable = gdk_window_get_gl_drawable (widget->window);
+      gldrawable = gdk_window_get_gl_drawable (gtk_widget_get_window (widget));
       gdk_gl_drawable_wait_gdk (gldrawable);
     }
 }
@@ -157,7 +159,7 @@ gtk_gl_widget_unrealize (GtkWidget       *widget,
    */
 
   if (gtk_widget_get_realized (widget))
-    gdk_window_unset_gl_capability (widget->window);
+    gdk_window_unset_gl_capability (gtk_widget_get_window (widget));
 
   private->is_realized = FALSE;
 }
@@ -190,6 +192,8 @@ gtk_gl_widget_style_set (GtkWidget *widget,
                          GtkStyle  *previous_style,
                          gpointer   user_data)
 {
+  GdkWindow *window;
+
   GTK_GL_NOTE_FUNC_PRIVATE ();
 
   /* 
@@ -198,15 +202,17 @@ gtk_gl_widget_style_set (GtkWidget *widget,
 
   if (gtk_widget_get_realized (widget))
     {
-      GTK_GL_NOTE (MISC,
-        g_message (" - window->bg_pixmap = %p",
-                   ((GdkWindowObject *) (widget->window))->bg_pixmap));
-
-      gdk_window_set_back_pixmap (widget->window, NULL, FALSE);
+      window = gtk_widget_get_window (widget);
 
       GTK_GL_NOTE (MISC,
         g_message (" - window->bg_pixmap = %p",
-                   ((GdkWindowObject *) (widget->window))->bg_pixmap));
+                   ((GdkWindowObject *) window)->bg_pixmap));
+
+      gdk_window_set_back_pixmap (window, NULL, FALSE);
+
+      GTK_GL_NOTE (MISC,
+        g_message (" - window->bg_pixmap = %p",
+                   ((GdkWindowObject *) window)->bg_pixmap));
     }
 }
 
@@ -436,7 +442,7 @@ gtk_widget_create_gl_context (GtkWidget    *widget,
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (gtk_widget_get_realized (widget), NULL);
 
-  gldrawable = gdk_window_get_gl_drawable (widget->window);
+  gldrawable = gdk_window_get_gl_drawable (gtk_widget_get_window (widget));
   if (gldrawable == NULL)
     return NULL;
 
@@ -505,5 +511,5 @@ gtk_widget_get_gl_window (GtkWidget *widget)
   g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (gtk_widget_get_realized (widget), NULL);
 
-  return gdk_window_get_gl_window (widget->window);
+  return gdk_window_get_gl_window (gtk_widget_get_window (widget));
 }

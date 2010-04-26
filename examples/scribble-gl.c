@@ -116,13 +116,18 @@ configure_event (GtkWidget         *widget,
 		 GdkEventConfigure *event,
 		 gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
   guint count;
 
-  GLfloat w = widget->allocation.width;
-  GLfloat h = widget->allocation.height;
+  GLfloat w;
+  GLfloat h;
+
+  gtk_widget_get_allocation (widget, &allocation);
+  w = allocation.width;
+  h = allocation.height;
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -205,16 +210,18 @@ motion_notify_event (GtkWidget      *widget,
 		     GdkEventMotion *event,
 		     gpointer        data)
 {
+  GtkAllocation allocation;
   Point* coord=NULL;
 
   if (event->state & GDK_BUTTON1_MASK)
     {
+      gtk_widget_get_allocation (widget, &allocation);
       coord = g_malloc(sizeof(Point));
       coord->x = event->x;
-      coord->y = widget->allocation.height - event->y;
+      coord->y = allocation.height - event->y;
 
       brushStrokeList = g_list_append(brushStrokeList, coord);
-      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
       return TRUE;
     }
 
@@ -231,16 +238,18 @@ button_press_event (GtkWidget      *widget,
 		    GdkEventButton *event,
 		    gpointer        data)
 {
+  GtkAllocation allocation;
   Point* coord=NULL;
 
   if (event->button == 1)
     {
+      gtk_widget_get_allocation (widget, &allocation);
       coord = g_malloc(sizeof(Point));
       coord->x = event->x;
-      coord->y = widget->allocation.height - event->y;
+      coord->y = allocation.height - event->y;
 
       brushStrokeList = g_list_append(brushStrokeList, coord);
-      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
       return TRUE;
     }
 

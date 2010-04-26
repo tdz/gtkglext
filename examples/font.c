@@ -27,6 +27,7 @@ static void
 realize (GtkWidget *widget,
          gpointer   data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
@@ -64,13 +65,15 @@ realize (GtkWidget *widget,
   glClearColor (1.0, 1.0, 1.0, 1.0);
   glClearDepth (1.0);
 
+  gtk_widget_get_allocation (widget, &allocation);
+
   glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
+              allocation.width, allocation.height);
 
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
-  glOrtho (0.0, widget->allocation.width,
-           0.0, widget->allocation.height,
+  glOrtho (0.0, allocation.width,
+           0.0, allocation.height,
            -1.0, 1.0);
 
   glMatrixMode (GL_MODELVIEW);
@@ -85,20 +88,23 @@ configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
                  gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
+  gtk_widget_get_allocation (widget, &allocation);
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
     return FALSE;
 
   glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
+              allocation.width, allocation.height);
 
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
-  glOrtho (0.0, widget->allocation.width,
-           0.0, widget->allocation.height,
+  glOrtho (0.0, allocation.width,
+           0.0, allocation.height,
            -1.0, 1.0);
 
   glMatrixMode (GL_MODELVIEW);
@@ -115,9 +121,12 @@ expose_event (GtkWidget      *widget,
               GdkEventExpose *event,
               gpointer        data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
   int i, j;
+
+  gtk_widget_get_allocation (widget, &allocation);
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -131,7 +140,7 @@ expose_event (GtkWidget      *widget,
   glColor3f (0.0, 0.0, 0.0);
   for (i = 2; i >= -2; i--)
     {
-      glRasterPos2f (10.0, 0.5*widget->allocation.height + i*font_height);
+      glRasterPos2f (10.0, 0.5*allocation.height + i*font_height);
       for (j = ' '; j <= 'Z'; j++)
         glCallList (font_list_base+j);
     }

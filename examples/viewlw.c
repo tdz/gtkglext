@@ -182,6 +182,7 @@ static gboolean
 configure(GtkWidget         *widget,
           GdkEventConfigure *event)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext;
   GdkGLDrawable *gldrawable;
 
@@ -189,12 +190,13 @@ configure(GtkWidget         *widget,
 
   glcontext = gtk_widget_get_gl_context(widget);
   gldrawable = gtk_widget_get_gl_drawable(widget);
+  gtk_widget_get_allocation (widget, &allocation);
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
     goto NO_GL;
 
-  glViewport (0, 0, widget->allocation.width, widget->allocation.height);
+  glViewport (0, 0, allocation.width, allocation.height);
 
   gdk_gl_drawable_gl_end(gldrawable);
   /*** OpenGL END ***/
@@ -264,12 +266,15 @@ static gboolean
 motion_notify(GtkWidget      *widget,
               GdkEventMotion *event)
 {
+  GtkAllocation allocation;
+  GdkModifierType state = 0;
   int x = 0;
   int y = 0;
-  GdkModifierType state = 0;
   float width, height;
   gboolean redraw = FALSE;
   mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
+
+  gtk_widget_get_allocation (widget, &allocation);
 
   if (event->is_hint)
     {
@@ -285,8 +290,8 @@ motion_notify(GtkWidget      *widget,
       state = event->state;
     }
 
-  width = widget->allocation.width;
-  height = widget->allocation.height;
+  width = allocation.width;
+  height = allocation.height;
 
   if (state & GDK_BUTTON1_MASK)
     {
@@ -319,7 +324,10 @@ motion_notify(GtkWidget      *widget,
   info->beginy = y;
 
   if (redraw && !info->animate)
-    gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+    {
+      gtk_widget_get_allocation (widget, &allocation);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
+    }
 
   return TRUE;
 }
@@ -327,11 +335,16 @@ motion_notify(GtkWidget      *widget,
 static gboolean
 timeout(GtkWidget *widget)
 {
+  GtkAllocation allocation;
+  GdkWindow *window;
+
+  gtk_widget_get_allocation (widget, &allocation);
+
   /* Invalidate the whole window. */
-  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+  gdk_window_invalidate_rect (window, &allocation, FALSE);
 
   /* Update synchronously. */
-  gdk_window_process_updates (widget->window, FALSE);
+  gdk_window_process_updates (window, FALSE);
 
   return TRUE;
 }
@@ -364,6 +377,7 @@ timeout_remove(GtkWidget *widget)
 static void
 toggle_animation(GtkWidget *widget)
 {
+  GtkAllocation allocation;
   mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
 
   info->animate = !info->animate;
@@ -379,7 +393,8 @@ toggle_animation(GtkWidget *widget)
       info->dquat[1] = 0.0;
       info->dquat[2] = 0.0;
       info->dquat[3] = 1.0;
-      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gtk_widget_get_allocation (widget, &allocation);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
     }
 }
 
@@ -425,7 +440,12 @@ static gboolean
 key_press_event(GtkWidget   *widget,
                 GdkEventKey *event)
 {
+  GtkAllocation allocation;
+  GdkWindow *window;
   mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
+
+  window = gtk_widget_get_window (widget);
+  gtk_widget_get_allocation (widget, &allocation);
 
   switch (event->keyval)
     {
@@ -435,7 +455,7 @@ key_press_event(GtkWidget   *widget,
       if (info->zoom < 5.0) info->zoom = 5.0;
       if (info->zoom > 120.0) info->zoom = 120.0;
       /* zoom has changed, redraw mesh */
-      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gdk_window_invalidate_rect (window, &allocation, FALSE);
       break;
 
     case GDK_minus:
@@ -444,7 +464,7 @@ key_press_event(GtkWidget   *widget,
       if (info->zoom < 5.0) info->zoom = 5.0;
       if (info->zoom > 120.0) info->zoom = 120.0;
       /* zoom has changed, redraw mesh */
-      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gdk_window_invalidate_rect (window, &allocation, FALSE);
       break;
 
     case GDK_Escape:

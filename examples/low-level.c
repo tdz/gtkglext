@@ -37,20 +37,24 @@ static void
 realize (GtkWidget *widget,
          gpointer   data)
 {
+  GtkAllocation allocation;
+  GdkWindow *window;
   GLUquadricObj *qobj;
   static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
   static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
+
+  window = gtk_widget_get_window (widget);
 
   /*
    * Create GdkGLWindow for widget->window.
    */
 
   glwindow = gdk_gl_window_new (glconfig,
-                                widget->window,
+                                window,
                                 NULL);
 
   /* Set a background of "None" on window to avoid AIX X server crash */
-  gdk_window_set_back_pixmap (widget->window, NULL, FALSE);
+  gdk_window_set_back_pixmap (window, NULL, FALSE);
 
   /*
    * Create OpenGL rendering context.
@@ -91,8 +95,9 @@ realize (GtkWidget *widget,
   glClearColor (1.0, 1.0, 1.0, 1.0);
   glClearDepth (1.0);
 
+  gtk_widget_get_allocation (widget, &allocation);
   glViewport (0, 0,
-	      widget->allocation.width, widget->allocation.height);
+	      allocation.width, allocation.height);
 
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
@@ -125,6 +130,8 @@ configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
                  gpointer           data)
 {
+  GtkAllocation allocation;
+
   /* gtk_drawing_area sends configure_event when it is realized. */
   if (glwindow == NULL)
     return FALSE;
@@ -134,8 +141,9 @@ configure_event (GtkWidget         *widget,
   if (!gdk_gl_drawable_gl_begin (GDK_GL_DRAWABLE (glwindow), glcontext))
     return FALSE;
 
+  gtk_widget_get_allocation (widget, &allocation);
   glViewport (0, 0,
-	      widget->allocation.width, widget->allocation.height);
+	      allocation.width, allocation.height);
 
   gdk_gl_drawable_gl_end (GDK_GL_DRAWABLE (glwindow));
 

@@ -66,12 +66,17 @@ configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
                  gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  GLfloat w = widget->allocation.width;
-  GLfloat h = widget->allocation.height;
+  GLfloat w;
+  GLfloat h;
   GLfloat aspect;
+
+  gtk_widget_get_allocation (widget, &allocation);
+  w = allocation.width;
+  h = allocation.height;
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -147,7 +152,12 @@ expose_event (GtkWidget      *widget,
 static gboolean
 timeout (GtkWidget *widget)
 {
+  GtkAllocation allocation;
+  GdkWindow *window;
   GLfloat t;
+
+  window = gtk_widget_get_window (widget);
+  gtk_widget_get_allocation (widget, &allocation);
 
   angle += 3.0;
   if (angle >= 360.0)
@@ -160,10 +170,10 @@ timeout (GtkWidget *widget)
   pos_y = 2.0 * (sin (t) + 0.4 * sin (3.0*t)) - 1.0;
 
   /* Invalidate the whole window. */
-  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+  gdk_window_invalidate_rect (window, &allocation, FALSE);
 
   /* Update synchronously (fast). */
-  gdk_window_process_updates (widget->window, FALSE);
+  gdk_window_process_updates (window, FALSE);
 
   return TRUE;
 }
@@ -238,6 +248,7 @@ visibility_notify_event (GtkWidget          *widget,
 static void
 toggle_animation (GtkWidget *widget)
 {
+  GtkAllocation allocation;
   animate = !animate;
 
   if (animate)
@@ -247,7 +258,8 @@ toggle_animation (GtkWidget *widget)
   else
     {
       timeout_remove (widget);
-      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gtk_widget_get_allocation (widget, &allocation);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
     }
 }
 

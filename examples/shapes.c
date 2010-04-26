@@ -267,12 +267,17 @@ configure_event (GtkWidget         *widget,
 		 GdkEventConfigure *event,
 		 gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  GLfloat w = widget->allocation.width;
-  GLfloat h = widget->allocation.height;
+  GLfloat w;
+  GLfloat h;
   GLfloat aspect;
+
+  gtk_widget_get_allocation (widget, &allocation);
+  w = allocation.width;
+  h = allocation.height;
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -398,11 +403,16 @@ motion_notify_event (GtkWidget      *widget,
 		     GdkEventMotion *event,
 		     gpointer        data)
 {
-  float w = widget->allocation.width;
-  float h = widget->allocation.height;
+  GtkAllocation allocation;
+  float w;
+  float h;
   float x = event->x;
   float y = event->y;
   gboolean redraw = FALSE;
+
+  gtk_widget_get_allocation (widget, &allocation);
+  w = allocation.width;
+  h = allocation.height;
 
   /* Rotation. */
   if (event->state & GDK_BUTTON1_MASK)
@@ -435,7 +445,7 @@ motion_notify_event (GtkWidget      *widget,
   begin_y = y;
 
   if (redraw && !animate)
-    gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
 
   return TRUE;
 }
@@ -461,11 +471,17 @@ key_press_event (GtkWidget   *widget,
 static gboolean
 idle (GtkWidget *widget)
 {
+  GtkAllocation allocation;
+  GdkWindow *window;
+
+  window = gtk_widget_get_window (widget);
+  gtk_widget_get_allocation (widget, &allocation);
+
   /* Invalidate the whole window. */
-  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+  gdk_window_invalidate_rect (window, &allocation, FALSE);
 
   /* Update synchronously. */
-  gdk_window_process_updates (widget->window, FALSE);
+  gdk_window_process_updates (window, FALSE);
 
   return TRUE;
 }
@@ -535,6 +551,7 @@ visibility_notify_event (GtkWidget          *widget,
 static void
 toggle_animation (GtkWidget *widget)
 {
+  GtkAllocation allocation;
   animate = !animate;
 
   if (animate)
@@ -548,7 +565,8 @@ toggle_animation (GtkWidget *widget)
       view_quat_diff[1] = 0.0;
       view_quat_diff[2] = 0.0;
       view_quat_diff[3] = 1.0;
-      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gtk_widget_get_allocation (widget, &allocation);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
     }
 }
 

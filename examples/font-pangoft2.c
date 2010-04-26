@@ -168,11 +168,16 @@ configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
                  gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  GLsizei w = widget->allocation.width;
-  GLsizei h = widget->allocation.height;
+  GLsizei w;
+  GLsizei h;
+
+  gtk_widget_get_allocation (widget, &allocation);
+  w = allocation.width;
+  h = allocation.height;
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -205,6 +210,7 @@ expose_event (GtkWidget      *widget,
               GdkEventExpose *event,
               gpointer        data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
@@ -215,6 +221,8 @@ expose_event (GtkWidget      *widget,
   GLfloat text_w, text_h;
   GLfloat tangent_h;
 
+  gtk_widget_get_allocation (widget, &allocation);
+
   /* Font */
   widget_context = gtk_widget_get_pango_context (widget);
   font_desc = pango_context_get_font_description (widget_context);
@@ -223,7 +231,7 @@ expose_event (GtkWidget      *widget,
 
   /* Text layout */
   layout = pango_layout_new (ft2_context);
-  pango_layout_set_width (layout, PANGO_SCALE * widget->allocation.width);
+  pango_layout_set_width (layout, PANGO_SCALE * allocation.width);
   pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
   pango_layout_set_text (layout, text, -1);
 
@@ -244,15 +252,15 @@ expose_event (GtkWidget      *widget,
   text_h = PANGO_PIXELS (logical_rect.height);
   /*
    * tangent = Z_NEAR * tan (FOVY_2 * G_PI / 180.0)
-   * w = widget->allocation.width
-   * h = widget->allocation.height
+   * w = allocation.width
+   * h = allocation.height
    *
    * x = -1.0 * (text_w/w) * tangent * (w/h) = -text_w * tangent / h
    * y = -1.0 * (text_h/h) * tangent         = -text_h * tangent / h
    * z = Z_NEAR
    */
   tangent_h = Z_NEAR * tan (FOVY_2 * G_PI / 180.0);
-  tangent_h /= widget->allocation.height;
+  tangent_h /= allocation.height;
   glRasterPos3f (-text_w * tangent_h,
                  -text_h * tangent_h,
                  Z_NEAR);

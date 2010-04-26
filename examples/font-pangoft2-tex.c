@@ -268,11 +268,16 @@ configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
                  gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  GLsizei w = widget->allocation.width;
-  GLsizei h = widget->allocation.height;
+  GLsizei w;
+  GLsizei h;
+
+  gtk_widget_get_allocation (widget, &allocation);
+  w = allocation.width;
+  h = allocation.height;
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -416,15 +421,21 @@ unrealize (GtkWidget *widget,
 static gboolean
 timeout (GtkWidget *widget)
 {
+  GtkAllocation allocation;
+  GdkWindow *window;
+
+  window = gtk_widget_get_window (widget);
+  gtk_widget_get_allocation (widget, &allocation);
+
   text_z -= TEXT_Z_DIFF;
   if (text_z <= TEXT_Z_FAR)
     text_z = TEXT_Z_NEAR;
 
   /* Invalidate the whole window. */
-  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+  gdk_window_invalidate_rect (window, &allocation, FALSE);
 
   /* Update synchronously. */
-  gdk_window_process_updates (widget->window, FALSE);
+  gdk_window_process_updates (window, FALSE);
 
   return TRUE;
 }

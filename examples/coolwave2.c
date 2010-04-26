@@ -294,11 +294,16 @@ configure_event (GtkWidget         *widget,
 		 GdkEventConfigure *event,
 		 gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  GLfloat w = widget->allocation.width;
-  GLfloat h = widget->allocation.height;
+  GLfloat w;
+  GLfloat h;
+
+  gtk_widget_get_allocation (widget, &allocation);
+  w = allocation.width;
+  h = allocation.height;
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -367,15 +372,20 @@ expose_event (GtkWidget      *widget,
 static gboolean
 timeout (GtkWidget *widget)
 {
+  GtkAllocation allocation;
+  GdkWindow *window;
   getforce ();
   getvelocity ();
   getposition ();
 
+  window = gtk_widget_get_window (widget);
+  gtk_widget_get_allocation (widget, &allocation);
+
   /* Invalidate the whole window. */
-  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+  gdk_window_invalidate_rect (window, &allocation, FALSE);
 
   /* Update synchronously (fast). */
-  gdk_window_process_updates (widget->window, FALSE);
+  gdk_window_process_updates (window, FALSE);
 
   return TRUE;
 }
@@ -389,7 +399,10 @@ motion_notify_event (GtkWidget      *widget,
 		     GdkEventMotion *event,
 		     gpointer        data)
 {
+  GtkAllocation allocation;
   gboolean redraw = FALSE;
+
+  gtk_widget_get_allocation (widget, &allocation);
 
   if (event->state & GDK_BUTTON1_MASK)
     {
@@ -401,7 +414,7 @@ motion_notify_event (GtkWidget      *widget,
 
   if (event->state & GDK_BUTTON2_MASK)
     {
-      sdepth -= ((event->y - beginY)/(widget->allocation.height))*(MAXGRID/2);
+      sdepth -= ((event->y - beginY)/(allocation.height))*(MAXGRID/2);
 
       redraw = TRUE;
     }
@@ -410,7 +423,7 @@ motion_notify_event (GtkWidget      *widget,
   beginY = event->y;
 
   if (redraw && !animate)
-    gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+    gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
 
   return TRUE;
 }
@@ -469,6 +482,8 @@ key_press_event (GtkWidget   *widget,
 		 GdkEventKey *event,
 		 gpointer     data)
 {
+  GtkAllocation allocation;
+
   switch (event->keyval)
     {
     case GDK_r:
@@ -501,7 +516,10 @@ key_press_event (GtkWidget   *widget,
     }
 
   if (!animate)
-    gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+    {
+      gtk_widget_get_allocation (widget, &allocation);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
+    }
 
   return TRUE;
 }
@@ -611,6 +629,7 @@ visibility_notify_event (GtkWidget          *widget,
 static void
 toggle_animation (GtkWidget *widget)
 {
+  GtkAllocation allocation;
   animate = !animate;
 
   if (animate)
@@ -620,7 +639,8 @@ toggle_animation (GtkWidget *widget)
   else
     {
       timeout_remove (widget);
-      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gtk_widget_get_allocation (widget, &allocation);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
     }
 }
 
@@ -630,8 +650,12 @@ toggle_animation (GtkWidget *widget)
 static void
 init_wireframe (GtkWidget *widget)
 {
+  GtkAllocation allocation;
+
+  gtk_widget_get_allocation (widget, &allocation);
+
   resetWireframe ();
-  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+  gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
 }
 
 

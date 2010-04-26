@@ -173,14 +173,17 @@ reshape (GtkWidget         *widget,
 	 GdkEventConfigure *event,
 	 gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
+  gtk_widget_get_allocation (widget, &allocation);
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
     return FALSE;
 
-  glViewport (0, 0, widget->allocation.width, widget->allocation.height);
+  glViewport (0, 0, allocation.width, allocation.height);
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
   glFrustum (-1.0, 1.0, -1.0, 1.0, 10.0, 100.0);
@@ -262,7 +265,12 @@ display (GtkWidget      *widget,
 static gboolean
 timeout (GtkWidget *widget)
 {
+  GtkAllocation allocation;
+  GdkWindow *window;
   GLint i;
+
+  window = gtk_widget_get_window (widget);
+  gtk_widget_get_allocation (widget, &allocation);
 
   drift += 0.05;
   if (drift >= 1.0)
@@ -293,10 +301,10 @@ timeout (GtkWidget *widget)
   glMatrixMode (GL_MODELVIEW);
 
   /* Invalidate the whole window. */
-  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+  gdk_window_invalidate_rect (window, &allocation, FALSE);
 
   /* Update synchronously. */
-  gdk_window_process_updates (widget->window, FALSE);
+  gdk_window_process_updates (window, FALSE);
 
   return TRUE;
 }
@@ -364,6 +372,7 @@ visible (GtkWidget          *widget,
 static void
 toggle_animation (GtkWidget *widget)
 {
+  GtkAllocation allocation;
   animate = !animate;
 
   if (animate)
@@ -373,7 +382,8 @@ toggle_animation (GtkWidget *widget)
   else
     {
       timeout_remove (widget);
-      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gtk_widget_get_allocation (widget, &allocation);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
     }
 }
 
@@ -396,6 +406,7 @@ key (GtkWidget   *widget,
      GdkEventKey *event,
      gpointer     data)
 {
+  GtkAllocation allocation;
   float step = 3.0;
 
   switch (event->keyval)
@@ -423,7 +434,10 @@ key (GtkWidget   *widget,
     }
 
   if (!animate)
-    gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+    {
+      gtk_widget_get_allocation (widget, &allocation);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
+    }
 
   return TRUE;
 }

@@ -62,8 +62,11 @@ configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
                  gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLDrawable *gldrawable;
   static gboolean is_initialized = FALSE;
+
+  gtk_widget_get_allocation (widget, &allocation);
 
   /*
    * Create an OpenGL off-screen rendering area.
@@ -72,9 +75,9 @@ configure_event (GtkWidget         *widget,
   if (pixmap != NULL)
     g_object_unref (G_OBJECT (pixmap));
 
-  pixmap = gdk_pixmap_new (widget->window,
-			   widget->allocation.width,
-			   widget->allocation.height,
+  pixmap = gdk_pixmap_new (gtk_widget_get_window (widget),
+			   allocation.width,
+			   allocation.height,
                            -1);
 
   /*
@@ -117,7 +120,7 @@ configure_event (GtkWidget         *widget,
     }
 
   glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
+              allocation.width, allocation.height);
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -136,8 +139,8 @@ expose_event (GtkWidget      *widget,
               GdkEventExpose *event,
               gpointer        data)
 {
-  gdk_draw_drawable (widget->window,
-		     widget->style->fg_gc[gtk_widget_get_state (widget)],
+  gdk_draw_drawable (gtk_widget_get_window (widget),
+		     gtk_widget_get_style (widget)->fg_gc[gtk_widget_get_state (widget)],
 		     pixmap,
 		     event->area.x, event->area.y,
 		     event->area.x, event->area.y,

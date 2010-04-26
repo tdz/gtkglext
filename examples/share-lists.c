@@ -99,6 +99,7 @@ configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
                  gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
@@ -106,8 +107,9 @@ configure_event (GtkWidget         *widget,
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
     return FALSE;
 
+  gtk_widget_get_allocation (widget, &allocation);
   glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
+              allocation.width, allocation.height);
 
   gdk_gl_drawable_gl_end (gldrawable);
   /*** OpenGL END ***/

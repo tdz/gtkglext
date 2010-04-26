@@ -121,11 +121,16 @@ configure_event (GtkWidget         *widget,
 		 GdkEventConfigure *event,
 		 gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  GLfloat w = widget->allocation.width;
-  GLfloat h = widget->allocation.height;
+  GLfloat w;
+  GLfloat h;
+
+  gtk_widget_get_allocation (widget, &allocation);
+  w = allocation.width;
+  h = allocation.height;
 
   g_print ("%s: \"configure_event\"\n", gtk_widget_get_name (widget));
 
@@ -186,15 +191,20 @@ expose_event (GtkWidget      *widget,
 static gboolean
 timeout (GtkWidget *widget)
 {
+  GtkAllocation allocation;
+  GdkWindow *window;
   g_print (".");
+
+  window = gtk_widget_get_window (widget);
+  gtk_widget_get_allocation (widget, &allocation);
 
   /*** Fill in the details here ***/
 
   /* Invalidate the whole window. */
-  gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+  gdk_window_invalidate_rect (window, &allocation, FALSE);
 
   /* Update synchronously. */
-  gdk_window_process_updates (widget->window, FALSE);
+  gdk_window_process_updates (window, FALSE);
 
   return TRUE;
 }
@@ -439,6 +449,7 @@ visibility_notify_event (GtkWidget          *widget,
 static void
 toggle_animation (GtkWidget *widget)
 {
+  GtkAllocation allocation;
   animate = !animate;
 
   if (animate)
@@ -448,7 +459,8 @@ toggle_animation (GtkWidget *widget)
   else
     {
       timeout_remove (widget);
-      gdk_window_invalidate_rect (widget->window, &widget->allocation, FALSE);
+      gtk_widget_get_allocation (widget, &allocation);
+      gdk_window_invalidate_rect (gtk_widget_get_window (widget), &allocation, FALSE);
     }
 }
 

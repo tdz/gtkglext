@@ -62,8 +62,11 @@ configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
                  gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLDrawable *gldrawable;
   static gboolean is_initialized = FALSE;
+
+  gtk_widget_get_allocation (widget, &allocation);
 
   /*
    * Create an OpenGL off-screen rendering area.
@@ -72,9 +75,9 @@ configure_event (GtkWidget         *widget,
   if (pixmap != NULL)
     g_object_unref (G_OBJECT (pixmap));
 
-  pixmap = gdk_pixmap_new (widget->window,
-			   widget->allocation.width,
-			   widget->allocation.height,
+  pixmap = gdk_pixmap_new (gtk_widget_get_window (widget),
+			   allocation.width,
+			   allocation.height,
                            -1);
 
   /*
@@ -117,7 +120,7 @@ configure_event (GtkWidget         *widget,
     }
 
   glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
+              allocation.width, allocation.height);
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -126,12 +129,12 @@ configure_event (GtkWidget         *widget,
 
   /* GDK rendering. */
   gdk_draw_rectangle (GDK_DRAWABLE (gldrawable),
-		      widget->style->black_gc,
+		      gtk_widget_get_style (widget)->black_gc,
 		      TRUE,
-		      widget->allocation.width/10,
-		      widget->allocation.height/10,
-		      widget->allocation.width*8/10,
-		      widget->allocation.height*8/10);
+		      allocation.width/10,
+		      allocation.height/10,
+		      allocation.width*8/10,
+		      allocation.height*8/10);
 
   /* Sync. */
   gdk_gl_drawable_wait_gdk (gldrawable);
@@ -153,8 +156,12 @@ expose_event (GtkWidget      *widget,
               GdkEventExpose *event,
               gpointer        data)
 {
-  gdk_draw_drawable (widget->window,
-		     widget->style->fg_gc[gtk_widget_get_state (widget)],
+  GtkStyle *style;
+
+  style = gtk_widget_get_style (widget);
+
+  gdk_draw_drawable (gtk_widget_get_window (widget),
+		     style->fg_gc[gtk_widget_get_state (widget)],
 		     pixmap,
 		     event->area.x, event->area.y,
 		     event->area.x, event->area.y,

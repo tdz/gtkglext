@@ -23,6 +23,7 @@ static void
 realize (GtkWidget *widget,
          gpointer   data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
@@ -49,8 +50,9 @@ realize (GtkWidget *widget,
   glClearColor (1.0, 1.0, 1.0, 1.0);
   glClearDepth (1.0);
 
+  gtk_widget_get_allocation (widget, &allocation);
   glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
+              allocation.width, allocation.height);
 
   glMatrixMode (GL_PROJECTION);
   glLoadIdentity ();
@@ -72,6 +74,7 @@ configure_event (GtkWidget         *widget,
                  GdkEventConfigure *event,
                  gpointer           data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
@@ -79,8 +82,9 @@ configure_event (GtkWidget         *widget,
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
     return FALSE;
 
+  gtk_widget_get_allocation (widget, &allocation);
   glViewport (0, 0,
-              widget->allocation.width, widget->allocation.height);
+              allocation.width, allocation.height);
 
   gdk_gl_drawable_gl_end (gldrawable);
   /*** OpenGL END ***/
@@ -93,8 +97,11 @@ expose_event (GtkWidget      *widget,
               GdkEventExpose *event,
               gpointer        data)
 {
+  GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
+  gtk_widget_get_allocation (widget, &allocation);
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -107,12 +114,12 @@ expose_event (GtkWidget      *widget,
 
   /* GDK rendering. */
   gdk_draw_rectangle (GDK_DRAWABLE (gldrawable),
-		      widget->style->black_gc,
+		      gtk_widget_get_style (widget)->black_gc,
 		      TRUE,
-		      widget->allocation.width/10,
-		      widget->allocation.height/10,
-		      widget->allocation.width*8/10,
-		      widget->allocation.height*8/10);
+		      allocation.width/10,
+		      allocation.height/10,
+		      allocation.width*8/10,
+		      allocation.height*8/10);
 
   /* Sync. */
   gdk_gl_drawable_wait_gdk (gldrawable);
