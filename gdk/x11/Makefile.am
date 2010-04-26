@@ -12,7 +12,6 @@ AM_CPPFLAGS = \
 	$(GDK_CFLAGS)			\
 	$(GL_CFLAGS)			\
 	$(GDKGLEXT_WIN_CFLAGS)		\
-	$(PANGOX_CFLAGS)		\
 	-DG_DISABLE_DEPRECATED		\
 	-DGDK_DISABLE_DEPRECATED	\
 	-DGDK_PIXBUF_DISABLE_DEPRECATED
@@ -37,7 +36,6 @@ gdkglext_x11_c_sources = \
 	gdkgldrawable-x11.c	\
 	gdkglpixmap-x11.c	\
 	gdkglwindow-x11.c	\
-	gdkglfont-x11.c		\
 	gdkglglxext.c
 
 gdkglext_x11_headers = \
@@ -53,5 +51,5 @@ gdkglextx11include_HEADERS = $(gdkglext_x11_headers)
 noinst_LTLIBRARIES = libgdkglext-x11.la
 
 libgdkglext_x11_la_SOURCES = $(gdkglext_x11_sources)
-libgdkglext_x11_la_LDFLAGS = $(GDK_LIBS) $(GL_LIBS) $(GDKGLEXT_WIN_LIBS) $(PANGOX_LIBS)
+libgdkglext_x11_la_LDFLAGS = $(GDK_LIBS) $(GL_LIBS) $(GDKGLEXT_WIN_LIBS)
 

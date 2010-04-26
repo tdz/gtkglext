@@ -14,7 +14,6 @@
 <!ENTITY gtkglext-gdkgldrawable SYSTEM "xml/gdkgldrawable.xml">
 <!ENTITY gtkglext-gdkglpixmap SYSTEM "xml/gdkglpixmap.xml">
 <!ENTITY gtkglext-gdkglwindow SYSTEM "xml/gdkglwindow.xml">
-<!ENTITY gtkglext-gdkglfont SYSTEM "xml/gdkglfont.xml">
 <!ENTITY gtkglext-gdkglx SYSTEM "xml/gdkglx.xml">
 
 <!ENTITY gtkglext-gtkgldefs SYSTEM "xml/gtkgldefs.xml">
@@ -48,7 +47,6 @@
     &gtkglext-gdkgldrawable;
     &gtkglext-gdkglpixmap;
     &gtkglext-gdkglwindow;
-    &gtkglext-gdkglfont;
     &gtkglext-gdkgltokens;
     &gtkglext-gdkglx;
     &gtkglext-gdkglversion;

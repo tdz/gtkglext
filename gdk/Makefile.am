@@ -66,7 +66,6 @@ gdkglext_public_h_sources = \
 	gdkgldrawable.h		\
 	gdkglpixmap.h		\
 	gdkglwindow.h		\
-	gdkglfont.h		\
 	gdkglglext.h
 
 gdkglext_private_h_sources = \

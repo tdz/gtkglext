@@ -186,12 +186,6 @@ gdk_gl_window_get_type
 </SECTION>
 
 <SECTION>
-<FILE>gdkglfont</FILE>
-gdk_gl_font_use_pango_font
-gdk_gl_font_use_pango_font_for_display
-</SECTION>
-
-<SECTION>
 <FILE>gdkgltokens</FILE>
 GDK_GL_SUCCESS
 GDK_GL_ATTRIB_LIST_NONE

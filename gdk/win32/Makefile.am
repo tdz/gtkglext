@@ -35,7 +35,6 @@ gdkglext_win32_c_sources = \
 	gdkgldrawable-win32.c	\
 	gdkglpixmap-win32.c	\
 	gdkglwindow-win32.c	\
-	gdkglfont-win32.c	\
 	gdkglwglext.c
 
 gdkglext_win32_headers = \

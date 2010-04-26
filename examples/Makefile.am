@@ -77,9 +77,6 @@ endif
 noinst_PROGRAMS += color
 color_SOURCES = color.c
 
-noinst_PROGRAMS += font
-font_SOURCES = font.c
-
 if GLU
 noinst_PROGRAMS += button
 button_SOURCES = button.c
