@@ -3,6 +3,7 @@ gtkglext-decl.txt
 gtkglext-decl-list.txt
 gtkglext-overrides.txt
 gtkglext-undeclared.txt
+gtkglext-undocumented.txt
 gtkglext-unused.txt
 gtkglext.args
 gtkglext.hierarchy
