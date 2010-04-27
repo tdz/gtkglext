@@ -220,9 +220,9 @@ AS_IF([test x$gdktarget = xwin32],
 
 AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
 
-PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.8], ,
+PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.20], ,
                   [AS_IF([test -z "${GTK_LIBS+x}"],
-                         [AC_MSG_FAILURE([GTK+ 2.8 or newer is required.])])])
+                         [AC_MSG_FAILURE([GTK+ 2.20 or newer is required.])])])
 PKG_CHECK_MODULES([GDK], [gdk-2.0], ,
                   [AS_IF([test -z "${GDK_LIBS+x}"],
                          [AC_MSG_FAILURE([GDK is required.])])])
