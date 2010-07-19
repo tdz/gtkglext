@@ -57,8 +57,6 @@ GdkGLPixmap *gdk_gl_pixmap_new              (GdkGLConfig *glconfig,
                                              GdkPixmap   *pixmap,
                                              const int   *attrib_list);
 
-void         gdk_gl_pixmap_destroy          (GdkGLPixmap *glpixmap);
-
 GdkPixmap   *gdk_gl_pixmap_get_pixmap       (GdkGLPixmap *glpixmap);
 
 /*

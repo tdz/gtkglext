@@ -756,22 +756,6 @@ _gdk_gl_pixmap_get_size (GdkGLDrawable *gldrawable,
 }
 
 /**
- * gdk_gl_pixmap_destroy:
- * @glpixmap: a #GdkGLPixmap.
- *
- * Destroys the OpenGL resources associated with @glpixmap and
- * decrements @glpixmap's reference count.
- **/
-void
-gdk_gl_pixmap_destroy (GdkGLPixmap *glpixmap)
-{
-  g_return_if_fail (GDK_IS_GL_PIXMAP (glpixmap));
-
-  _gdk_gl_pixmap_destroy (glpixmap);
-  g_object_unref (G_OBJECT (glpixmap));
-}
-
-/**
  * gdk_gl_pixmap_get_pixmap:
  * @glpixmap: a #GdkGLPixmap.
  *

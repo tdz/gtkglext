@@ -138,7 +138,6 @@ gdk_gl_drawable_get_type
 <FILE>gdkglpixmap</FILE>
 GdkGLPixmap
 gdk_gl_pixmap_new
-gdk_gl_pixmap_destroy
 gdk_gl_pixmap_get_pixmap
 gdk_pixmap_set_gl_capability
 gdk_pixmap_unset_gl_capability

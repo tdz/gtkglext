@@ -1307,7 +1307,6 @@ EXPORTS
 	gdk_gl_init_check
 	gdk_gl_parse_args
 	gdk_gl_pbuffer_attrib_get_type
-	gdk_gl_pixmap_destroy
 	gdk_gl_pixmap_get_pixmap
 	gdk_gl_pixmap_get_type
 	gdk_gl_pixmap_new
