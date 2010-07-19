@@ -25,7 +25,6 @@ EXPORTS
 	gdk_gl_config_new_by_mode_for_screen
 	gdk_gl_config_new_for_screen
 	gdk_gl_context_copy
-	gdk_gl_context_destroy
 	gdk_gl_context_get_current
 	gdk_gl_context_get_gl_config
 	gdk_gl_context_get_gl_drawable

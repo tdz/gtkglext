@@ -86,7 +86,6 @@ gdk_gl_config_get_type
 <FILE>gdkglcontext</FILE>
 GdkGLContext
 gdk_gl_context_new
-gdk_gl_context_destroy
 gdk_gl_context_copy
 gdk_gl_context_get_gl_drawable
 gdk_gl_context_get_gl_config
