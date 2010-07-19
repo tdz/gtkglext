@@ -156,6 +156,22 @@ static void             gdk_gl_pixmap_draw_trapezoids         (GdkDrawable      
                                                                GdkTrapezoid     *trapezoids,
                                                                gint              n_trapezoids);
 static cairo_surface_t *gdk_gl_pixmap_ref_cairo_surface       (GdkDrawable      *drawable);
+static GdkDrawable *    gdk_gl_pixmap_get_source_drawable     (GdkDrawable      *drawable);
+static void             gdk_gl_pixmap_set_cairo_clip          (GdkDrawable      *drawable,
+                                                               cairo_t          *cr);
+static cairo_surface_t *gdk_gl_pixmap_create_cairo_surface    (GdkDrawable      *drawable,
+                                                               int               width,
+                                                               int               height);
+static void             gdk_gl_pixmap_draw_drawable_with_src  (GdkDrawable      *drawable,
+                                                               GdkGC            *gc,
+                                                               GdkDrawable      *src,
+                                                               gint              xsrc,
+                                                               gint              ysrc,
+                                                               gint              xdest,
+                                                               gint              ydest,
+                                                               gint              width,
+                                                               gint              height,
+                                                               GdkDrawable      *original_src);
 static void             gdk_gl_pixmap_class_init              (GdkGLPixmapClass *klass);
 static void             gdk_gl_pixmap_finalize                (GObject          *object);
 
@@ -227,6 +243,10 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
   drawable_class->draw_glyphs_transformed = gdk_gl_pixmap_draw_glyphs_transformed;
   drawable_class->draw_trapezoids        = gdk_gl_pixmap_draw_trapezoids;
   drawable_class->ref_cairo_surface      = gdk_gl_pixmap_ref_cairo_surface;
+  drawable_class->get_source_drawable    = gdk_gl_pixmap_get_source_drawable;
+  drawable_class->set_cairo_clip         = gdk_gl_pixmap_set_cairo_clip;
+  drawable_class->create_cairo_surface   = gdk_gl_pixmap_create_cairo_surface;
+  drawable_class->draw_drawable_with_src = gdk_gl_pixmap_draw_drawable_with_src;
 }
 
 static void
@@ -661,6 +681,61 @@ gdk_gl_pixmap_ref_cairo_surface (GdkDrawable *drawable)
   GdkDrawable *real_drawable = ((GdkGLPixmap *) drawable)->drawable;
 
   return GDK_DRAWABLE_GET_CLASS (real_drawable)->ref_cairo_surface (real_drawable);
+}
+
+static GdkDrawable *
+gdk_gl_pixmap_get_source_drawable (GdkDrawable *drawable)
+{
+  GdkDrawable *real_drawable = ((GdkGLPixmap *) drawable)->drawable;
+
+  return GDK_DRAWABLE_GET_CLASS (real_drawable)->get_source_drawable (real_drawable);
+}
+
+static void
+gdk_gl_pixmap_set_cairo_clip (GdkDrawable *drawable,
+                              cairo_t     *cr)
+{
+  GdkDrawable *real_drawable = ((GdkGLPixmap *) drawable)->drawable;
+
+  GDK_DRAWABLE_GET_CLASS (real_drawable)->set_cairo_clip (real_drawable, cr);
+}
+
+static cairo_surface_t *
+gdk_gl_pixmap_create_cairo_surface (GdkDrawable *drawable,
+                                    int          width,
+                                    int          height)
+{
+  GdkDrawable *real_drawable = ((GdkGLPixmap *) drawable)->drawable;
+
+  return GDK_DRAWABLE_GET_CLASS (real_drawable)->create_cairo_surface (real_drawable,
+                                                                       width,
+                                                                       height);
+}
+
+static void
+gdk_gl_pixmap_draw_drawable_with_src (GdkDrawable *drawable,
+                                      GdkGC	  *gc,
+                                      GdkDrawable *src,
+                                      gint         xsrc,
+                                      gint         ysrc,
+                                      gint         xdest,
+                                      gint         ydest,
+                                      gint         width,
+                                      gint         height,
+                                      GdkDrawable *original_src)
+{
+  GdkDrawable *real_drawable = ((GdkGLPixmap *) drawable)->drawable;
+
+  GDK_DRAWABLE_GET_CLASS (real_drawable)->draw_drawable_with_src (real_drawable,
+                                                                  gc,
+                                                                  src,
+                                                                  xsrc,
+                                                                  ysrc,
+                                                                  xdest,
+                                                                  ydest,
+                                                                  width,
+                                                                  height,
+                                                                  original_src);
 }
 
 /*< private >*/
