@@ -142,22 +142,13 @@ $(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@AP
 $(srcdir)/gdkglenumtypes.h: stamp-gdkglenumtypes-h
 	@true
 stamp-gdkglenumtypes-h: @REBUILD@ $(gdkglext_public_h_sources) Makefile
-	( cd $(srcdir) && glib-mkenums \
-			--fhead "#ifndef __GDK_GL_ENUM_TYPES_H__\n#define __GDK_GL_ENUM_TYPES_H__\n\n#include <glib-object.h>\n\nG_BEGIN_DECLS\n" \
-			--fprod "/* enumerations from \"@filename@\" */\n" \
-			--vhead "GType @enum_name@_get_type (void);\n#define GDK_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
-			--ftail "G_END_DECLS\n\n#endif /* __GDK_GL_ENUM_TYPES_H__ */" \
+	( cd $(srcdir) && $(GLIB_MKENUMS) --template gtkglenumtypes.h.template \
 		$(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source) ) >> xgen-geth \
 	&& (cmp -s xgen-geth $(srcdir)/gdkglenumtypes.h || cp xgen-geth $(srcdir)/gdkglenumtypes.h ) \
 	&& rm -f xgen-geth \
 	&& echo timestamp > $(@F)
 $(srcdir)/gdkglenumtypes.c: @REBUILD@ $(gdkglext_public_h_sources) Makefile
-	( cd $(srcdir) && glib-mkenums \
-			--fhead "#include \"gdkgl.h\"" \
-			--fprod "\n/* enumerations from \"@filename@\" */" \
-			--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
-			--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
-			--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
+	( cd $(srcdir) && $(GLIB_MKENUMS) --template gtkglenumtypes.c.template \
 		$(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source) ) > xgen-getc \
 	&& cp xgen-getc $(srcdir)/gdkglenumtypes.c  \
 	&& rm -f xgen-getc
@@ -188,7 +179,9 @@ glext/gen-gdkglglxext-c.pl	\
 glext/gen-gdkglglxext-h.pl	\
 glext/gen-gdkglwglext-c.pl	\
 glext/gen-gdkglwglext-h.pl	\
-glext/common-header.h
+glext/common-header.h \
+gtkglenumtypes.h.template \
+gtkglenumtypes.c.template
 
 gdkglext_glext_public_h_sources = \
 glext/glext.h		\

@@ -230,6 +230,9 @@ PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
                   [AS_IF([test -z "${PANGOFT2_LIBS+x}"],
                          [AC_MSG_WARN([Pango Freetype support is required to build some of the examples.])])])
 
+GLIB_MKENUMS="`$PKG_CONFIG --variable=glib_mkenums glib-2.0`"
+AC_SUBST(GLIB_MKENUMS)
+
 AX_CHECK_GLU
 # FIXME: AX_CHECK_GLU's behavior diverges from common autoconf conventions
 AM_CONDITIONAL([GLU],[test "$no_glu" != yes])
