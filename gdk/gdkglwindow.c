@@ -757,22 +757,6 @@ _gdk_gl_window_get_size (GdkGLDrawable *gldrawable,
 }
 
 /**
- * gdk_gl_window_destroy:
- * @glwindow: a #GdkGLWindow.
- *
- * Destroys the OpenGL resources associated with @glwindow and
- * decrements @glwindow's reference count.
- **/
-void
-gdk_gl_window_destroy (GdkGLWindow *glwindow)
-{
-  g_return_if_fail (GDK_IS_GL_WINDOW (glwindow));
-
-  _gdk_gl_window_destroy (glwindow);
-  g_object_unref (G_OBJECT (glwindow));
-}
-
-/**
  * gdk_gl_window_get_window:
  * @glwindow: a #GdkGLWindow.
  *

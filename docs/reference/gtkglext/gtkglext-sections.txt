@@ -162,7 +162,6 @@ gdk_gl_pixmap_get_type
 <FILE>gdkglwindow</FILE>
 GdkGLWindow
 gdk_gl_window_new
-gdk_gl_window_destroy
 gdk_gl_window_get_window
 gdk_window_set_gl_capability
 gdk_window_unset_gl_capability

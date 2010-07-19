@@ -1319,7 +1319,6 @@ EXPORTS
 	gdk_gl_render_type_mask_get_type
 	gdk_gl_transparent_type_get_type
 	gdk_gl_visual_type_get_type
-	gdk_gl_window_destroy
 	gdk_gl_window_get_type
 	gdk_gl_window_get_window
 	gdk_gl_window_new

@@ -57,8 +57,6 @@ GdkGLWindow *gdk_gl_window_new              (GdkGLConfig *glconfig,
                                              GdkWindow   *window,
                                              const int   *attrib_list);
 
-void         gdk_gl_window_destroy          (GdkGLWindow *glwindow);
-
 GdkWindow   *gdk_gl_window_get_window       (GdkGLWindow *glwindow);
 
 /*
