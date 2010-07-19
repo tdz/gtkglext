@@ -150,7 +150,7 @@ gtk_gl_widget_unrealize (GtkWidget       *widget,
 
   if (private->glcontext != NULL)
     {
-      gdk_gl_context_destroy (private->glcontext);
+      g_object_unref (private->glcontext);
       private->glcontext = NULL;
     }
 

@@ -106,19 +106,3 @@ gdk_gl_context_new (GdkGLDrawable *gldrawable,
                                                                      direct,
                                                                      render_type);
 }
-
-/**
- * gdk_gl_context_destroy:
- * @glcontext: a #GdkGLContext.
- *
- * Destroys the OpenGL resources associated with @glcontext and
- * decrements @glcontext's reference count.
- **/
-void
-gdk_gl_context_destroy (GdkGLContext *glcontext)
-{
-  g_return_if_fail (GDK_IS_GL_CONTEXT (glcontext));
-
-  _gdk_gl_context_destroy (glcontext);
-  g_object_unref (G_OBJECT (glcontext));
-}

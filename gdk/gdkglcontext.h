@@ -50,8 +50,6 @@ GdkGLContext  *gdk_gl_context_new             (GdkGLDrawable *gldrawable,
                                                gboolean       direct,
                                                int            render_type);
 
-void           gdk_gl_context_destroy         (GdkGLContext  *glcontext);
-
 gboolean       gdk_gl_context_copy            (GdkGLContext  *glcontext,
                                                GdkGLContext  *src,
                                                unsigned long  mask);
