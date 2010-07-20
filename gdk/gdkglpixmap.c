@@ -175,8 +175,6 @@ static void             gdk_gl_pixmap_draw_drawable_with_src  (GdkDrawable      
 static void             gdk_gl_pixmap_class_init              (GdkGLPixmapClass *klass);
 static void             gdk_gl_pixmap_finalize                (GObject          *object);
 
-static gpointer parent_class = NULL;
-
 G_DEFINE_TYPE (GdkGLPixmap,                     \
                gdk_gl_pixmap,                   \
                GDK_TYPE_DRAWABLE)
@@ -193,8 +191,6 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
   GdkDrawableClass *drawable_class = GDK_DRAWABLE_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  parent_class = g_type_class_peek_parent (klass);
 
   object_class->finalize = gdk_gl_pixmap_finalize;
 
@@ -242,7 +238,7 @@ gdk_gl_pixmap_finalize (GObject *object)
     g_object_remove_weak_pointer (G_OBJECT (glpixmap->drawable),
                                   (gpointer *) &(glpixmap->drawable));
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (gdk_gl_pixmap_parent_class)->finalize (object);
 }
 
 static GdkGC *
