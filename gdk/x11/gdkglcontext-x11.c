@@ -35,8 +35,6 @@ static GdkGLContext *gdk_gl_context_lookup (GLXContext    glxcontext);
 static void gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass);
 static void gdk_gl_context_impl_x11_finalize   (GObject                  *object);
 
-static gpointer parent_class = NULL;
-
 G_DEFINE_TYPE (GdkGLContextImplX11,              \
                gdk_gl_context_impl_x11,          \
                GDK_TYPE_GL_CONTEXT)
@@ -52,8 +50,6 @@ gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  parent_class = g_type_class_peek_parent (klass);
 
   object_class->finalize = gdk_gl_context_impl_x11_finalize;
 }
@@ -122,7 +118,7 @@ gdk_gl_context_impl_x11_finalize (GObject *object)
   if (impl->share_list != NULL)
     g_object_unref (G_OBJECT (impl->share_list));
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (gdk_gl_context_impl_x11_parent_class)->finalize (object);
 }
 
 static GdkGLContext *
