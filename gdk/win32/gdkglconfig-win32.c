@@ -26,9 +26,6 @@
 
 #include <gdk/gdkscreen.h>
 
-static void gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass);
-static void gdk_gl_config_impl_win32_finalize   (GObject                   *object);
-
 G_DEFINE_TYPE (GdkGLConfigImplWin32,            \
                gdk_gl_config_impl_win32,        \
                GDK_TYPE_GL_CONFIG)
@@ -36,16 +33,6 @@ G_DEFINE_TYPE (GdkGLConfigImplWin32,            \
 static void
 gdk_gl_config_impl_win32_init (GdkGLConfigImplX11 *self)
 {
-}
-
-static void
-gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass)
-{
-  GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  object_class->finalize = gdk_gl_config_impl_win32_finalize;
 }
 
 static void
@@ -58,6 +45,16 @@ gdk_gl_config_impl_win32_finalize (GObject *object)
   g_object_unref (G_OBJECT (impl->colormap));
 
   G_OBJECT_CLASS (gdk_gl_config_impl_win32_parent_class)->finalize (object);
+}
+
+static void
+gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass)
+{
+  GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  object_class->finalize = gdk_gl_config_impl_win32_finalize;
 }
 
 /*
