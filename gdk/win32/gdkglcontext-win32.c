@@ -32,8 +32,6 @@ static GdkGLContext *gdk_gl_context_lookup (HGLRC         hglrc);
 static void gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass);
 static void gdk_gl_context_impl_win32_finalize   (GObject                    *object);
 
-static gpointer parent_class = NULL;
-
 G_DEFINE_TYPE (GdkGLContextImplWin32,              \
                gdk_gl_context_impl_win32,          \
                GDK_TYPE_GL_CONTEXT)
@@ -49,8 +47,6 @@ gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  parent_class = g_type_class_peek_parent (klass);
 
   object_class->finalize = gdk_gl_context_impl_win32_finalize;
 }
@@ -116,7 +112,7 @@ gdk_gl_context_impl_win32_finalize (GObject *object)
   if (impl->share_list != NULL)
     g_object_unref (G_OBJECT (impl->share_list));
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (gdk_gl_context_impl_win32_parent_class)->finalize (object);
 }
 
 static GdkGLContext *
