@@ -41,9 +41,6 @@
 
 #endif /* HAVE_LIBXMU */
 
-static void gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass);
-static void gdk_gl_config_impl_x11_finalize   (GObject                 *object);
-
 G_DEFINE_TYPE (GdkGLConfigImplX11,              \
                gdk_gl_config_impl_x11,          \
                GDK_TYPE_GL_CONFIG)
@@ -51,16 +48,6 @@ G_DEFINE_TYPE (GdkGLConfigImplX11,              \
 static void
 gdk_gl_config_impl_x11_init (GdkGLConfigImplX11 *self)
 {
-}
-
-static void
-gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass)
-{
-  GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  object_class->finalize = gdk_gl_config_impl_x11_finalize;
 }
 
 static void
@@ -75,6 +62,16 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
   g_object_unref (G_OBJECT (impl->colormap));
 
   G_OBJECT_CLASS (gdk_gl_config_impl_x11_parent_class)->finalize (object);
+}
+
+static void
+gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass)
+{
+  GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  object_class->finalize = gdk_gl_config_impl_x11_finalize;
 }
 
 /* 
