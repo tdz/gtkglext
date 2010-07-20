@@ -37,31 +37,13 @@ static void gdk_gl_context_impl_x11_finalize   (GObject                  *object
 
 static gpointer parent_class = NULL;
 
-GType
-gdk_gl_context_impl_x11_get_type (void)
+G_DEFINE_TYPE (GdkGLContextImplX11,              \
+               gdk_gl_context_impl_x11,          \
+               GDK_TYPE_GL_CONTEXT)
+
+static void
+gdk_gl_context_impl_x11_init (GdkGLContextImplX11 *self)
 {
-  static GType type = 0;
-
-  if (!type)
-    {
-      static const GTypeInfo type_info = {
-        sizeof (GdkGLContextImplX11Class),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) gdk_gl_context_impl_x11_class_init,
-        (GClassFinalizeFunc) NULL,
-        NULL,                   /* class_data */
-        sizeof (GdkGLContextImplX11),
-        0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL
-      };
-
-      type = g_type_register_static (GDK_TYPE_GL_CONTEXT,
-                                     "GdkGLContextImplX11",
-                                     &type_info, 0);
-    }
-
-  return type;
 }
 
 static void
