@@ -177,31 +177,13 @@ static void             gdk_gl_pixmap_finalize                (GObject          
 
 static gpointer parent_class = NULL;
 
-GType
-gdk_gl_pixmap_get_type (void)
+G_DEFINE_TYPE (GdkGLPixmap,                     \
+               gdk_gl_pixmap,                   \
+               GDK_TYPE_DRAWABLE)
+
+static void
+gdk_gl_pixmap_init (GdkGLPixmap *self)
 {
-  static GType type = 0;
-
-  if (!type)
-    {
-      static const GTypeInfo type_info = {
-        sizeof (GdkGLPixmapClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) gdk_gl_pixmap_class_init,
-        (GClassFinalizeFunc) NULL,
-        NULL,                   /* class_data */
-        sizeof (GdkGLPixmap),
-        0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL
-      };
-
-      type = g_type_register_static (GDK_TYPE_DRAWABLE,
-                                     "GdkGLPixmap",
-                                     &type_info, 0);
-    }
-
-  return type;
 }
 
 static void
