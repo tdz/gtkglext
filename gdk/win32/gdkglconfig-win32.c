@@ -29,8 +29,6 @@
 static void gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass);
 static void gdk_gl_config_impl_win32_finalize   (GObject                   *object);
 
-static gpointer parent_class = NULL;
-
 G_DEFINE_TYPE (GdkGLConfigImplWin32,            \
                gdk_gl_config_impl_win32,        \
                GDK_TYPE_GL_CONFIG)
@@ -47,8 +45,6 @@ gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  parent_class = g_type_class_peek_parent (klass);
-
   object_class->finalize = gdk_gl_config_impl_win32_finalize;
 }
 
@@ -61,7 +57,7 @@ gdk_gl_config_impl_win32_finalize (GObject *object)
 
   g_object_unref (G_OBJECT (impl->colormap));
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (gdk_gl_config_impl_win32_parent_class)->finalize (object);
 }
 
 /*
