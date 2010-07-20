@@ -172,8 +172,6 @@ static void             gdk_gl_pixmap_draw_drawable_with_src  (GdkDrawable      
                                                                gint              width,
                                                                gint              height,
                                                                GdkDrawable      *original_src);
-static void             gdk_gl_pixmap_class_init              (GdkGLPixmapClass *klass);
-static void             gdk_gl_pixmap_finalize                (GObject          *object);
 
 G_DEFINE_TYPE (GdkGLPixmap,                     \
                gdk_gl_pixmap,                   \
@@ -182,6 +180,20 @@ G_DEFINE_TYPE (GdkGLPixmap,                     \
 static void
 gdk_gl_pixmap_init (GdkGLPixmap *self)
 {
+}
+
+static void
+gdk_gl_pixmap_finalize (GObject *object)
+{
+  GdkGLPixmap *glpixmap = GDK_GL_PIXMAP (object);
+
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  if (glpixmap->drawable != NULL)
+    g_object_remove_weak_pointer (G_OBJECT (glpixmap->drawable),
+                                  (gpointer *) &(glpixmap->drawable));
+
+  G_OBJECT_CLASS (gdk_gl_pixmap_parent_class)->finalize (object);
 }
 
 static void
@@ -225,20 +237,6 @@ gdk_gl_pixmap_class_init (GdkGLPixmapClass *klass)
   drawable_class->set_cairo_clip         = gdk_gl_pixmap_set_cairo_clip;
   drawable_class->create_cairo_surface   = gdk_gl_pixmap_create_cairo_surface;
   drawable_class->draw_drawable_with_src = gdk_gl_pixmap_draw_drawable_with_src;
-}
-
-static void
-gdk_gl_pixmap_finalize (GObject *object)
-{
-  GdkGLPixmap *glpixmap = GDK_GL_PIXMAP (object);
-
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  if (glpixmap->drawable != NULL)
-    g_object_remove_weak_pointer (G_OBJECT (glpixmap->drawable),
-                                  (gpointer *) &(glpixmap->drawable));
-
-  G_OBJECT_CLASS (gdk_gl_pixmap_parent_class)->finalize (object);
 }
 
 static GdkGC *
