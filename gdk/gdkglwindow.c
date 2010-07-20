@@ -175,8 +175,6 @@ static void             gdk_gl_window_draw_drawable_with_src  (GdkDrawable      
 static void             gdk_gl_window_class_init              (GdkGLWindowClass *klass);
 static void             gdk_gl_window_finalize                (GObject          *object);
 
-static gpointer parent_class = NULL;
-
 G_DEFINE_TYPE (GdkGLWindow,                     \
                gdk_gl_window,                   \
                GDK_TYPE_DRAWABLE)
@@ -193,8 +191,6 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
   GdkDrawableClass *drawable_class = GDK_DRAWABLE_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  parent_class = g_type_class_peek_parent (klass);
 
   object_class->finalize = gdk_gl_window_finalize;
 
@@ -242,7 +238,7 @@ gdk_gl_window_finalize (GObject *object)
     g_object_remove_weak_pointer (G_OBJECT (glwindow->drawable),
                                   (gpointer *) &(glwindow->drawable));
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (gdk_gl_window_parent_class)->finalize (object);
 }
 
 static GdkGC *
