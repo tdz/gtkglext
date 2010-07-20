@@ -32,31 +32,13 @@ static void gdk_gl_context_finalize   (GObject           *object);
 
 static gpointer parent_class = NULL;
 
-GType
-gdk_gl_context_get_type (void)
+G_DEFINE_TYPE (GdkGLContext,    \
+               gdk_gl_context,  \
+               G_TYPE_OBJECT)
+
+static void
+gdk_gl_context_init (GdkGLContext *self)
 {
-  static GType type = 0;
-
-  if (!type)
-    {
-      static const GTypeInfo type_info = {
-        sizeof (GdkGLContextClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) gdk_gl_context_class_init,
-        (GClassFinalizeFunc) NULL,
-        NULL,                   /* class_data */
-        sizeof (GdkGLContext),
-        0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL
-      };
-
-      type = g_type_register_static (G_TYPE_OBJECT,
-                                     "GdkGLContext",
-                                     &type_info, 0);
-    }
-
-  return type;
 }
 
 static void
