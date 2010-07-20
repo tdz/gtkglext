@@ -27,36 +27,18 @@
 
 gboolean _gdk_gl_config_no_standard_colormap = FALSE;
 
+G_DEFINE_TYPE (GdkGLConfig,     \
+               gdk_gl_config,   \
+               G_TYPE_OBJECT)
+
 static void gdk_gl_config_class_init (GdkGLConfigClass *klass);
 static void gdk_gl_config_finalize   (GObject          *object);
 
 static gpointer parent_class = NULL;
 
-GType
-gdk_gl_config_get_type (void)
+static void
+gdk_gl_config_init (GdkGLConfig *self)
 {
-  static GType type = 0;
-
-  if (!type)
-    {
-      static const GTypeInfo type_info = {
-        sizeof (GdkGLConfigClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) gdk_gl_config_class_init,
-        (GClassFinalizeFunc) NULL,
-        NULL,                   /* class_data */
-        sizeof (GdkGLConfig),
-        0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL
-      };
-
-      type = g_type_register_static (G_TYPE_OBJECT,
-                                     "GdkGLConfig",
-                                     &type_info, 0);
-    }
-
-  return type;
 }
 
 static void
