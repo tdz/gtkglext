@@ -22,8 +22,67 @@
 
 #include "gdkglversion.h"
 
-const guint gdkglext_major_version = GDKGLEXT_MAJOR_VERSION;
-const guint gdkglext_minor_version = GDKGLEXT_MINOR_VERSION;
-const guint gdkglext_micro_version = GDKGLEXT_MICRO_VERSION;
-const guint gdkglext_interface_age = GDKGLEXT_INTERFACE_AGE;
-const guint gdkglext_binary_age    = GDKGLEXT_BINARY_AGE;
+/**
+ * gdk_gl_get_major_version:
+ *
+ * Returns the GtkGLExt library major version number.
+ *
+ * Returns: The major version number of the GtkGLExt library.
+ **/
+int
+gdk_gl_get_major_version (void)
+{
+        return (GDKGLEXT_MAJOR_VERSION);
+}
+
+/**
+ * gdk_gl_get_minor_version:
+ *
+ * Returns the GtkGLExt library minor version number.
+ *
+ * Returns: The minor version number of the GtkGLExt library.
+ **/
+int
+gdk_gl_get_minor_version (void)
+{
+        return (GDKGLEXT_MINOR_VERSION);
+}
+
+/**
+ * gdk_gl_get_micro_version:
+ *
+ * Returns the GtkGLExt library micro version number.
+ *
+ * Returns: The micro version number of the GtkGLExt library.
+ **/
+int
+gdk_gl_get_micro_version (void)
+{
+        return (GDKGLEXT_MICRO_VERSION);
+}
+
+/**
+ * gdk_gl_get_interface_age:
+ *
+ * Returns the GtkGLExt library interface age.
+ *
+ * Returns: The interface age of the GtkGLExt library.
+ **/
+int
+gdk_gl_get_interface_age (void)
+{
+        return (GDKGLEXT_INTERFACE_AGE);
+}
+
+/**
+ * gdk_gl_get_binary_age:
+ *
+ * Returns the GtkGLExt library binary age.
+ *
+ * Returns: The binary age of the GtkGLExt library.
+ **/
+int
+gdk_gl_get_binary_age (void)
+{
+        return (GDKGLEXT_BINARY_AGE);
+}
