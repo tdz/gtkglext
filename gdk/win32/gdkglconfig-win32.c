@@ -31,31 +31,13 @@ static void gdk_gl_config_impl_win32_finalize   (GObject                   *obje
 
 static gpointer parent_class = NULL;
 
-GType
-gdk_gl_config_impl_win32_get_type (void)
+G_DEFINE_TYPE (GdkGLConfigImplWin32,            \
+               gdk_gl_config_impl_win32,        \
+               GDK_TYPE_GL_CONFIG)
+
+static void
+gdk_gl_config_impl_win32_init (GdkGLConfigImplX11 *self)
 {
-  static GType type = 0;
-
-  if (!type)
-    {
-      static const GTypeInfo type_info = {
-        sizeof (GdkGLConfigImplWin32Class),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) gdk_gl_config_impl_win32_class_init,
-        (GClassFinalizeFunc) NULL,
-        NULL,                   /* class_data */
-        sizeof (GdkGLConfigImplWin32),
-        0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL
-      };
-
-      type = g_type_register_static (GDK_TYPE_GL_CONFIG,
-                                     "GdkGLConfigImplWin32",
-                                     &type_info, 0);
-    }
-
-  return type;
 }
 
 static void
