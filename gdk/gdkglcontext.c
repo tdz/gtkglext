@@ -30,8 +30,6 @@ gboolean _gdk_gl_context_force_indirect = FALSE;
 static void gdk_gl_context_class_init (GdkGLContextClass *klass);
 static void gdk_gl_context_finalize   (GObject           *object);
 
-static gpointer parent_class = NULL;
-
 G_DEFINE_TYPE (GdkGLContext,    \
                gdk_gl_context,  \
                G_TYPE_OBJECT)
@@ -48,8 +46,6 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  parent_class = g_type_class_peek_parent (klass);
-
   object_class->finalize = gdk_gl_context_finalize;
 }
 
@@ -58,7 +54,7 @@ gdk_gl_context_finalize (GObject *object)
 {
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (gdk_gl_context_parent_class)->finalize (object);
 }
 
 /**
