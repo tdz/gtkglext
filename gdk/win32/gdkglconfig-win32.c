@@ -31,7 +31,7 @@ G_DEFINE_TYPE (GdkGLConfigImplWin32,            \
                GDK_TYPE_GL_CONFIG)
 
 static void
-gdk_gl_config_impl_win32_init (GdkGLConfigImplX11 *self)
+gdk_gl_config_impl_win32_init (GdkGLConfigImplWin32 *self)
 {
 }
 
