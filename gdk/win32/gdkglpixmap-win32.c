@@ -48,39 +48,17 @@ static void gdk_gl_pixmap_impl_win32_gl_drawable_interface_init (GdkGLDrawableCl
 
 static gpointer parent_class = NULL;
 
-GType
-gdk_gl_pixmap_impl_win32_get_type (void)
+G_DEFINE_TYPE_EXTENDED (GdkGLPixmapImplWin32,
+                        gdk_gl_pixmap_impl_win32,
+                        GDK_TYPE_GL_PIXMAP,
+                        0,
+                        G_IMPLEMENT_INTERFACE
+                        (GDK_TYPE_GL_DRAWABLE,
+                         gdk_gl_pixmap_impl_win32_gl_drawable_interface_init));
+
+static void
+gdk_gl_pixmap_impl_win32_init (GdkGLPixmapImplWin32 *self)
 {
-  static GType type = 0;
-
-  if (!type)
-    {
-      static const GTypeInfo type_info = {
-        sizeof (GdkGLPixmapImplWin32Class),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) gdk_gl_pixmap_impl_win32_class_init,
-        (GClassFinalizeFunc) NULL,
-        NULL,                   /* class_data */
-        sizeof (GdkGLPixmapImplWin32),
-        0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL
-      };
-      static const GInterfaceInfo gl_drawable_interface_info = {
-        (GInterfaceInitFunc) gdk_gl_pixmap_impl_win32_gl_drawable_interface_init,
-        (GInterfaceFinalizeFunc) NULL,
-        NULL                    /* interface_data */
-      };
-
-      type = g_type_register_static (GDK_TYPE_GL_PIXMAP,
-                                     "GdkGLPixmapImplWin32",
-                                     &type_info, 0);
-      g_type_add_interface_static (type,
-                                   GDK_TYPE_GL_DRAWABLE,
-                                   &gl_drawable_interface_info);
-    }
-
-  return type;
 }
 
 static void
