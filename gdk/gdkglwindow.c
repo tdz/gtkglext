@@ -177,31 +177,13 @@ static void             gdk_gl_window_finalize                (GObject          
 
 static gpointer parent_class = NULL;
 
-GType
-gdk_gl_window_get_type (void)
+G_DEFINE_TYPE (GdkGLWindow,                     \
+               gdk_gl_window,                   \
+               GDK_TYPE_DRAWABLE)
+
+static void
+gdk_gl_window_init (GdkGLWindow *self)
 {
-  static GType type = 0;
-
-  if (!type)
-    {
-      static const GTypeInfo type_info = {
-        sizeof (GdkGLWindowClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) gdk_gl_window_class_init,
-        (GClassFinalizeFunc) NULL,
-        NULL,                   /* class_data */
-        sizeof (GdkGLWindow),
-        0,                      /* n_preallocs */
-        (GInstanceInitFunc) NULL
-      };
-
-      type = g_type_register_static (GDK_TYPE_DRAWABLE,
-                                     "GdkGLWindow",
-                                     &type_info, 0);
-    }
-
-  return type;
 }
 
 static void
