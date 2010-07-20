@@ -41,9 +41,7 @@ static gboolean     gdk_gl_window_impl_win32_gl_begin             (GdkGLDrawable
 static void         gdk_gl_window_impl_win32_gl_end               (GdkGLDrawable *gldrawable);
 static GdkGLConfig *gdk_gl_window_impl_win32_get_gl_config        (GdkGLDrawable *gldrawable);
 
-static void gdk_gl_window_impl_win32_class_init (GdkGLWindowImplWin32Class *klass);
-static void gdk_gl_window_impl_win32_finalize   (GObject                   *object);
-static void gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface);
+static void         gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface);
 
 G_DEFINE_TYPE_EXTENDED (GdkGLWindowImplWin32,
                         gdk_gl_window_impl_win32,
@@ -56,16 +54,6 @@ G_DEFINE_TYPE_EXTENDED (GdkGLWindowImplWin32,
 static void
 gdk_gl_window_impl_win32_init (GdkGLWindowImplWin32 *self)
 {
-}
-
-static void
-gdk_gl_window_impl_win32_class_init (GdkGLWindowImplWin32Class *klass)
-{
-  GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  object_class->finalize = gdk_gl_window_impl_win32_finalize;
 }
 
 void
@@ -116,6 +104,16 @@ gdk_gl_window_impl_win32_finalize (GObject *object)
   g_object_unref (G_OBJECT (impl->glconfig));
 
   G_OBJECT_CLASS (gdk_gl_window_impl_win32_parent_class)->finalize (object);
+}
+
+static void
+gdk_gl_window_impl_win32_class_init (GdkGLWindowImplWin32Class *klass)
+{
+  GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  object_class->finalize = gdk_gl_window_impl_win32_finalize;
 }
 
 static void
