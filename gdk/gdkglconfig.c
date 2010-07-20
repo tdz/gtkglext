@@ -34,8 +34,6 @@ G_DEFINE_TYPE (GdkGLConfig,     \
 static void gdk_gl_config_class_init (GdkGLConfigClass *klass);
 static void gdk_gl_config_finalize   (GObject          *object);
 
-static gpointer parent_class = NULL;
-
 static void
 gdk_gl_config_init (GdkGLConfig *self)
 {
@@ -48,8 +46,6 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  parent_class = g_type_class_peek_parent (klass);
-
   object_class->finalize = gdk_gl_config_finalize;
 }
 
@@ -58,7 +54,7 @@ gdk_gl_config_finalize (GObject *object)
 {
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (gdk_gl_config_parent_class)->finalize (object);
 }
 
 static GdkGLConfig *
