@@ -172,8 +172,6 @@ static void             gdk_gl_window_draw_drawable_with_src  (GdkDrawable      
                                                                gint              width,
                                                                gint              height,
                                                                GdkDrawable      *original_src);
-static void             gdk_gl_window_class_init              (GdkGLWindowClass *klass);
-static void             gdk_gl_window_finalize                (GObject          *object);
 
 G_DEFINE_TYPE (GdkGLWindow,                     \
                gdk_gl_window,                   \
@@ -182,6 +180,20 @@ G_DEFINE_TYPE (GdkGLWindow,                     \
 static void
 gdk_gl_window_init (GdkGLWindow *self)
 {
+}
+
+static void
+gdk_gl_window_finalize (GObject *object)
+{
+  GdkGLWindow *glwindow = GDK_GL_WINDOW (object);
+
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  if (glwindow->drawable != NULL)
+    g_object_remove_weak_pointer (G_OBJECT (glwindow->drawable),
+                                  (gpointer *) &(glwindow->drawable));
+
+  G_OBJECT_CLASS (gdk_gl_window_parent_class)->finalize (object);
 }
 
 static void
@@ -225,20 +237,6 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
   drawable_class->set_cairo_clip         = gdk_gl_window_set_cairo_clip;
   drawable_class->create_cairo_surface   = gdk_gl_window_create_cairo_surface;
   drawable_class->draw_drawable_with_src = gdk_gl_window_draw_drawable_with_src;
-}
-
-static void
-gdk_gl_window_finalize (GObject *object)
-{
-  GdkGLWindow *glwindow = GDK_GL_WINDOW (object);
-
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  if (glwindow->drawable != NULL)
-    g_object_remove_weak_pointer (G_OBJECT (glwindow->drawable),
-                                  (gpointer *) &(glwindow->drawable));
-
-  G_OBJECT_CLASS (gdk_gl_window_parent_class)->finalize (object);
 }
 
 static GdkGC *
