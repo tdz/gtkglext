@@ -37,21 +37,11 @@ gdk_gl_context_init (GdkGLContext *self)
 }
 
 static void
-gdk_gl_context_finalize (GObject *object)
-{
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  G_OBJECT_CLASS (gdk_gl_context_parent_class)->finalize (object);
-}
-
-static void
 gdk_gl_context_class_init (GdkGLContextClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  object_class->finalize = gdk_gl_context_finalize;
 }
 
 /**
