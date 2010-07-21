@@ -57,14 +57,14 @@ static const guint gtk_gl_ndebug_keys = G_N_ELEMENTS (gtk_gl_debug_keys);
  *
  * Return value: %TRUE if initialization succeeded, otherwise %FALSE.
  **/
-static gboolean
+static void
 gtk_gl_parse_args (int    *argc,
                    char ***argv)
 {
   const gchar *env_string;
 
   if (gtk_gl_initialized)
-    return TRUE;
+    return;
 
   /*
    * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
@@ -167,8 +167,6 @@ gtk_gl_parse_args (int    *argc,
 
   /* Set the 'initialized' flag. */
   gtk_gl_initialized = TRUE;
-
-  return TRUE;
 }
 
 /**
@@ -199,11 +197,7 @@ gtk_gl_init_check (int    *argc,
     return FALSE;
 
   /* Parse args and init GtkGLExt library. */
-  if (!gtk_gl_parse_args (argc, argv))
-    {
-      g_warning ("GtkGLExt library initialization fails.");
-      return FALSE;
-    }
+  gtk_gl_parse_args (argc, argv);
 
   return TRUE;
 }
