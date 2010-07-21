@@ -9,8 +9,7 @@
 !define GTKGLEXT_VERSION         @GTKGLEXT_VERSION@
 !define GTKGLEXT_API_VERSION     @GTKGLEXT_API_VERSION@
 !define GTKGLEXT_PUBLISHER       "GtkGLExt"
-!define GTKGLEXT_URL_INFO_ABOUT  "http://gtkglext.sourceforge.net/"
-!define GTKGLEXT_URL_UPDATE_INFO "http://sourceforge.net/projects/gtkglext/"
+!define GTKGLEXT_URL_INFO_ABOUT  "http://projects.gnome.org/gtkglext/"
 !define GTKGLEXT_HELP_LINK       "mailto:gtkglext-list@gnome.org"
 
 ;--------------------------------
@@ -220,7 +219,7 @@ Section "Start Menu" SecStartMenu
 
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
 
-    WriteINIStr "$SMPROGRAMS\$STARTMENU_FOLDER\GtkGLExt Website.url" "InternetShortcut" "URL" "http://gtkglext.sourceforge.net/"
+    WriteINIStr "$SMPROGRAMS\$STARTMENU_FOLDER\GtkGLExt Website.url" "InternetShortcut" "URL" "http://projects.gnome.org/gtkglext/"
 
     IfFileExists "$INSTDIR\share\gtk-doc\html\gtkglext\index.html" "" +2
       CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GtkGLExt Reference Manual.lnk" "$INSTDIR\share\gtk-doc\html\gtkglext\index.html"
@@ -250,7 +249,7 @@ Section -post
   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "DisplayVersion" "${GTKGLEXT_VERSION}"
   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "Publisher" "${GTKGLEXT_PUBLISHER}"
   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "URLInfoAbout" "${GTKGLEXT_URL_INFO_ABOUT}"
-  WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "URLUpdateInfo" "${GTKGLEXT_URL_UPDATE_INFO}"
+  WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "URLUpdateInfo" "${GTKGLEXT_URL_INFO_ABOUT}"
   WriteRegStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "HelpLink" "${GTKGLEXT_HELP_LINK}"
   WriteRegExpandStr HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\GtkGLExt" "UninstallString" "$INSTDIR\uninst-gtkglext.exe"
 
