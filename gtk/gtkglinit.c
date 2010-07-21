@@ -57,7 +57,7 @@ static const guint gtk_gl_ndebug_keys = G_N_ELEMENTS (gtk_gl_debug_keys);
  *
  * Return value: %TRUE if initialization succeeded, otherwise %FALSE.
  **/
-gboolean
+static gboolean
 gtk_gl_parse_args (int    *argc,
                    char ***argv)
 {
