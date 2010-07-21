@@ -222,23 +222,21 @@ gdk_gl_init_check (int    *argc,
 /**
  * gdk_gl_init:
  * @argc: Address of the <parameter>argc</parameter> parameter of your
- *        <function>main()</function> function. Changed if any arguments
- *        were handled.
+ * main() function. Changed if any arguments were handled.
  * @argv: Address of the <parameter>argv</parameter> parameter of
- *        <function>main()</function>. Any parameters understood by
- *        gdk_gl_init() are stripped before return.
+ * main(). Any parameters understood by gdk_gl_init() are stripped
+ * before return.
  *
  * Call this function before using any other GdkGLExt functions in your
- * applications.  It will initialize everything needed to operate the library
- * and parses some standard command line options. @argc and
- * @argv are adjusted accordingly so your own code will
- * never see those standard arguments.
+ * applications.  It will initialize everything needed to operate the
+ * library and parses some standard command line options. @argc and
+ * @argv are adjusted accordingly so your own code will never see those
+ * standard arguments.
  *
- * <note><para>
- * This function will terminate your program if it was unable to initialize
- * the library for some reason. If you want your program to fall back to a
- * textual interface you want to call gdk_gl_init_check() instead.
- * </para></note>
+ * <note><para>This function will terminate your program if it was
+ * unable to initialize the library for some reason. If you want your
+ * program to fall back to a textual interface you want to call
+ * gdk_gl_init_check() instead.</para></note>
  **/
 void
 gdk_gl_init (int    *argc,
