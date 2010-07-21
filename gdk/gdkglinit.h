@@ -28,9 +28,6 @@ G_BEGIN_DECLS
  * Initialization routines.
  */
 
-gboolean gdk_gl_parse_args (int    *argc,
-                            char ***argv);
-
 gboolean gdk_gl_init_check (int    *argc,
                             char ***argv);
 
