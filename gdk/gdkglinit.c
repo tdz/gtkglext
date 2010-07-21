@@ -59,14 +59,14 @@ static const guint gdk_gl_ndebug_keys = G_N_ELEMENTS (gdk_gl_debug_keys);
  *
  * Return value: %TRUE if initialization succeeded, otherwise %FALSE.
  **/
-static gboolean
+static void
 gdk_gl_parse_args (int    *argc,
                    char ***argv)
 {
   const gchar *env_string;
 
   if (gdk_gl_initialized)
-    return TRUE;
+    return;
 
   env_string = g_getenv ("GDK_GL_NO_STANDARD_COLORMAP");
   if (env_string != NULL)
@@ -175,8 +175,6 @@ gdk_gl_parse_args (int    *argc,
 
   /* Set the 'initialized' flag. */
   gdk_gl_initialized = TRUE;
-
-  return TRUE;
 }
 
 /**
@@ -203,11 +201,7 @@ gdk_gl_init_check (int    *argc,
                    char ***argv)
 {
   /* Parse args and init GdkGLExt library. */
-  if (!gdk_gl_parse_args (argc, argv))
-    {
-      g_warning ("GdkGLExt library initialization fails.");
-      return FALSE;
-    }
+  gdk_gl_parse_args (argc, argv);
 
   /* Is OpenGL supported? */
   if (!gdk_gl_query_extension ())
