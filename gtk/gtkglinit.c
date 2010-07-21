@@ -21,7 +21,6 @@
 #endif /* HAVE_CONFIG_H */
 
 #include <string.h>
-#include <stdlib.h>
 
 #include "gtkglprivate.h"
 #include "gtkglinit.h"
@@ -228,5 +227,5 @@ gtk_gl_init (int    *argc,
              char ***argv)
 {
   if (!gtk_gl_init_check (argc, argv))
-    exit (1);
+    g_error ("GdkGLExt library initialization fails.");
 }
