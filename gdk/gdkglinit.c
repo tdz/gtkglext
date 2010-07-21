@@ -55,8 +55,6 @@ static const guint gdk_gl_ndebug_keys = G_N_ELEMENTS (gdk_gl_debug_keys);
  *
  * You shouldn't call this function explicitely if you are using
  * gdk_gl_init(), or gdk_gl_init_check().
- *
- * Return value: %TRUE if initialization succeeded, otherwise %FALSE.
  **/
 static void
 gdk_gl_parse_args (int    *argc,
