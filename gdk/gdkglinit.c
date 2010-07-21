@@ -47,7 +47,7 @@ static const guint gdk_gl_ndebug_keys = G_N_ELEMENTS (gdk_gl_debug_keys);
  * gdk_gl_parse_args:
  * @argc: the number of command line arguments.
  * @argv: the array of command line arguments.
- * 
+ *
  * Parses command line arguments, and initializes global
  * attributes of GdkGLExt.
  *
@@ -96,7 +96,7 @@ gdk_gl_parse_args (int    *argc,
   if (argc && argv)
     {
       gint i, j, k;
-      
+
       for (i = 1; i < *argc;)
 	{
           if (strcmp ("--gdk-gl-no-standard-colormap", (*argv)[i]) == 0)
@@ -114,7 +114,7 @@ gdk_gl_parse_args (int    *argc,
                    (strncmp ("--gdk-gl-debug=", (*argv)[i], 15) == 0))
 	    {
 	      gchar *equal_pos = strchr ((*argv)[i], '=');
-	      
+
 	      if (equal_pos != NULL)
 		{
 		  gdk_gl_debug_flags |= g_parse_debug_string (equal_pos+1,
@@ -135,7 +135,7 @@ gdk_gl_parse_args (int    *argc,
 		   (strncmp ("--gdk-gl-no-debug=", (*argv)[i], 18) == 0))
 	    {
 	      gchar *equal_pos = strchr ((*argv)[i], '=');
-	      
+
 	      if (equal_pos != NULL)
 		{
 		  gdk_gl_debug_flags &= ~g_parse_debug_string (equal_pos+1,
@@ -155,13 +155,13 @@ gdk_gl_parse_args (int    *argc,
 #endif /* G_ENABLE_DEBUG */
 	  i += 1;
 	}
-      
+
       for (i = 1; i < *argc; i++)
 	{
 	  for (k = i; k < *argc; k++)
 	    if ((*argv)[k] != NULL)
 	      break;
-	  
+
 	  if (k > i)
 	    {
 	      k -= i;
@@ -181,21 +181,21 @@ gdk_gl_parse_args (int    *argc,
 
 /**
  * gdk_gl_init_check:
- * @argc: Address of the <parameter>argc</parameter> parameter of your 
+ * @argc: Address of the <parameter>argc</parameter> parameter of your
  *        <function>main()</function> function. Changed if any arguments
  *        were handled.
- * @argv: Address of the <parameter>argv</parameter> parameter of 
+ * @argv: Address of the <parameter>argv</parameter> parameter of
  *        <function>main()</function>. Any parameters understood by
  *        gdk_gl_init() are stripped before return.
- * 
- * This function does the same work as gdk_gl_init() with only 
- * a single change: It does not terminate the program if the library can't be 
+ *
+ * This function does the same work as gdk_gl_init() with only
+ * a single change: It does not terminate the program if the library can't be
  * initialized. Instead it returns %FALSE on failure.
  *
- * This way the application can fall back to some other means of communication 
+ * This way the application can fall back to some other means of communication
  * with the user - for example a curses or command line interface.
- * 
- * Return value: %TRUE if the GUI has been successfully initialized, 
+ *
+ * Return value: %TRUE if the GUI has been successfully initialized,
  *               %FALSE otherwise.
  **/
 gboolean
@@ -221,22 +221,22 @@ gdk_gl_init_check (int    *argc,
 
 /**
  * gdk_gl_init:
- * @argc: Address of the <parameter>argc</parameter> parameter of your 
+ * @argc: Address of the <parameter>argc</parameter> parameter of your
  *        <function>main()</function> function. Changed if any arguments
  *        were handled.
- * @argv: Address of the <parameter>argv</parameter> parameter of 
+ * @argv: Address of the <parameter>argv</parameter> parameter of
  *        <function>main()</function>. Any parameters understood by
  *        gdk_gl_init() are stripped before return.
- * 
- * Call this function before using any other GdkGLExt functions in your 
+ *
+ * Call this function before using any other GdkGLExt functions in your
  * applications.  It will initialize everything needed to operate the library
- * and parses some standard command line options. @argc and 
- * @argv are adjusted accordingly so your own code will 
+ * and parses some standard command line options. @argc and
+ * @argv are adjusted accordingly so your own code will
  * never see those standard arguments.
  *
  * <note><para>
- * This function will terminate your program if it was unable to initialize 
- * the library for some reason. If you want your program to fall back to a 
+ * This function will terminate your program if it was unable to initialize
+ * the library for some reason. If you want your program to fall back to a
  * textual interface you want to call gdk_gl_init_check() instead.
  * </para></note>
  **/
