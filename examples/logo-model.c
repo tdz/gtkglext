@@ -12,7 +12,13 @@
 #include <windows.h>
 #endif
 
+#include <gdkconfig.h>
+
+#ifdef GDK_WINDOWING_QUARTZ
+#include <OpenGL/gl.h>
+#else
 #include <GL/gl.h>
+#endif
 
 #include "logo-model.h"
 

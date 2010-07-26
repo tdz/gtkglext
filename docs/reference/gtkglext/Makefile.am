@@ -36,6 +36,7 @@ IGNORE_HFILES = \
 	glext			\
 	x11			\
 	win32			\
+	quartz			\
 	gdkglext-config.h	\
 	gdkglprivate.h		\
 	gdkgldebug.h		\

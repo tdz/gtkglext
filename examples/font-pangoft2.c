@@ -20,8 +20,12 @@
 #include <windows.h>
 #endif
 
+#ifdef GDK_WINDOWING_QUARTZ
+#include <OpenGL/glu.h>
+#else
 #include <GL/gl.h>
 #include <GL/glu.h>
+#endif
 
 #define FOVY_2 20.0
 #define Z_NEAR 3.0

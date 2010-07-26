@@ -16,8 +16,12 @@
 #include <windows.h>
 #endif
 
+#ifdef GDKGLEXT_WINDOWING_QUARTZ
+#include <OpenGL/glu.h>
+#else
 #include <GL/gl.h>
 #include <GL/glu.h>
+#endif
 
 static void
 realize (GtkWidget *widget,

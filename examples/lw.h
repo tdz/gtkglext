@@ -27,7 +27,13 @@
 #include <windows.h>
 #endif
 
+#include <gdk/gdkglext-config.h>
+
+#ifdef GDKGLEXT_WINDOWING_QUARTZ
+#include <OpenGL/gl.h>
+#else
 #include <GL/gl.h>
+#endif
 
 #define LW_MAX_POINTS   200
 #define LW_MAX_NAME_LEN 500

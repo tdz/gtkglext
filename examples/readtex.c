@@ -12,8 +12,14 @@
 #include <windows.h>
 #endif
 
+#include <gdkconfig.h>
+#ifdef GDK_WINDOWING_QUARTZ
+#include <OpenGL/glu.h>
+#else
 #include <GL/gl.h>
 #include <GL/glu.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h>

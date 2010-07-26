@@ -19,14 +19,19 @@
 #include <math.h>
 
 #include "drawshapes.h"
+#include <gdk/gdkglext-config.h>
 
 #ifdef G_OS_WIN32
 #define WIN32_LEAN_AND_MEAN 1
 #include <windows.h>
 #endif
 
+#ifdef GDKGLEXT_WINDOWING_QUARTZ
+#include <OpenGL/glu.h>
+#else
 #include <GL/gl.h>
 #include <GL/glu.h>
+#endif
 
 /* 
  * The following code is imported from GLUT.

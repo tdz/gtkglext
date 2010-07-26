@@ -22,7 +22,11 @@
 #include <windows.h>
 #endif
 
+#ifdef GDK_WINDOWING_QUARTZ
+#include <OpenGL/gl.h>
+#else
 #include <GL/gl.h>
+#endif
 
 /*
  * Draw a gear wheel.  You'll probably want to call this function when
@@ -574,7 +578,7 @@ main (int   argc,
   /*
    * Main loop.
    */
-
+//idle_add (drawing_area);
   gtk_main ();
 
   return 0;

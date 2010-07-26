@@ -14,6 +14,7 @@ AM_CPPFLAGS = \
 	-I$(top_builddir)/gtk		\
 	$(GTKGLEXT_DEBUG_FLAGS)		\
 	$(GTK_CFLAGS)			\
+	$(BASE_DEPENDENCIES_CFLAGS)	\
 	$(GL_CFLAGS)			\
 	$(GDKGLEXT_WIN_CFLAGS)		\
 	$(EXAMPLES_DEP_CFLAGS)
@@ -140,10 +141,12 @@ font_pangoft2_tex_LDFLAGS = $(AM_LDFLAGS) $(PANGOFT2_LIBS) $(GTKGLEXT_DEP_LIBS_W
 endif
 
 if !PLATFORM_WIN32
+if !TARGET_QUARTZ
 if GLU
 noinst_PROGRAMS += simple-pbuffer-sgix
 simple_pbuffer_sgix_SOURCES = simple-pbuffer-sgix.c
 simple_pbuffer_sgix_LDFLAGS = $(GLU_LIBS)
+endif
 endif
 endif
 
@@ -154,10 +157,12 @@ wglinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS)
 endif
 
 if !PLATFORM_WIN32
+if !TARGET_QUARTZ
 if GLU
 noinst_PROGRAMS += glxinfo
 glxinfo_SOURCES = glxinfo.c
 glxinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS) $(GLU_LIBS) $(MATH_LIB)
+endif
 endif
 endif
 

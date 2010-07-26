@@ -2,7 +2,7 @@
 ## Makefile.am for gtkglext/gdk
 
 SUBDIRS = $(gdktarget)
-DIST_SUBDIRS = x11 win32
+DIST_SUBDIRS = x11 win32 quartz
 
 EXTRA_DIST = \
 	gdkglversion.h.in	\
@@ -116,11 +116,16 @@ lib_LTLIBRARIES = $(gdkglext_targetlib)
 
 EXTRA_LTLIBRARIES = \
 	libgdkglext-x11-@API_MJ@.@API_MI@.la	\
+	libgdkglext-quartz-@API_MJ@.@API_MI@.la  \
 	libgdkglext-win32-@API_MJ@.@API_MI@.la
 
 libgdkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = $(gdkglext_sources)
 libgdkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
 libgdkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = x11/libgdkglext-x11.la $(common_libadd)
+
+libgdkglext_quartz_@API_MJ@_@API_MI@_la_SOURCES = $(gdkglext_sources)
+libgdkglext_quartz_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
+libgdkglext_quartz_@API_MJ@_@API_MI@_la_LIBADD = quartz/libgdkglext-quartz.la $(common_libadd)
 
 libgdkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = $(gdkglext_sources)
 libgdkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
@@ -137,7 +142,7 @@ MAINTAINERCLEANFILES = \
 	$(gdkglext_built_sources)
 
 # Generate built header without using automake BUILT_SOURCES
-$(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS): $(gdkglext_built_public_h_sources)
+$(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_quartz_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS): $(gdkglext_built_public_h_sources)
 
 $(srcdir)/gdkglenumtypes.h: stamp-gdkglenumtypes-h
 	@true
@@ -158,6 +163,12 @@ $(srcdir)/gdkglenumtypes.c: @REBUILD@ $(gdkglext_public_h_sources) Makefile
 #
 configexecincludedir = $(libdir)/gtkglext-@GTKGLEXT_API_VERSION@/include
 configexecinclude_DATA = gdkglext-config.h
+
+install-exec-local: gdkglext-config.h
+	$(mkinstalldirs) $(DESTDIR)$(configexecincludedir)
+	file=$(DESTDIR)$(configexecincludedir)/gdkglext-config.h; \
+	if test -r $$file && cmp -s gdkglext-config.h $$file; then :; \
+	else $(INSTALL_DATA) gdkglext-config.h $$file; fi
 
 gdkglext-config.h: stamp-gdkglext-config-h
 	@if test -f gdkglext-config.h; then :; \

@@ -42,7 +42,11 @@
 #include <windows.h>
 #endif
 
+#ifdef GDKGLEXT_WINDOWING_QUARTZ
+#include <OpenGL/gl.h>
+#else
 #include <GL/gl.h>
+#endif
 
 /**************************************************************************
  * The following section contains all the macro definitions.

@@ -101,6 +101,7 @@ AC_SUBST([GTKGLEXT_CURRENT_MINUS_AGE])
 dnl Initialize libtool
 AC_PROG_CC
 AM_PROG_CC_C_O
+AC_PROG_OBJC
 AM_DISABLE_STATIC
 LT_PREREQ([2.2.6])
 LT_INIT([win32-dll])
@@ -213,7 +214,7 @@ AC_ARG_WITH([gdktarget],
                             [select GDK target])],
             [gdktarget=$with_gdktarget],
             [gdktarget=`$PKG_CONFIG --variable=target gdk-2.0`])
-AS_IF([test x$gdktarget = xwin32],
+AS_IF([test x$gdktarget = xwin32 -o x$gdktarget = xquartz],
       [with_x=no])
 
 # Checks for headers and libraries.
@@ -315,8 +316,8 @@ fi
 AC_SUBST([REBUILD])
 
 case $gdktarget in
-  x11|win32) ;;
-  *) AC_MSG_ERROR([Invalid target for GDK: use x11 or win32.]);;
+  x11|quartz|win32) ;;
+  *) AC_MSG_ERROR([Invalid target for GDK: use x11, quartz or win32.]);;
 esac
 AC_SUBST([gdktarget])
 
@@ -352,14 +353,10 @@ if test "x$gdktarget" = "xx11"; then
   GDKGLEXT_WIN_CFLAGS="$X_CFLAGS"
   GDKGLEXT_WIN_LIBS="$X_LIBS $XMU_LIBS"
 fi
-AM_CONDITIONAL([USE_X11], [test x$gdktarget = xx11])
 
 if test "x$gdktarget" = "xwin32"; then
   WINDOWING_LIBS="-lgdi32 -luser32 -lkernel32"
   GDKGLEXT_WIN_LIBS="-lgdi32 -luser32 -lkernel32"
-  AM_CONDITIONAL([USE_WIN32], [true])
-else
-  AM_CONDITIONAL([USE_WIN32], [false])
 fi
 
 AC_SUBST([WINDOWING_CFLAGS])
@@ -367,6 +364,10 @@ AC_SUBST([WINDOWING_LIBS])
 
 AC_SUBST([GDKGLEXT_WIN_CFLAGS])
 AC_SUBST([GDKGLEXT_WIN_LIBS])
+
+AM_CONDITIONAL([USE_X11], [test x$gdktarget = xx11])
+AM_CONDITIONAL([USE_WIN32], [test x$gdktarget = xwin32])
+AM_CONDITIONAL([TARGET_QUARTZ], [test x$gdktarget = xquartz])
 
 # Debug option
 AC_ARG_ENABLE([debug],
@@ -457,6 +458,9 @@ if test "x$gdktarget" = "xx11" ; then
 elif test "x$gdktarget" = "xwin32" ; then
   gdkglext_windowing='
 #define GDKGLEXT_WINDOWING_WIN32'
+elif test "x$gdktarget" = "xquartz" ; then
+  gdkglext_windowing='
+#define GDKGLEXT_WINDOWING_QUARTZ'
 fi
 
 if test "x$GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF" = "xyes"; then
@@ -507,6 +511,7 @@ gdk/Makefile
 gdk/gdkglversion.h
 gdk/x11/Makefile
 gdk/win32/Makefile
+gdk/quartz/Makefile
 gtk/Makefile
 gtk/gtkglversion.h
 docs/Makefile

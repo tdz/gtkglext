@@ -87,11 +87,16 @@ lib_LTLIBRARIES = $(gtkglext_targetlib)
 
 EXTRA_LTLIBRARIES = \
 	libgtkglext-x11-@API_MJ@.@API_MI@.la	\
+	libgtkglext-quartz-@API_MJ@.@API_MI@.la \
 	libgtkglext-win32-@API_MJ@.@API_MI@.la
 
 libgtkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
 libgtkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
 libgtkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
+
+libgtkglext_quartz_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
+libgtkglext_quartz_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
+libgtkglext_quartz_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
 
 libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
 libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)

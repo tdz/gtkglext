@@ -31,7 +31,11 @@
 #include <windows.h>
 #endif
 
+#ifdef GDK_WINDOWING_QUARTZ
+#include <OpenGL/gl.h>
+#else
 #include <GL/gl.h>
+#endif
 
 /*
  * This code is based on glutExtensionSupported().
