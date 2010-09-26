@@ -50,8 +50,6 @@ EXPORTS
 	gdk_gl_drawable_wait_gl
 	gdk_gl_event_mask_get_type
 	gdk_gl_event_type_get_type
-	gdk_gl_font_use_pango_font
-	gdk_gl_font_use_pango_font_for_display
 	gdk_gl_get_GL_3DFX_tbuffer
 	gdk_gl_get_GL_APPLE_element_array
 	gdk_gl_get_GL_APPLE_fence
@@ -1305,7 +1303,6 @@ EXPORTS
 	gdk_gl_get_wglWaitForSbcOML
 	gdk_gl_init
 	gdk_gl_init_check
-	gdk_gl_parse_args
 	gdk_gl_pbuffer_attrib_get_type
 	gdk_gl_pixmap_get_pixmap
 	gdk_gl_pixmap_get_type
@@ -1341,8 +1338,3 @@ EXPORTS
 	gdk_window_is_gl_capable
 	gdk_window_set_gl_capability
 	gdk_window_unset_gl_capability
-	gdkglext_binary_age
-	gdkglext_interface_age
-	gdkglext_major_version
-	gdkglext_micro_version
-	gdkglext_minor_version
