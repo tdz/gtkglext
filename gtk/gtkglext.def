@@ -2,7 +2,6 @@ EXPORTS
 	gtk_gl_debug_flags
 	gtk_gl_init
 	gtk_gl_init_check
-	gtk_gl_parse_args
 	gtk_widget_create_gl_context
 	gtk_widget_get_gl_config
 	gtk_widget_get_gl_context
