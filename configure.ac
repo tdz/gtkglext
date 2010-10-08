@@ -105,6 +105,7 @@ AC_PROG_OBJC
 AM_DISABLE_STATIC
 LT_PREREQ([2.2.6])
 LT_INIT([win32-dll])
+LT_LANG([C++])
 
 AC_CHECK_PROG([ms_librarian], [lib.exe], [yes], [no])
 
