@@ -235,6 +235,9 @@ PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
 GLIB_MKENUMS="`$PKG_CONFIG --variable=glib_mkenums glib-2.0`"
 AC_SUBST(GLIB_MKENUMS)
 
+AX_CHECK_GL
+AS_IF([test X$no_gl = Xyes],
+      [AC_MSG_FAILURE([OpenGL is required.])])
 AX_CHECK_GLU
 # FIXME: AX_CHECK_GLU's behavior diverges from common autoconf conventions
 AM_CONDITIONAL([GLU],[test "$no_glu" != yes])
