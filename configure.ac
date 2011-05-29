@@ -119,18 +119,6 @@ AC_PATH_PROGS([PERL], [perl5 perl])
 
 GTK_DOC_CHECK
 
-platform_win32=no
-AC_MSG_CHECKING([for some Win32 platform])
-case "$host_os" in
-  *mingw*|*cygwin*)
-    platform_win32=yes
-    ;;
-  *)
-    ;;
-esac
-AC_MSG_RESULT([$platform_win32])
-AM_CONDITIONAL([PLATFORM_WIN32], [test "x$platform_win32" = "xyes"])
-
 os_win32=no
 MATH_LIB=-lm
 AC_MSG_CHECKING([for native Win32])

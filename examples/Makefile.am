@@ -156,7 +156,7 @@ font_pangoft2_tex_CPPFLAGS = $(AM_CPPFLAGS) $(PANGOFT2_CFLAGS)
 font_pangoft2_tex_LDFLAGS = $(AM_LDFLAGS) $(PANGOFT2_LIBS) $(GTKGLEXT_DEP_LIBS_WITH_PANGOFT2) $(GLU_LIBS) $(GL_LIBS)
 endif
 
-if !PLATFORM_WIN32
+if !USE_WIN32
 if !TARGET_QUARTZ
 if GLU
 noinst_PROGRAMS += simple-pbuffer-sgix
@@ -167,13 +167,13 @@ endif
 endif
 endif
 
-if PLATFORM_WIN32
+if USE_WIN32
 noinst_PROGRAMS += wglinfo
 wglinfo_SOURCES = wglinfo.c
 wglinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS)
 endif
 
-if !PLATFORM_WIN32
+if !USE_WIN32
 if !TARGET_QUARTZ
 if GLU
 noinst_PROGRAMS += glxinfo
