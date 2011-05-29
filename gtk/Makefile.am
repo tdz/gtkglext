@@ -5,10 +5,6 @@ EXTRA_DIST = \
 	gtkglversion.h.in	\
 	gtkglext.def
 
-if PLATFORM_WIN32
-no_undefined = -no-undefined
-endif
-
 if OS_WIN32
 gtkglext_def = $(srcdir)/gtkglext.def
 gtkglext_win32_symbols = -export-symbols $(gtkglext_def)
@@ -36,7 +32,7 @@ common_ldflags = \
 	-version-info $(GTKGLEXT_CURRENT):$(GTKGLEXT_REVISION):$(GTKGLEXT_AGE) 	\
 	-export-dynamic 					\
 	-rpath $(libdir) 					\
-	$(no_undefined)						\
+	-no-undefined						\
 	@LIBTOOL_EXPORT_OPTIONS@				\
 	$(gtkglext_win32_symbols)
 

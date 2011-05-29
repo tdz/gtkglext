@@ -8,10 +8,6 @@ EXTRA_DIST = \
 	gdkglversion.h.in	\
 	gdkglext.def
 
-if PLATFORM_WIN32
-no_undefined = -no-undefined
-endif
-
 if OS_WIN32
 gdkglext_def = $(srcdir)/gdkglext.def
 gdkglext_win32_symbols = -export-symbols $(gdkglext_def)
@@ -39,7 +35,7 @@ common_ldflags = \
 	-version-info $(GTKGLEXT_CURRENT):$(GTKGLEXT_REVISION):$(GTKGLEXT_AGE) 	\
 	-export-dynamic 					\
 	-rpath $(libdir) 					\
-	$(no_undefined)						\
+	-no-undefined						\
 	@LIBTOOL_EXPORT_OPTIONS@				\
 	$(gdkglext_win32_symbols)
 
