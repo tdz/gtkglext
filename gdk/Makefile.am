@@ -129,7 +129,6 @@ libgdkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = win32/libgdkglext-win32.la $(com
 libgdkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = $(gdkglext_def)
 
 BUILT_SOURCES = \
-	@REBUILD@			\
 	$(gdkglext_built_sources)
 
 DISTCLEANFILES = $(stamp_files) $(gdkglext_configure_generated_public_h_source)
@@ -140,19 +139,17 @@ MAINTAINERCLEANFILES = \
 # Generate built header without using automake BUILT_SOURCES
 $(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_quartz_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS): $(gdkglext_built_public_h_sources)
 
-$(srcdir)/gdkglenumtypes.h: stamp-gdkglenumtypes-h
-	@true
-stamp-gdkglenumtypes-h: @REBUILD@ $(gdkglext_public_h_sources) Makefile
+$(srcdir)/gdkglenumtypes.h: $(srcdir)/gtkglenumtypes.h.template $(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source)
 	( cd $(srcdir) && $(GLIB_MKENUMS) --template gtkglenumtypes.h.template \
-		$(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source) ) >> xgen-geth \
-	&& (cmp -s xgen-geth $(srcdir)/gdkglenumtypes.h || cp xgen-geth $(srcdir)/gdkglenumtypes.h ) \
-	&& rm -f xgen-geth \
-	&& echo timestamp > $(@F)
-$(srcdir)/gdkglenumtypes.c: @REBUILD@ $(gdkglext_public_h_sources) Makefile
+$(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source) ) >> xgen-geth \
+&& (cmp -s xgen-geth $(srcdir)/gdkglenumtypes.h || cp xgen-geth $(srcdir)/gdkglenumtypes.h ) \
+&& rm -f xgen-geth
+
+$(srcdir)/gdkglenumtypes.c: $(srcdir)/gtkglenumtypes.c.template $(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source)
 	( cd $(srcdir) && $(GLIB_MKENUMS) --template gtkglenumtypes.c.template \
-		$(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source) ) > xgen-getc \
-	&& cp xgen-getc $(srcdir)/gdkglenumtypes.c  \
-	&& rm -f xgen-getc
+$(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source) ) > xgen-getc \
+&& cp xgen-getc $(srcdir)/gdkglenumtypes.c  \
+&& rm -f xgen-getc
 
 #
 # Rule to install gdkglext-config.h header file
