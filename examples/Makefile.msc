@@ -35,7 +35,7 @@ PKGCONFIG_CFLAGS =
 PKGCONFIG_CFLAGS_MAK = PKGCONFIG_CFLAGS.mak
 !if [echo PKGCONFIG_CFLAGS = \> $(PKGCONFIG_CFLAGS_MAK)]
 !else
-!if [pkg-config --msvc-syntax --cflags gtkglext-1.0 pangoft2 >> $(PKGCONFIG_CFLAGS_MAK)]
+!if [pkg-config --msvc-syntax --cflags gtkglext-3.0 pangoft2 >> $(PKGCONFIG_CFLAGS_MAK)]
 !else
 !include $(PKGCONFIG_CFLAGS_MAK)
 !endif
@@ -46,7 +46,7 @@ PKGCONFIG_LIBS =
 PKGCONFIG_LIBS_MAK = PKGCONFIG_LIBS.mak
 !if [echo PKGCONFIG_LIBS = \> $(PKGCONFIG_LIBS_MAK)]
 !else
-!if [pkg-config --msvc-syntax --libs gtkglext-1.0 >> $(PKGCONFIG_LIBS_MAK)]
+!if [pkg-config --msvc-syntax --libs gtkglext-3.0 >> $(PKGCONFIG_LIBS_MAK)]
 !else
 !include $(PKGCONFIG_LIBS_MAK)
 !endif
@@ -57,7 +57,7 @@ PKGCONFIG_LIBS_WITH_PANGOFT2 =
 PKGCONFIG_LIBS_WITH_PANGOFT2_MAK = PKGCONFIG_LIBS_WITH_PANGOFT2.mak
 !if [echo PKGCONFIG_LIBS_WITH_PANGOFT2 = \> $(PKGCONFIG_LIBS_WITH_PANGOFT2_MAK)]
 !else
-!if [pkg-config --msvc-syntax --libs gtkglext-1.0 pangoft2 >> $(PKGCONFIG_LIBS_WITH_PANGOFT2_MAK)]
+!if [pkg-config --msvc-syntax --libs gtkglext-3.0 pangoft2 >> $(PKGCONFIG_LIBS_WITH_PANGOFT2_MAK)]
 !else
 !include $(PKGCONFIG_LIBS_WITH_PANGOFT2_MAK)
 !endif

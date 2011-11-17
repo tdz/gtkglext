@@ -67,7 +67,7 @@ Multihead support requires GTK+ 2.1 or above.
 If GtkGLExt is already installed, you can check whether installed
 GtkGLExt library supports multihead using the following command.
 
-  $ pkg-config --variable=multihead gtkglext-1.0
+  $ pkg-config --variable=multihead gtkglext-3.0
 
 
 Installation
