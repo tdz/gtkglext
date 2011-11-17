@@ -4,10 +4,10 @@ libglade.
 To build examples, type
 
   $ gcc -o simple simple.c \
-      `pkg-config --cflags --libs gtkglext-1.0 libglade-2.0`
+      `pkg-config --cflags --libs gtkglext-3.0 libglade-2.0`
 
   $ gcc -o share-lists share-lists.c \
-      `pkg-config --cflags --libs gtkglext-1.0 libglade-2.0`
+      `pkg-config --cflags --libs gtkglext-3.0 libglade-2.0`
 
 Note that "configure_event" signal handlers are connected with
 after="yes" (g_signal_connect_after()), because users'

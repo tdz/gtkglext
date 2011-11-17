@@ -429,13 +429,13 @@ Section Uninstall
 
   ; include
 
-  RMDir /r $INSTDIR\include\gtkglext-1.0
+  RMDir /r $INSTDIR\include\gtkglext-3.0
 
   RMDir $INSTDIR\include
 
   ; lib
 
-  RMDir /r $INSTDIR\lib\gtkglext-1.0
+  RMDir /r $INSTDIR\lib\gtkglext-3.0
 
   Delete $INSTDIR\lib\libgdkglext-win32-${GTKGLEXT_API_VERSION}.dll.a
   Delete $INSTDIR\lib\libgtkglext-win32-${GTKGLEXT_API_VERSION}.dll.a

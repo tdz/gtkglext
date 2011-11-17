@@ -3,7 +3,7 @@
 # Setup GtkGLExt win32 binary package.
 #
 
-PKGCONFIG_FILES="lib/pkgconfig/gdkglext-1.0.pc lib/pkgconfig/gdkglext-win32-1.0.pc lib/pkgconfig/gtkglext-1.0.pc lib/pkgconfig/gtkglext-win32-1.0.pc"
+PKGCONFIG_FILES="lib/pkgconfig/gdkglext-3.0.pc lib/pkgconfig/gdkglext-win32-3.0.pc lib/pkgconfig/gtkglext-3.0.pc lib/pkgconfig/gtkglext-win32-3.0.pc"
 
 PREFIX=""
 
