@@ -48,21 +48,21 @@ if GLU
 noinst_PROGRAMS += simple
 nodist_EXTRA_simple_SOURCES = dummy.cpp
 simple_SOURCES = simple.c
-simple_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
+simple_LDFLAGS = $(AM_LDFLAGS) $(GLU_LIBS) $(GL_LIBS)
 endif
 
 if GLU
 noinst_PROGRAMS += simple-mixed
 nodist_EXTRA_simple_mixed_SOURCES = dummy.cpp
 simple_mixed_SOURCES = simple-mixed.c
-simple_mixed_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
+simple_mixed_LDFLAGS = $(AM_LDFLAGS) $(GLU_LIBS) $(GL_LIBS)
 endif
 
 if GLU
 noinst_PROGRAMS += share-lists
 nodist_EXTRA_share_lists_SOURCES = dummy.cpp
 share_lists_SOURCES = share-lists.c
-share_lists_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
+share_lists_LDFLAGS = $(AM_LDFLAGS) $(GLU_LIBS) $(GL_LIBS)
 endif
 
 if GLU
@@ -90,14 +90,14 @@ if GLU
 noinst_PROGRAMS += multiarb
 nodist_EXTRA_multiarb_SOURCES = dummy.cpp
 multiarb_SOURCES = readtex.h readtex.c multiarb.c
-multiarb_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
+multiarb_LDFLAGS = $(AM_LDFLAGS) $(GLU_LIBS) $(GL_LIBS)
 endif
 
 if GLU
 noinst_PROGRAMS += viewlw
 nodist_EXTRA_viewlw_SOURCES = dummy.cpp
 viewlw_SOURCES = viewlw.c lw.h lw.c trackball.h trackball.c
-viewlw_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
+viewlw_LDFLAGS = $(AM_LDFLAGS) $(GLU_LIBS) $(GL_LIBS)
 endif
 
 noinst_PROGRAMS += rotating-square
@@ -107,14 +107,14 @@ if GLU
 noinst_PROGRAMS += coolwave
 nodist_EXTRA_coolwave_SOURCES = dummy.cpp
 coolwave_SOURCES = coolwave.c
-coolwave_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
+coolwave_LDFLAGS = $(AM_LDFLAGS) $(GLU_LIBS) $(GL_LIBS)
 endif
 
 if GLU
 noinst_PROGRAMS += coolwave2
 nodist_EXTRA_coolwave2_SOURCES = dummy.cpp
 coolwave2_SOURCES = coolwave2.c
-coolwave2_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
+coolwave2_LDFLAGS = $(AM_LDFLAGS) $(GLU_LIBS) $(GL_LIBS)
 endif
 
 noinst_PROGRAMS += template
@@ -145,7 +145,7 @@ if GLU
 noinst_PROGRAMS += simple-pbuffer-sgix
 nodist_EXTRA_simple_pbuffer_sgix_SOURCES = dummy.cpp
 simple_pbuffer_sgix_SOURCES = simple-pbuffer-sgix.c
-simple_pbuffer_sgix_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
+simple_pbuffer_sgix_LDFLAGS = $(AM_LDFLAGS) $(GLU_LIBS) $(GL_LIBS)
 endif
 endif
 endif
