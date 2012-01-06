@@ -44,8 +44,6 @@ struct _GdkGLConfigImplX11
 
   GdkScreen *screen;
 
-  GdkColormap *colormap;
-
   guint is_mesa_glx : 1;
 };
 
