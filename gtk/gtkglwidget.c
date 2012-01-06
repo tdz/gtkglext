@@ -41,7 +41,7 @@ typedef struct
 static const gchar quark_gl_private_string[] = "gtk-gl-widget-private";
 static GQuark quark_gl_private = 0;
 
-gboolean _gtk_gl_widget_install_toplevel_cmap = FALSE;
+gboolean _gtk_gl_widget_install_toplevel_visual = FALSE;
 
 static void     gtk_gl_widget_realize            (GtkWidget         *widget,
                                                   GLWidgetPrivate   *private);
@@ -54,15 +54,15 @@ static void     gtk_gl_widget_size_allocate      (GtkWidget         *widget,
 static void     gtk_gl_widget_unrealize          (GtkWidget         *widget,
                                                   GLWidgetPrivate   *private);
 static void     gtk_gl_widget_parent_set         (GtkWidget         *widget,
-                                                  GtkObject         *old_parent,
-                                                  GdkColormap       *colormap);
+                                                  GObject           *old_parent,
+                                                  GdkVisual         *visual);
 static void     gtk_gl_widget_style_set          (GtkWidget         *widget,
                                                   GtkStyle          *previous_style,
                                                   gpointer           user_data);
 
 static void     gl_widget_private_destroy        (GLWidgetPrivate   *private);
 
-/* 
+/*
  * Signal handlers.
  */
 
@@ -165,25 +165,25 @@ gtk_gl_widget_unrealize (GtkWidget       *widget,
 }
 
 static void
-gtk_gl_widget_parent_set (GtkWidget   *widget,
-                          GtkObject   *old_parent,
-                          GdkColormap *colormap)
+gtk_gl_widget_parent_set (GtkWidget *widget,
+                          GObject   *old_parent,
+                          GdkVisual *visual)
 {
   GtkWidget *toplevel;
 
   GTK_GL_NOTE_FUNC_PRIVATE ();
 
   /*
-   * Try to install colormap to the top-level window.
+   * Try to install visual to the top-level window.
    */
 
   toplevel = gtk_widget_get_toplevel (widget);
   if (gtk_widget_is_toplevel (toplevel) && !gtk_widget_get_realized (toplevel))
     {
       GTK_GL_NOTE (MISC,
-        g_message (" - Install colormap to the top-level window."));
+        g_message (" - Install visual to the top-level window."));
 
-      gtk_widget_set_colormap (toplevel, colormap);
+      gtk_widget_set_visual (toplevel, visual);
     }
 }
 
@@ -196,7 +196,7 @@ gtk_gl_widget_style_set (GtkWidget *widget,
 
   GTK_GL_NOTE_FUNC_PRIVATE ();
 
-  /* 
+  /*
    * Set a background of "None" on window to avoid AIX X server crash.
    */
 
@@ -252,7 +252,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
                               gboolean      direct,
                               int           render_type)
 {
-  GdkColormap *colormap;
+  GdkVisual *visual;
   GLWidgetPrivate *private;
 
   GTK_GL_NOTE_FUNC ();
@@ -262,7 +262,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
   g_return_val_if_fail (!gtk_widget_get_realized (widget), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  /* 
+  /*
    * Init quark.
    */
 
@@ -280,27 +280,28 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
    * Set OpenGL-capable colormap.
    */
 
-  colormap = gdk_gl_config_get_colormap (glconfig);
+  visual = gdk_gl_config_get_visual (glconfig);
 
-  gtk_widget_set_colormap (widget, colormap);
+  gtk_widget_set_visual (widget, visual);
 
-  /* Install colormap to the top-level window. */
-  if (_gtk_gl_widget_install_toplevel_cmap)
+  /* Install visual to the top-level window. */
+  if (_gtk_gl_widget_install_toplevel_visual)
     {
       /*
        * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
        * the top-level window, we have to set OpenGL window's colormap to the
        * top-level window, especially in color index mode (color index mode
-       * uses own private colormap).
+       * uses own private colormap). This is achieved by setting the window's
+       * visual.
        */
 
       /* Signal handler to set colormap to the top-level window. */
       g_signal_connect (G_OBJECT (widget), "parent_set",
                         G_CALLBACK (gtk_gl_widget_parent_set),
-                        colormap);
+                        visual);
 
-      /* If given widget has the top-level window, colormap is set here. */
-      gtk_gl_widget_parent_set (widget, NULL, colormap);
+      /* If given widget has the top-level window, visual is set here. */
+      gtk_gl_widget_parent_set (widget, NULL, visual);
     }
 
   /*
@@ -309,7 +310,7 @@ gtk_widget_set_gl_capability (GtkWidget    *widget,
 
   gtk_widget_set_double_buffered (widget, FALSE);
 
-  /* 
+  /*
    * "style_set" signal handler to set a background of "None" on window.
    * (relates AIX X server crash)
    */
