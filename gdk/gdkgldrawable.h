@@ -56,10 +56,6 @@ struct _GdkGLDrawableClass
   void          (*gl_end)               (GdkGLDrawable *gldrawable);
 
   GdkGLConfig*  (*get_gl_config)        (GdkGLDrawable *gldrawable);
-
-  void          (*get_size)             (GdkGLDrawable *gldrawable,
-                                         gint          *width,
-                                         gint          *height);
 };
 
 GType          gdk_gl_drawable_get_type           (void);
@@ -81,10 +77,6 @@ gboolean       gdk_gl_drawable_gl_begin           (GdkGLDrawable *gldrawable,
 void           gdk_gl_drawable_gl_end             (GdkGLDrawable *gldrawable);
 
 GdkGLConfig   *gdk_gl_drawable_get_gl_config      (GdkGLDrawable *gldrawable);
-
-void           gdk_gl_drawable_get_size           (GdkGLDrawable *gldrawable,
-                                                   gint          *width,
-                                                   gint          *height);
 
 GdkGLDrawable *gdk_gl_drawable_get_current        (void);
 

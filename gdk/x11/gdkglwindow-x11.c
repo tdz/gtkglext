@@ -135,7 +135,6 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->gl_begin             =  gdk_gl_window_impl_x11_make_context_current;
   iface->gl_end               =  gdk_gl_window_impl_x11_gl_end;
   iface->get_gl_config        =  gdk_gl_window_impl_x11_get_gl_config;
-  iface->get_size             = _gdk_gl_window_get_size;
 }
 
 /*
@@ -174,7 +173,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
    * Get X Window.
    */
 
-  glxwindow = GDK_DRAWABLE_XID (GDK_DRAWABLE (window));
+  glxwindow = GDK_WINDOW_XID (window);
 
   /*
    * Instantiate the GdkGLWindowImplX11 object.
@@ -183,9 +182,9 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   glwindow = g_object_new (GDK_TYPE_GL_WINDOW_IMPL_X11, NULL);
   impl = GDK_GL_WINDOW_IMPL_X11 (glwindow);
 
-  glwindow->drawable = GDK_DRAWABLE (window);
-  g_object_add_weak_pointer (G_OBJECT (glwindow->drawable),
-                             (gpointer *) &(glwindow->drawable));
+  glwindow->window = window;
+  g_object_add_weak_pointer (G_OBJECT (glwindow->window),
+                             (gpointer *) &(glwindow->window));
 
   impl->glxwindow = glxwindow;
 
@@ -202,14 +201,18 @@ gdk_gl_window_impl_x11_make_context_current (GdkGLDrawable *draw,
                                              GdkGLDrawable *read,
                                              GdkGLContext  *glcontext)
 {
+  GdkGLWindowImplX11 *impl;
   GdkGLConfig *glconfig;
+  GdkWindow *window;
   Window glxwindow;
   GLXContext glxcontext;
 
   g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (draw), FALSE);
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), FALSE);
 
+  impl = GDK_GL_WINDOW_IMPL_X11 (draw);
   glconfig = GDK_GL_WINDOW_IMPL_X11 (draw)->glconfig;
+  window = gdk_gl_window_get_window(GDK_GL_WINDOW(impl));
   glxwindow = GDK_GL_WINDOW_IMPL_X11 (draw)->glxwindow;
   glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
 
@@ -218,10 +221,10 @@ gdk_gl_window_impl_x11_make_context_current (GdkGLDrawable *draw,
 
   GDK_GL_NOTE (MISC,
     g_message (" -- Window: screen number = %d",
-      GDK_SCREEN_XNUMBER (gdk_drawable_get_screen (GDK_DRAWABLE (draw)))));
+      GDK_SCREEN_XNUMBER (gdk_window_get_screen (window))));
   GDK_GL_NOTE (MISC,
     g_message (" -- Window: visual id = 0x%lx",
-      GDK_VISUAL_XVISUAL (gdk_drawable_get_visual (GDK_DRAWABLE (draw)))->visualid));
+      GDK_VISUAL_XVISUAL (gdk_window_get_visual (window))->visualid));
 
   GDK_GL_NOTE_FUNC_IMPL ("glXMakeCurrent");
 

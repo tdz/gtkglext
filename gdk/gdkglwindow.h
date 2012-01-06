@@ -37,14 +37,14 @@ typedef struct _GdkGLWindowClass GdkGLWindowClass;
 
 struct _GdkGLWindow
 {
-  GdkDrawable parent_instance;
+  GObject parent_instance;
 
-  GdkDrawable *drawable;        /* Associated GdkWindow */
+  GdkWindow *window;        /* Associated GdkWindow */
 };
 
 struct _GdkGLWindowClass
 {
-  GdkDrawableClass parent_class;
+  GObjectClass parent_class;
 };
 
 GType        gdk_gl_window_get_type         (void);
