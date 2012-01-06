@@ -139,13 +139,13 @@ gdk_window_set_gl_capability (GdkWindow   *window,
 
   GDK_GL_NOTE (MISC,
     g_message (" - window->bg_pixmap = %p",
-               ((GdkWindowObject *) window)->bg_pixmap));
+               gdk_window_get_background_pattern (window)));
 
-  gdk_window_set_back_pixmap (window, NULL, FALSE);
+  gdk_window_set_background_pattern (window, NULL);
 
   GDK_GL_NOTE (MISC,
     g_message (" - window->bg_pixmap = %p",
-               ((GdkWindowObject *) window)->bg_pixmap));
+               gdk_window_get_background_pattern (window)));
 
   return glwindow;
 }
