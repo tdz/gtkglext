@@ -31,7 +31,6 @@
 #include <gdk/gdkglconfig.h>
 #include <gdk/gdkglcontext.h>
 #include <gdk/gdkgldrawable.h>
-#include <gdk/gdkglpixmap.h>
 #include <gdk/gdkglwindow.h>
 
 #endif /* __GDK_GL_H__ */
