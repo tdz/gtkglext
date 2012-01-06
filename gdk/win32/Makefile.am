@@ -20,7 +20,6 @@ gdkglext_win32_public_h_sources = \
 gdkglext_win32_private_h_sources = \
 	gdkglconfig-win32.h	\
 	gdkglcontext-win32.h	\
-	gdkglpixmap-win32.h	\
 	gdkglwindow-win32.h	\
 	gdkglprivate-win32.h
 
@@ -29,7 +28,6 @@ gdkglext_win32_c_sources = \
 	gdkglconfig-win32.c	\
 	gdkglcontext-win32.c	\
 	gdkgldrawable-win32.c	\
-	gdkglpixmap-win32.c	\
 	gdkglwindow-win32.c
 
 gdkglext_win32_headers = \

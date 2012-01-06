@@ -54,9 +54,6 @@ HGLRC                  gdk_win32_gl_context_get_hglrc       (GdkGLContext  *glco
 HDC                    gdk_win32_gl_drawable_hdc_get        (GdkGLDrawable *gldrawable);
 void                   gdk_win32_gl_drawable_hdc_release    (GdkGLDrawable *gldrawable);
 
-PIXELFORMATDESCRIPTOR *gdk_win32_gl_pixmap_get_pfd          (GdkGLPixmap   *glpixmap);
-int                    gdk_win32_gl_pixmap_get_pixel_format (GdkGLPixmap   *glpixmap);
-
 PIXELFORMATDESCRIPTOR *gdk_win32_gl_window_get_pfd          (GdkGLWindow   *glwindow);
 int                    gdk_win32_gl_window_get_pixel_format (GdkGLWindow   *glwindow);
 
@@ -64,8 +61,6 @@ int                    gdk_win32_gl_window_get_pixel_format (GdkGLWindow   *glwi
 
 #define GDK_GL_CONFIG_PFD(glconfig)          (&(GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->pfd))
 #define GDK_GL_CONTEXT_HGLRC(glcontext)      (GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->hglrc)
-#define GDK_GL_PIXMAP_PFD(glpixmap)          (&(GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap)->pfd))
-#define GDK_GL_PIXMAP_PIXEL_FORMAT(glpixmap) (GDK_GL_PIXMAP_IMPL_WIN32 (glpixmap)->pixel_format)
 #define GDK_GL_WINDOW_PFD(glwindow)          (&(GDK_GL_WINDOW_IMPL_WIN32 (glwindow)->pfd))
 #define GDK_GL_WINDOW_PIXEL_FORMAT(glwindow) (GDK_GL_WINDOW_IMPL_WIN32 (glwindow)->pixel_format)
 
@@ -73,8 +68,6 @@ int                    gdk_win32_gl_window_get_pixel_format (GdkGLWindow   *glwi
 
 #define GDK_GL_CONFIG_PFD(glconfig)          (gdk_win32_gl_config_get_pfd (glconfig))
 #define GDK_GL_CONTEXT_HGLRC(glcontext)      (gdk_win32_gl_context_get_hglrc (glcontext))
-#define GDK_GL_PIXMAP_PFD(glpixmap)          (gdk_win32_gl_pixmap_get_pfd (glpixmap))
-#define GDK_GL_PIXMAP_PIXEL_FORMAT(glpixmap) (gdk_win32_gl_pixmap_get_pixel_format (glpixmap))
 #define GDK_GL_WINDOW_PFD(glwindow)          (gdk_win32_gl_window_get_pfd (glwindow))
 #define GDK_GL_WINDOW_PIXEL_FORMAT(glwindow) (gdk_win32_gl_window_get_pixel_format (glwindow))
 

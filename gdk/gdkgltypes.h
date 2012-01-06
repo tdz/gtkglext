@@ -22,7 +22,7 @@
 #include <gdk/gdk.h>
 
 G_BEGIN_DECLS
- 
+
 /*
  * Forward declarations of commonly used types
  */
@@ -34,7 +34,6 @@ typedef struct _GdkGLContext  GdkGLContext;
 
 typedef struct _GdkGLDrawable GdkGLDrawable;
 
-typedef struct _GdkGLPixmap   GdkGLPixmap;
 typedef struct _GdkGLWindow   GdkGLWindow;
 
 G_END_DECLS

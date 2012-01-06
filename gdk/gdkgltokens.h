@@ -182,7 +182,6 @@ typedef enum
 typedef enum
 {
   GDK_GL_WINDOW_BIT                 = 1 << 0, /* 0x00000001 */
-  GDK_GL_PIXMAP_BIT                 = 1 << 1, /* 0x00000002 */
   GDK_GL_PBUFFER_BIT                = 1 << 2  /* 0x00000004 */
 } GdkGLDrawableTypeMask;
 

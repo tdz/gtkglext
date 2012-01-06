@@ -84,7 +84,7 @@ gdk_gl_config_parse_attrib_list (const int             *attrib_list,
      PFD_SUPPORT_GDI and PFD_DOUBLEBUFFER are mutually exclusive in
      the current generic implementation. */
   /* PFD_DRAW_TO_WINDOW or PFD_DRAW_TO_BITMAP is not specified at this stage.
-     The flag is set by gdk_gl_(window|pixmap)_new(). */
+     The flag is set by gdk_gl_window_new(). */
   pfd->dwFlags = PFD_SUPPORT_OPENGL |
                  PFD_SUPPORT_GDI;
 
@@ -268,7 +268,7 @@ _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
   return pixel_format;
 }
 
-/* 
+/*
  * Setup PFD.
  */
 
@@ -360,11 +360,11 @@ gdk_gl_config_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
   return TRUE;
 }
 
-/* 
+/*
  * Setup colormap.
  */
 
-/* 
+/*
  * !!! RGB palette management should be implemented...
  */
 

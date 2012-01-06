@@ -33,11 +33,6 @@ G_BEGIN_DECLS
 
 void _gdk_gl_context_destroy (GdkGLContext  *glcontext);
 
-void _gdk_gl_pixmap_destroy  (GdkGLPixmap   *glpixmap);
-void _gdk_gl_pixmap_get_size (GdkGLDrawable *gldrawable,
-                              gint          *width,
-                              gint          *height);
-
 void _gdk_gl_window_destroy  (GdkGLWindow   *glwindow);
 void _gdk_gl_window_get_size (GdkGLDrawable *gldrawable,
                               gint          *width,
