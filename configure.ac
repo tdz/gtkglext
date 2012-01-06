@@ -7,8 +7,8 @@
 # if backwards compatibility has been broken,
 # set gtkglext_binary_age and gtkglext_interface_age to 0.
 #
-m4_define([gtkglext_major_version], [1])
-m4_define([gtkglext_minor_version], [2])
+m4_define([gtkglext_major_version], [2])
+m4_define([gtkglext_minor_version], [99])
 m4_define([gtkglext_micro_version], [0])
 m4_define([gtkglext_interface_age], [0])
 m4_define([gtkglext_binary_age],
@@ -17,7 +17,7 @@ m4_define([gtkglext_version],
           [gtkglext_major_version.gtkglext_minor_version.gtkglext_micro_version])
 
 # This is the X.Y used in -lgtkglext-FOO-X.Y
-m4_define([gtkglext_api_major_version], [1])
+m4_define([gtkglext_api_major_version], [3])
 m4_define([gtkglext_api_minor_version], [0])
 m4_define([gtkglext_api_version],
           [gtkglext_api_major_version.gtkglext_api_minor_version])
@@ -210,10 +210,10 @@ AS_IF([test x$gdktarget = xwin32],
 
 AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
 
-PKG_CHECK_MODULES([GTK], [gtk+-2.0 >= 2.20], ,
+PKG_CHECK_MODULES([GTK], [gtk+-3.0 >= 3.0], ,
                   [AS_IF([test -z "${GTK_LIBS+x}"],
-                         [AC_MSG_FAILURE([GTK+ 2.20 or newer is required.])])])
-PKG_CHECK_MODULES([GDK], [gdk-2.0], ,
+                         [AC_MSG_FAILURE([GTK+ 3.0 or newer is required.])])])
+PKG_CHECK_MODULES([GDK], [gdk-3.0], ,
                   [AS_IF([test -z "${GDK_LIBS+x}"],
                          [AC_MSG_FAILURE([GDK is required.])])])
 PKG_CHECK_MODULES([PANGOFT2], [pangoft2], ,
