@@ -24,8 +24,8 @@
 
 G_BEGIN_DECLS
 
-/* Install colormap to top-level window. */
-extern gboolean _gtk_gl_widget_install_toplevel_cmap;
+/* Install visual to top-level window. */
+extern gboolean _gtk_gl_widget_install_toplevel_visual;
 
 G_END_DECLS
 
