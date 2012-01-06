@@ -166,7 +166,7 @@ gdk_gl_context_new_common (GdkGLConfig   *glconfig,
 
   impl->is_destroyed = FALSE;
 
-  /* 
+  /*
    * Insert into the GL context hash table.
    */
 
@@ -271,7 +271,7 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
 
   return gdk_gl_context_new_common (glconfig,
                                     share_list,
-                                    (glconfig->is_rgba) ? GDK_GL_RGBA_TYPE : GDK_GL_COLOR_INDEX_TYPE,
+                                    GDK_GL_RGBA_TYPE,
                                     glxcontext,
                                     TRUE);
 }
@@ -286,7 +286,7 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
  *
  * @mask contains the bitwise-OR of the same symbolic names that are passed to
  * the glPushAttrib() function. You can use GL_ALL_ATTRIB_BITS to copy all the
- * rendering state information. 
+ * rendering state information.
  *
  * Return value: FALSE if it fails, TRUE otherwise.
  **/
@@ -450,7 +450,7 @@ gdk_gl_context_is_direct (GdkGLContext *glcontext)
  *
  * Gets render_type of the @glcontext.
  *
- * Return value: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE.
+ * Return value: GDK_GL_RGBA_TYPE.
  **/
 int
 gdk_gl_context_get_render_type (GdkGLContext *glcontext)

@@ -59,8 +59,6 @@ gdk_gl_config_impl_x11_finalize (GObject *object)
 
   XFree (impl->xvinfo);
 
-  g_object_unref (G_OBJECT (impl->colormap));
-
   G_OBJECT_CLASS (gdk_gl_config_impl_x11_parent_class)->finalize (object);
 }
 
@@ -72,240 +70,6 @@ gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   object_class->finalize = gdk_gl_config_impl_x11_finalize;
-}
-
-/*
- * Get standard RGB colormap
- */
-
-#ifdef HAVE_GDK_X11_COLORMAP_FOREIGN_NEW
-static GdkColormap *
-gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
-                                    XVisualInfo *xvinfo,
-                                    gboolean     is_mesa_glx)
-{
-  GdkDisplay *display;
-  Display *xdisplay;
-  int screen_num;
-  Window xroot_window;
-  Status status;
-  Colormap xcolormap = None;
-  XStandardColormap *standard_cmaps;
-  int i, num_cmaps;
-  GdkVisual *visual;
-
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  display = gdk_screen_get_display (screen);
-  xdisplay = GDK_DISPLAY_XDISPLAY (display);
-  screen_num = xvinfo->screen;
-  xroot_window = RootWindow (xdisplay, screen_num);
-
-  /*
-   * (ripped from GLUT)
-   * Hewlett-Packard supports a feature called "HP Color Recovery".
-   * Mesa has code to use HP Color Recovery.  For Mesa to use this feature,
-   * the atom _HP_RGB_SMOOTH_MAP_LIST must be defined on the root window AND
-   * the colormap obtainable by XGetRGBColormaps for that atom must be set on
-   * the window.  If that colormap is not set, the output will look stripy.
-   */
-
-  if (is_mesa_glx &&
-      xvinfo->visual->class == TrueColor &&
-      xvinfo->depth == 8)
-    {
-      Atom xa_hp_cr_maps;
-
-      GDK_GL_NOTE (MISC,
-        g_message (" -- Try to find a standard RGB colormap with HP Color Recovery"));
-
-      xa_hp_cr_maps = gdk_x11_get_xatom_by_name_for_display (display,
-                                                             "_HP_RGB_SMOOTH_MAP_LIST");
-
-      status = XGetRGBColormaps (xdisplay, xroot_window,
-                                 &standard_cmaps, &num_cmaps,
-                                 xa_hp_cr_maps);
-      if (status)
-        {
-          for (i = 0; i < num_cmaps; i++)
-            {
-              if (standard_cmaps[i].visualid == xvinfo->visualid)
-                {
-                  xcolormap = standard_cmaps[i].colormap;
-                  break;
-                }
-            }
-
-          XFree (standard_cmaps);
-
-          if (xcolormap != None)
-            {
-              GDK_GL_NOTE (MISC,
-                g_message (" -- Colormap: standard RGB with HP Color Recovery"));
-
-              visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
-              return gdk_x11_colormap_foreign_new (visual, xcolormap);
-            }
-        }
-    }
-
-#if defined(HAVE_LIBXMU) && !defined(_DISABLE_STANDARD_RGB_CMAP)
-
-  /*
-   * (ripped from GLUT)
-   * Solaris 2.4 and 2.5 have a bug in their XmuLookupStandardColormap
-   * implementations.  Please compile your Solaris 2.4 or 2.5 version of
-   * GtkGLExt with -D_DISABLE_STANDARD_RGB_CMAP to work around this bug.
-   * The symptom of the bug is that programs will get a BadMatch error
-   * from XCreateWindow when creating a window because Solaris 2.4 and 2.5
-   * create a corrupted RGB_DEFAULT_MAP property.  Note that this workaround
-   * prevents colormap sharing between applications, perhaps leading
-   * unnecessary colormap installations or colormap flashing.  Sun fixed
-   * this bug in Solaris 2.6.
-   */
-
-  if (!_gdk_gl_config_no_standard_colormap)
-    {
-      GDK_GL_NOTE (MISC,
-        g_message (" -- Try to find a standard RGB colormap"));
-
-      status = XmuLookupStandardColormap (xdisplay, screen_num,
-                                          xvinfo->visualid, xvinfo->depth,
-                                          XA_RGB_DEFAULT_MAP,
-                                          False, True);
-      if (status)
-        {
-          status = XGetRGBColormaps (xdisplay, xroot_window,
-                                     &standard_cmaps, &num_cmaps,
-                                     XA_RGB_DEFAULT_MAP);
-          if (status)
-            {
-              for (i = 0; i < num_cmaps; i++)
-                {
-                  if (standard_cmaps[i].visualid == xvinfo->visualid)
-                    {
-                      xcolormap = standard_cmaps[i].colormap;
-                      break;
-                    }
-                }
-
-              XFree (standard_cmaps);
-
-              if (xcolormap != None)
-                {
-                  GDK_GL_NOTE (MISC, g_message (" -- Colormap: standard RGB"));
-
-                  visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
-                  return gdk_x11_colormap_foreign_new (visual, xcolormap);
-                }
-            }
-        }
-    }
-
-#endif /* defined(HAVE_LIBXMU) && !defined(_DISABLE_STANDARD_RGB_CMAP) */
-
-  return NULL;
-}
-#endif /* HAVE_GDK_X11_COLORMAP_FOREIGN_NEW */
-
-/*
- * Setup colormap.
- */
-
-static GdkColormap *
-gdk_gl_config_setup_colormap (GdkScreen   *screen,
-                              XVisualInfo *xvinfo,
-                              gboolean     is_rgba,
-                              gboolean     is_mesa_glx)
-{
-  GdkColormap *colormap;
-  GdkVisual *visual;
-  GdkGLOverlayInfo overlay_info;
-  gboolean overlay_supported;
-
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  if (is_rgba)
-    {
-      /*
-       * For RGBA mode.
-       */
-
-      /* Try default colormap. */
-
-      colormap = gdk_screen_get_default_colormap (screen);
-      visual = gdk_colormap_get_visual (colormap);
-      if (GDK_VISUAL_XVISUAL (visual)->visualid == xvinfo->visualid)
-        {
-          GDK_GL_NOTE (MISC, g_message (" -- Colormap: screen default"));
-          g_object_ref (G_OBJECT (colormap));
-          return colormap;
-        }
-
-      /* Try standard RGB colormap. */
-
-#ifdef HAVE_GDK_X11_COLORMAP_FOREIGN_NEW
-      colormap = gdk_gl_config_get_std_rgb_colormap (screen, xvinfo, is_mesa_glx);
-      if (colormap)
-        return colormap;
-#endif /* HAVE_GDK_X11_COLORMAP_FOREIGN_NEW */
-
-      /* New colormap. */
-
-      GDK_GL_NOTE (MISC, g_message (" -- Colormap: new"));
-      visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
-      colormap = gdk_colormap_new (visual, FALSE);
-      return colormap;
-
-    }
-  else
-    {
-      /*
-       * For color index mode.
-       */
-
-      visual = gdk_x11_screen_lookup_visual (screen, xvinfo->visualid);
-
-      overlay_supported = _gdk_x11_gl_overlay_get_info (visual, &overlay_info);
-      if (overlay_supported &&
-          overlay_info.transparent_type == GDK_GL_OVERLAY_TRANSPARENT_PIXEL &&
-          overlay_info.value < (guint32) xvinfo->visual->map_entries)
-        {
-
-          /*
-           * On machines where zero (or some other value in the range
-           * of 0 through map_entries-1), BadAlloc may be generated
-           * when an AllocAll overlay colormap is allocated since the
-           * transparent pixel precludes all the cells in the colormap
-           * being allocated (the transparent pixel is pre-allocated).
-           * So in this case, use XAllocColorCells to allocate
-           * map_entries-1 pixels (that is, all but the transparent pixel).
-           */
-
-          GDK_GL_NOTE (MISC, g_message (" -- Colormap: new"));
-          colormap = gdk_colormap_new (visual, FALSE);
-        }
-      else
-        {
-
-          /*
-           * If there is no transparent pixel or if the transparent
-           * pixel is outside the range of valid colormap cells (HP
-           * can implement their overlays this smart way since their
-           * transparent pixel is 255), we can AllocAll the colormap.
-           * See note above.
-           */
-
-          GDK_GL_NOTE (MISC, g_message (" -- Colormap: new allocated writable"));
-          colormap = gdk_colormap_new (visual, TRUE);
-        }
-
-      return colormap;
-
-    }
-
-  /* not reached */
-  return NULL;
 }
 
 static void
@@ -414,21 +178,8 @@ gdk_gl_config_new_common (GdkScreen *screen,
   else
     impl->is_mesa_glx = FALSE;
 
-  /*
-   * Get an appropriate colormap.
-   */
-
   /* RGBA mode? */
   glXGetConfig (xdisplay, xvinfo, GLX_RGBA, &is_rgba);
-
-  impl->colormap = gdk_gl_config_setup_colormap (impl->screen,
-                                                 impl->xvinfo,
-                                                 is_rgba,
-                                                 impl->is_mesa_glx);
-
-  GDK_GL_NOTE (MISC,
-    g_message (" -- Colormap: visual id = 0x%lx",
-               GDK_VISUAL_XVISUAL (impl->colormap->visual)->visualid));
 
   /*
    * Init configuration attributes.
@@ -581,21 +332,8 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
   else
     impl->is_mesa_glx = FALSE;
 
-  /*
-   * Get an appropriate colormap.
-   */
-
   /* RGBA mode? */
   glXGetConfig (xdisplay, xvinfo, GLX_RGBA, &is_rgba);
-
-  impl->colormap = gdk_gl_config_setup_colormap (impl->screen,
-                                                 impl->xvinfo,
-                                                 is_rgba,
-                                                 impl->is_mesa_glx);
-
-  GDK_GL_NOTE (MISC,
-    g_message (" -- Colormap: visual id = 0x%lx",
-               GDK_VISUAL_XVISUAL (impl->colormap->visual)->visualid));
 
   /*
    * Init configuration attributes.
@@ -692,23 +430,6 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
 }
 
 /**
- * gdk_gl_config_get_colormap:
- * @glconfig: a #GdkGLConfig.
- *
- * Gets the #GdkColormap that is appropriate for the OpenGL frame buffer
- * configuration.
- *
- * Return value: the appropriate #GdkColormap.
- **/
-GdkColormap *
-gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
-
-  return GDK_GL_CONFIG_IMPL_X11 (glconfig)->colormap;
-}
-
-/**
  * gdk_gl_config_get_visual:
  * @glconfig: a #GdkGLConfig.
  *
@@ -720,9 +441,13 @@ gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
 GdkVisual *
 gdk_gl_config_get_visual (GdkGLConfig *glconfig)
 {
+  GdkGLConfigImplX11 *impl;
+
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
 
-  return gdk_colormap_get_visual (GDK_GL_CONFIG_IMPL_X11 (glconfig)->colormap);
+  impl = GDK_GL_CONFIG_IMPL_X11 (glconfig);
+
+  return gdk_x11_screen_lookup_visual(impl->screen, impl->xvinfo->visualid);
 }
 
 /**

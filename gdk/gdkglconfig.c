@@ -25,8 +25,6 @@
 
 #include <gdk/gdk.h>
 
-gboolean _gdk_gl_config_no_standard_colormap = FALSE;
-
 G_DEFINE_TYPE (GdkGLConfig,     \
                gdk_gl_config,   \
                G_TYPE_OBJECT)

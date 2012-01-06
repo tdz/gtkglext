@@ -155,7 +155,7 @@ gdk_gl_context_new_common (GdkGLConfig   *glconfig,
 
   impl->is_destroyed = FALSE;
 
-  /* 
+  /*
    * Insert into the GL context hash table.
    */
 
@@ -238,7 +238,7 @@ gdk_win32_gl_context_foreign_new (GdkGLConfig  *glconfig,
 
   return gdk_gl_context_new_common (glconfig,
                                     share_list,
-                                    (glconfig->is_rgba) ? GDK_GL_RGBA_TYPE : GDK_GL_COLOR_INDEX_TYPE,
+                                    GDK_GL_RGBA_TYPE,
                                     hglrc,
                                     TRUE);
 }

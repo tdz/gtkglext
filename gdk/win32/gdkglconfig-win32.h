@@ -42,8 +42,6 @@ struct _GdkGLConfigImplWin32
 
   GdkScreen *screen;
 
-  GdkColormap *colormap;
-
   gint depth;
 };
 

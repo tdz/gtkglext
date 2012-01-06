@@ -237,8 +237,7 @@ gl_widget_private_destroy (GLWidgetPrivate *private)
  *              objects. NULL indicates that no sharing is to take place.
  * @direct: whether rendering is to be done with a direct connection to
  *          the graphics system.
- * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not
- *               used).
+ * @render_type: GDK_GL_RGBA_TYPE.
  *
  * Set the OpenGL-capability to the @widget.
  * This function prepares the widget for its use with OpenGL.
@@ -420,8 +419,7 @@ gtk_widget_get_gl_config (GtkWidget *widget)
  *              objects. NULL indicates that no sharing is to take place.
  * @direct: whether rendering is to be done with a direct connection to
  *          the graphics system.
- * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not
- *               used).
+ * @render_type: GDK_GL_RGBA_TYPE.
  *
  * Creates a new #GdkGLContext with the appropriate #GdkGLDrawable
  * for this widget. The GL context must be freed when you're

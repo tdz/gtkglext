@@ -4,7 +4,6 @@ EXPORTS
 	gdk_gl_config_caveat_get_type
 	gdk_gl_config_error_get_type
 	gdk_gl_config_get_attrib
-	gdk_gl_config_get_colormap
 	gdk_gl_config_get_depth
 	gdk_gl_config_get_layer_plane
 	gdk_gl_config_get_n_aux_buffers

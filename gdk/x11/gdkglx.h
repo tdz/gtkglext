@@ -58,7 +58,6 @@ Window        gdk_x11_gl_window_get_glxwindow     (GdkGLWindow  *glwindow);
 #define GDK_GL_CONFIG_XDISPLAY(glconfig)       (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xdisplay)
 #define GDK_GL_CONFIG_SCREEN_XNUMBER(glconfig) (GDK_GL_CONFIG_IMPL_X11 (glconfig)->screen_num)
 #define GDK_GL_CONFIG_XVINFO(glconfig)         (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo)
-#define GDK_GL_CONFIG_XCOLORMAP(glconfig)      (GDK_COLORMAP_XCOLORMAP (GDK_GL_CONFIG_IMPL_X11 (glconfig)->colormap))
 #define GDK_GL_CONTEXT_GLXCONTEXT(glcontext)   (GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glxcontext)
 #define GDK_GL_WINDOW_GLXWINDOW(glwindow)      (GDK_GL_WINDOW_IMPL_X11 (glwindow)->glxwindow)
 
@@ -67,7 +66,6 @@ Window        gdk_x11_gl_window_get_glxwindow     (GdkGLWindow  *glwindow);
 #define GDK_GL_CONFIG_XDISPLAY(glconfig)       (gdk_x11_gl_config_get_xdisplay (glconfig))
 #define GDK_GL_CONFIG_SCREEN_XNUMBER(glconfig) (gdk_x11_gl_config_get_screen_number (glconfig))
 #define GDK_GL_CONFIG_XVINFO(glconfig)         (gdk_x11_gl_config_get_xvinfo (glconfig))
-#define GDK_GL_CONFIG_XCOLORMAP(glconfig)      (GDK_COLORMAP_XCOLORMAP (gdk_gl_config_get_colormap (glconfig)))
 #define GDK_GL_CONTEXT_GLXCONTEXT(glcontext)   (gdk_x11_gl_context_get_glxcontext (glcontext))
 #define GDK_GL_WINDOW_GLXWINDOW(glwindow)      (gdk_x11_gl_window_get_glxwindow (glwindow))
 

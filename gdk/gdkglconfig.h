@@ -100,8 +100,6 @@ gboolean     gdk_gl_config_get_attrib             (GdkGLConfig     *glconfig,
                                                    int              attribute,
                                                    int             *value);
 
-GdkColormap *gdk_gl_config_get_colormap           (GdkGLConfig     *glconfig);
-
 GdkVisual   *gdk_gl_config_get_visual             (GdkGLConfig     *glconfig);
 
 gint         gdk_gl_config_get_depth              (GdkGLConfig     *glconfig);

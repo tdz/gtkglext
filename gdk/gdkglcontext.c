@@ -49,8 +49,7 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
  *              objects. NULL indicates that no sharing is to take place.
  * @direct: whether rendering is to be done with a direct connection to
  *          the graphics system.
- * @render_type: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE (currently not
- *               used).
+ * @render_type: GDK_GL_RGBA_TYPE.
  *
  * Creates a new OpenGL rendering context.
  *

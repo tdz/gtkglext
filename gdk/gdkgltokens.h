@@ -158,10 +158,6 @@ typedef enum
   GDK_GL_VISUAL_TYPE_DONT_CARE      = (int)0xFFFFFFFF, /* GDK_GL_DONT_CARE */
   GDK_GL_TRUE_COLOR                 = 0x8002,
   GDK_GL_DIRECT_COLOR               = 0x8003,
-  GDK_GL_PSEUDO_COLOR               = 0x8004,
-  GDK_GL_STATIC_COLOR               = 0x8005,
-  GDK_GL_GRAY_SCALE                 = 0x8006,
-  GDK_GL_STATIC_GRAY                = 0x8007
 } GdkGLVisualType;
 
 /*
@@ -172,7 +168,6 @@ typedef enum
 {
   GDK_GL_TRANSPARENT_NONE           = 0x8000, /* GDK_GL_NONE */
   GDK_GL_TRANSPARENT_RGB            = 0x8008,
-  GDK_GL_TRANSPARENT_INDEX          = 0x8009
 } GdkGLTransparentType;
 
 /*
@@ -192,7 +187,6 @@ typedef enum
 typedef enum
 {
   GDK_GL_RGBA_BIT                   = 1 << 0, /* 0x00000001 */
-  GDK_GL_COLOR_INDEX_BIT            = 1 << 1  /* 0x00000002 */
 } GdkGLRenderTypeMask;
 
 /*
@@ -233,7 +227,6 @@ typedef enum
 typedef enum
 {
   GDK_GL_RGBA_TYPE                  = 0x8014,
-  GDK_GL_COLOR_INDEX_TYPE           = 0x8015
 } GdkGLRenderType;
 
 /*
