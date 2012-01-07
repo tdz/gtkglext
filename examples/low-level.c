@@ -58,7 +58,7 @@ realize (GtkWidget *widget,
                                 NULL);
 
   /* Set a background of "None" on window to avoid AIX X server crash */
-  gdk_window_set_back_pixmap (window, NULL, FALSE);
+  gdk_window_set_background_pattern (window, NULL);
 
   /*
    * Create OpenGL rendering context.
@@ -157,9 +157,9 @@ configure_event (GtkWidget         *widget,
 }
 
 static gboolean
-expose_event (GtkWidget      *widget,
-              GdkEventExpose *event,
-              gpointer        data)
+draw (GtkWidget *widget,
+      cairo_t   *cr,
+      gpointer   data)
 {
   /*** OpenGL BEGIN ***/
 
@@ -366,10 +366,10 @@ main (int   argc,
                           G_CALLBACK (realize), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "size_allocate",
                     G_CALLBACK (size_allocate), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "configure_event",
+  g_signal_connect (G_OBJECT (drawing_area), "configure-event",
 		    G_CALLBACK (configure_event), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "expose_event",
-		    G_CALLBACK (expose_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "draw",
+		    G_CALLBACK (draw), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "unrealize",
 		    G_CALLBACK (unrealize), NULL);
 
@@ -395,14 +395,6 @@ main (int   argc,
    */
 
   gtk_widget_show (window);
-
-  /*
-   * Main loop.
-   */
-
-  /* Destroy the GLX context explicitly when application is terminated. */
-  gtk_quit_add_destroy (gtk_main_level () + 1,
-			GTK_OBJECT (drawing_area));
 
   gtk_main ();
 
