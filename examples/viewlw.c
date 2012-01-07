@@ -126,19 +126,15 @@ initgl(void)
 }
 
 static gboolean
-expose(GtkWidget      *widget,
-       GdkEventExpose *event)
+draw(GtkWidget *widget,
+     cairo_t   *cr,
+     gpointer   data)
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
 
   GLfloat m[4][4];
   mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
-
-  /* draw only last expose */
-  if (event->count > 0) {
-    return TRUE;
-  }
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
@@ -593,8 +589,8 @@ show_lwobject(const char *lwobject_name)
      			GDK_POINTER_MOTION_MASK|
      			GDK_POINTER_MOTION_HINT_MASK);
 
-  g_signal_connect(G_OBJECT(glarea), "expose_event",
-                   G_CALLBACK(expose), NULL);
+  g_signal_connect(G_OBJECT(glarea), "draw",
+                   G_CALLBACK(draw), NULL);
   g_signal_connect(G_OBJECT(glarea), "motion_notify_event",
                    G_CALLBACK(motion_notify), NULL);
   g_signal_connect(G_OBJECT(glarea), "button_press_event",
@@ -643,9 +639,6 @@ show_lwobject(const char *lwobject_name)
   g_signal_connect(G_OBJECT(window), "destroy",
                    G_CALLBACK(window_destroy), NULL);
   window_count++;
-
-  /* destroy this window when exiting from gtk_main() */
-  gtk_quit_add_destroy(1, GTK_OBJECT(window));
 
   /* put glarea into window and show it all */
   gtk_container_add(GTK_CONTAINER(window), frame);
