@@ -461,7 +461,7 @@ key_press_event (GtkWidget   *widget,
 {
   switch (event->keyval)
     {
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       gtk_main_quit ();
       break;
 
@@ -774,7 +774,7 @@ create_popup_menu (GtkWidget *drawing_area)
                     G_CALLBACK (change_material), &mat_silver);
   gtk_widget_show (menu_item);
 
-  /* 
+  /*
    * Root popup menu.
    */
 
@@ -798,7 +798,7 @@ create_popup_menu (GtkWidget *drawing_area)
   g_signal_connect (G_OBJECT (menu_item), "activate",
 		    G_CALLBACK (gtk_main_quit), NULL);
   gtk_widget_show (menu_item);
-	
+
   return menu;
 }
 

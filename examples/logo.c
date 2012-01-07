@@ -431,13 +431,13 @@ key_press_event (GtkWidget   *widget,
 {
   switch (event->keyval)
     {
-    case GDK_a:
+    case GDK_KEY_a:
       toggle_animation (widget);
       break;
-    case GDK_i:
+    case GDK_KEY_i:
       init_logo_view (widget);
       break;
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       gtk_main_quit ();
       break;
     default:
@@ -605,7 +605,7 @@ create_popup_menu (GtkWidget *drawing_area)
   g_signal_connect (G_OBJECT (menu_item), "activate",
 		    G_CALLBACK (gtk_main_quit), NULL);
   gtk_widget_show (menu_item);
-	
+
   return menu;
 }
 

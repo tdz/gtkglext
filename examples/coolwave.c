@@ -13,7 +13,7 @@
  *
  **************************************************************************/
 
-/* 
+/*
  * Modified by Naofumi Yasufuku  <naofumi@users.sourceforge.net>
  */
 
@@ -476,28 +476,28 @@ key_press_event (GtkWidget   *widget,
 
   switch (event->keyval)
     {
-    case GDK_r:
+    case GDK_KEY_r:
       init_wireframe (widget);
       break;
 
-    case GDK_a:
+    case GDK_KEY_a:
       toggle_animation (widget);
       break;
 
-    case GDK_w:
+    case GDK_KEY_w:
       if (!animate)
 	timeout (widget);
       break;
 
-    case GDK_plus:
+    case GDK_KEY_plus:
       sdepth -= 2.0;
       break;
 
-    case GDK_minus:
+    case GDK_KEY_minus:
       sdepth += 2.0;
       break;
 
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       gtk_main_quit ();
       break;
 
@@ -683,7 +683,7 @@ create_popup_menu (GtkWidget *drawing_area)
   g_signal_connect (G_OBJECT (menu_item), "activate",
 		    G_CALLBACK (gtk_main_quit), NULL);
   gtk_widget_show (menu_item);
-	
+
   return menu;
 }
 

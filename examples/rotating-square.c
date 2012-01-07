@@ -10,7 +10,7 @@
  *
  **************************************************************************/
 
-/* 
+/*
  * Modified by Naofumi Yasufuku  <naofumi@users.sourceforge.net>
  */
 
@@ -274,7 +274,7 @@ key_press_event (GtkWidget   *widget,
 
   switch (event->keyval)
     {
-    case GDK_Left:
+    case GDK_KEY_Left:
       /* Rotate left. */
       if (!animate)
 	{
@@ -284,7 +284,7 @@ key_press_event (GtkWidget   *widget,
 	}
       break;
 
-    case GDK_Right:
+    case GDK_KEY_Right:
       /* Rotate right. */
       if (!animate)
 	{
@@ -294,12 +294,12 @@ key_press_event (GtkWidget   *widget,
 	}
       break;
 
-    case GDK_a:
+    case GDK_KEY_a:
       /* Toggle animation. */
       toggle_animation (widget);
       break;
 
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       /* Quit. */
       gtk_main_quit ();
       break;
@@ -462,7 +462,7 @@ create_popup_menu (GtkWidget *drawing_area)
   g_signal_connect (G_OBJECT (menu_item), "activate",
 		    G_CALLBACK (gtk_main_quit), NULL);
   gtk_widget_show (menu_item);
-	
+
   return menu;
 }
 
