@@ -411,25 +411,25 @@ key (GtkWidget   *widget,
 
   switch (event->keyval)
     {
-    case GDK_z:
+    case GDK_KEY_z:
       view_rotz += 5.0;
       break;
-    case GDK_Z:
+    case GDK_KEY_Z:
       view_rotz -= 5.0;
       break;
-    case GDK_Up:
+    case GDK_KEY_Up:
       view_rotx += 5.0;
       break;
-    case GDK_Down:
+    case GDK_KEY_Down:
       view_rotx -= 5.0;
       break;
-    case GDK_Left:
+    case GDK_KEY_Left:
       view_roty += 5.0;
       break;
-    case GDK_Right:
+    case GDK_KEY_Right:
       view_roty -= 5.0;
       break;
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       gtk_main_quit ();
       break;
     default:

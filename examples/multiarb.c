@@ -416,22 +416,22 @@ key (GtkWidget   *widget,
 
   switch (event->keyval)
     {
-    case GDK_Up:
+    case GDK_KEY_Up:
       x_rot += step;
       break;
-    case GDK_Down:
+    case GDK_KEY_Down:
       x_rot -= step;
       break;
-    case GDK_Left:
+    case GDK_KEY_Left:
       y_rot += step;
       break;
-    case GDK_Right:
+    case GDK_KEY_Right:
       y_rot -= step;
       break;
-    case GDK_a:
+    case GDK_KEY_a:
       toggle_animation (widget);
       break;
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       gtk_main_quit ();
       break;
     default:

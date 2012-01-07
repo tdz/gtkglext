@@ -453,7 +453,7 @@ key_press_event(GtkWidget   *widget,
 
   switch (event->keyval)
     {
-    case GDK_plus:
+    case GDK_KEY_plus:
       /* zooming drag */
       info->zoom -= 2.0;
       if (info->zoom < 5.0) info->zoom = 5.0;
@@ -462,7 +462,7 @@ key_press_event(GtkWidget   *widget,
       gdk_window_invalidate_rect (window, &allocation, FALSE);
       break;
 
-    case GDK_minus:
+    case GDK_KEY_minus:
       /* zooming drag */
       info->zoom += 2.0;
       if (info->zoom < 5.0) info->zoom = 5.0;
@@ -471,7 +471,7 @@ key_press_event(GtkWidget   *widget,
       gdk_window_invalidate_rect (window, &allocation, FALSE);
       break;
 
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       gtk_main_quit();
       break;
 

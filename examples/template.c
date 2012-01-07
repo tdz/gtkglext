@@ -14,7 +14,7 @@
  *
  **************************************************************************/
 
-/* 
+/*
  * Follow the GTK coding style.
  * Changed idle function management codes.
  * Added popup menu.
@@ -340,12 +340,12 @@ key_press_event (GtkWidget   *widget,
     {
       /*** Fill in the details here. ***/
 
-    case GDK_a:
+    case GDK_KEY_a:
       g_print ("a key\n");
       toggle_animation (widget);
       break;
 
-    case GDK_Escape:
+    case GDK_KEY_Escape:
       g_print ("Escape key\n");
       gtk_main_quit ();
       break;
@@ -497,7 +497,7 @@ create_popup_menu (GtkWidget *drawing_area)
   g_signal_connect (G_OBJECT (menu_item), "activate",
 		    G_CALLBACK (gtk_main_quit), NULL);
   gtk_widget_show (menu_item);
-	
+
   return menu;
 }
 
