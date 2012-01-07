@@ -31,7 +31,7 @@ TARGETOS = BOTH
 !include <WIN32.MAK>
 
 # Generate makefile using 'pkg-config --cflags' command.
-PKGCONFIG_CFLAGS = 
+PKGCONFIG_CFLAGS =
 PKGCONFIG_CFLAGS_MAK = PKGCONFIG_CFLAGS.mak
 !if [echo PKGCONFIG_CFLAGS = \> $(PKGCONFIG_CFLAGS_MAK)]
 !else
@@ -42,7 +42,7 @@ PKGCONFIG_CFLAGS_MAK = PKGCONFIG_CFLAGS.mak
 !endif
 
 # Generate makefile using 'pkg-config --libs' command.
-PKGCONFIG_LIBS = 
+PKGCONFIG_LIBS =
 PKGCONFIG_LIBS_MAK = PKGCONFIG_LIBS.mak
 !if [echo PKGCONFIG_LIBS = \> $(PKGCONFIG_LIBS_MAK)]
 !else
@@ -53,7 +53,7 @@ PKGCONFIG_LIBS_MAK = PKGCONFIG_LIBS.mak
 !endif
 
 # Generate makefile using 'pkg-config --libs' command.
-PKGCONFIG_LIBS_WITH_PANGOFT2 = 
+PKGCONFIG_LIBS_WITH_PANGOFT2 =
 PKGCONFIG_LIBS_WITH_PANGOFT2_MAK = PKGCONFIG_LIBS_WITH_PANGOFT2.mak
 !if [echo PKGCONFIG_LIBS_WITH_PANGOFT2 = \> $(PKGCONFIG_LIBS_WITH_PANGOFT2_MAK)]
 !else
@@ -67,7 +67,7 @@ PKGCONFIG_LIBS_WITH_PANGOFT2_MAK = PKGCONFIG_LIBS_WITH_PANGOFT2.mak
 INCLUDES = $(PKGCONFIG_CFLAGS)
 LIBS = $(PKGCONFIG_LIBS)
 LIBS_WITH_PANGOFT2 = $(PKGCONFIG_LIBS_WITH_PANGOFT2)
-DEFINES = 
+DEFINES =
 
 # debug flags (from win32.mak)
 !IFDEF NODEBUG
@@ -103,8 +103,6 @@ SOURCES = \
 	low-level.c		\
 	simple.c		\
 	simple-mixed.c		\
-	pixmap.c		\
-	pixmap-mixed.c		\
 	share-lists.c		\
 	color.c			\
 	font.c			\
@@ -138,8 +136,6 @@ PROGRAMS = \
 	low-level$(EXEEXT)		\
 	simple$(EXEEXT)			\
 	simple-mixed$(EXEEXT)		\
-	pixmap$(EXEEXT)			\
-	pixmap-mixed$(EXEEXT)		\
 	share-lists$(EXEEXT)		\
 	color$(EXEEXT)			\
 	font$(EXEEXT)			\
@@ -179,12 +175,6 @@ simple$(EXEEXT): simple.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
 
 simple-mixed$(EXEEXT): simple-mixed.obj
-	$(link) $(linkdebug) -out:$@ $** $(LIBS)
-
-pixmap$(EXEEXT): pixmap.obj
-	$(link) $(linkdebug) -out:$@ $** $(LIBS)
-
-pixmap-mixed$(EXEEXT): pixmap-mixed.obj
 	$(link) $(linkdebug) -out:$@ $** $(LIBS)
 
 share-lists$(EXEEXT): share-lists.obj

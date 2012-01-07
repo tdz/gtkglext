@@ -59,20 +59,6 @@ simple_mixed_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
 endif
 
 if GLU
-noinst_PROGRAMS += pixmap
-nodist_EXTRA_pixmap_SOURCES = dummy.cpp
-pixmap_SOURCES = pixmap.c
-pixmap_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
-endif
-
-if GLU
-noinst_PROGRAMS += pixmap-mixed
-nodist_EXTRA_pixmap_mixed_SOURCES = dummy.cpp
-pixmap_mixed_SOURCES = pixmap-mixed.c
-pixmap_mixed_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
-endif
-
-if GLU
 noinst_PROGRAMS += share-lists
 nodist_EXTRA_share_lists_SOURCES = dummy.cpp
 share_lists_SOURCES = share-lists.c
