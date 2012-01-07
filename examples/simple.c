@@ -86,6 +86,7 @@ configure_event (GtkWidget         *widget,
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
     return FALSE;
 
+  gtk_widget_get_allocation (widget, &allocation);
   glViewport (0, 0,
               allocation.width, allocation.height);
 
