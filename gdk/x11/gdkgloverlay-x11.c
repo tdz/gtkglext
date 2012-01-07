@@ -106,7 +106,7 @@ gdk_gl_overlay_get_sov_props (GdkScreen *screen)
   xdisplay = GDK_DISPLAY_XDISPLAY (display);
   xa_sov = gdk_x11_get_xatom_by_name_for_display (display, "SERVER_OVERLAY_VISUALS");
 
-  status = XGetWindowProperty (xdisplay, GDK_WINDOW_XWINDOW (root_window),
+  status = XGetWindowProperty (xdisplay, GDK_WINDOW_XID (root_window),
                                xa_sov, 0L, 1000000L, False, AnyPropertyType,
                                &actual_type, &actual_format,
                                &nitems, &bytes_after, &prop);
@@ -207,6 +207,6 @@ _gdk_x11_gl_overlay_get_info (GdkVisual        *visual,
   overlay_info->layer            = 0;
 
   GDK_GL_NOTE (MISC, g_message (" -- not overlay visual"));
-      
+
   return FALSE;
 }
