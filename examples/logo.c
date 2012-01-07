@@ -291,9 +291,9 @@ static int mode = 0;
 static int counter = 0;
 
 static gboolean
-expose_event (GtkWidget      *widget,
-	      GdkEventExpose *event,
-	      gpointer        data)
+draw (GtkWidget *widget,
+	    cairo_t   *cr,
+	    gpointer   data)
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
@@ -303,13 +303,12 @@ expose_event (GtkWidget      *widget,
 
   if (animate)
     {
-
       if (counter == rot_count)
-	{
-	  if (rot_mode[++mode].axis == NULL)
-	    mode = 0;
-	  counter = 0;
-	}
+	      {
+          if (rot_mode[++mode].axis == NULL)
+	          mode = 0;
+          counter = 0;
+	      }
 
       axis_to_quat (rot_mode[mode].axis,
 		    rot_mode[mode].sign * G_PI_2 / rot_count,
@@ -801,8 +800,8 @@ main(int   argc,
                           G_CALLBACK (realize), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (configure_event), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "expose_event",
-		    G_CALLBACK (expose_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "draw",
+		    G_CALLBACK (draw), NULL);
 
   g_signal_connect (G_OBJECT (drawing_area), "button_press_event",
 		    G_CALLBACK (button_press_event), NULL);
