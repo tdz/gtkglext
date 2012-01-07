@@ -170,9 +170,9 @@ static gint frames = 0;
 static gboolean is_sync = TRUE;
 
 static gboolean
-draw (GtkWidget      *widget,
-      GdkEventExpose *event,
-      gpointer        data)
+draw (GtkWidget *widget,
+      cairo_t   *cr,
+      gpointer   data)
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
@@ -540,7 +540,7 @@ main (int   argc,
                           G_CALLBACK (init), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (reshape), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "expose_event",
+  g_signal_connect (G_OBJECT (drawing_area), "draw",
 		    G_CALLBACK (draw), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "map_event",
 		    G_CALLBACK (map), NULL);
