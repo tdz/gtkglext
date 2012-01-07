@@ -366,7 +366,7 @@ main (int   argc,
    */
 
   /* Destroy the GLX context explicitly when application is terminated. */
-  gtk_quit_add (0, (GtkFunction) destroy_gl_context, NULL);
+  gtk_quit_add (0, (GSourceFunc) destroy_gl_context, NULL);
 
   gtk_main ();
 
