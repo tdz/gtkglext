@@ -110,9 +110,9 @@ configure_event (GtkWidget         *widget,
 }
 
 static gboolean
-expose_event (GtkWidget      *widget,
-              GdkEventExpose *event,
-              gpointer        data)
+draw (GtkWidget *widget,
+      cairo_t   *cr,
+      gpointer   data)
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
@@ -300,8 +300,8 @@ create_gl_toggle_button (GdkGLConfig *glconfig)
                           G_CALLBACK (realize), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (configure_event), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "expose_event",
-		    G_CALLBACK (expose_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "draw",
+		    G_CALLBACK (draw), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "unrealize",
 		    G_CALLBACK (unrealize), NULL);
 
