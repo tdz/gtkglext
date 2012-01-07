@@ -97,9 +97,9 @@ configure_event (GtkWidget         *widget,
 }
 
 static gboolean
-expose_event (GtkWidget      *widget,
-              GdkEventExpose *event,
-              gpointer        data)
+draw (GtkWidget *widget,
+      cairo_t   *cr,
+      gpointer   data)
 {
   GtkAllocation allocation;
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
@@ -112,18 +112,20 @@ expose_event (GtkWidget      *widget,
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glFlush();
 
   /* Sync. */
   gdk_gl_drawable_wait_gl (gldrawable);
 
-  /* GDK rendering. */
-  gdk_draw_rectangle (GDK_DRAWABLE (gldrawable),
-		      gtk_widget_get_style (widget)->black_gc,
-		      TRUE,
-		      allocation.width/10,
-		      allocation.height/10,
-		      allocation.width*8/10,
-		      allocation.height*8/10);
+  /* cairo rendering. */
+
+  cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
+  cairo_rectangle(cr, allocation.width/8,
+                      allocation.height/8,
+                      allocation.width*8/10,
+                      allocation.height*8/10);
+  cairo_fill(cr);
+  cairo_surface_flush(cairo_get_target(cr));
 
   /* Sync. */
   gdk_gl_drawable_wait_gdk (gldrawable);
@@ -288,8 +290,8 @@ main (int   argc,
                           G_CALLBACK (realize), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (configure_event), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "expose_event",
-		    G_CALLBACK (expose_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "draw",
+		    G_CALLBACK (draw), NULL);
 
   gtk_box_pack_start (GTK_BOX (vbox), drawing_area, TRUE, TRUE, 0);
 
