@@ -153,19 +153,19 @@ configure_event (GtkWidget         *widget,
 }
 
 /***
- *** The "expose_event" signal handler. All the OpenGL re-drawing should
+ *** The "draw" signal handler. All the OpenGL re-drawing should
  *** be done here. This is repeatedly called as the painting routine
- *** every time the 'expose'/'draw' event is signalled.
+ *** every time the 'draw' event is signalled.
  ***/
 static gboolean
-expose_event (GtkWidget      *widget,
-	      GdkEventExpose *event,
-	      gpointer        data)
+draw (GtkWidget *widget,
+      cairo_t   *cr,
+      gpointer   data)
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
-  g_print ("%s: \"expose_event\"\n", gtk_widget_get_name (widget));
+  g_print ("%s: \"draw\"\n", gtk_widget_get_name (widget));
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -561,8 +561,8 @@ create_window (GdkGLConfig *glconfig)
                           G_CALLBACK (realize), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "configure_event",
 		    G_CALLBACK (configure_event), NULL);
-  g_signal_connect (G_OBJECT (drawing_area), "expose_event",
-		    G_CALLBACK (expose_event), NULL);
+  g_signal_connect (G_OBJECT (drawing_area), "draw",
+		    G_CALLBACK (draw), NULL);
   g_signal_connect (G_OBJECT (drawing_area), "unrealize",
 		    G_CALLBACK (unrealize), NULL);
 
