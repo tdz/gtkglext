@@ -12,7 +12,6 @@
 #include <windows.h>
 #endif
 
-#include <gdkconfig.h>
 #ifdef GDK_WINDOWING_QUARTZ
 #include <OpenGL/glu.h>
 #else
@@ -21,7 +20,7 @@
 #endif
 
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <string.h>
 #include "readtex.h"
 
@@ -180,7 +179,7 @@ static void RawImageGetRow(rawImageRec *raw, unsigned char *buf, int y, int z)
       fseek(raw->file, (long) raw->rowStart[y+z*raw->sizeY], SEEK_SET);
       fread(raw->tmp, 1, (unsigned int)raw->rowSize[y+z*raw->sizeY],
             raw->file);
-      
+
       iPtr = raw->tmp;
       oPtr = buf;
       while (!done) {
