@@ -4,7 +4,6 @@
 #define READTEX_H
 
 
-#include <gdkconfig.h>
 #ifdef GDK_WINDOWING_QUARTZ
 #include <OpenGL/gl.h>
 #else
