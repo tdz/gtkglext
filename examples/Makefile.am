@@ -79,9 +79,6 @@ share_lists_SOURCES = share-lists.c
 share_lists_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
 endif
 
-noinst_PROGRAMS += color
-color_SOURCES = color.c
-
 if GLU
 noinst_PROGRAMS += button
 nodist_EXTRA_button_SOURCES = dummy.cpp
