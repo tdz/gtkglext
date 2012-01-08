@@ -3,15 +3,15 @@ exec_prefix=@exec_prefix@
 libdir=@libdir@
 includedir=@includedir@
 
-target=@gdktarget@
+targets=@GDKGLEXT_BACKENDS@
 api_version=@GTKGLEXT_API_VERSION@
 
 multihead=@GDKGLEXT_MULTIHEAD_SUPPORT@
 
 Name: GtkGLExt
-Description: OpenGL Extension to GTK+ (${target} target)
+Description: OpenGL Extension to GTK+
 Version: @VERSION@
-Requires: gtk+-3.0 gdkglext-${target}-${api_version}
-Libs: -L${libdir} -lgtkglext-${target}-${api_version}
+Requires: gtk+-3.0 gdkglext-${api_version}
+Libs: -L${libdir} -lgtkglext-${api_version}
 Libs.private: @MATH_LIB@
 Cflags: -I${includedir}/gtkglext-${api_version}

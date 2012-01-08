@@ -3,12 +3,12 @@ exec_prefix=@exec_prefix@
 libdir=@libdir@
 includedir=@includedir@
 
-target=@gdktarget@
+targets=@GDKGLEXT_BACKENDS@
 api_version=@GTKGLEXT_API_VERSION@
 
 Name: GdkGLExt
-Description: OpenGL Extension to GDK (${target} target)
+Description: OpenGL Extension to GDK (${targets})
 Version: @VERSION@
 Requires: gdk-3.0
-Libs: -L${libdir} -lgdkglext-${target}-${api_version} @GL_LIBS@ @GDKGLEXT_WIN_LIBS@
+Libs: -L${libdir} -lgdkglext-${api_version} @GL_LIBS@ @GDKGLEXT_WIN_LIBS@
 Cflags: -I${includedir}/gtkglext-${api_version} -I${libdir}/gtkglext-${api_version}/include @GL_CFLAGS@ @GDKGLEXT_WIN_CFLAGS@

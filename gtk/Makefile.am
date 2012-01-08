@@ -12,10 +12,10 @@ endif
 
 if MS_LIB_AVAILABLE
 mslibdir = $(libdir)
-noinst_DATA = gtkglext-win32-@GTKGLEXT_API_VERSION@.lib
+noinst_DATA = gtkglext-@GTKGLEXT_API_VERSION@.lib
 
-gtkglext-win32-@GTKGLEXT_API_VERSION@.lib: libgtkglext-win32-@GTKGLEXT_API_VERSION@.la $(gtkglext_def)
-	lib -name:libgtkglext-win32-@GTKGLEXT_API_VERSION@-@GTKGLEXT_CURRENT_MINUS_AGE@.dll -def:$(gtkglext_def) -out:$@
+gtkglext-@GTKGLEXT_API_VERSION@.lib: libgtkglext-@GTKGLEXT_API_VERSION@.la $(gtkglext_def)
+	lib -name:libgtkglext-@GTKGLEXT_API_VERSION@-@GTKGLEXT_CURRENT_MINUS_AGE@.dll -def:$(gtkglext_def) -out:$@
 endif
 
 common_includes = \
@@ -79,22 +79,8 @@ gtkglextinclude_HEADERS = $(gtkglext_headers)
 
 AM_CPPFLAGS = $(common_includes)
 
-lib_LTLIBRARIES = $(gtkglext_targetlib)
+lib_LTLIBRARIES = libgtkglext-@API_MJ@.@API_MI@.la
 
-EXTRA_LTLIBRARIES = \
-	libgtkglext-x11-@API_MJ@.@API_MI@.la	\
-	libgtkglext-quartz-@API_MJ@.@API_MI@.la \
-	libgtkglext-win32-@API_MJ@.@API_MI@.la
-
-libgtkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
-libgtkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
-libgtkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
-
-libgtkglext_quartz_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
-libgtkglext_quartz_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
-libgtkglext_quartz_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
-
-libgtkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
-libgtkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
-libgtkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)
-libgtkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = $(gtkglext_def)
+libgtkglext_@API_MJ@_@API_MI@_la_SOURCES = $(gtkglext_sources)
+libgtkglext_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
+libgtkglext_@API_MJ@_@API_MI@_la_LIBADD = $(common_libadd)

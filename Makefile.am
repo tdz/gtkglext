@@ -19,7 +19,7 @@ EXTRA_DIST = \
 	setup-gtkglext.sh
 
 ## Copy .pc files to target-specific names
-GDK_TARGET = @gdktarget@
+GDK_TARGET = @GDKGLEXT_BACKENDS@
 API_VER = @GTKGLEXT_API_VERSION@
 
 gdkglext-$(GDK_TARGET)-$(API_VER).pc: gdkglext.pc gdkglext-$(GDK_TARGET)-$(API_VER)-uninstalled.pc

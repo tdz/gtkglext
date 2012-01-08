@@ -1,7 +1,7 @@
 ## -*- Makefile -*-
 ## Makefile.am for gtkglext/gdk
 
-SUBDIRS = $(gdktarget)
+SUBDIRS = $(GDKGLEXT_BACKENDS)
 DIST_SUBDIRS = x11 win32 quartz
 
 EXTRA_DIST = \
@@ -106,25 +106,26 @@ gdkglextinclude_HEADERS = $(gdkglext_headers)
 
 AM_CPPFLAGS = $(common_includes)
 
-lib_LTLIBRARIES = $(gdkglext_targetlib)
+lib_LTLIBRARIES = libgdkglext-@API_MJ@.@API_MI@.la
 
-EXTRA_LTLIBRARIES = \
-	libgdkglext-x11-@API_MJ@.@API_MI@.la	\
-	libgdkglext-quartz-@API_MJ@.@API_MI@.la  \
-	libgdkglext-win32-@API_MJ@.@API_MI@.la
+libgdkglext_@API_MJ@_@API_MI@_la_SOURCES = $(gdkglext_sources)
+libgdkglext_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
+libgdkglext_@API_MJ@_@API_MI@_la_LIBADD  =
 
-libgdkglext_x11_@API_MJ@_@API_MI@_la_SOURCES = $(gdkglext_sources)
-libgdkglext_x11_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
-libgdkglext_x11_@API_MJ@_@API_MI@_la_LIBADD = x11/libgdkglext-x11.la $(common_libadd)
+if USE_X11
+libgdkglext_@API_MJ@_@API_MI@_la_LIBADD += x11/libgdkglext-x11.la
+endif
 
-libgdkglext_quartz_@API_MJ@_@API_MI@_la_SOURCES = $(gdkglext_sources)
-libgdkglext_quartz_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
-libgdkglext_quartz_@API_MJ@_@API_MI@_la_LIBADD = quartz/libgdkglext-quartz.la $(common_libadd)
+if USE_WIN32
+libgdkglext_@API_MJ@_@API_MI@_la_LIBADD += win32/libgdkglext-win32.la
+libgdkglext_@API_MJ@_@API_MI@_la_DEPENDENCIES = $(gdkglext_def)
+endif
 
-libgdkglext_win32_@API_MJ@_@API_MI@_la_SOURCES = $(gdkglext_sources)
-libgdkglext_win32_@API_MJ@_@API_MI@_la_LDFLAGS = $(common_ldflags)
-libgdkglext_win32_@API_MJ@_@API_MI@_la_LIBADD = win32/libgdkglext-win32.la $(common_libadd)
-libgdkglext_win32_@API_MJ@_@API_MI@_la_DEPENDENCIES = $(gdkglext_def)
+if TARGET_QUARTZ
+libgdkglext_@API_MJ@_@API_MI@_la_LIBADD += quartz/libgdkglext-quartz.la
+endif
+
+libgdkglext_@API_MJ@_@API_MI@_la_LIBADD += $(common_libadd)
 
 BUILT_SOURCES = \
 	$(gdkglext_built_sources)
@@ -135,7 +136,7 @@ MAINTAINERCLEANFILES = \
 	$(gdkglext_built_sources)
 
 # Generate built header without using automake BUILT_SOURCES
-$(libgdkglext_x11_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_quartz_@API_MJ@_@API_MI@_la_OBJECTS) $(libgdkglext_win32_@API_MJ@_@API_MI@_la_OBJECTS): $(gdkglext_built_public_h_sources)
+$(libgdkglext_@API_MJ@_@API_MI@_la_OBJECTS): $(gdkglext_built_public_h_sources)
 
 $(srcdir)/gdkglenumtypes.h: $(srcdir)/gtkglenumtypes.h.template $(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source)
 	( cd $(srcdir) && $(GLIB_MKENUMS) --template gtkglenumtypes.h.template \
