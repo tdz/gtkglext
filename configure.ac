@@ -206,6 +206,27 @@ AC_ARG_WITH([gdktarget],
 AS_IF([test x$gdktarget = xwin32 -o x$gdktarget = xquartz],
       [with_x=no])
 
+AC_ARG_ENABLE(x11-backend,
+              [AS_HELP_STRING([--enable-x11-backend],
+                              [enable the X11 gdk backend])],
+			      [backend_set=yes])
+AC_ARG_ENABLE(win32-backend,
+              [AS_HELP_STRING([--enable-win32-backend],
+                              [enable the Win32 gdk backend])],
+			      [backend_set=yes])
+AC_ARG_ENABLE(quartz-backend,
+              [AS_HELP_STRING([--enable-quartz-backend],
+                              [enable the quartz gdk backend])],
+			      [backend_set=yes])
+
+if test -z "$backend_set"; then
+  if test "$platform_win32" = yes; then
+    enable_win32_backend=yes
+  else
+    enable_x11_backend=yes
+  fi
+fi
+
 # Checks for headers and libraries.
 
 AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
@@ -312,8 +333,9 @@ WINDOWING_LIBS=""
 
 GDKGLEXT_WIN_CFLAGS=""
 GDKGLEXT_WIN_LIBS=""
+GDKGLEXT_BACKENDS=
 
-if test "x$gdktarget" = "xx11"; then
+if test "$enable_x11_backend" = "yes"; then
   if test "x$no_x" = "xyes" ; then
     AC_MSG_ERROR([X development libraries not found])
   fi
@@ -328,11 +350,13 @@ if test "x$gdktarget" = "xx11"; then
 
   GDKGLEXT_WIN_CFLAGS="$X_CFLAGS"
   GDKGLEXT_WIN_LIBS="$X_LIBS $XMU_LIBS"
+  GDKGLEXT_BACKENDS="$GDKGLEXT_BACKENDS x11"
 fi
 
-if test "x$gdktarget" = "xwin32"; then
+if test "$enable_win32_backend" = "yes"; then
   WINDOWING_LIBS="-lgdi32 -luser32 -lkernel32"
   GDKGLEXT_WIN_LIBS="-lgdi32 -luser32 -lkernel32"
+  GDKGLEXT_BACKENDS="$GDKGLEXT_BACKENDS win32"
 fi
 
 AC_SUBST([WINDOWING_CFLAGS])
@@ -340,6 +364,10 @@ AC_SUBST([WINDOWING_LIBS])
 
 AC_SUBST([GDKGLEXT_WIN_CFLAGS])
 AC_SUBST([GDKGLEXT_WIN_LIBS])
+
+# strip leading space
+GDKGLEXT_BACKENDS=${GDKGLEXT_BACKENDS#* }
+AC_SUBST(GDKGLEXT_BACKENDS)
 
 AM_CONDITIONAL([USE_X11], [test x$gdktarget = xx11])
 AM_CONDITIONAL([USE_WIN32], [test x$gdktarget = xwin32])
