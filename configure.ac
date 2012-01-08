@@ -282,12 +282,28 @@ if test "$enable_x11_backend" = "yes"; then
   GDKGLEXT_WIN_CFLAGS="$X_CFLAGS"
   GDKGLEXT_WIN_LIBS="$X_LIBS $XMU_LIBS"
   GDKGLEXT_BACKENDS="$GDKGLEXT_BACKENDS x11"
+
+  AM_CONDITIONAL([USE_X11], true)
+
+else
+  AM_CONDITIONAL([USE_X11], false)
 fi
 
 if test "$enable_win32_backend" = "yes"; then
   WINDOWING_LIBS="-lgdi32 -luser32 -lkernel32"
   GDKGLEXT_WIN_LIBS="-lgdi32 -luser32 -lkernel32"
   GDKGLEXT_BACKENDS="$GDKGLEXT_BACKENDS win32"
+
+  AM_CONDITIONAL([USE_WIN32], true)
+
+else
+  AM_CONDITIONAL([USE_WIN32], false)
+fi
+
+if test "$enable_quartz_backend" = "yes"; then
+  AM_CONDITIONAL([TARGET_QUARTZ], true)
+else
+  AM_CONDITIONAL([TARGET_QUARTZ], false)
 fi
 
 AC_SUBST([WINDOWING_CFLAGS])
@@ -299,10 +315,6 @@ AC_SUBST([GDKGLEXT_WIN_LIBS])
 # strip leading space
 GDKGLEXT_BACKENDS=${GDKGLEXT_BACKENDS#* }
 AC_SUBST(GDKGLEXT_BACKENDS)
-
-AM_CONDITIONAL([USE_X11], [test x$gdktarget = xx11])
-AM_CONDITIONAL([USE_WIN32], [test x$gdktarget = xwin32])
-AM_CONDITIONAL([TARGET_QUARTZ], [test x$gdktarget = xquartz])
 
 PKG_CHECK_MODULES([GTK], [gtk+-3.0 >= 3.0], ,
                   [AS_IF([test -z "${GTK_LIBS+x}"],
