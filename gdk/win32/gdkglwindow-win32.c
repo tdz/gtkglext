@@ -130,7 +130,6 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   iface->gl_begin             =  gdk_gl_window_impl_win32_make_context_current;
   iface->gl_end               =  gdk_gl_window_impl_win32_gl_end;
   iface->get_gl_config        =  gdk_gl_window_impl_win32_get_gl_config;
-  iface->get_size             = _gdk_gl_window_get_size;
 }
 
 /*
