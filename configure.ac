@@ -461,10 +461,12 @@ _______EOF
 
 ],[
 
-if test "x$gdktarget" = "xx11" ; then
+if test "x$enable_x11_backend" = "xyes" ; then
   gdkglext_windowing='
 #define GDKGLEXT_WINDOWING_X11'
-elif test "x$gdktarget" = "xwin32" ; then
+fi
+
+if test "x$enable_win32_backend" = "xyes" ; then
   gdkglext_windowing='
 #define GDKGLEXT_WINDOWING_WIN32'
 fi
