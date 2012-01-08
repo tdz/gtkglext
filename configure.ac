@@ -194,18 +194,6 @@ else
 fi
 AC_SUBST([LIBTOOL_EXPORT_OPTIONS])
 
-#
-# We need to get the value of gdktarget before we run AX_CHECK_GLU so
-# that we can set with_x appropriately.
-#
-AC_ARG_WITH([gdktarget],
-            [AS_HELP_STRING([--with-gdktarget=@<:@x11/win32@:>@],
-                            [select GDK target])],
-            [gdktarget=$with_gdktarget],
-            [gdktarget=`$PKG_CONFIG --variable=target gdk-2.0`])
-AS_IF([test x$gdktarget = xwin32],
-      [with_x=no])
-
 AC_ARG_ENABLE(x11-backend,
               [AS_HELP_STRING([--enable-x11-backend],
                               [enable the X11 gdk backend])],
@@ -235,12 +223,6 @@ AC_FUNC_MALLOC
 AC_CHECK_FUNCS([memset sqrt strchr strrchr strstr])
 
 LIBS="$save_LIBS"
-
-case $gdktarget in
-  x11|win32) ;;
-  *) AC_MSG_ERROR([Invalid target for GDK: use x11 or win32.]);;
-esac
-AC_SUBST([gdktarget])
 
 gdkglext_targetlib=libgdkglext-$GTKGLEXT_API_VERSION.la
 gtkglext_targetlib=libgtkglext-$GTKGLEXT_API_VERSION.la
