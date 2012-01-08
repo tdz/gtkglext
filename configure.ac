@@ -242,8 +242,8 @@ case $gdktarget in
 esac
 AC_SUBST([gdktarget])
 
-gdkglext_targetlib=libgdkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
-gtkglext_targetlib=libgtkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
+gdkglext_targetlib=libgdkglext-$GTKGLEXT_API_VERSION.la
+gtkglext_targetlib=libgtkglext-$GTKGLEXT_API_VERSION.la
 
 AC_SUBST([gdkglext_targetlib])
 AC_SUBST([gtkglext_targetlib])
