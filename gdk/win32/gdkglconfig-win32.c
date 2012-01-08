@@ -42,8 +42,6 @@ gdk_gl_config_impl_win32_finalize (GObject *object)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  g_object_unref (G_OBJECT (impl->colormap));
-
   G_OBJECT_CLASS (gdk_gl_config_impl_win32_parent_class)->finalize (object);
 }
 
@@ -360,50 +358,6 @@ gdk_gl_config_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
   return TRUE;
 }
 
-/*
- * Setup colormap.
- */
-
-/*
- * !!! RGB palette management should be implemented...
- */
-
-static GdkColormap *
-gdk_gl_config_setup_colormap (GdkScreen             *screen,
-                              PIXELFORMATDESCRIPTOR *pfd,
-                              gboolean               is_rgba)
-{
-  GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  if (is_rgba)
-    {
-      /*
-       * For RGBA mode.
-       */
-
-      /* System default colormap. */
-
-      GDK_GL_NOTE (MISC, g_message (" -- Colormap: system default"));
-
-      return g_object_ref (G_OBJECT (gdk_screen_get_system_colormap (screen)));
-    }
-  else
-    {
-      /*
-       * For color index mode.
-       */
-
-      /* New private colormap. */
-
-      GDK_GL_NOTE (MISC, g_message (" -- Colormap: new allocated writable"));
-
-      return gdk_colormap_new (gdk_screen_get_system_visual (screen), TRUE);
-    }
-
-  /* not reached */
-  return NULL;
-}
-
 static void
 gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
 {
@@ -489,14 +443,6 @@ gdk_gl_config_new_common (GdkScreen *screen,
   impl->pfd = pfd;
 
   impl->screen = screen;
-
-  /*
-   * Get an appropriate colormap.
-   */
-
-  impl->colormap = gdk_gl_config_setup_colormap (screen,
-                                                 &pfd,
-                                                 (pfd.iPixelType == PFD_TYPE_RGBA));
 
   /*
    * Set depth (number of bits per pixel).
@@ -585,14 +531,6 @@ gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
   impl->pfd = pfd;
 
   impl->screen = gdk_screen_get_default ();
-
-  /*
-   * Get an appropriate colormap.
-   */
-
-  impl->colormap = gdk_gl_config_setup_colormap (impl->screen,
-                                                 &pfd,
-                                                 (pfd.iPixelType == PFD_TYPE_RGBA));
 
   /*
    * Set depth (number of bits per pixel).
@@ -723,20 +661,16 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
   return TRUE;
 }
 
-GdkColormap *
-gdk_gl_config_get_colormap (GdkGLConfig *glconfig)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
-
-  return GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->colormap;
-}
-
 GdkVisual *
 gdk_gl_config_get_visual (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
 
-  return gdk_colormap_get_visual (GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->colormap);
+  /* There is currently no function for retreiving a visual or
+   * PIXELFORMATDESCRIPTOR, or so. We just return the system visual and
+   * hope for the best.
+   */
+  return gdk_screen_get_system_visual (GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->screen);
 }
 
 gint
