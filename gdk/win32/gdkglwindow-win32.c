@@ -157,7 +157,7 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
 
-  hwnd = (HWND) gdk_win32_drawable_get_handle (GDK_DRAWABLE (window));
+  hwnd = (HWND) gdk_win32_window_get_handle (window);
 
   /* Private DC? */
   wndclass_style = GetClassLong (hwnd, GCL_STYLE);
@@ -232,9 +232,9 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
   glwindow = g_object_new (GDK_TYPE_GL_WINDOW_IMPL_WIN32, NULL);
   impl = GDK_GL_WINDOW_IMPL_WIN32 (glwindow);
 
-  glwindow->drawable = GDK_DRAWABLE (window);
-  g_object_add_weak_pointer (G_OBJECT (glwindow->drawable),
-                             (gpointer *) &(glwindow->drawable));
+  glwindow->window = window;
+  g_object_add_weak_pointer (G_OBJECT (glwindow->window),
+                             (gpointer *) &(glwindow->window));
 
   impl->hwnd = hwnd;
 
