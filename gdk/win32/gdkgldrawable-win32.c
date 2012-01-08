@@ -22,19 +22,13 @@
 
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
-#include "gdkglpixmap-win32.h"
 #include "gdkglwindow-win32.h"
 #include "gdkgldrawable.h"
 
 HDC
 gdk_win32_gl_drawable_hdc_get (GdkGLDrawable *gldrawable)
 {
-  if (GDK_IS_GL_PIXMAP (gldrawable))
-    {
-      GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
-      return GDK_GL_PIXMAP_IMPL_WIN32_HDC_GET (impl);
-    }
-  else if (GDK_IS_GL_WINDOW (gldrawable))
+  if (GDK_IS_GL_WINDOW (gldrawable))
     {
       GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
       return GDK_GL_WINDOW_IMPL_WIN32_HDC_GET (impl);
@@ -48,16 +42,7 @@ gdk_win32_gl_drawable_hdc_get (GdkGLDrawable *gldrawable)
 void
 gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable)
 {
-  if (GDK_IS_GL_PIXMAP (gldrawable))
-    {
-      /* GLPixmap's memory DC doesn't need to be released. */
-      /*
-      GdkGLPixmapImplWin32 *impl = GDK_GL_PIXMAP_IMPL_WIN32 (gldrawable);
-      GDK_GL_PIXMAP_IMPL_WIN32_HDC_RELEASE (impl);
-      */
-      return;
-    }
-  else if (GDK_IS_GL_WINDOW (gldrawable))
+  if (GDK_IS_GL_WINDOW (gldrawable))
     {
       GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
       GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE (impl);
