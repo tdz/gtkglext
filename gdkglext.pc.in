@@ -9,6 +9,6 @@ api_version=@GTKGLEXT_API_VERSION@
 Name: GdkGLExt
 Description: OpenGL Extension to GDK (${target} target)
 Version: @VERSION@
-Requires: gdk-2.0
+Requires: gdk-3.0
 Libs: -L${libdir} -lgdkglext-${target}-${api_version} @GL_LIBS@ @GDKGLEXT_WIN_LIBS@
 Cflags: -I${includedir}/gtkglext-${api_version} -I${libdir}/gtkglext-${api_version}/include @GL_CFLAGS@ @GDKGLEXT_WIN_CFLAGS@
