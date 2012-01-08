@@ -22,11 +22,11 @@
 
 #include <string.h>
 
+#include <gdk/gdk.h>
+
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglquery.h"
-
-#include <gdk/gdkdisplay.h>
 
 gboolean
 gdk_gl_query_extension (void)

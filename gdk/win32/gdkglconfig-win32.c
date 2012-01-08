@@ -20,11 +20,11 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
+#include <gdk/gdk.h>
+
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglconfig-win32.h"
-
-#include <gdk/gdkscreen.h>
 
 G_DEFINE_TYPE (GdkGLConfigImplWin32,            \
                gdk_gl_config_impl_win32,        \
@@ -268,7 +268,7 @@ _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
   return pixel_format;
 }
 
-/* 
+/*
  * Setup PFD.
  */
 
@@ -360,11 +360,11 @@ gdk_gl_config_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
   return TRUE;
 }
 
-/* 
+/*
  * Setup colormap.
  */
 
-/* 
+/*
  * !!! RGB palette management should be implemented...
  */
 
