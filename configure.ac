@@ -231,6 +231,79 @@ fi
 
 AC_CHECK_HEADERS([inttypes.h stdlib.h string.h])
 
+# Checks for library functions.
+save_LIBS="$LIBS"
+LIBS="$LIBS $MATH_LIB"
+
+AC_FUNC_MALLOC
+AC_CHECK_FUNCS([memset sqrt strchr strrchr strstr])
+
+LIBS="$save_LIBS"
+
+case $gdktarget in
+  x11|quartz|win32) ;;
+  *) AC_MSG_ERROR([Invalid target for GDK: use x11, quartz or win32.]);;
+esac
+AC_SUBST([gdktarget])
+
+gdkglext_targetlib=libgdkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
+gtkglext_targetlib=libgtkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
+
+AC_SUBST([gdkglext_targetlib])
+AC_SUBST([gtkglext_targetlib])
+
+##################################################
+# Checks for Window System
+##################################################
+
+WINDOWING_CFLAGS=""
+WINDOWING_LIBS=""
+
+GDKGLEXT_WIN_CFLAGS=""
+GDKGLEXT_WIN_LIBS=""
+GDKGLEXT_BACKENDS=
+
+if test "$enable_x11_backend" = "yes"; then
+
+  AC_PATH_XTRA
+
+  if test "x$no_x" = "xyes" ; then
+    AC_MSG_ERROR([X development libraries not found])
+  fi
+
+  XMU_LIBS=""
+  if test "x$ac_cv_lib_Xmu_XmuLookupStandardColormap" = "xyes" ; then
+    XMU_LIBS="-lXmu -lXt $X_PRE_LIBS"
+  fi
+
+  WINDOWING_CFLAGS="$X_CFLAGS"
+  WINDOWING_LIBS="$X_LIBS $XMU_LIBS -lXext -lX11 $X_EXTRA_LIBS"
+
+  GDKGLEXT_WIN_CFLAGS="$X_CFLAGS"
+  GDKGLEXT_WIN_LIBS="$X_LIBS $XMU_LIBS"
+  GDKGLEXT_BACKENDS="$GDKGLEXT_BACKENDS x11"
+fi
+
+if test "$enable_win32_backend" = "yes"; then
+  WINDOWING_LIBS="-lgdi32 -luser32 -lkernel32"
+  GDKGLEXT_WIN_LIBS="-lgdi32 -luser32 -lkernel32"
+  GDKGLEXT_BACKENDS="$GDKGLEXT_BACKENDS win32"
+fi
+
+AC_SUBST([WINDOWING_CFLAGS])
+AC_SUBST([WINDOWING_LIBS])
+
+AC_SUBST([GDKGLEXT_WIN_CFLAGS])
+AC_SUBST([GDKGLEXT_WIN_LIBS])
+
+# strip leading space
+GDKGLEXT_BACKENDS=${GDKGLEXT_BACKENDS#* }
+AC_SUBST(GDKGLEXT_BACKENDS)
+
+AM_CONDITIONAL([USE_X11], [test x$gdktarget = xx11])
+AM_CONDITIONAL([USE_WIN32], [test x$gdktarget = xwin32])
+AM_CONDITIONAL([TARGET_QUARTZ], [test x$gdktarget = xquartz])
+
 PKG_CHECK_MODULES([GTK], [gtk+-3.0 >= 3.0], ,
                   [AS_IF([test -z "${GTK_LIBS+x}"],
                          [AC_MSG_FAILURE([GTK+ 3.0 or newer is required.])])])
@@ -302,76 +375,6 @@ AC_CHECK_TYPES([GLhalfNV], , ,
 if test "x$ac_cv_type_GLhalfNV" = "xno" ; then
   GDKGLEXT_NEED_GLHALFNV_TYPEDEF=yes
 fi
-
-# Checks for library functions.
-save_LIBS="$LIBS"
-LIBS="$LIBS $MATH_LIB"
-
-AC_FUNC_MALLOC
-AC_CHECK_FUNCS([memset sqrt strchr strrchr strstr])
-
-LIBS="$save_LIBS"
-
-case $gdktarget in
-  x11|quartz|win32) ;;
-  *) AC_MSG_ERROR([Invalid target for GDK: use x11, quartz or win32.]);;
-esac
-AC_SUBST([gdktarget])
-
-gdkglext_targetlib=libgdkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
-gtkglext_targetlib=libgtkglext-$gdktarget-$GTKGLEXT_API_VERSION.la
-
-AC_SUBST([gdkglext_targetlib])
-AC_SUBST([gtkglext_targetlib])
-
-##################################################
-# Checks for Window System
-##################################################
-
-WINDOWING_CFLAGS=""
-WINDOWING_LIBS=""
-
-GDKGLEXT_WIN_CFLAGS=""
-GDKGLEXT_WIN_LIBS=""
-GDKGLEXT_BACKENDS=
-
-if test "$enable_x11_backend" = "yes"; then
-  if test "x$no_x" = "xyes" ; then
-    AC_MSG_ERROR([X development libraries not found])
-  fi
-
-  XMU_LIBS=""
-  if test "x$ac_cv_lib_Xmu_XmuLookupStandardColormap" = "xyes" ; then
-    XMU_LIBS="-lXmu -lXt $X_PRE_LIBS"
-  fi
-
-  WINDOWING_CFLAGS="$X_CFLAGS"
-  WINDOWING_LIBS="$X_LIBS $XMU_LIBS -lXext -lX11 $X_EXTRA_LIBS"
-
-  GDKGLEXT_WIN_CFLAGS="$X_CFLAGS"
-  GDKGLEXT_WIN_LIBS="$X_LIBS $XMU_LIBS"
-  GDKGLEXT_BACKENDS="$GDKGLEXT_BACKENDS x11"
-fi
-
-if test "$enable_win32_backend" = "yes"; then
-  WINDOWING_LIBS="-lgdi32 -luser32 -lkernel32"
-  GDKGLEXT_WIN_LIBS="-lgdi32 -luser32 -lkernel32"
-  GDKGLEXT_BACKENDS="$GDKGLEXT_BACKENDS win32"
-fi
-
-AC_SUBST([WINDOWING_CFLAGS])
-AC_SUBST([WINDOWING_LIBS])
-
-AC_SUBST([GDKGLEXT_WIN_CFLAGS])
-AC_SUBST([GDKGLEXT_WIN_LIBS])
-
-# strip leading space
-GDKGLEXT_BACKENDS=${GDKGLEXT_BACKENDS#* }
-AC_SUBST(GDKGLEXT_BACKENDS)
-
-AM_CONDITIONAL([USE_X11], [test x$gdktarget = xx11])
-AM_CONDITIONAL([USE_WIN32], [test x$gdktarget = xwin32])
-AM_CONDITIONAL([TARGET_QUARTZ], [test x$gdktarget = xquartz])
 
 # Debug option
 AC_ARG_ENABLE([debug],
