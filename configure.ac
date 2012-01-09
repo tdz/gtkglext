@@ -453,17 +453,17 @@ _______EOF
 
 ],[
 
-if test "x$enable-x11-backend" = "xyes" ; then
+if test "x$enable_x11_backend" = "xyes" ; then
   gdkglext_windowing='
 #define GDKGLEXT_WINDOWING_X11'
 fi
 
-if test "x$enable-win32-backend" = "xyes" ; then
+if test "x$enable_win32_backend" = "xyes" ; then
   gdkglext_windowing='
 #define GDKGLEXT_WINDOWING_WIN32'
 fi
 
-if test "x$enable-quartz-backend" = "xyes" ; then
+if test "x$enable_quartz_backend" = "xyes" ; then
   gdkglext_windowing='
 #define GDKGLEXT_WINDOWING_QUARTZ'
 fi
