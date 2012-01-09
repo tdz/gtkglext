@@ -76,6 +76,17 @@ struct _GdkGLConfig
 struct _GdkGLConfigClass
 {
   GObjectClass parent_class;
+
+  GdkScreen* (*get_screen) (GdkGLConfig *glconfig);
+
+  gboolean   (*get_attrib) (GdkGLConfig *glconfig,
+                            int          attribute,
+                            int         *value);
+
+  GdkVisual* (*get_visual) (GdkGLConfig *glconfig);
+
+  gint       (*get_depth)  (GdkGLConfig *glconfig);
+
 };
 
 GType        gdk_gl_config_get_type               (void);
@@ -83,6 +94,9 @@ GType        gdk_gl_config_get_type               (void);
 #ifndef GDK_MULTIHEAD_SAFE
 GdkGLConfig *gdk_gl_config_new                    (const int       *attrib_list);
 #endif /* GDK_MULTIHEAD_SAFE */
+
+GdkGLConfig *gdk_gl_config_new_for_display        (GdkDisplay      *display,
+                                                   const int       *attrib_list);
 
 GdkGLConfig *gdk_gl_config_new_for_screen         (GdkScreen       *screen,
                                                    const int       *attrib_list);

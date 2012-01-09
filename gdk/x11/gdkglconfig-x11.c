@@ -40,6 +40,13 @@
 
 #endif /* HAVE_LIBXMU */
 
+static GdkScreen* _gdk_x11_gl_config_get_screen (GdkGLConfig *glconfig);
+static gboolean   _gdk_x11_gl_config_get_attrib (GdkGLConfig *glconfig,
+                                                 int          attribute,
+                                                 int         *value);
+static GdkVisual* _gdk_x11_gl_config_get_visual (GdkGLConfig *glconfig);
+static gint       _gdk_x11_gl_config_get_depth  (GdkGLConfig *glconfig);
+
 G_DEFINE_TYPE (GdkGLConfigImplX11,              \
                gdk_gl_config_impl_x11,          \
                GDK_TYPE_GL_CONFIG)
@@ -67,6 +74,11 @@ gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  klass->parent_class.get_screen = _gdk_x11_gl_config_get_screen;
+  klass->parent_class.get_attrib = _gdk_x11_gl_config_get_attrib;
+  klass->parent_class.get_visual = _gdk_x11_gl_config_get_visual;
+  klass->parent_class.get_depth  = _gdk_x11_gl_config_get_depth;
 
   object_class->finalize = gdk_gl_config_impl_x11_finalize;
 }
@@ -183,26 +195,8 @@ gdk_gl_config_new_common (GdkScreen *screen,
   return glconfig;
 }
 
-/**
- * gdk_gl_config_new:
- * @attrib_list: a list of attribute/value pairs. The last attribute must
- *               be GDK_GL_ATTRIB_LIST_NONE.
- *
- * Returns an OpenGL frame buffer configuration that match the specified
- * attributes.
- *
- * attrib_list is a int array that contains the attribute/value pairs.
- * Available attributes are:
- * GDK_GL_USE_GL, GDK_GL_BUFFER_SIZE, GDK_GL_LEVEL, GDK_GL_RGBA,
- * GDK_GL_DOUBLEBUFFER, GDK_GL_STEREO, GDK_GL_AUX_BUFFERS,
- * GDK_GL_RED_SIZE, GDK_GL_GREEN_SIZE, GDK_GL_BLUE_SIZE, GDK_GL_ALPHA_SIZE,
- * GDK_GL_DEPTH_SIZE, GDK_GL_STENCIL_SIZE, GDK_GL_ACCUM_RED_SIZE,
- * GDK_GL_ACCUM_GREEN_SIZE, GDK_GL_ACCUM_BLUE_SIZE, GDK_GL_ACCUM_ALPHA_SIZE.
- *
- * Return value: the new #GdkGLConfig.
- **/
 GdkGLConfig *
-gdk_gl_config_new (const int *attrib_list)
+_gdk_x11_gl_config_new (const int *attrib_list)
 {
   GdkScreen *screen;
 
@@ -215,19 +209,8 @@ gdk_gl_config_new (const int *attrib_list)
   return gdk_gl_config_new_common (screen, attrib_list);
 }
 
-/**
- * gdk_gl_config_new_for_screen:
- * @screen: target screen.
- * @attrib_list: a list of attribute/value pairs. The last attribute must
- *               be GDK_GL_ATTRIB_LIST_NONE.
- *
- * Returns an OpenGL frame buffer configuration that match the specified
- * attributes.
- *
- * Return value: the new #GdkGLConfig.
- **/
 GdkGLConfig *
-gdk_gl_config_new_for_screen (GdkScreen *screen,
+_gdk_x11_gl_config_new_for_screen (GdkScreen *screen,
                               const int *attrib_list)
 {
   GDK_GL_NOTE_FUNC ();
@@ -373,36 +356,18 @@ gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
   return gdk_x11_gl_config_new_from_visualid_common (screen, xvisualid);
 }
 
-/**
- * gdk_gl_config_get_screen:
- * @glconfig: a #GdkGLConfig.
- *
- * Gets #GdkScreen.
- *
- * Return value: the #GdkScreen.
- **/
-GdkScreen *
-gdk_gl_config_get_screen (GdkGLConfig *glconfig)
+static GdkScreen *
+_gdk_x11_gl_config_get_screen (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->screen;
 }
 
-/**
- * gdk_gl_config_get_attrib:
- * @glconfig: a #GdkGLConfig.
- * @attribute: the attribute to be returned.
- * @value: returns the requested value.
- *
- * Gets information about a OpenGL frame buffer configuration.
- *
- * Return value: TRUE if it succeeded, FALSE otherwise.
- **/
-gboolean
-gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
-                          int          attribute,
-                          int         *value)
+static gboolean
+_gdk_x11_gl_config_get_attrib (GdkGLConfig *glconfig,
+                               int          attribute,
+                               int         *value)
 {
   GdkGLConfigImplX11 *impl;
   int ret;
@@ -416,17 +381,8 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
   return (ret == Success);
 }
 
-/**
- * gdk_gl_config_get_visual:
- * @glconfig: a #GdkGLConfig.
- *
- * Gets the #GdkVisual that is appropriate for the OpenGL frame buffer
- * configuration.
- *
- * Return value: the appropriate #GdkVisual.
- **/
-GdkVisual *
-gdk_gl_config_get_visual (GdkGLConfig *glconfig)
+static GdkVisual *
+_gdk_x11_gl_config_get_visual (GdkGLConfig *glconfig)
 {
   GdkGLConfigImplX11 *impl;
 
@@ -437,16 +393,8 @@ gdk_gl_config_get_visual (GdkGLConfig *glconfig)
   return gdk_x11_screen_lookup_visual(impl->screen, impl->xvinfo->visualid);
 }
 
-/**
- * gdk_gl_config_get_depth:
- * @glconfig: a #GdkGLConfig.
- *
- * Gets the color depth of the OpenGL-capable visual.
- *
- * Return value: number of bits per pixel
- **/
-gint
-gdk_gl_config_get_depth (GdkGLConfig *glconfig)
+static gint
+_gdk_x11_gl_config_get_depth (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), 0);
 

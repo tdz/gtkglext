@@ -25,6 +25,13 @@
 
 #include <gdk/gdk.h>
 
+#ifdef GDKGLEXT_WINDOWING_X11
+#include "x11/gdkglconfig-x11.h"
+#endif
+#ifdef GDKGLEXT_WINDOWING_WIN32
+#include "win32/gdkglconfig-win32.h"
+#endif
+
 G_DEFINE_TYPE (GdkGLConfig,     \
                gdk_gl_config,   \
                G_TYPE_OBJECT)
@@ -386,4 +393,198 @@ gdk_gl_config_has_accum_buffer (GdkGLConfig *glconfig)
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
   return glconfig->has_accum_buffer;
+}
+
+/**
+ * gdk_gl_config_new:
+ * @attrib_list: a list of attribute/value pairs. The last attribute must
+ *               be GDK_GL_ATTRIB_LIST_NONE.
+ *
+ * Returns an OpenGL frame buffer configuration that match the specified
+ * attributes.
+ *
+ * attrib_list is a int array that contains the attribute/value pairs.
+ * Available attributes are:
+ * GDK_GL_USE_GL, GDK_GL_BUFFER_SIZE, GDK_GL_LEVEL, GDK_GL_RGBA,
+ * GDK_GL_DOUBLEBUFFER, GDK_GL_STEREO, GDK_GL_AUX_BUFFERS,
+ * GDK_GL_RED_SIZE, GDK_GL_GREEN_SIZE, GDK_GL_BLUE_SIZE, GDK_GL_ALPHA_SIZE,
+ * GDK_GL_DEPTH_SIZE, GDK_GL_STENCIL_SIZE, GDK_GL_ACCUM_RED_SIZE,
+ * GDK_GL_ACCUM_GREEN_SIZE, GDK_GL_ACCUM_BLUE_SIZE, GDK_GL_ACCUM_ALPHA_SIZE.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_gl_config_new (const int *attrib_list)
+{
+  return gdk_gl_config_new_for_display(gdk_display_get_default(),
+                                       attrib_list);
+}
+
+/**
+ * gdk_gl_config_new_for_display:
+ * @screen: target display.
+ * @attrib_list: a list of attribute/value pairs. The last attribute must
+ *               be GDK_GL_ATTRIB_LIST_NONE.
+ *
+ * Returns an OpenGL frame buffer configuration that match the specified
+ * attributes.
+ *
+ * attrib_list is a int array that contains the attribute/value pairs.
+ * Available attributes are:
+ * GDK_GL_USE_GL, GDK_GL_BUFFER_SIZE, GDK_GL_LEVEL, GDK_GL_RGBA,
+ * GDK_GL_DOUBLEBUFFER, GDK_GL_STEREO, GDK_GL_AUX_BUFFERS,
+ * GDK_GL_RED_SIZE, GDK_GL_GREEN_SIZE, GDK_GL_BLUE_SIZE, GDK_GL_ALPHA_SIZE,
+ * GDK_GL_DEPTH_SIZE, GDK_GL_STENCIL_SIZE, GDK_GL_ACCUM_RED_SIZE,
+ * GDK_GL_ACCUM_GREEN_SIZE, GDK_GL_ACCUM_BLUE_SIZE, GDK_GL_ACCUM_ALPHA_SIZE.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_gl_config_new_for_display (GdkDisplay *display, const int *attrib_list)
+{
+  GdkGLConfig *glconfig = NULL;
+
+#ifdef GDKGLEXT_WINDOWING_X11
+  if (GDK_IS_X11_DISPLAY(display))
+    {
+      glconfig = _gdk_x11_gl_config_new(attrib_list);
+    }
+  else
+#endif
+#ifdef GDKGLEXT_WINDOWING_WIN32
+  if (GDK_IS_WIN32_DISPLAY(display))
+    {
+      glconfig = _gdk_win32_gl_config_new(attrib_list);
+    }
+  else
+#endif
+    {
+      g_warning("Unsupported GDK backend");
+    }
+
+  return glconfig;
+}
+
+/**
+ * gdk_gl_config_new_for_screen:
+ * @screen: target screen.
+ * @attrib_list: a list of attribute/value pairs. The last attribute must
+ *               be GDK_GL_ATTRIB_LIST_NONE.
+ *
+ * Returns an OpenGL frame buffer configuration that match the specified
+ * attributes.
+ *
+ * attrib_list is a int array that contains the attribute/value pairs.
+ * Available attributes are:
+ * GDK_GL_USE_GL, GDK_GL_BUFFER_SIZE, GDK_GL_LEVEL, GDK_GL_RGBA,
+ * GDK_GL_DOUBLEBUFFER, GDK_GL_STEREO, GDK_GL_AUX_BUFFERS,
+ * GDK_GL_RED_SIZE, GDK_GL_GREEN_SIZE, GDK_GL_BLUE_SIZE, GDK_GL_ALPHA_SIZE,
+ * GDK_GL_DEPTH_SIZE, GDK_GL_STENCIL_SIZE, GDK_GL_ACCUM_RED_SIZE,
+ * GDK_GL_ACCUM_GREEN_SIZE, GDK_GL_ACCUM_BLUE_SIZE, GDK_GL_ACCUM_ALPHA_SIZE.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_gl_config_new_for_screen (GdkScreen *screen,
+                              const int *attrib_list)
+{
+  GdkDisplay *display;
+  GdkGLConfig *glconfig = NULL;
+
+  /* The linker returns undefined symbol '_gdk_win32_screen_get_type'
+   * for win32 builds when using GDK_IS_WIN32_SCREEN. Thus we lookup
+   * the screen's display and test the display instead.
+   */
+
+  display = gdk_screen_get_display(screen);
+  g_return_val_if_fail(display != NULL, NULL);
+
+#ifdef GDKGLEXT_WINDOWING_X11
+  if (GDK_IS_X11_DISPLAY(display))
+    {
+      glconfig = _gdk_x11_gl_config_new_for_screen(screen, attrib_list);
+    }
+  else
+#endif
+#ifdef GDKGLEXT_WINDOWING_WIN32
+  if (GDK_IS_WIN32_DISPLAY(display))
+    {
+      glconfig = _gdk_win32_gl_config_new_for_screen(screen, attrib_list);
+    }
+  else
+#endif
+    {
+      g_warning("Unsupported GDK backend");
+    }
+
+  return glconfig;
+}
+
+/**
+ * gdk_gl_config_get_screen:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Gets #GdkScreen.
+ *
+ * Return value: the #GdkScreen.
+ **/
+GdkScreen *
+gdk_gl_config_get_screen (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  return GDK_GL_CONFIG_GET_CLASS (glconfig)->get_screen (glconfig);
+}
+
+/**
+ * gdk_gl_config_get_attrib:
+ * @glconfig: a #GdkGLConfig.
+ * @attribute: the attribute to be returned.
+ * @value: returns the requested value.
+ *
+ * Gets information about a OpenGL frame buffer configuration.
+ *
+ * Return value: TRUE if it succeeded, FALSE otherwise.
+ **/
+gboolean
+gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
+                          int          attribute,
+                          int         *value)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  return GDK_GL_CONFIG_GET_CLASS (glconfig)->get_attrib (glconfig, attribute, value);
+}
+
+/**
+ * gdk_gl_config_get_visual:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Gets the #GdkVisual that is appropriate for the OpenGL frame buffer
+ * configuration.
+ *
+ * Return value: the appropriate #GdkVisual.
+ **/
+GdkVisual *
+gdk_gl_config_get_visual (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  return GDK_GL_CONFIG_GET_CLASS (glconfig)->get_visual (glconfig);
+}
+
+/**
+ * gdk_gl_config_get_depth:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Gets the color depth of the OpenGL-capable visual.
+ *
+ * Return value: number of bits per pixel
+ **/
+gint
+gdk_gl_config_get_depth (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
+
+  return GDK_GL_CONFIG_GET_CLASS (glconfig)->get_depth (glconfig);
 }
