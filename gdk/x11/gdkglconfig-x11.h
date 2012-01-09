@@ -56,4 +56,11 @@ GType gdk_gl_config_impl_x11_get_type (void);
 
 G_END_DECLS
 
+GdkGLConfig *
+_gdk_x11_gl_config_new (const int *attrib_list);
+
+GdkGLConfig *
+_gdk_x11_gl_config_new_for_screen (GdkScreen *screen,
+                                   const int *attrib_list);
+
 #endif /* __GDK_GL_CONFIG_X11_H__ */
