@@ -68,6 +68,11 @@ GType gdk_gl_window_impl_win32_get_type (void);
       { ReleaseDC ((impl)->hwnd, (impl)->hdc); (impl)->hdc = NULL; };   \
   } G_STMT_END
 
+GdkGLWindow *
+_gdk_win32_gl_window_new (GdkGLConfig *glconfig,
+                          GdkWindow   *window,
+                          const int   *attrib_list);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_WINDOW_WIN32_H__ */

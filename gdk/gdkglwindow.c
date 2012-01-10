@@ -20,11 +20,20 @@
 #include "config.h"
 #endif /* HAVE_CONFIG_H */
 
-#include <gtk/gtk.h>
+#include <gdk/gdk.h>
 
 #include "gdkglprivate.h"
 #include "gdkglconfig.h"
 #include "gdkglwindow.h"
+
+#ifdef GDKGLEXT_WINDOWING_X11
+#include "x11/gdkglconfig-x11.h"
+#include "x11/gdkglwindow-x11.h"
+#endif
+#ifdef GDKGLEXT_WINDOWING_WIN32
+#include "win32/gdkglconfig-win32.h"
+#include "win32/gdkglwindow-win32.h"
+#endif
 
 G_DEFINE_TYPE (GdkGLWindow,                     \
                gdk_gl_window,                   \
@@ -57,6 +66,46 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   object_class->finalize = gdk_gl_window_finalize;
+}
+
+/**
+ * gdk_gl_window_new:
+ * @glconfig: a #GdkGLConfig.
+ * @window: the #GdkWindow to be used as the rendering area.
+ * @attrib_list: this must be set to NULL or empty (first attribute of None).
+ *
+ * Creates an on-screen rendering area.
+ * attrib_list is currently unused. This must be set to NULL or empty
+ * (first attribute of None). See GLX 1.3 spec.
+ *
+ * Return value: the new #GdkGLWindow.
+ **/
+GdkGLWindow *
+gdk_gl_window_new (GdkGLConfig *glconfig,
+                   GdkWindow   *window,
+                   const int   *attrib_list)
+{
+  GdkGLWindow *glwindow = NULL;
+
+#ifdef GDKGLEXT_WINDOWING_X11
+  if (GDK_IS_GL_CONFIG_IMPL_X11(glconfig))
+    {
+      glwindow = _gdk_x11_gl_window_new(glconfig, window, attrib_list);
+    }
+  else
+#endif
+#ifdef GDKGLEXT_WINDOWING_WIN32
+  if (GDK_IS_GL_CONFIG_IMPL_WIN32(glconfig))
+    {
+      glwindow = _gdk_win32_gl_window_new(glconfig, window, attrib_list);
+    }
+  else
+#endif
+    {
+      g_warning("Unsupported GDK backend");
+    }
+
+  return glwindow;
 }
 
 /**

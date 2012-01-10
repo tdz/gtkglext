@@ -53,6 +53,11 @@ struct _GdkGLWindowImplX11Class
 
 GType gdk_gl_window_impl_x11_get_type (void);
 
+GdkGLWindow *
+_gdk_x11_gl_window_new (GdkGLConfig *glconfig,
+                        GdkWindow   *window,
+                        const int   *attrib_list);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_WINDOW_X11_H__ */

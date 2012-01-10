@@ -137,9 +137,9 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
  * (first attribute of None). See GLX 1.3 spec.
  */
 GdkGLWindow *
-gdk_gl_window_new (GdkGLConfig *glconfig,
-                   GdkWindow   *window,
-                   const int   *attrib_list)
+_gdk_win32_gl_window_new (GdkGLConfig *glconfig,
+                          GdkWindow   *window,
+                          const int   *attrib_list)
 {
   GdkGLWindow *glwindow;
   GdkGLWindowImplWin32 *impl;
