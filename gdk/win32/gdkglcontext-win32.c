@@ -23,6 +23,7 @@
 #include "gdkglwin32.h"
 #include "gdkglprivate-win32.h"
 #include "gdkglconfig-win32.h"
+#include "gdkglwindow-win32.h"
 #include "gdkglcontext-win32.h"
 
 static void          gdk_gl_context_insert (GdkGLContext *glcontext);
@@ -37,7 +38,10 @@ static GdkGLConfig *   _gdk_win32_gl_context_get_gl_config (GdkGLContext *glcont
 static GdkGLContext *  _gdk_win32_gl_context_get_share_list (GdkGLContext *glcontext);
 static gboolean        _gdk_win32_gl_context_is_direct (GdkGLContext *glcontext);
 static int             _gdk_win32_gl_context_get_render_type (GdkGLContext *glcontext);
-
+static gboolean        _gdk_win32_gl_context_make_current (GdkGLContext  *glcontext,
+                                                           GdkGLDrawable *draw,
+                                                           GdkGLDrawable *read);
+static void            _gdk_win32_gl_context_make_uncurrent (GdkGLContext *glcontext);
 
 G_DEFINE_TYPE (GdkGLContextImplWin32,              \
                gdk_gl_context_impl_win32,          \
@@ -135,6 +139,8 @@ gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass)
   klass->parent_class.get_share_list  = _gdk_win32_gl_context_get_share_list;
   klass->parent_class.is_direct       = _gdk_win32_gl_context_is_direct;
   klass->parent_class.get_render_type = _gdk_win32_gl_context_get_render_type;
+  klass->parent_class.make_current    = _gdk_win32_gl_context_make_current;
+  klass->parent_class.make_uncurrent  = _gdk_win32_gl_context_make_uncurrent;
 
   object_class->finalize = gdk_gl_context_impl_win32_finalize;
 }
@@ -386,6 +392,79 @@ _gdk_win32_gl_context_get_render_type (GdkGLContext *glcontext)
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), 0);
 
   return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->render_type;
+}
+
+static gboolean
+_gdk_win32_gl_context_make_current (GdkGLContext *glcontext,
+                                    GdkGLDrawable *draw,
+                                    GdkGLDrawable *read)
+{
+  GdkGLWindowImplWin32 *impl;
+  HDC hdc;
+  HGLRC hglrc;
+
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (draw), FALSE);
+
+  if (GDK_GL_WINDOW_IS_DESTROYED (draw) ||
+      GDK_GL_CONTEXT_IS_DESTROYED (glcontext))
+    return FALSE;
+
+  impl = GDK_GL_WINDOW_IMPL_WIN32 (draw);
+
+  /* Get DC. */
+  hdc = GDK_GL_WINDOW_IMPL_WIN32_HDC_GET (impl);
+
+  /* Get GLRC. */
+  hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
+
+  GDK_GL_NOTE_FUNC_IMPL ("wglMakeCurrent");
+
+  if (!wglMakeCurrent (hdc, hglrc))
+    {
+      g_warning ("wglMakeCurrent() failed");
+      _gdk_gl_context_set_gl_drawable (glcontext, NULL);
+      /* currently unused. */
+      /* _gdk_gl_context_set_gl_drawable_read (glcontext, NULL); */
+      return FALSE;
+    }
+
+  _gdk_gl_context_set_gl_drawable (glcontext, draw);
+  /* currently unused. */
+  /* _gdk_gl_context_set_gl_drawable_read (glcontext, read); */
+
+  if (_GDK_GL_CONFIG_AS_SINGLE_MODE (impl->glconfig))
+    {
+      /* We do this because we are treating a double-buffered frame
+         buffer as a single-buffered frame buffer because the system
+         does not appear to export any suitable single-buffered
+         visuals (in which the following are necessary). */
+      glDrawBuffer (GL_FRONT);
+      glReadBuffer (GL_FRONT);
+    }
+
+  GDK_GL_NOTE (MISC, _gdk_gl_print_gl_info ());
+
+  /*
+   * Do *NOT* release DC.
+   *
+   * With some graphics card, DC owned by rendering thread will be needed.
+   */
+
+  return TRUE;
+}
+
+static void
+_gdk_win32_gl_context_make_uncurrent (GdkGLContext *glcontext)
+{
+  GdkGLDrawable *gldrawable = _gdk_win32_gl_context_get_gl_drawable (glcontext);
+
+  g_return_if_fail(gldrawable != NULL);
+
+  GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
+
+  /* Release DC. */
+  GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE (impl);
 }
 
 GdkGLContext *
