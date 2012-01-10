@@ -197,6 +197,34 @@ gdk_gl_context_get_render_type (GdkGLContext *glcontext)
   return GDK_GL_CONTEXT_GET_CLASS (glcontext)->get_render_type(glcontext);
 }
 
+gboolean
+gdk_gl_context_make_current(GdkGLContext  *glcontext,
+                            GdkGLDrawable *draw,
+                            GdkGLDrawable *read)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
+
+  return GDK_GL_CONTEXT_GET_CLASS (glcontext)->make_current(glcontext,
+                                                            draw,
+                                                            read);
+}
+
+/**
+ * gdk_gl_context_release_current:
+ *
+ * Releases the current #GdkGLContext.
+ **/
+void
+gdk_gl_context_release_current ()
+{
+  GdkGLContext *glcontext = gdk_gl_context_get_current();
+
+  g_return_if_fail(glcontext != NULL);
+
+  if (GDK_GL_CONTEXT_GET_CLASS (glcontext)->make_uncurrent)
+    GDK_GL_CONTEXT_GET_CLASS (glcontext)->make_uncurrent(glcontext);
+}
+
 /**
  * gdk_gl_context_get_current:
  *

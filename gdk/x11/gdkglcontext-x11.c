@@ -24,8 +24,8 @@
 
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
-#include "gdkgldrawable.h"
 #include "gdkglconfig-x11.h"
+#include "gdkglwindow-x11.h"
 #include "gdkglcontext-x11.h"
 
 static void          gdk_gl_context_insert (GdkGLContext *glcontext);
@@ -40,6 +40,9 @@ static GdkGLConfig*   _gdk_x11_gl_context_get_gl_config (GdkGLContext *glcontext
 static GdkGLContext*  _gdk_x11_gl_context_get_share_list (GdkGLContext *glcontext);
 static gboolean       _gdk_x11_gl_context_is_direct (GdkGLContext *glcontext);
 static int            _gdk_x11_gl_context_get_render_type (GdkGLContext *glcontext);
+static gboolean       _gdk_x11_gl_context_make_current (GdkGLContext  *glcontext,
+                                                        GdkGLDrawable *draw,
+                                                        GdkGLDrawable *read);
 
 G_DEFINE_TYPE (GdkGLContextImplX11,              \
                gdk_gl_context_impl_x11,          \
@@ -141,6 +144,8 @@ gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass)
   klass->parent_class.get_share_list  = _gdk_x11_gl_context_get_share_list;
   klass->parent_class.is_direct       = _gdk_x11_gl_context_is_direct;
   klass->parent_class.get_render_type = _gdk_x11_gl_context_get_render_type;
+  klass->parent_class.make_current    = _gdk_x11_gl_context_make_current;
+  klass->parent_class.make_uncurrent  = NULL;
 
   object_class->finalize = gdk_gl_context_impl_x11_finalize;
 }
@@ -430,6 +435,66 @@ _gdk_x11_gl_context_get_render_type (GdkGLContext *glcontext)
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), 0);
 
   return GDK_GL_CONTEXT_IMPL_X11 (glcontext)->render_type;
+}
+
+static gboolean
+_gdk_x11_gl_context_make_current (GdkGLContext  *glcontext,
+                                  GdkGLDrawable *draw,
+                                  GdkGLDrawable *read)
+{
+  GdkGLWindowImplX11 *impl;
+  GdkGLConfig *glconfig;
+  GdkWindow *window;
+  Window glxwindow;
+  GLXContext glxcontext;
+
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (draw), FALSE);
+
+  impl = GDK_GL_WINDOW_IMPL_X11 (draw);
+  glconfig = GDK_GL_WINDOW_IMPL_X11 (draw)->glconfig;
+  window = gdk_gl_window_get_window(GDK_GL_WINDOW(impl));
+  glxwindow = GDK_GL_WINDOW_IMPL_X11 (draw)->glxwindow;
+  glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
+
+  if (glxwindow == None || glxcontext == NULL)
+    return FALSE;
+
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Window: screen number = %d",
+      GDK_SCREEN_XNUMBER (gdk_window_get_screen (window))));
+  GDK_GL_NOTE (MISC,
+    g_message (" -- Window: visual id = 0x%lx",
+      GDK_VISUAL_XVISUAL (gdk_window_get_visual (window))->visualid));
+
+  GDK_GL_NOTE_FUNC_IMPL ("glXMakeCurrent");
+
+  if (!glXMakeCurrent (GDK_GL_CONFIG_XDISPLAY (glconfig), glxwindow, glxcontext))
+    {
+      g_warning ("glXMakeCurrent() failed");
+      _gdk_gl_context_set_gl_drawable (glcontext, NULL);
+      /* currently unused. */
+      /* _gdk_gl_context_set_gl_drawable_read (glcontext, NULL); */
+      return FALSE;
+    }
+
+  _gdk_gl_context_set_gl_drawable (glcontext, draw);
+  /* currently unused. */
+  /* _gdk_gl_context_set_gl_drawable_read (glcontext, read); */
+
+  if (_GDK_GL_CONFIG_AS_SINGLE_MODE (glconfig))
+    {
+      /* We do this because we are treating a double-buffered frame
+         buffer as a single-buffered frame buffer because the system
+         does not appear to export any suitable single-buffered
+         visuals (in which the following are necessary). */
+      glDrawBuffer (GL_FRONT);
+      glReadBuffer (GL_FRONT);
+    }
+
+  GDK_GL_NOTE (MISC, _gdk_gl_print_gl_info ());
+
+  return TRUE;
 }
 
 GdkGLContext *

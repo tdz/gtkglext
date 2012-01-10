@@ -54,6 +54,10 @@ struct _GdkGLContextClass
   GdkGLContext*  (*get_share_list) (GdkGLContext *glcontext);
   gboolean       (*is_direct) (GdkGLContext *glcontext);
   int            (*get_render_type) (GdkGLContext *glcontext);
+  gboolean       (*make_current)(GdkGLContext  *glcontext,
+                                 GdkGLDrawable *draw,
+                                 GdkGLDrawable *read);
+  void           (*make_uncurrent)(GdkGLContext *glcontext);
 };
 
 GType          gdk_gl_context_get_type        (void);
@@ -76,6 +80,12 @@ GdkGLContext  *gdk_gl_context_get_share_list  (GdkGLContext  *glcontext);
 gboolean       gdk_gl_context_is_direct       (GdkGLContext  *glcontext);
 
 int            gdk_gl_context_get_render_type (GdkGLContext  *glcontext);
+
+gboolean       gdk_gl_context_make_current    (GdkGLContext  *glcontext,
+                                               GdkGLDrawable *draw,
+                                               GdkGLDrawable *read);
+
+void           gdk_gl_context_release_current (void);
 
 GdkGLContext  *gdk_gl_context_get_current     (void);
 
