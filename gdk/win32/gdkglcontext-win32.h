@@ -58,6 +58,9 @@ struct _GdkGLContextImplWin32Class
 
 GType gdk_gl_context_impl_win32_get_type (void);
 
+GdkGLContext *
+_gdk_win32_gl_context_get_current (void);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_CONTEXT_WIN32_H__ */
