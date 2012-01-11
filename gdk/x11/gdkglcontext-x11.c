@@ -32,6 +32,15 @@ static void          gdk_gl_context_insert (GdkGLContext *glcontext);
 static void          gdk_gl_context_remove (GdkGLContext *glcontext);
 static GdkGLContext *gdk_gl_context_lookup (GLXContext    glxcontext);
 
+static gboolean       _gdk_x11_gl_context_copy (GdkGLContext  *glcontext,
+                                                GdkGLContext  *src,
+                                                unsigned long  mask);
+static GdkGLDrawable* _gdk_x11_gl_context_get_gl_drawable (GdkGLContext *glcontext);
+static GdkGLConfig*   _gdk_x11_gl_context_get_gl_config (GdkGLContext *glcontext);
+static GdkGLContext*  _gdk_x11_gl_context_get_share_list (GdkGLContext *glcontext);
+static gboolean       _gdk_x11_gl_context_is_direct (GdkGLContext *glcontext);
+static int            _gdk_x11_gl_context_get_render_type (GdkGLContext *glcontext);
+
 G_DEFINE_TYPE (GdkGLContextImplX11,              \
                gdk_gl_context_impl_x11,          \
                GDK_TYPE_GL_CONTEXT)
@@ -115,6 +124,13 @@ gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
+  klass->parent_class.copy            = _gdk_x11_gl_context_copy;
+  klass->parent_class.get_gl_drawable = _gdk_x11_gl_context_get_gl_drawable;
+  klass->parent_class.get_gl_config   = _gdk_x11_gl_context_get_gl_config;
+  klass->parent_class.get_share_list  = _gdk_x11_gl_context_get_share_list;
+  klass->parent_class.is_direct       = _gdk_x11_gl_context_is_direct;
+  klass->parent_class.get_render_type = _gdk_x11_gl_context_get_render_type;
+
   object_class->finalize = gdk_gl_context_impl_x11_finalize;
 }
 
@@ -166,7 +182,7 @@ gdk_gl_context_new_common (GdkGLConfig   *glconfig,
 
   impl->is_destroyed = FALSE;
 
-  /* 
+  /*
    * Insert into the GL context hash table.
    */
 
@@ -276,24 +292,10 @@ gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
                                     TRUE);
 }
 
-/**
- * gdk_gl_context_copy:
- * @glcontext: a #GdkGLContext.
- * @src: the source context.
- * @mask: which portions of @src state are to be copied to @glcontext.
- *
- * Copy state from @src rendering context to @glcontext.
- *
- * @mask contains the bitwise-OR of the same symbolic names that are passed to
- * the glPushAttrib() function. You can use GL_ALL_ATTRIB_BITS to copy all the
- * rendering state information. 
- *
- * Return value: FALSE if it fails, TRUE otherwise.
- **/
-gboolean
-gdk_gl_context_copy (GdkGLContext  *glcontext,
-                     GdkGLContext  *src,
-                     unsigned long  mask)
+static gboolean
+_gdk_x11_gl_context_copy (GdkGLContext  *glcontext,
+                          GdkGLContext  *src,
+                          unsigned long  mask)
 {
   GLXContext dst_glxcontext, src_glxcontext;
   GdkGLConfig *glconfig;
@@ -379,97 +381,48 @@ _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
 }
 */
 
-/**
- * gdk_gl_context_get_gl_drawable:
- * @glcontext: a #GdkGLContext.
- *
- * Gets #GdkGLDrawable to which the @glcontext is bound.
- *
- * Return value: the #GdkGLDrawable or NULL if no #GdkGLDrawable is bound.
- **/
-GdkGLDrawable *
-gdk_gl_context_get_gl_drawable (GdkGLContext *glcontext)
+static GdkGLDrawable *
+_gdk_x11_gl_context_get_gl_drawable (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), NULL);
 
   return GDK_GL_CONTEXT_IMPL_X11 (glcontext)->gldrawable;
 }
 
-/**
- * gdk_gl_context_get_gl_config:
- * @glcontext: a #GdkGLContext.
- *
- * Gets #GdkGLConfig with which the @glcontext is configured.
- *
- * Return value: the #GdkGLConfig.
- **/
-GdkGLConfig *
-gdk_gl_context_get_gl_config (GdkGLContext *glcontext)
+static GdkGLConfig *
+_gdk_x11_gl_context_get_gl_config (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), NULL);
 
   return GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glconfig;
 }
 
-/**
- * gdk_gl_context_get_share_list:
- * @glcontext: a #GdkGLContext.
- *
- * Gets #GdkGLContext with which the @glcontext shares the display lists and
- * texture objects.
- *
- * Return value: the #GdkGLContext.
- **/
-GdkGLContext *
-gdk_gl_context_get_share_list (GdkGLContext *glcontext)
+static GdkGLContext *
+_gdk_x11_gl_context_get_share_list (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), NULL);
 
   return GDK_GL_CONTEXT_IMPL_X11 (glcontext)->share_list;
 }
 
-/**
- * gdk_gl_context_is_direct:
- * @glcontext: a #GdkGLContext.
- *
- * Returns whether the @glcontext is a direct rendering context.
- *
- * Return value: TRUE if the @glcontext is a direct rendering contest.
- **/
-gboolean
-gdk_gl_context_is_direct (GdkGLContext *glcontext)
+static gboolean
+_gdk_x11_gl_context_is_direct (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), FALSE);
 
   return GDK_GL_CONTEXT_IMPL_X11 (glcontext)->is_direct;
 }
 
-/**
- * gdk_gl_context_get_render_type:
- * @glcontext: a #GdkGLContext.
- *
- * Gets render_type of the @glcontext.
- *
- * Return value: GDK_GL_RGBA_TYPE or GDK_GL_COLOR_INDEX_TYPE.
- **/
-int
-gdk_gl_context_get_render_type (GdkGLContext *glcontext)
+static int
+_gdk_x11_gl_context_get_render_type (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), 0);
 
   return GDK_GL_CONTEXT_IMPL_X11 (glcontext)->render_type;
 }
 
-/**
- * gdk_gl_context_get_current:
- *
- * Returns the current #GdkGLContext.
- *
- * Return value: the current #GdkGLContext or NULL if there is no current
- *               context.
- **/
 GdkGLContext *
-gdk_gl_context_get_current (void)
+_gdk_x11_gl_context_get_current (void)
 {
   static GdkGLContext *current = NULL;
   GLXContext glxcontext;

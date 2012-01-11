@@ -59,6 +59,9 @@ struct _GdkGLContextImplX11Class
 
 GType gdk_gl_context_impl_x11_get_type (void);
 
+GdkGLContext *
+_gdk_x11_gl_context_get_current (void);
+
 G_END_DECLS
 
 #endif /* __GDK_GL_CONTEXT_X11_H__ */
