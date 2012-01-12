@@ -28,39 +28,17 @@
 #include <gmodule.h>
 #endif /* __APPLE__ */
 
+#include <gdk/gdk.h>
+
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
 #include "gdkglconfig-x11.h"
 #include "gdkglquery.h"
 
-#include <gdk/gdk.h>
+#include "gdkglquery-x11.h"
 
-/**
- * gdk_gl_query_extension:
- *
- * Indicates whether the window system supports the OpenGL extension
- * (GLX, WGL, etc.).
- *
- * Return value: TRUE if OpenGL is supported, FALSE otherwise.
- **/
 gboolean
-gdk_gl_query_extension (void)
-{
-  return glXQueryExtension (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
-                            NULL, NULL);
-}
-
-/**
- * gdk_gl_query_extension_for_display:
- * @display: the #GdkDisplay where the query is sent to.
- *
- * Indicates whether the window system supports the OpenGL extension
- * (GLX, WGL, etc.).
- *
- * Return value: TRUE if OpenGL is supported, FALSE otherwise.
- **/
-gboolean
-gdk_gl_query_extension_for_display (GdkDisplay *display)
+_gdk_x11_gl_query_extension_for_display (GdkDisplay *display)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
 
@@ -68,45 +46,10 @@ gdk_gl_query_extension_for_display (GdkDisplay *display)
                             NULL, NULL);
 }
 
-/**
- * gdk_gl_query_version:
- * @major: returns the major version number of the OpenGL extension.
- * @minor: returns the minor version number of the OpenGL extension.
- *
- * Returns the version numbers of the OpenGL extension to the window system.
- *
- * In the X Window System, it returns the GLX version.
- *
- * In the Microsoft Windows, it returns the Windows version.
- *
- * Return value: FALSE if it fails, TRUE otherwise.
- **/
 gboolean
-gdk_gl_query_version (int *major,
-                      int *minor)
-{
-  return glXQueryVersion (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()),
-                          major, minor);
-}
-
-/**
- * gdk_gl_query_version_for_display:
- * @display: the #GdkDisplay where the query is sent to.
- * @major: returns the major version number of the OpenGL extension.
- * @minor: returns the minor version number of the OpenGL extension.
- *
- * Returns the version numbers of the OpenGL extension to the window system.
- *
- * In the X Window System, it returns the GLX version.
- *
- * In the Microsoft Windows, it returns the Windows version.
- *
- * Return value: FALSE if it fails, TRUE otherwise.
- **/
-gboolean
-gdk_gl_query_version_for_display (GdkDisplay *display,
-                                  int        *major,
-                                  int        *minor)
+_gdk_x11_gl_query_version_for_display (GdkDisplay *display,
+                                       int        *major,
+                                       int        *minor)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
 
@@ -188,23 +131,14 @@ gdk_x11_gl_query_glx_extension (GdkGLConfig *glconfig,
   return FALSE;
 }
 
-/**
- * gdk_gl_get_proc_address:
- * @proc_name: function name.
- *
- * Returns the address of the OpenGL, GLU, or GLX function.
- *
- * Return value: the address of the function named by @proc_name.
- **/
-
+GdkGLProc
+_gdk_x11_gl_get_proc_address (const char *proc_name)
+{
 #ifdef __APPLE__
 
-#define _GDK_GL_LIBGL_PATH  "/usr/X11R6/lib/libGL.1.dylib"
-#define _GDK_GL_LIBGLU_PATH "/usr/X11R6/lib/libGLU.1.dylib"
+  #define _GDK_GL_LIBGL_PATH  "/usr/X11R6/lib/libGL.1.dylib"
+  #define _GDK_GL_LIBGLU_PATH "/usr/X11R6/lib/libGLU.1.dylib"
 
-GdkGLProc
-gdk_gl_get_proc_address (const char *proc_name)
-{
   typedef GdkGLProc (*__glXGetProcAddressProc) (const GLubyte *);
   static __glXGetProcAddressProc glx_get_proc_address = (__glXGetProcAddressProc) -1;
   const char *image_name;
@@ -331,13 +265,9 @@ gdk_gl_get_proc_address (const char *proc_name)
     }
 
   return NULL;
-}
 
 #else  /* __APPLE__ */
 
-GdkGLProc
-gdk_gl_get_proc_address (const char *proc_name)
-{
   typedef GdkGLProc (*__glXGetProcAddressProc) (const GLubyte *);
   static __glXGetProcAddressProc glx_get_proc_address = (__glXGetProcAddressProc) -1;
   gchar *file_name;
@@ -455,9 +385,9 @@ gdk_gl_get_proc_address (const char *proc_name)
     }
 
   return proc_address;
-}
 
 #endif /* __APPLE__ */
+}
 
 /*< private >*/
 void

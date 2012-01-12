@@ -37,6 +37,13 @@
 #include <GL/gl.h>
 #endif
 
+#ifdef GDKGLEXT_WINDOWING_X11
+#include "x11/gdkglconfig-x11.h"
+#endif
+#ifdef GDKGLEXT_WINDOWING_WIN32
+#include "win32/gdkglconfig-win32.h"
+#endif
+
 /*
  * This code is based on glutExtensionSupported().
  */
@@ -54,7 +61,7 @@
  * only. This means that window system dependent extensions (for example,
  * GLX extensions) are not reported by gdk_gl_query_gl_extension().
  *
- * Return value: TRUE if the OpenGL extension is supported, FALSE if not 
+ * Return value: TRUE if the OpenGL extension is supported, FALSE if not
  *               supported.
  **/
 gboolean
@@ -102,6 +109,146 @@ gdk_gl_query_gl_extension (const char *extension)
   GDK_GL_NOTE (MISC, g_message (" - %s - not supported", extension));
 
   return FALSE;
+}
+
+/**
+ * gdk_gl_query_extension:
+ *
+ * Indicates whether the window system supports the OpenGL extension
+ * (GLX, WGL, etc.).
+ *
+ * Return value: TRUE if OpenGL is supported, FALSE otherwise.
+ **/
+gboolean
+gdk_gl_query_extension (void)
+{
+  return gdk_gl_query_extension_for_display(gdk_display_get_default());
+}
+
+/**
+ * gdk_gl_query_extension_for_display:
+ * @display: the #GdkDisplay where the query is sent to.
+ *
+ * Indicates whether the window system supports the OpenGL extension
+ * (GLX, WGL, etc.).
+ *
+ * Return value: TRUE if OpenGL is supported, FALSE otherwise.
+ **/
+gboolean
+gdk_gl_query_extension_for_display (GdkDisplay *display)
+{
+  gboolean supp = FALSE;
+
+#ifdef GDKGLEXT_WINDOWING_X11
+  if (GDK_IS_X11_DISPLAY(display))
+    {
+      supp = _gdk_x11_gl_query_extension_for_display(display);
+    }
+  else
+#endif
+#ifdef GDKGLEXT_WINDOWING_WIN32
+  if (GDK_IS_WIN32_DISPLAY(display))
+    {
+      supp = _gdk_win32_gl_query_extension_for_display(display);
+    }
+  else
+#endif
+    {
+      g_warning("Unsupported GDK backend");
+    }
+
+  return supp;
+}
+
+/**
+ * gdk_gl_query_version:
+ * @major: returns the major version number of the OpenGL extension.
+ * @minor: returns the minor version number of the OpenGL extension.
+ *
+ * Returns the version numbers of the OpenGL extension to the window system.
+ *
+ * In the X Window System, it returns the GLX version.
+ *
+ * In the Microsoft Windows, it returns the Windows version.
+ *
+ * Return value: FALSE if it fails, TRUE otherwise.
+ **/
+gboolean
+gdk_gl_query_version (int *major,
+                      int *minor)
+{
+  return gdk_gl_query_version_for_display(gdk_display_get_default(), major, minor);
+}
+
+/**
+ * gdk_gl_query_version_for_display:
+ * @display: the #GdkDisplay where the query is sent to.
+ * @major: returns the major version number of the OpenGL extension.
+ * @minor: returns the minor version number of the OpenGL extension.
+ *
+ * Returns the version numbers of the OpenGL extension to the window system.
+ *
+ * In the X Window System, it returns the GLX version.
+ *
+ * In the Microsoft Windows, it returns the Windows version.
+ *
+ * Return value: FALSE if it fails, TRUE otherwise.
+ **/
+gboolean
+gdk_gl_query_version_for_display (GdkDisplay *display,
+                                  int        *major,
+                                  int        *minor)
+{
+  gboolean succ = FALSE;
+
+#ifdef GDKGLEXT_WINDOWING_X11
+  if (GDK_IS_X11_DISPLAY(display))
+    {
+      succ = _gdk_x11_gl_query_version_for_display(display, major, minor);
+    }
+  else
+#endif
+#ifdef GDKGLEXT_WINDOWING_WIN32
+  if (GDK_IS_WIN32_DISPLAY(display))
+    {
+      succ = _gdk_win32_gl_query_version_for_display(display, major, minor);
+    }
+  else
+#endif
+    {
+      g_warning("Unsupported GDK backend");
+    }
+
+  return succ;
+}
+
+/**
+ * gdk_gl_get_proc_address:
+ * @proc_name: function name.
+ *
+ * Returns the address of the OpenGL, GLU, or GLX function.
+ *
+ * Return value: the address of the function named by @proc_name.
+ **/
+GdkGLProc
+gdk_gl_get_proc_address (const char *proc_name)
+{
+  GdkGLProc addr = NULL;
+
+#ifdef GDKGLEXT_WINDOWING_X11
+  if (!addr)
+    {
+      addr = _gdk_x11_gl_get_proc_address(proc_name);
+    }
+#endif
+#ifdef GDKGLEXT_WINDOWING_WIN32
+  if (!addr)
+    {
+      addr = _gdk_win32_gl_get_proc_address(proc_name);
+    }
+#endif
+
+  return addr;
 }
 
 /*< private >*/

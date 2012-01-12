@@ -18,6 +18,7 @@ gdkglext_x11_public_h_sources = \
 	gdkglglxext.h
 
 gdkglext_x11_private_h_sources = \
+	gdkglquery-x11.h	\
 	gdkglconfig-x11.h	\
 	gdkgloverlay-x11.h	\
 	gdkglcontext-x11.h	\

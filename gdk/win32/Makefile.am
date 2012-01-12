@@ -19,6 +19,7 @@ gdkglext_win32_public_h_sources = \
 	gdkglwglext.h
 
 gdkglext_win32_private_h_sources = \
+	gdkglquery-win32.h	\
 	gdkglconfig-win32.h	\
 	gdkglcontext-win32.h	\
 	gdkglwindow-win32.h	\

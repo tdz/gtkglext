@@ -28,32 +28,10 @@
 #include "gdkglprivate-win32.h"
 #include "gdkglquery.h"
 
-gboolean
-gdk_gl_query_extension (void)
-{
-  return TRUE;
-
-#if 0
-  DWORD version = GetVersion ();
-  DWORD major = (DWORD) (LOBYTE (LOWORD (version)));
-
-  if (version < 0x80000000)     /* Windows NT/2000/XP */
-    {
-      if (major >= 3)
-        return TRUE;
-    }
-  else                          /* Windows 95/98/Me */
-    {
-      if (major >= 4)
-        return TRUE;
-    }
-
-  return FALSE;
-#endif
-}
+#include "win32/gdkglquery-win32.h"
 
 gboolean
-gdk_gl_query_extension_for_display (GdkDisplay *display)
+_gdk_win32_gl_query_extension_for_display (GdkDisplay *display)
 {
   g_return_val_if_fail (display == gdk_display_get_default (), FALSE);
 
@@ -79,22 +57,9 @@ gdk_gl_query_extension_for_display (GdkDisplay *display)
 }
 
 gboolean
-gdk_gl_query_version (int *major,
-                      int *minor)
-{
-  DWORD version = GetVersion ();
-
-  /* return Windows version. */
-  *major = (int) (LOBYTE (LOWORD (version)));
-  *minor = (int) (HIBYTE (LOWORD (version)));
-
-  return TRUE;
-}
-
-gboolean
-gdk_gl_query_version_for_display (GdkDisplay *display,
-                                  int        *major,
-                                  int        *minor)
+_gdk_win32_gl_query_version_for_display (GdkDisplay *display,
+                                         int        *major,
+                                         int        *minor)
 {
   DWORD version;
 
@@ -192,7 +157,7 @@ gdk_win32_gl_query_wgl_extension (GdkGLConfig *glconfig,
 }
 
 GdkGLProc
-gdk_gl_get_proc_address (const char *proc_name)
+_gdk_win32_gl_get_proc_address (const char *proc_name)
 {
   GdkGLProc proc_address = NULL;
   HMODULE hmodule;
