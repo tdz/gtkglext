@@ -2,17 +2,17 @@
 
 /*
  * Copyright (C) 1999-2002  Brian Paul   All Rights Reserved.
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
  * to deal in the Software without restriction, including without limitation
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
  * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
@@ -123,7 +123,7 @@ struct visual_attribs
    int visualCaveat;
 };
 
-   
+
 /*
  * Print a list of extensions, with word-wrapping.
  */
@@ -139,7 +139,7 @@ print_extension_list(const char *ext)
       return;
 
    width = indent;
-   printf(indentString);
+   printf("%s", indentString);
    i = j = 0;
    while (1) {
       if (ext[j] == ' ' || ext[j] == 0) {
@@ -149,7 +149,7 @@ print_extension_list(const char *ext)
             /* start a new line */
             printf("\n");
             width = indent;
-            printf(indentString);
+            printf("%s", indentString);
          }
          /* print the extension name between ext[i] and ext[j] */
          while (i < j) {
@@ -535,7 +535,7 @@ print_visual_attribs_short(const struct visual_attribs *attribs)
       caveat = "None";
 #else
    caveat = "None";
-#endif 
+#endif
 
    printf("0x%2x %2d %2s %2d %2d %2d %1s %2s %2s %2d %2d %2d %2d %2d %2d %2d",
           attribs->id,
