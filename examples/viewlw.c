@@ -282,7 +282,7 @@ motion_notify(GtkWidget      *widget,
 
   if (event->is_hint)
     {
-      // fix this!
+      /* fix this! */
 #if !defined(WIN32)
       gdk_window_get_pointer(event->window, &x, &y, &state);
 #endif
