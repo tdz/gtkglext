@@ -98,7 +98,7 @@ static rawImageRec *RawImageOpen(const char *fileName)
    } endianTest;
    rawImageRec *raw;
    GLenum swapFlag;
-   int x;
+   size_t x;
 
    endianTest.testWord = 1;
    if (endianTest.testByte[0] == 1) {
@@ -117,7 +117,10 @@ static rawImageRec *RawImageOpen(const char *fileName)
       return NULL;
    }
 
-   fread(raw, 1, 12, raw->file);
+   if (fread(raw, 1, 12, raw->file) < 12) {
+      perror("fread");
+      return NULL;
+   }
 
    if (swapFlag) {
       ConvertShort(&raw->imagic, 6);
@@ -146,8 +149,14 @@ static rawImageRec *RawImageOpen(const char *fileName)
       }
       raw->rleEnd = 512 + (2 * x);
       fseek(raw->file, 512, SEEK_SET);
-      fread(raw->rowStart, 1, x, raw->file);
-      fread(raw->rowSize, 1, x, raw->file);
+      if (fread(raw->rowStart, 1, x, raw->file) < x) {
+         perror("fread");
+         return NULL;
+      }
+      if (fread(raw->rowSize, 1, x, raw->file) < x) {
+         perror("fread");
+         return NULL;
+      }
       if (swapFlag) {
          ConvertLong(raw->rowStart, (long) (x/sizeof(GLuint)));
          ConvertLong((GLuint *)raw->rowSize, (long) (x/sizeof(GLint)));
@@ -172,13 +181,15 @@ static void RawImageClose(rawImageRec *raw)
 
 static void RawImageGetRow(rawImageRec *raw, unsigned char *buf, int y, int z)
 {
+   size_t len;
    unsigned char *iPtr, *oPtr, pixel;
    int count, done = 0;
 
    if ((raw->type & 0xFF00) == 0x0100) {
       fseek(raw->file, (long) raw->rowStart[y+z*raw->sizeY], SEEK_SET);
-      fread(raw->tmp, 1, (unsigned int)raw->rowSize[y+z*raw->sizeY],
-            raw->file);
+      len = (unsigned int)raw->rowSize[y+z*raw->sizeY];
+      if (fread(raw->tmp, 1, len, raw->file) < len)
+         return;
 
       iPtr = raw->tmp;
       oPtr = buf;
@@ -203,7 +214,8 @@ static void RawImageGetRow(rawImageRec *raw, unsigned char *buf, int y, int z)
    } else {
       fseek(raw->file, 512+(y*raw->sizeX)+(z*raw->sizeX*raw->sizeY),
             SEEK_SET);
-      fread(buf, 1, raw->sizeX, raw->file);
+      if (fread(buf, 1, raw->sizeX, raw->file) < raw->sizeX)
+         return;
    }
 }
 
