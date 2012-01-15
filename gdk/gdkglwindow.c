@@ -35,9 +35,6 @@
 #include "win32/gdkglwindow-win32.h"
 #endif
 
-static GdkVisual   *    gdk_gl_window_get_visual              (GdkGLWindow *glwindow);
-static GdkScreen   *    gdk_gl_window_get_screen              (GdkGLWindow *glwindow);
-
 G_DEFINE_TYPE (GdkGLWindow,                     \
                gdk_gl_window,                   \
                G_TYPE_OBJECT)
