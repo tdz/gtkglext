@@ -16,24 +16,31 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifndef __GDK_GL_X_H__
-#define __GDK_GL_X_H__
+#if !defined (__GDKGLX_H_INSIDE__) && !defined (GDK_GL_COMPILATION)
+#error "Only <gdk/gdkglx.h> can be included directly."
+#endif
 
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
+#ifndef __GDK_X11_GL_WINDOW_H__
+#define __GDK_X11_GL_WINDOW_H__
 
 #include <gdk/gdkx.h>
 
-#include <GL/gl.h>
-#include <GL/glx.h>
+#include <gdk/gdkgl.h>
 
-#define __GDKGLX_H_INSIDE__
+G_BEGIN_DECLS
 
-#include <gdk/x11/gdkx11glconfig.h>
-#include <gdk/x11/gdkx11glcontext.h>
-#include <gdk/x11/gdkx11glquery.h>
-#include <gdk/x11/gdkx11glwindow.h>
+Window        gdk_x11_gl_window_get_glxwindow     (GdkGLWindow  *glwindow);
 
-#undef __GDKGLX_H_INSIDE__
+#ifdef INSIDE_GDK_GL_X11
 
-#endif /* __GDK_GL_X_H__ */
+#define GDK_GL_WINDOW_GLXWINDOW(glwindow)      (GDK_GL_WINDOW_IMPL_X11 (glwindow)->glxwindow)
+
+#else
+
+#define GDK_GL_WINDOW_GLXWINDOW(glwindow)      (gdk_x11_gl_window_get_glxwindow (glwindow))
+
+#endif
+
+G_END_DECLS
+
+#endif /* __GDK_X11_GL_WINDOW_H__ */
