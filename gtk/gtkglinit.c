@@ -73,7 +73,7 @@ gtk_gl_parse_args (int    *argc,
   env_string = g_getenv ("GTK_GL_INSTALL_VISUAL");
   if (env_string != NULL)
     {
-      _gtk_gl_widget_install_toplevel_visual = (atoi (env_string) != 0);
+      _gtk_gl_widget_install_toplevel_visual = !!g_ascii_strtoll (env_string, NULL, 0);
       env_string = NULL;
     }
 
