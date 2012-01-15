@@ -16,24 +16,35 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifndef __GDK_GL_X_H__
-#define __GDK_GL_X_H__
+#if !defined (__GDKGLX_H_INSIDE__) && !defined (GDK_GL_COMPILATION)
+#error "Only <gdk/gdkglx.h> can be included directly."
+#endif
 
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
+#ifndef __GDK_X11_GL_CONTEXT_H__
+#define __GDK_X11_GL_CONTEXT_H__
 
 #include <gdk/gdkx.h>
 
-#include <GL/gl.h>
-#include <GL/glx.h>
+#include <gdk/gdkgl.h>
 
-#define __GDKGLX_H_INSIDE__
+G_BEGIN_DECLS
 
-#include <gdk/x11/gdkx11glconfig.h>
-#include <gdk/x11/gdkx11glcontext.h>
-#include <gdk/x11/gdkx11glquery.h>
-#include <gdk/x11/gdkx11glwindow.h>
+GdkGLContext *gdk_x11_gl_context_foreign_new      (GdkGLConfig  *glconfig,
+                                                   GdkGLContext *share_list,
+                                                   GLXContext    glxcontext);
 
-#undef __GDKGLX_H_INSIDE__
+GLXContext    gdk_x11_gl_context_get_glxcontext   (GdkGLContext *glcontext);
 
-#endif /* __GDK_GL_X_H__ */
+#ifdef INSIDE_GDK_GL_X11
+
+#define GDK_GL_CONTEXT_GLXCONTEXT(glcontext)   (GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glxcontext)
+
+#else
+
+#define GDK_GL_CONTEXT_GLXCONTEXT(glcontext)   (gdk_x11_gl_context_get_glxcontext (glcontext))
+
+#endif
+
+G_END_DECLS
+
+#endif /* __GDK_GL_GL_CONFIG_H__ */

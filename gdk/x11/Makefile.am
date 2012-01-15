@@ -15,6 +15,10 @@ AM_CPPFLAGS = \
 
 gdkglext_x11_public_h_sources = \
 	gdkglx.h
+	gdkx11glconfig.h \
+	gdkx11glcontext.h \
+	gdkx11glquery.h \
+	gdkx11glwindow.h
 
 gdkglext_x11_private_h_sources = \
 	gdkglquery-x11.h	\

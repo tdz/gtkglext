@@ -16,24 +16,19 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifndef __GDK_GL_X_H__
-#define __GDK_GL_X_H__
+#if !defined (__GDKGLX_H_INSIDE__) && !defined (GDK_GL_COMPILATION)
+#error "Only <gdk/gdkglx.h> can be included directly."
+#endif
 
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
+#ifndef __GDK_X11_GL_QUERY_H__
+#define __GDK_X11_GL_QUERY_H__
 
-#include <gdk/gdkx.h>
+#include <gdk/gdkgl.h>
 
-#include <GL/gl.h>
-#include <GL/glx.h>
+G_BEGIN_DECLS
 
-#define __GDKGLX_H_INSIDE__
+gboolean      gdk_x11_gl_query_glx_extension      (GdkGLConfig  *glconfig,
+                                                   const char   *extension);
+G_END_DECLS
 
-#include <gdk/x11/gdkx11glconfig.h>
-#include <gdk/x11/gdkx11glcontext.h>
-#include <gdk/x11/gdkx11glquery.h>
-#include <gdk/x11/gdkx11glwindow.h>
-
-#undef __GDKGLX_H_INSIDE__
-
-#endif /* __GDK_GL_X_H__ */
+#endif /* __GDK_X11_GL_QUERY_H__ */
