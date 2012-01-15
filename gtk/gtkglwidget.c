@@ -206,13 +206,13 @@ gtk_gl_widget_style_set (GtkWidget *widget,
 
       GTK_GL_NOTE (MISC,
         g_message (" - window->bg_pixmap = %p",
-                   gdk_window_get_background_pattern(window)));
+                   (void*)gdk_window_get_background_pattern(window)));
 
       gdk_window_set_background_pattern (window, NULL);
 
       GTK_GL_NOTE (MISC,
         g_message (" - window->bg_pixmap = %p",
-                   gdk_window_get_background_pattern(window)));
+                   (void*)gdk_window_get_background_pattern(window)));
     }
 }
 
