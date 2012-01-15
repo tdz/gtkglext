@@ -344,6 +344,8 @@ timeout(GtkWidget *widget)
 
   gtk_widget_get_allocation (widget, &allocation);
 
+  window = gtk_widget_get_window(widget);
+
   /* Invalidate the whole window. */
   gdk_window_invalidate_rect (window, &allocation, FALSE);
 
