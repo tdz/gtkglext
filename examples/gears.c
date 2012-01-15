@@ -578,7 +578,6 @@ main (int   argc,
   /*
    * Main loop.
    */
-//idle_add (drawing_area);
   gtk_main ();
 
   return 0;
