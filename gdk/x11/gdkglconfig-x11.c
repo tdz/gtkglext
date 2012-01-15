@@ -24,7 +24,6 @@
 
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
-#include "gdkgloverlay-x11.h"
 #include "gdkglconfig-x11.h"
 
 #include <gdk/gdk.h>
