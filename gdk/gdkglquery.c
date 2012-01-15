@@ -38,10 +38,10 @@
 #endif
 
 #ifdef GDKGLEXT_WINDOWING_X11
-#include "x11/gdkglconfig-x11.h"
+#include "x11/gdkglquery-x11.h"
 #endif
 #ifdef GDKGLEXT_WINDOWING_WIN32
-#include "win32/gdkglconfig-win32.h"
+#include "win32/gdkglquery-win32.h"
 #endif
 
 /*
