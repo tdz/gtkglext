@@ -54,8 +54,6 @@ gdk_gl_context_init (GdkGLContext *self)
 static void
 gdk_gl_context_class_init (GdkGLContextClass *klass)
 {
-  GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   klass->copy = NULL;
