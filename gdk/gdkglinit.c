@@ -68,14 +68,14 @@ gdk_gl_parse_args (int    *argc,
   env_string = g_getenv ("GDK_GL_NO_STANDARD_COLORMAP");
   if (env_string != NULL)
     {
-      _gdk_gl_config_no_standard_colormap = (atoi (env_string) != 0);
+      _gdk_gl_config_no_standard_colormap = !!g_ascii_strtoll (env_string, NULL, 0);
       env_string = NULL;
     }
 
   env_string = g_getenv ("GDK_GL_FORCE_INDIRECT");
   if (env_string != NULL)
     {
-      _gdk_gl_context_force_indirect = (atoi (env_string) != 0);
+      _gdk_gl_context_force_indirect = !!g_ascii_strtoll (env_string, NULL, 0);
       env_string = NULL;
     }
 
