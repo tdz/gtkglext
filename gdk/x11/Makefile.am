@@ -19,7 +19,6 @@ gdkglext_x11_public_h_sources = \
 gdkglext_x11_private_h_sources = \
 	gdkglquery-x11.h	\
 	gdkglconfig-x11.h	\
-	gdkgloverlay-x11.h	\
 	gdkglcontext-x11.h	\
 	gdkglwindow-x11.h	\
 	gdkglprivate-x11.h
@@ -27,7 +26,6 @@ gdkglext_x11_private_h_sources = \
 gdkglext_x11_c_sources = \
 	gdkglquery-x11.c	\
 	gdkglconfig-x11.c	\
-	gdkgloverlay-x11.c	\
 	gdkglcontext-x11.c	\
 	gdkgldrawable-x11.c	\
 	gdkglwindow-x11.c
