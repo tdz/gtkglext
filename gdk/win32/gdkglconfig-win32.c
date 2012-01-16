@@ -50,8 +50,6 @@ gdk_gl_config_impl_win32_init (GdkGLConfigImplWin32 *self)
 static void
 gdk_gl_config_impl_win32_finalize (GObject *object)
 {
-  GdkGLConfigImplWin32 *impl = GDK_GL_CONFIG_IMPL_WIN32 (object);
-
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   G_OBJECT_CLASS (gdk_gl_config_impl_win32_parent_class)->finalize (object);
