@@ -48,6 +48,7 @@ G_DEFINE_TYPE (GdkGLContext,    \
 static void
 gdk_gl_context_init (GdkGLContext *self)
 {
+  GDK_GL_NOTE_FUNC_PRIVATE ();
 }
 
 static void
@@ -56,6 +57,13 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  klass->copy = NULL;
+  klass->get_gl_drawable = NULL;
+  klass->get_gl_config = NULL;
+  klass->get_share_list = NULL;
+  klass->is_direct = NULL;
+  klass->get_render_type = NULL;
 }
 
 /**
