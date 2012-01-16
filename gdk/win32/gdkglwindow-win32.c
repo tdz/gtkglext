@@ -49,7 +49,7 @@ G_DEFINE_TYPE_EXTENDED (GdkGLWindowImplWin32,
                         0,
                         G_IMPLEMENT_INTERFACE
                         (GDK_TYPE_GL_DRAWABLE,
-                         gdk_gl_window_impl_win32_gl_drawable_interface_init));
+                         gdk_gl_window_impl_win32_gl_drawable_interface_init))
 
 static void
 gdk_gl_window_impl_win32_init (GdkGLWindowImplWin32 *self)
