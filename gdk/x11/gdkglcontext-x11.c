@@ -48,6 +48,17 @@ G_DEFINE_TYPE (GdkGLContextImplX11,              \
 static void
 gdk_gl_context_impl_x11_init (GdkGLContextImplX11 *self)
 {
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  self->glxcontext = NULL;
+  self->share_list = NULL;
+  self->is_direct = FALSE;
+  self->render_type = 0;
+  self->glconfig = NULL;
+  self->gldrawable = NULL;
+  self->gldrawable_read = NULL;
+  self->is_destroyed = 0;
+  self->is_foreign = 0;
 }
 
 void
