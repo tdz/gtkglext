@@ -40,6 +40,11 @@ G_DEFINE_TYPE (GdkGLConfigImplWin32,            \
 static void
 gdk_gl_config_impl_win32_init (GdkGLConfigImplWin32 *self)
 {
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  memset (&self->pfd, 0, sizeof(self->pfd));
+  self->screen = NULL;
+  self->depth = 0;
 }
 
 static void
