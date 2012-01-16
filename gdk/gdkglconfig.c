@@ -39,6 +39,19 @@ G_DEFINE_TYPE (GdkGLConfig,     \
 static void
 gdk_gl_config_init (GdkGLConfig *self)
 {
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  self->layer_plane = 0;
+  self->n_aux_buffers = 0;
+  self->n_sample_buffers = 0;
+  self->is_rgba = 0;
+  self->is_double_buffered = 0;
+  self->as_single_mode = 0;
+  self->is_stereo = 0;
+  self->has_alpha = 0;
+  self->has_depth_buffer = 0;
+  self->has_stencil_buffer = 0;
+  self->has_accum_buffer = 0;
 }
 
 static void
