@@ -56,6 +56,11 @@ G_DEFINE_TYPE_EXTENDED (GdkGLWindowImplX11,
 static void
 gdk_gl_window_impl_x11_init (GdkGLWindowImplX11 *self)
 {
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  self->glxwindow = None;
+  self->glconfig = NULL;
+  self->is_destroyed = 0;
 }
 
 void
