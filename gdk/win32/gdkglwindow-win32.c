@@ -54,6 +54,15 @@ G_DEFINE_TYPE_EXTENDED (GdkGLWindowImplWin32,
 static void
 gdk_gl_window_impl_win32_init (GdkGLWindowImplWin32 *self)
 {
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  self->hwnd = NULL;
+  memset (&self->pfd, 0, sizeof(self->pfd));
+  self->pixel_format = 0;
+  self->glconfig = NULL;
+  self->hdc = NULL;
+  self->is_destroyed = 0;
+  self->need_release_dc = 0;
 }
 
 void
