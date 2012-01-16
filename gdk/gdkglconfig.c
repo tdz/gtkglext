@@ -62,6 +62,11 @@ gdk_gl_config_class_init (GdkGLConfigClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  klass->get_screen = NULL;
+  klass->get_attrib = NULL;
+  klass->get_visual = NULL;
+  klass->get_depth = NULL;
 }
 
 static GdkGLConfig *
