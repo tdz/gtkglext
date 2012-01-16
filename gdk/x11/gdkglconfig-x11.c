@@ -55,6 +55,13 @@ G_DEFINE_TYPE (GdkGLConfigImplX11,              \
 static void
 gdk_gl_config_impl_x11_init (GdkGLConfigImplX11 *self)
 {
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  self->xdisplay = NULL;
+  self->screen_num = 0;
+  self->xvinfo = NULL;
+  self->screen = 0;
+  self->is_mesa_glx = 0;
 }
 
 static void
