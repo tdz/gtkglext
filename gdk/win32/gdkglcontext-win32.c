@@ -46,6 +46,16 @@ G_DEFINE_TYPE (GdkGLContextImplWin32,              \
 static void
 gdk_gl_context_impl_win32_init (GdkGLContextImplWin32 *self)
 {
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  self->hglrc = NULL;
+  self->share_list = NULL;
+  self->render_type = 0;
+  self->glconfig = NULL;
+  self->gldrawable = NULL;
+  self->gldrawable_read = NULL;
+  self->is_destroyed = 0;
+  self->is_foreign = 0;
 }
 
 void
