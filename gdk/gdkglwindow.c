@@ -42,6 +42,9 @@ G_DEFINE_TYPE (GdkGLWindow,                     \
 static void
 gdk_gl_window_init (GdkGLWindow *self)
 {
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  self->window = NULL;
 }
 
 static void
