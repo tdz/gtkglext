@@ -57,8 +57,7 @@ gdkglext_public_h_sources = \
 	gdkglconfig.h		\
 	gdkglcontext.h		\
 	gdkgldrawable.h		\
-	gdkglwindow.h		\
-	gdkglglext.h
+	gdkglwindow.h
 
 gdkglext_private_h_sources = \
 	gdkglprivate.h
@@ -73,8 +72,7 @@ gdkglext_c_sources = \
 	gdkglconfig.c		\
 	gdkglcontext.c		\
 	gdkgldrawable.c		\
-	gdkglwindow.c		\
-	gdkglglext.c
+	gdkglwindow.c
 
 gdkglext_built_c_sources = \
 	gdkglenumtypes.c
@@ -173,29 +171,8 @@ stamp-gdkglext-config-h: $(top_builddir)/config.status
 DISTCLEANFILES += gdkglext-config.h stamp-gdkglext-config-h
 
 EXTRA_DIST += \
-glext/README			\
-glext/glxext.h.patch		\
-glext/list-ext.pl		\
-glext/gen-gdkglglext-c.pl	\
-glext/gen-gdkglglext-h.pl	\
-glext/gen-gdkglglxext-c.pl	\
-glext/gen-gdkglglxext-h.pl	\
-glext/gen-gdkglwglext-c.pl	\
-glext/gen-gdkglwglext-h.pl	\
-glext/common-header.h \
-gtkglenumtypes.h.template \
-gtkglenumtypes.c.template
-
-gdkglext_glext_public_h_sources = \
-glext/glext.h		\
-glext/glxext.h	\
-glext/wglext.h	\
-glext/glext-extra.h	\
-glext/glxext-extra.h	\
-glext/wglext-extra.h
-
-gdkglextglextincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk/glext
-gdkglextglextinclude_HEADERS = $(gdkglext_glext_public_h_sources)
+  gtkglenumtypes.h.template \
+  gtkglenumtypes.c.template
 
 #
 # Extra rules
