@@ -21,9 +21,13 @@
 
 #include <gdk/gdkgl.h>
 
+#define __GTKGL_H_INSIDE__
+
 #include <gtk/gtkgldefs.h>
 #include <gtk/gtkglversion.h>
 #include <gtk/gtkglinit.h>
 #include <gtk/gtkglwidget.h>
+
+#undef __GTKGL_H_INSIDE__
 
 #endif /* __GTK_GL_H__ */
