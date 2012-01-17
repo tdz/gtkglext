@@ -27,7 +27,7 @@
 #include <GL/gl.h>
 #include <GL/glx.h>
 
-#include <gdk/x11/gdkglglxext.h>
+#include <gdk/gdkgl.h>
 
 G_BEGIN_DECLS
 
