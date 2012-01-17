@@ -19,12 +19,6 @@
 #include <gdk/gdkkeysyms.h>
 
 #include <gtk/gtkgl.h>
-#include <gdk/gdkglglext.h>
-
-#ifdef G_OS_WIN32
-#define WIN32_LEAN_AND_MEAN 1
-#include <windows.h>
-#endif
 
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -177,8 +171,12 @@ draw (GtkWidget      *widget,
       GdkEventExpose *event,
       gpointer        data)
 {
+  void (APIENTRY *UseProgram)(GLuint) = NULL;
+
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
+
+  UseProgram = (void(APIENTRY*)(GLuint))gdk_gl_get_proc_address("glUseProgram");
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
@@ -191,7 +189,7 @@ draw (GtkWidget      *widget,
     glRotatef (view_roty, 0.0, 1.0, 0.0);
     glRotatef (view_rotz, 0.0, 0.0, 1.0);
 
-    gdk_gl_glUseProgram (gdk_gl_get_glUseProgram (), program1);
+    UseProgram (program1);
 
     glPushMatrix ();
       glTranslatef (-3.0, -2.0, 0.0);
@@ -199,7 +197,7 @@ draw (GtkWidget      *widget,
       glCallList (gear1);
     glPopMatrix ();
 
-    gdk_gl_glUseProgram (gdk_gl_get_glUseProgram (), program2);
+    UseProgram (program2);
 
     glPushMatrix ();
       glTranslatef (3.1, -2.0, 0.0);
@@ -258,44 +256,58 @@ reshape (GtkWidget         *widget,
 static GLuint
 create_shader_program (const char *name)
 {
+  GLuint (APIENTRY *CreateProgram)(void) = NULL;
+  GLuint (APIENTRY *CreateShader)(GLenum) = NULL;
+  void   (APIENTRY *ShaderSource)(GLuint, GLsizei, const GLchar**, const GLint*) = NULL;
+  void   (APIENTRY *CompileShader)(GLuint) = NULL;
+  void   (APIENTRY *AttachShader)(GLuint, GLuint) = NULL;
+  void   (APIENTRY *LinkProgram)(GLuint) = NULL;
+  void   (APIENTRY *DeleteShader)(GLuint) = NULL;
+
+
   GLuint program;
   GLuint vshader, fshader;
   char *filename;
   char *contents;
   const GLchar *sources[1];
 
-  program = gdk_gl_glCreateProgram (gdk_gl_get_glCreateProgram ());
+  CreateProgram = (void (APIENTRY*)(void))          gdk_gl_get_proc_address("glCreateProgram");
+  CreateShader  = (void (APIENTRY*)(GLenum))        gdk_gl_get_proc_address("glCreateShader");
+  ShaderSource  = (void (APIENTRY*)(GLuint, GLsizei, const GLchar**, const GLint*))
+                                                    gdk_gl_get_proc_address("glShaderSource");
+  CompileShader = (void (APIENTRY*)(GLuint))        gdk_gl_get_proc_address("glCompileShader");
+  AttachShader  = (void (APIENTRY*)(GLuint, GLuint))gdk_gl_get_proc_address("glAttachShader");
+  LinkProgram   = (void (APIENTRY*)(GLuint))        gdk_gl_get_proc_address("glLinkProgram");
+  DeleteShader  = (void (APIENTRY*)(GLuint))        gdk_gl_get_proc_address("glDeleteShader");
 
+  program = CreateProgram ();
 
-  vshader = gdk_gl_glCreateShader (gdk_gl_get_glCreateShader (),
-                                   GL_VERTEX_SHADER);
+  vshader = CreateShader (GL_VERTEX_SHADER);
+
   filename = g_strdup_printf ("%s.vsh", name);
   g_file_get_contents (filename, &contents, NULL, NULL);
   sources[0] = contents;
-  gdk_gl_glShaderSource (gdk_gl_get_glShaderSource (),
-                         vshader, 1, sources, NULL);
+  ShaderSource (vshader, 1, sources, NULL);
   g_free (contents);
   g_free (filename);
-  gdk_gl_glCompileShader (gdk_gl_get_glCompileShader (), vshader);
-  gdk_gl_glAttachShader (gdk_gl_get_glAttachShader (), program, vshader);
+  CompileShader (vshader);
+  AttachShader (program, vshader);
 
 
-  fshader = gdk_gl_glCreateShader (gdk_gl_get_glCreateShader (),
-                                   GL_FRAGMENT_SHADER);
+  fshader = CreateShader (GL_FRAGMENT_SHADER);
   filename = g_strdup_printf ("%s.fsh", name);
   g_file_get_contents (filename, &contents, NULL, NULL);
   sources[0] = contents;
-  gdk_gl_glShaderSource (gdk_gl_get_glShaderSource (),
-                         fshader, 1, sources, NULL);
+  ShaderSource (fshader, 1, sources, NULL);
   g_free (contents);
   g_free (filename);
-  gdk_gl_glCompileShader (gdk_gl_get_glCompileShader (), fshader);
-  gdk_gl_glAttachShader (gdk_gl_get_glAttachShader (), program, fshader);
+  CompileShader (fshader);
+  AttachShader (program, fshader);
 
-  gdk_gl_glLinkProgram (gdk_gl_get_glLinkProgram (), program);
+  LinkProgram (program);
 
-  gdk_gl_glDeleteShader (gdk_gl_get_glDeleteShader (), vshader);
-  gdk_gl_glDeleteShader (gdk_gl_get_glDeleteShader (), fshader);
+  DeleteShader (vshader);
+  DeleteShader (fshader);
 
   return program;
 }
