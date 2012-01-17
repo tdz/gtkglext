@@ -42,18 +42,12 @@
 #include <gdk/gdkkeysyms.h>
 
 #include <gtk/gtkgl.h>
-/*** Use OpenGL extensions. ***/
-#include <gdk/gdkglglext.h>
-
-#ifdef G_OS_WIN32
-#define WIN32_LEAN_AND_MEAN 1
-#include <windows.h>
-#endif
 
 #ifdef GDK_WINDOWING_QUARTZ
 #include <OpenGL/glu.h>
 #else
 #include <GL/gl.h>
+#include <GL/glext.h>
 #include <GL/glu.h>
 #endif
 
@@ -244,30 +238,29 @@ realize (GtkWidget *widget,
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
-  GdkGLProc proc = NULL;
+  void (APIENTRY *PolygonOffset)(GLfloat, GLfloat) = NULL;
 
   /*** OpenGL BEGIN ***/
   if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
     return;
 
   /* glPolygonOffsetEXT */
-  proc = gdk_gl_get_glPolygonOffsetEXT ();
-  if (proc == NULL)
+  PolygonOffset = (void (APIENTRY *)(GLfloat, GLfloat))gdk_gl_get_proc_address ("glPolygonOffsetEXT");
+  if (PolygonOffset == NULL)
     {
       /* glPolygonOffset */
-      proc = gdk_gl_get_proc_address ("glPolygonOffset");
-      if (proc == NULL)
-	{
-	  g_print ("Sorry, glPolygonOffset() is not supported by this renderer.\n");
-	  exit (1);
-	}
+      PolygonOffset = (void (APIENTRY *)(GLfloat, GLfloat))gdk_gl_get_proc_address ("glPolygonOffset");
+      if (PolygonOffset == NULL)
+        {
+          g_print ("Sorry, glPolygonOffset() is not supported by this renderer.\n");
+          exit (1);
+        }
     }
 
   glEnable (GL_DEPTH_TEST);
   glDepthFunc (GL_LEQUAL);
   glClearColor (0.0, 0.0, 0.0, 0.0);
-  gdk_gl_glPolygonOffsetEXT (proc, 1.0, 1.0);
+  PolygonOffset (1.0, 1.0);
   glEnable (GL_CULL_FACE);
   glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
   glHint (GL_POLYGON_SMOOTH_HINT, GL_NICEST);
