@@ -32,6 +32,13 @@
 #include "gdkglconfig.h"
 #include "gdkglcontext.h"
 
+#ifdef GDKGLEXT_WINDOWING_X11
+#include "x11/gdkglcontext-x11.h"
+#endif
+#ifdef GDKGLEXT_WINDOWING_WIN32
+#include "win32/gdkglcontext-win32.h"
+#endif
+
 gboolean _gdk_gl_context_force_indirect = FALSE;
 
 G_DEFINE_TYPE (GdkGLContext,    \
@@ -204,15 +211,14 @@ gdk_gl_context_get_current ()
 
   GdkGLContext *current = NULL;
 
-#ifdef GDLGLEXT_WINDOWING_X11
+#ifdef GDKGLEXT_WINDOWING_X11
     current = _gdk_x11_gl_context_get_current();
 #endif
-#ifdef GDLGLEXT_WINDOWING_WIN32
+#ifdef GDKGLEXT_WINDOWING_WIN32
   if (current == NULL)
     {
-      current = _gdk_win32_gl_context_get_current_for_display(display);
+      current = _gdk_win32_gl_context_get_current();
     }
-  else
 #endif
 
   return current;
