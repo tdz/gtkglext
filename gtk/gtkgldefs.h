@@ -16,6 +16,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#if !defined (__GTKGL_H_INSIDE__) && !defined (GTK_GL_COMPILATION)
+#error "Only <gtk/gtkgl.h> can be included directly."
+#endif
+
 #ifndef __GTK_GL_DEFS_H__
 #define __GTK_GL_DEFS_H__
 
