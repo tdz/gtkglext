@@ -16,32 +16,21 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifndef __GDK_GL_WIN32_H__
-#define __GDK_GL_WIN32_H__
-
-#ifndef STRICT
-#define STRICT                  /* We want strict type checks */
+#if !defined (__GDKGLWIN32_H_INSIDE__) && !defined (GDK_GL_COMPILATION)
+#error "Only <gdk/gdkglwin32.h> can be included directly."
 #endif
-#define WIN32_LEAN_AND_MEAN 1
-#include <windows.h>
 
-/* MinGW's wingdi.h bug. */
-#ifndef PFD_SWAP_LAYER_BUFFERS
-#define PFD_SWAP_LAYER_BUFFERS      0x00000800
-#endif
+#ifndef __GDK_WIN32_GL_QUERY_H__
+#define __GDK_WIN32_GL_QUERY_H__
 
 #include <gdk/gdkwin32.h>
+#include <gdk/gdkgl.h>
 
-#include <GL/gl.h>
+G_BEGIN_DECLS
 
-#define __GDKGLWIN32_H_INSIDE__
+gboolean  gdk_win32_gl_query_wgl_extension  (GdkGLConfig   *glconfig,
+                                             const char    *extension);
 
-#include <gdk/win32/gdkwin32glconfig.h>
-#include <gdk/win32/gdkwin32glcontext.h>
-#include <gdk/win32/gdkwin32gldrawable.h>
-#include <gdk/win32/gdkwin32glquery.h>
-#include <gdk/win32/gdkwin32glwindow.h>
+G_END_DECLS
 
-#undef __GDKGLWIN32_H_INSIDE__
-
-#endif /* __GDK_GL_WIN32_H__ */
+#endif /* __GDK_WIN32_GL_QUERY_H__ */
