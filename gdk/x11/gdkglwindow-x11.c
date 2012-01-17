@@ -24,6 +24,7 @@
 
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
+#include "gdkglquery-x11.h"
 #include "gdkglconfig-x11.h"
 #include "gdkglcontext-x11.h"
 #include "gdkglwindow-x11.h"
@@ -68,7 +69,7 @@ _gdk_gl_window_destroy (GdkGLWindow *glwindow)
 {
   GdkGLWindowImplX11 *impl = GDK_GL_WINDOW_IMPL_X11 (glwindow);
   Display *xdisplay;
-  GdkGL_GLX_MESA_release_buffers *mesa_ext;
+  Bool (APIENTRY *ReleaseBuffersMESA) (Display*, GLXDrawable);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
@@ -85,12 +86,16 @@ _gdk_gl_window_destroy (GdkGLWindow *glwindow)
       glXMakeCurrent (xdisplay, None, NULL);
     }
 
-  /* If GLX_MESA_release_buffers is supported. */
-  mesa_ext = gdk_gl_get_GLX_MESA_release_buffers (impl->glconfig);
-  if (mesa_ext)
+  if (gdk_x11_gl_query_glx_extension (impl->glconfig, "GLX_MESA_release_buffers"))
     {
+      /* Release buffers if GLX_MESA_release_buffers is supported. */
+
+      ReleaseBuffersMESA = (Bool (APIENTRY *)(Display*, GLXDrawable))
+        _gdk_x11_gl_get_proc_address("glXReleaseBuffersMESA");
+
       GDK_GL_NOTE_FUNC_IMPL ("glXReleaseBuffersMESA");
-      mesa_ext->glXReleaseBuffersMESA (xdisplay, impl->glxwindow);
+      if (ReleaseBuffersMESA)
+        ReleaseBuffersMESA (xdisplay, impl->glxwindow);
     }
 
   impl->glxwindow = None;
