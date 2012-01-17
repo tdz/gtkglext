@@ -12,13 +12,19 @@
 
 #include <gtk/gtkgl.h>
 #include <gdk/x11/gdkglx.h>
-#include <gdk/x11/gdkglglxext.h>
 
+#include <GL/glx.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-GdkGL_GLX_SGIX_fbconfig *fbc = NULL;
-GdkGL_GLX_SGIX_pbuffer *pb = NULL;
+static GLXFBConfigSGIX  (APIENTRY *GetFBConfigFromVisualSGIX) (Display*, XVisualInfo*);
+static GLXPbufferSGIX   (APIENTRY *CreateGLXPbufferSGIX)      (Display*,
+                                                               GLXFBConfigSGIX,
+                                                               unsigned int,
+                                                               unsigned int,
+                                                               int*);
+static void             (APIENTRY *DestroyGLXPbufferSGIX)     (Display*,
+                                                               GLXPbufferSGIX);
 
 static void
 realize (GtkWidget *widget,
@@ -201,7 +207,7 @@ render_to_file (GtkButton *button,
    */
 
   g_print ("- get FBConfig\n");
-  fbconfig = fbc->glXGetFBConfigFromVisualSGIX (xdisplay, xvinfo);
+  fbconfig = GetFBConfigFromVisualSGIX (xdisplay, xvinfo);
   if (!fbconfig)
     {
       g_print ("cannot get FBConfig\n");
@@ -217,9 +223,9 @@ render_to_file (GtkButton *button,
   height = allocation.height;
 
   g_print ("- create GLXPbuffer\n");
-  pbuffer = pb->glXCreateGLXPbufferSGIX (xdisplay, fbconfig,
-                                         width, height,
-                                         pb_attrib_list);
+  pbuffer = CreateGLXPbufferSGIX (xdisplay, fbconfig,
+                                  width, height,
+                                  pb_attrib_list);
   if (!pbuffer)
     {
       g_print ("cannot create GLXPbuffer\n");
@@ -254,7 +260,7 @@ render_to_file (GtkButton *button,
   glXMakeCurrent (xdisplay, None, NULL);
 
   g_print ("- destroy GLXPbuffer\n");
-  pb->glXDestroyGLXPbufferSGIX (xdisplay, pbuffer);
+  DestroyGLXPbufferSGIX (xdisplay, pbuffer);
 
   g_print ("Done.\n\n");
 }
@@ -318,19 +324,28 @@ main (int   argc,
    * GLX extensions.
    */
 
-  fbc = gdk_gl_get_GLX_SGIX_fbconfig (glconfig);
-  if (!fbc)
+  if (!gdk_x11_gl_query_glx_extension (glconfig, "GLX_SGIX_fbconfig"))
     {
       g_print ("GLX_SGIX_fbconfig extension is not supported.\n");
       exit (1);
     }
 
-  pb = gdk_gl_get_GLX_SGIX_pbuffer (glconfig);
-  if (!pb)
+  GetFBConfigFromVisualSGIX =
+    (GLXFBConfigSGIX (APIENTRY *)(Display*, XVisualInfo*))
+      gdk_gl_get_proc_address ("glXGetFBConfigFromVisualSGIX");
+
+  if (!gdk_x11_gl_query_glx_extension (glconfig, "GLX_SGIX_pbuffer"))
     {
       g_print ("GLX_SGIX_pbuffer extension is not supported.\n");
       exit (1);
     }
+
+  CreateGLXPbufferSGIX  =
+    (GLXPbufferSGIX (APIENTRY *)(Display*, GLXFBConfigSGIX, unsigned int, unsigned int, int*))
+      gdk_gl_get_proc_address ("glXCreateGLXPbufferSGIX");
+  DestroyGLXPbufferSGIX =
+    (void (APIENTRY *)(Display*, GLXPbufferSGIX))
+      gdk_gl_get_proc_address ("glXDestroyGLXPbufferSGIX");
 
   /*
    * Top-level window.
