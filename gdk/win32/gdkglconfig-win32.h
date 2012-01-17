@@ -19,7 +19,7 @@
 #ifndef __GDK_GL_CONFIG_WIN32_H__
 #define __GDK_GL_CONFIG_WIN32_H__
 
-#include <gdk/gdkglconfig.h>
+#include <gdk/gdkgl.h>
 #include <gdk/win32/gdkglwin32.h>
 
 G_BEGIN_DECLS

@@ -16,32 +16,33 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
-#ifndef __GDK_GL_WIN32_H__
-#define __GDK_GL_WIN32_H__
-
-#ifndef STRICT
-#define STRICT                  /* We want strict type checks */
+#if !defined (__GDKGLWIN32_H_INSIDE__) && !defined (GDK_GL_COMPILATION)
+#error "Only <gdk/gdkglwin32.h> can be included directly."
 #endif
-#define WIN32_LEAN_AND_MEAN 1
-#include <windows.h>
 
-/* MinGW's wingdi.h bug. */
-#ifndef PFD_SWAP_LAYER_BUFFERS
-#define PFD_SWAP_LAYER_BUFFERS      0x00000800
-#endif
+#ifndef __GDK_WIN32_GL_DRAWABLE_H__
+#define __GDK_WIN32_GL_DRAWABLE_H__
 
 #include <gdk/gdkwin32.h>
+#include <gdk/gdkgl.h>
 
-#include <GL/gl.h>
+G_BEGIN_DECLS
 
-#define __GDKGLWIN32_H_INSIDE__
+HDC   gdk_win32_gl_drawable_hdc_get     (GdkGLDrawable *gldrawable);
+void  gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable);
 
-#include <gdk/win32/gdkwin32glconfig.h>
-#include <gdk/win32/gdkwin32glcontext.h>
-#include <gdk/win32/gdkwin32gldrawable.h>
-#include <gdk/win32/gdkwin32glquery.h>
-#include <gdk/win32/gdkwin32glwindow.h>
+#ifdef INSIDE_GDK_GL_WIN32
 
-#undef __GDKGLWIN32_H_INSIDE__
+#define GDK_GL_WINDOW_PFD(glwindow)          (&(GDK_GL_WINDOW_IMPL_WIN32 (glwindow)->pfd))
+#define GDK_GL_WINDOW_PIXEL_FORMAT(glwindow) (GDK_GL_WINDOW_IMPL_WIN32 (glwindow)->pixel_format)
 
-#endif /* __GDK_GL_WIN32_H__ */
+#else
+
+#define GDK_GL_WINDOW_PFD(glwindow)          (gdk_win32_gl_window_get_pfd (glwindow))
+#define GDK_GL_WINDOW_PIXEL_FORMAT(glwindow) (gdk_win32_gl_window_get_pixel_format (glwindow))
+
+#endif
+
+G_END_DECLS
+
+#endif /* __GDK_WIN32_GL_DRAWABLE_H__ */
