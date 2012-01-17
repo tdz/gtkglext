@@ -1,4 +1,7 @@
 /*** BEGIN file-header ***/
+#if !defined (__GDKGL_H_INSIDE__) && !defined (GDK_GL_COMPILATION)
+#error "Only <gdk/gdkgl.h> can be included directly."
+#endif
 
 /* Generated data (by glib-mkenums) */
 
