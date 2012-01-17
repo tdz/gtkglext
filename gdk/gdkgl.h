@@ -19,6 +19,8 @@
 #ifndef __GDK_GL_H__
 #define __GDK_GL_H__
 
+#define __GDKGL_H_INSIDE__
+
 #include <gdkglext-config.h>
 
 #include <gdk/gdkgldefs.h>
@@ -32,5 +34,7 @@
 #include <gdk/gdkglcontext.h>
 #include <gdk/gdkgldrawable.h>
 #include <gdk/gdkglwindow.h>
+
+#undef __GDKGL_H_INSIDE__
 
 #endif /* __GDK_GL_H__ */

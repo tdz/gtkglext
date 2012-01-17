@@ -16,13 +16,17 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA.
  */
 
+#if !defined (__GDKGL_H_INSIDE__) && !defined (GDK_GL_COMPILATION)
+#error "Only <gdk/gdkgl.h> can be included directly."
+#endif
+
 #ifndef __GDK_GL_TYPES_H__
 #define __GDK_GL_TYPES_H__
 
 #include <gdk/gdk.h>
 
 G_BEGIN_DECLS
- 
+
 /*
  * Forward declarations of commonly used types
  */
