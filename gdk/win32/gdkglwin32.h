@@ -29,7 +29,7 @@
 
 #include <GL/gl.h>
 
-#include <gdk/win32/gdkglwglext.h>
+#include <gdk/gdkgl.h>
 
 /* MinGW's wingdi.h bug. */
 #ifndef PFD_SWAP_LAYER_BUFFERS
