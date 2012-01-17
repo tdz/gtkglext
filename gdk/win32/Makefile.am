@@ -15,8 +15,7 @@ AM_CPPFLAGS = \
 	$(PANGOWIN32_CFLAGS)
 
 gdkglext_win32_public_h_sources = \
-	gdkglwin32.h		\
-	gdkglwglext.h
+	gdkglwin32.h
 
 gdkglext_win32_private_h_sources = \
 	gdkglconfig-win32.h	\
@@ -31,8 +30,7 @@ gdkglext_win32_c_sources = \
 	gdkglcontext-win32.c	\
 	gdkgldrawable-win32.c	\
 	gdkglpixmap-win32.c	\
-	gdkglwindow-win32.c	\
-	gdkglwglext.c
+	gdkglwindow-win32.c
 
 gdkglext_win32_headers = \
 	$(gdkglext_win32_public_h_sources)

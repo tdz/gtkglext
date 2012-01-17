@@ -14,8 +14,7 @@ AM_CPPFLAGS = \
 	$(GDKGLEXT_WIN_CFLAGS)
 
 gdkglext_x11_public_h_sources = \
-	gdkglx.h		\
-	gdkglglxext.h
+	gdkglx.h
 
 gdkglext_x11_private_h_sources = \
 	gdkglconfig-x11.h	\
@@ -32,8 +31,7 @@ gdkglext_x11_c_sources = \
 	gdkglcontext-x11.c	\
 	gdkgldrawable-x11.c	\
 	gdkglpixmap-x11.c	\
-	gdkglwindow-x11.c	\
-	gdkglglxext.c
+	gdkglwindow-x11.c
 
 gdkglext_x11_headers = \
 	$(gdkglext_x11_public_h_sources)
@@ -49,4 +47,3 @@ noinst_LTLIBRARIES = libgdkglext-x11.la
 
 libgdkglext_x11_la_SOURCES = $(gdkglext_x11_sources)
 libgdkglext_x11_la_LDFLAGS = $(GDK_LIBS) $(GL_LIBS) $(GDKGLEXT_WIN_LIBS)
-
