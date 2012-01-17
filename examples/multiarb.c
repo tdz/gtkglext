@@ -14,17 +14,12 @@
 #include <gdk/gdkkeysyms.h>
 
 #include <gtk/gtkgl.h>
-#include <gdk/gdkglglext.h>     /* for GL_ARB_multitexture extension */
-
-#ifdef G_OS_WIN32
-#define WIN32_LEAN_AND_MEAN 1
-#include <windows.h>
-#endif
 
 #ifdef GDK_WINDOWING_QUARTZ
 #include <OpenGL/glu.h>
 #else
 #include <GL/gl.h>
+#include <GL/glext.h>
 #include <GL/glu.h>
 #endif
 
@@ -40,6 +35,10 @@
 #define ANIMATE 10
 #define QUIT 100
 
+/* GL_ARB_multitexture extension */
+static void (APIENTRY *ActiveTextureARB)   (GLenum);
+static void (APIENTRY *MultiTexCoord2fARB) (GLenum, GLfloat, GLfloat);
+
 static GLint num_units = 1;
 static GLboolean tex_enabled[8];
 
@@ -48,16 +47,12 @@ static GLfloat x_rot = 20.0, y_rot = 30.0, z_rot = 0.0;
 
 static gboolean animate = TRUE;
 
-/* GL_ARB_multitexture extension */
-static GdkGL_GL_ARB_multitexture *gl_arb_mt = NULL;
-
 static void
 init (GtkWidget *widget,
       gpointer   data)
 {
   GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   GLuint texObj[8];
   GLint size, i;
 
@@ -68,12 +63,15 @@ init (GtkWidget *widget,
   /*
    * Get GL_ARB_multitexture extension functions.
    */
-  gl_arb_mt = gdk_gl_get_GL_ARB_multitexture ();
-  if (gl_arb_mt == NULL)
+
+  if (!gdk_gl_query_gl_extension("GL_ARB_multitexture"))
     {
       g_print ("Sorry, GL_ARB_multitexture not supported by this renderer.\n");
       exit (1);
     }
+
+  ActiveTextureARB   = (void(APIENTRY *)(GLenum))                  gdk_gl_get_proc_address("glActiveTextureARB");
+  MultiTexCoord2fARB = (void(APIENTRY *)(GLenum, GLfloat, GLfloat))gdk_gl_get_proc_address("glMultiTexCoord2fARB");
 
   glGetIntegerv (GL_MAX_TEXTURE_UNITS_ARB, &num_units);
   g_print ("%d texture units supported\n", num_units);
@@ -88,9 +86,9 @@ init (GtkWidget *widget,
   for (i = 0; i < num_units; i++)
     {
       if (i < 2)
-	tex_enabled[i] = GL_TRUE;
+        tex_enabled[i] = GL_TRUE;
       else
-	tex_enabled[i] = GL_FALSE;
+        tex_enabled[i] = GL_FALSE;
     }
 
   /* allocate two texture objects */
@@ -99,64 +97,63 @@ init (GtkWidget *widget,
   /* setup the texture objects */
   for (i = 0; i < num_units; i++)
     {
-
-      gl_arb_mt->glActiveTextureARB (GL_TEXTURE0_ARB + i);
+      ActiveTextureARB (GL_TEXTURE0_ARB + i);
       glBindTexture (GL_TEXTURE_2D, texObj[i]);
 
       glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
       glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
       if (i == 0)
-	{
-	  if (!LoadRGBMipmaps (TEXTURE_1_FILE, GL_RGB))
-	    {
-	      g_print ("Error: couldn't load texture image\n");
-	      exit (1);
-	    }
-	}
+        {
+          if (!LoadRGBMipmaps (TEXTURE_1_FILE, GL_RGB))
+            {
+              g_print ("Error: couldn't load texture image\n");
+              exit (1);
+            }
+        }
       else if (i == 1)
-	{
-	  if (!LoadRGBMipmaps (TEXTURE_2_FILE, GL_RGB))
-	    {
-	      g_print ("Error: couldn't load texture image\n");
-	      exit (1);
-	    }
-	}
+        {
+          if (!LoadRGBMipmaps (TEXTURE_2_FILE, GL_RGB))
+            {
+              g_print ("Error: couldn't load texture image\n");
+              exit (1);
+            }
+        }
       else
-	{
-	  /* checker */
-	  GLubyte image[8][8][3];
-	  GLint i, j;
-	  for (i = 0; i < 8; i++)
-	    {
-	      for (j = 0; j < 8; j++)
-		{
-		  if ((i + j) & 1)
-		    {
-		      image[i][j][0] = 50;
-		      image[i][j][1] = 50;
-		      image[i][j][2] = 50;
-		    }
-		  else
-		    {
-		      image[i][j][0] = 25;
-		      image[i][j][1] = 25;
-		      image[i][j][2] = 25;
-		    }
-		}
-	    }
-	  glTexImage2D (GL_TEXTURE_2D, 0, GL_RGB, 8, 8, 0,
-			GL_RGB, GL_UNSIGNED_BYTE, (GLvoid *) image);
-	}
+        {
+          /* checker */
+          GLubyte image[8][8][3];
+          GLint i, j;
+          for (i = 0; i < 8; i++)
+            {
+              for (j = 0; j < 8; j++)
+                {
+                  if ((i + j) & 1)
+                    {
+                      image[i][j][0] = 50;
+                      image[i][j][1] = 50;
+                      image[i][j][2] = 50;
+                    }
+                  else
+                    {
+                      image[i][j][0] = 25;
+                      image[i][j][1] = 25;
+                      image[i][j][2] = 25;
+                    }
+                }
+            }
+          glTexImage2D (GL_TEXTURE_2D, 0, GL_RGB, 8, 8, 0,
+                        GL_RGB, GL_UNSIGNED_BYTE, (GLvoid *) image);
+        }
 
       /* Bind texObj[i] to ith texture unit */
       if (i < 2)
-	glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
       else
-	glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
+        glTexEnvi (GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_ADD);
 
       if (tex_enabled[i])
-	glEnable (GL_TEXTURE_2D);
+        glEnable (GL_TEXTURE_2D);
     }
 
   glShadeModel (GL_FLAT);
@@ -216,19 +213,19 @@ draw_object (void)
   glBegin (GL_QUADS);
 
   for (i = 0; i < num_units; i++)
-    gl_arb_mt->glMultiTexCoord2fARB (GL_TEXTURE0_ARB + i, 0.0, 0.0);
+    MultiTexCoord2fARB (GL_TEXTURE0_ARB + i, 0.0, 0.0);
   glVertex2f (-1.0, -1.0);
 
   for (i = 0; i < num_units; i++)
-    gl_arb_mt->glMultiTexCoord2fARB (GL_TEXTURE0_ARB + i, 1.0, 0.0);
+    MultiTexCoord2fARB (GL_TEXTURE0_ARB + i, 1.0, 0.0);
   glVertex2f (1.0, -1.0);
 
   for (i = 0; i < num_units; i++)
-    gl_arb_mt->glMultiTexCoord2fARB (GL_TEXTURE0_ARB + i, 1.0, 1.0);
+    MultiTexCoord2fARB (GL_TEXTURE0_ARB + i, 1.0, 1.0);
   glVertex2f (1.0, 1.0);
 
   for (i = 0; i < num_units; i++)
-    gl_arb_mt->glMultiTexCoord2fARB (GL_TEXTURE0_ARB + i, 0.0, 1.0);
+    MultiTexCoord2fARB (GL_TEXTURE0_ARB + i, 0.0, 1.0);
   glVertex2f (-1.0, 1.0);
 
   glEnd ();
@@ -283,25 +280,25 @@ timeout (GtkWidget *widget)
 
   for (i = 0; i < num_units; i++)
     {
-      gl_arb_mt->glActiveTextureARB (GL_TEXTURE0_ARB + i);
+      ActiveTextureARB (GL_TEXTURE0_ARB + i);
       glMatrixMode (GL_TEXTURE);
       glLoadIdentity ();
       if (i == 0)
-	{
-	  glTranslatef (drift, 0.0, 0.0);
-	  glScalef (2, 2, 2);
-	}
+        {
+          glTranslatef (drift, 0.0, 0.0);
+          glScalef (2, 2, 2);
+        }
       else if (i == 1)
-	{
-	  glTranslatef (0.0, drift, 0.0);
-	}
+        {
+          glTranslatef (0.0, drift, 0.0);
+        }
       else
-	{
-	  glTranslatef (0.5, 0.5, 0.0);
-	  glRotatef (180.0 * drift, 0, 0, 1);
-	  glScalef (1.0/i, 1.0/i, 1.0/i);
-	  glTranslatef (-0.5, -0.5, 0.0);
-	}
+        {
+          glTranslatef (0.5, 0.5, 0.0);
+          glRotatef (180.0 * drift, 0, 0, 1);
+          glScalef (1.0/i, 1.0/i, 1.0/i);
+          glTranslatef (-0.5, -0.5, 0.0);
+        }
     }
   glMatrixMode (GL_MODELVIEW);
 
@@ -366,9 +363,9 @@ visible (GtkWidget          *widget,
   if (animate)
     {
       if (event->state == GDK_VISIBILITY_FULLY_OBSCURED)
-	timeout_remove (widget);
+        timeout_remove (widget);
       else
-	timeout_add (widget);
+        timeout_add (widget);
     }
 
   return TRUE;
