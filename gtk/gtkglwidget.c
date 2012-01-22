@@ -23,6 +23,8 @@
 #include "gtkglprivate.h"
 #include "gtkglwidget.h"
 
+#include <GL/gl.h>
+
 typedef struct
 {
   GdkGLConfig *glconfig;
@@ -513,4 +515,38 @@ gtk_widget_get_gl_window (GtkWidget *widget)
   g_return_val_if_fail (gtk_widget_get_realized (widget), NULL);
 
   return gdk_window_get_gl_window (gtk_widget_get_window (widget));
+}
+
+gboolean
+gtk_widget_begin_gl(GtkWidget *widget)
+{
+  GdkGLWindow  *glwindow;
+  GdkGLContext *glcontext;
+
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+
+  glwindow  = gtk_widget_get_gl_window (widget);
+  glcontext = gtk_widget_get_gl_context (widget);
+
+  return gdk_gl_drawable_gl_begin(GDK_GL_DRAWABLE (glwindow), glcontext);
+}
+
+void
+gtk_widget_end_gl(GtkWidget *widget, gboolean do_swap)
+{
+  GdkGLDrawable *gldrawable;
+
+  g_return_if_fail (GTK_IS_WIDGET (widget));
+
+  gldrawable = GDK_GL_DRAWABLE (gtk_widget_get_gl_window (widget));
+
+  if (do_swap)
+    {
+      if (gdk_gl_drawable_is_double_buffered (gldrawable))
+        gdk_gl_drawable_swap_buffers (gldrawable);
+      else
+        glFlush ();
+    }
+
+  gdk_gl_drawable_gl_end (gldrawable);
 }

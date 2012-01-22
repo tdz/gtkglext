@@ -52,6 +52,10 @@ GdkGLWindow  *gtk_widget_get_gl_window     (GtkWidget    *widget);
 #define       gtk_widget_get_gl_drawable(widget)        \
   GDK_GL_DRAWABLE (gtk_widget_get_gl_window (widget))
 
+gboolean      gtk_widget_begin_gl(GtkWidget *widget);
+
+void          gtk_widget_end_gl(GtkWidget *widget, gboolean do_swap);
+
 G_END_DECLS
 
 #endif /* __GTK_GL_WIDGET_H__ */
