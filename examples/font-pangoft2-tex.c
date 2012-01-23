@@ -229,9 +229,6 @@ static void
 realize (GtkWidget *widget,
          gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   GLUquadricObj *qobj;
   static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
   static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
@@ -239,7 +236,7 @@ realize (GtkWidget *widget,
   GLuint texture;
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   qobj = gluNewQuadric ();
@@ -260,7 +257,7 @@ realize (GtkWidget *widget,
   /* Create texture. */
   gl_tex_create_texture (&texture);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   /* Get PangoFT2 context. */
@@ -273,8 +270,6 @@ configure_event (GtkWidget         *widget,
                  gpointer           data)
 {
   GtkAllocation allocation;
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
   GLsizei w;
   GLsizei h;
@@ -284,7 +279,7 @@ configure_event (GtkWidget         *widget,
   h = allocation.height;
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glViewport (0, 0, w, h);
@@ -303,7 +298,7 @@ configure_event (GtkWidget         *widget,
              0.0, 1.0, 0.0);
   glTranslatef (0.0, 0.0, -Z_NEAR);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return TRUE;
@@ -326,9 +321,6 @@ draw (GtkWidget *widget,
       cairo_t   *cr,
       gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   PangoContext *widget_context;
   PangoFontDescription *font_desc;
   PangoLayout *layout;
@@ -350,7 +342,7 @@ draw (GtkWidget *widget,
   pango_layout_set_text (layout, text, -1);
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -389,12 +381,7 @@ draw (GtkWidget *widget,
       glPopMatrix ();
     }
 
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, TRUE);
   /*** OpenGL END ***/
 
   g_object_unref (G_OBJECT (layout));
@@ -406,16 +393,13 @@ static void
 unrealize (GtkWidget *widget,
 	   gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   gl_tex_delete_texture ();
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   g_object_unref (G_OBJECT (ft2_context));
