@@ -233,12 +233,10 @@ static void
 realize (GtkWidget *widget,
 	 gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
   void (APIENTRY *PolygonOffset)(GLfloat, GLfloat) = NULL;
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   /* glPolygonOffsetEXT */
@@ -271,7 +269,7 @@ realize (GtkWidget *widget,
 
   resetWireframe ();
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return;
@@ -285,12 +283,9 @@ realize (GtkWidget *widget,
  ***/
 static gboolean
 configure_event (GtkWidget         *widget,
-		 GdkEventConfigure *event,
-		 gpointer           data)
+                 GdkEventConfigure *event,
+                 gpointer           data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   GLfloat w;
   GLfloat h;
 
@@ -298,13 +293,13 @@ configure_event (GtkWidget         *widget,
   h = event->height;
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   aspect = (float)w/(float)h;
   glViewport (0, 0, w, h);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return TRUE;
@@ -320,11 +315,8 @@ draw (GtkWidget *widget,
       cairo_t   *event,
       gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
-
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
+  if (!gtk_widget_begin_gl(widget))
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -342,15 +334,7 @@ draw (GtkWidget *widget,
 
   drawWireframe ();
 
-  /* Swap buffers */
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
-
-  glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, TRUE);
   /*** OpenGL END ***/
 
   return TRUE;
