@@ -130,14 +130,11 @@ draw(GtkWidget *widget,
      cairo_t   *cr,
      gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context(widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable(widget);
-
   GLfloat m[4][4];
   mesh_info *info = (mesh_info*)g_object_get_data(G_OBJECT(widget), "mesh_info");
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     goto NO_GL;
 
   /* basic initialization */
@@ -164,13 +161,7 @@ draw(GtkWidget *widget,
 
   lw_object_show(info->lwobject);
 
-  /* swap backbuffer to front */
-  if (gdk_gl_drawable_is_double_buffered(gldrawable))
-    gdk_gl_drawable_swap_buffers(gldrawable);
-  else
-    glFlush();
-
-  gdk_gl_drawable_gl_end(gldrawable);
+  gtk_widget_end_gl(widget, TRUE);
   /*** OpenGL END ***/
 
  NO_GL:
@@ -183,22 +174,18 @@ configure(GtkWidget         *widget,
           GdkEventConfigure *event)
 {
   GtkAllocation allocation;
-  GdkGLContext *glcontext;
-  GdkGLDrawable *gldrawable;
 
   g_return_val_if_fail(widget && event, FALSE);
 
-  glcontext = gtk_widget_get_gl_context(widget);
-  gldrawable = gtk_widget_get_gl_drawable(widget);
   gtk_widget_get_allocation (widget, &allocation);
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin(gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     goto NO_GL;
 
   glViewport (0, 0, allocation.width, allocation.height);
 
-  gdk_gl_drawable_gl_end(gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
  NO_GL:
