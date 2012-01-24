@@ -81,7 +81,9 @@ realize (GtkWidget *widget,
 
   /*** OpenGL BEGIN ***/
 
-  if (!gdk_gl_drawable_gl_begin (GDK_GL_DRAWABLE (glwindow), glcontext))
+  if (!gdk_gl_context_make_current (glcontext,
+                                    GDK_GL_DRAWABLE (glwindow),
+                                    GDK_GL_DRAWABLE (glwindow)))
     return;
 
   qobj = gluNewQuadric ();
@@ -114,7 +116,7 @@ realize (GtkWidget *widget,
 	     0.0, 1.0, 0.0);
   glTranslatef (0.0, 0.0, -3.0);
 
-  gdk_gl_drawable_gl_end (GDK_GL_DRAWABLE (glwindow));
+  gdk_gl_context_release_current();
 
   /*** OpenGL END ***/
 }
@@ -142,14 +144,16 @@ configure_event (GtkWidget         *widget,
 
   /*** OpenGL BEGIN ***/
 
-  if (!gdk_gl_drawable_gl_begin (GDK_GL_DRAWABLE (glwindow), glcontext))
+  if (!gdk_gl_context_make_current (glcontext,
+                                    GDK_GL_DRAWABLE (glwindow),
+                                    GDK_GL_DRAWABLE (glwindow)))
     return FALSE;
 
   gtk_widget_get_allocation (widget, &allocation);
   glViewport (0, 0,
 	      allocation.width, allocation.height);
 
-  gdk_gl_drawable_gl_end (GDK_GL_DRAWABLE (glwindow));
+  gdk_gl_context_release_current();
 
   /*** OpenGL END ***/
 
@@ -161,21 +165,25 @@ draw (GtkWidget *widget,
       cairo_t   *cr,
       gpointer   data)
 {
+  GdkGLDrawable *gldrawable = GDK_GL_DRAWABLE (glwindow);
+
   /*** OpenGL BEGIN ***/
 
-  if (!gdk_gl_drawable_gl_begin (GDK_GL_DRAWABLE (glwindow), glcontext))
+  if (!gdk_gl_context_make_current (glcontext,
+                                    gldrawable,
+                                    gldrawable))
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glCallList (1);
 
-  if (gdk_gl_drawable_is_double_buffered (GDK_GL_DRAWABLE (glwindow)))
-    gdk_gl_drawable_swap_buffers (GDK_GL_DRAWABLE (glwindow));
+  if (gdk_gl_drawable_is_double_buffered (gldrawable))
+    gdk_gl_drawable_swap_buffers (gldrawable);
   else
     glFlush ();
 
-  gdk_gl_drawable_gl_end (GDK_GL_DRAWABLE (glwindow));
+  gdk_gl_context_release_current();
 
   /*** OpenGL END ***/
 
