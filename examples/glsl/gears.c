@@ -169,11 +169,8 @@ draw (GtkWidget      *widget,
       GdkEventExpose *event,
       gpointer        data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -207,12 +204,7 @@ draw (GtkWidget      *widget,
 
   glPopMatrix ();
 
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, TRUE);
   /*** OpenGL END ***/
 
   return TRUE;
@@ -221,16 +213,13 @@ draw (GtkWidget      *widget,
 /* new window size or exposure */
 static gboolean
 reshape (GtkWidget         *widget,
-	 GdkEventConfigure *event,
-	 gpointer           data)
+         GdkEventConfigure *event,
+         gpointer           data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   GLfloat h = (GLfloat) (widget->allocation.height) / (GLfloat) (widget->allocation.width);
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glViewport (0, 0, widget->allocation.width, widget->allocation.height);
@@ -241,7 +230,7 @@ reshape (GtkWidget         *widget,
   glLoadIdentity ();
   glTranslatef (0.0, 0.0, -40.0);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return TRUE;
@@ -296,16 +285,13 @@ static void
 init(GtkWidget *widget,
      gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   static GLfloat pos[4] = {100.0, 0.0, 0.0, 1.0};
   static GLfloat red[4] = {0.8, 0.1, 0.0, 1.0};
   static GLfloat green[4] = {0.0, 0.8, 0.2, 1.0};
   static GLfloat blue[4] = {0.2, 0.2, 1.0, 1.0};
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   glLightfv (GL_LIGHT0, GL_POSITION, pos);
@@ -346,7 +332,7 @@ init(GtkWidget *widget,
   program1 = create_shader_program ("shiny");
   program2 = create_shader_program ("velvet");
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   /* create timer */
