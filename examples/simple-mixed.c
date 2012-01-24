@@ -28,15 +28,12 @@ realize (GtkWidget *widget,
          gpointer   data)
 {
   GtkAllocation allocation;
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   GLUquadricObj *qobj;
   static GLfloat light_diffuse[] = {1.0, 0.0, 0.0, 1.0};
   static GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   qobj = gluNewQuadric ();
@@ -69,7 +66,7 @@ realize (GtkWidget *widget,
              0.0, 1.0, 0.0);
   glTranslatef (0.0, 0.0, -3.0);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 }
 
@@ -79,18 +76,16 @@ configure_event (GtkWidget         *widget,
                  gpointer           data)
 {
   GtkAllocation allocation;
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   gtk_widget_get_allocation (widget, &allocation);
   glViewport (0, 0,
               allocation.width, allocation.height);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return TRUE;
@@ -102,13 +97,12 @@ draw (GtkWidget *widget,
       gpointer   data)
 {
   GtkAllocation allocation;
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
   GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
   gtk_widget_get_allocation (widget, &allocation);
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -132,9 +126,7 @@ draw (GtkWidget *widget,
 
   glCallList (1);
 
-  glFlush ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, TRUE);
   /*** OpenGL END ***/
 
   return TRUE;
