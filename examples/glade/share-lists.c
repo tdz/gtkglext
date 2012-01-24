@@ -63,14 +63,11 @@ void
 on_drawingarea1_realize (GtkWidget *widget,
                          gpointer   user_data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   GLUquadricObj *qobj;
   static GLfloat red[] = {1.0, 0.0, 0.0, 1.0};
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   /* Create display list #1 */
@@ -83,7 +80,7 @@ on_drawingarea1_realize (GtkWidget *widget,
   /* Initialize rendering context */
   init_gl (red);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 }
 
@@ -92,17 +89,14 @@ on_drawingarea1_configure_event (GtkWidget         *widget,
                                  GdkEventConfigure *event,
                                  gpointer           user_data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glViewport (0, 0,
               widget->allocation.width, widget->allocation.height);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return FALSE;
@@ -113,23 +107,15 @@ on_drawingarea1_expose_event (GtkWidget       *widget,
                               GdkEventExpose  *event,
                               gpointer         user_data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glCallList (1);
 
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, TRUE);
   /*** OpenGL END ***/
 
   return FALSE;
@@ -139,19 +125,16 @@ void
 on_drawingarea2_realize (GtkWidget *widget,
                          gpointer   user_data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   static GLfloat blue[]    = {0.0, 0.0, 1.0, 1.0};
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   /* Initialize rendering context */
   init_gl (blue);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 }
 
@@ -160,17 +143,14 @@ on_drawingarea2_configure_event (GtkWidget         *widget,
                                  GdkEventConfigure *event,
                                  gpointer           user_data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glViewport (0, 0,
               widget->allocation.width, widget->allocation.height);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return FALSE;
@@ -181,23 +161,15 @@ on_drawingarea2_expose_event (GtkWidget       *widget,
                               GdkEventExpose  *event,
                               gpointer         user_data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_wiget_begin_gl (widget))
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glCallList (1);
 
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, TRUE);
   /*** OpenGL END ***/
 
   return FALSE;
