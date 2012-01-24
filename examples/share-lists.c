@@ -57,13 +57,10 @@ static void
 realize_main (GtkWidget *widget,
               GLfloat   *light_diffuse)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   GLUquadricObj *qobj;
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   /* Create display list #1 */
@@ -76,7 +73,7 @@ realize_main (GtkWidget *widget,
   /* Initialize rendering context */
   init_gl (light_diffuse);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 }
 
@@ -84,17 +81,14 @@ static void
 realize_sub (GtkWidget *widget,
              GLfloat   *light_diffuse)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   /* Initialize rendering context */
   init_gl (light_diffuse);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 }
 
@@ -104,18 +98,16 @@ configure_event (GtkWidget         *widget,
                  gpointer           data)
 {
   GtkAllocation allocation;
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   gtk_widget_get_allocation (widget, &allocation);
   glViewport (0, 0,
               allocation.width, allocation.height);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return TRUE;
@@ -126,23 +118,15 @@ draw (GtkWidget *widget,
       cairo_t   *cr,
       gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
   glCallList (1);
 
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, TRUE);
   /*** OpenGL END ***/
 
   return TRUE;
