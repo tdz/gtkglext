@@ -164,11 +164,8 @@ init_view (void)
 
 static void
 realize (GtkWidget *widget,
-	 gpointer   data)
+         gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   GLfloat ambient[] = {0.0, 0.0, 0.0, 1.0};
   GLfloat diffuse[] = {1.0, 1.0, 1.0, 1.0};
   GLfloat position[] = {0.0, 3.0, 3.0, 0.0};
@@ -177,7 +174,7 @@ realize (GtkWidget *widget,
   GLfloat local_view[] = {0.0};
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   glClearColor (0.5, 0.5, 0.8, 1.0);
@@ -260,7 +257,7 @@ realize (GtkWidget *widget,
     draw_teapot (TRUE, 1.0);
   glEndList ();
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return;
@@ -268,13 +265,10 @@ realize (GtkWidget *widget,
 
 static gboolean
 configure_event (GtkWidget         *widget,
-		 GdkEventConfigure *event,
-		 gpointer           data)
+                 GdkEventConfigure *event,
+                 gpointer           data)
 {
   GtkAllocation allocation;
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   GLfloat w;
   GLfloat h;
   GLfloat aspect;
@@ -284,7 +278,7 @@ configure_event (GtkWidget         *widget,
   h = allocation.height;
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glViewport (0, 0, w, h);
@@ -304,7 +298,7 @@ configure_event (GtkWidget         *widget,
 
   glMatrixMode (GL_MODELVIEW);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return TRUE;
@@ -315,13 +309,10 @@ draw (GtkWidget *widget,
 	    cairo_t   *cr,
 	    gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   float m[4][4];
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -342,13 +333,7 @@ draw (GtkWidget *widget,
   glMaterialf (GL_FRONT, GL_SHININESS, mat_current->shininess * 128.0);
   glCallList (shape_list_base + shape_current);
 
-  /* Swap buffers */
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, TRUE);
   /*** OpenGL END ***/
 
   return TRUE;
