@@ -85,9 +85,6 @@ static void
 realize (GtkWidget *widget,
 	 gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   static GLfloat light0_position[] = { 0.0, 0.0, 30.0, 0.0 };
   static GLfloat light0_diffuse[]  = { 1.0, 1.0, 1.0, 1.0 };
   static GLfloat light0_specular[] = { 1.0, 1.0, 1.0, 1.0 };
@@ -100,7 +97,7 @@ realize (GtkWidget *widget,
   static GLfloat mat_blue[]      = { 0.0, 0.0, 1.0, 1.0 };
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return;
 
   glClearColor (0.5, 0.5, 0.8, 1.0);
@@ -215,7 +212,7 @@ realize (GtkWidget *widget,
   /* Init view. */
   init_view ();
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 }
 
@@ -225,8 +222,6 @@ configure_event (GtkWidget         *widget,
 		 gpointer           data)
 {
   GtkAllocation allocation;
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
 
   GLfloat w;
   GLfloat h;
@@ -237,7 +232,7 @@ configure_event (GtkWidget         *widget,
   h = allocation.height;
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glViewport (0, 0, w, h);
@@ -257,7 +252,7 @@ configure_event (GtkWidget         *widget,
 
   glMatrixMode (GL_MODELVIEW);
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, FALSE);
   /*** OpenGL END ***/
 
   return TRUE;
@@ -295,9 +290,6 @@ draw (GtkWidget *widget,
 	    cairo_t   *cr,
 	    gpointer   data)
 {
-  GdkGLContext *glcontext = gtk_widget_get_gl_context (widget);
-  GdkGLDrawable *gldrawable = gtk_widget_get_gl_drawable (widget);
-
   float d_quat[4];
   float m[4][4];
 
@@ -320,7 +312,7 @@ draw (GtkWidget *widget,
     }
 
   /*** OpenGL BEGIN ***/
-  if (!gdk_gl_drawable_gl_begin (gldrawable, glcontext))
+  if (!gtk_widget_begin_gl (widget))
     return FALSE;
 
   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -348,13 +340,7 @@ draw (GtkWidget *widget,
     glCallList (LOGO_K_BACKWARD);
   glPopMatrix ();
 
-  /* Swap buffers. */
-  if (gdk_gl_drawable_is_double_buffered (gldrawable))
-    gdk_gl_drawable_swap_buffers (gldrawable);
-  else
-    glFlush ();
-
-  gdk_gl_drawable_gl_end (gldrawable);
+  gtk_widget_end_gl (widget, TRUE);
   /*** OpenGL END ***/
 
   return TRUE;
