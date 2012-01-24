@@ -518,15 +518,15 @@ gtk_widget_get_gl_window (GtkWidget *widget)
 gboolean
 gtk_widget_begin_gl(GtkWidget *widget)
 {
-  GdkGLWindow  *glwindow;
   GdkGLContext *glcontext;
+  GdkGLWindow  *glwindow;
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
 
-  glwindow  = gtk_widget_get_gl_window (widget);
   glcontext = gtk_widget_get_gl_context (widget);
+  glwindow  = gtk_widget_get_gl_window (widget);
 
-  return gdk_gl_drawable_gl_begin(GDK_GL_DRAWABLE (glwindow), glcontext);
+  return gdk_gl_context_make_current(glcontext, GDK_GL_DRAWABLE (glwindow), GDK_GL_DRAWABLE (glwindow));
 }
 
 void
@@ -546,5 +546,5 @@ gtk_widget_end_gl(GtkWidget *widget, gboolean do_swap)
         glFlush ();
     }
 
-  gdk_gl_drawable_gl_end (gldrawable);
+  gdk_gl_context_release_current();
 }
