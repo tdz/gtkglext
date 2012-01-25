@@ -30,17 +30,8 @@
 
 #include <gdk/gdkglquery.h>
 
-static gboolean     gdk_gl_window_impl_x11_make_context_current (GdkGLDrawable *draw,
-                                                                 GdkGLDrawable *read,
-                                                                 GdkGLContext  *glcontext);
 static gboolean     gdk_gl_window_impl_x11_is_double_buffered   (GdkGLDrawable *gldrawable);
 static void         gdk_gl_window_impl_x11_swap_buffers         (GdkGLDrawable *gldrawable);
-/*
-static gboolean     gdk_gl_window_impl_x11_gl_begin             (GdkGLDrawable *draw,
-                                                                 GdkGLDrawable *read,
-                                                                 GdkGLContext  *glcontext);
-*/
-static void         gdk_gl_window_impl_x11_gl_end               (GdkGLDrawable *gldrawable);
 static GdkGLConfig *gdk_gl_window_impl_x11_get_gl_config        (GdkGLDrawable *gldrawable);
 
 static void         gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface);
@@ -132,13 +123,10 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   iface->create_new_context   = _gdk_x11_gl_context_new;
-  iface->make_context_current =  gdk_gl_window_impl_x11_make_context_current;
   iface->is_double_buffered   =  gdk_gl_window_impl_x11_is_double_buffered;
   iface->swap_buffers         =  gdk_gl_window_impl_x11_swap_buffers;
   iface->wait_gl              = _gdk_gl_drawable_impl_x11_wait_gl;
   iface->wait_gdk             = _gdk_gl_drawable_impl_x11_wait_gdk;
-  iface->gl_begin             =  gdk_gl_window_impl_x11_make_context_current;
-  iface->gl_end               =  gdk_gl_window_impl_x11_gl_end;
   iface->get_gl_config        =  gdk_gl_window_impl_x11_get_gl_config;
 }
 
@@ -190,66 +178,6 @@ _gdk_x11_gl_window_new (GdkGLConfig *glconfig,
 }
 
 static gboolean
-gdk_gl_window_impl_x11_make_context_current (GdkGLDrawable *draw,
-                                             GdkGLDrawable *read,
-                                             GdkGLContext  *glcontext)
-{
-  GdkGLWindowImplX11 *impl;
-  GdkGLConfig *glconfig;
-  GdkWindow *window;
-  Window glxwindow;
-  GLXContext glxcontext;
-
-  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (draw), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), FALSE);
-
-  impl = GDK_GL_WINDOW_IMPL_X11 (draw);
-  glconfig = GDK_GL_WINDOW_IMPL_X11 (draw)->glconfig;
-  window = gdk_gl_window_get_window(GDK_GL_WINDOW(impl));
-  glxwindow = GDK_GL_WINDOW_IMPL_X11 (draw)->glxwindow;
-  glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
-
-  if (glxwindow == None || glxcontext == NULL)
-    return FALSE;
-
-  GDK_GL_NOTE (MISC,
-    g_message (" -- Window: screen number = %d",
-      GDK_SCREEN_XNUMBER (gdk_window_get_screen (window))));
-  GDK_GL_NOTE (MISC,
-    g_message (" -- Window: visual id = 0x%lx",
-      GDK_VISUAL_XVISUAL (gdk_window_get_visual (window))->visualid));
-
-  GDK_GL_NOTE_FUNC_IMPL ("glXMakeCurrent");
-
-  if (!glXMakeCurrent (GDK_GL_CONFIG_XDISPLAY (glconfig), glxwindow, glxcontext))
-    {
-      g_warning ("glXMakeCurrent() failed");
-      _gdk_gl_context_set_gl_drawable (glcontext, NULL);
-      /* currently unused. */
-      /* _gdk_gl_context_set_gl_drawable_read (glcontext, NULL); */
-      return FALSE;
-    }
-
-  _gdk_gl_context_set_gl_drawable (glcontext, draw);
-  /* currently unused. */
-  /* _gdk_gl_context_set_gl_drawable_read (glcontext, read); */
-
-  if (_GDK_GL_CONFIG_AS_SINGLE_MODE (glconfig))
-    {
-      /* We do this because we are treating a double-buffered frame
-         buffer as a single-buffered frame buffer because the system
-         does not appear to export any suitable single-buffered
-         visuals (in which the following are necessary). */
-      glDrawBuffer (GL_FRONT);
-      glReadBuffer (GL_FRONT);
-    }
-
-  GDK_GL_NOTE (MISC, _gdk_gl_print_gl_info ());
-
-  return TRUE;
-}
-
-static gboolean
 gdk_gl_window_impl_x11_is_double_buffered (GdkGLDrawable *gldrawable)
 {
   g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (gldrawable), FALSE);
@@ -274,22 +202,6 @@ gdk_gl_window_impl_x11_swap_buffers (GdkGLDrawable *gldrawable)
   GDK_GL_NOTE_FUNC_IMPL ("glXSwapBuffers");
 
   glXSwapBuffers (xdisplay, glxwindow);
-}
-
-/*
-static gboolean
-gdk_gl_window_impl_x11_gl_begin (GdkGLDrawable *draw,
-                                 GdkGLDrawable *read,
-                                 GdkGLContext  *glcontext)
-{
-  return gdk_gl_window_impl_x11_make_context_current (draw, read, glcontext);
-}
-*/
-
-static void
-gdk_gl_window_impl_x11_gl_end (GdkGLDrawable *gldrawable)
-{
-  /* do nothing */
 }
 
 static GdkGLConfig *
