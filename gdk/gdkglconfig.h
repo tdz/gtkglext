@@ -81,16 +81,16 @@ struct _GdkGLConfigClass
 {
   GObjectClass parent_class;
 
-  GdkScreen* (*get_screen) (GdkGLConfig *glconfig);
+  GdkGLWindow* (*create_new_gl_window) (GdkGLConfig *glconfig,
+                                        GdkWindow   *window,
+                                        const int   *attrib_list);
 
+  GdkScreen* (*get_screen) (GdkGLConfig *glconfig);
   gboolean   (*get_attrib) (GdkGLConfig *glconfig,
                             int          attribute,
                             int         *value);
-
   GdkVisual* (*get_visual) (GdkGLConfig *glconfig);
-
   gint       (*get_depth)  (GdkGLConfig *glconfig);
-
 };
 
 GType        gdk_gl_config_get_type               (void);

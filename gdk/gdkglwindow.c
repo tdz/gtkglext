@@ -26,15 +26,6 @@
 #include "gdkglconfig.h"
 #include "gdkglwindow.h"
 
-#ifdef GDKGLEXT_WINDOWING_X11
-#include "x11/gdkglconfig-x11.h"
-#include "x11/gdkglwindow-x11.h"
-#endif
-#ifdef GDKGLEXT_WINDOWING_WIN32
-#include "win32/gdkglconfig-win32.h"
-#include "win32/gdkglwindow-win32.h"
-#endif
-
 G_DEFINE_TYPE (GdkGLWindow,                     \
                gdk_gl_window,                   \
                G_TYPE_OBJECT)
@@ -88,27 +79,11 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
                    GdkWindow   *window,
                    const int   *attrib_list)
 {
-  GdkGLWindow *glwindow = NULL;
+  g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
-#ifdef GDKGLEXT_WINDOWING_X11
-  if (GDK_IS_GL_CONFIG_IMPL_X11(glconfig))
-    {
-      glwindow = _gdk_x11_gl_window_new(glconfig, window, attrib_list);
-    }
-  else
-#endif
-#ifdef GDKGLEXT_WINDOWING_WIN32
-  if (GDK_IS_GL_CONFIG_IMPL_WIN32(glconfig))
-    {
-      glwindow = _gdk_win32_gl_window_new(glconfig, window, attrib_list);
-    }
-  else
-#endif
-    {
-      g_warning("Unsupported GDK backend");
-    }
-
-  return glwindow;
+  return GDK_GL_CONFIG_GET_CLASS (glconfig)->create_new_gl_window (glconfig,
+                                                                   window,
+                                                                   attrib_list);
 }
 
 /**

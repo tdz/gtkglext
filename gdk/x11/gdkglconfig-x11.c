@@ -25,6 +25,7 @@
 #include "gdkglx.h"
 #include "gdkglprivate-x11.h"
 #include "gdkglconfig-x11.h"
+#include "gdkglwindow-x11.h"
 
 #include <gdk/gdk.h>
 
@@ -82,6 +83,7 @@ gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
+  klass->parent_class.create_new_gl_window = _gdk_x11_gl_window_new;
   klass->parent_class.get_screen = _gdk_x11_gl_config_get_screen;
   klass->parent_class.get_attrib = _gdk_x11_gl_config_get_attrib;
   klass->parent_class.get_visual = _gdk_x11_gl_config_get_visual;
