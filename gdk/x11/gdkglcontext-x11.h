@@ -28,12 +28,12 @@ G_BEGIN_DECLS
 typedef struct _GdkGLContextImplX11      GdkGLContextImplX11;
 typedef struct _GdkGLContextImplX11Class GdkGLContextImplX11Class;
 
-#define GDK_TYPE_GL_CONTEXT_IMPL_X11              (gdk_gl_context_impl_x11_get_type ())
-#define GDK_GL_CONTEXT_IMPL_X11(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_GL_CONTEXT_IMPL_X11, GdkGLContextImplX11))
-#define GDK_GL_CONTEXT_IMPL_X11_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_GL_CONTEXT_IMPL_X11, GdkGLContextImplX11Class))
-#define GDK_IS_GL_CONTEXT_IMPL_X11(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_GL_CONTEXT_IMPL_X11))
-#define GDK_IS_GL_CONTEXT_IMPL_X11_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_GL_CONTEXT_IMPL_X11))
-#define GDK_GL_CONTEXT_IMPL_X11_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_CONTEXT_IMPL_X11, GdkGLContextImplX11Class))
+#define GDK_TYPE_GL_CONTEXT_IMPL_X11            (gdk_gl_context_impl_x11_get_type ())
+#define GDK_GL_CONTEXT_IMPL_X11(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_GL_CONTEXT_IMPL_X11, GdkGLContextImplX11))
+#define GDK_GL_CONTEXT_IMPL_X11_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_GL_CONTEXT_IMPL_X11, GdkGLContextImplX11Class))
+#define GDK_IS_GL_CONTEXT_IMPL_X11(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_GL_CONTEXT_IMPL_X11))
+#define GDK_IS_GL_CONTEXT_IMPL_X11_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_GL_CONTEXT_IMPL_X11))
+#define GDK_GL_CONTEXT_IMPL_X11_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_CONTEXT_IMPL_X11, GdkGLContextImplX11Class))
 
 struct _GdkGLContextImplX11
 {
@@ -60,8 +60,16 @@ struct _GdkGLContextImplX11Class
 
 GType gdk_gl_context_impl_x11_get_type (void);
 
+GdkGLContext *_gdk_x11_gl_context_impl_new (GdkGLDrawable *gldrawable,
+                                            GdkGLContext  *share_list,
+                                            gboolean       direct,
+                                            int            render_type);
+
+void _gdk_x11_gl_context_impl_set_gl_drawable (GdkGLContext  *glcontext,
+                                               GdkGLDrawable *gldrawable);
+
 GdkGLContext *
-_gdk_x11_gl_context_get_current (void);
+_gdk_x11_gl_context_impl_get_current (void);
 
 G_END_DECLS
 

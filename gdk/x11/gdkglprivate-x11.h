@@ -28,19 +28,6 @@ G_BEGIN_DECLS
 void _gdk_x11_gl_print_glx_info (Display *xdisplay,
                                  int      screen_num);
 
-GdkGLContext *_gdk_x11_gl_context_new (GdkGLDrawable *gldrawable,
-                                       GdkGLContext  *share_list,
-                                       gboolean       direct,
-                                       int            render_type);
-
-void _gdk_gl_context_set_gl_drawable      (GdkGLContext  *glcontext,
-                                           GdkGLDrawable *gldrawable);
-/* currently unused. */
-/*
-void _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
-                                           GdkGLDrawable *gldrawable_read);
-*/
-
 void _gdk_gl_drawable_impl_x11_wait_gl  (GdkGLDrawable *gldrawable);
 void _gdk_gl_drawable_impl_x11_wait_gdk (GdkGLDrawable *gldrawable);
 

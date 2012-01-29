@@ -245,7 +245,7 @@ gdk_gl_context_get_current ()
   GdkGLContext *current = NULL;
 
 #ifdef GDKGLEXT_WINDOWING_X11
-    current = _gdk_x11_gl_context_get_current();
+    current = _gdk_x11_gl_context_impl_get_current();
 #endif
 #ifdef GDKGLEXT_WINDOWING_WIN32
   if (current == NULL)
