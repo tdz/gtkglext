@@ -24,16 +24,31 @@
 #define __GDK_X11_GL_CONTEXT_H__
 
 #include <gdk/gdkx.h>
-
 #include <gdk/gdkgl.h>
 
 G_BEGIN_DECLS
 
-GdkGLContext *gdk_x11_gl_context_foreign_new      (GdkGLConfig  *glconfig,
-                                                   GdkGLContext *share_list,
-                                                   GLXContext    glxcontext);
+#define GDK_TYPE_X11_GL_CONTEXT             (gdk_x11_gl_context_get_type ())
+#define GDK_X11_GL_CONTEXT(object)          (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_GL_CONTEXT, GdkX11GLContext))
+#define GDK_X11_GL_CONTEXT_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_GL_CONTEXT, GdkX11GLContextClass))
+#define GDK_IS_X11_GL_CONTEXT(object)       (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_GL_CONTEXT))
+#define GDK_IS_X11_GL_CONTEXT_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_GL_CONTEXT))
+#define GDK_X11_GL_CONTEXT_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_GL_CONTEXT, GdkX11GLContextClass))
 
-GLXContext    gdk_x11_gl_context_get_glxcontext   (GdkGLContext *glcontext);
+#ifdef INSIDE_GDK_GL_X11
+typedef struct _GdkX11GLContext GdkX11GLContext;
+#else
+typedef GdkGLContext GdkX11GLContext;
+#endif
+typedef struct _GdkX11GLContextClass GdkX11GLContextClass;
+
+GType         gdk_x11_gl_context_get_type       (void);
+
+GdkGLContext *gdk_x11_gl_context_foreign_new    (GdkGLConfig  *glconfig,
+                                                 GdkGLContext *share_list,
+                                                 GLXContext    glxcontext);
+
+GLXContext    gdk_x11_gl_context_get_glxcontext (GdkGLContext *glcontext);
 
 #ifdef INSIDE_GDK_GL_X11
 
