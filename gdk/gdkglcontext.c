@@ -31,6 +31,7 @@
 #include "gdkgldrawable.h"
 #include "gdkglconfig.h"
 #include "gdkglcontext.h"
+#include "gdkglcontextimpl.h"
 
 #ifdef GDKGLEXT_WINDOWING_X11
 #include "x11/gdkglcontext-x11.h"
@@ -55,13 +56,6 @@ static void
 gdk_gl_context_class_init (GdkGLContextClass *klass)
 {
   GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  klass->copy_gl_context_impl = NULL;
-  klass->get_gl_drawable = NULL;
-  klass->get_gl_config = NULL;
-  klass->get_share_list = NULL;
-  klass->is_direct = NULL;
-  klass->get_render_type = NULL;
 }
 
 /**
@@ -85,10 +79,10 @@ gdk_gl_context_new (GdkGLDrawable *gldrawable,
 {
   g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
 
-  return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->create_gl_context_impl (gldrawable,
-                                                                         share_list,
-                                                                         direct,
-                                                                         render_type);
+  return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->create_gl_context (gldrawable,
+                                                                    share_list,
+                                                                    direct,
+                                                                    render_type);
 }
 
 /**
@@ -112,9 +106,9 @@ gdk_gl_context_copy (GdkGLContext  *glcontext,
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  return GDK_GL_CONTEXT_GET_CLASS (glcontext)->copy_gl_context_impl (glcontext,
-                                                                     src,
-                                                                     mask);
+  return GDK_GL_CONTEXT_IMPL_GET_CLASS (glcontext->impl)->copy_gl_context_impl (glcontext,
+                                                                                src,
+                                                                                mask);
 }
 
 /**
@@ -130,7 +124,7 @@ gdk_gl_context_get_gl_drawable (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  return GDK_GL_CONTEXT_GET_CLASS (glcontext)->get_gl_drawable (glcontext);
+  return GDK_GL_CONTEXT_IMPL_GET_CLASS (glcontext->impl)->get_gl_drawable (glcontext);
 }
 
 /**
@@ -146,7 +140,7 @@ gdk_gl_context_get_gl_config (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  return GDK_GL_CONTEXT_GET_CLASS (glcontext)->get_gl_config (glcontext);
+  return GDK_GL_CONTEXT_IMPL_GET_CLASS (glcontext->impl)->get_gl_config (glcontext);
 }
 
 /**
@@ -163,7 +157,7 @@ gdk_gl_context_get_share_list (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  return GDK_GL_CONTEXT_GET_CLASS (glcontext)->get_share_list(glcontext);
+  return GDK_GL_CONTEXT_IMPL_GET_CLASS (glcontext->impl)->get_share_list(glcontext);
 }
 
 /**
@@ -179,7 +173,7 @@ gdk_gl_context_is_direct (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  return GDK_GL_CONTEXT_GET_CLASS (glcontext)->is_direct(glcontext);
+  return GDK_GL_CONTEXT_IMPL_GET_CLASS (glcontext->impl)->is_direct(glcontext);
 }
 
 /**
@@ -195,7 +189,7 @@ gdk_gl_context_get_render_type (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  return GDK_GL_CONTEXT_GET_CLASS (glcontext)->get_render_type(glcontext);
+  return GDK_GL_CONTEXT_IMPL_GET_CLASS (glcontext->impl)->get_render_type(glcontext);
 }
 
 gboolean
@@ -205,9 +199,9 @@ gdk_gl_context_make_current(GdkGLContext  *glcontext,
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  return GDK_GL_CONTEXT_GET_CLASS (glcontext)->make_current(glcontext,
-                                                            draw,
-                                                            read);
+  return GDK_GL_CONTEXT_IMPL_GET_CLASS (glcontext->impl)->make_current(glcontext,
+                                                                       draw,
+                                                                       read);
 }
 
 /**
@@ -222,8 +216,8 @@ gdk_gl_context_release_current ()
 
   g_return_if_fail(glcontext != NULL);
 
-  if (GDK_GL_CONTEXT_GET_CLASS (glcontext)->make_uncurrent)
-    GDK_GL_CONTEXT_GET_CLASS (glcontext)->make_uncurrent(glcontext);
+  if (GDK_GL_CONTEXT_IMPL_GET_CLASS (glcontext->impl)->make_uncurrent)
+    GDK_GL_CONTEXT_IMPL_GET_CLASS (glcontext->impl)->make_uncurrent(glcontext);
 }
 
 /**

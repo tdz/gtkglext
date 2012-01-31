@@ -84,12 +84,12 @@ gdk_x11_gl_window_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 {
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  iface->create_gl_context_impl = _gdk_x11_gl_window_create_gl_context;
-  iface->is_double_buffered     = _gdk_x11_gl_window_is_double_buffered;
-  iface->swap_buffers           = _gdk_x11_gl_window_swap_buffers;
-  iface->wait_gl                = _gdk_x11_gl_window_wait_gl;
-  iface->wait_gdk               = _gdk_x11_gl_window_wait_gdk;
-  iface->get_gl_config          = _gdk_x11_gl_window_get_gl_config;
+  iface->create_gl_context  = _gdk_x11_gl_window_create_gl_context;
+  iface->is_double_buffered = _gdk_x11_gl_window_is_double_buffered;
+  iface->swap_buffers       = _gdk_x11_gl_window_swap_buffers;
+  iface->wait_gl            = _gdk_x11_gl_window_wait_gl;
+  iface->wait_gdk           = _gdk_x11_gl_window_wait_gdk;
+  iface->get_gl_config      = _gdk_x11_gl_window_get_gl_config;
 }
 
 static GdkGLContext *_gdk_x11_gl_window_create_gl_context (GdkGLDrawable *gldrawable,

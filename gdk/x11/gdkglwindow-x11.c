@@ -180,10 +180,24 @@ _gdk_x11_gl_window_impl_create_gl_context (GdkGLDrawable *gldrawable,
                                            gboolean       direct,
                                            int            render_type)
 {
-  return _gdk_x11_gl_context_impl_new(gldrawable,
+  GdkGLContext *glcontext;
+  GdkGLContextImpl *impl;
+
+  glcontext = g_object_new(GDK_TYPE_X11_GL_CONTEXT, NULL);
+
+  g_return_val_if_fail(glcontext != NULL, NULL);
+
+  impl = _gdk_x11_gl_context_impl_new(glcontext,
+                                      gldrawable,
                                       share_list,
                                       direct,
                                       render_type);
+  if (impl == NULL)
+    g_object_unref(glcontext);
+
+  g_return_val_if_fail(impl != NULL, NULL);
+
+  return glcontext;
 }
 
 static gboolean

@@ -46,7 +46,7 @@ static HGLRC           _gdk_win32_gl_context_impl_get_hglrc      (GdkGLContext *
 
 G_DEFINE_TYPE (GdkGLContextImplWin32,              \
                gdk_gl_context_impl_win32,          \
-               GDK_TYPE_GL_CONTEXT)
+               GDK_TYPE_GL_CONTEXT_IMPL)
 
 static void
 gdk_gl_context_impl_win32_init (GdkGLContextImplWin32 *self)
@@ -66,7 +66,7 @@ gdk_gl_context_impl_win32_init (GdkGLContextImplWin32 *self)
 static void
 _gdk_win32_gl_context_impl_destroy (GdkGLContext *glcontext)
 {
-  GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
+  GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->impl);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
@@ -148,15 +148,16 @@ gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass)
   object_class->finalize = gdk_gl_context_impl_win32_finalize;
 }
 
-static GdkGLContext *
-gdk_win32_gl_context_impl_new_common (GdkGLConfig   *glconfig,
+static GdkGLContextImpl *
+gdk_win32_gl_context_impl_new_common (GdkGLContext  *glcontext,
+                                      GdkGLConfig   *glconfig,
                                       GdkGLContext  *share_list,
                                       int            render_type,
                                       HGLRC          hglrc,
                                       gboolean       is_foreign)
 {
-  GdkGLContext *glcontext;
-  GdkGLContextImplWin32 *impl;
+  GdkGLContextImpl *impl;
+  GdkGLContextImplWin32 *win32_impl;
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
@@ -164,32 +165,34 @@ gdk_win32_gl_context_impl_new_common (GdkGLConfig   *glconfig,
    * Instantiate the GdkGLContextImplWin32 object.
    */
 
-  glcontext = g_object_new (GDK_TYPE_GL_CONTEXT_IMPL_WIN32, NULL);
-  impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
+  impl = g_object_new (GDK_TYPE_GL_CONTEXT_IMPL_WIN32, NULL);
+  win32_impl = GDK_GL_CONTEXT_IMPL_WIN32 (impl);
 
-  impl->hglrc = hglrc;
+  win32_impl->hglrc = hglrc;
 
   if (share_list != NULL && GDK_IS_GL_CONTEXT (share_list))
     {
-      impl->share_list = share_list;
-      g_object_ref (G_OBJECT (impl->share_list));
+      win32_impl->share_list = share_list;
+      g_object_ref (G_OBJECT (win32_impl->share_list));
     }
   else
     {
-      impl->share_list = NULL;
+      win32_impl->share_list = NULL;
     }
 
-  impl->render_type = render_type;
+  win32_impl->render_type = render_type;
 
-  impl->glconfig = glconfig;
-  g_object_ref (G_OBJECT (impl->glconfig));
+  win32_impl->glconfig = glconfig;
+  g_object_ref (G_OBJECT (win32_impl->glconfig));
 
-  impl->gldrawable = NULL;
-  impl->gldrawable_read = NULL;
+  win32_impl->gldrawable = NULL;
+  win32_impl->gldrawable_read = NULL;
 
-  impl->is_foreign = is_foreign;
+  win32_impl->is_foreign = is_foreign;
 
-  impl->is_destroyed = FALSE;
+  win32_impl->is_destroyed = FALSE;
+
+  glcontext->impl = impl;
 
   /*
    * Insert into the GL context hash table.
@@ -197,12 +200,13 @@ gdk_win32_gl_context_impl_new_common (GdkGLConfig   *glconfig,
 
   gdk_gl_context_insert (glcontext);
 
-  return glcontext;
+  return impl;
 }
 
 /*< private >*/
-GdkGLContext *
-_gdk_win32_gl_context_impl_new (GdkGLDrawable *gldrawable,
+GdkGLContextImpl *
+_gdk_win32_gl_context_impl_new (GdkGLContext  *glcontext,
+                                GdkGLDrawable *gldrawable,
                                 GdkGLContext  *share_list,
                                 gboolean       direct,
                                 int            render_type)
@@ -251,15 +255,17 @@ _gdk_win32_gl_context_impl_new (GdkGLDrawable *gldrawable,
    * Instantiate the GdkGLContextImplWin32 object.
    */
 
-  return gdk_win32_gl_context_impl_new_common (glconfig,
+  return gdk_win32_gl_context_impl_new_common (glcontext,
+                                               glconfig,
                                                share_list,
                                                render_type,
                                                hglrc,
                                                FALSE);
 }
 
-GdkGLContext *
-_gdk_win32_gl_context_impl_new_from_hglrc (GdkGLConfig  *glconfig,
+GdkGLContextImpl *
+_gdk_win32_gl_context_impl_new_from_hglrc (GdkGLContext *glcontext,
+                                           GdkGLConfig  *glconfig,
                                            GdkGLContext *share_list,
                                            HGLRC         hglrc)
 {
@@ -272,7 +278,8 @@ _gdk_win32_gl_context_impl_new_from_hglrc (GdkGLConfig  *glconfig,
    * Instantiate the GdkGLContextImplWin32 object.
    */
 
-  return gdk_win32_gl_context_impl_new_common (glconfig,
+  return gdk_win32_gl_context_impl_new_common (glcontext,
+                                               glconfig,
                                                share_list,
                                                GDK_GL_RGBA_TYPE,
                                                hglrc,
@@ -286,8 +293,8 @@ _gdk_win32_gl_context_impl_copy (GdkGLContext  *glcontext,
 {
   HGLRC dst_hglrc, src_hglrc;
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (src), FALSE);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_CONTEXT (glcontext->impl), FALSE);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_CONTEXT (src), FALSE);
 
   dst_hglrc = GDK_GL_CONTEXT_HGLRC (glcontext);
   if (dst_hglrc == NULL)
@@ -307,7 +314,7 @@ void
 _gdk_gl_context_set_gl_drawable (GdkGLContext  *glcontext,
                                  GdkGLDrawable *gldrawable)
 {
-  GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
+  GdkGLContextImplWin32 *impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->impl);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
@@ -362,25 +369,25 @@ _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
 static GdkGLDrawable *
 _gdk_win32_gl_context_impl_get_gl_drawable (GdkGLContext *glcontext)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), NULL);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_CONTEXT (glcontext), NULL);
 
-  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->gldrawable;
+  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->impl)->gldrawable;
 }
 
 static GdkGLConfig *
 _gdk_win32_gl_context_impl_get_gl_config (GdkGLContext *glcontext)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), NULL);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_CONTEXT (glcontext), NULL);
 
-  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->glconfig;
+  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->impl)->glconfig;
 }
 
 static GdkGLContext *
 _gdk_win32_gl_context_impl_get_share_list (GdkGLContext *glcontext)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), NULL);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_CONTEXT (glcontext), NULL);
 
-  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->share_list;
+  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->impl)->share_list;
 }
 
 static gboolean
@@ -392,9 +399,9 @@ _gdk_win32_gl_context_impl_is_direct (GdkGLContext *glcontext)
 static int
 _gdk_win32_gl_context_impl_get_render_type (GdkGLContext *glcontext)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), 0);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_CONTEXT (glcontext), 0);
 
-  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->render_type;
+  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->impl)->render_type;
 }
 
 static gboolean
@@ -406,7 +413,7 @@ _gdk_win32_gl_context_impl_make_current (GdkGLContext *glcontext,
   HDC hdc;
   HGLRC hglrc;
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), FALSE);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_CONTEXT (glcontext), FALSE);
   g_return_val_if_fail (GDK_IS_WIN32_GL_WINDOW (draw), FALSE);
 
   if (GDK_GL_WINDOW_IS_DESTROYED (GDK_GL_WINDOW (draw)) ||
@@ -494,9 +501,9 @@ _gdk_win32_gl_context_impl_get_current (void)
 static HGLRC
 _gdk_win32_gl_context_impl_get_hglrc (GdkGLContext *glcontext)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), NULL);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_CONTEXT (glcontext), NULL);
 
-  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->hglrc;
+  return GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->impl)->hglrc;
 }
 
 /*
@@ -512,7 +519,7 @@ gdk_gl_context_insert (GdkGLContext *glcontext)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext));
+  g_return_if_fail (GDK_IS_WIN32_GL_CONTEXT (glcontext));
 
   if (gl_context_ht == NULL)
     {
@@ -524,7 +531,7 @@ gdk_gl_context_insert (GdkGLContext *glcontext)
                                         g_direct_equal);
     }
 
-  impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
+  impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->impl);
 
   g_hash_table_insert (gl_context_ht, impl->hglrc, glcontext);
 }
@@ -536,12 +543,12 @@ gdk_gl_context_remove (GdkGLContext *glcontext)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext));
+  g_return_if_fail (GDK_IS_WIN32_GL_CONTEXT (glcontext));
 
   if (gl_context_ht == NULL)
     return;
 
-  impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext);
+  impl = GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->impl);
 
   g_hash_table_remove (gl_context_ht, impl->hglrc);
 

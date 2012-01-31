@@ -53,7 +53,7 @@ HGLRC          gdk_win32_gl_context_get_hglrc       (GdkGLContext  *glcontext);
 G_END_DECLS
 
 #ifdef INSIDE_GDK_GL_WIN32
-#define GDK_GL_CONTEXT_HGLRC(glcontext)      (GDK_GL_CONTEXT_IMPL_WIN32 (glcontext)->hglrc)
+#define GDK_GL_CONTEXT_HGLRC(glcontext)      (GDK_GL_CONTEXT_IMPL_WIN32 (glcontext->impl)->hglrc)
 #else
 #define GDK_GL_CONTEXT_HGLRC(glcontext)      (gdk_win32_gl_context_get_hglrc (glcontext))
 #endif

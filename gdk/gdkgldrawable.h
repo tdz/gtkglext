@@ -41,10 +41,10 @@ struct _GdkGLDrawableClass
 {
   GTypeInterface base_iface;
 
-  GdkGLContext* (*create_gl_context_impl) (GdkGLDrawable *gldrawable,
-                                           GdkGLContext  *share_list,
-                                           gboolean       direct,
-                                           int            render_type);
+  GdkGLContext* (*create_gl_context) (GdkGLDrawable *gldrawable,
+                                      GdkGLContext  *share_list,
+                                      gboolean       direct,
+                                      int            render_type);
 
   gboolean      (*is_double_buffered)   (GdkGLDrawable *gldrawable);
   void          (*swap_buffers)         (GdkGLDrawable *gldrawable);

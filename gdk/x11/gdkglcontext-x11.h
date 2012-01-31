@@ -22,6 +22,7 @@
 #include <GL/glx.h>
 
 #include <gdk/gdkglcontext.h>
+#include <gdk/gdkglcontextimpl.h>
 
 G_BEGIN_DECLS
 
@@ -37,7 +38,7 @@ typedef struct _GdkGLContextImplX11Class GdkGLContextImplX11Class;
 
 struct _GdkGLContextImplX11
 {
-  GdkGLContext parent_instance;
+  GdkGLContextImpl parent_instance;
 
   GLXContext glxcontext;
   GdkGLContext *share_list;
@@ -55,21 +56,23 @@ struct _GdkGLContextImplX11
 
 struct _GdkGLContextImplX11Class
 {
-  GdkGLContextClass parent_class;
+  GdkGLContextImplClass parent_class;
 
   GLXContext (*get_glxcontext) (GdkGLContext *glcontext);
 };
 
 GType gdk_gl_context_impl_x11_get_type (void);
 
-GdkGLContext *_gdk_x11_gl_context_impl_new (GdkGLDrawable *gldrawable,
-                                            GdkGLContext  *share_list,
-                                            gboolean       direct,
-                                            int            render_type);
+GdkGLContextImpl *_gdk_x11_gl_context_impl_new (GdkGLContext  *glcontext,
+                                                GdkGLDrawable *gldrawable,
+                                                GdkGLContext  *share_list,
+                                                gboolean       direct,
+                                                int            render_type);
 
-GdkGLContext *_gdk_x11_gl_context_impl_new_from_glxcontext (GdkGLConfig  *glconfig,
-                                                            GdkGLContext *share_list,
-                                                            GLXContext    glxcontext);
+GdkGLContextImpl *_gdk_x11_gl_context_impl_new_from_glxcontext (GdkGLContext *glcontext,
+                                                                GdkGLConfig  *glconfig,
+                                                                GdkGLContext *share_list,
+                                                                GLXContext    glxcontext);
 
 void _gdk_x11_gl_context_impl_set_gl_drawable (GdkGLContext  *glcontext,
                                                GdkGLDrawable *gldrawable);

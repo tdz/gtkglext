@@ -52,7 +52,7 @@ GLXContext    gdk_x11_gl_context_get_glxcontext (GdkGLContext *glcontext);
 
 #ifdef INSIDE_GDK_GL_X11
 
-#define GDK_GL_CONTEXT_GLXCONTEXT(glcontext)   (GDK_GL_CONTEXT_IMPL_X11 (glcontext)->glxcontext)
+#define GDK_GL_CONTEXT_GLXCONTEXT(glcontext)   (GDK_GL_CONTEXT_IMPL_X11 (glcontext->impl)->glxcontext)
 
 #else
 

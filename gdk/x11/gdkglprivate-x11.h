@@ -32,7 +32,7 @@ void _gdk_gl_drawable_impl_x11_wait_gl  (GdkGLDrawable *gldrawable);
 void _gdk_gl_drawable_impl_x11_wait_gdk (GdkGLDrawable *gldrawable);
 
 #define GDK_GL_CONTEXT_IS_DESTROYED(glcontext) \
-  ( ((GdkGLContextImplX11 *) (glcontext))->is_destroyed )
+  ( ((GdkGLContextImplX11 *) (glcontext->impl))->is_destroyed )
 
 #define GDK_GL_WINDOW_IS_DESTROYED(glwindow) \
   ( ((GdkGLWindowImplX11 *) (glwindow->impl))->is_destroyed )

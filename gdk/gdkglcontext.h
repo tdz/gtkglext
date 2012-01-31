@@ -28,6 +28,7 @@
 
 G_BEGIN_DECLS
 
+struct _GdkGLContextImpl;
 typedef struct _GdkGLContextClass GdkGLContextClass;
 
 #define GDK_TYPE_GL_CONTEXT              (gdk_gl_context_get_type ())
@@ -40,24 +41,13 @@ typedef struct _GdkGLContextClass GdkGLContextClass;
 struct _GdkGLContext
 {
   GObject parent_instance;
+
+  struct _GdkGLContextImpl *impl;
 };
 
 struct _GdkGLContextClass
 {
   GObjectClass parent_class;
-
-  gboolean       (*copy_gl_context_impl) (GdkGLContext  *glcontext,
-                                          GdkGLContext  *src,
-                                          unsigned long  mask);
-  GdkGLDrawable* (*get_gl_drawable) (GdkGLContext *glcontext);
-  GdkGLConfig*   (*get_gl_config) (GdkGLContext *glcontext);
-  GdkGLContext*  (*get_share_list) (GdkGLContext *glcontext);
-  gboolean       (*is_direct) (GdkGLContext *glcontext);
-  int            (*get_render_type) (GdkGLContext *glcontext);
-  gboolean       (*make_current)(GdkGLContext  *glcontext,
-                                 GdkGLDrawable *draw,
-                                 GdkGLDrawable *read);
-  void           (*make_uncurrent)(GdkGLContext *glcontext);
 };
 
 GType          gdk_gl_context_get_type        (void);
