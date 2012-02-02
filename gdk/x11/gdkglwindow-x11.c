@@ -54,7 +54,7 @@ gdk_gl_window_impl_x11_init (GdkGLWindowImplX11 *self)
   self->is_destroyed = 0;
 }
 
-void
+static void
 _gdk_gl_window_destroy (GdkGLWindow *glwindow)
 {
   GdkGLWindowImplX11 *impl = GDK_GL_WINDOW_IMPL_X11 (glwindow);
@@ -113,6 +113,8 @@ gdk_gl_window_impl_x11_class_init (GdkGLWindowImplX11Class *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  klass->parent_class.destroy_window = _gdk_gl_window_destroy;
 
   object_class->finalize = gdk_gl_window_impl_x11_finalize;
 }

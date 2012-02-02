@@ -200,7 +200,7 @@ gdk_window_unset_gl_capability (GdkWindow *window)
   if (glwindow == NULL)
     return;
 
-  _gdk_gl_window_destroy (glwindow);
+  GDK_GL_WINDOW_GET_CLASS(glwindow)->destroy_window(glwindow);
 
   g_object_set_qdata (G_OBJECT (window), quark_gl_window, NULL);
 }

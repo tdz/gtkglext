@@ -49,6 +49,8 @@ struct _GdkGLWindow
 struct _GdkGLWindowClass
 {
   GObjectClass parent_class;
+
+  void (*destroy_window) (GdkGLWindow *glwindow);
 };
 
 GType        gdk_gl_window_get_type         (void);

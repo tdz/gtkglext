@@ -56,7 +56,7 @@ gdk_gl_window_impl_win32_init (GdkGLWindowImplWin32 *self)
   self->need_release_dc = 0;
 }
 
-void
+static void
 _gdk_gl_window_destroy (GdkGLWindow *glwindow)
 {
   GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (glwindow);
@@ -112,6 +112,8 @@ gdk_gl_window_impl_win32_class_init (GdkGLWindowImplWin32Class *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  klass->parent_class.destroy_window = _gdk_gl_window_destroy;
 
   object_class->finalize = gdk_gl_window_impl_win32_finalize;
 }
