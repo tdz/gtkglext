@@ -41,12 +41,12 @@
 
 #endif /* HAVE_LIBXMU */
 
-static GdkScreen* _gdk_x11_gl_config_get_screen (GdkGLConfig *glconfig);
-static gboolean   _gdk_x11_gl_config_get_attrib (GdkGLConfig *glconfig,
-                                                 int          attribute,
-                                                 int         *value);
-static GdkVisual* _gdk_x11_gl_config_get_visual (GdkGLConfig *glconfig);
-static gint       _gdk_x11_gl_config_get_depth  (GdkGLConfig *glconfig);
+static GdkScreen* _gdk_x11_gl_config_impl_get_screen (GdkGLConfig *glconfig);
+static gboolean   _gdk_x11_gl_config_impl_get_attrib (GdkGLConfig *glconfig,
+                                                      int          attribute,
+                                                      int         *value);
+static GdkVisual* _gdk_x11_gl_config_impl_get_visual (GdkGLConfig *glconfig);
+static gint       _gdk_x11_gl_config_impl_get_depth  (GdkGLConfig *glconfig);
 
 G_DEFINE_TYPE (GdkGLConfigImplX11,              \
                gdk_gl_config_impl_x11,          \
@@ -83,16 +83,16 @@ gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   klass->parent_class.create_new_gl_window = _gdk_x11_gl_window_new;
-  klass->parent_class.get_screen = _gdk_x11_gl_config_get_screen;
-  klass->parent_class.get_attrib = _gdk_x11_gl_config_get_attrib;
-  klass->parent_class.get_visual = _gdk_x11_gl_config_get_visual;
-  klass->parent_class.get_depth  = _gdk_x11_gl_config_get_depth;
+  klass->parent_class.get_screen = _gdk_x11_gl_config_impl_get_screen;
+  klass->parent_class.get_attrib = _gdk_x11_gl_config_impl_get_attrib;
+  klass->parent_class.get_visual = _gdk_x11_gl_config_impl_get_visual;
+  klass->parent_class.get_depth  = _gdk_x11_gl_config_impl_get_depth;
 
   object_class->finalize = gdk_gl_config_impl_x11_finalize;
 }
 
 static void
-gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
+gdk_x11_gl_config_impl_init_attrib (GdkGLConfig *glconfig)
 {
   GdkGLConfigImplX11 *impl;
   int value;
@@ -145,8 +145,8 @@ gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
 }
 
 static GdkGLConfig *
-gdk_gl_config_new_common (GdkScreen *screen,
-                          const int *attrib_list)
+gdk_x11_gl_config_impl_new_common (GdkScreen *screen,
+                                   const int *attrib_list)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplX11 *impl;
@@ -198,13 +198,13 @@ gdk_gl_config_new_common (GdkScreen *screen,
    * Init configuration attributes.
    */
 
-  gdk_gl_config_init_attrib (glconfig);
+  gdk_x11_gl_config_impl_init_attrib (glconfig);
 
   return glconfig;
 }
 
 GdkGLConfig *
-_gdk_x11_gl_config_new (const int *attrib_list)
+_gdk_x11_gl_config_impl_new (const int *attrib_list)
 {
   GdkScreen *screen;
 
@@ -214,19 +214,19 @@ _gdk_x11_gl_config_new (const int *attrib_list)
 
   screen = gdk_screen_get_default ();
 
-  return gdk_gl_config_new_common (screen, attrib_list);
+  return gdk_x11_gl_config_impl_new_common (screen, attrib_list);
 }
 
 GdkGLConfig *
-_gdk_x11_gl_config_new_for_screen (GdkScreen *screen,
-                              const int *attrib_list)
+_gdk_x11_gl_config_impl_new_for_screen (GdkScreen *screen,
+                                        const int *attrib_list)
 {
   GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
   g_return_val_if_fail (attrib_list != NULL, NULL);
 
-  return gdk_gl_config_new_common (screen, attrib_list);
+  return gdk_x11_gl_config_impl_new_common (screen, attrib_list);
 }
 
 /*
@@ -258,8 +258,8 @@ gdk_x11_gl_get_xvinfo (Display  *xdisplay,
 }
 
 static GdkGLConfig *
-gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
-                                            VisualID   xvisualid)
+gdk_x11_gl_config_impl_new_from_visualid_common (GdkScreen *screen,
+                                                 VisualID   xvisualid)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplX11 *impl;
@@ -317,7 +317,7 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
    * Init configuration attributes.
    */
 
-  gdk_gl_config_init_attrib (glconfig);
+  gdk_x11_gl_config_impl_init_attrib (glconfig);
 
   return glconfig;
 }
@@ -340,7 +340,7 @@ gdk_x11_gl_config_new_from_visualid (VisualID xvisualid)
 
   screen = gdk_screen_get_default ();
 
-  return gdk_x11_gl_config_new_from_visualid_common (screen, xvisualid);
+  return gdk_x11_gl_config_impl_new_from_visualid_common (screen, xvisualid);
 }
 
 /**
@@ -361,11 +361,11 @@ gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
-  return gdk_x11_gl_config_new_from_visualid_common (screen, xvisualid);
+  return gdk_x11_gl_config_impl_new_from_visualid_common (screen, xvisualid);
 }
 
 static GdkScreen *
-_gdk_x11_gl_config_get_screen (GdkGLConfig *glconfig)
+_gdk_x11_gl_config_impl_get_screen (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
 
@@ -373,9 +373,9 @@ _gdk_x11_gl_config_get_screen (GdkGLConfig *glconfig)
 }
 
 static gboolean
-_gdk_x11_gl_config_get_attrib (GdkGLConfig *glconfig,
-                               int          attribute,
-                               int         *value)
+_gdk_x11_gl_config_impl_get_attrib (GdkGLConfig *glconfig,
+                                    int          attribute,
+                                    int         *value)
 {
   GdkGLConfigImplX11 *impl;
   int ret;
@@ -390,7 +390,7 @@ _gdk_x11_gl_config_get_attrib (GdkGLConfig *glconfig,
 }
 
 static GdkVisual *
-_gdk_x11_gl_config_get_visual (GdkGLConfig *glconfig)
+_gdk_x11_gl_config_impl_get_visual (GdkGLConfig *glconfig)
 {
   GdkGLConfigImplX11 *impl;
 
@@ -402,7 +402,7 @@ _gdk_x11_gl_config_get_visual (GdkGLConfig *glconfig)
 }
 
 static gint
-_gdk_x11_gl_config_get_depth (GdkGLConfig *glconfig)
+_gdk_x11_gl_config_impl_get_depth (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), 0);
 

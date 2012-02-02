@@ -465,7 +465,7 @@ gdk_gl_config_new_for_display (GdkDisplay *display, const int *attrib_list)
 #ifdef GDKGLEXT_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY(display))
     {
-      glconfig = _gdk_x11_gl_config_new(attrib_list);
+      glconfig = _gdk_x11_gl_config_impl_new(attrib_list);
     }
   else
 #endif
@@ -520,7 +520,7 @@ gdk_gl_config_new_for_screen (GdkScreen *screen,
 #ifdef GDKGLEXT_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY(display))
     {
-      glconfig = _gdk_x11_gl_config_new_for_screen(screen, attrib_list);
+      glconfig = _gdk_x11_gl_config_impl_new_for_screen(screen, attrib_list);
     }
   else
 #endif
