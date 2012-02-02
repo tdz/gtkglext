@@ -250,7 +250,7 @@ gdk_gl_context_get_current ()
 #ifdef GDKGLEXT_WINDOWING_WIN32
   if (current == NULL)
     {
-      current = _gdk_win32_gl_context_get_current();
+      current = _gdk_win32_gl_context_impl_get_current();
     }
 #endif
 

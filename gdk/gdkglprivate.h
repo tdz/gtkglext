@@ -31,8 +31,6 @@ G_BEGIN_DECLS
 
 #define _GDK_GL_CONFIG_AS_SINGLE_MODE(glconfig) ((glconfig)->as_single_mode)
 
-void _gdk_gl_context_destroy (GdkGLContext  *glcontext);
-
 void _gdk_gl_window_get_size (GdkGLDrawable *gldrawable,
                               gint          *width,
                               gint          *height);

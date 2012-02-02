@@ -123,7 +123,7 @@ gdk_gl_window_impl_win32_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 {
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  iface->create_new_context   = _gdk_win32_gl_context_new;
+  iface->create_new_context   = _gdk_win32_gl_context_impl_new;
   iface->is_double_buffered   = _gdk_win32_gl_window_impl_is_double_buffered;
   iface->swap_buffers         = _gdk_win32_gl_window_impl_swap_buffers;
   iface->wait_gl              = _gdk_win32_gl_window_impl_wait_gl;

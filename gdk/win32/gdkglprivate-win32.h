@@ -31,13 +31,13 @@ int _gdk_win32_gl_config_impl_find_pixel_format (HDC                          hd
 
 void _gdk_win32_gl_print_pfd (PIXELFORMATDESCRIPTOR *pfd);
 
-GdkGLContext *_gdk_win32_gl_context_new (GdkGLDrawable *gldrawable,
-					 GdkGLContext  *share_list,
-					 gboolean       direct,
-					 int            render_type);
+GdkGLContext *_gdk_win32_gl_context_impl_new (GdkGLDrawable *gldrawable,
+                                              GdkGLContext  *share_list,
+                                              gboolean       direct,
+                                              int            render_type);
 
-void _gdk_gl_context_set_gl_drawable      (GdkGLContext  *glcontext,
-                                           GdkGLDrawable *gldrawable);
+void _gdk_win32_gl_context_impl_set_gl_drawable (GdkGLContext  *glcontext,
+                                                 GdkGLDrawable *gldrawable);
 /* currently unused. */
 /*
 void _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
