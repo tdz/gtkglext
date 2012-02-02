@@ -25,9 +25,9 @@
 
 G_BEGIN_DECLS
 
-int _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
-					    CONST PIXELFORMATDESCRIPTOR* req_pfd,
-					    PIXELFORMATDESCRIPTOR*       found_pfd);
+int _gdk_win32_gl_config_impl_find_pixel_format (HDC                          hdc,
+                                                 CONST PIXELFORMATDESCRIPTOR* req_pfd,
+                                                 PIXELFORMATDESCRIPTOR*       found_pfd);
 
 void _gdk_win32_gl_print_pfd (PIXELFORMATDESCRIPTOR *pfd);
 

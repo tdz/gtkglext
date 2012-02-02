@@ -27,12 +27,12 @@
 #include "gdkglconfig-win32.h"
 #include "gdkglwindow-win32.h"
 
-static GdkScreen * _gdk_win32_gl_config_get_screen (GdkGLConfig *glconfig);
-static gboolean    _gdk_win32_gl_config_get_attrib (GdkGLConfig *glconfig,
-                                                    int          attribute,
-                                                    int         *value);
-static GdkVisual * _gdk_win32_gl_config_get_visual (GdkGLConfig *glconfig);
-static gint        _gdk_win32_gl_config_get_depth  (GdkGLConfig *glconfig);
+static GdkScreen * _gdk_win32_gl_config_impl_get_screen (GdkGLConfig *glconfig);
+static gboolean    _gdk_win32_gl_config_impl_get_attrib (GdkGLConfig *glconfig,
+                                                         int          attribute,
+                                                         int         *value);
+static GdkVisual * _gdk_win32_gl_config_impl_get_visual (GdkGLConfig *glconfig);
+static gint        _gdk_win32_gl_config_impl_get_depth  (GdkGLConfig *glconfig);
 
 G_DEFINE_TYPE (GdkGLConfigImplWin32,            \
                gdk_gl_config_impl_win32,        \
@@ -64,10 +64,10 @@ gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   klass->parent_class.create_new_gl_window = _gdk_win32_gl_window_new;
-  klass->parent_class.get_screen = _gdk_win32_gl_config_get_screen;
-  klass->parent_class.get_attrib = _gdk_win32_gl_config_get_attrib;
-  klass->parent_class.get_visual = _gdk_win32_gl_config_get_visual;
-  klass->parent_class.get_depth  = _gdk_win32_gl_config_get_depth;
+  klass->parent_class.get_screen = _gdk_win32_gl_config_impl_get_screen;
+  klass->parent_class.get_attrib = _gdk_win32_gl_config_impl_get_attrib;
+  klass->parent_class.get_visual = _gdk_win32_gl_config_impl_get_visual;
+  klass->parent_class.get_depth  = _gdk_win32_gl_config_impl_get_depth;
 
   object_class->finalize = gdk_gl_config_impl_win32_finalize;
 }
@@ -236,9 +236,9 @@ gdk_gl_config_parse_attrib_list (const int             *attrib_list,
  */
 /*< private >*/
 int
-_gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
-					CONST PIXELFORMATDESCRIPTOR *req_pfd,
-					PIXELFORMATDESCRIPTOR       *found_pfd)
+_gdk_win32_gl_config_impl_find_pixel_format (HDC                          hdc,
+                                             CONST PIXELFORMATDESCRIPTOR *req_pfd,
+                                             PIXELFORMATDESCRIPTOR       *found_pfd)
 {
   PIXELFORMATDESCRIPTOR pfd, chosen_pfd;
   int pixel_format = 0;
@@ -288,8 +288,8 @@ _gdk_win32_gl_config_find_pixel_format (HDC                          hdc,
  */
 
 static gboolean
-gdk_gl_config_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
-			 PIXELFORMATDESCRIPTOR       *pfd)
+gdk_win32_gl_config_impl_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
+                                    PIXELFORMATDESCRIPTOR       *pfd)
 {
   HDC hdc;
   PIXELFORMATDESCRIPTOR temp_pfd;
@@ -309,7 +309,7 @@ gdk_gl_config_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
   w_pfd = *req_pfd;
   w_pfd.dwFlags &= ~PFD_DRAW_TO_BITMAP;
   w_pfd.dwFlags |= PFD_DRAW_TO_WINDOW;
-  w_pf = _gdk_win32_gl_config_find_pixel_format (hdc, &w_pfd, &w_pfd);
+  w_pf = _gdk_win32_gl_config_impl_find_pixel_format (hdc, &w_pfd, &w_pfd);
 
   GDK_GL_NOTE (MISC, g_message (" -- pixel format for windows = 0x%x", w_pf));
   GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&w_pfd));
@@ -317,7 +317,7 @@ gdk_gl_config_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
   b_pfd = *req_pfd;
   b_pfd.dwFlags &= ~PFD_DRAW_TO_WINDOW;
   b_pfd.dwFlags |= PFD_DRAW_TO_BITMAP;
-  b_pf = _gdk_win32_gl_config_find_pixel_format (hdc, &b_pfd, &b_pfd);
+  b_pf = _gdk_win32_gl_config_impl_find_pixel_format (hdc, &b_pfd, &b_pfd);
 
   GDK_GL_NOTE (MISC, g_message (" -- pixel format for bitmaps = 0x%x", b_pf));
   GDK_GL_NOTE (MISC, _gdk_win32_gl_print_pfd (&b_pfd));
@@ -376,7 +376,7 @@ gdk_gl_config_setup_pfd (CONST PIXELFORMATDESCRIPTOR *req_pfd,
 }
 
 static void
-gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
+gdk_win32_gl_config_impl_init_attrib (GdkGLConfig *glconfig)
 {
   PIXELFORMATDESCRIPTOR *pfd;
 
@@ -423,8 +423,8 @@ gdk_gl_config_init_attrib (GdkGLConfig *glconfig)
 }
 
 static GdkGLConfig *
-gdk_gl_config_new_common (GdkScreen *screen,
-                          const int *attrib_list)
+gdk_win32_gl_config_impl_new_common (GdkScreen *screen,
+                                     const int *attrib_list)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplWin32 *impl;
@@ -444,7 +444,7 @@ gdk_gl_config_new_common (GdkScreen *screen,
    * Setup PFD.
    */
 
-  if (!gdk_gl_config_setup_pfd (&pfd, &pfd))
+  if (!gdk_win32_gl_config_impl_setup_pfd (&pfd, &pfd))
     return NULL;
 
   GDK_GL_NOTE (MISC, g_message (" -- created PFD"));
@@ -471,13 +471,13 @@ gdk_gl_config_new_common (GdkScreen *screen,
    * Init configuration attributes.
    */
 
-  gdk_gl_config_init_attrib (glconfig);
+  gdk_win32_gl_config_impl_init_attrib (glconfig);
 
   return glconfig;
 }
 
 GdkGLConfig *
-_gdk_win32_gl_config_new (const int *attrib_list)
+_gdk_win32_gl_config_impl_new (const int *attrib_list)
 {
   GdkScreen *screen;
 
@@ -487,19 +487,19 @@ _gdk_win32_gl_config_new (const int *attrib_list)
 
   screen = gdk_screen_get_default ();
 
-  return gdk_gl_config_new_common (screen, attrib_list);
+  return gdk_win32_gl_config_impl_new_common (screen, attrib_list);
 }
 
 GdkGLConfig *
-_gdk_win32_gl_config_new_for_screen (GdkScreen *screen,
-                                     const int *attrib_list)
+_gdk_win32_gl_config_impl_new_for_screen (GdkScreen *screen,
+                                          const int *attrib_list)
 {
   GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
   g_return_val_if_fail (attrib_list != NULL, NULL);
 
-  return gdk_gl_config_new_common (screen, attrib_list);
+  return gdk_win32_gl_config_impl_new_common (screen, attrib_list);
 }
 
 GdkGLConfig *
@@ -559,13 +559,13 @@ gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
    * Init configuration attributes.
    */
 
-  gdk_gl_config_init_attrib (glconfig);
+  gdk_win32_gl_config_impl_init_attrib (glconfig);
 
   return glconfig;
 }
 
 static GdkScreen *
-_gdk_win32_gl_config_get_screen (GdkGLConfig *glconfig)
+_gdk_win32_gl_config_impl_get_screen (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
 
@@ -576,9 +576,9 @@ _gdk_win32_gl_config_get_screen (GdkGLConfig *glconfig)
  * This code is based on lib/glut/win32_glx.c of GLUT by Nate Robins.
  */
 static gboolean
-_gdk_win32_gl_config_get_attrib (GdkGLConfig *glconfig,
-                                 int          attribute,
-                                 int         *value)
+_gdk_win32_gl_config_impl_get_attrib (GdkGLConfig *glconfig,
+                                      int          attribute,
+                                      int         *value)
 {
   GdkGLConfigImplWin32 *impl;
 
@@ -679,7 +679,7 @@ _gdk_win32_gl_config_get_attrib (GdkGLConfig *glconfig,
 }
 
 static GdkVisual *
-_gdk_win32_gl_config_get_visual (GdkGLConfig *glconfig)
+_gdk_win32_gl_config_impl_get_visual (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
 
@@ -691,7 +691,7 @@ _gdk_win32_gl_config_get_visual (GdkGLConfig *glconfig)
 }
 
 static gint
-_gdk_win32_gl_config_get_depth (GdkGLConfig *glconfig)
+_gdk_win32_gl_config_impl_get_depth (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), 0);
 

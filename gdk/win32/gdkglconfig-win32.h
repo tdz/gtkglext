@@ -54,11 +54,11 @@ struct _GdkGLConfigImplWin32Class
 GType gdk_gl_config_impl_win32_get_type (void);
 
 GdkGLConfig *
-_gdk_win32_gl_config_new (const int *attrib_list);
+_gdk_win32_gl_config_impl_new (const int *attrib_list);
 
 GdkGLConfig *
-_gdk_win32_gl_config_new_for_screen (GdkScreen *screen,
-                                     const int *attrib_list);
+_gdk_win32_gl_config_impl_new_for_screen (GdkScreen *screen,
+                                          const int *attrib_list);
 
 G_END_DECLS
 
