@@ -63,7 +63,7 @@ gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  klass->parent_class.create_new_gl_window = _gdk_win32_gl_window_new;
+  klass->parent_class.create_new_gl_window = _gdk_win32_gl_window_impl_new;
   klass->parent_class.get_screen = _gdk_win32_gl_config_impl_get_screen;
   klass->parent_class.get_attrib = _gdk_win32_gl_config_impl_get_attrib;
   klass->parent_class.get_visual = _gdk_win32_gl_config_impl_get_visual;
