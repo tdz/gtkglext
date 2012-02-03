@@ -30,9 +30,9 @@
 
 #include <gdk/gdkglquery.h>
 
-static gboolean     gdk_gl_window_impl_x11_is_double_buffered   (GdkGLDrawable *gldrawable);
-static void         gdk_gl_window_impl_x11_swap_buffers         (GdkGLDrawable *gldrawable);
-static GdkGLConfig *gdk_gl_window_impl_x11_get_gl_config        (GdkGLDrawable *gldrawable);
+static gboolean     _gdk_x11_gl_window_impl_is_double_buffered   (GdkGLDrawable *gldrawable);
+static void         _gdk_x11_gl_window_impl_swap_buffers         (GdkGLDrawable *gldrawable);
+static GdkGLConfig *_gdk_x11_gl_window_impl_get_gl_config        (GdkGLDrawable *gldrawable);
 
 static void         gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface);
 
@@ -55,7 +55,7 @@ gdk_gl_window_impl_x11_init (GdkGLWindowImplX11 *self)
 }
 
 static void
-_gdk_gl_window_destroy (GdkGLWindow *glwindow)
+_gdk_x11_gl_window_impl_destroy (GdkGLWindow *glwindow)
 {
   GdkGLWindowImplX11 *impl = GDK_GL_WINDOW_IMPL_X11 (glwindow);
   Display *xdisplay;
@@ -100,7 +100,7 @@ gdk_gl_window_impl_x11_finalize (GObject *object)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  _gdk_gl_window_destroy (GDK_GL_WINDOW (object));
+  _gdk_x11_gl_window_impl_destroy (GDK_GL_WINDOW (object));
 
   g_object_unref (G_OBJECT (impl->glconfig));
 
@@ -114,7 +114,7 @@ gdk_gl_window_impl_x11_class_init (GdkGLWindowImplX11Class *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  klass->parent_class.destroy_window = _gdk_gl_window_destroy;
+  klass->parent_class.destroy_window = _gdk_x11_gl_window_impl_destroy;
 
   object_class->finalize = gdk_gl_window_impl_x11_finalize;
 }
@@ -125,11 +125,11 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   iface->create_new_context   = _gdk_x11_gl_context_new;
-  iface->is_double_buffered   =  gdk_gl_window_impl_x11_is_double_buffered;
-  iface->swap_buffers         =  gdk_gl_window_impl_x11_swap_buffers;
+  iface->is_double_buffered   = _gdk_x11_gl_window_impl_is_double_buffered;
+  iface->swap_buffers         = _gdk_x11_gl_window_impl_swap_buffers;
   iface->wait_gl              = _gdk_gl_drawable_impl_x11_wait_gl;
   iface->wait_gdk             = _gdk_gl_drawable_impl_x11_wait_gdk;
-  iface->get_gl_config        =  gdk_gl_window_impl_x11_get_gl_config;
+  iface->get_gl_config        = _gdk_x11_gl_window_impl_get_gl_config;
 }
 
 /*
@@ -137,9 +137,9 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
  * (first attribute of None). See GLX 1.3 spec.
  */
 GdkGLWindow *
-_gdk_x11_gl_window_new (GdkGLConfig *glconfig,
-                        GdkWindow   *window,
-                        const int   *attrib_list)
+_gdk_x11_gl_window_impl_new (GdkGLConfig *glconfig,
+                             GdkWindow   *window,
+                             const int   *attrib_list)
 {
   GdkGLWindow *glwindow;
   GdkGLWindowImplX11 *impl;
@@ -180,7 +180,7 @@ _gdk_x11_gl_window_new (GdkGLConfig *glconfig,
 }
 
 static gboolean
-gdk_gl_window_impl_x11_is_double_buffered (GdkGLDrawable *gldrawable)
+_gdk_x11_gl_window_impl_is_double_buffered (GdkGLDrawable *gldrawable)
 {
   g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (gldrawable), FALSE);
 
@@ -188,7 +188,7 @@ gdk_gl_window_impl_x11_is_double_buffered (GdkGLDrawable *gldrawable)
 }
 
 static void
-gdk_gl_window_impl_x11_swap_buffers (GdkGLDrawable *gldrawable)
+_gdk_x11_gl_window_impl_swap_buffers (GdkGLDrawable *gldrawable)
 {
   Display *xdisplay;
   Window glxwindow;
@@ -207,7 +207,7 @@ gdk_gl_window_impl_x11_swap_buffers (GdkGLDrawable *gldrawable)
 }
 
 static GdkGLConfig *
-gdk_gl_window_impl_x11_get_gl_config (GdkGLDrawable *gldrawable)
+_gdk_x11_gl_window_impl_get_gl_config (GdkGLDrawable *gldrawable)
 {
   g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (gldrawable), NULL);
 
