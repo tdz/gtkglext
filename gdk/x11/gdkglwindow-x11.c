@@ -114,7 +114,7 @@ gdk_gl_window_impl_x11_class_init (GdkGLWindowImplX11Class *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  klass->parent_class.destroy_window = _gdk_x11_gl_window_impl_destroy;
+  klass->parent_class.destroy_gl_window_impl = _gdk_x11_gl_window_impl_destroy;
 
   object_class->finalize = gdk_gl_window_impl_x11_finalize;
 }
@@ -124,12 +124,12 @@ gdk_gl_window_impl_x11_gl_drawable_interface_init (GdkGLDrawableClass *iface)
 {
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  iface->create_new_context   = _gdk_x11_gl_context_impl_new;
-  iface->is_double_buffered   = _gdk_x11_gl_window_impl_is_double_buffered;
-  iface->swap_buffers         = _gdk_x11_gl_window_impl_swap_buffers;
-  iface->wait_gl              = _gdk_gl_drawable_impl_x11_wait_gl;
-  iface->wait_gdk             = _gdk_gl_drawable_impl_x11_wait_gdk;
-  iface->get_gl_config        = _gdk_x11_gl_window_impl_get_gl_config;
+  iface->create_gl_context_impl = _gdk_x11_gl_context_impl_new;
+  iface->is_double_buffered = _gdk_x11_gl_window_impl_is_double_buffered;
+  iface->swap_buffers       = _gdk_x11_gl_window_impl_swap_buffers;
+  iface->wait_gl            = _gdk_gl_drawable_impl_x11_wait_gl;
+  iface->wait_gdk           = _gdk_gl_drawable_impl_x11_wait_gdk;
+  iface->get_gl_config      = _gdk_x11_gl_window_impl_get_gl_config;
 }
 
 /*

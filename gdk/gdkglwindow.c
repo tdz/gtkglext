@@ -81,9 +81,9 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
-  return GDK_GL_CONFIG_GET_CLASS (glconfig)->create_new_gl_window (glconfig,
-                                                                   window,
-                                                                   attrib_list);
+  return GDK_GL_CONFIG_GET_CLASS (glconfig)->create_gl_window_impl (glconfig,
+                                                                    window,
+                                                                    attrib_list);
 }
 
 /**
@@ -200,7 +200,7 @@ gdk_window_unset_gl_capability (GdkWindow *window)
   if (glwindow == NULL)
     return;
 
-  GDK_GL_WINDOW_GET_CLASS(glwindow)->destroy_window(glwindow);
+  GDK_GL_WINDOW_GET_CLASS(glwindow)->destroy_gl_window_impl(glwindow);
 
   g_object_set_qdata (G_OBJECT (window), quark_gl_window, NULL);
 }

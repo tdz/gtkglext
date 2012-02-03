@@ -56,7 +56,7 @@ gdk_gl_context_class_init (GdkGLContextClass *klass)
 {
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  klass->copy = NULL;
+  klass->copy_gl_context_impl = NULL;
   klass->get_gl_drawable = NULL;
   klass->get_gl_config = NULL;
   klass->get_share_list = NULL;
@@ -85,10 +85,10 @@ gdk_gl_context_new (GdkGLDrawable *gldrawable,
 {
   g_return_val_if_fail (GDK_IS_GL_DRAWABLE (gldrawable), NULL);
 
-  return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->create_new_context (gldrawable,
-                                                                     share_list,
-                                                                     direct,
-                                                                     render_type);
+  return GDK_GL_DRAWABLE_GET_CLASS (gldrawable)->create_gl_context_impl (gldrawable,
+                                                                         share_list,
+                                                                         direct,
+                                                                         render_type);
 }
 
 /**
@@ -112,7 +112,9 @@ gdk_gl_context_copy (GdkGLContext  *glcontext,
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (glcontext), FALSE);
 
-  return GDK_GL_CONTEXT_GET_CLASS (glcontext)->copy (glcontext, src, mask);
+  return GDK_GL_CONTEXT_GET_CLASS (glcontext)->copy_gl_context_impl (glcontext,
+                                                                     src,
+                                                                     mask);
 }
 
 /**

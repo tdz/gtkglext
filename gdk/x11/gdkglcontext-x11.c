@@ -138,7 +138,7 @@ gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  klass->parent_class.copy            = _gdk_x11_gl_context_impl_copy;
+  klass->parent_class.copy_gl_context_impl = _gdk_x11_gl_context_impl_copy;
   klass->parent_class.get_gl_drawable = _gdk_x11_gl_context_impl_get_gl_drawable;
   klass->parent_class.get_gl_config   = _gdk_x11_gl_context_impl_get_gl_config;
   klass->parent_class.get_share_list  = _gdk_x11_gl_context_impl_get_share_list;

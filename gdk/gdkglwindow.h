@@ -50,7 +50,7 @@ struct _GdkGLWindowClass
 {
   GObjectClass parent_class;
 
-  void (*destroy_window) (GdkGLWindow *glwindow);
+  void (*destroy_gl_window_impl) (GdkGLWindow *glwindow);
 };
 
 GType        gdk_gl_window_get_type         (void);

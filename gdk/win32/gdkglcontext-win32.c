@@ -133,7 +133,7 @@ gdk_gl_context_impl_win32_class_init (GdkGLContextImplWin32Class *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
-  klass->parent_class.copy            = _gdk_win32_gl_context_impl_copy;
+  klass->parent_class.copy_gl_context_impl = _gdk_win32_gl_context_impl_copy;
   klass->parent_class.get_gl_drawable = _gdk_win32_gl_context_impl_get_gl_drawable;
   klass->parent_class.get_gl_config   = _gdk_win32_gl_context_impl_get_gl_config;
   klass->parent_class.get_share_list  = _gdk_win32_gl_context_impl_get_share_list;

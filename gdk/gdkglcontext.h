@@ -46,9 +46,9 @@ struct _GdkGLContextClass
 {
   GObjectClass parent_class;
 
-  gboolean       (*copy) (GdkGLContext  *glcontext,
-                          GdkGLContext  *src,
-                          unsigned long  mask);
+  gboolean       (*copy_gl_context_impl) (GdkGLContext  *glcontext,
+                                          GdkGLContext  *src,
+                                          unsigned long  mask);
   GdkGLDrawable* (*get_gl_drawable) (GdkGLContext *glcontext);
   GdkGLConfig*   (*get_gl_config) (GdkGLContext *glcontext);
   GdkGLContext*  (*get_share_list) (GdkGLContext *glcontext);
