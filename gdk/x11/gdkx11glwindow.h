@@ -29,6 +29,22 @@
 
 G_BEGIN_DECLS
 
+#define GDK_TYPE_X11_GL_WINDOW             (gdk_x11_gl_window_get_type ())
+#define GDK_X11_GL_WINDOW(object)          (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_GL_WINDOW, GdkX11GLWindow))
+#define GDK_X11_GL_WINDOW_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_GL_WINDOW, GdkX11GLWindowClass))
+#define GDK_IS_X11_GL_WINDOW(object)       (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_GL_WINDOW))
+#define GDK_IS_X11_GL_WINDOW_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_GL_WINDOW))
+#define GDK_X11_GL_WINDOW_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_GL_WINDOW, GdkX11GLWindowClass))
+
+#ifdef INSIDE_GDK_GL_X11
+typedef struct _GdkX11GLWindow GdkX11GLWindow;
+#else
+typedef GdkGLWindow GdkX11GLWindow;
+#endif
+typedef struct _GdkX11GLWindowClass GdkX11GLWindowClass;
+
+GType         gdk_x11_gl_window_get_type (void);
+
 Window        gdk_x11_gl_window_get_glxwindow     (GdkGLWindow  *glwindow);
 
 #ifdef INSIDE_GDK_GL_X11
