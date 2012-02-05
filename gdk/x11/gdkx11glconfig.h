@@ -28,6 +28,22 @@
 
 G_BEGIN_DECLS
 
+#define GDK_TYPE_X11_GL_CONFIG             (gdk_x11_gl_config_get_type ())
+#define GDK_X11_GL_CONFIG(object)          (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_GL_CONFIG, GdkX11GLConfig))
+#define GDK_X11_GL_CONFIG_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_GL_CONFIG, GdkX11GLConfigClass))
+#define GDK_IS_X11_GL_CONFIG(object)       (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_GL_CONFIG))
+#define GDK_IS_X11_GL_CONFIG_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_GL_CONFIG))
+#define GDK_X11_GL_CONFIG_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_GL_CONFIG, GdkX11GLConfigClass))
+
+#ifdef INSIDE_GDK_GL_X11
+typedef struct _GdkX11GLConfig GdkX11GLConfig;
+#else
+typedef GdkGLConfig GdkX11GLConfig;
+#endif
+typedef struct _GdkX11GLConfigClass GdkX11GLConfigClass;
+
+GType         gdk_x11_gl_config_get_type (void);
+
 #ifndef GDK_MULTIHEAD_SAFE
 GdkGLConfig  *gdk_x11_gl_config_new_from_visualid            (VisualID   xvisualid);
 #endif /* GDK_MULTIHEAD_SAFE */
