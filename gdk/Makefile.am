@@ -61,7 +61,8 @@ gdkglext_public_h_sources = \
 
 gdkglext_private_h_sources = \
 	gdkglconfigimpl.h \
-	gdkglprivate.h
+	gdkglprivate.h \
+	gdkglwindowimpl.h
 
 gdkglext_built_public_h_sources = \
 	gdkglenumtypes.h
@@ -74,7 +75,8 @@ gdkglext_c_sources = \
 	gdkglconfigimpl.c \
 	gdkglcontext.c		\
 	gdkgldrawable.c		\
-	gdkglwindow.c
+	gdkglwindow.c \
+	gdkglwindowimpl.c
 
 gdkglext_built_c_sources = \
 	gdkglenumtypes.c
