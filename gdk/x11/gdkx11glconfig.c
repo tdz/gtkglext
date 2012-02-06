@@ -23,6 +23,8 @@
 #include <gdk/gdkgldebug.h>
 #include <gdk/x11/gdkglx.h>
 
+#include "gdkglconfig-x11.h"
+
 struct _GdkX11GLConfig
 {
   GdkGLConfig parent;
@@ -57,4 +59,94 @@ gdk_x11_gl_config_class_init (GdkX11GLConfigClass *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   object_class->finalize = gdk_x11_gl_config_finalize;
+}
+
+/**
+ * gdk_x11_gl_config_new_from_visualid:
+ * @xvisualid: visual ID.
+ *
+ * Creates #GdkGLConfig from given visual ID that specifies the OpenGL-capable
+ * visual.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_x11_gl_config_new_from_visualid (VisualID xvisualid)
+{
+  GdkScreen *screen;
+
+  GDK_GL_NOTE_FUNC ();
+
+  screen = gdk_screen_get_default ();
+
+  return _gdk_x11_gl_config_impl_new_from_visualid_for_screen (screen, xvisualid);
+}
+
+/**
+ * gdk_x11_gl_config_new_from_visualid_for_screen:
+ * @screen: target screen.
+ * @xvisualid: visual ID.
+ *
+ * Creates #GdkGLConfig from given visual ID that specifies the OpenGL-capable
+ * visual.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
+                                                VisualID   xvisualid)
+{
+  GDK_GL_NOTE_FUNC ();
+
+  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+
+  return _gdk_x11_gl_config_impl_new_from_visualid_for_screen (screen, xvisualid);
+}
+
+/**
+ * gdk_x11_gl_config_get_xdisplay:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Gets X Display.
+ *
+ * Return value: pointer to the Display.
+ **/
+Display *
+gdk_x11_gl_config_get_xdisplay (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
+
+  return GDK_GL_CONFIG_IMPL_X11_CLASS (glconfig)->get_xdisplay(glconfig);
+}
+
+/**
+ * gdk_x11_gl_config_get_screen_number:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Gets X screen number.
+ *
+ * Return value: the screen number.
+ **/
+int
+gdk_x11_gl_config_get_screen_number (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), 0);
+
+  return GDK_GL_CONFIG_IMPL_X11_CLASS (glconfig)->get_screen_number(glconfig);
+}
+
+/**
+ * gdk_x11_gl_config_get_xvinfo:
+ * @glconfig: a #GdkGLConfig.
+ *
+ * Gets XVisualInfo data.
+ *
+ * Return value: pointer to the XVisualInfo data.
+ **/
+XVisualInfo *
+gdk_x11_gl_config_get_xvinfo (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
+
+  return GDK_GL_CONFIG_IMPL_X11_CLASS (glconfig)->get_xvinfo(glconfig);
 }
