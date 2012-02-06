@@ -171,12 +171,6 @@ gdk_gl_config_new_common (GdkScreen *screen,
 
   impl->screen = screen;
 
-  /* Using Mesa? */
-  if (strstr (glXQueryServerString (xdisplay, screen_num, GLX_VERSION), "Mesa"))
-    impl->is_mesa_glx = TRUE;
-  else
-    impl->is_mesa_glx = FALSE;
-
   /* RGBA mode? */
   glXGetConfig (xdisplay, xvinfo, GLX_RGBA, &is_rgba);
 
@@ -324,12 +318,6 @@ gdk_x11_gl_config_new_from_visualid_common (GdkScreen *screen,
   impl->xvinfo = xvinfo;
 
   impl->screen = screen;
-
-  /* Using Mesa? */
-  if (strstr (glXQueryServerString (xdisplay, screen_num, GLX_VERSION), "Mesa"))
-    impl->is_mesa_glx = TRUE;
-  else
-    impl->is_mesa_glx = FALSE;
 
   /* RGBA mode? */
   glXGetConfig (xdisplay, xvinfo, GLX_RGBA, &is_rgba);
@@ -511,20 +499,4 @@ gdk_x11_gl_config_get_xvinfo (GdkGLConfig *glconfig)
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo;
-}
-
-/**
- * gdk_x11_gl_config_is_mesa_glx:
- * @glconfig: a #GdkGLConfig.
- *
- * Returns whether the server's GLX entension is Mesa.
- *
- * Return value: TRUE if Mesa GLX, FALSE otherwise.
- **/
-gboolean
-gdk_x11_gl_config_is_mesa_glx (GdkGLConfig *glconfig)
-{
-  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), FALSE);
-
-  return GDK_GL_CONFIG_IMPL_X11 (glconfig)->is_mesa_glx;
 }
