@@ -36,7 +36,8 @@ gdkglext_win32_c_sources = \
 	gdkglconfig-win32.c	\
 	gdkglcontext-win32.c	\
 	gdkgldrawable-win32.c	\
-	gdkglwindow-win32.c
+	gdkglwindow-win32.c \
+	gdkwin32glconfig.c
 
 gdkglext_headers = \
 	$(gdkglext_public_h_sources)

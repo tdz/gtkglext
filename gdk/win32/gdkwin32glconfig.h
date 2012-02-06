@@ -28,6 +28,22 @@
 
 G_BEGIN_DECLS
 
+#define GDK_TYPE_WIN32_GL_CONFIG            (gdk_win32_gl_config_get_type ())
+#define GDK_WIN32_GL_CONFIG(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_GL_CONFIG, GdkWin32GLConfig))
+#define GDK_WIN32_GL_CONFIG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_GL_CONFIG, GdkWin32GLConfigClass))
+#define GDK_IS_WIN32_GL_CONFIG(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_GL_CONFIG))
+#define GDK_IS_WIN32_GL_CONFIG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WIN32_GL_CONFIG))
+#define GDK_WIN32_GL_CONFIG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_GL_CONFIG, GdkWin32GLConfigClass))
+
+#ifdef INSIDE_GDK_GL_WIN32
+typedef struct _GdkWin32GLConfig GdkWin32GLConfig;
+#else
+typedef GdkGLConfig GdkWin32GLConfig;
+#endif
+typedef struct _GdkWin32GLConfigClass GdkWin32GLConfigClass;
+
+GType                 gdk_win32_gl_config_get_type (void);
+
 GdkGLConfig           *gdk_win32_gl_config_new_from_pixel_format (int pixel_format);
 
 PIXELFORMATDESCRIPTOR *gdk_win32_gl_config_get_pfd               (GdkGLConfig   *glconfig);
