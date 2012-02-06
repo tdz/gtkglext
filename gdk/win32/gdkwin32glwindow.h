@@ -24,6 +24,22 @@
 
 G_BEGIN_DECLS
 
+#define GDK_TYPE_WIN32_GL_WINDOW            (gdk_win32_gl_window_get_type ())
+#define GDK_WIN32_GL_WINDOW(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_GL_WINDOW, GdkWin32GLWindow))
+#define GDK_WIN32_GL_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_GL_WINDOW, GdkWin32GLWindowClass))
+#define GDK_IS_WIN32_GL_WINDOW(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_GL_WINDOW))
+#define GDK_IS_WIN32_GL_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WIN32_GL_WINDOW))
+#define GDK_WIN32_GL_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_GL_WINDOW, GdkWin32GLWindowClass))
+
+#ifdef INSIDE_GDK_GL_WIN32
+typedef struct _GdkWin32GLWindow GdkWin32GLWindow;
+#else
+typedef GdkGLWindow GdkWin32GLWindow;
+#endif
+typedef struct _GdkWin32GLWindowClass GdkWin32GLWindowClass;
+
+GType                  gdk_win32_gl_window_get_type (void);
+
 PIXELFORMATDESCRIPTOR *gdk_win32_gl_window_get_pfd          (GdkGLWindow   *glwindow);
 int                    gdk_win32_gl_window_get_pixel_format (GdkGLWindow   *glwindow);
 
