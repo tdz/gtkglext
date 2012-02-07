@@ -56,6 +56,9 @@ struct _GdkGLWindowImplWin32
 struct _GdkGLWindowImplWin32Class
 {
   GdkGLWindowClass parent_class;
+
+  PIXELFORMATDESCRIPTOR* (*get_pfd)          (GdkGLWindow   *glwindow);
+  int                    (*get_pixel_format) (GdkGLWindow   *glwindow);
 };
 
 GType gdk_gl_window_impl_win32_get_type (void);

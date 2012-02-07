@@ -23,6 +23,8 @@
 #include <gdk/gdkgldebug.h>
 #include <gdk/win32/gdkglwin32.h>
 
+#include "gdkglwindow-win32.h"
+
 struct _GdkWin32GLWindow
 {
   GdkGLWindow parent;
@@ -57,4 +59,20 @@ gdk_win32_gl_window_class_init (GdkWin32GLWindowClass *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   object_class->finalize = gdk_win32_gl_window_finalize;
+}
+
+PIXELFORMATDESCRIPTOR *
+gdk_win32_gl_window_get_pfd (GdkGLWindow *glwindow)
+{
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (glwindow), NULL);
+
+  return GDK_GL_WINDOW_IMPL_WIN32_CLASS (glwindow)->get_pfd(glwindow);
+}
+
+int
+gdk_win32_gl_window_get_pixel_format (GdkGLWindow *glwindow)
+{
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (glwindow), 0);
+
+  return GDK_GL_WINDOW_IMPL_WIN32_CLASS (glwindow)->get_pixel_format(glwindow);
 }
