@@ -43,6 +43,7 @@ static int            _gdk_x11_gl_context_impl_get_render_type  (GdkGLContext *g
 static gboolean       _gdk_x11_gl_context_impl_make_current     (GdkGLContext  *glcontext,
                                                                  GdkGLDrawable *draw,
                                                                  GdkGLDrawable *read);
+static GLXContext     _gdk_x11_gl_context_impl_get_glxcontext   (GdkGLContext *glcontext);
 
 G_DEFINE_TYPE (GdkGLContextImplX11,             \
                gdk_gl_context_impl_x11,         \
@@ -137,6 +138,8 @@ gdk_gl_context_impl_x11_class_init (GdkGLContextImplX11Class *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  klass->get_glxcontext = _gdk_x11_gl_context_impl_get_glxcontext;
 
   klass->parent_class.copy_gl_context_impl = _gdk_x11_gl_context_impl_copy;
   klass->parent_class.get_gl_drawable = _gdk_x11_gl_context_impl_get_gl_drawable;
@@ -276,21 +279,10 @@ _gdk_x11_gl_context_impl_new (GdkGLDrawable *gldrawable,
                                              FALSE);
 }
 
-/**
- * gdk_x11_gl_context_foreign_new:
- * @glconfig: #GdkGLConfig that represents the visual the GLXContext uses.
- * @share_list: the #GdkGLContext which shares display lists with the
- *              GLXContext, or NULL.
- * @glxcontext: exsisting GLXContext.
- *
- * Creates #GdkGLContext from existing GLXContext.
- *
- * Return value: the newly-created #GdkGLContext wrapper.
- **/
 GdkGLContext *
-gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
-                                GdkGLContext *share_list,
-                                GLXContext    glxcontext)
+_gdk_x11_gl_context_impl_new_from_glxcontext (GdkGLConfig  *glconfig,
+                                              GdkGLContext *share_list,
+                                              GLXContext    glxcontext)
 {
   GDK_GL_NOTE_FUNC ();
 
@@ -518,16 +510,8 @@ _gdk_x11_gl_context_impl_get_current (void)
   return current;
 }
 
-/**
- * gdk_x11_gl_context_get_glxcontext:
- * @glcontext: a #GdkGLContext.
- *
- * Gets GLXContext.
- *
- * Return value: the GLXContext.
- **/
 GLXContext
-gdk_x11_gl_context_get_glxcontext (GdkGLContext *glcontext)
+_gdk_x11_gl_context_impl_get_glxcontext (GdkGLContext *glcontext)
 {
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), NULL);
 

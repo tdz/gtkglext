@@ -23,6 +23,8 @@
 #include <gdk/gdkgldebug.h>
 #include <gdk/x11/gdkglx.h>
 
+#include "gdkglcontext-x11.h"
+
 struct _GdkX11GLContext
 {
   GdkGLContext parent;
@@ -57,4 +59,43 @@ gdk_x11_gl_context_class_init (GdkX11GLContextClass *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   object_class->finalize = gdk_x11_gl_context_finalize;
+}
+
+/**
+ * gdk_x11_gl_context_foreign_new:
+ * @glconfig: #GdkGLConfig that represents the visual the GLXContext uses.
+ * @share_list: the #GdkGLContext which shares display lists with the
+ *              GLXContext, or NULL.
+ * @glxcontext: exsisting GLXContext.
+ *
+ * Creates #GdkGLContext from existing GLXContext.
+ *
+ * Return value: the newly-created #GdkGLContext wrapper.
+ **/
+GdkGLContext *
+gdk_x11_gl_context_foreign_new (GdkGLConfig  *glconfig,
+                                GdkGLContext *share_list,
+                                GLXContext    glxcontext)
+{
+  GDK_GL_NOTE_FUNC ();
+
+  return _gdk_x11_gl_context_impl_new_from_glxcontext(glconfig,
+                                                      share_list,
+                                                      glxcontext);
+}
+
+/**
+ * gdk_x11_gl_context_get_glxcontext:
+ * @glcontext: a #GdkGLContext.
+ *
+ * Gets GLXContext.
+ *
+ * Return value: the GLXContext.
+ **/
+GLXContext
+gdk_x11_gl_context_get_glxcontext (GdkGLContext *glcontext)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), NULL);
+
+  return GDK_GL_CONTEXT_IMPL_X11_CLASS (glcontext)->get_glxcontext(glcontext);
 }
