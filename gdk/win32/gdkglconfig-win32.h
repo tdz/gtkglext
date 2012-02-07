@@ -49,16 +49,16 @@ struct _GdkGLConfigImplWin32
 struct _GdkGLConfigImplWin32Class
 {
   GdkGLConfigClass parent_class;
+
+  PIXELFORMATDESCRIPTOR*  (*get_pfd) (GdkGLConfig *glconfig);
 };
 
 GType gdk_gl_config_impl_win32_get_type (void);
 
-GdkGLConfig *
-_gdk_win32_gl_config_impl_new (const int *attrib_list);
-
-GdkGLConfig *
-_gdk_win32_gl_config_impl_new_for_screen (GdkScreen *screen,
-                                          const int *attrib_list);
+GdkGLConfig *_gdk_win32_gl_config_impl_new                    (const int *attrib_list);
+GdkGLConfig *_gdk_win32_gl_config_impl_new_for_screen         (GdkScreen *screen,
+                                                               const int *attrib_list);
+GdkGLConfig *_gdk_win32_gl_config_impl_new_from_pixel_format  (int pixel_format);
 
 G_END_DECLS
 

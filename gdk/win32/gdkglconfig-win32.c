@@ -27,12 +27,13 @@
 #include "gdkglconfig-win32.h"
 #include "gdkglwindow-win32.h"
 
-static GdkScreen * _gdk_win32_gl_config_impl_get_screen (GdkGLConfig *glconfig);
-static gboolean    _gdk_win32_gl_config_impl_get_attrib (GdkGLConfig *glconfig,
-                                                         int          attribute,
-                                                         int         *value);
-static GdkVisual * _gdk_win32_gl_config_impl_get_visual (GdkGLConfig *glconfig);
-static gint        _gdk_win32_gl_config_impl_get_depth  (GdkGLConfig *glconfig);
+static GdkScreen              *_gdk_win32_gl_config_impl_get_screen (GdkGLConfig *glconfig);
+static gboolean                _gdk_win32_gl_config_impl_get_attrib (GdkGLConfig *glconfig,
+                                                                     int          attribute,
+                                                                     int         *value);
+static GdkVisual              *_gdk_win32_gl_config_impl_get_visual (GdkGLConfig *glconfig);
+static gint                    _gdk_win32_gl_config_impl_get_depth  (GdkGLConfig *glconfig);
+static PIXELFORMATDESCRIPTOR  *_gdk_win32_gl_config_impl_get_pfd    (GdkGLConfig *glconfig);
 
 G_DEFINE_TYPE (GdkGLConfigImplWin32,            \
                gdk_gl_config_impl_win32,        \
@@ -62,6 +63,8 @@ gdk_gl_config_impl_win32_class_init (GdkGLConfigImplWin32Class *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  klass->get_pfd = _gdk_win32_gl_config_impl_get_pfd;
 
   klass->parent_class.create_gl_window_impl = _gdk_win32_gl_window_impl_new;
   klass->parent_class.get_screen = _gdk_win32_gl_config_impl_get_screen;
@@ -503,7 +506,7 @@ _gdk_win32_gl_config_impl_new_for_screen (GdkScreen *screen,
 }
 
 GdkGLConfig *
-gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
+_gdk_win32_gl_config_impl_new_from_pixel_format (int pixel_format)
 {
   GdkGLConfig *glconfig;
   GdkGLConfigImplWin32 *impl;
@@ -698,8 +701,8 @@ _gdk_win32_gl_config_impl_get_depth (GdkGLConfig *glconfig)
   return GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->depth;
 }
 
-PIXELFORMATDESCRIPTOR *
-gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
+static PIXELFORMATDESCRIPTOR *
+_gdk_win32_gl_config_impl_get_pfd (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
 

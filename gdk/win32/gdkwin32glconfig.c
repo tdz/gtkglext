@@ -23,6 +23,8 @@
 #include <gdk/gdkgldebug.h>
 #include <gdk/win32/gdkglwin32.h>
 
+#include "gdkglconfig-win32.h"
+
 struct _GdkWin32GLConfig
 {
   GdkGLConfig parent;
@@ -57,4 +59,18 @@ gdk_win32_gl_config_class_init (GdkWin32GLConfigClass *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   object_class->finalize = gdk_win32_gl_config_finalize;
+}
+
+GdkGLConfig *
+gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
+{
+  return _gdk_win32_gl_config_impl_new_from_pixel_format(pixel_format);
+}
+
+PIXELFORMATDESCRIPTOR *
+gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
+
+  return GDK_GL_CONFIG_IMPL_WIN32_CLASS (glconfig)->get_pfd(glconfig);
 }
