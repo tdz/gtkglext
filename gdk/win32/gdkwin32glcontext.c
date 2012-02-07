@@ -23,6 +23,8 @@
 #include <gdk/gdkgldebug.h>
 #include <gdk/win32/gdkglwin32.h>
 
+#include "gdkglcontext-win32.h"
+
 struct _GdkWin32GLContext
 {
   GdkGLContext parent;
@@ -57,4 +59,24 @@ gdk_win32_gl_context_class_init (GdkWin32GLContextClass *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   object_class->finalize = gdk_win32_gl_context_finalize;
+}
+
+GdkGLContext *
+gdk_win32_gl_context_foreign_new (GdkGLConfig  *glconfig,
+                                  GdkGLContext *share_list,
+                                  HGLRC         hglrc)
+{
+  GDK_GL_NOTE_FUNC ();
+
+  return _gdk_win32_gl_context_impl_new_from_hglrc (glconfig,
+                                                    share_list,
+                                                    hglrc);
+}
+
+HGLRC
+gdk_win32_gl_context_get_hglrc (GdkGLContext *glcontext)
+{
+  g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), NULL);
+
+  return GDK_GL_CONTEXT_IMPL_WIN32_CLASS (glcontext)->get_hglrc(glcontext);
 }

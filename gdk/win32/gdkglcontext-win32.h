@@ -55,12 +55,16 @@ struct _GdkGLContextImplWin32
 struct _GdkGLContextImplWin32Class
 {
   GdkGLContextClass parent_class;
+
+  HGLRC (*get_hglrc)  (GdkGLContext  *glcontext);
 };
 
 GType gdk_gl_context_impl_win32_get_type (void);
 
-GdkGLContext *
-_gdk_win32_gl_context_impl_get_current (void);
+GdkGLContext  *_gdk_win32_gl_context_impl_new_from_hglrc (GdkGLConfig  *glconfig,
+                                                          GdkGLContext *share_list,
+                                                          HGLRC         hglrc);
+GdkGLContext  *_gdk_win32_gl_context_impl_get_current    (void);
 
 G_END_DECLS
 
