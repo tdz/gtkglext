@@ -50,6 +50,8 @@ struct _GdkGLWindowImplX11
 struct _GdkGLWindowImplX11Class
 {
   GdkGLWindowClass parent_class;
+
+  Window (*get_glxwindow) (GdkGLWindow *glwindow);
 };
 
 GType gdk_gl_window_impl_x11_get_type (void);

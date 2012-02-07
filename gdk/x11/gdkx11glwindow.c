@@ -23,6 +23,8 @@
 #include <gdk/gdkgldebug.h>
 #include <gdk/x11/gdkglx.h>
 
+#include "gdkglwindow-x11.h"
+
 struct _GdkX11GLWindow
 {
   GdkGLWindow parent;
@@ -57,4 +59,20 @@ gdk_x11_gl_window_class_init (GdkX11GLWindowClass *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   object_class->finalize = gdk_x11_gl_window_finalize;
+}
+
+/**
+ * gdk_x11_gl_window_get_glxwindow:
+ * @glwindow: a #GdkGLWindow.
+ *
+ * Gets X Window.
+ *
+ * Return value: the Window.
+ **/
+Window
+gdk_x11_gl_window_get_glxwindow (GdkGLWindow *glwindow)
+{
+  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (glwindow), None);
+
+  return GDK_GL_WINDOW_IMPL_X11_CLASS (glwindow)->get_glxwindow(glwindow);
 }
