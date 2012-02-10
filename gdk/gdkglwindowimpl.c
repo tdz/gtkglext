@@ -48,5 +48,12 @@ gdk_gl_window_impl_class_init (GdkGLWindowImplClass *klass)
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
+  klass->create_gl_context  = NULL;
+  klass->is_double_buffered = NULL;
+  klass->swap_buffers       = NULL;
+  klass->wait_gl            = NULL;
+  klass->wait_gdk           = NULL;
+  klass->get_gl_config      = NULL;
+
   object_class->finalize = gdk_gl_window_impl_finalize;
 }
