@@ -62,6 +62,68 @@ gdk_x11_gl_config_class_init (GdkX11GLConfigClass *klass)
 }
 
 /**
+ * gdk_x11_gl_config_new_for_display:
+ * @display: display.
+ * @attrib_list: the attribute list.
+ *
+ * Creates a #GdkGLConfig on the given display.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_x11_gl_config_new_for_display(GdkDisplay *display, const int *attrib_list)
+{
+  GdkGLConfig *glconfig;
+  GdkGLConfig *impl;
+
+  g_return_val_if_fail(GDK_IS_X11_DISPLAY(display), NULL);
+
+  glconfig = g_object_new(GDK_TYPE_X11_GL_CONFIG, NULL);
+
+  g_return_val_if_fail(glconfig != NULL, NULL);
+
+  impl = _gdk_x11_gl_config_impl_new(glconfig, attrib_list);
+
+  if (impl == NULL)
+    g_object_unref(glconfig);
+
+  g_return_val_if_fail(impl != NULL, NULL);
+
+  return glconfig;
+}
+
+/**
+ * gdk_x11_gl_config_new_for_screen:
+ * @screen: target screen.
+ * @attrib_list: the attribute list.
+ *
+ * Creates a #GdkGLConfig on the given display.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_x11_gl_config_new_for_screen(GdkScreen *screen, const int *attrib_list)
+{
+  GdkGLConfig *glconfig;
+  GdkGLConfig *impl;
+
+  g_return_val_if_fail(GDK_IS_X11_SCREEN(screen), NULL);
+
+  glconfig = g_object_new(GDK_TYPE_X11_GL_CONFIG, NULL);
+
+  g_return_val_if_fail(glconfig != NULL, NULL);
+
+  impl = _gdk_x11_gl_config_impl_new(glconfig, attrib_list);
+
+  if (impl == NULL)
+    g_object_unref(glconfig);
+
+  g_return_val_if_fail(impl != NULL, NULL);
+
+  return glconfig;
+}
+
+/**
  * gdk_x11_gl_config_new_from_visualid:
  * @xvisualid: visual ID.
  *
@@ -74,12 +136,26 @@ GdkGLConfig *
 gdk_x11_gl_config_new_from_visualid (VisualID xvisualid)
 {
   GdkScreen *screen;
+  GdkGLConfig *glconfig;
+  GdkGLConfig *impl;
 
   GDK_GL_NOTE_FUNC ();
 
   screen = gdk_screen_get_default ();
 
-  return _gdk_x11_gl_config_impl_new_from_visualid_for_screen (screen, xvisualid);
+  glconfig = g_object_new(GDK_TYPE_X11_GL_CONFIG, NULL);
+
+  g_return_val_if_fail(glconfig != NULL, NULL);
+
+  impl = _gdk_x11_gl_config_impl_new_from_visualid_for_screen (glconfig,
+                                                               screen,
+                                                               xvisualid);
+  if (impl == NULL)
+    g_object_unref(glconfig);
+
+  g_return_val_if_fail(impl != NULL, NULL);
+
+  return glconfig;
 }
 
 /**
@@ -96,11 +172,26 @@ GdkGLConfig *
 gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
                                                 VisualID   xvisualid)
 {
+  GdkGLConfig *glconfig;
+  GdkGLConfig *impl;
+
   GDK_GL_NOTE_FUNC ();
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
-  return _gdk_x11_gl_config_impl_new_from_visualid_for_screen (screen, xvisualid);
+  glconfig = g_object_new(GDK_TYPE_X11_GL_CONFIG, NULL);
+
+  g_return_val_if_fail(glconfig != NULL, NULL);
+
+  impl = _gdk_x11_gl_config_impl_new_from_visualid_for_screen (glconfig,
+                                                               screen,
+                                                               xvisualid);
+  if (impl == NULL)
+    g_object_unref(glconfig);
+
+  g_return_val_if_fail(impl != NULL, NULL);
+
+  return glconfig;
 }
 
 /**
@@ -114,7 +205,7 @@ gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
 Display *
 gdk_x11_gl_config_get_xdisplay (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_X11_GL_CONFIG (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_X11_CLASS (glconfig)->get_xdisplay(glconfig);
 }
@@ -130,7 +221,7 @@ gdk_x11_gl_config_get_xdisplay (GdkGLConfig *glconfig)
 int
 gdk_x11_gl_config_get_screen_number (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), 0);
+  g_return_val_if_fail (GDK_IS_X11_GL_CONFIG (glconfig), 0);
 
   return GDK_GL_CONFIG_IMPL_X11_CLASS (glconfig)->get_screen_number(glconfig);
 }
@@ -146,7 +237,7 @@ gdk_x11_gl_config_get_screen_number (GdkGLConfig *glconfig)
 XVisualInfo *
 gdk_x11_gl_config_get_xvinfo (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_X11_GL_CONFIG (glconfig), NULL);
 
   return GDK_GL_CONFIG_IMPL_X11_CLASS (glconfig)->get_xvinfo(glconfig);
 }

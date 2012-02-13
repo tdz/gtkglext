@@ -152,7 +152,7 @@ _gdk_x11_gl_window_impl_new (GdkGLConfig *glconfig,
 
   GDK_GL_NOTE_FUNC ();
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_X11_GL_CONFIG (glconfig), NULL);
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
 
   /*

@@ -26,9 +26,11 @@
 #include <gdk/gdk.h>
 
 #ifdef GDKGLEXT_WINDOWING_X11
+#include "x11/gdkx11glconfig.h"
 #include "x11/gdkglconfig-x11.h"
 #endif
 #ifdef GDKGLEXT_WINDOWING_WIN32
+#include "win32/gdkwin32glconfig.h"
 #include "win32/gdkglconfig-win32.h"
 #endif
 
@@ -40,29 +42,12 @@ static void
 gdk_gl_config_init (GdkGLConfig *self)
 {
   GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  self->layer_plane = 0;
-  self->n_aux_buffers = 0;
-  self->n_sample_buffers = 0;
-  self->is_rgba = 0;
-  self->is_double_buffered = 0;
-  self->as_single_mode = 0;
-  self->is_stereo = 0;
-  self->has_alpha = 0;
-  self->has_depth_buffer = 0;
-  self->has_stencil_buffer = 0;
-  self->has_accum_buffer = 0;
 }
 
 static void
 gdk_gl_config_class_init (GdkGLConfigClass *klass)
 {
   GDK_GL_NOTE_FUNC_PRIVATE ();
-
-  klass->get_screen = NULL;
-  klass->get_attrib = NULL;
-  klass->get_visual = NULL;
-  klass->get_depth = NULL;
 }
 
 static GdkGLConfig *
@@ -201,7 +186,7 @@ gdk_gl_config_new_by_mode_common (GdkScreen       *screen,
           mode |= GDK_GL_MODE_DOUBLE;
           glconfig = _GL_CONFIG_NEW_BY_MODE (screen, mode);
           if (glconfig != NULL)
-            glconfig->as_single_mode = TRUE;
+            glconfig->impl->as_single_mode = TRUE;
         }
     }
 
@@ -263,7 +248,7 @@ gdk_gl_config_get_layer_plane (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
 
-  return glconfig->layer_plane;
+  return glconfig->impl->layer_plane;
 }
 
 /**
@@ -279,7 +264,7 @@ gdk_gl_config_get_n_aux_buffers (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
 
-  return glconfig->n_aux_buffers;
+  return glconfig->impl->n_aux_buffers;
 }
 
 /**
@@ -295,7 +280,7 @@ gdk_gl_config_get_n_sample_buffers (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), 0);
 
-  return glconfig->n_sample_buffers;
+  return glconfig->impl->n_sample_buffers;
 }
 
 /**
@@ -312,7 +297,7 @@ gdk_gl_config_is_rgba (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return glconfig->is_rgba;
+  return glconfig->impl->is_rgba;
 }
 
 /**
@@ -329,7 +314,7 @@ gdk_gl_config_is_double_buffered (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return (glconfig->is_double_buffered && (!glconfig->as_single_mode));
+  return (glconfig->impl->is_double_buffered && (!glconfig->impl->as_single_mode));
 }
 
 /**
@@ -345,7 +330,7 @@ gdk_gl_config_is_stereo (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return glconfig->is_stereo;
+  return glconfig->impl->is_stereo;
 }
 
 /**
@@ -361,7 +346,7 @@ gdk_gl_config_has_alpha (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return glconfig->has_alpha;
+  return glconfig->impl->has_alpha;
 }
 
 /**
@@ -377,7 +362,7 @@ gdk_gl_config_has_depth_buffer (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return glconfig->has_depth_buffer;
+  return glconfig->impl->has_depth_buffer;
 }
 
 /**
@@ -393,7 +378,7 @@ gdk_gl_config_has_stencil_buffer (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return glconfig->has_stencil_buffer;
+  return glconfig->impl->has_stencil_buffer;
 }
 
 /**
@@ -410,7 +395,7 @@ gdk_gl_config_has_accum_buffer (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return glconfig->has_accum_buffer;
+  return glconfig->impl->has_accum_buffer;
 }
 
 /**
@@ -465,14 +450,14 @@ gdk_gl_config_new_for_display (GdkDisplay *display, const int *attrib_list)
 #ifdef GDKGLEXT_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY(display))
     {
-      glconfig = _gdk_x11_gl_config_impl_new(attrib_list);
+      glconfig = gdk_x11_gl_config_new_for_display(display, attrib_list);
     }
   else
 #endif
 #ifdef GDKGLEXT_WINDOWING_WIN32
   if (GDK_IS_WIN32_DISPLAY(display))
     {
-      glconfig = _gdk_win32_gl_config_impl_new(attrib_list);
+      glconfig = gdk_win32_gl_config_new_for_display(display, attrib_list);
     }
   else
 #endif
@@ -520,14 +505,14 @@ gdk_gl_config_new_for_screen (GdkScreen *screen,
 #ifdef GDKGLEXT_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY(display))
     {
-      glconfig = _gdk_x11_gl_config_impl_new_for_screen(screen, attrib_list);
+      glconfig = gdk_x11_gl_config_new_for_screen(screen, attrib_list);
     }
   else
 #endif
 #ifdef GDKGLEXT_WINDOWING_WIN32
   if (GDK_IS_WIN32_DISPLAY(display))
     {
-      glconfig = _gdk_win32_gl_config_impl_new_for_screen(screen, attrib_list);
+      glconfig = gdk_win32_gl_config_new_for_screen(screen, attrib_list);
     }
   else
 #endif
@@ -551,7 +536,7 @@ gdk_gl_config_get_screen (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return GDK_GL_CONFIG_GET_CLASS (glconfig)->get_screen (glconfig);
+  return GDK_GL_CONFIG_IMPL_GET_CLASS (glconfig->impl)->get_screen (glconfig);
 }
 
 /**
@@ -571,7 +556,7 @@ gdk_gl_config_get_attrib (GdkGLConfig *glconfig,
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return GDK_GL_CONFIG_GET_CLASS (glconfig)->get_attrib (glconfig, attribute, value);
+  return GDK_GL_CONFIG_IMPL_GET_CLASS (glconfig->impl)->get_attrib (glconfig, attribute, value);
 }
 
 /**
@@ -588,7 +573,7 @@ gdk_gl_config_get_visual (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return GDK_GL_CONFIG_GET_CLASS (glconfig)->get_visual (glconfig);
+  return GDK_GL_CONFIG_IMPL_GET_CLASS (glconfig->impl)->get_visual (glconfig);
 }
 
 /**
@@ -604,5 +589,5 @@ gdk_gl_config_get_depth (GdkGLConfig *glconfig)
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), FALSE);
 
-  return GDK_GL_CONFIG_GET_CLASS (glconfig)->get_depth (glconfig);
+  return GDK_GL_CONFIG_IMPL_GET_CLASS (glconfig->impl)->get_depth (glconfig);
 }

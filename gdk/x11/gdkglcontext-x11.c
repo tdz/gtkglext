@@ -286,7 +286,7 @@ _gdk_x11_gl_context_impl_new_from_glxcontext (GdkGLConfig  *glconfig,
 {
   GDK_GL_NOTE_FUNC ();
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_X11 (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_X11_GL_CONFIG (glconfig), NULL);
   g_return_val_if_fail (glxcontext != NULL, NULL);
 
   /*

@@ -48,6 +48,7 @@ typedef enum
   GDK_GL_MODE_MULTISAMPLE = 1 << 7   /* not supported yet */
 } GdkGLConfigMode;
 
+struct _GdkGLConfigImpl;
 typedef struct _GdkGLConfigClass GdkGLConfigClass;
 
 #define GDK_TYPE_GL_CONFIG              (gdk_gl_config_get_type ())
@@ -61,36 +62,12 @@ struct _GdkGLConfig
 {
   GObject parent_instance;
 
-  gint layer_plane;
-
-  gint n_aux_buffers;
-
-  gint n_sample_buffers;
-
-  guint is_rgba            : 1;
-  guint is_double_buffered : 1;
-  guint as_single_mode     : 1;
-  guint is_stereo          : 1;
-  guint has_alpha          : 1;
-  guint has_depth_buffer   : 1;
-  guint has_stencil_buffer : 1;
-  guint has_accum_buffer   : 1;
+  struct _GdkGLConfigImpl *impl;
 };
 
 struct _GdkGLConfigClass
 {
   GObjectClass parent_class;
-
-  GdkGLWindow* (*create_gl_window_impl) (GdkGLConfig *glconfig,
-                                         GdkWindow   *window,
-                                         const int   *attrib_list);
-
-  GdkScreen* (*get_screen) (GdkGLConfig *glconfig);
-  gboolean   (*get_attrib) (GdkGLConfig *glconfig,
-                            int          attribute,
-                            int         *value);
-  GdkVisual* (*get_visual) (GdkGLConfig *glconfig);
-  gint       (*get_depth)  (GdkGLConfig *glconfig);
 };
 
 GType        gdk_gl_config_get_type               (void);

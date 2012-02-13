@@ -61,16 +61,92 @@ gdk_win32_gl_config_class_init (GdkWin32GLConfigClass *klass)
   object_class->finalize = gdk_win32_gl_config_finalize;
 }
 
+/**
+ * gdk_win32_gl_config_new_for_display:
+ * @display: display.
+ * @attrib_list: the attribute list.
+ *
+ * Creates a #GdkGLConfig on the given display.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_win32_gl_config_new_for_display(GdkDisplay *display, const int *attrib_list)
+{
+  GdkGLConfig *glconfig;
+  GdkGLConfig *impl;
+
+  g_return_val_if_fail(GDK_IS_WIN32_DISPLAY(display), NULL);
+
+  glconfig = g_object_new(GDK_TYPE_WIN32_GL_CONFIG, NULL);
+
+  g_return_val_if_fail(glconfig != NULL, NULL);
+
+  impl = _gdk_win32_gl_config_impl_new(glconfig, attrib_list);
+
+  if (impl == NULL)
+    g_object_unref(glconfig);
+
+  g_return_val_if_fail(impl != NULL, NULL);
+
+  return glconfig;
+}
+
+/**
+ * gdk_win32_gl_config_new_for_screen:
+ * @screen: target screen.
+ * @attrib_list: the attribute list.
+ *
+ * Creates a #GdkGLConfig on the given display.
+ *
+ * Return value: the new #GdkGLConfig.
+ **/
+GdkGLConfig *
+gdk_win32_gl_config_new_for_screen(GdkScreen *screen, const int *attrib_list)
+{
+  GdkGLConfig *glconfig;
+  GdkGLConfig *impl;
+
+  glconfig = g_object_new(GDK_TYPE_WIN32_GL_CONFIG, NULL);
+
+  g_return_val_if_fail(glconfig != NULL, NULL);
+
+  impl = _gdk_win32_gl_config_impl_new(glconfig, attrib_list);
+
+  if (impl == NULL)
+    g_object_unref(glconfig);
+
+  g_return_val_if_fail(impl != NULL, NULL);
+
+  return glconfig;
+}
+
 GdkGLConfig *
 gdk_win32_gl_config_new_from_pixel_format (int pixel_format)
 {
-  return _gdk_win32_gl_config_impl_new_from_pixel_format(pixel_format);
+  GdkGLConfig *glconfig;
+  GdkGLConfig *impl;
+
+  GDK_GL_NOTE_FUNC ();
+
+  glconfig = g_object_new(GDK_TYPE_WIN32_GL_CONFIG, NULL);
+
+  g_return_val_if_fail(glconfig != NULL, NULL);
+
+  impl = _gdk_win32_gl_config_impl_new_from_pixel_format(glconfig,
+                                                         pixel_format);
+  if (impl == NULL)
+    g_object_unref(glconfig);
+
+  g_return_val_if_fail(impl != NULL, NULL);
+
+  return glconfig;
 }
 
 PIXELFORMATDESCRIPTOR *
 gdk_win32_gl_config_get_pfd (GdkGLConfig *glconfig)
 {
-  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_CONFIG (glconfig), NULL);
 
-  return GDK_GL_CONFIG_IMPL_WIN32_CLASS (glconfig)->get_pfd(glconfig);
+  return GDK_GL_CONFIG_IMPL_WIN32_CLASS (glconfig->impl)->get_pfd(glconfig);
 }

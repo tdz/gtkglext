@@ -22,6 +22,7 @@
 #include <gdk/gdkx.h>
 
 #include <gdk/gdkglconfig.h>
+#include <gdk/gdkglconfigimpl.h>
 
 G_BEGIN_DECLS
 
@@ -37,7 +38,7 @@ typedef struct _GdkGLConfigImplX11Class GdkGLConfigImplX11Class;
 
 struct _GdkGLConfigImplX11
 {
-  GdkGLConfig parent_instance;
+  GdkGLConfigImpl parent_instance;
 
   Display *xdisplay;
   int screen_num;
@@ -48,7 +49,7 @@ struct _GdkGLConfigImplX11
 
 struct _GdkGLConfigImplX11Class
 {
-  GdkGLConfigClass parent_class;
+  GdkGLConfigImplClass parent_class;
 
   Display*      (*get_xdisplay)      (GdkGLConfig  *glconfig);
   int           (*get_screen_number) (GdkGLConfig  *glconfig);
@@ -57,11 +58,14 @@ struct _GdkGLConfigImplX11Class
 
 GType gdk_gl_config_impl_x11_get_type (void);
 
-GdkGLConfig *_gdk_x11_gl_config_impl_new                          (const int *attrib_list);
-GdkGLConfig *_gdk_x11_gl_config_impl_new_for_screen               (GdkScreen *screen,
-                                                                   const int *attrib_list);
-GdkGLConfig *_gdk_x11_gl_config_impl_new_from_visualid_for_screen (GdkScreen *screen,
-                                                                   VisualID   xvisualid);
+GdkGLConfig *_gdk_x11_gl_config_impl_new                          (GdkGLConfig *glconfig,
+                                                                   const int   *attrib_list);
+GdkGLConfig *_gdk_x11_gl_config_impl_new_for_screen               (GdkGLConfig *glconfig,
+                                                                   GdkScreen   *screen,
+                                                                   const int   *attrib_list);
+GdkGLConfig *_gdk_x11_gl_config_impl_new_from_visualid_for_screen (GdkGLConfig *glconfig,
+                                                                   GdkScreen   *screen,
+                                                                   VisualID     xvisualid);
 
 G_END_DECLS
 

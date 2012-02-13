@@ -22,6 +22,8 @@
 #include <gdk/gdkwin32.h>
 
 #include <gdk/gdkgl.h>
+#include <gdk/gdkglconfig.h>
+#include <gdk/gdkglconfigimpl.h>
 
 G_BEGIN_DECLS
 
@@ -37,7 +39,7 @@ typedef struct _GdkGLConfigImplWin32Class GdkGLConfigImplWin32Class;
 
 struct _GdkGLConfigImplWin32
 {
-  GdkGLConfig parent_instance;
+  GdkGLConfigImpl parent_instance;
 
   PIXELFORMATDESCRIPTOR pfd;
 
@@ -48,17 +50,20 @@ struct _GdkGLConfigImplWin32
 
 struct _GdkGLConfigImplWin32Class
 {
-  GdkGLConfigClass parent_class;
+  GdkGLConfigImplClass parent_class;
 
   PIXELFORMATDESCRIPTOR*  (*get_pfd) (GdkGLConfig *glconfig);
 };
 
 GType gdk_gl_config_impl_win32_get_type (void);
 
-GdkGLConfig *_gdk_win32_gl_config_impl_new                    (const int *attrib_list);
-GdkGLConfig *_gdk_win32_gl_config_impl_new_for_screen         (GdkScreen *screen,
+GdkGLConfig *_gdk_win32_gl_config_impl_new                    (GdkGLConfig *glconfig,
                                                                const int *attrib_list);
-GdkGLConfig *_gdk_win32_gl_config_impl_new_from_pixel_format  (int pixel_format);
+GdkGLConfig *_gdk_win32_gl_config_impl_new_for_screen         (GdkGLConfig *glconfig,
+                                                               GdkScreen *screen,
+                                                               const int *attrib_list);
+GdkGLConfig *_gdk_win32_gl_config_impl_new_from_pixel_format  (GdkGLConfig *glconfig,
+                                                               int          pixel_format);
 
 G_END_DECLS
 

@@ -42,16 +42,20 @@ typedef GdkGLConfig GdkWin32GLConfig;
 #endif
 typedef struct _GdkWin32GLConfigClass GdkWin32GLConfigClass;
 
-GType                 gdk_win32_gl_config_get_type (void);
+GType                  gdk_win32_gl_config_get_type (void);
 
-GdkGLConfig           *gdk_win32_gl_config_new_from_pixel_format (int pixel_format);
+GdkGLConfig           *gdk_win32_gl_config_new_for_display        (GdkDisplay *display,
+                                                                   const int  *attrib_list);
+GdkGLConfig           *gdk_win32_gl_config_new_for_screen         (GdkScreen *screen,
+                                                                   const int *attrib_list);
+GdkGLConfig           *gdk_win32_gl_config_new_from_pixel_format  (int pixel_format);
 
-PIXELFORMATDESCRIPTOR *gdk_win32_gl_config_get_pfd               (GdkGLConfig   *glconfig);
+PIXELFORMATDESCRIPTOR *gdk_win32_gl_config_get_pfd                (GdkGLConfig *glconfig);
 
 G_END_DECLS
 
 #ifdef INSIDE_GDK_GL_WIN32
-#define GDK_GL_CONFIG_PFD(glconfig)          (&(GDK_GL_CONFIG_IMPL_WIN32 (glconfig)->pfd))
+#define GDK_GL_CONFIG_PFD(glconfig)          (&(GDK_GL_CONFIG_IMPL_WIN32 (glconfig->impl)->pfd))
 #else
 #define GDK_GL_CONFIG_PFD(glconfig)          (gdk_win32_gl_config_get_pfd (glconfig))
 #endif

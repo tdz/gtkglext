@@ -42,24 +42,30 @@ typedef GdkGLConfig GdkX11GLConfig;
 #endif
 typedef struct _GdkX11GLConfigClass GdkX11GLConfigClass;
 
-GType         gdk_x11_gl_config_get_type (void);
+GType        gdk_x11_gl_config_get_type (void);
+
+GdkGLConfig *gdk_x11_gl_config_new_for_display  (GdkDisplay *display,
+                                                 const int  *attrib_list);
+
+GdkGLConfig *gdk_x11_gl_config_new_for_screen   (GdkScreen *screen,
+                                                 const int *attrib_list);
 
 #ifndef GDK_MULTIHEAD_SAFE
-GdkGLConfig  *gdk_x11_gl_config_new_from_visualid            (VisualID   xvisualid);
+GdkGLConfig *gdk_x11_gl_config_new_from_visualid            (VisualID   xvisualid);
 #endif /* GDK_MULTIHEAD_SAFE */
 
-GdkGLConfig  *gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
-                                                              VisualID   xvisualid);
+GdkGLConfig *gdk_x11_gl_config_new_from_visualid_for_screen (GdkScreen *screen,
+                                                             VisualID   xvisualid);
 
-Display      *gdk_x11_gl_config_get_xdisplay      (GdkGLConfig  *glconfig);
-int           gdk_x11_gl_config_get_screen_number (GdkGLConfig  *glconfig);
-XVisualInfo  *gdk_x11_gl_config_get_xvinfo        (GdkGLConfig  *glconfig);
+Display     *gdk_x11_gl_config_get_xdisplay      (GdkGLConfig  *glconfig);
+int          gdk_x11_gl_config_get_screen_number (GdkGLConfig  *glconfig);
+XVisualInfo *gdk_x11_gl_config_get_xvinfo        (GdkGLConfig  *glconfig);
 
 #ifdef INSIDE_GDK_GL_X11
 
-#define GDK_GL_CONFIG_XDISPLAY(glconfig)       (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xdisplay)
-#define GDK_GL_CONFIG_SCREEN_XNUMBER(glconfig) (GDK_GL_CONFIG_IMPL_X11 (glconfig)->screen_num)
-#define GDK_GL_CONFIG_XVINFO(glconfig)         (GDK_GL_CONFIG_IMPL_X11 (glconfig)->xvinfo)
+#define GDK_GL_CONFIG_XDISPLAY(glconfig)       (GDK_GL_CONFIG_IMPL_X11 (glconfig->impl)->xdisplay)
+#define GDK_GL_CONFIG_SCREEN_XNUMBER(glconfig) (GDK_GL_CONFIG_IMPL_X11 (glconfig->impl)->screen_num)
+#define GDK_GL_CONFIG_XVINFO(glconfig)         (GDK_GL_CONFIG_IMPL_X11 (glconfig->impl)->xvinfo)
 
 #else
 

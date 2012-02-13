@@ -157,7 +157,7 @@ _gdk_win32_gl_window_impl_new (GdkGLConfig *glconfig,
 
   GDK_GL_NOTE_FUNC ();
 
-  g_return_val_if_fail (GDK_IS_GL_CONFIG_IMPL_WIN32 (glconfig), NULL);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_CONFIG (glconfig), NULL);
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
 
   hwnd = (HWND) gdk_win32_window_get_handle (window);

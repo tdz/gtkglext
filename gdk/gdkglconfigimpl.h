@@ -33,6 +33,21 @@ G_BEGIN_DECLS
 typedef struct _GdkGLConfigImpl
 {
   GObject parent;
+
+  gint layer_plane;
+
+  gint n_aux_buffers;
+
+  gint n_sample_buffers;
+
+  guint is_rgba            : 1;
+  guint is_double_buffered : 1;
+  guint as_single_mode     : 1;
+  guint is_stereo          : 1;
+  guint has_alpha          : 1;
+  guint has_depth_buffer   : 1;
+  guint has_stencil_buffer : 1;
+  guint has_accum_buffer   : 1;
 } GdkGLConfigImpl;
 
 typedef struct _GdkGLConfigImplClass

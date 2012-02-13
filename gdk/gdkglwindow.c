@@ -24,6 +24,7 @@
 
 #include "gdkglprivate.h"
 #include "gdkglconfig.h"
+#include "gdkglconfigimpl.h"
 #include "gdkglwindow.h"
 
 G_DEFINE_TYPE (GdkGLWindow,                     \
@@ -81,9 +82,9 @@ gdk_gl_window_new (GdkGLConfig *glconfig,
 {
   g_return_val_if_fail (GDK_IS_GL_CONFIG (glconfig), NULL);
 
-  return GDK_GL_CONFIG_GET_CLASS (glconfig)->create_gl_window_impl (glconfig,
-                                                                    window,
-                                                                    attrib_list);
+  return GDK_GL_CONFIG_IMPL_GET_CLASS (glconfig->impl)->create_gl_window (glconfig,
+                                                                          window,
+                                                                          attrib_list);
 }
 
 /**
