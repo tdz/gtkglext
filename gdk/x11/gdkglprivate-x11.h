@@ -35,7 +35,7 @@ void _gdk_gl_drawable_impl_x11_wait_gdk (GdkGLDrawable *gldrawable);
   ( ((GdkGLContextImplX11 *) (glcontext))->is_destroyed )
 
 #define GDK_GL_WINDOW_IS_DESTROYED(glwindow) \
-  ( ((GdkGLWindowImplX11 *) (glwindow))->is_destroyed )
+  ( ((GdkGLWindowImplX11 *) (glwindow->impl))->is_destroyed )
 
 G_END_DECLS
 

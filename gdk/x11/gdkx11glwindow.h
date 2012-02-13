@@ -49,7 +49,7 @@ Window        gdk_x11_gl_window_get_glxwindow     (GdkGLWindow  *glwindow);
 
 #ifdef INSIDE_GDK_GL_X11
 
-#define GDK_GL_WINDOW_GLXWINDOW(glwindow)      (GDK_GL_WINDOW_IMPL_X11 (glwindow)->glxwindow)
+#define GDK_GL_WINDOW_GLXWINDOW(glwindow)      (GDK_GL_WINDOW_IMPL_X11 (glwindow->impl)->glxwindow)
 
 #else
 

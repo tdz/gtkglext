@@ -30,6 +30,7 @@
 
 G_BEGIN_DECLS
 
+struct _GdkGLWindowImpl;
 typedef struct _GdkGLWindowClass GdkGLWindowClass;
 
 #define GDK_TYPE_GL_WINDOW              (gdk_gl_window_get_type ())
@@ -43,14 +44,14 @@ struct _GdkGLWindow
 {
   GObject parent_instance;
 
+  struct _GdkGLWindowImpl *impl;
+
   GdkWindow *window;        /* Associated GdkWindow */
 };
 
 struct _GdkGLWindowClass
 {
   GObjectClass parent_class;
-
-  void (*destroy_gl_window_impl) (GdkGLWindow *glwindow);
 };
 
 GType        gdk_gl_window_get_type         (void);

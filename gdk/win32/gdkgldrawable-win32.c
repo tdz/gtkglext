@@ -30,7 +30,7 @@ gdk_win32_gl_drawable_hdc_get (GdkGLDrawable *gldrawable)
 {
   if (GDK_IS_GL_WINDOW (gldrawable))
     {
-      GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
+      GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 ( GDK_GL_WINDOW (gldrawable)->impl);
       return GDK_GL_WINDOW_IMPL_WIN32_HDC_GET (impl);
     }
   else
@@ -44,7 +44,7 @@ gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable)
 {
   if (GDK_IS_GL_WINDOW (gldrawable))
     {
-      GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
+      GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 ( GDK_GL_WINDOW (gldrawable)->impl);
       GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE (impl);
     }
   else

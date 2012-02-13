@@ -22,6 +22,7 @@
 #include <gdk/gdkwin32.h>
 
 #include <gdk/gdkglwindow.h>
+#include <gdk/gdkglwindowimpl.h>
 
 G_BEGIN_DECLS
 
@@ -37,7 +38,7 @@ typedef struct _GdkGLWindowImplWin32Class GdkGLWindowImplWin32Class;
 
 struct _GdkGLWindowImplWin32
 {
-  GdkGLWindow parent_instance;
+  GdkGLWindowImpl parent_instance;
 
   HWND hwnd;
 
@@ -55,7 +56,7 @@ struct _GdkGLWindowImplWin32
 
 struct _GdkGLWindowImplWin32Class
 {
-  GdkGLWindowClass parent_class;
+  GdkGLWindowImplClass parent_class;
 
   PIXELFORMATDESCRIPTOR* (*get_pfd)          (GdkGLWindow   *glwindow);
   int                    (*get_pixel_format) (GdkGLWindow   *glwindow);
@@ -73,7 +74,8 @@ GType gdk_gl_window_impl_win32_get_type (void);
   } G_STMT_END
 
 GdkGLWindow *
-_gdk_win32_gl_window_impl_new (GdkGLConfig *glconfig,
+_gdk_win32_gl_window_impl_new (GdkGLWindow *glwindow,
+                               GdkGLConfig *glconfig,
                                GdkWindow   *window,
                                const int   *attrib_list);
 

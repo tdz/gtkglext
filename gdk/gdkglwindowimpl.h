@@ -49,6 +49,8 @@ typedef struct _GdkGLWindowImplClass
   void          (*wait_gl)              (GdkGLDrawable *gldrawable);
   void          (*wait_gdk)             (GdkGLDrawable *gldrawable);
   GdkGLConfig*  (*get_gl_config)        (GdkGLDrawable *gldrawable);
+
+  void          (*destroy_gl_window_impl) (GdkGLWindow *glwindow);
 } GdkGLWindowImplClass;
 
 GType gdk_gl_window_impl_get_type (void);

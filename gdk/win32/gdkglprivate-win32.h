@@ -48,7 +48,7 @@ void _gdk_gl_context_set_gl_drawable_read (GdkGLContext  *glcontext,
   ( ((GdkGLContextImplWin32 *) (glcontext))->is_destroyed )
 
 #define GDK_GL_WINDOW_IS_DESTROYED(glwindow) \
-  ( ((GdkGLWindowImplWin32 *) (glwindow))->is_destroyed )
+  ( ((GdkGLWindowImplWin32 *) (glwindow->impl))->is_destroyed )
 
 G_END_DECLS
 

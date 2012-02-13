@@ -98,38 +98,46 @@ static GdkGLContext *_gdk_x11_gl_window_create_gl_context (GdkGLDrawable *gldraw
                                                            int            render_type)
 {
   g_return_val_if_fail(GDK_IS_X11_GL_WINDOW(gldrawable), NULL);
-  g_return_val_if_fail(GDK_IS_X11_GL_CONTEXT(share_list), NULL);
 
-  return NULL;
+  return GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->create_gl_context(gldrawable,
+                                                                                          share_list,
+                                                                                          direct,
+                                                                                          render_type);
 }
 
 static gboolean _gdk_x11_gl_window_is_double_buffered (GdkGLDrawable *gldrawable)
 {
   g_return_val_if_fail(GDK_IS_X11_GL_WINDOW(gldrawable), FALSE);
 
-  return FALSE;
+  return GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->is_double_buffered(gldrawable);
 }
 
 static void _gdk_x11_gl_window_swap_buffers (GdkGLDrawable *gldrawable)
 {
   g_return_if_fail(GDK_IS_X11_GL_WINDOW(gldrawable));
+
+  GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->swap_buffers(gldrawable);
 }
 
 static void _gdk_x11_gl_window_wait_gl (GdkGLDrawable *gldrawable)
 {
   g_return_if_fail(GDK_IS_X11_GL_WINDOW(gldrawable));
+
+  GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->wait_gl(gldrawable);
 }
 
 static void _gdk_x11_gl_window_wait_gdk (GdkGLDrawable *gldrawable)
 {
   g_return_if_fail(GDK_IS_X11_GL_WINDOW(gldrawable));
+
+  GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->wait_gdk(gldrawable);
 }
 
 static GdkGLConfig  *_gdk_x11_gl_window_get_gl_config (GdkGLDrawable *gldrawable)
 {
   g_return_val_if_fail(GDK_IS_X11_GL_WINDOW(gldrawable), NULL);
 
-  return NULL;
+  return GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->get_gl_config(gldrawable);
 }
 
 /**
@@ -143,7 +151,7 @@ static GdkGLConfig  *_gdk_x11_gl_window_get_gl_config (GdkGLDrawable *gldrawable
 Window
 gdk_x11_gl_window_get_glxwindow (GdkGLWindow *glwindow)
 {
-  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (glwindow), None);
+  g_return_val_if_fail (GDK_IS_X11_GL_WINDOW (glwindow), None);
 
-  return GDK_GL_WINDOW_IMPL_X11_CLASS (glwindow)->get_glxwindow(glwindow);
+  return GDK_GL_WINDOW_IMPL_X11_CLASS (glwindow->impl)->get_glxwindow(glwindow);
 }

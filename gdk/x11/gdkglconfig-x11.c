@@ -41,9 +41,9 @@
 
 #endif /* HAVE_LIBXMU */
 
-static Display      *_gdk_x11_gl_config_impl_get_xdisplay       (GdkGLConfig  *glconfig);
-static int           _gdk_x11_gl_config_impl_get_screen_number  (GdkGLConfig  *glconfig);
-static XVisualInfo  *_gdk_x11_gl_config_impl_get_xvinfo         (GdkGLConfig  *glconfig);
+static Display      *_gdk_x11_gl_config_impl_get_xdisplay       (GdkGLConfig *glconfig);
+static int           _gdk_x11_gl_config_impl_get_screen_number  (GdkGLConfig *glconfig);
+static XVisualInfo  *_gdk_x11_gl_config_impl_get_xvinfo         (GdkGLConfig *glconfig);
 static GdkGLWindow  *_gdk_x11_gl_config_impl_create_gl_window   (GdkGLConfig *glconfig,
                                                                  GdkWindow   *window,
                                                                  const int   *attrib_list);
@@ -388,9 +388,25 @@ _gdk_x11_gl_config_impl_create_gl_window (GdkGLConfig *glconfig,
                                           GdkWindow   *window,
                                           const int   *attrib_list)
 {
+  GdkGLWindow *glwindow;
+  GdkGLWindow *impl;
+
   g_return_val_if_fail (GDK_IS_X11_GL_CONFIG (glconfig), NULL);
 
-  return _gdk_x11_gl_window_impl_new(glconfig, window, attrib_list);
+  glwindow = g_object_new (GDK_TYPE_X11_GL_WINDOW, NULL);
+
+  g_return_val_if_fail(glwindow != NULL, NULL);
+
+  impl = _gdk_x11_gl_window_impl_new(glwindow,
+                                     glconfig,
+                                     window,
+                                     attrib_list);
+  if (impl == NULL)
+    g_object_unref(glwindow);
+
+  g_return_val_if_fail(impl != NULL, NULL);
+
+  return glwindow;
 }
 
 static GdkScreen *

@@ -33,8 +33,8 @@ void  gdk_win32_gl_drawable_hdc_release (GdkGLDrawable *gldrawable);
 
 #ifdef INSIDE_GDK_GL_WIN32
 
-#define GDK_GL_WINDOW_PFD(glwindow)          (&(GDK_GL_WINDOW_IMPL_WIN32 (glwindow)->pfd))
-#define GDK_GL_WINDOW_PIXEL_FORMAT(glwindow) (GDK_GL_WINDOW_IMPL_WIN32 (glwindow)->pixel_format)
+#define GDK_GL_WINDOW_PFD(glwindow)          (&(GDK_GL_WINDOW_IMPL_WIN32 (glwindow->impl)->pfd))
+#define GDK_GL_WINDOW_PIXEL_FORMAT(glwindow) (GDK_GL_WINDOW_IMPL_WIN32 (glwindow->impl)->pixel_format)
 
 #else
 

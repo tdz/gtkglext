@@ -434,19 +434,21 @@ _gdk_x11_gl_context_impl_make_current (GdkGLContext  *glcontext,
                                        GdkGLDrawable *draw,
                                        GdkGLDrawable *read)
 {
-  GdkGLWindowImplX11 *impl;
+  GdkGLWindow *glwindow;
+  GdkGLWindowImplX11 *x11_impl;
   GdkGLConfig *glconfig;
   GdkWindow *window;
   Window glxwindow;
   GLXContext glxcontext;
 
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_X11 (glcontext), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_X11 (draw), FALSE);
+  g_return_val_if_fail (GDK_IS_X11_GL_WINDOW (draw), FALSE);
 
-  impl = GDK_GL_WINDOW_IMPL_X11 (draw);
-  glconfig = GDK_GL_WINDOW_IMPL_X11 (draw)->glconfig;
-  window = gdk_gl_window_get_window(GDK_GL_WINDOW(impl));
-  glxwindow = GDK_GL_WINDOW_IMPL_X11 (draw)->glxwindow;
+  glwindow = GDK_GL_WINDOW(draw);
+  x11_impl = GDK_GL_WINDOW_IMPL_X11 (glwindow->impl);
+  glconfig = x11_impl->glconfig;
+  window = gdk_gl_window_get_window(glwindow);
+  glxwindow = x11_impl->glxwindow;
   glxcontext = GDK_GL_CONTEXT_GLXCONTEXT (glcontext);
 
   if (glxwindow == None || glxcontext == NULL)

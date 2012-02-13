@@ -407,13 +407,13 @@ _gdk_win32_gl_context_impl_make_current (GdkGLContext *glcontext,
   HGLRC hglrc;
 
   g_return_val_if_fail (GDK_IS_GL_CONTEXT_IMPL_WIN32 (glcontext), FALSE);
-  g_return_val_if_fail (GDK_IS_GL_WINDOW_IMPL_WIN32 (draw), FALSE);
+  g_return_val_if_fail (GDK_IS_WIN32_GL_WINDOW (draw), FALSE);
 
-  if (GDK_GL_WINDOW_IS_DESTROYED (draw) ||
+  if (GDK_GL_WINDOW_IS_DESTROYED (GDK_GL_WINDOW (draw)) ||
       GDK_GL_CONTEXT_IS_DESTROYED (glcontext))
     return FALSE;
 
-  impl = GDK_GL_WINDOW_IMPL_WIN32 (draw);
+  impl = GDK_GL_WINDOW_IMPL_WIN32 (GDK_GL_WINDOW (draw)->impl);
 
   /* Get DC. */
   hdc = GDK_GL_WINDOW_IMPL_WIN32_HDC_GET (impl);
@@ -464,7 +464,7 @@ _gdk_win32_gl_context_impl_make_uncurrent (GdkGLContext *glcontext)
 
   g_return_if_fail(gldrawable != NULL);
 
-  GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 (gldrawable);
+  GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 ( GDK_GL_WINDOW (gldrawable)->impl);
 
   /* Release DC. */
   GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE (impl);

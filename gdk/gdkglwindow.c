@@ -26,6 +26,7 @@
 #include "gdkglconfig.h"
 #include "gdkglconfigimpl.h"
 #include "gdkglwindow.h"
+#include "gdkglwindowimpl.h"
 
 G_DEFINE_TYPE (GdkGLWindow,                     \
                gdk_gl_window,                   \
@@ -201,7 +202,7 @@ gdk_window_unset_gl_capability (GdkWindow *window)
   if (glwindow == NULL)
     return;
 
-  GDK_GL_WINDOW_GET_CLASS(glwindow)->destroy_gl_window_impl(glwindow);
+  GDK_GL_WINDOW_IMPL_GET_CLASS(glwindow->impl)->destroy_gl_window_impl(glwindow);
 
   g_object_set_qdata (G_OBJECT (window), quark_gl_window, NULL);
 }

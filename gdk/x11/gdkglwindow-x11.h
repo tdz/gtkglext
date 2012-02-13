@@ -22,6 +22,7 @@
 #include <gdk/gdkx.h>
 
 #include <gdk/gdkglwindow.h>
+#include <gdk/gdkglwindowimpl.h>
 
 G_BEGIN_DECLS
 
@@ -37,7 +38,7 @@ typedef struct _GdkGLWindowImplX11Class GdkGLWindowImplX11Class;
 
 struct _GdkGLWindowImplX11
 {
-  GdkGLWindow parent_instance;
+  GdkGLWindowImpl parent_instance;
 
   /* GLXWindow glxwindow; */
   Window glxwindow;
@@ -49,7 +50,7 @@ struct _GdkGLWindowImplX11
 
 struct _GdkGLWindowImplX11Class
 {
-  GdkGLWindowClass parent_class;
+  GdkGLWindowImplClass parent_class;
 
   Window (*get_glxwindow) (GdkGLWindow *glwindow);
 };
@@ -57,7 +58,8 @@ struct _GdkGLWindowImplX11Class
 GType gdk_gl_window_impl_x11_get_type (void);
 
 GdkGLWindow *
-_gdk_x11_gl_window_impl_new (GdkGLConfig *glconfig,
+_gdk_x11_gl_window_impl_new (GdkGLWindow *glwindow,
+                             GdkGLConfig *glconfig,
                              GdkWindow   *window,
                              const int   *attrib_list);
 
