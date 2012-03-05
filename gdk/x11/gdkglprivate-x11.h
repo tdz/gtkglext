@@ -28,9 +28,6 @@ G_BEGIN_DECLS
 void _gdk_x11_gl_print_glx_info (Display *xdisplay,
                                  int      screen_num);
 
-void _gdk_gl_drawable_impl_x11_wait_gl  (GdkGLDrawable *gldrawable);
-void _gdk_gl_drawable_impl_x11_wait_gdk (GdkGLDrawable *gldrawable);
-
 #define GDK_GL_CONTEXT_IS_DESTROYED(glcontext) \
   ( ((GdkGLContextImplX11 *) (glcontext->impl))->is_destroyed )
 

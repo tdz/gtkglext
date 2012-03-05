@@ -33,7 +33,6 @@ gdkglext_x11_c_sources = \
 	gdkglquery-x11.c	\
 	gdkglconfig-x11.c	\
 	gdkglcontext-x11.c	\
-	gdkgldrawable-x11.c	\
 	gdkglwindow-x11.c \
 	gdkx11glconfig.c \
 	gdkx11glcontext.c \
