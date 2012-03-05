@@ -78,3 +78,19 @@ gdk_win32_gl_window_get_pixel_format (GdkGLWindow *glwindow)
 
   return GDK_GL_WINDOW_IMPL_WIN32_GET_CLASS (glwindow->impl)->get_pixel_format(glwindow);
 }
+
+HDC
+gdk_win32_gl_window_get_hdc (GdkGLWindow *glwindow)
+{
+  g_return_val_if_fail(GDK_IS_WIN32_GL_WINDOW (glwindow), NULL);
+
+  return GDK_GL_WINDOW_IMPL_WIN32_GET_CLASS (glwindow->impl)->get_hdc(glwindow);
+}
+
+void
+gdk_win32_gl_window_release_hdc (GdkGLWindow *glwindow)
+{
+  g_return_if_fail(GDK_IS_WIN32_GL_WINDOW (glwindow));
+
+  GDK_GL_WINDOW_IMPL_WIN32_GET_CLASS (glwindow->impl)->release_hdc(glwindow);
+}
