@@ -39,17 +39,15 @@ typedef struct _GdkGLWindowImplClass
 {
   GObjectClass parent_class;
 
-  GdkGLContext* (*create_gl_context) (GdkGLDrawable *gldrawable,
-                                      GdkGLContext  *share_list,
-                                      gboolean       direct,
-                                      int            render_type);
-
-  gboolean      (*is_double_buffered)   (GdkGLDrawable *gldrawable);
-  void          (*swap_buffers)         (GdkGLDrawable *gldrawable);
-  void          (*wait_gl)              (GdkGLDrawable *gldrawable);
-  void          (*wait_gdk)             (GdkGLDrawable *gldrawable);
-  GdkGLConfig*  (*get_gl_config)        (GdkGLDrawable *gldrawable);
-
+  GdkGLContext* (*create_gl_context)      (GdkGLWindow  *gldrawable,
+                                           GdkGLContext *share_list,
+                                           gboolean      direct,
+                                           int           render_type);
+  gboolean      (*is_double_buffered)     (GdkGLWindow *glwindow);
+  void          (*swap_buffers)           (GdkGLWindow *glwindow);
+  void          (*wait_gl)                (GdkGLWindow *glwindow);
+  void          (*wait_gdk)               (GdkGLWindow *glwindow);
+  GdkGLConfig*  (*get_gl_config)          (GdkGLWindow *glwindow);
   void          (*destroy_gl_window_impl) (GdkGLWindow *glwindow);
 } GdkGLWindowImplClass;
 
