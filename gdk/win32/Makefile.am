@@ -20,7 +20,6 @@ gdkglext_public_h_sources = \
 gdkglext_win32_public_h_sources = \
 	gdkwin32glconfig.h \
 	gdkwin32glcontext.h \
-	gdkwin32gldrawable.h \
 	gdkwin32glquery.h \
 	gdkwin32glwindow.h
 
@@ -35,7 +34,6 @@ gdkglext_win32_c_sources = \
 	gdkglquery-win32.c	\
 	gdkglconfig-win32.c	\
 	gdkglcontext-win32.c	\
-	gdkgldrawable-win32.c	\
 	gdkglwindow-win32.c \
 	gdkwin32glconfig.c \
 	gdkwin32glwindow.c \

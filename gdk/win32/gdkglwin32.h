@@ -38,7 +38,6 @@
 
 #include <gdk/win32/gdkwin32glconfig.h>
 #include <gdk/win32/gdkwin32glcontext.h>
-#include <gdk/win32/gdkwin32gldrawable.h>
 #include <gdk/win32/gdkwin32glquery.h>
 #include <gdk/win32/gdkwin32glwindow.h>
 
