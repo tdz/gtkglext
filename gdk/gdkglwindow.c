@@ -28,9 +28,25 @@
 #include "gdkglwindow.h"
 #include "gdkglwindowimpl.h"
 
-G_DEFINE_TYPE (GdkGLWindow,                     \
-               gdk_gl_window,                   \
-               G_TYPE_OBJECT)
+static GdkGLContext *_gdk_gl_window_create_gl_context   (GdkGLDrawable *gldrawable,
+                                                         GdkGLContext  *share_list,
+                                                         gboolean       direct,
+                                                         int            render_type);
+static gboolean      _gdk_gl_window_is_double_buffered  (GdkGLDrawable *gldrawable);
+static void          _gdk_gl_window_swap_buffers        (GdkGLDrawable *gldrawable);
+static void          _gdk_gl_window_wait_gl             (GdkGLDrawable *gldrawable);
+static void          _gdk_gl_window_wait_gdk            (GdkGLDrawable *gldrawable);
+static GdkGLConfig  *_gdk_gl_window_get_gl_config       (GdkGLDrawable *gldrawable);
+
+static void gdk_gl_window_gl_drawable_interface_init (GdkGLDrawableClass *iface);
+
+G_DEFINE_TYPE_EXTENDED  (GdkGLWindow,
+                         gdk_gl_window,
+                         G_TYPE_OBJECT,
+                         0,
+                         G_IMPLEMENT_INTERFACE (
+                          GDK_TYPE_GL_DRAWABLE,
+                          gdk_gl_window_gl_drawable_interface_init))
 
 static void
 gdk_gl_window_init (GdkGLWindow *self)
@@ -62,6 +78,73 @@ gdk_gl_window_class_init (GdkGLWindowClass *klass)
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
   object_class->finalize = gdk_gl_window_finalize;
+}
+
+static void
+gdk_gl_window_gl_drawable_interface_init (GdkGLDrawableClass *iface)
+{
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  iface->create_gl_context  = _gdk_gl_window_create_gl_context;
+  iface->is_double_buffered = _gdk_gl_window_is_double_buffered;
+  iface->swap_buffers       = _gdk_gl_window_swap_buffers;
+  iface->wait_gl            = _gdk_gl_window_wait_gl;
+  iface->wait_gdk           = _gdk_gl_window_wait_gdk;
+  iface->get_gl_config      = _gdk_gl_window_get_gl_config;
+}
+
+static GdkGLContext *
+_gdk_gl_window_create_gl_context  (GdkGLDrawable *gldrawable,
+                                   GdkGLContext  *share_list,
+                                   gboolean       direct,
+                                   int            render_type)
+{
+  g_return_val_if_fail(GDK_IS_GL_WINDOW(gldrawable), NULL);
+
+  return GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->create_gl_context(gldrawable,
+                                                                                          share_list,
+                                                                                          direct,
+                                                                                          render_type);
+}
+
+static gboolean
+_gdk_gl_window_is_double_buffered (GdkGLDrawable *gldrawable)
+{
+  g_return_val_if_fail(GDK_IS_GL_WINDOW(gldrawable), FALSE);
+
+  return GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->is_double_buffered(gldrawable);
+}
+
+static void
+_gdk_gl_window_swap_buffers (GdkGLDrawable *gldrawable)
+{
+  g_return_if_fail(GDK_IS_GL_WINDOW(gldrawable));
+
+  GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->swap_buffers(gldrawable);
+}
+
+static void
+_gdk_gl_window_wait_gl (GdkGLDrawable *gldrawable)
+{
+  g_return_if_fail(GDK_IS_GL_WINDOW(gldrawable));
+
+  GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->wait_gl(gldrawable);
+}
+
+static void
+_gdk_gl_window_wait_gdk (GdkGLDrawable *gldrawable)
+{
+  g_return_if_fail(GDK_IS_GL_WINDOW(gldrawable));
+
+  GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->wait_gdk(gldrawable);
+}
+
+static GdkGLConfig *
+_gdk_gl_window_get_gl_config (GdkGLDrawable *gldrawable)
+{
+  g_return_val_if_fail(GDK_IS_GL_WINDOW(gldrawable), NULL);
+
+  return GDK_GL_WINDOW_IMPL_GET_CLASS(GDK_GL_WINDOW(gldrawable)->impl)->get_gl_config(gldrawable);
 }
 
 /**
