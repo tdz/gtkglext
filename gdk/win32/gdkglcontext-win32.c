@@ -225,7 +225,7 @@ _gdk_win32_gl_context_impl_new (GdkGLContext  *glcontext,
   glconfig = gdk_gl_drawable_get_gl_config (gldrawable);
 
   /* Get DC. */
-  hdc = gdk_win32_gl_drawable_hdc_get (gldrawable);
+  hdc = gdk_win32_gl_window_get_hdc (GDK_GL_WINDOW (gldrawable));
   if (hdc == NULL)
     return NULL;
 
@@ -234,7 +234,7 @@ _gdk_win32_gl_context_impl_new (GdkGLContext  *glcontext,
   hglrc = wglCreateContext (hdc);
 
   /* Release DC. */
-  gdk_win32_gl_drawable_hdc_release (gldrawable);
+  gdk_win32_gl_window_release_hdc (GDK_GL_WINDOW (gldrawable));
 
   if (hglrc == NULL)
     return NULL;

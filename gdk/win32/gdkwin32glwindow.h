@@ -40,8 +40,10 @@ typedef struct _GdkWin32GLWindowClass GdkWin32GLWindowClass;
 
 GType                  gdk_win32_gl_window_get_type (void);
 
-PIXELFORMATDESCRIPTOR *gdk_win32_gl_window_get_pfd          (GdkGLWindow   *glwindow);
-int                    gdk_win32_gl_window_get_pixel_format (GdkGLWindow   *glwindow);
+PIXELFORMATDESCRIPTOR *gdk_win32_gl_window_get_pfd          (GdkGLWindow *glwindow);
+int                    gdk_win32_gl_window_get_pixel_format (GdkGLWindow *glwindow);
+HDC                    gdk_win32_gl_window_get_hdc          (GdkGLWindow *glwindow);
+void                   gdk_win32_gl_window_release_hdc      (GdkGLWindow *glwindow);
 
 #ifdef INSIDE_GDK_GL_WIN32
 
