@@ -36,6 +36,8 @@ static GdkGLContext *_gdk_x11_gl_window_impl_create_gl_context  (GdkGLDrawable *
                                                                  int            render_type);
 static gboolean     _gdk_x11_gl_window_impl_is_double_buffered  (GdkGLDrawable *gldrawable);
 static void         _gdk_x11_gl_window_impl_swap_buffers        (GdkGLDrawable *gldrawable);
+static void         _gdk_x11_gl_window_impl_wait_gl             (GdkGLDrawable *gldrawable);
+static void         _gdk_x11_gl_window_impl_wait_gdk            (GdkGLDrawable *gldrawable);
 static GdkGLConfig *_gdk_x11_gl_window_impl_get_gl_config       (GdkGLDrawable *gldrawable);
 static Window       _gdk_x11_gl_window_impl_get_glxwindow       (GdkGLWindow   *glwindow);
 
@@ -118,8 +120,8 @@ gdk_gl_window_impl_x11_class_init (GdkGLWindowImplX11Class *klass)
   klass->parent_class.create_gl_context      = _gdk_x11_gl_window_impl_create_gl_context;
   klass->parent_class.is_double_buffered     = _gdk_x11_gl_window_impl_is_double_buffered;
   klass->parent_class.swap_buffers           = _gdk_x11_gl_window_impl_swap_buffers;
-  klass->parent_class.wait_gl                = _gdk_gl_drawable_impl_x11_wait_gl;
-  klass->parent_class.wait_gdk               = _gdk_gl_drawable_impl_x11_wait_gdk;
+  klass->parent_class.wait_gl                = _gdk_x11_gl_window_impl_wait_gl;
+  klass->parent_class.wait_gdk               = _gdk_x11_gl_window_impl_wait_gdk;
   klass->parent_class.get_gl_config          = _gdk_x11_gl_window_impl_get_gl_config;
   klass->parent_class.destroy_gl_window_impl = _gdk_x11_gl_window_impl_destroy;
 
@@ -232,6 +234,22 @@ _gdk_x11_gl_window_impl_swap_buffers (GdkGLDrawable *gldrawable)
   GDK_GL_NOTE_FUNC_IMPL ("glXSwapBuffers");
 
   glXSwapBuffers (xdisplay, glxwindow);
+}
+
+static void
+_gdk_x11_gl_window_impl_wait_gl (GdkGLDrawable *gldrawable)
+{
+  g_return_if_fail (GDK_IS_X11_GL_WINDOW (gldrawable));
+
+  glXWaitGL ();
+}
+
+static void
+_gdk_x11_gl_window_impl_wait_gdk (GdkGLDrawable *gldrawable)
+{
+  g_return_if_fail (GDK_IS_X11_GL_WINDOW (gldrawable));
+
+  glXWaitX ();
 }
 
 static GdkGLConfig *
