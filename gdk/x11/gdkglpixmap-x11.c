@@ -143,6 +143,11 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
                    GdkPixmap   *pixmap,
                    const int   *attrib_list)
 {
+  GLXPixmap (APIENTRY * CreateGLXPixmapMESA)(Display*,
+                                             XVisualInfo*,
+                                             Pixmap,
+                                             Colormap);
+
   GdkGLPixmap *glpixmap;
   GdkGLPixmapImplX11 *impl;
 
@@ -156,8 +161,6 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
   unsigned int width_return, height_return;
   unsigned int border_width_return;
   unsigned int depth_return;
-
-  GdkGL_GLX_MESA_pixmap_colormap *mesa_ext;
 
   GDK_GL_NOTE_FUNC ();
 
@@ -192,17 +195,22 @@ gdk_gl_pixmap_new (GdkGLConfig *glconfig,
    * Create GLXPixmap.
    */
 
-  mesa_ext = gdk_gl_get_GLX_MESA_pixmap_colormap (glconfig);
-  if (mesa_ext)
+  CreateGLXPixmapMESA =
+    (GLXPixmap (APIENTRY *)(Display*,
+                            XVisualInfo*,
+                            Pixmap,
+                            Colormap))gdk_gl_get_proc_address ("glXCreateGLXPixmapMESA");
+
+  if (CreateGLXPixmapMESA)
     {
       /* If GLX_MESA_pixmap_colormap is supported. */
 
       GDK_GL_NOTE_FUNC_IMPL ("glXCreateGLXPixmapMESA");
 
-      glxpixmap = mesa_ext->glXCreateGLXPixmapMESA (xdisplay,
-                                                    xvinfo,
-                                                    xpixmap,
-                                                    GDK_GL_CONFIG_XCOLORMAP (glconfig));
+      glxpixmap = CreateGLXPixmapMESA (xdisplay,
+                                       xvinfo,
+                                       xpixmap,
+                                       GDK_GL_CONFIG_XCOLORMAP (glconfig));
     }
   else
     {
