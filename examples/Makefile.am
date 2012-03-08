@@ -157,13 +157,11 @@ font_pangoft2_tex_LDFLAGS = $(AM_LDFLAGS) $(PANGOFT2_LIBS) $(GTKGLEXT_DEP_LIBS_W
 endif
 
 if !USE_WIN32
-if !TARGET_QUARTZ
 if GLU
 noinst_PROGRAMS += simple-pbuffer-sgix
 nodist_EXTRA_simple_pbuffer_sgix_SOURCES = dummy.cpp
 simple_pbuffer_sgix_SOURCES = simple-pbuffer-sgix.c
 simple_pbuffer_sgix_LDFLAGS = $(GLU_LIBS) $(GL_LIBS)
-endif
 endif
 endif
 
@@ -174,13 +172,11 @@ wglinfo_LDADD = $(GL_LIBS) $(WINDOWING_LIBS)
 endif
 
 if !USE_WIN32
-if !TARGET_QUARTZ
 if GLU
 noinst_PROGRAMS += glxinfo
 nodist_EXTRA_glxinfo_SOURCES = dummy.cpp
 glxinfo_SOURCES = glxinfo.c
 glxinfo_LDADD = $(WINDOWING_LIBS) $(GLU_LIBS) $(GL_LIBS) $(MATH_LIB)
-endif
 endif
 endif
 

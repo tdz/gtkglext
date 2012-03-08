@@ -36,7 +36,6 @@ IGNORE_HFILES = \
 	glext			\
 	x11			\
 	win32			\
-	quartz			\
 	gdkglext-config.h	\
 	gdkglprivate.h		\
 	gdkgldebug.h		\
@@ -164,7 +163,7 @@ html-build.stamp: sgml.stamp $(DOC_MAIN_SGML_FILE) $(content_files)
 	test -d $(srcdir)/html || mkdir $(srcdir)/html
 	cd $(srcdir)/html && gtkdoc-mkhtml --path=$(abs_builddir) $(DOC_MODULE) ../$(DOC_MAIN_SGML_FILE)
 	test "x$(HTML_IMAGES)" = "x" || ( cd $(srcdir) && cp $(HTML_IMAGES) html )
-	@echo '-- Fixing Crossreferences' 
+	@echo '-- Fixing Crossreferences'
 	cd $(srcdir) && gtkdoc-fixxref --module-dir=html --html-dir=$(HTML_DIR) $(FIXXREF_OPTIONS)
 	touch html-build.stamp
 endif
