@@ -330,11 +330,10 @@ main (int   argc,
 
   /*
    * If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
-   * the top-level window, we have to set OpenGL window's colormap to the
+   * the top-level window, we have to set OpenGL window's visual to the
    * top-level window.
    */
-  gtk_widget_set_colormap (window,
-                           gdk_gl_config_get_colormap (glconfig));
+  gtk_widget_set_visual (window, gdk_gl_config_get_visual (glconfig));
 
   /* Get automatically redrawn if any of their children changed allocation. */
   gtk_container_set_reallocate_redraws (GTK_CONTAINER (window), TRUE);
@@ -357,9 +356,8 @@ main (int   argc,
   drawing_area = gtk_drawing_area_new ();
   gtk_widget_set_size_request (drawing_area, 200, 200);
 
-  /* Set OpenGL-capable colormap. */
-  gtk_widget_set_colormap (drawing_area,
-                           gdk_gl_config_get_colormap (glconfig));
+  /* Set OpenGL-capable visual. */
+  gtk_widget_set_visual (drawing_area, gdk_gl_config_get_visual (glconfig));
 
   /* Disable backing store feature of the widget. */
   gtk_widget_set_double_buffered (drawing_area, FALSE);
