@@ -25,14 +25,13 @@ options. These are removed from <literal>argv</literal> by
 </para>
 
 <formalpara>
-<title><systemitem>--gtk-gl-install-colormap</systemitem></title>
+<title><systemitem>--gtk-gl-install-visual</systemitem></title>
 
 <para>
-Install OpenGL window's colormap to the top-level window.
+Install OpenGL window's visual to the top-level window.
 If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
-the top-level window, we have to set OpenGL window's colormap to the
-top-level window, especially in color index mode (color index mode
-uses own private colormap).
+the top-level window, we have to set OpenGL window's visual to the
+top-level window.
 </para>
 </formalpara>
 
@@ -40,9 +39,9 @@ uses own private colormap).
 <title><systemitem>--gtk-gl-debug <replaceable>options</replaceable></systemitem></title>
 
 <para>
-A list of <link linkend="GTK-GL-Debug-Options">debug options</link> 
+A list of <link linkend="GTK-GL-Debug-Options">debug options</link>
 to turn on in addition to those specified in the
-<envar>GTK_GL_DEBUG</envar> environment variable. 
+<envar>GTK_GL_DEBUG</envar> environment variable.
 This option is only available if GtkGLExt has been configured with
 <option>--enable-debug=yes</option>.
 </para>
@@ -52,7 +51,7 @@ This option is only available if GtkGLExt has been configured with
 <title><systemitem>--gtk-gl-no-debug <replaceable>options</replaceable></systemitem></title>
 
 <para>
-A list of <link linkend="GTK-GL-Debug-Options">debug options</link> 
+A list of <link linkend="GTK-GL-Debug-Options">debug options</link>
 to turn off.
 This option is only available if GtkGLExt has been configured with
 <option>--enable-debug=yes</option>.
@@ -82,7 +81,7 @@ XmuLookupStandardColormap(). Sun fixed this bug in Solaris 2.6.
 
 <para>
 Users can force GdkGLExt library to use indirect rendering context.
-If your application has a problem with hardware acceleration, try 
+If your application has a problem with hardware acceleration, try
 this option.
 </para>
 </formalpara>
@@ -91,9 +90,9 @@ this option.
 <title><systemitem>--gdk-gl-debug <replaceable>options</replaceable></systemitem></title>
 
 <para>
-A list of <link linkend="GDK-GL-Debug-Options">debug options</link> 
-to turn on in addition to those 
-specified in the <envar>GDK_GL_DEBUG</envar> environment variable. 
+A list of <link linkend="GDK-GL-Debug-Options">debug options</link>
+to turn on in addition to those
+specified in the <envar>GDK_GL_DEBUG</envar> environment variable.
 This option is only available if GtkGLExt has been configured with
 <option>--enable-debug=yes</option>.
 </para>
@@ -103,7 +102,7 @@ This option is only available if GtkGLExt has been configured with
 <title><systemitem>--gdk-gl-no-debug <replaceable>options</replaceable></systemitem></title>
 
 <para>
-A list of <link linkend="GDK-GL-Debug-Options">debug options</link> 
+A list of <link linkend="GDK-GL-Debug-Options">debug options</link>
 to turn off.
 This option is only available if GtkGLExt has been configured with
 <option>--enable-debug=yes</option>.
@@ -115,18 +114,18 @@ This option is only available if GtkGLExt has been configured with
 <refsect2>
 <title>Environment variables</title>
 
-<para> 
+<para>
 GtkGLExt inspects the following environment variables.
 </para>
 
 <formalpara>
-  <title><envar>GTK_GL_INSTALL_COLORMAP</envar></title>
+  <title><envar>GTK_GL_INSTALL_VISUAL</envar></title>
 
   <para>
     If this variable is set to 1, GtkGLExt will try to install
-    colormap to the top-level window.
+    the OpenGL window's visual to the top-level window.
     If window manager doesn't watch the WM_COLORMAP_WINDOWS property on
-    the top-level window, we have to set OpenGL window's colormap to the
+    the top-level window, we have to set OpenGL window's visual to the
     top-level window.
   </para>
 </formalpara>
