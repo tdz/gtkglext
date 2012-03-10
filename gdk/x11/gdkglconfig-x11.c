@@ -74,10 +74,11 @@ gdk_gl_config_impl_x11_class_init (GdkGLConfigImplX11Class *klass)
   object_class->finalize = gdk_gl_config_impl_x11_finalize;
 }
 
-/* 
+/*
  * Get standard RGB colormap
  */
 
+#ifdef HAVE_GDK_X11_COLORMAP_FOREIGN_NEW
 static GdkColormap *
 gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
                                     XVisualInfo *xvinfo,
@@ -205,8 +206,9 @@ gdk_gl_config_get_std_rgb_colormap (GdkScreen   *screen,
 
   return NULL;
 }
+#endif /* HAVE_GDK_X11_COLORMAP_FOREIGN_NEW */
 
-/* 
+/*
  * Setup colormap.
  */
 
@@ -446,7 +448,7 @@ gdk_gl_config_new_common (GdkScreen *screen,
  * attributes.
  *
  * attrib_list is a int array that contains the attribute/value pairs.
- * Available attributes are: 
+ * Available attributes are:
  * GDK_GL_USE_GL, GDK_GL_BUFFER_SIZE, GDK_GL_LEVEL, GDK_GL_RGBA,
  * GDK_GL_DOUBLEBUFFER, GDK_GL_STEREO, GDK_GL_AUX_BUFFERS,
  * GDK_GL_RED_SIZE, GDK_GL_GREEN_SIZE, GDK_GL_BLUE_SIZE, GDK_GL_ALPHA_SIZE,
