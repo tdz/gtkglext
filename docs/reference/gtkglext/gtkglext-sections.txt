@@ -135,30 +135,6 @@ gdk_gl_drawable_get_type
 </SECTION>
 
 <SECTION>
-<FILE>gdkglpixmap</FILE>
-GdkGLPixmap
-gdk_gl_pixmap_new
-gdk_gl_pixmap_get_pixmap
-gdk_pixmap_set_gl_capability
-gdk_pixmap_unset_gl_capability
-gdk_pixmap_is_gl_capable
-gdk_pixmap_get_gl_pixmap
-gdk_pixmap_get_gl_drawable
-
-<SUBSECTION Standard>
-GdkGLPixmapClass
-GDK_GL_PIXMAP
-GDK_IS_GL_PIXMAP
-GDK_TYPE_GL_PIXMAP
-GDK_GL_PIXMAP_CLASS
-GDK_IS_GL_PIXMAP_CLASS
-GDK_GL_PIXMAP_GET_CLASS
-
-<SUBSECTION Private>
-gdk_gl_pixmap_get_type
-</SECTION>
-
-<SECTION>
 <FILE>gdkglwindow</FILE>
 GdkGLWindow
 gdk_gl_window_new
@@ -249,7 +225,6 @@ gdk_x11_gl_config_get_xvinfo
 gdk_x11_gl_config_is_mesa_glx
 gdk_x11_gl_context_foreign_new
 gdk_x11_gl_context_get_glxcontext
-gdk_x11_gl_pixmap_get_glxpixmap
 gdk_x11_gl_window_get_glxwindow
 GDK_GL_CONFIG_XDISPLAY
 GDK_GL_CONFIG_SCREEN_XNUMBER
