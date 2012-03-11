@@ -19,8 +19,9 @@
 #ifndef __GDK_GL_WINDOW_X11_H__
 #define __GDK_GL_WINDOW_X11_H__
 
+#include <gdk/gdkx.h>
+
 #include <gdk/gdkglwindow.h>
-#include <gdk/x11/gdkglx.h>
 
 G_BEGIN_DECLS
 

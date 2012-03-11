@@ -20,7 +20,6 @@
 #define __GDK_GL_QUERY_X11_H__
 
 #include "gdkglquery.h"
-#include <gdk/x11/gdkglx.h>
 
 G_BEGIN_DECLS
 

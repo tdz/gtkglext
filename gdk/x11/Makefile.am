@@ -13,8 +13,10 @@ AM_CPPFLAGS = \
 	$(GL_CFLAGS)			\
 	$(GDKGLEXT_WIN_CFLAGS)
 
+gdkglext_public_h_sources = \
+	gdkglx.h
+
 gdkglext_x11_public_h_sources = \
-	gdkglx.h \
 	gdkx11glconfig.h \
 	gdkx11glcontext.h \
 	gdkx11glquery.h \
@@ -34,12 +36,18 @@ gdkglext_x11_c_sources = \
 	gdkgldrawable-x11.c	\
 	gdkglwindow-x11.c
 
+gdkglext_headers = \
+	$(gdkglext_public_h_sources)
+
 gdkglext_x11_headers = \
 	$(gdkglext_x11_public_h_sources)
 
 gdkglext_x11_sources = \
 	$(gdkglext_x11_private_h_sources)	\
 	$(gdkglext_x11_c_sources)
+
+gdkglextincludedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk
+gdkglextinclude_HEADERS = $(gdkglext_headers)
 
 gdkglextx11includedir = $(includedir)/gtkglext-@GTKGLEXT_API_VERSION@/gdk/x11
 gdkglextx11include_HEADERS = $(gdkglext_x11_headers)

@@ -38,6 +38,7 @@
 #endif
 
 #ifdef GDKGLEXT_WINDOWING_X11
+#include <gdk/gdkx.h>
 #include "x11/gdkglquery-x11.h"
 #endif
 #ifdef GDKGLEXT_WINDOWING_WIN32

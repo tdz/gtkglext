@@ -211,7 +211,7 @@ gdk_gl_event_type_get_type
 gdk_gl_drawable_type_get_type
 </SECTION>
 
-<INCLUDE>gdk/x11/gdkglx.h</INCLUDE>
+<INCLUDE>gdk/gdkglx.h</INCLUDE>
 
 <SECTION>
 <FILE>gdkglx</FILE>
