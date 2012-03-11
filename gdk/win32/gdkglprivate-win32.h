@@ -22,7 +22,6 @@
 #include <gdk/gdkprivate.h>
 
 #include <gdk/gdkglprivate.h>
-#include <gdk/win32/gdkglwin32.h>
 
 G_BEGIN_DECLS
 

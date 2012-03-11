@@ -20,7 +20,6 @@
 #define __GDK_GL_QUERY_WIN32_H__
 
 #include "gdkglquery.h"
-#include <gdk/win32/gdkglwin32.h>
 
 G_BEGIN_DECLS
 

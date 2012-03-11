@@ -42,6 +42,7 @@
 #include "x11/gdkglquery-x11.h"
 #endif
 #ifdef GDKGLEXT_WINDOWING_WIN32
+#include <gdk/gdkwin32.h>
 #include "win32/gdkglquery-win32.h"
 #endif
 

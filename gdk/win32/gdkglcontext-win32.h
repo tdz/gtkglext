@@ -19,8 +19,9 @@
 #ifndef __GDK_GL_CONTEXT_WIN32_H__
 #define __GDK_GL_CONTEXT_WIN32_H__
 
+#include <gdk/gdkwin32.h>
+
 #include <gdk/gdkglcontext.h>
-#include <gdk/win32/gdkglwin32.h>
 
 G_BEGIN_DECLS
 
