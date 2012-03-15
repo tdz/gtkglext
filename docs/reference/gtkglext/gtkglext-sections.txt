@@ -109,16 +109,12 @@ gdk_gl_context_get_type
 <SECTION>
 <FILE>gdkgldrawable</FILE>
 GdkGLDrawable
-gdk_gl_drawable_make_current
 gdk_gl_drawable_is_double_buffered
 gdk_gl_drawable_swap_buffers
 gdk_gl_drawable_wait_gl
 gdk_gl_drawable_wait_gdk
-gdk_gl_drawable_gl_begin
-gdk_gl_drawable_gl_end
 gdk_gl_drawable_get_gl_config
 gdk_gl_drawable_get_size
-gdk_gl_drawable_get_current
 
 <SUBSECTION Standard>
 GdkGLDrawableClass
