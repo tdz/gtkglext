@@ -25,21 +25,17 @@ MKDB_OPTIONS = --sgml-mode --output-format=xml
 FIXXREF_OPTIONS =
 
 # Used for dependencies.
-HFILE_GLOB = $(top_srcdir)/gdk/*.h $(top_srcdir)/gdk/x11/gdkglx.h $(top_srcdir)/gtk/*.h
-CFILE_GLOB = $(top_srcdir)/gdk/*.c $(top_srcdir)/gdk/x11/*.c $(top_srcdir)/gtk/*.c
+HFILE_GLOB = $(top_srcdir)/gdk/*.h $(top_srcdir)/gdk/x11/*.h $(top_srcdir)/gdk/win32/*.h $(top_srcdir)/gtk/*.h
+CFILE_GLOB = $(top_srcdir)/gdk/*.c $(top_srcdir)/gdk/x11/*.c $(top_srcdir)/gdk/win32/*.c $(top_srcdir)/gtk/*.c
 
 # Header files to ignore when scanning.
 IGNORE_HFILES = \
 	config.h		\
 	docs			\
 	examples		\
-	glext			\
-	x11			\
-	win32			\
 	gdkglext-config.h	\
 	gdkglprivate.h		\
 	gdkgldebug.h		\
-	gdkglglext.h		\
 	gtkglprivate.h		\
 	gtkgldebug.h
 
