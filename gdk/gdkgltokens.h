@@ -114,9 +114,6 @@ typedef enum
   GDK_GL_RENDER_TYPE                = 0x8011,
   GDK_GL_X_RENDERABLE               = 0x8012,
   GDK_GL_FBCONFIG_ID                = 0x8013,
-  GDK_GL_MAX_PBUFFER_WIDTH          = 0x8016,
-  GDK_GL_MAX_PBUFFER_HEIGHT         = 0x8017,
-  GDK_GL_MAX_PBUFFER_PIXELS         = 0x8018,
   GDK_GL_VISUAL_ID                  = 0x800B,
   GDK_GL_SCREEN                     = 0x800C,
 
@@ -181,7 +178,6 @@ typedef enum
 typedef enum
 {
   GDK_GL_WINDOW_BIT                 = 1 << 0, /* 0x00000001 */
-  GDK_GL_PBUFFER_BIT                = 1 << 2  /* 0x00000004 */
 } GdkGLDrawableTypeMask;
 
 /*
@@ -240,52 +236,10 @@ typedef enum
 typedef enum
 {
   GDK_GL_PRESERVED_CONTENTS         = 0x801B,
-  GDK_GL_LARGEST_PBUFFER            = 0x801C,
   GDK_GL_WIDTH                      = 0x801D,
   GDK_GL_HEIGHT                     = 0x801E,
   GDK_GL_EVENT_MASK                 = 0x801F
 } GdkGLDrawableAttrib;
-
-/*
- * glXCreatePbuffer attributes.
- * [ GLX 1.3 and later ]
- */
-typedef enum
-{
-  GDK_GL_PBUFFER_PRESERVED_CONTENTS = 0x801B, /* GDK_GL_PRESERVED_CONTENTS */
-  GDK_GL_PBUFFER_LARGEST_PBUFFER    = 0x801C, /* GDK_GL_LARGEST_PBUFFER */
-  GDK_GL_PBUFFER_HEIGHT             = 0x8040,
-  GDK_GL_PBUFFER_WIDTH              = 0x8041
-} GdkGLPbufferAttrib;
-
-/*
- * glXSelectEvent event mask bits.
- * [ GLX 1.3 and later ]
- */
-typedef enum
-{
-  GDK_GL_PBUFFER_CLOBBER_MASK       = 1 << 27  /* 0x08000000 */
-} GdkGLEventMask;
-
-/*
- * GLXPbufferClobberEvent event_type values.
- * [ GLX 1.3 and later ]
- */
-typedef enum
-{
-  GDK_GL_DAMAGED                    = 0x8020,
-  GDK_GL_SAVED                      = 0x8021
-} GdkGLEventType;
-
-/*
- * GLXPbufferClobberEvent draw_type values.
- * [ GLX 1.3 and later ]
- */
-typedef enum
-{
-  GDK_GL_WINDOW                     = 0x8022,
-  GDK_GL_PBUFFER                    = 0x8023
-} GdkGLDrawableType;
 
 #ifdef __cplusplus
 }

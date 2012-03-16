@@ -173,7 +173,6 @@ GdkGLBufferMask
 GdkGLConfigError
 GdkGLRenderType
 GdkGLDrawableAttrib
-GdkGLPbufferAttrib
 GdkGLEventMask
 GdkGLEventType
 GdkGLDrawableType
@@ -205,7 +204,6 @@ gdk_gl_buffer_mask_get_type
 gdk_gl_config_error_get_type
 gdk_gl_render_type_get_type
 gdk_gl_drawable_attrib_get_type
-gdk_gl_pbuffer_attrib_get_type
 gdk_gl_event_mask_get_type
 gdk_gl_event_type_get_type
 gdk_gl_drawable_type_get_type
