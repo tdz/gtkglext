@@ -147,7 +147,7 @@ $(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_publ
 $(srcdir)/gdkglenumtypes.c: $(srcdir)/gtkglenumtypes.c.template $(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source)
 	( cd $(srcdir) && $(GLIB_MKENUMS) --template gtkglenumtypes.c.template \
 $(gdkglext_public_h_sources) $(abs_builddir)/$(gdkglext_configure_generated_public_h_source) ) > xgen-getc \
-&& cp xgen-getc $(srcdir)/gdkglenumtypes.c  \
+&& (cmp -s xgen-getc $(srcdir)/gdkglenumtypes.c || cp xgen-getc $(srcdir)/gdkglenumtypes.c ) \
 && rm -f xgen-getc
 
 #
