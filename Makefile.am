@@ -4,7 +4,7 @@
 SUBDIRS = gdk gtk docs examples
 
 ACLOCAL_AMFLAGS = -I m4macros
-DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
+DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --enable-introspection
 
 EXTRA_DIST = \
 	README.win32			\
