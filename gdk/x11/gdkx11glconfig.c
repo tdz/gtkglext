@@ -65,13 +65,14 @@ gdk_x11_gl_config_class_init (GdkX11GLConfigClass *klass)
  * gdk_x11_gl_config_new_for_display:
  * @display: display.
  * @attrib_list: the attribute list.
+ * @n_attribs: the number of attributes and values in attrib_list
  *
  * Creates a #GdkGLConfig on the given display.
  *
  * Return value: the new #GdkGLConfig.
  **/
 GdkGLConfig *
-gdk_x11_gl_config_new_for_display(GdkDisplay *display, const int *attrib_list)
+gdk_x11_gl_config_new_for_display(GdkDisplay *display, const int *attrib_list, gsize n_attribs)
 {
   GdkGLConfig *glconfig;
   GdkGLConfig *impl;
@@ -82,7 +83,7 @@ gdk_x11_gl_config_new_for_display(GdkDisplay *display, const int *attrib_list)
 
   g_return_val_if_fail(glconfig != NULL, NULL);
 
-  impl = _gdk_x11_gl_config_impl_new(glconfig, attrib_list);
+  impl = _gdk_x11_gl_config_impl_new(glconfig, attrib_list, n_attribs);
 
   if (impl == NULL)
     g_object_unref(glconfig);
@@ -96,13 +97,14 @@ gdk_x11_gl_config_new_for_display(GdkDisplay *display, const int *attrib_list)
  * gdk_x11_gl_config_new_for_screen:
  * @screen: target screen.
  * @attrib_list: the attribute list.
+ * @n_attribs: the number of attributes and values in attrib_list
  *
  * Creates a #GdkGLConfig on the given display.
  *
  * Return value: the new #GdkGLConfig.
  **/
 GdkGLConfig *
-gdk_x11_gl_config_new_for_screen(GdkScreen *screen, const int *attrib_list)
+gdk_x11_gl_config_new_for_screen(GdkScreen *screen, const int *attrib_list, gsize n_attribs)
 {
   GdkGLConfig *glconfig;
   GdkGLConfig *impl;
@@ -113,7 +115,7 @@ gdk_x11_gl_config_new_for_screen(GdkScreen *screen, const int *attrib_list)
 
   g_return_val_if_fail(glconfig != NULL, NULL);
 
-  impl = _gdk_x11_gl_config_impl_new(glconfig, attrib_list);
+  impl = _gdk_x11_gl_config_impl_new(glconfig, attrib_list, n_attribs);
 
   if (impl == NULL)
     g_object_unref(glconfig);

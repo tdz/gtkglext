@@ -45,10 +45,12 @@ typedef struct _GdkX11GLConfigClass GdkX11GLConfigClass;
 GType        gdk_x11_gl_config_get_type (void);
 
 GdkGLConfig *gdk_x11_gl_config_new_for_display  (GdkDisplay *display,
-                                                 const int  *attrib_list);
+                                                 const int  *attrib_list,
+                                                 gsize       n_attribs);
 
 GdkGLConfig *gdk_x11_gl_config_new_for_screen   (GdkScreen *screen,
-                                                 const int *attrib_list);
+                                                 const int *attrib_list,
+                                                 gsize      n_attribs);
 
 #ifndef GDK_MULTIHEAD_SAFE
 GdkGLConfig *gdk_x11_gl_config_new_from_visualid            (VisualID   xvisualid);

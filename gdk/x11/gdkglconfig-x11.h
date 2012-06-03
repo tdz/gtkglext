@@ -59,10 +59,12 @@ struct _GdkGLConfigImplX11Class
 GType gdk_gl_config_impl_x11_get_type (void);
 
 GdkGLConfig *_gdk_x11_gl_config_impl_new                          (GdkGLConfig *glconfig,
-                                                                   const int   *attrib_list);
+                                                                   const int   *attrib_list,
+                                                                   gsize        n_attribs);
 GdkGLConfig *_gdk_x11_gl_config_impl_new_for_screen               (GdkGLConfig *glconfig,
                                                                    GdkScreen   *screen,
-                                                                   const int   *attrib_list);
+                                                                   const int   *attrib_list,
+                                                                   gsize        n_attribs);
 GdkGLConfig *_gdk_x11_gl_config_impl_new_from_visualid_for_screen (GdkGLConfig *glconfig,
                                                                    GdkScreen   *screen,
                                                                    VisualID     xvisualid);

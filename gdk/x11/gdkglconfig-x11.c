@@ -154,15 +154,103 @@ gdk_x11_gl_config_impl_init_attrib (GdkGLConfig *glconfig)
 #undef _GET_CONFIG
 }
 
+static int *
+glx_attrib_list_from_attrib_list (const gint *attrib_list, gsize n_attribs)
+{
+  static const guchar has_param[] =
+    {
+      [GDK_GL_BUFFER_SIZE]      = 1,
+      [GDK_GL_LEVEL]            = 1,
+      [GDK_GL_AUX_BUFFERS]      = 1,
+      [GDK_GL_RED_SIZE]         = 1,
+      [GDK_GL_GREEN_SIZE]       = 1,
+      [GDK_GL_BLUE_SIZE]        = 1,
+      [GDK_GL_ALPHA_SIZE]       = 1,
+      [GDK_GL_DEPTH_SIZE]       = 1,
+      [GDK_GL_STENCIL_SIZE]     = 1,
+      [GDK_GL_ACCUM_RED_SIZE]   = 1,
+      [GDK_GL_ACCUM_GREEN_SIZE] = 1,
+      [GDK_GL_ACCUM_BLUE_SIZE]  = 1,
+      [GDK_GL_ACCUM_ALPHA_SIZE] = 1
+    };
+
+  static const int glx_attrib_of_attrib[] =
+    {
+      [GDK_GL_USE_GL]           = GLX_USE_GL,
+      [GDK_GL_BUFFER_SIZE]      = GLX_BUFFER_SIZE,
+      [GDK_GL_LEVEL]            = GLX_LEVEL,
+      [GDK_GL_RGBA]             = GLX_RGBA,
+      [GDK_GL_DOUBLEBUFFER]     = GLX_DOUBLEBUFFER,
+      [GDK_GL_STEREO]           = GLX_STEREO,
+      [GDK_GL_AUX_BUFFERS]      = GLX_AUX_BUFFERS,
+      [GDK_GL_RED_SIZE]         = GLX_RED_SIZE,
+      [GDK_GL_GREEN_SIZE]       = GLX_GREEN_SIZE,
+      [GDK_GL_BLUE_SIZE]        = GLX_BLUE_SIZE,
+      [GDK_GL_ALPHA_SIZE]       = GLX_ALPHA_SIZE,
+      [GDK_GL_DEPTH_SIZE]       = GLX_DEPTH_SIZE,
+      [GDK_GL_STENCIL_SIZE]     = GLX_STENCIL_SIZE,
+      [GDK_GL_ACCUM_RED_SIZE]   = GLX_ACCUM_RED_SIZE,
+      [GDK_GL_ACCUM_GREEN_SIZE] = GLX_ACCUM_GREEN_SIZE,
+      [GDK_GL_ACCUM_BLUE_SIZE]  = GLX_ACCUM_BLUE_SIZE,
+      [GDK_GL_ACCUM_ALPHA_SIZE] = GLX_ACCUM_ALPHA_SIZE
+    };
+
+  int *glx_attrib_list;
+  gsize i;
+
+  GDK_GL_NOTE_FUNC_PRIVATE ();
+
+  glx_attrib_list = g_malloc( sizeof(*glx_attrib_list)*(n_attribs+3) );
+
+  if (!glx_attrib_list)
+    goto err_g_malloc;
+
+  for (i = 0; (i < n_attribs) && attrib_list[i]; ++i)
+    {
+      switch (attrib_list[i])
+        {
+          case GDK_GL_USE_GL:
+            /* legacy from GLX 1.2 and always true; will be removed */
+          case GDK_GL_RGBA:
+            /* not supported anymore; skip now, remove later */
+            break;
+
+          default:
+            glx_attrib_list[i] = glx_attrib_of_attrib[attrib_list[i]];
+            if ( has_param[attrib_list[i]] )
+              {
+                ++i;
+                if (i == n_attribs)
+                  goto err_n_attribs;
+                glx_attrib_list[i] = attrib_list[i];
+              }
+            break;
+        }
+    }
+
+  glx_attrib_list[i++] = GLX_RGBA;
+  glx_attrib_list[i++] = GLX_USE_GL;
+  glx_attrib_list[i++] = 0;
+
+  return glx_attrib_list;
+
+err_n_attribs:
+  g_free(glx_attrib_list);
+err_g_malloc:
+  return NULL;
+}
+
 static GdkGLConfig *
 gdk_x11_gl_config_impl_new_common (GdkGLConfig *glconfig,
                                    GdkScreen *screen,
-                                   const int *attrib_list)
+                                   const int *attrib_list,
+                                   gsize n_attribs)
 {
   GdkGLConfigImplX11 *x11_impl;
 
   Display *xdisplay;
   int screen_num;
+  int *glx_attrib_list;
   XVisualInfo *xvinfo;
   int is_rgba;
 
@@ -177,11 +265,17 @@ gdk_x11_gl_config_impl_new_common (GdkGLConfig *glconfig,
    * Find an OpenGL-capable visual.
    */
 
+  glx_attrib_list = glx_attrib_list_from_attrib_list(attrib_list, n_attribs);
+
+  if (glx_attrib_list == NULL)
+    goto err_glx_attrib_list_from_attrib_list;
+
   GDK_GL_NOTE_FUNC_IMPL ("glXChooseVisual");
 
-  xvinfo = glXChooseVisual (xdisplay, screen_num, (int *) attrib_list);
+  xvinfo = glXChooseVisual (xdisplay, screen_num, glx_attrib_list);
+
   if (xvinfo == NULL)
-    return NULL;
+    goto err_glXChooseVisual;
 
   GDK_GL_NOTE (MISC,
     g_message (" -- glXChooseVisual: screen number = %d", xvinfo->screen));
@@ -214,12 +308,20 @@ gdk_x11_gl_config_impl_new_common (GdkGLConfig *glconfig,
 
   gdk_x11_gl_config_impl_init_attrib (glconfig);
 
+  g_free(glx_attrib_list);
+
   return glconfig;
+
+err_glXChooseVisual:
+  g_free(glx_attrib_list);
+err_glx_attrib_list_from_attrib_list:
+  return NULL;
 }
 
 GdkGLConfig *
 _gdk_x11_gl_config_impl_new (GdkGLConfig *glconfig,
-                             const int *attrib_list)
+                             const int *attrib_list,
+                             gsize n_attribs)
 {
   GdkScreen *screen;
 
@@ -230,13 +332,14 @@ _gdk_x11_gl_config_impl_new (GdkGLConfig *glconfig,
 
   screen = gdk_screen_get_default ();
 
-  return gdk_x11_gl_config_impl_new_common (glconfig, screen, attrib_list);
+  return gdk_x11_gl_config_impl_new_common (glconfig, screen, attrib_list, n_attribs);
 }
 
 GdkGLConfig *
 _gdk_x11_gl_config_impl_new_for_screen (GdkGLConfig *glconfig,
                                         GdkScreen *screen,
-                                        const int *attrib_list)
+                                        const int *attrib_list,
+                                        gsize n_attribs)
 {
   GDK_GL_NOTE_FUNC ();
 
@@ -244,7 +347,7 @@ _gdk_x11_gl_config_impl_new_for_screen (GdkGLConfig *glconfig,
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
   g_return_val_if_fail (attrib_list != NULL, NULL);
 
-  return gdk_x11_gl_config_impl_new_common (glconfig, screen, attrib_list);
+  return gdk_x11_gl_config_impl_new_common (glconfig, screen, attrib_list, n_attribs);
 }
 
 /*
