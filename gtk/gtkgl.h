@@ -23,10 +23,10 @@
 
 #define __GTKGL_H_INSIDE__
 
-#include <gtk/gtkgldefs.h>
-#include <gtk/gtkglversion.h>
-#include <gtk/gtkglinit.h>
-#include <gtk/gtkglwidget.h>
+#include "gtkgldefs.h"
+#include "gtkglversion.h"
+#include "gtkglinit.h"
+#include "gtkglwidget.h"
 
 #undef __GTKGL_H_INSIDE__
 
