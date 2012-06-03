@@ -21,19 +21,19 @@
 
 #define __GDKGL_H_INSIDE__
 
-#include <gdkglext-config.h>
+#include "gdkglext-config.h"
 
-#include <gdk/gdkgldefs.h>
-#include <gdk/gdkglversion.h>
-#include <gdk/gdkgltokens.h>
-#include <gdk/gdkgltypes.h>
-#include <gdk/gdkglenumtypes.h>
-#include <gdk/gdkglinit.h>
-#include <gdk/gdkglquery.h>
-#include <gdk/gdkglconfig.h>
-#include <gdk/gdkglcontext.h>
-#include <gdk/gdkgldrawable.h>
-#include <gdk/gdkglwindow.h>
+#include "gdkgldefs.h"
+#include "gdkglversion.h"
+#include "gdkgltokens.h"
+#include "gdkgltypes.h"
+#include "gdkglenumtypes.h"
+#include "gdkglinit.h"
+#include "gdkglquery.h"
+#include "gdkglconfig.h"
+#include "gdkglcontext.h"
+#include "gdkgldrawable.h"
+#include "gdkglwindow.h"
 
 #undef __GDKGL_H_INSIDE__
 
