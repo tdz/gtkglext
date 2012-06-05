@@ -1,5 +1,5 @@
 /**************************************************************************
- * rotatingSquare.c
+ * rotating-square.c
  *
  * Copyright (c) 2002 Alif Wahid <awah005@users.sourceforge.net>
  *
