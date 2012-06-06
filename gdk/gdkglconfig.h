@@ -73,14 +73,17 @@ struct _GdkGLConfigClass
 GType        gdk_gl_config_get_type               (void);
 
 #ifndef GDK_MULTIHEAD_SAFE
-GdkGLConfig *gdk_gl_config_new                    (const int       *attrib_list);
+GdkGLConfig *gdk_gl_config_new                    (const int       *attrib_list,
+                                                   gsize            n_attribs);
 #endif /* GDK_MULTIHEAD_SAFE */
 
 GdkGLConfig *gdk_gl_config_new_for_display        (GdkDisplay      *display,
-                                                   const int       *attrib_list);
+                                                   const int       *attrib_list,
+                                                   gsize            n_attribs);
 
 GdkGLConfig *gdk_gl_config_new_for_screen         (GdkScreen       *screen,
-                                                   const int       *attrib_list);
+                                                   const int       *attrib_list,
+                                                   gsize            n_attribs);
 
 #ifndef GDK_MULTIHEAD_SAFE
 GdkGLConfig *gdk_gl_config_new_by_mode            (GdkGLConfigMode  mode);

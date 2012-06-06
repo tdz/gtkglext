@@ -80,7 +80,6 @@ gdk_gl_config_new_ci (GdkScreen       *screen,
       list[n++] = GDK_GL_STENCIL_SIZE;
       list[n++] = 1;
     }
-  list[n] = GDK_GL_ATTRIB_LIST_NONE;
 
   /* from GLUT */
   /* glXChooseVisual specify GLX_BUFFER_SIZE prefers the
@@ -96,7 +95,7 @@ gdk_gl_config_new_ci (GdkScreen       *screen,
       /* XXX Assumes list[1] is where GDK_GL_BUFFER_SIZE parameter is. */
       list[1] = buf_size_list[i];
 
-      glconfig = gdk_gl_config_new_for_screen (screen, list);
+      glconfig = gdk_gl_config_new_for_screen (screen, list, n);
 
       if (glconfig != NULL)
         return glconfig;
@@ -156,9 +155,8 @@ gdk_gl_config_new_rgb (GdkScreen       *screen,
           list[n++] = 1;
         }
     }
-  list[n] = GDK_GL_ATTRIB_LIST_NONE;
 
-  return gdk_gl_config_new_for_screen (screen, list);
+  return gdk_gl_config_new_for_screen (screen, list, n);
 }
 
 static GdkGLConfig *
@@ -400,8 +398,8 @@ gdk_gl_config_has_accum_buffer (GdkGLConfig *glconfig)
 
 /**
  * gdk_gl_config_new:
- * @attrib_list: a list of attribute/value pairs. The last attribute must
- *               be GDK_GL_ATTRIB_LIST_NONE.
+ * @attrib_list: a list of attribute/value pairs.
+ * @n_attribs: the number of attributes and values in attrib_list.
  *
  * Returns an OpenGL frame buffer configuration that match the specified
  * attributes.
@@ -417,17 +415,18 @@ gdk_gl_config_has_accum_buffer (GdkGLConfig *glconfig)
  * Return value: the new #GdkGLConfig.
  **/
 GdkGLConfig *
-gdk_gl_config_new (const int *attrib_list)
+gdk_gl_config_new (const int *attrib_list, gsize n_attribs)
 {
   return gdk_gl_config_new_for_display(gdk_display_get_default(),
-                                       attrib_list);
+                                       attrib_list,
+                                       n_attribs);
 }
 
 /**
  * gdk_gl_config_new_for_display:
  * @screen: target display.
- * @attrib_list: a list of attribute/value pairs. The last attribute must
- *               be GDK_GL_ATTRIB_LIST_NONE.
+ * @attrib_list: a list of attribute/value pairs.
+ * @n_attribs: the number of attributes and values in attrib_list.
  *
  * Returns an OpenGL frame buffer configuration that match the specified
  * attributes.
@@ -443,21 +442,27 @@ gdk_gl_config_new (const int *attrib_list)
  * Return value: the new #GdkGLConfig.
  **/
 GdkGLConfig *
-gdk_gl_config_new_for_display (GdkDisplay *display, const int *attrib_list)
+gdk_gl_config_new_for_display (GdkDisplay *display,
+                               const int *attrib_list,
+                               gsize n_attribs)
 {
   GdkGLConfig *glconfig = NULL;
 
 #ifdef GDKGLEXT_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY(display))
     {
-      glconfig = gdk_x11_gl_config_new_for_display(display, attrib_list, 64);
+      glconfig = gdk_x11_gl_config_new_for_display(display,
+                                                   attrib_list,
+                                                   n_attribs);
     }
   else
 #endif
 #ifdef GDKGLEXT_WINDOWING_WIN32
   if (GDK_IS_WIN32_DISPLAY(display))
     {
-      glconfig = gdk_win32_gl_config_new_for_display(display, attrib_list, 64);
+      glconfig = gdk_win32_gl_config_new_for_display(display,
+                                                     attrib_list,
+                                                     n_attribs);
     }
   else
 #endif
@@ -471,8 +476,8 @@ gdk_gl_config_new_for_display (GdkDisplay *display, const int *attrib_list)
 /**
  * gdk_gl_config_new_for_screen:
  * @screen: target screen.
- * @attrib_list: a list of attribute/value pairs. The last attribute must
- *               be GDK_GL_ATTRIB_LIST_NONE.
+ * @attrib_list: a list of attribute/value pairs.
+ * @n_attribs: the number of attributes and values in attrib_list.
  *
  * Returns an OpenGL frame buffer configuration that match the specified
  * attributes.
@@ -489,7 +494,8 @@ gdk_gl_config_new_for_display (GdkDisplay *display, const int *attrib_list)
  **/
 GdkGLConfig *
 gdk_gl_config_new_for_screen (GdkScreen *screen,
-                              const int *attrib_list)
+                              const int *attrib_list,
+                              gsize n_attribs)
 {
   GdkDisplay *display;
   GdkGLConfig *glconfig = NULL;
@@ -505,14 +511,18 @@ gdk_gl_config_new_for_screen (GdkScreen *screen,
 #ifdef GDKGLEXT_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY(display))
     {
-      glconfig = gdk_x11_gl_config_new_for_screen(screen, attrib_list, 64);
+      glconfig = gdk_x11_gl_config_new_for_screen(screen,
+                                                  attrib_list,
+                                                  n_attribs);
     }
   else
 #endif
 #ifdef GDKGLEXT_WINDOWING_WIN32
   if (GDK_IS_WIN32_DISPLAY(display))
     {
-      glconfig = gdk_win32_gl_config_new_for_screen(screen, attrib_list, 64);
+      glconfig = gdk_win32_gl_config_new_for_screen(screen,
+                                                    attrib_list,
+                                                    n_attribs);
     }
   else
 #endif

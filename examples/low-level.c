@@ -34,7 +34,6 @@ static const int config_attributes[] = {
   GDK_GL_GREEN_SIZE,      1,
   GDK_GL_BLUE_SIZE,       1,
   GDK_GL_DEPTH_SIZE,      12,
-  GDK_GL_ATTRIB_LIST_NONE
 };
 
 static void
@@ -312,14 +311,14 @@ main (int   argc,
    */
 
   /* Try double-buffered visual */
-  glconfig = gdk_gl_config_new (&config_attributes[0]);
+  glconfig = gdk_gl_config_new (&config_attributes[0], G_N_ELEMENTS(config_attributes));
   if (glconfig == NULL)
     {
       g_print ("*** Cannot find the double-buffered visual.\n");
       g_print ("*** Trying single-buffered visual.\n");
 
       /* Try single-buffered visual */
-      glconfig = gdk_gl_config_new (&config_attributes[1]);
+      glconfig = gdk_gl_config_new (&config_attributes[1], G_N_ELEMENTS(config_attributes)-1);
       if (glconfig == NULL)
         {
           g_print ("*** No appropriate OpenGL-capable visual found.\n");
