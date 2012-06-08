@@ -398,7 +398,7 @@ gdk_gl_config_has_accum_buffer (GdkGLConfig *glconfig)
 
 /**
  * gdk_gl_config_new:
- * @attrib_list: a list of attribute/value pairs.
+ * @attrib_list: (array length=n_attribs): a list of attribute/value pairs.
  * @n_attribs: the number of attributes and values in attrib_list.
  *
  * Returns an OpenGL frame buffer configuration that match the specified
@@ -425,7 +425,7 @@ gdk_gl_config_new (const int *attrib_list, gsize n_attribs)
 /**
  * gdk_gl_config_new_for_display:
  * @screen: target display.
- * @attrib_list: a list of attribute/value pairs.
+ * @attrib_list: (array length=n_attribs): a list of attribute/value pairs.
  * @n_attribs: the number of attributes and values in attrib_list.
  *
  * Returns an OpenGL frame buffer configuration that match the specified
@@ -476,7 +476,7 @@ gdk_gl_config_new_for_display (GdkDisplay *display,
 /**
  * gdk_gl_config_new_for_screen:
  * @screen: target screen.
- * @attrib_list: a list of attribute/value pairs.
+ * @attrib_list: (array length=n_attribs): a list of attribute/value pairs.
  * @n_attribs: the number of attributes and values in attrib_list.
  *
  * Returns an OpenGL frame buffer configuration that match the specified
