@@ -64,7 +64,7 @@ gdk_x11_gl_config_class_init (GdkX11GLConfigClass *klass)
 /**
  * gdk_x11_gl_config_new_for_display:
  * @display: display.
- * @attrib_list: the attribute list.
+ * @attrib_list: (array length=n_attribs): the attribute list.
  * @n_attribs: the number of attributes and values in attrib_list
  *
  * Creates a #GdkGLConfig on the given display.
@@ -96,7 +96,7 @@ gdk_x11_gl_config_new_for_display(GdkDisplay *display, const int *attrib_list, g
 /**
  * gdk_x11_gl_config_new_for_screen:
  * @screen: target screen.
- * @attrib_list: the attribute list.
+ * @attrib_list: (array length=n_attribs): the attribute list.
  * @n_attribs: the number of attributes and values in attrib_list
  *
  * Creates a #GdkGLConfig on the given display.
