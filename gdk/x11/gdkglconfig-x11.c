@@ -230,7 +230,7 @@ glx_attrib_list_from_attrib_list (const gint *attrib_list, gsize n_attribs)
 
   glx_attrib_list[attrib_index++] = GLX_RGBA;
   glx_attrib_list[attrib_index++] = GLX_USE_GL;
-  glx_attrib_list[attrib_index++] = 0;
+  glx_attrib_list[attrib_index++] = None;
 
   return glx_attrib_list;
 
