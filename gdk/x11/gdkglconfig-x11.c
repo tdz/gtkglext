@@ -196,7 +196,7 @@ glx_attrib_list_from_attrib_list (const gint *attrib_list, gsize n_attribs)
     };
 
   int *glx_attrib_list;
-  gsize i;
+  gsize attrib_index;
 
   GDK_GL_NOTE_FUNC_PRIVATE ();
 
@@ -205,9 +205,9 @@ glx_attrib_list_from_attrib_list (const gint *attrib_list, gsize n_attribs)
   if (!glx_attrib_list)
     goto err_g_malloc;
 
-  for (i = 0; (i < n_attribs) && attrib_list[i]; ++i)
+  for (attrib_index = 0; (attrib_index < n_attribs) && attrib_list[attrib_index]; ++attrib_index)
     {
-      switch (attrib_list[i])
+      switch (attrib_list[attrib_index])
         {
           case GDK_GL_USE_GL:
             /* legacy from GLX 1.2 and always true; will be removed */
@@ -216,21 +216,21 @@ glx_attrib_list_from_attrib_list (const gint *attrib_list, gsize n_attribs)
             break;
 
           default:
-            glx_attrib_list[i] = glx_attrib_of_attrib[attrib_list[i]];
-            if ( has_param[attrib_list[i]] )
+            glx_attrib_list[attrib_index] = glx_attrib_of_attrib[attrib_list[attrib_index]];
+            if ( has_param[attrib_list[attrib_index]] )
               {
-                ++i;
-                if (i == n_attribs)
+                ++attrib_index;
+                if (attrib_index == n_attribs)
                   goto err_n_attribs;
-                glx_attrib_list[i] = attrib_list[i];
+                glx_attrib_list[attrib_index] = attrib_list[attrib_index];
               }
             break;
         }
     }
 
-  glx_attrib_list[i++] = GLX_RGBA;
-  glx_attrib_list[i++] = GLX_USE_GL;
-  glx_attrib_list[i++] = 0;
+  glx_attrib_list[attrib_index++] = GLX_RGBA;
+  glx_attrib_list[attrib_index++] = GLX_USE_GL;
+  glx_attrib_list[attrib_index++] = 0;
 
   return glx_attrib_list;
 
