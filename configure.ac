@@ -55,7 +55,7 @@ cflags_set=${CFLAGS+set}
 AM_INIT_AUTOMAKE([1.11 no-define dist-bzip2 dist-zip dist-xz])
 
 # Specify a configuration file
-AM_CONFIG_HEADER([config.h])
+AC_CONFIG_HEADERS([config.h])
 
 AC_CANONICAL_HOST
 
