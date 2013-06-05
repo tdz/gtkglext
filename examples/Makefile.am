@@ -82,9 +82,11 @@ endif
 noinst_PROGRAMS += logo
 logo_SOURCES = trackball.h trackball.c logo-model.h logo-model.c logo.c
 logo_SOURCES += logo-g.h logo-t.h logo-k.h
+logo_LDADD = $(LDADD) $(MATH_LIB) $(GL_LIBS)
 
 noinst_PROGRAMS += gears
 gears_SOURCES = gears.c
+gears_LDADD = $(LDADD) $(MATH_LIB) $(GL_LIBS)
 
 if GLU
 noinst_PROGRAMS += multiarb
@@ -102,6 +104,7 @@ endif
 
 noinst_PROGRAMS += rotating-square
 rotating_square_SOURCES = rotating-square.c
+rotating_square_LDADD = $(LDADD) $(GL_LIBS)
 
 if GLU
 noinst_PROGRAMS += coolwave
@@ -119,9 +122,11 @@ endif
 
 noinst_PROGRAMS += template
 template_SOURCES = template.c
+template_LDADD = $(LDADD) $(GL_LIBS)
 
 noinst_PROGRAMS += scribble-gl
 scribble_gl_SOURCES = scribble-gl.c
+scribble_gl_LDADD = $(LDADD) $(GL_LIBS)
 
 if GLU
 noinst_PROGRAMS += font-pangoft2
