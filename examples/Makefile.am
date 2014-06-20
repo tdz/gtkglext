@@ -25,7 +25,9 @@ LDADD = \
 
 AM_LDFLAGS = \
 	$(GTK_LIBS)		\
-	$(GDKGLEXT_WIN_LIBS)
+	$(GDKGLEXT_WIN_LIBS) \
+	$(MATH_LIB) \
+	$(GL_LIBS)
 
 if GLU
 noinst_LTLIBRARIES = libdrawshapes.la
