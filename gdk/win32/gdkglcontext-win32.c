@@ -243,7 +243,7 @@ _gdk_win32_gl_context_impl_new (GdkGLContext  *glcontext,
     {
       GDK_GL_NOTE_FUNC_IMPL ("wglShareLists");
 
-      share_impl = GDK_GL_CONTEXT_IMPL_WIN32 (share_list);
+	  share_impl = GDK_GL_CONTEXT_IMPL_WIN32 (share_list->impl);
       if (!wglShareLists (share_impl->hglrc, hglrc))
         {
           wglDeleteContext (hglrc);
@@ -467,11 +467,12 @@ _gdk_win32_gl_context_impl_make_current (GdkGLContext *glcontext,
 static void
 _gdk_win32_gl_context_impl_make_uncurrent (GdkGLContext *glcontext)
 {
+	GdkGLWindowImplWin32 *impl;
   GdkGLDrawable *gldrawable = _gdk_win32_gl_context_impl_get_gl_drawable (glcontext);
 
   g_return_if_fail(gldrawable != NULL);
 
-  GdkGLWindowImplWin32 *impl = GDK_GL_WINDOW_IMPL_WIN32 ( GDK_GL_WINDOW (gldrawable)->impl);
+  impl = GDK_GL_WINDOW_IMPL_WIN32 ( GDK_GL_WINDOW (gldrawable)->impl);
 
   /* Release DC. */
   GDK_GL_WINDOW_IMPL_WIN32_HDC_RELEASE (impl);
